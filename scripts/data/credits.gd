@@ -1,0 +1,32 @@
+extends RefCounted
+## De aftiteling. Stijlen: "title", "heading", "text" of "" (lege regel).
+
+const LINES := [
+	["title", "Bluemap Quest"],
+	["", ""],
+	["heading", "Een spel voor de WTP-community"],
+	["", ""],
+	["heading", "Bedacht door"],
+	["text", "de eigenaar van WTP"],
+	["", ""],
+	["heading", "Gebouwd met"],
+	["text", "Claude (Anthropic)"],
+	["", ""],
+	["heading", "Verhaal en personages"],
+	["text", "Oudste Bram, Greta, Tobias, Mila, Pim,"],
+	["text", "Wachter Hein, Anja, Joost, Wilfred en Muis"],
+	["", ""],
+	["heading", "Pixel art"],
+	["text", "Zelf getekend met code (tools/make_art.py)"],
+	["", ""],
+	["heading", "Muziek en geluid"],
+	["text", "Zelf gesynthetiseerd (tools/make_audio.py)"],
+	["", ""],
+	["heading", "Techniek"],
+	["text", "Godot Engine 4 (MIT-licentie)"],
+	["text", "Python, Pillow en NumPy"],
+	["", ""],
+	["", ""],
+	["heading", "Speciale dank"],
+	["text", "Aan jou, voor het spelen!"],
+]

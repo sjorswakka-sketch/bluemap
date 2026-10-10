@@ -166,6 +166,8 @@ func hurt(from_pos: Vector2, amount: int = 1) -> void:
 	invuln = INVULN_TIME
 	knockback = (global_position - from_pos).normalized() * 260.0
 	shake(5.0)
+	if world:
+		world.hitstop(0.07)
 
 
 func shake(power: float) -> void:

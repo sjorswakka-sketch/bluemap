@@ -226,7 +226,7 @@ func _golem_slam(enraged: bool) -> void:
 	world.ring(global_position + Vector2(0, 14), 56.0, Color(0.7, 0.85, 1.0))
 	slam_ring = 0.3
 	if global_position.distance_to(player.global_position) < 56.0:
-		player.hurt(global_position, data["damage"])
+		player.hurt(global_position, int(data.get("slam_damage", data["damage"])))
 	if enraged:
 		for i in 6:
 			world.spawn_projectile("rock", global_position, Vector2.from_angle(TAU * float(i) / 6.0 + 0.3), 95.0, 1)
@@ -283,7 +283,7 @@ func _king_land(phase: int) -> void:
 	world.ring(global_position + Vector2(0, 30), shock, Color(0.5, 0.95, 0.55))
 	slam_ring = 0.35
 	if global_position.distance_to(player.global_position) < shock:
-		player.hurt(global_position, data["damage"])
+		player.hurt(global_position, 1 if phase == 1 else int(data.get("slam_damage", 2)))
 	var minions := 0
 	for enemy: Node in get_tree().get_nodes_in_group("enemies"):
 		if enemy != self and enemy.kind == "slime":
@@ -315,8 +315,10 @@ func hurt(damage: int, direction: Vector2) -> void:
 	world.burst(global_position, Color(1, 1, 1), 5)
 	if hp <= 0:
 		_die()
+		world.hitstop(0.07)
 	else:
 		Sound.play("hit", -2.0, randf_range(0.9, 1.1))
+		world.hitstop(0.035)
 
 
 func _die() -> void:

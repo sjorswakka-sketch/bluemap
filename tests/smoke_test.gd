@@ -749,12 +749,78 @@ func test_title() -> void:
 	check(title.start_button != null and title.continue_button != null and title.quit_button != null, "titelscherm heeft knoppen")
 	check(not title.continue_button.disabled, "Doorgaan werkt als er een opslag is")
 	check(title.continue_button.has_focus(), "Doorgaan is geselecteerd (toetsenbord werkt)")
+	title.start_game()
+	await frames(5)
+	check(current_scene != null and current_scene.scene_file_path.ends_with("intro.tscn"), "Nieuw spel begint met de intro")
+	current_scene.queue_free()
+	await frames(3)
+	var title2: Control = load("res://scenes/title.tscn").instantiate()
+	root.add_child(title2)
+	current_scene = title2
+	await frames(3)
+	title = title2
 	title.continue_game()
 	await frames(5)
 	check(current_scene != null and current_scene.scene_file_path.ends_with("main.tscn"), "Doorgaan start het spel")
 	check(gs.map_id != "" and gs.use_load_pos == false, "de opslag is geladen")
 	var menu_scene: String = ProjectSettings.get_setting("application/run/main_scene")
 	check(menu_scene.ends_with("title.tscn"), "het spel start op het titelscherm")
+	await frames(3)
+
+
+func test_story_scenes() -> void:
+	print("Intro en einde")
+	var intro: Control = load("res://scenes/intro.tscn").instantiate()
+	root.add_child(intro)
+	current_scene = intro
+	await frames(3)
+	var guard := 0
+	while is_instance_valid(intro) and not intro.done and guard < 60:
+		guard += 1
+		press("interact")
+		await frames(3)
+	check(not is_instance_valid(intro) or intro.done, "de intro is door te klikken")
+	await frames(5)
+	check(current_scene != null and current_scene.scene_file_path.ends_with("main.tscn"), "na de intro begint het spel")
+	await stop_world_and_scene()
+
+	gs.new_game()
+	gs.kills = 50
+	gs.play_time = 1234.0
+	gs.start_quest("main")
+	var ending: Control = load("res://scenes/ending.tscn").instantiate()
+	root.add_child(ending)
+	current_scene = ending
+	await frames(3)
+	var seen := {}
+	guard = 0
+	while ending.page < ending.pages.size() - 1 and guard < 80:
+		guard += 1
+		seen[ending.pages[ending.page]["type"]] = true
+		if ending.pages[ending.page]["type"] == "credits":
+			ending.credits_scroll = 100000.0
+			await frames(3)
+		elif ending.pages[ending.page]["type"] == "map":
+			await frames(400)
+			press("interact")
+			await frames(3)
+		else:
+			press("interact")
+			await frames(2)
+			press("interact")
+			await frames(2)
+	check(seen.has("text") and seen.has("map") and seen.has("stats") and seen.has("credits"), "einde: tekst, kaart, statistieken en aftiteling")
+	check(ending.lit[0] and ending.lit[1] and ending.lit[2], "de drie kristallen lichten op")
+	check(ending.pages[ending.page]["type"] == "end", "einde bereikt de slotpagina")
+	press("interact")
+	await frames(6)
+	check(current_scene != null and current_scene.scene_file_path.ends_with("title.tscn"), "daarna terug naar het titelscherm")
+
+
+func stop_world_and_scene() -> void:
+	if current_scene and current_scene != root:
+		current_scene.queue_free()
+	await frames(3)
 
 
 func _run() -> void:
@@ -767,6 +833,7 @@ func _run() -> void:
 	await test_dialogues()
 	await test_menus()
 	await test_title()
+	await test_story_scenes()
 
 	print("")
 	if failures == 0:

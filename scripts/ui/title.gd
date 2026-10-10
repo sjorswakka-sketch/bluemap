@@ -6,6 +6,7 @@ const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const UiStyle := preload("res://scripts/core/ui_style.gd")
 
 const GAME_SCENE := "res://scenes/main.tscn"
+const INTRO_SCENE := "res://scenes/intro.tscn"
 const SKY_TOP := Color(0.05, 0.07, 0.2)
 const SKY_BOTTOM := Color(0.2, 0.32, 0.6)
 const GROUND_SCALE := 4.0 # 16 pixels per tegel -> 64 op het scherm
@@ -87,8 +88,7 @@ func _refresh_sound_label() -> void:
 func start_game() -> void:
 	Sound.play("select")
 	GameState.new_game()
-	GameState.in_game = true
-	get_tree().change_scene_to_file(GAME_SCENE)
+	get_tree().change_scene_to_file(INTRO_SCENE)
 
 
 func continue_game() -> void:

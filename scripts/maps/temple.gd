@@ -5,7 +5,7 @@ extends RefCounted
 const DATA := {
 	"name": "De Kristaltempel",
 	"music": "temple",
-	"dark": 0.4,
+	"dark": 0.55,
 	"rows": [
 		"ZZZZZZZZZZZZZZZZZZZZZZZZ",
 		"ZZZZZZZZZZZZZZZZZZZZZZZZ",

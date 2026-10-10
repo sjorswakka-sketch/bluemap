@@ -242,37 +242,6 @@ func _draw_quests(font: Font) -> void:
 			break
 
 
-func _tile_color(tile_name: String) -> Color:
-	var color := Color(0.5, 0.5, 0.55)
-	if tile_name.begins_with("grass"):
-		color = Color(0.36, 0.66, 0.3)
-	elif tile_name in ["tree", "bush", "dead_tree"]:
-		color = Color(0.14, 0.4, 0.2)
-	elif tile_name == "water":
-		color = Color(0.25, 0.5, 0.85)
-	elif tile_name in ["path", "bridge", "mat"]:
-		color = Color(0.85, 0.75, 0.55)
-	elif tile_name.begins_with("cave"):
-		color = Color(0.42, 0.36, 0.34)
-	elif tile_name.begins_with("ruin"):
-		color = Color(0.55, 0.57, 0.62)
-	elif tile_name.begins_with("temple") or tile_name == "carpet":
-		color = Color(0.5, 0.7, 0.95)
-	elif tile_name.begins_with("wood") or tile_name in ["counter", "shelf", "bed"]:
-		color = Color(0.62, 0.45, 0.28)
-	elif tile_name == "roof":
-		color = Color(0.75, 0.3, 0.25)
-	elif tile_name.begins_with("house"):
-		color = Color(0.85, 0.8, 0.7)
-	elif tile_name in ["door", "cave_mouth", "ruin_stairs", "temple_door"]:
-		color = Color(1.0, 0.85, 0.4)
-	elif tile_name == "stone":
-		color = Color(0.5, 0.52, 0.6)
-	if Tiles.is_solid_name(tile_name):
-		color = color.darkened(0.3)
-	return color
-
-
 func _draw_map(font: Font) -> void:
 	var world := Util.world(self)
 	if world == null or world.map_data.is_empty():
@@ -287,7 +256,7 @@ func _draw_map(font: Font) -> void:
 	for y in h:
 		var row: String = rows[y]
 		for x in w:
-			content.draw_rect(Rect2(origin + Vector2(x, y) * cell, Vector2(cell, cell)), _tile_color(Tiles.name_for(row[x], x, y)))
+			content.draw_rect(Rect2(origin + Vector2(x, y) * cell, Vector2(cell, cell)), Tiles.map_color(Tiles.name_for(row[x], x, y)))
 	content.draw_rect(Rect2(origin, Vector2(w, h) * cell), Color(0.9, 0.95, 1.0), false, 2.0)
 	for obj: Dictionary in world.map_data.get("objects", []):
 		if obj.has("if") and not GameState.check_all(obj["if"]):

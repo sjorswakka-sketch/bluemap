@@ -102,6 +102,7 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
+	Engine.time_scale = 1.0
 	if GameState.world_action.is_connected(_on_world_action):
 		GameState.world_action.disconnect(_on_world_action)
 	if GameState.ending_requested.is_connected(_on_ending):
@@ -112,13 +113,15 @@ func _exit_tree() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if GameState.ended and event.is_action_pressed("restart"):
-		restart_from_save()
+		restart_from_save(true)
 
 
 ## Doorgaan vanaf je laatste opslag (of opnieuw beginnen als je nog niet hebt opgeslagen).
-func restart_from_save() -> void:
+func restart_from_save(full_heal := false) -> void:
 	if not GameState.load_game():
 		GameState.new_game()
+	elif full_heal:
+		GameState.full_heal()
 	GameState.in_game = true
 	get_tree().reload_current_scene()
 
@@ -369,6 +372,21 @@ func ring(pos: Vector2, radius: float, color: Color) -> void:
 
 func shake(power: float) -> void:
 	player.shake(power)
+
+
+## Een heel korte stilstand bij een treffer, dat voelt steviger. (Niet in tests zonder scherm.)
+var _hitstop_id := 0
+
+
+func hitstop(duration := 0.05) -> void:
+	if DisplayServer.get_name() == "headless":
+		return
+	_hitstop_id += 1
+	var id := _hitstop_id
+	Engine.time_scale = 0.08
+	await get_tree().create_timer(duration, true, false, true).timeout
+	if id == _hitstop_id:
+		Engine.time_scale = 1.0
 
 
 # --- Acties vanuit gesprekken en triggers -------------------------------------------------

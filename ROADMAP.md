@@ -1,22 +1,28 @@
 # Roadmap
 
 Richting: fantasy-RPG met gevechten, verhaal en NPC's, verkennen en verzamelen/upgraden,
-pixel art, en uiteindelijk te delen met vrienden en de community.
+pixel art, en te delen met vrienden en de community.
 
 ## Klaar
-- [x] **Fase 1: prototype.** Lopen, zwaard, slijmen, NPC met opdracht, HUD, game over en winscherm
-- [x] **Fase 1b: pixel art.** Loopanimaties, tegels met variatie, personages en voorwerpen als PNG
-- [x] **Fase 2: delen.** Windows-versie (.exe) met automatische build via GitHub, titelscherm, pauzemenu,
-      geluidseffecten en muziek (geluid aan/uit met M)
+- [x] **Fase 1: prototype en pixel art.** Lopen, zwaard, slijmen, HUD, game over, loopanimaties
+- [x] **Fase 2: delen.** Windows-versie (.exe) met automatische build via GitHub, titelscherm, pauzemenu, geluid en muziek
+- [x] **Fase 3: gevechten.** Ontwijkrol, drie zwaarden, vleermuizen, skeletten, golems, de Slijmkoning met drie fases,
+      schadegetallen, schermschud, hit-stop
+- [x] **Fase 4: verhaal en NPC's.** Gesprekken met keuzes en vertakkingen, tien personages, hoofdopdracht en drie zij-opdrachten,
+      opdrachtenlogboek
+- [x] **Fase 5: verkennen.** Acht gebieden met overgangen, poorten en sleutels, kisten, verborgen plekken, altaren, belichting in
+      donkere gebieden, kaartje
+- [x] **Fase 6: verzamelen en upgraden.** Inventaris, winkel, smid, hartcontainers, laarzen, opslaan en laden
+- [x] **Einde.** Intro, eindbaas, eindscherm met herstelde Blauwe Kaart, epiloog, statistieken en aftiteling
+- [x] **Controller en volledig scherm**
 
-## Gepland (volgorde is een voorstel)
-- [ ] **Fase 3: gevechten.** Meer vijanden (boogschutter, zwaar monster), ontwijkrol,
-      een eindbaas, betere treffers (schudden, geluid)
-- [ ] **Fase 4: verhaal en NPC's.** Dialoog uit bestanden in plaats van uit code, meerdere NPC's,
-      opdrachtenlijst, keuzes in gesprekken
-- [ ] **Fase 5: verkennen.** Meerdere gebieden (bos, grot, ruïne, dorp), deuren en overgangen,
-      geheimen, kaartje
-- [ ] **Fase 6: verzamelen en upgraden.** Inventaris, winkel met munten, uitrusting,
-      meer levens, opslaan en laden
+## Ideeën voor later
+- Een tweede gebied-reeks na het einde (nieuw spel+, hogere moeilijkheid, geheime baas)
+- Meer zij-opdrachten en personages, bijvoorbeeld een visser, een bibliotheek of een arena
+- Meer vijanden (magiër, slijmvuurspuwer), een vijand die muren doorbreekt
+- Een boog of magie als tweede wapen, schilden en uitrusting
+- Dag en nacht, weer, en een echte wereldkaart met snel reizen
+- Meerdere talen
+- Echte pixel art van een kunstenaar en opgenomen muziek: vervang gewoon de bestanden in `assets/`
 
-Elke fase eindigt met een speelbare versie en een geslaagde `tests/smoke_test.gd`.
+Elke wijziging eindigt met een geslaagde `sh tools/run_tests.sh`.
