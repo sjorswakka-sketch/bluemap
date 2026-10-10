@@ -177,6 +177,16 @@ const TALKS := {
 		"lines": ["Dat kristalzwaard is mijn beste werk. Meer kan ik er niet aan doen. Ga ze maar een lesje leren!"],
 	},
 
+	"greta_done": {
+		"speaker": "Greta",
+		"lines": ["De held van Azura in mijn smederij! Ik heb net nieuwe zwaarden gesmeed, voor op het feest. Nou ja, voor de taart."],
+		"do": [["set_flag", "heard_greta_done"]],
+		"branch": [
+			{"if": [["weapon", "crystal"]], "next": "greta_max"},
+			{"next": "greta_menu"},
+		],
+	},
+
 	# --- Tobias de koopman ---------------------------------------------------------------
 	"tobias_intro": {
 		"speaker": "Tobias",
@@ -204,6 +214,13 @@ const TALKS := {
 	"tobias_sold": {
 		"speaker": "Tobias",
 		"lines": ["Prima zaken doen met jou!"],
+	},
+
+	"tobias_done": {
+		"speaker": "Tobias",
+		"lines": ["Mijn omzet is verdubbeld sinds de Slijmkoning weg is! Alles blijft voor jou gewoon hetzelfde. Maar dan wel met een knipoog."],
+		"do": [["set_flag", "heard_tobias_done"]],
+		"next": "tobias_menu",
 	},
 
 	# --- Mila de herbergierster ----------------------------------------------------------
@@ -252,6 +269,13 @@ const TALKS := {
 		"speaker": "Mila",
 		"lines": ["Slijmgel! Vijf stuks! Dan ga ik meteen aan de slag.", "Hier, drie helddrankjes en 25 munten. Dank je wel!"],
 		"do": [["take", "gel", 5], ["give", "potion", 3], ["coins", 25], ["finish_quest", "drank"], ["sound", "quest"]],
+	},
+
+	"mila_done": {
+		"speaker": "Mila",
+		"lines": ["De herberg zit vol met mensen die jou willen zien. Jouw bed is altijd vrij, held."],
+		"do": [["set_flag", "heard_mila_done"]],
+		"next": "mila_menu",
 	},
 
 	# --- Pim en Muis -----------------------------------------------------------------------
@@ -317,6 +341,14 @@ const TALKS := {
 			"De Blauwe Kaart is al duizend jaar oud. Mijn oma zei altijd dat hij het land beschermt.",
 			"Als die kaart echt breekt, wordt Azura weer wild. Gelukkig heb jij nu die opdracht!",
 		],
+	},
+	"anja_done": {
+		"speaker": "Anja",
+		"lines": ["Heb je het gehoord? De Blauwe Kaart straalt weer helderblauw! Alles dankzij jou."],
+	},
+	"joost_done": {
+		"speaker": "Joost",
+		"lines": ["De slijmen zijn rustiger nu de kaart weer heel is. Ik gaf er een een appel. Hij at hem op. Het was raar."],
 	},
 	"joost_talk": {
 		"speaker": "Joost",

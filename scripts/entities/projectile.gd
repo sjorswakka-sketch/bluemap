@@ -10,6 +10,7 @@ const FRAMES := {"arrow": 0, "rock": 1, "slimeball": 2}
 var kind := "arrow"
 var velocity := Vector2.ZERO
 var damage := 1
+var source := ""
 var world: Node
 var age := 0.0
 var player: Node2D
@@ -25,7 +26,7 @@ func _process(delta: float) -> void:
 	if player == null:
 		player = Util.player(self)
 	if player and not GameState.ended and global_position.distance_to(player.global_position + Vector2(0, 4)) < 11.0:
-		player.hurt(global_position - velocity.normalized() * 8.0, damage)
+		player.hurt(global_position - velocity.normalized() * 8.0, damage, source)
 		queue_free()
 		return
 	queue_redraw()

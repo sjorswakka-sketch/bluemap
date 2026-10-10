@@ -18,6 +18,7 @@ const NPCS := {
 		"name": "Greta de smid", "sheet": "npc_greta",
 		"rules": [
 			{"if": [["no_flag", "met_greta"]], "talk": "greta_intro"},
+			{"if": [["quest", "main", "done"], ["no_flag", "heard_greta_done"]], "talk": "greta_done"},
 			{"if": [["weapon", "crystal"]], "talk": "greta_max"},
 			{"talk": "greta_menu"},
 		],
@@ -26,6 +27,7 @@ const NPCS := {
 		"name": "Tobias de koopman", "sheet": "npc_tobias",
 		"rules": [
 			{"if": [["no_flag", "met_tobias"]], "talk": "tobias_intro"},
+			{"if": [["quest", "main", "done"], ["no_flag", "heard_tobias_done"]], "talk": "tobias_done"},
 			{"talk": "tobias_menu"},
 		],
 	},
@@ -35,6 +37,7 @@ const NPCS := {
 			{"if": [["step", "drank", 1]], "talk": "mila_potion_done"},
 			{"if": [["quest", "drank", "active"]], "talk": "mila_potion_progress"},
 			{"if": [["no_flag", "met_mila"]], "talk": "mila_intro"},
+			{"if": [["quest", "main", "done"], ["no_flag", "heard_mila_done"]], "talk": "mila_done"},
 			{"talk": "mila_menu"},
 		],
 	},
@@ -56,11 +59,15 @@ const NPCS := {
 	},
 	"anja": {
 		"name": "Anja", "sheet": "npc_anja",
-		"rules": [{"talk": "anja_talk"}],
+		"rules": [
+			{"if": [["quest", "main", "done"]], "talk": "anja_done"},
+			{"talk": "anja_talk"},
+		],
 	},
 	"joost": {
 		"name": "Joost", "sheet": "npc_joost",
 		"rules": [
+			{"if": [["quest", "main", "done"]], "talk": "joost_done"},
 			{"if": [["has", "ruin_key", 1]], "talk": "joost_key"},
 			{"talk": "joost_talk"},
 		],

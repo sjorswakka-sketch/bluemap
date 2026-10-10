@@ -86,6 +86,7 @@ func fight(boss_kind: String, weapon: String, containers: int, potions: int) -> 
 	else:
 		player.global_position = boss.global_position + Vector2(-110, 40)
 	var start_hp: int = gs.hp
+	gs.damage_log = {}
 	var damage_taken := 0
 	var potions_used := 0
 	var last_hp: int = gs.hp
@@ -140,16 +141,24 @@ func fight(boss_kind: String, weapon: String, containers: int, potions: int) -> 
 			danger = true
 
 		if not danger:
-			# Golem: eerst een stukje naast hem blijven, slaan als hij net geslagen heeft
-			var want := reach * 0.75
+			# Eerst minislijmpjes die dichtbij zijn, anders de baas
+			var target: Node2D = boss
+			var target_dist := dist
+			for enemy in get_nodes_in_group("enemies"):
+				if enemy != boss and enemy.global_position.distance_to(player.global_position) < 70.0:
+					target = enemy
+					target_dist = enemy.global_position.distance_to(player.global_position)
+					break
+			var to_target: Vector2 = target.global_position - player.global_position
+			var want: float = (reach + target.radius) * 0.8
 			if boss_kind == "golem" and boss.state == "windup":
 				move = -to_boss.normalized()
-			elif dist > want:
-				move = to_boss.normalized()
+			elif target_dist > want:
+				move = to_target.normalized()
 			else:
 				move = Vector2.ZERO
-			if dist < reach + boss.radius - 4.0 and player.cooldown <= 0.0:
-				player.facing = to_boss.normalized()
+			if target_dist < reach + target.radius - 4.0 and player.cooldown <= 0.0:
+				player.facing = to_target.normalized()
 				pause_attack += 1
 				press("attack")
 		steer(move)
@@ -162,7 +171,7 @@ func fight(boss_kind: String, weapon: String, containers: int, potions: int) -> 
 		won = false
 	world.queue_free()
 	await frames(3)
-	return [won, seconds, damage_taken, potions_used, start_hp]
+	return [won, seconds, damage_taken, potions_used, start_hp, gs.damage_log.duplicate()]
 
 
 func _run() -> void:
@@ -176,6 +185,7 @@ func _run() -> void:
 		var total_time := 0.0
 		var total_damage := 0
 		var total_potions := 0
+		var by_source := {}
 		for i in EPISODES:
 			var result: Array = await fight(config[0], config[1], config[2], config[3])
 			if result[0]:
@@ -183,7 +193,13 @@ func _run() -> void:
 				total_time += result[1]
 			total_damage += result[2]
 			total_potions += result[3]
+			for src in result[5]:
+				by_source[src] = int(by_source.get(src, 0)) + int(result[5][src])
 		var avg_time := total_time / maxf(float(wins), 1.0)
 		print("%-6s zwaard %-8s hartjes %d  drankjes %d:  gewonnen %d/%d  gem. tijd %5.1fs  schade/gevecht %.1f  drankjes/gevecht %.1f" % [
 			config[0], config[1], 5 + config[2], config[3], wins, EPISODES, avg_time, float(total_damage) / EPISODES, float(total_potions) / EPISODES])
+		var parts: Array = []
+		for src in by_source:
+			parts.append("%s %.1f" % [src, float(by_source[src]) / EPISODES])
+		print("        schade per bron: ", ", ".join(parts))
 	quit()

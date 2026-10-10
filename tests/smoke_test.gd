@@ -295,6 +295,14 @@ func run_dialogue(talk_id: String, picks: Array = []) -> void:
 		await frames(2)
 
 
+## Welk gesprek een personage nu zou voeren (dezelfde regels als in npc.gd).
+func pick_talk(npc_id: String) -> String:
+	for rule: Dictionary in Npcs.NPCS[npc_id]["rules"]:
+		if not rule.has("if") or gs.check_all(rule["if"]):
+			return rule["talk"]
+	return ""
+
+
 func count_children_with_script(file_name: String) -> int:
 	var total := 0
 	for child in world.entities.get_children():
@@ -643,6 +651,18 @@ func test_dialogues() -> void:
 	check(gs.quest_step("medaillon") == 1, "medaillon gevonden")
 	await run_dialogue("wilfred_return")
 	check(gs.quest_state("medaillon") == "done" and gs.count("shard") == 2, "Wilfred beloont met kristalscherven")
+
+	# Na het einde reageren de dorpelingen anders
+	gs.new_game()
+	gs.set_flag("met_greta")
+	gs.start_quest("main")
+	gs.finish_quest("main")
+	check(pick_talk("anja") == "anja_done" and pick_talk("joost") == "joost_done" and pick_talk("hein") == "hein_done", "dorpelingen reageren op het einde")
+	check(pick_talk("greta") == "greta_done", "Greta feliciteert je een keer")
+	await run_dialogue("greta_done", [1])
+	check(pick_talk("greta") == "greta_menu" and gs.flag("heard_greta_done"), "daarna werkt de smid weer gewoon")
+	gs.new_game()
+	check(pick_talk("bram") == "bram_intro" and pick_talk("greta") == "greta_intro", "vóór het einde krijg je de gewone gesprekken")
 
 	print("Poorten, kisten en altaren")
 	gs.new_game()

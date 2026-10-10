@@ -130,7 +130,7 @@ func _draw_stats() -> void:
 	var x := 0.0
 	var entries := [
 		[Items.ITEMS["coin"]["icon"], str(GameState.coins), Color(1, 0.9, 0.4)],
-		[Items.ITEMS["crystal_bos"]["icon"], "%d/3" % GameState.crystal_count(), Color(0.6, 0.85, 1.0)],
+		[Items.ITEMS["crystal_bos"]["icon"], "%d/3" % (3 if GameState.flag("gate_temple") else GameState.crystal_count()), Color(0.6, 0.85, 1.0)],
 		[Items.ITEMS["potion"]["icon"], "%d [H]" % GameState.count("potion"), Color(1, 0.6, 0.7)],
 		[Items.ITEMS[Items.WEAPONS[GameState.weapon]["item"]]["icon"], "", Color.WHITE],
 	]
@@ -211,5 +211,6 @@ func _draw_boss_bar() -> void:
 func _show_game_over() -> void:
 	overlay_title.text = "Game over"
 	var has_save := GameState.has_save()
-	overlay_sub.text = ("Druk op R om verder te gaan vanaf je laatste opslag" if has_save else "Druk op R om opnieuw te beginnen") + "  ·  Esc voor het menu"
+	var by := "" if GameState.last_damage_source == "" else "Verslagen door: %s\n" % GameState.last_damage_source
+	overlay_sub.text = by + ("Druk op R om verder te gaan vanaf je laatste opslag" if has_save else "Druk op R om opnieuw te beginnen") + "  ·  Esc voor het menu"
 	overlay.visible = true

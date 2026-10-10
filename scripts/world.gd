@@ -346,9 +346,10 @@ func spawn_pickup(item: String, pos: Vector2, unique_key := "", scatter := false
 	return pickup
 
 
-func spawn_projectile(kind: String, pos: Vector2, dir: Vector2, speed: float, damage: int) -> void:
+func spawn_projectile(kind: String, pos: Vector2, dir: Vector2, speed: float, damage: int, source := "") -> void:
 	var projectile: Node2D = ProjectileScript.new()
 	projectile.kind = kind
+	projectile.source = source
 	projectile.velocity = dir.normalized() * speed
 	projectile.damage = damage
 	projectile.world = self

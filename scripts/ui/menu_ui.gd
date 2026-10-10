@@ -203,7 +203,7 @@ func _draw_items(font: Font) -> void:
 		"Levens:  %d / %d" % [GameState.hp, GameState.max_hp()],
 		"Snelheid:  %s" % ("snel (laarzen)" if GameState.count("boots") > 0 else "normaal"),
 		"Munten:  %d" % GameState.coins,
-		"Kristallen:  %d / 3" % GameState.crystal_count(),
+		"Kristallen:  %d / 3" % (3 if GameState.flag("gate_temple") else GameState.crystal_count()),
 		"Verslagen:  %d" % GameState.kills,
 		"Speeltijd:  %s" % format_time(GameState.play_time),
 	]

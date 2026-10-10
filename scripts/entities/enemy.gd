@@ -110,7 +110,7 @@ func _physics_process(delta: float) -> void:
 		touch_range = 0.0 # in de lucht kan hij niemand raken
 	if global_position.distance_to(player.global_position) < touch_range and touch_cooldown <= 0.0:
 		touch_cooldown = 0.8
-		player.hurt(global_position, data["damage"])
+		player.hurt(global_position, data["damage"], data["name"])
 	queue_redraw()
 
 
@@ -191,7 +191,7 @@ func _ai_archer(delta: float) -> void:
 			aim_dir = to_player.normalized()
 			if state_time > 0.55:
 				Sound.play("arrow", -4.0)
-				world.spawn_projectile("arrow", global_position, aim_dir, 150.0, data["damage"])
+				world.spawn_projectile("arrow", global_position, aim_dir, 150.0, data["damage"], data["name"] + " (pijl)")
 				state = "idle"
 				state_time = 0.0
 
@@ -226,10 +226,10 @@ func _golem_slam(enraged: bool) -> void:
 	world.ring(global_position + Vector2(0, 14), 56.0, Color(0.7, 0.85, 1.0))
 	slam_ring = 0.3
 	if global_position.distance_to(player.global_position) < 56.0:
-		player.hurt(global_position, int(data.get("slam_damage", data["damage"])))
+		player.hurt(global_position, int(data.get("slam_damage", data["damage"])), data["name"] + " (klap)")
 	if enraged:
 		for i in 6:
-			world.spawn_projectile("rock", global_position, Vector2.from_angle(TAU * float(i) / 6.0 + 0.3), 95.0, 1)
+			world.spawn_projectile("rock", global_position, Vector2.from_angle(TAU * float(i) / 6.0 + 0.3), 95.0, 1, data["name"] + " (steen)")
 
 
 # --- De Slijmkoning ---------------------------------------------------------------
@@ -283,21 +283,21 @@ func _king_land(phase: int) -> void:
 	world.ring(global_position + Vector2(0, 30), shock, Color(0.5, 0.95, 0.55))
 	slam_ring = 0.35
 	if global_position.distance_to(player.global_position) < shock:
-		player.hurt(global_position, 1 if phase == 1 else int(data.get("slam_damage", 2)))
+		player.hurt(global_position, 1 if phase == 1 else int(data.get("slam_damage", 2)), data["name"] + " (landing)")
 	var minions := 0
 	for enemy: Node in get_tree().get_nodes_in_group("enemies"):
-		if enemy != self and enemy.kind == "slime":
+		if enemy != self and enemy.kind == "slime_mini":
 			minions += 1
-	if (phase == 1 and hop_count % 3 == 0) or (phase == 3 and hop_count % 2 == 0):
-		if minions < 4:
+	if (phase == 1 and hop_count % 4 == 0) or (phase == 3 and hop_count % 3 == 0):
+		if minions < 3:
 			for i in 2:
-				world.spawn_enemy("slime", world.clamp_to_map(global_position + Vector2.from_angle(randf() * TAU) * 60.0))
+				world.spawn_enemy("slime_mini", world.clamp_to_map(global_position + Vector2.from_angle(randf() * TAU) * 60.0))
 	if phase >= 2:
 		var bullets := 3 if phase == 2 else 5
 		var to_player := _to_player().normalized()
 		for i in bullets:
 			var spread := (float(i) - float(bullets - 1) / 2.0) * 0.3
-			world.spawn_projectile("slimeball", global_position, to_player.rotated(spread), 115.0, 1)
+			world.spawn_projectile("slimeball", global_position, to_player.rotated(spread), 115.0, 1, data["name"] + " (slijmbal)")
 
 
 # --- Schade en dood ---------------------------------------------------------------

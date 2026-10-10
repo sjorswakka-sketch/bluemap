@@ -24,6 +24,12 @@ const ENEMIES := {
 		"sheet": "slime_red", "cell": 16, "scale": 2.0, "radius": 7.0, "shadow": 10.0,
 		"drops": [["coin", 1.0, 2], ["gel", 0.55, 1], ["heart", 0.15, 1], ["potion", 0.06, 1]],
 	},
+	"slime_mini": {
+		"name": "Minislijm", "hp": 1, "damage": 1, "behavior": "chase",
+		"speed": 40.0, "chase_speed": 58.0, "sight": 400.0,
+		"sheet": "slime", "cell": 16, "scale": 1.5, "radius": 5.0, "shadow": 7.0, "knockback": 300.0,
+		"drops": [["heart", 0.3, 1]],
+	},
 	"bat": {
 		"name": "Vleermuis", "hp": 2, "damage": 1, "behavior": "bat",
 		"speed": 90.0, "chase_speed": 120.0, "sight": 170.0,
@@ -43,7 +49,7 @@ const ENEMIES := {
 		"drops": [["coin", 1.0, 8], ["shard", 1.0, 1], ["heart", 1.0, 1]],
 	},
 	"king": {
-		"name": "De Slijmkoning", "hp": 70, "damage": 1, "slam_damage": 2, "behavior": "king", "boss": true,
+		"name": "De Slijmkoning", "hp": 60, "damage": 1, "slam_damage": 2, "behavior": "king", "boss": true,
 		"speed": 30.0, "chase_speed": 50.0, "sight": 400.0,
 		"sheet": "king", "cell": 48, "scale": 2.0, "radius": 20.0, "shadow": 36.0,
 		"start_inactive": true, "knockback": 0.0,

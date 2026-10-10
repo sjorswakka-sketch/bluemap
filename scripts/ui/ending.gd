@@ -20,7 +20,7 @@ const ISLANDS := {
 	"temple": Vector2(150, 110), "village": Vector2(130, 240), "forest": Vector2(350, 200),
 	"ruins": Vector2(610, 100), "cave": Vector2(620, 290),
 }
-const CRYSTAL_SPOTS := [Vector2(450, 150), Vector2(690, 80), Vector2(710, 260)]
+const CRYSTAL_SPOTS := [Vector2(440, 120), Vector2(790, 70), Vector2(790, 250)]
 
 var pages: Array[Dictionary] = []
 var page := -1

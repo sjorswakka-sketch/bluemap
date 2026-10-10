@@ -158,9 +158,11 @@ func _update_target() -> void:
 
 
 ## Wordt aangeroepen door vijanden en projectielen.
-func hurt(from_pos: Vector2, amount: int = 1) -> void:
+func hurt(from_pos: Vector2, amount: int = 1, source := "") -> void:
 	if invuln > 0.0 or GameState.ended or (roll_timer > ROLL_TIME - ROLL_SAFE_TIME):
 		return
+	GameState.last_damage_source = source
+	GameState.damage_log[source] = int(GameState.damage_log.get(source, 0)) + amount
 	GameState.hurt(amount)
 	Sound.play("hurt")
 	invuln = INVULN_TIME

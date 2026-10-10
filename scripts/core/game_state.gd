@@ -36,6 +36,8 @@ var kills: int = 0
 
 # Tijdelijke toestand (wordt niet opgeslagen).
 var in_game: bool = false
+var last_damage_source: String = "" # waardoor je het laatst geraakt bent (voor het game-over-scherm)
+var damage_log: Dictionary = {} # voor de balansbot
 var ended: bool = false
 var transitioning: bool = false
 var dialogue_open: bool = false
@@ -75,6 +77,8 @@ func new_game() -> void:
 	transitioning = false
 	dialogue_open = false
 	ui_owners = {}
+	last_damage_source = ""
+	damage_log = {}
 	_apply_pause()
 	hp_changed.emit()
 	items_changed.emit()

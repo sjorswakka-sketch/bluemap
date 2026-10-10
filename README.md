@@ -112,10 +112,11 @@ Zonder scherm, handig na elke wijziging:
 sh tools/run_tests.sh /pad/naar/godot
 ```
 
-De test controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk voorwerp, elke opdracht) en
-speelt daarna het spel na: lopen, gebieden wisselen, vechten, de baas, praten, kopen, smeden, opslaan, menu's,
-titelscherm, intro en einde. Hij eindigt met `ALLE TESTS GESLAAGD` en stopt met een foutmelding als er een
-scriptfout optreedt.
+Dat draait twee tests. `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
+voorwerp, elke opdracht) en speelt daarna de systemen na: lopen, gebieden wisselen, vechten, de baas, praten, kopen,
+smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd` speelt het hele spel uit met de echte
+kaarten: van Bram tot en met het einde. Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het
+met een foutmelding.
 
 Meer gereedschap:
 
