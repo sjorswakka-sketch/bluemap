@@ -12,6 +12,7 @@ const EnemyScript := preload("res://scripts/enemy.gd")
 const NpcScript := preload("res://scripts/npc.gd")
 const PickupScript := preload("res://scripts/pickup.gd")
 const HudScript := preload("res://scripts/hud.gd")
+const PauseScript := preload("res://scripts/pause_menu.gd")
 const Art := preload("res://scripts/art.gd")
 
 const TILE := 32 # grootte van een tegel in de spelwereld
@@ -57,6 +58,8 @@ func _ready() -> void:
 	_build_tiles()
 	_spawn_entities()
 	add_child(HudScript.new())
+	add_child(PauseScript.new())
+	Sound.play_music()
 
 
 func _unhandled_input(event: InputEvent) -> void:

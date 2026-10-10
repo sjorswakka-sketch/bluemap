@@ -73,6 +73,7 @@ func _attack() -> void:
 		return
 	attack_timer = ATTACK_TIME
 	cooldown = ATTACK_COOLDOWN
+	Sound.play("swing", -4.0, randf_range(0.92, 1.08))
 	for enemy: Node2D in get_tree().get_nodes_in_group("enemies"):
 		var to_enemy := enemy.global_position - global_position
 		if to_enemy.length() <= ATTACK_RANGE and facing.dot(to_enemy.normalized()) > 0.3:
@@ -96,6 +97,7 @@ func hurt(from_pos: Vector2) -> void:
 	if invuln > 0.0 or GameState.ended:
 		return
 	GameState.hurt(1)
+	Sound.play("hurt")
 	invuln = INVULN_TIME
 	knockback = (global_position - from_pos).normalized() * 260.0
 

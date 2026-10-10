@@ -1,0 +1,66 @@
+name: Windows-versie bouwen
+
+# Handmatig starten: tabblad Actions > "Windows-versie bouwen" > Run workflow.
+# Een versie publiceren voor je community: maak een tag aan, bijvoorbeeld v0.2.0.
+#   git tag v0.2.0 && git push origin v0.2.0
+# Dan verschijnt er een Release met het zipbestand dat vrienden kunnen downloaden.
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write # nodig om een Release aan te maken
+
+env:
+  GODOT_VERSION: "4.4.1"
+
+jobs:
+  windows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Godot en export-templates downloaden
+        run: |
+          base="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-stable"
+          curl -fsSL -o godot.zip "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          curl -fsSL -o templates.tpz "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          unzip -q godot.zip
+          mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" godot
+          chmod +x godot
+          dest="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p "$dest"
+          unzip -q -j templates.tpz "templates/version.txt" "templates/windows_*_x86_64*.exe" -d "$dest"
+
+      - name: Importeren en speltest draaien
+        run: |
+          ./godot --headless --import
+          ./godot --headless -s tests/smoke_test.gd
+
+      - name: Windows-versie exporteren
+        run: |
+          mkdir -p build/windows
+          ./godot --headless --export-release "Windows Desktop" build/windows/BluemapQuest.exe
+
+      - name: Inpakken
+        run: |
+          version=$(grep '^config/version=' project.godot | cut -d'"' -f2)
+          mkdir -p dist/BluemapQuest
+          cp build/windows/BluemapQuest.exe dist/BluemapQuest/
+          cp distribution/LEESMIJ.txt dist/BluemapQuest/
+          (cd dist && zip -qr "BluemapQuest-v${version}-windows.zip" BluemapQuest)
+          echo "ZIP=dist/BluemapQuest-v${version}-windows.zip" >> "$GITHUB_ENV"
+
+      - name: Als download bij de run bewaren
+        uses: actions/upload-artifact@v4
+        with:
+          name: BluemapQuest-windows
+          path: ${{ env.ZIP }}
+
+      - name: Release maken (alleen bij een tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP }}
+          generate_release_notes: true

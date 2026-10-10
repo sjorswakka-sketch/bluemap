@@ -29,12 +29,15 @@ func _collect() -> void:
 	match kind:
 		"coin":
 			GameState.add_coin()
+			Sound.play("coin", -4.0)
 		"crystal":
 			GameState.add_crystal()
+			Sound.play("crystal", -3.0)
 		"heart":
 			if GameState.hp >= GameState.MAX_HP:
 				return # Bewaren voor als je gewond bent.
 			GameState.heal(1)
+			Sound.play("heart", -3.0)
 	queue_free()
 
 

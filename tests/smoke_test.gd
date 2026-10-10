@@ -51,6 +51,34 @@ func _run() -> void:
 	for action in ["move_left", "move_right", "move_up", "move_down", "attack", "interact", "restart"]:
 		check(InputMap.has_action(action), "input-actie " + action)
 
+	print("Geluid")
+	var sound := root.get_node("Sound")
+	check(sound.streams.size() == 10, "alle 10 geluidseffecten geladen (%d)" % sound.streams.size())
+	check(sound._music.stream != null, "muziek geladen")
+	check(sound._music.stream is AudioStreamWAV and sound._music.stream.loop_mode == AudioStreamWAV.LOOP_FORWARD, "muziek loopt")
+	check(sound._music.playing, "muziek speelt in het spel")
+	var was_muted: bool = sound.muted
+	press("mute")
+	await frames(2)
+	check(sound.muted != was_muted, "M zet het geluid uit/aan")
+	press("mute")
+	await frames(2)
+	check(sound.muted == was_muted, "M terug")
+
+	print("Pauze")
+	check(not paused, "spel loopt")
+	press("pause")
+	await frames(2)
+	check(paused, "Esc/P pauzeert")
+	var frozen_pos := player.global_position
+	Input.action_press("move_right")
+	await frames(20)
+	Input.action_release("move_right")
+	check(player.global_position == frozen_pos, "speler staat stil tijdens pauze")
+	press("pause")
+	await frames(2)
+	check(not paused, "nogmaals Esc/P hervat")
+
 	print("Botsingen")
 	var start := player.global_position
 	Input.action_press("move_left")
@@ -150,6 +178,20 @@ func _run() -> void:
 	check(get_nodes_in_group("enemies").size() == 8, "alle 8 slijmen zijn terug")
 	var fresh_crystals := get_nodes_in_group("pickups").filter(func(p): return p.kind == "crystal")
 	check(fresh_crystals.size() == 4, "alle 4 kristallen zijn terug")
+
+	print("Titelscherm")
+	var title: Control = load("res://scenes/title.tscn").instantiate()
+	root.add_child(title)
+	current_scene = title
+	await frames(3)
+	check(title.start_button != null and title.quit_button != null, "titelscherm heeft knoppen")
+	check(title.start_button.has_focus(), "Spelen is geselecteerd (toetsenbord werkt)")
+	title.start_game()
+	await frames(5)
+	check(current_scene != null and current_scene.scene_file_path.ends_with("main.tscn"), "Spelen start het spel")
+	check(not gs.ended and gs.hp == gs.MAX_HP, "nieuw spel begint schoon")
+	var menu_scene: String = ProjectSettings.get_setting("application/run/main_scene")
+	check(menu_scene.ends_with("title.tscn"), "het spel start op het titelscherm")
 
 	print("")
 	if failures == 0:

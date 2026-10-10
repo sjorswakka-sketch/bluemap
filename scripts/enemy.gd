@@ -75,9 +75,12 @@ func hurt(damage: int, direction: Vector2) -> void:
 	flash = 0.15
 	if hp <= 0:
 		_die()
+	else:
+		Sound.play("hit", -2.0, randf_range(0.9, 1.1))
 
 
 func _die() -> void:
+	Sound.play("die", -2.0, randf_range(0.9, 1.1))
 	var world := get_parent()
 	world.spawn_pickup("coin", global_position)
 	if randf() < 0.25:

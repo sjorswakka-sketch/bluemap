@@ -35,7 +35,7 @@ func _ready() -> void:
 	GameState.game_over.connect(_show_game_over)
 	GameState.victory.connect(_show_victory)
 	_refresh_labels()
-	_show_toast("WASD/pijltjes = lopen  ·  SPATIE = zwaard  ·  E = praten", 6.0)
+	_show_toast("WASD lopen  ·  SPATIE zwaard  ·  E praten  ·  ESC pauze", 6.0)
 
 
 func _build_ui() -> void:
@@ -171,6 +171,7 @@ func _open_dialogue(speaker: String, new_lines: Array, done: Callable) -> void:
 	dialogue_panel.visible = true
 	# Dezelfde toetsdruk die het gesprek opende mag het niet meteen doorklikken.
 	opened_frame = Engine.get_process_frames()
+	Sound.play("select", -6.0)
 	_show_line()
 
 
@@ -194,6 +195,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _next_line() -> void:
+	Sound.play("select", -6.0)
 	line_idx += 1
 	if line_idx < lines.size():
 		_show_line()
@@ -209,12 +211,12 @@ func _next_line() -> void:
 func _show_game_over() -> void:
 	overlay_title.text = "Game over"
 	overlay_title.add_theme_color_override("font_color", Color(1.0, 0.4, 0.4))
-	overlay_sub.text = "Druk op R om opnieuw te beginnen"
+	overlay_sub.text = "Druk op R om opnieuw te beginnen  ·  Esc voor het menu"
 	overlay.visible = true
 
 
 func _show_victory() -> void:
 	overlay_title.text = "Gewonnen!"
 	overlay_title.add_theme_color_override("font_color", Color(0.5, 0.85, 1.0))
-	overlay_sub.text = "De kaart is weer compleet.  Munten: %d  ·  Druk op R om opnieuw te spelen" % GameState.coins
+	overlay_sub.text = "De kaart is weer compleet.  Munten: %d\nDruk op R om opnieuw te spelen  ·  Esc voor het menu" % GameState.coins
 	overlay.visible = true

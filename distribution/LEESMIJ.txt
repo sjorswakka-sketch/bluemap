@@ -1,0 +1,26 @@
+BLUEMAP QUEST  (v0.2.0)
+=======================
+
+Starten
+  Dubbelklik op BluemapQuest.exe. Installeren is niet nodig.
+
+Besturing
+  WASD / pijltjes   lopen
+  Spatie / J        zwaard
+  E / Enter         praten en doorklikken
+  Esc / P           pauze
+  M                 geluid aan/uit
+  R                 opnieuw beginnen (na game over of winst)
+
+Doel
+  Praat met Oudste Bram in het dorp, steek de brug over, versla de slijmen en
+  vind 3 blauwe kristallen. Breng ze naar Bram.
+
+Windows geeft een waarschuwing?
+  Het spel is niet digitaal ondertekend (dat kost geld), dus Windows kan
+  zeggen "Windows heeft uw pc beveiligd". Klik op "Meer informatie" en dan
+  op "Toch uitvoeren". Het spel doet niets anders dan zichzelf starten.
+  Sommige virusscanners reageren ook op spellen die met Godot zijn gemaakt;
+  dat is een bekende valse melding.
+
+Problemen of ideeen? Laat het weten aan degene die je dit spel gaf.

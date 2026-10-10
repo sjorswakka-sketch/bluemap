@@ -6,10 +6,10 @@ pixel art, en uiteindelijk te delen met vrienden en de community.
 ## Klaar
 - [x] **Fase 1: prototype.** Lopen, zwaard, slijmen, NPC met opdracht, HUD, game over en winscherm
 - [x] **Fase 1b: pixel art.** Loopanimaties, tegels met variatie, personages en voorwerpen als PNG
+- [x] **Fase 2: delen.** Windows-versie (.exe) met automatische build via GitHub, titelscherm, pauzemenu,
+      geluidseffecten en muziek (geluid aan/uit met M)
 
 ## Gepland (volgorde is een voorstel)
-- [ ] **Fase 2: delen.** Windows-versie (.exe) maken, zodat vrienden kunnen testen zonder Godot.
-      Titelscherm, pauzemenu, geluid en muziek
 - [ ] **Fase 3: gevechten.** Meer vijanden (boogschutter, zwaar monster), ontwijkrol,
       een eindbaas, betere treffers (schudden, geluid)
 - [ ] **Fase 4: verhaal en NPC's.** Dialoog uit bestanden in plaats van uit code, meerdere NPC's,
