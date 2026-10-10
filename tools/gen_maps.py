@@ -437,7 +437,7 @@ def build_cave():
 # ---------------------------------------------------------------------------------------------------------
 
 def build_temple():
-    lv = Level("temple", "De Kristaltempel", 24, 22, "temple", fill="Z", dark=0.55)
+    lv = Level("temple", "De Kristaltempel", 24, 22, "temple", fill="Z", dark=0.62)
     lv.rect(2, 2, 21, 14, "_")                      # arena
     lv.rect(10, 15, 13, 15, "_")                    # hals
     lv.rect(8, 16, 15, 20, "_")                     # voorkamer

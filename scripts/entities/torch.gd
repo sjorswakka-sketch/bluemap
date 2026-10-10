@@ -15,15 +15,15 @@ func _ready() -> void:
 		light = PointLight2D.new()
 		light.texture = Art.light_texture()
 		light.color = Color(0.4, 0.7, 1.0) if cold else Color(1.0, 0.7, 0.35)
-		light.texture_scale = 2.6
-		light.energy = 1.0
+		light.texture_scale = 2.0 if cold else 2.6
+		light.energy = 0.55 if cold else 1.0
 		add_child(light)
 
 
 func _process(delta: float) -> void:
 	t += delta
 	if light:
-		light.energy = 0.9 + sin(t * 9.0) * 0.08 + sin(t * 23.0) * 0.05
+		light.energy = (0.5 if cold else 0.9) + sin(t * 9.0) * 0.05 + sin(t * 23.0) * 0.03
 	queue_redraw()
 
 

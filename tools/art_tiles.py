@@ -319,11 +319,11 @@ def ruin_cracked_tile():
 
 def temple_floor_tile():
     img = blank()
-    fill_noise(img, c("#cfe3f7"), c("#b8d4ee"), c("#e6f2ff"), 31, 8)
-    hline(img, 0, 15, 0, c("#9ec3ea"))
-    vline(img, 0, 0, 15, c("#9ec3ea"))
+    fill_noise(img, c("#8aa8d4"), c("#7a98c4"), c("#9ab8e0"), 31, 8)
+    hline(img, 0, 15, 0, c("#6a88b8"))
+    vline(img, 0, 0, 15, c("#6a88b8"))
     for x, y in [(4, 5), (5, 6), (6, 7), (10, 11), (11, 12)]:
-        put(img, x, y, c("#a8cdf0"))
+        put(img, x, y, c("#7a9acc"))
     return img
 
 
