@@ -2,6 +2,7 @@ extends CharacterBody2D
 ## Een slijm: dwaalt rond, jaagt op de speler als die dichtbij komt en laat munten vallen.
 
 const DrawUtil := preload("res://scripts/draw_util.gd")
+const Art := preload("res://scripts/art.gd")
 
 const WANDER_SPEED := 35.0
 const CHASE_SPEED := 62.0
@@ -27,8 +28,9 @@ func _ready() -> void:
 
 	var shape := CollisionShape2D.new()
 	var circle := CircleShape2D.new()
-	circle.radius = 8.0
+	circle.radius = 7.0
 	shape.shape = circle
+	shape.position = Vector2(0, 8) # botsing onderin
 	add_child(shape)
 
 
@@ -84,14 +86,9 @@ func _die() -> void:
 
 
 func _draw() -> void:
-	var squash := sin(anim) * 1.5
-	DrawUtil.ellipse(self, Vector2(0, 9), Vector2(10, 3.5), Color(0, 0, 0, 0.3))
-	var body_color := Color(0.4, 0.85, 0.45) if flash <= 0.0 else Color(1, 1, 1)
-	DrawUtil.ellipse(self, Vector2(0, 1.0 - squash * 0.5), Vector2(10 + squash, 9 - squash), body_color)
-	DrawUtil.ellipse(self, Vector2(-3, -3), Vector2(3, 2), Color(1, 1, 1, 0.4))
-	draw_circle(Vector2(-3.5, 0), 1.6, Color(0.1, 0.15, 0.1))
-	draw_circle(Vector2(3.5, 0), 1.6, Color(0.1, 0.15, 0.1))
-	# Boze wenkbrauwen als de slijm de speler ziet.
-	if player and player.global_position.distance_to(global_position) < SIGHT:
-		draw_line(Vector2(-6, -3), Vector2(-2, -1.5), Color(0.1, 0.15, 0.1), 1.5)
-		draw_line(Vector2(6, -3), Vector2(2, -1.5), Color(0.1, 0.15, 0.1), 1.5)
+	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(10, 3.5), Color(0, 0, 0, 0.3))
+	var chasing := player != null and player.global_position.distance_to(global_position) < SIGHT
+	# slime.png: kolom 0-1 = rustig (twee frames), kolom 2-3 = boos.
+	var column := int(anim * 0.6) % 2 + (2 if chasing else 0)
+	var tint := Color(3, 3, 3) if flash > 0.0 else Color.WHITE # wit oplichten bij een klap
+	DrawUtil.sprite(self, Art.tex("slime"), column, 0, Vector2.ZERO, Vector2i(16, 16), 2.0, tint)

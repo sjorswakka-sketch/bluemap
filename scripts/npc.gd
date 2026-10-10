@@ -2,6 +2,7 @@ extends StaticBody2D
 ## Oudste Bram: geeft de opdracht en neemt de kristallen in ontvangst.
 
 const DrawUtil := preload("res://scripts/draw_util.gd")
+const Art := preload("res://scripts/art.gd")
 
 const NPC_NAME := "Oudste Bram"
 
@@ -15,8 +16,9 @@ func _ready() -> void:
 
 	var shape := CollisionShape2D.new()
 	var rect := RectangleShape2D.new()
-	rect.size = Vector2(14, 14)
+	rect.size = Vector2(14, 10)
 	shape.shape = rect
+	shape.position = Vector2(0, 8) # botsing onderin
 	add_child(shape)
 
 
@@ -59,25 +61,12 @@ func interact() -> void:
 
 
 func _draw() -> void:
-	DrawUtil.ellipse(self, Vector2(0, 12), Vector2(10, 4), Color(0, 0, 0, 0.3))
-	# Paarse mantel, wit hoofd met baard.
-	draw_colored_polygon(
-		PackedVector2Array([Vector2(-6, -4), Vector2(6, -4), Vector2(10, 12), Vector2(-10, 12)]),
-		Color(0.45, 0.25, 0.65))
-	draw_circle(Vector2(0, -9), 7.0, Color(0.96, 0.78, 0.62))
-	draw_colored_polygon(
-		PackedVector2Array([Vector2(-6, -7), Vector2(6, -7), Vector2(0, 5)]),
-		Color(0.92, 0.92, 0.95))
-	draw_circle(Vector2(-2.5, -9), 1.1, Color(0.1, 0.1, 0.15))
-	draw_circle(Vector2(2.5, -9), 1.1, Color(0.1, 0.1, 0.15))
-	# Puntmuts.
-	draw_colored_polygon(
-		PackedVector2Array([Vector2(-7, -14), Vector2(7, -14), Vector2(0, -28)]),
-		Color(0.35, 0.18, 0.55))
+	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(10, 4), Color(0, 0, 0, 0.3))
+	DrawUtil.sprite(self, Art.tex("npc"), 0, 0)
 
 	# Ropje om te laten zien dat je kunt praten.
 	if player and not GameState.dialogue_open and not GameState.ended \
 			and player.global_position.distance_to(global_position) < 44.0:
 		var bob := sin(t * 5.0) * 2.0
-		draw_rect(Rect2(-8, -46 + bob, 16, 14), Color(0, 0, 0, 0.75))
-		draw_string(ThemeDB.fallback_font, Vector2(-4, -35 + bob), "E", HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color.WHITE)
+		draw_rect(Rect2(-8, -34 + bob, 16, 14), Color(0, 0, 0, 0.75))
+		draw_string(ThemeDB.fallback_font, Vector2(-4, -23 + bob), "E", HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color.WHITE)

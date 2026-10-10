@@ -1,7 +1,7 @@
 extends CanvasLayer
 ## Alles wat bovenop het spel getekend wordt: hartjes, tellers, dialoog en eindschermen.
 
-const DrawUtil := preload("res://scripts/draw_util.gd")
+const Art := preload("res://scripts/art.gd")
 
 var hearts: Control
 var items_label: Label
@@ -124,12 +124,12 @@ func _make_label(size: int, pos: Vector2) -> Label:
 
 
 func _draw_hearts() -> void:
+	# ui_heart.png: vakje 0 = vol hartje, vakje 1 = leeg hartje (13x12 pixels, hier 3x vergroot).
+	var cell := Vector2(13, 12)
 	for i in GameState.MAX_HP:
-		var center := Vector2(16 + i * 36, 16)
-		if i < GameState.hp:
-			DrawUtil.heart(hearts, center, 14.0, Color(0.92, 0.2, 0.3))
-		else:
-			DrawUtil.heart(hearts, center, 14.0, Color(0.2, 0.2, 0.25, 0.8))
+		var frame := 0 if i < GameState.hp else 1
+		hearts.draw_texture_rect_region(Art.tex("ui_heart"), Rect2(Vector2(i * 44, 0), cell * 3.0),
+			Rect2(Vector2(frame * cell.x, 0), cell))
 
 
 func _refresh_labels() -> void:

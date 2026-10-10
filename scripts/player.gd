@@ -2,6 +2,7 @@ extends CharacterBody2D
 ## De speler: lopen (WASD/pijltjes), zwaard (spatie/J) en praten (E/Enter).
 
 const DrawUtil := preload("res://scripts/draw_util.gd")
+const Art := preload("res://scripts/art.gd")
 
 const SPEED := 110.0
 const ATTACK_TIME := 0.18
@@ -15,6 +16,8 @@ var attack_timer := 0.0
 var cooldown := 0.0
 var invuln := 0.0
 var knockback := Vector2.ZERO
+var walk_time := 0.0
+var moving := false
 var camera: Camera2D
 
 
@@ -26,8 +29,9 @@ func _ready() -> void:
 
 	var shape := CollisionShape2D.new()
 	var circle := CircleShape2D.new()
-	circle.radius = 8.0
+	circle.radius = 7.0
 	shape.shape = circle
+	shape.position = Vector2(0, 8) # botsing bij de voeten
 	add_child(shape)
 
 	camera = Camera2D.new()
@@ -40,8 +44,10 @@ func _physics_process(delta: float) -> void:
 	var dir := Vector2.ZERO
 	if not GameState.dialogue_open and not GameState.ended:
 		dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if dir != Vector2.ZERO:
+	moving = dir != Vector2.ZERO
+	if moving:
 		facing = dir.normalized()
+		walk_time += delta
 
 	velocity = dir * SPEED + knockback
 	knockback = knockback.move_toward(Vector2.ZERO, 900.0 * delta)
@@ -94,20 +100,21 @@ func hurt(from_pos: Vector2) -> void:
 	knockback = (global_position - from_pos).normalized() * 260.0
 
 
+## Rij in player.png: 0 = naar beneden, 1 = omhoog, 2 = rechts, 3 = links.
+func _direction_row() -> int:
+	if absf(facing.y) > absf(facing.x):
+		return 0 if facing.y > 0.0 else 1
+	return 2 if facing.x > 0.0 else 3
+
+
 func _draw() -> void:
 	# Knipperen als we net geraakt zijn.
 	if invuln > 0.0 and int(invuln * 12.0) % 2 == 0:
 		return
-	DrawUtil.ellipse(self, Vector2(0, 12), Vector2(9, 4), Color(0, 0, 0, 0.3))
-	# Lijf (blauwe tuniek) en hoofd.
-	draw_rect(Rect2(-7, -3, 14, 15), Color(0.17, 0.42, 0.82))
-	draw_rect(Rect2(-7, 8, 14, 3), Color(0.35, 0.22, 0.12))
-	draw_circle(Vector2(0, -8), 7.0, Color(0.96, 0.78, 0.62))
-	draw_arc(Vector2(0, -9), 7.0, PI, TAU, 12, Color(0.35, 0.2, 0.1), 3.0)
-	# Ogen kijken in de looprichting.
-	var eye_offset := facing * 2.5
-	draw_circle(Vector2(-2.5, -8) + eye_offset, 1.2, Color(0.1, 0.1, 0.15))
-	draw_circle(Vector2(2.5, -8) + eye_offset, 1.2, Color(0.1, 0.1, 0.15))
+	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(9, 3.5), Color(0, 0, 0, 0.3))
+	# Kolom 0 = stilstaan, kolom 1 en 2 = om en om een stap.
+	var column := 1 + int(walk_time * 9.0) % 2 if moving else 0
+	DrawUtil.sprite(self, Art.tex("player"), column, _direction_row())
 	# Zwaardzwaai.
 	if attack_timer > 0.0:
 		var progress := 1.0 - attack_timer / ATTACK_TIME
