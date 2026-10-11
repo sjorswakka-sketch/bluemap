@@ -27,6 +27,7 @@ extends RefCounted
 
 const MODULES: Array = [
 	# preload("res://scripts/data/ext/voorbeeld.gd"),
+	preload("res://scripts/data/ext/vijanden.gd"),
 ]
 
 

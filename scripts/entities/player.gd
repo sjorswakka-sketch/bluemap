@@ -15,6 +15,7 @@ const ATTACK_TIME := 0.18
 const ATTACK_COOLDOWN := 0.35
 const INVULN_TIME := 1.0
 const INTERACT_RANGE := 40.0
+const ORB_MARGIN := 10.0 # een bol is iets groter dan een punt: zo ruim raakt je zwaard hem
 
 var world: Node
 var facing := Vector2.DOWN
@@ -131,6 +132,11 @@ func _attack() -> void:
 		var margin: float = enemy.radius
 		if to_enemy.length() <= reach + margin and facing.dot(to_enemy.normalized()) > 0.2:
 			enemy.hurt(GameState.damage(), facing)
+	# Arcane bollen van Magiërs kun je gewoon stukslaan.
+	for orb: Node2D in get_tree().get_nodes_in_group("breakable"):
+		var to_orb := orb.global_position - global_position
+		if to_orb.length() <= reach + ORB_MARGIN and facing.dot(to_orb.normalized()) > 0.2:
+			orb.shatter()
 
 
 func _drink() -> void:
