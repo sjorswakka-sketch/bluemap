@@ -3,3 +3,4 @@
 *.translation
 build/
 .testdata/
+__pycache__/
