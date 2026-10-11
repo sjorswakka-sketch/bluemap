@@ -5,7 +5,9 @@ extends RefCounted
 ## drops   = lijst van [voorwerp, kans, aantal]; "coin" laat munten vallen
 ## radius  = botsing, size = hoe groot hij getekend wordt (voor schaduw en raken)
 
-const ENEMIES := {
+const Content := preload("res://scripts/data/content.gd")
+
+const BASE_ENEMIES := {
 	"slime": {
 		"name": "Slijm", "hp": 3, "damage": 1, "behavior": "chase",
 		"speed": 35.0, "chase_speed": 62.0, "sight": 120.0,
@@ -56,6 +58,10 @@ const ENEMIES := {
 		"drops": [],
 	},
 }
+
+
+## Basis en uitbreidingen samen (zie content.gd).
+static var ENEMIES: Dictionary = Content.merged("ENEMIES", BASE_ENEMIES)
 
 
 static func info(kind: String) -> Dictionary:

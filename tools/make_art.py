@@ -10,7 +10,10 @@ door eigen bestanden met dezelfde indeling (zie README), de game-code hoeft dan 
   tools/art_tiles.py  alle tegels (volgorde staat in scripts/data/tiles.gd)
   tools/art_chars.py  speler, vijanden, bazen en personages
   tools/art_items.py  voorwerpen, objecten en projectielen
+  tools/art_x_*.py    uitbreidingen: elk bestand heeft sheets() -> {naam: plaatje}
 """
+import glob
+import importlib.util
 import os
 import sys
 
@@ -57,7 +60,21 @@ def sheets():
     }
     for name, fn in npcs.items():
         s[name] = ch.npc_sheet(fn)                    # 2 vakjes: rustig en een beetje bewegen
+    s.update(extension_sheets())
     return s
+
+
+def extension_sheets():
+    """Uitbreidingen: tools/art_x_<naam>.py met een functie sheets() die {bestandsnaam: plaatje} teruggeeft."""
+    found = {}
+    for path in sorted(glob.glob(os.path.join(HERE, "art_x_*.py"))):
+        spec = importlib.util.spec_from_file_location(os.path.basename(path)[:-3], path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        for name, img in module.sheets().items():
+            assert name not in found, f"{name} komt twee keer voor in de uitbreidingen"
+            found[name] = img
+    return found
 
 
 def main():

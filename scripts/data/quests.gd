@@ -3,7 +3,9 @@ extends RefCounted
 ## als de voorwaarden kloppen. Voorwaarden en acties staan beschreven in scripts/core/game_state.gd.
 ## In de tekst kun je {crystals}, {gel}, {shards} en {coins} gebruiken.
 
-const QUESTS := {
+const Content := preload("res://scripts/data/content.gd")
+
+const BASE_QUESTS := {
 	"main": {
 		"title": "De Blauwe Kaart",
 		"main": true,
@@ -47,6 +49,10 @@ const QUESTS := {
 		],
 	},
 }
+
+
+## Basis en uitbreidingen samen (zie content.gd).
+static var QUESTS: Dictionary = Content.merged("QUESTS", BASE_QUESTS)
 
 
 static func info(quest_id: String) -> Dictionary:

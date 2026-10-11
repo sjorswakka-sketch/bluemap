@@ -3,7 +3,9 @@ extends RefCounted
 ## voorwaarden (`if`) kloppen bepaalt welk gesprek (`talk`, zie dialogue.gd) je krijgt.
 ## `sheet` is het plaatje in assets/ (2 vakjes van 16x16: rustig en een beetje bewegen).
 
-const NPCS := {
+const Content := preload("res://scripts/data/content.gd")
+
+const BASE_NPCS := {
 	"bram": {
 		"name": "Oudste Bram", "sheet": "npc_bram",
 		"rules": [
@@ -90,6 +92,10 @@ const NPCS := {
 		"rules": [{"talk": "muis_dorp"}],
 	},
 }
+
+
+## Basis en uitbreidingen samen (zie content.gd).
+static var NPCS: Dictionary = Content.merged("NPCS", BASE_NPCS)
 
 
 static func info(npc_id: String) -> Dictionary:

@@ -575,6 +575,11 @@ def main():
     problems = check(levels)
     for p in problems:
         print("PROBLEEM:", p)
+    if "--force" not in sys.argv:
+        # Sinds fase 7 zijn de kaarten in scripts/maps/ met de hand aangepast en zijn er nieuwe kaarten bij.
+        # Dit script overschrijft ze, dus standaard controleert het alleen de oorspronkelijke acht.
+        print("Alleen gecontroleerd (niets geschreven). Met --force worden scripts/maps/*.gd en registry.gd OVERSCHREVEN.")
+        sys.exit(1 if problems else 0)
     for lv in levels:
         print(write(lv), f"{lv.w}x{lv.h}, {len(lv.objects)} objecten")
     write_registry(levels)

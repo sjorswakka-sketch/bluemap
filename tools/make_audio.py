@@ -7,7 +7,10 @@ Alles wordt hier uit golfvormen opgebouwd, dus het is origineel en vrij te delen
 geluiden? Vervang gewoon de WAV-bestanden in assets/audio/ (zelfde bestandsnamen).
 Muziek: music_<naam>.wav (village, forest, ruins, cave, boss, temple, ending).
 """
+import glob
+import importlib.util
 import os
+import sys
 import wave
 
 import numpy as np
@@ -531,5 +534,15 @@ def main():
         save("music_" + name, fn(), 0.7, fade=False)  # de muziek loopt naadloos, dus geen fade
 
 
+def run_extensions():
+    """Uitbreidingen: tools/audio_x_<naam>.py met een functie generate(ma). `ma` is deze module (save, tri, compose...)."""
+    for path in sorted(glob.glob(os.path.join(HERE, "audio_x_*.py"))):
+        spec = importlib.util.spec_from_file_location(os.path.basename(path)[:-3], path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        module.generate(sys.modules[__name__])
+
+
 if __name__ == "__main__":
     main()
+    run_extensions()

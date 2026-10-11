@@ -95,7 +95,7 @@ func _populate(focus_index: int) -> void:
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		UiStyle.style_button(button, 22)
 		button.disabled = owned
-		button.icon = _icon(info["icon"])
+		button.icon = Items.icon_tex(entry["item"])
 		button.pressed.connect(_buy.bind(entry, index))
 		button.focus_entered.connect(func() -> void: desc_label.text = info["desc"])
 		list.add_child(button)
@@ -107,13 +107,6 @@ func _populate(focus_index: int) -> void:
 		first.grab_focus.call_deferred()
 	else:
 		desc_label.text = "Je hebt alles gekocht!"
-
-
-func _icon(index: int) -> Texture2D:
-	var atlas := AtlasTexture.new()
-	atlas.atlas = Art.tex("items")
-	atlas.region = Rect2(index * 16, 0, 16, 16)
-	return atlas
 
 
 func _buy(entry: Dictionary, index: int) -> void:

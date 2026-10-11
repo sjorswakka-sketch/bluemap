@@ -3,14 +3,20 @@ extends Node
 
 signal mute_changed(muted: bool)
 
-const SOUNDS := [
+const Content := preload("res://scripts/data/content.gd")
+
+const BASE_SOUNDS := [
 	"swing", "hit", "die", "hurt", "coin", "heart", "crystal", "select", "victory", "gameover",
 	"dodge", "arrow", "chest", "buy", "save", "door", "boss", "error", "quest", "upgrade", "slam", "drink",
 ]
-const TRACKS := ["village", "forest", "ruins", "cave", "boss", "temple", "ending"]
+const BASE_TRACKS := ["village", "forest", "ruins", "cave", "boss", "temple", "ending"]
 const SETTINGS_PATH := "user://settings.cfg"
 const MUSIC_DB := -9.0
 const POOL_SIZE := 8
+
+## Basis en uitbreidingen samen (zie scripts/data/content.gd).
+var SOUNDS: Array = Content.appended("SOUNDS", BASE_SOUNDS)
+var TRACKS: Array = Content.appended("TRACKS", BASE_TRACKS)
 
 var streams := {}
 var muted := false

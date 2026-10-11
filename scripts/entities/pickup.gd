@@ -73,4 +73,4 @@ func _draw() -> void:
 			var info := Items.info(item)
 			if info.get("type", "") == "crystal":
 				draw_circle(bob, 15.0 + sin(t * 2.0) * 1.5, Color(0.3, 0.7, 1.0, 0.18))
-			DrawUtil.sprite(self, Art.tex("items"), int(info["icon"]), 0, bob)
+			DrawUtil.sprite(self, Art.tex(Items.sheet_of(item)), int(info["icon"]), 0, bob)

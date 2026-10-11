@@ -1,7 +1,11 @@
 extends RefCounted
-## Alle voorwerpen en zwaarden. `icon` is het vakje in assets/items.png (16x16 per vakje).
+## Alle voorwerpen en zwaarden. `icon` is het vakje (16x16) in assets/items.png. Een uitbreiding kan een eigen
+## plaatje gebruiken met `"sheet": "items_vissen"` (een rij van 16x16 vakjes in assets/items_vissen.png).
 
-const ITEMS := {
+const Content := preload("res://scripts/data/content.gd")
+const Art := preload("res://scripts/core/art.gd")
+
+const BASE_ITEMS := {
 	"coin": {"name": "Munt", "icon": 0, "desc": "Je betaalt er mee."},
 	"potion": {
 		"name": "Helddrank", "icon": 1, "type": "use", "heal": 3, "price": 15,
@@ -52,7 +56,7 @@ const ITEMS := {
 }
 
 ## Zwaarden. `reach` is hoe ver je raakt, `damage` hoeveel schade per klap.
-const WEAPONS := {
+const BASE_WEAPONS := {
 	"wood": {"name": "Houten zwaard", "item": "sword_wood", "damage": 1, "reach": 34.0, "color": Color(0.85, 0.7, 0.45)},
 	"iron": {"name": "IJzeren zwaard", "item": "sword_iron", "damage": 2, "reach": 38.0, "color": Color(0.85, 0.9, 1.0)},
 	"crystal": {"name": "Kristalzwaard", "item": "sword_crystal", "damage": 3, "reach": 44.0, "color": Color(0.5, 0.85, 1.0)},
@@ -61,5 +65,23 @@ const WEAPONS := {
 const CRYSTALS := ["crystal_bos", "crystal_ruine", "crystal_grot"]
 
 
+## Basis en uitbreidingen samen (zie content.gd).
+static var ITEMS: Dictionary = Content.merged("ITEMS", BASE_ITEMS)
+static var WEAPONS: Dictionary = Content.merged("WEAPONS", BASE_WEAPONS)
+
+
 static func info(item_id: String) -> Dictionary:
 	return ITEMS.get(item_id, {"name": item_id, "icon": 0, "desc": ""})
+
+
+## Naam van het plaatje (in assets/) waar het icoon van dit voorwerp in staat.
+static func sheet_of(item_id: String) -> String:
+	return info(item_id).get("sheet", "items")
+
+
+## Het icoon van een voorwerp als los plaatje van 16x16 (voor knoppen en menu's).
+static func icon_tex(item_id: String) -> Texture2D:
+	var atlas := AtlasTexture.new()
+	atlas.atlas = Art.tex(sheet_of(item_id))
+	atlas.region = Rect2(int(info(item_id).get("icon", 0)) * 16, 0, 16, 16)
+	return atlas

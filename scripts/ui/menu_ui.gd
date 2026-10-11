@@ -171,7 +171,6 @@ func _text(font: Font, pos: Vector2, text: String, size: int, color := Color.WHI
 
 
 func _draw_items(font: Font) -> void:
-	var items_tex := Art.tex("items")
 	var owned := _owned()
 	selected = clampi(selected, 0, maxi(owned.size() - 1, 0))
 	_text(font, Vector2(24, 72), "Je spullen", 24, Color(0.6, 0.88, 1.0))
@@ -183,7 +182,7 @@ func _draw_items(font: Font) -> void:
 		content.draw_rect(Rect2(pos, Vector2(SLOT, SLOT)), Color(0.18, 0.3, 0.55) if chosen else Color(0.1, 0.16, 0.3))
 		content.draw_rect(Rect2(pos, Vector2(SLOT, SLOT)), Color(1.0, 0.88, 0.35) if chosen else Color(0.3, 0.45, 0.7), false, 3.0 if chosen else 2.0)
 		var icon: int = Items.ITEMS[owned[i]]["icon"]
-		content.draw_texture_rect_region(items_tex, Rect2(pos + Vector2(10, 6), Vector2(56, 56)), Rect2(Vector2(icon * 16, 0), Vector2(16, 16)))
+		content.draw_texture_rect_region(Art.tex(Items.sheet_of(owned[i])), Rect2(pos + Vector2(10, 6), Vector2(56, 56)), Rect2(Vector2(icon * 16, 0), Vector2(16, 16)))
 		var count := GameState.count(owned[i])
 		if count > 1:
 			content.draw_string_outline(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, 4, Color(0, 0, 0))

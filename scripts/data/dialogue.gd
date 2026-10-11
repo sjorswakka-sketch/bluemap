@@ -10,7 +10,9 @@ extends RefCounted
 ##
 ## Voorwaarden en acties staan beschreven in scripts/core/game_state.gd.
 
-const TALKS := {
+const Content := preload("res://scripts/data/content.gd")
+
+const BASE_TALKS := {
 	# --- Oudste Bram ---------------------------------------------------------------------
 	"bram_intro": {
 		"speaker": "Oudste Bram",
@@ -405,6 +407,10 @@ const TALKS := {
 		],
 	},
 }
+
+
+## Basis en uitbreidingen samen (zie content.gd).
+static var TALKS: Dictionary = Content.merged("TALKS", BASE_TALKS)
 
 
 static func get_talk(talk_id: String) -> Dictionary:
