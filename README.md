@@ -41,8 +41,8 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Verhaal:** een hoofdopdracht en drie zij-opdrachten, tien personages en gesprekken met keuzes.
 - **Gevechten:** zwaard in drie niveaus (hout, ijzer, kristal), ontwijkrol, slijmen in drie kleuren, vleermuizen,
   boogschutter-skeletten, twee kristalgolems (minibazen) en de Slijmkoning met drie fases.
-- **Magiërs en Slijmspuwers:** de Magiër (Vergeten Ruïne en Echo-grot) zweeft, houdt afstand, teleporteert elke paar
-  seconden en schiet na een aanloop een trage tovervonk af. Die kun je met je zwaard stukslaan. De Slijmspuwer (Fluisterbos)
+- **Magiërs en slijmspuwers:** de magiër (Vergeten Ruïne en Echo-grot) zweeft, houdt afstand, teleporteert elke paar
+  seconden en schiet na een aanloop een trage tovervonk af. Die kun je met je zwaard stukslaan. De slijmspuwer (Fluisterbos)
   spuugt drie slijmballen tegelijk en hupt weg als je te dichtbij komt.
 - **Verzamelen en upgraden:** winkel, smid die zwaarden maakt, drankjes, laarzen, hartcontainers en verborgen kisten.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
@@ -55,9 +55,9 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - Slijmen laten slijmgel vallen. Greta de smid maakt er betere zwaarden van.
 - Golems laten kristalscherven vallen, nodig voor het kristalzwaard.
 - Praat met iedereen: veel mensen hebben een opdracht of een tip.
-- Een Magiër teleporteert elke paar seconden. Loop meteen op hem af nadat hij geschoten heeft, dan kun je hem raken voor hij weer weg is.
-- Een tovervonk van een Magiër is traag. Wijk uit, rol weg of sla hem stuk met je zwaard.
-- Een Slijmspuwer hupt weg als je vlak bij hem komt. Zet hem klem tegen een muur of val hem aan vlak nadat hij heeft gehupt.
+- Een magiër teleporteert elke paar seconden. Ren op hem af zodra hij verschijnt: raak je hem voordat hij schiet, dan mislukt zijn spreuk.
+- Een tovervonk van een magiër is traag. Wijk uit, rol weg of sla hem stuk met je zwaard.
+- Een slijmspuwer hupt weg als je vlak bij hem komt. Zet hem klem tegen een muur of val hem aan vlak nadat hij heeft gehupt.
 
 ## Mappen
 
@@ -85,7 +85,7 @@ Bijna alles wat met inhoud te maken heeft staat als leesbare tekst in `scripts/d
   (een voorwerp geven, een opdracht starten...). De mogelijke voorwaarden en acties staan bovenaan `scripts/core/game_state.gd`.
 - **Personages:** `scripts/data/npcs.gd` (wie zegt wat, afhankelijk van je voortgang).
 - **Opdrachten:** `scripts/data/quests.gd`. Voorwerpen en zwaarden: `items.gd`. Winkels: `shops.gd`.
-- **Vijanden:** `scripts/data/enemies.gd` (levens, snelheid, schade, wat ze laten vallen). De Magiër en de Slijmspuwer
+- **Vijanden:** `scripts/data/enemies.gd` (levens, snelheid, schade, wat ze laten vallen). De magiër en de slijmspuwer
   staan in `scripts/data/ext/vijanden.gd`, het gedrag staat in `scripts/entities/enemy.gd`.
 - **Kaarten:** `scripts/maps/*.gd`. De kaart is gewone tekst, elk teken is een tegel (zie `scripts/data/tiles.gd`).
   Personages, vijanden, kisten en poortjes staan als lijst onder `objects`. Wijzig iets en druk op F5.
@@ -106,7 +106,7 @@ De plaatjes in `assets/` zijn zelf gemaakt met `python3 tools/make_art.py` en de
 | `skeleton.png` | 4 kolommen (stil, stap, stap, boog) x 4 rijen (onder, boven, rechts, links) |
 | `mage.png` | 4 vakjes: rustig (2), aanloop met oplichtende handen, teleport-wolkje |
 | `slime_spitter.png` | 5 vakjes: rustig (2), opblazen, spuwen, hupje |
-| `arcane_orb.png` | 4 vakjes: de tovervonk van de Magiër, pulserend |
+| `arcane_orb.png` | 4 vakjes: de tovervonk van de magiër, pulserend |
 | `golem.png` | 32x32: rustig (2), armen omhoog, klap |
 | `king.png` | 48x48: rustig (2), ineengedoken, in de lucht |
 | `npc_*.png` | 2 vakjes: rustig en een beetje bewegen |
@@ -125,7 +125,7 @@ sh tools/run_tests.sh /pad/naar/godot
 Dat draait alle tests (`tests/*_test.gd`). `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
 voorwerp, elke opdracht) en speelt daarna de systemen na: lopen, gebieden wisselen, vechten, de baas, praten, kopen,
 smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd` speelt het hele spel uit met de echte
-kaarten: van Bram tot en met het einde. `tests/vijanden_test.gd` controleert de Magiër en de Slijmspuwer: gedrag,
+kaarten: van Bram tot en met het einde. `tests/vijanden_test.gd` controleert de magiër en de slijmspuwer: gedrag,
 plaatsing op de kaarten en drops. Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het
 met een foutmelding.
 

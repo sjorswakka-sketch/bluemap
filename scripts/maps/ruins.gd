@@ -50,7 +50,6 @@ const DATA := {
 		{"type": "torch", "pos": [13, 27]},
 		{"type": "torch", "pos": [8, 20]},
 		{"type": "savepoint", "pos": [5, 16]},
-		{"type": "sign", "pos": [9, 18], "lines": ["Pas op voor magiërs!", "Ze verdwijnen in een rookwolkje en schieten een tovervonk. Die is traag: sla hem stuk met je zwaard."]},
 		{"type": "torch", "pos": [4, 10]},
 		{"type": "torch", "pos": [21, 10]},
 		{"type": "torch", "pos": [4, 17]},
@@ -76,8 +75,6 @@ const DATA := {
 		{"type": "enemy", "pos": [14, 12], "kind": "slime_blue"},
 		{"type": "enemy", "pos": [22, 24], "kind": "slime_blue"},
 		{"type": "enemy", "pos": [28, 26], "kind": "slime_blue"},
-		{"type": "enemy", "pos": [18, 14], "kind": "mage"},
-		{"type": "enemy", "pos": [24, 27], "kind": "mage"},
 		{"type": "pickup", "pos": [5, 13], "item": "coin"},
 		{"type": "pickup", "pos": [20, 15], "item": "coin"},
 		{"type": "pickup", "pos": [13, 28], "item": "coin"},
@@ -87,5 +84,9 @@ const DATA := {
 		{"type": "pickup", "pos": [8, 6], "item": "heart"},
 		{"type": "pickup", "pos": [22, 29], "item": "heart"},
 		{"type": "sign", "pos": [9, 28], "lines": ["Hier rust de bewaker van de ruïne.", "Wie het kristal wil, moet de golem verslaan."]},
+		# Vijanden-uitbreiding (achteraan, zodat de plekken van de oude voorwerpen in opslagen niet verschuiven).
+		{"type": "sign", "pos": [9, 18], "lines": ["Pas op voor magiërs!", "Ze verdwijnen in een rookwolkje en schieten een tovervonk. Die is traag: sla hem stuk met je zwaard."]},
+		{"type": "enemy", "pos": [18, 14], "kind": "mage"},
+		{"type": "enemy", "pos": [24, 27], "kind": "mage"},
 	],
 }

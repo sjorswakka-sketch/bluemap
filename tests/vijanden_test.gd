@@ -1,7 +1,10 @@
 extends SceneTree
 ## Test voor de uitbreiding "vijanden": de Magiër (teleporteren, arcane bol) en de Slijmspuwer (waaier, hupje).
 ##
-##   godot --headless --fixed-fps 60 --path . -s tests/vijanden_test.gd
+##   sh tools/run_tests.sh /pad/naar/godot      (alle tests, met een eigen opslagmap)
+##   godot --headless --fixed-fps 60 --path . -s tests/vijanden_test.gd     (alleen deze test)
+##
+## Draai je hem los, dan gebruikt hij de echte opslagmap. Een opgeslagen spel dat er al was, zet hij na afloop terug.
 ##
 ## Deel 1: gegevens, plaatjes en geluiden. Deel 2: plaatsing op de kaarten (vrije, bereikbare tegels).
 ## Deel 3: gedrag in een echte wereld, frame voor frame. Deel 4: opslaan en laden.
@@ -17,8 +20,19 @@ const TILE := 32.0
 const FPS := 60.0
 const KINDS := ["mage", "slime_spitter"]
 const SHEET_CELLS := {"mage": 4, "slime_spitter": 5, "arcane_orb": 4} # vakjes van 16x16 per plaatje
+const SOUND_NAMES := ["mage_teleport", "mage_charge", "mage_orb", "mage_orb_pop", "spitter_spit", "spitter_hop"]
+## Kisten en unieke voorwerpen met hun nummer in `objects` van vóór deze uitbreiding. Een opgeslagen spel onthoudt ze met
+## dat nummer (zie world.gd), dus nieuwe dingen moeten achteraan de lijst staan.
+const SAVED_OBJECTS := {
+	"forest": [[4, "chest", [10, 4]], [6, "chest", [31, 30]], [7, "pickup", [41, 4]], [47, "pickup", [20, 28]]],
+	"ruins": [[18, "chest", [10, 4]], [19, "chest", [29, 29]], [20, "pickup", [36, 5]]],
+	"cave": [[19, "chest", [5, 5]], [20, "chest", [43, 3]], [21, "pickup", [41, 30]], [47, "pickup", [24, 10]]],
+}
+const OLD_OBJECT_COUNT := {"forest": 48, "ruins": 40, "cave": 48}
+const SECTIONS := 9 # zoveel testonderdelen moeten tot het eind lopen
 
 var failures := 0
+var sections_done := 0
 var gs: Node
 var world: Node2D
 var seen_ids := {}
@@ -49,6 +63,8 @@ func tile_pos(x: int, y: int) -> Vector2:
 
 func start_world(map_id: String) -> void:
 	gs.new_game()
+	for kind: String in KINDS:
+		gs.set_flag("vijanden_hint_" + kind) # de tips zijn al gezien (test_hints test ze apart)
 	gs.in_game = true
 	gs.map_id = map_id
 	world = load("res://scenes/main.tscn").instantiate()
@@ -134,6 +150,44 @@ func wait_state(enemy: Node2D, wanted: String, max_frames: int) -> bool:
 	return enemy.state == wanted
 
 
+## Ligt `cell` binnen `margin` tegels van een portaal, trigger of poort? Daar zet een test de speler liever niet neer.
+func near_exit(map_id: String, cell: Vector2i, margin: int) -> bool:
+	for obj: Dictionary in Maps.get_map(map_id)["objects"]:
+		if not obj["type"] in ["portal", "trigger", "gate"]:
+			continue
+		var size: Array = obj.get("size", [1, 1])
+		var low := Vector2i(obj["pos"][0], obj["pos"][1]) - Vector2i(margin, margin)
+		var high := Vector2i(obj["pos"][0], obj["pos"][1]) + Vector2i(int(size[0]) - 1 + margin, int(size[1]) - 1 + margin)
+		if cell.x >= low.x and cell.y >= low.y and cell.x <= high.x and cell.y <= high.y:
+			return true
+	return false
+
+
+## Heeft de wereld net een zwevende tekst als "Mislukt!" laten zien?
+func shows_text(text: String) -> bool:
+	for fx in world.fx_layer.get_children():
+		if fx.kind == "text" and fx.text == text:
+			return true
+	return false
+
+
+## Het eerste ding op de kaart met deze inhoud (bijvoorbeeld de sleutelkist).
+func chest_with(item: String) -> Node2D:
+	for child in world.entities.get_children():
+		if "contents" in child and child.contents[0][0] == item:
+			return child
+	return null
+
+
+## Ligt er tussen `from` en `to` geen muur? Eigen controle in kleine stapjes, los van die van de Magiër.
+func open_line(from: Vector2, to: Vector2) -> bool:
+	var steps := int(from.distance_to(to) / 2.0)
+	for i in range(0, steps + 1):
+		if world.is_solid(from.lerp(to, float(i) / float(maxi(steps, 1)))):
+			return false
+	return true
+
+
 func is_free_tile(map_rows: Array, x: int, y: int) -> bool:
 	if y < 0 or x < 0 or y >= map_rows.size() or x >= String(map_rows[0]).length():
 		return false
@@ -195,13 +249,12 @@ func test_data() -> void:
 		"schade is 1 of 2 hartjes (je begint met 5)")
 	check(int(mage["hp"]) >= int(skeleton["hp"]) and int(mage["hp"]) <= int(skeleton["hp"]) + 3, "de Magiër is iets taaier dan een skelet")
 	check(not mage.get("boss", false) and not spitter.get("boss", false), "geen van beide is een baas")
-	check(mage["teleport_every"] == 4.0 and mage["cast_time"] >= 0.4 and mage["cast_time"] <= 0.6,
-		"teleport elke 4 seconden, aanloop ongeveer een halve seconde")
+	check(mage["teleport_every"] == 4.0 and mage["cast_time"] == 0.7, "teleport elke 4 seconden, aanloop van 0,7 seconde")
 	var span: Array = mage["teleport_range"]
 	check(span[0] == 100.0 and span[1] == 140.0, "teleport naar 100-140 pixels van de speler")
 	check(mage["orb_speed"] == 90.0, "de arcane bol vliegt met snelheid 90")
-	check(spitter["fan"] == 3 and spitter["spit_every"] == 2.2 and spitter["spit_range"] == 170.0 and spitter["flee_range"] == 60.0,
-		"waaier van 3, elke 2,2 seconden, binnen 170 px, hupt weg binnen 60 px")
+	check(spitter["fan"] == 3 and spitter["fan_spread"] == 0.35 and spitter["spit_every"] == 2.2 and spitter["spit_range"] == 170.0
+		and spitter["flee_range"] == 60.0, "waaier van 3 (0,35 radialen uit elkaar), elke 2,2 seconden, binnen 170 px, hupt weg binnen 60 px")
 	check(float(spitter["speed"]) <= 20.0, "de Slijmspuwer staat bijna stil")
 
 	var drops_ok := true
@@ -212,8 +265,9 @@ func test_data() -> void:
 	check(drops_ok, "alle drops zijn bestaande voorwerpen met een kans tussen 0 en 1")
 	var mage_drops := drop_table("mage")
 	check(mage_drops.has("coin") and mage_drops["coin"][0] == 1.0 and mage_drops["coin"][1] == 3, "de Magiër laat altijd 3 munten vallen")
-	check(mage_drops.has("potion") and mage_drops.has("heart") and mage_drops["potion"][0] < 0.3 and mage_drops["heart"][0] < 0.4,
-		"en soms een helddrank of een hartje")
+	var skeleton_drops := drop_table("skeleton")
+	check(mage_drops.has("potion") and mage_drops.has("heart") and mage_drops["potion"][0] <= skeleton_drops["potion"][0]
+		and mage_drops["heart"][0] <= skeleton_drops["heart"][0], "en soms een helddrank of een hartje, niet vaker dan bij een skelet")
 	var spit_drops := drop_table("slime_spitter")
 	check(spit_drops.has("gel") and absf(spit_drops["gel"][0] - 0.6) < 0.001 and spit_drops.has("coin"), "de Slijmspuwer laat slijmgel (60%) en munten vallen")
 	var most_coins := 0
@@ -256,8 +310,17 @@ func test_data() -> void:
 			sounds_ok = false
 			print("       geluid ontbreekt of is te kort: ", sound_name)
 	check(sounds_ok, "alle %d nieuwe geluiden zijn geladen" % Vijanden.SOUNDS.size())
-	for needed in ["mage_teleport", "mage_orb", "spitter_spit"]:
-		check(Vijanden.SOUNDS.has(needed), "er is een geluid voor %s" % needed)
+	for needed: String in SOUND_NAMES:
+		check(Vijanden.SOUNDS.has(needed) and snd.SOUNDS.has(needed), "er is een geluid %s" % needed)
+	# Sound.play zegt niets bij een onbekende naam, dus kijken we of elk geluid uit de code ook echt bestaat.
+	var missing: Array = []
+	var pattern := RegEx.create_from_string("Sound\\.play\\(\"(\\w+)\"")
+	for path in ["res://scripts/entities/enemy.gd", "res://scripts/entities/projectile.gd"]:
+		for found in pattern.search_all(FileAccess.get_file_as_string(path)):
+			if not snd.SOUNDS.has(found.get_string(1)):
+				missing.append(found.get_string(1))
+	check(missing.is_empty(), "elk geluid dat de vijanden en bollen afspelen bestaat %s" % [missing])
+	sections_done += 1
 
 
 # --- Deel 2: plaatsing op de kaarten ---------------------------------------------------------------------------
@@ -336,15 +399,31 @@ func test_placement() -> void:
 				unreachable.append("%s@%s" % [obj["type"], obj["pos"]])
 		check(unreachable.is_empty(), "%s: personages, kisten, bordjes, voorwerpen en doorgangen zijn bereikbaar %s" % [map_id, unreachable])
 
-	var warned_forest := false
-	var warned_ruins := false
-	for obj: Dictionary in Maps.get_map("forest")["objects"]:
-		if obj["type"] == "sign" and "slijmspuwers" in String(obj["lines"][0]).to_lower():
-			warned_forest = true
-	for obj: Dictionary in Maps.get_map("ruins")["objects"]:
-		if obj["type"] == "sign" and "magiërs" in String(obj["lines"][0]).to_lower():
-			warned_ruins = true
-	check(warned_forest and warned_ruins, "een bordje in het bos en in de ruïne waarschuwt voor de nieuwe vijanden")
+	var warnings := {"forest": "slijmspuwers", "ruins": "magiërs", "cave": "magiërs"}
+	var warned := {}
+	for map_id: String in warnings:
+		for obj: Dictionary in Maps.get_map(map_id)["objects"]:
+			if obj["type"] == "sign" and warnings[map_id] in String(obj["lines"][0]).to_lower():
+				warned[map_id] = true
+	check(warned.size() == 3, "een bordje in het bos, de ruïne en de grot waarschuwt voor de nieuwe vijanden")
+
+	# Een opgeslagen spel onthoudt kisten en unieke voorwerpen met hun nummer in de lijst: dat mag niet verschuiven.
+	for map_id: String in SAVED_OBJECTS:
+		var objects: Array = Maps.get_map(map_id)["objects"]
+		var same := true
+		for saved: Array in SAVED_OBJECTS[map_id]:
+			var obj: Dictionary = objects[saved[0]] if objects.size() > saved[0] else {}
+			if obj.get("type", "") != saved[1] or obj.get("pos", []) != saved[2]:
+				same = false
+				print("       %s: op nummer %d hoort %s %s" % [map_id, saved[0], saved[1], saved[2]])
+		var new_at_end := true
+		for index in objects.size():
+			var obj: Dictionary = objects[index]
+			var ours: bool = (obj["type"] == "enemy" and obj["kind"] in KINDS) \
+				or (obj["type"] == "sign" and ("magiërs" in String(obj["lines"][0]) or "slijmspuwers" in String(obj["lines"][0])))
+			if ours and index < OLD_OBJECT_COUNT[map_id]:
+				new_at_end = false
+		check(same and new_at_end, "%s: de nieuwe dingen staan achteraan, kisten en kristallen houden hun nummer voor oude opslagen" % map_id)
 
 	# In de echte wereld: ze verschijnen op de juiste plek en staan niet in of tegen een muur.
 	for map_id in ["forest", "ruins", "cave"]:
@@ -363,6 +442,22 @@ func test_placement() -> void:
 				fits = false
 		check(fits, "%s: geen van hen staat in of tegen een muur" % map_id)
 		await stop_world()
+
+	# Een opslag van vóór deze uitbreiding: de geopende sleutelkist en het opgepakte boskristal blijven weg.
+	gs.new_game()
+	gs.set_flag("chest:forest:4")
+	gs.set_flag("pickup:forest:7")
+	gs.in_game = true
+	gs.map_id = "forest"
+	world = load("res://scenes/main.tscn").instantiate()
+	root.add_child(world)
+	current_scene = world
+	await frames(5)
+	var key_chest := chest_with("ruin_key")
+	check(key_chest != null and key_chest.opened, "een oude opslag: de sleutelkist is nog steeds open")
+	check(count_pickups("crystal_bos") == 0, "en het boskristal ligt er niet opnieuw")
+	await stop_world()
+	sections_done += 1
 
 
 # --- Deel 3: de Magiër ---------------------------------------------------------------------------------------------
@@ -429,7 +524,15 @@ func test_mage() -> void:
 			break
 	check(cast_frame >= 0 and orb_frame > cast_frame, "eerst een aanloop, dan pas het schot")
 	var windup := float(orb_frame - cast_frame) / FPS
-	check(windup >= 0.45 and windup <= 0.58, "de aanloop duurt ongeveer een halve seconde (%.2f s)" % windup)
+	check(windup >= 0.65 and windup <= 0.78, "de aanloop duurt ongeveer 0,7 seconde (%.2f s)" % windup)
+	var orb_start: Vector2 = mage.global_position + Vector2(0, -14)
+	check(orb != null and orb.global_position.distance_to(orb_start) < 4.0, "de bol ontstaat boven zijn handen, 14 px boven zijn midden")
+	var info: Dictionary = Enemies.info("mage")
+	var span: Array = info["teleport_range"]
+	var run_and_hit: float = (float(info["appear_time"]) + float(info["cast_time"])) * float(player.SPEED) \
+		+ float(Items.WEAPONS["wood"]["reach"]) + float(info["radius"])
+	check(run_and_hit >= (float(span[0]) + float(span[1])) / 2.0,
+		"ren je meteen op hem af, dan haal je hem meestal nog tijdens de aanloop, zelfs met het houten zwaard (%.0f px)" % run_and_hit)
 	check(orb != null and absf(orb.velocity.length() - 90.0) < 1.0, "de bol vliegt met snelheid 90")
 	var to_player: Vector2 = player.global_position + Vector2(0, 4) - orb.global_position
 	check(absf(orb.velocity.angle_to(to_player)) < 0.1, "en wijst naar de speler")
@@ -440,11 +543,23 @@ func test_mage() -> void:
 	await clear_all()
 	player.invuln = 0.0
 	var hp_before: int = gs.hp
-	world.spawn_projectile("arcane_orb", player.global_position + Vector2(60, 0), Vector2.LEFT, 90.0, 1, "Magiër (arcane bol)")
+	world.spawn_projectile("arcane_orb", player.global_position + Vector2(60, 0), Vector2.LEFT, 90.0, 1, "Magiër (tovervonk)")
 	await frames(70)
 	check(gs.hp == hp_before - 1, "een treffer kost 1 hartje (%d -> %d)" % [hp_before, gs.hp])
 	check(projectiles("arcane_orb").is_empty(), "de bol verdwijnt na de treffer")
 	check(gs.last_damage_source.begins_with("Magiër"), "het game-over-scherm weet wie het was: %s" % gs.last_damage_source)
+	var source_ok := false
+	mage = await mage_arena(130.0)
+	seen_ids.clear()
+	mage.special_timer = 0.0
+	for i in 120:
+		await process_frame
+		var shot := fresh("arcane_orb")
+		if not shot.is_empty():
+			source_ok = shot[0].source == "Magiër (tovervonk)"
+			break
+	check(source_ok, "een echte bol heet op het game-over-scherm 'Magiër (tovervonk)'")
+	await clear_all()
 	player.invuln = 99999.0
 
 	print("Magiër: de bol met het zwaard stukslaan")
@@ -478,6 +593,11 @@ func test_mage() -> void:
 	await frames(3)
 	check(gone(point_blank) and gs.hp == hp_now, "ook een bol die al bijna bij je is, sla je nog stuk zonder schade")
 	player.invuln = 99999.0
+	var twice := launch("arcane_orb", player.global_position + Vector2(60, 0), Vector2.ZERO, 0.0)
+	var effects_before: int = world.fx_layer.get_child_count()
+	twice.shatter()
+	twice.shatter()
+	check(world.fx_layer.get_child_count() == effects_before + 2, "twee keer raken in hetzelfde moment geeft maar een knal (wolkje en ring)")
 	await clear_all()
 
 	print("Magiër: de bol draait bij en dooft uit")
@@ -516,12 +636,17 @@ func test_mage() -> void:
 	await frames(8)
 	mage.hurt(1, Vector2.RIGHT)
 	check(mage.state == "idle" and mage.hp == 5, "een klap tijdens de aanloop onderbreekt de spreuk")
+	check(shows_text("Mislukt!"), "en dan zie je 'Mislukt!'")
 	await frames(45)
 	check(fresh("arcane_orb").is_empty(), "er komt dan geen bol uit")
 	mage.special_timer = 99.0
 	await frames(3)
 	mage.hurt(1, Vector2.RIGHT)
 	check(mage.state == "idle" and mage.hp == 4, "een klap op een rustig moment kost alleen een leven")
+	mage.special_timer = 0.0
+	await wait_state(mage, "vanish", 60)
+	mage.hurt(1, Vector2.RIGHT)
+	check(mage.state == "vanish" and mage.hp == 3, "een klap terwijl hij verdwijnt houdt de teleport niet tegen")
 
 	print("Magiër: afstand houden")
 	mage = await mage_arena(40.0)
@@ -538,6 +663,15 @@ func test_mage() -> void:
 	seen_ids.clear()
 	await frames(int(FPS * 4.0))
 	check(mage.state == "idle" and fresh("arcane_orb").is_empty(), "buiten zijn zicht doet hij niets")
+	put_player(mage.global_position + Vector2(-130, 0))
+	var seen_after := -1
+	for i in int(FPS * 2.0):
+		await process_frame
+		if mage.state == "vanish":
+			seen_after = i
+			break
+	check(seen_after >= int(FPS * 1.0) and seen_after <= int(FPS * 1.4),
+		"kom je in zicht, dan teleporteert hij pas na ongeveer 1,2 seconde (%.2f s)" % (float(seen_after) / FPS))
 
 	print("Magiër: dood en drops")
 	mage = await mage_arena(130.0)
@@ -568,7 +702,7 @@ func test_mage() -> void:
 		hearts += count_pickups("heart")
 		await clear_all()
 	check(coins == 300, "100 Magiërs laten precies 300 munten vallen")
-	check(potions >= 5 and potions <= 28 and hearts >= 10 and hearts <= 32, "en soms een helddrank (%d) en een hartje (%d)" % [potions, hearts])
+	check(potions >= 3 and potions <= 20 and hearts >= 4 and hearts <= 22, "en soms een helddrank (%d) en een hartje (%d)" % [potions, hearts])
 
 	print("Magiër: lichtje in het donker")
 	var lit := spawn("mage", tile_pos(16, 14))
@@ -577,11 +711,16 @@ func test_mage() -> void:
 	await wait_state(lit, "cast", 120)
 	await frames(25)
 	check(lit.glow.energy > 1.0, "tijdens de aanloop wordt het lichtje feller")
+	var dark_orb := launch("arcane_orb", tile_pos(10, 14), Vector2.RIGHT, 0.0)
+	check(dark_orb.get_children().any(func(child: Node) -> bool: return child is PointLight2D), "ook zijn tovervonk geeft licht in het donker")
 	await stop_world()
 	await start_world("forest")
 	var daylight := spawn("mage", tile_pos(30, 20))
 	check(daylight.glow == null, "in een lichte omgeving is dat niet nodig")
+	var day_orb := launch("arcane_orb", tile_pos(30, 22), Vector2.RIGHT, 0.0)
+	check(day_orb.get_child_count() == 0, "en zijn tovervonk ook niet")
 	await stop_world()
+	sections_done += 1
 
 
 func test_mage_walls() -> void:
@@ -607,13 +746,16 @@ func test_mage_walls() -> void:
 				var d := spot.distance_to(world.player.global_position)
 				if d < 99.9 or d > 140.1 or world.is_solid(spot) or not mage._fits_at(spot):
 					bad += 1
-				if not mage._clear_line(spot, world.player.global_position):
+				# Waar de bol ontstaat (boven zijn handen) mag geen muur zijn, en de weg naar de speler moet vrij zijn.
+				var orb_start: Vector2 = spot + Vector2(0, -14)
+				if world.is_solid(orb_start) or not open_line(orb_start, world.player.global_position + Vector2(0, 4)):
 					no_view += 1
 		check(tested_here > 100, "%s: %d teleportplekken gekozen" % [map_id, tested_here])
 		tested += tested_here
 		await stop_world()
 	check(bad == 0, "elke gekozen plek ligt 100-140 px weg en past tussen de muren (%d fout)" % bad)
-	check(float(no_view) <= float(tested) / 4.0, "en heeft bijna altijd vrij zicht op de speler (%d zonder zicht van %d)" % [no_view, tested])
+	check(float(no_view) <= float(tested) * 0.02,
+		"en van bijna elke plek vliegt zijn bol vrij naar de speler (%d zonder vrije baan van %d)" % [no_view, tested])
 
 	print("Magiër: in een hoek en zonder ruimte")
 	await start_world("ruins")
@@ -654,6 +796,7 @@ func test_mage_walls() -> void:
 			boxed_in_wall = true
 	check(shots >= 1 and not boxed_in_wall, "dan blijft hij gewoon waar het kan en schiet toch (de bol spat uit elkaar)")
 	await stop_world()
+	sections_done += 1
 
 
 # --- Deel 3b: de Slijmspuwer ---------------------------------------------------------------------------------------
@@ -708,6 +851,26 @@ func test_spitter() -> void:
 	check(interval_ok, "ongeveer elke 2,2 seconden")
 	check(fan_ok, "de middelste wijst naar jou, de andere twee waaieren eromheen, snelheid 100%s" % fan_text)
 
+	print("Slijmspuwer: richten en vastzetten")
+	sp = await spitter_arena(120.0)
+	sp.special_timer = 0.0
+	await wait_state(sp, "windup", 30)
+	var windup_time: float = Enemies.info("slime_spitter")["windup"]
+	while sp.state == "windup" and sp.state_time < windup_time - 0.1:
+		await process_frame
+	var locked: Vector2 = sp.aim_dir
+	put_player(sp.global_position + Vector2(0, -120)) # de speler stapt vlak voor het spugen opzij
+	seen_ids.clear()
+	var middle: Node2D = null
+	for i in 30:
+		await process_frame
+		var balls := fresh("slimeball")
+		if balls.size() == 3:
+			middle = balls[1]
+			break
+	check(middle != null and absf(middle.velocity.angle_to(locked)) < 0.02,
+		"de laatste tel richt hij niet meer: wie vlak voor het spugen opzij stapt, ontwijkt de waaier")
+
 	print("Slijmspuwer: afstand en bereik")
 	sp = await spitter_arena(220.0)
 	seen_ids.clear()
@@ -729,6 +892,17 @@ func test_spitter() -> void:
 		path += sp.global_position.distance_to(last_pos)
 		last_pos = sp.global_position
 	check(path / 6.0 < 25.0, "hij blijft bijna stil staan (gemiddeld %.0f px per seconde)" % (path / 6.0))
+	sp = await spitter_arena(165.0)
+	seen_ids.clear()
+	var late_volleys := 0
+	for i in int(FPS * 14.0):
+		await process_frame
+		if i >= int(FPS * 8.0) and not fresh("slimeball").is_empty():
+			late_volleys += 1
+		elif i < int(FPS * 8.0):
+			fresh("slimeball")
+	check(late_volleys >= 2 and sp.global_position.distance_to(player.global_position) < 170.0,
+		"staat de speler aan de rand van zijn bereik, dan schuifelt hij dichterbij en blijft hij spugen (%d beurten in de laatste 6 s)" % late_volleys)
 
 	print("Slijmspuwer: wegspringen")
 	sp = await spitter_arena(40.0)
@@ -742,6 +916,43 @@ func test_spitter() -> void:
 	check(highest > 8.0, "het hupje heeft een boog door de lucht (%.0f px hoog)" % highest)
 	check(sp.state == "idle" and sp.global_position.distance_to(player.global_position) > 60.0, "hij landt buiten die 60 px (%.0f px)" % sp.global_position.distance_to(player.global_position))
 	check(not world.is_solid(sp.global_position) and sp._fits_at(sp.global_position), "op een vrije plek")
+	check(sp.global_position.distance_to(player.global_position) >= 40.0 + 15.0, "en echt verder van je af dan eerst")
+	sp = await spitter_arena(40.0)
+	sp.special_timer = 0.0 # hij wil ook spugen, maar eerst hupt hij weg
+	await wait_state(sp, "hop", 30)
+	await wait_state(sp, "idle", 60)
+	var calm := 0
+	while sp.state == "idle" and calm < int(FPS * 2.0):
+		calm += 1
+		await process_frame
+	check(sp.state == "windup" and float(calm) / FPS >= 0.65 and float(calm) / FPS <= 0.8,
+		"na het landen wacht hij even voor hij weer spuugt (%.2f s)" % (float(calm) / FPS))
+	# Rechts van hem een muur, onder hem een boom en boven hem een plank met net genoeg plek voor een klein sprongetje
+	# opzij. Dat brengt hem nauwelijks verder van de speler af, dus dan blijft hij liever staan.
+	sp = await spitter_arena(100.0)
+	sp.special_timer = 99.0
+	var home := Vector2i(36, 20)
+	var added: Array[Vector2i] = [Vector2i(home.x, home.y - 2), Vector2i(home.x, home.y + 2)]
+	for y in range(home.y - 4, home.y + 5):
+		for x in range(home.x + 1, home.x + 5):
+			added.append(Vector2i(x, y))
+	added = added.filter(func(cell: Vector2i) -> bool: return not world.solid_cells.has(cell))
+	for cell in added:
+		world.solid_cells[cell] = true
+	var plank := StaticBody2D.new() # op botsingslaag 1, net als een kist
+	var plank_shape := CollisionShape2D.new()
+	plank_shape.shape = RectangleShape2D.new()
+	plank_shape.shape.size = Vector2(40, 16)
+	plank.add_child(plank_shape)
+	plank.position = sp.global_position + Vector2(2, -52) # 44 px boven hem past hij niet meer, 36 px wel
+	world.entities.add_child(plank)
+	await frames(2)
+	put_player(sp.global_position + Vector2(-58, 0))
+	await frames(20)
+	check(sp.hop_count == 0 and sp.hop_cooldown > 0.0, "een sprongetje opzij dat hem nauwelijks verder weg brengt, doet hij niet")
+	for cell in added:
+		world.solid_cells.erase(cell)
+	plank.queue_free()
 	sp = await spitter_arena(40.0)
 	sp.special_timer = 99.0
 	sp.state = "hop"
@@ -798,6 +1009,7 @@ func test_spitter() -> void:
 	check(gel >= 45 and gel <= 75, "ongeveer 60%% van de Slijmspuwers laat slijmgel vallen (%d van 100)" % gel)
 	check(hearts <= 25, "en maar zelden een hartje (%d van 100)" % hearts)
 	await stop_world()
+	sections_done += 1
 
 
 func test_spitter_walls() -> void:
@@ -809,9 +1021,13 @@ func test_spitter_walls() -> void:
 	var in_wall := 0
 	var stuck := 0
 	var hops := 0
+	var too_close := 0
+	var left_forest := false
 	var player: Node2D = world.player
 	for index in range(0, cells.size(), 17):
 		var cell: Vector2i = cells[index]
+		if near_exit("forest", cell, 3):
+			continue # de speler mag niet per ongeluk door een portaal naar een ander gebied
 		var sp := spawn("slime_spitter", tile_pos(cell.x, cell.y))
 		if not sp._fits_at(sp.global_position):
 			sp.queue_free()
@@ -819,7 +1035,7 @@ func test_spitter_walls() -> void:
 		# De speler komt van een vrije kant, vlak bij hem.
 		var near_spot := Vector2.INF
 		for turn in 8:
-			var candidate: Vector2 = sp.global_position + Vector2.from_angle(float(index + turn) * PI / 4.0) * 34.0
+			var candidate: Vector2 = sp.global_position + Vector2.from_angle(float(index + turn) * PI / 4.0) * 50.0
 			if not world.is_solid(candidate):
 				near_spot = candidate
 				break
@@ -830,22 +1046,35 @@ func test_spitter_walls() -> void:
 		sp.special_timer = 99.0
 		freeze_wander(sp)
 		put_player(near_spot)
+		var player_at_hop := Vector2.INF
 		for i in 75:
 			await process_frame
+			if not is_instance_valid(sp) or gs.map_id != "forest":
+				break
 			if world.is_solid(sp.global_position):
 				in_wall += 1
+			if sp.hop_count == 1 and player_at_hop == Vector2.INF:
+				player_at_hop = player.global_position
+		if not is_instance_valid(sp) or gs.map_id != "forest":
+			left_forest = true
+			break
 		hops += sp.hop_count
-		if sp.hop_count == 0:
-			# Hij hupte niet: dan moet er echt geen vrije plek zijn geweest.
-			var to_player: Vector2 = player.global_position - sp.global_position
+		if player_at_hop != Vector2.INF and sp.hop_to.distance_to(player_at_hop) < sp.hop_from.distance_to(player_at_hop) + 15.0:
+			too_close += 1
+		var to_player: Vector2 = player.global_position - sp.global_position
+		if sp.hop_count == 0 and to_player.length() < float(Enemies.info("slime_spitter")["flee_range"]):
+			# Hij hupte niet terwijl je vlak bij hem stond (soms duwt een boom je net iets weg): dan moet er echt geen
+			# vrije plek zijn geweest.
 			sp.hop_cooldown = 0.0
 			sp._spitter_hop(to_player, to_player.length())
 			if sp.state == "hop":
 				stuck += 1
 		sp.queue_free()
 		await frames(1)
+	check(not left_forest, "de speler blijft in het bos (geen portaal geraakt)")
 	check(sampled >= 25, "%d beginplekken uitgeprobeerd (open veld, bomen, hoeken)" % sampled)
 	check(float(hops) >= float(sampled) / 2.0, "bijna overal hupt hij weg (%d van %d)" % [hops, sampled])
+	check(too_close == 0, "elk hupje brengt hem echt verder van de speler af (%d niet)" % too_close)
 	check(in_wall == 0, "bij het hupsen komt hij nooit in een muur terecht")
 	check(stuck == 0, "en als hij kan hupsen, doet hij dat ook")
 
@@ -868,12 +1097,32 @@ func test_spitter_walls() -> void:
 			wall_hits += 1
 	check(wall_hits == 0, "in een hoek hupt hij niet door de muur")
 	check(cornered.state == "idle" or cornered.state == "hop", "en blijft in een geldige toestand (%s)" % cornered.state)
+
+	print("Vaste dingen op de kaart: kisten, borden en poortjes")
+	await clear_all()
+	var chest := chest_with("ruin_key")
+	var under := spawn("slime_spitter", chest.global_position + Vector2(0, 80))
+	under.special_timer = 99.0
+	freeze_wander(under)
+	check(not under._fits_at(chest.global_position) and under._fits_at(chest.global_position + Vector2(0, 80)),
+		"op een kist past hij niet, op het gras eronder wel")
+	check(not under._clear_line(chest.global_position + Vector2(-40, 6), chest.global_position + Vector2(40, 6)),
+		"een kist staat in de weg: daar is geen vrij zicht doorheen")
+	put_player(under.global_position + Vector2(0, 40)) # de speler komt van onderen, recht weg is de kist
+	await wait_state(under, "hop", 30)
+	var lid: CollisionShape2D = chest.get_children().filter(func(child: Node) -> bool: return child is CollisionShape2D)[0]
+	var box := Rect2(chest.global_position + lid.position - lid.shape.size / 2.0, lid.shape.size)
+	var feet: Vector2 = under.hop_to + Vector2(0, 32.0 * 0.28) # waar zijn botsingsrondje zit
+	var gap := feet.distance_to(Vector2(clampf(feet.x, box.position.x, box.end.x), clampf(feet.y, box.position.y, box.end.y)))
+	check(under.hop_count == 1 and gap >= under.radius, "hij hupt weg, maar niet bovenop de kist (%.0f px ertussen)" % gap)
 	await stop_world()
+	sections_done += 1
 
 
 func test_hints() -> void:
 	print("Tips bij de eerste ontmoeting")
 	await start_world("ruins")
+	gs.set_flag("vijanden_hint_mage", false)
 	var toasts: Array = []
 	var catcher := func(text: String) -> void: toasts.append(text)
 	gs.toast.connect(catcher)
@@ -893,14 +1142,24 @@ func test_hints() -> void:
 	await frames(30)
 	check(toasts.size() == 1, "een Magiër die je nog niet ziet, geeft geen tip")
 	gs.toast.disconnect(catcher)
+	gs.set_flag("vijanden_hint_mage", false)
+	var reader := await mage_arena(130.0)
+	var calm := 0
+	while reader.state == "idle" and calm < int(FPS * 5.0):
+		calm += 1
+		await process_frame
+	check(float(calm) / FPS >= 3.2 and reader.state == "vanish",
+		"bij de tip wacht hij met zijn eerste aanval tot de tip weer weg is (%.2f s)" % (float(calm) / FPS))
 	await stop_world()
 	await start_world("forest")
+	gs.set_flag("vijanden_hint_slime_spitter", false)
 	toasts.clear()
 	gs.toast.connect(catcher)
 	var sp := await spitter_arena(100.0)
-	sp.special_timer = 99.0
 	await frames(5)
 	check(toasts.size() == 1 and toasts[0] == Enemies.info("slime_spitter")["hint"], "de eerste Slijmspuwer geeft een tip")
+	check(gs.flag("vijanden_hint_slime_spitter"), "en onthoudt dat ook")
+	check(sp.state == "idle" and sp.special_timer > 3.0, "en spuugt pas als je de tip hebt kunnen lezen")
 	var long_enough := true
 	for kind: String in KINDS:
 		if String(Enemies.info(kind)["hint"]).length() > 75:
@@ -908,6 +1167,7 @@ func test_hints() -> void:
 	check(long_enough, "de tips passen op een regel in beeld")
 	gs.toast.disconnect(catcher)
 	await stop_world()
+	sections_done += 1
 
 
 func test_touch() -> void:
@@ -928,30 +1188,37 @@ func test_touch() -> void:
 	await frames(3)
 	check(gs.hp == hp_before - 1, "als hij gewoon zweeft doet aanraken 1 schade")
 	await stop_world()
+	sections_done += 1
 
 
 # --- Deel 4: opslaan en laden --------------------------------------------------------------------------------------
 
 func test_save() -> void:
 	print("Opslaan en laden")
+	# Draait de test los (zonder tools/run_tests.sh), dan staat hier misschien een echt opgeslagen spel: dat komt terug.
+	var real_save := FileAccess.get_file_as_string(gs.SAVE_PATH) if FileAccess.file_exists(gs.SAVE_PATH) else ""
 	await start_world("forest")
 	world.load_map("forest", "start")
 	await frames(5)
+	var seen_flag := "vijanden_hint_slime_spitter"
+	gs.set_flag(seen_flag, false)
 	var kills_before: int = gs.kills
 	var spitters: Array = []
 	for enemy in get_nodes_in_group("enemies"):
 		if enemy.kind == "slime_spitter":
 			spitters.append(enemy)
 	var placed := spitters.size()
+	put_player(spitters[0].global_position + Vector2(100, 0))
+	await frames(3)
+	check(gs.flag(seen_flag), "wie een Slijmspuwer ziet, krijgt de vlag %s" % seen_flag)
 	spitters[0].hurt(99, Vector2.RIGHT)
 	check(gs.kills == kills_before + 1, "een verslagen Slijmspuwer telt mee")
 	gs.coins = 12
-	gs.set_flag("vijanden_hint_spitter")
 	gs.save_game(world.player.global_position)
 	await stop_world()
-	check(gs.kills == 0 and gs.coins == 0 and not gs.flag("vijanden_hint_spitter"), "een nieuw spel begint op nul")
+	check(gs.kills == 0 and gs.coins == 0 and not gs.flag(seen_flag), "een nieuw spel begint op nul")
 	check(gs.load_game() and gs.kills == kills_before + 1 and gs.coins == 12 and gs.map_id == "forest", "laden brengt teller, munten en plek terug")
-	check(gs.flag("vijanden_hint_spitter"), "en onthoudt dat je de tip al hebt gezien")
+	check(gs.flag(seen_flag), "en onthoudt dat je de tip al hebt gezien")
 	gs.in_game = true
 	world = load("res://scenes/main.tscn").instantiate()
 	root.add_child(world)
@@ -963,6 +1230,11 @@ func test_save() -> void:
 			back += 1
 	check(back == placed, "na het laden staan de Slijmspuwers weer in het bos (%d van %d)" % [back, placed])
 	await stop_world()
+	if real_save != "":
+		FileAccess.open(gs.SAVE_PATH, FileAccess.WRITE).store_string(real_save)
+	else:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(gs.SAVE_PATH))
+	sections_done += 1
 
 
 func _run() -> void:
@@ -977,6 +1249,7 @@ func _run() -> void:
 	await test_hints()
 	await test_touch()
 	await test_save()
+	check(sections_done == SECTIONS, "alle %d onderdelen zijn tot het eind gelopen (%d)" % [SECTIONS, sections_done])
 
 	print("")
 	if failures == 0:

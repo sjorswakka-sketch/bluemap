@@ -18,6 +18,10 @@ const LOOKAHEAD := 22.0 # zo ver vooruit kijken ze of er een muur aankomt
 const SPOT_TRIES := 24 # pogingen om een vrije plek te vinden voor een teleport
 const HOP_TURNS: Array[float] = [0.0, 0.5, -0.5, 1.0, -1.0, 1.5, -1.5] # hoeken (radialen) waarin de Slijmspuwer wegspringt
 const MAGE_ORB_HEIGHT := -14.0 # de bol ontstaat boven de handen van de Magiër
+const MAGE_AIM := Vector2(0, 4) # de bol mikt op het midden van de speler
+const HINT_DELAY := 3.5 # na de tip bij de eerste ontmoeting wacht hij even met aanvallen (de tip staat 3,2 s in beeld)
+const SPITTER_CREEP := 0.8 # staat de speler verder dan 80% van zijn bereik, dan schuifelt de Slijmspuwer naar hem toe
+const SOLID_LAYER := 1 # botsingslaag van muren en van vaste dingen zoals kisten, borden, poortjes en personages
 const MAGE_COLOR := Color(0.85, 0.6, 1.0)
 const SPIT_COLOR := Color(0.65, 0.95, 0.35)
 
@@ -313,16 +317,19 @@ func _mage_appear() -> void:
 	state_time = 0.0
 
 
-## Een plek 100-140 px van de speler waar de Magiër past (niet in of tegen een muur) en die vrij zicht op de speler
-## heeft. Geeft Vector2.INF als er geen plek is (bijvoorbeeld in een heel smalle gang): dan blijft hij staan.
+## Een plek 100-140 px van de speler waar de Magiër past (niet in of tegen een muur, niet op een kist of poortje) en
+## waar zijn bol vrij zicht op de speler heeft: de bol ontstaat niet in een muur en vliegt nergens tegenaan.
+## Geeft Vector2.INF als er geen plek is (bijvoorbeeld in een heel smalle gang): dan blijft hij staan.
 func _mage_pick_spot() -> Vector2:
 	var span: Array = data["teleport_range"]
+	var target := player.global_position + MAGE_AIM
 	var without_view := Vector2.INF
 	for i in SPOT_TRIES:
 		var spot: Vector2 = player.global_position + Vector2.from_angle(randf() * TAU) * randf_range(span[0], span[1])
 		if not _fits_at(spot):
 			continue
-		if _clear_line(spot, player.global_position):
+		var orb_start := spot + Vector2(0, MAGE_ORB_HEIGHT)
+		if not world.is_solid(orb_start) and _clear_line(orb_start, target):
 			return spot
 		if without_view == Vector2.INF:
 			without_view = spot
@@ -331,9 +338,9 @@ func _mage_pick_spot() -> Vector2:
 
 func _mage_shoot() -> void:
 	var origin := global_position + Vector2(0, MAGE_ORB_HEIGHT)
-	var direction := (player.global_position + Vector2(0, 4) - origin).normalized()
+	var direction := (player.global_position + MAGE_AIM - origin).normalized()
 	Sound.play("mage_orb", -3.0)
-	world.spawn_projectile("arcane_orb", origin, direction, data["orb_speed"], data["damage"], data["name"] + " (arcane bol)")
+	world.spawn_projectile("arcane_orb", origin, direction, data["orb_speed"], data["damage"], data["name"] + " (tovervonk)")
 	world.burst(origin, MAGE_COLOR, 6)
 	action_flash = 0.15
 
@@ -343,15 +350,18 @@ func _mage_interrupt() -> void:
 	state = "idle"
 	state_time = 0.0
 	world.burst(global_position, MAGE_COLOR, 8)
+	world.damage_number(global_position + Vector2(0, -_size_px() * 0.9), "Mislukt!", MAGE_COLOR)
 
 
 ## Eenmalig een tip als je deze soort vijand voor het eerst tegenkomt (de vlag wordt mee opgeslagen).
+## Zijn eerste aanval komt pas als de tip weer weg is: de tip staat onderin beeld en mag de aanloop niet verbergen.
 func _show_hint() -> void:
 	var hint: String = data.get("hint", "")
 	var seen_flag := "vijanden_hint_" + kind
 	if hint != "" and not GameState.flag(seen_flag):
 		GameState.set_flag(seen_flag)
 		GameState.toast.emit(hint)
+		special_timer = maxf(special_timer, HINT_DELAY)
 
 
 func _smoke_puff() -> void:
@@ -377,11 +387,16 @@ func _ai_spitter(delta: float) -> void:
 	hop_cooldown = maxf(hop_cooldown - delta, 0.0)
 	match state:
 		"idle":
-			_wander(delta)
 			if dist > data["spit_range"]:
+				_wander(delta)
 				special_timer = FIRST_DELAY # pas als je dichtbij komt begint hij te spuwen
 				return
 			_show_hint()
+			if dist > float(data["spit_range"]) * SPITTER_CREEP:
+				# Aan de rand van zijn bereik schuifelt hij naar je toe, anders duwt het spugen hem langzaam weg.
+				desired = _free_direction(to_player.normalized()) * float(data["speed"])
+			else:
+				_wander(delta)
 			if dist < data["flee_range"] and hop_cooldown <= 0.0:
 				_spitter_hop(to_player, dist)
 			elif special_timer <= 0.0:
@@ -412,7 +427,7 @@ func _ai_spitter(delta: float) -> void:
 
 func _spitter_spit() -> void:
 	var mouth := global_position + Vector2(0, 6)
-	Sound.play("spitter_spit", -3.0, randf_range(0.95, 1.05))
+	Sound.play("spitter_spit", 0.0, randf_range(0.95, 1.05))
 	var fan: int = data["fan"]
 	for i in fan:
 		var spread := (float(i) - float(fan - 1) / 2.0) * float(data["fan_spread"])
@@ -447,7 +462,8 @@ func _feet(pos: Vector2) -> Vector2:
 	return pos + Vector2(0, _size_px() * 0.28)
 
 
-## Past een vijand op `pos` zonder een muur te raken? `margin` is de ruimte die hij minstens rondom wil hebben.
+## Past een vijand op `pos` zonder een muur of iets anders vasts (kist, bord, poortje, personage) te raken?
+## `margin` is de ruimte die hij minstens rondom wil hebben.
 func _fits_at(pos: Vector2, margin := 2.0) -> bool:
 	if world.is_solid(pos):
 		return false
@@ -457,19 +473,27 @@ func _fits_at(pos: Vector2, margin := 2.0) -> bool:
 			Vector2(reach, reach) * 0.7, Vector2(-reach, reach) * 0.7, Vector2(reach, -reach) * 0.7, Vector2(-reach, -reach) * 0.7]:
 		if world.is_solid(feet + offset):
 			return false
-	return true
+	var circle := CircleShape2D.new()
+	circle.radius = reach
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = circle
+	query.transform = Transform2D(0.0, feet)
+	query.collision_mask = SOLID_LAYER
+	return get_world_2d().direct_space_state.intersect_shape(query, 1).is_empty()
 
 
-## Ligt er geen muur tussen `from` en `to`?
+## Ligt er niets vasts tussen `from` en `to`: geen muur, maar ook geen kist, poortje of personage?
 func _clear_line(from: Vector2, to: Vector2) -> bool:
 	var steps := int(from.distance_to(to) / 8.0)
 	for i in range(1, steps + 1):
 		if world.is_solid(from.lerp(to, float(i) / float(steps))):
 			return false
-	return true
+	var query := PhysicsRayQueryParameters2D.create(from, to, SOLID_LAYER)
+	return get_world_2d().direct_space_state.intersect_ray(query).is_empty()
 
 
-## Past een vijand overal langs de rechte lijn van `from` naar `to` tussen de muren (hij schuurt niet langs een hoek)?
+## Past een vijand overal langs de rechte lijn van `from` naar `to` (hij schuurt niet langs een hoek en springt niet
+## over een kist of poortje)?
 func _body_clear(from: Vector2, to: Vector2) -> bool:
 	var steps := maxi(int(from.distance_to(to) / 8.0), 1)
 	for i in range(1, steps + 1):
@@ -761,9 +785,15 @@ func _draw_mage_charge(hover: float) -> void:
 		draw_rect(Rect2(center + Vector2.from_angle(angle) * (radius_now + 4.0) - Vector2(1, 1), Vector2(2, 2)), Color(1, 0.8, 1, 0.9))
 
 
-## Dunne streepjes laten zien waar de drie slijmballen heen gaan (wordt duidelijker tijdens de aanloop).
+## Streepjes laten zien waar de slijmballen heen gaan. Tijdens de aanloop worden ze langer en feller, en met hun
+## donkere rand zie je ze ook goed op gras.
 func _draw_fan_hint(progress: float) -> void:
 	var fan: int = data["fan"]
+	var alpha := 0.5 + 0.5 * progress
+	var tip := 26.0 + 16.0 * progress
 	for i in fan:
 		var direction := aim_dir.rotated((float(i) - float(fan - 1) / 2.0) * float(data["fan_spread"]))
-		draw_line(Vector2(0, 6) + direction * 18.0, Vector2(0, 6) + direction * 30.0, Color(SPIT_COLOR, 0.15 + 0.45 * progress), 2.0)
+		var from := Vector2(0, 6) + direction * 16.0
+		var to := Vector2(0, 6) + direction * tip
+		draw_line(from, to, Color(0.1, 0.2, 0.05, 0.6 * alpha), 4.0)
+		draw_line(from, to, Color(1.0, 1.0, 0.7, alpha), 2.0)

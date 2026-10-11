@@ -9,7 +9,7 @@ const FRAMES := {"arrow": 0, "rock": 1, "slimeball": 2}
 const DEFAULT_LIFE := 5.0 # zo lang vliegt een projectiel hoogstens
 
 ## Bijzondere projectielen. turn = hoe snel hij bijdraait naar de speler (radialen per seconde), life = hoelang hij
-## leeft (seconden) en breakable = je kunt hem met je zwaard stukslaan (zie player.gd).
+## leeft (seconden) en breakable = je kunt hem met je zwaard stukslaan (player.gd roept dan sword_hit aan).
 const TRAITS := {
 	"arcane_orb": {"turn": 1.0, "life": 3.0, "breakable": true},
 }
@@ -17,6 +17,7 @@ const ORB_COLOR := Color(0.75, 0.5, 1.0)
 const ORB_FADE := 0.4 # de bol vervaagt in zijn laatste seconden
 const ORB_TRAIL := 6 # zoveel puntjes in de lichtstaart
 const ORB_TRAIL_STEP := 0.04 # seconden tussen twee puntjes
+const SWORD_MARGIN := 10.0 # een bol is iets groter dan een punt: zo ruim raakt het zwaard hem
 
 var kind := "arrow"
 var velocity := Vector2.ZERO
@@ -76,11 +77,18 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 
-## Wordt aangeroepen door het zwaard van de speler (alleen voor projectielen in de groep "breakable").
+## Het zwaard van de speler zwaait vanaf `from` in de richting `facing` en reikt `reach` ver (zie player.gd, alleen
+## voor projectielen in de groep "breakable"). Raakt het zwaard hem, dan spat hij uit elkaar.
+func sword_hit(from: Vector2, facing: Vector2, reach: float) -> void:
+	var to_me := global_position - from
+	if to_me.length() <= reach + SWORD_MARGIN and facing.dot(to_me.normalized()) > 0.2:
+		shatter()
+
+
 func shatter() -> void:
 	if is_queued_for_deletion():
 		return
-	Sound.play("mage_orb_pop", -2.0, randf_range(0.95, 1.1))
+	Sound.play("mage_orb_pop", 1.0, randf_range(0.95, 1.1))
 	world.burst(global_position, ORB_COLOR, 10)
 	world.ring(global_position, 22.0, ORB_COLOR)
 	queue_free()
