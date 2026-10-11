@@ -22,8 +22,9 @@ const SOUNDS := ["meer_plons", "meer_beet", "meer_haspel", "meer_vangst", "meer_
 const TRACKS := ["lake"]
 
 ## Onze objecten op de kaart (soort -> pad van het script, zie content.gd).
-const OBJECT_PATHS := {
+const OBJECTS := {
 	"meer_visplek": "res://scripts/entities/meer_visplek.gd",
+	"meer_diepe_visplek": "res://scripts/entities/meer_visplek.gd", # diep water: hier zwemt de Gouden Karper
 	"meer_lessenaar": "res://scripts/entities/meer_lessenaar.gd",
 	"meer_kast": "res://scripts/entities/meer_kast.gd",
 	"meer_water": "res://scripts/entities/meer_water.gd",
@@ -32,12 +33,13 @@ const OBJECT_PATHS := {
 ## Stipjes op het kaartje in het menu (N) voor onze soorten objecten, met een naam voor de legenda.
 const MAP_MARKERS := {
 	"meer_visplek": {"color": Color(0.7, 0.95, 1.0), "label": "visplek"},
+	"meer_diepe_visplek": {"color": Color(1.0, 0.55, 0.2), "label": "diepe visplek"}, # oranje: anders dan de gele kisten
 	"meer_lessenaar": {"color": Color(1.0, 0.75, 0.9), "label": "lessenaar"},
 }
 
 const CONDITIONS := ["meer_vis", "meer_vol", "meer_boeken", "meer_gelezen"]
 const ACTIONS := ["meer_verkoop"]
-const FORMATS := ["boeken"] # {boeken} in een opdrachttekst: hoeveel boeken je al hebt
+const FORMATS := ["boeken", "visgeld"] # {boeken}: hoeveel boeken je al hebt, {visgeld}: wat je vis nu oplevert
 
 const ITEMS := {
 	"fishing_rod": {
@@ -46,22 +48,22 @@ const ITEMS := {
 	},
 	"meer_baars": {
 		"name": "Baars", "sheet": "items_meer", "icon": 1, "type": "fish", "sell": 8,
-		"desc": "Een gestreepte baars met rode vinnen. Joris en Mila kopen hem voor 8 munten.",
+		"desc": "Een gestreepte baars met rode vinnen. Joris en Mila kopen hem graag.",
 	},
 	"meer_snoek": {
 		"name": "Snoek", "sheet": "items_meer", "icon": 2, "type": "fish", "sell": 15,
-		"desc": "Een lange snoek met een grote bek. Goed voor 15 munten bij Joris of Mila.",
+		"desc": "Een lange snoek met een grote bek. Joris en Mila betalen er goed voor.",
 	},
 	"meer_gouden_karper": {
-		"name": "Gouden Karper", "sheet": "items_meer", "icon": 3, "type": "quest", "sell": 60,
+		"name": "Gouden Karper", "sheet": "items_meer", "icon": 3, "type": "quest",
 		"desc": "De beroemde vis van het Zilvermeer. Hij glinstert alsof hij van goud is. Visser Joris droomt van hem.",
 	},
 	"meer_laars": {
 		"name": "Oude laars", "sheet": "items_meer", "icon": 4, "type": "fish", "sell": 1,
-		"desc": "Een natte, stinkende laars. Joris verzamelt ze. Waarom, dat weet niemand. Waarde: 1 munt.",
+		"desc": "Een natte, stinkende laars. Joris verzamelt ze. Waarom, dat weet niemand.",
 	},
 	"fishers_cap": {
-		"name": "Vissershoed", "sheet": "items_meer", "icon": 5, "type": "gear",
+		"name": "Visserspet", "sheet": "items_meer", "icon": 5, "type": "gear",
 		"desc": "De pet van Visser Joris. Met deze pet betalen Joris en Mila je 10% extra voor je vis.",
 	},
 	"meer_boek_eiland": {
@@ -74,7 +76,7 @@ const ITEMS := {
 	},
 	"meer_boek_sanne": {
 		"name": "Sterren boven Azura", "sheet": "items_meer", "icon": 8, "type": "quest",
-		"desc": "Een van de drie boeken die Lena mist. Sanne gaf het aan je.",
+		"desc": "Een van de drie boeken die Lena mist. Sanne gaf het je.",
 	},
 	"meer_schelp": {
 		"name": "Zilverschelp", "sheet": "items_meer", "icon": 9, "type": "treasure",
@@ -97,7 +99,7 @@ const QUESTS := {
 		"title": "Boekenwurm",
 		"steps": [
 			{
-				"text": "Lena van de bibliotheek mist drie boeken: een op het eiland in het Zilvermeer, een in het huisje van Joris en een bij Sanne. ({boeken}/3)",
+				"text": "Lena van de bibliotheek mist drie boeken: één op het eiland in het Zilvermeer, één in het huisje van Joris en één bij Sanne. ({boeken}/3)",
 				"advance_if": [["meer_boeken", 3]],
 			},
 			{"text": "Je hebt alle drie de boeken! Breng ze naar Lena in de bibliotheek."},
@@ -160,7 +162,7 @@ const TALKS := {
 		"speaker": "Visser Joris",
 		"lines": ["Nou? Wat kan ik voor je doen?"],
 		"choices": [
-			{"text": "Verkoop al mijn vis", "if": [["meer_vis"]], "next": "meer_joris_verkoop"},
+			{"text": "Verkoop al mijn vis ({visgeld} munten)", "if": [["meer_vis"]], "next": "meer_joris_verkoop"},
 			{"text": "Heb je werk voor me?", "if": [["quest", "meer_karper", "none"]], "next": "meer_joris_karper_vraag"},
 			{"text": "Hoe is het met de Gouden Karper?", "if": [["quest", "meer_karper", "active"]], "next": "meer_joris_karper_voortgang"},
 			{"text": "Heb je tips over vissen?", "next": "meer_joris_tips"},
@@ -171,8 +173,8 @@ const TALKS := {
 	"meer_joris_na": {
 		"speaker": "Visser Joris",
 		"lines": [
-			"De Slijmkoning is weg? Dat wist ik al. De slijmen aan de overkant eten niet langer mijn aas. Ze zijn gewoon... rustig.",
-			"Ik begin ze bijna aardig te vinden. Vertel het niet door, ik heb een reputatie.",
+			"De Slijmkoning is weg? Dat wist ik al. De vissen bijten weer als vanouds. Alleen die slijmen aan de overkant blijven brutaal.",
+			"Ze eten nog steeds mijn aas. Maar ik begin ze bijna aardig te vinden. Vertel het niet door, ik heb een reputatie.",
 		],
 		"next": "meer_joris_menu",
 	},
@@ -224,7 +226,7 @@ const TALKS := {
 		"speaker": "Visser Joris",
 		"lines": [
 			"In diep water. Aan het eind van de verre steiger, helemaal aan de oostkant van het meer.",
-			"Daar zwemt de grootste vis van het meer. Ik heb hem al honderd keer gezien. En nul keer gevangen.",
+			"Daar zwemt de grootste vis van het meer. Ik heb hem één keer gezien. En nul keer gevangen.",
 		],
 		"next": "meer_joris_tips",
 	},
@@ -280,7 +282,7 @@ const TALKS := {
 			"Veertig jaar heb ik gewacht. Hier, hier, neem dit. Het is minder dan hij waard is, maar het is alles wat ik heb.",
 		],
 		"do": [
-			["take", "meer_gouden_karper"], ["coins", 120], ["give", "fishers_cap"],
+			["take", "meer_gouden_karper"], ["coins", 40], ["give", "fishers_cap"],
 			["finish_quest", "meer_karper"], ["sound", "quest"],
 		],
 		"next": "meer_joris_karper_na",
@@ -288,9 +290,9 @@ const TALKS := {
 	"meer_joris_karper_na": {
 		"speaker": "Visser Joris",
 		"lines": [
-			"Mijn Vissershoed. Ik draag hem al veertig jaar. Nu is hij van jou. Hij brengt geluk.",
+			"Mijn Visserspet. Ik draag hem al veertig jaar. Nu is hij van jou. Ik heb er thuis nog drie, maar deze brengt geluk.",
 			"En voor je vis betalen Mila en ik voortaan 10% extra. Dat heet respect.",
-			"De Gouden Karper zet ik terug in het meer. Hij heeft het verdiend. Misschien lacht hij nog eens naar je.",
+			"De Gouden Karper zet ik terug in het meer. Hij heeft het verdiend. Aan een haak hapt hij nooit meer, zo slim is hij wel. Maar soms zie je hem glinsteren.",
 		],
 	},
 
@@ -329,7 +331,7 @@ const TALKS := {
 		"lines": [
 			"De Diepte? Ik hoopte al dat je dat ging vragen. Het staat in alle boeken, maar op geen enkele bladzijde die je kunt vinden.",
 			"De Blauwe Kaart is een kopie. Het origineel, de Sterrenkaart, ligt ergens onder de Kristaltempel. Een oude Wachter bewaakt hem. Hij slaapt, maar hij slaapt licht.",
-			"Nu de Slijmkoning weg is en de kaart weer heel is, gaat de weg naar beneden open. Neem veel drankjes mee. De Wachter waakt al eeuwen en vertrouwt niemand.",
+			"De oude boeken zeggen: als de kaart weer heel is, gaat de weg naar beneden open. Of dat klopt, weet niemand. Ga je kijken? Neem dan veel drankjes mee.",
 		],
 		"next": "meer_lena_menu",
 	},
@@ -338,7 +340,7 @@ const TALKS := {
 		"lines": [
 			"Nu je het zegt... ja! Ik mis drie boeken. Ze zijn nooit teruggebracht.",
 			"Eén heb ik uitgeleend aan iemand die naar het eiland in het meer ging. Hij kwam nooit terug. Het boek ook niet.",
-			"Eén ligt vast in het huisje van Joris. Hij gebruikt het als onderzetter. Ik wil er niet over nadenken.",
+			"Eén ligt vast in het huisje van Joris. Hij gebruikte het als onderzetter en heeft het daarna ergens opgeborgen. Ik wil er niet over nadenken.",
 			"En eentje heeft Sanne meegenomen. Ze vindt boeken zonder plaatjes saai, maar ze neemt ze wel mee. Kinderen!",
 			"Wil je ze voor me zoeken? Dan krijg je een beloning. En iets bijzonders, achterin.",
 		],
@@ -351,6 +353,7 @@ const TALKS := {
 		"speaker": "Lena",
 		"lines": ["Wat fijn! Eén op het eiland, één in het huisje van Joris en één bij Sanne. Je kunt ze niet missen. Nou ja, wel. Maar ze zijn er."],
 		"do": [["sound", "quest"]],
+		"branch": [{"if": [["meer_boeken", 3]], "next": "meer_lena_boeken_terug"}], # had je ze al? Dan meteen inleveren
 	},
 	"meer_lena_voortgang": {
 		"speaker": "Lena",
@@ -369,11 +372,11 @@ const TALKS := {
 		"lines": [
 			"Jij hebt ze! Alle drie! Laat eens kijken...",
 			"'Sagen van het Zilvermeer', nog droog. 'Het Grote Vissenboek', met een koffiekring. En 'Sterren boven Azura'... met kleurpotloodvlekken.",
-			"Het is perfect. Ik zet ze meteen terug. Hier is je beloning: tachtig munten.",
+			"Het is perfect. Ik zet ze meteen terug. Hier is je beloning: dertig munten.",
 		],
 		"do": [
 			["take", "meer_boek_eiland"], ["take", "meer_boek_hut"], ["take", "meer_boek_sanne"],
-			["coins", 80], ["finish_quest", "meer_boeken"], ["sound", "quest"],
+			["coins", 30], ["finish_quest", "meer_boeken"], ["sound", "quest"],
 		],
 		"next": "meer_lena_achterkamer",
 	},
@@ -382,7 +385,7 @@ const TALKS := {
 		"lines": [
 			"En nu iets bijzonders. Achter de kast aan de rechterkant van de zaal zit een geheim kamertje. Alleen leden mogen erin.",
 			"Vanaf nu ben jij lid. Kijk maar eens goed naar de rechterwand...",
-			"Hoor je dat? De kast schuift opzij. Hij klemde al jaren. Achterin ligt het laatste boek van de oude bibliothecarissen, en een klein cadeautje.",
+			"Straks, als we uitgepraat zijn, schuift de kast opzij. Hij klemde al jaren. Achterin ligt het laatste boek van de oude bibliothecarissen, en een klein cadeautje.",
 		],
 		"do": [["set_flag", "meer_achterkamer"]],
 	},
@@ -390,7 +393,7 @@ const TALKS := {
 		"speaker": "Lena",
 		"lines": ["Mijn favoriete lezer! Het achterkamertje staat altijd voor je open. Lees vooral alles. Lessenaars bijten niet."],
 		"branch": [
-			{"if": [["meer_gelezen", 6]], "next": "meer_lena_alles_gelezen"},
+			{"if": [["meer_gelezen", 6], ["no_flag", "meer_alles_gelezen_gemeld"]], "next": "meer_lena_alles_gelezen"},
 			{"next": "meer_lena_menu"},
 		],
 	},
@@ -400,6 +403,7 @@ const TALKS := {
 			"Wacht eens... heb je álle lessenaars gelezen? Zelfs die in het geheime kamertje?",
 			"Ik heb nog nooit zo'n goede lezer ontmoet. Jij weet nu meer over Azura dan Oudste Bram. Zeg dat maar niet tegen hem.",
 		],
+		"do": [["set_flag", "meer_alles_gelezen_gemeld"]],
 		"next": "meer_lena_menu",
 	},
 
@@ -443,7 +447,7 @@ const TALKS := {
 	"meer_sanne_klaar": {
 		"speaker": "Sanne",
 		"lines": [
-			"Bedankt voor je hulp! Ik ga nu nog meer vangen. Ik wil de Gouden Karper. Joris heeft een tekening van hem.",
+			"Bedankt voor je hulp! Ik ga nu nog meer vangen. Ik wil de Gouden Karper. Joris zegt dat hij lacht. Vissen lachen niet. Toch?",
 			"Maar eerst moet ik stil zijn. Sssst.",
 		],
 	},
@@ -479,5 +483,5 @@ static func run(action: Array) -> void:
 	load(LOGIC).call("run", action)
 
 
-static func format(token: String) -> String:
-	return load(LOGIC).call("format", token)
+static func format(text: String) -> String:
+	return load(LOGIC).call("format", text)

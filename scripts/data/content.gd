@@ -7,7 +7,7 @@ extends RefCounted
 ##   TALKS    (dialogue.gd)   QUESTS (quests.gd)   ITEMS / WEAPONS (items.gd)   ENEMIES (enemies.gd)
 ##   NPCS     (npcs.gd)       SHOPS  (shops.gd)    MAPS (maps/registry.gd)
 ##   SOUNDS / TRACKS (lijsten met namen van .wav-bestanden in assets/audio, zie scripts/core/sound.gd)
-##   OBJECTS  (soort object op de kaart -> script, zie hieronder) of OBJECT_PATHS (soort -> pad van het script)
+##   OBJECTS  (soort object op de kaart -> script, zie hieronder)
 ##   MAP_MARKERS (soort object -> {"color": Color, "label": "naam"}): een stipje op het kaartje in het menu (N)
 ##
 ## Eigen voorwaarden en acties voor gesprekken, poortjes enzovoort:
@@ -19,20 +19,20 @@ extends RefCounted
 ##
 ## Eigen soorten objecten op de kaart ({"type": "doelwit", "pos": [3, 4], ...}):
 ##
-##   const OBJECTS := {"doelwit": preload("res://scripts/entities/target.gd")}
+##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}   # het pad (tekst), zie object_types()
 ##
 ## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
 ## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
 ##
-## Eigen {tekens} in gesprekken en opdrachtteksten (zoals {gel} en {coins}):
+## Eigen {tekens} in gesprekken en opdrachtteksten (zoals {gel} en {coins} in game_state.gd):
 ##
-##   const FORMATS := ["boeken"]                    # {boeken} wordt ingevuld
-##   static func format(token: String) -> String    # geeft de tekst voor zo'n teken
+##   const FORMATS := ["boeken"]                    # de namen van de tekens
+##   static func format(text: String) -> String     # vult jouw tekens in en laat de rest van de tekst staan
 ##
 ## LET OP: de speltesten (godot -s) compileren de modules voordat de autoloads GameState en Sound bestaan, en een script
 ## dat die namen gebruikt kan dan niet gecompileerd worden. Houd het moduleschript zelf daarom vrij van GameState en Sound:
-## zet die code in een apart script dat je met load() aanroept wanneer het nodig is (zie ext/meer.gd en ext/meer_logic.gd),
-## en geef objectscripts op via OBJECT_PATHS (pad) in plaats van OBJECTS (preload).
+## zet die code in een apart script dat je met load() aanroept wanneer het nodig is (zie ext/meer.gd en ext/meer_logic.gd).
+## Daarom staan de objectscripts ook als pad in OBJECTS: ze worden pas geladen als de wereld ze nodig heeft.
 ##
 ## Je hoeft alleen de constanten op te nemen die je nodig hebt. Namen (sleutels) mogen niet al bestaan.
 
@@ -96,28 +96,23 @@ static func run_action(action: Array) -> bool:
 	return false
 
 
-## Soorten objecten (naam -> script) die de modules toevoegen. Een module geeft ze op in OBJECTS (met preload) of,
-## als de scripts autoloads zoals GameState gebruiken, in OBJECT_PATHS (naam -> pad): die worden pas geladen als de
-## wereld ze nodig heeft, want de speltesten compileren de modules voordat de autoloads bestaan.
-static func object_types() -> Dictionary:
-	var types := merged("OBJECTS", {})
-	var paths := merged("OBJECT_PATHS", {})
-	for kind: String in paths:
-		types[kind] = load(paths[kind])
-	return types
-
-
-## Vult de {tekens} van de modules in een tekst in (zie `fmt` in game_state.gd).
-static func format_text(text: String) -> String:
+## Laat de modules hun eigen {tekens} invullen in een tekst (zie FORMATS bovenaan dit bestand).
+static func format(text: String) -> String:
 	if not "{" in text:
 		return text
 	for module: Script in MODULES:
-		var constants := module.get_script_constant_map()
-		if constants.has("FORMATS"):
-			for token: String in constants["FORMATS"]:
-				if "{%s}" % token in text:
-					text = text.replace("{%s}" % token, str(module.call("format", token)))
+		if module.get_script_constant_map().has("FORMATS"):
+			text = module.call("format", text)
 	return text
+
+
+## Soorten objecten (naam -> script) die de modules toevoegen. Paden (tekst) worden hier geladen.
+static func object_types() -> Dictionary:
+	var types := merged("OBJECTS", {})
+	for type_name: String in types:
+		if types[type_name] is String:
+			types[type_name] = load(types[type_name])
+	return types
 
 
 ## Kleur van het stipje op het kaartje (menu) voor soorten objecten van de modules.

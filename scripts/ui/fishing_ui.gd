@@ -7,10 +7,12 @@ extends CanvasLayer
 ##   reel   binnenhalen: houd de vis in de groene zone (zie fishing_reel.gd)
 ##   result een kaartje met wat je gevangen hebt (of dat hij ontsnapt is)
 ##
-## Esc, P of B (dodge) stopt altijd en geeft de besturing terug. E op het kaartje gooit opnieuw uit.
+## Esc of P (of B op een controller) stopt altijd en geeft de besturing terug. E op het kaartje gooit opnieuw uit.
+## Rollen (Shift) stopt het visspel niet: zo verlies je je vis niet door een verkeerde toets.
 ## Voor tests: `forced_catch` bepaalt welke vis bijt, `forced_wait` hoe lang je wacht en `rng.seed` de rest.
 
 const Art := preload("res://scripts/core/art.gd")
+const Fx := preload("res://scripts/entities/fx.gd")
 const Items := preload("res://scripts/data/items.gd")
 const UiStyle := preload("res://scripts/core/ui_style.gd")
 const Util := preload("res://scripts/core/util.gd")
@@ -79,6 +81,7 @@ func start(new_spot: Node2D) -> void:
 	opened_frame = Engine.get_process_frames()
 	root.visible = true
 	GameState.set_ui("vissen", true)
+	spot.queue_redraw() # de wereld staat nu stil: zonder dit blijft de E-knop van de visplek in beeld
 	_cast()
 
 
@@ -107,7 +110,7 @@ func _land() -> void:
 func _bite() -> void:
 	phase = "bite"
 	phase_time = 0.0
-	catch_id = forced_catch if forced_catch != "" else Vis.roll(rng, bool(spot.get("deep")), Logic.pity())
+	catch_id = forced_catch if forced_catch != "" else Vis.roll(rng, bool(spot.get("deep")), Logic.pity(), Logic.golden_can_bite())
 	Sound.play("meer_beet")
 	_splash(spot.global_position, 16.0, 4)
 
@@ -137,8 +140,10 @@ func _finish(result: String) -> void:
 
 
 func _splash(at: Vector2, radius: float, sparks: int) -> void:
-	world.ring(at, radius, Color(1, 1, 1, 0.9))
-	world.burst(at, Color(0.8, 0.92, 1.0), sparks)
+	# De wereld staat stil tijdens het vissen, dus deze effecten moeten zelf blijven bewegen.
+	for fx: Node2D in [Fx.make_ring(at, radius, Color(1, 1, 1, 0.9)), Fx.make_burst(at, Color(0.8, 0.92, 1.0), sparks)]:
+		fx.process_mode = Node.PROCESS_MODE_ALWAYS
+		world.fx_layer.add_child(fx)
 
 
 func _process(delta: float) -> void:
@@ -173,7 +178,7 @@ func _update_reel(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if phase == "idle" or Engine.get_process_frames() == opened_frame:
 		return
-	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel") or event.is_action_pressed("dodge"):
+	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		close()
 	elif event.is_action_pressed("interact"):
@@ -334,16 +339,12 @@ func _draw_result() -> void:
 	_text(Vector2(card.position.x, 428), "E: nog een keer   ·   Esc: stoppen", 18, Color(1, 1, 1, 0.65), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 
 
-## Een zinnetje bij de vangst.
+## Een zinnetje bij de vangst, met wat hij nu oplevert (minder als het dorp vol vis zit, meer met de pet).
 func _catch_note() -> String:
-	match catch_id:
-		Vis.GOLDEN:
-			if GameState.quest_state("meer_karper") == "active":
-				return "Breng hem naar Visser Joris!"
-			return "Zo zeldzaam! Joris zal er raar van opkijken."
-		"meer_laars":
-			return "Joris verzamelt ze. Waarde: 1 munt."
-	return "Waarde: %d munten" % int(Vis.stats(catch_id)["sell"])
+	if catch_id == Vis.GOLDEN:
+		return "Zo zeldzaam! Breng hem naar Visser Joris!"
+	var value := Logic.price_now(catch_id)
+	return "%sWaarde: %d %s" % ["Joris verzamelt ze. " if catch_id == "meer_laars" else "", value, "munt" if value == 1 else "munten"]
 
 
 func _draw_sparkles(card: Rect2) -> void:

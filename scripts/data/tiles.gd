@@ -34,7 +34,7 @@ const CHARS := {
 	"_": "temple_floor", "Z": "temple_wall", "u": "temple_rune", "%": "carpet",
 	"w": "wood_floor", "N": "wood_wall", "C": "counter", "S": "shelf", "B": "bed", "m": "mat",
 	# Zilvermeer
-	":": "meer_sand", ";": "meer_reeds", "&": "meer_lelie", "!": "meer_paal", "Q": "meer_bibvloer", "J": "meer_tapijt",
+	"s": "meer_sand", ";": "meer_reeds", "l": "meer_lelie", "p": "meer_paal", "Q": "meer_bibvloer", "J": "meer_tapijt",
 }
 
 

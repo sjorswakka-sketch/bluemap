@@ -13,26 +13,26 @@ const CATCHES := {
 	"meer_laars": {"weight": 10, "deep_weight": 6, "sell": 1, "fill_time": 7.0, "speed": 0.6, "zone": 0.40},
 }
 
-## De Gouden Karper zwemt alleen in diep water (de verre steiger) en is het lastigst binnen te halen.
+## De Gouden Karper zwemt alleen in diep water (de verre steiger) en is het lastigst binnen te halen. Je vangt hem
+## één keer, voor Joris: hij is niet te koop (zie golden_can_bite in meer_logic.gd).
 const GOLDEN := "meer_gouden_karper"
-const GOLDEN_STATS := {"sell": 60, "fill_time": 9.5, "speed": 1.3, "zone": 0.30}
+const GOLDEN_STATS := {"fill_time": 9.5, "speed": 1.3, "zone": 0.30}
 const GOLDEN_CHANCE := 0.04 # kans per vangst in diep water
 const GOLDEN_PITY := 0.03 # erbij voor elke diepe vangst zonder karper, zodat het nooit eindeloos duurt
 const GOLDEN_MAX_CHANCE := 0.5
 
-## De eerste vissen die je verkoopt, brengen de volle prijs op; daarna zit het dorp vol vis en krijg je de helft.
-## Zo blijft vissen een gezellig tijdverdrijf en geen onuitputtelijke geldmachine (slijmen vangen levert ongeveer
-## evenveel op).
-const FULL_PRICE_FISH := 20
-const CAP_BONUS := 1.1 # de Vissershoed: 10% extra
+## De eerste vissen die je verkoopt, brengen de volle prijs op; daarna zit het dorp vol vis en krijg je de helft
+## (gemiddeld zo'n 5 munten per vangst). Zo blijft vissen een gezellig tijdverdrijf en geen geldmachine.
+const FULL_PRICE_FISH := 8
+const CAP_BONUS := 0.1 # de Visserspet: 10% extra, en altijd minstens 1 munt
 
 const WAIT_MIN := 1.0 # seconden wachten op een beet
 const WAIT_MAX := 3.0
 
 
-## Alle vissen die in de inventaris kunnen zitten, de duurste eerst.
+## De vissen die je kunt verkopen, de duurste eerst.
 static func fish_ids() -> Array[String]:
-	return [GOLDEN, "meer_snoek", "meer_baars", "meer_laars"]
+	return ["meer_snoek", "meer_baars", "meer_laars"]
 
 
 static func stats(fish_id: String) -> Dictionary:
@@ -43,9 +43,10 @@ static func golden_chance(pity: int) -> float:
 	return minf(GOLDEN_CHANCE + GOLDEN_PITY * pity, GOLDEN_MAX_CHANCE)
 
 
-## Welke vis bijt er? `pity` is het aantal diepe vangsten sinds de laatste Gouden Karper.
-static func roll(rng: RandomNumberGenerator, deep: bool, pity := 0) -> String:
-	if deep and rng.randf() < golden_chance(pity):
+## Welke vis bijt er? `pity` is het aantal diepe vangsten sinds de laatste Gouden Karper. Met `golden` = false
+## bijt de Gouden Karper niet (Joris heeft hem al, of hij zit al in je tas).
+static func roll(rng: RandomNumberGenerator, deep: bool, pity := 0, golden := true) -> String:
+	if deep and golden and rng.randf() < golden_chance(pity):
 		return GOLDEN
 	var total := 0.0
 	for fish_id: String in CATCHES:
@@ -60,9 +61,10 @@ static func roll(rng: RandomNumberGenerator, deep: bool, pity := 0) -> String:
 
 ## Wat de n-de verkochte vis oplevert (n telt vanaf 0): de volle prijs voor de eerste vissen, daarna de helft.
 static func price(fish_id: String, nth: int, has_cap: bool) -> int:
-	var value := float(stats(fish_id)["sell"])
+	var value := float(CATCHES[fish_id]["sell"])
 	if nth >= FULL_PRICE_FISH:
 		value *= 0.5
+	var coins := maxi(1, roundi(value))
 	if has_cap:
-		value *= CAP_BONUS
-	return maxi(1, roundi(value))
+		coins += maxi(1, roundi(coins * CAP_BONUS))
+	return coins

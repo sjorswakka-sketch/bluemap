@@ -748,7 +748,7 @@ func test_menus() -> void:
 	await frames(2)
 	check(sound.muted == was_muted, "M terug")
 	check(sound.streams.size() >= 20, "alle geluidseffecten geladen (%d)" % sound.streams.size())
-	check(sound.tracks.size() == 7 + Content.appended("TRACKS", []).size(), "alle muziekstukken geladen (%d)" % sound.tracks.size())
+	check(sound.tracks.size() == sound.TRACKS.size() and sound.tracks.size() >= 7, "alle muziekstukken geladen (%d)" % sound.tracks.size())
 
 	print("Game over")
 	gs.hurt(gs.max_hp())

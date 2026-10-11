@@ -32,7 +32,7 @@ const DATA := {
 		{"type": "meer_lessenaar", "pos": [12, 11], "id": "slijmen"},
 		{"type": "meer_lessenaar", "pos": [20, 4], "id": "dagboek"},
 		{"type": "meer_kast", "pos": [17, 6], "size": [1, 2], "open_if": [["flag", "meer_achterkamer"]]},
-		{"type": "chest", "pos": [22, 8], "contents": [["potion", 1], ["coins", 30]]},
+		{"type": "chest", "pos": [22, 8], "contents": [["potion", 1], ["coins", 15]]},
 		{"type": "torch", "pos": [4, 3]},
 		{"type": "torch", "pos": [14, 3]},
 	],

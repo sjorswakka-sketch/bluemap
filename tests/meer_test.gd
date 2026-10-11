@@ -2,7 +2,10 @@ extends SceneTree
 ## Test van het Zilvermeer (spoor "meer"): kaarten, doorgangen, het visspel in al zijn uitkomsten, vis verkopen,
 ## beide opdrachten, de bibliotheek, opslaan en laden.
 ##
-##   godot --headless --fixed-fps 60 --path . -s tests/meer_test.gd
+##   sh tools/run_tests.sh /pad/naar/godot      (alle tests), of alleen deze:
+##   XDG_DATA_HOME=.testdata godot --headless --fixed-fps 60 --path . -s tests/meer_test.gd
+##
+## Zonder XDG_DATA_HOME schrijft de test in de echte opslagmap van het spel (en overschrijft hij je opgeslagen spel).
 
 const Maps := preload("res://scripts/maps/registry.gd")
 const Tiles := preload("res://scripts/data/tiles.gd")
@@ -20,11 +23,23 @@ const Reel := preload("res://scripts/ui/fishing_reel.gd")
 const MEER_MAPS := ["lake", "fisher_hut", "library"]
 const NEW_TILES := ["meer_sand", "meer_reeds", "meer_lelie", "meer_paal", "meer_bibvloer", "meer_tapijt"]
 const FISH := ["meer_baars", "meer_snoek", "meer_laars", "meer_gouden_karper"]
+const SPOT_TYPES := ["meer_visplek", "meer_diepe_visplek"]
+## De gemiddelde kleur van elke nieuwe tegel in tiles.png: zo zie je of het plaatje nog bij de volgorde in NAMES past.
+const TILE_COLORS := {
+	"meer_sand": Color("ead8a2"), "meer_reeds": Color("53829d"), "meer_lelie": Color("428bab"),
+	"meer_paal": Color("537baa"), "meer_bibvloer": Color("a9733e"), "meer_tapijt": Color("387963"),
+}
+## De scripts van het meer die geluiden afspelen.
+const SOUND_SCRIPTS := [
+	"res://scripts/ui/fishing_ui.gd", "res://scripts/entities/meer_visplek.gd", "res://scripts/entities/meer_kast.gd",
+	"res://scripts/entities/meer_lessenaar.gd", "res://scripts/entities/meer_water.gd", "res://scripts/data/ext/meer_logic.gd",
+]
 
 var failures := 0
 var gs: Node
 var world: Node2D
 var logic: GDScript # de werking van het meer gebruikt de autoloads en wordt dus pas geladen als het spel draait
+var seen_lines: Array[String] = [] # de regels van het laatste gesprek (zie talk)
 
 
 func check(cond: bool, label: String) -> void:
@@ -102,6 +117,7 @@ func through_portal(to_map: String) -> void:
 
 ## Speelt een gesprek af; `picks` zijn de keuzes (nummer van de zichtbare knop), daarna steeds de laatste.
 func talk(talk_id: String, picks: Array = []) -> void:
+	seen_lines.clear()
 	gs.start_dialogue(talk_id)
 	await frames(2)
 	await finish_dialogue(picks)
@@ -117,6 +133,7 @@ func finish_dialogue(picks: Array = []) -> void:
 			index += 1
 			world.dialogue.buttons[mini(choice, world.dialogue.buttons.size() - 1)].pressed.emit()
 		else:
+			seen_lines.append(world.dialogue.text_label.text)
 			press("interact")
 		await frames(2)
 
@@ -179,7 +196,7 @@ func unreachable_things(map_id: String, opened: Array = []) -> Array:
 		var cell := Vector2i(int(obj["pos"][0]), int(obj["pos"][1]))
 		var label := "%s op %s" % [obj["type"], cell]
 		match obj["type"]:
-			"npc", "sign", "chest", "meer_lessenaar", "meer_visplek":
+			"npc", "sign", "chest", "meer_lessenaar", "meer_visplek", "meer_diepe_visplek":
 				# Je praat vanaf een tegel ernaast (40 pixels bereik, dus niet schuin).
 				var near := false
 				for step in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
@@ -204,6 +221,17 @@ func unreachable_things(map_id: String, opened: Array = []) -> Array:
 	return bad
 
 
+## De gemiddelde kleur van een stuk van een plaatje.
+func mean_color(img: Image, rect: Rect2i) -> Color:
+	var sum := Vector3.ZERO
+	for y in rect.size.y:
+		for x in rect.size.x:
+			var pixel := img.get_pixel(rect.position.x + x, rect.position.y + y)
+			sum += Vector3(pixel.r, pixel.g, pixel.b)
+	sum /= float(rect.get_area())
+	return Color(sum.x, sum.y, sum.z)
+
+
 func test_data() -> void:
 	print("Gegevens van het Zilvermeer")
 	for map_id: String in MEER_MAPS:
@@ -225,7 +253,14 @@ func test_data() -> void:
 	check(tiles_ok, "zes nieuwe tegels aan het eind van de lijst, met een eigen kleur op het kaartje")
 	check(Tiles.is_solid_name("meer_reeds") and Tiles.is_solid_name("meer_lelie") and Tiles.is_solid_name("meer_paal"), "riet, lelieblad en steigerpaal zijn vast")
 	check(not Tiles.is_solid_name("meer_sand") and not Tiles.is_solid_name("meer_bibvloer") and not Tiles.is_solid_name("meer_tapijt"), "zand, vloer en tapijt zijn begaanbaar")
-	check(Tiles.name_for(":", 0, 0) == "meer_sand" and Tiles.name_for("Q", 0, 0) == "meer_bibvloer", "de tekens in de kaart kloppen")
+	check(Tiles.name_for("s", 0, 0) == "meer_sand" and Tiles.name_for("Q", 0, 0) == "meer_bibvloer", "de tekens in de kaart kloppen")
+	var tiles_img := tiles_tex.get_image()
+	var order_ok := true
+	for tile_name: String in TILE_COLORS:
+		var mean := mean_color(tiles_img, Rect2i(Tiles.index_of(tile_name) * 16, 0, 16, 16))
+		var want: Color = TILE_COLORS[tile_name]
+		order_ok = order_ok and Vector3(mean.r - want.r, mean.g - want.g, mean.b - want.b).length() < 0.025
+	check(order_ok, "tiles.png past bij de volgorde in Tiles.NAMES (anders: python3 tools/make_art.py)")
 
 	for map_id: String in ["lake", "fisher_hut"]:
 		var bad := unreachable_things(map_id)
@@ -258,8 +293,8 @@ func test_data() -> void:
 		for entry: Array in chest["contents"]:
 			chest_items.append(entry[0])
 	check(chests.size() == 3 and chest_items.has("coins") and chest_items.has("potion") and chest_items.has("meer_schelp"), "drie verborgen kisten: munten, een Helddrank en iets leuks")
-	var spots := lake_objects.filter(func(o: Dictionary) -> bool: return o["type"] == "meer_visplek")
-	var deep_spots := spots.filter(func(o: Dictionary) -> bool: return o.get("diep", false))
+	var spots := lake_objects.filter(func(o: Dictionary) -> bool: return o["type"] in SPOT_TYPES)
+	var deep_spots := spots.filter(func(o: Dictionary) -> bool: return o["type"] == "meer_diepe_visplek")
 	check(spots.size() >= 4 and deep_spots.size() == 1, "%d visplekken, waarvan één in diep water (de verre steiger)" % spots.size())
 	var spots_on_water := true
 	for spot: Dictionary in spots:
@@ -287,18 +322,22 @@ func test_data() -> void:
 	for sound_name: String in Meer.SOUNDS:
 		sounds_ok = sounds_ok and sound.streams.has(sound_name)
 	check(sounds_ok and sound.tracks.has("lake"), "alle geluiden en de muziek van het meer zijn geladen")
+	var played := {}
+	var play_call := RegEx.create_from_string("Sound\\.play\\(\"(meer_[a-z_]+)\"")
+	for path: String in SOUND_SCRIPTS:
+		for found: RegExMatch in play_call.search_all(FileAccess.get_file_as_string(path)):
+			played[found.get_string(1)] = true
+	check(played.size() == Meer.SOUNDS.size() and played.keys().all(func(n: String) -> bool: return sound.streams.has(n)), "elk geluid dat het meer afspeelt bestaat, en elk geluid wordt gebruikt (%s)" % [played.keys()])
 	var items_ok := true
 	for item_id: String in Meer.ITEMS:
 		var info: Dictionary = Items.info(item_id)
 		items_ok = items_ok and info.get("sheet", "") == "items_meer" and Art.tex("items_meer").get_width() >= (int(info["icon"]) + 1) * 16
 	check(items_ok, "alle voorwerpen van het meer hebben een icoon in items_meer.png")
-	for fish_id: String in FISH:
-		items_ok = items_ok and Items.info(fish_id).has("sell")
 	var sells_match := true
-	for fish_id: String in FISH:
-		sells_match = sells_match and Items.info(fish_id)["sell"] == Vis.stats(fish_id)["sell"]
-	check(sells_match, "de verkoopwaarde in het voorwerp en in de vistabel zijn gelijk")
-	check(Items.info("meer_baars")["sell"] == 8 and Items.info("meer_snoek")["sell"] == 15 and Items.info("meer_gouden_karper")["sell"] == 60 and Items.info("meer_laars")["sell"] == 1, "verkoopwaardes: baars 8, snoek 15, Gouden Karper 60, laars 1")
+	for fish_id: String in Vis.CATCHES:
+		sells_match = sells_match and Items.info(fish_id)["sell"] == Vis.CATCHES[fish_id]["sell"]
+	check(sells_match and not Items.info(Vis.GOLDEN).has("sell"), "de verkoopwaarde in het voorwerp en in de vistabel zijn gelijk (de Gouden Karper is niet te koop)")
+	check(Items.info("meer_baars")["sell"] == 8 and Items.info("meer_snoek")["sell"] == 15 and Items.info("meer_laars")["sell"] == 1, "verkoopwaardes: baars 8, snoek 15, laars 1")
 
 
 # --- Deel 2: de wereld ------------------------------------------------------------------------------------
@@ -338,7 +377,7 @@ func test_pickups_and_chests() -> void:
 	for chest in chests:
 		await put_player(chest.global_position + Vector2(0, 32))
 		chest.interact()
-	check(gs.coins == 60 and gs.count("potion") == 1 and gs.count("meer_schelp") == 1, "kisten: 60 munten, een Helddrank en een Zilverschelp")
+	check(gs.coins == 35 and gs.count("potion") == 1 and gs.count("meer_schelp") == 1, "kisten: 35 munten, een Helddrank en een Zilverschelp")
 	check(Items.info("meer_schelp")["type"] == "treasure", "de schelp is een verzamelstuk")
 	var book: Node = find_node("pickups", func(p: Node) -> bool: return p.item == "meer_boek_eiland")
 	check(book != null, "het boek ligt op het eiland")
@@ -392,6 +431,22 @@ func play_reel(ui: Node, skill: String, max_frames := 3000) -> void:
 	Input.action_release("interact")
 
 
+## Een speler die alles `delay` seconden te laat ziet, `per_second` keer per seconde E indrukt of loslaat en niet
+## vooruitkijkt. Geeft het aantal beeldjes terug: positief als de vis gevangen is, negatief als niet.
+func slow_reel(rng: RandomNumberGenerator, fish_id: String, delay: float, per_second: int) -> int:
+	var reel = Reel.new(rng, Vis.stats(fish_id))
+	var seen: Array[float] = []
+	var hold := false
+	var steps := 0
+	while reel.state == "bezig" and steps < 60 * 120:
+		seen.append(float(reel.fish_pos) - float(reel.zone_pos))
+		if steps % (60 / per_second) == 0:
+			hold = seen[maxi(0, seen.size() - 1 - int(delay * 60.0))] > 0.0
+		reel.update(1.0 / 60.0, hold)
+		steps += 1
+	return steps if reel.state == "gevangen" else -steps
+
+
 func test_reel_logic() -> void:
 	print("Binnenhalen (zonder scherm)")
 	var rng := RandomNumberGenerator.new()
@@ -410,6 +465,18 @@ func test_reel_logic() -> void:
 			times.append(steps / 60.0)
 	check(all_win, "met een goede speler worden alle vissen gevangen (20 keer per soort)")
 	check(times.min() >= 4.5 and times.max() <= 30.0, "binnenhalen duurt %.1f tot %.1f seconden" % [times.min(), times.max()])
+	# Spelers die trager reageren (en kinderen) moeten ook de snoek en de Gouden Karper kunnen vangen, en een gevecht
+	# mag niet eindeloos duren: de vis wordt moe. Deze spelers zien alles te laat en kijken niet vooruit.
+	for player_kind: Array in [["een gewone speler", 0.25, 8], ["een trage speler", 0.4, 4]]:
+		var slow_ok := true
+		var slow_max := 0.0
+		for fish_id: String in ["meer_snoek", Vis.GOLDEN]:
+			for seed_value in range(1, 11):
+				rng.seed = seed_value
+				var steps := slow_reel(rng, fish_id, player_kind[1], player_kind[2])
+				slow_ok = slow_ok and steps > 0
+				slow_max = maxf(slow_max, absf(steps) / 60.0)
+		check(slow_ok and slow_max < 90.0, "%s vangt de snoek en de Gouden Karper ook (hooguit %.0f seconden)" % [player_kind[0], slow_max])
 	rng.seed = 3
 	var idle = Reel.new(rng, Vis.stats("meer_snoek"))
 	var steps_idle := 0
@@ -444,12 +511,29 @@ func test_reel_logic() -> void:
 		var deep_roll := Vis.roll(rng, true)
 		golden_deep += 1 if deep_roll == Vis.GOLDEN else 0
 		golden_pity += 1 if Vis.roll(rng, true, 20) == Vis.GOLDEN else 0
+		golden_normal += 1 if Vis.roll(rng, true, 20, false) == Vis.GOLDEN else 0
 		kinds[deep_roll] = true
-	check(golden_normal == 0, "op gewone plekken bijt de Gouden Karper nooit")
+	check(golden_normal == 0, "op gewone plekken bijt de Gouden Karper nooit (en ook niet als hij niet mag bijten)")
 	check(golden_deep > 3000 * 0.025 and golden_deep < 3000 * 0.06, "in diep water is de kans op de Gouden Karper ongeveer 4%% (%.1f%%)" % (golden_deep / 30.0))
 	check(golden_pity > 3000 * 0.4 and golden_pity < 3000 * 0.6, "met pech wordt de kans groter, maar nooit boven de helft (%.0f%%)" % (golden_pity / 30.0))
 	check(kinds.has("meer_baars") and kinds.has("meer_snoek") and kinds.has("meer_laars"), "baars, snoek en een oude laars komen ook voor")
 	check(is_equal_approx(Vis.golden_chance(0), 0.04) and Vis.golden_chance(100) == Vis.GOLDEN_MAX_CHANCE, "de kans groeit met pech en heeft een plafond")
+
+
+## Gooit `times` keer uit bij een visplek, met zo veel pech dat de kans op de Gouden Karper het grootst is.
+## Geeft terug hoe vaak hij beet.
+func count_golden_bites(spot_node: Node, times: int) -> int:
+	var ui: Node = fishing_ui()
+	var golden := 0
+	for i in times:
+		gs.meer["pech"] = 100
+		ui.rng.seed = 300 + i
+		spot_node.interact()
+		await wait_for_phase(ui, "bite")
+		golden += 1 if ui.catch_id == Vis.GOLDEN else 0
+		press("pause")
+		await frames(3)
+	return golden
 
 
 func test_fishing() -> void:
@@ -457,9 +541,13 @@ func test_fishing() -> void:
 	await fresh_game("lake")
 	var node: Node = spot(false)
 	check(node != null and spot(true) != null, "er zijn gewone en diepe visplekken")
-	node.interact()
+	var toasts: Array[String] = world.hud.toast_queue
+	var toasts_before := toasts.size()
+	for i in 10:
+		node.interact()
 	await frames(2)
 	check(fishing_ui() == null and not gs.ui_owners.has("vissen") and not paused, "zonder hengel gebeurt er niets (alleen een melding)")
+	check(toasts.size() <= toasts_before + 1, "vaak op E drukken geeft geen rij met dezelfde melding (%d)" % (toasts.size() - toasts_before))
 	gs.give("fishing_rod", 1, true)
 	await put_player(node.global_position + Vector2(32, 0)) # de visplek ligt links van de steiger
 	check(world.player.target == node, "bij een visplek kun je E drukken")
@@ -510,13 +598,20 @@ func test_fishing() -> void:
 	check(ui.phase == "cast", "daarna gooit E opnieuw uit")
 	press("dodge")
 	await frames(3)
-	check(ui.phase == "idle" and not paused and gs.ui_owners.is_empty(), "B (rollen) stopt ook")
+	check(ui.phase != "idle" and paused, "rollen (Shift) stopt het visspel niet: zo verlies je geen vis door een verkeerde toets")
+	press("ui_cancel")
+	await frames(3)
+	check(ui.phase == "idle" and not paused and gs.ui_owners.is_empty(), "B op een controller (ui_cancel) stopt wel")
 
 	print("Visspel: een vis vangen")
 	ui.rng.seed = 11 # de vis zwemt steeds hetzelfde
 	ui.forced_wait = 0.1
 	ui.forced_catch = "meer_baars"
 	node.interact()
+	await wait_for_phase(ui, "wait")
+	await frames(10)
+	var splashes: Array = world.fx_layer.get_children().filter(func(fx: Node) -> bool: return fx.process_mode == Node.PROCESS_MODE_ALWAYS)
+	check(paused and splashes.any(func(fx: Node) -> bool: return fx.age > 0.1), "de plons beweegt, ook al staat de wereld stil")
 	await wait_for_phase(ui, "bite")
 	press("interact")
 	await frames(2)
@@ -525,6 +620,11 @@ func test_fishing() -> void:
 	await play_reel(ui, "goed")
 	check(ui.phase == "result" and ui.outcome == "gevangen", "de vis in het groen houden vangt hem")
 	check(gs.count("meer_baars") == 1 and int(gs.meer["gevangen"]) == 1, "een baars in je tas en de teller telt mee")
+	var note_full: String = ui._catch_note()
+	gs.meer["verkocht"] = Vis.FULL_PRICE_FISH
+	var note_half: String = ui._catch_note()
+	gs.meer.erase("verkocht")
+	check(note_full == "Waarde: 8 munten" and note_half == "Waarde: 4 munten", "het kaartje toont wat de vis nu oplevert (%s / %s)" % [note_full, note_half])
 	await frames(40)
 	press("pause")
 	await frames(3)
@@ -579,9 +679,9 @@ func test_fishing() -> void:
 			press("interact")
 			await frames(2)
 		if stop_phase == "result":
-			await wait_for_phase(ui, "result", 3000) # zonder in te grijpen ontsnapt de vis vanzelf
+			await play_reel(ui, "slecht")
 		var reached: bool = ui.phase == stop_phase
-		press("pause" if stop_phase != "reel" else "dodge")
+		press("pause" if stop_phase != "reel" else "ui_cancel")
 		await frames(3)
 		check(reached and ui.phase == "idle" and not paused and gs.ui_owners.is_empty() and not gs.input_locked(),
 			"stoppen tijdens '%s' sluit het menu en geeft de besturing terug" % stop_phase)
@@ -611,6 +711,22 @@ func test_fishing() -> void:
 	ui.forced_catch = ""
 	ui.forced_wait = -1.0
 	check(not paused and gs.ui_owners.is_empty(), "het spel loopt weer")
+
+	print("Visspel: waar en wanneer de Gouden Karper bijt")
+	gs.new_game()
+	gs.give("fishing_rod", 1, true)
+	ui.forced_wait = 0.05
+	var golden_normal := await count_golden_bites(node, 12)
+	var golden_deep := await count_golden_bites(deep, 12)
+	check(golden_normal == 0 and golden_deep > 0, "met veel pech bijt hij alleen bij de diepe visplek (%d keer van de 12)" % golden_deep)
+	gs.give(Vis.GOLDEN, 1, true)
+	var golden_twice := await count_golden_bites(deep, 8)
+	gs.take(Vis.GOLDEN, 1)
+	gs.start_quest("meer_karper")
+	gs.finish_quest("meer_karper")
+	var golden_after := await count_golden_bites(deep, 8)
+	check(golden_twice == 0 and golden_after == 0, "geen tweede karper als je er al een hebt, en geen meer als Joris hem heeft gezien")
+	ui.forced_wait = -1.0
 
 	print("Visspel: echte kansen")
 	gs.new_game()
@@ -646,34 +762,33 @@ func test_selling() -> void:
 
 	print("Vis verkopen: het dorp raakt vol")
 	gs.coins = 0
-	gs.meer["verkocht"] = 18
+	gs.meer["verkocht"] = Vis.FULL_PRICE_FISH - 2
 	gs.give("meer_baars", 4, true)
-	check(not gs.check(["meer_vol"]), "na 18 vissen is het dorp nog niet vol")
+	check(not gs.check(["meer_vol"]), "na %d vissen is het dorp nog niet vol" % (Vis.FULL_PRICE_FISH - 2))
+	var sell_choice: String = Dialogue.TALKS["meer_joris_menu"]["choices"][0]["text"]
+	check(gs.fmt(sell_choice) == "Verkoop al mijn vis (24 munten)", "vooraf zie je wat je vis oplevert: %s" % gs.fmt(sell_choice))
 	await talk_npc("meer_joris", [0])
-	check(gs.coins == 8 + 8 + 4 + 4, "de eerste 20 vissen krijgen de volle prijs, daarna de helft (%d munten)" % gs.coins)
-	check(gs.check(["meer_vol"]) and gs.flag("meer_vol_gemeld"), "Joris vertelt dat het dorp vol zit met vis")
+	check(gs.coins == 8 + 8 + 4 + 4, "de eerste %d vissen krijgen de volle prijs, daarna de helft (%d munten)" % [Vis.FULL_PRICE_FISH, gs.coins])
+	check(gs.check(["meer_vol"]) and gs.flag("meer_vol_gemeld") and seen_lines.any(func(line: String) -> bool: return "helft" in line), "Joris vertelt dat het dorp vol zit met vis")
 	gs.coins = 0
 	gs.give("meer_snoek", 2, true)
 	gs.give("meer_laars", 1, true)
 	await talk_npc("meer_joris", [0])
 	check(gs.coins == 8 + 8 + 1, "daarna blijft het de halve prijs (en een laars is minstens 1 munt)")
 
-	print("Vis verkopen: de Vissershoed en de Gouden Karper")
+	print("Vis verkopen: de Visserspet en de Gouden Karper")
 	gs.new_game()
 	gs.give("fishers_cap", 1, true)
 	gs.give("meer_baars", 1, true)
 	gs.give("meer_snoek", 1, true)
 	gs.give(Vis.GOLDEN, 1, true)
 	var sellable: Array = logic.sellable_fish()
-	check(sellable.size() == 2 and sellable[0] == "meer_snoek" and sellable[1] == "meer_baars", "de Gouden Karper kun je niet verkopen voordat Joris hem heeft gezien")
+	check(sellable.size() == 2 and sellable[0] == "meer_snoek" and sellable[1] == "meer_baars", "de Gouden Karper is niet te koop: hij is voor Joris")
 	logic.sell_fish()
 	check(gs.coins == 17 + 9 and gs.count(Vis.GOLDEN) == 1, "met de pet krijg je 10% extra (17 en 9 munten) en je houdt de karper")
-	gs.start_quest("meer_karper")
-	gs.finish_quest("meer_karper")
-	gs.coins = 0
-	logic.sell_fish()
-	check(gs.coins == 66 and gs.count(Vis.GOLDEN) == 0, "na de opdracht is een tweede Gouden Karper 60 munten waard (66 met pet)")
-	check(Vis.price("meer_baars", 0, false) == 8 and Vis.price("meer_baars", 19, false) == 8 and Vis.price("meer_baars", 20, false) == 4, "prijzen: volle prijs tot en met de 20e vis")
+	var last_full := Vis.FULL_PRICE_FISH - 1
+	check(Vis.price("meer_baars", 0, false) == 8 and Vis.price("meer_baars", last_full, false) == 8 and Vis.price("meer_baars", last_full + 1, false) == 4, "prijzen: volle prijs tot en met de %de vis" % Vis.FULL_PRICE_FISH)
+	check(Vis.price("meer_baars", last_full + 1, true) == 5 and Vis.price("meer_snoek", last_full + 1, true) == 9 and Vis.price("meer_laars", 0, true) == 2, "de pet geeft altijd iets extra, ook als het dorp vol vis zit")
 
 	print("Vis verkopen: Mila")
 	gs.new_game()
@@ -683,12 +798,16 @@ func test_selling() -> void:
 	gs.coins = 0
 	await talk("mila_menu", [0]) # zonder vis is de eerste keuze uitrusten
 	check(gs.coins == 0, "zonder vis heeft Mila de keuze niet")
+	gs.meer["verkocht"] = Vis.FULL_PRICE_FISH
+	gs.give("meer_snoek", 2, true)
+	await talk("mila_menu", [1])
+	check(gs.coins == 16 and seen_lines.any(func(line: String) -> bool: return "halve prijs" in line), "zit het dorp vol vis, dan betaalt Mila de helft en zegt ze dat ook (%d munten)" % gs.coins)
 
 	print("Economie")
 	var one_full_load := 0
 	for i in Vis.FULL_PRICE_FISH:
 		one_full_load += Vis.price("meer_baars", i, false)
-	check(one_full_load == 160 and Vis.FULL_PRICE_FISH * 15 <= 300, "de eerste 20 vissen leveren hooguit 300 munten op, daarna de helft")
+	check(one_full_load == 64 and Vis.FULL_PRICE_FISH * 15 <= 120, "de eerste %d vissen leveren hooguit 120 munten op, daarna de helft" % Vis.FULL_PRICE_FISH)
 	var weights := 0.0
 	var expected := 0.0
 	for fish_id: String in Vis.CATCHES:
@@ -716,12 +835,13 @@ func test_quest_karper() -> void:
 	check(gs.quest_step("meer_karper") == 1, "met de karper in je tas gaat de opdracht vanzelf naar de volgende stap")
 	check(pick_talk("meer_joris") == "meer_joris_karper_klaar", "Joris wil hem zien")
 	await talk_npc("meer_joris")
-	check(gs.quest_state("meer_karper") == "done" and gs.coins == 120, "beloning: 120 munten")
-	check(gs.count("fishers_cap") == 1 and gs.count(Vis.GOLDEN) == 0, "en de Vissershoed (de karper blijft bij Joris)")
+	check(gs.quest_state("meer_karper") == "done" and gs.coins == 40, "beloning: 40 munten")
+	check(gs.count("fishers_cap") == 1 and gs.count(Vis.GOLDEN) == 0, "en de Visserspet (de karper blijft bij Joris)")
+	check(not logic.golden_can_bite(), "daarna bijt de Gouden Karper niet meer")
 	check(pick_talk("meer_joris") == "meer_joris_menu", "daarna is hij weer gewoon Joris")
 	gs.give("meer_baars", 1, true)
 	await talk_npc("meer_joris", [0])
-	check(gs.coins == 129, "met de Vissershoed krijg je 9 munten voor een baars")
+	check(gs.coins == 49, "met de Visserspet krijg je 9 munten voor een baars")
 
 	check(Dialogue.TALKS["meer_joris_menu"]["choices"].filter(func(c: Dictionary) -> bool: return gs.check_all(c.get("if", []))).size() == 2, "Joris' menu na de opdracht: tips en weggaan")
 	gs.set_flag("game_completed")
@@ -733,7 +853,7 @@ func test_quest_karper() -> void:
 	gs.give(Vis.GOLDEN, 1, true)
 	check(pick_talk("meer_joris") == "meer_joris_karper_direct", "met een karper in je tas voordat je de opdracht had, is Joris sprakeloos")
 	await talk_npc("meer_joris")
-	check(gs.quest_state("meer_karper") == "done" and gs.coins == 120 and gs.count("fishers_cap") == 1, "de opdracht is meteen afgerond")
+	check(gs.quest_state("meer_karper") == "done" and gs.coins == 40 and gs.count("fishers_cap") == 1, "de opdracht is meteen afgerond")
 	check(pick_talk("meer_joris") == "meer_joris_intro", "en de hengel krijg je alsnog bij het kennismakingsgesprek")
 
 
@@ -793,7 +913,7 @@ func test_quest_books() -> void:
 	check(pick_talk("meer_lena") == "meer_lena_boeken_terug", "Lena herkent haar boeken")
 	var coins_before: int = gs.coins
 	await talk_npc("meer_lena")
-	check(gs.quest_state("meer_boeken") == "done" and gs.coins == coins_before + 80, "beloning: 80 munten")
+	check(gs.quest_state("meer_boeken") == "done" and gs.coins == coins_before + 30, "beloning: 30 munten")
 	check(gs.count("meer_boek_eiland") == 0 and gs.count("meer_boek_hut") == 0 and gs.count("meer_boek_sanne") == 0, "de boeken staan weer in de kast")
 	check(gs.flag("meer_achterkamer"), "je bent nu lid: de achterkamer is vrij")
 	await frames(10)
@@ -809,7 +929,7 @@ func test_quest_books() -> void:
 	var potions: int = gs.count("potion")
 	coins_before = gs.coins
 	alcove_chest.interact()
-	check(gs.count("potion") == potions + 1 and gs.coins == coins_before + 30, "de kist in het achterkamertje: een Helddrank en 30 munten")
+	check(gs.count("potion") == potions + 1 and gs.coins == coins_before + 15, "de kist in het achterkamertje: een Helddrank en 15 munten")
 	check(pick_talk("meer_lena") == "meer_lena_klaar", "Lena is blij met haar lezer")
 
 	print("Opdracht: Boekenwurm (opslaan en opnieuw laden)")
@@ -821,6 +941,34 @@ func test_quest_books() -> void:
 	check(not world.is_solid(Vector2(kast_cell) * 32.0 + Vector2(16, 16)), "na het laden staat de kast meteen open")
 	check(gs.quest_state("meer_boeken") == "done", "en de opdracht is nog afgerond")
 	gs.use_load_pos = false
+
+	print("Opdracht: Boekenwurm (de boeken al gevonden)")
+	await fresh_game("library")
+	for book_id: String in ["meer_boek_eiland", "meer_boek_hut", "meer_boek_sanne"]:
+		gs.give(book_id, 1, true)
+	await talk_npc("meer_lena", [0, 0]) # intro, menu: 'Heb je werk voor me?', 'Ik zoek ze wel!'
+	check(gs.quest_state("meer_boeken") == "done" and gs.coins == 30 and gs.flag("meer_achterkamer"), "had je de boeken al, dan lever je ze meteen in")
+
+	print("De geheime kast wacht tot je klaar bent")
+	await fresh_game("library")
+	gs.start_dialogue("meer_lena_over")
+	await frames(2)
+	gs.set_flag("meer_achterkamer")
+	await frames(5)
+	check(world.dialogue.active and world.is_solid(Vector2(kast_cell) * 32.0 + Vector2(16, 16)), "zolang er een gesprek open is, blijft de kast dicht")
+	await finish_dialogue()
+	await frames(5)
+	check(not world.is_solid(Vector2(kast_cell) * 32.0 + Vector2(16, 16)), "daarna schuift hij open")
+
+
+func test_sanne() -> void:
+	print("Sanne")
+	for fish_id: String in ["meer_baars", "meer_snoek"]:
+		await fresh_game("lake")
+		gs.set_flag("meer_sanne_ontmoet")
+		gs.give(fish_id, 2, true)
+		await talk_npc("meer_sanne", [0]) # de vis is de eerste keuze
+		check(gs.count("meer_boek_sanne") == 1 and gs.flag("meer_sanne_boek") and gs.count(fish_id) == 1, "voor een %s geeft Sanne haar boek (en ze houdt er één)" % String(Items.info(fish_id)["name"]).to_lower())
 
 
 func test_library() -> void:
@@ -849,6 +997,10 @@ func test_library() -> void:
 	check(pick_talk("meer_lena") == "meer_lena_klaar", "Lena na de opdracht")
 	await talk_npc("meer_lena", [0])
 	check(not world.dialogue.active and not paused, "het gesprek van Lena met een trotse lezer sluit netjes")
+	var surprised := seen_lines.any(func(line: String) -> bool: return "álle lessenaars" in line)
+	await talk_npc("meer_lena", [0])
+	var surprised_again := seen_lines.any(func(line: String) -> bool: return "álle lessenaars" in line)
+	check(surprised and not surprised_again, "Lena is één keer verrast dat je alles gelezen hebt, niet bij elk gesprek")
 	check(not gs.check(["flag", "game_completed"]), "voor het einde van het verhaal weet Lena niets over de Diepte te vertellen")
 	var lena_choices: Array = Dialogue.TALKS["meer_lena_menu"]["choices"]
 	var menu_choices: Array = lena_choices.filter(func(c: Dictionary) -> bool: return gs.check_all(c.get("if", [])))
@@ -872,7 +1024,11 @@ func test_menu_and_save() -> void:
 		press("map")
 		await frames(4)
 		check(world.menu_ui.active and world.menu_ui.tab == 2, "N toont de kaart van %s" % Maps.get_map(map_id)["name"])
-		check(world.menu_ui.markers.has("meer_visplek") and world.menu_ui.markers.has("meer_lessenaar"), "de kaart kent de bijzondere plekken")
+		var labels := {}
+		for mark: Dictionary in world.menu_ui.extension_marks(world.map_data):
+			labels[mark["label"]] = int(labels.get(mark["label"], 0)) + 1
+		var want: Dictionary = {"lake": {"visplek": 5, "diepe visplek": 1}, "fisher_hut": {}, "library": {"lessenaar": 6}}[map_id]
+		check(labels == want, "de bijzondere plekken op het kaartje: %s" % [labels])
 		press("pause")
 		await frames(3)
 		check(not world.menu_ui.active and not paused, "Esc sluit de kaart")
@@ -931,6 +1087,7 @@ func _run() -> void:
 	await test_selling()
 	await test_quest_karper()
 	await test_quest_books()
+	await test_sanne()
 	await test_library()
 	await test_menu_and_save()
 

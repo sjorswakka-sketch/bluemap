@@ -287,11 +287,12 @@ func tracked_text() -> String:
 
 
 func fmt(text: String) -> String:
-	return Content.format_text(text \
+	text = text \
 		.replace("{crystals}", str(crystal_count())) \
 		.replace("{gel}", str(count("gel"))) \
 		.replace("{shards}", str(count("shard"))) \
-		.replace("{coins}", str(coins)))
+		.replace("{coins}", str(coins))
+	return Content.format(text)
 
 
 # --- Voorwaarden en acties (gebruikt door dialogen en poortjes) ---------------

@@ -9,8 +9,8 @@ const TEXTS := {
 		"title": "Geschiedenis van Azura",
 		"lines": [
 			"Lang geleden was Azura een wilde streek zonder naam. Er woonde niemand. Alleen de wind, het water en de slijmen.",
-			"Toen de eerste mensen kwamen, hing er een kaart van sterren aan de hemel: de Sterrenkaart. Hij liet zien waar het land veilig was.",
-			"De mensen bouwden hun dorpen precies waar de kaart het aanwees. Het eerste dorp kreeg daarom de naam Dageraadsdorp: het lag in het eerste licht.",
+			"Toen de eerste mensen kwamen, vonden ze een kaart vol sterren, zo groot als een plein: de Sterrenkaart. Hij liet zien waar het land veilig was.",
+			"De mensen bouwden hun dorpen precies waar de kaart het aanwees. Het eerste dorp lag in het eerste licht en heette daarom Dageraadsdorp.",
 		],
 	},
 	"blauwe_kaart": {

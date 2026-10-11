@@ -1,4 +1,6 @@
 """Alle tegels (16x16). De volgorde komt uit scripts/data/tiles.gd (NAMES)."""
+import glob
+import importlib
 import os
 import random
 import re
@@ -443,10 +445,11 @@ PAINTERS = {
 }
 
 
-# Nieuwe tegels van het spoor "meer" (Zilvermeer): de tekeningen staan in art_x_meer.py.
-import art_x_meer  # noqa: E402
-
-PAINTERS.update(art_x_meer.tile_painters(sys.modules[__name__]))
+# Uitbreidingen met eigen tegels: tools/art_x_<naam>.py met een functie tile_painters(art_tiles) -> {tegelnaam: tekening}.
+for _path in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "art_x_*.py"))):
+    _extension = importlib.import_module(os.path.basename(_path)[:-3])
+    if hasattr(_extension, "tile_painters"):
+        PAINTERS.update(_extension.tile_painters(sys.modules[__name__]))
 
 
 def tile_names(root):

@@ -26,9 +26,9 @@ static func run(action: Array) -> void:
 		sell_fish()
 
 
-## De tekst voor {boeken} (zie FORMATS in meer.gd).
-static func format(token: String) -> String:
-	return str(books_found()) if token == "boeken" else ""
+## Vult {boeken} en {visgeld} in (zie FORMATS in meer.gd).
+static func format(text: String) -> String:
+	return text.replace("{boeken}", str(books_found())).replace("{visgeld}", str(sale_value()))
 
 
 # --- Vis verkopen en bijhouden -------------------------------------------------------------------------
@@ -60,35 +60,51 @@ static func books_found() -> int:
 	return total
 
 
-## De vissen in je tas die je kunt verkopen. De Gouden Karper pas als Joris hem heeft gezien.
+## De vissen in je tas die je kunt verkopen.
 static func sellable_fish() -> Array[String]:
 	var found: Array[String] = []
 	for fish_id in Vis.fish_ids():
-		if fish_id == Vis.GOLDEN and GameState.quest_state("meer_karper") != "done":
-			continue
 		if GameState.count(fish_id) > 0:
 			found.append(fish_id)
 	return found
 
 
-## Verkoopt al je vis (de duurste eerst) en geeft het geld. Geeft het aantal munten terug.
-static func sell_fish() -> int:
-	var sold := sold_count()
+## Wat deze vis nu oplevert (de volgende die je verkoopt).
+static func price_now(fish_id: String) -> int:
+	return Vis.price(fish_id, sold_count(), GameState.count("fishers_cap") > 0)
+
+
+## Wat al je vis samen oplevert als je hem nu verkoopt (de duurste eerst, want die krijgen het eerst de volle prijs).
+static func sale_value() -> int:
+	var nth := sold_count()
 	var has_cap := GameState.count("fishers_cap") > 0
-	var amount := 0
 	var coins := 0
 	for fish_id in sellable_fish():
 		for i in GameState.count(fish_id):
-			coins += Vis.price(fish_id, sold + amount, has_cap)
-			amount += 1
+			coins += Vis.price(fish_id, nth, has_cap)
+			nth += 1
+	return coins
+
+
+## Verkoopt al je vis en geeft het geld. Geeft het aantal munten terug.
+static func sell_fish() -> int:
+	var coins := sale_value()
+	var amount := 0
+	for fish_id in sellable_fish():
+		amount += GameState.count(fish_id)
 		GameState.take(fish_id, GameState.count(fish_id))
 	if amount == 0:
 		return 0
 	GameState.add_coins(coins)
-	GameState.meer["verkocht"] = sold + amount
+	GameState.meer["verkocht"] = sold_count() + amount
 	Sound.play("buy")
 	GameState.toast.emit("Verkocht: %d %s voor %d munten" % [amount, "vis" if amount == 1 else "vissen", coins])
 	return coins
+
+
+## Kan de Gouden Karper nog bijten? Alleen zolang Joris hem niet gezien heeft, en niet als je er al een in je tas hebt.
+static func golden_can_bite() -> bool:
+	return GameState.quest_state("meer_karper") != "done" and GameState.count(Vis.GOLDEN) == 0
 
 
 ## Onthoudt een vangst: voor de statistieken en voor de kans op de Gouden Karper.
