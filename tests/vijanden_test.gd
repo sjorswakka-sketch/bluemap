@@ -163,10 +163,10 @@ func near_exit(map_id: String, cell: Vector2i, margin: int) -> bool:
 	return false
 
 
-## Heeft de wereld net een zwevende tekst als "Mislukt!" laten zien?
+## Heeft de wereld net een zwevende tekst als "Mislukt!" laten zien? (Er kan ook ander spul in de effectenlaag zitten.)
 func shows_text(text: String) -> bool:
 	for fx in world.fx_layer.get_children():
-		if fx.kind == "text" and fx.text == text:
+		if fx.get("kind") == "text" and fx.get("text") == text:
 			return true
 	return false
 
