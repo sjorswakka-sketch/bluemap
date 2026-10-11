@@ -2,6 +2,7 @@
 import os
 import random
 import re
+import sys
 
 from artlib import *  # noqa: F401,F403
 
@@ -440,6 +441,12 @@ PAINTERS = {
     "temple_rune": temple_rune_tile, "carpet": carpet_tile, "wood_floor": wood_floor_tile,
     "wood_wall": wood_wall_tile, "counter": counter_tile, "shelf": shelf_tile, "bed": bed_tile, "mat": mat_tile,
 }
+
+
+# Nieuwe tegels van het spoor "meer" (Zilvermeer): de tekeningen staan in art_x_meer.py.
+import art_x_meer  # noqa: E402
+
+PAINTERS.update(art_x_meer.tile_painters(sys.modules[__name__]))
 
 
 def tile_names(root):

@@ -35,7 +35,7 @@ const DATA := {
 		"###################,,###################",
 		"###################,,###################",
 	],
-	"spawns": {"start": [19, 9], "from_forest": [36, 13], "from_smithy": [6, 12], "from_shop": [13, 12], "from_inn": [30, 11], "from_temple": [19, 8]},
+	"spawns": {"start": [19, 9], "from_forest": [36, 13], "from_smithy": [6, 12], "from_shop": [13, 12], "from_inn": [30, 11], "from_temple": [19, 8], "from_lake": [19, 24]},
 	"objects": [
 		{"type": "npc", "pos": [17, 8], "id": "bram"},
 		{"type": "npc", "pos": [24, 18], "id": "pim"},
@@ -48,10 +48,12 @@ const DATA := {
 		{"type": "pickup", "pos": [30, 15], "item": "coin"},
 		{"type": "sign", "pos": [21, 8], "lines": ["Dageraadsdorp", "Tempel van de Blauwe Kaart. Bewaker: Oudste Bram."]},
 		{"type": "sign", "pos": [33, 15], "lines": ["Oostelijke weg: Fluisterbos.", "Pas op voor slijmen!"]},
+		{"type": "sign", "pos": [18, 24], "lines": ["Zuidelijke weg: het Zilvermeer.", "Rustig water, grote vissen en een bibliotheek."]},
 		{"type": "portal", "pos": [6, 11], "to": "smithy", "spawn": "door"},
 		{"type": "portal", "pos": [13, 11], "to": "shop", "spawn": "door"},
 		{"type": "portal", "pos": [30, 10], "to": "inn", "spawn": "door"},
 		{"type": "portal", "pos": [38, 13], "to": "forest", "spawn": "from_village", "size": [1, 2]},
+		{"type": "portal", "pos": [19, 26], "to": "lake", "spawn": "from_village", "size": [2, 2]},
 		{"type": "portal", "pos": [19, 6], "to": "temple", "spawn": "start", "size": [2, 1], "requires": [["flag", "gate_temple"]], "locked_text": "De tempeldeur is verzegeld door de gebarsten kaart."},
 	],
 }

@@ -34,6 +34,7 @@ var load_pos: Vector2 = Vector2.ZERO
 var use_load_pos: bool = false
 var play_time: float = 0.0
 var kills: int = 0
+var meer: Dictionary = {} # eigen opslag van het Zilvermeer (zie scripts/data/ext/meer.gd): verkochte en gevangen vis
 
 # Tijdelijke toestand (wordt niet opgeslagen).
 var in_game: bool = false
@@ -74,6 +75,7 @@ func new_game() -> void:
 	use_load_pos = false
 	play_time = 0.0
 	kills = 0
+	meer = {}
 	ended = false
 	transitioning = false
 	dialogue_open = false
@@ -285,11 +287,11 @@ func tracked_text() -> String:
 
 
 func fmt(text: String) -> String:
-	return text \
+	return Content.format_text(text \
 		.replace("{crystals}", str(crystal_count())) \
 		.replace("{gel}", str(count("gel"))) \
 		.replace("{shards}", str(count("shard"))) \
-		.replace("{coins}", str(coins))
+		.replace("{coins}", str(coins)))
 
 
 # --- Voorwaarden en acties (gebruikt door dialogen en poortjes) ---------------
@@ -404,7 +406,7 @@ func save_game(pos: Vector2) -> bool:
 	var data := {
 		"version": SAVE_VERSION, "map": map_id, "pos": [pos.x, pos.y], "hp": hp, "coins": coins,
 		"inventory": inventory, "flags": flags, "quests": quests, "weapon": weapon,
-		"play_time": play_time, "kills": kills,
+		"play_time": play_time, "kills": kills, "meer": meer,
 	}
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
@@ -430,6 +432,8 @@ func load_game() -> bool:
 	weapon = data.get("weapon", "wood")
 	play_time = float(data.get("play_time", 0.0))
 	kills = int(data.get("kills", 0))
+	for stat: String in data.get("meer", {}):
+		meer[stat] = int(data["meer"][stat])
 	for item_id: String in data.get("inventory", {}):
 		inventory[item_id] = int(data["inventory"][item_id])
 	for flag_name: String in data.get("flags", {}):

@@ -24,7 +24,7 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | `WASD` / pijltjes | linkerstick / d-pad | Lopen |
 | `Spatie` / `J` | X | Zwaard |
 | `Shift` / `K` | B | Rollen (je bent even onraakbaar) |
-| `E` / `Enter` | A | Praten, kisten en altaren openen, doorklikken |
+| `E` / `Enter` | A | Praten, kisten en altaren openen, lezen, vissen bij een visplek, doorklikken |
 | `H` | Y | Helddrank drinken |
 | `I` / `Tab` | Back | Menu: voorwerpen |
 | `Q` | linker schouderknop | Menu: opdrachten |
@@ -36,9 +36,14 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 
 ## Wat zit erin
 
-- **Acht gebieden:** Dageraadsdorp, drie gebouwen (smederij, winkel, herberg), het Fluisterbos,
-  de Vergeten Ruïne, de Echo-grot en de Kristaltempel. In de donkere gebieden heb je licht van je eigen lamp en fakkels.
-- **Verhaal:** een hoofdopdracht en drie zij-opdrachten, tien personages en gesprekken met keuzes.
+- **Elf gebieden:** Dageraadsdorp, drie gebouwen (smederij, winkel, herberg), het Fluisterbos,
+  de Vergeten Ruïne, de Echo-grot, de Kristaltempel en het Zilvermeer met het huisje van Joris en de bibliotheek.
+  In de donkere gebieden heb je licht van je eigen lamp en fakkels.
+- **Verhaal:** een hoofdopdracht en vijf zij-opdrachten, dertien personages en gesprekken met keuzes.
+- **Het Zilvermeer:** een rustig gebied aan de zuidkant van het dorp. Visser Joris leent je een hengel en bij de
+  visplekken (de kringetjes in het water) speel je een visspel: wachten op een beet, snel op `E` drukken en de vis
+  met `E` ingedrukt in de groene zone houden. Bij de verre steiger zwemt de Gouden Karper. In de bibliotheek van Lena
+  lees je op de lessenaars over de geschiedenis van Azura, en een geheim kamertje wacht op wie Lena's boeken terugbrengt.
 - **Gevechten:** zwaard in drie niveaus (hout, ijzer, kristal), ontwijkrol, slijmen in drie kleuren, vleermuizen,
   boogschutter-skeletten, twee kristalgolems (minibazen) en de Slijmkoning met drie fases.
 - **Verzamelen en upgraden:** winkel, smid die zwaarden maakt, drankjes, laarzen, hartcontainers en verborgen kisten.
@@ -52,6 +57,7 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - Slijmen laten slijmgel vallen. Greta de smid maakt er betere zwaarden van.
 - Golems laten kristalscherven vallen, nodig voor het kristalzwaard.
 - Praat met iedereen: veel mensen hebben een opdracht of een tip.
+- Vis verkoop je aan Joris of aan Mila in de herberg. Als het dorp vol zit met vis, krijg je de helft.
 
 ## Mappen
 
@@ -60,6 +66,7 @@ project.godot          Instellingen, toetsen en autoloads (GameState en Sound)
 scenes/                title, intro, main (de wereld) en ending
 scripts/core/          GameState (voortgang, opslaan, voorwaarden en acties), Sound, hulpfuncties
 scripts/data/          ALLE INHOUD: items, vijanden, personages, dialoog, opdrachten, winkels, tegels, aftiteling
+scripts/data/ext/      Uitbreidingen als losse modules (zie scripts/data/content.gd), bijvoorbeeld meer.gd voor het Zilvermeer
 scripts/maps/          De kaarten (tekst!) en het register
 scripts/entities/      Speler, vijand, personage, voorwerp, kist, poort, altaar, projectiel...
 scripts/ui/            HUD, dialoogvenster, menu, winkel, pauze, titel, intro en einde
@@ -100,7 +107,7 @@ De plaatjes in `assets/` zijn zelf gemaakt met `python3 tools/make_art.py` en de
 | `golem.png` | 32x32: rustig (2), armen omhoog, klap |
 | `king.png` | 48x48: rustig (2), ineengedoken, in de lucht |
 | `npc_*.png` | 2 vakjes: rustig en een beetje bewegen |
-| `items.png` | iconen, nummer = `icon` in `items.gd` |
+| `items.png` | iconen, nummer = `icon` in `items.gd` (uitbreidingen hebben een eigen plaatje, zoals `items_meer.png`) |
 | `chest`, `sign`, `gate`, `altar`, `torch`, `coin`, `heart`, `ui_heart`, `projectiles` | zie `tools/art_items.py` |
 | `audio/*.wav` | geluidseffecten; `audio/music_<gebied>.wav` zijn lussen van 25 tot 45 seconden |
 
@@ -112,11 +119,15 @@ Zonder scherm, handig na elke wijziging:
 sh tools/run_tests.sh /pad/naar/godot
 ```
 
-Dat draait twee tests. `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
+Dat draait alle tests in `tests/`. `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
 voorwerp, elke opdracht) en speelt daarna de systemen na: lopen, gebieden wisselen, vechten, de baas, praten, kopen,
 smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd` speelt het hele spel uit met de echte
 kaarten: van Bram tot en met het einde. Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het
 met een foutmelding.
+
+`tests/meer_test.gd` test het Zilvermeer: alle doorgangen, of alles op de kaarten bereikbaar is, het visspel in al zijn
+uitkomsten (te laat, gevangen, ontsnapt, stoppen, de Gouden Karper), vis verkopen, beide opdrachten via de gesprekken,
+de bibliotheek en opslaan en laden.
 
 Meer gereedschap:
 

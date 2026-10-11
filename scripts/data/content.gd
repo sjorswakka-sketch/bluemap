@@ -7,7 +7,8 @@ extends RefCounted
 ##   TALKS    (dialogue.gd)   QUESTS (quests.gd)   ITEMS / WEAPONS (items.gd)   ENEMIES (enemies.gd)
 ##   NPCS     (npcs.gd)       SHOPS  (shops.gd)    MAPS (maps/registry.gd)
 ##   SOUNDS / TRACKS (lijsten met namen van .wav-bestanden in assets/audio, zie scripts/core/sound.gd)
-##   OBJECTS  (soort object op de kaart -> script, zie hieronder)
+##   OBJECTS  (soort object op de kaart -> script, zie hieronder) of OBJECT_PATHS (soort -> pad van het script)
+##   MAP_MARKERS (soort object -> {"color": Color, "label": "naam"}): een stipje op het kaartje in het menu (N)
 ##
 ## Eigen voorwaarden en acties voor gesprekken, poortjes enzovoort:
 ##
@@ -23,10 +24,21 @@ extends RefCounted
 ## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
 ## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
 ##
+## Eigen {tekens} in gesprekken en opdrachtteksten (zoals {gel} en {coins}):
+##
+##   const FORMATS := ["boeken"]                    # {boeken} wordt ingevuld
+##   static func format(token: String) -> String    # geeft de tekst voor zo'n teken
+##
+## LET OP: de speltesten (godot -s) compileren de modules voordat de autoloads GameState en Sound bestaan, en een script
+## dat die namen gebruikt kan dan niet gecompileerd worden. Houd het moduleschript zelf daarom vrij van GameState en Sound:
+## zet die code in een apart script dat je met load() aanroept wanneer het nodig is (zie ext/meer.gd en ext/meer_logic.gd),
+## en geef objectscripts op via OBJECT_PATHS (pad) in plaats van OBJECTS (preload).
+##
 ## Je hoeft alleen de constanten op te nemen die je nodig hebt. Namen (sleutels) mogen niet al bestaan.
 
 const MODULES: Array = [
 	# preload("res://scripts/data/ext/voorbeeld.gd"),
+	preload("res://scripts/data/ext/meer.gd"), # het Zilvermeer: vissen, bibliotheek, Joris, Lena en Sanne
 ]
 
 
@@ -84,6 +96,30 @@ static func run_action(action: Array) -> bool:
 	return false
 
 
-## Soorten objecten (naam -> script) die de modules toevoegen.
+## Soorten objecten (naam -> script) die de modules toevoegen. Een module geeft ze op in OBJECTS (met preload) of,
+## als de scripts autoloads zoals GameState gebruiken, in OBJECT_PATHS (naam -> pad): die worden pas geladen als de
+## wereld ze nodig heeft, want de speltesten compileren de modules voordat de autoloads bestaan.
 static func object_types() -> Dictionary:
-	return merged("OBJECTS", {})
+	var types := merged("OBJECTS", {})
+	var paths := merged("OBJECT_PATHS", {})
+	for kind: String in paths:
+		types[kind] = load(paths[kind])
+	return types
+
+
+## Vult de {tekens} van de modules in een tekst in (zie `fmt` in game_state.gd).
+static func format_text(text: String) -> String:
+	if not "{" in text:
+		return text
+	for module: Script in MODULES:
+		var constants := module.get_script_constant_map()
+		if constants.has("FORMATS"):
+			for token: String in constants["FORMATS"]:
+				if "{%s}" % token in text:
+					text = text.replace("{%s}" % token, str(module.call("format", token)))
+	return text
+
+
+## Kleur van het stipje op het kaartje (menu) voor soorten objecten van de modules.
+static func map_markers() -> Dictionary:
+	return merged("MAP_MARKERS", {})

@@ -8,7 +8,7 @@ Besturing
   WASD / pijltjes   lopen
   Spatie / J        zwaard
   Shift / K         rollen (even onraakbaar)
-  E / Enter         praten, kisten en altaren openen, doorklikken
+  E / Enter         praten, kisten en altaren openen, lezen, vissen bij een visplek, doorklikken
   H                 helddrank drinken
   I / Tab           menu: voorwerpen        Q: opdrachten        N: kaart
   Esc / P           pauze                   M: geluid aan/uit    F11: volledig scherm
@@ -19,6 +19,11 @@ Besturing
 Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
+
+Vissen
+  Ten zuiden van het dorp ligt het Zilvermeer. Praat met Visser Joris voor een hengel, ga bij een visplek
+  (kringetjes in het water) staan en druk op E. Als de dobber zakt, druk je snel op E. Houd daarna E ingedrukt
+  om de groene zone omhoog te laten gaan en houd de vis erin. Esc stopt altijd.
 
 Opslaan
   Het spel slaat automatisch op als je van gebied wisselt, en bij de blauwe altaren
