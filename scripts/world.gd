@@ -26,6 +26,7 @@ const FaderScript := preload("res://scripts/ui/fader.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Maps := preload("res://scripts/maps/registry.gd")
 const Tiles := preload("res://scripts/data/tiles.gd")
+const Content := preload("res://scripts/data/content.gd")
 
 const TILE := 32 # grootte van een tegel in de spelwereld
 const ART_TILE := 16 # pixels per tegel in assets/tiles.png (wordt 2x vergroot getoond)
@@ -46,6 +47,7 @@ var shop_ui: CanvasLayer
 var menu_ui: CanvasLayer
 var pause_menu: CanvasLayer
 var map_data: Dictionary = {}
+var object_types: Dictionary = Content.object_types() # soorten objecten uit uitbreidingen
 var map_size := Vector2i.ZERO
 var solid_cells: Dictionary = {}
 var darkness := 0.0
@@ -323,6 +325,17 @@ func _spawn_objects() -> void:
 				trigger.actions = obj["do"]
 				trigger.world = self
 				entities.add_child(trigger)
+			_:
+				var script: Script = object_types.get(obj["type"])
+				if script == null:
+					push_warning("Onbekend soort object op de kaart: %s" % obj["type"])
+					continue
+				var node: Node2D = script.new()
+				node.set("world", self)
+				node.set("obj", obj)
+				node.set("key", key)
+				node.position = pos
+				entities.add_child(node)
 
 
 func spawn_enemy(kind: String, pos: Vector2, flag := "") -> Node2D:

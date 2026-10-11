@@ -4,6 +4,7 @@ extends Node
 
 const Items := preload("res://scripts/data/items.gd")
 const Quests := preload("res://scripts/data/quests.gd")
+const Content := preload("res://scripts/data/content.gd")
 
 signal hp_changed
 signal items_changed
@@ -317,6 +318,9 @@ func check(cond: Array) -> bool:
 			return crystal_count() >= cond[1]
 		"hurt":
 			return hp < max_hp()
+	var extra: Variant = Content.check_condition(cond)
+	if extra != null:
+		return extra
 	push_warning("Onbekende voorwaarde: %s" % [cond])
 	return false
 
@@ -372,7 +376,8 @@ func run(action: Array) -> void:
 		"boss_start", "music", "lock_arena":
 			world_action.emit(action)
 		_:
-			push_warning("Onbekende actie: %s" % [action])
+			if not Content.run_action(action):
+				push_warning("Onbekende actie: %s" % [action])
 
 
 func run_all(actions: Array) -> void:

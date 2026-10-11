@@ -15,6 +15,7 @@ const Dialogue := preload("res://scripts/data/dialogue.gd")
 const Quests := preload("res://scripts/data/quests.gd")
 const Shops := preload("res://scripts/data/shops.gd")
 const Art := preload("res://scripts/core/art.gd")
+const Content := preload("res://scripts/data/content.gd")
 
 const COND_NAMES := ["flag", "no_flag", "quest", "step", "has", "lacks", "coins", "map", "weapon", "crystals", "hurt"]
 const ACTION_NAMES := [
@@ -61,7 +62,7 @@ func _initialize() -> void:
 
 func valid_conds(conds: Array, where: String) -> bool:
 	for cond: Array in conds:
-		if not (cond[0] in COND_NAMES):
+		if not (cond[0] in COND_NAMES or cond[0] in Content.condition_names()):
 			print("       onbekende voorwaarde in ", where, ": ", cond)
 			return false
 		if cond[0] in ["quest", "step"] and not Quests.QUESTS.has(cond[1]):
@@ -78,7 +79,7 @@ func valid_conds(conds: Array, where: String) -> bool:
 
 func valid_actions(actions: Array, where: String) -> bool:
 	for action: Array in actions:
-		if not (action[0] in ACTION_NAMES):
+		if not (action[0] in ACTION_NAMES or action[0] in Content.action_names()):
 			print("       onbekende actie in ", where, ": ", action)
 			return false
 		match action[0]:
@@ -206,7 +207,7 @@ func test_data() -> void:
 			print("       ", map_id, ": geen start")
 			maps_ok = false
 		for obj: Dictionary in def["objects"]:
-			if not (obj["type"] in OBJECT_TYPES):
+			if not (obj["type"] in OBJECT_TYPES or Content.object_types().has(obj["type"])):
 				print("       ", map_id, ": onbekend object ", obj["type"])
 				maps_ok = false
 			for cond_key in ["if", "exists_if", "requires", "block_if", "conditions"]:

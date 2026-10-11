@@ -7,6 +7,21 @@ extends RefCounted
 ##   TALKS    (dialogue.gd)   QUESTS (quests.gd)   ITEMS / WEAPONS (items.gd)   ENEMIES (enemies.gd)
 ##   NPCS     (npcs.gd)       SHOPS  (shops.gd)    MAPS (maps/registry.gd)
 ##   SOUNDS / TRACKS (lijsten met namen van .wav-bestanden in assets/audio, zie scripts/core/sound.gd)
+##   OBJECTS  (soort object op de kaart -> script, zie hieronder)
+##
+## Eigen voorwaarden en acties voor gesprekken, poortjes enzovoort:
+##
+##   const CONDITIONS := ["gevangen"]     # de namen, zodat de speltest ze herkent
+##   const ACTIONS := ["start_arena"]
+##   static func check(cond: Array) -> bool     # wordt alleen aangeroepen voor jouw eigen voorwaarden
+##   static func run(action: Array) -> void     # idem voor acties
+##
+## Eigen soorten objecten op de kaart ({"type": "doelwit", "pos": [3, 4], ...}):
+##
+##   const OBJECTS := {"doelwit": preload("res://scripts/entities/target.gd")}
+##
+## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
+## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
 ##
 ## Je hoeft alleen de constanten op te nemen die je nodig hebt. Namen (sleutels) mogen niet al bestaan.
 
@@ -39,3 +54,36 @@ static func appended(key: String, base: Array) -> Array:
 				if not result.has(entry):
 					result.append(entry)
 	return result
+
+
+## Welke voorwaarden en acties de modules erbij brengen (voor de speltest).
+static func condition_names() -> Array:
+	return appended("CONDITIONS", [])
+
+
+static func action_names() -> Array:
+	return appended("ACTIONS", [])
+
+
+## Voorwaarde van een module. Geeft null terug als geen enkele module de voorwaarde kent.
+static func check_condition(cond: Array) -> Variant:
+	for module: Script in MODULES:
+		var constants := module.get_script_constant_map()
+		if constants.has("CONDITIONS") and cond[0] in constants["CONDITIONS"]:
+			return module.call("check", cond)
+	return null
+
+
+## Voert een actie van een module uit. Geeft false terug als geen enkele module de actie kent.
+static func run_action(action: Array) -> bool:
+	for module: Script in MODULES:
+		var constants := module.get_script_constant_map()
+		if constants.has("ACTIONS") and action[0] in constants["ACTIONS"]:
+			module.call("run", action)
+			return true
+	return false
+
+
+## Soorten objecten (naam -> script) die de modules toevoegen.
+static func object_types() -> Dictionary:
+	return merged("OBJECTS", {})
