@@ -7,6 +7,7 @@ Starten
 Besturing
   WASD / pijltjes   lopen
   Spatie / J        zwaard
+  F / L             boog: een pijl schieten (nadat je een boog hebt gekocht)
   Shift / K         rollen (even onraakbaar)
   E / Enter         praten, kisten en altaren openen, doorklikken
   H                 helddrank drinken
@@ -14,7 +15,7 @@ Besturing
   Esc / P           pauze                   M: geluid aan/uit    F11: volledig scherm
   R                 na game over: verder vanaf je laatste opslag
 
-  Een controller werkt ook: stick lopen, X zwaard, B rollen, A praten, Y drankje, Start pauze.
+  Een controller werkt ook: stick lopen, X zwaard, rechter trekker boog, B rollen, A praten, Y drankje, Start pauze.
 
 Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
