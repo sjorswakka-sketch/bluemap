@@ -16,6 +16,7 @@ const PAGES := [
 	"Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur...",
 ]
 
+var pages: Array = PAGES.duplicate() # bij Nieuw spel+ komt er een zin bij
 var page := 0
 var t := 0.0
 var typed := 0.0
@@ -27,6 +28,8 @@ func _ready() -> void:
 	GameState.in_game = false
 	get_tree().paused = false
 	Sound.play_music("temple")
+	if GameState.ng_plus > 0:
+		pages[pages.size() - 1] += " Maar let op: dit is Nieuw spel+. De slijmen zijn sterker geworden, en jij hebt je beste spullen mee!"
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -36,11 +39,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not (event.is_action_pressed("interact") or event.is_action_pressed("attack") or event.is_action_pressed("ui_accept")):
 		return
 	get_viewport().set_input_as_handled()
-	if typed < PAGES[page].length():
-		typed = PAGES[page].length()
+	if typed < pages[page].length():
+		typed = pages[page].length()
 		return
 	Sound.play("select", -8.0)
-	if page < PAGES.size() - 1:
+	if page < pages.size() - 1:
 		page += 1
 		typed = 0.0
 		t = 0.0
@@ -93,7 +96,7 @@ func _draw() -> void:
 	var box := Rect2(120, 300, W - 240, 220)
 	draw_style_box(UiStyle.flat(Color(0.05, 0.08, 0.2, 0.9), Color(0.45, 0.75, 1.0), 3), box)
 	var font := ThemeDB.fallback_font
-	var line: String = PAGES[page]
+	var line: String = pages[page]
 	draw_multiline_string(font, box.position + Vector2(30, 60), line.substr(0, int(typed)), HORIZONTAL_ALIGNMENT_LEFT, box.size.x - 60.0, 30, -1, Color.WHITE)
 	var hint := "E  ▼" if typed >= line.length() else ""
 	draw_string(font, box.position + Vector2(box.size.x - 80, box.size.y - 18), hint, HORIZONTAL_ALIGNMENT_LEFT, -1, 20, Color(1, 1, 1, 0.6))

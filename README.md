@@ -45,6 +45,11 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),
   ondersteuning voor een controller, en een eindscherm met aftiteling.
+- **Na het einde:** een verzegelde trap achter in de Kristaltempel breekt open zodra de Blauwe Kaart hersteld is. Daaronder ligt
+  **De Diepte**: de Kristalgangen (met een sleutel, een poort en een kristalwachter) en Het Hart van de Kaart, waar de geheime
+  baas **De Vergeten Wachter** slaapt. Wie hem verslaat krijgt het **Sterrenzwaard**, een hartcontainer en 500 munten.
+- **Nieuw spel+:** na het einde staat er op het titelscherm een knop *Nieuw spel+*. Je begint opnieuw met je beste zwaard,
+  je hartcontainers, je laarzen en 100 munten. Vijanden hebben dan de helft meer levens per voltooide ronde en laten meer munten vallen.
 
 ## Tips voor spelers
 
@@ -52,6 +57,8 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - Slijmen laten slijmgel vallen. Greta de smid maakt er betere zwaarden van.
 - Golems laten kristalscherven vallen, nodig voor het kristalzwaard.
 - Praat met iedereen: veel mensen hebben een opdracht of een tip.
+- De Vergeten Wachter kondigt elke aanval aan met een rode baan of gloed. Rol door zijn scherven heen, en laat hem tegen een muur
+  of pilaar knallen: dan is hij duizelig en kun je hem raken.
 
 ## Mappen
 
@@ -102,6 +109,7 @@ De plaatjes in `assets/` zijn zelf gemaakt met `python3 tools/make_art.py` en de
 | `npc_*.png` | 2 vakjes: rustig en een beetje bewegen |
 | `items.png` | iconen, nummer = `icon` in `items.gd` |
 | `chest`, `sign`, `gate`, `altar`, `torch`, `coin`, `heart`, `ui_heart`, `projectiles` | zie `tools/art_items.py` |
+| `guardian.png`, `golem_void.png`, `depths_*.png`, `items_diepte.png` | De Diepte: de Wachter (48x48, 8 vakjes), de paarse golem, pilaar, zegel, lamp, poort, scherf en iconen. Zie `tools/art_x_diepte.py` |
 | `audio/*.wav` | geluidseffecten; `audio/music_<gebied>.wav` zijn lussen van 25 tot 45 seconden |
 
 ## Testen
@@ -112,15 +120,16 @@ Zonder scherm, handig na elke wijziging:
 sh tools/run_tests.sh /pad/naar/godot
 ```
 
-Dat draait twee tests. `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
+Dat draait alle speltests in `tests/`. `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
 voorwerp, elke opdracht) en speelt daarna de systemen na: lopen, gebieden wisselen, vechten, de baas, praten, kopen,
 smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd` speelt het hele spel uit met de echte
-kaarten: van Bram tot en met het einde. Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het
-met een foutmelding.
+kaarten: van Bram tot en met het einde. `tests/diepte_test.gd` controleert de Diepte, De Vergeten Wachter en Nieuw spel+.
+Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het met een foutmelding.
 
 Meer gereedschap:
 
 - `tests/boss_sim.gd`: een bot speelt het baasgevecht steeds opnieuw met verschillende zwaarden. Handig om de balans te meten.
+- `tests/guardian_sim.gd`: een bot vecht steeds opnieuw tegen De Vergeten Wachter. Handig om te zien of de baas eerlijk blijft.
 - `python3 tools/check_audio.py`: controleert geluiden en muzieklussen op clipping, tikjes en de juiste noten.
 - `python3 tools/gen_maps.py`: controleert tijdens het maken of alles op de kaarten bereikbaar is.
 

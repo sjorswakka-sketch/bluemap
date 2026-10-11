@@ -11,13 +11,15 @@ const NAMES: Array[String] = [
 	"ruin_floor", "ruin_wall", "ruin_pillar", "ruin_cracked",
 	"temple_floor", "temple_wall", "temple_rune", "carpet",
 	"wood_floor", "wood_wall", "counter", "shelf", "bed", "mat",
+	# De Diepte (spoor diepte): paars en diepblauw, anders dan de lichtblauwe tempel.
+	"void_floor", "void_wall", "void_crystal", "rune_pad", "void_stairs",
 ]
 
 ## Tegels waar je niet doorheen kunt lopen.
 const SOLID: Array[String] = [
 	"tree", "water", "stone", "fence", "roof", "house_wall", "house_window", "rock", "bush", "dead_tree",
 	"well", "crate", "cave_wall", "cave_crystal", "stalagmite", "ruin_wall", "ruin_pillar", "temple_wall",
-	"wood_wall", "counter", "shelf", "bed",
+	"wood_wall", "counter", "shelf", "bed", "void_wall", "void_crystal",
 ]
 
 ## Teken in de kaart -> tegel. Het gras (".") krijgt automatisch wat afwisseling.
@@ -30,6 +32,8 @@ const CHARS := {
 	"r": "ruin_floor", "M": "ruin_wall", "I": "ruin_pillar", "k": "ruin_cracked",
 	"_": "temple_floor", "Z": "temple_wall", "u": "temple_rune", "%": "carpet",
 	"w": "wood_floor", "N": "wood_wall", "C": "counter", "S": "shelf", "B": "bed", "m": "mat",
+	# De Diepte
+	"$": "void_floor", "&": "void_wall", "@": "void_crystal", "*": "rune_pad", ">": "void_stairs",
 }
 
 
@@ -74,6 +78,8 @@ static func map_color(tile_name: String) -> Color:
 		color = Color(0.55, 0.57, 0.62)
 	elif tile_name.begins_with("temple") or tile_name == "carpet":
 		color = Color(0.5, 0.7, 0.95)
+	elif tile_name.begins_with("void") or tile_name == "rune_pad":
+		color = Color(0.42, 0.3, 0.72)
 	elif tile_name.begins_with("wood") or tile_name in ["counter", "shelf", "bed"]:
 		color = Color(0.62, 0.45, 0.28)
 	elif tile_name == "roof":

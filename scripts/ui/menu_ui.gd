@@ -206,6 +206,9 @@ func _draw_items(font: Font) -> void:
 		"Verslagen:  %d" % GameState.kills,
 		"Speeltijd:  %s" % format_time(GameState.play_time),
 	]
+	if GameState.ng_plus > 0:
+		UiStyle.draw_star(content, Vector2(36, SIZE.y - 42), 11.0, Color(1.0, 0.85, 0.3))
+		_text(font, Vector2(56, SIZE.y - 56), "Nieuw spel+  ·  ronde %d" % GameState.ng_plus, 20, Color(1.0, 0.9, 0.5))
 	content.draw_line(Vector2(x, 330), Vector2(x + 340, 330), Color(0.3, 0.45, 0.7), 2.0)
 	var y := 342.0
 	for line: String in lines:

@@ -132,10 +132,11 @@ func _draw_stats() -> void:
 		[Items.ITEMS["coin"]["icon"], str(GameState.coins), Color(1, 0.9, 0.4)],
 		[Items.ITEMS["crystal_bos"]["icon"], "%d/3" % (3 if GameState.flag("gate_temple") else GameState.crystal_count()), Color(0.6, 0.85, 1.0)],
 		[Items.ITEMS["potion"]["icon"], "%d [H]" % GameState.count("potion"), Color(1, 0.6, 0.7)],
-		[Items.ITEMS[Items.WEAPONS[GameState.weapon]["item"]]["icon"], "", Color.WHITE],
+		[Items.ITEMS[Items.WEAPONS[GameState.weapon]["item"]]["icon"], "", Color.WHITE, Items.sheet_of(Items.WEAPONS[GameState.weapon]["item"])],
 	]
 	for entry: Array in entries:
-		stats.draw_texture_rect_region(items_tex, Rect2(Vector2(x, 2), Vector2(32, 32)), Rect2(Vector2(entry[0] * 16, 0), Vector2(16, 16)))
+		var sheet: Texture2D = Art.tex(entry[3]) if entry.size() > 3 else items_tex # een zwaard kan een eigen plaatje hebben
+		stats.draw_texture_rect_region(sheet, Rect2(Vector2(x, 2), Vector2(32, 32)), Rect2(Vector2(entry[0] * 16, 0), Vector2(16, 16)))
 		x += 36.0
 		if entry[1] != "":
 			stats.draw_string_outline(font, Vector2(x, 26), entry[1], HORIZONTAL_ALIGNMENT_LEFT, -1, 22, 5, Color(0, 0, 0, 0.9))
@@ -185,7 +186,9 @@ func _update_boss() -> void:
 	boss = null
 	var player := get_tree().get_first_node_in_group("player")
 	for candidate: Node2D in get_tree().get_nodes_in_group("boss"):
-		if candidate.active and not candidate.dead and player and candidate.global_position.distance_to(player.global_position) < 360.0:
+		# Een baas kan met `bar_range` zeggen dat zijn balk vanaf verder weg te zien is (een grote arena).
+		var show_range: float = float(candidate.get("bar_range")) if candidate.get("bar_range") != null else 360.0
+		if candidate.active and not candidate.dead and player and candidate.global_position.distance_to(player.global_position) < show_range:
 			boss = candidate
 			break
 	boss_bar.visible = boss != null

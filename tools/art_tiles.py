@@ -442,6 +442,94 @@ PAINTERS = {
 }
 
 
+# --- De Diepte (spoor diepte): paars en diepblauw, met gloeiende kristallen -----------------------------------
+
+VOID_BASE, VOID_DARK, VOID_LIGHT = c("#2b2754"), c("#211e47"), c("#3a3470")
+VOID_STAR = c("#9a8cf0")
+CRYSTAL_MAIN, CRYSTAL_DARK, CRYSTAL_LIGHT, CRYSTAL_EDGE = c("#b46bff"), c("#7f3fd6"), c("#ecd4ff"), c("#2a0f5e")
+
+
+def void_floor_tile():
+    img = blank()
+    fill_noise(img, VOID_BASE, VOID_DARK, VOID_LIGHT, 41, 12)
+    hline(img, 0, 15, 0, c("#3f3880"))
+    vline(img, 0, 0, 15, c("#3f3880"))
+    hline(img, 1, 15, 15, c("#1a1738"))
+    vline(img, 15, 1, 15, c("#1a1738"))
+    for x, y in [(4, 5), (5, 6), (11, 10), (12, 11)]:
+        put(img, x, y, c("#342e6a"))
+    for x, y in [(10, 4), (3, 12)]:  # een paar sterrenstofjes
+        put(img, x, y, VOID_STAR)
+    return img
+
+
+def void_wall_tile():
+    img = blank()
+    fill(img, c("#1c1840"))
+    for row, y in enumerate((0, 8)):
+        hline(img, 0, 15, y + 7, c("#0d0a22"))
+        hline(img, 0, 15, y, c("#40388a"))
+        for x in ((4, 12) if row % 2 else (8, 15)):
+            vline(img, x, y, y + 6, c("#0d0a22"))
+    for x, y in [(2, 3), (10, 11), (13, 4), (5, 13)]:
+        put(img, x, y, c("#6a5cc8"))
+    for x, y in [(3, 5), (11, 12)]:
+        put(img, x, y, c("#2c2562"))
+    hline(img, 0, 15, 15, c("#090719"))
+    return img
+
+
+def void_crystal_tile():
+    img = void_floor_tile()
+    ellipse(img, (2, 11, 13, 15), c("#1a1738"))  # schaduw op de grond
+    for pts in ([(2, 14), (4, 6), (7, 14)], [(6, 14), (9, 1), (13, 14)], [(11, 14), (13, 7), (15, 13)]):
+        polygon(img, pts, CRYSTAL_MAIN, CRYSTAL_EDGE)
+    polygon(img, [(9, 1), (13, 14), (9, 14)], CRYSTAL_DARK)
+    polygon(img, [(4, 6), (7, 14), (4, 14)], CRYSTAL_DARK)
+    for x, y in [(9, 4), (9, 5), (8, 6), (4, 8), (13, 9)]:
+        put(img, x, y, CRYSTAL_LIGHT)
+    put(img, 8, 2, c("#ffffff"))
+    for x, y in [(1, 8), (14, 4), (0, 12)]:  # glinsteringen in de lucht
+        put(img, x, y, c("#a8e8ff"))
+    return img
+
+
+def rune_pad_tile():
+    img = void_floor_tile()
+    ellipse(img, (2, 2, 13, 13), None, c("#6a58d8"))
+    ellipse(img, (3, 3, 12, 12), None, c("#2e2868"))
+    # een ster in de cirkel
+    star = [(8, 3), (9, 7), (13, 8), (9, 9), (8, 13), (7, 9), (3, 8), (7, 7)]
+    polygon(img, star, c("#8c7cf0"))
+    polygon(img, [(8, 5), (9, 7), (11, 8), (9, 9), (8, 11), (7, 9), (5, 8), (7, 7)], c("#cfc4ff"))
+    put(img, 7, 7, c("#ffffff"))
+    put(img, 8, 8, c("#ffffff"))
+    for p in [(8, 1), (8, 14), (1, 8), (14, 8)]:
+        put(img, p[0], p[1], c("#6a58d8"))
+    return img
+
+
+def void_stairs_tile():
+    """Een trap die omlaag gaat: boven donker (diep), onder licht. Loopt van rand tot rand, zodat twee tegels naast elkaar één brede trap zijn."""
+    img = blank()
+    fill(img, c("#0a0820"))
+    shades = ["#0e0b26", "#15113a", "#1d1850", "#292266", "#382f84", "#4a3f9e"]
+    for i, y in enumerate(range(1, 16, 3)):
+        tread, riser = c(shades[i]), c(shades[max(i - 1, 0)])
+        rect(img, 0, y, 15, y + 1, tread)
+        hline(img, 0, 15, y, c(shades[min(i + 1, 5)]))
+        hline(img, 0, 15, y + 2, c("#07051a"))
+    for x, y in [(3, 1), (12, 1), (7, 4)]:  # paars schijnsel uit de diepte
+        put(img, x, y, c("#7a50d8"))
+    return img
+
+
+PAINTERS.update({
+    "void_floor": void_floor_tile, "void_wall": void_wall_tile, "void_crystal": void_crystal_tile,
+    "rune_pad": rune_pad_tile, "void_stairs": void_stairs_tile,
+})
+
+
 def tile_names(root):
     """Leest de volgorde van de tegels uit scripts/data/tiles.gd, zodat spel en plaatje gelijk blijven."""
     text = open(os.path.join(root, "scripts", "data", "tiles.gd"), encoding="utf-8").read()

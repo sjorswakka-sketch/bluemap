@@ -15,6 +15,7 @@ const SPRITE_SCALE := 6.0
 var t := 0.0
 var stars: Array[Dictionary] = []
 var start_button: Button
+var ng_button: Button # Nieuw spel+: alleen als je het spel al hebt uitgespeeld
 var continue_button: Button
 var sound_button: Button
 var quit_button: Button
@@ -47,12 +48,15 @@ func _build_ui() -> void:
 	subtitle.size = Vector2(1152, 40)
 	add_child(subtitle)
 
+	var ng_available := GameState.ng_plus_available()
 	var menu := VBoxContainer.new()
-	menu.add_theme_constant_override("separation", 10)
-	menu.position = Vector2(576 - 170, 310)
+	menu.add_theme_constant_override("separation", 8 if ng_available else 10)
+	menu.position = Vector2(576 - 170, 262 if ng_available else 310) # met een knop extra schuift het menu iets omhoog
 	add_child(menu)
 	continue_button = _button(menu, "Doorgaan", continue_game)
 	start_button = _button(menu, "Nieuw spel", start_game)
+	ng_button = _button(menu, "Nieuw spel+", start_game_plus)
+	ng_button.visible = ng_available
 	sound_button = _button(menu, "", Sound.toggle_mute)
 	quit_button = _button(menu, "Afsluiten", quit_game)
 	continue_button.disabled = not GameState.has_save()
@@ -88,6 +92,14 @@ func _refresh_sound_label() -> void:
 func start_game() -> void:
 	Sound.play("select")
 	GameState.new_game()
+	get_tree().change_scene_to_file(INTRO_SCENE)
+
+
+## Een nieuw verhaal met je beste spullen, tegen sterkere vijanden (zie GameState.new_game_plus).
+func start_game_plus() -> void:
+	if not GameState.new_game_plus():
+		return
+	Sound.play("select")
 	get_tree().change_scene_to_file(INTRO_SCENE)
 
 

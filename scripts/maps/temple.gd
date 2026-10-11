@@ -7,8 +7,8 @@ const DATA := {
 	"music": "temple",
 	"dark": 0.62,
 	"rows": [
-		"ZZZZZZZZZZZZZZZZZZZZZZZZ",
-		"ZZZZZZZZZZZZZZZZZZZZZZZZ",
+		"ZZZZZZZZZZZ>>ZZZZZZZZZZZ",
+		"ZZZZZZZZZZZ>>ZZZZZZZZZZZ",
 		"ZZ____________________ZZ",
 		"ZZ_________%%_________ZZ",
 		"ZZ__ZZ_____%%______ZZ_ZZ",
@@ -30,7 +30,7 @@ const DATA := {
 		"ZZZZZZZZ___%%___ZZZZZZZZ",
 		"ZZZZZZZZZZZTTZZZZZZZZZZZ",
 	],
-	"spawns": {"start": [11, 19]},
+	"spawns": {"start": [11, 19], "from_depths": [11, 3]},
 	"objects": [
 		{"type": "portal", "pos": [11, 21], "to": "village", "spawn": "from_temple", "size": [2, 1]},
 		{"type": "savepoint", "pos": [9, 18]},
@@ -46,5 +46,10 @@ const DATA := {
 		{"type": "trigger", "pos": [4, 12], "size": [16, 2], "once": "boss_started", "do": [["talk", "king_intro"], ["boss_start"]]},
 		{"type": "gate", "pos": [10, 15], "id": "arena", "size": [4, 1], "block_if": [["flag", "boss_started"], ["no_flag", "boss_defeated"]], "locked_text": "De deur zit dicht. Er is geen weg terug!"},
 		{"type": "pickup", "pos": [15, 18], "item": "potion"},
+		# De Diepte (spoor diepte): een verzegelde trap achter in de tempel. Na het einde breekt het zegel.
+		{"type": "diepte_seal", "pos": [11, 0], "size": [2, 2], "if": [["no_flag", "diepte_opened"]]},
+		{"type": "portal", "pos": [11, 0], "to": "depths1", "spawn": "start", "size": [2, 2], "requires": [["flag", "game_completed"], ["flag", "diepte_opened"]], "locked_text": "Een zegel versperrt de trap."},
+		{"type": "torch", "pos": [10, 2], "glow": "blue"},
+		{"type": "torch", "pos": [13, 2], "glow": "blue"},
 	],
 }

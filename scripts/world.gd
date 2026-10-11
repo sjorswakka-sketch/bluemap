@@ -423,6 +423,7 @@ func _on_ending() -> void:
 	GameState.transitioning = true
 	GameState.set_flag("game_completed")
 	GameState.finish_quest("main")
+	GameState.record_completion() # Nieuw spel+ wordt beschikbaar
 	# De opslag begint na het einde weer in het dorp.
 	GameState.map_id = "village"
 	var spawns: Dictionary = Maps.get_map("village")["spawns"]
