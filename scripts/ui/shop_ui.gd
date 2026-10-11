@@ -133,13 +133,23 @@ func _buy(entry: Dictionary, index: int) -> void:
 		return
 	if GameState.room(entry["item"]) < amount:
 		Sound.play("error")
-		GameState.toast.emit(Items.info(entry["item"]).get("full_text", "Je tas is vol"))
+		GameState.toast.emit(_no_room_text(entry["item"]))
 		return
 	GameState.add_coins(-price)
 	GameState.give(entry["item"], amount, true)
+	for extra: Array in entry.get("with", []):
+		GameState.give(extra[0], int(extra[1]), true)
 	Sound.play("buy")
 	GameState.toast.emit("Gekocht: %s" % _label(entry))
 	_populate(index)
+
+
+## Waarom iets niet meer past: helemaal vol, of bijna vol (dan met hoeveel je er hebt, bijvoorbeeld "38 van de 40").
+func _no_room_text(item_id: String) -> String:
+	var info := Items.info(item_id)
+	if GameState.room(item_id) > 0 and info.has("almost_full_text"):
+		return "%s (%d van de %d)" % [info["almost_full_text"], GameState.count(item_id), int(info["max"])]
+	return info.get("full_text", "Je tas is vol")
 
 
 func _unhandled_input(event: InputEvent) -> void:

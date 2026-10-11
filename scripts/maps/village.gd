@@ -47,7 +47,7 @@ const DATA := {
 		{"type": "pickup", "pos": [8, 15], "item": "coin"},
 		{"type": "pickup", "pos": [30, 15], "item": "coin"},
 		{"type": "sign", "pos": [21, 8], "lines": ["Dageraadsdorp", "Tempel van de Blauwe Kaart. Bewaker: Oudste Bram."]},
-		{"type": "sign", "pos": [36, 12], "lines": ["Oostelijke weg: Fluisterbos.", "Pas op voor slijmen!"]},
+		{"type": "sign", "pos": [37, 12], "lines": ["Oostelijke weg: Fluisterbos.", "Pas op voor slijmen!"]},
 		{"type": "portal", "pos": [6, 11], "to": "smithy", "spawn": "door"},
 		{"type": "portal", "pos": [13, 11], "to": "shop", "spawn": "door"},
 		{"type": "portal", "pos": [30, 10], "to": "inn", "spawn": "door"},
@@ -56,9 +56,9 @@ const DATA := {
 		# Boog: Tessa's schietbaan (drie doelwitten) in de hoek onder de weg naar het bos.
 		{"type": "npc", "pos": [30, 16], "id": "tessa"},
 		{"type": "boog_baan", "pos": [31, 15], "size": [1, 3], "id": "schietbaan"},
-		{"type": "target", "pos": [35, 15], "range": "schietbaan"},
-		{"type": "target", "pos": [37, 16], "range": "schietbaan"},
-		{"type": "target", "pos": [34, 17], "range": "schietbaan"},
-		{"type": "sign", "pos": [29, 15], "lines": ["Schietbaan van Tessa.", "Raak de doelwitten met je boog. Praat met Tessa om te beginnen."]},
+		{"type": "boog_target", "pos": [35, 15], "range": "schietbaan"},
+		{"type": "boog_target", "pos": [37, 16], "range": "schietbaan"},
+		{"type": "boog_target", "pos": [34, 17], "range": "schietbaan"},
+		{"type": "sign", "pos": [29, 17], "lines": ["Schietbaan van Tessa.", "Raak de doelwitten met je boog. Praat met Tessa om te beginnen."]},
 	],
 }

@@ -2,7 +2,7 @@ extends Node2D
 ## Een doelwit. Raakt een pijl van de speler het, dan licht het op en gebeurt er iets: de vlag `sets` gaat aan
 ## (blijvend, ook na opslaan) en de acties in `do` worden uitgevoerd. Het zwaard doet er niets mee.
 ##
-##   {"type": "target", "pos": [27, 30], "sets": "boog_bos_a", "do": [["boog_progress", "boog_bos_a", "boog_bos_b"]]}
+##   {"type": "boog_target", "pos": [27, 30], "sets": "boog_bos_a", "do": [["boog_progress", "boog_bos_a", "boog_bos_b"]]}
 ##
 ## Een poortje opent ermee via `block_if`: [["no_flag", "boog_bos_a"]] voor een doelwit, of
 ## [["boog_missing", "boog_bos_a", "boog_bos_b"]] (de poort blijft dicht zolang er nog een ontbreekt) voor meer doelwitten.

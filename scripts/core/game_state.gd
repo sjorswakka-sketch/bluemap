@@ -21,7 +21,6 @@ signal world_action(action: Array)
 const BASE_HP := 5
 const SAVE_PATH := "user://savegame.json"
 const SAVE_VERSION := 1
-const NO_LIMIT := 1000000 # "ruimte" voor voorwerpen zonder maximum
 
 var hp: int = BASE_HP
 var coins: int = 0
@@ -157,6 +156,9 @@ func crystal_count() -> int:
 	return total
 
 
+const NO_LIMIT := 1000000 # "ruimte" voor voorwerpen zonder maximum
+
+
 ## Hoeveel van dit voorwerp er nog bij kunnen. Voorwerpen met een "max" (pijlen) passen maar tot dat maximum.
 func room(item_id: String) -> int:
 	var cap := int(Items.info(item_id).get("max", 0))
@@ -165,7 +167,8 @@ func room(item_id: String) -> int:
 
 func give(item_id: String, amount: int = 1, quiet: bool = false) -> void:
 	var space := room(item_id)
-	if space < amount:
+	var cut_off := space < amount # past niet alles? dan krijg je wat er nog in past
+	if cut_off:
 		amount = space
 		if amount <= 0:
 			if not quiet:
@@ -178,7 +181,8 @@ func give(item_id: String, amount: int = 1, quiet: bool = false) -> void:
 	items_changed.emit()
 	if not quiet:
 		var label: String = Items.info(item_id)["name"]
-		toast.emit("Gekregen: %s%s" % [label, "" if amount == 1 else " x%d" % amount])
+		var full := ". %s!" % Items.info(item_id).get("full_text", "Je tas is vol") if cut_off else ""
+		toast.emit("Gekregen: %s%s%s" % [label, "" if amount == 1 else " x%d" % amount, full])
 	_refresh_quests()
 
 

@@ -42,9 +42,10 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Verhaal:** een hoofdopdracht en drie zij-opdrachten, tien personages en gesprekken met keuzes.
 - **Gevechten:** zwaard in drie niveaus (hout, ijzer, kristal), ontwijkrol, slijmen in drie kleuren, vleermuizen,
   boogschutter-skeletten, twee kristalgolems (minibazen) en de Slijmkoning met drie fases.
-- **De boog:** koop hem bij Tobias en schiet met `F` (of `L`, of de rechter trekker). Pijlen kosten een pijl uit je pijlenkoker
-  (maximaal 40), doen 2 schade (bij bazen 1), vliegen over water en blijven steken in muren. Raak doelwitten om poortjes te openen
-  en probeer Tessa's schietbaan in het dorp.
+- **De boog:** koop hem bij Tobias (met 5 pijlen erbij) en schiet met `F` (of `L`, of de rechter trekker). Elk schot kost een pijl
+  uit je pijlenkoker (maximaal 40). Een pijl doet 2 schade (bij bazen 1), vliegt over water en blijft steken in muren. Op het
+  kristal van een golem ketst hij af, behalve als de golem uithaalt voor een klap. Raak doelwitten om poortjes te openen en
+  probeer Tessa's schietbaan in het dorp (daar leen je haar pijlen).
 - **Verzamelen en upgraden:** winkel, smid die zwaarden maakt, drankjes, laarzen, hartcontainers en verborgen kisten.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),

@@ -13,19 +13,21 @@ extends RefCounted
 const ITEMS := {
 	"bow": {
 		"name": "Boog", "sheet": "items_boog", "icon": 0, "type": "gear",
-		"desc": "Druk op F om een pijl te schieten. Een pijl doet 2 schade (bij bazen 1) en vliegt over water.",
+		"desc": "Druk op F om een pijl te schieten. Een pijl doet 2 schade (bij bazen 1) en vliegt over water. Je krijgt er 5 pijlen bij, meer pijlen koop je apart.",
 	},
 	"arrow": {
 		"name": "Pijl", "sheet": "items_boog", "icon": 1, "type": "ammo", "max": 40,
 		"full_text": "Je pijlenkoker is vol",
-		"desc": "Munitie voor je boog. Er passen er 40 in je pijlenkoker. Skeletten laten er soms een vallen.",
+		"almost_full_text": "Je pijlenkoker zit bijna vol", # de winkel zet er "(38 van de 40)" achter
+		"chest_full_text": "Er zitten pijlen in deze kist, maar ze passen niet meer in je pijlenkoker. Schiet er eerst een paar af!",
+		"desc": "Pijlen voor je boog. Er passen er 40 in je pijlenkoker. Skeletten laten er soms een paar vallen.",
 	},
 }
 
-const SOUNDS := ["boog_twang", "boog_target"]
+const SOUNDS := ["boog_twang", "boog_target", "boog_kets"]
 
 const OBJECTS := {
-	"target": "res://scripts/entities/target.gd",
+	"boog_target": "res://scripts/entities/target.gd",
 	"boog_baan": "res://scripts/entities/shooting_range.gd",
 }
 
@@ -99,16 +101,17 @@ const TALKS := {
 	"tessa_go": {
 		"speaker": "Tessa",
 		"lines": [
-			"Ga bij de schietlijn staan en kijk naar de doelwitten.",
-			"Zodra je \"Af!\" ziet, begint de tijd. Succes!",
+			"Ga op de planken van de schietlijn staan. Van daar zie je alle drie de doelwitten.",
+			"Ik tel af: 3, 2, 1... Bij \"Af!\" begint de tijd.",
+			"Tijdens een poging schiet je met mijn pijlen. Dat kost jou dus niks. Succes!",
 		],
 	},
 	"tessa_howto": {
 		"speaker": "Tessa",
 		"lines": [
-			"Druk op F om een pijl te schieten. Je schiet de kant op waar je naartoe kijkt.",
+			"Druk op F om een pijl te schieten. Je schiet de kant op waarin je kijkt.",
 			"Loop je schuin? Dan vliegt je pijl ook schuin. Muren stoppen een pijl, maar over water vliegt hij gewoon heen.",
-			"Elke pijl kost een pijl uit je pijlenkoker. Je kunt er 40 dragen.",
+			"Elk schot kost een pijl uit je pijlenkoker. Je kunt er 40 dragen. Hier op mijn baan leen je mijn pijlen.",
 		],
 		"next": "tessa_menu",
 	},

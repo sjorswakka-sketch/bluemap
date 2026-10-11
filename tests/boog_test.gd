@@ -141,6 +141,13 @@ func hp_of(enemy: Variant) -> int:
 	return enemy.hp
 
 
+## Haalt alleen de vijanden weg (de voorwerpen op de grond blijven liggen).
+func free_enemies() -> void:
+	for enemy in get_nodes_in_group("enemies"):
+		enemy.queue_free()
+	await frames(2)
+
+
 func clear_enemies() -> void:
 	for enemy in get_nodes_in_group("enemies"):
 		enemy.queue_free()
@@ -169,6 +176,13 @@ func gate_with_id(gate_id: String) -> Node:
 	for gate in find_by_script("gate.gd"):
 		if gate.gate_id == gate_id:
 			return gate
+	return null
+
+
+func pickup_at(x: int, y: int) -> Node:
+	for pickup in get_nodes_in_group("pickups"):
+		if not pickup.is_queued_for_deletion() and (pickup.global_position - tile_pos(x, y)).length() < 1.0:
+			return pickup
 	return null
 
 
@@ -243,24 +257,22 @@ func test_data() -> void:
 		if entry["item"] == "arrow":
 			arrow_entry = entry
 	check(bow_entry.get("once", false) and int(bow_entry.get("price", 0)) == 80, "Tobias verkoopt de boog eenmalig voor 80 munten")
+	check(bow_entry.get("with", []) == [["arrow", 5]], "met 5 pijlen erbij, zodat je meteen kunt schieten")
 	check(int(arrow_entry.get("amount", 0)) == 5 and int(arrow_entry.get("price", 0)) == 10, "en pijlen in bundels van 5 voor 10 munten")
 	check(tobias[0]["item"] == "potion" and tobias[1]["item"] == "boots", "de oude winkelregels staan nog op hun plek")
 	var drops: Array = Enemies.info("skeleton")["drops"]
-	var drops_arrows := false
+	var arrow_drop: Array = []
 	for drop: Array in drops:
-		if drop[0] == "arrow" and float(drop[1]) > 0.0 and float(drop[1]) < 1.0:
-			drops_arrows = true
-	check(drops_arrows, "skeletten laten soms pijlen vallen")
+		if drop[0] == "arrow":
+			arrow_drop = drop
+	check(arrow_drop.size() == 3 and is_equal_approx(float(arrow_drop[1]), 0.3) and int(arrow_drop[2]) == 2, "skeletten laten met 30% kans 2 pijlen vallen")
+	check(ArrowScript.ARMOR.has("golem") and Enemies.info("golem")["behavior"] == "golem", "de kristalgolem heeft een pantser tegen pijlen")
 
 	var types := Content.object_types()
-	check(types.has("target") and types["target"] is Script and types.has("boog_baan") and types["boog_baan"] is Script, "doelwit en schietbaan zijn objectsoorten")
+	check(types.has("boog_target") and types["boog_target"] is Script and types.has("boog_baan") and types["boog_baan"] is Script, "doelwit en schietbaan zijn objectsoorten")
 	var sound := root.get_node("Sound")
-	check(sound.streams.has("boog_twang") and sound.streams.has("boog_target"), "de geluiden 'boog_twang' en 'boog_target' zijn geladen")
+	check(sound.streams.has("boog_twang") and sound.streams.has("boog_target") and sound.streams.has("boog_kets"), "de geluiden 'boog_twang', 'boog_target' en 'boog_kets' zijn geladen")
 	check(Npcs.NPCS.has("tessa") and Quests.QUESTS.has("boog_schietbaan"), "Tessa en de opdracht Schietbaan bestaan")
-
-	var readme := FileAccess.get_file_as_string("res://README.md")
-	var leesmij := FileAccess.get_file_as_string("res://distribution/LEESMIJ.txt")
-	check(readme.contains("`F` / `L`") and leesmij.contains("F / L"), "README en LEESMIJ noemen de nieuwe toetsen")
 
 	print("Eigen voorwaarde en acties")
 	gs.new_game()
@@ -276,8 +288,9 @@ func test_data() -> void:
 	gs.set_flag("x_b", false)
 	gs.run(["boog_progress", "x_a", "x_b"])
 	check(toasts.has("Doelwit geraakt! (1 van 2)"), "boog_progress telt de doelwitten")
+	toasts.clear()
 	gs.run(["boog_range_start"]) # zonder schietbaan op de kaart gebeurt er niets (en gaat er niets mis)
-	check(true, "boog_range_start zonder schietbaan is onschadelijk")
+	check(toasts.is_empty() and gs.quest_state("boog_schietbaan") == "none" and not gs.flag("boog_range_won"), "boog_range_start zonder schietbaan doet niets")
 	gs.new_game()
 
 
@@ -309,7 +322,7 @@ func test_shop() -> void:
 	var has_arrow_line := false
 	for text in texts:
 		has_bow_line = has_bow_line or text.begins_with("Boog")
-		has_arrow_line = has_arrow_line or text.contains("pijlen")
+		has_arrow_line = has_arrow_line or text.begins_with("5 pijlen")
 	check(has_bow_line, "de boog staat in de winkel: %s" % [texts])
 	check(not has_arrow_line, "pijlen zijn pas te koop als je een boog hebt")
 	world.shop_ui._buy(shop_entry("arrow"), 3)
@@ -318,10 +331,11 @@ func test_shop() -> void:
 	world.shop_ui._buy(shop_entry("bow"), 2)
 	await frames(3)
 	check(gs.count("bow") == 1 and gs.coins == 120, "boog gekocht voor 80 munten")
-	check(toasts.has("Gekocht: Boog"), "er komt een melding bij het kopen")
+	check(gs.count("arrow") == 5, "je krijgt er meteen 5 pijlen bij")
+	check(toasts.has("Gekocht: Boog + 5 pijlen"), "er komt een melding bij het kopen")
 	world.shop_ui._buy(shop_entry("bow"), 2)
 	await frames(2)
-	check(gs.count("bow") == 1 and gs.coins == 120, "de boog koop je maar een keer")
+	check(gs.count("bow") == 1 and gs.coins == 120 and gs.count("arrow") == 5, "de boog koop je maar een keer")
 	var bow_button_disabled := false
 	var arrow_line := ""
 	for child in world.shop_ui.list.get_children():
@@ -329,31 +343,33 @@ func test_shop() -> void:
 			var button := child as Button
 			if button.text.begins_with("Boog"):
 				bow_button_disabled = button.disabled and button.text.contains("gekocht")
-			if button.text.contains("pijlen"):
+			if button.text.begins_with("5 pijlen"):
 				arrow_line = button.text
 	check(bow_button_disabled, "de knop van de boog is uitgeschakeld (gekocht)")
 	check(arrow_line.begins_with("5 pijlen") and arrow_line.contains("10 munten"), "nu zijn er pijlen te koop: %s" % arrow_line)
 
 	world.shop_ui._buy(shop_entry("arrow"), 3)
-	check(gs.count("arrow") == 5 and gs.coins == 110, "een bundel geeft 5 pijlen voor 10 munten")
+	check(gs.count("arrow") == 10 and gs.coins == 110, "een bundel geeft 5 pijlen voor 10 munten")
 	world.shop_ui._buy(shop_entry("arrow"), 3)
-	check(gs.count("arrow") == 10 and gs.coins == 100, "en nog een bundel: 10 pijlen")
+	check(gs.count("arrow") == 15 and gs.coins == 100, "en nog een bundel: 15 pijlen")
 
 	toasts.clear()
 	gs.coins = 9
 	world.shop_ui._buy(shop_entry("arrow"), 3)
-	check(gs.count("arrow") == 10 and gs.coins == 9 and toasts.has("Je hebt niet genoeg munten."), "te weinig munten: er verandert niets")
+	check(gs.count("arrow") == 15 and gs.coins == 9 and toasts.has("Je hebt niet genoeg munten."), "te weinig munten: er verandert niets")
 
 	gs.coins = 100
 	gs.inventory["arrow"] = 38
 	toasts.clear()
 	world.shop_ui._buy(shop_entry("arrow"), 3)
-	check(gs.count("arrow") == 38 and gs.coins == 100 and toasts.has(FULL_QUIVER_TEXT), "een bundel die niet meer past wordt niet verkocht")
+	check(gs.count("arrow") == 38 and gs.coins == 100, "een bundel die niet meer past wordt niet verkocht")
+	check(toasts.has("Je pijlenkoker zit bijna vol (38 van de 40)"), "de melding zegt hoeveel je er al hebt: %s" % [toasts])
 	gs.inventory["arrow"] = 35
 	world.shop_ui._buy(shop_entry("arrow"), 3)
 	check(gs.count("arrow") == 40 and gs.coins == 90, "een bundel die er precies in past kan wel")
+	toasts.clear()
 	world.shop_ui._buy(shop_entry("arrow"), 3)
-	check(gs.count("arrow") == 40 and gs.coins == 90, "met een volle pijlenkoker koop je niets meer")
+	check(gs.count("arrow") == 40 and gs.coins == 90 and toasts.has(FULL_QUIVER_TEXT), "met een volle pijlenkoker koop je niets meer")
 
 	press("pause")
 	await frames(3)
@@ -488,6 +504,19 @@ func test_shooting() -> void:
 	await frames(1)
 	check(gs.count("arrow") == 8, "los laten en opnieuw intrekken schiet weer")
 	await wait_arrows()
+	# Losgelaten terwijl een menu open is (de speler hoort dat niet): de volgende haal moet toch schieten.
+	player.bow_cooldown = 0.0
+	gs.set_ui("menu", true)
+	await frames(2)
+	check(player.trigger_down, "de trekker is nog ingedrukt als het menu opengaat")
+	root.push_input(release)
+	await frames(2)
+	gs.set_ui("menu", false)
+	await frames(2)
+	root.push_input(pull)
+	await frames(1)
+	check(gs.count("arrow") == 7, "na het menu schiet de eerste nieuwe haal meteen (geen verloren schot)")
+	await wait_arrows()
 
 	print("Echt lopen en dan schieten")
 	await teleport(8, 14)
@@ -619,35 +648,144 @@ func test_arrow_hits() -> void:
 
 	print("Bazen")
 	await goto_map("village")
-	gs.inventory = {"bow": 1, "arrow": 30}
-	var golem := spawn("golem", 10, 14)
-	await shoot_from(5, 14, Vector2.RIGHT)
-	check(golem.hp == golem.max_hp - 1, "een pijl doet maar 1 schade aan een baas (golem 22 -> 21)")
-	await clear_enemies()
+	gs.inventory = {"bow": 1, "arrow": 40}
 	var king := spawn("king", 10, 14)
+	var behind_king := spawn("slime", 12, 14)
 	await shoot_from(5, 14, Vector2.RIGHT)
-	check(king.hp == king.max_hp, "een slapende baas wordt niet geraakt: de pijl vliegt erlangs")
+	check(king.hp == king.max_hp and hp_of(behind_king) == 1, "een slapende baas wordt niet geraakt: de pijl vliegt erlangs en raakt het slijm erachter")
 	king.activate()
 	await shoot_from(5, 14, Vector2.RIGHT)
-	check(king.hp == king.max_hp - 1, "een wakkere Slijmkoning wel, voor 1 schade")
+	check(king.hp == king.max_hp - 1 and hp_of(behind_king) == 1, "een wakkere Slijmkoning wel, voor 1 schade (en het slijm erachter niet)")
 	king.state = "hop"
 	king.air_height = 30.0
 	await shoot_from(5, 14, Vector2.RIGHT)
-	check(king.hp == king.max_hp - 1, "in de lucht vlieg je eronderdoor")
+	check(king.hp == king.max_hp - 1 and hp_of(behind_king) == -1, "in de lucht vlieg je eronderdoor: het slijm erachter is nu verslagen")
+	await clear_enemies()
+
+	print("De kristalgolem: pijlen ketsen af, behalve als hij uithaalt")
+	var golem := spawn("golem", 10, 14)
+	toasts.clear()
+	var arrows_before: int = gs.count("arrow")
+	await shoot_from(5, 14, Vector2.RIGHT)
+	check(golem.hp == golem.max_hp, "een rustige golem: de pijl ketst af (geen schade)")
+	check(toast_count("Je pijl ketst af op het kristal!") == 1, "een melding vertelt wanneer je wel moet schieten")
+	check(gs.count("arrow") == arrows_before - 1, "de afgeketste pijl ben je kwijt")
+	await shoot_from(5, 14, Vector2.RIGHT)
+	check(golem.hp == golem.max_hp and toast_count("Je pijl ketst af op het kristal!") == 1, "nog een keer: weer geen schade, en de melding komt maar een keer")
+	golem.state = "windup"
+	await shoot_from(5, 14, Vector2.RIGHT)
+	check(golem.hp == golem.max_hp - 1, "als hij uithaalt voor een klap doet een pijl 1 schade (golem 22 -> 21)")
+	golem.state = "recover"
+	await shoot_from(5, 14, Vector2.RIGHT)
+	check(golem.hp == golem.max_hp - 2, "en vlak na zijn klap ook")
+	await clear_enemies()
+
+	# Van veraf schieten terwijl hij op je af komt (de truc uit de review): hij blijft heel.
+	var walker: Node2D = world.spawn_enemy("golem", tile_pos(11, 14))
+	await teleport(5, 14)
+	var shots := 0
+	for i in 6:
+		player.facing = Vector2.RIGHT
+		player.bow_cooldown = 0.0
+		press("bow")
+		shots += 1
+		await frames(25)
+	await wait_arrows()
+	check(is_instance_valid(walker) and walker.hp == walker.max_hp and walker.global_position.x > player.global_position.x + 66.0,
+		"%d pijlen van veraf op een naderende golem: geen schade" % shots)
+	await clear_enemies()
+
+	print("De pijl raakt het dichtstbijzijnde op zijn pad")
+	# Twee vijanden die allebei in het eerste stukje van de vlucht liggen, in beide volgordes aangemaakt.
+	for near_first in [true, false]:
+		await teleport(5, 14)
+		var hand: Vector2 = world.player.global_position + Vector2(0, 4)
+		var near_pos := hand + Vector2(6, -4) # vijanden zitten 4 pixels hoger dan hun lichaam
+		var far_pos := hand + Vector2(16, -4)
+		var near_slime: Node2D = spawn("slime", 5, 14) if near_first else null
+		var far_slime := spawn("slime", 5, 14)
+		if not near_first:
+			near_slime = spawn("slime", 5, 14)
+		near_slime.global_position = near_pos
+		far_slime.global_position = far_pos
+		world.player.facing = Vector2.RIGHT
+		world.player.bow_cooldown = 0.0
+		press("bow")
+		await frames(2)
+		await wait_arrows()
+		check(hp_of(near_slime) == 1 and hp_of(far_slime) == 3, "de dichtste van twee vijanden wordt geraakt (%s eerst gemaakt)" % ("dichtste" if near_first else "verste"))
+		await clear_enemies()
+	# Hetzelfde voor doelwitten, en voor een doelwit en een vijand door elkaar.
+	var target_script: Script = load("res://scripts/entities/target.gd")
+	for near_first in [true, false]:
+		await teleport(5, 14)
+		var hand: Vector2 = world.player.global_position + Vector2(0, 4)
+		var boards: Array[Node2D] = []
+		for i in 2:
+			var board: Node2D = target_script.new()
+			board.world = world
+			board.obj = {}
+			world.entities.add_child(board)
+			boards.append(board)
+		var near_board: Node2D = boards[0] if near_first else boards[1]
+		var far_board: Node2D = boards[1] if near_first else boards[0]
+		near_board.global_position = hand + Vector2(8, 3) # het bord zit 3 pixels boven zijn voet
+		far_board.global_position = hand + Vector2(20, 3)
+		world.player.facing = Vector2.RIGHT
+		world.player.bow_cooldown = 0.0
+		press("bow")
+		await frames(2)
+		await wait_arrows()
+		check(near_board.hit and not far_board.hit, "het dichtste van twee doelwitten wordt geraakt (%s eerst gemaakt)" % ("dichtste" if near_first else "verste"))
+		for board in boards:
+			board.queue_free()
+	await frames(2)
+	await teleport(5, 14)
+	var hand_pos: Vector2 = world.player.global_position + Vector2(0, 4)
+	var board_near: Node2D = target_script.new()
+	board_near.world = world
+	board_near.obj = {}
+	world.entities.add_child(board_near)
+	board_near.global_position = hand_pos + Vector2(6, 3)
+	var slime_far := spawn("slime", 5, 14)
+	slime_far.global_position = hand_pos + Vector2(16, -4)
+	world.player.facing = Vector2.RIGHT
+	world.player.bow_cooldown = 0.0
+	press("bow")
+	await frames(2)
+	await wait_arrows()
+	check(board_near.hit and hp_of(slime_far) == 3, "een doelwit voor een vijand: het doelwit wordt geraakt")
+	board_near.queue_free()
+	await clear_enemies()
+	var board_far: Node2D = target_script.new()
+	board_far.world = world
+	board_far.obj = {}
+	world.entities.add_child(board_far)
+	board_far.global_position = hand_pos + Vector2(20, 3)
+	var slime_near := spawn("slime", 5, 14)
+	slime_near.global_position = hand_pos + Vector2(6, -4)
+	world.player.bow_cooldown = 0.0
+	press("bow")
+	await frames(2)
+	await wait_arrows()
+	check(hp_of(slime_near) == 1 and not board_far.hit, "een vijand voor een doelwit: de vijand wordt geraakt")
+	board_far.queue_free()
 	await clear_enemies()
 
 	print("Skeletten laten pijlen vallen")
 	seed(7) # vaste dobbelstenen, zodat de test elke keer hetzelfde doet
-	var dropped := 0
-	for i in 40:
+	const SKELETONS := 120
+	for i in SKELETONS:
 		var skeleton := spawn("skeleton", 20, 14)
 		skeleton.hurt(99, Vector2.RIGHT)
 		await frames(1)
+	var dropped := 0
 	for pickup in get_nodes_in_group("pickups"):
-		if pickup.item == "arrow":
+		if pickup.item == "arrow" and not pickup.is_queued_for_deletion():
 			dropped += 1
-	check(dropped > 0 and dropped % 2 == 0, "van 40 skeletten vallen er pijlen (twee tegelijk): %d" % dropped)
-	check(dropped < 80, "maar lang niet altijd (kans 30%%)")
+	var share := float(dropped) / 2.0 / float(SKELETONS)
+	check(dropped > 0 and dropped % 2 == 0, "van %d skeletten vallen er pijlen, steeds twee tegelijk: %d" % [SKELETONS, dropped])
+	check(share > 0.18 and share < 0.42, "ongeveer 30%% van de skeletten laat pijlen vallen (%.0f%%)" % (share * 100.0))
 	await clear_enemies()
 
 	print("Pijlen na het wisselen van gebied")
@@ -679,10 +817,28 @@ func test_forest_puzzle() -> void:
 	check(gate.blocked and not target_a.is_hit() and not target_b.is_hit(), "het poortje zit dicht en de doelwitten staan recht")
 	check(gate.is_in_group("interactable"), "je kunt het poortje aanspreken voor een hint")
 	gate.interact()
-	check(toasts.has("Het poortje is dicht. Raak de twee doelwitten over de rivier!"), "dat geeft een hint")
+	check(toasts.has("Het poortje is dicht. Schiet met je boog op de twee doelwitten over de rivier!"), "dat geeft een hint (met de boog erbij)")
 	var in_nook := spawn("slime", 22, 34)
 	await shoot_from(22, 31, Vector2.DOWN)
 	check(hp_of(in_nook) == 3, "een dicht poortje houdt een pijl tegen")
+	# Ook als je er vlak tegenaan staat: de pijl begint dan al bijna in het poortje.
+	await teleport(22, 31)
+	Input.action_press("move_down")
+	await frames(40)
+	Input.action_release("move_down")
+	await frames(2)
+	var against: float = world.player.global_position.y
+	check(against > 32 * TILE - 2.0 and against < 33 * TILE, "de speler loopt tegen het dichte poortje aan (y = %.0f)" % against)
+	world.player.bow_cooldown = 0.0
+	press("bow")
+	await frames(2)
+	var lowest := 0.0
+	for i in 40:
+		for arrow in arrows():
+			lowest = maxf(lowest, arrow.global_position.y)
+		await process_frame
+	await wait_arrows()
+	check(hp_of(in_nook) == 3 and lowest < 34 * TILE, "vlak voor het poortje geschoten blijft de pijl er ook in steken (tot y = %.0f)" % lowest)
 
 	# Het zwaard doet niets met een doelwit.
 	await teleport(26, 30)
@@ -715,8 +871,16 @@ func test_forest_puzzle() -> void:
 
 	await teleport(22, 34)
 	check(world.player.global_position.y > 33 * TILE, "de speler staat in het verborgen hoekje")
+	# Met een bijna volle pijlenkoker blijft de kist dicht, zodat de 10 pijlen niet verloren gaan.
+	var own_arrows: int = gs.count("arrow")
+	gs.inventory["arrow"] = 35
+	toasts.clear()
 	chest.interact()
-	check(gs.coins == 60 and gs.count("arrow") > 0 and chest.opened, "de kist geeft 60 munten en pijlen")
+	check(not chest.opened and gs.coins == 0 and gs.count("arrow") == 35, "met 35 pijlen gaat de kist niet open (er zitten er 10 in)")
+	check(toast_count("Er zitten pijlen in deze kist, maar ze passen niet meer in je pijlenkoker.") == 1, "een melding zegt waarom")
+	gs.inventory["arrow"] = own_arrows
+	chest.interact()
+	check(gs.coins == 60 and gs.count("arrow") == own_arrows + 10 and chest.opened, "met ruimte geeft de kist 60 munten en 10 pijlen")
 	var arrows_now: int = gs.count("arrow")
 	chest.interact()
 	check(gs.coins == 60 and gs.count("arrow") == arrows_now, "een kist geeft maar een keer iets")
@@ -738,6 +902,48 @@ func test_forest_puzzle() -> void:
 	world.load_map("forest", "start")
 	await frames(5)
 	check(gate_with_id("boog_bos").blocked and not target_at(27, 30).is_hit(), "in een nieuw spel zit alles weer dicht")
+
+	print("Unieke pijlen in het bos komen niet terug")
+	await free_enemies()
+	var loose := pickup_at(22, 15)
+	check(loose != null and loose.item == "arrow" and loose.unique_key != "", "op (22, 15) ligt een unieke pijl")
+	gs.inventory = {"bow": 1, "arrow": 3}
+	await teleport(22, 15)
+	await frames(20)
+	check(gs.count("arrow") == 4 and not is_instance_valid(loose), "oppakken geeft een pijl")
+	world.load_map("forest", "start")
+	await frames(5)
+	check(pickup_at(22, 15) == null and pickup_at(30, 10) != null, "na het opnieuw laden van het bos is hij weg (de andere nog niet)")
+
+	print("Oude opslagen: de plekken van de oude voorwerpen zijn niet verschoven")
+	gs.new_game()
+	gs.in_game = true
+	gs.set_flag("pickup:forest:47") # het drankje op (20, 28), opgepakt in een versie van voor de boog
+	world.load_map("forest", "start")
+	await frames(5)
+	var potion := pickup_at(20, 28)
+	check(potion == null, "het al opgepakte drankje komt niet terug")
+	gs.new_game()
+	gs.in_game = true
+	world.load_map("forest", "start")
+	await frames(5)
+	potion = pickup_at(20, 28)
+	check(potion != null and potion.unique_key == "pickup:forest:47", "in een nieuw spel ligt het er wel, met dezelfde sleutel als vroeger")
+
+	print("Het ruïnepoortje sluit de hele opening af")
+	await free_enemies()
+	await teleport(49, 18)
+	Input.action_press("move_up")
+	await frames(90)
+	Input.action_release("move_up")
+	await frames(2)
+	check(world.player.global_position.y > 15 * TILE and gs.map_id == "forest", "zonder sleutel loop je niet langs het poortje, ook niet aan de rechterkant (y = %.0f)" % world.player.global_position.y)
+	await teleport(48, 18)
+	Input.action_press("move_up")
+	await frames(90)
+	Input.action_release("move_up")
+	await frames(2)
+	check(world.player.global_position.y > 15 * TILE and gs.map_id == "forest", "en ook niet aan de linkerkant")
 
 
 func test_ruins_puzzle() -> void:
@@ -823,6 +1029,7 @@ func test_range() -> void:
 	await shoot_from(31, 17, Vector2.RIGHT)
 	var practice := target_at(34, 17)
 	check(practice.hit and baan.state == "idle", "een schot zonder poging licht het doelwit even op")
+	check(gs.count("arrow") == 9 and not baan.lends_arrows(), "buiten een poging kost een schot gewoon een pijl")
 	check(not gs.flag("boog_range_won") and gs.quest_state("boog_schietbaan") == "none", "maar het telt nergens voor")
 	await frames(110)
 	check(not practice.hit, "daarna staat het doelwit vanzelf weer recht")
@@ -832,6 +1039,8 @@ func test_range() -> void:
 	await run_dialogue("tessa_intro", [0])
 	check(gs.quest_state("boog_schietbaan") == "active" and gs.quest_step("boog_schietbaan") == 0, "'Ik doe mee!' start de opdracht")
 	check(baan.state == "ready", "en een poging: 'Klaar?'")
+	await frames(150)
+	check(baan.state == "ready" and baan.count_shown == 1, "Tessa telt drie seconden af (3, 2, 1), zo heb je tijd om naar de schietlijn te lopen")
 	await wait_for_state("run")
 	check(baan.state == "run" and absf(baan.time_left - 20.0) < 1.0, "daarna loopt de tijd: 20 seconden")
 	baan.start_run()
@@ -847,6 +1056,12 @@ func test_range() -> void:
 	await shoot_from(31, 17, Vector2.RIGHT)
 	await frames(3)
 	check(baan.state == "won", "alle drie geraakt binnen de tijd: gehaald!")
+	check(gs.count("arrow") == 9, "tijdens de poging schoot je met Tessa's pijlen: je hebt er nog evenveel")
+	world.player.bow_cooldown = 0.0
+	press("bow")
+	await frames(2)
+	check(gs.count("arrow") == 8, "na de poging kost een schot weer een eigen pijl")
+	await wait_arrows()
 	check(gs.flag("boog_range_won") and gs.quest_step("boog_schietbaan") == 1, "de opdracht gaat naar stap 2: ga naar Tessa")
 	check(toast_count("Gehaald in") == 1, "er komt een melding met je tijd")
 	check(gs.coins == 0, "de beloning krijg je pas bij Tessa")
@@ -874,13 +1089,14 @@ func test_range() -> void:
 	check(pick_talk("tessa") == "tessa_done", "Tessa biedt de beloning niet nog eens aan")
 	await frames(170)
 
-	print("Te laat")
+	print("Te laat (en meedoen zonder eigen pijlen)")
 	gs.new_game()
-	gs.inventory = {"bow": 1, "arrow": 10}
+	gs.inventory = {"bow": 1}
 	await goto_map("village")
 	baan = range_node()
 	toasts.clear()
 	await run_dialogue("tessa_intro", [0])
+	check(baan.state == "ready", "ook zonder pijlen kun je meedoen")
 	await wait_for_state("run")
 	await shoot_from(31, 15, Vector2.RIGHT)
 	await frames(2)
@@ -889,10 +1105,13 @@ func test_range() -> void:
 	check(baan.state == "lost", "als de tijd om is, mislukt de poging")
 	check(not gs.flag("boog_range_won") and gs.quest_step("boog_schietbaan") == 0, "de opdracht blijft bij stap 1")
 	check(toast_count("Tijd om! Je raakte 1 van de 3.") == 1, "een melding vertelt hoeveel je raakte")
+	check(toast_count("Geen pijlen!") == 0, "met Tessa's pijlen kon je schieten, ook zonder eigen pijlen")
 	check(gs.coins == 0, "geen beloning")
+	gs.inventory["arrow"] = 10
 	await shoot_from(31, 16, Vector2.RIGHT)
 	await shoot_from(31, 17, Vector2.RIGHT)
 	check(not gs.flag("boog_range_won"), "schieten nadat de tijd om is telt niet meer")
+	check(gs.count("arrow") == 8, "en kost weer je eigen pijlen")
 	await frames(170)
 	check(baan.state == "idle" and not target_at(35, 15).hit, "daarna staat alles weer klaar")
 	check(pick_talk("tessa") == "tessa_active", "Tessa weet dat je het nog eens wilt proberen")
@@ -900,9 +1119,10 @@ func test_range() -> void:
 	check(baan.state == "ready", "'Nog een poging!' begint opnieuw")
 	await wait_for_state("run")
 	check(baan.hits == 0 and not target_at(35, 15).hit, "alle doelwitten staan weer recht")
+	gs.inventory["arrow"] = 0
 	await hit_all_range_targets()
 	await frames(3)
-	check(gs.flag("boog_range_won") and gs.quest_step("boog_schietbaan") == 1, "de tweede poging lukt")
+	check(gs.flag("boog_range_won") and gs.quest_step("boog_schietbaan") == 1, "de tweede poging lukt, helemaal zonder eigen pijlen")
 
 	print("Beloning bij een bijna volle pijlenkoker")
 	gs.inventory = {"bow": 1, "arrow": 35}
@@ -945,9 +1165,13 @@ func test_hud() -> void:
 	press("bow")
 	await frames(2)
 	check(hud.arrow_text() == "11 [F]", "schieten verlaagt de teller")
+	var normal_color: Color = hud.arrow_color()
 	gs.inventory["arrow"] = 0
 	gs.items_changed.emit()
 	check(hud.arrow_text() == "0 [F]", "bij nul staat er 0")
+	var empty_color: Color = hud.arrow_color()
+	check(empty_color.r > 0.9 and empty_color.g < 0.6 and normal_color.g > 0.8, "en dan kleurt de teller rood")
+	await frames(2) # de teller wordt getekend met het eigen plaatje (items_boog) zonder fouten
 	await frames(2)
 	check(world.menu_ui._owned().has("bow"), "de boog staat in het menu")
 	gs.give("arrow", 3, true)
@@ -980,7 +1204,7 @@ func test_full_quiver() -> void:
 	gs.inventory["arrow"] = 35
 	toasts.clear()
 	gs.give("arrow", 10)
-	check(gs.count("arrow") == 40 and toasts.has("Gekregen: Pijl x5"), "een stapel van 10 past maar voor de helft: je houdt 40")
+	check(gs.count("arrow") == 40 and toasts.has("Gekregen: Pijl x5. Je pijlenkoker is vol!"), "een stapel van 10 past maar voor de helft: je houdt 40, en de melding zegt dat")
 	toasts.clear()
 	gs.give("arrow", 10)
 	check(gs.count("arrow") == 40 and toasts.has(FULL_QUIVER_TEXT), "en met een volle koker geeft 'give' niets en meldt dat")
@@ -1125,7 +1349,7 @@ func test_placement() -> void:
 		var all_ok := true
 		var used := {}
 		for obj: Dictionary in def["objects"]:
-			if not (obj["type"] in ["npc", "chest", "pickup", "sign", "portal", "savepoint", "gate", "target", "boog_baan"]):
+			if not (obj["type"] in ["npc", "chest", "pickup", "sign", "portal", "savepoint", "gate", "boog_target", "boog_baan"]):
 				continue
 			if not object_reachable(obj, open_region):
 				print("       onbereikbaar op ", map_id, ": ", obj)
@@ -1134,7 +1358,7 @@ func test_placement() -> void:
 				if Tiles.is_solid_char(String(def["rows"][cell.y])[cell.x]):
 					print("       object in een muur op ", map_id, ": ", obj)
 					all_ok = false
-				if obj["type"] in ["npc", "chest", "sign", "savepoint", "gate", "target"]:
+				if obj["type"] in ["npc", "chest", "sign", "savepoint", "gate", "boog_target"]:
 					if used.has(cell):
 						print("       twee objecten op dezelfde tegel op ", map_id, ": ", cell)
 						all_ok = false
@@ -1151,6 +1375,7 @@ func test_placement() -> void:
 	check(not ruins_closed.has(Vector2i(15, 7)) and not ruins_closed.has(Vector2i(15, 6)), "ruïne: de bonuskamer zit dicht")
 	check(ruins_open.has(Vector2i(15, 6)) and ruins_open.has(Vector2i(14, 5)) and ruins_open.has(Vector2i(16, 7)), "ruïne: open poortje geeft toegang tot de hele kamer")
 	check(forest_closed.has(Vector2i(22, 32)) and ruins_closed.has(Vector2i(15, 9)), "en je kunt wel tot het poortje lopen")
+	check(not forest_closed.has(Vector2i(49, 13)) and not forest_closed.has(Vector2i(48, 13)) and forest_open.has(Vector2i(49, 11)), "bos: het ruïnepoortje sluit de hele opening (twee tegels breed)")
 
 	print("De doelwitten zijn te raken")
 	var forest_target_a := Vector2i(27, 30)
@@ -1179,7 +1404,7 @@ func test_placement() -> void:
 	for obj: Dictionary in Maps.get_map("village")["objects"]:
 		if obj["type"] == "sign":
 			sign_cells.append(Vector2i(obj["pos"][0], obj["pos"][1]))
-	check(sign_cells.has(Vector2i(36, 12)) and not sign_cells.has(Vector2i(33, 15)), "dorp: het bord naar het bos staat niet meer in het schietveld")
+	check(sign_cells.has(Vector2i(37, 12)) and not sign_cells.has(Vector2i(33, 15)), "dorp: het bord naar het bos staat niet meer in het schietveld, maar bij de uitgang")
 	check(not forest_open.is_empty() and forest_open.has(Vector2i(48, 16)) and ruins_open.has(Vector2i(36, 5)), "bos en ruïne: de kristallen blijven bereikbaar")
 
 

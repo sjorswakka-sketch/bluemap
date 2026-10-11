@@ -16,12 +16,6 @@ const ATTACK_TIME := 0.18
 const ATTACK_COOLDOWN := 0.35
 const INVULN_TIME := 1.0
 const INTERACT_RANGE := 40.0
-# Boog
-const BOW_COOLDOWN := 0.4 # afkoelen tussen twee pijlen
-const BOW_ANIM_TIME := 0.25 # zo lang zie je de boog na het schieten
-const NO_ARROWS_TOAST_TIME := 3.4 # "Geen pijlen!" blijft ruim 3 seconden in beeld, dus niet vaker melden
-const ARROW_START := 12.0 # de pijl begint zover voor je
-const ARROW_HEIGHT := Vector2(0, 4) # en iets onder je middelpunt, op hoogte van de handen
 
 var world: Node
 var facing := Vector2.DOWN
@@ -39,11 +33,6 @@ var camera: Camera2D
 var light: PointLight2D
 var shake_power := 0.0
 var time := 0.0
-var bow_cooldown := 0.0
-var bow_anim := 0.0
-var no_arrows_toast := 0.0
-var trigger_axis := -1 # de as van de rechter trekker (uit de input-acties), -1 als er geen is
-var trigger_down := false # de trekker is ingedrukt: hij telt maar een keer per haal
 
 
 func _ready() -> void:
@@ -157,6 +146,19 @@ func _attack() -> void:
 
 # --- Boog -----------------------------------------------------------------------------
 
+const BOW_COOLDOWN := 0.4 # afkoelen tussen twee pijlen
+const BOW_ANIM_TIME := 0.25 # zo lang zie je de boog na het schieten
+const NO_ARROWS_TOAST_TIME := 3.4 # "Geen pijlen!" blijft ruim 3 seconden in beeld, dus niet vaker melden
+const ARROW_START := 12.0 # de pijl vliegt vanuit je hand eerst zover vooruit (in het eerste beeld)
+const ARROW_HEIGHT := Vector2(0, 4) # je hand zit iets onder je middelpunt
+
+var bow_cooldown := 0.0
+var bow_anim := 0.0
+var no_arrows_toast := 0.0
+var trigger_axis := -1 # de as van de rechter trekker (uit de input-acties), -1 als er geen is
+var trigger_down := false # de trekker is ingedrukt: hij telt maar een keer per haal
+
+
 func _bow_pressed(event: InputEvent) -> bool:
 	if event is InputEventJoypadMotion and (event as InputEventJoypadMotion).axis == trigger_axis:
 		# Een analoge trekker stuurt veel gebeurtenissen: alleen het moment van intrekken telt.
@@ -167,24 +169,50 @@ func _bow_pressed(event: InputEvent) -> bool:
 	return event.is_action_pressed("bow")
 
 
-## Schiet een pijl in je kijkrichting (schuin als je schuin loopt). Kost een pijl.
+func _notification(what: int) -> void:
+	# Tijdens een menu, gesprek of winkel staat de speler stil en hoort hij de trekker niet. Is hij intussen
+	# losgelaten, dan moet de volgende haal gewoon weer schieten.
+	if what == NOTIFICATION_UNPAUSED:
+		trigger_down = _trigger_held()
+
+
+## Houdt iemand op een controller nu de trekker van de boog ingedrukt?
+func _trigger_held() -> bool:
+	if trigger_axis < 0:
+		return false
+	for device in Input.get_connected_joypads():
+		if absf(Input.get_joy_axis(device, trigger_axis as JoyAxis)) >= InputMap.action_get_deadzone("bow"):
+			return true
+	return false
+
+
+## Tijdens een poging op Tessa's schietbaan schiet je met haar pijlen: dan kost een schot niets.
+func _lent_arrow() -> bool:
+	var shooting_range: Node = get_tree().get_first_node_in_group("boog_range")
+	return shooting_range != null and shooting_range.lends_arrows()
+
+
+## Schiet een pijl in je kijkrichting (schuin als je schuin loopt). Kost een pijl, behalve op Tessa's schietbaan.
 func _shoot() -> void:
 	if world == null or GameState.count("bow") <= 0 or bow_cooldown > 0.0 or roll_timer > 0.0:
 		return
 	bow_cooldown = BOW_COOLDOWN
-	if GameState.count("arrow") <= 0:
+	var lent := _lent_arrow()
+	if GameState.count("arrow") <= 0 and not lent:
 		Sound.play("error", -3.0)
 		if no_arrows_toast <= 0.0:
 			no_arrows_toast = NO_ARROWS_TOAST_TIME
 			GameState.toast.emit("Geen pijlen!")
 		return
-	GameState.take("arrow")
+	if not lent:
+		GameState.take("arrow")
 	bow_anim = BOW_ANIM_TIME
 	var arrow: Node2D = ArrowScript.new()
 	arrow.world = world
 	arrow.direction = facing.normalized()
-	arrow.position = global_position + ARROW_HEIGHT + facing.normalized() * ARROW_START
+	arrow.position = global_position + ARROW_HEIGHT
 	world.entities.add_child(arrow)
+	arrow.launch(ARROW_START) # vanuit je hand, zodat hij niet door een poortje springt waar je tegenaan staat
 	Sound.play("boog_twang", -3.0, randf_range(0.95, 1.05))
 	world.burst(arrow.position, Color(1, 1, 1, 0.8), 3)
 

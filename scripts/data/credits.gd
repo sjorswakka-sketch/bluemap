@@ -14,7 +14,7 @@ const LINES := [
 	["", ""],
 	["heading", "Verhaal en personages"],
 	["text", "Oudste Bram, Greta, Tobias, Mila, Pim,"],
-	["text", "Wachter Hein, Anja, Joost, Wilfred en Muis"],
+	["text", "Wachter Hein, Anja, Joost, Tessa, Wilfred en Muis"],
 	["", ""],
 	["heading", "Pixel art"],
 	["text", "Zelf getekend met code (tools/make_art.py)"],
