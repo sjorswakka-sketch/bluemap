@@ -60,7 +60,7 @@ func _build_ui() -> void:
 	(start_button if continue_button.disabled else continue_button).grab_focus()
 
 	var hint := UiStyle.make_label(
-		"WASD lopen  ·  SPATIE zwaard  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze  ·  M geluid", 20)
+		"WASD lopen  ·  SPATIE zwaard  ·  F boog  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze  ·  M geluid", 20)
 	hint.position = Vector2(0, 596)
 	hint.size = Vector2(1152, 30)
 	add_child(hint)

@@ -23,6 +23,7 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 |---|---|---|
 | `WASD` / pijltjes | linkerstick / d-pad | Lopen |
 | `Spatie` / `J` | X | Zwaard |
+| `F` / `L` | rechter trekker | Boog: een pijl schieten (zodra je een boog hebt) |
 | `Shift` / `K` | B | Rollen (je bent even onraakbaar) |
 | `E` / `Enter` | A | Praten, kisten en altaren openen, doorklikken |
 | `H` | Y | Helddrank drinken |
@@ -41,6 +42,10 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Verhaal:** een hoofdopdracht en drie zij-opdrachten, tien personages en gesprekken met keuzes.
 - **Gevechten:** zwaard in drie niveaus (hout, ijzer, kristal), ontwijkrol, slijmen in drie kleuren, vleermuizen,
   boogschutter-skeletten, twee kristalgolems (minibazen) en de Slijmkoning met drie fases.
+- **De boog:** koop hem bij Tobias (met 5 pijlen erbij) en schiet met `F` (of `L`, of de rechter trekker). Elk schot kost een pijl
+  uit je pijlenkoker (maximaal 40). Een pijl doet 2 schade (bij bazen 1), vliegt over water en blijft steken in muren. Op het
+  kristal van een golem ketst hij af, behalve als de golem uithaalt voor een klap. Raak doelwitten om poortjes te openen en
+  probeer Tessa's schietbaan in het dorp (daar leen je haar pijlen).
 - **Verzamelen en upgraden:** winkel, smid die zwaarden maakt, drankjes, laarzen, hartcontainers en verborgen kisten.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),
@@ -52,6 +57,7 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - Slijmen laten slijmgel vallen. Greta de smid maakt er betere zwaarden van.
 - Golems laten kristalscherven vallen, nodig voor het kristalzwaard.
 - Praat met iedereen: veel mensen hebben een opdracht of een tip.
+- Met de boog schiet je ook schuin: loop je schuin, dan vliegt je pijl schuin. Soms zit er een doelwit ergens waar je rechtdoor niet bij kunt.
 
 ## Mappen
 
@@ -102,6 +108,7 @@ De plaatjes in `assets/` zijn zelf gemaakt met `python3 tools/make_art.py` en de
 | `npc_*.png` | 2 vakjes: rustig en een beetje bewegen |
 | `items.png` | iconen, nummer = `icon` in `items.gd` |
 | `chest`, `sign`, `gate`, `altar`, `torch`, `coin`, `heart`, `ui_heart`, `projectiles` | zie `tools/art_items.py` |
+| `items_boog.png`, `target.png`, `npc_tessa.png` | boog-iconen (boog, pijl, vliegende pijl), doelwit (gewoon, geraakt) en Tessa, zie `tools/art_x_boog.py` |
 | `audio/*.wav` | geluidseffecten; `audio/music_<gebied>.wav` zijn lussen van 25 tot 45 seconden |
 
 ## Testen

@@ -1,10 +1,11 @@
 extends CharacterBody2D
-## De speler: lopen (WASD/pijltjes), zwaard (spatie/J), rollen (Shift/K), praten en openen (E),
+## De speler: lopen (WASD/pijltjes), zwaard (spatie/J), boog (F/L), rollen (Shift/K), praten en openen (E),
 ## drankje drinken (H).
 
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Items := preload("res://scripts/data/items.gd")
+const ArrowScript := preload("res://scripts/entities/arrow.gd")
 
 const SPEED := 110.0
 const ROLL_SPEED := 235.0
@@ -60,6 +61,10 @@ func _ready() -> void:
 	light.enabled = false
 	add_child(light)
 
+	for event in InputMap.action_get_events("bow"):
+		if event is InputEventJoypadMotion:
+			trigger_axis = (event as InputEventJoypadMotion).axis
+
 
 func is_rolling() -> bool:
 	return roll_timer > 0.0
@@ -87,6 +92,9 @@ func _physics_process(delta: float) -> void:
 	attack_timer = maxf(attack_timer - delta, 0.0)
 	cooldown = maxf(cooldown - delta, 0.0)
 	invuln = maxf(invuln - delta, 0.0)
+	bow_cooldown = maxf(bow_cooldown - delta, 0.0)
+	bow_anim = maxf(bow_anim - delta, 0.0)
+	no_arrows_toast = maxf(no_arrows_toast - delta, 0.0)
 
 	_update_target()
 	_update_shake(delta)
@@ -94,9 +102,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	var bow_pressed := _bow_pressed(event) # altijd bijhouden, ook als het spel even vastzit
 	if GameState.input_locked():
 		return
-	if event.is_action_pressed("attack"):
+	if bow_pressed:
+		_shoot()
+	elif event.is_action_pressed("attack"):
 		_attack()
 	elif event.is_action_pressed("dodge"):
 		_roll()
@@ -131,6 +142,79 @@ func _attack() -> void:
 		var margin: float = enemy.radius
 		if to_enemy.length() <= reach + margin and facing.dot(to_enemy.normalized()) > 0.2:
 			enemy.hurt(GameState.damage(), facing)
+
+
+# --- Boog -----------------------------------------------------------------------------
+
+const BOW_COOLDOWN := 0.4 # afkoelen tussen twee pijlen
+const BOW_ANIM_TIME := 0.25 # zo lang zie je de boog na het schieten
+const NO_ARROWS_TOAST_TIME := 3.4 # "Geen pijlen!" blijft ruim 3 seconden in beeld, dus niet vaker melden
+const ARROW_START := 12.0 # de pijl vliegt vanuit je hand eerst zover vooruit (in het eerste beeld)
+const ARROW_HEIGHT := Vector2(0, 4) # je hand zit iets onder je middelpunt
+
+var bow_cooldown := 0.0
+var bow_anim := 0.0
+var no_arrows_toast := 0.0
+var trigger_axis := -1 # de as van de rechter trekker (uit de input-acties), -1 als er geen is
+var trigger_down := false # de trekker is ingedrukt: hij telt maar een keer per haal
+
+
+func _bow_pressed(event: InputEvent) -> bool:
+	if event is InputEventJoypadMotion and (event as InputEventJoypadMotion).axis == trigger_axis:
+		# Een analoge trekker stuurt veel gebeurtenissen: alleen het moment van intrekken telt.
+		var down := absf((event as InputEventJoypadMotion).axis_value) >= InputMap.action_get_deadzone("bow")
+		var fresh := down and not trigger_down
+		trigger_down = down
+		return fresh
+	return event.is_action_pressed("bow")
+
+
+func _notification(what: int) -> void:
+	# Tijdens een menu, gesprek of winkel staat de speler stil en hoort hij de trekker niet. Is hij intussen
+	# losgelaten, dan moet de volgende haal gewoon weer schieten.
+	if what == NOTIFICATION_UNPAUSED:
+		trigger_down = _trigger_held()
+
+
+## Houdt iemand op een controller nu de trekker van de boog ingedrukt?
+func _trigger_held() -> bool:
+	if trigger_axis < 0:
+		return false
+	for device in Input.get_connected_joypads():
+		if absf(Input.get_joy_axis(device, trigger_axis as JoyAxis)) >= InputMap.action_get_deadzone("bow"):
+			return true
+	return false
+
+
+## Tijdens een poging op Tessa's schietbaan schiet je met haar pijlen: dan kost een schot niets.
+func _lent_arrow() -> bool:
+	var shooting_range: Node = get_tree().get_first_node_in_group("boog_range")
+	return shooting_range != null and shooting_range.lends_arrows()
+
+
+## Schiet een pijl in je kijkrichting (schuin als je schuin loopt). Kost een pijl, behalve op Tessa's schietbaan.
+func _shoot() -> void:
+	if world == null or GameState.count("bow") <= 0 or bow_cooldown > 0.0 or roll_timer > 0.0:
+		return
+	bow_cooldown = BOW_COOLDOWN
+	var lent := _lent_arrow()
+	if GameState.count("arrow") <= 0 and not lent:
+		Sound.play("error", -3.0)
+		if no_arrows_toast <= 0.0:
+			no_arrows_toast = NO_ARROWS_TOAST_TIME
+			GameState.toast.emit("Geen pijlen!")
+		return
+	if not lent:
+		GameState.take("arrow")
+	bow_anim = BOW_ANIM_TIME
+	var arrow: Node2D = ArrowScript.new()
+	arrow.world = world
+	arrow.direction = facing.normalized()
+	arrow.position = global_position + ARROW_HEIGHT
+	world.entities.add_child(arrow)
+	arrow.launch(ARROW_START) # vanuit je hand, zodat hij niet door een poortje springt waar je tegenaan staat
+	Sound.play("boog_twang", -3.0, randf_range(0.95, 1.05))
+	world.burst(arrow.position, Color(1, 1, 1, 0.8), 3)
 
 
 func _drink() -> void:
@@ -212,8 +296,31 @@ func _draw() -> void:
 		DrawUtil.sprite(self, Art.tex("player"), column, _direction_row(), Vector2.ZERO, Vector2i(16, 16), 2.0, tint)
 	if attack_timer > 0.0:
 		_draw_sword()
+	if bow_anim > 0.0:
+		_draw_bow()
 	if target and is_instance_valid(target) and not GameState.input_locked():
 		pass # het bolletje wordt door het ding zelf getekend
+
+
+## De boog even in je hand na het schieten: de pees trilt uit.
+func _draw_bow() -> void:
+	var progress := 1.0 - bow_anim / BOW_ANIM_TIME
+	var forward := facing.normalized()
+	var sideways := forward.orthogonal()
+	var grip := ARROW_HEIGHT + forward * 11.0
+	var wood := Color(0.72, 0.5, 0.26)
+	# De boog zelf: een bocht om de hand, met de bolle kant van je af.
+	var points := PackedVector2Array()
+	for i in 9:
+		var s := float(i) / 8.0 * 2.0 - 1.0 # -1..1 langs de boog
+		points.append(grip + sideways * s * 10.0 - forward * s * s * 5.0 + forward * 5.0)
+	draw_polyline(points, Color(0.2, 0.12, 0.06), 5.0)
+	draw_polyline(points, wood, 3.0)
+	# De pees trilt: eerst flink naar voren, dan steeds minder.
+	var wobble := sin(progress * 22.0) * (1.0 - progress) * 4.0
+	var string_mid := grip + forward * wobble
+	draw_line(points[0], string_mid, Color(1, 1, 1, 0.9), 1.0)
+	draw_line(string_mid, points[8], Color(1, 1, 1, 0.9), 1.0)
 
 
 func _draw_sword() -> void:

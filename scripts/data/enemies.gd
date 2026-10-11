@@ -42,7 +42,7 @@ const BASE_ENEMIES := {
 		"name": "Skelet", "hp": 5, "damage": 1, "behavior": "archer",
 		"speed": 40.0, "chase_speed": 60.0, "sight": 190.0,
 		"sheet": "skeleton", "cell": 16, "scale": 2.0, "radius": 7.0, "shadow": 10.0,
-		"drops": [["coin", 1.0, 2], ["potion", 0.12, 1], ["heart", 0.12, 1]],
+		"drops": [["coin", 1.0, 2], ["potion", 0.12, 1], ["heart", 0.12, 1], ["arrow", 0.3, 2]],
 	},
 	"golem": {
 		"name": "Kristalgolem", "hp": 22, "damage": 1, "slam_damage": 2, "behavior": "golem", "boss": true,

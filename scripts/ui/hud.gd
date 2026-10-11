@@ -22,6 +22,7 @@ var toast_queue: Array[String] = []
 var toast_time := 0.0
 var banner_time := 0.0
 var boss: Node2D = null
+var had_bow := false # om te zien wanneer je de boog voor het eerst krijgt
 
 
 func _ready() -> void:
@@ -34,6 +35,9 @@ func _ready() -> void:
 	GameState.game_over.connect(_show_game_over)
 	_refresh_tracker()
 	_queue_toast("WASD lopen  ·  SPATIE zwaard  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze")
+	# Boog: de pijlenteller (met "[F]") staat in beeld zodra je een boog hebt, en bij het krijgen ervan komt een melding.
+	had_bow = GameState.count("bow") > 0
+	GameState.items_changed.connect(_check_bow)
 
 
 func _build_ui() -> void:
@@ -134,13 +138,36 @@ func _draw_stats() -> void:
 		[Items.ITEMS["potion"]["icon"], "%d [H]" % GameState.count("potion"), Color(1, 0.6, 0.7)],
 		[Items.ITEMS[Items.WEAPONS[GameState.weapon]["item"]]["icon"], "", Color.WHITE],
 	]
+	if GameState.count("bow") > 0: # de pijlenteller
+		entries.append([Items.ITEMS["arrow"]["icon"], arrow_text(), arrow_color(), Items.sheet_of("arrow")])
 	for entry: Array in entries:
-		stats.draw_texture_rect_region(items_tex, Rect2(Vector2(x, 2), Vector2(32, 32)), Rect2(Vector2(entry[0] * 16, 0), Vector2(16, 16)))
+		var icons: Texture2D = Art.tex(entry[3]) if entry.size() > 3 else items_tex # een eigen plaatje (naam) voor uitbreidingen
+		stats.draw_texture_rect_region(icons, Rect2(Vector2(x, 2), Vector2(32, 32)), Rect2(Vector2(entry[0] * 16, 0), Vector2(16, 16)))
 		x += 36.0
 		if entry[1] != "":
 			stats.draw_string_outline(font, Vector2(x, 26), entry[1], HORIZONTAL_ALIGNMENT_LEFT, -1, 22, 5, Color(0, 0, 0, 0.9))
 			stats.draw_string(font, Vector2(x, 26), entry[1], HORIZONTAL_ALIGNMENT_LEFT, -1, 22, entry[2])
 			x += font.get_string_size(entry[1], HORIZONTAL_ALIGNMENT_LEFT, -1, 22).x + 18.0
+
+
+## De tekst bij de pijlenteller ("12 [F]"), of niets zolang je geen boog hebt.
+func arrow_text() -> String:
+	if GameState.count("bow") <= 0:
+		return ""
+	return "%d [F]" % GameState.count("arrow")
+
+
+## De kleur van de pijlenteller: rood als je pijlen op zijn.
+func arrow_color() -> Color:
+	return Color(1, 0.45, 0.4) if GameState.count("arrow") == 0 else Color(1, 0.88, 0.6)
+
+
+## Het moment dat je de boog krijgt: vertel meteen hoe je schiet.
+func _check_bow() -> void:
+	var has_bow := GameState.count("bow") > 0
+	if has_bow and not had_bow:
+		_queue_toast("Boog gekregen! Druk op F om te schieten.")
+	had_bow = has_bow
 
 
 func _refresh_tracker() -> void:

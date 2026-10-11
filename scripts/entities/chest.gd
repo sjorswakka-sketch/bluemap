@@ -4,6 +4,7 @@ extends StaticBody2D
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Util := preload("res://scripts/core/util.gd")
+const Items := preload("res://scripts/data/items.gd")
 
 var contents: Array = [] # [["potion", 1], ["coins", 25]]
 var unique_key := ""
@@ -36,6 +37,12 @@ func interact() -> void:
 	if opened:
 		GameState.toast.emit("De kist is leeg.")
 		return
+	# Past iets niet meer (een volle pijlenkoker)? Dan blijft de kist dicht, zodat er niets verloren gaat.
+	for entry: Array in contents:
+		if entry[0] != "coins" and GameState.room(entry[0]) < int(entry[1]):
+			Sound.play("error", -3.0)
+			GameState.toast.emit(Items.info(entry[0]).get("chest_full_text", "Je tas is te vol voor wat er in deze kist zit."))
+			return
 	opened = true
 	if unique_key != "":
 		GameState.set_flag(unique_key)

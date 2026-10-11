@@ -8,6 +8,9 @@ const Items := preload("res://scripts/data/items.gd")
 
 const PICKUP_RANGE := 16.0
 const MAGNET_RANGE := 54.0
+const FULL_WARNING_FRAMES := 200 # "vol"-melding hooguit eens per ruim 3 seconden (zolang een melding in beeld staat)
+
+static var _last_full_warning := -FULL_WARNING_FRAMES
 
 var item := "coin"
 var unique_key := "" # vlag die onthoudt dat dit voorwerp al is opgepakt (kristallen, sleutels)
@@ -51,14 +54,31 @@ func _collect() -> void:
 			Sound.play("heart", -3.0)
 		_:
 			var info := Items.info(item)
-			GameState.give(item)
-			Sound.play("crystal" if info.get("type", "") == "crystal" else "chest", -2.0)
+			if GameState.room(item) <= 0:
+				_warn_full(info) # het voorwerp blijft liggen voor later
+				return
+			if info.get("type", "") == "ammo":
+				# Pijlen vallen vaak een voor een: geen melding maar een klein plusje.
+				GameState.give(item, 1, true)
+				Sound.play("select", -2.0, 1.3)
+				world.damage_number(global_position + Vector2(0, -14), "+1", Color(1.0, 0.9, 0.6))
+			else:
+				GameState.give(item)
+				Sound.play("crystal" if info.get("type", "") == "crystal" else "chest", -2.0)
 			if info.get("type", "") == "crystal":
 				world.shake(3.0)
 	if unique_key != "":
 		GameState.set_flag(unique_key)
 	world.burst(global_position, Color(1, 0.95, 0.6), 8)
 	queue_free()
+
+
+func _warn_full(info: Dictionary) -> void:
+	if Engine.get_process_frames() - _last_full_warning < FULL_WARNING_FRAMES:
+		return
+	_last_full_warning = Engine.get_process_frames()
+	Sound.play("error", -3.0)
+	GameState.toast.emit(info.get("full_text", "Je tas is vol"))
 
 
 func _draw() -> void:

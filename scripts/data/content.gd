@@ -18,15 +18,22 @@ extends RefCounted
 ##
 ## Eigen soorten objecten op de kaart ({"type": "doelwit", "pos": [3, 4], ...}):
 ##
-##   const OBJECTS := {"doelwit": preload("res://scripts/entities/target.gd")}
+##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}
+##
+## Het pad staat als tekst (geen preload): een preload laadt het objectscript al terwijl GameState nog wordt opgebouwd,
+## en dan kent dat script GameState en Sound nog niet. Zo kan een objectscript ze gewoon bij naam gebruiken.
 ##
 ## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
 ## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
 ##
 ## Je hoeft alleen de constanten op te nemen die je nodig hebt. Namen (sleutels) mogen niet al bestaan.
+##
+## Let op: gebruik in de module zelf GameState en Sound niet bij naam (compileerfout, want game_state.gd laadt dit
+## bestand al). Haal ze in check() en run() uit de scenetree: (Engine.get_main_loop() as SceneTree).root.get_node("GameState").
 
 const MODULES: Array = [
 	# preload("res://scripts/data/ext/voorbeeld.gd"),
+	preload("res://scripts/data/ext/boog.gd"),
 ]
 
 
@@ -84,6 +91,10 @@ static func run_action(action: Array) -> bool:
 	return false
 
 
-## Soorten objecten (naam -> script) die de modules toevoegen.
+## Soorten objecten (naam -> script) die de modules toevoegen. Paden (tekst) worden hier geladen.
 static func object_types() -> Dictionary:
-	return merged("OBJECTS", {})
+	var types := merged("OBJECTS", {})
+	for type_name: String in types:
+		if types[type_name] is String:
+			types[type_name] = load(types[type_name])
+	return types

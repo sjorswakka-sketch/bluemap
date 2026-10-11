@@ -88,10 +88,12 @@ func _populate(focus_index: int) -> void:
 	var first: Button = null
 	var index := 0
 	for entry: Dictionary in shop["items"]:
+		if entry.has("if") and not GameState.check_all(entry["if"]):
+			continue # nog niet te koop (bijvoorbeeld pijlen zonder boog)
 		var info := Items.info(entry["item"])
 		var owned: bool = entry.get("once", false) and GameState.count(entry["item"]) > 0
 		var button := Button.new()
-		button.text = "%s   —   %s" % [info["name"], "gekocht" if owned else "%d munten" % entry["price"]]
+		button.text = "%s   —   %s" % [_label(entry), "gekocht" if owned else "%d munten" % entry["price"]]
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		UiStyle.style_button(button, 22)
 		button.disabled = owned
@@ -109,17 +111,45 @@ func _populate(focus_index: int) -> void:
 		desc_label.text = "Je hebt alles gekocht!"
 
 
+## De naam van een winkelregel: een eigen `label`, anders de naam van het voorwerp (met het aantal erbij).
+func _label(entry: Dictionary) -> String:
+	if entry.has("label"):
+		return entry["label"]
+	var amount: int = entry.get("amount", 1)
+	var item_name: String = Items.info(entry["item"])["name"]
+	return item_name if amount == 1 else "%s x%d" % [item_name, amount]
+
+
 func _buy(entry: Dictionary, index: int) -> void:
 	var price: int = entry["price"]
+	var amount: int = entry.get("amount", 1)
+	if entry.get("once", false) and GameState.count(entry["item"]) > 0:
+		return # eenmalige dingen koop je maar één keer
+	if entry.has("if") and not GameState.check_all(entry["if"]):
+		return # nog niet te koop
 	if GameState.coins < price:
 		Sound.play("error")
 		GameState.toast.emit("Je hebt niet genoeg munten.")
 		return
+	if GameState.room(entry["item"]) < amount:
+		Sound.play("error")
+		GameState.toast.emit(_no_room_text(entry["item"]))
+		return
 	GameState.add_coins(-price)
-	GameState.give(entry["item"], 1, true)
+	GameState.give(entry["item"], amount, true)
+	for extra: Array in entry.get("with", []):
+		GameState.give(extra[0], int(extra[1]), true)
 	Sound.play("buy")
-	GameState.toast.emit("Gekocht: %s" % Items.info(entry["item"])["name"])
+	GameState.toast.emit("Gekocht: %s" % _label(entry))
 	_populate(index)
+
+
+## Waarom iets niet meer past: helemaal vol, of bijna vol (dan met hoeveel je er hebt, bijvoorbeeld "38 van de 40").
+func _no_room_text(item_id: String) -> String:
+	var info := Items.info(item_id)
+	if GameState.room(item_id) > 0 and info.has("almost_full_text"):
+		return "%s (%d van de %d)" % [info["almost_full_text"], GameState.count(item_id), int(info["max"])]
+	return info.get("full_text", "Je tas is vol")
 
 
 func _unhandled_input(event: InputEvent) -> void:

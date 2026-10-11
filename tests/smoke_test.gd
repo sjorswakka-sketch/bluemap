@@ -672,7 +672,7 @@ func test_dialogues() -> void:
 	var gate: Node2D = null
 	for child in world.entities.get_children():
 		var script: Script = child.get_script()
-		if script and script.resource_path.ends_with("gate.gd"):
+		if script and script.resource_path.ends_with("gate.gd") and child.gate_id == "ruin":
 			gate = child
 	check(gate != null and gate.blocked, "de ruïnepoort is dicht")
 	world.player.global_position = gate.global_position + Vector2(0, 30)
