@@ -44,7 +44,7 @@ const DATA := {
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXyXXyyXXyXXXXXXX",
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 	],
-	"spawns": {"start": [5, 31]},
+	"spawns": {"start": [5, 31], "altar": [21, 10]},
 	"objects": [
 		{"type": "portal", "pos": [4, 33], "to": "forest", "spawn": "from_cave"},
 		{"type": "torch", "pos": [3, 28]},

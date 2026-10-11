@@ -42,7 +42,7 @@ const DATA := {
 		"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
 		"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
 	],
-	"spawns": {"start": [5, 29]},
+	"spawns": {"start": [5, 29], "altar": [5, 17]},
 	"objects": [
 		{"type": "portal", "pos": [3, 30], "to": "forest", "spawn": "from_ruins"},
 		{"type": "npc", "pos": [11, 29], "id": "wilfred"},

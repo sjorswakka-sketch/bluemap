@@ -11,10 +11,13 @@ Besturing
   E / Enter         praten, kisten en altaren openen, doorklikken
   H                 helddrank drinken
   I / Tab           menu: voorwerpen        Q: opdrachten        N: kaart
+                    T: prestaties           B: beestenboek
+                    In het menu: pijltjes links/rechts = ander tabblad, omhoog/omlaag = kiezen
   Esc / P           pauze                   M: geluid aan/uit    F11: volledig scherm
   R                 na game over: verder vanaf je laatste opslag
 
   Een controller werkt ook: stick lopen, X zwaard, B rollen, A praten, Y drankje, Start pauze.
+  In het menu bladeren de schouderknoppen door de tabbladen.
 
 Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
@@ -23,6 +26,12 @@ Doel
 Opslaan
   Het spel slaat automatisch op als je van gebied wisselt, en bij de blauwe altaren
   (die genezen je ook). Kies in het titelscherm "Doorgaan" om verder te spelen.
+
+Snel reizen, dag en nacht
+  Een blauw altaar dat je gebruikt hebt is ontdekt. Open de kaart (N), kies een altaar en druk op E
+  om er snel naartoe te reizen. Dat kan niet tijdens een gesprek of een baasgevecht.
+  Het spel heeft dag en nacht en af en toe regen. In de herberg kun je slapen (5 munten) om het ochtend te maken.
+  Je prestaties (T) blijven bewaard, ook als je een nieuw spel begint.
 
 Windows geeft een waarschuwing?
   Het spel is niet digitaal ondertekend (dat kost geld), dus Windows kan zeggen

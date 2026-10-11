@@ -5,6 +5,8 @@ extends RefCounted
 const DATA := {
 	"name": "Fluisterbos",
 	"music": "forest",
+	"outdoor": true, # volgt dag en nacht
+	"weather": "random", # af en toe regen
 	"rows": [
 		"########################~~############################",
 		"########################~~##########WWWWWWWWWWW#######",
@@ -45,7 +47,7 @@ const DATA := {
 		"########################~~##################oooooooo##",
 		"########################~~############################",
 	],
-	"spawns": {"start": [4, 17], "from_village": [4, 17], "from_ruins": [49, 16], "from_cave": [48, 32]},
+	"spawns": {"start": [4, 17], "from_village": [4, 17], "from_ruins": [49, 16], "from_cave": [48, 32], "altar": [6, 16]},
 	"objects": [
 		{"type": "portal", "pos": [1, 17], "to": "village", "spawn": "from_forest", "size": [1, 2]},
 		{"type": "savepoint", "pos": [6, 15]},

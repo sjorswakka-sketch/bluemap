@@ -5,6 +5,8 @@ extends RefCounted
 const DATA := {
 	"name": "Dageraadsdorp",
 	"music": "village",
+	"outdoor": true, # volgt dag en nacht
+	"weather": "random", # af en toe regen
 	"rows": [
 		"########################################",
 		"##############ZZZZZZZZZZZZ##############",
@@ -35,7 +37,7 @@ const DATA := {
 		"###################,,###################",
 		"###################,,###################",
 	],
-	"spawns": {"start": [19, 9], "from_forest": [36, 13], "from_smithy": [6, 12], "from_shop": [13, 12], "from_inn": [30, 11], "from_temple": [19, 8]},
+	"spawns": {"start": [19, 9], "from_forest": [36, 13], "from_smithy": [6, 12], "from_shop": [13, 12], "from_inn": [30, 11], "from_temple": [19, 8], "altar": [22, 13]},
 	"objects": [
 		{"type": "npc", "pos": [17, 8], "id": "bram"},
 		{"type": "npc", "pos": [24, 18], "id": "pim"},
@@ -44,6 +46,15 @@ const DATA := {
 		{"type": "npc", "pos": [22, 24], "id": "joost"},
 		{"type": "npc", "pos": [34, 11], "id": "hein"},
 		{"type": "savepoint", "pos": [22, 12]},
+		{"type": "wereld_lantaarn", "pos": [18, 7]},
+		{"type": "wereld_lantaarn", "pos": [21, 7]},
+		{"type": "wereld_lantaarn", "pos": [3, 12]},
+		{"type": "wereld_lantaarn", "pos": [7, 12]},
+		{"type": "wereld_lantaarn", "pos": [14, 12]},
+		{"type": "wereld_lantaarn", "pos": [31, 11]},
+		{"type": "wereld_lantaarn", "pos": [36, 12]},
+		{"type": "wereld_lantaarn", "pos": [12, 15]},
+		{"type": "wereld_lantaarn", "pos": [25, 15]},
 		{"type": "pickup", "pos": [8, 15], "item": "coin"},
 		{"type": "pickup", "pos": [30, 15], "item": "coin"},
 		{"type": "sign", "pos": [21, 8], "lines": ["Dageraadsdorp", "Tempel van de Blauwe Kaart. Bewaker: Oudste Bram."]},

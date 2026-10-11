@@ -6,6 +6,7 @@ extends RefCounted
 ##
 ##   TALKS    (dialogue.gd)   QUESTS (quests.gd)   ITEMS / WEAPONS (items.gd)   ENEMIES (enemies.gd)
 ##   NPCS     (npcs.gd)       SHOPS  (shops.gd)    MAPS (maps/registry.gd)
+##   ACHIEVEMENTS (achievements.gd: naam, uitleg en voorwaarden; behaald in het menu onder Prestaties)
 ##   SOUNDS / TRACKS (lijsten met namen van .wav-bestanden in assets/audio, zie scripts/core/sound.gd)
 ##   OBJECTS  (soort object op de kaart -> script, zie hieronder)
 ##
@@ -18,7 +19,13 @@ extends RefCounted
 ##
 ## Eigen soorten objecten op de kaart ({"type": "doelwit", "pos": [3, 4], ...}):
 ##
-##   const OBJECTS := {"doelwit": preload("res://scripts/entities/target.gd")}
+##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}
+##
+## Let op: zet hier het PAD (tekst) van het script, geen preload(). Een module wordt geladen terwijl GameState nog
+## opstart, en dan kent Godot de namen GameState en Sound (waar elk object-script mee werkt) nog niet.
+## Het script zelf wordt pas geladen als de wereld erom vraagt (zie object_types). Hetzelfde geldt voor je module
+## zelf: gebruik daar de namen GameState en Sound niet, maar haal ze op met
+## (Engine.get_main_loop() as SceneTree).root.get_node("GameState") (zie scripts/data/ext/wereld.gd).
 ##
 ## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
 ## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
@@ -27,6 +34,7 @@ extends RefCounted
 
 const MODULES: Array = [
 	# preload("res://scripts/data/ext/voorbeeld.gd"),
+	preload("res://scripts/data/ext/wereld.gd"),
 ]
 
 
@@ -84,6 +92,10 @@ static func run_action(action: Array) -> bool:
 	return false
 
 
-## Soorten objecten (naam -> script) die de modules toevoegen.
+## Soorten objecten (naam -> script) die de modules toevoegen. Paden worden hier pas geladen.
 static func object_types() -> Dictionary:
-	return merged("OBJECTS", {})
+	var types := merged("OBJECTS", {})
+	for type_name: String in types:
+		if types[type_name] is String:
+			types[type_name] = load(types[type_name])
+	return types

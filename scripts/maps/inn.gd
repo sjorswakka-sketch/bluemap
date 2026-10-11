@@ -20,6 +20,9 @@ const DATA := {
 	"spawns": {"start": [8, 8], "door": [8, 8]},
 	"objects": [
 		{"type": "npc", "pos": [8, 4], "id": "mila"},
+		{"type": "wereld_bed", "pos": [2, 6]},
+		{"type": "wereld_bed", "pos": [4, 6]},
+		{"type": "wereld_bed", "pos": [6, 6]},
 		{"type": "torch", "pos": [3, 2]},
 		{"type": "torch", "pos": [12, 2]},
 		{"type": "portal", "pos": [7, 9], "to": "village", "spawn": "from_inn", "size": [2, 1]},

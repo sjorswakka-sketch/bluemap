@@ -5,6 +5,8 @@ extends CanvasLayer
 const Art := preload("res://scripts/core/art.gd")
 const UiStyle := preload("res://scripts/core/ui_style.gd")
 const Items := preload("res://scripts/data/items.gd")
+const Daynight := preload("res://scripts/core/daynight.gd")
+const AchievementBanner := preload("res://scripts/ui/achievement_banner.gd")
 
 var hearts: Control
 var stats: Control
@@ -14,6 +16,9 @@ var toast_panel: PanelContainer
 var toast_label: Label
 var banner: Label
 var boss_bar: Control
+var clock: Control # zon of maan, en welk deel van de dag het is
+var achievement_banner: CanvasLayer # de melding "Prestatie behaald!"
+var clock_state := ""
 var overlay: ColorRect
 var overlay_title: Label
 var overlay_sub: Label
@@ -48,6 +53,12 @@ func _build_ui() -> void:
 	stats.size = Vector2(500, 36)
 	stats.draw.connect(_draw_stats)
 	add_child(stats)
+
+	clock = Control.new()
+	clock.position = Vector2(20, 100)
+	clock.size = Vector2(300, 36)
+	clock.draw.connect(_draw_clock)
+	add_child(clock)
 
 	tracker_panel = PanelContainer.new()
 	tracker_panel.anchor_left = 1.0
@@ -90,6 +101,9 @@ func _build_ui() -> void:
 	banner.offset_right = 0.0
 	banner.modulate.a = 0.0
 	add_child(banner)
+
+	achievement_banner = AchievementBanner.new()
+	add_child(achievement_banner)
 
 	boss_bar = Control.new()
 	boss_bar.position = Vector2(406, 16)
@@ -178,6 +192,7 @@ func _process(delta: float) -> void:
 	else:
 		banner.modulate.a = 0.0
 
+	_update_clock()
 	_update_boss()
 
 
@@ -214,3 +229,29 @@ func _show_game_over() -> void:
 	var by := "" if GameState.last_damage_source == "" else "Verslagen door: %s\n" % GameState.last_damage_source
 	overlay_sub.text = by + ("Druk op R om verder te gaan vanaf je laatste opslag" if has_save else "Druk op R om opnieuw te beginnen") + "  ·  Esc voor het menu"
 	overlay.visible = true
+
+
+# --- Dag en nacht ------------------------------------------------------------------------------
+
+func _update_clock() -> void:
+	var state := "%s %s" % [Daynight.icon_frame(GameState.day_time), _clock_label()]
+	if state != clock_state:
+		clock_state = state
+		clock.queue_redraw()
+
+
+func _clock_label() -> String:
+	var label := Daynight.phase_label(GameState.day_time)
+	var world := get_tree().get_first_node_in_group("world")
+	if world != null and world.atmosphere != null and world.atmosphere.rain_level > 0.3:
+		label += "  ·  regen"
+	return label
+
+
+func _draw_clock() -> void:
+	var font := ThemeDB.fallback_font
+	var frame := Daynight.icon_frame(GameState.day_time)
+	clock.draw_texture_rect_region(Art.tex("wereld_ui"), Rect2(Vector2(0, 2), Vector2(32, 32)), Rect2(Vector2(frame * 16, 0), Vector2(16, 16)))
+	var label := _clock_label()
+	clock.draw_string_outline(font, Vector2(38, 25), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, 5, Color(0, 0, 0, 0.9))
+	clock.draw_string(font, Vector2(38, 25), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color(0.95, 0.97, 1.0))

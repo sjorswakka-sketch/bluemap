@@ -241,6 +241,7 @@ const BASE_TALKS := {
 		"choices": [
 			{"text": "Ik wil uitrusten.", "do": [["heal"], ["save"]], "next": "mila_rest"},
 			{"text": "Heb je werk voor me?", "if": [["quest", "drank", "none"]], "next": "mila_quest"},
+			{"text": "Mag ik hier slapen?", "next": "wereld_bed_info"},
 			{"text": "Nee, bedankt."},
 		],
 	},
