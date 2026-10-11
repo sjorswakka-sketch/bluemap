@@ -43,6 +43,10 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
   boogschutter-skeletten, twee kristalgolems (minibazen) en de Slijmkoning met drie fases.
 - **Verzamelen en upgraden:** winkel, smid die zwaarden maakt, drankjes, laarzen, hartcontainers en verborgen kisten.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
+- **De arena:** een gevechtsarena in het noordoosten van het dorp (je hebt een ijzeren zwaard nodig en Oudste Bram moet je
+  kennen). Arenameester Bruno schrijft je in voor Brons (3 rondes), Zilver (5) of Goud (7, met een kristalgolem als laatste).
+  De poorten sluiten, het publiek juicht en na elke ronde krijg je drie seconden rust en een hartje. Je wint munten,
+  trofeeën voor de plank in de hal, een titel en een beste tijd op het scorebord. Verslagen? Dan ben je alleen je inschrijving kwijt.
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),
   ondersteuning voor een controller, en een eindscherm met aftiteling.
 
@@ -79,6 +83,9 @@ Bijna alles wat met inhoud te maken heeft staat als leesbare tekst in `scripts/d
   (een voorwerp geven, een opdracht starten...). De mogelijke voorwaarden en acties staan bovenaan `scripts/core/game_state.gd`.
 - **Personages:** `scripts/data/npcs.gd` (wie zegt wat, afhankelijk van je voortgang).
 - **Opdrachten:** `scripts/data/quests.gd`. Voorwerpen en zwaarden: `items.gd`. Winkels: `shops.gd`.
+- **De arena:** `scripts/data/arena.gd` (rangen, rondes, beloningen en records: elke ronde is een lijst `[soort vijand, aantal]`,
+  dus een nieuwe vijand in de arena zetten is een regel), `scripts/data/ext/arena.gd` (gesprekken, voorwerpen en de rest van
+  de uitbreiding) en `scripts/entities/arena_master.gd` (speelt de golven). De kaarten zijn `scripts/maps/arena_hall.gd` en `arena.gd`.
 - **Vijanden:** `scripts/data/enemies.gd` (levens, snelheid, schade, wat ze laten vallen).
 - **Kaarten:** `scripts/maps/*.gd`. De kaart is gewone tekst, elk teken is een tegel (zie `scripts/data/tiles.gd`).
   Personages, vijanden, kisten en poortjes staan als lijst onder `objects`. Wijzig iets en druk op F5.
@@ -112,15 +119,19 @@ Zonder scherm, handig na elke wijziging:
 sh tools/run_tests.sh /pad/naar/godot
 ```
 
-Dat draait twee tests. `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
-voorwerp, elke opdracht) en speelt daarna de systemen na: lopen, gebieden wisselen, vechten, de baas, praten, kopen,
-smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd` speelt het hele spel uit met de echte
-kaarten: van Bram tot en met het einde. Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het
-met een foutmelding.
+Dat draait alle tests in `tests/` (`*_test.gd`). `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk
+gesprek, elke kaart, elk voorwerp, elke opdracht) en speelt daarna de systemen na: lopen, gebieden wisselen, vechten, de baas,
+praten, kopen, smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd` speelt het hele spel uit met
+de echte kaarten: van Bram tot en met het einde. `tests/arena_test.gd` test de arena: ingang, inschrijven, de golven, het
+gesloten veld, verliezen en opgeven, beloningen, records, opslaan en of alles op de kaarten bereikbaar is. Alles eindigt met
+`ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het met een foutmelding.
 
 Meer gereedschap:
 
 - `tests/boss_sim.gd`: een bot speelt het baasgevecht steeds opnieuw met verschillende zwaarden. Handig om de balans te meten.
+- `tests/arena_sim.gd`: een bot speelt Brons, Zilver en Goud steeds opnieuw (`godot --headless --fixed-fps 60 --path . -s tests/arena_sim.gd`).
+  Het doel is dat een redelijke speler met het passende zwaard Brons ongeveer 90%, Zilver 65% en Goud 40% van de keren haalt.
+  Pas je de rondes in `scripts/data/arena.gd` aan, draai dan deze bot weer.
 - `python3 tools/check_audio.py`: controleert geluiden en muzieklussen op clipping, tikjes en de juiste noten.
 - `python3 tools/gen_maps.py`: controleert tijdens het maken of alles op de kaarten bereikbaar is.
 

@@ -16,9 +16,17 @@ extends RefCounted
 ##   static func check(cond: Array) -> bool     # wordt alleen aangeroepen voor jouw eigen voorwaarden
 ##   static func run(action: Array) -> void     # idem voor acties
 ##
+## Eigen tekens in gesprekken ({arena_title}, zoals {coins} en {gel} in game_state.gd):
+##
+##   const FORMATS := ["arena_title"]           # de namen van de tekens, zodat de speltest ze herkent
+##   static func format(text: String) -> String # vult jouw tekens in
+##
 ## Eigen soorten objecten op de kaart ({"type": "doelwit", "pos": [3, 4], ...}):
 ##
-##   const OBJECTS := {"doelwit": preload("res://scripts/entities/target.gd")}
+##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}   # een pad, of een preload() van het script
+##
+## Modules worden geladen voordat GameState en Sound bestaan. Gebruik daarom in een module zelf (en in alles wat hij
+## preload()) niet de namen GameState of Sound: laat dat in scripts die pas later geladen worden (zoals een pad bij OBJECTS).
 ##
 ## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
 ## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
@@ -27,6 +35,7 @@ extends RefCounted
 
 const MODULES: Array = [
 	# preload("res://scripts/data/ext/voorbeeld.gd"),
+	preload("res://scripts/data/ext/arena.gd"),
 ]
 
 
@@ -84,6 +93,27 @@ static func run_action(action: Array) -> bool:
 	return false
 
 
+## Laat de modules hun eigen {tekens} invullen in een tekst (zie FORMATS bovenaan dit bestand).
+static func format(text: String) -> String:
+	if not "{" in text:
+		return text
+	for module: Script in MODULES:
+		if module.get_script_constant_map().has("FORMATS"):
+			text = module.call("format", text)
+	return text
+
+
+## Namen van de tekens die de modules kennen (voor de speltest).
+static func format_names() -> Array:
+	return appended("FORMATS", [])
+
+
 ## Soorten objecten (naam -> script) die de modules toevoegen.
+## Een module mag het script ook als pad opgeven ("res://scripts/entities/doelwit.gd"): dat wordt hier pas geladen. Handig
+## als het script GameState of Sound gebruikt, want modules worden geladen voordat die autoloads bestaan.
 static func object_types() -> Dictionary:
-	return merged("OBJECTS", {})
+	var types := merged("OBJECTS", {})
+	for type_name: String in types:
+		if types[type_name] is String:
+			types[type_name] = load(types[type_name])
+	return types

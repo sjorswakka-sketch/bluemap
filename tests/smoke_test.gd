@@ -179,6 +179,10 @@ func test_data() -> void:
 			print("       ", talk_id, " heeft geen regels")
 			talks_ok = false
 	check(talks_ok, "alle gesprekken en voorwaarden kloppen")
+	for map_id: String in Maps.MAPS: # gesprekken die een object op de kaart zelf start (een "talk" bij het object)
+		for obj: Dictionary in Maps.get_map(map_id)["objects"]:
+			if obj.has("talk"):
+				referenced[obj["talk"]] = true
 	var unused: Array = []
 	for talk_id: String in Dialogue.TALKS:
 		if not referenced.has(talk_id) and talk_id != "king_intro":
@@ -748,7 +752,7 @@ func test_menus() -> void:
 	await frames(2)
 	check(sound.muted == was_muted, "M terug")
 	check(sound.streams.size() >= 20, "alle geluidseffecten geladen (%d)" % sound.streams.size())
-	check(sound.tracks.size() == 7, "alle muziekstukken geladen (%d)" % sound.tracks.size())
+	check(sound.tracks.size() >= 7, "alle muziekstukken geladen (%d)" % sound.tracks.size()) # 7 basisstukken, plus die van de uitbreidingen
 
 	print("Game over")
 	gs.hurt(gs.max_hp())

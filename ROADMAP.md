@@ -15,10 +15,12 @@ pixel art, en te delen met vrienden en de community.
 - [x] **Fase 6: verzamelen en upgraden.** Inventaris, winkel, smid, hartcontainers, laarzen, opslaan en laden
 - [x] **Einde.** Intro, eindbaas, eindscherm met herstelde Blauwe Kaart, epiloog, statistieken en aftiteling
 - [x] **Controller en volledig scherm**
+- [x] **Arena.** Gevechtsarena met golven vijanden, drie rangen (Brons, Zilver, Goud met een kristalgolem), publiek,
+      trofeeën, titels en beste tijden. Rondes staan als data, dus nieuwe vijanden zijn eenvoudig toe te voegen.
 
 ## Ideeën voor later
 - Een tweede gebied-reeks na het einde (nieuw spel+, hogere moeilijkheid, geheime baas)
-- Meer zij-opdrachten en personages, bijvoorbeeld een visser, een bibliotheek of een arena
+- Meer zij-opdrachten en personages, bijvoorbeeld een visser of een bibliotheek
 - Meer vijanden (magiër, slijmvuurspuwer), een vijand die muren doorbreekt
 - Een boog of magie als tweede wapen, schilden en uitrusting
 - Dag en nacht, weer, en een echte wereldkaart met snel reizen

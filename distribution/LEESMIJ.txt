@@ -20,6 +20,12 @@ Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
 
+De arena
+  In het noordoosten van het dorp staat een arena. Je hebt een ijzeren zwaard nodig en Oudste Bram moet je kennen.
+  Arenameester Bruno schrijft je in (Brons, Zilver of Goud). In de arena sluiten de poorten tot alle vijanden van de
+  ronde verslagen zijn; daarna krijg je even rust en een hartje van het publiek. Winnen geeft munten, een trofee,
+  een titel en een beste tijd. Word je verslagen of geef je op (sla op de gong), dan ben je alleen je inschrijving kwijt.
+
 Opslaan
   Het spel slaat automatisch op als je van gebied wisselt, en bij de blauwe altaren
   (die genezen je ook). Kies in het titelscherm "Doorgaan" om verder te spelen.

@@ -11,13 +11,14 @@ const NAMES: Array[String] = [
 	"ruin_floor", "ruin_wall", "ruin_pillar", "ruin_cracked",
 	"temple_floor", "temple_wall", "temple_rune", "carpet",
 	"wood_floor", "wood_wall", "counter", "shelf", "bed", "mat",
+	"arena_sand", "arena_wall", "arena_tribune", "arena_gate", "arena_arch", # de arena
 ]
 
 ## Tegels waar je niet doorheen kunt lopen.
 const SOLID: Array[String] = [
 	"tree", "water", "stone", "fence", "roof", "house_wall", "house_window", "rock", "bush", "dead_tree",
 	"well", "crate", "cave_wall", "cave_crystal", "stalagmite", "ruin_wall", "ruin_pillar", "temple_wall",
-	"wood_wall", "counter", "shelf", "bed",
+	"wood_wall", "counter", "shelf", "bed", "arena_wall", "arena_tribune", "arena_gate",
 ]
 
 ## Teken in de kaart -> tegel. Het gras (".") krijgt automatisch wat afwisseling.
@@ -30,6 +31,7 @@ const CHARS := {
 	"r": "ruin_floor", "M": "ruin_wall", "I": "ruin_pillar", "k": "ruin_cracked",
 	"_": "temple_floor", "Z": "temple_wall", "u": "temple_rune", "%": "carpet",
 	"w": "wood_floor", "N": "wood_wall", "C": "counter", "S": "shelf", "B": "bed", "m": "mat",
+	":": "arena_sand", "&": "arena_wall", "$": "arena_tribune", "!": "arena_gate", "@": "arena_arch", # de arena
 }
 
 
@@ -84,6 +86,10 @@ static func map_color(tile_name: String) -> Color:
 		color = Color(1.0, 0.85, 0.4)
 	elif tile_name == "stone":
 		color = Color(0.5, 0.52, 0.6)
+	elif tile_name == "arena_sand":
+		color = Color(0.86, 0.72, 0.46)
+	elif tile_name.begins_with("arena"):
+		color = Color(0.76, 0.66, 0.52)
 	if is_solid_name(tile_name):
 		color = color.darkened(0.3)
 	return color

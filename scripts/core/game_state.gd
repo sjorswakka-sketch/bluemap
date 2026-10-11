@@ -34,6 +34,7 @@ var load_pos: Vector2 = Vector2.ZERO
 var use_load_pos: bool = false
 var play_time: float = 0.0
 var kills: int = 0
+var arena_records: Dictionary = {} # beste tijd (seconden) per arena-rang, bijvoorbeeld {"bronze": 95.2}
 
 # Tijdelijke toestand (wordt niet opgeslagen).
 var in_game: bool = false
@@ -43,6 +44,8 @@ var ended: bool = false
 var transitioning: bool = false
 var dialogue_open: bool = false
 var ui_owners: Dictionary = {}
+# Een uitbreiding (de arena) kan het verlies overnemen: geeft de handler true terug, dan is het geen game over.
+var defeat_handler: Callable = Callable()
 
 
 func _ready() -> void:
@@ -74,10 +77,12 @@ func new_game() -> void:
 	use_load_pos = false
 	play_time = 0.0
 	kills = 0
+	arena_records = {}
 	ended = false
 	transitioning = false
 	dialogue_open = false
 	ui_owners = {}
+	defeat_handler = Callable()
 	last_damage_source = ""
 	damage_log = {}
 	_apply_pause()
@@ -116,6 +121,8 @@ func hurt(amount: int = 1) -> void:
 	hp = maxi(hp - amount, 0)
 	hp_changed.emit()
 	if hp == 0:
+		if defeat_handler.is_valid() and defeat_handler.call():
+			return # de arena handelt het verlies zelf af
 		ended = true
 		game_over.emit()
 
@@ -285,11 +292,12 @@ func tracked_text() -> String:
 
 
 func fmt(text: String) -> String:
-	return text \
+	text = text \
 		.replace("{crystals}", str(crystal_count())) \
 		.replace("{gel}", str(count("gel"))) \
 		.replace("{shards}", str(count("shard"))) \
 		.replace("{coins}", str(coins))
+	return Content.format(text)
 
 
 # --- Voorwaarden en acties (gebruikt door dialogen en poortjes) ---------------
@@ -404,7 +412,7 @@ func save_game(pos: Vector2) -> bool:
 	var data := {
 		"version": SAVE_VERSION, "map": map_id, "pos": [pos.x, pos.y], "hp": hp, "coins": coins,
 		"inventory": inventory, "flags": flags, "quests": quests, "weapon": weapon,
-		"play_time": play_time, "kills": kills,
+		"play_time": play_time, "kills": kills, "arena_records": arena_records,
 	}
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
@@ -430,6 +438,10 @@ func load_game() -> bool:
 	weapon = data.get("weapon", "wood")
 	play_time = float(data.get("play_time", 0.0))
 	kills = int(data.get("kills", 0))
+	var saved_records: Variant = data.get("arena_records", {})
+	if typeof(saved_records) == TYPE_DICTIONARY:
+		for rank: String in saved_records:
+			arena_records[rank] = float(saved_records[rank])
 	for item_id: String in data.get("inventory", {}):
 		inventory[item_id] = int(data["inventory"][item_id])
 	for flag_name: String in data.get("flags", {}):
