@@ -60,6 +60,7 @@ var transitioning: bool = false
 var dialogue_open: bool = false
 var ui_owners: Dictionary = {}
 var meta_achievements: Dictionary = {} # alle prestaties ooit behaald, over alle spellen heen
+var save_is_ours := false # hoort het opslagbestand bij dit spel? (bij "Nieuw spel" nog niet: dat is een oud spel)
 var achievement_queue: Array[String] = [] # nog te tonen meldingen (het beeld pakt ze op zodra het er is)
 var _achievements_dirty := false
 var _achievement_timer := ACHIEVEMENT_INTERVAL
@@ -117,6 +118,7 @@ func new_game() -> void:
 	talked = {}
 	achievements = meta_achievements.duplicate()
 	achievement_queue = []
+	save_is_ours = false
 	ended = false
 	transitioning = false
 	dialogue_open = false
@@ -214,11 +216,12 @@ func skip_to_morning() -> void:
 
 
 ## Telt een nederlaag, en zet die meteen in het opslagbestand. Anders zou herladen na je dood het weer wissen.
+## Alleen als dat bestand bij dit spel hoort: een nederlaag in een nieuw spel verandert niets aan een oud spel.
 func _record_death() -> void:
 	deaths += 1
 	if flag("boss_started") and not flag("boss_defeated"):
 		boss_deaths += 1
-	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH)) if has_save() else null
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH)) if save_is_ours and has_save() else null
 	if typeof(parsed) == TYPE_DICTIONARY:
 		var data: Dictionary = parsed
 		data["deaths"] = deaths
@@ -226,6 +229,19 @@ func _record_death() -> void:
 		var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(data))
+
+
+## Een opslag van voor de wereld-uitbreiding kent het beestenboek en de praatjes nog niet. Wat we uit de vlaggen weten
+## vullen we aan: golems en de Slijmkoning komen nooit terug, en de Muis in het bos is weg als je de kat gevonden hebt.
+func _fill_in_old_save(data: Dictionary) -> void:
+	if not data.has("kills_by"):
+		for golem_flag: String in ["golem_ruins", "golem_cave"]:
+			if flag(golem_flag):
+				kills_by["golem"] = int(kills_by.get("golem", 0)) + 1
+		if flag("boss_defeated"):
+			kills_by["king"] = 1
+	if not data.has("talked") and flag("cat_found"):
+		talked["muis_bos"] = true
 
 
 func _mark_achievements() -> void:
@@ -543,6 +559,7 @@ func save_game(pos: Vector2) -> bool:
 		push_warning("Opslaan mislukt: %s" % error_string(FileAccess.get_open_error()))
 		return false
 	file.store_string(JSON.stringify(data))
+	save_is_ours = true
 	return true
 
 
@@ -587,6 +604,8 @@ func load_game() -> bool:
 	var saved_quests: Dictionary = data.get("quests", {})
 	for quest_id: String in saved_quests:
 		quests[quest_id] = {"state": saved_quests[quest_id]["state"], "step": int(saved_quests[quest_id]["step"])}
+	_fill_in_old_save(data)
+	save_is_ours = true
 	hp = clampi(int(data.get("hp", BASE_HP)), 1, max_hp())
 	hp_changed.emit()
 	items_changed.emit()

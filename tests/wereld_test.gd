@@ -155,6 +155,15 @@ func finish_dialogue(picks: Array = []) -> void:
 		await frames(2)
 
 
+## Wacht tot de grote naam van de kaart weer weg is (pas daarna komen de meldingen van prestaties).
+func wait_for_map_name() -> void:
+	var guard := 0
+	while world.hud.banner_time > 0.0 and guard < 400:
+		guard += 1
+		await process_frame
+	await frames(3)
+
+
 func read_save() -> Dictionary:
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(gs.SAVE_PATH))
 	return parsed if typeof(parsed) == TYPE_DICTIONARY else {}
@@ -198,6 +207,13 @@ func test_clock_rules() -> void:
 	check(rising, "tussen 0.52 en 0.76 wordt het alleen maar donkerder")
 	check(Daynight.phase_at(0.0) == "ochtend" and Daynight.phase_at(0.3) == "dag" and Daynight.phase_at(0.6) == "avond" and Daynight.phase_at(0.8) == "nacht" and Daynight.phase_at(0.97) == "ochtend", "dagdelen op vaste tijdstippen")
 	check(Daynight.phase_at(1.3) == "dag" and Daynight.phase_at(-0.1) == "nacht", "dagdelen kloppen ook buiten 0..1")
+	var edges := [[0.169, "ochtend"], [0.17, "dag"], [0.519, "dag"], [0.52, "avond"], [0.719, "avond"], [0.72, "nacht"], [0.949, "nacht"], [0.95, "ochtend"]]
+	var edges_ok := true
+	for edge: Array in edges:
+		if Daynight.phase_at(edge[0]) != edge[1]:
+			edges_ok = false
+			print("       op ", edge[0], " is het ", Daynight.phase_at(edge[0]), " in plaats van ", edge[1])
+	check(edges_ok, "de grenzen tussen de dagdelen liggen op 0.17, 0.52, 0.72 en 0.95")
 	check(Daynight.icon_frame(0.3) == 0 and Daynight.icon_frame(0.6) == 1 and Daynight.icon_frame(0.05) == 1 and Daynight.icon_frame(0.8) == 2, "zon, lage zon en maan")
 	check(Daynight.phase_label(0.8) == "Nacht" and Daynight.phase_label(0.3) == "Dag", "namen voor in beeld")
 	check(Daynight.MORNING > 0.0 and Daynight.phase_at(Daynight.MORNING) == "ochtend" and Daynight.phase_at(Daynight.START) == "ochtend", "een nieuw spel en wakker worden beginnen 's ochtends")
@@ -454,7 +470,12 @@ func test_day_night_in_world() -> void:
 	# Lantaarns, ramen, altaar en je eigen lamp.
 	var lanterns := entities_with("lantern.gd")
 	var altars := entities_with("savepoint.gd")
-	check(lanterns.size() == 9 and altars.size() == 1, "lantaarns en altaar staan er (%d lantaarns)" % lanterns.size())
+	check(lanterns.size() == 12 and altars.size() == 1, "lantaarns en altaar staan er (%d lantaarns)" % lanterns.size())
+	var south_lit := false
+	for lantern in lanterns:
+		if lantern.global_position.y > tile_pos(0, 20).y:
+			south_lit = true
+	check(south_lit, "ook in de zuidelijke helft van het dorp staan lantaarns")
 	var windows: Node2D = atmosphere.windows
 	var window_count := 0
 	for row: String in Maps.get_map("village")["rows"]:
@@ -505,9 +526,11 @@ func test_day_night_in_world() -> void:
 	gs.day_time = 0.8
 	await frames(3)
 	check(world.hud._clock_label() == "Nacht", "in beeld staat 'Nacht' (%s)" % world.hud._clock_label())
+	check(world.hud.clock_state == "2 Nacht", "met de maan erbij (%s)" % world.hud.clock_state)
 	gs.day_time = 0.3
 	await frames(3)
 	check(world.hud._clock_label() == "Dag", "overdag staat er 'Dag'")
+	check(world.hud.clock_state == "0 Dag", "met de zon erbij, en het beeld volgt de klok vanzelf (%s)" % world.hud.clock_state)
 
 	# Binnen en in grotten verandert er niets.
 	gs.day_time = 0.8
@@ -664,6 +687,7 @@ func test_rain() -> void:
 	check(atmosphere.rain_audio.playing and atmosphere.rain_audio.bus == "SFX" and atmosphere.rain_audio.stream is AudioStreamWAV, "het regengeluid speelt op het geluidseffecten-kanaal (volume en mute werken)")
 	var loop: AudioStreamWAV = atmosphere.rain_audio.stream
 	check(loop.loop_mode == AudioStreamWAV.LOOP_FORWARD and loop.loop_end > 0, "en het is een lus")
+	check(near(loop.loop_end / float(loop.mix_rate), loop.get_length(), 0.05), "de lus is het hele geluid (%.2f van %.2f seconden), niet alleen het begin" % [loop.loop_end / float(loop.mix_rate), loop.get_length()])
 	var rain_color: Color = world.canvas_mod.color
 	check(rain_color.r < dry_color.r - 0.05 and rain_color.b < dry_color.b, "het wordt iets donkerder als het regent")
 	var splashes := 0
@@ -884,6 +908,17 @@ func test_fast_travel() -> void:
 	Input.action_release("move_down")
 	check(world.player.global_position.y > walk_start.y + 5.0, "en je kunt meteen weer lopen")
 
+	# Naar het altaar van de kaart waar je al bent: alleen jij gaat erheen, de kaart wordt niet opnieuw geladen.
+	var enemies_before: int = get_nodes_in_group("enemies").size()
+	get_nodes_in_group("enemies")[0].queue_free() # deze is "verslagen"
+	await frames(2)
+	var forest_altar: Node2D = entities_with("savepoint.gd")[0]
+	world.player.global_position = tile_pos(20, 20)
+	result = await FastTravel.travel(world, all[1])
+	check(result and gs.map_id == "forest" and world.player.global_position.is_equal_approx(all[1]["pos"]), "naar het altaar op dezelfde kaart: je staat er meteen naast")
+	check(get_nodes_in_group("enemies").size() == enemies_before - 1 and is_instance_valid(forest_altar) and not forest_altar.is_queued_for_deletion(), "verslagen vijanden komen niet terug (de kaart is niet opnieuw geladen)")
+	check(not gs.transitioning and read_save().get("map", "") == "forest" and world.fader.rect.color.a < 0.01, "en daarna is alles weer vrij en opgeslagen")
+
 	# Naar een kaart met een donker gebied en terug.
 	gs.set_flag(all[3]["key"])
 	result = await FastTravel.travel(world, all[3])
@@ -893,6 +928,23 @@ func test_fast_travel() -> void:
 	check(result and gs.map_id == "village" and world.player.global_position.is_equal_approx(all[0]["pos"]), "en weer terug naar het dorp")
 	result = await FastTravel.travel(world, all[0])
 	check(result and gs.map_id == "village", "reizen naar het altaar op dezelfde kaart mag ook")
+
+	# Onderweg verslagen (een vijand raakt je nog terwijl het scherm zwart wordt).
+	var save_before := read_save()
+	FastTravel.travel(world, all[3])
+	await frames(5)
+	gs.hurt(99)
+	var guard := 0
+	while gs.transitioning and guard < 200:
+		guard += 1
+		await process_frame
+	var save_after := read_save()
+	check(gs.ended and gs.map_id == "village", "wie onderweg verslagen wordt, reist niet")
+	check(save_after.get("map") == save_before.get("map") and save_after.get("pos") == save_before.get("pos") and int(save_after.get("hp", 0)) > 0, "en de laatste opslag wordt niet overschreven door een verslagen held")
+	check(world.fader.rect.color.a < 0.01 and world.hud.overlay.visible, "het scherm wordt weer helder, met het game-over-scherm erop")
+	gs.ended = false
+	gs.full_heal()
+	world.hud.overlay.visible = false
 
 	# Een baasgevecht.
 	gs.set_flag(all[4]["key"])
@@ -911,10 +963,11 @@ func test_fast_travel() -> void:
 	result = await FastTravel.travel(world, all[0])
 	check(not result and gs.map_id == map_before and not gs.transitioning, "reizen tijdens het baasgevecht wordt geweigerd")
 	king.dead = true
-	check(not FastTravel.boss_fight(world), "als de baas verslagen is mag het weer")
+	check(FastTravel.boss_fight(world), "een verslagen baas die nog aan het verdwijnen is, telt nog mee")
 	king.dead = false
 	king.queue_free()
 	await frames(3)
+	check(not FastTravel.boss_fight(world) and FastTravel.blocked_reason(world) == "", "als de baas weg is mag het weer")
 
 	# Een golem (altijd wakker) telt alleen als je dichtbij bent.
 	await load_map("ruins")
@@ -970,6 +1023,7 @@ func test_fast_travel_menu() -> void:
 	press("interact")
 	await frames(2)
 	check(menu.travel_confirm and menu.active, "E vraagt om bevestiging")
+	check(MenuPages.in_sentence("De Vergeten Ruïne") == "de Vergeten Ruïne" and MenuPages.in_sentence("Het Oude Bos") == "het Oude Bos" and MenuPages.in_sentence("Fluisterbos") == "Fluisterbos", "in de vraag staat \"Reizen naar de Vergeten Ruïne?\" (kleine letter midden in de zin)")
 	press("pause")
 	await frames(2)
 	check(not menu.travel_confirm and menu.active and gs.map_id == "village", "Esc annuleert de vraag en laat het menu open")
@@ -1029,6 +1083,63 @@ func test_fast_travel_menu() -> void:
 	gs.set_ui("dialogue", false)
 	await frames(2)
 
+	# Een open vraag blijft niet hangen als je het menu sluit (met I) en weer opent.
+	var map_now: String = gs.map_id
+	press("map")
+	await frames(3)
+	press("interact")
+	await frames(2)
+	check(menu.travel_confirm, "de vraag staat open")
+	press("menu")
+	await frames(3)
+	check(not menu.active, "I sluit het menu")
+	press("map")
+	await frames(3)
+	check(menu.active and not menu.travel_confirm and gs.map_id == map_now, "weer open: geen oude vraag meer, en er is niet gereisd")
+	press("pause")
+	await frames(3)
+
+
+## De Slijmkoning is verslagen en verdwijnt langzaam; daarna begint het einde. Wegreizen mag dan niet,
+## anders verdwijnt hij met de oude kaart en komt het einde nooit.
+func test_fast_travel_dying_king() -> void:
+	print("Snel reizen terwijl de Slijmkoning verdwijnt")
+	fresh_game()
+	var all: Array = FastTravel.all_altars()
+	gs.set_flag(all[0]["key"])
+	gs.set_flag(all[4]["key"])
+	gs.set_flag("gate_temple")
+	await load_map("temple")
+	var king: Node2D = null
+	for boss in get_nodes_in_group("boss"):
+		if boss.kind == "king":
+			king = boss
+	king.activate()
+	await frames(2)
+	king.hurt(999, Vector2.DOWN)
+	check(king.dead and gs.flag("boss_defeated"), "de Slijmkoning is verslagen")
+	await frames(6)
+	check(FastTravel.blocked_reason(world) != "", "terwijl hij verdwijnt kun je niet reizen")
+	var menu: Node = world.menu_ui
+	press("map")
+	await frames(3)
+	press("interact")
+	await frames(2)
+	press("interact")
+	await frames(2)
+	check(menu.active and not menu.travel_confirm and menu.travel_message != "" and gs.map_id == "temple" and not gs.transitioning, "ook niet via de kaart (N, E, E): je krijgt een melding")
+	press("pause")
+	await frames(3)
+	var guard := 0
+	while not (current_scene != null and current_scene.scene_file_path.ends_with("ending.tscn")) and guard < 400:
+		guard += 1
+		await process_frame
+	check(gs.flag("game_completed") and current_scene != null and current_scene.scene_file_path.ends_with("ending.tscn"), "daarna begint het einde gewoon")
+	current_scene.queue_free()
+	await frames(3)
+	gs.transitioning = false
+	await start_world()
+
 
 # --- Prestaties -------------------------------------------------------------------------------------
 
@@ -1052,7 +1163,14 @@ func test_achievements() -> void:
 	check(unlocked == ["first_blood"] and gs.achievements.has("first_blood"), "de eerste vijand geeft 'Eerste klap'")
 	check(world.fx_layer.get_child_count() >= fx_before + 2, "met gouden glinsteringen rond de speler")
 	await frames(3)
+	check(not banner.is_showing() and gs.achievement_queue == ["first_blood"] and world.hud.banner_time > 0.0, "zolang de naam van de kaart groot in beeld staat, wacht de melding (anders vallen ze over elkaar)")
+	var toasts: Array[String] = []
+	var catcher := func(text: String) -> void: toasts.append(text)
+	gs.toast.connect(catcher)
+	banner.hinted = false
+	await wait_for_map_name()
 	check(banner.is_showing() and gs.achievement_queue.is_empty(), "de melding verschijnt in beeld en de wachtrij is leeg")
+	check(toasts.has(banner.HINT), "bij de eerste melding hoor je waar je de prestaties (T) en het beestenboek (B) vindt")
 	check(banner.name_label.text == Achievements.info("first_blood")["name"], "met de naam van de prestatie")
 	gs.check_achievements()
 	check(unlocked.size() == 1, "dezelfde prestatie komt maar een keer")
@@ -1069,6 +1187,8 @@ func test_achievements() -> void:
 	gs.transitioning = false
 	await frames(5)
 	check(banner.is_showing() and gs.achievement_queue.is_empty() and banner.name_label.text == Achievements.info("boots")["name"], "na de overgang wordt hij getoond")
+	check(toasts.count(banner.HINT) == 1, "die tip krijg je maar een keer")
+	gs.toast.disconnect(catcher)
 	await frames(60 * 5)
 
 	# Tellen: kills, rollen, drankjes.
@@ -1083,6 +1203,10 @@ func test_achievements() -> void:
 	gs.register_kill("slime")
 	gs.check_achievements()
 	check(gs.achievements.has("slayer_200"), "bij 200 'Schrik van Azura'")
+	gs.kills = 12
+	check(MenuPages.progress([["kills", 50]]) == "  (12 / 50)" and MenuPages.progress([["kills", 10]]) == "  (10 / 10)", "in de lijst zie je hoe ver je bent (12 / 50), en nooit verder dan het doel")
+	check(MenuPages.progress([["flag", "boss_defeated"]]) == "" and MenuPages.progress([]) == "", "zonder teller geen voortgang")
+	gs.kills = 200
 	world.player.roll_cooldown = 0.0
 	var rolls_before: int = gs.rolls
 	press("dodge")
@@ -1276,7 +1400,7 @@ func test_achievement_checks() -> void:
 	gs.in_game = true
 	gs.set_flag("boss_defeated")
 	gs.check_achievements()
-	check(not gs.achievements.has("flawless_boss"), "met een nederlaag in het baasgevecht geen 'Ongeraakbaar'")
+	check(not gs.achievements.has("flawless_boss"), "met een nederlaag in het baasgevecht geen 'In één keer'")
 	gs.new_game()
 	check(gs.deaths == 0 and gs.boss_deaths == 0 and gs.rolls == 0 and gs.kills_by.is_empty() and gs.talked.is_empty() and gs.potions_drunk == 0, "een nieuw spel zet alle tellers terug")
 	gs.in_game = true
@@ -1285,6 +1409,23 @@ func test_achievement_checks() -> void:
 	gs.hp = 1
 	gs.hurt(1)
 	check(gs.deaths == 1 and gs.ended, "doodgaan zonder opslag geeft geen fout")
+	# Een nederlaag in een nieuw spel verandert niets aan het opslagbestand van het oude spel.
+	gs.new_game()
+	gs.in_game = true
+	gs.deaths = 4
+	gs.boss_deaths = 2
+	gs.save_game(world.player.global_position)
+	gs.new_game() # "Nieuw spel" op het titelscherm: het oude bestand blijft staan
+	gs.in_game = true
+	gs.hp = 1
+	gs.hurt(1)
+	var old_save := read_save()
+	check(gs.deaths == 1 and int(old_save.get("deaths", 0)) == 4 and int(old_save.get("boss_deaths", 0)) == 2, "doodgaan in een nieuw spel laat de tellers van het oude spel met rust")
+	gs.save_game(world.player.global_position)
+	gs.ended = false
+	gs.hp = 1
+	gs.hurt(1)
+	check(int(read_save().get("deaths", 0)) == 2, "maar zodra dit spel is opgeslagen, telt het wel in het eigen bestand")
 	gs.new_game()
 	gs.in_game = true
 
@@ -1338,6 +1479,12 @@ func test_achievement_persistence() -> void:
 	gs.meta_achievements.erase("bestaat_niet_meer")
 	gs._save_meta()
 
+	# Een GameState die net opstart (het spel gaat open) leest de meta meteen.
+	var starting: Node = load("res://scripts/core/game_state.gd").new()
+	root.add_child(starting)
+	check(starting.meta_achievements.has("boots") and starting.meta_achievements.has("rich") and starting.achievements.has("boots"), "bij het opstarten van het spel zijn de prestaties van eerdere keren er meteen")
+	starting.free()
+
 	# Een kapotte meta mag het spel niet stoppen.
 	var broken := FileAccess.open(gs.META_PATH, FileAccess.WRITE)
 	broken.store_string("dit is geen [geldig bestand")
@@ -1356,7 +1503,7 @@ func test_achievement_persistence() -> void:
 	world = load("res://scenes/main.tscn").instantiate()
 	root.add_child(world)
 	current_scene = world
-	await frames(8)
+	await wait_for_map_name()
 	check(gs.achievement_queue.is_empty() and world.hud.achievement_banner.is_showing() and world.hud.achievement_banner.name_label.text == Achievements.info("slept")["name"], "zodra het spel er weer is, wordt hij getoond")
 	await frames(60 * 5)
 
@@ -1679,6 +1826,14 @@ func test_saving() -> void:
 	gs.in_game = true
 	gs.check_achievements()
 	check(gs.achievements.has("first_blood"), "met 7 verslagen vijanden uit de oude opslag... (kills telt zelf mee) wordt 'Eerste klap' alsnog behaald")
+	# Een oude opslag van na de kat, de golems en de koning: die komen nooit meer terug, dus dat vullen we aan.
+	var later := old.duplicate(true)
+	later["flags"] = {"cat_found": true, "cat_home": true, "golem_ruins": true, "golem_cave": true, "boss_defeated": true}
+	file = FileAccess.open(gs.SAVE_PATH, FileAccess.WRITE)
+	file.store_string(JSON.stringify(later))
+	file.close()
+	check(gs.load_game() and gs.talked.has("muis_bos") and gs.talked.size() == 1, "de Muis in het bos (al weg) telt als gesproken, dus 'Gezellig babbelen' kan nog")
+	check(gs.kills_by.get("golem", 0) == 2 and gs.kills_by.get("king", 0) == 1 and gs.kills_by.size() == 2, "de golems en de Slijmkoning staan in het beestenboek, dus 'Beestenkenner' kan nog")
 
 	# Rare waarden in een opslag.
 	var odd := old.duplicate()
@@ -1723,6 +1878,7 @@ func _run() -> void:
 	await test_rain()
 	await test_fast_travel()
 	await test_fast_travel_menu()
+	await test_fast_travel_dying_king()
 	await test_achievements()
 	await test_achievement_checks()
 	await test_achievement_persistence()

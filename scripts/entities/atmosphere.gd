@@ -38,8 +38,8 @@ func _ready() -> void:
 		var loop: AudioStreamWAV = stream.duplicate()
 		loop.loop_mode = AudioStreamWAV.LOOP_FORWARD
 		loop.loop_begin = 0
-		@warning_ignore("integer_division")
-		loop.loop_end = loop.data.size() / 2 # 16 bit, mono: 2 bytes per sample
+		# In samples. Uit de lengte rekenen, niet uit de grootte van de data: die is ingepakt (QOA, zie het .import-bestand).
+		loop.loop_end = roundi(loop.get_length() * loop.mix_rate)
 		rain_audio.stream = loop
 	add_child(rain_audio)
 	GameState.achievement_unlocked.connect(_celebrate)

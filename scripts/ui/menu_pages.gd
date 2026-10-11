@@ -20,6 +20,9 @@ const PANEL := Color(0.1, 0.16, 0.3)
 const FRAME := Color(0.3, 0.45, 0.7)
 const SILHOUETTE := Color(0.03, 0.05, 0.12) # een beest dat je nog niet kent: alleen de vorm
 
+## Voorwaarden die een teller in GameState zijn (met dezelfde naam). Daarvan tonen we de voortgang: "(12 / 50)".
+const COUNTERS := ["kills", "rolls", "potions_drunk"]
+
 ## Hoe vaak een voorwerp valt, in woorden (kans vanaf, tekst).
 const CHANCE_WORDS: Array = [[0.95, "altijd"], [0.4, "vaak"], [0.15, "soms"], [0.0, "zelden"]]
 const DROP_NAMES := {"heart": "Hartje"}
@@ -67,6 +70,8 @@ static func draw_achievements(menu: Node, font: Font) -> void:
 	menu.achievement_selected = clampi(menu.achievement_selected, 0, maxi(ids.size() - 1, 0))
 	menu.achievement_scroll = follow(menu.achievement_selected, menu.achievement_scroll, visible, ids.size())
 	_header(canvas, font, "Prestaties", "%d / %d behaald" % [Achievements.count_owned(GameState.achievements), ids.size()])
+	var title_width := font.get_string_size("Prestaties", HORIZONTAL_ALIGNMENT_LEFT, -1, 24).x
+	text(canvas, font, Vector2(24 + title_width + 16, 79), "Die houd je, ook als je een nieuw spel begint.", 16, DIM)
 	var width := SIZE.x - 48.0 - (14.0 if ids.size() > visible else 0.0)
 	for row in visible:
 		var index: int = menu.achievement_scroll + row
@@ -82,11 +87,22 @@ static func draw_achievements(menu: Node, font: Font) -> void:
 		_trophy(canvas, rect.position + Vector2(8, 5), 40.0, 3 if done else 5 if secret else 4)
 		var title: String = def["name"] if not secret else "???"
 		var desc: String = def["desc"] if not secret else "Een geheime prestatie. Blijf het spel ontdekken!"
+		if not done and not secret:
+			desc += progress(def.get("if", []))
 		text(canvas, font, rect.position + Vector2(62, 3), title, 21, GOLD if done else Color(0.75, 0.8, 0.92) if not secret else DIM)
 		text(canvas, font, rect.position + Vector2(62, 27), desc, 16, Color(0.9, 0.95, 1.0) if done else Color(0.62, 0.7, 0.88), width - 80.0)
 		if done:
 			text(canvas, font, rect.position + Vector2(width - 24, 12), "✓", 24, Color(0.55, 1.0, 0.65))
 	scrollbar(canvas, menu.achievement_scroll, visible, ids.size(), SIZE.x - 30.0)
+
+
+## Hoe ver je bent met een tellerprestatie, bijvoorbeeld "  (12 / 50)". Leeg als er niets te tellen valt.
+static func progress(conditions: Array) -> String:
+	for cond: Array in conditions:
+		if cond[0] in COUNTERS:
+			var goal := int(cond[1])
+			return "  (%d / %d)" % [mini(int(GameState.get(cond[0])), goal), goal]
+	return ""
 
 
 # --- Beestenboek ---------------------------------------------------------------------------------
@@ -172,7 +188,7 @@ static func _draw_beast_detail(canvas: Control, font: Font, kind: String) -> voi
 	# De grappige beschrijving; ontbreekt die, dan tonen we niets.
 	var desc: String = data.get("desc", "")
 	if desc != "":
-		var desc_y := drops_y + 30 + ceili(drops.size() / 2.0) * 32 + 14.0
+		var desc_y := drops_y + 30 + maxi(ceili(drops.size() / 2.0), 1) * 32 + 14.0 # minstens een regel ("Niets.")
 		canvas.draw_line(Vector2(left, desc_y - 6), Vector2(left + width, desc_y - 6), FRAME, 2.0)
 		text(canvas, font, Vector2(left, desc_y + 4), desc, 19, Color(0.95, 0.93, 0.8), width)
 
@@ -230,10 +246,18 @@ static func draw_travel_panel(menu: Node, font: Font, altars: Array) -> void:
 	var box_y := 104 + altars.size() * 48.0 + 12.0
 	if menu.travel_confirm:
 		var altar: Dictionary = altars[menu.travel_selected]
-		var box := Rect2(left, box_y, width, 96)
+		var box := Rect2(left, box_y, width, 110) # ruimte voor een naam over twee regels
 		canvas.draw_rect(box, Color(0.2, 0.18, 0.06))
 		canvas.draw_rect(box, Color(1.0, 0.85, 0.3), false, 3.0)
-		text(canvas, font, box.position + Vector2(12, 8), "Reizen naar %s?" % altar["name"], 20, GOLD, width - 24.0)
-		text(canvas, font, box.position + Vector2(12, 62), "E  ja, reis maar    Esc  nee", 18, Color(0.9, 0.95, 1.0))
+		text(canvas, font, box.position + Vector2(12, 8), "Reizen naar %s?" % in_sentence(altar["name"]), 20, GOLD, width - 24.0)
+		text(canvas, font, box.position + Vector2(12, 78), "E  ja, reis maar    Esc  nee", 18, Color(0.9, 0.95, 1.0))
 	elif menu.travel_message != "":
 		text(canvas, font, Vector2(left, box_y), menu.travel_message, 18, Color(1.0, 0.65, 0.55), width)
+
+
+## Een kaartnaam midden in een zin: "De Vergeten Ruïne" wordt "de Vergeten Ruïne".
+static func in_sentence(map_name: String) -> String:
+	for article: String in ["De ", "Het "]:
+		if map_name.begins_with(article):
+			return article.to_lower() + map_name.substr(article.length())
+	return map_name

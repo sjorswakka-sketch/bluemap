@@ -3,6 +3,7 @@ extends CanvasLayer
 ## Alle prestaties die nog getoond moeten worden staan in GameState.achievement_queue. Deze melding pakt ze een voor een
 ## en haalt ze pas uit de rij als hij ze echt toont. Zo gaat er niets verloren als er even geen beeld is (bijvoorbeeld
 ## tijdens het zwart worden bij het einde): de volgende melding in een volgend scherm toont ze alsnog.
+## Bij de eerste melding vertellen we ook waar je al je prestaties en het beestenboek vindt.
 
 const Art := preload("res://scripts/core/art.gd")
 const UiStyle := preload("res://scripts/core/ui_style.gd")
@@ -14,11 +15,13 @@ const SHOW_TIME := 4.0 # seconden in beeld
 const SHOW_TIME_RUSH := 1.8 # als er meer dan twee wachten (bijvoorbeeld na het laden van een oude opslag)
 const SLIDE_TIME := 0.35 # seconden om in en uit te schuiven
 const TROPHY_FRAME := 3 # de gouden beker in assets/wereld_ui.png
+const HINT := "Al je prestaties zie je met T, het beestenboek met B."
 
 var root: Control
 var name_label: Label
 var time := 0.0 # hoe lang de huidige melding nog in beeld blijft
 var duration := SHOW_TIME # hoe lang de huidige melding in totaal in beeld is
+var hinted := false # de tip over T en B is al gegeven
 
 
 func _ready() -> void:
@@ -61,20 +64,25 @@ func is_showing() -> bool:
 	return time > 0.0
 
 
-## Tijdens een overgang in de wereld (deur, reizen, slapen, het einde) is het scherm zwart: dan wachten we met de volgende.
-func _screen_is_fading() -> bool:
-	return GameState.transitioning and get_tree().get_first_node_in_group("world") != null
+## Tijdens een overgang in de wereld (deur, reizen, slapen, het einde) is het scherm zwart, en daarna staat de naam van
+## de kaart groot in beeld (op dezelfde hoogte). Dan wachten we met de volgende melding.
+func _screen_is_busy() -> bool:
+	var world := get_tree().get_first_node_in_group("world")
+	return world != null and (GameState.transitioning or world.hud.banner_time > 0.0)
 
 
 func _process(delta: float) -> void:
 	if time <= 0.0:
 		root.modulate.a = 0.0
-		if GameState.achievement_queue.is_empty() or _screen_is_fading():
+		if GameState.achievement_queue.is_empty() or _screen_is_busy():
 			return
 		duration = SHOW_TIME if GameState.achievement_queue.size() <= 2 else SHOW_TIME_RUSH
 		name_label.text = Achievements.info(GameState.achievement_queue.pop_front())["name"]
 		time = duration
 		Sound.play("wereld_prestatie", -3.0)
+		if not hinted:
+			hinted = true
+			GameState.toast.emit(HINT)
 	time -= delta
 	var shown := minf(duration - time, time) / SLIDE_TIME
 	root.modulate.a = clampf(shown * 1.5, 0.0, 1.0)

@@ -111,9 +111,15 @@ static func blocked_reason(world: Node) -> String:
 
 ## Is er een baasgevecht bezig? Een baas die je moet starten (de Slijmkoning) telt zodra hij wakker is,
 ## een baas die altijd wakker is (een golem) pas als je dichtbij bent.
+## Een verslagen baas die nog in beeld is telt ook: de Slijmkoning verdwijnt langzaam en daarna begint het einde.
+## Zou je dan wegreizen, dan verdwijnt hij met de oude kaart en komt het einde nooit.
 static func boss_fight(world: Node) -> bool:
 	for boss: Node2D in world.get_tree().get_nodes_in_group("boss"):
-		if not is_instance_valid(boss) or not boss.active or boss.dead:
+		if not is_instance_valid(boss) or boss.is_queued_for_deletion():
+			continue
+		if boss.dead:
+			return true
+		if not boss.active:
 			continue
 		if boss.data.get("start_inactive", false) or boss.global_position.distance_to(world.player.global_position) < BOSS_RANGE:
 			return true
@@ -121,6 +127,8 @@ static func boss_fight(world: Node) -> bool:
 
 
 ## Reist naar een ontdekt altaar: fade, kaart laden, opslaan. Geeft false terug als het niet mocht.
+## Een altaar op de kaart waar je al bent: dan verplaatsen we alleen jou. De kaart opnieuw laden zou alle
+## verslagen vijanden en opgeraapte muntjes terugbrengen.
 static func travel(world: Node, altar: Dictionary) -> bool:
 	var reason := blocked_reason(world)
 	if reason == "" and not GameState.flag(altar["key"]):
@@ -132,10 +140,27 @@ static func travel(world: Node, altar: Dictionary) -> bool:
 	GameState.transitioning = true
 	Sound.play("wereld_reis")
 	await world.fader.fade_out(FADE)
-	world.load_map(altar["map"], altar["spawn"], altar["pos"])
+	if GameState.ended:
+		# Onderweg verslagen (een vijand raakte je nog tijdens het zwart worden): dan reis je niet en slaan we niets op.
+		await world.fader.fade_in(FADE)
+		GameState.transitioning = false
+		return false
+	if altar["map"] == GameState.map_id:
+		_move_player(world, altar["pos"])
+	else:
+		world.load_map(altar["map"], altar["spawn"], altar["pos"])
 	GameState.set_flag("wereld_snel_gereisd")
 	world.autosave()
 	world.ring(altar["pos"], 44.0, Color(0.5, 0.85, 1.0))
 	await world.fader.fade_in(FADE)
 	GameState.transitioning = false
 	return true
+
+
+## Zet de speler neer op een andere plek van dezelfde kaart (zoals load_map dat doet, maar zonder de kaart te herladen).
+static func _move_player(world: Node, pos: Vector2) -> void:
+	var player: Node2D = world.player
+	player.global_position = pos
+	player.velocity = Vector2.ZERO
+	player.knockback = Vector2.ZERO
+	player.camera.reset_smoothing()

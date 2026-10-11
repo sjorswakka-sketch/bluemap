@@ -26,7 +26,7 @@ const BASE_ACHIEVEMENTS := {
 		"if": [["kills", 200]],
 	},
 	"bestiary_all": {
-		"name": "Beestenkenner", "desc": "Versla elke soort vijand uit het begin van het spel minstens één keer.",
+		"name": "Beestenkenner", "desc": "Versla elke soort vijand uit het verhaal minstens één keer, ook de Slijmkoning.",
 		"if": [["kinds_killed", ["slime", "slime_blue", "slime_red", "slime_mini", "bat", "skeleton", "golem", "king"]]],
 	},
 	"hearts_all": {
@@ -66,7 +66,7 @@ const BASE_ACHIEVEMENTS := {
 		"if": [["finished_within", 3600]],
 	},
 	"flawless_boss": {
-		"name": "Ongeraakbaar", "desc": "Versla de Slijmkoning zonder dat je in dat gevecht doodgaat.",
+		"name": "In één keer", "desc": "Versla de Slijmkoning zonder dat je in dat gevecht doodgaat.",
 		"if": [["flag", "boss_defeated"], ["max_boss_deaths", 0]],
 	},
 	"talked_all": {

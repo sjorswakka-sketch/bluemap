@@ -17,8 +17,8 @@ const TALKS := {
 	"wereld_bed_info": {
 		"speaker": "Mila",
 		"lines": [
-			"Slapen? Natuurlijk! De bedden staan daar links.",
-			"Een nachtje kost 5 munten. Je wordt helemaal beter, en als je wakker wordt is het ochtend.",
+			"Uitrusten blijft gratis, hoor! Maar in een echt bed slapen kost 5 munten.",
+			"Dan slaap je door tot de ochtend, en je wordt ook helemaal beter. Fijn als het buiten donker is!",
 		],
 		"next": "wereld_bed",
 	},
@@ -31,7 +31,7 @@ const TALKS := {
 	},
 	"wereld_bed_menu": {
 		"speaker": "Bed",
-		"lines": ["Een zacht bed met een blauwe deken. Een nachtje slapen kost 5 munten."],
+		"lines": ["Een zacht bed met een blauwe deken. Wil je slapen tot het ochtend is?"],
 		"choices": [
 			{"text": "Slapen (5 munten)", "do": [["wereld_sleep"]]},
 			{"text": "Nog even niet."},
