@@ -5,6 +5,9 @@
 # Gebruik:  sh tools/run_tests.sh [pad/naar/godot]
 GODOT="${1:-godot}"
 cd "$(dirname "$0")/.." || exit 1
+# Eigen opslagmap voor de tests, zodat ze nooit in je echte spel of in een andere testrun schrijven.
+XDG_DATA_HOME="$(pwd)/.testdata"
+export XDG_DATA_HOME
 "$GODOT" --headless --path . --import > /dev/null 2>&1
 ORDER="smoke_test playthrough_test"
 for FILE in tests/*_test.gd; do
