@@ -47,7 +47,7 @@ const DATA := {
 		"########################~~##################oooooooo##",
 		"########################~~############################",
 	],
-	"spawns": {"start": [4, 17], "from_village": [4, 17], "from_ruins": [49, 16], "from_cave": [48, 32], "altar": [6, 16], "from_dauwbos": [10, 11]},
+	"spawns": {"start": [4, 17], "from_village": [4, 17], "from_ruins": [49, 16], "from_cave": [48, 32], "altar": [6, 16], "from_dauwbos": [5, 12]},
 	"objects": [
 		{"type": "portal", "pos": [1, 17], "to": "village", "spawn": "from_forest", "size": [1, 2]},
 		{"type": "savepoint", "pos": [6, 15]},
@@ -111,8 +111,8 @@ const DATA := {
 		{"type": "enemy", "pos": [12, 28], "kind": "slime_spitter"},
 		{"type": "enemy", "pos": [35, 16], "kind": "slime_spitter"},
 		{"type": "enemy", "pos": [42, 26], "kind": "slime_spitter"},
-		# Portaal naar het nieuwe Dauwbos (polish) – op vrij pad
-		{"type": "portal", "pos": [8, 11], "to": "dauwbos", "spawn": "from_forest", "size": [1, 2]},
-		{"type": "sign", "pos": [7, 13], "lines": ["Noordelijk pad: Dauwbos", "Mistig en stil. Mira bewaakt de dauw."]},
+		# Portaal naar Dauwbos – vrije grass-tegels (gecontroleerd op niet-solid)
+		{"type": "portal", "pos": [3, 10], "to": "dauwbos", "spawn": "from_forest", "size": [1, 2]},
+		{"type": "sign", "pos": [5, 12], "lines": ["Noordelijk pad: Dauwbos", "Mistig en stil. Mira bewaakt de dauw."]},
 	],
 }
