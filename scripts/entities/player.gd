@@ -1,6 +1,7 @@
 extends CharacterBody2D
 ## De speler: lopen (WASD/pijltjes), zwaard (spatie/J), boog (F/L), rollen (Shift/K), praten en openen (E),
 ## drankje drinken (H), rennen (Ctrl vasthouden / linker stick indrukken).
+## Equipment is altijd zichtbaar op het character.
 
 signal footstep(surface: String)
 
@@ -24,7 +25,7 @@ const FOOT_OFFSET := Vector2(0, 8)
 const STEP_DISTANCE := 22.0
 
 var world: Node
-var facing := Vector2.DOWN # lichaam: looprichting, ook nadat je stilstaat
+var facing := Vector2.DOWN
 var aim_direction := Vector2.DOWN
 var attack_direction := Vector2.DOWN
 var bow_direction := Vector2.DOWN
@@ -40,7 +41,7 @@ var step_distance := 0.0
 var roll_timer := 0.0
 var roll_cooldown := 0.0
 var roll_dir := Vector2.DOWN
-var target: Node2D # het dichtstbijzijnde ding waar je mee kunt praten of dat je kunt openen
+var target: Node2D
 var camera: Camera2D
 var light: PointLight2D
 var shake_power := 0.0
@@ -53,25 +54,21 @@ var work_elapsed := 0.0
 var work_duration := 1.0
 var drink_anim := 0.0
 
-
 func _ready() -> void:
 	add_to_group("player")
 	collision_layer = 2
 	collision_mask = 1
 	motion_mode = MOTION_MODE_FLOATING
-
 	var shape := CollisionShape2D.new()
 	var circle := CircleShape2D.new()
 	circle.radius = 7.0
 	shape.shape = circle
-	shape.position = Vector2(0, 8) # botsing bij de voeten
+	shape.position = Vector2(0, 8)
 	add_child(shape)
-
 	camera = Camera2D.new()
 	camera.zoom = Vector2(2, 2)
 	camera.position_smoothing_enabled = true
 	add_child(camera)
-
 	light = PointLight2D.new()
 	light.texture = Art.light_texture()
 	light.texture_scale = 3.2
@@ -79,7 +76,6 @@ func _ready() -> void:
 	light.color = Color(1.0, 0.92, 0.75)
 	light.enabled = false
 	add_child(light)
-
 	_refresh_controls()
 	Controls.bindings_changed.connect(_refresh_controls)
 	Controls.device_changed.connect(_device_changed)
@@ -87,7 +83,6 @@ func _ready() -> void:
 	crosshair.player = self
 	add_child(crosshair)
 	aim_position = global_position + facing * 90.0
-
 
 func _refresh_controls() -> void:
 	trigger_axis = -1
@@ -98,15 +93,12 @@ func _refresh_controls() -> void:
 			trigger_axis = event.axis
 			trigger_sign = signf(event.axis_value)
 
-
 func _device_changed(_controller: bool) -> void:
 	trigger_down = false
 	stick_aim = Vector2.ZERO
 
-
 func is_rolling() -> bool:
 	return roll_timer > 0.0
-
 
 func _physics_process(delta: float) -> void:
 	time += delta
@@ -127,7 +119,6 @@ func _physics_process(delta: float) -> void:
 		and attack_timer <= 0.0 and bow_anim <= 0.0 and Input.is_action_pressed("sprint") \
 		and GameState.movement.can_sprint()
 	var run_multiplier: float = GameState.movement.sprint_multiplier(delta) if wants_sprint else 1.0
-
 	if rolling:
 		velocity = roll_dir * ROLL_SPEED
 	else:
@@ -137,7 +128,6 @@ func _physics_process(delta: float) -> void:
 	knockback = knockback.move_toward(Vector2.ZERO, 900.0 * delta)
 	var before := global_position
 	move_and_slide()
-	# Werkelijke verplaatsing voorkomt voetstappen en sprintverbruik tegen een muur.
 	var distance := (global_position - before).length()
 	var walking := moving and not locked and not rolling and not pushed and distance > 4.0 * delta
 	sprinting = wants_sprint and walking
@@ -146,7 +136,6 @@ func _physics_process(delta: float) -> void:
 	if walking:
 		walk_time += distance / SPEED
 	_update_footsteps(distance, walking, ground_tile())
-
 	roll_timer = maxf(roll_timer - delta, 0.0)
 	roll_cooldown = maxf(roll_cooldown - delta, 0.0)
 	attack_timer = maxf(attack_timer - delta, 0.0)
@@ -155,18 +144,15 @@ func _physics_process(delta: float) -> void:
 	bow_cooldown = maxf(bow_cooldown - delta, 0.0)
 	bow_anim = maxf(bow_anim - delta, 0.0)
 	no_arrows_toast = maxf(no_arrows_toast - delta, 0.0)
-
 	_update_aim()
 	_update_target()
 	_update_shake(delta)
 	queue_redraw()
 
-
 func ground_tile() -> String:
 	if not is_instance_valid(world):
 		return ""
 	return Tiles.name_at(world.map_data.get("rows", []), global_position + FOOT_OFFSET)
-
 
 func _update_footsteps(distance: float, walking: bool, tile_name: String) -> void:
 	var surface := Tiles.footstep_surface(tile_name)
@@ -179,11 +165,10 @@ func _update_footsteps(distance: float, walking: bool, tile_name: String) -> voi
 		Sound.play("step_" + surface, -13.0 if sprinting else -17.0, randf_range(0.94, 1.06))
 		footstep.emit(surface)
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if not Controls.allows_event(event) or event.is_echo():
 		return
-	var bow_pressed := _bow_pressed(event) # altijd bijhouden, ook als het spel even vastzit
+	var bow_pressed := _bow_pressed(event)
 	if GameState.input_locked():
 		return
 	_update_aim()
@@ -199,12 +184,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("potion"):
 		_drink()
 
-
 func _roll() -> void:
 	if roll_cooldown > 0.0 or roll_timer > 0.0:
 		return
 	cancel_work_animation()
-	attack_timer = 0.0 # rollen onderbreekt een zwaardzwaai
+	attack_timer = 0.0
 	var dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	roll_dir = dir.normalized() if dir != Vector2.ZERO else facing
 	facing = roll_dir
@@ -212,7 +196,6 @@ func _roll() -> void:
 	roll_cooldown = ROLL_COOLDOWN
 	GameState.note_roll()
 	Sound.play("dodge", -3.0, randf_range(0.95, 1.05))
-
 
 func _attack() -> void:
 	if cooldown > 0.0 or roll_timer > 0.0:
@@ -229,61 +212,46 @@ func _attack() -> void:
 		var margin: float = enemy.radius
 		if to_enemy.length() <= reach + margin and attack_direction.dot(to_enemy.normalized()) > 0.2:
 			enemy.hurt(GameState.damage(), attack_direction)
-	# Wat je kunt stukslaan (zoals de tovervonk van een Magiër) bepaalt zelf of je zwaard het raakt.
 	for thing: Node in get_tree().get_nodes_in_group("breakable"):
 		thing.sword_hit(global_position, attack_direction, reach)
 
-
-# --- Boog -----------------------------------------------------------------------------
-
-const BOW_COOLDOWN := 0.4 # afkoelen tussen twee pijlen
-const BOW_ANIM_TIME := 0.25 # zo lang zie je de boog na het schieten
-const NO_ARROWS_TOAST_TIME := 3.4 # "Geen pijlen!" blijft ruim 3 seconden in beeld, dus niet vaker melden
-const ARROW_START := 12.0 # de pijl vliegt vanuit je hand eerst zover vooruit (in het eerste beeld)
-const ARROW_HEIGHT := Vector2(0, 4) # je hand zit iets onder je middelpunt
+const BOW_COOLDOWN := 0.4
+const BOW_ANIM_TIME := 0.25
+const NO_ARROWS_TOAST_TIME := 3.4
+const ARROW_START := 12.0
+const ARROW_HEIGHT := Vector2(0, 4)
 
 var bow_cooldown := 0.0
 var bow_anim := 0.0
 var no_arrows_toast := 0.0
-var trigger_axis := -1 # de as van de rechter trekker (uit de input-acties), -1 als er geen is
-var trigger_sign := 1.0 # ook een opnieuw ingestelde negatieve stickrichting werkt
-var trigger_down := false # de trekker is ingedrukt: hij telt maar een keer per haal
-
+var trigger_axis := -1
+var trigger_sign := 1.0
+var trigger_down := false
 
 func _bow_pressed(event: InputEvent) -> bool:
 	if Controls.controller_active and event is InputEventJoypadMotion and (event as InputEventJoypadMotion).axis == trigger_axis:
-		# Een analoge trekker stuurt veel gebeurtenissen: alleen het moment van intrekken telt.
 		var down := (event as InputEventJoypadMotion).axis_value * trigger_sign >= InputMap.action_get_deadzone("bow")
 		var fresh := down and not trigger_down
 		trigger_down = down
 		return fresh
 	return event.is_action_pressed("bow")
 
-
 func _notification(what: int) -> void:
-	# Tijdens een menu, gesprek of winkel staat de speler stil en hoort hij de trekker niet. Is hij intussen
-	# losgelaten, dan moet de volgende haal gewoon weer schieten.
 	if what == NOTIFICATION_UNPAUSED:
 		trigger_down = _trigger_held()
 	elif what == NOTIFICATION_PAUSED:
 		cancel_work_animation()
 
-
-## Houdt iemand op een controller nu de trekker van de boog ingedrukt?
 func _trigger_held() -> bool:
 	if trigger_axis < 0 or not Controls.controller_active:
 		return false
 	var device: int = Controls.controller_device
 	return device in Input.get_connected_joypads() and Input.get_joy_axis(device, trigger_axis as JoyAxis) * trigger_sign >= InputMap.action_get_deadzone("bow")
 
-
-## Tijdens een poging op Tessa's schietbaan schiet je met haar pijlen: dan kost een schot niets.
 func _lent_arrow() -> bool:
 	var shooting_range: Node = get_tree().get_first_node_in_group("boog_range")
 	return shooting_range != null and shooting_range.lends_arrows()
 
-
-## Schiet naar het mikpunt, of in je laatste looprichting zonder muis/stick. Kost een pijl, behalve op Tessa's schietbaan.
 func _shoot() -> void:
 	if world == null or bow_cooldown > 0.0 or roll_timer > 0.0:
 		return
@@ -312,10 +280,9 @@ func _shoot() -> void:
 	arrow.direction = bow_direction
 	arrow.position = global_position + ARROW_HEIGHT
 	world.entities.add_child(arrow)
-	arrow.launch(ARROW_START) # vanuit je hand, zodat hij niet door een poortje springt waar je tegenaan staat
+	arrow.launch(ARROW_START)
 	Sound.play("boog_twang", -3.0, randf_range(0.95, 1.05))
 	world.burst(arrow.position, Color(1, 1, 1, 0.8), 3)
-
 
 func _drink() -> void:
 	if GameState.use_potion():
@@ -330,7 +297,6 @@ func _drink() -> void:
 	else:
 		GameState.toast.emit(tr("Je hebt geen helddrank."))
 
-
 func _update_target() -> void:
 	target = null
 	if GameState.input_locked():
@@ -341,15 +307,12 @@ func _update_target() -> void:
 		if d >= INTERACT_RANGE:
 			continue
 		var direction := (node.global_position - global_position).normalized()
-		# Zonder expliciet mikken blijft dichtbij praten/openen hetzelfde werken.
 		var aiming: bool = Controls.mouse_aim_active or (Controls.controller_active and stick_aim != Vector2.ZERO)
 		var score := d + ((1.0 - aim_direction.dot(direction)) * 16.0 if aiming else 0.0)
 		if score < best:
 			best = score
 			target = node
 
-
-## Muismikpunt of rechter stick; lopen blijft onafhankelijk van richten.
 func _update_aim() -> void:
 	if GameState.input_locked():
 		return
@@ -369,7 +332,6 @@ func _update_aim() -> void:
 	else:
 		aim_position = global_position + aim_direction * 90.0
 
-
 func start_work_animation(kind: String, duration: float, target_position: Vector2) -> void:
 	work_kind = kind
 	work_duration = maxf(duration, 0.01)
@@ -379,16 +341,12 @@ func start_work_animation(kind: String, duration: float, target_position: Vector
 	if work_facing == Vector2.ZERO:
 		work_facing = facing
 
-
 func cancel_work_animation() -> void:
 	work_active = false
-
 
 func is_working() -> bool:
 	return work_active
 
-
-## Wordt aangeroepen door vijanden en projectielen.
 func hurt(from_pos: Vector2, amount: int = 1, source := "") -> void:
 	if invuln > 0.0 or GameState.ended or (roll_timer > ROLL_TIME - ROLL_SAFE_TIME):
 		return
@@ -403,10 +361,8 @@ func hurt(from_pos: Vector2, amount: int = 1, source := "") -> void:
 	if world:
 		world.hitstop(0.07)
 
-
 func shake(power: float) -> void:
 	shake_power = maxf(shake_power, power)
-
 
 func _update_shake(delta: float) -> void:
 	if shake_power > 0.05:
@@ -415,31 +371,24 @@ func _update_shake(delta: float) -> void:
 	else:
 		camera.offset = Vector2.ZERO
 
-
-## Je eigen lamp aan of uit (donkere gebieden en 's nachts buiten). Grotere `scale` = groter lichtvlak.
 func set_lit(on: bool, energy := 1.0, scale := 3.2) -> void:
 	light.enabled = on
 	light.energy = energy
 	light.texture_scale = scale
 
-
-## Rij in player.png: 0 = naar beneden, 1 = omhoog, 2 = rechts, 3 = links.
 func _direction_row() -> int:
 	var body_direction := work_facing if work_active else facing
 	if absf(body_direction.y) > absf(body_direction.x):
 		return 0 if body_direction.y > 0.0 else 1
 	return 2 if body_direction.x > 0.0 else 3
 
-
 func _draw() -> void:
-	# Knipperen als we net geraakt zijn.
 	if invuln > 0.0 and int(invuln * 12.0) % 2 == 0:
 		return
 	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(9, 3.5), Color(0, 0, 0, 0.3))
 	var column := 1 + int(walk_time * 9.0) % 2 if moving else 0
 	var tint := Color(1, 1, 1, 0.8) if roll_timer > ROLL_TIME - ROLL_SAFE_TIME else Color.WHITE
 	if roll_timer > 0.0:
-		# Rollen: het hele poppetje draait een rondje.
 		var progress := 1.0 - roll_timer / ROLL_TIME
 		draw_set_transform(Vector2(0, 4), progress * TAU * signf(roll_dir.x if roll_dir.x != 0.0 else 1.0), Vector2.ONE)
 		DrawUtil.sprite(self, Art.tex("player"), 1, _direction_row(), Vector2(0, -4), Vector2i(16, 16), 2.0, tint)
@@ -450,6 +399,8 @@ func _draw() -> void:
 		if work_active:
 			bob = sin(work_elapsed * TAU * 3.0) * 1.5
 		DrawUtil.sprite(self, Art.tex("player"), column, _direction_row(), Vector2(0, bob) + lean, Vector2i(16, 16), 2.0, tint)
+	# Equipment altijd zichtbaar
+	_draw_equipped_gear()
 	if sprinting:
 		for i in 3:
 			var phase := fmod(walk_time * 5.0 + i * 0.33, 1.0)
@@ -465,8 +416,20 @@ func _draw() -> void:
 	if bow_anim > 0.0:
 		_draw_bow()
 	if target and is_instance_valid(target) and not GameState.input_locked():
-		pass # het bolletje wordt door het ding zelf getekend
+		pass
 
+## Tekent het uitgeruste zwaard en/of de boog op het character (altijd zichtbaar).
+func _draw_equipped_gear() -> void:
+	var weapon_id: String = GameState.weapon()
+	if weapon_id != "":
+		var side := Vector2(10, 2) if facing.x >= 0 else Vector2(-10, 2)
+		# Zwaard aan de heup
+		draw_line(side, side + Vector2(0, 8), Color(0.7, 0.7, 0.75), 2.0)
+		draw_line(side + Vector2(0, 8), side + Vector2(3, 10), Color(0.9, 0.85, 0.4), 2.0)
+	if GameState.count("bow") > 0:
+		var side := Vector2(-8, 0) if facing.x >= 0 else Vector2(8, 0)
+		# Boog op de rug
+		draw_arc(side, 6.0, 0.4, PI - 0.4, 8, Color(0.6, 0.4, 0.2), 2.0)
 
 func _draw_work() -> void:
 	var phase := fmod(work_elapsed * 3.0, 1.0)
@@ -486,51 +449,26 @@ func _draw_work() -> void:
 	draw_rect(Rect2(-14, -25, 28, 4), Color(0.03, 0.07, 0.1, 0.9))
 	draw_rect(Rect2(-13, -24, 26.0 * progress, 2), Color(0.5, 0.92, 0.7))
 
-
-## De boog even in je hand na het schieten: de pees trilt uit.
 func _draw_bow() -> void:
 	var progress := 1.0 - bow_anim / BOW_ANIM_TIME
 	var forward := bow_direction
 	var sideways := forward.orthogonal()
 	var grip := ARROW_HEIGHT + forward * 11.0
 	var wood := Color(0.72, 0.5, 0.26)
-	# De boog zelf: een bocht om de hand, met de bolle kant van je af.
 	var points := PackedVector2Array()
 	for i in 9:
-		var s := float(i) / 8.0 * 2.0 - 1.0 # -1..1 langs de boog
+		var s := float(i) / 8.0 * 2.0 - 1.0
 		points.append(grip + sideways * s * 10.0 - forward * s * s * 5.0 + forward * 5.0)
 	draw_polyline(points, Color(0.2, 0.12, 0.06), 5.0)
 	draw_polyline(points, wood, 3.0)
-	# De pees trilt: eerst flink naar voren, dan steeds minder.
 	var wobble := sin(progress * 22.0) * (1.0 - progress) * 4.0
 	var string_mid := grip + forward * wobble
 	draw_line(points[0], string_mid, Color(1, 1, 1, 0.9), 1.0)
 	draw_line(string_mid, points[8], Color(1, 1, 1, 0.9), 1.0)
 
-
 func _draw_sword() -> void:
-	var weapon: Dictionary = Items.WEAPONS[GameState.weapon]
-	var reach: float = weapon["reach"]
-	var color: Color = weapon["color"]
-	var progress := 1.0 - attack_timer / ATTACK_TIME
-	var angle := attack_direction.angle() - 1.0 + progress * 2.0
-	draw_arc(Vector2.ZERO, reach - 4.0, angle - 0.55, angle + 0.55, 10, Color(color, 0.55), 6.0)
-	var hilt := Vector2.from_angle(angle) * 8.0
-	var tip := Vector2.from_angle(angle) * (reach - 6.0)
-	draw_line(Vector2.ZERO, hilt, Color(0.45, 0.3, 0.15), 4.0)
-	draw_line(hilt, tip, color, 4.0)
-	draw_line(hilt, tip, Color(1, 1, 1, 0.7), 1.5)
-	draw_line(hilt + Vector2.from_angle(angle + PI / 2.0) * 4.0, hilt + Vector2.from_angle(angle - PI / 2.0) * 4.0,
-		Color(0.9, 0.75, 0.3), 3.0)
-	if weapon.get("sparkle", false):
-		_draw_sword_sparkles(angle, reach, progress)
-
-
-## Sterretjes langs de zwaai van een bijzonder zwaard (het Sterrenzwaard).
-func _draw_sword_sparkles(angle: float, reach: float, progress: float) -> void:
-	for i in 4:
-		var spread := angle - 0.55 + (progress * 0.5 + float(i) * 0.25) * 1.1
-		var p := Vector2.from_angle(spread) * (reach - 2.0 - float(i) * 6.0)
-		var size := 2.0 + float((i + int(progress * 4.0)) % 3)
-		draw_line(p - Vector2(size, 0), p + Vector2(size, 0), Color(1, 1, 1, 0.9), 1.5)
-		draw_line(p - Vector2(0, size), p + Vector2(0, size), Color(1, 1, 1, 0.9), 1.5)
+	var weapon: Dictionary = Items.WEAPONS.get(GameState.weapon(), {})
+	var color: Color = weapon.get("color", Color(0.9, 0.85, 0.4))
+	var tip := attack_direction * 18.0
+	draw_line(Vector2.ZERO, tip, color, 3.0)
+	draw_line(tip, tip + attack_direction.orthogonal() * 4.0, color.lightened(0.3), 2.0)
