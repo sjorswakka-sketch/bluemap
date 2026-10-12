@@ -2,7 +2,7 @@
 
 Automatically included by make_art.py; sheets() only creates the two new sheets.
 """
-from artlib import blank, c, ellipse, line, outline, polygon, rect, strip
+from artlib import blank, c, ellipse, hline, line, outline, polygon, put, rect, strip, vline
 
 WOOD = c("a46f43")
 LIGHT = c("e3b579")
@@ -241,9 +241,121 @@ def icevein():
     return im
 
 
+SAND = c("ecd193")
+SAND_D = c("d4ac66")
+CACTUS = c("4e9e4a")
+CACTUS_D = c("33702f")
+FIG = c("e87a9a")
+FIG_D = c("c85a7a")
+WORT = c("b3a04f")
+WORT_D = c("8a6f36")
+ROCKW = c("c08a54")
+ROCKW_D = c("96683c")
+ROCKW_L = c("dcb078")
+MEAT = c("c94f4f")
+MEAT_D = c("963838")
+BONE = c("f2eadc")
+HIDE = c("b98a5a")
+HIDE_D = c("8a6238")
+
+
+def cactusfig():
+    im = blank()
+    ellipse(im, (5, 3, 11, 12), FIG)
+    ellipse(im, (6, 4, 10, 8), c("f4a5bc"))
+    for x, y in [(4, 6), (12, 7), (5, 12), (11, 12)]:
+        put(im, x, y, BONE)  # fijne stekeltjes
+    rect(im, 7, 1, 9, 3, CACTUS_D)  # restje van het blad
+    return outline(im)
+
+
+def sandwort():
+    im = blank()
+    line(im, (8, 14), (8, 4), WORT_D, 2)
+    for x, y, sign in [(7, 11, -1), (9, 9, 1), (7, 7, -1)]:
+        polygon(im, [(x, y), (x + 4 * sign, y - 3), (x + 4 * sign, y), (x, y + 1)], WORT)
+    rect(im, 7, 2, 9, 3, c("e8dba0"))
+    return outline(im)
+
+
+def sandstone_rock():
+    im = blank()
+    polygon(im, [(2, 11), (4, 5), (9, 3), (13, 7), (14, 12), (9, 14), (3, 13)], ROCKW)
+    polygon(im, [(4, 5), (9, 3), (10, 8), (3, 10)], ROCKW_L)
+    line(im, (3, 10), (13, 9), ROCKW_D)
+    line(im, (4, 12), (12, 12), ROCKW_D)
+    return outline(im)
+
+
+def sandbalm():
+    im = blank()
+    rect(im, 5, 2, 10, 4, ROCKW_D)  # kurk
+    ellipse(im, (3, 4, 12, 14), c("e8ddc0"))
+    ellipse(im, (4, 7, 11, 13), c("d8c26a"))
+    rect(im, 5, 5, 10, 6, c("fbf4dc"))
+    polygon(im, [(7, 8), (9, 8), (8, 11)], CACTUS)  # kruidenteken op de pot
+    return outline(im)
+
+
+def rawmeat():
+    im = blank()
+    ellipse(im, (3, 4, 12, 12), MEAT)
+    ellipse(im, (5, 5, 10, 9), c("e88a7a"))
+    rect(im, 6, 10, 9, 13, MEAT_D)
+    ellipse(im, (6, 2, 9, 5), BONE)  # botje
+    return outline(im)
+
+
+def hide():
+    im = blank()
+    # een uitgespreide vacht: breder midden, pootpunten aan de hoeken
+    polygon(im, [(4, 3), (12, 3), (14, 7), (13, 12), (3, 12), (2, 7)], HIDE)
+    polygon(im, [(5, 4), (11, 4), (12, 8), (11, 11), (5, 11), (4, 8)], c("d4a878"))
+    for x, y in [(3, 2), (13, 2), (2, 13), (14, 13)]:
+        put(im, x, y, HIDE_D)
+    return outline(im)
+
+
+def roast():
+    im = blank()
+    ellipse(im, (1, 8, 14, 13), c("e8e4d4"))  # bord
+    ellipse(im, (3, 5, 12, 11), c("a96f3a"))  # gebraden stuk
+    ellipse(im, (4, 6, 9, 9), c("d89a5a"))
+    line(im, (10, 5), (13, 2), BONE, 2)  # bot eruit
+    put(im, 13, 1, BONE)
+    put(im, 14, 2, BONE)
+    put(im, 6, 4, WORT)  # snufje zandkruid
+    return outline(im)
+
+
+def cactusfig_bush():
+    im = blank()
+    ellipse(im, (2, 12, 13, 15), SAND_D)
+    rect(im, 7, 4, 9, 13, CACTUS)
+    vline(im, 7, 4, 13, CACTUS_D)
+    rect(im, 4, 7, 6, 8, CACTUS)
+    vline(im, 4, 5, 8, CACTUS)
+    rect(im, 10, 8, 12, 9, CACTUS)
+    vline(im, 12, 6, 9, CACTUS)
+    for x, y in [(8, 3), (4, 5), (12, 6)]:
+        ellipse(im, (x - 1, y - 1, x + 1, y + 1), FIG)
+    return outline(im)
+
+
+def sandwort_bush():
+    im = blank()
+    ellipse(im, (2, 12, 13, 15), SAND_D)
+    for x0, x1, y in [(8, 8, 3), (6, 5, 5), (10, 11, 5), (5, 4, 8), (11, 12, 8)]:
+        line(im, (x0, 12), (x1, y), WORT_D)
+        put(im, x1, y - 1, WORT)
+    for x, y in [(7, 6), (9, 7), (8, 10)]:
+        put(im, x, y, c("e8dba0"))
+    return outline(im)
+
+
 def sheets():
-    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl()]
-    resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein()]
+    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast()]
+    resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein(), cactusfig_bush(), sandwort_bush(), sandstone_rock()]
     return {"items_beroepen": strip(icons), "resources_beroepen": strip(resources)}
 
 

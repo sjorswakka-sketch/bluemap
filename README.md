@@ -63,17 +63,19 @@ Het laatst bewust gebruikte apparaat is actief. De controller verbergt de muiscu
 - **Herkenbare gebouwen:** de smederij heeft een leien dak, schoorsteen, aambeeld en zichtbaar vuur; ook winkel,
   herberg, bibliotheek, vissershuisje, arena en tempel hebben een eigen exterieur en herkenbare symbolen.
 - **Zeven beroepen:** kruidenzoeken, houthakken, mijnbouw, vissen, smeden, alchemie en koken, elk met ervaring en
-  niveaus. Er zijn 36 verzamelplekken en recepten voor gereedschap, eten, drankjes en uitrusting. In `C` zie je je voortgang,
+  niveaus. Er zijn 47 verzamelplekken en recepten voor gereedschap, eten, drankjes en uitrusting. In `C` zie je je voortgang,
   ingrediënten, benodigde niveaus en werkplekken. De gewone inventaris bladert nu door alle spullen en meerdere pagina's.
 
-- **Zestien gebieden:** Dageraadsdorp met smederij, winkel en herberg, het Fluisterbos, de Vergeten Ruïne, de Echo-grot,
+- **Zeventien gebieden:** Dageraadsdorp met smederij, winkel en herberg, het Fluisterbos, de Vergeten Ruïne, de Echo-grot,
   de Kristaltempel, het Zilvermeer met het huisje van Joris en de bibliotheek, de Arena met haar hal, het besneeuwde
-  IJsdal met zijn bevroren meer en mijnhoek, en na het einde De Diepte (de Kristalgangen en Het Hart van de Kaart).
-  In donkere gebieden heb je licht van je eigen lamp en fakkels.
-- **Verhaal:** een hoofdopdracht en tien zij-opdrachten, achttien personages en gesprekken met keuzes.
+  IJsdal met zijn bevroren meer en mijnhoek, de snikhete Dorstvallei met oase en jachtgronden, en na het einde
+  De Diepte (de Kristalgangen en Het Hart van de Kaart). In donkere gebieden heb je licht van je eigen lamp en fakkels.
+- **Verhaal:** een hoofdopdracht en twaalf zij-opdrachten, eenentwintig personages en gesprekken met keuzes.
 - **Gevechten:** zwaard in vier niveaus (hout, ijzer, kristal en het geheime Sterrenzwaard), ontwijkrol, slijmen in drie
   kleuren, vleermuizen, boogschutter-skeletten, magiërs, slijmspuwers, kristalgolems (minibazen), de Slijmkoning met drie
   fases en de geheime baas De Vergeten Wachter.
+- **Wilde dieren:** in de Dorstvallei lopen woestijnvossen en zandhazen. Ze zijn onschuldig en vluchten als je dichtbij
+  komt of ze raakt; wie ze vangt (met zwaard of boog) krijgt rauw vlees en dierenvachten voor de keuken en de handel.
 - **De boog:** koop hem bij Tobias (met 5 pijlen erbij) en schiet met `F` (of `L`, of de rechter trekker). Elk schot kost
   een pijl uit je pijlenkoker (maximaal 40). Een pijl doet 2 schade (bij bazen 1), vliegt over water en blijft steken in
   muren. Op het kristal van een golem ketst hij af, behalve als de golem uithaalt voor een klap. Raak doelwitten om

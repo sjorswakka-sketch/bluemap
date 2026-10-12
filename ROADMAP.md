@@ -60,6 +60,14 @@ pixel art, en te delen met vrienden en de community.
       en wintergloed (koken) als nieuwe recepten
 - [x] Twee nieuwe opdrachten (Warmte voor IJsdal, De Ijswacht), drie nieuwe personages en de prestatie Sneeuwvoeten
 - [x] Richtkruis laat los zodra de linkerstick weer een nieuwe looprichting geeft
+- [x] De Dorstvallei: een snikhete woestijnvallei ten oosten van het Dauwbos, met dwarrelzand, een warme gloed,
+      een oase, cactusvelden en zandsteenklippen, en een altaar voor snel reizen
+- [x] Wilde dieren: woestijnvossen en zandhazen zijn vreedzaam, vluchten als je dichtbij komt (of raakt) en
+      laten rauw vlees en dierenvachten vallen
+- [x] Woestijngrondstoffen: cactusvijgen, zandkruid en zandsteen, met zandbalsem (alchemie) en braadstuk
+      (koken) als nieuwe recepten
+- [x] Twee nieuwe opdrachten (Vellen en vlees, Cactusvijgen voor Sana), drie nieuwe personages en de
+      prestatie Zandvoeten
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
