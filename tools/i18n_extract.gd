@@ -26,6 +26,7 @@ const Credits := preload("res://scripts/data/credits.gd")
 const Maps := preload("res://scripts/maps/registry.gd")
 const Content := preload("res://scripts/data/content.gd")
 const Boeken := preload("res://scripts/data/ext/meer_boeken.gd")
+const Beroepen := preload("res://scripts/data/ext/beroepen.gd")
 
 const CODE_ROOT := "res://scripts"
 ## Sleutels in de data waarvan de waarde nooit tekst voor de speler is (de guard in find_unclaimed slaat ze over).
@@ -209,6 +210,25 @@ static func collect_data(c: Collector) -> void:
 	var markers := Content.map_markers()
 	for marker_type: String in markers:
 		c.add(markers[marker_type].get("label", ""), "Legenda op het kaartje (menu): %s" % marker_type)
+	# Beroepen: UI-sjablonen en grondstoffen zijn data, geen letterlijke tr-aanroepen.
+	for text_id: String in Beroepen.TEXT:
+		c.add(Beroepen.TEXT[text_id], "Beroepen: tekst of sjabloon %s" % text_id)
+	for skill_id: String in Beroepen.SKILLS:
+		for field: String in ["name", "desc"]:
+			c.add(Beroepen.SKILLS[skill_id].get(field, ""), "Beroep %s: %s" % [skill_id, field])
+	for resource_id: String in Beroepen.RESOURCES:
+		c.add(Beroepen.RESOURCES[resource_id].get("name", ""), "Oogstbare grondstof %s" % resource_id)
+	# Receptnamen komen nu van hun uitvoervoorwerp. Neem eventuele eigen
+	# beschrijvingen ook mee als een uitbreiding ze later toevoegt.
+	for recipe_id: String in Beroepen.RECIPES:
+		for field: String in ["name", "desc", "hint"]:
+			c.add(Beroepen.RECIPES[recipe_id].get(field, ""), "Recept %s: %s" % [recipe_id, field])
+	# De invoermodule gebruikt autoloads: net als menu_pages pas nu laden.
+	var controls: GDScript = load("res://scripts/core/input_manager.gd")
+	for action: String in controls.ACTION_NAMES:
+		c.add(controls.ACTION_NAMES[action], "Instelbare bediening: %s" % action)
+	for label: String in controls.JOY_NAMES:
+		c.add(label, "Naam van een controllerknop; Xbox / PlayStation waar van toepassing")
 	# De aftiteling.
 	for entry: Array in Credits.LINES:
 		if entry[0] != "":
@@ -442,6 +462,7 @@ static func find_unclaimed(c: Collector) -> Array:
 	var sources: Array = [Dialogue, Items, Quests, Npcs, Enemies, Achievements, Shops, Credits, Boeken]
 	sources.append_array(Content.MODULES)
 	sources.append(load("res://scripts/data/arena.gd"))
+	sources.append(load("res://scripts/core/input_manager.gd"))
 	for script: Script in sources:
 		var constants := script.get_script_constant_map()
 		for name: String in constants:

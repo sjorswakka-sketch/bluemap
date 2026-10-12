@@ -93,7 +93,8 @@ func _run() -> void:
 	check(Tiles.footstep_surface("arena_sand") == "sand" and Tiles.movement_multiplier("arena_sand") == 0.92, "arena en strand hebben hetzelfde zandgedrag")
 	var sprint_key := false
 	var sprint_stick := false
-	for event in InputMap.action_get_events("sprint"):
+	var controls: Node = root.get_node("Controls")
+	for event in controls.binding_events("sprint", "keyboard") + controls.binding_events("sprint", "controller"):
 		if event is InputEventKey and event.physical_keycode == KEY_CTRL:
 			sprint_key = true
 		if event is InputEventJoypadButton and event.button_index == JOY_BUTTON_LEFT_STICK:

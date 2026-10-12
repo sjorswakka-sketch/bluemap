@@ -35,18 +35,35 @@ var had_bow := false # om te zien wanneer je de boog voor het eerst krijgt
 func _ready() -> void:
 	layer = 10
 	_build_ui()
+	_ignore_mouse(self)
+	Controls.device_changed.connect(func(_pad: bool) -> void: _refresh_controls())
+	Controls.bindings_changed.connect(_refresh_controls)
 	GameState.hp_changed.connect(func() -> void: hearts.queue_redraw())
 	GameState.items_changed.connect(func() -> void: stats.queue_redraw(); _refresh_tracker())
 	GameState.quests_changed.connect(_refresh_tracker)
 	GameState.toast.connect(_queue_toast)
 	GameState.game_over.connect(_show_game_over)
 	_refresh_tracker()
-	_queue_toast(tr("WASD lopen  ·  SPATIE zwaard  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze"))
-	_queue_toast(tr("CTRL / L3 vasthouden: rennen  ·  C / R3: beroepen en maken  ·  Paden geven extra snelheid"))
+	_queue_toast(tr("%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing") % [Controls.action_label("attack"), Controls.action_label("interact"), Controls.action_label("menu"), Controls.action_label("pause")])
+	_queue_toast(tr("%s vasthouden: rennen  ·  %s: beroepen en maken  ·  Paden geven extra snelheid") % [Controls.action_label("sprint"), Controls.action_label("crafting")])
 	# Boog: de pijlenteller (met "[F]") staat in beeld zodra je een boog hebt, en bij het krijgen ervan komt een melding.
 	had_bow = GameState.count("bow") > 0
 	GameState.items_changed.connect(_check_bow)
 	Lang.changed.connect(_on_language_changed)
+
+
+func _ignore_mouse(node: Node) -> void:
+	if node is Control:
+		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	for child in node.get_children():
+		_ignore_mouse(child)
+
+
+func _refresh_controls() -> void:
+	stats.queue_redraw()
+	stamina_bar.queue_redraw()
+	if GameState.ended:
+		_show_game_over()
 
 
 func _build_ui() -> void:
@@ -148,7 +165,7 @@ func _draw_stamina() -> void:
 	var font := ThemeDB.fallback_font
 	var ratio: float = GameState.movement.stamina / GameState.movement.MAX_STAMINA
 	var tired: bool = GameState.movement.exhausted
-	var label := "Even op adem komen..." if tired else "Uithouding  ·  Ctrl / L3"
+	var label := tr("Even op adem komen...") if tired else tr("Uithouding  ·  %s") % Controls.action_label("sprint")
 	var color := Color(1.0, 0.57, 0.3) if tired else Color(0.4, 0.88, 0.7)
 	stamina_bar.draw_string_outline(font, Vector2(0, 15), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, 4, Color(0, 0, 0, 0.9))
 	stamina_bar.draw_string(font, Vector2(0, 15), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(0.92, 0.98, 0.95))
@@ -173,7 +190,7 @@ func _draw_stats() -> void:
 	var entries := [
 		[Items.ITEMS["coin"]["icon"], str(GameState.coins), Color(1, 0.9, 0.4)],
 		[Items.ITEMS["crystal_bos"]["icon"], "%d/3" % (3 if GameState.flag("gate_temple") else GameState.crystal_count()), Color(0.6, 0.85, 1.0)],
-		[Items.ITEMS["potion"]["icon"], "%d [H]" % GameState.count("potion"), Color(1, 0.6, 0.7)],
+		[Items.ITEMS["potion"]["icon"], "%d [%s]" % [GameState.count("potion"), Controls.action_label("potion")], Color(1, 0.6, 0.7)],
 		[Items.ITEMS[Items.WEAPONS[GameState.weapon]["item"]]["icon"], "", Color.WHITE, Items.sheet_of(Items.WEAPONS[GameState.weapon]["item"])],
 	]
 	if GameState.count("bow") > 0: # de pijlenteller
@@ -192,7 +209,7 @@ func _draw_stats() -> void:
 func arrow_text() -> String:
 	if GameState.count("bow") <= 0:
 		return ""
-	return "%d [F]" % GameState.count("arrow")
+	return "%d [%s]" % [GameState.count("arrow"), Controls.action_label("bow")]
 
 
 ## De kleur van de pijlenteller: rood als je pijlen op zijn.
@@ -204,7 +221,7 @@ func arrow_color() -> Color:
 func _check_bow() -> void:
 	var has_bow := GameState.count("bow") > 0
 	if has_bow and not had_bow:
-		_queue_toast(tr("Boog gekregen! Druk op F om te schieten."))
+		_queue_toast(tr("Boog gekregen! Druk op %s om te schieten.") % Controls.action_label("bow"))
 	had_bow = has_bow
 
 
@@ -299,12 +316,12 @@ func _draw_boss_bar() -> void:
 
 func _show_game_over() -> void:
 	overlay_title.text = tr("Game over")
-	# Vertalers: op het game-over-scherm; %s is wie je versloeg, bijvoorbeeld "Kristalgolem (klap)"
+	var has_save := GameState.has_save()
 	var by := "" if GameState.last_damage_source == "" else tr("Verslagen door: %s") % damage_source_text(GameState.last_damage_source) + "\n"
-	if GameState.has_save():
-		overlay_sub.text = by + tr("Druk op R om verder te gaan vanaf je laatste opslag  ·  Esc voor het menu")
-	else:
-		overlay_sub.text = by + tr("Druk op R om opnieuw te beginnen  ·  Esc voor het menu")
+	var restart_label: String = Controls.action_label("restart")
+	var pause_label: String = Controls.action_label("pause")
+	var menu_hint := "  ·  " + tr("%s voor het menu") % pause_label if pause_label != restart_label else ""
+	overlay_sub.text = by + ((tr("Druk op %s om verder te gaan vanaf je laatste opslag") if has_save else tr("Druk op %s om opnieuw te beginnen")) % restart_label) + menu_hint
 	overlay.visible = true
 
 

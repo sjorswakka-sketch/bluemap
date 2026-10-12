@@ -22,8 +22,8 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | Toets | Controller | Actie |
 |---|---|---|
 | `WASD` / pijltjes | linkerstick / d-pad | Lopen |
-| `Spatie` / `J` | X | Zwaard |
-| `F` / `L` | rechter trekker | Boog: een pijl schieten (zodra je een boog hebt) |
+| Linkermuis / `Spatie` / `J` | X | Zwaard |
+| Rechtermuis / `F` / `L` | rechter trekker | Boog: een pijl schieten (zodra je een boog hebt) |
 | `Shift` / `K` | B | Rollen (je bent even onraakbaar) |
 | `Ctrl` vasthouden | linkerstick indrukken en vasthouden (L3) | Sprinten; verbruikt de groene staminabalk |
 | `C` | rechterstick indrukken (R3) | Beroepen, recepten en eten/drinken |
@@ -34,16 +34,24 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | `N` | rechter schouderknop | Menu: kaart (en snel reizen) |
 | `T` | | Menu: prestaties |
 | `B` | | Menu: beestenboek |
-| `←` `→` | d-pad, linker en rechter schouderknop | In het menu: ander tabblad |
-| `↑` `↓` | d-pad | In het menu: kiezen en bladeren (ook door lange lijsten) |
+| `PageUp` / `PageDown` | LB / RB | In het menu: ander tabblad |
+| WASD / pijltjes | linkerstick / d-pad | Inventarisraster en menukeuzes; vasthouden herhaalt |
+| Muis | rechterstick | Richten met een permanent richtkruis |
+| `Enter` / `E` / klik | A | Menu: bevestigen / gebruiken |
+| `Esc` | B | Menu: terug / sluiten |
 | `Esc` / `P` | Start | Pauze |
 | `M` | | Geluid aan/uit |
 | `↑` `↓` en `E` | d-pad en A | Taal wisselen: de knop *Taal: Nederlands* / *Language: English* op het titelscherm (rechtsboven) en in het pauzemenu |
 | `F11` | | Volledig scherm |
 | `R` | Start | Na game over: verder vanaf je laatste opslag |
 
+Open **Bediening** op het titelscherm of in het pauzemenu om toetsen, muisknoppen en controllerknoppen apart aan te passen. De instellingen blijven bewaard; standaardinstellingen kunnen per apparaat worden hersteld. Bezette koppelingen wisselen om, tenzij een actie daardoor onbereikbaar zou worden. De vaste menubediening blijft beschikbaar.
+
+Het laatst bewust gebruikte apparaat is actief. De controller verbergt de muiscursor; muis of toetsenbord neemt de besturing weer over bij bewuste invoer. Stickdrift wisselt het apparaat niet. Tijdens het spelen vervangt het richtkruis de gewone cursor; in muismenu's zie je de cursor weer.
+
 ## Wat zit erin
 
+- **Oprapen en animaties:** alle losse voorwerpen worden net als munten naar de speler getrokken. Volle stapels en hartjes bij volle gezondheid blijven beschikbaar. Mijnbouw, houthakken en kruidenzoeken hebben een korte werkactie met gereedschap, voortgang, geluid en deeltjes. Lopen, schade, gevechten of menu's onderbreken die actie. Vereist gereedschap, niveau en tasruimte worden ook bij het afronden opnieuw gecontroleerd. Er zijn extra rust-, sprint-, zwaard- en drinkanimaties.
 - **Ondergrond en sprinten:** op paden loop je 20% sneller dan op gras; op zand 8% langzamer. Sprinten geeft 50% extra
   loopsnelheid zolang er stamina is. Een volle balk is goed voor vijf seconden sprinten; na 0,8 seconde rust begint het
   herstel. Na uitputting moet de balk eerst tot 25% herstellen. Rollen blijft hetzelfde. Gras, pad, zand, hout, steen en
@@ -126,9 +134,9 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 ## Mappen
 
 ```
-project.godot          Instellingen, toetsen, vertalingen en autoloads (Lang, GameState en Sound)
+project.godot          Instellingen, toetsen, vertalingen en autoloads (Lang, Controls, GameState en Sound)
 scenes/                title, intro, main (de wereld) en ending
-scripts/core/          GameState (voortgang, opslaan, voorwaarden en acties), Sound, Lang (de taal), hulpfuncties
+scripts/core/          GameState (voortgang, opslaan, voorwaarden en acties), Sound, Lang (de taal), Controls (besturing), hulpfuncties
 scripts/data/          ALLE INHOUD: items, vijanden, personages, dialoog, opdrachten, winkels, tegels, aftiteling
 scripts/data/ext/      Uitbreidingen als losse modules (zie scripts/data/content.gd), bijvoorbeeld meer.gd voor het Zilvermeer
 scripts/maps/          De kaarten (tekst!) en het register
@@ -341,8 +349,7 @@ fout (fouten in plaatsaanduidingen en teksten die niet in `en.po` staan wel).
 run onder *Artifacts*. Wil je een downloadlink voor je community? Maak een tag, bijvoorbeeld
 `git tag v0.4.0 && git push origin v0.4.0`, dan verschijnt de zip onder **Releases**.
 
-Wijzigingsvoorstellen (pull requests) starten dezelfde tests en Windows-build automatisch. Een preview is pas klaar
-voor samenvoegen nadat de controles geslaagd zijn. Het nog te publiceren taalpakket moet vóór samenvoegen apart worden geïntegreerd.
+Elke push naar `main` en ieder wijzigingsvoorstel start dezelfde tests en Windows-build automatisch. Het taalpakket is geïntegreerd; nieuwe teksten worden door de taaltest gecontroleerd.
 
 **Zelf in Godot:** *Project > Exporteren*, kies **Windows Desktop** en klik op *Project exporteren*.
 Godot vraagt dan eenmalig om de export-templates (Editor > Export-templates beheren).

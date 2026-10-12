@@ -10,7 +10,7 @@ msgstr ""
 
 #. Naam van gebied village
 #. Kaart village, sign [21, 8]: tekst op een bord
-#: scripts/ui/ending.gd:212 scripts/maps/village.gd:6 scripts/maps/village.gd:63
+#: scripts/ui/ending.gd:218 scripts/maps/village.gd:6 scripts/maps/village.gd:63
 msgid "Dageraadsdorp"
 msgstr "Daybreak Village"
 
@@ -86,7 +86,7 @@ msgstr "The Blue Slime Inn"
 
 #. Naam van gebied forest
 #. Kaart forest, sign [5, 19]: tekst op een bord
-#: scripts/ui/ending.gd:212 scripts/maps/forest.gd:6 scripts/maps/forest.gd:54
+#: scripts/ui/ending.gd:218 scripts/maps/forest.gd:6 scripts/maps/forest.gd:54
 msgid "Fluisterbos"
 msgstr "Whispering Woods"
 
@@ -190,7 +190,7 @@ msgid "de Echo-grot"
 msgstr "the Echo Cave"
 
 #. Kaart cave, sign [7, 30]: tekst op een bord
-#: scripts/ui/ending.gd:212 scripts/maps/cave.gd:52
+#: scripts/ui/ending.gd:218 scripts/maps/cave.gd:52
 msgid "Echo-grot"
 msgstr "Echo Cave"
 
@@ -417,7 +417,7 @@ msgstr "The gates stay shut until you win every round. Want to give up? Use the 
 #. Naam van wie er praat (Gesprek bram_accept)
 #. Naam van wie er praat (Gesprek bram_later)
 #. Naam van wie er praat (Gesprek bram_progress)
-#: scripts/ui/ending.gd:53 scripts/data/dialogue.gd:18 scripts/data/dialogue.gd:27 scripts/data/dialogue.gd:39
+#: scripts/ui/ending.gd:54 scripts/data/dialogue.gd:18 scripts/data/dialogue.gd:27 scripts/data/dialogue.gd:39
 msgid "Oudste Bram"
 msgstr "Elder Bram"
 
@@ -553,7 +553,7 @@ msgstr "The village is celebrating. Get some rest, hero. You've earned it."
 #. Naam van wie er praat (Gesprek greta_iron_ask)
 #. Naam van wie er praat (Gesprek greta_iron_no)
 #. Naam van wie er praat (Gesprek greta_iron_done)
-#: scripts/ui/ending.gd:54 scripts/data/dialogue.gd:101 scripts/data/dialogue.gd:110 scripts/data/dialogue.gd:119
+#: scripts/ui/ending.gd:55 scripts/data/dialogue.gd:101 scripts/data/dialogue.gd:110 scripts/data/dialogue.gd:119
 msgid "Greta"
 msgstr "Greta"
 
@@ -663,7 +663,7 @@ msgstr "The hero of Azura in my smithy! I just forged some new swords for the pa
 #. Naam van wie er praat (Gesprek tobias_sell)
 #. Naam van wie er praat (Gesprek tobias_sold)
 #. Naam van wie er praat (Gesprek tobias_done)
-#: scripts/ui/ending.gd:55 scripts/data/dialogue.gd:194 scripts/data/dialogue.gd:200 scripts/data/dialogue.gd:209
+#: scripts/ui/ending.gd:56 scripts/data/dialogue.gd:194 scripts/data/dialogue.gd:200 scripts/data/dialogue.gd:209
 msgid "Tobias"
 msgstr "Tobias"
 
@@ -731,7 +731,7 @@ msgstr "My sales have doubled since the Slime King left! Don't worry, your price
 #. Naam van wie er praat (Gesprek mila_quest)
 #. Naam van wie er praat (Gesprek mila_quest_ok)
 #. Naam van wie er praat (Gesprek mila_potion_progress)
-#: scripts/ui/ending.gd:56 scripts/data/dialogue.gd:230 scripts/data/dialogue.gd:239 scripts/data/dialogue.gd:250
+#: scripts/ui/ending.gd:57 scripts/data/dialogue.gd:230 scripts/data/dialogue.gd:239 scripts/data/dialogue.gd:250
 msgid "Mila"
 msgstr "Mila"
 
@@ -837,7 +837,7 @@ msgstr "The inn is packed with people who want to meet you. Your bed is always r
 #. Naam van wie er praat (Gesprek pim_cat_back)
 #. Naam van wie er praat (Gesprek pim_done)
 #. Naam van personage pim (boven zijn hoofd)
-#: scripts/ui/ending.gd:57 scripts/data/dialogue.gd:287 scripts/data/dialogue.gd:298 scripts/data/dialogue.gd:302
+#: scripts/ui/ending.gd:58 scripts/data/dialogue.gd:287 scripts/data/dialogue.gd:298 scripts/data/dialogue.gd:302
 msgid "Pim"
 msgstr "Pim"
 
@@ -2418,7 +2418,8 @@ msgid "Gloeit zachtblauw. Het sterkste zwaard van Azura."
 msgstr "Glows a soft blue. The strongest sword in Azura."
 
 #. Naam van voorwerp bow
-#: scripts/data/ext/boog.gd:15
+#. Instelbare bediening: bow
+#: scripts/core/input_manager.gd:13 scripts/data/ext/boog.gd:15
 msgid "Boog"
 msgstr "Bow"
 
@@ -2612,6 +2613,187 @@ msgstr "Arena Helmet"
 #: scripts/data/ext/arena.gd:44
 msgid "Een stalen helm met een rode pluim. Alleen een echte Arenakampioen mag hem dragen. Een verzamelstuk."
 msgstr "A steel helmet with a red plume. Only a true Arena Champion may wear it. A collectible."
+
+#. Naam van voorwerp prof_branch
+#: scripts/data/ext/beroepen.gd:32
+msgid "Droge tak"
+msgstr "Dry Branch"
+
+#. Beschrijving van voorwerp prof_branch
+#: scripts/data/ext/beroepen.gd:32
+msgid "Los hout uit dorp en bos. Voor je eerste bijl en pikhouweel."
+msgstr "Loose wood from the village and woods. For your first axe and pickaxe."
+
+#. Naam van voorwerp prof_stone
+#: scripts/data/ext/beroepen.gd:33
+msgid "Vuursteen"
+msgstr "Flint"
+
+#. Beschrijving van voorwerp prof_stone
+#: scripts/data/ext/beroepen.gd:33
+msgid "Een scherpe losse steen. Je kunt hem zonder gereedschap oprapen."
+msgstr "A sharp loose stone. You can pick it up without tools."
+
+#. Naam van voorwerp prof_herb
+#. Oogstbare grondstof herbs
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:68
+msgid "Zilverkruid"
+msgstr "Silverleaf"
+
+#. Beschrijving van voorwerp prof_herb
+#: scripts/data/ext/beroepen.gd:34
+msgid "Geurig kruid voor alchemie en stevige soep."
+msgstr "A fragrant herb for alchemy and hearty soup."
+
+#. Naam van voorwerp prof_berry
+#: scripts/data/ext/beroepen.gd:35
+msgid "Bosbes"
+msgstr "Blueberry"
+
+#. Beschrijving van voorwerp prof_berry
+#: scripts/data/ext/beroepen.gd:35
+msgid "Maak er een bessensnack of een energie-elixer van."
+msgstr "Use it to make a berry snack or an energy tonic."
+
+#. Naam van voorwerp prof_log
+#: scripts/data/ext/beroepen.gd:36
+msgid "Berkenhout"
+msgstr "Birch Wood"
+
+#. Beschrijving van voorwerp prof_log
+#: scripts/data/ext/beroepen.gd:36
+msgid "Hout van een oogstbare stronk. Voor smeltvuur, gereedschap en pijlen."
+msgstr "Wood from a harvestable stump. For smelting, tools and arrows."
+
+#. Naam van voorwerp prof_copper_ore
+#: scripts/data/ext/beroepen.gd:37
+msgid "Kopererts"
+msgstr "Copper Ore"
+
+#. Beschrijving van voorwerp prof_copper_ore
+#: scripts/data/ext/beroepen.gd:37
+msgid "Win met een stenen pikhouweel. Smelt het bij Greta tot koper."
+msgstr "Mine it with a stone pickaxe. Smelt it into copper at Greta's."
+
+#. Naam van voorwerp prof_iron_ore
+#: scripts/data/ext/beroepen.gd:38
+msgid "IJzererts"
+msgstr "Iron Ore"
+
+#. Beschrijving van voorwerp prof_iron_ore
+#: scripts/data/ext/beroepen.gd:38
+msgid "Win in de Echo-grot met mijnbouw 2 en een koperen pikhouweel."
+msgstr "Mine it in Echo Cave with Mining 2 and a copper pickaxe."
+
+#. Naam van voorwerp prof_copper_bar
+#: scripts/data/ext/beroepen.gd:39
+msgid "Koperstaaf"
+msgstr "Copper Bar"
+
+#. Beschrijving van voorwerp prof_copper_bar
+#: scripts/data/ext/beroepen.gd:39
+msgid "Gesmolten koper voor een beter pikhouweel."
+msgstr "Smelted copper for a better pickaxe."
+
+#. Naam van voorwerp prof_iron_bar
+#: scripts/data/ext/beroepen.gd:40
+msgid "IJzerstaaf"
+msgstr "Iron Bar"
+
+#. Beschrijving van voorwerp prof_iron_bar
+#: scripts/data/ext/beroepen.gd:40
+msgid "Gesmolten ijzer voor een efficiëntere bijl."
+msgstr "Smelted iron for a more efficient axe."
+
+#. Naam van voorwerp prof_axe
+#: scripts/data/ext/beroepen.gd:41
+msgid "Stenen bijl"
+msgstr "Stone Axe"
+
+#. Beschrijving van voorwerp prof_axe
+#: scripts/data/ext/beroepen.gd:41
+msgid "Hak oogstbare stronken. Wordt automatisch gebruikt; slijt niet."
+msgstr "Chop harvestable stumps. Used automatically; never wears out."
+
+#. Naam van voorwerp prof_pickaxe
+#: scripts/data/ext/beroepen.gd:42
+msgid "Stenen pikhouweel"
+msgstr "Stone Pickaxe"
+
+#. Beschrijving van voorwerp prof_pickaxe
+#: scripts/data/ext/beroepen.gd:42
+msgid "Win koperaders. Wordt automatisch gebruikt; slijt niet."
+msgstr "Mine copper veins. Used automatically; never wears out."
+
+#. Naam van voorwerp prof_copper_pickaxe
+#: scripts/data/ext/beroepen.gd:43
+msgid "Koperen pikhouweel"
+msgstr "Copper Pickaxe"
+
+#. Beschrijving van voorwerp prof_copper_pickaxe
+#: scripts/data/ext/beroepen.gd:43
+msgid "Ontsluit ijzererts vanaf mijnbouw 2. Vervangt je stenen pikhouweel automatisch."
+msgstr "Unlocks iron ore at Mining 2. Automatically replaces your stone pickaxe."
+
+#. Naam van voorwerp prof_iron_axe
+#: scripts/data/ext/beroepen.gd:44
+msgid "IJzeren bijl"
+msgstr "Iron Axe"
+
+#. Beschrijving van voorwerp prof_iron_axe
+#: scripts/data/ext/beroepen.gd:44
+msgid "Oogst 3 berkenhout per stronk in plaats van 2. Slijt niet."
+msgstr "Harvests 3 birch wood per stump instead of 2. Never wears out."
+
+#. Naam van voorwerp prof_tonic
+#: scripts/data/ext/beroepen.gd:45
+msgid "Energie-elixer"
+msgstr "Energy Tonic"
+
+#. Beschrijving van voorwerp prof_tonic
+#: scripts/data/ext/beroepen.gd:45
+msgid "Herstelt 60 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Restores 60 stamina. Use through Professions → Food & drink."
+
+#. Naam van voorwerp prof_berry_meal
+#: scripts/data/ext/beroepen.gd:46
+msgid "Bessensnack"
+msgstr "Berry Snack"
+
+#. Beschrijving van voorwerp prof_berry_meal
+#: scripts/data/ext/beroepen.gd:46
+msgid "Herstelt 1 hartje. Gebruik via Beroepen → Eten & drinken."
+msgstr "Restores 1 heart. Use through Professions → Food & drink."
+
+#. Naam van voorwerp prof_fish_meal
+#: scripts/data/ext/beroepen.gd:47
+msgid "Gebakken baars"
+msgstr "Grilled Perch"
+
+#. Beschrijving van voorwerp prof_fish_meal
+#: scripts/data/ext/beroepen.gd:47
+msgid "Herstelt 3 hartjes. Gemaakt in de herberg. Gebruik via Beroepen → Eten & drinken."
+msgstr "Restores 3 hearts. Cooked at the inn. Use through Professions → Food & drink."
+
+#. Naam van voorwerp prof_mushroom
+#: scripts/data/ext/beroepen.gd:48
+msgid "Honingzwam"
+msgstr "Honey Mushroom"
+
+#. Beschrijving van voorwerp prof_mushroom
+#: scripts/data/ext/beroepen.gd:48
+msgid "Een eetbare zwam uit het Fluisterbos. Voor stevige paddenstoelensoep."
+msgstr "An edible mushroom from the Whispering Woods. For hearty mushroom soup."
+
+#. Naam van voorwerp prof_stew
+#: scripts/data/ext/beroepen.gd:49
+msgid "Paddenstoelensoep"
+msgstr "Mushroom Soup"
+
+#. Beschrijving van voorwerp prof_stew
+#: scripts/data/ext/beroepen.gd:49
+msgid "Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."
+msgstr "Restores 2 hearts. Use through Professions → Food & drink."
 
 #. Naam van vijand slime
 #: scripts/data/enemies.gd:13
@@ -3271,8 +3453,499 @@ msgstr "deep fishing spot"
 msgid "lessenaar"
 msgstr "reading stand"
 
+#. Legenda op het kaartje (menu): profession_resource
+#: scripts/data/ext/beroepen.gd:6
+msgid "grondstof"
+msgstr "resource"
+
+#. Beroepen: tekst of sjabloon title
+#: scripts/data/ext/beroepen.gd:17
+msgid "Beroepen & ambachten"
+msgstr "Professions & crafts"
+
+#. Beroepen: tekst of sjabloon skills
+#: scripts/data/ext/beroepen.gd:17
+msgid "Beroepen"
+msgstr "Professions"
+
+#. Beroepen: tekst of sjabloon recipes
+#: scripts/data/ext/beroepen.gd:17
+msgid "Maken"
+msgstr "Craft"
+
+#. Beroepen: tekst of sjabloon supplies
+#: scripts/data/ext/beroepen.gd:17
+msgid "Eten & drinken"
+msgstr "Food & drink"
+
+#. Beroepen: tekst of sjabloon hint
+#: scripts/data/ext/beroepen.gd:18
+msgid "C / Esc sluiten  ·  pijltjes kiezen  ·  E / Enter gebruiken"
+msgstr "C / Esc to close  ·  arrows to select  ·  E / Enter to use"
+
+#. Beroepen: tekst of sjabloon intro
+#: scripts/data/ext/beroepen.gd:19
+msgid "Verzamel met E. Maak eerst een stenen bijl en pikhouweel van losse takken en stenen. Gereedschap wordt automatisch gebruikt en slijt niet."
+msgstr "Gather with E. First, craft a stone axe and pickaxe from loose branches and stones. Tools are used automatically and never wear out."
+
+#. Beroepen: tekst of sjabloon level
+#: scripts/data/ext/beroepen.gd:20
+msgid "Niveau %d / %d"
+msgstr "Level %d / %d"
+
+#. Beroepen: tekst of sjabloon xp
+#: scripts/data/ext/beroepen.gd:20
+msgid "%d / %d XP tot volgend niveau"
+msgstr "%d / %d XP toward the next level"
+
+#. Beroepen: tekst of sjabloon master
+#: scripts/data/ext/beroepen.gd:20
+msgid "Meester • maximaal niveau"
+msgstr "Master • maximum level"
+
+#. Beroepen: tekst of sjabloon station
+#: scripts/data/ext/beroepen.gd:21
+msgid "Werkplek: %s"
+msgstr "Workstation: %s"
+
+#. Beroepen: tekst of sjabloon anywhere
+#: scripts/data/ext/beroepen.gd:21
+msgid "Overal"
+msgstr "Anywhere"
+
+#. Beroepen: tekst of sjabloon smithy
+#: scripts/data/ext/beroepen.gd:21
+msgid "Greta's smederij"
+msgstr "Greta's Smithy"
+
+#. Beroepen: tekst of sjabloon inn
+#: scripts/data/ext/beroepen.gd:21
+msgid "Keuken van de herberg"
+msgstr "Inn kitchen"
+
+#. Beroepen: tekst of sjabloon library
+#: scripts/data/ext/beroepen.gd:21
+msgid "Alchemietafel in de bibliotheek"
+msgstr "Library alchemy table"
+
+#. Beroepen: tekst of sjabloon required
+#. Beroepen: tekst of sjabloon tool_required
+#: scripts/data/ext/beroepen.gd:22 scripts/data/ext/beroepen.gd:25
+msgid "Nodig: %s"
+msgstr "Required: %s"
+
+#. Beroepen: tekst of sjabloon skill_required
+#: scripts/data/ext/beroepen.gd:22
+msgid "%s niveau %d vereist"
+msgstr "%s level %d required"
+
+#. Beroepen: tekst of sjabloon station_required
+#: scripts/data/ext/beroepen.gd:22
+msgid "Ga naar: %s"
+msgstr "Go to: %s"
+
+#. Beroepen: tekst of sjabloon missing
+#: scripts/data/ext/beroepen.gd:23
+msgid "Te weinig: %s"
+msgstr "Not enough: %s"
+
+#. Beroepen: tekst of sjabloon full
+#: scripts/data/ext/beroepen.gd:23
+msgid "Geen ruimte voor: %s"
+msgstr "No room for: %s"
+
+#. Beroepen: tekst of sjabloon ready
+#: scripts/data/ext/beroepen.gd:23
+msgid "Klaar om te maken"
+msgstr "Ready to craft"
+
+#. Beroepen: tekst of sjabloon made
+#: scripts/data/ext/beroepen.gd:23
+msgid "Gemaakt: %s x%d"
+msgstr "Crafted: %s x%d"
+
+#. Beroepen: tekst of sjabloon unknown
+#: scripts/data/ext/beroepen.gd:23
+msgid "Onbekend recept"
+msgstr "Unknown recipe"
+
+#. Beroepen: tekst of sjabloon skill_up
+#: scripts/data/ext/beroepen.gd:24
+msgid "%s: niveau %d!"
+msgstr "%s: level %d!"
+
+#. Beroepen: tekst of sjabloon gathered
+#: scripts/data/ext/beroepen.gd:24
+msgid "%s x%d  ·  +%d XP %s"
+msgstr "%s x%d  ·  +%d XP %s"
+
+#. Beroepen: tekst of sjabloon recovering
+#: scripts/data/ext/beroepen.gd:24
+msgid "%s groeit / verschijnt opnieuw over %d s"
+msgstr "%s will regrow / reappear in %d s"
+
+#. Beroepen: tekst of sjabloon gather_hint
+#: scripts/data/ext/beroepen.gd:25
+msgid "Verzamelen"
+msgstr "Gather"
+
+#. Beroepen: tekst of sjabloon depleted
+#: scripts/data/ext/beroepen.gd:25
+msgid "Herstelt over %d s"
+msgstr "Replenishes in %d s"
+
+#. Beroepen: tekst of sjabloon harvesting
+#: scripts/data/ext/beroepen.gd:25
+msgid "Verzamelen…"
+msgstr "Gathering…"
+
+#. Beroepen: tekst of sjabloon use
+#: scripts/data/ext/beroepen.gd:26
+msgid "Gebruik %s (%d)"
+msgstr "Use %s (%d)"
+
+#. Beroepen: tekst of sjabloon used
+#: scripts/data/ext/beroepen.gd:26
+msgid "Gebruikt: %s"
+msgstr "Used: %s"
+
+#. Beroepen: tekst of sjabloon none
+#: scripts/data/ext/beroepen.gd:26
+msgid "Je hebt nog geen eten of drankjes. Maak iets op het tabblad Maken."
+msgstr "You have no food or drinks yet. Make something in the Craft tab."
+
+#. Beroepen: tekst of sjabloon health_full
+#: scripts/data/ext/beroepen.gd:27
+msgid "Je hartjes zijn al vol"
+msgstr "Your hearts are already full"
+
+#. Beroepen: tekst of sjabloon stamina_full
+#: scripts/data/ext/beroepen.gd:27
+msgid "Je uithoudingsvermogen is al vol"
+msgstr "Your stamina is already full"
+
+#. Beroepen: tekst of sjabloon missing_item
+#: scripts/data/ext/beroepen.gd:27
+msgid "Je hebt dit niet bij je"
+msgstr "You are not carrying this"
+
+#. Beroepen: tekst of sjabloon busy
+#: scripts/data/ext/beroepen.gd:27
+msgid "Wacht even"
+msgstr "Wait a moment"
+
+#. Beroepen: tekst of sjabloon materials
+#: scripts/data/ext/beroepen.gd:28
+msgid "Materialen: %s"
+msgstr "Materials: %s"
+
+#. Beroepen: tekst of sjabloon recipe_line
+#: scripts/data/ext/beroepen.gd:28
+msgid "%s x%d  ·  %s %d"
+msgstr "%s x%d  ·  %s %d"
+
+#. Beroepen: tekst of sjabloon skill_line
+#: scripts/data/ext/beroepen.gd:28
+msgid "%s  ·  niveau %d"
+msgstr "%s  ·  level %d"
+
+#. Beroepen: tekst of sjabloon world_hint
+#: scripts/data/ext/beroepen.gd:28
+msgid "C: beroepen, recepten en eten"
+msgstr "C: professions, recipes and food"
+
+#. Beroepen: tekst of sjabloon inventory_navigation
+#: scripts/data/ext/beroepen.gd:29
+msgid "↑ ↓ voorwerp kiezen  ·  E gebruiken  ·  "
+msgstr "↑ ↓ select item  ·  E to use  ·  "
+
+#. Beroepen: tekst of sjabloon inventory_page
+#: scripts/data/ext/beroepen.gd:29
+msgid "Voorwerpen %d–%d / %d"
+msgstr "Items %d–%d / %d"
+
+#. Beroepen: tekst of sjabloon inventory_use
+#: scripts/data/ext/beroepen.gd:29
+msgid "Druk op E om te gebruiken"
+msgstr "Press E to use"
+
+#. Beroep foraging: name
+#: scripts/data/ext/beroepen.gd:8
+msgid "Kruidenzoeken"
+msgstr "Foraging"
+
+#. Beroep foraging: desc
+#: scripts/data/ext/beroepen.gd:8
+msgid "Zoek kruiden, bessen en paddenstoelen in dorp, bos en langs het meer."
+msgstr "Find herbs, berries and mushrooms in the village, woods and along the lake."
+
+#. Beroep woodcutting: name
+#: scripts/data/ext/beroepen.gd:9
+msgid "Houthakken"
+msgstr "Woodcutting"
+
+#. Beroep woodcutting: desc
+#: scripts/data/ext/beroepen.gd:9
+msgid "Raap takken op en hak boomstronken met een bijl. Een ijzeren bijl geeft extra hout."
+msgstr "Pick up branches and chop stumps with an axe. An iron axe yields extra wood."
+
+#. Beroep mining: name
+#: scripts/data/ext/beroepen.gd:10
+msgid "Mijnbouw"
+msgstr "Mining"
+
+#. Beroep mining: desc
+#: scripts/data/ext/beroepen.gd:10
+msgid "Raap stenen op, maak een pikhouweel en win koper. IJzer vereist niveau 2 en een koperen pikhouweel."
+msgstr "Pick up stones, craft a pickaxe and mine copper. Iron requires level 2 and a copper pickaxe."
+
+#. Beroep fishing: name
+#: scripts/data/ext/beroepen.gd:11 scripts/entities/meer_visplek.gd:44 scripts/entities/meer_visplek.gd:48
+msgid "Vissen"
+msgstr "Fishing"
+
+#. Beroep fishing: desc
+#: scripts/data/ext/beroepen.gd:11
+msgid "Vraag Joris om een hengel. Elke echte vangst bij het Zilvermeer geeft ervaring."
+msgstr "Ask Joris for a fishing rod. Every real fish caught at Silver Lake grants experience."
+
+#. Beroep smithing: name
+#: scripts/data/ext/beroepen.gd:12
+msgid "Smeden"
+msgstr "Smithing"
+
+#. Beroep smithing: desc
+#: scripts/data/ext/beroepen.gd:12
+msgid "Smelt erts en maak beter gereedschap bij Greta in de smederij."
+msgstr "Smelt ore and craft better tools with Greta at the smithy."
+
+#. Beroep alchemy: name
+#: scripts/data/ext/beroepen.gd:13
+msgid "Alchemie"
+msgstr "Alchemy"
+
+#. Beroep alchemy: desc
+#: scripts/data/ext/beroepen.gd:13
+msgid "Meng kruiden met slijmgel of bessen in Lena's bibliotheek."
+msgstr "Mix herbs with slime gel or berries in Lena's library."
+
+#. Beroep cooking: name
+#: scripts/data/ext/beroepen.gd:14
+msgid "Koken"
+msgstr "Cooking"
+
+#. Beroep cooking: desc
+#: scripts/data/ext/beroepen.gd:14
+msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme gerechten."
+msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
+
+#. Oogstbare grondstof branches
+#: scripts/data/ext/beroepen.gd:66
+msgid "Losse takken"
+msgstr "Loose Branches"
+
+#. Oogstbare grondstof stones
+#: scripts/data/ext/beroepen.gd:67
+msgid "Losse vuurstenen"
+msgstr "Loose Flint"
+
+#. Oogstbare grondstof berries
+#: scripts/data/ext/beroepen.gd:69
+msgid "Bosbessenstruik"
+msgstr "Blueberry Bush"
+
+#. Oogstbare grondstof mushrooms
+#: scripts/data/ext/beroepen.gd:70
+msgid "Honingzwammen"
+msgstr "Honey Mushrooms"
+
+#. Oogstbare grondstof stump
+#: scripts/data/ext/beroepen.gd:71
+msgid "Berkenstronk"
+msgstr "Birch Stump"
+
+#. Oogstbare grondstof copper
+#: scripts/data/ext/beroepen.gd:72
+msgid "Koperader"
+msgstr "Copper Vein"
+
+#. Oogstbare grondstof iron
+#: scripts/data/ext/beroepen.gd:73
+msgid "IJzerader"
+msgstr "Iron Vein"
+
+#. Instelbare bediening: move_up
+#: scripts/core/input_manager.gd:11
+msgid "Omhoog lopen"
+msgstr "Move up"
+
+#. Instelbare bediening: move_down
+#: scripts/core/input_manager.gd:11
+msgid "Omlaag lopen"
+msgstr "Move down"
+
+#. Instelbare bediening: move_left
+#: scripts/core/input_manager.gd:12
+msgid "Naar links lopen"
+msgstr "Move left"
+
+#. Instelbare bediening: move_right
+#: scripts/core/input_manager.gd:12
+msgid "Naar rechts lopen"
+msgstr "Move right"
+
+#. Instelbare bediening: attack
+#: scripts/ui/ending.gd:254 scripts/core/input_manager.gd:13
+msgid "Zwaard"
+msgstr "Sword"
+
+#. Instelbare bediening: interact
+#: scripts/core/input_manager.gd:13
+msgid "Praten / gebruiken"
+msgstr "Talk / interact"
+
+#. Instelbare bediening: dodge
+#: scripts/core/input_manager.gd:14
+msgid "Rollen"
+msgstr "Dodge roll"
+
+#. Instelbare bediening: sprint
+#: scripts/core/input_manager.gd:14
+msgid "Rennen (vasthouden)"
+msgstr "Sprint (hold)"
+
+#. Instelbare bediening: potion
+#: scripts/core/input_manager.gd:14
+msgid "Drankje"
+msgstr "Potion"
+
+#. Instelbare bediening: menu
+#: scripts/core/input_manager.gd:15
+msgid "Inventaris"
+msgstr "Inventory"
+
+#. Instelbare bediening: crafting
+#: scripts/core/input_manager.gd:15
+msgid "Beroepen / maken"
+msgstr "Professions / crafting"
+
+#. Instelbare bediening: quests
+#: scripts/ui/menu_ui.gd:295 scripts/ui/menu_ui.gd:506 scripts/core/input_manager.gd:15
+msgid "Opdrachten"
+msgstr "Quests"
+
+#. Instelbare bediening: map
+#: scripts/ui/menu_ui.gd:295 scripts/core/input_manager.gd:16
+msgid "Kaart"
+msgstr "Map"
+
+#. Instelbare bediening: wereld_prestaties
+#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:295 scripts/core/input_manager.gd:16
+msgid "Prestaties"
+msgstr "Achievements"
+
+#. Instelbare bediening: wereld_beestenboek
+#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:295 scripts/core/input_manager.gd:16
+msgid "Beestenboek"
+msgstr "Bestiary"
+
+#. Instelbare bediening: pause
+#: scripts/ui/pause_menu.gd:72 scripts/core/input_manager.gd:17
+msgid "Pauze"
+msgstr "Paused"
+
+#. Instelbare bediening: restart
+#: scripts/core/input_manager.gd:17
+msgid "Opnieuw na verlies"
+msgstr "Restart after defeat"
+
+#. Instelbare bediening: mute
+#: scripts/core/input_manager.gd:17
+msgid "Geluid aan / uit"
+msgstr "Sound on / off"
+
+#. Instelbare bediening: fullscreen
+#: scripts/core/input_manager.gd:17
+msgid "Volledig scherm"
+msgstr "Fullscreen"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "A / kruis"
+msgstr "A / cross"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "B / cirkel"
+msgstr "B / circle"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "X / vierkant"
+msgstr "X / square"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "Y / driehoek"
+msgstr "Y / triangle"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "Select / View"
+msgstr "Select / View"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "Home"
+msgstr "Home"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "Start / Menu"
+msgstr "Start / Menu"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "L3"
+msgstr "L3"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "R3"
+msgstr "R3"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "LB / L1"
+msgstr "LB / L1"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "RB / R1"
+msgstr "RB / R1"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "D-pad omhoog"
+msgstr "D-pad up"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "D-pad omlaag"
+msgstr "D-pad down"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "D-pad links"
+msgstr "D-pad left"
+
+#. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
+#: scripts/core/input_manager.gd:19
+msgid "D-pad rechts"
+msgstr "D-pad right"
+
 #. Aftiteling (title)
-#: scripts/ui/title.gd:108 scripts/data/credits.gd:5
+#: scripts/ui/title.gd:111 scripts/data/credits.gd:5
 msgid "Bluemap Quest"
 msgstr "Bluemap Quest"
 
@@ -3407,7 +4080,7 @@ msgstr "You can't travel during a boss fight!"
 msgid "Je kunt niet reizen tijdens een arenagevecht!"
 msgstr "You can't travel during an arena fight!"
 
-#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:207
+#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:328
 msgid "Je hebt nog geen altaar ontdekt."
 msgstr "You haven't found an altar yet."
 
@@ -3416,52 +4089,132 @@ msgid "Dat altaar heb je nog niet ontdekt."
 msgstr "You haven't found that altar yet."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:339
+#: scripts/core/game_state.gd:347
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:342
+#: scripts/core/game_state.gd:350
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:344
+#: scripts/core/game_state.gd:352
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:347
+#: scripts/core/game_state.gd:355
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:354
+#: scripts/core/game_state.gd:362
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:418
+#: scripts/core/game_state.gd:426
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:433
+#: scripts/core/game_state.gd:441
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:474
+#: scripts/core/game_state.gd:482
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:478
+#: scripts/core/game_state.gd:486
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:554
+#: scripts/core/game_state.gd:562
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:571
+#: scripts/core/game_state.gd:579
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
+
+#: scripts/core/input_manager.gd:231
+msgid "Niet ingesteld"
+msgstr "Unassigned"
+
+#: scripts/core/input_manager.gd:243
+msgid "Linkermuis"
+msgstr "Left mouse"
+
+#: scripts/core/input_manager.gd:244
+msgid "Rechtermuis"
+msgstr "Right mouse"
+
+#: scripts/core/input_manager.gd:245
+msgid "Middelmuisknop"
+msgstr "Middle mouse"
+
+#: scripts/core/input_manager.gd:246
+msgid "Wiel omhoog"
+msgstr "Wheel up"
+
+#: scripts/core/input_manager.gd:247
+msgid "Wiel omlaag"
+msgstr "Wheel down"
+
+#: scripts/core/input_manager.gd:248
+msgid "Muisknop %d"
+msgstr "Mouse button %d"
+
+#: scripts/core/input_manager.gd:250
+msgid "Knop %d"
+msgstr "Button %d"
+
+#: scripts/core/input_manager.gd:258
+msgid "Linkerstick links"
+msgstr "Left stick left"
+
+#: scripts/core/input_manager.gd:258
+msgid "Linkerstick rechts"
+msgstr "Left stick right"
+
+#: scripts/core/input_manager.gd:259
+msgid "Linkerstick omhoog"
+msgstr "Left stick up"
+
+#: scripts/core/input_manager.gd:259
+msgid "Linkerstick omlaag"
+msgstr "Left stick down"
+
+#: scripts/core/input_manager.gd:265
+msgid "Kies een geldige toets of controllerknop."
+msgstr "Choose a valid key or controller button."
+
+#: scripts/core/input_manager.gd:268
+msgid "De rechterstick blijft beschikbaar om te richten."
+msgstr "The right stick is reserved for aiming."
+
+#: scripts/core/input_manager.gd:270
+msgid "Beweeg de stick of trigger verder."
+msgstr "Move the stick or trigger further."
+
+#: scripts/core/input_manager.gd:272
+msgid "Kies een toets, muisknop, stickrichting of trigger."
+msgstr "Choose a key, mouse button, stick direction or trigger."
+
+#: scripts/core/input_manager.gd:274
+msgid "Esc blijft beschikbaar om menu's te sluiten."
+msgstr "Esc is reserved for closing menus."
+
+#: scripts/core/input_manager.gd:302
+msgid "Deze invoer hoort bij meerdere acties; kies een andere."
+msgstr "This input is assigned to several actions; choose another."
+
+#: scripts/core/input_manager.gd:306
+msgid "Die invoer is al gekoppeld aan %s. Kies een vrije knop."
+msgstr "That input is already assigned to %s. Choose an unused button."
+
+#: scripts/core/input_manager.gd:345
+msgid "Bediening kon niet worden opgeslagen."
+msgstr "Controls could not be saved."
 
 #: scripts/data/arena.gd:101
 msgid "Je staat al ingeschreven. Loop maar naar de arenadeur!"
@@ -3546,7 +4299,7 @@ msgstr[0] "%d fish"
 msgstr[1] "%d fish"
 
 #. achter iets in de winkel dat je maar één keer kunt kopen en al hebt; anders de prijs
-#: scripts/data/ext/meer_logic.gd:107 scripts/ui/shop_ui.gd:98
+#: scripts/data/ext/meer_logic.gd:107 scripts/ui/shop_ui.gd:113
 msgid "%d munt"
 msgid_plural "%d munten"
 msgstr[0] "%d coin"
@@ -3755,15 +4508,19 @@ msgstr "Deep fishing spot"
 msgid "Visplek"
 msgstr "Fishing spot"
 
-#: scripts/entities/player.gd:209
+#: scripts/entities/player.gd:287
+msgid "Je hebt een boog nodig. Tobias verkoopt er een."
+msgstr "You need a bow. Tobias sells one."
+
+#: scripts/entities/player.gd:297
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:231 scripts/ui/menu_ui.gd:259
+#: scripts/entities/player.gd:321 scripts/ui/menu_ui.gd:380
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
-#: scripts/entities/player.gd:233
+#: scripts/entities/player.gd:323
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
 
@@ -3807,7 +4564,7 @@ msgstr "Ready? %d"
 msgid "Gehaald!"
 msgstr "Made it!"
 
-#: scripts/entities/shooting_range.gd:229 scripts/ui/fishing_ui.gd:333
+#: scripts/entities/shooting_range.gd:229 scripts/ui/fishing_ui.gd:337
 msgid "Te laat!"
 msgstr "Too late!"
 
@@ -3824,253 +4581,334 @@ msgstr "Achievement unlocked!"
 msgid "Al je prestaties zie je met T, het beestenboek met B."
 msgstr "See all your achievements with T, and the bestiary with B."
 
-#. toetsen om verder te klikken in een gesprek (spatie = de spatiebalk)
-#: scripts/ui/dialogue_box.gd:127
-msgid "E / spatie  ▼"
-msgstr "E / Space  ▼"
+#: scripts/ui/controls_menu.gd:102
+msgid "Standaardbediening hersteld voor dit apparaat."
+msgstr "Default controls restored for this device."
 
-#. toetsen om verder te klikken in een gesprek (spatie = de spatiebalk)
-#: scripts/ui/dialogue_box.gd:127
-msgid "E / spatie  ✓"
-msgstr "E / Space  ✓"
+#: scripts/ui/controls_menu.gd:123 scripts/ui/pause_menu.gd:79 scripts/ui/title.gd:117
+msgid "Bediening"
+msgstr "Controls"
 
-#: scripts/ui/dialogue_box.gd:193
-msgid "↑ ↓ kiezen  ·  E bevestigen"
-msgstr "↑ ↓ choose  ·  E confirm"
+#: scripts/ui/controls_menu.gd:124
+msgid "Klik een koppeling en druk de nieuwe invoer. Bestaande koppelingen wisselen om."
+msgstr "Select a binding and press the new input. Existing bindings will be swapped."
 
-#: scripts/ui/ending.gd:48
+#: scripts/ui/controls_menu.gd:125
+msgid "Standaard herstellen"
+msgstr "Restore defaults"
+
+#: scripts/ui/controls_menu.gd:126
+msgid "Terug"
+msgstr "Back"
+
+#: scripts/ui/controls_menu.gd:127
+msgid "Toetsenbord + muis"
+msgstr "Keyboard + mouse"
+
+#: scripts/ui/controls_menu.gd:128
+msgid "Controller"
+msgstr "Controller"
+
+#: scripts/ui/controls_menu.gd:133
+msgid "Menu: WASD / pijlen / linkerstick / D-pad · Enter / A kiezen · Esc / B terug\nRichten: muis / rechterstick · Actief apparaat wisselt automatisch."
+msgstr "Menus: WASD / arrows / left stick / D-pad · Enter / A to select · Esc / B to go back\nAim: mouse / right stick · Active device switches automatically."
+
+#: scripts/ui/controls_menu.gd:153
+msgid "Nieuwe invoer voor %s (%s). Esc of 8 seconden wachten annuleert."
+msgstr "New input for %s (%s). Press Esc or wait 8 seconds to cancel."
+
+#: scripts/ui/controls_menu.gd:153 scripts/core/input_manager.gd:35 scripts/core/input_manager.gd:98 scripts/core/input_manager.gd:191
+msgid "controller"
+msgstr "controller"
+
+#: scripts/ui/controls_menu.gd:153
+msgid "toetsenbord / muis"
+msgstr "keyboard / mouse"
+
+#: scripts/ui/controls_menu.gd:154
+msgid "Druk de gewenste invoer…"
+msgstr "Press the desired input…"
+
+#: scripts/ui/controls_menu.gd:161
+msgid "Wijzigen geannuleerd."
+msgstr "Change cancelled."
+
+#: scripts/ui/controls_menu.gd:172
+msgid "Bediening opgeslagen. Een bezette koppeling is automatisch omgewisseld."
+msgstr "Controls saved. Any existing binding was swapped automatically."
+
+#: scripts/ui/controls_menu.gd:174
+msgid "Esc of wachten annuleert."
+msgstr "Press Esc or wait to cancel."
+
+#: scripts/ui/controls_menu.gd:193
+msgid "Geen nieuwe invoer ontvangen; je koppeling is behouden."
+msgstr "No new input received; your binding has been kept."
+
+#: scripts/ui/crafting_ui.gd:85 scripts/ui/crafting_ui.gd:335 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
+msgid "Sluiten"
+msgstr "Close"
+
+#: scripts/ui/crafting_ui.gd:124
+msgid "↑ ↓ ← → kiezen  ·  %s bevestigen  ·  %s / %s recepten/voorraad  ·  %s sluiten"
+msgstr "↑ ↓ ← → select  ·  %s confirm  ·  %s / %s recipes/supplies  ·  %s close"
+
+#: scripts/ui/crafting_ui.gd:125
+msgid "Verzamel met %s. Maak eerst een stenen bijl en pikhouweel van losse takken en stenen. Gereedschap wordt automatisch gebruikt en slijt niet."
+msgstr "Gather with %s. First, craft a stone axe and pickaxe from loose branches and stones. Tools are used automatically and never wear out."
+
+#: scripts/ui/dialogue_box.gd:133
+msgid "↑ ↓ kiezen  ·  %s bevestigen  ·  %s sluiten"
+msgstr "↑ ↓ select  ·  %s confirm  ·  %s close"
+
+#: scripts/ui/dialogue_box.gd:133
+msgid "%s / klik  verder  ·  %s sluiten"
+msgstr "%s / click to continue  ·  %s close"
+
+#: scripts/ui/dialogue_box.gd:208
+msgid "↑ ↓ kiezen  ·  %s bevestigen"
+msgstr "↑ ↓ select  ·  %s confirm"
+
+#: scripts/ui/ending.gd:49
 msgid "Met een enorme plof zakt de Slijmkoning in elkaar."
 msgstr "With a huge SPLAT, the Slime King collapses."
 
-#: scripts/ui/ending.gd:49
+#: scripts/ui/ending.gd:50
 msgid "Het groene gel trekt weg uit de tempel, sijpelt als een rivier door het land... en verdwijnt."
 msgstr "The green goo drains out of the temple, trickles across the land like a river... and disappears."
 
-#: scripts/ui/ending.gd:50
+#: scripts/ui/ending.gd:51
 msgid "Het wordt heel stil in de Kristaltempel."
 msgstr "The Crystal Temple goes very quiet."
 
-#: scripts/ui/ending.gd:53
+#: scripts/ui/ending.gd:54
 msgid "Dankzij jou is Azura weer veilig. De Blauwe Kaart laat weer zien waar het land rustig is."
 msgstr "Thanks to you, Azura is safe again. The Blue Map shows where the land is peaceful once more."
 
-#: scripts/ui/ending.gd:54
+#: scripts/ui/ending.gd:55
 msgid "Ik smeed vanaf nu zwaarden voor op het feest. Nou ja, voor het snijden van de taart."
 msgstr "From now on, I'm forging swords for the party. Well... for cutting the cake."
 
-#: scripts/ui/ending.gd:55
+#: scripts/ui/ending.gd:56
 msgid "Mijn winkel draait beter dan ooit! De eerste helddrank van de week is voor jou. Gratis. Ehm... bijna gratis."
 msgstr "Business has never been better! The first Hero Potion of the week is yours. Free. Um... almost free."
 
-#: scripts/ui/ending.gd:56
+#: scripts/ui/ending.gd:57
 msgid "De herberg zit vol. Iedereen wil de held van Dageraadsdorp zien."
 msgstr "The inn is packed. Everyone wants to see the hero of Daybreak Village."
 
-#: scripts/ui/ending.gd:57
+#: scripts/ui/ending.gd:58
 msgid "Muis en ik gaan ook slijmen verslaan. Als ze groter worden dan Muis, rennen we weg."
 msgstr "Mouse and I are going to beat slimes too. If they get bigger than Mouse, we'll run away."
 
-#: scripts/ui/ending.gd:212
+#: scripts/ui/ending.gd:218
 msgid "Kristaltempel"
 msgstr "Crystal Temple"
 
-#: scripts/ui/ending.gd:212
+#: scripts/ui/ending.gd:218
 msgid "Vergeten Ruïne"
 msgstr "Forgotten Ruins"
 
-#: scripts/ui/ending.gd:233
+#: scripts/ui/ending.gd:239
 msgid "De Blauwe Kaart is weer heel."
 msgstr "The Blue Map is whole again."
 
-#: scripts/ui/ending.gd:238
+#: scripts/ui/ending.gd:244
 msgid "Jouw avontuur"
 msgstr "Your adventure"
 
-#: scripts/ui/ending.gd:245
+#: scripts/ui/ending.gd:251
 msgid "Speeltijd"
 msgstr "Play time"
 
-#: scripts/ui/ending.gd:246
+#: scripts/ui/ending.gd:252
 msgid "Verslagen vijanden"
 msgstr "Enemies defeated"
 
-#: scripts/ui/ending.gd:247
+#: scripts/ui/ending.gd:253
 msgid "Munten"
 msgstr "Coins"
 
-#: scripts/ui/ending.gd:248
-msgid "Zwaard"
-msgstr "Sword"
-
-#: scripts/ui/ending.gd:249
+#: scripts/ui/ending.gd:255
 msgid "Hartjes"
 msgstr "Hearts"
 
 #. aantal voltooide opdrachten: "5 van 9"
-#: scripts/ui/ending.gd:251
+#: scripts/ui/ending.gd:257
 msgid "Opdrachten voltooid"
 msgstr "Quests completed"
 
 #. aantal voltooide opdrachten: "5 van 9"
-#: scripts/ui/ending.gd:251
+#: scripts/ui/ending.gd:257
 msgid "%d van %d"
 msgstr "%d of %d"
 
-#: scripts/ui/ending.gd:282
+#: scripts/ui/ending.gd:288
 msgid "Bedankt voor het spelen!"
 msgstr "Thanks for playing!"
 
-#: scripts/ui/ending.gd:283
+#: scripts/ui/ending.gd:289
 msgid "Je voortgang is bewaard: je kunt verder in het dorp."
 msgstr "Your progress is saved: you can keep playing in the village."
 
-#: scripts/ui/ending.gd:284
-msgid "Druk op E om naar het titelscherm te gaan"
-msgstr "Press E to go to the title screen"
+#: scripts/ui/ending.gd:290
+msgid "Druk op %s om naar het titelscherm te gaan"
+msgstr "Press %s to return to the title screen"
 
 #: scripts/ui/fishing_ui.gd:137
 msgid "Je hebt de Gouden Karper gevangen!"
 msgstr "You caught the Golden Carp!"
 
-#: scripts/ui/fishing_ui.gd:237
+#: scripts/ui/fishing_ui.gd:242
 msgid "Je gooit uit..."
 msgstr "You cast your line..."
 
-#: scripts/ui/fishing_ui.gd:240
+#: scripts/ui/fishing_ui.gd:244
 msgid "Wacht op een beet"
 msgstr "Wait for a bite"
 
-#: scripts/ui/fishing_ui.gd:240
-msgid "Esc: stoppen"
-msgstr "Esc: stop"
+#: scripts/ui/fishing_ui.gd:244
+msgid "%s: stoppen"
+msgstr "%s: stop"
 
-#: scripts/ui/fishing_ui.gd:282
-msgid "BEET!  Druk snel op E!"
-msgstr "BITE!  Press E, quick!"
+#: scripts/ui/fishing_ui.gd:286
+msgid "BEET!  Druk snel op %s!"
+msgstr "BITE!  Quickly press %s!"
 
-#: scripts/ui/fishing_ui.gd:290
+#: scripts/ui/fishing_ui.gd:294
 msgid "Binnenhalen!"
 msgstr "Reel it in!"
 
-#: scripts/ui/fishing_ui.gd:313
-msgid "Houd E ingedrukt: omhoog"
-msgstr "Hold E: move up"
+#: scripts/ui/fishing_ui.gd:317
+msgid "Houd %s ingedrukt: omhoog"
+msgstr "Hold %s: rise"
 
-#: scripts/ui/fishing_ui.gd:314
+#: scripts/ui/fishing_ui.gd:318
 msgid "Houd de vis in het groen!"
 msgstr "Keep the fish in the green!"
 
-#: scripts/ui/fishing_ui.gd:314
-msgid "Laat E los om te zakken  ·  Esc: stoppen"
-msgstr "Let go of E to sink  ·  Esc: stop"
+#: scripts/ui/fishing_ui.gd:318
+msgid "Loslaten: zakken  ·  %s: stoppen"
+msgstr "Release: sink  ·  %s: stop"
 
-#: scripts/ui/fishing_ui.gd:323
+#: scripts/ui/fishing_ui.gd:327
 msgid "Gevangen!"
 msgstr "Caught!"
 
-#: scripts/ui/fishing_ui.gd:334
+#: scripts/ui/fishing_ui.gd:338
 msgid "De vis is ontsnapt."
 msgstr "The fish got away."
 
-#: scripts/ui/fishing_ui.gd:335
-msgid "Druk sneller op E als de dobber zakt."
-msgstr "Press E faster when the bobber dips."
+#: scripts/ui/fishing_ui.gd:339
+msgid "Druk op %s zodra de dobber zakt."
+msgstr "Press %s when the float dips."
 
-#: scripts/ui/fishing_ui.gd:337
+#: scripts/ui/fishing_ui.gd:341
 msgid "Hij is ontsnapt!"
 msgstr "It got away!"
 
-#: scripts/ui/fishing_ui.gd:338
+#: scripts/ui/fishing_ui.gd:342
 msgid "De lijn werd te slap."
 msgstr "The line went too slack."
 
-#: scripts/ui/fishing_ui.gd:339
+#: scripts/ui/fishing_ui.gd:343
 msgid "Houd de vis in de groene zone."
 msgstr "Keep the fish in the green zone."
 
-#: scripts/ui/fishing_ui.gd:340
-msgid "E: nog een keer   ·   Esc: stoppen"
-msgstr "E: try again   ·   Esc: stop"
+#: scripts/ui/fishing_ui.gd:344
+msgid "%s: nog een keer  ·  %s: stoppen"
+msgstr "%s: try again  ·  %s: stop"
 
-#: scripts/ui/fishing_ui.gd:346
+#: scripts/ui/fishing_ui.gd:350
 msgid "Zo zeldzaam! Breng hem naar Visser Joris!"
 msgstr "So rare! Take it to Joris the Fisher!"
 
-#: scripts/ui/fishing_ui.gd:349
+#: scripts/ui/fishing_ui.gd:353
 msgid "Joris verzamelt ze. Waarde: %d munt"
 msgid_plural "Joris verzamelt ze. Waarde: %d munten"
 msgstr[0] "Joris collects these. Worth: %d coin"
 msgstr[1] "Joris collects these. Worth: %d coins"
 
-#: scripts/ui/fishing_ui.gd:350
+#: scripts/ui/fishing_ui.gd:354
 msgid "Waarde: %d munt"
 msgid_plural "Waarde: %d munten"
 msgstr[0] "Worth: %d coin"
 msgstr[1] "Worth: %d coins"
 
-#: scripts/ui/hud.gd:43
-msgid "WASD lopen  ·  SPATIE zwaard  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze"
-msgstr "WASD move  ·  SPACE sword  ·  SHIFT roll  ·  E talk  ·  I menu  ·  ESC pause"
+#: scripts/ui/hud.gd:47
+msgid "%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing"
+msgstr "%s sword  ·  %s talk  ·  %s menu  ·  %s pause and controls"
 
-#: scripts/ui/hud.gd:130 scripts/ui/hud.gd:216 scripts/ui/hud.gd:278
+#: scripts/ui/hud.gd:48
+msgid "%s vasthouden: rennen  ·  %s: beroepen en maken  ·  Paden geven extra snelheid"
+msgstr "Hold %s: sprint  ·  %s: professions and crafting  ·  Paths make you faster"
+
+#: scripts/ui/hud.gd:156 scripts/ui/hud.gd:255 scripts/ui/hud.gd:318
 msgid "Game over"
 msgstr "Game over"
 
-#: scripts/ui/hud.gd:185
-msgid "Boog gekregen! Druk op F om te schieten."
-msgstr "You got the Bow! Press F to shoot."
+#: scripts/ui/hud.gd:168
+msgid "Even op adem komen..."
+msgstr "Catching your breath..."
 
-#. op het game-over-scherm; %s is wie je versloeg, bijvoorbeeld "Kristalgolem (klap)"
-#: scripts/ui/hud.gd:280
+#: scripts/ui/hud.gd:168
+msgid "Uithouding  ·  %s"
+msgstr "Stamina  ·  %s"
+
+#: scripts/ui/hud.gd:224
+msgid "Boog gekregen! Druk op %s om te schieten."
+msgstr "Bow acquired! Press %s to shoot."
+
+#: scripts/ui/hud.gd:320
 msgid "Verslagen door: %s"
 msgstr "Defeated by: %s"
 
-#: scripts/ui/hud.gd:282
-msgid "Druk op R om verder te gaan vanaf je laatste opslag  ·  Esc voor het menu"
-msgstr "Press R to continue from your last save  ·  Esc for the menu"
+#: scripts/ui/hud.gd:323
+msgid "%s voor het menu"
+msgstr "%s for the menu"
 
-#: scripts/ui/hud.gd:284
-msgid "Druk op R om opnieuw te beginnen  ·  Esc voor het menu"
-msgstr "Press R to start over  ·  Esc for the menu"
+#: scripts/ui/hud.gd:324
+msgid "Druk op %s om verder te gaan vanaf je laatste opslag"
+msgstr "Press %s to continue from your last save"
+
+#: scripts/ui/hud.gd:324
+msgid "Druk op %s om opnieuw te beginnen"
+msgstr "Press %s to start again"
 
 #. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
 #. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
-#: scripts/ui/hud.gd:296 scripts/ui/menu_pages.gd:220
+#: scripts/ui/hud.gd:336 scripts/ui/menu_pages.gd:220
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
 #. het dagdeel bij de klok als het regent: "Avond  ·  regen"
-#: scripts/ui/hud.gd:315
+#: scripts/ui/hud.gd:355
 msgid "%s  ·  regen"
 msgstr "%s  ·  rain"
 
-#: scripts/ui/intro.gd:30
+#: scripts/ui/intro.gd:31
 msgid "Azura is een land vol bossen, ruïnes en grotten. Eeuwenlang werd het beschermd door de Blauwe Kaart."
 msgstr "Azura is a land full of forests, ruins and caves. For hundreds of years, it was protected by the Blue Map."
 
-#: scripts/ui/intro.gd:31
+#: scripts/ui/intro.gd:32
 msgid "De kaart is gemaakt van gloeiend kristal. Hij houdt de slijmen rustig en laat zien waar het land veilig is."
 msgstr "The map is made of glowing crystal. It keeps the slimes calm and shows where the land is safe."
 
-#: scripts/ui/intro.gd:32
+#: scripts/ui/intro.gd:33
 msgid "Maar op een nacht barstte de kaart. De drie grote kristallen vlogen het land in, en overal werden de slijmen wild."
 msgstr "But one night, the map cracked. Its three big crystals flew off across the land, and everywhere the slimes went wild."
 
-#: scripts/ui/intro.gd:35
+#: scripts/ui/intro.gd:36
 msgid "Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur... Maar let op: dit is Nieuw spel+. De slijmen zijn sterker geworden, en jij hebt je beste spullen mee!"
 msgstr "You arrive in Daybreak Village, the little village below the temple where the map hangs. That's where your adventure begins... But watch out: this is New Game+. The slimes have gotten stronger, and you've brought your best gear!"
 
-#: scripts/ui/intro.gd:37
+#: scripts/ui/intro.gd:38
 msgid "Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur..."
 msgstr "You arrive in Daybreak Village, the little village below the temple where the map hangs. That's where your adventure begins..."
 
-#: scripts/ui/intro.gd:109
-msgid "Esc = overslaan"
-msgstr "Esc = skip"
-
-#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:174
-msgid "Prestaties"
-msgstr "Achievements"
+#: scripts/ui/intro.gd:115
+msgid "%s = overslaan"
+msgstr "%s = skip"
 
 #: scripts/ui/menu_pages.gd:73
 msgid "%d / %d behaald"
@@ -4083,10 +4921,6 @@ msgstr "You keep these, even if you start a new game."
 #: scripts/ui/menu_pages.gd:90
 msgid "Een geheime prestatie. Blijf het spel ontdekken!"
 msgstr "A secret achievement. Keep exploring!"
-
-#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:174
-msgid "Beestenboek"
-msgstr "Bestiary"
 
 #: scripts/ui/menu_pages.gd:134
 msgid "%d / %d ontdekt"
@@ -4108,7 +4942,7 @@ msgstr "Health:  %d"
 msgid "Schade:  %s"
 msgstr "Damage:  %s"
 
-#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:339
+#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:476
 msgid "Verslagen:  %d"
 msgstr "Defeated:  %d"
 
@@ -4157,191 +4991,193 @@ msgid "Snel reizen"
 msgstr "Fast Travel"
 
 #: scripts/ui/menu_pages.gd:255
-msgid "Je hebt nog geen blauw altaar ontdekt. Gebruik een altaar (druk op E erbij), dan kun je er later snel naartoe reizen."
-msgstr "You haven't found a blue altar yet. Use an altar (press E next to it), and later you can fast travel there."
+msgid "Je hebt nog geen blauw altaar ontdekt. Gebruik een altaar, dan kun je er later snel naartoe reizen."
+msgstr "You have not discovered a blue altar yet. Use an altar to unlock fast travel to it."
 
 #. in de lijst voor snel reizen achter het altaar in het gebied waar je nu bent
 #: scripts/ui/menu_pages.gd:268
 msgid "hier"
 msgstr "here"
 
-#. %s is een gebied midden in een zin, zoals "de Vergeten Ruïne" (die staat apart in de vertaling)
-#: scripts/ui/menu_pages.gd:280
+#: scripts/ui/menu_pages.gd:277
 msgid "Reizen naar %s?"
 msgstr "Travel to %s?"
 
-#: scripts/ui/menu_pages.gd:281
-msgid "E  ja, reis maar    Esc  nee"
-msgstr "E  yes, let's go    Esc  no"
+#: scripts/ui/menu_pages.gd:280
+msgid "%s  Reizen"
+msgstr "%s  Travel"
 
-#: scripts/ui/menu_ui.gd:174
+#: scripts/ui/menu_pages.gd:281
+msgid "%s  Terug"
+msgstr "%s  Back"
+
+#: scripts/ui/menu_ui.gd:295
 msgid "Voorwerpen"
 msgstr "Items"
 
-#: scripts/ui/menu_ui.gd:174 scripts/ui/menu_ui.gd:366
-msgid "Opdrachten"
-msgstr "Quests"
+#: scripts/ui/menu_ui.gd:416
+msgid "%s / %s tabblad  ·  "
+msgstr "%s / %s tab  ·  "
 
-#: scripts/ui/menu_ui.gd:174
-msgid "Kaart"
-msgstr "Map"
+#: scripts/ui/menu_ui.gd:417
+msgid "%s sluiten"
+msgstr "%s close"
 
-#: scripts/ui/menu_ui.gd:295
-msgid "↑ ↓  altaar kiezen   ·   E  reizen   ·   ← → of LB / RB  tabblad   ·   Esc  sluiten"
-msgstr "↑ ↓  choose altar   ·   E  travel   ·   ← → or LB / RB  tab   ·   Esc  close"
+#: scripts/ui/menu_ui.gd:419
+msgid "↑ ↓ ← → kiezen  ·  %s gebruiken  ·  "
+msgstr "↑ ↓ ← → select  ·  %s use  ·  "
 
-#: scripts/ui/menu_ui.gd:297
-msgid "↑ ↓  bladeren   ·   ← → of LB / RB  tabblad   ·   I Q N T B  openen en sluiten   ·   Esc  sluiten"
-msgstr "↑ ↓  scroll   ·   ← → or LB / RB  tab   ·   I Q N T B  open and close   ·   Esc  close"
+#: scripts/ui/menu_ui.gd:421
+msgid "↑ ↓ altaar  ·  %s reizen  ·  "
+msgstr "↑ ↓ altar  ·  %s travel  ·  "
 
-#: scripts/ui/menu_ui.gd:298
-msgid "← → of LB / RB  tabblad   ·   I Q N T B  openen en sluiten   ·   Esc  sluiten"
-msgstr "← → or LB / RB  tab   ·   I Q N T B  open and close   ·   Esc  close"
+#: scripts/ui/menu_ui.gd:422
+msgid "↑ ↓ bladeren  ·  "
+msgstr "↑ ↓ browse  ·  "
 
-#: scripts/ui/menu_ui.gd:309
+#: scripts/ui/menu_ui.gd:436
 msgid "Je spullen"
 msgstr "Your stuff"
 
-#: scripts/ui/menu_ui.gd:311
+#: scripts/ui/menu_ui.gd:438
 msgid "Je hebt nog niets bij je."
 msgstr "You're not carrying anything yet."
 
-#: scripts/ui/menu_ui.gd:331
-msgid "Druk op E om te drinken"
-msgstr "Press E to drink"
+#: scripts/ui/menu_ui.gd:468
+msgid "%s  Gebruiken"
+msgstr "%s  Use"
 
-#: scripts/ui/menu_ui.gd:334
+#: scripts/ui/menu_ui.gd:471
 msgid "Zwaard:  %s (schade %d)"
 msgstr "Sword:  %s (damage %d)"
 
-#: scripts/ui/menu_ui.gd:335
+#: scripts/ui/menu_ui.gd:472
 msgid "Levens:  %d / %d"
 msgstr "Health:  %d / %d"
 
-#: scripts/ui/menu_ui.gd:336
+#: scripts/ui/menu_ui.gd:473
 msgid "Snelheid:  snel (laarzen)"
 msgstr "Speed:  fast (boots)"
 
-#: scripts/ui/menu_ui.gd:336
+#: scripts/ui/menu_ui.gd:473
 msgid "Snelheid:  normaal"
 msgstr "Speed:  normal"
 
-#: scripts/ui/menu_ui.gd:337
+#: scripts/ui/menu_ui.gd:474
 msgid "Munten:  %d"
 msgstr "Coins:  %d"
 
-#: scripts/ui/menu_ui.gd:338
+#: scripts/ui/menu_ui.gd:475
 msgid "Kristallen:  %d / 3"
 msgstr "Crystals:  %d / 3"
 
-#: scripts/ui/menu_ui.gd:340
+#: scripts/ui/menu_ui.gd:477
 msgid "Speeltijd:  %s"
 msgstr "Play time:  %s"
 
 #. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-#: scripts/ui/menu_ui.gd:345 scripts/ui/pause_menu.gd:108
+#: scripts/ui/menu_ui.gd:482 scripts/ui/pause_menu.gd:111
 msgid "Nieuw spel+  ·  ronde %d"
 msgstr "New Game+  ·  round %d"
 
-#: scripts/ui/menu_ui.gd:368
+#: scripts/ui/menu_ui.gd:508
 msgid "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"
 msgstr "You don't have any quests yet. Talk to the people in the village!"
 
-#. titel van de hoofdopdracht in het opdrachtenlogboek
-#: scripts/ui/menu_ui.gd:376
+#: scripts/ui/menu_ui.gd:518
 msgid "%s   (hoofdopdracht)"
 msgstr "%s   (main quest)"
 
-#: scripts/ui/menu_ui.gd:379
+#: scripts/ui/menu_ui.gd:525
 msgid "Voltooid."
 msgstr "Completed."
 
-#: scripts/ui/menu_ui.gd:425
+#: scripts/ui/menu_ui.gd:568
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
 
-#: scripts/ui/pause_menu.gd:70
-msgid "Pauze"
-msgstr "Paused"
-
-#: scripts/ui/pause_menu.gd:71
+#: scripts/ui/pause_menu.gd:73
 msgid "Verder spelen"
 msgstr "Keep playing"
 
-#: scripts/ui/pause_menu.gd:72
+#: scripts/ui/pause_menu.gd:74
 msgid "Laatste opslag laden"
 msgstr "Load last save"
 
-#: scripts/ui/pause_menu.gd:74
+#: scripts/ui/pause_menu.gd:76
 msgid "Muziek"
 msgstr "Music"
 
-#: scripts/ui/pause_menu.gd:75
+#: scripts/ui/pause_menu.gd:77
 msgid "Effecten"
 msgstr "Effects"
 
-#: scripts/ui/pause_menu.gd:76
+#: scripts/ui/pause_menu.gd:78
 msgid "Naar titelscherm"
 msgstr "Back to title"
 
-#: scripts/ui/pause_menu.gd:142 scripts/ui/title.gd:147
-msgid "Geluid: uit  (M)"
-msgstr "Sound: off  (M)"
+#: scripts/ui/pause_menu.gd:145 scripts/ui/title.gd:153
+msgid "Geluid: uit"
+msgstr "Sound: off"
 
-#: scripts/ui/pause_menu.gd:142 scripts/ui/title.gd:147
-msgid "Geluid: aan  (M)"
-msgstr "Sound: on  (M)"
+#: scripts/ui/pause_menu.gd:145 scripts/ui/title.gd:153
+msgid "Geluid: aan"
+msgstr "Sound: on"
 
-#: scripts/ui/shop_ui.gd:27 scripts/ui/shop_ui.gd:71
+#: scripts/ui/shop_ui.gd:32 scripts/ui/shop_ui.gd:84 scripts/ui/shop_ui.gd:212
 msgid "Munten: %d"
 msgstr "Coins: %d"
 
-#: scripts/ui/shop_ui.gd:61
-msgid "↑ ↓ kiezen  ·  E kopen  ·  Esc sluiten"
-msgstr "↑ ↓ choose  ·  E buy  ·  Esc close"
-
 #. achter iets in de winkel dat je maar één keer kunt kopen en al hebt; anders de prijs
-#: scripts/ui/shop_ui.gd:98
+#: scripts/ui/shop_ui.gd:113
 msgid "gekocht"
 msgstr "owned"
 
-#: scripts/ui/shop_ui.gd:113
+#: scripts/ui/shop_ui.gd:132
 msgid "Je hebt alles gekocht!"
 msgstr "You bought everything!"
 
-#: scripts/ui/shop_ui.gd:134
+#: scripts/ui/shop_ui.gd:156
 msgid "Je hebt niet genoeg munten."
 msgstr "You don't have enough coins."
 
-#: scripts/ui/shop_ui.gd:145
+#: scripts/ui/shop_ui.gd:167
 msgid "Gekocht: %s"
 msgstr "Bought: %s"
 
 #. melding dat iets bijna vol is, met hoeveel je hebt en het maximum: "Je pijlenkoker zit bijna vol (38 van de 40)"
-#: scripts/ui/shop_ui.gd:154
+#: scripts/ui/shop_ui.gd:176
 msgid "%s (%d van de %d)"
 msgstr "%s (%d of %d)"
 
-#: scripts/ui/title.gd:109
+#: scripts/ui/shop_ui.gd:198
+msgid "↑ ↓ kiezen  ·  %s kopen  ·  %s sluiten"
+msgstr "↑ ↓ select  ·  %s buy  ·  %s close"
+
+#: scripts/ui/title.gd:112
 msgid "Een kleine fantasy-quest"
 msgstr "A little fantasy quest"
 
-#: scripts/ui/title.gd:110
+#: scripts/ui/title.gd:113
 msgid "Doorgaan"
 msgstr "Continue"
 
-#: scripts/ui/title.gd:111
+#: scripts/ui/title.gd:114
 msgid "Nieuw spel"
 msgstr "New Game"
 
-#: scripts/ui/title.gd:112
+#: scripts/ui/title.gd:115
 msgid "Nieuw spel+"
 msgstr "New Game+"
 
-#: scripts/ui/title.gd:113
+#: scripts/ui/title.gd:116
 msgid "Afsluiten"
 msgstr "Quit"
 
-#: scripts/ui/title.gd:114
-msgid "WASD lopen  ·  SPATIE zwaard  ·  F boog  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze  ·  M geluid"
-msgstr "WASD move  ·  SPACE sword  ·  F bow  ·  SHIFT roll  ·  E talk  ·  I menu  ·  ESC pause  ·  M sound"
+#: scripts/ui/title.gd:159
+msgid "Linkerstick / D-pad kiezen  ·  A bevestigen  ·  Bediening: knoppen aanpassen"
+msgstr "Left stick / D-pad to select  ·  A to confirm  ·  Controls: remap buttons"
+
+#: scripts/ui/title.gd:159
+msgid "WASD / pijlen kiezen  ·  Enter bevestigen  ·  Bediening: toetsen en muis aanpassen"
+msgstr "WASD / arrows to select  ·  Enter to confirm  ·  Controls: remap keyboard and mouse"

@@ -9,6 +9,7 @@ var title_label: Label
 var resume_button: Button
 var load_button: Button
 var sound_button: Button
+var controls_button: Button
 var language_button: Button
 var music_label: Label
 var effects_label: Label
@@ -58,6 +59,7 @@ func _build_ui() -> void:
 	resume_button = _button(box, toggle)
 	load_button = _button(box, _load_save)
 	sound_button = _button(box, Sound.toggle_mute)
+	controls_button = _button(box, _open_controls)
 	language_button = _button(box, _toggle_language)
 	music_label = _slider(box, Sound.music_volume, Sound.set_music_volume)
 	effects_label = _slider(box, Sound.sfx_volume, Sound.set_sfx_volume)
@@ -74,6 +76,7 @@ func _refresh_texts() -> void:
 	music_label.text = tr("Muziek")
 	effects_label.text = tr("Effecten")
 	title_button.text = tr("Naar titelscherm")
+	controls_button.text = tr("Bediening")
 	_refresh_sound_label()
 	_refresh_ng_row()
 
@@ -139,16 +142,29 @@ func _slider(parent: Node, value: float, setter: Callable) -> Label:
 
 
 func _refresh_sound_label() -> void:
-	sound_button.text = tr("Geluid: uit  (M)") if Sound.muted else tr("Geluid: aan  (M)")
+	sound_button.text = tr("Geluid: uit") if Sound.muted else tr("Geluid: aan")
+
+
+func _open_controls() -> void:
+	var menu := preload("res://scripts/ui/controls_menu.gd").new()
+	menu.closed.connect(func() -> void: controls_button.grab_focus())
+	add_child(menu)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Met een controller (A) of met E druk je de gekozen knop in; Enter en spatie doet Godot zelf al (ui_accept).
-	if open and event.is_action_pressed("interact"):
-		var focused := get_viewport().gui_get_focus_owner()
-		if focused is Button and root.is_ancestor_of(focused) and not (focused as Button).disabled:
-			get_viewport().set_input_as_handled()
-			(focused as Button).pressed.emit()
+	if Controls.capture_active or not Controls.allows_event(event):
+		return
+	if open and UiStyle.activate_focused(root, event):
+		get_viewport().set_input_as_handled()
+		return
+	if open and event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		toggle()
+		return
+	if open and Controls.is_ui_navigation_event(event):
+		return
+	# Start is bij verlies ook de herstartknop; laat de wereld die afhandelen.
+	if GameState.ended and event.is_action_pressed("restart"):
 		return
 	if not event.is_action_pressed("pause"):
 		return

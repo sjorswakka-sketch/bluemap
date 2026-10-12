@@ -237,7 +237,8 @@ func test_data() -> void:
 	check(int(Items.info("arrow")["max"]) == 40, "je kunt maximaal 40 pijlen dragen")
 	check(Items.icon_tex("bow").get_width() == 16 and Items.icon_tex("arrow").get_width() == 16, "iconen zijn los op te vragen voor de winkel")
 
-	var events := InputMap.action_get_events("bow")
+	var controls: Node = root.get_node("Controls")
+	var events: Array = controls.binding_events("bow", "keyboard") + controls.binding_events("bow", "controller")
 	var keys: Array[int] = []
 	var trigger := false
 	for event in events:
@@ -1148,6 +1149,7 @@ func test_range() -> void:
 # --- HUD, menu en volle pijlenkoker ---------------------------------------------------------------------------
 
 func test_hud() -> void:
+	var controls: Node = root.get_node("Controls")
 	print("Pijlenteller en menu")
 	gs.new_game()
 	gs.in_game = true
@@ -1157,18 +1159,18 @@ func test_hud() -> void:
 	gs.give("arrow", 12, true)
 	check(hud.arrow_text() == "", "ook niet met pijlen alleen")
 	gs.give("bow", 1, true)
-	check(hud.arrow_text() == "12 [F]", "met een boog: aantal en toets: %s" % hud.arrow_text())
+	check(hud.arrow_text() == "12 [%s]" % controls.action_label("bow"), "met een boog: aantal en toets: %s" % hud.arrow_text())
 	var text_queue: String = " ".join(PackedStringArray(hud.toast_queue)) + " " + hud.toast_label.text
-	check(text_queue.contains("Boog gekregen! Druk op F om te schieten."), "bij het krijgen van de boog vertelt een melding hoe je schiet")
+	check(text_queue.contains("Boog gekregen! Druk op %s om te schieten." % controls.action_label("bow")), "bij het krijgen van de boog vertelt een melding hoe je schiet")
 	world.player.facing = Vector2.RIGHT
 	world.player.bow_cooldown = 0.0
 	press("bow")
 	await frames(2)
-	check(hud.arrow_text() == "11 [F]", "schieten verlaagt de teller")
+	check(hud.arrow_text() == "11 [%s]" % controls.action_label("bow"), "schieten verlaagt de teller")
 	var normal_color: Color = hud.arrow_color()
 	gs.inventory["arrow"] = 0
 	gs.items_changed.emit()
-	check(hud.arrow_text() == "0 [F]", "bij nul staat er 0")
+	check(hud.arrow_text() == "0 [%s]" % controls.action_label("bow"), "bij nul staat er 0")
 	var empty_color: Color = hud.arrow_color()
 	check(empty_color.r > 0.9 and empty_color.g < 0.6 and normal_color.g > 0.8, "en dan kleurt de teller rood")
 	await frames(2) # de teller wordt getekend met het eigen plaatje (items_boog) zonder fouten

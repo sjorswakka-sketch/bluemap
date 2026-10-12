@@ -66,7 +66,7 @@ static func add_xp(skill: String, amount: int) -> void:
 	gs.professions["xp"][skill] = mini(xp(skill) + amount, MAX_XP)
 	var new_level := level(skill)
 	if new_level > old_level:
-		gs.toast.emit(Data.TEXT["skill_up"] % [Data.SKILLS[skill]["name"], new_level])
+		gs.toast.emit(TranslationServer.translate(Data.TEXT["skill_up"]) % [TranslationServer.translate(Data.SKILLS[skill]["name"]), new_level])
 
 
 static func record_fish(item_id: String) -> void:
@@ -81,26 +81,26 @@ static func _item_info(item_id: String) -> Dictionary:
 
 
 static func item_name(item_id: String) -> String:
-	return str(_item_info(item_id)["name"])
+	return TranslationServer.translate(str(_item_info(item_id)["name"]))
 
 
 static func craft_reason(recipe_id: String) -> String:
 	if not Data.RECIPES.has(recipe_id):
-		return Data.TEXT["unknown"]
+		return TranslationServer.translate(Data.TEXT["unknown"])
 	var gs := _ensure()
 	var recipe: Dictionary = Data.RECIPES[recipe_id]
 	var skill: String = recipe["skill"]
 	if level(skill) < int(recipe["level"]):
-		return Data.TEXT["skill_required"] % [Data.SKILLS[skill]["name"], recipe["level"]]
+		return TranslationServer.translate(Data.TEXT["skill_required"]) % [TranslationServer.translate(Data.SKILLS[skill]["name"]), recipe["level"]]
 	var station: String = recipe.get("station", "")
 	if station != "" and gs.map_id != station:
-		return Data.TEXT["station_required"] % Data.TEXT[station]
+		return TranslationServer.translate(Data.TEXT["station_required"]) % TranslationServer.translate(Data.TEXT[station])
 	var output: String = recipe["output"]
 	if gs.room(output) < int(recipe.get("amount", 1)):
-		return Data.TEXT["full"] % item_name(output)
+		return TranslationServer.translate(Data.TEXT["full"]) % item_name(output)
 	for item: String in recipe["inputs"]:
 		if gs.count(item) < int(recipe["inputs"][item]):
-			return Data.TEXT["missing"] % item_name(item)
+			return TranslationServer.translate(Data.TEXT["missing"]) % item_name(item)
 	return ""
 
 
@@ -120,7 +120,7 @@ static func craft(recipe_id: String) -> bool:
 		gs.take(item, int(recipe["inputs"][item]))
 	gs.give(recipe["output"], int(recipe.get("amount", 1)), true)
 	add_xp(recipe["skill"], int(recipe["xp"]))
-	gs.toast.emit(Data.TEXT["made"] % [item_name(recipe["output"]), int(recipe.get("amount", 1))])
+	gs.toast.emit(TranslationServer.translate(Data.TEXT["made"]) % [item_name(recipe["output"]), int(recipe.get("amount", 1))])
 	_busy = false
 	return true
 
@@ -132,24 +132,20 @@ static func remaining(resource_id: String) -> float:
 
 static func gather_reason(kind: String, resource_id: String) -> String:
 	if not Data.RESOURCES.has(kind):
-		return Data.TEXT["unknown"]
+		return TranslationServer.translate(Data.TEXT["unknown"])
 	var gs := _ensure()
 	var resource: Dictionary = Data.RESOURCES[kind]
 	var wait := remaining(resource_id)
 	if wait > 0.0:
-		return Data.TEXT["recovering"] % [resource["name"], ceili(wait)]
+		return TranslationServer.translate(Data.TEXT["recovering"]) % [TranslationServer.translate(resource["name"]), ceili(wait)]
 	var skill: String = resource["skill"]
 	if level(skill) < int(resource.get("level", 1)):
-		return Data.TEXT["skill_required"] % [Data.SKILLS[skill]["name"], resource["level"]]
+		return TranslationServer.translate(Data.TEXT["skill_required"]) % [TranslationServer.translate(Data.SKILLS[skill]["name"]), resource["level"]]
 	var required_tools: Array = resource.get("tools", [])
-	if not required_tools.is_empty():
-		var has_tool := false
-		for tool: String in required_tools:
-			has_tool = has_tool or gs.count(tool) > 0
-		if not has_tool:
-			return Data.TEXT["tool_required"] % item_name(required_tools.back())
+	if not required_tools.is_empty() and gather_tool(kind) == "":
+		return TranslationServer.translate(Data.TEXT["tool_required"]) % item_name(required_tools.back())
 	if gs.room(resource["item"]) < gather_amount(kind):
-		return Data.TEXT["full"] % item_name(resource["item"])
+		return TranslationServer.translate(Data.TEXT["full"]) % item_name(resource["item"])
 	return ""
 
 
@@ -160,10 +156,29 @@ static func gather_amount(kind: String) -> int:
 	return amount
 
 
+static func gather_duration(kind: String) -> float:
+	return float(Data.RESOURCES.get(kind, {}).get("duration", 0.65))
+
+
+static func gather_animation(kind: String) -> String:
+	return str(Data.RESOURCES.get(kind, {}).get("animation", "foraging"))
+
+
+static func gather_tool(kind: String) -> String:
+	# The first owned entry is the strongest usable tool, for both feedback and
+	# harvest bonuses. A different tool class must never satisfy a requirement.
+	for tool: String in Data.RESOURCES.get(kind, {}).get("tools", []):
+		if state().count(tool) > 0:
+			return tool
+	return ""
+
+
 static func gather(kind: String, resource_id: String) -> bool:
 	if _busy:
 		return false
 	var gs := _ensure()
+	# This commit check is deliberately repeated after the world's timed
+	# animation: gear, level or free inventory space may have changed meanwhile.
 	var reason := gather_reason(kind, resource_id)
 	if reason != "":
 		gs.toast.emit(reason)
@@ -175,7 +190,7 @@ static func gather(kind: String, resource_id: String) -> bool:
 	gs.professions["cooldowns"][resource_id] = float(gs.play_time) + float(resource["cooldown"])
 	gs.give(resource["item"], amount, true)
 	add_xp(resource["skill"], int(resource["xp"]))
-	gs.toast.emit(Data.TEXT["gathered"] % [item_name(resource["item"]), amount, int(resource["xp"]), Data.SKILLS[resource["skill"]]["name"]])
+	gs.toast.emit(TranslationServer.translate(Data.TEXT["gathered"]) % [item_name(resource["item"]), amount, int(resource["xp"]), TranslationServer.translate(Data.SKILLS[resource["skill"]]["name"])])
 	_busy = false
 	return true
 
@@ -183,12 +198,12 @@ static func gather(kind: String, resource_id: String) -> bool:
 static func use_reason(item_id: String) -> String:
 	var gs := _ensure()
 	if not item_id in CONSUMABLES or gs.count(item_id) <= 0:
-		return Data.TEXT["missing_item"]
+		return TranslationServer.translate(Data.TEXT["missing_item"])
 	var info := _item_info(item_id)
 	if info.has("heal") and gs.hp >= gs.max_hp():
-		return Data.TEXT["health_full"]
+		return TranslationServer.translate(Data.TEXT["health_full"])
 	if info.has("stamina") and gs.movement.stamina >= gs.movement.MAX_STAMINA:
-		return Data.TEXT["stamina_full"]
+		return TranslationServer.translate(Data.TEXT["stamina_full"])
 	return ""
 
 
@@ -210,6 +225,6 @@ static func use_item(item_id: String) -> bool:
 			gs.heal(int(info["heal"]))
 		if info.has("stamina"):
 			gs.movement.restore(float(info["stamina"]))
-	gs.toast.emit(Data.TEXT["used"] % item_name(item_id))
+	gs.toast.emit(TranslationServer.translate(Data.TEXT["used"]) % item_name(item_id))
 	_busy = false
 	return true

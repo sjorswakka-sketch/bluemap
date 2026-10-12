@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
   pull_request:
   push:
+    branches: ["main"]
     tags: ["v*"]
 
 permissions:
@@ -35,11 +36,12 @@ jobs:
           unzip -q -j templates.tpz "templates/version.txt" "templates/windows_*_x86_64*.exe" -d "$dest"
 
       - name: Alle tests draaien
-        run: sh tools/run_tests.sh ./godot
+        run: python3 tools/run_tests.py ./godot
 
       - name: Windows-versie exporteren
         run: |
           mkdir -p build/windows
+          ./godot --headless --editor --import
           ./godot --headless --export-release "Windows Desktop" build/windows/BluemapQuest.exe
 
       - name: Inpakken

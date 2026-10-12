@@ -7,10 +7,14 @@ const Items := preload("res://scripts/data/items.gd")
 const Shops := preload("res://scripts/data/shops.gd")
 
 var root: Control
+var panel: PanelContainer
 var title_label: Label
 var coins_label: Label
 var list: VBoxContainer
 var desc_label: Label
+var hint: Label
+var close_button: Button
+var scroll: ScrollContainer
 var shop: Dictionary = {}
 var active := false
 var opened_frame := -1
@@ -22,6 +26,7 @@ func _ready() -> void:
 	_build_ui()
 	root.visible = false
 	GameState.shop_requested.connect(open)
+	Lang.changed.connect(_refresh_language)
 	GameState.items_changed.connect(func() -> void:
 		if active:
 			coins_label.text = tr("Munten: %d") % GameState.coins)
@@ -35,34 +40,42 @@ func _build_ui() -> void:
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	dim.color = Color(0, 0, 0, 0.6)
 	root.add_child(dim)
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	root.add_child(center)
-	var panel := PanelContainer.new()
+	panel = PanelContainer.new()
 	panel.add_theme_stylebox_override("panel", UiStyle.flat(Color(0.06, 0.1, 0.22, 0.97), Color(0.45, 0.75, 1.0), 3))
-	center.add_child(panel)
+	root.add_child(panel)
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 10)
 	box.custom_minimum_size = Vector2(560, 0)
 	panel.add_child(box)
-	title_label = UiStyle.make_label("", 38, Color(0.6, 0.88, 1.0))
+	title_label = UiStyle.make_label("", 30, Color(0.6, 0.88, 1.0))
 	box.add_child(title_label)
 	coins_label = UiStyle.make_label("", 24, Color(1, 0.9, 0.4))
 	box.add_child(coins_label)
 	list = VBoxContainer.new()
 	list.add_theme_constant_override("separation", 6)
-	box.add_child(list)
+	scroll = ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(560, 240)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.follow_focus = true
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.add_child(scroll)
+	scroll.add_child(list)
 	desc_label = Label.new()
-	desc_label.add_theme_font_size_override("font_size", 20)
+	desc_label.add_theme_font_size_override("font_size", 18)
 	desc_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	desc_label.custom_minimum_size = Vector2(0, 54)
 	box.add_child(desc_label)
-	var hint := Label.new()
-	hint.text = tr("↑ ↓ kiezen  ·  E kopen  ·  Esc sluiten")
+	hint = Label.new()
 	hint.add_theme_font_size_override("font_size", 16)
 	hint.modulate = Color(1, 1, 1, 0.6)
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	box.add_child(hint)
+	close_button = Button.new()
+	UiStyle.style_button(close_button, 20)
+	close_button.custom_minimum_size.y = 38
+	close_button.text = tr("Sluiten")
+	close_button.pressed.connect(close)
+	box.add_child(close_button)
 
 
 func open(shop_id: String) -> void:
@@ -84,7 +97,9 @@ func close() -> void:
 
 func _populate(focus_index: int) -> void:
 	for child in list.get_children():
+		list.remove_child(child)
 		child.queue_free()
+	var controls: Array[Control] = []
 	var first: Button = null
 	var index := 0
 	for entry: Dictionary in shop["items"]:
@@ -103,14 +118,19 @@ func _populate(focus_index: int) -> void:
 		button.pressed.connect(_buy.bind(entry, index))
 		button.focus_entered.connect(func() -> void: desc_label.text = tr(info["desc"]))
 		list.add_child(button)
+		if not owned:
+			controls.append(button)
 		if first == null or index == focus_index:
 			if not owned:
 				first = button
 		index += 1
+	controls.append(close_button)
+	UiStyle.link_vertical(controls)
 	if first:
-		first.grab_focus.call_deferred()
+		UiStyle.focus_if_visible.call_deferred(first)
 	else:
 		desc_label.text = tr("Je hebt alles gekocht!")
+		UiStyle.focus_if_visible.call_deferred(close_button)
 
 
 ## De naam van een winkelregel (vertaald): een eigen `label`, anders de naam van het voorwerp (met het aantal erbij).
@@ -123,6 +143,8 @@ func _label(entry: Dictionary) -> String:
 
 
 func _buy(entry: Dictionary, index: int) -> void:
+	if not active:
+		return
 	var price: int = entry["price"]
 	var amount: int = entry.get("amount", 1)
 	if entry.get("once", false) and GameState.count(entry["item"]) > 0:
@@ -156,13 +178,36 @@ func _no_room_text(item_id: String) -> String:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not active or Engine.get_process_frames() == opened_frame:
+	if not Controls.allows_event(event):
 		return
-	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
+	if not active or Engine.get_process_frames() == opened_frame or event.is_echo():
+		return
+	if UiStyle.shortcut(event, "pause") or event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		close()
-	elif event.is_action_pressed("interact"):
+	elif UiStyle.activate_focused(root, event):
 		get_viewport().set_input_as_handled()
+
+
+func _process(_delta: float) -> void:
+	if active:
+		panel.size = panel.get_combined_minimum_size()
+		var factor := minf(1.0, minf((root.size.x - 24.0) / panel.size.x, (root.size.y - 24.0) / panel.size.y))
+		panel.scale = Vector2.ONE * maxf(factor, 0.1)
+		panel.position = (root.size - panel.size * panel.scale) * 0.5
+		hint.text = tr("↑ ↓ kiezen  ·  %s kopen  ·  %s sluiten") % [Controls.action_label("ui_accept"), Controls.action_label("ui_cancel")]
+
+
+func _exit_tree() -> void:
+	if active:
+		GameState.set_ui("shop", false)
+
+
+func _refresh_language(_locale: String) -> void:
+	close_button.text = tr("Sluiten")
+	if active:
 		var focused := get_viewport().gui_get_focus_owner()
-		if focused is Button:
-			(focused as Button).pressed.emit()
+		var index := focused.get_index() if focused != null and focused.get_parent() == list else 0
+		title_label.text = tr(shop["name"])
+		coins_label.text = tr("Munten: %d") % GameState.coins
+		_populate(index)

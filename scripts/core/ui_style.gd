@@ -14,6 +14,7 @@ static func _box(bg: Color, border: Color, width := 3, filled := true) -> StyleB
 
 
 static func style_button(button: Button, font_size := 28) -> void:
+	button.add_theme_stylebox_override("disabled", _box(Color(0.07, 0.11, 0.22), Color(0.22, 0.3, 0.45)))
 	button.add_theme_stylebox_override("normal", _box(Color(0.10, 0.17, 0.34), Color(0.35, 0.55, 0.9)))
 	button.add_theme_stylebox_override("hover", _box(Color(0.16, 0.27, 0.52), Color(0.6, 0.85, 1.0)))
 	button.add_theme_stylebox_override("pressed", _box(Color(0.22, 0.36, 0.66), Color(0.8, 0.95, 1.0)))
@@ -22,6 +23,9 @@ static func style_button(button: Button, font_size := 28) -> void:
 	button.add_theme_font_size_override("font_size", font_size)
 	button.custom_minimum_size = Vector2(340, 56)
 	button.focus_mode = Control.FOCUS_ALL
+	button.mouse_entered.connect(func() -> void:
+		if not Controls.controller_active and not button.disabled and button.is_visible_in_tree():
+			button.grab_focus())
 
 
 static func style_panel(panel: PanelContainer) -> void:
@@ -53,3 +57,42 @@ static func draw_star(canvas: CanvasItem, center: Vector2, radius: float, color:
 	canvas.draw_colored_polygon(points, color)
 	points.append(points[0])
 	canvas.draw_polyline(points, color.darkened(0.5), 1.5)
+
+
+## Explicit vertical focus links prevent the engine jumping across panels or disabled rows.
+static func link_vertical(controls: Array[Control], wrap := true) -> void:
+	for i in controls.size():
+		var item := controls[i]
+		var before := controls[posmod(i - 1, controls.size()) if wrap else maxi(i - 1, 0)]
+		var after := controls[(i + 1) % controls.size() if wrap else mini(i + 1, controls.size() - 1)]
+		item.focus_neighbor_top = item.get_path_to(before)
+		item.focus_neighbor_bottom = item.get_path_to(after)
+		item.focus_previous = item.get_path_to(before)
+		item.focus_next = item.get_path_to(after)
+
+
+## E may supplement the built-in A/Enter activation, but never bypass a disabled button.
+static func activate_focused(owner: Control, event: InputEvent) -> bool:
+	if event.is_echo() or not event.is_action_pressed("interact") or Controls.is_ui_navigation_event(event):
+		return false
+	var focused := owner.get_viewport().gui_get_focus_owner()
+	if focused is Button and owner.is_ancestor_of(focused) and focused.is_visible_in_tree() and not focused.disabled:
+		if focused is OptionButton:
+			(focused as OptionButton).show_popup()
+		else:
+			(focused as Button).pressed.emit()
+		return true
+	return false
+
+
+static func shortcut(event: InputEvent, action: String) -> bool:
+	return event.is_action_pressed(action) and not Controls.is_ui_navigation_event(event)
+
+
+static func confirm(event: InputEvent) -> bool:
+	return event.is_action_pressed("ui_accept") or shortcut(event, "interact")
+
+
+static func focus_if_visible(control: Control) -> void:
+	if is_instance_valid(control) and control.is_inside_tree() and control.is_visible_in_tree() and not control.is_queued_for_deletion():
+		control.grab_focus()

@@ -1036,10 +1036,10 @@ func test_fast_travel_menu() -> void:
 	await frames(2)
 	press("interact")
 	await frames(2)
-	press("ui_right")
+	press("ui_next_tab")
 	await frames(2)
 	check(not menu.travel_confirm and menu.tab == menu.TAB_MAP + 1, "naar een ander tabblad annuleert de vraag")
-	press("ui_left")
+	press("ui_prev_tab")
 	await frames(2)
 
 	# Bevestigen.
@@ -1644,15 +1644,15 @@ func test_menu_navigation() -> void:
 	await frames(3)
 	check(menu.active and menu.tab == 0 and paused, "I opent het menu (het spel staat stil)")
 	for step in tabs:
-		press("ui_right")
+		press("ui_next_tab")
 		await frames(2)
-		check(menu.tab == (step + 1) % tabs, "pijl rechts: tabblad %d" % ((step + 1) % tabs))
-	press("ui_left")
+		check(menu.tab == (step + 1) % tabs, "volgend tabblad: tabblad %d" % ((step + 1) % tabs))
+	press("ui_prev_tab")
 	await frames(2)
-	check(menu.tab == tabs - 1, "pijl links vanaf het eerste tabblad: naar het laatste")
-	press("ui_left")
+	check(menu.tab == tabs - 1, "vorige tab vanaf het eerste tabblad: naar het laatste")
+	press("ui_prev_tab")
 	await frames(2)
-	check(menu.tab == tabs - 2, "pijl links: een tabblad terug")
+	check(menu.tab == tabs - 2, "vorig tabblad: een tabblad terug")
 
 	# Snelkoppelingen.
 	menu._set_tab(menu.TAB_MAP)
@@ -1763,7 +1763,7 @@ func test_menu_navigation() -> void:
 	await frames(3)
 	for tab in tabs:
 		await frames(4)
-		press("ui_right")
+		press("ui_next_tab")
 	check(draws[0] >= tabs * 2, "elk tabblad wordt getekend (%d keer)" % draws[0])
 	menu.content.draw.disconnect(counter)
 	press("pause")

@@ -22,7 +22,7 @@ const TEXT := {
 	"required": "Nodig: %s", "skill_required": "%s niveau %d vereist", "station_required": "Ga naar: %s",
 	"missing": "Te weinig: %s", "full": "Geen ruimte voor: %s", "ready": "Klaar om te maken", "made": "Gemaakt: %s x%d", "unknown": "Onbekend recept",
 	"skill_up": "%s: niveau %d!", "gathered": "%s x%d  ·  +%d XP %s", "recovering": "%s groeit / verschijnt opnieuw over %d s",
-	"tool_required": "Nodig: %s. Open C voor het recept.", "gather_hint": "E verzamelen", "depleted": "Herstelt over %d s",
+	"tool_required": "Nodig: %s", "gather_hint": "Verzamelen", "depleted": "Herstelt over %d s", "harvesting": "Verzamelen…",
 	"use": "Gebruik %s (%d)", "used": "Gebruikt: %s", "none": "Je hebt nog geen eten of drankjes. Maak iets op het tabblad Maken.",
 	"health_full": "Je hartjes zijn al vol", "stamina_full": "Je uithoudingsvermogen is al vol", "missing_item": "Je hebt dit niet bij je", "busy": "Wacht even",
 	"materials": "Materialen: %s", "recipe_line": "%s x%d  ·  %s %d", "skill_line": "%s  ·  niveau %d", "world_hint": "C: beroepen, recepten en eten",
@@ -38,15 +38,15 @@ const ITEMS := {
 	"prof_iron_ore": {"name": "IJzererts", "sheet": "items_beroepen", "icon": 6, "type": "material", "desc": "Win in de Echo-grot met mijnbouw 2 en een koperen pikhouweel."},
 	"prof_copper_bar": {"name": "Koperstaaf", "sheet": "items_beroepen", "icon": 7, "type": "material", "desc": "Gesmolten koper voor een beter pikhouweel."},
 	"prof_iron_bar": {"name": "IJzerstaaf", "sheet": "items_beroepen", "icon": 8, "type": "material", "desc": "Gesmolten ijzer voor een efficiëntere bijl."},
-	"prof_axe": {"name": "Stenen bijl", "sheet": "items_beroepen", "icon": 9, "type": "gear", "max": 1, "desc": "Hak oogstbare stronken met E. Wordt automatisch gebruikt; slijt niet."},
-	"prof_pickaxe": {"name": "Stenen pikhouweel", "sheet": "items_beroepen", "icon": 10, "type": "gear", "max": 1, "desc": "Win koper met E. Wordt automatisch gebruikt; slijt niet."},
+	"prof_axe": {"name": "Stenen bijl", "sheet": "items_beroepen", "icon": 9, "type": "gear", "max": 1, "desc": "Hak oogstbare stronken. Wordt automatisch gebruikt; slijt niet."},
+	"prof_pickaxe": {"name": "Stenen pikhouweel", "sheet": "items_beroepen", "icon": 10, "type": "gear", "max": 1, "desc": "Win koperaders. Wordt automatisch gebruikt; slijt niet."},
 	"prof_copper_pickaxe": {"name": "Koperen pikhouweel", "sheet": "items_beroepen", "icon": 11, "type": "gear", "max": 1, "desc": "Ontsluit ijzererts vanaf mijnbouw 2. Vervangt je stenen pikhouweel automatisch."},
 	"prof_iron_axe": {"name": "IJzeren bijl", "sheet": "items_beroepen", "icon": 12, "type": "gear", "max": 1, "desc": "Oogst 3 berkenhout per stronk in plaats van 2. Slijt niet."},
-	"prof_tonic": {"name": "Energie-elixer", "sheet": "items_beroepen", "icon": 13, "type": "use", "stamina": 60, "desc": "Herstelt 60 uithoudingsvermogen. Gebruik via C → Eten & drinken."},
-	"prof_berry_meal": {"name": "Bessensnack", "sheet": "items_beroepen", "icon": 14, "type": "use", "heal": 1, "desc": "Herstelt 1 hartje. Gebruik via C → Eten & drinken."},
-	"prof_fish_meal": {"name": "Gebakken baars", "sheet": "items_beroepen", "icon": 15, "type": "use", "heal": 3, "desc": "Herstelt 3 hartjes. Gemaakt in de herberg. Gebruik via C → Eten & drinken."},
+	"prof_tonic": {"name": "Energie-elixer", "sheet": "items_beroepen", "icon": 13, "type": "use", "stamina": 60, "desc": "Herstelt 60 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
+	"prof_berry_meal": {"name": "Bessensnack", "sheet": "items_beroepen", "icon": 14, "type": "use", "heal": 1, "desc": "Herstelt 1 hartje. Gebruik via Beroepen → Eten & drinken."},
+	"prof_fish_meal": {"name": "Gebakken baars", "sheet": "items_beroepen", "icon": 15, "type": "use", "heal": 3, "desc": "Herstelt 3 hartjes. Gemaakt in de herberg. Gebruik via Beroepen → Eten & drinken."},
 	"prof_mushroom": {"name": "Honingzwam", "sheet": "items_beroepen", "icon": 16, "type": "material", "desc": "Een eetbare zwam uit het Fluisterbos. Voor stevige paddenstoelensoep."},
-	"prof_stew": {"name": "Paddenstoelensoep", "sheet": "items_beroepen", "icon": 17, "type": "use", "heal": 2, "desc": "Herstelt 2 hartjes. Gebruik via C → Eten & drinken."},
+	"prof_stew": {"name": "Paddenstoelensoep", "sheet": "items_beroepen", "icon": 17, "type": "use", "heal": 2, "desc": "Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."},
 }
 const RECIPES := {
 	"stone_axe": {"skill": "woodcutting", "level": 1, "xp": 8, "inputs": {"prof_branch": 2, "prof_stone": 2}, "output": "prof_axe"},
@@ -68,9 +68,9 @@ const RESOURCES := {
 	"herbs": {"name": "Zilverkruid", "skill": "foraging", "item": "prof_herb", "amount": 2, "xp": 6, "cooldown": 120.0, "color": Color("85dfb5")},
 	"berries": {"name": "Bosbessenstruik", "skill": "foraging", "item": "prof_berry", "amount": 3, "xp": 6, "cooldown": 120.0, "color": Color("9b9ee9")},
 	"mushrooms": {"name": "Honingzwammen", "skill": "foraging", "item": "prof_mushroom", "amount": 2, "xp": 8, "cooldown": 150.0, "level": 2, "color": Color("e5ad57")},
-	"stump": {"name": "Berkenstronk", "skill": "woodcutting", "item": "prof_log", "amount": 2, "xp": 8, "cooldown": 150.0, "tools": ["prof_iron_axe", "prof_axe"], "color": Color("cbac70")},
-	"copper": {"name": "Koperader", "skill": "mining", "item": "prof_copper_ore", "amount": 2, "xp": 10, "cooldown": 180.0, "tools": ["prof_copper_pickaxe", "prof_pickaxe"], "color": Color("e39760")},
-	"iron": {"name": "IJzerader", "skill": "mining", "item": "prof_iron_ore", "amount": 2, "xp": 12, "cooldown": 180.0, "level": 2, "tools": ["prof_copper_pickaxe"], "color": Color("bdcfdd")},
+	"stump": {"name": "Berkenstronk", "skill": "woodcutting", "item": "prof_log", "amount": 2, "xp": 8, "cooldown": 150.0, "tools": ["prof_iron_axe", "prof_axe"], "duration": 1.1, "animation": "woodcutting", "color": Color("cbac70")},
+	"copper": {"name": "Koperader", "skill": "mining", "item": "prof_copper_ore", "amount": 2, "xp": 10, "cooldown": 180.0, "tools": ["prof_copper_pickaxe", "prof_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("e39760")},
+	"iron": {"name": "IJzerader", "skill": "mining", "item": "prof_iron_ore", "amount": 2, "xp": 12, "cooldown": 180.0, "level": 2, "tools": ["prof_copper_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("bdcfdd")},
 }
 # Explicit IDs keep cooldowns stable when maps or the original object lists change.
 # Nodes are small, non-blocking props on walkable tiles away from doors and quest items.

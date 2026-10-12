@@ -99,11 +99,14 @@ msgstr "slam"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-msgid "Druk op R om opnieuw te beginnen  ·  Esc voor het menu"
-msgstr "Press R to start over  ·  Esc for the menu"
+msgid "Druk op %s om opnieuw te beginnen"
+msgstr "Press %s to start over"
 
-msgid "Druk op R om verder te gaan vanaf je laatste opslag  ·  Esc voor het menu"
-msgstr "Press R to continue from your last save  ·  Esc for the menu"
+msgid "Druk op %s om verder te gaan vanaf je laatste opslag"
+msgstr "Press %s to continue from your last save"
+
+msgid "%s voor het menu"
+msgstr "%s for the menu"
 
 msgid "%d hartje"
 msgid_plural "%d hartjes"
@@ -378,10 +381,10 @@ func test_english_in_game() -> void:
 	world.player.hurt(world.player.global_position, 99, "Kristalgolem (klap)")
 	await frames(3)
 	var sub: String = world.hud.overlay_sub.text
-	check(world.hud.overlay.visible and sub.begins_with("Defeated by: Crystal golem (slam)\nPress R"), "game over: \"Defeated by: Crystal golem (slam)\" (%s)" % sub.replace("\n", " | "))
+	check(world.hud.overlay.visible and sub.begins_with("Defeated by: Crystal golem (slam)\nPress " + root.get_node("Controls").action_label("restart")), "game over: \"Defeated by: Crystal golem (slam)\" (%s)" % sub.replace("\n", " | "))
 	lang.set_language("nl", false)
 	await frames(1)
-	check(world.hud.overlay_sub.text.begins_with("Verslagen door: Kristalgolem (klap)\nDruk op R"), "en terug in het Nederlands: \"Verslagen door: Kristalgolem (klap)\"")
+	check(world.hud.overlay_sub.text.begins_with("Verslagen door: Kristalgolem (klap)\nDruk op " + root.get_node("Controls").action_label("restart")), "en terug in het Nederlands: \"Verslagen door: Kristalgolem (klap)\"")
 	gs.toast.disconnect(listener)
 	gs.ended = false
 	await stop_world()

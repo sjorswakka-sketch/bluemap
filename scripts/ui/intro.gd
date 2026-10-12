@@ -18,6 +18,7 @@ var done := false
 
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	GameState.in_game = false
 	get_tree().paused = false
 	Sound.play_music("temple")
@@ -39,7 +40,12 @@ func build_pages(ng_plus: int) -> Array[String]:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if not Controls.allows_event(event):
+		return
+	if event.is_echo():
+		return
+	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
 		finish()
 		return
 	if not (event.is_action_pressed("interact") or event.is_action_pressed("attack") or event.is_action_pressed("ui_accept")):
@@ -104,6 +110,6 @@ func _draw() -> void:
 	var font := ThemeDB.fallback_font
 	var line: String = pages[page]
 	draw_multiline_string(font, box.position + Vector2(30, 60), line.substr(0, int(typed)), HORIZONTAL_ALIGNMENT_LEFT, box.size.x - 60.0, 30, -1, Color.WHITE)
-	var hint := "E  ▼" if typed >= line.length() else "" # alleen een toets en een pijltje: niets te vertalen
+	var hint := Controls.action_label("ui_accept") + "  ▼" if typed >= line.length() else ""
 	draw_string(font, box.position + Vector2(box.size.x - 80, box.size.y - 18), hint, HORIZONTAL_ALIGNMENT_LEFT, -1, 20, Color(1, 1, 1, 0.6))
-	draw_string(font, Vector2(0, H - 24), tr("Esc = overslaan"), HORIZONTAL_ALIGNMENT_CENTER, W, 18, Color(1, 1, 1, 0.4))
+	draw_string(font, Vector2(0, H - 24), tr("%s = overslaan") % Controls.action_label("ui_cancel"), HORIZONTAL_ALIGNMENT_CENTER, W, 18, Color(1, 1, 1, 0.4))

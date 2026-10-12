@@ -33,7 +33,14 @@ pixel art, en te delen met vrienden en de community.
 - [x] Kruidenzoeken, houthakken, mijnbouw, vissen, smeden, alchemie en koken
 - [x] Verzamelplekken, blijvende beroepsvoortgang, gereedschap en bruikbare recepten
 - [x] Beroepenmenu en een inventaris die alle voorwerpen bereikbaar houdt
-- [ ] Het afzonderlijke taalpakket integreren zodra het op GitHub beschikbaar is
+- [x] Claude's taalpakket geïntegreerd; nieuwe bediening en beroepen ook vertaald
+
+## In de 0.5.1-preview
+- [x] Alle losse voorwerpen magnetisch, zonder volle stapels of hartjes te verliezen
+- [x] Werk-, rust-, sprint- en drinkanimaties; gereedschap ook bij het afronden gecontroleerd
+- [x] Richtkruis voor muis en rechterstick, onafhankelijk van lopen
+- [x] Opgeslagen toetsen- en controllerinstellingen via titel- en pauzemenu
+- [x] Automatische apparaatwisseling, consistente menu's, rasterselectie en klikbediening
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
@@ -42,4 +49,4 @@ pixel art, en te delen met vrienden en de community.
 - Nog meer talen (een PO-bestand erbij, zie de README onder "Talen")
 - Echte pixel art van een kunstenaar en opgenomen muziek: vervang gewoon de bestanden in `assets/`
 
-Elke wijziging eindigt met een geslaagde `sh tools/run_tests.sh`.
+Elke wijziging eindigt met een geslaagde `python tools/run_tests.py <godot>` in een tijdelijke spelkopie.

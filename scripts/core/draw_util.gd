@@ -21,10 +21,13 @@ static func ellipse(canvas: CanvasItem, center: Vector2, radii: Vector2, color: 
 
 
 ## Het "E"-bolletje boven iets waar je mee kunt praten of dat je kunt openen.
-static func prompt(canvas: CanvasItem, offset: Vector2, time: float, label := "E") -> void:
+static func prompt(canvas: CanvasItem, offset: Vector2, time: float, label := "") -> void:
+	if label == "":
+		label = Controls.action_label("interact")
 	var bob := sin(time * 5.0) * 2.0
-	canvas.draw_rect(Rect2(offset.x - 9, offset.y - 8 + bob, 18, 16), Color(0, 0, 0, 0.75))
-	canvas.draw_string(ThemeDB.fallback_font, Vector2(offset.x - 4, offset.y + 4 + bob), label,
+	var width := maxf(18.0, ThemeDB.fallback_font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, 12).x + 10.0)
+	canvas.draw_rect(Rect2(offset.x - width / 2.0, offset.y - 8 + bob, width, 16), Color(0, 0, 0, 0.75))
+	canvas.draw_string(ThemeDB.fallback_font, Vector2(offset.x - width / 2.0 + 5.0, offset.y + 4 + bob), label,
 		HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color.WHITE)
 
 

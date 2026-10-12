@@ -24,6 +24,7 @@ var ng_button: Button # Nieuw spel+: alleen als je het spel al hebt uitgespeeld
 var continue_button: Button
 var sound_button: Button
 var quit_button: Button
+var controls_button: Button
 
 
 func _ready() -> void:
@@ -40,6 +41,8 @@ func _ready() -> void:
 	GameState.in_game = false
 	Sound.play_music("village")
 	Sound.mute_changed.connect(func(_muted: bool) -> void: _refresh_sound_label())
+	Controls.device_changed.connect(func(_controller: bool) -> void: _refresh_controls_hint())
+	Controls.bindings_changed.connect(_refresh_controls_hint)
 	Lang.changed.connect(_on_language_changed)
 
 
@@ -56,7 +59,7 @@ func _build_ui() -> void:
 
 	var menu := VBoxContainer.new()
 	menu.add_theme_constant_override("separation", 10)
-	menu.position = Vector2(576 - 170, 310)
+	menu.position = Vector2(576 - 170, 290)
 	add_child(menu)
 	continue_button = _button(menu, "", continue_game)
 	# "Nieuw spel" en "Nieuw spel+" staan naast elkaar, zodat het menu niet hoger wordt (het kristal blijft vrij).
@@ -69,8 +72,8 @@ func _build_ui() -> void:
 	if ng_button.visible:
 		for button: Button in [start_button, ng_button]:
 			button.custom_minimum_size.x = 166
-			button.add_theme_font_size_override("font_size", 24)
 	sound_button = _button(menu, "", Sound.toggle_mute)
+	controls_button = _button(menu, "", _open_controls)
 	quit_button = _button(menu, "", quit_game)
 	continue_button.disabled = not GameState.has_save()
 	(start_button if continue_button.disabled else continue_button).grab_focus()
@@ -90,7 +93,7 @@ func _build_ui() -> void:
 	language_button.focus_neighbor_bottom = language_button.get_path_to(top_row[0])
 	language_button.focus_neighbor_top = language_button.get_path_to(quit_button)
 
-	hint_label = UiStyle.make_label("", 20)
+	hint_label = UiStyle.make_label("", 18)
 	hint_label.position = Vector2(0, 596)
 	hint_label.size = Vector2(1152, 30)
 	add_child(hint_label)
@@ -111,7 +114,8 @@ func _refresh_texts() -> void:
 	start_button.text = tr("Nieuw spel")
 	ng_button.text = tr("Nieuw spel+")
 	quit_button.text = tr("Afsluiten")
-	hint_label.text = tr("WASD lopen  ·  SPATIE zwaard  ·  F boog  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze  ·  M geluid")
+	controls_button.text = tr("Bediening")
+	_refresh_controls_hint()
 	language_button.text = Lang.button_text()
 	_refresh_sound_label()
 
@@ -123,11 +127,10 @@ func _toggle_language() -> void:
 
 ## Met een controller (A) of met E druk je de gekozen knop in; Enter en spatie doet Godot zelf al (ui_accept).
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
-		var focused := get_viewport().gui_get_focus_owner()
-		if focused is Button and is_ancestor_of(focused) and not (focused as Button).disabled:
-			get_viewport().set_input_as_handled()
-			(focused as Button).pressed.emit()
+	if Controls.capture_active or not Controls.allows_event(event):
+		return
+	if UiStyle.activate_focused(self, event):
+		get_viewport().set_input_as_handled()
 
 
 func _on_language_changed(_locale: String) -> void:
@@ -137,14 +140,29 @@ func _on_language_changed(_locale: String) -> void:
 func _button(parent: Node, text: String, action: Callable) -> Button:
 	var button := Button.new()
 	button.text = text
-	UiStyle.style_button(button)
+	# Stel de definitieve maat in vóór de knop in een Container komt. Een later
+	# verkleinde knop laat anders tijdelijk een hogere rij bij Nieuw spel+ staan.
+	UiStyle.style_button(button, 24)
+	button.custom_minimum_size = Vector2(340, 48)
 	button.pressed.connect(action)
 	parent.add_child(button)
 	return button
 
 
 func _refresh_sound_label() -> void:
-	sound_button.text = tr("Geluid: uit  (M)") if Sound.muted else tr("Geluid: aan  (M)")
+	sound_button.text = tr("Geluid: uit") if Sound.muted else tr("Geluid: aan")
+
+
+func _refresh_controls_hint() -> void:
+	if not is_instance_valid(hint_label):
+		return
+	hint_label.text = tr("Linkerstick / D-pad kiezen  ·  A bevestigen  ·  Bediening: knoppen aanpassen") if Controls.controller_active else tr("WASD / pijlen kiezen  ·  Enter bevestigen  ·  Bediening: toetsen en muis aanpassen")
+
+
+func _open_controls() -> void:
+	var menu := preload("res://scripts/ui/controls_menu.gd").new()
+	menu.closed.connect(func() -> void: controls_button.grab_focus())
+	add_child(menu)
 
 
 func start_game() -> void:
