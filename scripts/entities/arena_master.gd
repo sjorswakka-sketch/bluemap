@@ -11,6 +11,7 @@ extends Node2D
 
 const UiStyle := preload("res://scripts/core/ui_style.gd")
 const Arena := preload("res://scripts/data/arena.gd")
+const Enemies := preload("res://scripts/data/enemies.gd")
 
 const TILE := 32.0
 const INTRO_TIME := 3.2 # even wachten: de kaartnaam verdwijnt en het publiek warmt op
@@ -20,6 +21,8 @@ const SPAWN_GAP := 0.45 # tussen twee vijanden
 const WARN_TIME := 0.7 # het hek gaat omhoog, daarna komt de vijand naar buiten
 const EMERGE_TIME := 0.4 # de vijand wordt zichtbaar en kan dan pas vechten
 const SIGHT := 900.0 # vijanden in de arena zien je altijd (anders dwalen ze rond)
+const FEET := 0.28 # de botsing van een vijand zit zo ver onder zijn midden (deel van zijn grootte, zoals in enemy.gd)
+const WALL_GAP := 2.0 # zoveel ruimte tussen de voeten van een nieuwe vijand en de muur
 const LOW_HP := 2 # zo weinig hartjes: het publiek gooit er eentje (een keer per ronde)
 const DEFEAT_TIME := 1.8
 const GATE_LIFT_TIME := 0.35 # hoe snel een hek omhoog en omlaag gaat
@@ -50,7 +53,6 @@ var rng := RandomNumberGenerator.new()
 var heart_thrown := false
 var gate_lift: Dictionary = {} # poort -> hoe ver het hek omhoog is (0 tot 1)
 var gate_hold: Dictionary = {} # poort -> hoe lang het hek nog open blijft
-var owns_run := false
 var cheer_cooldown := 0.0
 var player: Node2D
 
@@ -88,7 +90,7 @@ func start_run(rank_id: String) -> void:
 	rank = rank_id
 	rounds = Arena.RANKS[rank]["rounds"]
 	Arena.run_active = true
-	owns_run = true
+	Arena.run_owner = get_instance_id()
 	GameState.defeat_handler = _on_defeat
 	round_index = -1
 	run_time = 0.0
@@ -190,7 +192,7 @@ func _tick_spawns(delta: float) -> void:
 		entry["delay"] -= delta
 	while not queue.is_empty() and queue[0]["delay"] <= 0.0:
 		var entry: Dictionary = queue.pop_front()
-		entry["pos"] = _spawn_point(entry["gate"])
+		entry["pos"] = _spawn_point(entry["gate"], entry["kind"])
 		warnings.append(entry)
 		_open_gate(entry["gate"])
 	for entry in warnings:
@@ -199,11 +201,19 @@ func _tick_spawns(delta: float) -> void:
 		_emerge(warnings.pop_front())
 
 
-## Waar een vijand uit een poort komt: het eerste stukje zand voor de poort.
-func _spawn_point(gate_index: int) -> Vector2:
+## Waar een vijand uit een poort komt: het eerste stukje zand voor de poort, met een beetje spreiding langs de muur.
+## Uit de onderste muur komt hij iets hoger tevoorschijn: zijn voeten (daar zit zijn botsing) moeten op het zand staan,
+## ook bij een grote golem.
+func _spawn_point(gate_index: int, kind: String) -> Vector2:
 	var gate: Array = gates[gate_index]
-	var side := Vector2(absf(float(gate[3])), absf(float(gate[2]))) # langs de muur, voor een beetje spreiding
-	return Vector2((float(gate[0] + gate[2]) + 0.5) * TILE, (float(gate[1] + gate[3]) + 0.5) * TILE) + side * rng.randf_range(-8.0, 8.0)
+	var out := Vector2(float(gate[2]), float(gate[3]))
+	var pos := (Vector2(float(gate[0]), float(gate[1])) + out + Vector2(0.5, 0.5)) * TILE
+	if out.y < 0.0:
+		var info: Dictionary = Enemies.info(kind)
+		var feet := float(info["cell"]) * float(info["scale"]) * FEET + float(info["radius"]) + WALL_GAP
+		pos.y = minf(pos.y, float(gate[1]) * TILE - feet)
+	var side := Vector2(absf(out.y), absf(out.x)) # langs de muur
+	return pos + side * rng.randf_range(-8.0, 8.0)
 
 
 func _emerge(entry: Dictionary) -> void:
@@ -333,6 +343,8 @@ func _victory() -> void:
 	var info: Dictionary = Arena.RANKS[rank]
 	var result := Arena.complete(rank, run_time)
 	_release_run()
+	_clear_projectiles() # een pijl of steen die nog vliegt kan je na de overwinning niet meer raken
+	world.autosave() # de beloning is binnen, ook als je het spel nu afsluit
 	var shown := "Nieuw record: %s" if result["record"] and not result["first_time"] else "Tijd: %s"
 	_set_banner("%s gehaald!" % info["name"], shown % Arena.format_time(run_time), info["color"], 6.0)
 	Sound.play("arena_fanfare")
@@ -359,6 +371,7 @@ func _on_defeat() -> bool:
 ## in de hal, helemaal beter. Alles wat tijdelijk aanstond (inschrijving, poorten, handler, invoer) gaat weer uit.
 func _lose(reason: String) -> void:
 	phase = "defeat"
+	GameState.set_flag(Arena.SIGNED_FLAG % rank, false) # de inschrijving is gebruikt, ook als je opgeeft voor de eerste gong
 	GameState.transitioning = true # tot we in de hal staan kan niemand iets doen
 	var lost := reason == "defeat"
 	_set_banner("Verslagen!" if lost else "Opgegeven", "Bruno vangt je op in de hal." if lost else "Geen schande!", Color(1.0, 0.45, 0.4), DEFEAT_TIME + 0.4)
@@ -402,9 +415,9 @@ func _clear_projectiles() -> void:
 
 ## Het toernooi is voorbij: de poorten gaan open en het verlies wordt niet meer door ons afgehandeld.
 func _release_run() -> void:
-	if owns_run:
+	if Arena.run_owner == get_instance_id(): # niet als een nieuwe arenameester het toernooi al heeft overgenomen
 		Arena.run_active = false
-		owns_run = false
+		Arena.run_owner = 0
 	if GameState.defeat_handler == _on_defeat:
 		GameState.defeat_handler = Callable()
 

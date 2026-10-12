@@ -282,6 +282,11 @@ func test_data() -> void:
 	gs.set_flag("arena_bronze_done")
 	check(gs.fmt("{arena_best_bronze}, {arena_title}") == "1:32, Arenastrijder", "met een record: de tijd en de titel (%s)" % gs.fmt("{arena_best_bronze}, {arena_title}"))
 	check(gs.fmt("{coins} munten en {arena_unknown}") == "0 munten en {arena_unknown}", "onbekende tekens blijven staan, gewone tekens werken nog")
+	var filled := true
+	for token: String in Content.format_names():
+		filled = filled and Content.format_text("{%s}" % token) != "{%s}" % token and Content.format_text("{%s}" % token) != ""
+	check(filled and Content.format_names().size() == 4, "Content.format_text vult elk teken van de arena in %s" % [Content.format_names()])
+	check(Content.format_text("Goud: {arena_best_gold}!") == "Goud: nog niet gehaald!" and Content.format_text("geen tekens") == "geen tekens", "en laat de rest van de tekst staan")
 	var quest: Dictionary = Quests.info("arena_kampioen")
 	check(quest["steps"].size() == 3, "de opdracht Arenakampioen heeft drie stappen")
 	gs.new_game()
@@ -298,6 +303,13 @@ func has_all_sounds() -> bool:
 
 func test_maps() -> void:
 	print("Kaarten: bereikbaarheid")
+	for map_id: String in ["arena_hall", "arena"]:
+		var unknown := {}
+		for row: String in Maps.get_map(map_id)["rows"]:
+			for ch in row:
+				if not Tiles.CHARS.has(ch):
+					unknown[ch] = true
+		check(unknown.is_empty(), "%s: elk teken in de kaart is een bekende tegel %s" % [map_id, unknown.keys()])
 	for map_id: String in ["arena_hall", "arena", "village"]:
 		var def: Dictionary = Maps.get_map(map_id)
 		var seen := reachable_from(map_id, def["spawns"]["start"])
@@ -508,11 +520,14 @@ func test_bronze_run() -> void:
 
 	var pickups_before := get_nodes_in_group("pickups").size()
 	var first_foes: Array = m.foes.duplicate()
+	crowd.ambient = 999.0 # geen losse juichers tussendoor: we willen alleen het gejuich om de verslagen vijanden zien
+	for seat: Dictionary in crowd.seats:
+		seat["jump"] = -1.0
 	for i in first_foes.size() - 1:
 		first_foes[i].hurt(9999, Vector2.RIGHT)
 	await frames(30)
 	check(m.phase == "fight" and m.round_index == 0, "alle vijanden op een na dood: de ronde gaat nog door")
-	check(crowd.cheering() > 0, "het publiek juicht bij een verslagen vijand")
+	check(crowd.cheering() >= crowd.seats.size() * 0.1, "het publiek juicht bij een verslagen vijand (%d van de %d)" % [crowd.cheering(), crowd.seats.size()])
 	var hp_before: int = gs.hp
 	gs.hp = 3
 	world.spawn_projectile("arrow", tile_center(20, 8), Vector2.RIGHT, 5.0, 1, "testpijl")
@@ -545,9 +560,14 @@ func test_bronze_run() -> void:
 	check(foes_in_walls() == 0, "ook in ronde 3 staat niemand in een muur")
 	await frames(40)
 	var coins_before: int = gs.coins
+	world.spawn_projectile("arrow", tile_center(20, 8), Vector2.RIGHT, 5.0, 1, "testpijl")
 	await kill_all_foes()
 	await frames(5)
 	check(m.phase == "done" and not Arena.run_active, "na de laatste ronde is het toernooi voorbij")
+	check(projectile_count() == 0, "een pijl die nog vloog verdwijnt: na de overwinning kan niets je meer raken")
+	var saved: Variant = JSON.parse_string(FileAccess.get_file_as_string(gs.SAVE_PATH))
+	check(saved is Dictionary and saved["map"] == "arena" and saved["flags"].has("arena_bronze_done") and saved["arena_records"].has("bronze")
+		and int(saved["coins"]) == gs.coins and not saved["flags"].has("arena_signed_bronze"), "de overwinning is meteen opgeslagen (ook als je nu afsluit)")
 	check(gs.flag("arena_bronze_done") and gs.coins == coins_before + 50, "beloning: 50 munten (%d)" % (gs.coins - coins_before))
 	check(gs.count("arena_trophy_bronze") == 1 and gs.arena_records.has("bronze") and gs.arena_records["bronze"] > 0.0, "een bronzen trofee en een eerste record (%.1f s)" % gs.arena_records.get("bronze", 0.0))
 	check(Arena.title() == "Arenastrijder" and Arena.unlocked("silver") and not Arena.unlocked("gold"), "titel Arenastrijder; Zilver is open, Goud nog niet")
@@ -638,17 +658,41 @@ func test_gold_final() -> void:
 	var arena_master_node := master()
 	var spawn_ok := true
 	var spots := 0
-	for gate_index in arena_master_node.gates.size():
-		for i in 120:
-			var spot: Vector2 = arena_master_node._spawn_point(gate_index)
-			spots += 1
-			# een golem heeft een straal van 13: geen enkel punt rondom mag in een muur liggen
-			for angle in 8:
-				if world.is_solid(spot + Vector2.from_angle(float(angle) * TAU / 8.0) * 14.0):
+	var kinds := {}
+	for rank: String in Arena.ORDER:
+		for round_list: Array in Arena.RANKS[rank]["rounds"]:
+			for entry: Array in round_list:
+				kinds[entry[0]] = true
+	for kind: String in kinds:
+		# de botsing van een vijand is een cirkel bij zijn voeten (zie enemy.gd): die moet helemaal op het zand staan
+		var info: Dictionary = Enemies.info(kind)
+		var feet := Vector2(0, float(info["cell"]) * float(info["scale"]) * 0.28)
+		var radius: float = info["radius"]
+		for gate_index in arena_master_node.gates.size():
+			for i in 20:
+				var spot: Vector2 = arena_master_node._spawn_point(gate_index, kind)
+				spots += 1
+				for angle in 12:
+					if world.is_solid(spot + feet + Vector2.from_angle(float(angle) * TAU / 12.0) * radius):
+						spawn_ok = false
+				if world.is_solid(spot) or world.is_solid(spot + feet):
 					spawn_ok = false
-			if world.is_solid(spot):
-				spawn_ok = false
-	check(spawn_ok, "%d spawnpunten bij alle poorten liggen vrij van muren (ook voor een golem)" % spots)
+	check(spawn_ok and kinds.has("golem"), "%d spawnpunten (%d soorten, alle poorten): de vijand staat er met zijn hele botsing op het zand" % [spots, kinds.size()])
+	# Hetzelfde met de natuurkunde: raakt de botsing van een golem (cirkel bij zijn voeten) een muur?
+	var query := PhysicsShapeQueryParameters2D.new()
+	var circle := CircleShape2D.new()
+	circle.radius = 13.0
+	query.shape = circle
+	query.collision_mask = 1
+	var space := world.get_world_2d().direct_space_state
+	var golem_feet := Vector2(0, 64.0 * 0.28)
+	var touching := 0
+	for gate_index in arena_master_node.gates.size():
+		query.transform = Transform2D(0.0, arena_master_node._spawn_point(gate_index, "golem") + golem_feet)
+		touching += space.intersect_shape(query).size()
+	query.transform = Transform2D(0.0, tile_center(7, 15) + golem_feet)
+	var naive: int = space.intersect_shape(query).size()
+	check(touching == 0 and naive > 0, "een golem raakt bij geen enkele poort de muur (midden op de tegel voor de onderste poort zou dat wel doen)")
 	await stop_world()
 
 
@@ -715,7 +759,9 @@ func test_defeat() -> void:
 	check(world.player.target == gong, "je kunt de gong aanspreken")
 	gong.interact()
 	await frames(3)
-	check(world.dialogue.active and m.phase == "fight", "de gong vraagt of je wilt opgeven; het gevecht gaat ondertussen niet door")
+	var clock: float = m.run_time
+	await frames(10)
+	check(world.dialogue.active and m.phase == "fight" and paused and m.run_time == clock, "de gong vraagt of je wilt opgeven; het gevecht (en de klok) staat ondertussen stil")
 	while world.dialogue.active and world.dialogue.buttons.is_empty():
 		world.dialogue._advance()
 		await frames(2)
@@ -758,9 +804,20 @@ func test_defeat() -> void:
 # --- Als het misgaat tussendoor -------------------------------------------------------------------------------
 
 func test_interrupted() -> void:
-	print("Opgeven in de rust, en niet opgeven als het voorbij is")
+	print("Opgeven nog voor de eerste gong")
 	await enter_arena("bronze", 50)
 	var m := master()
+	check(m.phase == "intro" and Arena.registered_rank() == "bronze", "in de introductie sta je nog ingeschreven")
+	m.forfeit()
+	check(await wait_for(func() -> bool: return gs.map_id == "arena_hall" and not gs.transitioning, 400), "opgeven bij de gong: je staat in de hal")
+	check(Arena.registered_rank() == "" and gs.coins == 40 and bruno_talk() == "arena_bruno_quit", "je inschrijving is weg, zoals de gong en Bruno zeggen")
+	await walk_into(object_of("arena_hall", "portal", "to", "arena"))
+	check(gs.map_id == "arena_hall", "de arenadeur gaat niet meer open")
+	await stop_world()
+
+	print("Opgeven in de rust, en niet opgeven als het voorbij is")
+	await enter_arena("bronze", 50)
+	m = master()
 	m.timer = 0.0
 	check(await wait_for(func() -> bool: return round_ready(m)), "ronde 1 loopt")
 	await kill_all_foes()
@@ -814,6 +871,7 @@ func test_interrupted() -> void:
 	world.load_map("arena", "from_hall")
 	await frames(3)
 	check(master().phase == "intro" and master().rank == "bronze", "en begint gewoon weer aan het toernooi")
+	check(Arena.run_active and gs.defeat_handler.is_valid() and get_nodes_in_group("arena_master").size() == 1, "de oude arenameester is weg en zet het nieuwe toernooi niet stop")
 	await stop_world()
 
 

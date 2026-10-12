@@ -1,13 +1,13 @@
 extends Node2D
-## Het publiek van de arena: figuurtjes op alle tribunetegels ($ in de kaart) die juichen en springen.
+## Het publiek van de arena: figuurtjes op alle tribunetegels (arena_tribune) die juichen en springen.
 ## Op de kaart: {"type": "arena_crowd", "pos": [0, 0], "field": [x0, y0, x1, y1]}. Wie onder het veld zit, kijkt
 ## de andere kant op (je ziet zijn rug).
 
 const Art := preload("res://scripts/core/art.gd")
 const Arena := preload("res://scripts/data/arena.gd")
+const Tiles := preload("res://scripts/data/tiles.gd")
 
 const TILE := 32
-const TRIBUNE_CHAR := "$"
 const DENSITY := 82 # procent van de plaatsen dat bezet is
 const LOOKS := 4 # kleurstellingen in assets/arena_crowd.png
 const JUMP_TIME := 0.55
@@ -33,7 +33,7 @@ func _ready() -> void:
 	for y in rows.size():
 		var row: String = rows[y]
 		for x in row.length():
-			if row[x] != TRIBUNE_CHAR:
+			if Tiles.name_for(row[x], x, y) != "arena_tribune":
 				continue
 			var h := (x * 7919 + y * 104729 + x * y * 31) % 1000
 			if h % 100 >= DENSITY:

@@ -8,9 +8,9 @@ const DATA := {
 	"rows": [
 		"########################################",
 		"##############ZZZZZZZZZZZZ##############",
-		"##....b.....#.ZZZZZZZZZZZZ..#.&&&&&&&###",
-		"##.#..#..b....ZZZZZZZZZZZZ....&!&&&!&###",
-		"##......#.....ZZZZZZZZZZZZ..#.&&&@&&&.##",
+		"##....b.....#.ZZZZZZZZZZZZ..#.+++++++###",
+		"##.#..#..b....ZZZZZZZZZZZZ....+!+++!+###",
+		"##......#.....ZZZZZZZZZZZZ..#.+++n+++.##",
 		"##.#..........ZZZZZZZZZZZZ.......,,,..##",
 		"##.......##...ZZZZZTTZZZZZ.........,..##",
 		"##.................,,......^^^^^^^^,.b##",
@@ -53,8 +53,8 @@ const DATA := {
 		{"type": "portal", "pos": [30, 10], "to": "inn", "spawn": "door"},
 		{"type": "portal", "pos": [38, 13], "to": "forest", "spawn": "from_village", "size": [1, 2]},
 		# De arena (noordoosten): open voor wie Oudste Bram kent en een ijzeren zwaard heeft.
-		{"type": "portal", "pos": [33, 4], "to": "arena_hall", "spawn": "door", "requires": [["arena_open"]], "locked_text": "De arenawachter stuurt je weg: je hebt een ijzeren zwaard nodig, en Oudste Bram moet je kennen."},
-		{"type": "sign", "pos": [31, 5], "lines": ["Arena van Dageraadsdorp", "Voor echte vechters! Je hebt een ijzeren zwaard nodig, en Oudste Bram moet je kennen."]},
+		{"type": "portal", "pos": [33, 4], "to": "arena_hall", "spawn": "door", "requires": [["arena_open"]], "locked_text": "De arenadeur blijft dicht. Praat eerst met Oudste Bram, en kom terug met een ijzeren zwaard van Greta de smid."},
+		{"type": "sign", "pos": [31, 5], "lines": ["Arena van Dageraadsdorp", "Voor echte vechters! Praat eerst met Oudste Bram, en kom terug met een ijzeren zwaard van Greta de smid."]},
 		{"type": "torch", "pos": [32, 4]},
 		{"type": "torch", "pos": [34, 4]},
 		{"type": "arena_prop", "pos": [30, 4], "kind": "banner"},

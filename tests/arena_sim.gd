@@ -11,9 +11,9 @@ extends SceneTree
 ## dood is. Hij kijkt niet vooruit en houdt geen afstand: hij reageert pas na een paar beeldjes en mist soms een
 ## uitwijkmoment, net als een gewone speler. (Een perfecte bot die elke slijm op afstand houdt haalt alles altijd.)
 ## Referentie-instellingen (de eerste drie): Brons met het ijzeren zwaard en 5 hartjes, Zilver met het ijzeren zwaard en
-## 6 hartjes, Goud met het kristalzwaard en 7 hartjes, steeds met 2 drankjes. Laatste meting met 60 beurten per
-## instelling: Brons 95%, Zilver 63%, Goud 40%. Het zwaard maakt veel uit: Brons met het houten zwaard lukt maar 35% van de
-## keren, Goud met het ijzeren zwaard helemaal niet.
+## 6 hartjes, Goud met het kristalzwaard en 7 hartjes, steeds met 2 drankjes. Laatste meting (Brons 160 beurten, Zilver en
+## Goud 80): Brons 91%, Zilver 62%, Goud 40%. Het zwaard maakt veel uit: Brons met het houten zwaard lukt maar 12% van de
+## keren (daarom moet je voor de arena een ijzeren zwaard hebben), Goud met het ijzeren zwaard helemaal niet.
 ## Dit bestand heet geen *_test.gd, dus run_tests.sh slaat het over.
 
 const MAX_SECONDS := 900.0

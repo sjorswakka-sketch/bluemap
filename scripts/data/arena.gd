@@ -17,7 +17,7 @@ const RANKS := {
 		"rounds": [
 			[["slime", 3], ["bat", 1]],
 			[["slime", 3], ["slime_blue", 2]],
-			[["slime_blue", 3], ["slime_red", 2], ["bat", 2]],
+			[["slime_blue", 4], ["slime_red", 2], ["bat", 2]],
 		],
 	},
 	"silver": {
@@ -59,6 +59,8 @@ const NO_RECORD := "nog niet gehaald"
 
 ## Een toernooi loopt (de poorten van de arena zijn dicht). Wordt gezet door de arenameester op de kaart.
 static var run_active := false
+## Welke arenameester het toernooi speelt (zijn instance-id), zodat een oude die net wordt opgeruimd het niet stopzet.
+static var run_owner := 0
 
 
 static func is_run_active() -> bool:
@@ -193,11 +195,8 @@ static func _join(parts: Array[String]) -> String:
 
 # --- Tekens in gesprekken ----------------------------------------------------------------------------------
 
-## Vult {arena_title} en {arena_best_brons...} in (zie FORMATS in scripts/data/ext/arena.gd).
-static func format(text: String) -> String:
-	if not "{arena_" in text:
-		return text
-	text = text.replace("{arena_title}", title())
-	for rank: String in ORDER:
-		text = text.replace("{arena_best_%s}" % rank, record_text(rank))
-	return text
+## De tekst voor een teken in gesprekken: arena_title of arena_best_<rang> (zie FORMATS in scripts/data/ext/arena.gd).
+static func format(token: String) -> String:
+	if token == "arena_title":
+		return title()
+	return record_text(token.trim_prefix("arena_best_"))

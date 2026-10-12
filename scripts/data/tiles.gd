@@ -31,7 +31,7 @@ const CHARS := {
 	"r": "ruin_floor", "M": "ruin_wall", "I": "ruin_pillar", "k": "ruin_cracked",
 	"_": "temple_floor", "Z": "temple_wall", "u": "temple_rune", "%": "carpet",
 	"w": "wood_floor", "N": "wood_wall", "C": "counter", "S": "shelf", "B": "bed", "m": "mat",
-	":": "arena_sand", "&": "arena_wall", "$": "arena_tribune", "!": "arena_gate", "@": "arena_arch", # de arena
+	":": "arena_sand", "+": "arena_wall", "-": "arena_tribune", "!": "arena_gate", "n": "arena_arch", # de arena
 }
 
 

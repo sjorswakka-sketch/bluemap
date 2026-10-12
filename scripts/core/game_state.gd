@@ -297,7 +297,7 @@ func fmt(text: String) -> String:
 		.replace("{gel}", str(count("gel"))) \
 		.replace("{shards}", str(count("shard"))) \
 		.replace("{coins}", str(coins))
-	return Content.format(text)
+	return Content.format_text(text)
 
 
 # --- Voorwaarden en acties (gebruikt door dialogen en poortjes) ---------------

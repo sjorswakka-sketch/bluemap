@@ -95,7 +95,7 @@ const TALKS := {
 		"lines": [
 			"HA! Een nieuwe vechter! Welkom in de arena van Dageraadsdorp. Ik ben Bruno, de arenameester.",
 			"Hier vecht je tegen golven vijanden, en het hele dorp kijkt toe. Dat hoor je aan het gejuich!",
-			"Na elke ronde krijg je even rust en een hartje van het publiek. Maar de poorten blijven dicht tot alle vijanden verslagen zijn.",
+			"Na elke ronde krijg je even rust en een hartje van het publiek. Maar de poorten gaan pas weer open als je alle rondes hebt gewonnen.",
 		],
 		"do": [["set_flag", "arena_met_bruno"], ["start_quest", "arena_kampioen"]],
 		"next": "arena_bruno_menu",
@@ -192,10 +192,11 @@ const TALKS := {
 	"arena_bruno_rules": {
 		"speaker": "Arenameester Bruno",
 		"lines": [
-			"De regels zijn simpel. Zodra je binnen bent, sluiten de poorten. Je kunt pas weg als alle vijanden verslagen zijn.",
+			"De regels zijn simpel. Zodra je binnen bent, sluiten de poorten. Je kunt pas weg als je alle rondes hebt gewonnen.",
 			"Na elke ronde heb je drie seconden rust, en het publiek gooit je een hartje toe. Gaat het tijdens een ronde heel slecht? Dan gooit het publiek er nog eentje.",
 			"Word je verslagen? Dan ben je je inschrijving kwijt, maar je bent meteen weer helemaal beter. Opgeven kan ook: sla op de gong bij de uitgang.",
 			"Zilver gaat open als je Brons hebt gehaald, en Goud als je Zilver hebt gehaald. Let op: vijanden in de arena laten niets vallen. Het gaat om de eer!",
+			"Een rang nog een keer winnen mag altijd. Dan krijg je de helft van de munten, en misschien een nieuw record op het scorebord!",
 		],
 		"next": "arena_bruno_menu",
 	},
@@ -272,7 +273,7 @@ const TALKS := {
 		"speaker": "Arenameester Bruno",
 		"lines": [
 			"Jij bent de nieuwe Arenakampioen! Er is niemand in heel Azura die dit beter kan.",
-			"Mijn verrassing is die Arenahelm. Een echte kampioen draagt hem met trots. Kijk maar op de plank: er staat nu van alles op!",
+			"En dit is mijn verrassing: de Arenahelm! Een echte kampioen draagt hem met trots. Kijk maar op de plank: er staat nu van alles op!",
 		],
 		"do": [["clear_flag", "arena_first_gold"]],
 		"next": "arena_bruno_menu",
@@ -300,7 +301,7 @@ const TALKS := {
 	"arena_forfeit_ask": {
 		"speaker": "Arenagong",
 		"lines": [
-			"Wil je opgeven? Dan galmt de gong en loopt het gevecht af.",
+			"Wil je opgeven? Dan galmt de gong en stopt het gevecht.",
 			"Je inschrijving ben je dan kwijt. Je bent wel meteen weer helemaal beter.",
 		],
 		"choices": [
@@ -344,5 +345,6 @@ static func run(action: Array) -> void:
 				master.forfeit()
 
 
-static func format(text: String) -> String:
-	return _arena().format(text)
+## De tekst voor één teken uit FORMATS (zie Content.format_text).
+static func format(token: String) -> String:
+	return _arena().format(token)
