@@ -27,6 +27,7 @@ const Maps := preload("res://scripts/maps/registry.gd")
 const Content := preload("res://scripts/data/content.gd")
 const Boeken := preload("res://scripts/data/ext/meer_boeken.gd")
 const Beroepen := preload("res://scripts/data/ext/beroepen.gd")
+const EquipmentData := preload("res://scripts/data/ext/uitrusting.gd")
 
 const CODE_ROOT := "res://scripts"
 ## Sleutels in de data waarvan de waarde nooit tekst voor de speler is (de guard in find_unclaimed slaat ze over).
@@ -211,6 +212,9 @@ static func collect_data(c: Collector) -> void:
 	for marker_type: String in markers:
 		c.add(markers[marker_type].get("label", ""), "Legenda op het kaartje (menu): %s" % marker_type)
 	# Beroepen: UI-sjablonen en grondstoffen zijn data, geen letterlijke tr-aanroepen.
+	for slot_id: String in EquipmentData.SLOTS:
+		for field: String in ["name", "desc"]:
+			c.add(EquipmentData.SLOTS[slot_id].get(field, ""), "Uitrustingsslot %s: %s" % [slot_id, field])
 	for text_id: String in Beroepen.TEXT:
 		c.add(Beroepen.TEXT[text_id], "Beroepen: tekst of sjabloon %s" % text_id)
 	for skill_id: String in Beroepen.SKILLS:

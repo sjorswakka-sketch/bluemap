@@ -206,7 +206,7 @@ static func use_reason(item_id: String) -> String:
 	var info := _item_info(item_id)
 	if info.has("heal") and gs.hp >= gs.max_hp():
 		return TranslationServer.translate(Data.TEXT["health_full"])
-	if info.has("stamina") and gs.movement.stamina >= gs.movement.MAX_STAMINA:
+	if info.has("stamina") and gs.movement.stamina >= gs.movement.capacity():
 		return TranslationServer.translate(Data.TEXT["stamina_full"])
 	return ""
 

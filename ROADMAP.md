@@ -47,9 +47,14 @@ pixel art, en te delen met vrienden en de community.
 - [x] Heldenervaring via gevechten en opdrachten, met een zichtbare XP-balk en muntbeloningen
 - [x] Voortgangstabblad met beroepen, uitrusting en duidelijke volgende upgrades
 
+## In de 0.5.3-preview
+- [x] Vijf nieuwe uitrustingsslots met tien koopbare of maakbare stukken en opgeslagen keuzes
+- [x] Uitrustingsmenu met bonussen, vereisten en bediening voor muis, toetsenbord en controller
+- [x] Kijkrichting volgt lopen; aanvallen en schieten volgen onafhankelijk het richtkruis
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
-- Een vijand die muren doorbreekt, magie als derde wapen, schilden en uitrusting
+- Een vijand die muren doorbreekt, magie als derde wapen en schilden
 - Een echte wereldkaart met alle gebieden
 - Nog meer talen (een PO-bestand erbij, zie de README onder "Talen")
 - Echte pixel art van een kunstenaar en opgenomen muziek: vervang gewoon de bestanden in `assets/`

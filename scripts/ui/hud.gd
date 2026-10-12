@@ -174,7 +174,7 @@ func _build_ui() -> void:
 
 func _draw_stamina() -> void:
 	var font := ThemeDB.fallback_font
-	var ratio: float = GameState.movement.stamina / GameState.movement.MAX_STAMINA
+	var ratio: float = GameState.movement.stamina / GameState.movement.capacity()
 	var tired: bool = GameState.movement.exhausted
 	var label := tr("Even op adem komen...") if tired else tr("Uithouding  ·  %s") % Controls.action_label("sprint")
 	var color := Color(1.0, 0.57, 0.3) if tired else Color(0.4, 0.88, 0.7)

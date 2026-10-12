@@ -82,15 +82,18 @@ func _run() -> void:
 	var page: Node = menu.progression_page
 	var hud: Node = world.hud
 	var lang: Node = root.get_node("Lang")
-	check(menu.TAB_COUNT == 6 and menu.TAB_PROGRESSION == 5, "Progression appends a sixth tab without changing existing indices")
+	check(menu.TAB_COUNT == 7 and menu.TAB_PROGRESSION == 5, "Progression retains index five with the seventh equipment tab")
 	check(hud.xp_bar.position.y >= hud.stamina_bar.position.y + hud.stamina_bar.size.y, "XP bar sits below stamina without overlap")
 	check(not hud.xp_bar.get_rect().intersects(hud.clock.get_rect()), "XP bar does not overlap the clock")
 	check(hud.xp_label().contains("1") and hud.xp_label().contains("0/50 XP"), "HUD shows initial hero level and actual XP threshold")
 	await tap_key(KEY_I)
 	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
-	check(menu.active and menu.tab == 5 and page.visible and paused, "LB wraps from inventory to the visible progression page")
+	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
+	check(menu.active and menu.tab == 5 and page.visible and paused, "LB reaches the visible progression page through equipment")
+	await tap_pad(JOY_BUTTON_RIGHT_SHOULDER)
 	await tap_pad(JOY_BUTTON_RIGHT_SHOULDER)
 	check(menu.tab == 0 and not page.visible, "RB wraps back to inventory and hides progression content")
+	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
 	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
 	var location: Vector2 = world.player.position
 	for index in range(1, 11):
@@ -112,6 +115,7 @@ func _run() -> void:
 	for index in menu.TAB_COUNT:
 		await click(menu.content.position + menu.tab_rect(index).get_center())
 		check(menu.tab == index and page.visible == (index == 5), "Mouse tab %d selects the matching content" % index)
+	menu._set_tab(5)
 	page.select(0)
 	var upgrade: Dictionary = page.weapon_upgrade()
 	check(upgrade.weapon == "iron" and upgrade.coins == 40 and upgrade.materials == {"gel": 5}, "Iron requirements match Greta's real transaction")
@@ -153,7 +157,7 @@ func _run() -> void:
 		await frames(4)
 		for index in menu.TAB_COUNT:
 			var rect: Rect2 = menu.tab_rect(index)
-			var width: float = ThemeDB.fallback_font.get_string_size(menu.tab_titles()[index], HORIZONTAL_ALIGNMENT_LEFT, -1, 20).x
+			var width: float = ThemeDB.fallback_font.get_string_size(menu.tab_titles()[index], HORIZONTAL_ALIGNMENT_LEFT, -1, menu.TAB_FONT_SIZE).x
 			check(width <= rect.size.x and rect.end.x < menu.CLOSE_RECT.position.x, "%s tab %d fits without clipping the close button" % [locale, index])
 		check(page.heading.text == TranslationServer.translate(Data.SKILLS.foraging.name), "Selected skill refreshes in %s without losing selection" % locale)
 		check(page.selected == 4 and page.visible, "Language refresh retains the progression selection")

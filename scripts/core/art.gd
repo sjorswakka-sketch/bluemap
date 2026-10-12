@@ -7,6 +7,10 @@ static var _cache := {}
 static func tex(art_name: String) -> Texture2D:
 	if _cache.has(art_name):
 		return _cache[art_name]
+	if art_name == "items_equipment":
+		var equipment_texture := preload("res://scripts/core/equipment_art.gd").texture()
+		_cache[art_name] = equipment_texture
+		return equipment_texture
 	var path := "res://assets/%s.png" % art_name
 	var texture: Texture2D = null
 	if ResourceLoader.exists(path):

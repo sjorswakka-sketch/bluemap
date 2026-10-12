@@ -13,6 +13,11 @@ const BASE_SHOPS := {
 			{"item": "boots", "price": 60, "once": true},
 			{"item": "bow", "price": 80, "once": true, "label": "Boog + 5 pijlen", "with": [["arrow", 5]]},
 			{"item": "arrow", "price": 10, "amount": 5, "label": "5 pijlen", "if": [["has", "bow"]]},
+			{"item": "gear_cloth_hood", "price": 25, "once": true},
+			{"item": "gear_leather_armor", "price": 50, "once": true},
+			{"item": "gear_novice_gloves", "price": 35, "once": true},
+			{"item": "gear_copper_amulet", "price": 40, "once": true},
+			{"item": "gear_copper_ring", "price": 35, "once": true},
 		],
 	},
 }

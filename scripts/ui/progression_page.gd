@@ -2,6 +2,7 @@ extends Control
 ## Eén overzicht van held-ervaring, alle beroepen en de bestaande uitrusting.
 ## Kosten komen uit gesprekken/winkels/recepten; dit scherm koopt of ontgrendelt niets.
 
+const Equipment := preload("res://scripts/core/equipment.gd")
 const Progression := preload("res://scripts/core/progression.gd")
 const Professions := preload("res://scripts/core/professions.gd")
 const Data := preload("res://scripts/data/ext/beroepen.gd")
@@ -169,7 +170,7 @@ func weapon_upgrade() -> Dictionary:
 
 func _weapon_text() -> String:
 	var current: Dictionary = Items.WEAPONS[GameState.weapon]
-	var lines: Array[String] = [tr("Nu: %s") % tr(current["name"]), tr("Schade: %d per klap · bereik: %d") % [current["damage"], current["reach"]], ""]
+	var lines: Array[String] = [tr("Nu: %s") % tr(current["name"]), tr("Schade: %d per klap · bereik: %d") % [current["damage"], current["reach"]], tr("Uitrusting: pantser %d · uithouding %d") % [Equipment.bonus("armor"), GameState.movement.capacity()], tr("Wissel hoofd, borst, handen, hals en ring op het tabblad Uitrusting."), ""]
 	var upgrade := weapon_upgrade()
 	var next: String = upgrade["weapon"]
 	if next == "":

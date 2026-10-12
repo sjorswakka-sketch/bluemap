@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.5.2-preview)
+BLUEMAP QUEST  (v0.5.3-preview)
 =======================
 
 Starten
@@ -20,6 +20,7 @@ Besturing
   R                 na game over: verder vanaf je laatste opslag
 
   Richten: muis of rechterstick; het richtkruis toont je mikpunt.
+  Je personage kijkt in de looprichting; zwaard en pijlen volgen het richtkruis.
   Een controller werkt ook: linkerstick lopen, X zwaard, rechter trekker boog, B rollen, A praten, Y drankje, Start pauze.
   In het menu bladeren LB/RB door de tabbladen; A bevestigt, B gaat terug.
   Via Bediening (titel- of pauzemenu) pas je toetsen, muis en controller apart aan.
@@ -34,6 +35,10 @@ Doel
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
 
 Nieuw in deze preview
+  I -> Uitrusting: vijf nieuwe slots voor hoofd, borst, handen, hals en ring, naast zwaard en laarzen.
+  Tien nieuwe stukken: koop de eerste bij Tobias en maak betere via C bij de smid of alchemietafel.
+  Selecteer een stuk en kies Uitrusten. Alleen gedragen spullen geven bonussen; wisselen kost niets.
+  Je uitrustingskeuze blijft bewaard bij opslaan en Nieuw Spel+.
   Een grotere fontein met bewegend water staat midden op het dorpsplein.
   Je held verdient XP met gevechten buiten de arena en opdrachten. De XP-balk toont je volgende niveau.
   Open in je inventaris het tabblad Voortgang voor je niveaus, uitrusting en volgende upgrades.
@@ -41,7 +46,7 @@ Nieuw in deze preview
   Alle losse items zijn magnetisch. Volle stapels en hartjes blijven beschikbaar.
   Oogsten heeft animaties en gereedschapscontroles. Lopen of een menu onderbreekt de actie.
   Paden geven 20% extra loopsnelheid, zand remt 8% af. Ondergronden hebben eigen voetstappen.
-  Sprinten gaat 50% sneller en kost stamina. Laat Ctrl los om te herstellen; een volle balk duurt vijf seconden.
+  Sprinten gaat 50% sneller en kost stamina. Laat Ctrl los om te herstellen; zonder gear duurt een volle balk vijf seconden.
   Smid, winkel, herberg, tempel, arena, vissershuisje en bibliotheek zijn herkenbaar aan hun nieuwe gevels.
 
 Beroepen en maken

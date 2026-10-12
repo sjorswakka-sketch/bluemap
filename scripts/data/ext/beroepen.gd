@@ -61,6 +61,11 @@ const RECIPES := {
 	"berry_meal": {"skill": "cooking", "level": 1, "xp": 6, "inputs": {"prof_berry": 3}, "output": "prof_berry_meal"},
 	"stew": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_mushroom": 2, "prof_herb": 1}, "output": "prof_stew"},
 	"fish_meal": {"skill": "cooking", "level": 2, "xp": 12, "station": "inn", "inputs": {"meer_baars": 1, "prof_herb": 1}, "output": "prof_fish_meal"},
+	"bronze_helm": {"skill": "smithing", "level": 2, "xp": 18, "station": "smithy", "inputs": {"prof_copper_bar": 2, "prof_iron_bar": 1}, "output": "gear_bronze_helm"},
+	"iron_armor": {"skill": "smithing", "level": 3, "xp": 25, "station": "smithy", "inputs": {"prof_iron_bar": 3, "prof_log": 1}, "output": "gear_iron_armor"},
+	"smith_gloves": {"skill": "smithing", "level": 2, "xp": 18, "station": "smithy", "inputs": {"prof_iron_bar": 2, "gel": 2}, "output": "gear_smith_gloves"},
+	"crystal_amulet": {"skill": "alchemy", "level": 3, "xp": 25, "station": "library", "inputs": {"prof_copper_bar": 2, "prof_herb": 6, "gel": 3}, "output": "gear_crystal_amulet"},
+	"crystal_ring": {"skill": "alchemy", "level": 2, "xp": 18, "station": "library", "inputs": {"prof_copper_bar": 1, "prof_herb": 4, "gel": 4}, "output": "gear_crystal_ring"},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},
