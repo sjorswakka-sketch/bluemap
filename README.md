@@ -29,7 +29,11 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | `H` | Y | Helddrank drinken |
 | `I` / `Tab` | Back | Menu: voorwerpen |
 | `Q` | linker schouderknop | Menu: opdrachten |
-| `N` | rechter schouderknop | Menu: kaart |
+| `N` | rechter schouderknop | Menu: kaart (en snel reizen) |
+| `T` | | Menu: prestaties |
+| `B` | | Menu: beestenboek |
+| `←` `→` | d-pad, linker en rechter schouderknop | In het menu: ander tabblad |
+| `↑` `↓` | d-pad | In het menu: kiezen en bladeren (ook door lange lijsten) |
 | `Esc` / `P` | Start | Pauze |
 | `M` | | Geluid aan/uit |
 | `F11` | | Volledig scherm |
@@ -55,6 +59,13 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
   seconden en schiet na een aanloop een trage tovervonk af. Die kun je met je zwaard stukslaan. De slijmspuwer (Fluisterbos)
   spuugt drie slijmballen tegelijk en hupt weg als je te dichtbij komt.
 - **Verzamelen en upgraden:** winkel, smid die zwaarden maakt, drankjes, laarzen, hartcontainers en verborgen kisten.
+- **Dag en nacht:** een dag duurt 8 minuten. 's Ochtends is het warm, 's avonds oranje en 's nachts blauw en donker. Dan branden de
+  lantaarns in het dorp en gloeien de ramen. In de herberg kun je in een bed slapen (5 munten): je wordt beter en het wordt ochtend.
+- **Weer:** in het dorp en het bos regent het af en toe, met zacht geluid van de regen.
+- **Snel reizen:** een blauw altaar dat je gebruikt hebt is "ontdekt". Open de kaart (`N`), kies een ontdekt altaar met `↑` `↓`
+  en druk op `E` om er meteen heen te reizen (niet tijdens een gesprek of een baasgevecht).
+- **Prestaties en beestenboek:** ruim twintig prestaties (ook een paar geheime) die je ook in een nieuw spel houdt, en een boek
+  met alle vijanden die je al verslagen hebt, met hun gegevens en een grappige beschrijving.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),
   ondersteuning voor een controller, en een eindscherm met aftiteling.
@@ -100,6 +111,12 @@ Bijna alles wat met inhoud te maken heeft staat als leesbare tekst in `scripts/d
 - **Opdrachten:** `scripts/data/quests.gd`. Voorwerpen en zwaarden: `items.gd`. Winkels: `shops.gd`.
 - **Vijanden:** `scripts/data/enemies.gd` (levens, snelheid, schade, wat ze laten vallen). De magiër en de slijmspuwer
   staan in `scripts/data/ext/vijanden.gd`, het gedrag staat in `scripts/entities/enemy.gd`.
+- **Vijanden:** `scripts/data/enemies.gd` (levens, snelheid, schade, wat ze laten vallen, en een `desc` voor het beestenboek).
+- **Prestaties:** `scripts/data/achievements.gd`. Elke prestatie heeft een naam, uitleg en voorwaarden in hetzelfde formaat als
+  bij gesprekken. Er zijn extra voorwaarden zoals `["kills", 50]` en `["rolls", 50]` (zie `scripts/data/ext/wereld.gd`).
+- **Dag, nacht en weer:** in de kaart zet je `"outdoor": true` (de kaart volgt de klok) en `"weather": "rain"` (altijd regen) of
+  `"random"` (wisselt met de klok). De kleuren van de dag staan in `scripts/core/daynight.gd`. Een lantaarn is een object
+  `{"type": "wereld_lantaarn", "pos": [x, y]}`, een bed `{"type": "wereld_bed", "pos": [x, y]}`.
 - **Kaarten:** `scripts/maps/*.gd`. De kaart is gewone tekst, elk teken is een tegel (zie `scripts/data/tiles.gd`).
   Personages, vijanden, kisten en poortjes staan als lijst onder `objects`. Wijzig iets en druk op F5.
   `python3 tools/gen_maps.py` maakt de kaarten opnieuw vanaf een startpunt, maar overschrijft dan je eigen wijzigingen.
@@ -127,6 +144,9 @@ De plaatjes in `assets/` zijn zelf gemaakt met `python3 tools/make_art.py` en de
 | `chest`, `sign`, `gate`, `altar`, `torch`, `coin`, `heart`, `ui_heart`, `projectiles` | zie `tools/art_items.py` |
 | `items_boog.png`, `target.png`, `npc_tessa.png` | boog-iconen (boog, pijl, vliegende pijl), doelwit (gewoon, geraakt) en Tessa, zie `tools/art_x_boog.py` |
 | `audio/*.wav` | geluidseffecten; `audio/music_<gebied>.wav` zijn lussen van 25 tot 45 seconden |
+| `wereld_ui.png` | zon, lage zon, maan, drie bekers en een altaarspeldje, zie `tools/art_x_wereld.py` |
+| `wereld_lantaarn.png` | 3 vakjes van 16x32: uit, aan, aan (flikkert) |
+| `audio/*.wav` | geluidseffecten; `audio/music_<gebied>.wav` zijn lussen van 25 tot 45 seconden; `wereld_regen.wav` is een lus van 6 seconden |
 
 ## Testen
 
@@ -143,6 +163,11 @@ smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd
 kaarten: van Bram tot en met het einde. `tests/vijanden_test.gd` controleert de magiër en de slijmspuwer: gedrag,
 plaatsing op de kaarten en drops. Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het
 met een foutmelding.
+Dat draait alle tests in `tests/`. `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
+voorwerp, elke opdracht) en speelt daarna de systemen na: lopen, gebieden wisselen, vechten, de baas, praten, kopen,
+smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd` speelt het hele spel uit met de echte
+kaarten: van Bram tot en met het einde. Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het
+met een foutmelding. `tests/wereld_test.gd` controleert dag en nacht, weer, slapen, snel reizen, prestaties, het beestenboek en het menu.
 
 `tests/meer_test.gd` test het Zilvermeer: alle doorgangen, of alles op de kaarten bereikbaar is, het visspel in al zijn
 uitkomsten (te laat, gevangen, ontsnapt, stoppen, de Gouden Karper), vis verkopen, beide opdrachten via de gesprekken,

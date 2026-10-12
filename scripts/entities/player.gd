@@ -127,6 +127,7 @@ func _roll() -> void:
 	facing = roll_dir
 	roll_timer = ROLL_TIME
 	roll_cooldown = ROLL_COOLDOWN
+	GameState.note_roll()
 	Sound.play("dodge", -3.0, randf_range(0.95, 1.05))
 
 
@@ -271,8 +272,11 @@ func _update_shake(delta: float) -> void:
 		camera.offset = Vector2.ZERO
 
 
-func set_lit(on: bool) -> void:
+## Je eigen lamp aan of uit (donkere gebieden en 's nachts buiten). Grotere `scale` = groter lichtvlak.
+func set_lit(on: bool, energy := 1.0, scale := 3.2) -> void:
 	light.enabled = on
+	light.energy = energy
+	light.texture_scale = scale
 
 
 ## Rij in player.png: 0 = naar beneden, 1 = omhoog, 2 = rechts, 3 = links.

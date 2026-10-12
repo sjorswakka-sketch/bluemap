@@ -30,7 +30,7 @@ const DATA := {
 		"ZZZZZZZZ___%%___ZZZZZZZZ",
 		"ZZZZZZZZZZZTTZZZZZZZZZZZ",
 	],
-	"spawns": {"start": [11, 19]},
+	"spawns": {"start": [11, 19], "altar": [9, 19]},
 	"objects": [
 		{"type": "portal", "pos": [11, 21], "to": "village", "spawn": "from_temple", "size": [2, 1]},
 		{"type": "savepoint", "pos": [9, 18]},

@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 
 
 func interact() -> void:
+	GameState.note_talked(npc_id)
 	for rule: Dictionary in data["rules"]:
 		if not rule.has("if") or GameState.check_all(rule["if"]):
 			GameState.start_dialogue(rule["talk"])

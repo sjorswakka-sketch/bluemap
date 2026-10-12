@@ -1,5 +1,5 @@
 extends Node2D
-## Een fakkel. In donkere gebieden geeft hij licht.
+## Een fakkel. In donkere gebieden geeft hij licht, en buiten 's avonds en 's nachts.
 
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
@@ -11,19 +11,22 @@ var light: PointLight2D
 
 
 func _ready() -> void:
-	if world != null and world.darkness > 0.0:
+	if world != null and (world.darkness > 0.0 or world.is_outdoor()):
 		light = PointLight2D.new()
 		light.texture = Art.light_texture()
 		light.color = Color(0.4, 0.7, 1.0) if cold else Color(1.0, 0.7, 0.35)
 		light.texture_scale = 2.0 if cold else 2.6
-		light.energy = 0.55 if cold else 1.0
+		light.energy = 0.0
+		light.enabled = false
 		add_child(light)
 
 
 func _process(delta: float) -> void:
 	t += delta
 	if light:
-		light.energy = (0.5 if cold else 0.9) + sin(t * 9.0) * 0.05 + sin(t * 23.0) * 0.03
+		var need: float = world.light_need()
+		light.enabled = need > 0.02
+		light.energy = ((0.5 if cold else 0.9) + sin(t * 9.0) * 0.05 + sin(t * 23.0) * 0.03) * need
 	queue_redraw()
 
 

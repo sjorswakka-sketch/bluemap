@@ -641,7 +641,7 @@ func hurt(damage: int, direction: Vector2) -> void:
 func _die() -> void:
 	dead = true
 	remove_from_group("enemies")
-	GameState.kills += 1
+	GameState.register_kill(kind)
 	Sound.play("die", -2.0, randf_range(0.9, 1.1))
 	world.burst(global_position, data.get("death_color", Color(0.7, 1.0, 0.7)), 16)
 	if unique_flag != "":

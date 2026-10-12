@@ -10,6 +10,7 @@ const Items := preload("res://scripts/data/items.gd")
 const Quests := preload("res://scripts/data/quests.gd")
 const Credits := preload("res://scripts/data/credits.gd")
 const MenuUi := preload("res://scripts/ui/menu_ui.gd")
+const AchievementBanner := preload("res://scripts/ui/achievement_banner.gd")
 
 const W := 1152.0
 const H := 648.0
@@ -40,6 +41,7 @@ func _ready() -> void:
 	GameState.ui_owners = {}
 	get_tree().paused = false
 	_build_map_textures()
+	add_child(AchievementBanner.new()) # prestaties van het einde (de Slijmkoning, uitgespeeld...) zie je hier
 	pages = [
 		{"type": "text", "speaker": "", "lines": [
 			"Met een enorme plof zakt de Slijmkoning in elkaar.",

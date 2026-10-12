@@ -17,6 +17,7 @@ const TorchScript := preload("res://scripts/entities/torch.gd")
 const ProjectileScript := preload("res://scripts/entities/projectile.gd")
 const TriggerScript := preload("res://scripts/entities/trigger.gd")
 const FxScript := preload("res://scripts/entities/fx.gd")
+const AtmosphereScript := preload("res://scripts/entities/atmosphere.gd")
 const HudScript := preload("res://scripts/ui/hud.gd")
 const PauseScript := preload("res://scripts/ui/pause_menu.gd")
 const DialogueScript := preload("res://scripts/ui/dialogue_box.gd")
@@ -38,6 +39,7 @@ var ground: Node2D
 var entities: Node2D
 var fx_layer: Node2D
 var canvas_mod: CanvasModulate
+var atmosphere: Node # dag en nacht, weer en lichtjes (scripts/entities/atmosphere.gd)
 var tile_set: TileSet
 var tile_layer: TileMapLayer
 var fader: CanvasLayer
@@ -76,6 +78,9 @@ func _ready() -> void:
 
 	player = PlayerScript.new()
 	player.world = self
+	atmosphere = AtmosphereScript.new()
+	atmosphere.world = self
+	add_child(atmosphere)
 
 	hud = HudScript.new()
 	add_child(hud)
@@ -143,6 +148,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	if player.get_parent() != entities:
 		entities.add_child(player)
 	player.set_lit(darkness > 0.0)
+	atmosphere.enter_map(map_data)
 	var start: Vector2
 	if pos_override != Vector2.INF:
 		start = pos_override
@@ -158,6 +164,15 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 
 	Sound.play_music(map_data.get("music", "forest"))
 	hud.show_banner(map_data["name"])
+
+
+## Hoeveel kunstlicht (fakkels, lantaarns, ramen) er nu nodig is: 0 overdag, 1 in het donker.
+func light_need() -> float:
+	return atmosphere.light_need
+
+
+func is_outdoor() -> bool:
+	return atmosphere.outdoor
 
 
 func travel(map_id: String, spawn: String) -> void:
@@ -423,6 +438,7 @@ func _on_ending() -> void:
 	GameState.transitioning = true
 	GameState.set_flag("game_completed")
 	GameState.finish_quest("main")
+	GameState.check_achievements() # meteen, zodat de prestaties van het einde ook in de opslag staan
 	# De opslag begint na het einde weer in het dorp.
 	GameState.map_id = "village"
 	var spawns: Dictionary = Maps.get_map("village")["spawns"]

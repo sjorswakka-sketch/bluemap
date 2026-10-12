@@ -5,6 +5,8 @@ extends Node
 const Items := preload("res://scripts/data/items.gd")
 const Quests := preload("res://scripts/data/quests.gd")
 const Content := preload("res://scripts/data/content.gd")
+const Achievements := preload("res://scripts/data/achievements.gd")
+const Daynight := preload("res://scripts/core/daynight.gd")
 
 signal hp_changed
 signal items_changed
@@ -17,10 +19,13 @@ signal text_dialogue_requested(speaker: String, lines: Array)
 signal shop_requested(shop_id: String)
 signal save_requested
 signal world_action(action: Array)
+signal achievement_unlocked(achievement_id: String)
 
 const BASE_HP := 5
 const SAVE_PATH := "user://savegame.json"
+const META_PATH := "user://meta.cfg" # blijft bestaan als je een nieuw spel begint (prestaties)
 const SAVE_VERSION := 1
+const ACHIEVEMENT_INTERVAL := 2.0 # zo vaak (seconden) kijken we ook zonder aanleiding of er iets is behaald
 
 var hp: int = BASE_HP
 var coins: int = 0
@@ -36,6 +41,17 @@ var play_time: float = 0.0
 var kills: int = 0
 var meer: Dictionary = {} # eigen opslag van het Zilvermeer (zie scripts/data/ext/meer.gd): verkochte en gevangen vis
 
+# Wereld: de klok, tellers voor prestaties en het beestenboek (worden opgeslagen).
+var day_time: float = Daynight.START # 0..1, zie scripts/core/daynight.gd
+var day_count: int = 0 # hoeveel dagen er voorbij zijn (bepaalt het weer)
+var kills_by: Dictionary = {} # soort vijand -> aantal verslagen
+var rolls: int = 0
+var potions_drunk: int = 0
+var deaths: int = 0
+var boss_deaths: int = 0 # keren dat je doodging tijdens het gevecht met de Slijmkoning
+var talked: Dictionary = {} # personage-id -> true
+var achievements: Dictionary = {} # behaalde prestaties (id -> true), ook uit user://meta.cfg
+
 # Tijdelijke toestand (wordt niet opgeslagen).
 var in_game: bool = false
 var last_damage_source: String = "" # waardoor je het laatst geraakt bent (voor het game-over-scherm)
@@ -44,15 +60,33 @@ var ended: bool = false
 var transitioning: bool = false
 var dialogue_open: bool = false
 var ui_owners: Dictionary = {}
+var meta_achievements: Dictionary = {} # alle prestaties ooit behaald, over alle spellen heen
+var save_is_ours := false # hoort het opslagbestand bij dit spel? (bij "Nieuw spel" nog niet: dat is een oud spel)
+var achievement_queue: Array[String] = [] # nog te tonen meldingen (het beeld pakt ze op zodra het er is)
+var _achievements_dirty := false
+var _achievement_timer := ACHIEVEMENT_INTERVAL
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_load_meta()
+	achievements = meta_achievements.duplicate()
+	# Prestaties worden gecontroleerd zodra er iets verandert, en daarnaast op een rustig interval.
+	items_changed.connect(_mark_achievements)
+	quests_changed.connect(_mark_achievements)
 
 
 func _process(delta: float) -> void:
 	if in_game and not ended and not get_tree().paused:
 		play_time += delta
+		day_time += delta / Daynight.DAY_LENGTH
+		if day_time >= 1.0:
+			day_time = Daynight.wrap_time(day_time)
+			day_count += 1
+	if in_game:
+		_achievement_timer -= delta
+		if _achievements_dirty or _achievement_timer <= 0.0:
+			check_achievements()
 
 
 func _input(event: InputEvent) -> void:
@@ -76,6 +110,17 @@ func new_game() -> void:
 	play_time = 0.0
 	kills = 0
 	meer = {}
+	day_time = Daynight.START
+	day_count = 0
+	kills_by = {}
+	rolls = 0
+	potions_drunk = 0
+	deaths = 0
+	boss_deaths = 0
+	talked = {}
+	achievements = meta_achievements.duplicate()
+	achievement_queue = []
+	save_is_ours = false
 	ended = false
 	transitioning = false
 	dialogue_open = false
@@ -119,6 +164,7 @@ func hurt(amount: int = 1) -> void:
 	hp_changed.emit()
 	if hp == 0:
 		ended = true
+		_record_death()
 		game_over.emit()
 
 
@@ -142,6 +188,102 @@ func reach() -> float:
 
 func speed_multiplier() -> float:
 	return 1.18 if count("boots") > 0 else 1.0
+
+
+# --- Wereld: tijd, tellers en prestaties ---------------------------------------------
+
+## Een vijand is verslagen (voor het totaal, het beestenboek en de prestaties).
+func register_kill(kind: String) -> void:
+	kills += 1
+	kills_by[kind] = int(kills_by.get(kind, 0)) + 1
+	_mark_achievements()
+
+
+func note_roll() -> void:
+	rolls += 1
+	_mark_achievements()
+
+
+func note_talked(npc_id: String) -> void:
+	if not talked.has(npc_id):
+		talked[npc_id] = true
+		_mark_achievements()
+
+
+## Je wordt wakker in de ochtend van de volgende dag (of van vandaag, als het nog vroeg is).
+func skip_to_morning() -> void:
+	if day_time > Daynight.MORNING:
+		day_count += 1
+	day_time = Daynight.MORNING
+
+
+## Telt een nederlaag, en zet die meteen in het opslagbestand. Anders zou herladen na je dood het weer wissen.
+## Alleen als dat bestand bij dit spel hoort: een nederlaag in een nieuw spel verandert niets aan een oud spel.
+func _record_death() -> void:
+	deaths += 1
+	if flag("boss_started") and not flag("boss_defeated"):
+		boss_deaths += 1
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH)) if save_is_ours and has_save() else null
+	if typeof(parsed) == TYPE_DICTIONARY:
+		var data: Dictionary = parsed
+		data["deaths"] = deaths
+		data["boss_deaths"] = boss_deaths
+		var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+		if file:
+			file.store_string(JSON.stringify(data))
+
+
+## Een opslag van voor de wereld-uitbreiding kent het beestenboek en de praatjes nog niet. Wat we uit de vlaggen weten
+## vullen we aan: golems en de Slijmkoning komen nooit terug, en de Muis in het bos is weg als je de kat gevonden hebt.
+func _fill_in_old_save(data: Dictionary) -> void:
+	if not data.has("kills_by"):
+		for golem_flag: String in ["golem_ruins", "golem_cave"]:
+			if flag(golem_flag):
+				kills_by["golem"] = int(kills_by.get("golem", 0)) + 1
+		if flag("boss_defeated"):
+			kills_by["king"] = 1
+	if not data.has("talked") and flag("cat_found"):
+		talked["muis_bos"] = true
+
+
+func _mark_achievements() -> void:
+	_achievements_dirty = true
+
+
+## Kijkt of er prestaties zijn behaald. Wordt vanzelf aangeroepen; je kunt het ook zelf doen.
+func check_achievements() -> void:
+	_achievements_dirty = false
+	_achievement_timer = ACHIEVEMENT_INTERVAL
+	for id: String in Achievements.ACHIEVEMENTS:
+		var conditions: Array = Achievements.ACHIEVEMENTS[id].get("if", [])
+		# Een prestatie zonder voorwaarden is nooit vanzelf behaald (die geef je zelf met unlock_achievement).
+		if not achievements.has(id) and not conditions.is_empty() and check_all(conditions):
+			unlock_achievement(id)
+
+
+func unlock_achievement(id: String) -> void:
+	if achievements.has(id):
+		return
+	achievements[id] = true
+	if not meta_achievements.has(id):
+		meta_achievements[id] = true
+		_save_meta()
+	achievement_queue.append(id)
+	achievement_unlocked.emit(id)
+
+
+func _load_meta() -> void:
+	var config := ConfigFile.new()
+	if config.load(META_PATH) == OK and config.has_section("achievements"):
+		for id: String in config.get_section_keys("achievements"):
+			meta_achievements[id] = true
+
+
+func _save_meta() -> void:
+	var config := ConfigFile.new()
+	for id: String in meta_achievements:
+		config.set_value("achievements", id, true)
+	config.save(META_PATH)
 
 
 # --- Voorwerpen ----------------------------------------------------------------
@@ -208,6 +350,8 @@ func use_potion() -> bool:
 		return false
 	take("potion")
 	heal(Items.ITEMS["potion"]["heal"])
+	potions_drunk += 1
+	_mark_achievements()
 	return true
 
 
@@ -227,6 +371,7 @@ func set_flag(flag_name: String, value := true) -> void:
 		flags[flag_name] = true
 	else:
 		flags.erase(flag_name)
+	_mark_achievements()
 	_refresh_quests()
 
 
@@ -426,12 +571,16 @@ func save_game(pos: Vector2) -> bool:
 		"version": SAVE_VERSION, "map": map_id, "pos": [pos.x, pos.y], "hp": hp, "coins": coins,
 		"inventory": inventory, "flags": flags, "quests": quests, "weapon": weapon,
 		"play_time": play_time, "kills": kills, "meer": meer,
+		"day_time": day_time, "day_count": day_count, "kills_by": kills_by, "rolls": rolls,
+		"potions_drunk": potions_drunk, "deaths": deaths, "boss_deaths": boss_deaths,
+		"talked": talked.keys(), "achievements": achievements.keys(),
 	}
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
 		push_warning("Opslaan mislukt: %s" % error_string(FileAccess.get_open_error()))
 		return false
 	file.store_string(JSON.stringify(data))
+	save_is_ours = true
 	return true
 
 
@@ -453,6 +602,24 @@ func load_game() -> bool:
 	kills = int(data.get("kills", 0))
 	for stat: String in data.get("meer", {}):
 		meer[stat] = int(data["meer"][stat])
+	day_time = Daynight.wrap_time(float(data.get("day_time", Daynight.START)))
+	day_count = int(data.get("day_count", 0))
+	for kind: String in data.get("kills_by", {}):
+		kills_by[kind] = int(data["kills_by"][kind])
+	rolls = int(data.get("rolls", 0))
+	potions_drunk = int(data.get("potions_drunk", 0))
+	deaths = int(data.get("deaths", 0))
+	boss_deaths = int(data.get("boss_deaths", 0))
+	for npc_id: String in data.get("talked", []):
+		talked[npc_id] = true
+	var new_in_meta := false
+	for id: String in data.get("achievements", []):
+		achievements[id] = true
+		if not meta_achievements.has(id):
+			meta_achievements[id] = true
+			new_in_meta = true
+	if new_in_meta:
+		_save_meta()
 	for item_id: String in data.get("inventory", {}):
 		inventory[item_id] = int(data["inventory"][item_id])
 	for flag_name: String in data.get("flags", {}):
@@ -460,6 +627,8 @@ func load_game() -> bool:
 	var saved_quests: Dictionary = data.get("quests", {})
 	for quest_id: String in saved_quests:
 		quests[quest_id] = {"state": saved_quests[quest_id]["state"], "step": int(saved_quests[quest_id]["step"])}
+	_fill_in_old_save(data)
+	save_is_ours = true
 	hp = clampi(int(data.get("hp", BASE_HP)), 1, max_hp())
 	hp_changed.emit()
 	items_changed.emit()

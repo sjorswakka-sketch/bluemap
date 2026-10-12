@@ -6,6 +6,7 @@ extends RefCounted
 ##
 ##   TALKS    (dialogue.gd)   QUESTS (quests.gd)   ITEMS / WEAPONS (items.gd)   ENEMIES (enemies.gd)
 ##   NPCS     (npcs.gd)       SHOPS  (shops.gd)    MAPS (maps/registry.gd)
+##   ACHIEVEMENTS (achievements.gd: naam, uitleg en voorwaarden; behaald in het menu onder Prestaties)
 ##   SOUNDS / TRACKS (lijsten met namen van .wav-bestanden in assets/audio, zie scripts/core/sound.gd)
 ##   OBJECTS  (soort object op de kaart -> script, zie hieronder)
 ##   MAP_MARKERS (soort object -> {"color": Color, "label": "naam"}): een stipje op het kaartje in het menu (N)
@@ -42,6 +43,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/boog.gd"),
 	preload("res://scripts/data/ext/vijanden.gd"),
 	preload("res://scripts/data/ext/meer.gd"), # het Zilvermeer: vissen, bibliotheek, Joris, Lena en Sanne
+	preload("res://scripts/data/ext/wereld.gd"),
 ]
 
 
@@ -109,7 +111,7 @@ static func format(text: String) -> String:
 	return text
 
 
-## Soorten objecten (naam -> script) die de modules toevoegen. Paden (tekst) worden hier geladen.
+## Soorten objecten (naam -> script) die de modules toevoegen. Paden (tekst) worden hier pas geladen.
 static func object_types() -> Dictionary:
 	var types := merged("OBJECTS", {})
 	for type_name: String in types:
