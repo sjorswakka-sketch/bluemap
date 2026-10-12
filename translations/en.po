@@ -1,1 +1,93 @@
-PLACEHOLDER
+msgid ""
+msgstr ""
+"Project-Id-Version: Bluemap Quest\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-Language: nl\n"
+
+#. Naam van gebied village
+#. Kaart village, sign [21, 8]: tekst op een bord
+#: scripts/ui/ending.gd:218 scripts/maps/village.gd:6 scripts/maps/village.gd:66
+msgid "Dageraadsdorp"
+msgstr "Daybreak Village"
+
+msgid "Dauwbos"
+msgstr "Dew Woods"
+
+msgid "Noordelijk pad: Dauwbos"
+msgstr "Northern path: Dew Woods"
+
+msgid "Mistig en stil. Mira bewaakt de dauw."
+msgstr "Misty and quiet. Mira guards the dew."
+
+msgid "Hier hangt de dauw zwaar. De bomen fluisteren zachter."
+msgstr "The dew hangs heavy here. The trees whisper more softly."
+
+msgid "Lotte de lantaarnmaker"
+msgstr "Lotte the Lantern Maker"
+
+msgid "Kasper de handelaar"
+msgstr "Kasper the Trader"
+
+msgid "Elke de kruidenier"
+msgstr "Elke the Herbalist"
+
+msgid "Willem de verhalenverteller"
+msgstr "Willem the Storyteller"
+
+msgid "Mira de dauwbewaarder"
+msgstr "Mira the Dew Keeper"
+
+msgid "Tomas de oude"
+msgstr "Old Tomas"
+
+msgid "Noor de verzamelaar"
+msgstr "Noor the Collector"
+
+msgid "De Verdwenen Lantaarn"
+msgstr "The Missing Lantern"
+
+msgid "Verse kruiden voor Elke"
+msgstr "Fresh Herbs for Elke"
+
+msgid "Het Geheim van de Dauw"
+msgstr "The Secret of the Dew"
+
+msgid "Nachtlantaarn"
+msgstr "Night Lantern"
+
+msgid "Een lantaarn die 's nachts verder en warmer schijnt dan een gewone fakkel."
+msgstr "A lantern that shines farther and warmer at night than an ordinary torch."
+
+msgid "Dauwsteen"
+msgstr "Dew Stone"
+
+msgid "Een steen die altijd bedekt is met fijne dauw. Hij voelt koel en levend."
+msgstr "A stone that is always covered in fine dew. It feels cool and alive."
+
+msgid "Verse kruiden"
+msgstr "Fresh Herbs"
+
+msgid "Verse kruiden uit het bos. Elke de kruidenier heeft ze nodig."
+msgstr "Fresh herbs from the woods. Elke the herbalist needs them."
+
+msgid "Licht in de duisternis"
+msgstr "Light in the Darkness"
+
+msgid "Vind en terugbreng de nachtlantaarn van Lotte."
+msgstr "Find and return Lotte's night lantern."
+
+msgid "Groene vingers"
+msgstr "Green Fingers"
+
+msgid "Breng verse kruiden naar Elke."
+msgstr "Bring fresh herbs to Elke."
+
+msgid "Bewaarder van de dauw"
+msgstr "Keeper of the Dew"
+
+msgid "Herstel het evenwicht in het Dauwbos."
+msgstr "Restore the balance in the Dew Woods."
