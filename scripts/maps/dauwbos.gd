@@ -1,6 +1,7 @@
 extends RefCounted
 ## Dauwbos – nieuw polish-gebied. Mistig bos ten noorden van het Fluisterbos.
 ## Rustig, met dauw, oude bomen en een kleine schuilplaats.
+## Gefixt: dauwsteen ligt nu als pickup.
 
 const DATA := {
 	"name": "Dauwbos",
@@ -54,10 +55,13 @@ const DATA := {
 		{"type": "npc", "pos": [15, 12], "id": "mira"},
 		{"type": "npc", "pos": [28, 18], "id": "tomas"},
 		{"type": "npc", "pos": [22, 28], "id": "noor"},
-		{"type": "chest", "pos": [40, 10], "contents": [["potion", 3], ["coins", 40]]},
+		{"type": "chest", "pos": [40, 10], "contents": [["potion", 3], ["coins", 40], ["herb", 3]]},
 		{"type": "chest", "pos": [12, 30], "contents": [["herb", 5], ["coins", 20]]},
+		{"type": "pickup", "pos": [32, 8], "item": "dauwsteen", "unique": true},
 		{"type": "pickup", "pos": [18, 8], "item": "heart"},
 		{"type": "pickup", "pos": [35, 25], "item": "potion", "unique": true},
+		{"type": "pickup", "pos": [10, 15], "item": "herb"},
+		{"type": "pickup", "pos": [25, 25], "item": "herb"},
 		{"type": "enemy", "pos": [10, 8], "kind": "slime"},
 		{"type": "enemy", "pos": [20, 15], "kind": "slime"},
 		{"type": "enemy", "pos": [30, 22], "kind": "bat"},

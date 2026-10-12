@@ -1,5 +1,6 @@
 extends RefCounted
 ## Grote polish-uitbreiding: Dauwbos, langere quests, meer NPC's.
+## Gefixt: herb-item + dauwsteen is nu echt te vinden.
 
 const MAPS := {
 	"dauwbos": preload("res://scripts/maps/dauwbos.gd"),
@@ -30,18 +31,14 @@ const QUESTS := {
 		"title": "Het Geheim van de Dauw",
 		"steps": [
 			{
-				"text": "Mira in het Dauwbos zoekt een oude dauwsteen. Ze denkt dat die bij de schuilplaats ligt.",
+				"text": "Mira in het Dauwbos zoekt een oude dauwsteen. Hij ligt ergens in het bos.",
 				"advance_if": [["has", "dauwsteen", 1]],
 			},
 			{
-				"text": "Breng de dauwsteen naar Mira. Ze wil hem gebruiken om de mist te lichten.",
-				"advance_if": [["flag", "dauw_gesproken"]],
-			},
-			{
-				"text": "Praat met Tomas over de oude verhalen van het Dauwbos.",
+				"text": "Breng de dauwsteen naar Mira en hoor het verhaal van Tomas.",
 				"advance_if": [["flag", "tomas_verhaal"]],
 			},
-			{"text": "Keer terug naar Mira met het verhaal en de steen."},
+			{"text": "Keer terug naar Mira om het evenwicht te herstellen."},
 		],
 	},
 }
@@ -54,6 +51,10 @@ const ITEMS := {
 	"dauwsteen": {
 		"name": "Dauwsteen", "sheet": "items", "icon": 21, "type": "quest",
 		"desc": "Een steen die altijd bedekt is met fijne dauw. Hij voelt koel en levend.",
+	},
+	"herb": {
+		"name": "Verse kruiden", "sheet": "items", "icon": 22, "type": "material", "sell": 2,
+		"desc": "Verse kruiden uit het bos. Elke de kruidenier heeft ze nodig.",
 	},
 }
 
@@ -91,7 +92,7 @@ const NPCS := {
 	"mira": {
 		"name": "Mira de dauwbewaarder", "sheet": "npc_mila",
 		"rules": [
-			{"if": [["step", "dauw", 3]], "talk": "mira_klaar"},
+			{"if": [["step", "dauw", 2]], "talk": "mira_klaar"},
 			{"if": [["step", "dauw", 1]], "talk": "mira_steen"},
 			{"if": [["no_flag", "mira_ontmoet"]], "talk": "mira_intro"},
 			{"talk": "mira_menu"},
@@ -162,13 +163,13 @@ const TALKS := {
 	},
 	"elke_vraag": {
 		"speaker": "Elke",
-		"lines": ["Wil je 4 verse kruiden voor me plukken in het Fluisterbos?"],
+		"lines": ["Wil je 4 verse kruiden voor me plukken in het Fluisterbos of Dauwbos?"],
 		"choices": [
 			{"text": "Ik haal ze.", "do": [["start_quest", "kruiden"]], "next": "elke_ok"},
 			{"text": "Misschien later."},
 		],
 	},
-	"elke_ok": {"speaker": "Elke", "lines": ["Fijn. Ze groeien bij de bomen aan de rand van het bos."], "do": [["sound", "quest"]]},
+	"elke_ok": {"speaker": "Elke", "lines": ["Fijn. Ze liggen in kisten of op de grond in de bossen."], "do": [["sound", "quest"]]},
 	"elke_menu": {"speaker": "Elke", "lines": ["Heb je de kruiden al?"], "choices": [{"text": "Nog niet."}, {"text": "Tot zo."}]},
 	"elke_klaar": {
 		"speaker": "Elke",
@@ -202,18 +203,18 @@ const TALKS := {
 	},
 	"mira_vraag": {
 		"speaker": "Mira",
-		"lines": ["Wil je de dauwsteen voor me zoeken? Hij ligt ergens in dit bos, bij de oude schuilplaats."],
+		"lines": ["Wil je de dauwsteen voor me zoeken? Hij ligt ergens in dit bos."],
 		"choices": [
 			{"text": "Ik zoek hem.", "do": [["start_quest", "dauw"]], "next": "mira_ok"},
 			{"text": "Later."},
 		],
 	},
-	"mira_ok": {"speaker": "Mira", "lines": ["Dank je. Zoek in de noordelijke delen van het bos."], "do": [["sound", "quest"]]},
+	"mira_ok": {"speaker": "Mira", "lines": ["Dank je. Zoek in het noorden of bij de kisten."], "do": [["sound", "quest"]]},
 	"mira_menu": {"speaker": "Mira", "lines": ["Heb je de steen al?"], "choices": [{"text": "Nog niet."}, {"text": "Tot zo."}]},
 	"mira_steen": {
 		"speaker": "Mira",
 		"lines": ["Je hebt de steen! Prachtig. Nu moet ik het oude verhaal horen. Praat met Tomas."],
-		"do": [["set_flag", "dauw_gesproken"], ["sound", "quest"]],
+		"do": [["sound", "quest"]],
 	},
 	"mira_klaar": {
 		"speaker": "Mira",
