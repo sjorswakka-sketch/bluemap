@@ -24,7 +24,11 @@ const FOOT_OFFSET := Vector2(0, 8)
 const STEP_DISTANCE := 22.0
 
 var world: Node
-var facing := Vector2.DOWN
+var facing := Vector2.DOWN # lichaam: looprichting, ook nadat je stilstaat
+var aim_direction := Vector2.DOWN
+var attack_direction := Vector2.DOWN
+var bow_direction := Vector2.DOWN
+var work_facing := Vector2.DOWN
 var attack_timer := 0.0
 var cooldown := 0.0
 var invuln := 0.0
@@ -213,22 +217,21 @@ func _roll() -> void:
 func _attack() -> void:
 	if cooldown > 0.0 or roll_timer > 0.0:
 		return
-	var interrupted_work := work_active
 	cancel_work_animation()
-	if interrupted_work:
-		_update_aim() # de eerste zwaai volgt al het mikpunt, niet de grondstof
+	_update_aim()
+	attack_direction = aim_direction
 	attack_timer = ATTACK_TIME
-	cooldown = ATTACK_COOLDOWN
+	cooldown = ATTACK_COOLDOWN * GameState.attack_cooldown_multiplier()
 	Sound.play("swing", -4.0, randf_range(0.92, 1.08))
 	var reach := GameState.reach()
 	for enemy: Node2D in get_tree().get_nodes_in_group("enemies"):
 		var to_enemy := enemy.global_position - global_position
 		var margin: float = enemy.radius
-		if to_enemy.length() <= reach + margin and facing.dot(to_enemy.normalized()) > 0.2:
-			enemy.hurt(GameState.damage(), facing)
+		if to_enemy.length() <= reach + margin and attack_direction.dot(to_enemy.normalized()) > 0.2:
+			enemy.hurt(GameState.damage(), attack_direction)
 	# Wat je kunt stukslaan (zoals de tovervonk van een Magiër) bepaalt zelf of je zwaard het raakt.
 	for thing: Node in get_tree().get_nodes_in_group("breakable"):
-		thing.sword_hit(global_position, facing, reach)
+		thing.sword_hit(global_position, attack_direction, reach)
 
 
 # --- Boog -----------------------------------------------------------------------------
@@ -280,7 +283,7 @@ func _lent_arrow() -> bool:
 	return shooting_range != null and shooting_range.lends_arrows()
 
 
-## Schiet een pijl in je kijkrichting (schuin als je schuin loopt). Kost een pijl, behalve op Tessa's schietbaan.
+## Schiet naar het mikpunt, of in je laatste looprichting zonder muis/stick. Kost een pijl, behalve op Tessa's schietbaan.
 func _shoot() -> void:
 	if world == null or bow_cooldown > 0.0 or roll_timer > 0.0:
 		return
@@ -290,10 +293,8 @@ func _shoot() -> void:
 			GameState.toast.emit(tr("Je hebt een boog nodig. Tobias verkoopt er een."))
 			Sound.play("error", -5.0)
 		return
-	var interrupted_work := work_active
 	cancel_work_animation()
-	if interrupted_work:
-		_update_aim() # tijdens het verzamelen bleef facing bij het gereedschap
+	_update_aim()
 	bow_cooldown = BOW_COOLDOWN
 	var lent := _lent_arrow()
 	if GameState.count("arrow") <= 0 and not lent:
@@ -305,9 +306,10 @@ func _shoot() -> void:
 	if not lent:
 		GameState.take("arrow")
 	bow_anim = BOW_ANIM_TIME
+	bow_direction = aim_direction
 	var arrow: Node2D = ArrowScript.new()
 	arrow.world = world
-	arrow.direction = facing.normalized()
+	arrow.direction = bow_direction
 	arrow.position = global_position + ARROW_HEIGHT
 	world.entities.add_child(arrow)
 	arrow.launch(ARROW_START) # vanuit je hand, zodat hij niet door een poortje springt waar je tegenaan staat
@@ -341,7 +343,7 @@ func _update_target() -> void:
 		var direction := (node.global_position - global_position).normalized()
 		# Zonder expliciet mikken blijft dichtbij praten/openen hetzelfde werken.
 		var aiming: bool = Controls.mouse_aim_active or (Controls.controller_active and stick_aim != Vector2.ZERO)
-		var score := d + ((1.0 - facing.dot(direction)) * 16.0 if aiming else 0.0)
+		var score := d + ((1.0 - aim_direction.dot(direction)) * 16.0 if aiming else 0.0)
 		if score < best:
 			best = score
 			target = node
@@ -351,20 +353,21 @@ func _update_target() -> void:
 func _update_aim() -> void:
 	if GameState.input_locked():
 		return
+	aim_direction = facing
 	if Controls.controller_active:
 		var stick: Vector2 = Controls.aim_vector()
 		if stick.length_squared() > 0.01:
 			stick_aim = stick.normalized()
-		if stick_aim != Vector2.ZERO and not is_rolling() and not work_active:
-			facing = stick_aim
-		aim_position = global_position + facing * 90.0
+		if stick_aim != Vector2.ZERO:
+			aim_direction = stick_aim
+		aim_position = global_position + aim_direction * 90.0
 	elif Controls.mouse_aim_active:
 		aim_position = get_global_mouse_position()
 		var direction := aim_position - global_position
-		if direction.length_squared() > 16.0 and not is_rolling() and not work_active:
-			facing = direction.normalized()
+		if direction.length_squared() > 16.0:
+			aim_direction = direction.normalized()
 	else:
-		aim_position = global_position + facing * 90.0
+		aim_position = global_position + aim_direction * 90.0
 
 
 func start_work_animation(kind: String, duration: float, target_position: Vector2) -> void:
@@ -372,9 +375,9 @@ func start_work_animation(kind: String, duration: float, target_position: Vector
 	work_duration = maxf(duration, 0.01)
 	work_elapsed = 0.0
 	work_active = true
-	facing = (target_position - global_position).normalized()
-	if facing == Vector2.ZERO:
-		facing = Vector2.DOWN
+	work_facing = (target_position - global_position).normalized()
+	if work_facing == Vector2.ZERO:
+		work_facing = facing
 
 
 func cancel_work_animation() -> void:
@@ -391,7 +394,7 @@ func hurt(from_pos: Vector2, amount: int = 1, source := "") -> void:
 		return
 	cancel_work_animation()
 	GameState.last_damage_source = source
-	GameState.damage_log[source] = int(GameState.damage_log.get(source, 0)) + amount
+	GameState.damage_log[source] = int(GameState.damage_log.get(source, 0)) + GameState.damage_after_armor(amount)
 	GameState.hurt(amount)
 	Sound.play("hurt")
 	invuln = INVULN_TIME
@@ -422,9 +425,10 @@ func set_lit(on: bool, energy := 1.0, scale := 3.2) -> void:
 
 ## Rij in player.png: 0 = naar beneden, 1 = omhoog, 2 = rechts, 3 = links.
 func _direction_row() -> int:
-	if absf(facing.y) > absf(facing.x):
-		return 0 if facing.y > 0.0 else 1
-	return 2 if facing.x > 0.0 else 3
+	var body_direction := work_facing if work_active else facing
+	if absf(body_direction.y) > absf(body_direction.x):
+		return 0 if body_direction.y > 0.0 else 1
+	return 2 if body_direction.x > 0.0 else 3
 
 
 func _draw() -> void:
@@ -442,7 +446,7 @@ func _draw() -> void:
 		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	else:
 		var bob := sin(time * 2.4) * 0.55 if not moving else sin(walk_time * 18.0) * (1.6 if sprinting else 0.6)
-		var lean := facing * sin((1.0 - attack_timer / ATTACK_TIME) * PI) * 3.0 if attack_timer > 0.0 else Vector2.ZERO
+		var lean := attack_direction * sin((1.0 - attack_timer / ATTACK_TIME) * PI) * 3.0 if attack_timer > 0.0 else Vector2.ZERO
 		if work_active:
 			bob = sin(work_elapsed * TAU * 3.0) * 1.5
 		DrawUtil.sprite(self, Art.tex("player"), column, _direction_row(), Vector2(0, bob) + lean, Vector2i(16, 16), 2.0, tint)
@@ -466,10 +470,10 @@ func _draw() -> void:
 
 func _draw_work() -> void:
 	var phase := fmod(work_elapsed * 3.0, 1.0)
-	var angle := facing.angle() - 0.95 + sin(phase * PI) * 1.8
+	var angle := work_facing.angle() - 0.95 + sin(phase * PI) * 1.8
 	var hand := Vector2.from_angle(angle) * 8.0 + Vector2(0, 3)
 	if work_kind == "foraging":
-		draw_circle(hand + facing * sin(phase * PI) * 6.0, 2.5, Color(1, 0.77, 0.57))
+		draw_circle(hand + work_facing * sin(phase * PI) * 6.0, 2.5, Color(1, 0.77, 0.57))
 	else:
 		var tip := hand + Vector2.from_angle(angle) * 17.0
 		var side := Vector2.from_angle(angle).orthogonal()
@@ -477,7 +481,7 @@ func _draw_work() -> void:
 		if work_kind == "mining":
 			draw_line(tip - side * 8.0, tip + side * 8.0, Color(0.7, 0.8, 0.86), 3.0)
 		else:
-			draw_colored_polygon(PackedVector2Array([tip - side * 2.0, tip + side * 8.0 - facing * 4.0, tip + side * 8.0 + facing * 4.0]), Color(0.72, 0.8, 0.85))
+			draw_colored_polygon(PackedVector2Array([tip - side * 2.0, tip + side * 8.0 - work_facing * 4.0, tip + side * 8.0 + work_facing * 4.0]), Color(0.72, 0.8, 0.85))
 	var progress := clampf(work_elapsed / work_duration, 0.0, 1.0)
 	draw_rect(Rect2(-14, -25, 28, 4), Color(0.03, 0.07, 0.1, 0.9))
 	draw_rect(Rect2(-13, -24, 26.0 * progress, 2), Color(0.5, 0.92, 0.7))
@@ -486,7 +490,7 @@ func _draw_work() -> void:
 ## De boog even in je hand na het schieten: de pees trilt uit.
 func _draw_bow() -> void:
 	var progress := 1.0 - bow_anim / BOW_ANIM_TIME
-	var forward := facing.normalized()
+	var forward := bow_direction
 	var sideways := forward.orthogonal()
 	var grip := ARROW_HEIGHT + forward * 11.0
 	var wood := Color(0.72, 0.5, 0.26)
@@ -509,7 +513,7 @@ func _draw_sword() -> void:
 	var reach: float = weapon["reach"]
 	var color: Color = weapon["color"]
 	var progress := 1.0 - attack_timer / ATTACK_TIME
-	var angle := facing.angle() - 1.0 + progress * 2.0
+	var angle := attack_direction.angle() - 1.0 + progress * 2.0
 	draw_arc(Vector2.ZERO, reach - 4.0, angle - 0.55, angle + 0.55, 10, Color(color, 0.55), 6.0)
 	var hilt := Vector2.from_angle(angle) * 8.0
 	var tip := Vector2.from_angle(angle) * (reach - 6.0)

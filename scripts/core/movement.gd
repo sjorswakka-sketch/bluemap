@@ -1,6 +1,7 @@
 extends RefCounted
 ## Tijdelijke uithouding. GameState bewaart dit object zodat een kaartwissel het niet bijvult.
 
+const Equipment := preload("res://scripts/core/equipment.gd")
 const MAX_STAMINA := 100.0
 const SPRINT_MULTIPLIER := 1.5
 const DRAIN_PER_SECOND := 20.0
@@ -14,9 +15,27 @@ var exhausted := false
 
 
 func reset() -> void:
-	stamina = MAX_STAMINA
+	stamina = capacity()
 	regen_delay = 0.0
 	exhausted = false
+
+
+func capacity() -> float:
+	return MAX_STAMINA + Equipment.bonus("stamina_max")
+
+
+func regen_rate() -> float:
+	return REGEN_PER_SECOND * (1.0 + Equipment.bonus("stamina_regen"))
+
+
+func recovery_threshold() -> float:
+	return capacity() * RECOVERY_THRESHOLD / MAX_STAMINA
+
+
+func clamp_capacity() -> void:
+	stamina = clampf(stamina, 0.0, capacity()) if is_finite(stamina) else 0.0
+	if exhausted and stamina >= recovery_threshold():
+		exhausted = false
 
 
 func can_sprint() -> bool:
@@ -25,10 +44,10 @@ func can_sprint() -> bool:
 
 ## Een gemaakt drankje mag energie herstellen, maar wordt niet verspild bij een volle balk.
 func restore(amount: float) -> bool:
-	if amount <= 0.0 or stamina >= MAX_STAMINA:
+	if not is_finite(amount) or amount <= 0.0 or stamina >= capacity():
 		return false
-	stamina = minf(stamina + amount, MAX_STAMINA)
-	if stamina >= RECOVERY_THRESHOLD:
+	stamina = minf(stamina + amount, capacity())
+	if stamina >= recovery_threshold():
 		exhausted = false
 	return true
 
@@ -43,6 +62,7 @@ func sprint_multiplier(delta: float) -> float:
 
 ## Alleen aanroepen tijdens actief spelen. sprinting betekent dat je echt vooruit kwam.
 func advance(delta: float, sprinting: bool) -> void:
+	clamp_capacity()
 	if delta <= 0.0:
 		return
 	if sprinting and can_sprint():
@@ -54,6 +74,6 @@ func advance(delta: float, sprinting: bool) -> void:
 		return
 	var recovery_time := maxf(delta - regen_delay, 0.0)
 	regen_delay = maxf(regen_delay - delta, 0.0)
-	stamina = minf(stamina + REGEN_PER_SECOND * recovery_time, MAX_STAMINA)
-	if exhausted and stamina >= RECOVERY_THRESHOLD:
+	stamina = minf(stamina + regen_rate() * recovery_time, capacity())
+	if exhausted and stamina >= recovery_threshold():
 		exhausted = false

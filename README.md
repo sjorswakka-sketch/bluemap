@@ -51,15 +51,19 @@ Het laatst bewust gebruikte apparaat is actief. De controller verbergt de muiscu
 
 ## Wat zit erin
 
+- **Uitrustingsslots:** naast zwaard en laarzen zijn er vijf nieuwe slots voor hoofd, borst, handen, hals en ring, met tien nieuwe uitrustingsstukken. Kies ze via **I → Uitrusting**; alleen gedragen spullen geven hun bonus. Tobias verkoopt de eerste stukken, betere versies maak je via Smeden en Alchemie. Hoofdbedekking geeft meer stamina, borststukken verminderen zware klappen (tot minimaal één hartje), handschoenen verkorten de zwaardwachttijd, amuletten versnellen staminaherstel en ringen trekken buit van verder weg aan. Je keuze wordt opgeslagen en gaat mee naar Nieuw Spel+.
+- **Kijkrichting:** je personage kijkt tijdens het lopen in de looprichting en behoudt die richting bij stilstand. Muis of rechterstick bepaalt apart waar je zwaard of pijl naartoe gaat.
+- **Heldenvoortgang:** verdien XP met verslagen vijanden buiten de arena en voltooide opdrachten. Je heldenniveau en XP-balk staan in beeld; elk nieuw niveau geeft 15 munten voor je volgende aankoop, tot niveau 10. Het tabblad **Voortgang** in de inventaris toont je helden- en beroepsniveaus, uitrusting en de kosten, voorwaarden en locaties van verbeteringen. De zeven beroepen behouden hun eigen XP en recepten. Oudere opgeslagen spellen starten met 0 helden-XP en behouden hun uitrusting; Nieuw Spel+ neemt je helden-XP mee.
+- **Dorpsplein:** een grotere stenen fontein staat in het midden van het plein, met bewegende waterstralen, spetters en kringen. De looproutes blijven rondom de fontein bereikbaar.
 - **Oprapen en animaties:** alle losse voorwerpen worden net als munten naar de speler getrokken. Volle stapels en hartjes bij volle gezondheid blijven beschikbaar. Mijnbouw, houthakken en kruidenzoeken hebben een korte werkactie met gereedschap, voortgang, geluid en deeltjes. Lopen, schade, gevechten of menu's onderbreken die actie. Vereist gereedschap, niveau en tasruimte worden ook bij het afronden opnieuw gecontroleerd. Er zijn extra rust-, sprint-, zwaard- en drinkanimaties.
 - **Ondergrond en sprinten:** op paden loop je 20% sneller dan op gras; op zand 8% langzamer. Sprinten geeft 50% extra
-  loopsnelheid zolang er stamina is. Een volle balk is goed voor vijf seconden sprinten; na 0,8 seconde rust begint het
+  loopsnelheid zolang er stamina is. Zonder uitrustingsbonus is een volle balk goed voor vijf seconden sprinten; na 0,8 seconde rust begint het
   herstel. Na uitputting moet de balk eerst tot 25% herstellen. Rollen blijft hetzelfde. Gras, pad, zand, hout, steen en
   tapijt hebben elk hun eigen voetstappen, alleen hoorbaar als je echt beweegt.
 - **Herkenbare gebouwen:** de smederij heeft een leien dak, schoorsteen, aambeeld en zichtbaar vuur; ook winkel,
   herberg, bibliotheek, vissershuisje, arena en tempel hebben een eigen exterieur en herkenbare symbolen.
 - **Zeven beroepen:** kruidenzoeken, houthakken, mijnbouw, vissen, smeden, alchemie en koken, elk met ervaring en
-  niveaus. Er zijn 25 verzamelplekken, 18 nieuwe materialen/voorwerpen en 12 recepten. In `C` zie je je voortgang,
+  niveaus. Er zijn 25 verzamelplekken en recepten voor gereedschap, eten, drankjes en uitrusting. In `C` zie je je voortgang,
   ingrediënten, benodigde niveaus en werkplekken. De gewone inventaris bladert nu door alle spullen en meerdere pagina's.
 
 - **Vijftien gebieden:** Dageraadsdorp met smederij, winkel en herberg, het Fluisterbos, de Vergeten Ruïne, de Echo-grot,

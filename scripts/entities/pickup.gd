@@ -5,6 +5,7 @@ const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Util := preload("res://scripts/core/util.gd")
 const Items := preload("res://scripts/data/items.gd")
+const Equipment := preload("res://scripts/core/equipment.gd")
 
 const PICKUP_RANGE := 16.0
 const MAGNET_RANGE := 54.0
@@ -38,11 +39,15 @@ func _process(delta: float) -> void:
 		var dist := player.global_position.distance_to(global_position)
 		# Every dropped item follows the same magnet rule, even when it cannot
 		# be collected yet. Full hearts and capped stacks remain available.
-		if age > 0.25 and dist < MAGNET_RANGE:
+		if age > 0.25 and dist < magnet_range():
 			global_position = global_position.move_toward(player.global_position, 170.0 * delta)
 		if age > 0.2 and player.global_position.distance_to(global_position) < PICKUP_RANGE:
 			_collect()
 	queue_redraw()
+
+
+func magnet_range() -> float:
+	return MAGNET_RANGE + Equipment.bonus("magnet_range")
 
 
 func _collect() -> void:

@@ -574,10 +574,17 @@ func test_arrow_hits() -> void:
 	await shoot_from(9, 14, Vector2.LEFT)
 	check(hp_of(left) == 1, "ook naar links, en omhoog en omlaag, raakt hij")
 	await clear_enemies()
-	var above := spawn("slime", 20, 10)
-	await shoot_from(20, 14, Vector2.UP)
-	var below := spawn("slime", 20, 17)
-	await shoot_from(20, 14, Vector2.DOWN)
+	# Test beide richtingen in de vrije strook naast de grotere dorpsfontein.
+	# Kolom 20 valt nu in de sokkel; dat zou terecht een pijl tegenhouden.
+	var vertical_lane := 18
+	var clear_lane := true
+	for y in range(10, 18):
+		clear_lane = clear_lane and not world.is_solid(tile_pos(vertical_lane, y))
+	check(clear_lane, "de verticale schietproef heeft een vrije baan naast de fontein")
+	var above := spawn("slime", vertical_lane, 10)
+	await shoot_from(vertical_lane, 14, Vector2.UP)
+	var below := spawn("slime", vertical_lane, 17)
+	await shoot_from(vertical_lane, 14, Vector2.DOWN)
 	check(hp_of(above) == 1 and hp_of(below) == 1, "naar boven en naar beneden")
 	await clear_enemies()
 	var diagonal := spawn("slime", 8, 17)

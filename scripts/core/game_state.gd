@@ -9,10 +9,14 @@ const Achievements := preload("res://scripts/data/achievements.gd")
 const Daynight := preload("res://scripts/core/daynight.gd")
 const Movement := preload("res://scripts/core/movement.gd")
 const Professions := preload("res://scripts/core/professions.gd")
+const Progression := preload("res://scripts/core/progression.gd")
+const Equipment := preload("res://scripts/core/equipment.gd")
 
 signal hp_changed
 signal items_changed
 signal quests_changed
+signal progression_changed
+signal equipment_changed
 signal toast(text: String) # tekst die al vertaald is (zie scripts/core/lang.gd)
 signal game_over
 signal ending_requested
@@ -24,6 +28,7 @@ signal world_action(action: Array)
 signal achievement_unlocked(achievement_id: String)
 
 const BASE_HP := 5
+const BOOTS_SPEED_MULTIPLIER := 1.18
 const SAVE_PATH := "user://savegame.json"
 const META_PATH := "user://meta.cfg" # blijft bestaan als je een nieuw spel begint (prestaties)
 const SAVE_VERSION := 1
@@ -41,8 +46,10 @@ var load_pos: Vector2 = Vector2.ZERO
 var use_load_pos: bool = false
 var play_time: float = 0.0
 var kills: int = 0
+var hero_xp: int = 0 # totale held-ervaring; levels worden hieruit berekend
 var meer: Dictionary = {} # eigen opslag van het Zilvermeer (zie scripts/data/ext/meer.gd): verkochte en gevangen vis
 var professions: Dictionary = {} # beroepenervaring en verzamelde grondstoffen (eigen stabiele sleutels)
+var equipment: Dictionary = {} # vak -> gekozen voorwerp; alleen geldig zolang je het bezit
 var movement := Movement.new() # stamina blijft bij gebiedsovergangen behouden
 
 # Wereld: de klok, tellers voor prestaties en het beestenboek (worden opgeslagen).
@@ -118,8 +125,10 @@ func new_game() -> void:
 	use_load_pos = false
 	play_time = 0.0
 	kills = 0
+	hero_xp = 0
 	meer = {}
 	professions = {}
+	equipment = {}
 	movement.reset()
 	day_time = Daynight.START
 	day_count = 0
@@ -145,6 +154,8 @@ func new_game() -> void:
 	hp_changed.emit()
 	items_changed.emit()
 	quests_changed.emit()
+	progression_changed.emit()
+	equipment_changed.emit()
 
 
 ## Schermen (menu, winkel, dialoog, pauze) zetten het spel stil zolang ze open staan.
@@ -172,9 +183,9 @@ func max_hp() -> int:
 
 
 func hurt(amount: int = 1) -> void:
-	if ended:
+	if ended or amount <= 0:
 		return
-	hp = maxi(hp - amount, 0)
+	hp = maxi(hp - damage_after_armor(amount), 0)
 	hp_changed.emit()
 	if hp == 0:
 		if defeat_handler.is_valid() and defeat_handler.call():
@@ -203,7 +214,15 @@ func reach() -> float:
 
 
 func speed_multiplier() -> float:
-	return 1.18 if count("boots") > 0 else 1.0
+	return BOOTS_SPEED_MULTIPLIER if count("boots") > 0 else 1.0
+
+
+func attack_cooldown_multiplier() -> float:
+	return 1.0 - Equipment.bonus("attack_cooldown_reduction")
+
+
+func damage_after_armor(amount: int) -> int:
+	return maxi(amount - int(Equipment.bonus("armor")), 1) if amount > 0 else 0
 
 
 # --- Wereld: tijd, tellers en prestaties ---------------------------------------------
@@ -212,7 +231,31 @@ func speed_multiplier() -> float:
 func register_kill(kind: String) -> void:
 	kills += 1
 	kills_by[kind] = int(kills_by.get(kind, 0)) + 1
+	# De arena geeft rangbeloningen, geen buit of extra ervaringsmunten per vijand.
+	if map_id != "arena":
+		add_hero_xp(Progression.enemy_xp(kind))
 	_mark_achievements()
+
+
+## Alleen echte spelbeloningen lopen hierlangs. Laden en Nieuw spel+ zetten de XP
+## rechtstreeks, zodat een bestaand level nooit opnieuw munten oplevert.
+func add_hero_xp(amount: int) -> void:
+	if amount <= 0:
+		return
+	var previous := Progression.normalize(hero_xp)
+	var total := previous + mini(amount, Progression.MAX_XP - previous)
+	if total == previous:
+		return
+	var old_level := Progression.level_for(previous)
+	var new_level := Progression.level_for(total)
+	hero_xp = total # vóór signalen vastleggen: een luisteraar kan geen beloning verdubbelen
+	var reward := (new_level - old_level) * Progression.LEVEL_REWARD
+	if reward > 0:
+		add_coins(reward)
+	progression_changed.emit()
+	if reward > 0:
+		# Vertalers: het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
+		toast.emit(tr("Heldenlevel %d! +%d munten voor je uitrusting.") % [new_level, reward])
 
 
 func note_roll() -> void:
@@ -368,6 +411,7 @@ func take(item_id: String, amount: int = 1) -> void:
 		inventory[item_id] = left
 	else:
 		inventory.erase(item_id)
+	Equipment.reconcile()
 	items_changed.emit()
 	_refresh_quests()
 
@@ -439,6 +483,7 @@ func finish_quest(quest_id: String) -> void:
 	if quests.has(quest_id) and quests[quest_id]["state"] != "done":
 		quests[quest_id]["state"] = "done"
 		toast.emit(tr("Opdracht voltooid: %s") % tr(Quests.info(quest_id)["title"]))
+		add_hero_xp(Progression.quest_xp(quest_id))
 		quests_changed.emit()
 
 
@@ -617,7 +662,8 @@ func save_game(pos: Vector2) -> bool:
 		"day_time": day_time, "day_count": day_count, "kills_by": kills_by, "rolls": rolls,
 		"potions_drunk": potions_drunk, "deaths": deaths, "boss_deaths": boss_deaths,
 		"talked": talked.keys(), "achievements": achievements.keys(), "arena_records": arena_records,
-		"professions": professions,
+		"professions": professions, "hero_xp": Progression.normalize(hero_xp),
+		"equipment": Equipment.normalize(equipment, inventory),
 	}
 	data["ng_plus"] = ng_plus # de ronde van Nieuw spel+ (zie onderaan)
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -646,6 +692,7 @@ func load_game() -> bool:
 	ng_plus = int(data.get("ng_plus", 0)) # de ronde van Nieuw spel+ (oude opslagen: 0)
 	play_time = float(data.get("play_time", 0.0))
 	professions = Professions.normalize(data.get("professions", {}), play_time)
+	hero_xp = Progression.normalize(data.get("hero_xp", 0))
 	kills = int(data.get("kills", 0))
 	for stat: String in data.get("meer", {}):
 		meer[stat] = int(data["meer"][stat])
@@ -672,7 +719,15 @@ func load_game() -> bool:
 		for rank: String in saved_records:
 			arena_records[rank] = float(saved_records[rank])
 	for item_id: String in data.get("inventory", {}):
-		inventory[item_id] = int(data["inventory"][item_id])
+		if Equipment.slot_of(item_id) != "":
+			# Nieuwe draagbare spullen hebben altijd maximaal één geldig exemplaar.
+			var saved_gear := Equipment.normalize_owned({item_id: data["inventory"][item_id]})
+			if saved_gear.has(item_id):
+				inventory[item_id] = 1
+		else:
+			inventory[item_id] = int(data["inventory"][item_id])
+	equipment = Equipment.normalize(data.get("equipment", {}), inventory)
+	movement.reset()
 	for flag_name: String in data.get("flags", {}):
 		flags[flag_name] = true
 	var saved_quests: Dictionary = data.get("quests", {})
@@ -684,6 +739,8 @@ func load_game() -> bool:
 	hp_changed.emit()
 	items_changed.emit()
 	quests_changed.emit()
+	progression_changed.emit()
+	equipment_changed.emit()
 	return true
 
 
@@ -709,9 +766,9 @@ func ng_coins(amount: int) -> int:
 	return ceili(float(amount) * NG_COIN_FACTOR) if ng_plus > 0 else amount
 
 
-## Wat het spel onthoudt over uitgespeelde rondes: {completed, rounds, weapon, hearts, boots}.
+## Wat het spel onthoudt over uitgespeelde rondes: beste spullen en held-ervaring.
 func load_meta() -> Dictionary:
-	var meta := {"completed": false, "rounds": 0, "weapon": "wood", "hearts": 0, "boots": false}
+	var meta := {"completed": false, "rounds": 0, "weapon": "wood", "hearts": 0, "boots": false, "hero_xp": 0, "gear_items": {}, "equipment": {}}
 	var config := ConfigFile.new()
 	if config.load(NG_META_PATH) != OK:
 		return meta
@@ -720,6 +777,9 @@ func load_meta() -> Dictionary:
 	meta["weapon"] = str(config.get_value("ng", "weapon", "wood"))
 	meta["hearts"] = int(config.get_value("ng", "hearts", 0))
 	meta["boots"] = bool(config.get_value("ng", "boots", false))
+	meta["hero_xp"] = Progression.normalize(config.get_value("ng", "hero_xp", 0))
+	meta["gear_items"] = Equipment.normalize_owned(config.get_value("ng", "gear_items", {}))
+	meta["equipment"] = Equipment.normalize(config.get_value("ng", "equipment", {}), meta["gear_items"])
 	if not Items.WEAPONS.has(meta["weapon"]):
 		meta["weapon"] = "wood"
 	return meta
@@ -732,6 +792,10 @@ func save_meta(meta: Dictionary) -> void:
 	config.set_value("ng", "weapon", meta["weapon"])
 	config.set_value("ng", "hearts", meta["hearts"])
 	config.set_value("ng", "boots", meta["boots"])
+	config.set_value("ng", "hero_xp", Progression.normalize(meta.get("hero_xp", 0)))
+	var gear_items := Equipment.normalize_owned(meta.get("gear_items", {}))
+	config.set_value("ng", "gear_items", gear_items)
+	config.set_value("ng", "equipment", Equipment.normalize(meta.get("equipment", {}), gear_items))
 	config.save(NG_META_PATH)
 
 
@@ -754,6 +818,12 @@ func _merge_gear(meta: Dictionary) -> Dictionary:
 		meta["weapon"] = weapon
 	meta["hearts"] = maxi(int(meta["hearts"]), count("heart_container"))
 	meta["boots"] = bool(meta["boots"]) or count("boots") > 0
+	meta["hero_xp"] = maxi(Progression.normalize(meta.get("hero_xp", 0)), Progression.normalize(hero_xp))
+	var gear_items := Equipment.normalize_owned(meta.get("gear_items", {}))
+	gear_items.merge(Equipment.normalize_owned(inventory), true)
+	meta["gear_items"] = gear_items
+	# Bezit wordt bewaard, de laatste bewuste selectie (ook leeg) blijft de keuze.
+	meta["equipment"] = Equipment.normalize(equipment, inventory)
 	return meta
 
 
@@ -765,11 +835,18 @@ func new_game_plus() -> bool:
 	new_game()
 	ng_plus = int(meta["rounds"])
 	weapon = meta["weapon"]
+	hero_xp = meta["hero_xp"]
 	if int(meta["hearts"]) > 0:
 		give("heart_container", int(meta["hearts"]), true)
 	if meta["boots"]:
 		give("boots", 1, true)
+	for item: String in meta["gear_items"]:
+		give(item, 1, true)
+	equipment = Equipment.normalize(meta["equipment"], inventory)
+	movement.reset()
 	coins = NG_START_COINS
 	full_heal()
 	items_changed.emit()
+	progression_changed.emit()
+	equipment_changed.emit()
 	return true
