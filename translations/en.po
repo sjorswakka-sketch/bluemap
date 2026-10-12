@@ -423,22 +423,32 @@ msgstr "The gates stay shut until you win every round. Want to give up? Use the 
 
 #. Naam van gebied dauwbos
 #. Kaart dauwbos, sign [6, 22]: tekst op een bord
-#: scripts/maps/dauwbos.gd:7 scripts/maps/dauwbos.gd:55
+#: scripts/maps/dauwbos.gd:7 scripts/maps/dauwbos.gd:57
 msgid "Dauwbos"
 msgstr "Dew Woods"
 
-#. Kaart dauwbos, sign [6, 22]: tekst op een bord
+#. Kaart dauwbos, sign [46, 18]: tekst op een bord
 #: scripts/maps/dauwbos.gd:55
+msgid "Oostelijk pad: Dorstvallei"
+msgstr "Eastern path: Dorstvallei"
+
+#. Kaart dauwbos, sign [46, 18]: tekst op een bord
+#: scripts/maps/dauwbos.gd:55
+msgid "Over de heuvelrug begint het zand. De zon is daar niet te doen."
+msgstr "Beyond the ridge the sand begins. The sun there is relentless."
+
+#. Kaart dauwbos, sign [6, 22]: tekst op een bord
+#: scripts/maps/dauwbos.gd:57
 msgid "Hier hangt de dauw zwaar. De bomen fluisteren zachter."
 msgstr "The dew hangs heavy here. The trees whisper more softly."
 
 #. Kaart dauwbos, sign [27, 4]: tekst op een bord
-#: scripts/maps/dauwbos.gd:56
+#: scripts/maps/dauwbos.gd:58
 msgid "Noordelijk pad: IJsdal"
 msgstr "Northern path: IJsdal"
 
 #. Kaart dauwbos, sign [27, 4]: tekst op een bord
-#: scripts/maps/dauwbos.gd:56
+#: scripts/maps/dauwbos.gd:58
 msgid "Hoge toppen, diepe sneeuw. Warm aan de lantaarns blijven."
 msgstr "High peaks, deep snow. Stay warm near the lanterns."
 
@@ -462,6 +472,27 @@ msgstr "IJsdal Mine"
 #: scripts/maps/ijsdal.gd:55
 msgid "Ijskristal diep in de rotsen. Nodig: een koperen pikhouweel."
 msgstr "Ice crystal deep in the rocks. Requires: a copper pickaxe."
+
+#. Naam van gebied dorstvallei
+#. Kaart dorstvallei, sign [27, 14]: tekst op een bord
+#: scripts/maps/dorstvallei.gd:9 scripts/maps/dorstvallei.gd:53
+msgid "Dorstvallei"
+msgstr "Dorstvallei"
+
+#. Kaart dorstvallei, sign [27, 14]: tekst op een bord
+#: scripts/maps/dorstvallei.gd:53
+msgid "De zon brandt, het zand waait. De oase geeft leven."
+msgstr "The sun scorches, the sand drifts. The oasis gives life."
+
+#. Kaart dorstvallei, sign [40, 21]: tekst op een bord
+#: scripts/maps/dorstvallei.gd:54
+msgid "Jachtgronden"
+msgstr "Hunting grounds"
+
+#. Kaart dorstvallei, sign [40, 21]: tekst op een bord
+#: scripts/maps/dorstvallei.gd:54
+msgid "Woestijnvossen en zandhazen. Kom je te dichtbij, dan rennen ze weg."
+msgstr "Desert foxes and sand hares. Get too close and they bolt."
 
 #. Naam van wie er praat (Gesprek bram_intro)
 #. Naam van wie er praat (Gesprek bram_intro2)
@@ -2176,7 +2207,8 @@ msgstr "I'll find it."
 
 #. Gesprek lotte_vraag: keuze van de speler
 #. Gesprek fenna_vraag: keuze van de speler
-#: scripts/data/ext/polijst.gd:130 scripts/data/ext/sneeuw.gd:73
+#. Gesprek jelle_vraag: keuze van de speler
+#: scripts/data/ext/dorst.gd:97 scripts/data/ext/polijst.gd:130 scripts/data/ext/sneeuw.gd:73
 msgid "Later misschien."
 msgstr "Maybe later."
 
@@ -2196,7 +2228,7 @@ msgstr "Have you found the night lantern yet?"
 #. Gesprek noor_menu: keuze van de speler
 #. Gesprek fenna_menu: keuze van de speler
 #. Gesprek roos_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:134 scripts/data/ext/polijst.gd:174 scripts/data/ext/polijst.gd:214 scripts/data/ext/polijst.gd:257
+#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/polijst.gd:134 scripts/data/ext/polijst.gd:174
 msgid "Nog niet."
 msgstr "Not yet."
 
@@ -2303,7 +2335,9 @@ msgstr "Do you have the herbs yet?"
 #. Gesprek elke_menu: keuze van de speler
 #. Gesprek mira_menu: keuze van de speler
 #. Gesprek fenna_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:174 scripts/data/ext/polijst.gd:214 scripts/data/ext/sneeuw.gd:77
+#. Gesprek jelle_menu: keuze van de speler
+#. Gesprek sana_menu: keuze van de speler
+#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/polijst.gd:174 scripts/data/ext/polijst.gd:214
 msgid "Tot zo."
 msgstr "See you soon."
 
@@ -2494,7 +2528,8 @@ msgid "Wil je 4 ijsbloemen voor me plukken? Ze bloeien in het dal, zelfs onder d
 msgstr "Will you pick 4 ice flowers for me? They bloom in the valley, even under the snow."
 
 #. Gesprek fenna_vraag: keuze van de speler
-#: scripts/data/ext/sneeuw.gd:72
+#. Gesprek sana_vraag: keuze van de speler
+#: scripts/data/ext/dorst.gd:118 scripts/data/ext/sneeuw.gd:72
 msgid "Ik pluk ze wel."
 msgstr "I'll pick them."
 
@@ -2548,7 +2583,8 @@ msgid "Ik regel het."
 msgstr "I'm on it."
 
 #. Gesprek roos_vraag: keuze van de speler
-#: scripts/data/ext/sneeuw.gd:95
+#. Gesprek sana_vraag: keuze van de speler
+#: scripts/data/ext/dorst.gd:119 scripts/data/ext/sneeuw.gd:95
 msgid "Niet nu."
 msgstr "Not now."
 
@@ -2641,6 +2677,173 @@ msgstr "Ice crystal grows in the mine corner: cold, clear and harder than copper
 msgid "Je hebt er een koperen pikhouweel en wat mijnservaring voor nodig. Alchemisten betalen goed."
 msgstr "You need a copper pickaxe and some mining experience for it. Alchemists pay well."
 
+#. Naam van wie er praat (Gesprek jelle_intro)
+#. Naam van wie er praat (Gesprek jelle_vraag)
+#. Naam van wie er praat (Gesprek jelle_ok)
+#. Naam van wie er praat (Gesprek jelle_menu)
+#. Naam van wie er praat (Gesprek jelle_klaar)
+#: scripts/data/ext/dorst.gd:87 scripts/data/ext/dorst.gd:93 scripts/data/ext/dorst.gd:100 scripts/data/ext/dorst.gd:101
+msgid "Jelle"
+msgstr "Jelle"
+
+#. Gesprek jelle_intro, Jelle zegt
+#: scripts/data/ext/dorst.gd:88
+msgid "Vreemdeling! Welkom in de Dorstvallei. Ik ben Jelle; ik handel in vellen en vlees."
+msgstr "Stranger! Welcome to Dorstvallei. I am Jelle; I trade in hides and meat."
+
+#. Gesprek jelle_intro, Jelle zegt
+#: scripts/data/ext/dorst.gd:88
+msgid "De vossen hier hebben de zachtste vacht van het land. Maar vangen... dat is een ander verhaal."
+msgstr "The foxes here have the softest coats in the land. But catching them... that's another story."
+
+#. Gesprek jelle_vraag, Jelle zegt
+#: scripts/data/ext/dorst.gd:94
+msgid "Wil je voor me jagen? Breng me 2 dierenvachten en 2 stukken rauw vlees van het wild hier."
+msgstr "Will you hunt for me? Bring me 2 hides and 2 pieces of raw meat from the game here."
+
+#. Gesprek jelle_vraag: keuze van de speler
+#: scripts/data/ext/dorst.gd:96
+msgid "Ik ga op jacht."
+msgstr "I'll go hunting."
+
+#. Gesprek jelle_ok, Jelle zegt
+#: scripts/data/ext/dorst.gd:100
+msgid "Mooi. De vossen zitten in het oosten, de hazen in het zuiden. Ze rennen weg als je te dichtbij komt, dus zet aan met een sprint. Of neem een boog mee."
+msgstr "Good. The foxes are in the east, the hares in the south. They bolt when you get close, so charge with a sprint. Or bring a bow."
+
+#. Gesprek jelle_menu, Jelle zegt
+#: scripts/data/ext/dorst.gd:101
+msgid "Heb je de vellen en het vlees al?"
+msgstr "Do you have the hides and the meat yet?"
+
+#. Gesprek jelle_klaar, Jelle zegt
+#: scripts/data/ext/dorst.gd:104
+msgid "Ah, prachtig spul! Zulke vellen zie je zelden."
+msgstr "Ah, fine goods! You rarely see hides like these."
+
+#. Gesprek jelle_klaar, Jelle zegt
+#: scripts/data/ext/dorst.gd:104
+msgid "Hier, je deel van de opbrengst. En een braadstuk van mijn eigen voorraad, je hebt het verdiend."
+msgstr "Here, your share of the proceeds. And a roast from my own stock, you've earned it."
+
+#. Naam van wie er praat (Gesprek sana_intro)
+#. Naam van wie er praat (Gesprek sana_vraag)
+#. Naam van wie er praat (Gesprek sana_ok)
+#. Naam van wie er praat (Gesprek sana_menu)
+#. Naam van wie er praat (Gesprek sana_klaar)
+#: scripts/data/ext/dorst.gd:109 scripts/data/ext/dorst.gd:115 scripts/data/ext/dorst.gd:122 scripts/data/ext/dorst.gd:123
+msgid "Sana"
+msgstr "Sana"
+
+#. Gesprek sana_intro, Sana zegt
+#: scripts/data/ext/dorst.gd:110
+msgid "Welkom bij de oase, reiziger. Ik ben Sana. Dit water is het hart van de vallei."
+msgstr "Welcome to the oasis, traveller. I am Sana. This water is the heart of the valley."
+
+#. Gesprek sana_intro, Sana zegt
+#: scripts/data/ext/dorst.gd:110
+msgid "Ik maak koele drankjes van cactusvijgen. Zoet, en je houdt er de hitte mee uit."
+msgstr "I make cool drinks from cactus figs. Sweet, and they keep the heat at bay."
+
+#. Gesprek sana_vraag, Sana zegt
+#: scripts/data/ext/dorst.gd:116
+msgid "Wil je 5 cactusvijgen voor me plukken? Ze groeien op de cactussen, vooral in het noordwesten en het oosten."
+msgstr "Will you pick 5 cactus figs for me? They grow on the cacti, mostly in the northwest and the east."
+
+#. Gesprek sana_ok, Sana zegt
+#: scripts/data/ext/dorst.gd:122
+msgid "Dank je. Pas op voor de stekels, en groet de hazen van me als je ze ziet."
+msgstr "Thank you. Mind the spines, and greet the hares from me if you see them."
+
+#. Gesprek sana_menu, Sana zegt
+#: scripts/data/ext/dorst.gd:123
+msgid "Heb je de cactusvijgen al?"
+msgstr "Do you have the cactus figs yet?"
+
+#. Gesprek sana_klaar, Sana zegt
+#: scripts/data/ext/dorst.gd:126
+msgid "Wat een mooie vijgen! Hier wordt de hele vallei blij van."
+msgstr "What beautiful figs! The whole valley will love these."
+
+#. Gesprek sana_klaar, Sana zegt
+#: scripts/data/ext/dorst.gd:126
+msgid "Neem mijn zandbalsem mee; die maakte ik van het zandkruid dat hier groeit."
+msgstr "Take my sand balm; I made it from the sandwort that grows here."
+
+#. Naam van wie er praat (Gesprek nour_intro)
+#. Naam van wie er praat (Gesprek nour_menu)
+#. Naam van wie er praat (Gesprek nour_oase)
+#. Naam van wie er praat (Gesprek nour_wild)
+#. Naam van wie er praat (Gesprek nour_hitte)
+#: scripts/data/ext/dorst.gd:131 scripts/data/ext/dorst.gd:137 scripts/data/ext/dorst.gd:146 scripts/data/ext/dorst.gd:147
+msgid "Nour"
+msgstr "Nour"
+
+#. Gesprek nour_intro, Nour zegt
+#: scripts/data/ext/dorst.gd:132
+msgid "Ah, iemand van over de heuvelrug. Ik ben Nour; ik gids reizigers door het zand."
+msgstr "Ah, someone from beyond the ridge. I am Nour; I guide travellers through the sand."
+
+#. Gesprek nour_intro, Nour zegt
+#: scripts/data/ext/dorst.gd:132
+msgid "De Dorstvallei is hard maar eerlijk. De oase geeft water, de cactus geeft fruit, het wild geeft vlees."
+msgstr "Dorstvallei is harsh but fair. The oasis gives water, the cactus gives fruit, the game gives meat."
+
+#. Gesprek nour_menu, Nour zegt
+#: scripts/data/ext/dorst.gd:138
+msgid "Wat wil je weten van de vallei?"
+msgstr "What do you want to know about the valley?"
+
+#. Gesprek nour_menu: keuze van de speler
+#: scripts/data/ext/dorst.gd:140
+msgid "Over de oase."
+msgstr "About the oasis."
+
+#. Gesprek nour_menu: keuze van de speler
+#: scripts/data/ext/dorst.gd:141
+msgid "Over het wild."
+msgstr "About the game."
+
+#. Gesprek nour_menu: keuze van de speler
+#: scripts/data/ext/dorst.gd:142
+msgid "Over de hitte."
+msgstr "About the heat."
+
+#. Gesprek nour_menu: keuze van de speler
+#: scripts/data/ext/dorst.gd:143
+msgid "Een andere keer."
+msgstr "Another time."
+
+#. Gesprek nour_oase, Nour zegt
+#: scripts/data/ext/dorst.gd:146
+msgid "De oase is ouder dan elk dorp in het westen. Zonder dit water was hier alleen zand geweest."
+msgstr "The oasis is older than any village in the west. Without this water there would be only sand."
+
+#. Gesprek nour_oase, Nour zegt
+#: scripts/data/ext/dorst.gd:146
+msgid "Sana waakt erover. Pluk gerust vijgen, maar laat het water met rust."
+msgstr "Sana watches over it. Pick figs as you like, but leave the water be."
+
+#. Gesprek nour_wild, Nour zegt
+#: scripts/data/ext/dorst.gd:147
+msgid "De vossen en hazen zijn schuw, niet gevaarlijk. Kom je te dichtbij, dan verdwijnen ze als een stofwolk."
+msgstr "The foxes and hares are shy, not dangerous. Get too close and they vanish like a dust cloud."
+
+#. Gesprek nour_wild, Nour zegt
+#: scripts/data/ext/dorst.gd:147
+msgid "Jelle betaalt goed voor vel en vlees. En met een boog haal je ze neer voordat ze weg zijn."
+msgstr "Jelle pays well for hide and meat. And with a bow you take them down before they bolt."
+
+#. Gesprek nour_hitte, Nour zegt
+#: scripts/data/ext/dorst.gd:148
+msgid "De zon brandt hier de hele dag en het zand waait nooit helemaal stil."
+msgstr "The sun scorches here all day and the sand never quite settles."
+
+#. Gesprek nour_hitte, Nour zegt
+#: scripts/data/ext/dorst.gd:148
+msgid "Draag iets luchts, drink genoeg, en zoek op het heetst de schaduw van de klippen op."
+msgstr "Wear something airy, drink plenty, and at the hottest hour seek the shade of the cliffs."
+
 #. Naam van personage greta (boven zijn hoofd)
 #: scripts/data/npcs.gd:20
 msgid "Greta de smid"
@@ -2715,6 +2918,21 @@ msgstr "Roos the huntress"
 #: scripts/data/ext/sneeuw.gd:53
 msgid "Olav de kaartenbewaarder"
 msgstr "Olav the map keeper"
+
+#. Naam van personage jelle (boven zijn hoofd)
+#: scripts/data/ext/dorst.gd:61
+msgid "Jelle de vellenhandelaar"
+msgstr "Jelle the hide trader"
+
+#. Naam van personage sana (boven zijn hoofd)
+#: scripts/data/ext/dorst.gd:69
+msgid "Sana van de oase"
+msgstr "Sana of the oasis"
+
+#. Naam van personage nour (boven zijn hoofd)
+#: scripts/data/ext/dorst.gd:77
+msgid "Nour de woestijngids"
+msgstr "Nour the desert guide"
 
 #. Titel van opdracht main
 #. Titel van boek blauwe_kaart (bibliotheek)
@@ -2948,6 +3166,36 @@ msgstr "Roos the huntress keeps the paths of IJsdal safe. Defeat 4 ice-blue slim
 #: scripts/data/ext/sneeuw.gd:30
 msgid "Vertel Roos dat de paden weer veilig zijn."
 msgstr "Tell Roos the paths are safe again."
+
+#. Titel van opdracht vellen_en_vlees
+#: scripts/data/ext/dorst.gd:38
+msgid "Vellen en vlees"
+msgstr "Hides and meat"
+
+#. Opdracht vellen_en_vlees, stap 1
+#: scripts/data/ext/dorst.gd:41
+msgid "Jelle de vellenhandelaar vraagt 2 dierenvachten en 2 stukken rauw vlees. Jaag op het wild van de Dorstvallei."
+msgstr "Jelle the hide trader asks for 2 hides and 2 pieces of raw meat. Hunt the game of Dorstvallei."
+
+#. Opdracht vellen_en_vlees, stap 2
+#: scripts/data/ext/dorst.gd:44
+msgid "Breng de vellen en het vlees naar Jelle in de Dorstvallei."
+msgstr "Bring the hides and meat to Jelle in Dorstvallei."
+
+#. Titel van opdracht cactusvijgen
+#: scripts/data/ext/dorst.gd:48
+msgid "Cactusvijgen voor Sana"
+msgstr "Cactus figs for Sana"
+
+#. Opdracht cactusvijgen, stap 1
+#: scripts/data/ext/dorst.gd:51
+msgid "Sana bij de oase heeft 5 cactusvijgen nodig voor haar koele drankjes. Ze groeien op de cactussen van de vallei."
+msgstr "Sana at the oasis needs 5 cactus figs for her cool drinks. They grow on the valley's cacti."
+
+#. Opdracht cactusvijgen, stap 2
+#: scripts/data/ext/dorst.gd:54
+msgid "Breng de cactusvijgen naar Sana bij de oase."
+msgstr "Bring the cactus figs to Sana at the oasis."
 
 #. Naam van voorwerp coin
 #: scripts/data/items.gd:9
@@ -3316,7 +3564,7 @@ msgstr "A sharp loose stone. You can pick it up without tools."
 
 #. Naam van voorwerp prof_herb
 #. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:81
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:87
 msgid "Zilverkruid"
 msgstr "Silverleaf"
 
@@ -3535,6 +3783,47 @@ msgstr "Winter glow"
 msgid "Een warme winterbespap. Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."
 msgstr "A warm winter berry porridge. Restores 2 hearts. Use through Professions → Food & drink."
 
+#. Naam van voorwerp prof_cactusvijg
+#: scripts/data/ext/beroepen.gd:56
+msgid "Cactusvijg"
+msgstr "Cactus fig"
+
+#. Beschrijving van voorwerp prof_cactusvijg
+#: scripts/data/ext/beroepen.gd:56
+msgid "Zoete vrucht van de zuilcactus. Verkoelend; Sana maakt er drankjes van."
+msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks."
+
+#. Naam van voorwerp prof_zandkruid
+#. Oogstbare grondstof sandwort
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:98
+msgid "Zandkruid"
+msgstr "Sandwort"
+
+#. Beschrijving van voorwerp prof_zandkruid
+#: scripts/data/ext/beroepen.gd:57
+msgid "Een taai, geurig kruid dat tussen het duinzand groeit. Voor balsems en braadstukken."
+msgstr "A tough, fragrant herb that grows among the dune sand. For balms and roasts."
+
+#. Naam van voorwerp prof_zandsteen
+#: scripts/data/ext/beroepen.gd:58
+msgid "Zandsteen"
+msgstr "Sandstone"
+
+#. Beschrijving van voorwerp prof_zandsteen
+#: scripts/data/ext/beroepen.gd:58
+msgid "Warme, gelaagde steen uit de klippen van de Dorstvallei. Licht en goed te bewerken."
+msgstr "Warm, layered stone from the cliffs of Dorstvallei. Light and easy to work."
+
+#. Naam van voorwerp prof_zandbalsem
+#: scripts/data/ext/beroepen.gd:59
+msgid "Zandbalsem"
+msgstr "Sand balm"
+
+#. Beschrijving van voorwerp prof_zandbalsem
+#: scripts/data/ext/beroepen.gd:59
+msgid "Verkoelende balsem van zandkruid en cactusvijg. Herstelt 30 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Cooling balm of sandwort and cactus fig. Restores 30 stamina. Use through Professions → Food & drink."
+
 #. Naam van voorwerp gear_cloth_hood
 #: scripts/data/ext/uitrusting.gd:14
 msgid "Linnen kap"
@@ -3665,6 +3954,36 @@ msgstr "Fresh Herbs"
 msgid "Verse kruiden uit het bos. Elke de kruidenier heeft ze nodig."
 msgstr "Fresh herbs from the forest. Elke the herbalist needs them."
 
+#. Naam van voorwerp jacht_vlees
+#: scripts/data/ext/dorst.gd:31
+msgid "Rauw vlees"
+msgstr "Raw meat"
+
+#. Beschrijving van voorwerp jacht_vlees
+#: scripts/data/ext/dorst.gd:31
+msgid "Vers vlees van wild uit de Dorstvallei. Braad het in de keuken van de herberg."
+msgstr "Fresh game meat from Dorstvallei. Roast it in the inn's kitchen."
+
+#. Naam van voorwerp jacht_vacht
+#: scripts/data/ext/dorst.gd:32
+msgid "Dierenvacht"
+msgstr "Animal hide"
+
+#. Beschrijving van voorwerp jacht_vacht
+#: scripts/data/ext/dorst.gd:32
+msgid "Een zachte vossenvacht. Handelaars en kleermakers betalen er goed voor."
+msgstr "A soft fox hide. Traders and tailors pay well for it."
+
+#. Naam van voorwerp jacht_braadstuk
+#: scripts/data/ext/dorst.gd:33
+msgid "Braadstuk"
+msgstr "Roast"
+
+#. Beschrijving van voorwerp jacht_braadstuk
+#: scripts/data/ext/dorst.gd:33
+msgid "Sappig gebraden vlees met zandkruid. Herstelt 3 hartjes. Gebruik via Beroepen → Eten & drinken."
+msgstr "Juicy roasted meat with sandwort. Restores 3 hearts. Use through Professions → Food & drink."
+
 #. Naam van vijand slime
 #: scripts/data/enemies.gd:13
 msgid "Slijm"
@@ -3784,6 +4103,26 @@ msgstr "A golem of purple crystal that has guarded the Crystal Halls for ages. I
 #: scripts/data/ext/diepte.gd:130
 msgid "De oude bewaker van de Sterrenkaart. Hij sliep meer dan duizend jaar onder de tempel en wilde liever niet gestoord worden."
 msgstr "The ancient keeper of the Star Map. He slept under the temple for over a thousand years and really didn't want to be woken up."
+
+#. Naam van vijand woestijnvos
+#: scripts/data/ext/dorst.gd:15
+msgid "Woestijnvos"
+msgstr "Desert fox"
+
+#. Vijand woestijnvos: grappige beschrijving in het beestenboek
+#: scripts/data/ext/dorst.gd:19
+msgid "Een sluwe vos met oren als warmtepanelen. Hij is niet gevaarlijk, maar wel verdomd snel."
+msgstr "A sly fox with ears like heat panels. Not dangerous, but darn fast."
+
+#. Naam van vijand zandhaas
+#: scripts/data/ext/dorst.gd:22
+msgid "Zandhaas"
+msgstr "Sand hare"
+
+#. Vijand zandhaas: grappige beschrijving in het beestenboek
+#: scripts/data/ext/dorst.gd:26
+msgid "Een haas die tussen de duinen huppelt. Zijn achterpoten zijn sneller dan je zwaard, bijna dan."
+msgstr "A hare that hops between the dunes. Its hind legs are faster than your sword — almost."
 
 #. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
 #: scripts/data/enemies.gd:75
@@ -4187,6 +4526,16 @@ msgstr "Snow feet"
 #: scripts/data/ext/sneeuw.gd:129
 msgid "Ontdek IJsdal en praat met Fenna, Roos en Olav."
 msgstr "Discover IJsdal and talk to Fenna, Roos and Olav."
+
+#. Naam van prestatie dorstvallei_ontdekt
+#: scripts/data/ext/dorst.gd:153
+msgid "Zandvoeten"
+msgstr "Sand feet"
+
+#. Uitleg bij prestatie dorstvallei_ontdekt
+#: scripts/data/ext/dorst.gd:153
+msgid "Ontdek de Dorstvallei en praat met Jelle, Sana en Nour."
+msgstr "Discover Dorstvallei and talk to Jelle, Sana and Nour."
 
 #. Naam van winkel tobias
 #: scripts/data/shops.gd:10
@@ -4700,59 +5049,69 @@ msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme g
 msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
 
 #. Oogstbare grondstof branches
-#: scripts/data/ext/beroepen.gd:79
+#: scripts/data/ext/beroepen.gd:85
 msgid "Losse takken"
 msgstr "Loose Branches"
 
 #. Oogstbare grondstof stones
-#: scripts/data/ext/beroepen.gd:80
+#: scripts/data/ext/beroepen.gd:86
 msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof berries
-#: scripts/data/ext/beroepen.gd:82
+#: scripts/data/ext/beroepen.gd:88
 msgid "Bosbessenstruik"
 msgstr "Blueberry Bush"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:83
+#: scripts/data/ext/beroepen.gd:89
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
 #. Oogstbare grondstof stump
-#: scripts/data/ext/beroepen.gd:84
+#: scripts/data/ext/beroepen.gd:90
 msgid "Berkenstronk"
 msgstr "Birch Stump"
 
 #. Oogstbare grondstof copper
-#: scripts/data/ext/beroepen.gd:85
+#: scripts/data/ext/beroepen.gd:91
 msgid "Koperader"
 msgstr "Copper Vein"
 
 #. Oogstbare grondstof iron
-#: scripts/data/ext/beroepen.gd:86
+#: scripts/data/ext/beroepen.gd:92
 msgid "IJzerader"
 msgstr "Iron Vein"
 
 #. Oogstbare grondstof winterherbs
-#: scripts/data/ext/beroepen.gd:87
+#: scripts/data/ext/beroepen.gd:93
 msgid "IJsbloemen"
 msgstr "Ice flowers"
 
 #. Oogstbare grondstof frostberries
-#: scripts/data/ext/beroepen.gd:88
+#: scripts/data/ext/beroepen.gd:94
 msgid "Winterbessenstruik"
 msgstr "Winter berry bush"
 
 #. Oogstbare grondstof pine_stump
-#: scripts/data/ext/beroepen.gd:89
+#: scripts/data/ext/beroepen.gd:95
 msgid "Dennenstronk"
 msgstr "Pine stump"
 
 #. Oogstbare grondstof ice_vein
-#: scripts/data/ext/beroepen.gd:90
+#: scripts/data/ext/beroepen.gd:96
 msgid "IJskristalader"
 msgstr "Ice crystal vein"
+
+#. Oogstbare grondstof cactusfigs
+#: scripts/data/ext/beroepen.gd:97
+msgid "Cactusvijgen"
+msgstr "Cactus figs"
+
+#. Oogstbare grondstof sandstone_rock
+#: scripts/data/ext/beroepen.gd:99
+msgid "Zandsteenklip"
+msgstr "Sandstone crag"
 
 #. Instelbare bediening: move_up
 #: scripts/core/input_manager.gd:11
@@ -5024,19 +5383,19 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/core/daynight.gd:125
+#: scripts/core/daynight.gd:135
 msgid "Ochtend"
 msgstr "Morning"
 
-#: scripts/core/daynight.gd:127
+#: scripts/core/daynight.gd:137
 msgid "Dag"
 msgstr "Day"
 
-#: scripts/core/daynight.gd:129
+#: scripts/core/daynight.gd:139
 msgid "Avond"
 msgstr "Evening"
 
-#: scripts/core/daynight.gd:131
+#: scripts/core/daynight.gd:141
 msgid "Nacht"
 msgstr "Night"
 
@@ -5439,11 +5798,11 @@ msgstr "Bounced off!"
 msgid "Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."
 msgstr "Your arrow bounces off the crystal! Shoot when the golem winds up for a slam."
 
-#: scripts/entities/atmosphere.gd:157
+#: scripts/entities/atmosphere.gd:173
 msgid "Goedemorgen!"
 msgstr "Good morning!"
 
-#: scripts/entities/atmosphere.gd:158
+#: scripts/entities/atmosphere.gd:174
 msgid "Lekker geslapen! Je hebt weer alle hartjes."
 msgstr "Slept like a log! All your hearts are back."
 
@@ -5477,7 +5836,7 @@ msgstr "It's stuck tight. Maybe it will only open once the Blue Map is whole aga
 msgid "Het zegel is gebroken! Er is een trap naar beneden."
 msgstr "The seal is broken! There's a staircase going down."
 
-#: scripts/entities/enemy.gd:353
+#: scripts/entities/enemy.gd:370
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -5555,7 +5914,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:37
+#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:40
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."

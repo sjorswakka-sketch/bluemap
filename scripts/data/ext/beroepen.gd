@@ -53,6 +53,10 @@ const ITEMS := {
 	"prof_ijskristal": {"name": "IJskristal", "sheet": "items_beroepen", "icon": 21, "type": "material", "desc": "Een zuivere kristalspalk uit een bevroren ader. Gezocht door alchemisten."},
 	"prof_frost_tonic": {"name": "Vorstelixer", "sheet": "items_beroepen", "icon": 22, "type": "use", "stamina": 40, "desc": "Herstelt 40 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
 	"prof_winter_gloed": {"name": "Wintergloed", "sheet": "items_beroepen", "icon": 23, "type": "use", "heal": 2, "desc": "Een warme winterbespap. Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."},
+	"prof_cactusvijg": {"name": "Cactusvijg", "sheet": "items_beroepen", "icon": 24, "type": "material", "desc": "Zoete vrucht van de zuilcactus. Verkoelend; Sana maakt er drankjes van."},
+	"prof_zandkruid": {"name": "Zandkruid", "sheet": "items_beroepen", "icon": 25, "type": "material", "desc": "Een taai, geurig kruid dat tussen het duinzand groeit. Voor balsems en braadstukken."},
+	"prof_zandsteen": {"name": "Zandsteen", "sheet": "items_beroepen", "icon": 26, "type": "material", "desc": "Warme, gelaagde steen uit de klippen van de Dorstvallei. Licht en goed te bewerken."},
+	"prof_zandbalsem": {"name": "Zandbalsem", "sheet": "items_beroepen", "icon": 27, "type": "use", "stamina": 30, "desc": "Verkoelende balsem van zandkruid en cactusvijg. Herstelt 30 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
 }
 const RECIPES := {
 	"stone_axe": {"skill": "woodcutting", "level": 1, "xp": 8, "inputs": {"prof_branch": 2, "prof_stone": 2}, "output": "prof_axe"},
@@ -74,6 +78,8 @@ const RECIPES := {
 	"crystal_ring": {"skill": "alchemy", "level": 2, "xp": 18, "station": "library", "inputs": {"prof_copper_bar": 1, "prof_herb": 4, "gel": 4}, "output": "gear_crystal_ring"},
 	"frost_tonic": {"skill": "alchemy", "level": 2, "xp": 12, "station": "library", "inputs": {"prof_ijsbloem": 2, "prof_winterbes": 2}, "output": "prof_frost_tonic"},
 	"winter_glow": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_winterbes": 3, "prof_ijsbloem": 1}, "output": "prof_winter_gloed"},
+	"sand_balm": {"skill": "alchemy", "level": 2, "xp": 12, "station": "library", "inputs": {"prof_zandkruid": 2, "prof_cactusvijg": 1}, "output": "prof_zandbalsem"},
+	"roast_meat": {"skill": "cooking", "level": 2, "xp": 12, "station": "inn", "inputs": {"jacht_vlees": 2, "prof_zandkruid": 1}, "output": "jacht_braadstuk"},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},
@@ -88,6 +94,9 @@ const RESOURCES := {
 	"frostberries": {"name": "Winterbessenstruik", "skill": "foraging", "item": "prof_winterbes", "amount": 3, "xp": 8, "cooldown": 150.0, "color": Color("e8a5b5")},
 	"pine_stump": {"name": "Dennenstronk", "skill": "woodcutting", "item": "prof_dennenhout", "amount": 2, "xp": 8, "cooldown": 150.0, "tools": ["prof_iron_axe", "prof_axe"], "duration": 1.1, "animation": "woodcutting", "color": Color("7a5c3d")},
 	"ice_vein": {"name": "IJskristalader", "skill": "mining", "item": "prof_ijskristal", "amount": 2, "xp": 12, "cooldown": 180.0, "level": 2, "tools": ["prof_copper_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("9fd8f0")},
+	"cactusfigs": {"name": "Cactusvijgen", "skill": "foraging", "item": "prof_cactusvijg", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("e87a9a")},
+	"sandwort": {"name": "Zandkruid", "skill": "foraging", "item": "prof_zandkruid", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("b3a04f")},
+	"sandstone_rock": {"name": "Zandsteenklip", "skill": "mining", "item": "prof_zandsteen", "amount": 2, "xp": 10, "cooldown": 180.0, "tools": ["prof_copper_pickaxe", "prof_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("c08a54")},
 }
 # Explicit IDs keep cooldowns stable when maps or the original object lists change.
 # Nodes are small, non-blocking props on walkable tiles away from doors and quest items.
@@ -97,6 +106,7 @@ const RESOURCE_PLACEMENTS := {
 	"lake": [["herbs_north", "herbs", 17, 10], ["berries_north", "berries", 25, 10], ["twigs_shore", "branches", 6, 13], ["flint_shore", "stones", 35, 12]],
 	"cave": [["copper_entry", "copper", 9, 32], ["iron_entry", "iron", 3, 29], ["iron_west", "iron", 10, 22], ["iron_east", "iron", 29, 28]],
 	"ijsdal": [["ijsbloem_west", "winterherbs", 5, 14], ["ijsbloem_meer", "winterherbs", 16, 25], ["ijsbloem_noord", "winterherbs", 30, 5], ["winterbes_west", "frostberries", 4, 19], ["winterbes_oost", "frostberries", 42, 6], ["den_west", "pine_stump", 7, 16], ["den_oost", "pine_stump", 33, 20], ["ijskristal_mijn", "ice_vein", 40, 24], ["ijskristal_diep", "ice_vein", 44, 28], ["vuursteen_mijn", "stones", 38, 26], ["takken_plein", "branches", 28, 19]],
+	"dorstvallei": [["vijgen_west", "cactusfigs", 6, 7], ["vijgen_oost", "cactusfigs", 41, 8], ["vijgen_zuidoost", "cactusfigs", 38, 12], ["kruid_noord", "sandwort", 11, 8], ["kruid_midden", "sandwort", 20, 12], ["kruid_oost", "sandwort", 37, 22], ["zandsteen_west", "sandstone_rock", 7, 27], ["zandsteen_noord", "sandstone_rock", 25, 4], ["zandsteen_zuid", "sandstone_rock", 13, 30], ["vuursteen_zuid", "stones", 21, 26], ["kruiden_oase", "herbs", 12, 13]],
 }
 
 

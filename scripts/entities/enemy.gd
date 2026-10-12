@@ -52,6 +52,9 @@ var hop_to := Vector2.ZERO
 var hop_count := 0
 var slam_ring := 0.0
 var dead := false
+# Wilde dieren (gedrag "animal"): vreedzaam wild dat wegrent als je te dichtbij komt of het raakt
+var panic := 0.0 # hoe lang het dier nog vlucht na een klap
+var fleeing := false # rent het dier nu weg (voor het plaatje)
 # Magiër en Slijmspuwer
 var special_timer := FIRST_DELAY # tijd tot de volgende teleport (Magiër) of spuugbeurt (Slijmspuwer)
 var hop_cooldown := 0.0 # de Slijmspuwer hupt niet meteen weer
@@ -137,14 +140,16 @@ func _physics_process(delta: float) -> void:
 			_ai_golem(delta)
 		"king":
 			_ai_king(delta)
+		"animal":
+			_ai_animal(delta)
 
 	velocity = desired + knockback
 	knockback = knockback.move_toward(Vector2.ZERO, 700.0 * delta)
 	move_and_slide()
 
 	var touch_range: float = radius + 9.0
-	if state in ["hop", "vanish", "appear"]:
-		touch_range = 0.0 # in de lucht of als rookwolkje kan hij niemand raken
+	if state in ["hop", "vanish", "appear"] or data["behavior"] == "animal":
+		touch_range = 0.0 # in de lucht, als rookwolkje of als vreedzaam dier kan hij niemand raken
 	if global_position.distance_to(player.global_position) < touch_range and touch_cooldown <= 0.0:
 		touch_cooldown = 0.8
 		player.hurt(global_position, data["damage"], data["name"])
@@ -169,6 +174,18 @@ func _ai_chase(delta: float) -> void:
 	var to_player := _to_player()
 	if to_player.length() < data["sight"]:
 		desired = to_player.normalized() * data["chase_speed"]
+	else:
+		_wander(delta)
+
+
+## Vreedzaam wild: het draalt wat rond, maar schrikt en rent weg als je te dichtbij komt of het raakt.
+## Een klap (ook een pijl uit de verte) zet `panic`: dan vlucht het nog even nadat je stopt met achtervolgen.
+func _ai_animal(delta: float) -> void:
+	panic = maxf(panic - delta, 0.0)
+	var to_player := _to_player()
+	fleeing = panic > 0.0 or to_player.length() < float(data.get("panic_range", 90.0))
+	if fleeing:
+		desired = -to_player.normalized() * float(data["chase_speed"])
 	else:
 		_wander(delta)
 
@@ -626,6 +643,8 @@ func hurt(damage: int, direction: Vector2) -> void:
 	hp -= damage
 	knockback = direction.normalized() * float(data.get("knockback", 240.0))
 	flash = 0.15
+	if data["behavior"] == "animal":
+		panic = 5.0 # een geraakt dier vlucht, ook als de pijl van ver kwam
 	if data["behavior"] == "mage" and (state == "appear" or state == "cast"):
 		_mage_interrupt()
 	world.damage_number(global_position + Vector2(0, -_size_px() * 0.35), str(damage), Color(1, 0.95, 0.6))
@@ -684,6 +703,11 @@ func _draw() -> void:
 	var chasing: bool = player != null and active and _to_player().length() < float(data["sight"])
 
 	match data["behavior"]:
+		"animal":
+			# Wild dier: twee stapplaatjes, twee vluchtplaatjes (het kijkt naar rechts, net als de slijmen)
+			DrawUtil.ellipse(self, Vector2(0, size * 0.44), Vector2(shadow, shadow * 0.35), Color(0, 0, 0, 0.3))
+			var column := int(anim * 0.9) % 2 + (2 if fleeing else 0)
+			DrawUtil.sprite(self, sheet, column, 0, Vector2.ZERO, cell, scale, tint)
 		"chase":
 			DrawUtil.ellipse(self, Vector2(0, size * 0.44), Vector2(shadow, shadow * 0.35), Color(0, 0, 0, 0.3))
 			var column := int(anim * 0.6) % 2 + (2 if chasing else 0)
