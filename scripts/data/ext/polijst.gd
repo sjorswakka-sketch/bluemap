@@ -1,6 +1,9 @@
 extends RefCounted
-## Polish-uitbreiding: extra content zonder nieuwe systemen.
-## Quest "De Verdwenen Lantaarn" + meer NPC's met dialoog.
+## Grote polish-uitbreiding: Dauwbos, langere quests, meer NPC's.
+
+const MAPS := {
+	"dauwbos": preload("res://scripts/maps/dauwbos.gd"),
+}
 
 const QUESTS := {
 	"lantaarn": {
@@ -23,12 +26,34 @@ const QUESTS := {
 			{"text": "Breng de kruiden naar Elke in het dorp."},
 		],
 	},
+	"dauw": {
+		"title": "Het Geheim van de Dauw",
+		"steps": [
+			{
+				"text": "Mira in het Dauwbos zoekt een oude dauwsteen. Ze denkt dat die bij de schuilplaats ligt.",
+				"advance_if": [["has", "dauwsteen", 1]],
+			},
+			{
+				"text": "Breng de dauwsteen naar Mira. Ze wil hem gebruiken om de mist te lichten.",
+				"advance_if": [["flag", "dauw_gesproken"]],
+			},
+			{
+				"text": "Praat met Tomas over de oude verhalen van het Dauwbos.",
+				"advance_if": [["flag", "tomas_verhaal"]],
+			},
+			{"text": "Keer terug naar Mira met het verhaal en de steen."},
+		],
+	},
 }
 
 const ITEMS := {
 	"special_lantern": {
 		"name": "Nachtlantaarn", "sheet": "items", "icon": 20, "type": "quest",
 		"desc": "Een lantaarn die 's nachts verder en warmer schijnt dan een gewone fakkel.",
+	},
+	"dauwsteen": {
+		"name": "Dauwsteen", "sheet": "items", "icon": 21, "type": "quest",
+		"desc": "Een steen die altijd bedekt is met fijne dauw. Hij voelt koel en levend.",
 	},
 }
 
@@ -63,15 +88,35 @@ const NPCS := {
 			{"talk": "willem_menu"},
 		],
 	},
+	"mira": {
+		"name": "Mira de dauwbewaarder", "sheet": "npc_mila",
+		"rules": [
+			{"if": [["step", "dauw", 3]], "talk": "mira_klaar"},
+			{"if": [["step", "dauw", 1]], "talk": "mira_steen"},
+			{"if": [["no_flag", "mira_ontmoet"]], "talk": "mira_intro"},
+			{"talk": "mira_menu"},
+		],
+	},
+	"tomas": {
+		"name": "Tomas de oude", "sheet": "npc_bram",
+		"rules": [
+			{"if": [["no_flag", "tomas_ontmoet"]], "talk": "tomas_intro"},
+			{"talk": "tomas_menu"},
+		],
+	},
+	"noor": {
+		"name": "Noor de verzamelaar", "sheet": "npc_tobias",
+		"rules": [
+			{"if": [["no_flag", "noor_ontmoet"]], "talk": "noor_intro"},
+			{"talk": "noor_menu"},
+		],
+	},
 }
 
 const TALKS := {
 	"lotte_intro": {
 		"speaker": "Lotte",
-		"lines": [
-			"Ik ben Lotte. Ik maak lantaarns voor het dorp.",
-			"Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten.",
-		],
+		"lines": ["Ik ben Lotte. Ik maak lantaarns voor het dorp.", "Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten."],
 		"do": [["set_flag", "lotte_ontmoet"]],
 		"next": "lotte_vraag",
 	},
@@ -83,40 +128,17 @@ const TALKS := {
 			{"text": "Later misschien."},
 		],
 	},
-	"lotte_ok": {
-		"speaker": "Lotte",
-		"lines": ["Dank je. Kijk in de Vergeten Ruïne, ergens bij de oude gangen."],
-		"do": [["sound", "quest"]],
-	},
-	"lotte_menu": {
-		"speaker": "Lotte",
-		"lines": ["Heb je de nachtlantaarn al gevonden?"],
-		"choices": [
-			{"text": "Nog niet."},
-			{"text": "Tot later."},
-		],
-	},
+	"lotte_ok": {"speaker": "Lotte", "lines": ["Dank je. Kijk in de Vergeten Ruïne, ergens bij de oude gangen."], "do": [["sound", "quest"]]},
+	"lotte_menu": {"speaker": "Lotte", "lines": ["Heb je de nachtlantaarn al gevonden?"], "choices": [{"text": "Nog niet."}, {"text": "Tot later."}]},
 	"lotte_klaar": {
 		"speaker": "Lotte",
-		"lines": [
-			"Je hebt hem! Hij werkt nog. Neem hem maar, hij helpt je beter in het donker dan een gewone.",
-			"En hier wat munten voor de moeite.",
-		],
-		"do": [
-			["take", "special_lantern"],
-			["give", "special_lantern"],
-			["coins", 25],
-			["finish_quest", "lantaarn"],
-			["sound", "quest"],
-		],
+		"lines": ["Je hebt hem! Hij werkt nog. Neem hem maar, hij helpt je beter in het donker dan een gewone.", "En hier wat munten voor de moeite."],
+		"do": [["take", "special_lantern"], ["give", "special_lantern"], ["coins", 25], ["finish_quest", "lantaarn"], ["sound", "quest"]],
 	},
 
 	"kasper_intro": {
 		"speaker": "Kasper",
-		"lines": [
-			"Ha, een reiziger! Ik ben Kasper. Ik verhandel alles wat de slijmen niet opeten.",
-			"Munten, kruiden, geruchten... als het waarde heeft, koop of verkoop ik het.",
-		],
+		"lines": ["Ha, een reiziger! Ik ben Kasper. Ik verhandel alles wat de slijmen niet opeten.", "Munten, kruiden, geruchten... als het waarde heeft, koop of verkoop ik het."],
 		"do": [["set_flag", "kasper_ontmoet"]],
 		"next": "kasper_menu",
 	},
@@ -129,23 +151,12 @@ const TALKS := {
 			{"text": "Tot later."},
 		],
 	},
-	"kasper_bijzonder": {
-		"speaker": "Kasper",
-		"lines": ["Bijzonders? Alles is bijzonder als je het hard genoeg wilt. Maar echte schatten liggen buiten het dorp."],
-		"next": "kasper_menu",
-	},
-	"kasper_handel": {
-		"speaker": "Kasper",
-		"lines": ["De handel bloeit. Zolang de Slijmkoning weg blijft, blijft mijn tas vol."],
-		"next": "kasper_menu",
-	},
+	"kasper_bijzonder": {"speaker": "Kasper", "lines": ["Bijzonders? Alles is bijzonder als je het hard genoeg wilt. Maar echte schatten liggen buiten het dorp."], "next": "kasper_menu"},
+	"kasper_handel": {"speaker": "Kasper", "lines": ["De handel bloeit. Zolang de Slijmkoning weg blijft, blijft mijn tas vol."], "next": "kasper_menu"},
 
 	"elke_intro": {
 		"speaker": "Elke",
-		"lines": [
-			"Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.",
-			"De verse kruiden uit het bos zijn het beste. Die mis ik nu." ,
-		],
+		"lines": ["Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.", "De verse kruiden uit het bos zijn het beste. Die mis ik nu."],
 		"do": [["set_flag", "elke_ontmoet"]],
 		"next": "elke_vraag",
 	},
@@ -157,37 +168,17 @@ const TALKS := {
 			{"text": "Misschien later."},
 		],
 	},
-	"elke_ok": {
-		"speaker": "Elke",
-		"lines": ["Fijn. Ze groeien bij de bomen aan de rand van het bos."],
-		"do": [["sound", "quest"]],
-	},
-	"elke_menu": {
-		"speaker": "Elke",
-		"lines": ["Heb je de kruiden al?"],
-		"choices": [
-			{"text": "Nog niet."},
-			{"text": "Tot zo."},
-		],
-	},
+	"elke_ok": {"speaker": "Elke", "lines": ["Fijn. Ze groeien bij de bomen aan de rand van het bos."], "do": [["sound", "quest"]]},
+	"elke_menu": {"speaker": "Elke", "lines": ["Heb je de kruiden al?"], "choices": [{"text": "Nog niet."}, {"text": "Tot zo."}]},
 	"elke_klaar": {
 		"speaker": "Elke",
 		"lines": ["Prachtig vers! Hier, een drankje en wat munten. Kom gerust terug."],
-		"do": [
-			["take", "herb", 4],
-			["give", "potion"],
-			["coins", 15],
-			["finish_quest", "kruiden"],
-			["sound", "quest"],
-		],
+		"do": [["take", "herb", 4], ["give", "potion"], ["coins", 15], ["finish_quest", "kruiden"], ["sound", "quest"]],
 	},
 
 	"willem_intro": {
 		"speaker": "Willem",
-		"lines": [
-			"Ah, een luisteraar! Ik ben Willem. Ik ken alle verhalen van Azura.",
-			"Van de gebarsten kaart tot de oude wachters in de Diepte." ,
-		],
+		"lines": ["Ah, een luisteraar! Ik ben Willem. Ik ken alle verhalen van Azura.", "Van de gebarsten kaart tot de oude wachters in de Diepte."],
 		"do": [["set_flag", "willem_ontmoet"]],
 		"next": "willem_menu",
 	},
@@ -200,27 +191,75 @@ const TALKS := {
 			{"text": "Een ander keer."},
 		],
 	},
-	"willem_kaart": {
-		"speaker": "Willem",
-		"lines": ["De Blauwe Kaart hield Azura bijeen. Toen hij barstte, vlogen de kristallen het land in. Zonder hen raakt alles uit balans."],
-		"next": "willem_menu",
+	"willem_kaart": {"speaker": "Willem", "lines": ["De Blauwe Kaart hield Azura bijeen. Toen hij barstte, vlogen de kristallen het land in. Zonder hen raakt alles uit balans."], "next": "willem_menu"},
+	"willem_diepte": {"speaker": "Willem", "lines": ["Onder de tempel slaapt een oude wachter. Hij bewaakt het origineel van de kaart. Wees voorzichtig als je hem wekt."], "next": "willem_menu"},
+
+	"mira_intro": {
+		"speaker": "Mira",
+		"lines": ["Welkom in het Dauwbos. Ik ben Mira. Ik bewaar de dauw hier.", "De mist wordt dikker. Ik zoek een oude dauwsteen om het evenwicht te herstellen."],
+		"do": [["set_flag", "mira_ontmoet"]],
+		"next": "mira_vraag",
 	},
-	"willem_diepte": {
-		"speaker": "Willem",
-		"lines": ["Onder de tempel slaapt een oude wachter. Hij bewaakt het origineel van de kaart. Wees voorzichtig als je hem wekt."],
-		"next": "willem_menu",
+	"mira_vraag": {
+		"speaker": "Mira",
+		"lines": ["Wil je de dauwsteen voor me zoeken? Hij ligt ergens in dit bos, bij de oude schuilplaats."],
+		"choices": [
+			{"text": "Ik zoek hem.", "do": [["start_quest", "dauw"]], "next": "mira_ok"},
+			{"text": "Later."},
+		],
+	},
+	"mira_ok": {"speaker": "Mira", "lines": ["Dank je. Zoek in de noordelijke delen van het bos."], "do": [["sound", "quest"]]},
+	"mira_menu": {"speaker": "Mira", "lines": ["Heb je de steen al?"], "choices": [{"text": "Nog niet."}, {"text": "Tot zo."}]},
+	"mira_steen": {
+		"speaker": "Mira",
+		"lines": ["Je hebt de steen! Prachtig. Nu moet ik het oude verhaal horen. Praat met Tomas."],
+		"do": [["set_flag", "dauw_gesproken"], ["sound", "quest"]],
+	},
+	"mira_klaar": {
+		"speaker": "Mira",
+		"lines": ["Het verhaal klopt. De steen werkt. De dauw blijft, maar de mist wordt zachter.", "Hier, een beloning voor je hulp."],
+		"do": [["take", "dauwsteen"], ["coins", 35], ["give", "potion"], ["finish_quest", "dauw"], ["sound", "quest"]],
+	},
+
+	"tomas_intro": {
+		"speaker": "Tomas",
+		"lines": ["Ik ben Tomas. Ik woon al lang in dit bos. De dauw kent me."],
+		"do": [["set_flag", "tomas_ontmoet"]],
+		"next": "tomas_menu",
+	},
+	"tomas_menu": {
+		"speaker": "Tomas",
+		"lines": ["Wat wil je weten?"],
+		"choices": [
+			{"text": "Vertel het oude verhaal.", "next": "tomas_verhaal"},
+			{"text": "Tot later."},
+		],
+	},
+	"tomas_verhaal": {
+		"speaker": "Tomas",
+		"lines": ["Lang geleden viel de dauwsteen uit de sterren. Hij houdt de mist levend. Zonder hem wordt het bos dor.", "Mira weet wat ze doet. Geef haar de steen."],
+		"do": [["set_flag", "tomas_verhaal"]],
+		"next": "tomas_menu",
+	},
+
+	"noor_intro": {
+		"speaker": "Noor",
+		"lines": ["Ik ben Noor. Ik verzamel alles wat glimt in de dauw."],
+		"do": [["set_flag", "noor_ontmoet"]],
+		"next": "noor_menu",
+	},
+	"noor_menu": {
+		"speaker": "Noor",
+		"lines": ["Heb je iets moois gevonden in het bos?"],
+		"choices": [
+			{"text": "Nog niet."},
+			{"text": "Tot ziens."},
+		],
 	},
 }
 
 const ACHIEVEMENTS := {
-	"lantaarn_gevonden": {
-		"name": "Licht in de duisternis",
-		"desc": "Vind en terugbreng de nachtlantaarn van Lotte.",
-		"if": [["quest", "lantaarn", "done"]],
-	},
-	"kruiden_gehaald": {
-		"name": "Groene vingers",
-		"desc": "Breng verse kruiden naar Elke.",
-		"if": [["quest", "kruiden", "done"]],
-	},
+	"lantaarn_gevonden": {"name": "Licht in de duisternis", "desc": "Vind en terugbreng de nachtlantaarn van Lotte.", "if": [["quest", "lantaarn", "done"]]},
+	"kruiden_gehaald": {"name": "Groene vingers", "desc": "Breng verse kruiden naar Elke.", "if": [["quest", "kruiden", "done"]]},
+	"dauw_hersteld": {"name": "Bewaarder van de dauw", "desc": "Herstel het evenwicht in het Dauwbos.", "if": [["quest", "dauw", "done"]]},
 }
