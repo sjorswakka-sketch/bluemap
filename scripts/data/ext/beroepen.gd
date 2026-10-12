@@ -107,6 +107,7 @@ const RESOURCE_PLACEMENTS := {
 	"cave": [["copper_entry", "copper", 9, 32], ["iron_entry", "iron", 3, 29], ["iron_west", "iron", 10, 22], ["iron_east", "iron", 29, 28]],
 	"ijsdal": [["ijsbloem_west", "winterherbs", 5, 14], ["ijsbloem_meer", "winterherbs", 16, 25], ["ijsbloem_noord", "winterherbs", 30, 5], ["winterbes_west", "frostberries", 4, 19], ["winterbes_oost", "frostberries", 42, 6], ["den_west", "pine_stump", 7, 16], ["den_oost", "pine_stump", 33, 20], ["ijskristal_mijn", "ice_vein", 40, 24], ["ijskristal_diep", "ice_vein", 44, 28], ["vuursteen_mijn", "stones", 38, 26], ["takken_plein", "branches", 28, 19]],
 	"dorstvallei": [["vijgen_west", "cactusfigs", 6, 7], ["vijgen_oost", "cactusfigs", 41, 8], ["vijgen_zuidoost", "cactusfigs", 38, 12], ["kruid_noord", "sandwort", 11, 8], ["kruid_midden", "sandwort", 20, 12], ["kruid_oost", "sandwort", 37, 22], ["zandsteen_west", "sandstone_rock", 7, 27], ["zandsteen_noord", "sandstone_rock", 25, 4], ["zandsteen_zuid", "sandstone_rock", 13, 30], ["vuursteen_zuid", "stones", 21, 26], ["kruiden_oase", "herbs", 12, 13]],
+	"dauwbos": [["padden_kring", "mushrooms", 20, 9], ["padden_zuid", "mushrooms", 27, 27], ["kruiden_plein", "herbs", 20, 20], ["kruiden_oost", "herbs", 36, 22], ["bessen_heg", "berries", 16, 16], ["bessen_noord", "berries", 30, 6], ["takken_west", "branches", 8, 24], ["stronk_oud", "stump", 34, 10], ["vuursteen_vijver", "stones", 38, 29]],
 }
 
 
