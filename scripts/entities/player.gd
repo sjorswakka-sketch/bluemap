@@ -399,7 +399,6 @@ func _draw() -> void:
 		if work_active:
 			bob = sin(work_elapsed * TAU * 3.0) * 1.5
 		DrawUtil.sprite(self, Art.tex("player"), column, _direction_row(), Vector2(0, bob) + lean, Vector2i(16, 16), 2.0, tint)
-	# Equipment altijd zichtbaar
 	_draw_equipped_gear()
 	if sprinting:
 		for i in 3:
@@ -418,17 +417,14 @@ func _draw() -> void:
 	if target and is_instance_valid(target) and not GameState.input_locked():
 		pass
 
-## Tekent het uitgeruste zwaard en/of de boog op het character (altijd zichtbaar).
 func _draw_equipped_gear() -> void:
-	var weapon_id: String = GameState.weapon()
-	if weapon_id != "":
+	var weapon_id: String = str(GameState.get("weapon"))
+	if weapon_id != "" and weapon_id != "null":
 		var side := Vector2(10, 2) if facing.x >= 0 else Vector2(-10, 2)
-		# Zwaard aan de heup
 		draw_line(side, side + Vector2(0, 8), Color(0.7, 0.7, 0.75), 2.0)
 		draw_line(side + Vector2(0, 8), side + Vector2(3, 10), Color(0.9, 0.85, 0.4), 2.0)
 	if GameState.count("bow") > 0:
 		var side := Vector2(-8, 0) if facing.x >= 0 else Vector2(8, 0)
-		# Boog op de rug
 		draw_arc(side, 6.0, 0.4, PI - 0.4, 8, Color(0.6, 0.4, 0.2), 2.0)
 
 func _draw_work() -> void:
@@ -467,7 +463,8 @@ func _draw_bow() -> void:
 	draw_line(string_mid, points[8], Color(1, 1, 1, 0.9), 1.0)
 
 func _draw_sword() -> void:
-	var weapon: Dictionary = Items.WEAPONS.get(GameState.weapon(), {})
+	var weapon_id: String = str(GameState.get("weapon"))
+	var weapon: Dictionary = Items.WEAPONS.get(weapon_id, {})
 	var color: Color = weapon.get("color", Color(0.9, 0.85, 0.4))
 	var tip := attack_direction * 18.0
 	draw_line(Vector2.ZERO, tip, color, 3.0)
