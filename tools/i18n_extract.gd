@@ -227,6 +227,25 @@ static func collect_data(c: Collector) -> void:
 	for recipe_id: String in Beroepen.RECIPES:
 		for field: String in ["name", "desc", "hint"]:
 			c.add(Beroepen.RECIPES[recipe_id].get(field, ""), "Recept %s: %s" % [recipe_id, field])
+	# Uiterlijk: geslachten, haarstijlen, ogen, kleuren en kledingvakken zijn data.
+	var uiterlijk: GDScript = load("res://scripts/data/ext/uiterlijk.gd")
+	for gender_id: String in uiterlijk.GENDERS:
+		c.add(uiterlijk.GENDERS[gender_id].get("name", ""), "Geslacht %s (tabblad Uiterlijk)" % gender_id)
+	for style_id: String in uiterlijk.HAIR_M:
+		c.add(uiterlijk.HAIR_M[style_id].get("name", ""), "Haarstijl %s voor mannen (tabblad Uiterlijk)" % style_id)
+	for style_id: String in uiterlijk.HAIR_V:
+		c.add(uiterlijk.HAIR_V[style_id].get("name", ""), "Haarstijl %s voor vrouwen (tabblad Uiterlijk)" % style_id)
+	for entry: Dictionary in uiterlijk.HAIR_COLORS:
+		c.add(entry.get("name", ""), "Haarkleur (tabblad Uiterlijk)")
+	for style_id: String in uiterlijk.EYES:
+		c.add(uiterlijk.EYES[style_id].get("name", ""), "Oogstijl %s (tabblad Uiterlijk)" % style_id)
+	for entry: Dictionary in uiterlijk.EYE_COLORS:
+		c.add(entry.get("name", ""), "Oogkleur (tabblad Uiterlijk)")
+	for slot_id: String in uiterlijk.CLOTHING_SLOTS:
+		for field: String in ["name", "desc"]:
+			c.add(uiterlijk.CLOTHING_SLOTS[slot_id].get(field, ""), "Kledingvak %s: %s" % [slot_id, field])
+	for entry: Dictionary in uiterlijk.DYE_COLORS:
+		c.add(entry.get("name", ""), "Verfkleur voor kleding (tabblad Uiterlijk)")
 	# De invoermodule gebruikt autoloads: net als menu_pages pas nu laden.
 	var controls: GDScript = load("res://scripts/core/input_manager.gd")
 	for action: String in controls.ACTION_NAMES:

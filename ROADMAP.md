@@ -68,6 +68,14 @@ pixel art, en te delen met vrienden en de community.
       (koken) als nieuwe recepten
 - [x] Twee nieuwe opdrachten (Vellen en vlees, Cactusvijgen voor Sana), drie nieuwe personages en de
       prestatie Zandvoeten
+- [x] Het Dauwbos hersteld: de heggenmuren hadden geen openingen op de padcorridors, waardoor het grootste
+      deel van het gebied (inclusief beide portalen en het altaar) onbereikbaar was. Een padvindingstest
+      bewaakt nu de hele route
+- [x] Uiterlijk: het menu heeft een achtste tabblad waar je geslacht, haarstijl (30 per geslacht), haarkleur
+      (10), oogstijl (10) en oogkleur (8) kiest, met een live voorvertoning van drie kanten
+- [x] Kleding: vijf eigen vakken (hoofd, rug, bovenlijf, onderlijf, voeten) die je óver je uitrusting draagt —
+      puur voor de look, zonder bonussen. Vera de kleermaakster verkoopt twaalf stukken in Dageraadsdorp en
+      elk gedragen stuk is in twaalf verfkleuren te verven. Alles wordt opgeslagen
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages

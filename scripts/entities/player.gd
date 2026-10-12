@@ -6,6 +6,7 @@ extends CharacterBody2D
 signal footstep(surface: String)
 
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
+const AppearanceDraw := preload("res://scripts/core/appearance_draw.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Items := preload("res://scripts/data/items.gd")
 const Tiles := preload("res://scripts/data/tiles.gd")
@@ -397,14 +398,20 @@ func _draw() -> void:
 	if roll_timer > 0.0:
 		var progress := 1.0 - roll_timer / ROLL_TIME
 		draw_set_transform(Vector2(0, 4), progress * TAU * signf(roll_dir.x if roll_dir.x != 0.0 else 1.0), Vector2.ONE)
+		var roll_origin := Vector2(0, -4) - Vector2(16, 16)
+		AppearanceDraw.behind(self, roll_origin, 2.0, _direction_row(), GameState.clothing)
 		DrawUtil.sprite(self, Art.tex("player"), 1, _direction_row(), Vector2(0, -4), Vector2i(16, 16), 2.0, tint)
+		AppearanceDraw.front(self, roll_origin, 2.0, _direction_row(), 1, GameState.appearance, GameState.clothing)
 		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	else:
 		var bob := sin(time * 2.4) * 0.55 if not moving else sin(walk_time * 18.0) * (1.6 if sprinting else 0.6)
 		var lean := attack_direction * sin((1.0 - attack_timer / ATTACK_TIME) * PI) * 3.0 if attack_timer > 0.0 else Vector2.ZERO
 		if work_active:
 			bob = sin(work_elapsed * TAU * 3.0) * 1.5
+		var origin := Vector2(0, bob) + lean - Vector2(16, 16)
+		AppearanceDraw.behind(self, origin, 2.0, _direction_row(), GameState.clothing)
 		DrawUtil.sprite(self, Art.tex("player"), column, _direction_row(), Vector2(0, bob) + lean, Vector2i(16, 16), 2.0, tint)
+		AppearanceDraw.front(self, origin, 2.0, _direction_row(), column, GameState.appearance, GameState.clothing)
 	_draw_equipped_gear()
 	if sprinting:
 		for i in 3:

@@ -55,6 +55,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/polijst.gd"), # polish: Dauwbos + extra quests & NPC's
 	preload("res://scripts/data/ext/sneeuw.gd"), # IJsdal: sneeuwdorp, sneeuwklimaat, wintergrondstoffen
 	preload("res://scripts/data/ext/dorst.gd"), # Dorstvallei: woestijn, hitte, wild en jacht
+	preload("res://scripts/data/ext/uiterlijk.gd"), # uiterlijk: kleding over je uitrusting, haarstijlen, ogen en verf
 ]
 
 

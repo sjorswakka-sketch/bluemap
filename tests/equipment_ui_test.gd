@@ -109,7 +109,9 @@ func _run() -> void:
 	await tap_pad(JOY_BUTTON_B)
 	await tap_key(KEY_I)
 	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
-	check(menu.tab == 6 and page.visible and menu.TAB_COUNT == 7, "LB opens the seventh equipment tab from inventory")
+	check(menu.tab == 7 and menu.appearance_page.visible and menu.TAB_COUNT == 8, "LB opens the eighth appearance tab from inventory")
+	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
+	check(menu.tab == 6 and page.visible, "Another LB reaches the equipment tab")
 	check(page.slots().size() == 7 and page.slot_rect(6).end.y <= page.size.y, "All five selectable slots and two automatic legacy positions are visible")
 	await tap_pad(JOY_BUTTON_A)
 	await tap_pad(JOY_BUTTON_A)
@@ -179,7 +181,7 @@ func _run() -> void:
 		for index in menu.TAB_COUNT:
 			var tab: Rect2 = menu.tab_rect(index)
 			var width: float = ThemeDB.fallback_font.get_string_size(menu.tab_titles()[index], HORIZONTAL_ALIGNMENT_LEFT, -1, menu.TAB_FONT_SIZE).x
-			check(width <= tab.size.x and tab.end.x < menu.CLOSE_RECT.position.x, "%s tab %d fits seven-tab layout" % [locale, index])
+			check(width <= tab.size.x and tab.end.x < menu.CLOSE_RECT.position.x, "%s tab %d fits eight-tab layout" % [locale, index])
 		for index in 5:
 			page.select_slot(index)
 			for option in page.alternatives().size():
