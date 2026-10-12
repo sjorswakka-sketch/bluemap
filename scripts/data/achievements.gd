@@ -30,7 +30,7 @@ const BASE_ACHIEVEMENTS := {
 		"if": [["kinds_killed", ["slime", "slime_blue", "slime_red", "slime_mini", "bat", "skeleton", "golem", "king"]]],
 	},
 	"hearts_all": {
-		"name": "Hart van goud", "desc": "Vind alle hartcontainers.",
+		"name": "Hart van goud", "desc": "Vind de twee hartcontainers uit het verhaal.",
 		"if": [["has", "heart_container", 2]],
 	},
 	"boots": {

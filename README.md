@@ -69,6 +69,13 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),
   ondersteuning voor een controller, en een eindscherm met aftiteling.
+- **Na het einde:** een verzegelde trap achter in de Kristaltempel breekt open zodra de Blauwe Kaart hersteld is. Daaronder ligt
+  **De Diepte**: de Kristalgangen (met een sleutel, een poort en een paarse kristalgolem) en Het Hart van de Kaart, waar de
+  geheime baas **De Vergeten Wachter** slaapt. Wie hem verslaat krijgt het **Sterrenzwaard**, 500 munten en een kist met
+  een hartcontainer (heb je al 8 hartjes, dan zitten er drankjes en munten in).
+- **Nieuw spel+:** na het einde staat er op het titelscherm een knop *Nieuw spel+*. Je begint opnieuw met je beste zwaard,
+  je hartcontainers, je laarzen en 100 munten. Vijanden hebben dan de helft meer levens per voltooide ronde en laten meer munten vallen.
+  Meer dan 8 hartjes kun je niet krijgen.
 
 ## Tips voor spelers
 
@@ -81,6 +88,8 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - Een tovervonk van een magiër is traag. Wijk uit, rol weg of sla hem stuk met je zwaard.
 - Een slijmspuwer hupt weg als je vlak bij hem komt. Zet hem klem tegen een muur of val hem aan vlak nadat hij heeft gehupt.
 - Vis verkoop je aan Joris of aan Mila in de herberg. Als het dorp vol zit met vis, krijg je de helft.
+- De Vergeten Wachter kondigt elke aanval aan met een rode baan of gloed. Rol door zijn scherven heen, en laat hem tegen een muur
+  of pilaar knallen: dan is hij duizelig en kun je hem raken.
 
 ## Mappen
 
@@ -143,6 +152,7 @@ De plaatjes in `assets/` zijn zelf gemaakt met `python3 tools/make_art.py` en de
 | `items.png` | iconen, nummer = `icon` in `items.gd` (uitbreidingen hebben een eigen plaatje, zoals `items_meer.png`) |
 | `chest`, `sign`, `gate`, `altar`, `torch`, `coin`, `heart`, `ui_heart`, `projectiles` | zie `tools/art_items.py` |
 | `items_boog.png`, `target.png`, `npc_tessa.png` | boog-iconen (boog, pijl, vliegende pijl), doelwit (gewoon, geraakt) en Tessa, zie `tools/art_x_boog.py` |
+| `guardian.png`, `golem_void.png`, `depths_*.png`, `items_diepte.png` | De Diepte: de Wachter (48x48, 8 vakjes), de paarse golem, pilaar, zegel, lamp, poort, scherf en iconen. Zie `tools/art_x_diepte.py` |
 | `audio/*.wav` | geluidseffecten; `audio/music_<gebied>.wav` zijn lussen van 25 tot 45 seconden |
 | `wereld_ui.png` | zon, lage zon, maan, drie bekers en een altaarspeldje, zie `tools/art_x_wereld.py` |
 | `wereld_lantaarn.png` | 3 vakjes van 16x32: uit, aan, aan (flikkert) |
@@ -172,10 +182,16 @@ met een foutmelding. `tests/wereld_test.gd` controleert dag en nacht, weer, slap
 `tests/meer_test.gd` test het Zilvermeer: alle doorgangen, of alles op de kaarten bereikbaar is, het visspel in al zijn
 uitkomsten (te laat, gevangen, ontsnapt, stoppen, de Gouden Karper), vis verkopen, beide opdrachten via de gesprekken,
 de bibliotheek en opslaan en laden.
+Dat draait alle speltests in `tests/`. `tests/smoke_test.gd` controleert eerst alle inhoud op samenhang (elk gesprek, elke kaart, elk
+voorwerp, elke opdracht) en speelt daarna de systemen na: lopen, gebieden wisselen, vechten, de baas, praten, kopen,
+smeden, opslaan, menu's, titelscherm, intro en einde. `tests/playthrough_test.gd` speelt het hele spel uit met de echte
+kaarten: van Bram tot en met het einde. `tests/diepte_test.gd` controleert de Diepte, De Vergeten Wachter en Nieuw spel+.
+Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het met een foutmelding.
 
 Meer gereedschap:
 
 - `tests/boss_sim.gd`: een bot speelt het baasgevecht steeds opnieuw met verschillende zwaarden. Handig om de balans te meten.
+- `tests/guardian_sim.gd`: een bot vecht steeds opnieuw tegen De Vergeten Wachter. Handig om te zien of de baas eerlijk blijft.
 - `python3 tools/check_audio.py`: controleert geluiden en muzieklussen op clipping, tikjes en de juiste noten.
 - `python3 tools/gen_maps.py`: controleert tijdens het maken of alles op de kaarten bereikbaar is.
 

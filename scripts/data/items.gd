@@ -32,7 +32,8 @@ const BASE_ITEMS := {
 		"desc": "Je loopt een stuk sneller. Altijd handig.",
 	},
 	"heart_container": {
-		"name": "Hartcontainer", "icon": 7, "type": "gear",
+		"name": "Hartcontainer", "icon": 7, "type": "gear", "max": 3, # 5 + 3 = 8 hartjes; meer passen niet in beeld
+		"full_text": "Je hebt al het maximum van 8 hartjes",
 		"desc": "Je kunt er een hartje meer door hebben. Blijvend!",
 	},
 	"crystal_bos": {

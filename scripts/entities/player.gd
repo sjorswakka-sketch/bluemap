@@ -344,3 +344,15 @@ func _draw_sword() -> void:
 	draw_line(hilt, tip, Color(1, 1, 1, 0.7), 1.5)
 	draw_line(hilt + Vector2.from_angle(angle + PI / 2.0) * 4.0, hilt + Vector2.from_angle(angle - PI / 2.0) * 4.0,
 		Color(0.9, 0.75, 0.3), 3.0)
+	if weapon.get("sparkle", false):
+		_draw_sword_sparkles(angle, reach, progress)
+
+
+## Sterretjes langs de zwaai van een bijzonder zwaard (het Sterrenzwaard).
+func _draw_sword_sparkles(angle: float, reach: float, progress: float) -> void:
+	for i in 4:
+		var spread := angle - 0.55 + (progress * 0.5 + float(i) * 0.25) * 1.1
+		var p := Vector2.from_angle(spread) * (reach - 2.0 - float(i) * 6.0)
+		var size := 2.0 + float((i + int(progress * 4.0)) % 3)
+		draw_line(p - Vector2(size, 0), p + Vector2(size, 0), Color(1, 1, 1, 0.9), 1.5)
+		draw_line(p - Vector2(0, size), p + Vector2(0, size), Color(1, 1, 1, 0.9), 1.5)

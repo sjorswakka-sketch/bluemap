@@ -44,6 +44,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/vijanden.gd"),
 	preload("res://scripts/data/ext/meer.gd"), # het Zilvermeer: vissen, bibliotheek, Joris, Lena en Sanne
 	preload("res://scripts/data/ext/wereld.gd"),
+	preload("res://scripts/data/ext/diepte.gd"),
 ]
 
 

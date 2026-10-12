@@ -28,6 +28,10 @@ Vissen
   Ten zuiden van het dorp ligt het Zilvermeer. Praat met Visser Joris voor een hengel, ga bij een visplek
   (kringetjes in het water) staan en druk op E. Als de dobber zakt, druk je snel op E. Houd daarna E ingedrukt
   om de groene zone omhoog te laten gaan en houd de vis erin. Esc stopt altijd.
+Na het einde
+  Heb je de Slijmkoning verslagen? Dan is het avontuur nog niet voorbij. Oudste Bram wijst je een verzegelde
+  trap achter in de Kristaltempel, en daaronder wacht De Vergeten Wachter. Op het titelscherm staat dan ook
+  "Nieuw spel+": opnieuw beginnen met je beste spullen, tegen sterkere vijanden.
 
 Opslaan
   Het spel slaat automatisch op als je van gebied wisselt, en bij de blauwe altaren

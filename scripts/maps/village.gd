@@ -65,6 +65,8 @@ const DATA := {
 		{"type": "portal", "pos": [6, 11], "to": "smithy", "spawn": "door"},
 		{"type": "portal", "pos": [13, 11], "to": "shop", "spawn": "door"},
 		{"type": "portal", "pos": [30, 10], "to": "inn", "spawn": "door"},
+		# De Diepte (spoor diepte): na het einde roept Bram je en wijst hij de weg.
+		{"type": "trigger", "pos": [17, 8], "size": [5, 3], "conditions": [["flag", "game_completed"]], "once": "diepte_hint", "do": [["talk", "diepte_bram_hint"]]},
 		{"type": "portal", "pos": [38, 13], "to": "forest", "spawn": "from_village", "size": [1, 2]},
 		{"type": "portal", "pos": [19, 6], "to": "temple", "spawn": "start", "size": [2, 1], "requires": [["flag", "gate_temple"]], "locked_text": "De tempeldeur is verzegeld door de gebarsten kaart."},
 		# Boog: Tessa's schietbaan (drie doelwitten) in de hoek onder de weg naar het bos.

@@ -42,3 +42,14 @@ static func make_label(text: String, font_size: int, color := Color.WHITE) -> La
 ## Een effen vlak met rand, voor panelen.
 static func flat(bg: Color, border: Color, width := 3) -> StyleBoxFlat:
 	return _box(bg, border, width)
+
+
+## Een ster met vijf punten (gebruikt voor Nieuw spel+).
+static func draw_star(canvas: CanvasItem, center: Vector2, radius: float, color: Color) -> void:
+	var points := PackedVector2Array()
+	for i in 10:
+		var angle := -PI / 2.0 + TAU * float(i) / 10.0
+		points.append(center + Vector2.from_angle(angle) * (radius if i % 2 == 0 else radius * 0.45))
+	canvas.draw_colored_polygon(points, color)
+	points.append(points[0])
+	canvas.draw_polyline(points, color.darkened(0.5), 1.5)

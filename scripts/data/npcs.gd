@@ -19,6 +19,8 @@ const BASE_NPCS := {
 	"greta": {
 		"name": "Greta de smid", "sheet": "npc_greta",
 		"rules": [
+			{"if": [["weapon", "star"], ["no_flag", "greta_star_seen"]], "talk": "greta_star"}, # De Diepte
+			{"if": [["weapon", "star"]], "talk": "greta_star_again"},
 			{"if": [["no_flag", "met_greta"]], "talk": "greta_intro"},
 			{"if": [["quest", "main", "done"], ["no_flag", "heard_greta_done"]], "talk": "greta_done"},
 			{"if": [["weapon", "crystal"]], "talk": "greta_max"},

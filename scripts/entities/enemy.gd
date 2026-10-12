@@ -65,7 +65,7 @@ func setup(enemy_kind: String, flag := "") -> void:
 	kind = enemy_kind
 	data = Enemies.info(kind)
 	unique_flag = flag
-	max_hp = data["hp"]
+	max_hp = GameState.ng_hp(int(data["hp"])) # sterkere vijanden bij Nieuw spel+
 	hp = max_hp
 	radius = data["radius"]
 	active = not data.get("start_inactive", false)
@@ -648,7 +648,8 @@ func _die() -> void:
 		GameState.set_flag(unique_flag)
 	for drop: Array in data["drops"]:
 		if randf() < drop[1]:
-			for i in int(drop[2]):
+			var amount := GameState.ng_coins(int(drop[2])) if drop[0] == "coin" else int(drop[2]) # Nieuw spel+: meer munten
+			for i in amount:
 				world.spawn_pickup(drop[0], global_position + Vector2(randf_range(-12, 12), randf_range(-6, 12)), "", true)
 	died.emit()
 	if kind == "king":

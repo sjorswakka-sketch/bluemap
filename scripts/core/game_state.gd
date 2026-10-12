@@ -127,6 +127,7 @@ func new_game() -> void:
 	ui_owners = {}
 	last_damage_source = ""
 	damage_log = {}
+	ng_plus = 0
 	_apply_pause()
 	hp_changed.emit()
 	items_changed.emit()
@@ -441,7 +442,12 @@ func quest_text(quest_id: String) -> String:
 ## De opdracht die in beeld getoond wordt (de hoofdopdracht, anders de eerste lopende).
 func tracked_text() -> String:
 	if quest_state("main") == "done":
-		return "De Blauwe Kaart is hersteld!"
+		# Na het einde: de lopende opdracht die je het laatst bent begonnen (bijvoorbeeld De Vergeten Wachter).
+		var latest := ""
+		for quest_id: String in quests:
+			if quests[quest_id]["state"] == "active":
+				latest = quest_id
+		return quest_text(latest) if latest != "" else "De Blauwe Kaart is hersteld!"
 	if quest_state("main") == "active":
 		return quest_text("main")
 	if quest_state("main") == "none":
@@ -567,6 +573,8 @@ func has_save() -> bool:
 
 
 func save_game(pos: Vector2) -> bool:
+	if flag("game_completed"):
+		record_completion() # na het einde onthoudt het spel je beste spullen voor Nieuw spel+ (ook bij oude opslagen)
 	var data := {
 		"version": SAVE_VERSION, "map": map_id, "pos": [pos.x, pos.y], "hp": hp, "coins": coins,
 		"inventory": inventory, "flags": flags, "quests": quests, "weapon": weapon,
@@ -575,6 +583,7 @@ func save_game(pos: Vector2) -> bool:
 		"potions_drunk": potions_drunk, "deaths": deaths, "boss_deaths": boss_deaths,
 		"talked": talked.keys(), "achievements": achievements.keys(),
 	}
+	data["ng_plus"] = ng_plus # de ronde van Nieuw spel+ (zie onderaan)
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
 		push_warning("Opslaan mislukt: %s" % error_string(FileAccess.get_open_error()))
@@ -598,6 +607,7 @@ func load_game() -> bool:
 	use_load_pos = true
 	coins = int(data.get("coins", 0))
 	weapon = data.get("weapon", "wood")
+	ng_plus = int(data.get("ng_plus", 0)) # de ronde van Nieuw spel+ (oude opslagen: 0)
 	play_time = float(data.get("play_time", 0.0))
 	kills = int(data.get("kills", 0))
 	for stat: String in data.get("meer", {}):
@@ -633,4 +643,92 @@ func load_game() -> bool:
 	hp_changed.emit()
 	items_changed.emit()
 	quests_changed.emit()
+	return true
+
+
+# --- Nieuw spel+ -------------------------------------------------------------------------------------------------
+# Na het einde van het hoofdverhaal kun je opnieuw beginnen met je beste spullen, tegen sterkere vijanden.
+# Dat een spel is uitgespeeld staat in user://ng_plus.cfg, los van de opslag, zodat het blijft bestaan na een nieuw spel.
+
+const NG_META_PATH := "user://ng_plus.cfg"
+const NG_START_COINS := 100
+const NG_HP_PER_ROUND := 0.5 # vijanden krijgen zoveel levens extra per voltooide ronde (0.5 = de helft)
+const NG_COIN_FACTOR := 1.5 # munten uit vijanden
+
+var ng_plus: int = 0 # aantal voltooide rondes (Nieuw spel+); 0 = gewoon spel. Wordt opgeslagen.
+
+
+## Levens van een vijand die normaal `base` levens heeft, in deze ronde (naar boven afgerond).
+func ng_hp(base: int) -> int:
+	return ceili(float(base) * (1.0 + NG_HP_PER_ROUND * float(ng_plus)))
+
+
+## Aantal munten uit een vijand die normaal `amount` munten laat vallen.
+func ng_coins(amount: int) -> int:
+	return ceili(float(amount) * NG_COIN_FACTOR) if ng_plus > 0 else amount
+
+
+## Wat het spel onthoudt over uitgespeelde rondes: {completed, rounds, weapon, hearts, boots}.
+func load_meta() -> Dictionary:
+	var meta := {"completed": false, "rounds": 0, "weapon": "wood", "hearts": 0, "boots": false}
+	var config := ConfigFile.new()
+	if config.load(NG_META_PATH) != OK:
+		return meta
+	meta["completed"] = bool(config.get_value("ng", "completed", false))
+	meta["rounds"] = int(config.get_value("ng", "rounds", 0))
+	meta["weapon"] = str(config.get_value("ng", "weapon", "wood"))
+	meta["hearts"] = int(config.get_value("ng", "hearts", 0))
+	meta["boots"] = bool(config.get_value("ng", "boots", false))
+	if not Items.WEAPONS.has(meta["weapon"]):
+		meta["weapon"] = "wood"
+	return meta
+
+
+func save_meta(meta: Dictionary) -> void:
+	var config := ConfigFile.new()
+	config.set_value("ng", "completed", meta["completed"])
+	config.set_value("ng", "rounds", meta["rounds"])
+	config.set_value("ng", "weapon", meta["weapon"])
+	config.set_value("ng", "hearts", meta["hearts"])
+	config.set_value("ng", "boots", meta["boots"])
+	config.save(NG_META_PATH)
+
+
+func ng_plus_available() -> bool:
+	return load_meta()["completed"]
+
+
+## Het hoofdverhaal is uitgespeeld: bij elke opslag na het einde (de eerste is die aan het einde zelf, zie world.gd). Zo
+## hebben ook spelers die het spel al uitgespeeld hadden Nieuw spel+, zodra ze weer opslaan.
+func record_completion() -> void:
+	var meta := load_meta()
+	meta["completed"] = true
+	meta["rounds"] = maxi(int(meta["rounds"]), ng_plus + 1)
+	save_meta(_merge_gear(meta))
+
+
+## Bewaart je beste zwaard, hartcontainers en laarzen (nooit minder dan wat al bewaard was).
+func _merge_gear(meta: Dictionary) -> Dictionary:
+	if Items.WEAPONS[weapon]["damage"] > Items.WEAPONS[meta["weapon"]]["damage"]:
+		meta["weapon"] = weapon
+	meta["hearts"] = maxi(int(meta["hearts"]), count("heart_container"))
+	meta["boots"] = bool(meta["boots"]) or count("boots") > 0
+	return meta
+
+
+## Begint een nieuw verhaal met je beste spullen. Geeft false als je nog niets hebt uitgespeeld.
+func new_game_plus() -> bool:
+	var meta := load_meta()
+	if not meta["completed"]:
+		return false
+	new_game()
+	ng_plus = int(meta["rounds"])
+	weapon = meta["weapon"]
+	if int(meta["hearts"]) > 0:
+		give("heart_container", int(meta["hearts"]), true)
+	if meta["boots"]:
+		give("boots", 1, true)
+	coins = NG_START_COINS
+	full_heal()
+	items_changed.emit()
 	return true

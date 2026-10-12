@@ -1322,6 +1322,9 @@ func test_achievements() -> void:
 	gs.achievement_unlocked.disconnect(listener)
 
 	# Meerdere meldingen achter elkaar.
+	# Na het einde (game_completed hierboven) begint Bram bij de start over de Diepte. Zolang dat gesprek open is,
+	# wachten de meldingen; klik het dus eerst weg.
+	await finish_dialogue()
 	gs.achievement_queue.clear()
 	banner.time = 0.0
 	await frames(2)
