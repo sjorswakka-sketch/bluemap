@@ -51,6 +51,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/diepte.gd"),
 	preload("res://scripts/data/ext/arena.gd"),
 	preload("res://scripts/data/ext/beroepen.gd"),
+	preload("res://scripts/data/ext/polijst.gd"), # polish: extra quest & content
 ]
 
 

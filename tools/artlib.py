@@ -65,6 +65,42 @@ def outline(img, col=OUTLINE):
     return out
 
 
+def shade(img, light_offset=( -1, -1), highlight=None, shadow=None):
+    """Eenvoudige directional shading: highlight boven-links, shadow onder-rechts."""
+    if highlight is None:
+        highlight = c("#ffffff", 80)
+    if shadow is None:
+        shadow = c("#000000", 60)
+    out = img.copy()
+    w, h = img.size
+    for y in range(h):
+        for x in range(w):
+            if img.getpixel((x, y))[3] == 0:
+                continue
+            # highlight
+            hx, hy = x + light_offset[0], y + light_offset[1]
+            if 0 <= hx < w and 0 <= hy < h and img.getpixel((hx, hy))[3] == 0:
+                put(out, x, y, _blend(img.getpixel((x, y)), highlight))
+            # shadow
+            sx, sy = x - light_offset[0], y - light_offset[1]
+            if 0 <= sx < w and 0 <= sy < h and img.getpixel((sx, sy))[3] == 0:
+                put(out, x, y, _blend(out.getpixel((x, y)), shadow))
+    return out
+
+
+def _blend(base, overlay):
+    """Simpele alpha-blend."""
+    br, bg, bb, ba = base
+    or_, og, ob, oa = overlay
+    a = oa / 255.0
+    return (
+        int(br * (1 - a) + or_ * a),
+        int(bg * (1 - a) + og * a),
+        int(bb * (1 - a) + ob * a),
+        max(ba, oa),
+    )
+
+
 def from_grid(rows, palette):
     h, w = len(rows), len(rows[0])
     img = blank(w, h)
