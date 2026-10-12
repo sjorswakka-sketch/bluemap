@@ -1,1 +1,72 @@
-THE_FULL_CONTENT_IS_IN_THE_FILE
+msgid ""
+msgstr ""
+"Project-Id-Version: Bluemap Quest\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-Language: nl\n"
+
+msgid "Dageraadsdorp"
+msgstr "Daybreak Village"
+
+msgid "Nieuw spel"
+msgstr "New Game"
+
+msgid "Doorgaan"
+msgstr "Continue"
+
+msgid "Afsluiten"
+msgstr "Quit"
+
+msgid "Pauze"
+msgstr "Paused"
+
+msgid "Verder spelen"
+msgstr "Resume"
+
+msgid "Muziek"
+msgstr "Music"
+
+msgid "Dauwbos"
+msgstr "Dew Woods"
+
+msgid "Lotte de lantaarnmaker"
+msgstr "Lotte the Lantern Maker"
+
+msgid "Kasper de handelaar"
+msgstr "Kasper the Trader"
+
+msgid "Elke de kruidenier"
+msgstr "Elke the Herbalist"
+
+msgid "Willem de verhalenverteller"
+msgstr "Willem the Storyteller"
+
+msgid "Mira de dauwbewaarder"
+msgstr "Mira the Dew Keeper"
+
+msgid "Tomas de oude"
+msgstr "Old Tomas"
+
+msgid "Noor de verzamelaar"
+msgstr "Noor the Collector"
+
+msgid "De Verdwenen Lantaarn"
+msgstr "The Missing Lantern"
+
+msgid "Verse kruiden voor Elke"
+msgstr "Fresh Herbs for Elke"
+
+msgid "Het Geheim van de Dauw"
+msgstr "The Secret of the Dew"
+
+msgid "Nachtlantaarn"
+msgstr "Night Lantern"
+
+msgid "Dauwsteen"
+msgstr "Dew Stone"
+
+msgid "Verse kruiden"
+msgstr "Fresh Herbs"
