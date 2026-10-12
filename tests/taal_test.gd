@@ -7,13 +7,11 @@ extends SceneTree
 ##     het titelscherm en in het pauzemenu (ook met een controller), waarna alle tekst meteen meeverandert.
 ## (b) Engels in het spel: met een kleine test-vertaling (hieronder, TEST_PO) staan een gesprek, een melding met %s,
 ##     een voorwerpnaam, een opdrachttekst met {teken}, de prestatiemelding en het game-over-scherm in het Engels.
-## (c) Dekking: elke tekst die de extractie vindt (tools/i18n_extract.gd) staat in en.po, en elke vertaling heeft
-##     dezelfde plaatsaanduidingen als de brontekst. Of een ONTBREKENDE vertaling een fout is:
-##       - en.po heeft nog geen enkele vertaling: geen fout (alleen een melding). Zo is de suite groen zolang de
-##         vertalingen nog niet zijn ingevuld.
-##       - zodra er minstens één vertaling in en.po staat: elke tekst moet een (niet-lege) vertaling hebben.
-##       - met I18N_ALLOW_MISSING=1 is een ontbrekende vertaling nooit een fout (handig tijdens het vertalen).
-##     Fouten in plaatsaanduidingen, teksten die niet in en.po staan en verouderde teksten in en.po zijn altijd fout.
+## (c) Dekking: elke tekst die de extractie vindt (tools/i18n_extract.gd) staat in en.po, elke tekst heeft een
+##     (niet-lege, niet-fuzzy) Engelse vertaling, en elke vertaling heeft dezelfde plaatsaanduidingen als de brontekst.
+##     Een ontbrekende vertaling is dus een fout. Alleen met I18N_ALLOW_MISSING=1 is dat even toegestaan (handig
+##     tijdens het vertalen van nieuwe tekst). Fouten in plaatsaanduidingen, teksten die niet in en.po staan en
+##     verouderde teksten in en.po zijn altijd fout, ook met die vlag.
 
 const Items := preload("res://scripts/data/items.gd")
 const Dialogue := preload("res://scripts/data/dialogue.gd")
@@ -445,7 +443,8 @@ func test_coverage() -> void:
 		if entry["plural"] != "" and forms.size() < 2:
 			complete = false
 		if complete:
-			translated += 1
+			if wanted.has(key):
+				translated += 1
 			# Wat Godot er in het spel van maakt, moet de vertaling zijn.
 			var shown: String
 			if entry["plural"] == "":
@@ -460,15 +459,15 @@ func test_coverage() -> void:
 	check(bad.is_empty(), "elke vertaling heeft dezelfde plaatsaanduidingen ({teken}, %%s, %%d...) %s" % [bad.slice(0, 5)])
 	check(runtime_bad.is_empty(), "het spel toont de vertalingen uit en.po %s" % [runtime_bad.slice(0, 5)])
 
+	# Streng: elke tekst moet vertaald zijn (ook een tekst die nog niet in en.po staat, telt als ontbrekend).
 	var allow_missing := OS.get_environment("I18N_ALLOW_MISSING") == "1"
-	if missing.is_empty():
-		check(true, "alle %d teksten hebben een Engelse vertaling" % wanted.size())
+	var untranslated: Array = missing + not_in_po
+	if untranslated.is_empty():
+		check(translated == wanted.size(), "alle %d teksten hebben een Engelse vertaling" % wanted.size())
 	elif allow_missing:
-		info("I18N_ALLOW_MISSING=1: %d van de %d teksten hebben nog geen vertaling (geen fout)" % [missing.size(), wanted.size()])
-	elif translated == 0:
-		info("en.po heeft nog geen vertalingen (%d teksten): de dekking wordt streng zodra er een vertaling in staat" % wanted.size())
+		info("I18N_ALLOW_MISSING=1: %d van de %d teksten hebben nog geen vertaling (geen fout)" % [untranslated.size(), wanted.size()])
 	else:
-		check(false, "elke tekst heeft een Engelse vertaling: %d van de %d ontbreken, bijvoorbeeld %s (zie python3 tools/i18n.py check)" % [missing.size(), wanted.size(), missing.slice(0, 5)])
+		check(false, "elke tekst heeft een Engelse vertaling: %d van de %d ontbreken, bijvoorbeeld %s (zie python3 tools/i18n.py check; tijdens het vertalen: I18N_ALLOW_MISSING=1)" % [untranslated.size(), wanted.size(), untranslated.slice(0, 5)])
 
 
 # --- Hulp -----------------------------------------------------------------------------------------------------------

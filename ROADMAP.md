@@ -24,7 +24,7 @@ pixel art, en te delen met vrienden en de community.
         met drie fases, het Sterrenzwaard, en Nieuw spel+ met je beste spullen tegen sterkere vijanden
   - [x] **Arena.** Golven vijanden, drie rangen (Brons, Zilver, Goud), publiek, trofeeën, titels en beste tijden
 - [x] **Talen.** Vertaalsysteem (gettext, `translations/en.po`, `tools/i18n.py`), taalknop op het titelscherm en in het
-      pauzemenu. Nederlands is de brontaal; de Engelse vertaling wordt nog ingevuld
+      pauzemenu. Nederlands is de brontaal, en het hele spel is in het Engels vertaald
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages

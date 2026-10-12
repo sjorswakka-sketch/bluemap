@@ -85,8 +85,7 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),
   ondersteuning voor een controller, en een eindscherm met aftiteling.
-- **Talen:** Nederlands, en Engels zodra de vertaling is ingevuld (zie [Talen](#talen)). Wisselen kan op het titelscherm en
-  in het pauzemenu.
+- **Talen:** Nederlands en Engels (zie [Talen](#talen)). Wisselen kan op het titelscherm en in het pauzemenu.
 
 ## Tips voor spelers
 
@@ -217,8 +216,9 @@ Meer gereedschap:
 
 ## Talen
 
-Het spel is in het Nederlands geschreven. Engels komt erbij via een vertaling: zolang een tekst nog geen Engelse
-vertaling heeft, staat hij in het Nederlands in beeld.
+Het spel is in het Nederlands geschreven en helemaal in het Engels vertaald (`translations/en.po`). Heeft een nieuwe
+tekst nog geen vertaling, dan staat hij ook in het Engels gewoon in het Nederlands in beeld, en faalt de taaltest (zie
+hieronder).
 
 ### De taal kiezen
 
@@ -279,14 +279,15 @@ wie het zegt, waar het staat) en waar hij in de scripts staat (`#:`). Regels om 
   decimaalteken: in het Engels een punt).
 - Namen (Pim, Azura) mogen hetzelfde blijven; vul ze dan toch in, anders telt de tekst als ontbrekend.
 
-### Wanneer is de test streng?
+### Wat controleert de test?
 
-`tests/taal_test.gd` controleert altijd dat `en.po` bij de code past (elke tekst erin, geen verouderde teksten) en dat elke
-ingevulde vertaling dezelfde plaatsaanduidingen heeft. Of een **ontbrekende** vertaling een fout is:
+`tests/taal_test.gd` controleert dat `en.po` bij de code past (elke tekst erin, geen verouderde teksten), dat **elke**
+tekst een Engelse vertaling heeft (een lege of fuzzy vertaling telt als ontbrekend) en dat elke vertaling dezelfde
+plaatsaanduidingen heeft als de brontekst. Verander of voeg je Nederlandse tekst toe, draai dan `extract`, vertaal de
+nieuwe teksten en draai `check`; anders faalt de test.
 
-- zolang `en.po` nog helemaal leeg is: nee (de test meldt alleen hoeveel er nog te doen is);
-- zodra er minstens één vertaling in staat: ja, dan moet alles vertaald zijn;
-- met `I18N_ALLOW_MISSING=1 sh tools/run_tests.sh ...` nooit (handig zolang je nog aan het vertalen bent).
+Ben je nog aan het vertalen? Met `I18N_ALLOW_MISSING=1 sh tools/run_tests.sh ...` is een ontbrekende vertaling even geen
+fout (fouten in plaatsaanduidingen en teksten die niet in `en.po` staan wel).
 
 ### Een nieuwe taal toevoegen
 
