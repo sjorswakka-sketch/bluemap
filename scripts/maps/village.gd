@@ -89,5 +89,10 @@ const DATA := {
 		# Zilvermeer (achteraan, zodat de plekken van de oude dingen in opslagen niet verschuiven): de weg naar het zuiden.
 		{"type": "sign", "pos": [18, 24], "lines": ["Zuidelijke weg: het Zilvermeer.", "Rustig water, grote vissen en een bibliotheek."]},
 		{"type": "portal", "pos": [19, 26], "to": "lake", "spawn": "from_village", "size": [2, 2]},
+		# Polish: extra NPC's helemaal achteraan zodat de oude objectvolgorde intact blijft
+		{"type": "npc", "pos": [15, 25], "id": "lotte"},
+		{"type": "npc", "pos": [11, 18], "id": "kasper"},
+		{"type": "npc", "pos": [20, 16], "id": "elke"},
+		{"type": "npc", "pos": [27, 14], "id": "willem"},
 	],
 }

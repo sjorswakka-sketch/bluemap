@@ -23,11 +23,16 @@ def step(ma, surface, seed):
         return resonance * 0.3 + noise * heel * 0.4
     if surface == "cloth":
         return soft * heel + impact * heel * 0.18
+    if surface == "snow":
+        # knarsende sneeuw: veel korrel, zachte aanzet
+        crunch = grit * heel * 0.9 + soft * 0.7 * heel
+        squeak = np.sin(2 * np.pi * 900 * t) * np.exp(-t * 90) * 0.08
+        return crunch + squeak
     return impact * heel * 0.5 + noise * np.exp(-t * 100) + grit * heel * 0.1
 
 
 def generate(ma):
-    for i, surface in enumerate(("grass", "path", "sand", "wood", "stone", "cloth")):
+    for i, surface in enumerate(("grass", "path", "sand", "wood", "stone", "cloth", "snow")):
         ma.save("step_" + surface, step(ma, surface, 810 + i), 0.45)
 
 

@@ -63,8 +63,13 @@ func _run() -> void:
 	Input.action_release("aim_up")
 	player.set_physics_process(false)
 	check(player.global_position.x > before.x and player.facing.is_equal_approx(Vector2.RIGHT) and player.aim_direction.is_equal_approx(Vector2.UP) and player._direction_row() == 2, "lichaam loopt naar rechts terwijl de rechterstick omhoog richt")
+	# Fysieke stick terug naar neutraal, zoals een echte controller bij loslaten.
+	var release := InputEventJoypadMotion.new()
+	release.axis = JOY_AXIS_RIGHT_Y
+	release.axis_value = 0.0
+	root.push_input(release)
 	player._update_aim()
-	check(player.facing.is_equal_approx(Vector2.RIGHT) and player.aim_direction.is_equal_approx(Vector2.UP), "loslaten rechterstick bewaart mikrichting en laatste looprichting afzonderlijk")
+	check(player.facing.is_equal_approx(Vector2.RIGHT) and player.aim_direction.is_equal_approx(Vector2.UP), "loslaten rechterstick bewaart de mikrichting zolang je stilstaat")
 	world.hud._show_game_over()
 	check(not world.hud.overlay_sub.text.contains("voor het menu"), "controller toont geen conflicterende Start-knop als pauzeknop na verlies")
 	world.hud.overlay.visible = false
@@ -102,6 +107,14 @@ func _run() -> void:
 	player.cooldown = 0.0
 	player._attack()
 	check(not player.work_active and player.attack_direction.is_equal_approx(Vector2.UP) and player.facing.is_equal_approx(Vector2.RIGHT), "eerste zwaardzwaai na verzamelen volgt de stickrichting zonder het lichaam te draaien")
+	# Weer lopen met de linkerstick (rechterstick neutraal) neemt de mikrichting
+	# over: het richtkruis blijft niet op de laatste mikrichting hangen.
+	Input.action_press("move_right")
+	player.set_physics_process(true)
+	await frames(4)
+	Input.action_release("move_right")
+	player.set_physics_process(false)
+	check(player.stick_aim == Vector2.ZERO and player.facing.is_equal_approx(Vector2.RIGHT) and player.aim_direction.is_equal_approx(Vector2.RIGHT), "lopen met de linkerstick na mikken neemt de mikrichting weer over")
 
 	var mouse := InputEventMouseMotion.new()
 	mouse.position = Vector2(850, 320)
