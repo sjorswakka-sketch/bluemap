@@ -321,6 +321,12 @@ func _update_aim() -> void:
 		var stick: Vector2 = Controls.aim_vector()
 		if stick.length_squared() > 0.01:
 			stick_aim = stick.normalized()
+		elif Input.get_vector("move_left", "move_right", "move_up", "move_down") != Vector2.ZERO:
+			# Rechterstick neutraal en de linkerstick stuurt op dit moment: het richtkruis
+			# laat los en de mikrichting volgt de nieuwe looprichting weer. Verse invoer
+			# lezen (niet `moving`): die is tussen physics frames verouderd. Stilstaan
+			# bewaart de mikrichting, zodat je stil kunt mikken en dan pas schieten.
+			stick_aim = Vector2.ZERO
 		if stick_aim != Vector2.ZERO:
 			aim_direction = stick_aim
 		aim_position = global_position + aim_direction * 90.0
