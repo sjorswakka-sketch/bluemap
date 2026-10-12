@@ -51,6 +51,8 @@ Het laatst bewust gebruikte apparaat is actief. De controller verbergt de muiscu
 
 ## Wat zit erin
 
+- **Heldenvoortgang:** verdien XP met verslagen vijanden buiten de arena en voltooide opdrachten. Je heldenniveau en XP-balk staan in beeld; elk nieuw niveau geeft 15 munten voor je volgende aankoop, tot niveau 10. Het tabblad **Voortgang** in de inventaris toont je helden- en beroepsniveaus, uitrusting en de kosten, voorwaarden en locaties van verbeteringen. De zeven beroepen behouden hun eigen XP en recepten. Oudere opgeslagen spellen starten met 0 helden-XP en behouden hun uitrusting; Nieuw Spel+ neemt je helden-XP mee.
+- **Dorpsplein:** een grotere stenen fontein staat in het midden van het plein, met bewegende waterstralen, spetters en kringen. De looproutes blijven rondom de fontein bereikbaar.
 - **Oprapen en animaties:** alle losse voorwerpen worden net als munten naar de speler getrokken. Volle stapels en hartjes bij volle gezondheid blijven beschikbaar. Mijnbouw, houthakken en kruidenzoeken hebben een korte werkactie met gereedschap, voortgang, geluid en deeltjes. Lopen, schade, gevechten of menu's onderbreken die actie. Vereist gereedschap, niveau en tasruimte worden ook bij het afronden opnieuw gecontroleerd. Er zijn extra rust-, sprint-, zwaard- en drinkanimaties.
 - **Ondergrond en sprinten:** op paden loop je 20% sneller dan op gras; op zand 8% langzamer. Sprinten geeft 50% extra
   loopsnelheid zolang er stamina is. Een volle balk is goed voor vijf seconden sprinten; na 0,8 seconde rust begint het

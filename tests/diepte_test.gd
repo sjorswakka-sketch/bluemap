@@ -1,4 +1,5 @@
 extends SceneTree
+const Progression := preload("res://scripts/core/progression.gd")
 ## Test voor de Diepte, De Vergeten Wachter, het Sterrenzwaard en Nieuw spel+. Draaien met:
 ##   sh tools/run_tests.sh /pad/naar/godot      (alle tests, met een eigen opslagmap)
 ## Draai je hem los (godot --headless --fixed-fps 60 --path . -s tests/diepte_test.gd), dan zet de test je opgeslagen
@@ -926,6 +927,9 @@ func test_guardian_death() -> void:
 	await put_player(tile_center([13, 10])) # je staat in de arena
 	var kills_before: int = gs.kills
 	var coins_before: int = gs.coins
+	var xp_before: int = gs.hero_xp
+	var expected_xp := mini(xp_before + 200 + 100, Progression.MAX_XP) # Wachter + voltooide Diepte-opdracht
+	var expected_level_coins := (Progression.level_for(expected_xp) - Progression.level_for(xp_before)) * Progression.LEVEL_REWARD
 	var died := [0]
 	boss.died.connect(func() -> void: died[0] += 1)
 	# Net als in een echt gevecht: er vliegen scherven en de pilaren laden op.
@@ -945,7 +949,8 @@ func test_guardian_death() -> void:
 	check(boss.hp == 0, "een tweede klap doet niets meer")
 	await frames(int(boss.DEATH_TIME * 60.0) + 20)
 	check(gs.flag("guardian_defeated"), "de vlag guardian_defeated staat aan")
-	check(gs.coins == coins_before + 500, "500 munten")
+	check(gs.hero_xp == expected_xp, "ervaring voor de Wachter en de Diepte-opdracht, elk één keer")
+	check(gs.coins == coins_before + 500 + expected_level_coins, "500 baasmunten plus de precieze beloning voor nieuwe heldenlevels")
 	check(gs.weapon == "star" and gs.damage() == 4, "het Sterrenzwaard is je nieuwe zwaard")
 	check(gs.quest_state("diepte") == "done", "de opdracht is voltooid")
 	check(guardian_node() == null or boss.is_queued_for_deletion() or not is_instance_valid(boss), "de baas is weg")

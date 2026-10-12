@@ -5,6 +5,7 @@ extends CanvasLayer
 const Art := preload("res://scripts/core/art.gd")
 const UiStyle := preload("res://scripts/core/ui_style.gd")
 const Items := preload("res://scripts/data/items.gd")
+const Progression := preload("res://scripts/core/progression.gd")
 const Daynight := preload("res://scripts/core/daynight.gd")
 const AchievementBanner := preload("res://scripts/ui/achievement_banner.gd")
 
@@ -17,6 +18,7 @@ var toast_label: Label
 var banner: Label
 var boss_bar: Control
 var clock: Control # zon of maan, en welk deel van de dag het is
+var xp_bar: Control
 var stamina_bar: Control
 var achievement_banner: CanvasLayer # de melding "Prestatie behaald!"
 var clock_state := ""
@@ -38,6 +40,7 @@ func _ready() -> void:
 	_ignore_mouse(self)
 	Controls.device_changed.connect(func(_pad: bool) -> void: _refresh_controls())
 	Controls.bindings_changed.connect(_refresh_controls)
+	GameState.progression_changed.connect(func() -> void: xp_bar.queue_redraw())
 	GameState.hp_changed.connect(func() -> void: hearts.queue_redraw())
 	GameState.items_changed.connect(func() -> void: stats.queue_redraw(); _refresh_tracker())
 	GameState.quests_changed.connect(_refresh_tracker)
@@ -46,6 +49,7 @@ func _ready() -> void:
 	_refresh_tracker()
 	_queue_toast(tr("%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing") % [Controls.action_label("attack"), Controls.action_label("interact"), Controls.action_label("menu"), Controls.action_label("pause")])
 	_queue_toast(tr("%s vasthouden: rennen  ·  %s: beroepen en maken  ·  Paden geven extra snelheid") % [Controls.action_label("sprint"), Controls.action_label("crafting")])
+	_queue_toast(tr("Je XP, beroepen en volgende upgrades staan in %s → Voortgang.") % Controls.action_label("menu"))
 	# Boog: de pijlenteller (met "[F]") staat in beeld zodra je een boog hebt, en bij het krijgen ervan komt een melding.
 	had_bow = GameState.count("bow") > 0
 	GameState.items_changed.connect(_check_bow)
@@ -62,6 +66,7 @@ func _ignore_mouse(node: Node) -> void:
 func _refresh_controls() -> void:
 	stats.queue_redraw()
 	stamina_bar.queue_redraw()
+	xp_bar.queue_redraw()
 	if GameState.ended:
 		_show_game_over()
 
@@ -91,6 +96,12 @@ func _build_ui() -> void:
 	stamina_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	stamina_bar.draw.connect(_draw_stamina)
 	add_child(stamina_bar)
+
+	xp_bar = Control.new()
+	xp_bar.position = Vector2(20, 194)
+	xp_bar.size = Vector2(280, 38)
+	xp_bar.draw.connect(_draw_xp)
+	add_child(xp_bar)
 
 	tracker_panel = PanelContainer.new()
 	tracker_panel.anchor_left = 1.0
@@ -256,6 +267,7 @@ func _on_language_changed(_locale: String) -> void:
 	if overlay.visible:
 		_show_game_over()
 	stats.queue_redraw()
+	xp_bar.queue_redraw()
 	clock_state = ""
 	clock.queue_redraw()
 	boss_bar.queue_redraw()
@@ -363,3 +375,19 @@ func _draw_clock() -> void:
 	var label := _clock_label()
 	clock.draw_string_outline(font, Vector2(38, 25), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, 5, Color(0, 0, 0, 0.9))
 	clock.draw_string(font, Vector2(38, 25), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color(0.95, 0.97, 1.0))
+
+
+func xp_label() -> String:
+	var hero := Progression.progress()
+	return tr("Held %d · maximaal niveau") % hero["level"] if hero["max_level"] else tr("Held %d · %d/%d XP") % [hero["level"], hero["current"], hero["needed"]]
+
+
+func _draw_xp() -> void:
+	var hero := Progression.progress()
+	var ratio := 1.0 if hero["max_level"] else float(hero["current"]) / maxi(int(hero["needed"]), 1)
+	var font := ThemeDB.fallback_font
+	xp_bar.draw_string_outline(font, Vector2(0, 15), xp_label(), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, 4, Color(0, 0, 0, 0.9))
+	xp_bar.draw_string(font, Vector2(0, 15), xp_label(), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(0.83, 0.88, 1.0))
+	xp_bar.draw_rect(Rect2(0, 22, 222, 10), Color(0.02, 0.04, 0.09, 0.85))
+	xp_bar.draw_rect(Rect2(2, 24, 218.0 * ratio, 6), Color(0.6, 0.67, 1.0))
+	xp_bar.draw_rect(Rect2(0, 22, 222, 10), Color(0.7, 0.77, 1.0), false, 1.0)

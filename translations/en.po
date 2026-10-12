@@ -10,62 +10,62 @@ msgstr ""
 
 #. Naam van gebied village
 #. Kaart village, sign [21, 8]: tekst op een bord
-#: scripts/ui/ending.gd:218 scripts/maps/village.gd:6 scripts/maps/village.gd:63
+#: scripts/ui/ending.gd:218 scripts/maps/village.gd:6 scripts/maps/village.gd:66
 msgid "Dageraadsdorp"
 msgstr "Daybreak Village"
 
 #. Kaart village, sign [21, 8]: tekst op een bord
-#: scripts/maps/village.gd:63
+#: scripts/maps/village.gd:66
 msgid "Tempel van de Blauwe Kaart. Bewaker: Oudste Bram."
 msgstr "Temple of the Blue Map. Keeper: Elder Bram."
 
 #. Kaart village, sign [37, 12]: tekst op een bord
-#: scripts/maps/village.gd:64
+#: scripts/maps/village.gd:67
 msgid "Oostelijke weg: Fluisterbos."
 msgstr "East road: Whispering Woods."
 
 #. Kaart village, sign [37, 12]: tekst op een bord
-#: scripts/maps/village.gd:64
+#: scripts/maps/village.gd:67
 msgid "Pas op voor slijmen!"
 msgstr "Watch out for slimes!"
 
 #. Kaart village, portal [33, 4]: melding als hij op slot zit
-#: scripts/maps/village.gd:72
+#: scripts/maps/village.gd:75
 msgid "De arenadeur blijft dicht. Praat eerst met Oudste Bram, en kom terug met een ijzeren zwaard van Greta de smid."
 msgstr "The arena door stays shut. Talk to Elder Bram first, then come back with an Iron Sword from Greta the Smith."
 
 #. Kaart village, sign [31, 5]: tekst op een bord
-#: scripts/maps/village.gd:73
+#: scripts/maps/village.gd:76
 msgid "Arena van Dageraadsdorp"
 msgstr "Daybreak Village Arena"
 
 #. Kaart village, sign [31, 5]: tekst op een bord
-#: scripts/maps/village.gd:73
+#: scripts/maps/village.gd:76
 msgid "Voor echte vechters! Praat eerst met Oudste Bram, en kom terug met een ijzeren zwaard van Greta de smid."
 msgstr "For true fighters only! Talk to Elder Bram first, then come back with an Iron Sword from Greta the Smith."
 
 #. Kaart village, portal [19, 6]: melding als hij op slot zit
-#: scripts/maps/village.gd:78
+#: scripts/maps/village.gd:81
 msgid "De tempeldeur is verzegeld door de gebarsten kaart."
 msgstr "The temple door is sealed by the cracked map."
 
 #. Kaart village, sign [29, 17]: tekst op een bord
-#: scripts/maps/village.gd:85
+#: scripts/maps/village.gd:88
 msgid "Schietbaan van Tessa."
 msgstr "Tessa's Shooting Range."
 
 #. Kaart village, sign [29, 17]: tekst op een bord
-#: scripts/maps/village.gd:85
+#: scripts/maps/village.gd:88
 msgid "Raak de doelwitten met je boog. Praat met Tessa om te beginnen."
 msgstr "Hit the targets with your bow. Talk to Tessa to start."
 
 #. Kaart village, sign [18, 24]: tekst op een bord
-#: scripts/maps/village.gd:87
+#: scripts/maps/village.gd:90
 msgid "Zuidelijke weg: het Zilvermeer."
 msgstr "South road: Silver Lake."
 
 #. Kaart village, sign [18, 24]: tekst op een bord
-#: scripts/maps/village.gd:87
+#: scripts/maps/village.gd:90
 msgid "Rustig water, grote vissen en een bibliotheek."
 msgstr "Calm water, big fish, and a library."
 
@@ -3489,17 +3489,17 @@ msgid "Verzamel met E. Maak eerst een stenen bijl en pikhouweel van losse takken
 msgstr "Gather with E. First, craft a stone axe and pickaxe from loose branches and stones. Tools are used automatically and never wear out."
 
 #. Beroepen: tekst of sjabloon level
-#: scripts/data/ext/beroepen.gd:20
+#: scripts/ui/progression_page.gd:105 scripts/data/ext/beroepen.gd:20
 msgid "Niveau %d / %d"
 msgstr "Level %d / %d"
 
 #. Beroepen: tekst of sjabloon xp
-#: scripts/data/ext/beroepen.gd:20
+#: scripts/ui/progression_page.gd:104 scripts/data/ext/beroepen.gd:20
 msgid "%d / %d XP tot volgend niveau"
 msgstr "%d / %d XP toward the next level"
 
 #. Beroepen: tekst of sjabloon master
-#: scripts/data/ext/beroepen.gd:20
+#: scripts/ui/progression_page.gd:104 scripts/data/ext/beroepen.gd:20
 msgid "Meester • maximaal niveau"
 msgstr "Master • maximum level"
 
@@ -3795,7 +3795,7 @@ msgid "Naar rechts lopen"
 msgstr "Move right"
 
 #. Instelbare bediening: attack
-#: scripts/ui/ending.gd:254 scripts/core/input_manager.gd:13
+#: scripts/ui/ending.gd:254 scripts/ui/progression_page.gd:125 scripts/core/input_manager.gd:13
 msgid "Zwaard"
 msgstr "Sword"
 
@@ -3830,22 +3830,22 @@ msgid "Beroepen / maken"
 msgstr "Professions / crafting"
 
 #. Instelbare bediening: quests
-#: scripts/ui/menu_ui.gd:295 scripts/ui/menu_ui.gd:506 scripts/core/input_manager.gd:15
+#: scripts/ui/menu_ui.gd:309 scripts/ui/menu_ui.gd:522 scripts/core/input_manager.gd:15
 msgid "Opdrachten"
 msgstr "Quests"
 
 #. Instelbare bediening: map
-#: scripts/ui/menu_ui.gd:295 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_ui.gd:309 scripts/core/input_manager.gd:16
 msgid "Kaart"
 msgstr "Map"
 
 #. Instelbare bediening: wereld_prestaties
-#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:295 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:309 scripts/core/input_manager.gd:16
 msgid "Prestaties"
 msgstr "Achievements"
 
 #. Instelbare bediening: wereld_beestenboek
-#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:295 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:309 scripts/core/input_manager.gd:16
 msgid "Beestenboek"
 msgstr "Bestiary"
 
@@ -4080,7 +4080,7 @@ msgstr "You can't travel during a boss fight!"
 msgid "Je kunt niet reizen tijdens een arenagevecht!"
 msgstr "You can't travel during an arena fight!"
 
-#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:328
+#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:342
 msgid "Je hebt nog geen altaar ontdekt."
 msgstr "You haven't found an altar yet."
 
@@ -4088,51 +4088,56 @@ msgstr "You haven't found an altar yet."
 msgid "Dat altaar heb je nog niet ontdekt."
 msgstr "You haven't found that altar yet."
 
+#. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
+#: scripts/core/game_state.gd:245
+msgid "Heldenlevel %d! +%d munten voor je uitrusting."
+msgstr "Hero level %d! +%d coins for your equipment."
+
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:347
+#: scripts/core/game_state.gd:377
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:350
+#: scripts/core/game_state.gd:380
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:352
+#: scripts/core/game_state.gd:382
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:355
+#: scripts/core/game_state.gd:385
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:362
+#: scripts/core/game_state.gd:392
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:426
+#: scripts/core/game_state.gd:456
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:441
+#: scripts/core/game_state.gd:471
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:482
+#: scripts/core/game_state.gd:513
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:486
+#: scripts/core/game_state.gd:517
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:562
+#: scripts/core/game_state.gd:593
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:579
+#: scripts/core/game_state.gd:610
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -4508,19 +4513,19 @@ msgstr "Deep fishing spot"
 msgid "Visplek"
 msgstr "Fishing spot"
 
-#: scripts/entities/player.gd:287
+#: scripts/entities/player.gd:290
 msgid "Je hebt een boog nodig. Tobias verkoopt er een."
 msgstr "You need a bow. Tobias sells one."
 
-#: scripts/entities/player.gd:297
+#: scripts/entities/player.gd:303
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:321 scripts/ui/menu_ui.gd:380
+#: scripts/entities/player.gd:327 scripts/ui/menu_ui.gd:394
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
-#: scripts/entities/player.gd:323
+#: scripts/entities/player.gd:329
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
 
@@ -4729,7 +4734,7 @@ msgstr "Enemies defeated"
 msgid "Munten"
 msgstr "Coins"
 
-#: scripts/ui/ending.gd:255
+#: scripts/ui/ending.gd:255 scripts/ui/progression_page.gd:125
 msgid "Hartjes"
 msgstr "Hearts"
 
@@ -4835,56 +4840,68 @@ msgid_plural "Waarde: %d munten"
 msgstr[0] "Worth: %d coin"
 msgstr[1] "Worth: %d coins"
 
-#: scripts/ui/hud.gd:47
+#: scripts/ui/hud.gd:50
 msgid "%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing"
 msgstr "%s sword  ·  %s talk  ·  %s menu  ·  %s pause and controls"
 
-#: scripts/ui/hud.gd:48
+#: scripts/ui/hud.gd:51
 msgid "%s vasthouden: rennen  ·  %s: beroepen en maken  ·  Paden geven extra snelheid"
 msgstr "Hold %s: sprint  ·  %s: professions and crafting  ·  Paths make you faster"
 
-#: scripts/ui/hud.gd:156 scripts/ui/hud.gd:255 scripts/ui/hud.gd:318
+#: scripts/ui/hud.gd:52
+msgid "Je XP, beroepen en volgende upgrades staan in %s → Voortgang."
+msgstr "Find your XP, professions and next upgrades in %s → Progress."
+
+#: scripts/ui/hud.gd:167 scripts/ui/hud.gd:266 scripts/ui/hud.gd:330
 msgid "Game over"
 msgstr "Game over"
 
-#: scripts/ui/hud.gd:168
+#: scripts/ui/hud.gd:179
 msgid "Even op adem komen..."
 msgstr "Catching your breath..."
 
-#: scripts/ui/hud.gd:168
+#: scripts/ui/hud.gd:179
 msgid "Uithouding  ·  %s"
 msgstr "Stamina  ·  %s"
 
-#: scripts/ui/hud.gd:224
+#: scripts/ui/hud.gd:235
 msgid "Boog gekregen! Druk op %s om te schieten."
 msgstr "Bow acquired! Press %s to shoot."
 
-#: scripts/ui/hud.gd:320
+#: scripts/ui/hud.gd:332
 msgid "Verslagen door: %s"
 msgstr "Defeated by: %s"
 
-#: scripts/ui/hud.gd:323
+#: scripts/ui/hud.gd:335
 msgid "%s voor het menu"
 msgstr "%s for the menu"
 
-#: scripts/ui/hud.gd:324
+#: scripts/ui/hud.gd:336
 msgid "Druk op %s om verder te gaan vanaf je laatste opslag"
 msgstr "Press %s to continue from your last save"
 
-#: scripts/ui/hud.gd:324
+#: scripts/ui/hud.gd:336
 msgid "Druk op %s om opnieuw te beginnen"
 msgstr "Press %s to start again"
 
 #. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
 #. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
-#: scripts/ui/hud.gd:336 scripts/ui/menu_pages.gd:220
+#: scripts/ui/hud.gd:348 scripts/ui/menu_pages.gd:220
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
 #. het dagdeel bij de klok als het regent: "Avond  ·  regen"
-#: scripts/ui/hud.gd:355
+#: scripts/ui/hud.gd:367
 msgid "%s  ·  regen"
 msgstr "%s  ·  rain"
+
+#: scripts/ui/hud.gd:382
+msgid "Held %d · maximaal niveau"
+msgstr "Hero %d · maximum level"
+
+#: scripts/ui/hud.gd:382
+msgid "Held %d · %d/%d XP"
+msgstr "Hero %d · %d/%d XP"
 
 #: scripts/ui/intro.gd:31
 msgid "Azura is een land vol bossen, ruïnes en grotten. Eeuwenlang werd het beschermd door de Blauwe Kaart."
@@ -4942,7 +4959,7 @@ msgstr "Health:  %d"
 msgid "Schade:  %s"
 msgstr "Damage:  %s"
 
-#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:476
+#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:492
 msgid "Verslagen:  %d"
 msgstr "Defeated:  %d"
 
@@ -5011,88 +5028,96 @@ msgstr "%s  Travel"
 msgid "%s  Terug"
 msgstr "%s  Back"
 
-#: scripts/ui/menu_ui.gd:295
+#: scripts/ui/menu_ui.gd:309
 msgid "Voorwerpen"
 msgstr "Items"
 
-#: scripts/ui/menu_ui.gd:416
+#: scripts/ui/menu_ui.gd:309
+msgid "Voortgang"
+msgstr "Progress"
+
+#: scripts/ui/menu_ui.gd:430
 msgid "%s / %s tabblad  ·  "
 msgstr "%s / %s tab  ·  "
 
-#: scripts/ui/menu_ui.gd:417
+#: scripts/ui/menu_ui.gd:431
 msgid "%s sluiten"
 msgstr "%s close"
 
-#: scripts/ui/menu_ui.gd:419
+#: scripts/ui/menu_ui.gd:433
 msgid "↑ ↓ ← → kiezen  ·  %s gebruiken  ·  "
 msgstr "↑ ↓ ← → select  ·  %s use  ·  "
 
-#: scripts/ui/menu_ui.gd:421
+#: scripts/ui/menu_ui.gd:435
+msgid "↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  "
+msgstr "↑ ↓ select  ·  ← → scroll details  ·  "
+
+#: scripts/ui/menu_ui.gd:437
 msgid "↑ ↓ altaar  ·  %s reizen  ·  "
 msgstr "↑ ↓ altar  ·  %s travel  ·  "
 
-#: scripts/ui/menu_ui.gd:422
+#: scripts/ui/menu_ui.gd:438
 msgid "↑ ↓ bladeren  ·  "
 msgstr "↑ ↓ browse  ·  "
 
-#: scripts/ui/menu_ui.gd:436
+#: scripts/ui/menu_ui.gd:452
 msgid "Je spullen"
 msgstr "Your stuff"
 
-#: scripts/ui/menu_ui.gd:438
+#: scripts/ui/menu_ui.gd:454
 msgid "Je hebt nog niets bij je."
 msgstr "You're not carrying anything yet."
 
-#: scripts/ui/menu_ui.gd:468
+#: scripts/ui/menu_ui.gd:484
 msgid "%s  Gebruiken"
 msgstr "%s  Use"
 
-#: scripts/ui/menu_ui.gd:471
+#: scripts/ui/menu_ui.gd:487
 msgid "Zwaard:  %s (schade %d)"
 msgstr "Sword:  %s (damage %d)"
 
-#: scripts/ui/menu_ui.gd:472
+#: scripts/ui/menu_ui.gd:488
 msgid "Levens:  %d / %d"
 msgstr "Health:  %d / %d"
 
-#: scripts/ui/menu_ui.gd:473
+#: scripts/ui/menu_ui.gd:489
 msgid "Snelheid:  snel (laarzen)"
 msgstr "Speed:  fast (boots)"
 
-#: scripts/ui/menu_ui.gd:473
+#: scripts/ui/menu_ui.gd:489
 msgid "Snelheid:  normaal"
 msgstr "Speed:  normal"
 
-#: scripts/ui/menu_ui.gd:474
+#: scripts/ui/menu_ui.gd:490
 msgid "Munten:  %d"
 msgstr "Coins:  %d"
 
-#: scripts/ui/menu_ui.gd:475
+#: scripts/ui/menu_ui.gd:491
 msgid "Kristallen:  %d / 3"
 msgstr "Crystals:  %d / 3"
 
-#: scripts/ui/menu_ui.gd:477
+#: scripts/ui/menu_ui.gd:493
 msgid "Speeltijd:  %s"
 msgstr "Play time:  %s"
 
 #. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-#: scripts/ui/menu_ui.gd:482 scripts/ui/pause_menu.gd:111
+#: scripts/ui/menu_ui.gd:498 scripts/ui/pause_menu.gd:111
 msgid "Nieuw spel+  ·  ronde %d"
 msgstr "New Game+  ·  round %d"
 
-#: scripts/ui/menu_ui.gd:508
+#: scripts/ui/menu_ui.gd:524
 msgid "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"
 msgstr "You don't have any quests yet. Talk to the people in the village!"
 
-#: scripts/ui/menu_ui.gd:518
+#: scripts/ui/menu_ui.gd:534
 msgid "%s   (hoofdopdracht)"
 msgstr "%s   (main quest)"
 
-#: scripts/ui/menu_ui.gd:525
+#: scripts/ui/menu_ui.gd:541
 msgid "Voltooid."
 msgstr "Completed."
 
-#: scripts/ui/menu_ui.gd:568
+#: scripts/ui/menu_ui.gd:584
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
 
@@ -5123,6 +5148,202 @@ msgstr "Sound: off"
 #: scripts/ui/pause_menu.gd:145 scripts/ui/title.gd:153
 msgid "Geluid: aan"
 msgstr "Sound: on"
+
+#: scripts/ui/progression_page.gd:95
+msgid "Zwaard & volgende upgrade"
+msgstr "Sword & next upgrade"
+
+#: scripts/ui/progression_page.gd:97
+msgid "Laarzen & snelheid"
+msgstr "Boots & speed"
+
+#: scripts/ui/progression_page.gd:99
+msgid "Hartjes & overleven"
+msgstr "Hearts & health"
+
+#: scripts/ui/progression_page.gd:101 scripts/ui/progression_page.gd:125
+msgid "Gereedschap & boog"
+msgstr "Tools & bow"
+
+#: scripts/ui/progression_page.gd:105
+msgid "Beroepen stijgen door verzamelen, vissen en maken. Ze ontgrendelen eigen recepten en grondstoffen."
+msgstr "Level up professions by gathering, fishing and crafting. They unlock their own recipes and resources."
+
+#: scripts/ui/progression_page.gd:105
+msgid "Open %s voor recepten en hun materialen."
+msgstr "Open %s to see recipes and their materials."
+
+#: scripts/ui/progression_page.gd:109
+msgid "Volgend recept: %s (niveau %d)"
+msgstr "Next recipe: %s (level %d)"
+
+#: scripts/ui/progression_page.gd:117
+msgid "Held · niveau %d"
+msgstr "Hero · level %d"
+
+#: scripts/ui/progression_page.gd:118
+msgid "Maximaal niveau"
+msgstr "Maximum level"
+
+#: scripts/ui/progression_page.gd:118
+msgid "%d / %d XP"
+msgstr "%d / %d XP"
+
+#: scripts/ui/progression_page.gd:122
+msgid "Alle heldlevels behaald"
+msgstr "All hero levels reached"
+
+#: scripts/ui/progression_page.gd:122
+msgid "Volgend level: +%d munten"
+msgstr "Next level: +%d coins"
+
+#: scripts/ui/progression_page.gd:123
+msgid "Verdien XP met gevechten buiten de arena en opdrachten. Levels geven munten voor uitrusting."
+msgstr "Earn XP from battles outside the arena and quests. Levels reward coins for equipment."
+
+#: scripts/ui/progression_page.gd:125
+msgid "Laarzen"
+msgstr "Boots"
+
+#: scripts/ui/progression_page.gd:172 scripts/ui/progression_page.gd:241
+msgid "Nu: %s"
+msgstr "Current: %s"
+
+#: scripts/ui/progression_page.gd:172
+msgid "Schade: %d per klap · bereik: %d"
+msgstr "Damage: %d per hit · reach: %d"
+
+#: scripts/ui/progression_page.gd:176
+msgid "Je hebt het sterkste zwaard van Azura."
+msgstr "You have the strongest sword in Azura."
+
+#: scripts/ui/progression_page.gd:179 scripts/ui/progression_page.gd:208 scripts/ui/progression_page.gd:245
+msgid "Volgende upgrade: %s"
+msgstr "Next upgrade: %s"
+
+#: scripts/ui/progression_page.gd:180
+msgid "Schade %d → %d · bereik %d → %d"
+msgstr "Damage %d → %d · reach %d → %d"
+
+#: scripts/ui/progression_page.gd:182
+msgid "Herstel eerst de Blauwe Kaart. Daal daarna onder de Kristaltempel af en versla De Vergeten Wachter. Geen muntkosten."
+msgstr "First restore the Blue Map. Then descend beneath the Crystal Temple and defeat the Forgotten Guardian. No coins required."
+
+#: scripts/ui/progression_page.gd:184
+msgid "Greta · smederij in het noordwesten van het dorp"
+msgstr "Greta · smithy in the northwest of the village"
+
+#: scripts/ui/progression_page.gd:185 scripts/ui/progression_page.gd:208
+msgid "Munten: %d / %d"
+msgstr "Coins: %d / %d"
+
+#: scripts/ui/progression_page.gd:187
+msgid "%s: %d / %d"
+msgstr "%s: %d / %d"
+
+#: scripts/ui/progression_page.gd:188
+msgid "Slijmen geven slijmgel; golembewakers in de ruïne en grot geven scherven."
+msgstr "Slimes drop slime gel; golem guards in the ruins and cave drop shards."
+
+#: scripts/ui/progression_page.gd:189
+msgid "Praat met Greta om te laten smeden. Heldniveau en beroep Smeden zijn hiervoor niet vereist."
+msgstr "Talk to Greta to have it forged. No hero or Smithing level is required."
+
+#: scripts/ui/progression_page.gd:207
+msgid "Uitgerust: %s"
+msgstr "Equipped: %s"
+
+#: scripts/ui/progression_page.gd:207 scripts/ui/progression_page.gd:208
+msgid "Blijvend %d%% sneller lopen en rennen."
+msgstr "Permanently walk and sprint %d%% faster."
+
+#: scripts/ui/progression_page.gd:207
+msgid "Je hebt de beste laarzen. Paden en rennen geven daarbovenop hun eigen snelheidsbonus."
+msgstr "You have the best boots. Paths and sprinting add their own speed bonuses."
+
+#: scripts/ui/progression_page.gd:208
+msgid "Nu: gewone schoenen"
+msgstr "Current: ordinary shoes"
+
+#: scripts/ui/progression_page.gd:208
+msgid "Tobias · winkel naast de smederij in het dorp"
+msgstr "Tobias · shop beside the village smithy"
+
+#: scripts/ui/progression_page.gd:208
+msgid "Geen niveau of materialen vereist. Koop ze via het gesprek met Tobias."
+msgstr "No level or materials required. Talk to Tobias to buy them."
+
+#: scripts/ui/progression_page.gd:213
+msgid "Levens: %d / %d hartjes maximaal"
+msgstr "Health capacity: %d / %d hearts"
+
+#: scripts/ui/progression_page.gd:215
+msgid "Alle hartcontainers verzameld."
+msgstr "All heart containers collected."
+
+#: scripts/ui/progression_page.gd:217
+msgid "Elke hartcontainer geeft blijvend +1 hartje. Geen muntkosten."
+msgstr "Each heart container permanently adds 1 heart. No coins required."
+
+#: scripts/ui/progression_page.gd:219
+msgid "Pim · bij zijn kat in het oosten van het dorp"
+msgstr "Pim · beside his cat in the east of the village"
+
+#: scripts/ui/progression_page.gd:219
+msgid "Pim · oosten van het dorp: vind zijn kat Muis in het Fluisterbos en keer bij hem terug."
+msgstr "Pim · east of the village: find his cat Muis in the Whispering Woods, then return to him."
+
+#: scripts/ui/progression_page.gd:220
+msgid "Beloning van Pim ontvangen."
+msgstr "Pim's reward received."
+
+#: scripts/ui/progression_page.gd:220
+msgid "Nog te verdienen: één hartcontainer van Pim."
+msgstr "Still to earn: one heart container from Pim."
+
+#: scripts/ui/progression_page.gd:222
+msgid "Andere hartcontainers: een kist in het noordoosten van de Echo-grot en de beloningskist van De Vergeten Wachter in de Diepte."
+msgstr "Other heart containers: a chest in the northeast of Echo Cave, and the Forgotten Guardian's reward chest in the Depths."
+
+#: scripts/ui/progression_page.gd:223
+msgid "De Diepte opent nadat de Blauwe Kaart is hersteld."
+msgstr "The Depths open after you restore the Blue Map."
+
+#: scripts/ui/progression_page.gd:231 scripts/ui/crafting_ui.gd:237
+msgid "%s %d/%d"
+msgstr "%s %d/%d"
+
+#: scripts/ui/progression_page.gd:233
+msgid "%s niveau %d · %s"
+msgstr "%s level %d · %s"
+
+#: scripts/ui/progression_page.gd:237
+msgid "Gereedschap wordt automatisch gebruikt en slijt niet."
+msgstr "Tools are used automatically and never wear out."
+
+#: scripts/ui/progression_page.gd:237
+msgid "Open %s om te maken; materialen en vereiste niveaus staan hieronder."
+msgstr "Open %s to craft; materials and required levels are shown below."
+
+#: scripts/ui/progression_page.gd:241
+msgid "Nog geen gereedschap"
+msgstr "No tool yet"
+
+#: scripts/ui/progression_page.gd:249
+msgid "Hengel: in bezit"
+msgstr "Fishing rod: owned"
+
+#: scripts/ui/progression_page.gd:249
+msgid "Hengel: gratis van Visser Joris aan het Zilvermeer."
+msgstr "Fishing rod: free from Joris the Fisher at Silver Lake."
+
+#: scripts/ui/progression_page.gd:250
+msgid "Boog: in bezit"
+msgstr "Bow: owned"
+
+#: scripts/ui/progression_page.gd:250
+msgid "Boog: %d munten bij Tobias, met %d pijlen. Geen niveau vereist."
+msgstr "Bow: %d coins from Tobias, including %d arrows. No level required."
 
 #: scripts/ui/shop_ui.gd:32 scripts/ui/shop_ui.gd:84 scripts/ui/shop_ui.gd:212
 msgid "Munten: %d"

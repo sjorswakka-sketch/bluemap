@@ -62,9 +62,13 @@ static func add_xp(skill: String, amount: int) -> void:
 	if not Data.SKILLS.has(skill) or amount <= 0:
 		return
 	var gs := _ensure()
+	var previous := xp(skill)
 	var old_level := level(skill)
-	gs.professions["xp"][skill] = mini(xp(skill) + amount, MAX_XP)
+	gs.professions["xp"][skill] = previous + mini(amount, MAX_XP - previous)
+	if xp(skill) == previous:
+		return
 	var new_level := level(skill)
+	gs.progression_changed.emit()
 	if new_level > old_level:
 		gs.toast.emit(TranslationServer.translate(Data.TEXT["skill_up"]) % [TranslationServer.translate(Data.SKILLS[skill]["name"]), new_level])
 

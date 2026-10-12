@@ -25,6 +25,7 @@ const ShopScript := preload("res://scripts/ui/shop_ui.gd")
 const MenuScript := preload("res://scripts/ui/menu_ui.gd")
 const CraftingScript := preload("res://scripts/ui/crafting_ui.gd")
 const BuildingLandmarksScript := preload("res://scripts/entities/building_landmarks.gd")
+const FountainScript := preload("res://scripts/entities/fountain.gd")
 const Beroepen := preload("res://scripts/data/ext/beroepen.gd")
 const FaderScript := preload("res://scripts/ui/fader.gd")
 const Art := preload("res://scripts/core/art.gd")
@@ -155,6 +156,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	map_data["objects"].append_array(Beroepen.resource_objects(map_id))
 	_clear_map()
 	_build_tiles(map_data["rows"])
+	_build_fountains()
 
 	darkness = map_data.get("dark", 0.0)
 	canvas_mod.color = Color.WHITE.lerp(DARK_COLOR, darkness)
@@ -169,7 +171,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	else:
 		var spawns: Dictionary = map_data["spawns"]
 		start = _tile_center(spawns.get(spawn, spawns["start"]))
-	player.global_position = start
+	player.global_position = _safe_fountain_spawn(start)
 	player.velocity = Vector2.ZERO
 	player.knockback = Vector2.ZERO
 	_set_camera_limits()
@@ -275,6 +277,53 @@ func _build_tiles(rows: Array) -> void:
 			tile_layer.set_cell(Vector2i(x, y), 0, Vector2i(Tiles.index_of(tile_name), 0))
 			if Tiles.is_solid_name(tile_name):
 				solid_cells[Vector2i(x, y)] = true
+
+
+## Fonteinen zitten buiten objects: uitbreiden verplaatst geen bestaande opslag-ID's.
+func _build_fountains() -> void:
+	for spec: Dictionary in map_data.get("fountains", []):
+		var pos: Array = spec["pos"]
+		var size: Array = spec.get("size", [2, 2])
+		var cells := Rect2i(pos[0], pos[1], size[0], size[1])
+		var fountain := FountainScript.new()
+		fountain.setup(cells)
+		entities.add_child(fountain)
+		for y in range(cells.position.y, cells.end.y):
+			for x in range(cells.position.x, cells.end.x):
+				solid_cells[Vector2i(x, y)] = true
+
+
+## Een oude opslag kan precies staan waar het grotere bassin nu ligt.
+## Alleen die overlap corrigeren; iedere andere opgeslagen positie blijft gelijk.
+func _safe_fountain_spawn(wanted: Vector2) -> Vector2:
+	var foot := wanted + PlayerScript.FOOT_OFFSET
+	var basins: Array[Rect2] = []
+	for spec: Dictionary in map_data.get("fountains", []):
+		var pos: Array = spec["pos"]
+		var size: Array = spec.get("size", [2, 2])
+		# Spelervoet heeft radius 7; 2 pixels extra houden de rand vrij.
+		basins.append(Rect2(Vector2(pos[0], pos[1]) * TILE, Vector2(size[0], size[1]) * TILE).grow(9.0))
+	var candidates: Array[Vector2] = []
+	for basin: Rect2 in basins:
+		if not basin.has_point(foot):
+			continue
+		candidates.append(Vector2(basin.position.x, foot.y))
+		candidates.append(Vector2(basin.end.x, foot.y))
+		candidates.append(Vector2(foot.x, basin.position.y))
+		candidates.append(Vector2(foot.x, basin.end.y))
+	var best := wanted
+	var distance := INF
+	for candidate: Vector2 in candidates:
+		if is_solid(candidate):
+			continue
+		var blocked := false
+		for basin: Rect2 in basins:
+			if basin.grow(-0.1).has_point(candidate):
+				blocked = true
+		if not blocked and candidate.distance_squared_to(foot) < distance:
+			best = candidate - PlayerScript.FOOT_OFFSET
+			distance = candidate.distance_squared_to(foot)
+	return best
 
 
 # --- Voorwerpen op de kaart ---------------------------------------------------------

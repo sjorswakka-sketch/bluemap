@@ -1,5 +1,5 @@
 extends CanvasLayer
-## Het menu met vijf tabbladen: voorwerpen (I of Tab), opdrachten (Q), kaart (N), prestaties (T) en beestenboek (B).
+## Het menu met zes tabbladen: voorwerpen (I of Tab), opdrachten (Q), kaart (N), prestaties (T) en beestenboek (B).
 ## Op de kaart kun je ook snel reizen naar een ontdekt altaar. Met een controller bladeren de schouderknoppen.
 
 const UiStyle := preload("res://scripts/core/ui_style.gd")
@@ -16,11 +16,14 @@ const FastTravel := preload("res://scripts/core/fast_travel.gd")
 const Professions := preload("res://scripts/core/professions.gd")
 const ProfessionData := preload("res://scripts/data/ext/beroepen.gd")
 
-const TAB_COUNT := 5 # de namen staan in tab_titles()
+const ProgressionPage := preload("res://scripts/ui/progression_page.gd")
+
+const TAB_COUNT := 6 # de namen staan in tab_titles()
 const TAB_QUESTS := 1
 const TAB_MAP := 2
 const TAB_ACHIEVEMENTS := 3
 const TAB_BESTIARY := 4
+const TAB_PROGRESSION := 5
 const SIZE := Vector2(1000, 560)
 const SLOT := 76.0
 const INVENTORY_PAGE_SIZE := 24
@@ -35,6 +38,7 @@ const MESSAGE_TIME := 3.0 # seconden dat een melding in het kaarttabblad blijft 
 
 var root: Control
 var content: Control
+var progression_page: Control
 var tab := 0
 var selected := 0
 var quest_selected := 0
@@ -72,6 +76,12 @@ func _ready() -> void:
 	content.draw.connect(_draw_content)
 	content.gui_input.connect(_pointer_input)
 	root.add_child(content)
+	progression_page = ProgressionPage.new()
+	progression_page.position = Vector2(24, 72)
+	progression_page.size = Vector2(952, 444)
+	progression_page.visible = false
+	progression_page.close_requested.connect(close)
+	content.add_child(progression_page)
 
 
 func open(start_tab: int) -> void:
@@ -82,6 +92,7 @@ func open(start_tab: int) -> void:
 	travel_message = ""
 	active = true
 	root.visible = true
+	_refresh_progression_page()
 	opened_frame = Engine.get_process_frames()
 	GameState.set_ui("menu", true)
 	Sound.play("select", -4.0)
@@ -198,6 +209,8 @@ func _navigate(action: String) -> void:
 			travel_selected = clampi(travel_selected + step, 0, maxi(FastTravel.discovered_altars().size() - 1, 0))
 		TAB_ACHIEVEMENTS:
 			achievement_selected = clampi(achievement_selected + step, 0, Achievements.ACHIEVEMENTS.size() - 1)
+		TAB_PROGRESSION:
+			progression_page.navigate(action)
 		TAB_BESTIARY:
 			bestiary_selected = clampi(bestiary_selected + step, 0, Enemies.ENEMIES.size() - 1)
 	Sound.play("select", -12.0)
@@ -226,7 +239,7 @@ func _pointer_input(event: InputEvent) -> void:
 		close()
 		return
 	for i in TAB_COUNT:
-		if Rect2(24 + i * 186, 16, 178, 40).has_point(at):
+		if tab_rect(i).has_point(at):
 			_set_tab(i)
 			return
 	match tab:
@@ -284,6 +297,7 @@ func _set_tab(new_tab: int) -> void:
 	selected = 0
 	travel_confirm = false
 	Sound.play("select", -8.0)
+	_refresh_progression_page()
 
 
 func _step_tab(step: int) -> void:
@@ -292,7 +306,7 @@ func _step_tab(step: int) -> void:
 
 ## De namen van de tabbladen in de taal van de speler: voorwerpen, opdrachten, kaart, prestaties en beestenboek.
 func tab_titles() -> Array[String]:
-	return [tr("Voorwerpen"), tr("Opdrachten"), tr("Kaart"), tr("Prestaties"), tr("Beestenboek")]
+	return [tr("Voorwerpen"), tr("Opdrachten"), tr("Kaart"), tr("Prestaties"), tr("Beestenboek"), tr("Voortgang")]
 
 
 ## Dezelfde toets opent het tabblad, en sluit het menu weer als je er al bent.
@@ -389,11 +403,11 @@ func _draw_content() -> void:
 	# Tabbladen
 	var titles := tab_titles()
 	for i in TAB_COUNT:
-		var rect := Rect2(24 + i * 186, 16, 178, 40)
+		var rect := tab_rect(i)
 		var chosen := i == tab
 		content.draw_rect(rect, Color(0.2, 0.35, 0.65) if chosen else Color(0.1, 0.16, 0.3))
 		content.draw_rect(rect, Color(0.6, 0.85, 1.0) if chosen else Color(0.3, 0.45, 0.7), false, 2.0)
-		content.draw_string(font, rect.position + Vector2(0, 28), titles[i], HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 22,
+		content.draw_string(font, rect.position + Vector2(0, 28), titles[i], HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 20,
 			Color.WHITE if chosen else Color(0.7, 0.8, 1.0))
 	content.draw_rect(CLOSE_RECT, Color(0.22, 0.3, 0.48))
 	content.draw_string(font, CLOSE_RECT.position + Vector2(0, 26), "×", HORIZONTAL_ALIGNMENT_CENTER, CLOSE_RECT.size.x, 24)
@@ -417,6 +431,8 @@ func _footer_hint() -> String:
 	var close_hint := tr("%s sluiten") % Controls.action_label("ui_cancel")
 	if tab == 0:
 		return tr("↑ ↓ ← → kiezen  ·  %s gebruiken  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
+	if tab == TAB_PROGRESSION:
+		return tr("↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  ") + browse + close_hint
 	if tab == TAB_MAP:
 		return tr("↑ ↓ altaar  ·  %s reizen  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
 	return tr("↑ ↓ bladeren  ·  ") + browse + close_hint
@@ -607,3 +623,14 @@ func _draw_altar_marker(p: Vector2, cell: int, obj: Dictionary, altars: Array) -
 func _exit_tree() -> void:
 	if active:
 		GameState.set_ui("menu", false)
+
+
+func tab_rect(index: int) -> Rect2:
+	var stride := (CLOSE_RECT.position.x - 32.0) / TAB_COUNT
+	return Rect2(24.0 + index * stride, 16, stride - 8.0, 40)
+
+
+func _refresh_progression_page() -> void:
+	progression_page.visible = tab == TAB_PROGRESSION
+	if progression_page.visible:
+		progression_page.refresh()

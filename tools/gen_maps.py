@@ -36,6 +36,7 @@ class Level:
         self.key, self.name, self.w, self.h, self.music, self.dark = key, name, w, h, music, dark
         self.g = [[fill] * w for _ in range(h)]
         self.objects = []
+        self.fountains = []
         self.spawns = {}
         self.protect = set()
 
@@ -122,7 +123,9 @@ def build_village():
     lv.rect(16, 11, 23, 16, ",")
     lv.path([(2, 13), (38, 13)], ",", 2)
     lv.path([(19, 14), (19, 26)], ",", 2)
-    lv.put(19, 13, "O")  # de put
+    # Plein x16..23, y11..16: een 2x2-bassin exact rond het midden (20,14).
+    # Geen object toevoegen: opgeslagen object-ID's mogen niet verschuiven.
+    lv.fountains.append({"pos": [19, 13], "size": [2, 2]})
     lv.keep(15, 10, 24, 17)
     # huisjes
     smithy_door = house(lv, 4, 8, 6, 2)
@@ -489,11 +492,18 @@ def check(levels):
     for lv in levels:
         rows = lv.rows()
         assert all(len(r) == lv.w for r in rows), lv.key
+        fountain_cells = set()
+        for fountain in lv.fountains:
+            x, y = fountain["pos"]
+            width, height = fountain["size"]
+            fountain_cells.update((cx, cy) for cy in range(y, y + height) for cx in range(x, x + width))
+        def blocked(x, y):
+            return (x, y) in fountain_cells or is_solid(lv.get(x, y))
         sx, sy = lv.spawns["start"]
-        if is_solid(lv.get(sx, sy)):
+        if blocked(sx, sy):
             problems.append(f"{lv.key}: startplek ligt in een muur")
         for name, (x, y) in lv.spawns.items():
-            if is_solid(lv.get(x, y)):
+            if blocked(x, y):
                 problems.append(f"{lv.key}: spawn {name} ligt in een muur ({x},{y})")
         seen = {(sx, sy)}
         queue = deque([(sx, sy)])
@@ -501,7 +511,7 @@ def check(levels):
             x, y = queue.popleft()
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 nx, ny = x + dx, y + dy
-                if (nx, ny) not in seen and 0 <= nx < lv.w and 0 <= ny < lv.h and not is_solid(lv.get(nx, ny)):
+                if (nx, ny) not in seen and 0 <= nx < lv.w and 0 <= ny < lv.h and not blocked(nx, ny):
                     seen.add((nx, ny))
                     queue.append((nx, ny))
         def reachable(x, y):
@@ -515,9 +525,9 @@ def check(levels):
             used[(x, y)] = label
             if obj["type"] in ("trigger", "gate"):
                 continue
-            if obj["type"] in ("chest", "sign", "savepoint") and not is_solid(lv.get(x, y)) and not reachable(x, y):
+            if obj["type"] in ("chest", "sign", "savepoint") and not blocked(x, y) and not reachable(x, y):
                 problems.append(f"{label} is niet bereikbaar")
-            elif obj["type"] not in ("chest", "sign", "savepoint", "torch") and is_solid(lv.get(x, y)):
+            elif obj["type"] not in ("chest", "sign", "savepoint", "torch") and blocked(x, y):
                 problems.append(f"{label} staat in een muur")
             elif obj["type"] not in ("torch",) and not reachable(x, y):
                 problems.append(f"{label} is niet bereikbaar")
@@ -545,6 +555,8 @@ def write(lv):
         lines.append(f'\t\t"{row}",')
     lines.append("\t],")
     lines.append(f'\t"spawns": {gd(lv.spawns)},')
+    if lv.fountains:
+        lines.append(f'\t"fountains": {gd(lv.fountains)},')
     lines.append('\t"objects": [')
     for obj in lv.objects:
         lines.append(f"\t\t{gd(obj)},")

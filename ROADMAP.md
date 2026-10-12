@@ -42,6 +42,11 @@ pixel art, en te delen met vrienden en de community.
 - [x] Opgeslagen toetsen- en controllerinstellingen via titel- en pauzemenu
 - [x] Automatische apparaatwisseling, consistente menu's, rasterselectie en klikbediening
 
+## In de 0.5.2-preview
+- [x] Grotere geanimeerde fontein in het midden van het dorpsplein
+- [x] Heldenervaring via gevechten en opdrachten, met een zichtbare XP-balk en muntbeloningen
+- [x] Voortgangstabblad met beroepen, uitrusting en duidelijke volgende upgrades
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen, schilden en uitrusting

@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.5.1-preview)
+BLUEMAP QUEST  (v0.5.2-preview)
 =======================
 
 Starten
@@ -34,6 +34,10 @@ Doel
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
 
 Nieuw in deze preview
+  Een grotere fontein met bewegend water staat midden op het dorpsplein.
+  Je held verdient XP met gevechten buiten de arena en opdrachten. De XP-balk toont je volgende niveau.
+  Open in je inventaris het tabblad Voortgang voor je niveaus, uitrusting en volgende upgrades.
+  Daar zie je wat een upgrade doet, wat hij kost en bij wie je hem haalt.
   Alle losse items zijn magnetisch. Volle stapels en hartjes blijven beschikbaar.
   Oogsten heeft animaties en gereedschapscontroles. Lopen of een menu onderbreekt de actie.
   Paden geven 20% extra loopsnelheid, zand remt 8% af. Ondergronden hebben eigen voetstappen.
