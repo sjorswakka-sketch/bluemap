@@ -45,6 +45,7 @@ const DATA := {
 		{"type": "npc", "pos": [13, 15], "id": "anja"},
 		{"type": "npc", "pos": [22, 24], "id": "joost"},
 		{"type": "npc", "pos": [34, 11], "id": "hein"},
+		{"type": "npc", "pos": [16, 20], "id": "lotte"}, # polish: Lotte de lantaarnmaker
 		{"type": "savepoint", "pos": [22, 12]},
 		{"type": "wereld_lantaarn", "pos": [18, 7]},
 		{"type": "wereld_lantaarn", "pos": [21, 7]},
