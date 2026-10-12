@@ -41,3 +41,15 @@ const ENEMIES := {
 
 ## Geluiden (assets/audio, gemaakt door tools/audio_x_vijanden.py).
 const SOUNDS := ["mage_teleport", "mage_charge", "mage_orb", "mage_orb_pop", "spitter_spit", "spitter_hop"]
+
+## Prestaties (zie scripts/data/achievements.gd).
+const ACHIEVEMENTS := {
+	"vijanden_magier": {
+		"name": "Spreuk gebroken", "desc": "Versla een magiër.",
+		"if": [["kills_of", "mage", 1]],
+	},
+	"vijanden_spuwer": {
+		"name": "Spuuglokker", "desc": "Versla vijf slijmspuwers.",
+		"if": [["kills_of", "slime_spitter", 5]],
+	},
+}

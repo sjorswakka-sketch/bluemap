@@ -34,6 +34,18 @@ const OBJECTS := {
 const CONDITIONS := ["boog_missing"]
 const ACTIONS := ["boog_range_start", "boog_progress"]
 
+## Prestaties (zie scripts/data/achievements.gd).
+const ACHIEVEMENTS := {
+	"boog_schietbaan": {
+		"name": "Scherpschutter", "desc": "Haal Tessa's schietbaan: drie doelwitten binnen de tijd.",
+		"if": [["quest", "boog_schietbaan", "done"]],
+	},
+	"boog_rivier": {
+		"name": "Over de rivier", "desc": "Open het verborgen poortje in het Fluisterbos met je boog.",
+		"if": [["flag", "boog_bos_a"], ["flag", "boog_bos_b"]],
+	},
+}
+
 const NPCS := {
 	"tessa": {
 		"name": "Tessa de boogschutter", "sheet": "npc_tessa",

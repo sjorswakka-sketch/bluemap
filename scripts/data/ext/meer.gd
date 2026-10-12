@@ -41,6 +41,22 @@ const CONDITIONS := ["meer_vis", "meer_vol", "meer_boeken", "meer_gelezen"]
 const ACTIONS := ["meer_verkoop"]
 const FORMATS := ["boeken", "visgeld"] # {boeken}: hoeveel boeken je al hebt, {visgeld}: wat je vis nu oplevert
 
+## Prestaties (zie scripts/data/achievements.gd).
+const ACHIEVEMENTS := {
+	"meer_karper": {
+		"name": "Legende van het meer", "desc": "Vang de Gouden Karper en breng hem naar Visser Joris.",
+		"if": [["quest", "meer_karper", "done"]],
+	},
+	"meer_boekenwurm": {
+		"name": "Boekenwurm", "desc": "Breng Lena haar drie verloren boeken terug.",
+		"if": [["quest", "meer_boeken", "done"]],
+	},
+	"meer_lezer": {
+		"name": "Kenner van Azura", "desc": "Lees alle oude boeken in de bibliotheek van het Zilvermeer.",
+		"if": [["meer_gelezen", 6]],
+	},
+}
+
 const ITEMS := {
 	"fishing_rod": {
 		"name": "Hengel", "sheet": "items_meer", "icon": 0, "type": "gear",

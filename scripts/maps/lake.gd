@@ -5,6 +5,8 @@ extends RefCounted
 const DATA := {
 	"name": "Zilvermeer",
 	"music": "lake",
+	"outdoor": true, # volgt dag en nacht
+	"weather": "random", # af en toe regen
 	"rows": [
 		"#####################,,#####################",
 		"#####################,,#####################",
