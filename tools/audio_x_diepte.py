@@ -3,7 +3,8 @@
 Geluiden: guardian_roar, guardian_charge, pillar_charge, shard_burst, phase_shift, seal_break, star_fanfare, guardian_die.
 Muziek:   music_depths (sfeer in de Diepte) en music_guardian (het baasgevecht).
 
-Een eigen ruisgenerator, zodat andere uitbreidingen deze geluiden nooit veranderen.
+Een eigen ruisgenerator, zodat andere uitbreidingen deze geluiden nooit veranderen. Ook de trommels van ma.compose (die
+de gedeelde ma.RNG gebruiken) krijgen tijdens onze muziek een eigen generator.
 """
 import numpy as np
 
@@ -156,10 +157,14 @@ def generate(ma):
             [("F5", 1), ("F5", 1), ("G#5", 1), ("F5", 1), ("C6", 2), ("A#5", 1), ("G#5", 1)],
             [("G5", 2), ("B5", 2), ("D6", 2), ("G6", 2)],
         ] * 2
-        return ma.compose(124, chords, melody, pad_gain=0.16, pad_attack=0.4, bass_pattern=((0, 0), (1, 0), (2, 12), (3, 0), (4, 0), (5, 0), (6, 12), (7, 7)),
-                          bass_gain=0.5, bass_rate=4.5, bass_rough=0.5, arp_pattern=None, lead_gain=0.4, lead_vibrato=0.06,
-                          lead_square=0.5, kick_pos=(0, 2, 4, 6), snare_pos=(2, 6), hat_pos=(0, 1, 2, 3, 4, 5, 6, 7),
-                          perc_gain=0.5)
+        shared, ma.RNG = ma.RNG, np.random.default_rng(3141)  # eigen ruis voor de snaredrum en de hi-hat
+        try:
+            return ma.compose(124, chords, melody, pad_gain=0.16, pad_attack=0.4, bass_pattern=((0, 0), (1, 0), (2, 12), (3, 0), (4, 0), (5, 0), (6, 12), (7, 7)),
+                              bass_gain=0.5, bass_rate=4.5, bass_rough=0.5, arp_pattern=None, lead_gain=0.4, lead_vibrato=0.06,
+                              lead_square=0.5, kick_pos=(0, 2, 4, 6), snare_pos=(2, 6), hat_pos=(0, 1, 2, 3, 4, 5, 6, 7),
+                              perc_gain=0.5)
+        finally:
+            ma.RNG = shared
 
     ma.save("music_depths", music_depths(), 0.7, fade=False)
     ma.save("music_guardian", music_guardian(), 0.7, fade=False)

@@ -15,9 +15,10 @@ pixel art, en te delen met vrienden en de community.
 - [x] **Fase 6: verzamelen en upgraden.** Inventaris, winkel, smid, hartcontainers, laarzen, opslaan en laden
 - [x] **Einde.** Intro, eindbaas, eindscherm met herstelde Blauwe Kaart, epiloog, statistieken en aftiteling
 - [x] **Controller en volledig scherm**
+- [x] **De Diepte en Nieuw spel+.** Na het einde een geheime dungeon onder de tempel, de geheime baas De Vergeten Wachter
+      met drie fases, het Sterrenzwaard, en Nieuw spel+ met je beste spullen tegen sterkere vijanden
 
 ## Ideeën voor later
-- Een tweede gebied-reeks na het einde (nieuw spel+, hogere moeilijkheid, geheime baas)
 - Meer zij-opdrachten en personages, bijvoorbeeld een visser, een bibliotheek of een arena
 - Meer vijanden (magiër, slijmvuurspuwer), een vijand die muren doorbreekt
 - Een boog of magie als tweede wapen, schilden en uitrusting

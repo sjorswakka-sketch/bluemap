@@ -7,6 +7,7 @@ const Art := preload("res://scripts/core/art.gd")
 const ShardScript := preload("res://scripts/entities/guardian_shard.gd")
 
 const LANE_LENGTH := 150.0 # hoe lang de rode lijnen zijn
+const RAGE_LANE_LENGTH := 90.0 # korter als er twee ringen komen (woede-fase): anders zie je door de lijnen de gaten niet
 const SHARD_START := 22.0 # de scherven beginnen een stukje van de pilaar vandaan
 const RING_PAUSE := 0.7 # tijd tussen twee ringen vlak na elkaar (woede-fase)
 const WARNING := Color(1.0, 0.25, 0.3)
@@ -111,9 +112,11 @@ func _draw() -> void:
 		draw_circle(Vector2(0, -22), 18.0 + progress * 10.0, Color(WARNING, 0.12 + progress * 0.25))
 		# rode lijnen: de paden van de scherven. Zonder lijn = een gat waar je veilig doorheen kunt.
 		var alpha := 0.25 + progress * 0.5 + (pulse * 0.2 if progress > 0.7 else 0.0)
+		var rage := rings_left > 1
 		for angle in angles:
 			var dir := Vector2.from_angle(angle)
-			draw_line(Vector2(0, 2) + dir * SHARD_START, Vector2(0, 2) + dir * LANE_LENGTH, Color(WARNING, alpha), 3.0)
+			draw_line(Vector2(0, 2) + dir * SHARD_START, Vector2(0, 2) + dir * (RAGE_LANE_LENGTH if rage else LANE_LENGTH),
+				Color(WARNING, alpha), 2.0 if rage else 3.0)
 	elif flash > 0.0:
 		draw_circle(Vector2(0, -22), 24.0 * (flash / 0.25), Color(0.9, 0.7, 1.0, 0.35))
 	var frame := 1 if hot or flash > 0.0 else 0

@@ -48,15 +48,22 @@ func _build_ui() -> void:
 	subtitle.size = Vector2(1152, 40)
 	add_child(subtitle)
 
-	var ng_available := GameState.ng_plus_available()
 	var menu := VBoxContainer.new()
-	menu.add_theme_constant_override("separation", 8 if ng_available else 10)
-	menu.position = Vector2(576 - 170, 262 if ng_available else 310) # met een knop extra schuift het menu iets omhoog
+	menu.add_theme_constant_override("separation", 10)
+	menu.position = Vector2(576 - 170, 310)
 	add_child(menu)
 	continue_button = _button(menu, "Doorgaan", continue_game)
-	start_button = _button(menu, "Nieuw spel", start_game)
-	ng_button = _button(menu, "Nieuw spel+", start_game_plus)
-	ng_button.visible = ng_available
+	# "Nieuw spel" en "Nieuw spel+" staan naast elkaar, zodat het menu niet hoger wordt (het kristal blijft vrij).
+	var new_row := HBoxContainer.new()
+	new_row.add_theme_constant_override("separation", 8)
+	menu.add_child(new_row)
+	start_button = _button(new_row, "Nieuw spel", start_game)
+	ng_button = _button(new_row, "Nieuw spel+", start_game_plus)
+	ng_button.visible = GameState.ng_plus_available()
+	if ng_button.visible:
+		for button: Button in [start_button, ng_button]:
+			button.custom_minimum_size.x = 166
+			button.add_theme_font_size_override("font_size", 24)
 	sound_button = _button(menu, "", Sound.toggle_mute)
 	quit_button = _button(menu, "Afsluiten", quit_game)
 	continue_button.disabled = not GameState.has_save()

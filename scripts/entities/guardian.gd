@@ -28,7 +28,6 @@ const TILE := 32.0
 const STARTED_FLAG := "guardian_started" # gezet door de trigger in Het Hart van de Kaart: het gevecht begint
 const DEFEATED_FLAG := "guardian_defeated"
 const CHEST_KEY := "chest:depths2:heart" # onthoudt dat de hartcontainer-kist is geopend
-const MAX_HEARTS := 8 # meer hartjes dan dit geeft de kist niet (het spel is daarop gebalanceerd)
 const REWARD_COINS := 500
 const REWARD_WEAPON := "star"
 
@@ -125,12 +124,6 @@ func _ready() -> void:
 	_spawn_pillars.call_deferred()
 
 
-func _exit_tree() -> void:
-	for pillar: Node2D in pillars:
-		if is_instance_valid(pillar) and not pillar.is_queued_for_deletion():
-			pillar.queue_free()
-
-
 func _size_px() -> float:
 	return float(data["cell"]) * float(data["scale"])
 
@@ -151,11 +144,13 @@ func _spawn_pillars() -> void:
 
 
 ## De hartcontainer-kist. Een kist die je al hebt geopend, blijft staan (open en leeg), zoals alle kisten.
+## Heb je al alle hartjes (8), dan zitten er drankjes en munten in.
 func _make_chest() -> StaticBody2D:
 	if not obj.has("chest"):
 		return null
 	var chest: StaticBody2D = ChestScript.new()
-	chest.contents = [["heart_container", 1]] if GameState.max_hp() < MAX_HEARTS else [["potion", 2], ["coins", 100]]
+	var room := GameState.count("heart_container") < GameState.MAX_HEART_CONTAINERS
+	chest.contents = [["heart_container", 1]] if room else [["potion", 2], ["coins", 100]]
 	chest.unique_key = CHEST_KEY
 	chest.world = world
 	chest.position = _tile_center(obj["chest"])
@@ -433,9 +428,9 @@ func _ring_angles(start: float, gaps: int) -> Array[float]:
 	var skip: Array[int] = []
 	var first := randi() % RING_SHARDS
 	for g in gaps:
-		var at := (first + g * RING_SHARDS / gaps + randi_range(-1, 1)) % RING_SHARDS
+		var at := posmod(first + g * RING_SHARDS / gaps + randi_range(-1, 1), RING_SHARDS) # posmod: zo wordt -1 de laatste scherf
 		skip.append(at)
-		skip.append((at + 1) % RING_SHARDS)
+		skip.append(posmod(at + 1, RING_SHARDS))
 	var angles: Array[float] = []
 	for i in RING_SHARDS:
 		if not skip.has(i):
@@ -462,8 +457,9 @@ func hurt(damage: int, direction: Vector2) -> void:
 	if dead or not active:
 		return
 	if state == "waking" or state == "phase_shift":
-		# Beschermd: er springen alleen een paar vonken af.
+		# Beschermd: er springen alleen een paar vonken af, en je ziet dat je klap niet telt.
 		world.burst(global_position + direction.normalized() * 18.0, GLOW, 4)
+		world.damage_number(global_position + Vector2(0, -_size_px() * 0.35), "Beschermd!", Color(0.75, 0.8, 0.95))
 		Sound.play("hit", -10.0, 1.8)
 		return
 	hp -= damage

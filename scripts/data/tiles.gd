@@ -32,8 +32,8 @@ const CHARS := {
 	"r": "ruin_floor", "M": "ruin_wall", "I": "ruin_pillar", "k": "ruin_cracked",
 	"_": "temple_floor", "Z": "temple_wall", "u": "temple_rune", "%": "carpet",
 	"w": "wood_floor", "N": "wood_wall", "C": "counter", "S": "shelf", "B": "bed", "m": "mat",
-	# De Diepte
-	"$": "void_floor", "&": "void_wall", "@": "void_crystal", "*": "rune_pad", ">": "void_stairs",
+	# De Diepte (d = diepte, V = void, K = kristal; andere sporen gebruiken $ & @ : ! s ; l p Q J)
+	"d": "void_floor", "V": "void_wall", "K": "void_crystal", "*": "rune_pad", ">": "void_stairs",
 }
 
 

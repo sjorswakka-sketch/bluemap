@@ -46,10 +46,12 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),
   ondersteuning voor een controller, en een eindscherm met aftiteling.
 - **Na het einde:** een verzegelde trap achter in de Kristaltempel breekt open zodra de Blauwe Kaart hersteld is. Daaronder ligt
-  **De Diepte**: de Kristalgangen (met een sleutel, een poort en een kristalwachter) en Het Hart van de Kaart, waar de geheime
-  baas **De Vergeten Wachter** slaapt. Wie hem verslaat krijgt het **Sterrenzwaard**, een hartcontainer en 500 munten.
+  **De Diepte**: de Kristalgangen (met een sleutel, een poort en een paarse kristalgolem) en Het Hart van de Kaart, waar de
+  geheime baas **De Vergeten Wachter** slaapt. Wie hem verslaat krijgt het **Sterrenzwaard**, 500 munten en een kist met
+  een hartcontainer (heb je al 8 hartjes, dan zitten er drankjes en munten in).
 - **Nieuw spel+:** na het einde staat er op het titelscherm een knop *Nieuw spel+*. Je begint opnieuw met je beste zwaard,
   je hartcontainers, je laarzen en 100 munten. Vijanden hebben dan de helft meer levens per voltooide ronde en laten meer munten vallen.
+  Meer dan 8 hartjes kun je niet krijgen.
 
 ## Tips voor spelers
 

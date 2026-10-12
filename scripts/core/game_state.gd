@@ -34,7 +34,6 @@ var load_pos: Vector2 = Vector2.ZERO
 var use_load_pos: bool = false
 var play_time: float = 0.0
 var kills: int = 0
-var ng_plus: int = 0 # aantal voltooide rondes (Nieuw spel+); 0 = gewoon spel
 
 # Tijdelijke toestand (wordt niet opgeslagen).
 var in_game: bool = false
@@ -75,13 +74,13 @@ func new_game() -> void:
 	use_load_pos = false
 	play_time = 0.0
 	kills = 0
-	ng_plus = 0
 	ended = false
 	transitioning = false
 	dialogue_open = false
 	ui_owners = {}
 	last_damage_source = ""
 	damage_log = {}
+	ng_plus = 0
 	_apply_pause()
 	hp_changed.emit()
 	items_changed.emit()
@@ -161,6 +160,7 @@ func crystal_count() -> int:
 func give(item_id: String, amount: int = 1, quiet: bool = false) -> void:
 	inventory[item_id] = count(item_id) + amount
 	if item_id == "heart_container":
+		inventory[item_id] = mini(count(item_id), MAX_HEART_CONTAINERS) # meer hartjes passen niet in beeld
 		hp = mini(hp + amount, max_hp())
 		hp_changed.emit()
 	items_changed.emit()
@@ -278,11 +278,12 @@ func quest_text(quest_id: String) -> String:
 ## De opdracht die in beeld getoond wordt (de hoofdopdracht, anders de eerste lopende).
 func tracked_text() -> String:
 	if quest_state("main") == "done":
-		# Na het einde: de eerste lopende opdracht (bijvoorbeeld De Vergeten Wachter), anders het goede nieuws.
+		# Na het einde: de lopende opdracht die je het laatst bent begonnen (bijvoorbeeld De Vergeten Wachter).
+		var latest := ""
 		for quest_id: String in quests:
 			if quests[quest_id]["state"] == "active":
-				return quest_text(quest_id)
-		return "De Blauwe Kaart is hersteld!"
+				latest = quest_id
+		return quest_text(latest) if latest != "" else "De Blauwe Kaart is hersteld!"
 	if quest_state("main") == "active":
 		return quest_text("main")
 	if quest_state("main") == "none":
@@ -412,8 +413,9 @@ func save_game(pos: Vector2) -> bool:
 	var data := {
 		"version": SAVE_VERSION, "map": map_id, "pos": [pos.x, pos.y], "hp": hp, "coins": coins,
 		"inventory": inventory, "flags": flags, "quests": quests, "weapon": weapon,
-		"play_time": play_time, "kills": kills, "ng_plus": ng_plus,
+		"play_time": play_time, "kills": kills,
 	}
+	data["ng_plus"] = ng_plus # de ronde van Nieuw spel+ (zie onderaan)
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
 		push_warning("Opslaan mislukt: %s" % error_string(FileAccess.get_open_error()))
@@ -436,9 +438,9 @@ func load_game() -> bool:
 	use_load_pos = true
 	coins = int(data.get("coins", 0))
 	weapon = data.get("weapon", "wood")
+	ng_plus = int(data.get("ng_plus", 0)) # de ronde van Nieuw spel+ (oude opslagen: 0)
 	play_time = float(data.get("play_time", 0.0))
 	kills = int(data.get("kills", 0))
-	ng_plus = int(data.get("ng_plus", 0))
 	for item_id: String in data.get("inventory", {}):
 		inventory[item_id] = int(data["inventory"][item_id])
 	for flag_name: String in data.get("flags", {}):
@@ -455,12 +457,15 @@ func load_game() -> bool:
 
 # --- Nieuw spel+ -------------------------------------------------------------------------------------------------
 # Na het einde van het hoofdverhaal kun je opnieuw beginnen met je beste spullen, tegen sterkere vijanden.
-# Dat een spel is uitgespeeld staat in user://meta.cfg, los van de opslag, zodat het blijft bestaan na een nieuw spel.
+# Dat een spel is uitgespeeld staat in user://ng_plus.cfg, los van de opslag, zodat het blijft bestaan na een nieuw spel.
 
-const META_PATH := "user://meta.cfg"
+const NG_META_PATH := "user://ng_plus.cfg"
+const MAX_HEART_CONTAINERS := 3 # 5 + 3 = 8 hartjes; meer passen niet in beeld (ook niet als je ze in Nieuw spel+ weer vindt)
 const NG_START_COINS := 100
 const NG_HP_PER_ROUND := 0.5 # vijanden krijgen zoveel levens extra per voltooide ronde (0.5 = de helft)
 const NG_COIN_FACTOR := 1.5 # munten uit vijanden
+
+var ng_plus: int = 0 # aantal voltooide rondes (Nieuw spel+); 0 = gewoon spel. Wordt opgeslagen.
 
 
 ## Levens van een vijand die normaal `base` levens heeft, in deze ronde (naar boven afgerond).
@@ -477,7 +482,7 @@ func ng_coins(amount: int) -> int:
 func load_meta() -> Dictionary:
 	var meta := {"completed": false, "rounds": 0, "weapon": "wood", "hearts": 0, "boots": false}
 	var config := ConfigFile.new()
-	if config.load(META_PATH) != OK:
+	if config.load(NG_META_PATH) != OK:
 		return meta
 	meta["completed"] = bool(config.get_value("ng", "completed", false))
 	meta["rounds"] = int(config.get_value("ng", "rounds", 0))
@@ -496,15 +501,15 @@ func save_meta(meta: Dictionary) -> void:
 	config.set_value("ng", "weapon", meta["weapon"])
 	config.set_value("ng", "hearts", meta["hearts"])
 	config.set_value("ng", "boots", meta["boots"])
-	config.save(META_PATH)
+	config.save(NG_META_PATH)
 
 
 func ng_plus_available() -> bool:
 	return load_meta()["completed"]
 
 
-## Het hoofdverhaal is uitgespeeld: aan het einde (zie world.gd) en bij elke opslag daarna. Zo hebben ook spelers die het
-## spel al uitgespeeld hadden Nieuw spel+, zodra ze weer opslaan.
+## Het hoofdverhaal is uitgespeeld: bij elke opslag na het einde (de eerste is die aan het einde zelf, zie world.gd). Zo
+## hebben ook spelers die het spel al uitgespeeld hadden Nieuw spel+, zodra ze weer opslaan.
 func record_completion() -> void:
 	var meta := load_meta()
 	meta["completed"] = true

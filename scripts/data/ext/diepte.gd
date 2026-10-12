@@ -25,12 +25,26 @@ const TALKS := {
 		],
 		"do": [["start_quest", "diepte"], ["sound", "quest"]],
 	},
+	# Greta ziet het Sterrenzwaard (haar eerste regels in scripts/data/npcs.gd). Smeden hoeft dan niet meer.
+	"greta_star": {
+		"speaker": "Greta",
+		"lines": [
+			"Wacht eens even... Is dat... het STERRENZWAARD?!",
+			"Ik ken het alleen uit de oude verhalen van mijn opa. Het is niet van ijzer gemaakt, maar van sterrenlicht!",
+			"Daar kan zelfs ik niets meer aan verbeteren. Pas er goed op, held!",
+		],
+		"do": [["set_flag", "met_greta"], ["set_flag", "greta_star_seen"]],
+	},
+	"greta_star_again": {
+		"speaker": "Greta",
+		"lines": ["Mag ik het Sterrenzwaard nog één keertje vasthouden? ... Prachtig. Ga maar, held, de wereld wacht!"],
+	},
 	"guardian_intro": {
 		"speaker": "De Vergeten Wachter",
 		"lines": [
 			"...",
 			"Wie... wekt... mij?",
-			"Ik ben de Wachter van de Sterrenkaart. Duizend jaar lang heb ik gewaakt.",
+			"Ik ben de Wachter van de Sterrenkaart. Al meer dan duizend jaar waak ik hier.",
 			"De Blauwe Kaart was maar een kopie. En toch hebben jullie hem aangeraakt!",
 			"Alleen wie sterker is dan de Wachter, mag de Sterrenkaart zien. Laat maar zien wat je kunt!",
 		],
@@ -39,16 +53,18 @@ const TALKS := {
 		"speaker": "De Vergeten Wachter",
 		"lines": [
 			"Je bent sterk. En slim. Je rolde door mijn scherven alsof het niets was.",
-			"Duizend jaar heb ik gewaakt. Nu mag ik eindelijk rusten.",
-			"Neem het Sterrenzwaard. Het is gemaakt van het licht van de Sterrenkaart. Gebruik het goed, held van Azura.",
+			"Meer dan duizend jaar heb ik gewaakt. Nu mag ik eindelijk rusten.",
+			"Het Sterrenzwaard is nu van jou. Het is gemaakt van het licht van de Sterrenkaart. Gebruik het goed, held van Azura.",
+			"En kijk omhoog... Dit is wat ik al die tijd heb bewaakt.",
 		],
 		"next": "guardian_defeat2",
 	},
 	"guardian_defeat2": {
 		"speaker": "",
 		"lines": [
+			"Boven je hoofd gaan duizenden kleine lichtjes aan. Ze vormen samen een kaart van heel Azura: de Sterrenkaart!",
 			"Het Sterrenzwaard gloeit in je hand. Het is zo licht als een veertje en zo scherp als een sterrenstraal.",
-			"Greta de smid gaat hier zeker van opkijken!",
+			"Greta de smid gaat hier zeker van opkijken! Laat het haar maar eens zien in de smederij.",
 		],
 	},
 }
@@ -66,11 +82,11 @@ const QUESTS := {
 				"advance_if": [["flag", "gate_depths"]],
 			},
 			{
-				"text": "De poort is open. Neem de trap naar Het Hart van de Kaart.",
+				"text": "De poort is open. Neem de trap naar Het Hart van de Kaart. Neem genoeg drankjes mee!",
 				"advance_if": [["flag", "guardian_started"]],
 			},
 			{
-				"text": "Versla De Vergeten Wachter! Rol door zijn scherven heen en sla toe als hij moe is. Greta de smid wil het zwaard daarna vast zien.",
+				"text": "Versla De Vergeten Wachter! Rol door zijn scherven en sla toe na zijn aanval. Laat hem tegen een pilaar knallen: dan is hij even duizelig!",
 			},
 		],
 	},
@@ -95,11 +111,11 @@ const WEAPONS := {
 	},
 }
 
-## De Kristalwachter is een golem van de Diepte. De Vergeten Wachter wordt niet door enemy.gd bestuurd maar door
-## scripts/entities/guardian.gd (object "guardian"); deze gegevens zijn zijn levens, schade en plaatje.
+## De paarse kristalgolem bewaakt de sleutel in de Kristalgangen. De Vergeten Wachter wordt niet door enemy.gd
+## bestuurd maar door scripts/entities/guardian.gd (object "guardian"); deze gegevens zijn zijn levens, schade en plaatje.
 const ENEMIES := {
 	"diepte_golem": {
-		"name": "Kristalwachter", "hp": 26, "damage": 1, "slam_damage": 2, "behavior": "golem", "boss": true,
+		"name": "Paarse kristalgolem", "hp": 26, "damage": 1, "slam_damage": 2, "behavior": "golem", "boss": true,
 		"speed": 26.0, "chase_speed": 40.0, "sight": 200.0,
 		"sheet": "golem_void", "cell": 32, "scale": 2.0, "radius": 13.0, "shadow": 22.0, "knockback": 40.0,
 		"drops": [["coin", 1.0, 10], ["shard", 1.0, 1], ["heart", 1.0, 1]],
@@ -124,6 +140,7 @@ const SOUNDS := [
 ]
 const TRACKS := ["depths", "guardian"]
 
+## Paden (tekst), geen preload(): deze scripts gebruiken GameState en worden pas geladen als de wereld ze nodig heeft.
 const OBJECTS := {
 	"guardian": "res://scripts/entities/guardian.gd",
 	"diepte_seal": "res://scripts/entities/diepte_seal.gd",

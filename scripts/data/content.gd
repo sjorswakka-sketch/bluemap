@@ -18,7 +18,7 @@ extends RefCounted
 ##
 ## Eigen soorten objecten op de kaart ({"type": "doelwit", "pos": [3, 4], ...}):
 ##
-##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}   # het pad, geen preload (zie object_types)
+##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}
 ##
 ## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
 ## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
@@ -85,9 +85,7 @@ static func run_action(action: Array) -> bool:
 	return false
 
 
-## Soorten objecten (naam -> script) die de modules toevoegen. Een module geeft het script als pad (tekst), want een
-## script dat GameState gebruikt kan hier niet met preload() worden geladen: de modules worden al geladen terwijl
-## GameState zichzelf nog compileert. De scripts worden pas geladen als de wereld hier om vraagt.
+## Soorten objecten (naam -> script) die de modules toevoegen. Paden (tekst) worden hier geladen.
 static func object_types() -> Dictionary:
 	var types := merged("OBJECTS", {})
 	for type_name: String in types:

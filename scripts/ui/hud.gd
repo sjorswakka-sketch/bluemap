@@ -135,8 +135,8 @@ func _draw_stats() -> void:
 		[Items.ITEMS[Items.WEAPONS[GameState.weapon]["item"]]["icon"], "", Color.WHITE, Items.sheet_of(Items.WEAPONS[GameState.weapon]["item"])],
 	]
 	for entry: Array in entries:
-		var sheet: Texture2D = Art.tex(entry[3]) if entry.size() > 3 else items_tex # een zwaard kan een eigen plaatje hebben
-		stats.draw_texture_rect_region(sheet, Rect2(Vector2(x, 2), Vector2(32, 32)), Rect2(Vector2(entry[0] * 16, 0), Vector2(16, 16)))
+		var icons: Texture2D = Art.tex(entry[3]) if entry.size() > 3 else items_tex # een eigen plaatje (naam) voor uitbreidingen
+		stats.draw_texture_rect_region(icons, Rect2(Vector2(x, 2), Vector2(32, 32)), Rect2(Vector2(entry[0] * 16, 0), Vector2(16, 16)))
 		x += 36.0
 		if entry[1] != "":
 			stats.draw_string_outline(font, Vector2(x, 26), entry[1], HORIZONTAL_ALIGNMENT_LEFT, -1, 22, 5, Color(0, 0, 0, 0.9))

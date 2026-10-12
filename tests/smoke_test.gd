@@ -178,7 +178,6 @@ func test_data() -> void:
 		if node.get("lines", []).is_empty() and not node.has("branch"):
 			print("       ", talk_id, " heeft geen regels")
 			talks_ok = false
-	check(talks_ok, "alle gesprekken en voorwaarden kloppen")
 	# Gesprekken die een trigger op een kaart start (zoals de intro van een baas) worden ook gebruikt.
 	for map_id: String in Maps.MAPS:
 		for obj: Dictionary in Maps.get_map(map_id)["objects"]:
@@ -186,6 +185,7 @@ func test_data() -> void:
 				for action: Array in obj["do"]:
 					if action[0] == "talk":
 						referenced[action[1]] = true
+	check(talks_ok, "alle gesprekken en voorwaarden kloppen")
 	var unused: Array = []
 	for talk_id: String in Dialogue.TALKS:
 		if not referenced.has(talk_id) and talk_id != "king_intro":

@@ -1,6 +1,8 @@
 extends SceneTree
 ## Test voor de Diepte, De Vergeten Wachter, het Sterrenzwaard en Nieuw spel+. Draaien met:
-##   godot --headless --fixed-fps 60 --path . -s tests/diepte_test.gd
+##   sh tools/run_tests.sh /pad/naar/godot      (alle tests, met een eigen opslagmap)
+## Draai je hem los (godot --headless --fixed-fps 60 --path . -s tests/diepte_test.gd), dan zet de test je opgeslagen
+## spel en je Nieuw spel+ eerst opzij en aan het eind weer terug.
 ## Exitcode 0 = alles goed, 1 = er ging iets mis.
 ##
 ## Deel 1: gegevens (tegels, plaatjes, geluiden, kaarten). Deel 2: bereikbaarheid met een flood-fill. Deel 3: de toegang
@@ -22,6 +24,7 @@ const STATE_LIMIT := 3.0 # geen enkele toestand van de baas duurt langer dan dit
 var failures := 0
 var gs: Node
 var world: Node2D
+var user_backup := {} # opslag en Nieuw spel+ van de echte speler (pad -> inhoud)
 
 
 func check(cond: bool, label: String) -> void:
@@ -66,8 +69,23 @@ func rect_of(obj: Dictionary) -> Rect2:
 
 
 func clean_meta() -> void:
-	if FileAccess.file_exists(gs.META_PATH):
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(gs.META_PATH))
+	if FileAccess.file_exists(gs.NG_META_PATH):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(gs.NG_META_PATH))
+
+
+## Deze test schrijft en wist de opslag en user://ng_plus.cfg. Die van de echte speler gaan eerst opzij en straks terug.
+func back_up_user_files() -> void:
+	for path: String in [gs.SAVE_PATH, gs.NG_META_PATH]:
+		if FileAccess.file_exists(path):
+			user_backup[path] = FileAccess.get_file_as_bytes(path)
+
+
+func restore_user_files() -> void:
+	for path: String in [gs.SAVE_PATH, gs.NG_META_PATH]:
+		if user_backup.has(path):
+			FileAccess.open(path, FileAccess.WRITE).store_buffer(user_backup[path])
+		elif FileAccess.file_exists(path):
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 
 
 ## Een nieuwe wereld op een bepaalde kaart, met een schoon spel (zonder opslag of meta).
@@ -144,10 +162,13 @@ func tiles_of(obj: Dictionary) -> Array[Vector2i]:
 
 
 ## Alle tegels waar je vanaf `start` kunt komen. Met `closed_gates` zijn de poorten dicht (dan tellen ze als muur).
-func flood(map_id: String, start: Vector2i, closed_gates: bool) -> Dictionary:
+## `walls` zijn extra tegels die als muur tellen.
+func flood(map_id: String, start: Vector2i, closed_gates: bool, walls: Array[Vector2i] = []) -> Dictionary:
 	var def: Dictionary = Maps.get_map(map_id)
 	var rows: Array = def["rows"]
 	var blocked := {}
+	for tile in walls:
+		blocked[tile] = true
 	if closed_gates:
 		for obj: Dictionary in def["objects"]:
 			if obj["type"] in ["gate", "diepte_gate"]:
@@ -195,8 +216,30 @@ func test_data() -> void:
 	check(tiles_ok and Tiles.NAMES.find("void_floor") > Tiles.NAMES.find("mat"), "de nieuwe tegels staan achteraan in de lijst")
 	check(Tiles.is_solid_name("void_wall") and Tiles.is_solid_name("void_crystal"), "muren en kristallen zijn solide")
 	check(not Tiles.is_solid_name("void_floor") and not Tiles.is_solid_name("rune_pad") and not Tiles.is_solid_name("void_stairs"), "vloer, runenplaat en trap zijn begaanbaar")
-	check(Tiles.CHARS["$"] == "void_floor" and Tiles.CHARS[">"] == "void_stairs", "de tekens in de kaart kloppen")
+	var chars_ok := true
+	for tile_name: String in new_tiles:
+		chars_ok = chars_ok and Tiles.CHARS.find_key(tile_name) != null
+	check(chars_ok, "elke nieuwe tegel heeft een teken in de kaart")
 	check(Art.tex("tiles").get_width() == Tiles.NAMES.size() * 16, "tiles.png heeft een tegel voor elke naam")
+	# Staat elk plaatje op de goede plek in tiles.png? Een paar pixels uit tools/art_tiles.py (de tekenfuncties). Klopt dit
+	# niet, dan is de volgorde van NAMES veranderd zonder dat tiles.png opnieuw is gemaakt (python3 tools/make_art.py).
+	var spots := {
+		"void_floor": [[10, 4, "9a8cf0"], [0, 0, "3f3880"]],
+		"void_wall": [[2, 3, "6a5cc8"], [0, 15, "090719"]],
+		"void_crystal": [[8, 2, "ffffff"], [14, 4, "a8e8ff"]],
+		"rune_pad": [[8, 8, "ffffff"], [8, 1, "6a58d8"]],
+		"void_stairs": [[3, 1, "7a50d8"], [0, 0, "0a0820"]],
+	}
+	var tiles_img: Image = Art.tex("tiles").get_image()
+	var spots_ok := true
+	for tile_name: String in spots:
+		var cell := Tiles.NAMES.find(tile_name)
+		for spot: Array in spots[tile_name]:
+			var pixel := tiles_img.get_pixel(cell * 16 + int(spot[0]), int(spot[1]))
+			if not pixel.is_equal_approx(Color.html(spot[2])):
+				print("       ", tile_name, " ", spot, " is ", pixel.to_html(false))
+				spots_ok = false
+	check(spots_ok, "elke tegel van de Diepte staat op de goede plek in tiles.png")
 
 	var guardian_tex := Art.tex("guardian")
 	check(guardian_tex.get_height() == 48 and guardian_tex.get_width() == 8 * 48, "guardian.png: 8 vakjes van 48x48")
@@ -240,7 +283,7 @@ func test_data() -> void:
 	check(Items.sheet_of(star["item"]) == "items_diepte" and Items.ITEMS["sword_star"]["type"] == "weapon", "het zwaard heeft een eigen icoon")
 	check(Items.ITEMS["diepte_key"]["sheet"] == "items_diepte" and int(Items.ITEMS["diepte_key"]["icon"]) == 1, "de sleutel heeft een eigen icoon")
 	check(Enemies.info("guardian")["hp"] >= 90 and Enemies.info("guardian")["hp"] <= 120 and Enemies.info("guardian")["boss"], "de Wachter is een baas met ongeveer honderd levens")
-	check(Enemies.info("diepte_golem")["boss"] and Enemies.info("diepte_golem")["sheet"] == "golem_void", "de kristalwachter is een golem met een eigen plaatje")
+	check(Enemies.info("diepte_golem")["boss"] and Enemies.info("diepte_golem")["sheet"] == "golem_void", "de paarse kristalgolem heeft een eigen plaatje")
 	var quest: Dictionary = Quests.info("diepte")
 	check(quest["title"] == "De Vergeten Wachter" and quest["steps"].size() == 4, "de opdracht heeft vier stappen")
 	check(Dialogue.TALKS.has("diepte_bram_hint") and Dialogue.TALKS.has("guardian_intro") and Dialogue.TALKS.has("guardian_defeat"), "de gesprekken bestaan")
@@ -268,7 +311,7 @@ func test_data() -> void:
 	var d1_types := {}
 	for obj: Dictionary in Maps.get_map("depths1")["objects"]:
 		d1_types[obj.get("kind", obj["type"])] = true
-	check(d1_types.has("slime_red") and d1_types.has("skeleton") and d1_types.has("diepte_golem"), "depths1: rode slijmen, skeletten en een kristalwachter")
+	check(d1_types.has("slime_red") and d1_types.has("skeleton") and d1_types.has("diepte_golem"), "depths1: rode slijmen, skeletten en een paarse kristalgolem")
 	check(objects("depths1", "chest").size() >= 2 and objects("depths1", "chest").size() <= 3, "depths1 heeft 2 of 3 kisten")
 	check(objects("depths2", "guardian").size() == 1 and objects("depths2", "guardian")[0]["pillars"].size() >= 4, "depths2 heeft de Wachter met pilaren")
 	var temple_portal: Dictionary = {}
@@ -276,7 +319,7 @@ func test_data() -> void:
 		if obj["to"] == "depths1":
 			temple_portal = obj
 	var requires: Array = temple_portal.get("requires", [])
-	check(requires.has(["flag", "game_completed"]), "de trap in de tempel vraagt om game_completed")
+	check(requires.has(["flag", "game_completed"]) and requires.has(["flag", "diepte_opened"]), "de trap in de tempel vraagt om game_completed en een gebroken zegel")
 
 
 # --- Deel 2: bereikbaarheid ----------------------------------------------------------------------------
@@ -332,7 +375,17 @@ func test_reachability() -> void:
 			var key_tile: Array = key_chest["pos"]
 			var golem_tile: Array = obj["pos"]
 			guards_key = Vector2(key_tile[0], key_tile[1]).distance_to(Vector2(golem_tile[0], golem_tile[1])) < 8.0
-	check(guards_key, "de kristalwachter staat bij de sleutelkist")
+	check(guards_key, "de paarse kristalgolem staat bij de sleutelkist")
+
+	# Je kunt niet om de intro van de Wachter heen lopen: wie de trigger als muur ziet, komt niet bij de baas.
+	var intro: Dictionary = {}
+	for obj: Dictionary in objects("depths2", "trigger"):
+		if obj.get("once", "") == "guardian_started":
+			intro = obj
+	var start2: Array = Maps.get_map("depths2")["spawns"]["start"]
+	var around := flood("depths2", Vector2i(start2[0], start2[1]), false, tiles_of(intro))
+	var boss_tile: Array = objects("depths2", "guardian")[0]["pos"]
+	check(not around.has(Vector2i(boss_tile[0], boss_tile[1])), "je kunt niet langs de intro van de Wachter lopen (de trigger is zo breed als de gang)")
 
 	# De tempel is na de baas te belopen, tot aan de trap.
 	var temple_seen := flood("temple", Vector2i(11, 19), false)
@@ -386,11 +439,20 @@ func test_access() -> void:
 	check(gs.map_id == "temple", "alleen diepte_opened zonder game_completed is niet genoeg")
 	gs.set_flag("diepte_opened", false)
 	gs.set_flag("game_completed")
+	gs.transitioning = true # zoals tijdens een overgang of een gesprek: dan gebeurt er niets
 	await put_player(seal.global_position + Vector2(16, 90))
+	await frames(20)
+	check(is_instance_valid(seal) and not seal.breaking, "tijdens een overgang breekt het zegel niet")
+	gs.transitioning = false
+	var toasts: Array[String] = []
+	var record_toast := func(text: String) -> void: toasts.append(text)
+	gs.toast.connect(record_toast)
 	await frames(30)
 	check(is_instance_valid(seal) and seal.breaking, "met game_completed begint het zegel te breken zodra je dichtbij komt")
 	await frames(130)
+	gs.toast.disconnect(record_toast)
 	check(not is_instance_valid(seal) or seal.is_queued_for_deletion(), "het zegel is gebroken")
+	check(toasts.size() >= 2 and toasts[0].begins_with("Het zegel is gebroken") and toasts[1].begins_with("Nieuwe opdracht"), "eerst 'het zegel is gebroken', dan de nieuwe opdracht (%s)" % [toasts])
 	check(gs.flag("diepte_opened") and gs.quest_state("diepte") == "active" and gs.quest_step("diepte") == 1, "de vlag staat aan en de opdracht begint (stap 2)")
 	await walk_through(stairs)
 	check(gs.map_id == "depths1", "de trap brengt je naar de Kristalgangen")
@@ -424,7 +486,7 @@ func test_access() -> void:
 	gs.set_flag("gate_depths")
 	check(gs.quest_step("diepte") == 2, "poort open: stap 3")
 	gs.set_flag("guardian_started")
-	check(gs.quest_step("diepte") == 3 and gs.quest_text("diepte").find("Greta") >= 0, "het gevecht begint: laatste stap, met een hint over Greta")
+	check(gs.quest_step("diepte") == 3 and gs.quest_text("diepte").find("pilaar") >= 0, "het gevecht begint: laatste stap, met een tip over de pilaren")
 	gs.finish_quest("diepte")
 	check(gs.quest_state("diepte") == "done", "de opdracht kan worden afgerond")
 	gs.new_game()
@@ -435,6 +497,26 @@ func test_access() -> void:
 	check(gs.tracked_text() == gs.quest_text("diepte"), "na het einde toont het beeld de opdracht van de Diepte")
 	gs.finish_quest("diepte")
 	check(gs.tracked_text() == "De Blauwe Kaart is hersteld!", "en daarna weer het goede nieuws")
+	gs.new_game()
+	gs.start_quest("kat")
+	gs.start_quest("main")
+	gs.finish_quest("main")
+	gs.start_quest("diepte")
+	check(gs.tracked_text() == gs.quest_text("diepte"), "staat er nog een oudere opdracht open, dan toont het beeld toch de nieuwste (de Diepte)")
+
+	print("Greta ziet het Sterrenzwaard")
+	await start_world("smithy", [])
+	gs.set_weapon("star")
+	var greta: Node = children_with_script("npc.gd").filter(func(npc: Node) -> bool: return npc.npc_id == "greta")[0]
+	greta.interact()
+	await frames(3)
+	check(world.dialogue.active and world.dialogue.node == Dialogue.TALKS["greta_star"], "met het Sterrenzwaard wil Greta het meteen zien (ook als je haar nog niet kende)")
+	await finish_dialogue()
+	check(gs.flag("greta_star_seen") and gs.flag("met_greta"), "dat onthoudt ze")
+	greta.interact()
+	await frames(3)
+	check(world.dialogue.active and world.dialogue.node == Dialogue.TALKS["greta_star_again"] and world.dialogue.buttons.is_empty(), "daarna een kort praatje, zonder een lege smeedvraag")
+	await finish_dialogue()
 
 
 func test_puzzle() -> void:
@@ -506,16 +588,22 @@ func test_guardian() -> void:
 	check(not gs.flag("guardian_started") and not boss.active, "in de voorkamer begint het gevecht nog niet")
 	var door := children_with_script("gate.gd").filter(func(g: Node) -> bool: return g.gate_id == "guardian_door")
 	check(door.size() == 1 and not door[0].blocked, "de deur terug staat nog open")
-	await put_player(rect_of(intro_trigger).get_center())
+	check(door.size() == 1 and door[0].get_script().resource_path.ends_with("diepte_gate.gd"), "de deur is een kristalpoort, net als in de Kristalgangen")
+	await put_player(tile_center([13, 17]))
+	await put_player(tile_center([10, 17]))
+	await put_player(tile_center([10, 16])) # helemaal langs de linkerkant van de gang
 	await frames(4)
-	check(world.dialogue.active and gs.flag("guardian_started"), "de baas begroet je zodra je het plein op loopt")
+	check(world.dialogue.active and gs.flag("guardian_started"), "de baas begroet je zodra je het plein op loopt, ook langs de zijkant")
 	await finish_dialogue()
 	await frames(4)
 	check(boss.active and boss.state == "waking", "hij ontwaakt")
+	check(root.get_node("Sound").current_track == "guardian", "de baasmuziek begint")
 	check(door[0].blocked, "de deur gaat dicht: geen weg terug")
 	check(gs.quest_step("diepte") == 3, "de opdracht staat op de laatste stap")
 	boss.hurt(10, Vector2.RIGHT)
 	check(boss.hp == boss.max_hp, "tijdens het ontwaken is hij beschermd")
+	var shield_text: Array = world.fx_layer.get_children().filter(func(fx: Node) -> bool: return fx.get("text") == "Beschermd!")
+	check(shield_text.size() == 1, "en dat zie je: 'Beschermd!'")
 	await put_player(tile_center([13, 9]))
 	await frames(5)
 	check(world.hud.boss == boss and world.hud.boss_bar.visible, "de baasbalk in de HUD ziet hem")
@@ -619,6 +707,17 @@ func test_guardian() -> void:
 	await frames(int(boss.PHASES[0]["slam_windup"] * 60.0) + 3)
 	check(gs.hp == hp_before, "wie ver genoeg weg staat, is veilig")
 	player.invuln = 999.0
+
+	print("De Vergeten Wachter: de ringen")
+	# Elke ring mist precies twee scherven per gat, ook als het gat over de rand (scherf 15 -> 0) heen valt.
+	var ring_sizes := {}
+	for i in 3000:
+		var gaps := 1 + i % 2
+		var size: int = boss._ring_angles(0.0, gaps).size()
+		ring_sizes[size] = true
+		if size != boss.RING_SHARDS - 2 * gaps:
+			ring_sizes["fout bij %d gaten" % gaps] = size
+	check(ring_sizes.size() == 2 and ring_sizes.has(boss.RING_SHARDS - 2) and ring_sizes.has(boss.RING_SHARDS - 4), "elk gat is precies twee scherven breed (%s)" % [ring_sizes.keys()])
 
 	print("De Vergeten Wachter: fasen en pilaren")
 	boss.set_physics_process(false)
@@ -730,6 +829,39 @@ func test_guardian() -> void:
 		shard.queue_free()
 	for pillar in boss.pillars:
 		pillar.cancel()
+	await frames(2)
+
+	# fase 3: de klap schiet ook een ring scherven weg
+	boss.global_position = tile_center([13, 8])
+	await put_player(tile_center([20, 12])) # ver weg, zodat geen scherf je raakt (dan zijn er minder om te tellen)
+	boss._enter("idle")
+	boss._choose_attack(10.0) # 10 = de afstand tot de speler: dichtbij, dus een klap
+	check(boss.state == "slam_windup" and boss.slam_angles.size() == boss.RING_SHARDS - 2, "in fase 3 kondigt de klap een ring scherven aan (%d lijnen)" % boss.slam_angles.size())
+	boss.set_physics_process(true)
+	await frames(int(boss.PHASES[2]["slam_windup"] * 60.0) + 3)
+	boss.set_physics_process(false)
+	check(get_nodes_in_group("guardian_shards").size() == boss.RING_SHARDS - 2, "en schiet ze weg bij de klap (%d)" % get_nodes_in_group("guardian_shards").size())
+
+	# een scherf verdwijnt tegen een muur
+	for shard in get_nodes_in_group("guardian_shards"):
+		shard.queue_free()
+	await frames(2)
+	var wall_shard: Node2D = shard_script.new()
+	wall_shard.set("world", world)
+	wall_shard.position = tile_center([13, 2])
+	wall_shard.set("velocity", Vector2.UP * 200.0)
+	world.entities.add_child(wall_shard)
+	await frames(30)
+	check(not is_instance_valid(wall_shard) or wall_shard.is_queued_for_deletion(), "een scherf vliegt niet door een muur")
+
+	# een fasewissel stopt de pilaren die aan het opladen zijn
+	boss.phase = 2
+	await put_player(tile_center([13, 9]))
+	boss._start_volley()
+	check(boss.pillars.any(func(p: Node) -> bool: return p.charging), "(de pilaren laden op)")
+	boss._begin_phase_shift(3)
+	check(not boss.pillars.any(func(p: Node) -> bool: return p.charging), "een fasewissel stopt de pilaren meteen")
+	boss._enter("idle")
 
 
 func test_guardian_safety() -> void:
@@ -796,9 +928,17 @@ func test_guardian_death() -> void:
 	var coins_before: int = gs.coins
 	var died := [0]
 	boss.died.connect(func() -> void: died[0] += 1)
+	# Net als in een echt gevecht: er vliegen scherven en de pilaren laden op.
+	boss.phase = 2
+	boss._start_volley()
+	boss._shoot_ring(boss.global_position, boss._ring_angles(0.0, 1), 110.0)
+	check(boss.pillars.any(func(p: Node) -> bool: return p.charging) and not get_nodes_in_group("guardian_shards").is_empty(), "(er vliegen scherven en de pilaren laden op)")
 	boss.hp = 3
 	boss.hurt(9999, Vector2.RIGHT)
 	check(boss.dead and boss.hp == 0 and boss.state == "dying", "de baas valt")
+	check(get_nodes_in_group("guardian_shards").all(func(s: Node) -> bool: return s.is_queued_for_deletion()), "alle scherven verdwijnen meteen")
+	check(not boss.pillars.any(func(p: Node) -> bool: return p.charging), "en de pilaren stoppen met opladen")
+	check(root.get_node("Sound").current_track == "", "de baasmuziek stopt")
 	check(not boss.is_in_group("enemies") and died[0] == 1 and gs.kills == kills_before + 1, "hij telt als verslagen en het signaal klinkt")
 	check(not gs.flag("guardian_defeated") and gs.weapon == "wood", "tijdens het uiteenvallen is de beloning er nog niet")
 	boss.hurt(5, Vector2.RIGHT)
@@ -987,6 +1127,7 @@ func test_new_game_plus() -> void:
 	current_scene = title
 	await frames(3)
 	check(title.ng_button != null and not title.ng_button.visible, "de knop 'Nieuw spel+' is verborgen")
+	var menu_bottom: float = title.quit_button.get_global_rect().end.y
 	title.queue_free()
 	await frames(3)
 
@@ -1020,6 +1161,7 @@ func test_new_game_plus() -> void:
 	current_scene = title
 	await frames(3)
 	check(title.ng_button.visible and not title.ng_button.disabled, "nu is de knop 'Nieuw spel+' er")
+	check(title.ng_button.get_parent() == title.start_button.get_parent() and is_equal_approx(title.quit_button.get_global_rect().end.y, menu_bottom), "naast 'Nieuw spel': het menu wordt niet hoger (het kristal blijft vrij)")
 	title.start_game_plus()
 	await frames(5)
 	check(gs.ng_plus == 1, "ng_plus is 1")
@@ -1115,9 +1257,12 @@ func test_new_game_plus() -> void:
 	check(gs.load_meta()["rounds"] == 1 and gs.load_meta()["weapon"] == "star" and gs.load_meta()["hearts"] == 3 and not gs.load_meta()["boots"], "ronde 1 bewaard met Sterrenzwaard en 3 hartcontainers")
 	gs.new_game()
 	check(gs.new_game_plus() and gs.ng_plus == 1 and gs.weapon == "star" and gs.max_hp() == 8 and gs.count("boots") == 0, "Nieuw spel+ met het Sterrenzwaard en 8 hartjes, zonder laarzen")
+	gs.give("heart_container") # de kist in de grot
+	gs.give("heart_container") # van Pim
+	check(gs.count("heart_container") == 3 and gs.max_hp() == 8, "de hartcontainers uit de grot en van Pim brengen je niet boven de 8 hartjes")
 	gs.set_flag("game_completed")
 	gs.record_completion()
-	check(gs.load_meta()["rounds"] == 2, "ronde 2 uitgespeeld: 2 rondes")
+	check(gs.load_meta()["rounds"] == 2 and gs.load_meta()["hearts"] == 3, "ronde 2 uitgespeeld: 2 rondes, nog steeds 3 hartcontainers")
 	gs.new_game()
 	gs.set_flag("game_completed")
 	gs.record_completion() # een eenvoudig spel zonder spullen mag niets afnemen
@@ -1139,7 +1284,7 @@ func test_new_game_plus() -> void:
 	var config := ConfigFile.new()
 	config.set_value("ng", "completed", true)
 	config.set_value("ng", "weapon", "bestaat_niet")
-	config.save(gs.META_PATH)
+	config.save(gs.NG_META_PATH)
 	check(gs.load_meta()["weapon"] == "wood" and gs.new_game_plus() and gs.weapon == "wood", "een onbekend zwaard in het metabestand valt terug op hout")
 	clean_meta()
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(gs.SAVE_PATH))
@@ -1148,6 +1293,7 @@ func test_new_game_plus() -> void:
 
 func _run() -> void:
 	gs = root.get_node("GameState")
+	back_up_user_files()
 	clean_meta()
 	test_data()
 	test_reachability()
@@ -1159,7 +1305,7 @@ func _run() -> void:
 	await test_playthrough()
 	test_save()
 	await test_new_game_plus()
-	clean_meta()
+	restore_user_files()
 
 	print("")
 	if failures == 0:
