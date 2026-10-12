@@ -23,6 +23,9 @@ const PauseScript := preload("res://scripts/ui/pause_menu.gd")
 const DialogueScript := preload("res://scripts/ui/dialogue_box.gd")
 const ShopScript := preload("res://scripts/ui/shop_ui.gd")
 const MenuScript := preload("res://scripts/ui/menu_ui.gd")
+const CraftingScript := preload("res://scripts/ui/crafting_ui.gd")
+const BuildingLandmarksScript := preload("res://scripts/entities/building_landmarks.gd")
+const Beroepen := preload("res://scripts/data/ext/beroepen.gd")
 const FaderScript := preload("res://scripts/ui/fader.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Maps := preload("res://scripts/maps/registry.gd")
@@ -47,6 +50,7 @@ var hud: CanvasLayer
 var dialogue: CanvasLayer
 var shop_ui: CanvasLayer
 var menu_ui: CanvasLayer
+var crafting_ui: CanvasLayer
 var pause_menu: CanvasLayer
 var map_data: Dictionary = {}
 var object_types: Dictionary = Content.object_types() # soorten objecten uit uitbreidingen
@@ -90,6 +94,8 @@ func _ready() -> void:
 	add_child(shop_ui)
 	menu_ui = MenuScript.new()
 	add_child(menu_ui)
+	crafting_ui = CraftingScript.new()
+	add_child(crafting_ui)
 	pause_menu = PauseScript.new()
 	add_child(pause_menu)
 	fader = FaderScript.new()
@@ -121,6 +127,9 @@ func _exit_tree() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if GameState.ended and event.is_action_pressed("restart"):
 		restart_from_save(true)
+	elif event.is_action_pressed("crafting") and not GameState.input_locked():
+		crafting_ui.open()
+		get_viewport().set_input_as_handled()
 
 
 ## Doorgaan vanaf je laatste opslag (of opnieuw beginnen als je nog niet hebt opgeslagen).
@@ -138,7 +147,9 @@ func restart_from_save(full_heal := false) -> void:
 func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> void:
 	GameState.map_id = map_id
 	GameState.spawn_name = spawn
-	map_data = Maps.get_map(map_id)
+	map_data = Maps.get_map(map_id).duplicate(true)
+	# Achteraan toevoegen: bestaande kisten en unieke voorwerpen houden hun opslag-ID.
+	map_data["objects"].append_array(Beroepen.resource_objects(map_id))
 	_clear_map()
 	_build_tiles(map_data["rows"])
 
@@ -160,6 +171,9 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	player.knockback = Vector2.ZERO
 	_set_camera_limits()
 	_spawn_objects()
+	var landmarks := BuildingLandmarksScript.new()
+	landmarks.setup(map_id, self)
+	ground.add_child(landmarks)
 	player.camera.reset_smoothing()
 
 	Sound.play_music(map_data.get("music", "forest"))

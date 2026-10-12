@@ -1027,7 +1027,7 @@ func test_menu_and_save() -> void:
 		var labels := {}
 		for mark: Dictionary in world.menu_ui.extension_marks(world.map_data):
 			labels[mark["label"]] = int(labels.get(mark["label"], 0)) + 1
-		var want: Dictionary = {"lake": {"visplek": 5, "diepe visplek": 1}, "fisher_hut": {}, "library": {"lessenaar": 6}}[map_id]
+		var want: Dictionary = {"lake": {"visplek": 5, "diepe visplek": 1, "grondstof": 4}, "fisher_hut": {}, "library": {"lessenaar": 6}}[map_id]
 		check(labels == want, "de bijzondere plekken op het kaartje: %s" % [labels])
 		press("pause")
 		await frames(3)

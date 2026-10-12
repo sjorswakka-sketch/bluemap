@@ -25,6 +25,8 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | `Spatie` / `J` | X | Zwaard |
 | `F` / `L` | rechter trekker | Boog: een pijl schieten (zodra je een boog hebt) |
 | `Shift` / `K` | B | Rollen (je bent even onraakbaar) |
+| `Ctrl` vasthouden | linkerstick indrukken en vasthouden (L3) | Sprinten; verbruikt de groene staminabalk |
+| `C` | rechterstick indrukken (R3) | Beroepen, recepten en eten/drinken |
 | `E` / `Enter` | A | Praten, kisten en altaren openen, lezen, vissen bij een visplek, doorklikken; op het titelscherm en in het pauzemenu: de gekozen knop indrukken |
 | `H` | Y | Helddrank drinken |
 | `I` / `Tab` | Back | Menu: voorwerpen |
@@ -41,6 +43,16 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | `R` | Start | Na game over: verder vanaf je laatste opslag |
 
 ## Wat zit erin
+
+- **Ondergrond en sprinten:** op paden loop je 20% sneller dan op gras; op zand 8% langzamer. Sprinten geeft 50% extra
+  loopsnelheid zolang er stamina is. Een volle balk is goed voor vijf seconden sprinten; na 0,8 seconde rust begint het
+  herstel. Na uitputting moet de balk eerst tot 25% herstellen. Rollen blijft hetzelfde. Gras, pad, zand, hout, steen en
+  tapijt hebben elk hun eigen voetstappen, alleen hoorbaar als je echt beweegt.
+- **Herkenbare gebouwen:** de smederij heeft een leien dak, schoorsteen, aambeeld en zichtbaar vuur; ook winkel,
+  herberg, bibliotheek, vissershuisje, arena en tempel hebben een eigen exterieur en herkenbare symbolen.
+- **Zeven beroepen:** kruidenzoeken, houthakken, mijnbouw, vissen, smeden, alchemie en koken, elk met ervaring en
+  niveaus. Er zijn 25 verzamelplekken, 18 nieuwe materialen/voorwerpen en 12 recepten. In `C` zie je je voortgang,
+  ingrediënten, benodigde niveaus en werkplekken. De gewone inventaris bladert nu door alle spullen en meerdere pagina's.
 
 - **Vijftien gebieden:** Dageraadsdorp met smederij, winkel en herberg, het Fluisterbos, de Vergeten Ruïne, de Echo-grot,
   de Kristaltempel, het Zilvermeer met het huisje van Joris en de bibliotheek, de Arena met haar hal, en na het einde
@@ -88,6 +100,15 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Talen:** Nederlands en Engels (zie [Talen](#talen)). Wisselen kan op het titelscherm en in het pauzemenu.
 
 ## Tips voor spelers
+
+- Begin met losse takken en vuurstenen in het dorp: verzamel met `E`. Maak via `C` een stenen bijl en pikhouweel
+  (elk 2 takken + 2 stenen). Gereedschap wordt automatisch gebruikt en slijt niet.
+- Hak oogstbare berkenstronken in het bos en win koper. Smelt bij Greta in de smederij koperstaven: drie staven geven
+  genoeg smidservaring voor een koperen pikhouweel. Daarmee kun je vanaf mijnbouw niveau 2 ijzer winnen in de Echo-grot.
+- Kruiden, slijmgel en bessen worden bij de bibliotheek drankjes; bij de herberg maak je warme gerechten van vis of
+  paddenstoelen. Een bessensnack kun je overal maken. Gebruik eten en energie-elixers via `C` of selecteer ze in `I` en druk `E`.
+- Grondstoffen keren na 90–180 seconden actieve speeltijd terug. Gebieden wisselen, slapen en opnieuw laden omzeilen
+  die wachttijd niet. Beroepenervaring en wachttijden worden met je spel opgeslagen; oudere opgeslagen spellen blijven werken.
 
 - Rollen met `Shift` maakt je even onraakbaar. Gebruik dat tegen de bazen.
 - Slijmen laten slijmgel vallen. Greta de smid maakt er betere zwaarden van.
@@ -182,6 +203,18 @@ De plaatjes in `assets/` zijn zelf gemaakt met `python3 tools/make_art.py` en de
 
 Zonder scherm, handig na elke wijziging:
 
+**Windows, macOS en Linux (Python 3):**
+
+```
+python tools/run_tests.py /pad/naar/godot
+```
+
+Dit maakt een tijdelijke projectkopie en controleert een unieke opslagmap voordat de tests beginnen. Op Windows is dit
+de veilige route: alleen `XDG_DATA_HOME` instellen is daar onvoldoende. Gebruik `--tests movement_test professions_test`
+voor een gerichte controle en `--keep` om de testkopie en logs te bewaren. Je gewone spelopslag wordt niet gebruikt.
+
+**Linux / de GitHub-build:**
+
 ```
 sh tools/run_tests.sh /pad/naar/godot
 ```
@@ -196,6 +229,8 @@ Dat draait alle tests in `tests/` (`*_test.gd`):
   uitbreiding: gedrag, opdrachten van begin tot eind, opslaan en laden, en of alles op de kaarten bereikbaar is.
 - `samen_test.gd` test de samenhang tussen de uitbreidingen: oude opslagen, prestaties, het beestenboek, de arena-vijanden,
   snel reizen en de tekens in teksten.
+- `movement_test.gd`, `buildings_test.gd`, `professions_test.gd` en `adventure_integration_test.gd` controleren ondergrond,
+  stamina, voetstappen, vrije ingangen, verzamelplekken, recepten, opslag, menubediening en een volle inventaris.
 - `taal_test.gd` test de talen: de taalkeuze en de taalknoppen, het spel in het Engels (met een kleine test-vertaling) en
   of `translations/en.po` bij de code past (zie [Talen](#talen)).
 
@@ -305,6 +340,9 @@ fout (fouten in plaatsaanduidingen en teksten die niet in `en.po` staan wel).
 **Run workflow**. De workflow draait eerst alle tests en maakt dan de .exe. Na een paar minuten staat er een zip bij de
 run onder *Artifacts*. Wil je een downloadlink voor je community? Maak een tag, bijvoorbeeld
 `git tag v0.4.0 && git push origin v0.4.0`, dan verschijnt de zip onder **Releases**.
+
+Wijzigingsvoorstellen (pull requests) starten dezelfde tests en Windows-build automatisch. Een preview is pas klaar
+voor samenvoegen nadat de controles geslaagd zijn. Het nog te publiceren taalpakket moet vóór samenvoegen apart worden geïntegreerd.
 
 **Zelf in Godot:** *Project > Exporteren*, kies **Windows Desktop** en klik op *Project exporteren*.
 Godot vraagt dan eenmalig om de export-templates (Editor > Export-templates beheren).

@@ -50,6 +50,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/wereld.gd"),
 	preload("res://scripts/data/ext/diepte.gd"),
 	preload("res://scripts/data/ext/arena.gd"),
+	preload("res://scripts/data/ext/beroepen.gd"),
 ]
 
 

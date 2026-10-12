@@ -1,10 +1,13 @@
 extends CharacterBody2D
 ## De speler: lopen (WASD/pijltjes), zwaard (spatie/J), boog (F/L), rollen (Shift/K), praten en openen (E),
-## drankje drinken (H).
+## drankje drinken (H), rennen (Ctrl vasthouden / linker stick indrukken).
+
+signal footstep(surface: String)
 
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Items := preload("res://scripts/data/items.gd")
+const Tiles := preload("res://scripts/data/tiles.gd")
 const ArrowScript := preload("res://scripts/entities/arrow.gd")
 
 const SPEED := 110.0
@@ -16,6 +19,8 @@ const ATTACK_TIME := 0.18
 const ATTACK_COOLDOWN := 0.35
 const INVULN_TIME := 1.0
 const INTERACT_RANGE := 40.0
+const FOOT_OFFSET := Vector2(0, 8)
+const STEP_DISTANCE := 22.0
 
 var world: Node
 var facing := Vector2.DOWN
@@ -25,6 +30,8 @@ var invuln := 0.0
 var knockback := Vector2.ZERO
 var walk_time := 0.0
 var moving := false
+var sprinting := false
+var step_distance := 0.0
 var roll_timer := 0.0
 var roll_cooldown := 0.0
 var roll_dir := Vector2.DOWN
@@ -73,19 +80,36 @@ func is_rolling() -> bool:
 func _physics_process(delta: float) -> void:
 	time += delta
 	var dir := Vector2.ZERO
-	if not GameState.input_locked():
+	var locked := GameState.input_locked()
+	if not locked:
 		dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	moving = dir != Vector2.ZERO
+	var rolling := roll_timer > 0.0
+	var pushed := knockback.length_squared() > 1.0
+	var tile_name := ground_tile()
+	var wants_sprint: bool = moving and not locked and not rolling and not pushed \
+		and attack_timer <= 0.0 and bow_anim <= 0.0 and Input.is_action_pressed("sprint") \
+		and GameState.movement.can_sprint()
+	var run_multiplier: float = GameState.movement.sprint_multiplier(delta) if wants_sprint else 1.0
 
-	if roll_timer > 0.0:
+	if rolling:
 		velocity = roll_dir * ROLL_SPEED
 	else:
 		if moving:
 			facing = dir.normalized()
-			walk_time += delta
-		velocity = dir * SPEED * GameState.speed_multiplier() + knockback
+		velocity = dir * SPEED * GameState.speed_multiplier() * Tiles.movement_multiplier(tile_name) * run_multiplier + knockback
 	knockback = knockback.move_toward(Vector2.ZERO, 900.0 * delta)
+	var before := global_position
 	move_and_slide()
+	# Werkelijke verplaatsing voorkomt voetstappen en sprintverbruik tegen een muur.
+	var distance := (global_position - before).length()
+	var walking := moving and not locked and not rolling and not pushed and distance > 4.0 * delta
+	sprinting = wants_sprint and walking
+	if not locked:
+		GameState.movement.advance(delta, sprinting)
+	if walking:
+		walk_time += distance / SPEED
+	_update_footsteps(distance, walking, ground_tile())
 
 	roll_timer = maxf(roll_timer - delta, 0.0)
 	roll_cooldown = maxf(roll_cooldown - delta, 0.0)
@@ -99,6 +123,24 @@ func _physics_process(delta: float) -> void:
 	_update_target()
 	_update_shake(delta)
 	queue_redraw()
+
+
+func ground_tile() -> String:
+	if not is_instance_valid(world):
+		return ""
+	return Tiles.name_at(world.map_data.get("rows", []), global_position + FOOT_OFFSET)
+
+
+func _update_footsteps(distance: float, walking: bool, tile_name: String) -> void:
+	var surface := Tiles.footstep_surface(tile_name)
+	if not walking or surface == "":
+		step_distance = 0.0
+		return
+	step_distance += distance
+	if step_distance >= STEP_DISTANCE:
+		step_distance = fmod(step_distance, STEP_DISTANCE)
+		Sound.play("step_" + surface, -13.0 if sprinting else -17.0, randf_range(0.94, 1.06))
+		footstep.emit(surface)
 
 
 func _unhandled_input(event: InputEvent) -> void:

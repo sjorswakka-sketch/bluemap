@@ -8,6 +8,7 @@ const Content := preload("res://scripts/data/content.gd")
 const BASE_SOUNDS := [
 	"swing", "hit", "die", "hurt", "coin", "heart", "crystal", "select", "victory", "gameover",
 	"dodge", "arrow", "chest", "buy", "save", "door", "boss", "error", "quest", "upgrade", "slam", "drink",
+	"step_grass", "step_path", "step_sand", "step_wood", "step_stone", "step_cloth",
 ]
 const BASE_TRACKS := ["village", "forest", "ruins", "cave", "boss", "temple", "ending"]
 const SETTINGS_PATH := "user://settings.cfg"

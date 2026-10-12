@@ -13,6 +13,8 @@ const MenuPages := preload("res://scripts/ui/menu_pages.gd")
 const Achievements := preload("res://scripts/data/achievements.gd")
 const Enemies := preload("res://scripts/data/enemies.gd")
 const FastTravel := preload("res://scripts/core/fast_travel.gd")
+const Professions := preload("res://scripts/core/professions.gd")
+const ProfessionData := preload("res://scripts/data/ext/beroepen.gd")
 
 const TAB_COUNT := 5 # de namen staan in tab_titles()
 const TAB_QUESTS := 1
@@ -21,6 +23,7 @@ const TAB_ACHIEVEMENTS := 3
 const TAB_BESTIARY := 4
 const SIZE := Vector2(1000, 560)
 const SLOT := 76.0
+const INVENTORY_PAGE_SIZE := 24
 const MAP_WIDTH := 600.0 # zoveel ruimte krijgt het kaartje; rechts ervan staat het lijstje voor snel reizen
 const MESSAGE_TIME := 3.0 # seconden dat een melding in het kaarttabblad blijft staan
 
@@ -139,10 +142,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif tab == 0:
 		var count := _owned().size()
 		if event.is_action_pressed("ui_down") and count > 0:
-			selected = mini(selected + 6, count - 1)
+			selected = mini(selected + 1, count - 1)
 			get_viewport().set_input_as_handled()
 		elif event.is_action_pressed("ui_up"):
-			selected = maxi(selected - 6, 0)
+			selected = maxi(selected - 1, 0)
 			get_viewport().set_input_as_handled()
 		elif event.is_action_pressed("interact") or event.is_action_pressed("ui_accept"):
 			get_viewport().set_input_as_handled()
@@ -248,8 +251,8 @@ func _use_selected() -> void:
 	var owned := _owned()
 	if selected >= owned.size():
 		return
-	if owned[selected] == "potion":
-		_drink()
+	if owned[selected] in Professions.CONSUMABLES:
+		Sound.play("drink" if Professions.use_item(owned[selected]) else "error", -5.0)
 
 
 func _drink() -> void:
@@ -291,6 +294,8 @@ func _draw_content() -> void:
 ## De toetsen die op dit tabblad iets doen.
 func _footer_hint() -> String:
 	match tab:
+		0:
+			return tr(ProfessionData.TEXT["inventory_navigation"]) + tr("← → of LB / RB  tabblad   ·   Esc  sluiten")
 		TAB_MAP:
 			return tr("↑ ↓  altaar kiezen   ·   E  reizen   ·   ← → of LB / RB  tabblad   ·   Esc  sluiten")
 		TAB_ACHIEVEMENTS, TAB_BESTIARY:
@@ -303,14 +308,21 @@ func _text(font: Font, pos: Vector2, text: String, size: int, color := Color.WHI
 	return MenuPages.text(content, font, pos, text, size, color, width)
 
 
+func inventory_page_start() -> int:
+	return floori(float(selected) / INVENTORY_PAGE_SIZE) * INVENTORY_PAGE_SIZE
+
+
 func _draw_items(font: Font) -> void:
 	var owned := _owned()
 	selected = clampi(selected, 0, maxi(owned.size() - 1, 0))
 	_text(font, Vector2(24, 72), tr("Je spullen"), 24, Color(0.6, 0.88, 1.0))
 	if owned.is_empty():
 		_text(font, Vector2(24, 112), tr("Je hebt nog niets bij je."), 20, Color(1, 1, 1, 0.6))
-	for i in owned.size():
-		var pos := Vector2(24 + (i % 6) * (SLOT + 8), 110 + (i / 6) * (SLOT + 8))
+	var first := inventory_page_start()
+	var last := mini(first + INVENTORY_PAGE_SIZE, owned.size())
+	for i in range(first, last):
+		var local_index := i - first
+		var pos := Vector2(24 + (local_index % 6) * (SLOT + 8), 110 + floori(float(local_index) / 6.0) * (SLOT + 8))
 		var chosen := i == selected
 		content.draw_rect(Rect2(pos, Vector2(SLOT, SLOT)), Color(0.18, 0.3, 0.55) if chosen else Color(0.1, 0.16, 0.3))
 		content.draw_rect(Rect2(pos, Vector2(SLOT, SLOT)), Color(1.0, 0.88, 0.35) if chosen else Color(0.3, 0.45, 0.7), false, 3.0 if chosen else 2.0)
@@ -320,6 +332,8 @@ func _draw_items(font: Font) -> void:
 		if count > 1:
 			content.draw_string_outline(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, 4, Color(0, 0, 0))
 			content.draw_string(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color.WHITE)
+	if owned.size() > INVENTORY_PAGE_SIZE:
+		_text(font, Vector2(24, 462), ProfessionData.TEXT["inventory_page"] % [first + 1, last, owned.size()], 17, Color(0.7, 0.8, 0.95))
 
 	# Rechts: omschrijving en gegevens
 	var x := 620.0
@@ -327,8 +341,8 @@ func _draw_items(font: Font) -> void:
 		var info: Dictionary = Items.ITEMS[owned[selected]]
 		var h := _text(font, Vector2(x, 72), tr(info["name"]), 24, Color(1.0, 0.9, 0.5), 340)
 		h += _text(font, Vector2(x, 72 + h + 6), tr(info["desc"]), 18, Color(0.9, 0.93, 1.0), 340) + 6
-		if owned[selected] == "potion":
-			_text(font, Vector2(x, 72 + h + 10), tr("Druk op E om te drinken"), 18, Color(0.6, 1.0, 0.7))
+		if owned[selected] in Professions.CONSUMABLES:
+			_text(font, Vector2(x, 72 + h + 10), tr(ProfessionData.TEXT["inventory_use"]), 18, Color(0.6, 1.0, 0.7))
 	var weapon: Dictionary = Items.WEAPONS[GameState.weapon]
 	var lines := [
 		tr("Zwaard:  %s (schade %d)") % [tr(weapon["name"]), weapon["damage"]],
