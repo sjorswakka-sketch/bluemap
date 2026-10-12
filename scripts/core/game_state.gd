@@ -7,6 +7,8 @@ const Quests := preload("res://scripts/data/quests.gd")
 const Content := preload("res://scripts/data/content.gd")
 const Achievements := preload("res://scripts/data/achievements.gd")
 const Daynight := preload("res://scripts/core/daynight.gd")
+const Movement := preload("res://scripts/core/movement.gd")
+const Professions := preload("res://scripts/core/professions.gd")
 
 signal hp_changed
 signal items_changed
@@ -40,6 +42,8 @@ var use_load_pos: bool = false
 var play_time: float = 0.0
 var kills: int = 0
 var meer: Dictionary = {} # eigen opslag van het Zilvermeer (zie scripts/data/ext/meer.gd): verkochte en gevangen vis
+var professions: Dictionary = {} # beroepenervaring en verzamelde grondstoffen (eigen stabiele sleutels)
+var movement := Movement.new() # stamina blijft bij gebiedsovergangen behouden
 
 # Wereld: de klok, tellers voor prestaties en het beestenboek (worden opgeslagen).
 var day_time: float = Daynight.START # 0..1, zie scripts/core/daynight.gd
@@ -113,6 +117,8 @@ func new_game() -> void:
 	play_time = 0.0
 	kills = 0
 	meer = {}
+	professions = {}
+	movement.reset()
 	day_time = Daynight.START
 	day_count = 0
 	kills_by = {}
@@ -589,6 +595,7 @@ func save_game(pos: Vector2) -> bool:
 		"day_time": day_time, "day_count": day_count, "kills_by": kills_by, "rolls": rolls,
 		"potions_drunk": potions_drunk, "deaths": deaths, "boss_deaths": boss_deaths,
 		"talked": talked.keys(), "achievements": achievements.keys(), "arena_records": arena_records,
+		"professions": professions,
 	}
 	data["ng_plus"] = ng_plus # de ronde van Nieuw spel+ (zie onderaan)
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -616,6 +623,7 @@ func load_game() -> bool:
 	weapon = data.get("weapon", "wood")
 	ng_plus = int(data.get("ng_plus", 0)) # de ronde van Nieuw spel+ (oude opslagen: 0)
 	play_time = float(data.get("play_time", 0.0))
+	professions = Professions.normalize(data.get("professions", {}), play_time)
 	kills = int(data.get("kills", 0))
 	for stat: String in data.get("meer", {}):
 		meer[stat] = int(data["meer"][stat])

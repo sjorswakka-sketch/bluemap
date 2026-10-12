@@ -6,6 +6,7 @@ name: Windows-versie bouwen
 # Dan verschijnt er een Release met het zipbestand dat vrienden kunnen downloaden.
 on:
   workflow_dispatch:
+  pull_request:
   push:
     tags: ["v*"]
 

@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.4.0)
+BLUEMAP QUEST  (v0.5.0-preview)
 =======================
 
 Starten
@@ -9,6 +9,8 @@ Besturing
   Spatie / J        zwaard
   F / L             boog: een pijl schieten (nadat je een boog hebt gekocht)
   Shift / K         rollen (even onraakbaar)
+  Ctrl vasthouden   sprinten; L3 vasthouden op een controller
+  C                 beroepen, recepten en eten/drinken; R3 op een controller
   E / Enter         praten, kisten en altaren openen, lezen, vissen bij een visplek, doorklikken
   H                 helddrank drinken
   I / Tab           menu: voorwerpen        Q: opdrachten        N: kaart
@@ -23,6 +25,21 @@ Besturing
 Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
+
+Nieuw in deze preview
+  Paden geven 20% extra loopsnelheid, zand remt 8% af. Ondergronden hebben eigen voetstappen.
+  Sprinten gaat 50% sneller en kost stamina. Laat Ctrl los om te herstellen; een volle balk duurt vijf seconden.
+  Smid, winkel, herberg, tempel, arena, vissershuisje en bibliotheek zijn herkenbaar aan hun nieuwe gevels.
+
+Beroepen en maken
+  Zeven beroepen: kruidenzoeken, houthakken, mijnbouw, vissen, smeden, alchemie en koken.
+  Raap in het dorp takken en vuurstenen met E. Maak via C eerst een stenen bijl en een pikhouweel.
+  Daarmee hak je oogstbare stronken en win je koper; later maak je beter gereedschap voor ijzer.
+  Smeden doe je binnen bij Greta, alchemie in de bibliotheek en warm koken in de herberg.
+  Eten en energie-elixers gebruik je via C of I. Omhoog/omlaag selecteert elk voorwerp, E gebruikt het.
+  Grondstoffen keren na 90 tot 180 seconden actieve speeltijd terug. Je beroepen worden mee opgeslagen.
+
+  Deze preview bevat nog niet het afzonderlijk geplande taalpakket.
 
 Vissen
   Ten zuiden van het dorp ligt het Zilvermeer. Praat met Visser Joris voor een hengel, ga bij een visplek

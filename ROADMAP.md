@@ -24,6 +24,15 @@ pixel art, en te delen met vrienden en de community.
         met drie fases, het Sterrenzwaard, en Nieuw spel+ met je beste spullen tegen sterkere vijanden
   - [x] **Arena.** Golven vijanden, drie rangen (Brons, Zilver, Goud), publiek, trofeeën, titels en beste tijden
 
+## In de 0.5.0-preview
+- [x] Sneller lopen op paden, trager op zand en zes soorten voetstappen
+- [x] Sprinten met stamina, met behoud van de bestaande ontwijkrol
+- [x] Zeven herkenbare gebouwexterieurs met symbolen en eigen details
+- [x] Kruidenzoeken, houthakken, mijnbouw, vissen, smeden, alchemie en koken
+- [x] Verzamelplekken, blijvende beroepsvoortgang, gereedschap en bruikbare recepten
+- [x] Beroepenmenu en een inventaris die alle voorwerpen bereikbaar houdt
+- [ ] Het afzonderlijke taalpakket integreren zodra het op GitHub beschikbaar is
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen, schilden en uitrusting
