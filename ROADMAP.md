@@ -22,6 +22,12 @@ pixel art, en te delen met vrienden en de community.
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages, bijvoorbeeld een visser, een bibliotheek of een arena
+- [x] **Arena.** Gevechtsarena met golven vijanden, drie rangen (Brons, Zilver, Goud met een kristalgolem), publiek,
+      trofeeën, titels en beste tijden. Rondes staan als data, dus nieuwe vijanden zijn eenvoudig toe te voegen.
+
+## Ideeën voor later
+- Een tweede gebied-reeks na het einde (nieuw spel+, hogere moeilijkheid, geheime baas)
+- Meer zij-opdrachten en personages, bijvoorbeeld een visser of een bibliotheek
 - Meer vijanden (magiër, slijmvuurspuwer), een vijand die muren doorbreekt
 - Een boog of magie als tweede wapen, schilden en uitrusting
 - Dag en nacht, weer, en een echte wereldkaart met snel reizen

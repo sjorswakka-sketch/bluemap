@@ -27,8 +27,13 @@ static func run(action: Array) -> void:
 
 
 ## Vult {boeken} en {visgeld} in (zie FORMATS in meer.gd).
-static func format(text: String) -> String:
-	return text.replace("{boeken}", str(books_found())).replace("{visgeld}", str(sale_value()))
+static func format(token: String) -> String:
+	match token:
+		"boeken":
+			return str(books_found())
+		"visgeld":
+			return str(sale_value())
+	return "{%s}" % token
 
 
 # --- Vis verkopen en bijhouden -------------------------------------------------------------------------

@@ -499,5 +499,5 @@ static func run(action: Array) -> void:
 	load(LOGIC).call("run", action)
 
 
-static func format(text: String) -> String:
-	return load(LOGIC).call("format", text)
+static func format(token: String) -> String:
+	return load(LOGIC).call("format", token)

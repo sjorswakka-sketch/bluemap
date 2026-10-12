@@ -430,6 +430,95 @@ def mat_tile():
     return img
 
 
+# --- arena (zandkleurige steen, zie scripts/data/tiles.gd) -------------------------------------------
+
+ARENA_STONE, ARENA_LIGHT, ARENA_MORTAR = c("#c4ab85"), c("#dcc8a2"), c("#8c7656")
+
+
+def arena_sand_tile():
+    img = blank()
+    fill_noise(img, c("#dcb97a"), c("#c8a262"), c("#ecd2a0"), 41, 16)
+    for x, y in [(2, 5), (3, 5), (4, 5), (9, 11), (10, 11), (11, 11), (12, 11)]:  # geharkte strepen
+        put(img, x, y, c("#c19a5a"))
+    for x, y in [(6, 2), (13, 7), (3, 13)]:  # steentjes
+        put(img, x, y, c("#a58552"))
+        put(img, x + 1, y, c("#b8965f"))
+    return img
+
+
+def arena_wall_tile():
+    img = blank()
+    fill(img, ARENA_STONE)
+    shade = c("#a48d68")
+    for row, y in enumerate((0, 5, 10)):
+        hline(img, 0, 15, y + 4, ARENA_MORTAR)
+        hline(img, 0, 15, y, ARENA_LIGHT)
+        for x in ((4, 12) if row % 2 else (8, 15)):
+            vline(img, x, y, y + 3, ARENA_MORTAR)
+        for x in ((3, 11) if row % 2 else (7, 14)):
+            vline(img, x, y + 1, y + 3, shade)
+    for x, y in [(2, 2), (10, 7), (5, 12), (13, 13)]:
+        put(img, x, y, c("#b39c76"))
+    hline(img, 0, 15, 15, c("#5e4b34"))
+    return img
+
+
+def arena_tribune_tile():
+    img = blank()
+    fill(img, c("#9c8662"))
+    for y0 in (0, 8):  # twee banken per tegel: zitvlak en rug
+        rect(img, 0, y0, 15, y0 + 3, c("#cdb78f"))
+        hline(img, 0, 15, y0, c("#e0cfab"))
+        rect(img, 0, y0 + 4, 15, y0 + 7, c("#8a7452"))
+        hline(img, 0, 15, y0 + 7, c("#6a5640"))
+        vline(img, 7, y0 + 1, y0 + 3, c("#a89472"))
+    for x, y in [(3, 5), (11, 13), (13, 5)]:
+        put(img, x, y, c("#a08a66"))
+    return img
+
+
+def arena_gate_tile():
+    img = arena_wall_tile()
+    dark = c("#15101c")
+    ellipse(img, (2, 1, 13, 11), dark)  # boog met een diepe donkere opening
+    rect(img, 2, 6, 13, 15, dark)
+    for x, y in [(2, 5), (3, 3), (4, 2), (5, 1), (6, 0), (9, 0), (10, 1), (11, 2), (12, 3), (13, 5)]:  # lichte stenen langs de boog
+        put(img, x, y, c("#e2d0ac"))
+    rect(img, 2, 14, 13, 15, c("#2a2230"))
+    iron, iron_l, iron_d = c("#5a5f6e"), c("#9aa0b4"), c("#2f3340")
+    for x in (4, 7, 10):  # het hek hangt half omhoog: puntjes onderaan
+        vline(img, x, 2, 12, iron)
+        vline(img, x + 1, 2, 12, iron_d)
+        put(img, x, 2, iron_l)
+        put(img, x, 13, iron_l)
+        put(img, x, 14, iron)
+    hline(img, 3, 12, 5, iron_d)
+    hline(img, 3, 12, 9, iron_d)
+    hline(img, 3, 12, 6, iron)
+    hline(img, 3, 12, 10, iron)
+    return img
+
+
+def arena_arch_tile():
+    img = arena_wall_tile()
+    rect(img, 0, 0, 1, 15, c("#a48d68"))  # zijpilaren
+    rect(img, 14, 0, 15, 15, c("#a48d68"))
+    vline(img, 1, 0, 15, ARENA_MORTAR)
+    vline(img, 14, 0, 15, ARENA_MORTAR)
+    rect(img, 2, 0, 13, 2, ARENA_LIGHT)  # latei met sluitsteen
+    hline(img, 2, 13, 2, ARENA_MORTAR)
+    rect(img, 7, 0, 8, 2, c("#e8d8b6"))
+    put(img, 7, 1, c("#e0b84a"))
+    put(img, 8, 1, c("#c98f12"))
+    for y, shade in [(3, "#1c1622"), (4, "#1c1622"), (5, "#1c1622"), (6, "#241c2a"), (7, "#241c2a"), (8, "#241c2a"),
+                     (9, "#2e2434"), (10, "#2e2434"), (11, "#2e2434"), (12, "#3a2f3c"), (13, "#8a6f48"), (14, "#a88a58"),
+                     (15, "#b89a64")]:
+        hline(img, 2, 13, y, c(shade))
+    for x, y in [(2, 3), (13, 3)]:  # afgeronde hoeken
+        put(img, x, y, ARENA_STONE)
+    return img
+
+
 PAINTERS = {
     "grass": lambda: grass_tile(0), "tree": tree_tile, "water": water_tile, "path": path_tile,
     "stone": stone_tile, "grass_flowers": lambda: grass_tile(1), "grass_tufts": lambda: grass_tile(2),
@@ -442,6 +531,9 @@ PAINTERS = {
     "ruin_cracked": ruin_cracked_tile, "temple_floor": temple_floor_tile, "temple_wall": temple_wall_tile,
     "temple_rune": temple_rune_tile, "carpet": carpet_tile, "wood_floor": wood_floor_tile,
     "wood_wall": wood_wall_tile, "counter": counter_tile, "shelf": shelf_tile, "bed": bed_tile, "mat": mat_tile,
+    # arena
+    "arena_sand": arena_sand_tile, "arena_wall": arena_wall_tile, "arena_tribune": arena_tribune_tile,
+    "arena_gate": arena_gate_tile, "arena_arch": arena_arch_tile,
 }
 
 

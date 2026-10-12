@@ -51,6 +51,7 @@ var deaths: int = 0
 var boss_deaths: int = 0 # keren dat je doodging tijdens het gevecht met de Slijmkoning
 var talked: Dictionary = {} # personage-id -> true
 var achievements: Dictionary = {} # behaalde prestaties (id -> true), ook uit user://meta.cfg
+var arena_records: Dictionary = {} # beste tijd (seconden) per arena-rang, bijvoorbeeld {"bronze": 95.2}
 
 # Tijdelijke toestand (wordt niet opgeslagen).
 var in_game: bool = false
@@ -65,6 +66,8 @@ var save_is_ours := false # hoort het opslagbestand bij dit spel? (bij "Nieuw sp
 var achievement_queue: Array[String] = [] # nog te tonen meldingen (het beeld pakt ze op zodra het er is)
 var _achievements_dirty := false
 var _achievement_timer := ACHIEVEMENT_INTERVAL
+# Een uitbreiding (de arena) kan het verlies overnemen: geeft de handler true terug, dan is het geen game over.
+var defeat_handler: Callable = Callable()
 
 
 func _ready() -> void:
@@ -121,10 +124,12 @@ func new_game() -> void:
 	achievements = meta_achievements.duplicate()
 	achievement_queue = []
 	save_is_ours = false
+	arena_records = {}
 	ended = false
 	transitioning = false
 	dialogue_open = false
 	ui_owners = {}
+	defeat_handler = Callable()
 	last_damage_source = ""
 	damage_log = {}
 	ng_plus = 0
@@ -164,6 +169,8 @@ func hurt(amount: int = 1) -> void:
 	hp = maxi(hp - amount, 0)
 	hp_changed.emit()
 	if hp == 0:
+		if defeat_handler.is_valid() and defeat_handler.call():
+			return # de arena handelt het verlies zelf af
 		ended = true
 		_record_death()
 		game_over.emit()
@@ -461,7 +468,7 @@ func fmt(text: String) -> String:
 		.replace("{gel}", str(count("gel"))) \
 		.replace("{shards}", str(count("shard"))) \
 		.replace("{coins}", str(coins))
-	return Content.format(text)
+	return Content.format_text(text)
 
 
 # --- Voorwaarden en acties (gebruikt door dialogen en poortjes) ---------------
@@ -581,7 +588,7 @@ func save_game(pos: Vector2) -> bool:
 		"play_time": play_time, "kills": kills, "meer": meer,
 		"day_time": day_time, "day_count": day_count, "kills_by": kills_by, "rolls": rolls,
 		"potions_drunk": potions_drunk, "deaths": deaths, "boss_deaths": boss_deaths,
-		"talked": talked.keys(), "achievements": achievements.keys(),
+		"talked": talked.keys(), "achievements": achievements.keys(), "arena_records": arena_records,
 	}
 	data["ng_plus"] = ng_plus # de ronde van Nieuw spel+ (zie onderaan)
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -630,6 +637,10 @@ func load_game() -> bool:
 			new_in_meta = true
 	if new_in_meta:
 		_save_meta()
+	var saved_records: Variant = data.get("arena_records", {})
+	if typeof(saved_records) == TYPE_DICTIONARY:
+		for rank: String in saved_records:
+			arena_records[rank] = float(saved_records[rank])
 	for item_id: String in data.get("inventory", {}):
 		inventory[item_id] = int(data["inventory"][item_id])
 	for flag_name: String in data.get("flags", {}):

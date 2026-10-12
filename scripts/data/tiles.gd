@@ -15,6 +15,8 @@ const NAMES: Array[String] = [
 	"meer_sand", "meer_reeds", "meer_lelie", "meer_paal", "meer_bibvloer", "meer_tapijt",
 	# De Diepte (spoor diepte): paars en diepblauw, anders dan de lichtblauwe tempel.
 	"void_floor", "void_wall", "void_crystal", "rune_pad", "void_stairs",
+	# De arena (spoor arena)
+	"arena_sand", "arena_wall", "arena_tribune", "arena_gate", "arena_arch",
 ]
 
 ## Tegels waar je niet doorheen kunt lopen.
@@ -24,6 +26,7 @@ const SOLID: Array[String] = [
 	"wood_wall", "counter", "shelf", "bed",
 	"meer_reeds", "meer_lelie", "meer_paal",
 	"void_wall", "void_crystal",
+	"arena_wall", "arena_tribune", "arena_gate",
 ]
 
 ## Teken in de kaart -> tegel. Het gras (".") krijgt automatisch wat afwisseling.
@@ -40,6 +43,8 @@ const CHARS := {
 	"s": "meer_sand", ";": "meer_reeds", "l": "meer_lelie", "p": "meer_paal", "Q": "meer_bibvloer", "J": "meer_tapijt",
 	# De Diepte (d = diepte, V = void, K = kristal)
 	"d": "void_floor", "V": "void_wall", "K": "void_crystal", "*": "rune_pad", ">": "void_stairs",
+	# De arena
+	":": "arena_sand", "+": "arena_wall", "-": "arena_tribune", "!": "arena_gate", "n": "arena_arch",
 }
 
 
@@ -98,6 +103,10 @@ static func map_color(tile_name: String) -> Color:
 		color = Color(1.0, 0.85, 0.4)
 	elif tile_name == "stone":
 		color = Color(0.5, 0.52, 0.6)
+	elif tile_name == "arena_sand":
+		color = Color(0.86, 0.72, 0.46)
+	elif tile_name.begins_with("arena"):
+		color = Color(0.76, 0.66, 0.52)
 	if is_solid_name(tile_name):
 		color = color.darkened(0.3)
 	return color

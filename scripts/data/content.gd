@@ -18,17 +18,17 @@ extends RefCounted
 ##   static func check(cond: Array) -> bool     # wordt alleen aangeroepen voor jouw eigen voorwaarden
 ##   static func run(action: Array) -> void     # idem voor acties
 ##
+## Eigen {tekens} in gesprekken en opdrachtteksten (zoals {coins} en {gel} in game_state.gd):
+##
+##   const FORMATS := ["arena_title"]              # de namen van de tekens (zonder haakjes)
+##   static func format(token: String) -> String   # de tekst voor één teken, bijvoorbeeld "Arenastrijder"
+##
 ## Eigen soorten objecten op de kaart ({"type": "doelwit", "pos": [3, 4], ...}):
 ##
 ##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}   # het PAD als tekst, geen preload()
 ##
 ## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
 ## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
-##
-## Eigen {tekens} in gesprekken en opdrachtteksten (zoals {gel} en {coins} in game_state.gd):
-##
-##   const FORMATS := ["boeken"]                    # de namen van de tekens
-##   static func format(text: String) -> String     # vult jouw tekens in en laat de rest van de tekst staan
 ##
 ## LET OP (compileervolgorde): game_state.gd laadt dit bestand en dus alle modules al terwijl de autoloads GameState en
 ## Sound nog niet bestaan. Gebruik in een module (en in alles wat hij met preload() laadt) daarom nooit de namen GameState
@@ -45,6 +45,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/meer.gd"), # het Zilvermeer: vissen, bibliotheek, Joris, Lena en Sanne
 	preload("res://scripts/data/ext/wereld.gd"),
 	preload("res://scripts/data/ext/diepte.gd"),
+	preload("res://scripts/data/ext/arena.gd"),
 ]
 
 
@@ -102,14 +103,21 @@ static func run_action(action: Array) -> bool:
 	return false
 
 
-## Laat de modules hun eigen {tekens} invullen in een tekst (zie FORMATS bovenaan dit bestand).
-static func format(text: String) -> String:
+## Vult de {tekens} van de modules in een tekst in (zie FORMATS bovenaan dit bestand). Onbekende tekens blijven staan.
+static func format_text(text: String) -> String:
 	if not "{" in text:
 		return text
 	for module: Script in MODULES:
-		if module.get_script_constant_map().has("FORMATS"):
-			text = module.call("format", text)
+		for token: String in module.get_script_constant_map().get("FORMATS", []):
+			var tag := "{%s}" % token
+			if tag in text:
+				text = text.replace(tag, module.call("format", token))
 	return text
+
+
+## Namen van de tekens die de modules kennen (voor de speltest).
+static func format_names() -> Array:
+	return appended("FORMATS", [])
 
 
 ## Soorten objecten (naam -> script) die de modules toevoegen. Paden (tekst) worden hier pas geladen.
