@@ -34,7 +34,7 @@ const QUESTS := {
 
 const NPCS := {
 	"fenna": {
-		"name": "Fenna de kruidenvrouwe", "sheet": "npc_mila",
+		"name": "Fenna de kruidenvrouwe", "sheet": "npc_fenna",
 		"rules": [
 			{"if": [["step", "warmte", 1]], "talk": "fenna_klaar"},
 			{"if": [["no_flag", "fenna_ontmoet"]], "talk": "fenna_intro"},
@@ -42,7 +42,7 @@ const NPCS := {
 		],
 	},
 	"roos": {
-		"name": "Roos de jageres", "sheet": "npc_greta",
+		"name": "Roos de jageres", "sheet": "npc_roos",
 		"rules": [
 			{"if": [["step", "ijswacht", 1]], "talk": "roos_klaar"},
 			{"if": [["no_flag", "roos_ontmoet"]], "talk": "roos_intro"},
@@ -50,7 +50,7 @@ const NPCS := {
 		],
 	},
 	"olav": {
-		"name": "Olav de kaartenbewaarder", "sheet": "npc_bram",
+		"name": "Olav de kaartenbewaarder", "sheet": "npc_olav",
 		"rules": [
 			{"if": [["no_flag", "olav_ontmoet"]], "talk": "olav_intro"},
 			{"talk": "olav_menu"},
