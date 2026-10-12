@@ -17,6 +17,7 @@ var toast_label: Label
 var banner: Label
 var boss_bar: Control
 var clock: Control # zon of maan, en welk deel van de dag het is
+var stamina_bar: Control
 var achievement_banner: CanvasLayer # de melding "Prestatie behaald!"
 var clock_state := ""
 var overlay: ColorRect
@@ -40,6 +41,7 @@ func _ready() -> void:
 	GameState.game_over.connect(_show_game_over)
 	_refresh_tracker()
 	_queue_toast("WASD lopen  ·  SPATIE zwaard  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze")
+	_queue_toast("CTRL / L3 vasthouden: rennen  ·  C / R3: beroepen en maken  ·  Paden geven extra snelheid")
 	# Boog: de pijlenteller (met "[F]") staat in beeld zodra je een boog hebt, en bij het krijgen ervan komt een melding.
 	had_bow = GameState.count("bow") > 0
 	GameState.items_changed.connect(_check_bow)
@@ -63,6 +65,13 @@ func _build_ui() -> void:
 	clock.size = Vector2(300, 36)
 	clock.draw.connect(_draw_clock)
 	add_child(clock)
+
+	stamina_bar = Control.new()
+	stamina_bar.position = Vector2(20, 146)
+	stamina_bar.size = Vector2(280, 38)
+	stamina_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	stamina_bar.draw.connect(_draw_stamina)
+	add_child(stamina_bar)
 
 	tracker_panel = PanelContainer.new()
 	tracker_panel.anchor_left = 1.0
@@ -133,6 +142,19 @@ func _build_ui() -> void:
 
 # --- Hartjes en tellers ----------------------------------------------------------------
 
+func _draw_stamina() -> void:
+	var font := ThemeDB.fallback_font
+	var ratio: float = GameState.movement.stamina / GameState.movement.MAX_STAMINA
+	var tired: bool = GameState.movement.exhausted
+	var label := "Even op adem komen..." if tired else "Uithouding  ·  Ctrl / L3"
+	var color := Color(1.0, 0.57, 0.3) if tired else Color(0.4, 0.88, 0.7)
+	stamina_bar.draw_string_outline(font, Vector2(0, 15), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, 4, Color(0, 0, 0, 0.9))
+	stamina_bar.draw_string(font, Vector2(0, 15), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(0.92, 0.98, 0.95))
+	stamina_bar.draw_rect(Rect2(0, 22, 222, 12), Color(0.02, 0.06, 0.09, 0.85))
+	stamina_bar.draw_rect(Rect2(2, 24, 218.0 * ratio, 8), color)
+	stamina_bar.draw_rect(Rect2(0, 22, 222, 12), Color(0.65, 0.86, 0.8), false, 1.0)
+
+
 func _draw_hearts() -> void:
 	# ui_heart.png: vakje 0 = vol hartje, vakje 1 = leeg hartje (13x12 pixels, hier 3x vergroot).
 	var cell := Vector2(13, 12)
@@ -202,6 +224,7 @@ func show_banner(text: String) -> void:
 
 
 func _process(delta: float) -> void:
+	stamina_bar.queue_redraw()
 	# Meldingen komen een voor een, en wachten tot een gesprek klaar is.
 	if toast_time > 0.0:
 		toast_time -= delta

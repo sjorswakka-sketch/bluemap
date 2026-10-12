@@ -72,6 +72,42 @@ static func is_solid_char(c: String) -> bool:
 	return is_solid_name(CHARS.get(c, "grass"))
 
 
+## Ondergrond bij de voeten; buiten een kaart hebben we geen loopgeluid.
+static func name_at(rows: Array, foot_position: Vector2, tile_size := 32.0) -> String:
+	var cell := Vector2i(floori(foot_position.x / tile_size), floori(foot_position.y / tile_size))
+	if cell.y < 0 or cell.y >= rows.size() or cell.x < 0:
+		return ""
+	var row: String = rows[cell.y]
+	if cell.x >= row.length():
+		return ""
+	return name_for(row[cell.x], cell.x, cell.y)
+
+
+## Het gewone gras houdt zijn oorspronkelijke snelheid; een pad loont, zand is wat zwaarder.
+static func movement_multiplier(tile_name: String) -> float:
+	if tile_name == "path":
+		return 1.2
+	if tile_name in ["meer_sand", "arena_sand"]:
+		return 0.92
+	return 1.0
+
+
+static func footstep_surface(tile_name: String) -> String:
+	if tile_name == "" or is_solid_name(tile_name):
+		return ""
+	if tile_name.begins_with("grass"):
+		return "grass"
+	if tile_name == "path":
+		return "path"
+	if tile_name in ["meer_sand", "arena_sand"]:
+		return "sand"
+	if tile_name in ["bridge", "wood_floor", "meer_bibvloer", "door"]:
+		return "wood"
+	if tile_name in ["carpet", "mat", "meer_tapijt"]:
+		return "cloth"
+	return "stone"
+
+
 ## Kleur van een tegel op de kaartjes (kaarttabblad en einde).
 static func map_color(tile_name: String) -> Color:
 	var color := Color(0.5, 0.5, 0.55)

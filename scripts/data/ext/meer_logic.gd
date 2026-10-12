@@ -115,5 +115,6 @@ static func golden_can_bite() -> bool:
 ## Onthoudt een vangst: voor de statistieken en voor de kans op de Gouden Karper.
 static func record_catch(fish_id: String, deep: bool) -> void:
 	GameState.meer["gevangen"] = int(GameState.meer.get("gevangen", 0)) + 1
+	load("res://scripts/core/professions.gd").record_fish(fish_id)
 	if deep:
 		GameState.meer["pech"] = 0 if fish_id == Vis.GOLDEN else pity() + 1
