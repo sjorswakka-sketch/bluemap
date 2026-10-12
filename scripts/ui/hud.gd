@@ -26,6 +26,7 @@ var overlay_sub: Label
 var toast_queue: Array[String] = []
 var toast_time := 0.0
 var banner_time := 0.0
+var banner_text := Callable() # geeft de tekst van de banner in de huidige taal (zie show_banner)
 var boss: Node2D = null
 var had_bow := false # om te zien wanneer je de boog voor het eerst krijgt
 
@@ -39,10 +40,11 @@ func _ready() -> void:
 	GameState.toast.connect(_queue_toast)
 	GameState.game_over.connect(_show_game_over)
 	_refresh_tracker()
-	_queue_toast("WASD lopen  ·  SPATIE zwaard  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze")
+	_queue_toast(tr("WASD lopen  ·  SPATIE zwaard  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze"))
 	# Boog: de pijlenteller (met "[F]") staat in beeld zodra je een boog hebt, en bij het krijgen ervan komt een melding.
 	had_bow = GameState.count("bow") > 0
 	GameState.items_changed.connect(_check_bow)
+	Lang.changed.connect(_on_language_changed)
 
 
 func _build_ui() -> void:
@@ -125,7 +127,7 @@ func _build_ui() -> void:
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
 	center.alignment = BoxContainer.ALIGNMENT_CENTER
 	overlay.add_child(center)
-	overlay_title = UiStyle.make_label("Game over", 72, Color(1.0, 0.4, 0.4))
+	overlay_title = UiStyle.make_label(tr("Game over"), 72, Color(1.0, 0.4, 0.4))
 	center.add_child(overlay_title)
 	overlay_sub = UiStyle.make_label("", 26)
 	center.add_child(overlay_sub)
@@ -180,7 +182,7 @@ func arrow_color() -> Color:
 func _check_bow() -> void:
 	var has_bow := GameState.count("bow") > 0
 	if has_bow and not had_bow:
-		_queue_toast("Boog gekregen! Druk op F om te schieten.")
+		_queue_toast(tr("Boog gekregen! Druk op F om te schieten."))
 	had_bow = has_bow
 
 
@@ -196,9 +198,28 @@ func _queue_toast(text: String) -> void:
 	toast_queue.append(text)
 
 
-func show_banner(text: String) -> void:
-	banner.text = text
+## Grote tekst midden bovenin: de naam van een gebied, of "Goedemorgen!". `text_of` geeft de tekst in de huidige taal,
+## bijvoorbeeld func() -> String: return tr("Goedemorgen!"). Zo verandert de banner meteen mee als je in het pauzemenu
+## een andere taal kiest terwijl hij in beeld is.
+func show_banner(text_of: Callable) -> void:
+	banner_text = text_of
+	banner.text = text_of.call()
 	banner_time = 2.8
+
+
+## De taal is gewisseld (pauzemenu): alles wat in beeld staat opnieuw invullen. Een melding die al in beeld is blijft
+## in de oude taal staan tot hij verdwijnt; nieuwe meldingen komen in de nieuwe taal.
+func _on_language_changed(_locale: String) -> void:
+	_refresh_tracker()
+	if banner_text.is_valid():
+		banner.text = banner_text.call()
+	overlay_title.text = tr("Game over")
+	if overlay.visible:
+		_show_game_over()
+	stats.queue_redraw()
+	clock_state = ""
+	clock.queue_redraw()
+	boss_bar.queue_redraw()
 
 
 func _process(delta: float) -> void:
@@ -242,8 +263,9 @@ func _draw_boss_bar() -> void:
 		return
 	var font := ThemeDB.fallback_font
 	var ratio := clampf(float(boss.hp) / float(boss.max_hp), 0.0, 1.0)
-	boss_bar.draw_string_outline(font, Vector2(0, 16), boss.data["name"], HORIZONTAL_ALIGNMENT_LEFT, -1, 20, 5, Color(0, 0, 0, 0.9))
-	boss_bar.draw_string(font, Vector2(0, 16), boss.data["name"], HORIZONTAL_ALIGNMENT_LEFT, -1, 20, Color(1, 0.85, 0.85))
+	var boss_name := tr(boss.data["name"])
+	boss_bar.draw_string_outline(font, Vector2(0, 16), boss_name, HORIZONTAL_ALIGNMENT_LEFT, -1, 20, 5, Color(0, 0, 0, 0.9))
+	boss_bar.draw_string(font, Vector2(0, 16), boss_name, HORIZONTAL_ALIGNMENT_LEFT, -1, 20, Color(1, 0.85, 0.85))
 	boss_bar.draw_rect(Rect2(0, 24, 340, 16), Color(0.05, 0.02, 0.05, 0.85))
 	boss_bar.draw_rect(Rect2(2, 26, 336.0 * ratio, 12), Color(0.85, 0.2, 0.25))
 	boss_bar.draw_rect(Rect2(2, 26, 336.0 * ratio, 4), Color(1, 0.5, 0.5, 0.7))
@@ -253,11 +275,27 @@ func _draw_boss_bar() -> void:
 # --- Game over ---------------------------------------------------------------------------------
 
 func _show_game_over() -> void:
-	overlay_title.text = "Game over"
-	var has_save := GameState.has_save()
-	var by := "" if GameState.last_damage_source == "" else "Verslagen door: %s\n" % GameState.last_damage_source
-	overlay_sub.text = by + ("Druk op R om verder te gaan vanaf je laatste opslag" if has_save else "Druk op R om opnieuw te beginnen") + "  ·  Esc voor het menu"
+	overlay_title.text = tr("Game over")
+	# Vertalers: op het game-over-scherm; %s is wie je versloeg, bijvoorbeeld "Kristalgolem (klap)"
+	var by := "" if GameState.last_damage_source == "" else tr("Verslagen door: %s") % damage_source_text(GameState.last_damage_source) + "\n"
+	if GameState.has_save():
+		overlay_sub.text = by + tr("Druk op R om verder te gaan vanaf je laatste opslag  ·  Esc voor het menu")
+	else:
+		overlay_sub.text = by + tr("Druk op R om opnieuw te beginnen  ·  Esc voor het menu")
 	overlay.visible = true
+
+
+## Wie je versloeg, in de taal van de speler. De bron van de schade (player.hurt) is de Nederlandse naam van de vijand,
+## soms met de aanval erachter: "Kristalgolem (klap)". Naam en aanval worden los vertaald; de aanvallen staan in
+## Enemies.ATTACKS (met de context "aanval", want "klap" of "steen" kan los ook iets anders betekenen).
+static func damage_source_text(source: String) -> String:
+	var open := source.rfind(" (")
+	if open > 0 and source.ends_with(")"):
+		var attack := source.substr(open + 2, source.length() - open - 3)
+		# Vertalers: naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
+		return TranslationServer.translate("%s (%s)") % [TranslationServer.translate(source.substr(0, open)),
+			TranslationServer.translate(attack, "aanval")]
+	return TranslationServer.translate(source)
 
 
 # --- Dag en nacht ------------------------------------------------------------------------------
@@ -273,7 +311,8 @@ func _clock_label() -> String:
 	var label := Daynight.phase_label(GameState.day_time)
 	var world := get_tree().get_first_node_in_group("world")
 	if world != null and world.atmosphere != null and world.atmosphere.rain_level > 0.3:
-		label += "  ·  regen"
+		# Vertalers: het dagdeel bij de klok als het regent: "Avond  ·  regen"
+		label = tr("%s  ·  regen") % label
 	return label
 
 

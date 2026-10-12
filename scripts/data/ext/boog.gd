@@ -193,6 +193,6 @@ static func run(action: Array) -> void:
 				if _state().flag(action[i]):
 					done += 1
 			if done >= total:
-				_state().toast.emit("Alle doelwitten geraakt!")
+				_state().toast.emit(TranslationServer.translate("Alle doelwitten geraakt!"))
 			else:
-				_state().toast.emit("Doelwit geraakt! (%d van %d)" % [done, total])
+				_state().toast.emit(TranslationServer.translate("Doelwit geraakt! (%d van %d)") % [done, total])

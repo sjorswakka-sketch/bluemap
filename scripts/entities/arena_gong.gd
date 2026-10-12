@@ -48,7 +48,7 @@ func interact() -> void:
 		return
 	Sound.play("arena_gong", -5.0)
 	strike()
-	GameState.say("Gong", ["Een enorme bronzen gong. Bruno slaat hem aan het begin van elke ronde."])
+	GameState.say(tr("Gong"), [tr("Een enorme bronzen gong. Bruno slaat hem aan het begin van elke ronde.")])
 
 
 func _draw() -> void:

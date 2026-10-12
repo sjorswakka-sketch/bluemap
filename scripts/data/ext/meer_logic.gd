@@ -103,7 +103,10 @@ static func sell_fish() -> int:
 	GameState.add_coins(coins)
 	GameState.meer["verkocht"] = sold_count() + amount
 	Sound.play("buy")
-	GameState.toast.emit("Verkocht: %d %s voor %d munten" % [amount, "vis" if amount == 1 else "vissen", coins])
+	var fish := TranslationServer.translate_plural("%d vis", "%d vissen", amount) % amount
+	var money := TranslationServer.translate_plural("%d munt", "%d munten", coins) % coins
+	# Vertalers: bijvoorbeeld "Verkocht: 3 vissen voor 24 munten" (de eerste %s is "3 vissen", de tweede "24 munten")
+	GameState.toast.emit(TranslationServer.translate("Verkocht: %s voor %s") % [fish, money])
 	return coins
 
 

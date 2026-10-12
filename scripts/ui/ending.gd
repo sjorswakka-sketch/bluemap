@@ -42,18 +42,19 @@ func _ready() -> void:
 	get_tree().paused = false
 	_build_map_textures()
 	add_child(AchievementBanner.new()) # prestaties van het einde (de Slijmkoning, uitgespeeld...) zie je hier
+	# De epiloog, meteen vertaald (de taal kan op dit scherm niet meer veranderen).
 	pages = [
 		{"type": "text", "speaker": "", "lines": [
-			"Met een enorme plof zakt de Slijmkoning in elkaar.",
-			"Het groene gel trekt weg uit de tempel, sijpelt als een rivier door het land... en verdwijnt.",
-			"Het wordt heel stil in de Kristaltempel.",
+			tr("Met een enorme plof zakt de Slijmkoning in elkaar."),
+			tr("Het groene gel trekt weg uit de tempel, sijpelt als een rivier door het land... en verdwijnt."),
+			tr("Het wordt heel stil in de Kristaltempel."),
 		]},
 		{"type": "map"},
-		{"type": "text", "speaker": "Oudste Bram", "lines": ["Dankzij jou is Azura weer veilig. De Blauwe Kaart laat weer zien waar het land rustig is."]},
-		{"type": "text", "speaker": "Greta", "lines": ["Ik smeed vanaf nu zwaarden voor op het feest. Nou ja, voor het snijden van de taart."]},
-		{"type": "text", "speaker": "Tobias", "lines": ["Mijn winkel draait beter dan ooit! De eerste helddrank van de week is voor jou. Gratis. Ehm... bijna gratis."]},
-		{"type": "text", "speaker": "Mila", "lines": ["De herberg zit vol. Iedereen wil de held van Dageraadsdorp zien."]},
-		{"type": "text", "speaker": "Pim", "lines": ["Muis en ik gaan ook slijmen verslaan. Als ze groter worden dan Muis, rennen we weg."]},
+		{"type": "text", "speaker": tr("Oudste Bram"), "lines": [tr("Dankzij jou is Azura weer veilig. De Blauwe Kaart laat weer zien waar het land rustig is.")]},
+		{"type": "text", "speaker": tr("Greta"), "lines": [tr("Ik smeed vanaf nu zwaarden voor op het feest. Nou ja, voor het snijden van de taart.")]},
+		{"type": "text", "speaker": tr("Tobias"), "lines": [tr("Mijn winkel draait beter dan ooit! De eerste helddrank van de week is voor jou. Gratis. Ehm... bijna gratis.")]},
+		{"type": "text", "speaker": tr("Mila"), "lines": [tr("De herberg zit vol. Iedereen wil de held van Dageraadsdorp zien.")]},
+		{"type": "text", "speaker": tr("Pim"), "lines": [tr("Muis en ik gaan ook slijmen verslaan. Als ze groter worden dan Muis, rennen we weg.")]},
 		{"type": "stats"},
 		{"type": "credits"},
 		{"type": "end"},
@@ -208,7 +209,7 @@ func _draw_map_page() -> void:
 	draw_texture(map_gray_tex, map_origin, Color(1, 1, 1, 1.0 - progress))
 	draw_texture(map_color_tex, map_origin, Color(1, 1, 1, progress))
 	# naamplaatjes
-	var names := {"temple": "Kristaltempel", "village": "Dageraadsdorp", "forest": "Fluisterbos", "ruins": "Vergeten Ruïne", "cave": "Echo-grot"}
+	var names := {"temple": tr("Kristaltempel"), "village": tr("Dageraadsdorp"), "forest": tr("Fluisterbos"), "ruins": tr("Vergeten Ruïne"), "cave": tr("Echo-grot")}
 	for map_id: String in ISLANDS:
 		var p: Vector2 = map_origin + ISLANDS[map_id]
 		draw_string_outline(font, p + Vector2(0, -6), names[map_id], HORIZONTAL_ALIGNMENT_LEFT, -1, 16, 4, Color(0, 0, 0, 0.8))
@@ -229,24 +230,25 @@ func _draw_map_page() -> void:
 			Color(1, 1, 1, 1.0 if lit[i] else 0.3))
 	if progress > 0.5:
 		var alpha := clampf((t - 7.2) / 1.0, 0.0, 1.0)
-		_text_centered("De Blauwe Kaart is weer heel.", H - 24.0, 34, Color(0.85, 0.95, 1.0, alpha))
+		_text_centered(tr("De Blauwe Kaart is weer heel."), H - 24.0, 34, Color(0.85, 0.95, 1.0, alpha))
 
 
 func _draw_stats() -> void:
 	var font := ThemeDB.fallback_font
-	_text_centered("Jouw avontuur", 120, 54, Color(0.7, 0.92, 1.0))
+	_text_centered(tr("Jouw avontuur"), 120, 54, Color(0.7, 0.92, 1.0))
 	var done := 0
 	for quest_id: String in Quests.QUESTS:
 		if GameState.quest_state(quest_id) == "done":
 			done += 1
 	var weapon: Dictionary = Items.WEAPONS[GameState.weapon]
 	var rows := [
-		["Speeltijd", MenuUi.format_time(GameState.play_time)],
-		["Verslagen vijanden", str(GameState.kills)],
-		["Munten", str(GameState.coins)],
-		["Zwaard", weapon["name"]],
-		["Hartjes", str(GameState.max_hp())],
-		["Opdrachten voltooid", "%d van %d" % [done, Quests.QUESTS.size()]],
+		[tr("Speeltijd"), MenuUi.format_time(GameState.play_time)],
+		[tr("Verslagen vijanden"), str(GameState.kills)],
+		[tr("Munten"), str(GameState.coins)],
+		[tr("Zwaard"), tr(weapon["name"])],
+		[tr("Hartjes"), str(GameState.max_hp())],
+		# Vertalers: aantal voltooide opdrachten: "5 van 9"
+		[tr("Opdrachten voltooid"), tr("%d van %d") % [done, Quests.QUESTS.size()]],
 	]
 	var box := Rect2(280, 170, W - 560, 330)
 	_draw_box(box)
@@ -264,11 +266,11 @@ func _draw_credits() -> void:
 	for entry: Array in Credits.LINES:
 		match entry[0]:
 			"title":
-				_text_centered(entry[1], y, 64, Color(0.7, 0.92, 1.0))
+				_text_centered(tr(entry[1]), y, 64, Color(0.7, 0.92, 1.0))
 			"heading":
-				_text_centered(entry[1], y, 28, Color(1.0, 0.88, 0.5))
+				_text_centered(tr(entry[1]), y, 28, Color(1.0, 0.88, 0.5))
 			"text":
-				_text_centered(entry[1], y, 24, Color(0.9, 0.95, 1.0))
+				_text_centered(tr(entry[1]), y, 24, Color(0.9, 0.95, 1.0))
 		y += 40.0
 
 
@@ -277,6 +279,6 @@ func _draw_end() -> void:
 	var crystal := Vector2(W / 2.0, 200.0 + sin(t * 2.0) * 8.0)
 	draw_circle(crystal, 90.0, Color(0.4, 0.8, 1.0, 0.12))
 	DrawUtil.sprite(self, Art.tex("crystal"), int(t * 1.4) % 2, 0, crystal, Vector2i(16, 16), 8.0)
-	_text_centered("Bedankt voor het spelen!", 400, 64, Color(0.7, 0.92, 1.0))
-	_text_centered("Je voortgang is bewaard: je kunt verder in het dorp.", 450, 24, Color(0.85, 0.9, 1.0))
-	_text_centered("Druk op E om naar het titelscherm te gaan", 520, 26, Color(1, 1, 1, pulse))
+	_text_centered(tr("Bedankt voor het spelen!"), 400, 64, Color(0.7, 0.92, 1.0))
+	_text_centered(tr("Je voortgang is bewaard: je kunt verder in het dorp."), 450, 24, Color(0.85, 0.9, 1.0))
+	_text_centered(tr("Druk op E om naar het titelscherm te gaan"), 520, 26, Color(1, 1, 1, pulse))

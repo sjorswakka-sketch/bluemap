@@ -36,6 +36,10 @@ extends RefCounted
 ## of zet de code in een apart script dat je met load() aanroept (zie ext/meer.gd en ext/meer_logic.gd). Daarom staan
 ## objectscripts als pad in OBJECTS: ze worden pas geladen als de wereld ze nodig heeft.
 ##
+## Tekst in een module (gesprekken, namen, beschrijvingen...) schrijf je gewoon in het Nederlands: het scherm dat hem toont
+## vertaalt hem, en tools/i18n.py extract vindt hem vanzelf (zie de README, sectie "Talen"). Maak je in code zelf een
+## melding (bijvoorbeeld in run()), gebruik dan TranslationServer.translate("...") (de naam Lang mag hier ook niet).
+##
 ## Je hoeft alleen de constanten op te nemen die je nodig hebt. Namen (sleutels) mogen niet al bestaan.
 
 const MODULES: Array = [

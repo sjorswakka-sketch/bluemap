@@ -137,7 +137,7 @@ func sleep_in_bed() -> void:
 	world.autosave()
 	_apply()
 	await get_tree().create_timer(0.6, true, false, true).timeout
-	world.hud.show_banner("Goedemorgen!")
-	GameState.toast.emit("Lekker geslapen! Je hebt weer alle hartjes.")
+	world.hud.show_banner(func() -> String: return tr("Goedemorgen!"))
+	GameState.toast.emit(tr("Lekker geslapen! Je hebt weer alle hartjes."))
 	await world.fader.fade_in(SLEEP_FADE)
 	GameState.transitioning = false

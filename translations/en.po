@@ -1,0 +1,4347 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bluemap Quest\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-Language: nl\n"
+
+#. Naam van gebied village
+#. Kaart village, sign [21, 8]: tekst op een bord
+#: scripts/ui/ending.gd:212 scripts/maps/village.gd:6 scripts/maps/village.gd:63
+msgid "Dageraadsdorp"
+msgstr ""
+
+#. Kaart village, sign [21, 8]: tekst op een bord
+#: scripts/maps/village.gd:63
+msgid "Tempel van de Blauwe Kaart. Bewaker: Oudste Bram."
+msgstr ""
+
+#. Kaart village, sign [37, 12]: tekst op een bord
+#: scripts/maps/village.gd:64
+msgid "Oostelijke weg: Fluisterbos."
+msgstr ""
+
+#. Kaart village, sign [37, 12]: tekst op een bord
+#: scripts/maps/village.gd:64
+msgid "Pas op voor slijmen!"
+msgstr ""
+
+#. Kaart village, portal [33, 4]: melding als hij op slot zit
+#: scripts/maps/village.gd:72
+msgid "De arenadeur blijft dicht. Praat eerst met Oudste Bram, en kom terug met een ijzeren zwaard van Greta de smid."
+msgstr ""
+
+#. Kaart village, sign [31, 5]: tekst op een bord
+#: scripts/maps/village.gd:73
+msgid "Arena van Dageraadsdorp"
+msgstr ""
+
+#. Kaart village, sign [31, 5]: tekst op een bord
+#: scripts/maps/village.gd:73
+msgid "Voor echte vechters! Praat eerst met Oudste Bram, en kom terug met een ijzeren zwaard van Greta de smid."
+msgstr ""
+
+#. Kaart village, portal [19, 6]: melding als hij op slot zit
+#: scripts/maps/village.gd:78
+msgid "De tempeldeur is verzegeld door de gebarsten kaart."
+msgstr ""
+
+#. Kaart village, sign [29, 17]: tekst op een bord
+#: scripts/maps/village.gd:85
+msgid "Schietbaan van Tessa."
+msgstr ""
+
+#. Kaart village, sign [29, 17]: tekst op een bord
+#: scripts/maps/village.gd:85
+msgid "Raak de doelwitten met je boog. Praat met Tessa om te beginnen."
+msgstr ""
+
+#. Kaart village, sign [18, 24]: tekst op een bord
+#: scripts/maps/village.gd:87
+msgid "Zuidelijke weg: het Zilvermeer."
+msgstr ""
+
+#. Kaart village, sign [18, 24]: tekst op een bord
+#: scripts/maps/village.gd:87
+msgid "Rustig water, grote vissen en een bibliotheek."
+msgstr ""
+
+#. Naam van gebied smithy
+#: scripts/maps/smithy.gd:6
+msgid "Smederij"
+msgstr ""
+
+#. Naam van gebied shop
+#: scripts/maps/shop.gd:6
+msgid "Winkel van Tobias"
+msgstr ""
+
+#. Naam van gebied inn
+#: scripts/maps/inn.gd:6
+msgid "Herberg De Blauwe Slijm"
+msgstr ""
+
+#. Naam van gebied forest
+#. Kaart forest, sign [5, 19]: tekst op een bord
+#: scripts/ui/ending.gd:212 scripts/maps/forest.gd:6 scripts/maps/forest.gd:54
+msgid "Fluisterbos"
+msgstr ""
+
+#. Kaart forest, sign [5, 19]: tekst op een bord
+#: scripts/maps/forest.gd:54
+msgid "Hier fluisteren de bomen. En de slijmen zijn niet te vertrouwen."
+msgstr ""
+
+#. Kaart forest, sign [28, 19]: tekst op een bord
+#: scripts/maps/forest.gd:55
+msgid "Noord: oude stenen ruïne."
+msgstr ""
+
+#. Kaart forest, sign [28, 19]: tekst op een bord
+#: scripts/maps/forest.gd:55
+msgid "Oost: Vergeten Ruïne."
+msgstr ""
+
+#. Kaart forest, sign [28, 19]: tekst op een bord
+#: scripts/maps/forest.gd:55
+msgid "Zuid-oost: Echo-grot."
+msgstr ""
+
+#. Kaart forest, gate [48, 15]: melding als hij op slot zit
+#: scripts/maps/forest.gd:61
+msgid "Het poortje zit op slot. Je hebt een sleutel nodig."
+msgstr ""
+
+#. Kaart forest, sign [47, 19]: tekst op een bord
+#: scripts/maps/forest.gd:63
+msgid "Vergeten Ruïne."
+msgstr ""
+
+#. Kaart forest, sign [47, 19]: tekst op een bord
+#: scripts/maps/forest.gd:63
+msgid "Het poortje is al eeuwen op slot."
+msgstr ""
+
+#. Kaart forest, gate [22, 33]: melding als hij op slot zit
+#: scripts/maps/forest.gd:101
+msgid "Het poortje is dicht. Schiet met je boog op de twee doelwitten over de rivier!"
+msgstr ""
+
+#. Kaart forest, sign [14, 16]: tekst op een bord
+#: scripts/maps/forest.gd:109
+msgid "Pas op voor slijmspuwers!"
+msgstr ""
+
+#. Kaart forest, sign [14, 16]: tekst op een bord
+#: scripts/maps/forest.gd:109
+msgid "Een slijmspuwer spuugt drie slijmballen tegelijk. Rol weg met Shift!"
+msgstr ""
+
+#. Kaart forest, sign [14, 16]: tekst op een bord
+#: scripts/maps/forest.gd:109
+msgid "Kom je te dichtbij, dan hupt hij weg."
+msgstr ""
+
+#. Naam van gebied ruins
+#: scripts/maps/ruins.gd:6
+msgid "De Vergeten Ruïne"
+msgstr ""
+
+#. Naam van gebied ruins midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "De Vergeten Ruïne"
+msgid "de Vergeten Ruïne"
+msgstr ""
+
+#. Kaart ruins, sign [9, 28]: tekst op een bord
+#: scripts/maps/ruins.gd:86
+msgid "Hier rust de bewaker van de ruïne."
+msgstr ""
+
+#. Kaart ruins, sign [9, 28]: tekst op een bord
+#: scripts/maps/ruins.gd:86
+msgid "Wie het kristal wil, moet de golem verslaan."
+msgstr ""
+
+#. Kaart ruins, gate [15, 8]: melding als hij op slot zit
+#: scripts/maps/ruins.gd:88
+msgid "Het poortje is dicht. Schiet met je boog op de twee oude doelwitten in de muren!"
+msgstr ""
+
+#. Kaart ruins, sign [9, 18]: tekst op een bord
+#. Kaart cave, sign [9, 27]: tekst op een bord
+#: scripts/maps/cave.gd:98 scripts/maps/ruins.gd:97
+msgid "Pas op voor magiërs!"
+msgstr ""
+
+#. Kaart ruins, sign [9, 18]: tekst op een bord
+#: scripts/maps/ruins.gd:97
+msgid "Ze verdwijnen in een rookwolkje en schieten een tovervonk. Die is traag: sla hem stuk met je zwaard."
+msgstr ""
+
+#. Naam van gebied cave
+#: scripts/maps/cave.gd:6
+msgid "De Echo-grot"
+msgstr ""
+
+#. Naam van gebied cave midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "De Echo-grot"
+msgid "de Echo-grot"
+msgstr ""
+
+#. Kaart cave, sign [7, 30]: tekst op een bord
+#: scripts/ui/ending.gd:212 scripts/maps/cave.gd:52
+msgid "Echo-grot"
+msgstr ""
+
+#. Kaart cave, sign [7, 30]: tekst op een bord
+#: scripts/maps/cave.gd:52
+msgid "Het is hier pikkedonker. Volg het licht van de fakkels."
+msgstr ""
+
+#. Kaart cave, sign [9, 27]: tekst op een bord
+#: scripts/maps/cave.gd:98
+msgid "Ook in de grot zweven ze rond. Hun tovervonk geeft paars licht: sla hem stuk met je zwaard!"
+msgstr ""
+
+#. Naam van gebied temple
+#: scripts/maps/temple.gd:6
+msgid "De Kristaltempel"
+msgstr ""
+
+#. Naam van gebied temple midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "De Kristaltempel"
+msgid "de Kristaltempel"
+msgstr ""
+
+#. Kaart temple, gate [10, 15]: melding als hij op slot zit
+#: scripts/maps/temple.gd:47
+msgid "De deur zit dicht. Er is geen weg terug!"
+msgstr ""
+
+#. Kaart temple, portal [11, 0]: melding als hij op slot zit
+#: scripts/maps/temple.gd:51
+msgid "Een zegel versperrt de trap."
+msgstr ""
+
+#. Naam van gebied lake
+#: scripts/maps/lake.gd:6
+msgid "Zilvermeer"
+msgstr ""
+
+#. Kaart lake, sign [20, 4]: tekst op een bord
+#: scripts/maps/lake.gd:52
+msgid "Het Zilvermeer"
+msgstr ""
+
+#. Kaart lake, sign [20, 4]: tekst op een bord
+#: scripts/maps/lake.gd:52
+msgid "Vissen mag. Mopperen ook. Maar niet allebei tegelijk. - Joris"
+msgstr ""
+
+#. Kaart lake, sign [23, 13]: tekst op een bord
+#: scripts/maps/lake.gd:53
+msgid "Steiger"
+msgstr ""
+
+#. Kaart lake, sign [23, 13]: tekst op een bord
+#: scripts/maps/lake.gd:53
+msgid "Niet rennen. Niet duwen. En niet boos worden op de vis."
+msgstr ""
+
+#. Kaart lake, sign [36, 19]: tekst op een bord
+#: scripts/maps/lake.gd:54
+msgid "De verre steiger"
+msgstr ""
+
+#. Kaart lake, sign [36, 19]: tekst op een bord
+#: scripts/maps/lake.gd:54
+msgid "Het water is hier diep. Grote vissen zwemmen graag in diep water."
+msgstr ""
+
+#. Kaart lake, sign [10, 7]: tekst op een bord
+#. Naam van wie er praat (Gesprek meer_joris_intro)
+#. Naam van wie er praat (Gesprek meer_joris_hengel)
+#. Naam van wie er praat (Gesprek meer_joris_menu)
+#. Naam van wie er praat (Gesprek meer_joris_na)
+#. Naam van wie er praat (Gesprek meer_joris_verkoop)
+#: scripts/data/ext/meer.gd:128 scripts/data/ext/meer.gd:159 scripts/data/ext/meer.gd:169 scripts/data/ext/meer.gd:178
+msgid "Visser Joris"
+msgstr ""
+
+#. Kaart lake, sign [10, 7]: tekst op een bord
+#: scripts/maps/lake.gd:55
+msgid "Bellen kan niet, er is geen bel. Kloppen mag."
+msgstr ""
+
+#. Kaart lake, sign [34, 7]: tekst op een bord
+#. Naam van gebied library
+#: scripts/maps/lake.gd:56 scripts/maps/library.gd:6
+msgid "Bibliotheek van Lena"
+msgstr ""
+
+#. Kaart lake, sign [34, 7]: tekst op een bord
+#: scripts/maps/lake.gd:56
+msgid "Stil zijn graag. De boeken slapen."
+msgstr ""
+
+#. Kaart lake, sign [20, 24]: tekst op een bord
+#: scripts/maps/lake.gd:57
+msgid "Eilandje"
+msgstr ""
+
+#. Kaart lake, sign [20, 24]: tekst op een bord
+#: scripts/maps/lake.gd:57
+msgid "Rustig, groen en een beetje nat."
+msgstr ""
+
+#. Naam van gebied fisher_hut
+#: scripts/maps/fisher_hut.gd:6
+msgid "Het huisje van Joris"
+msgstr ""
+
+#. Naam van gebied fisher_hut midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "Het huisje van Joris"
+msgid "het huisje van Joris"
+msgstr ""
+
+#. Kaart fisher_hut, sign [3, 6]: tekst op een bord
+#: scripts/maps/fisher_hut.gd:24
+msgid "Het visdagboek van Joris"
+msgstr ""
+
+#. Kaart fisher_hut, sign [3, 6]: tekst op een bord
+#: scripts/maps/fisher_hut.gd:24
+msgid "Dag 1: geen vis. Dag 2: geen vis. Dag 3: een laars. Dag 4: nog een laars. Dag 5: ik begin een collectie."
+msgstr ""
+
+#. Kaart fisher_hut, sign [8, 5]: tekst op een bord
+#: scripts/maps/fisher_hut.gd:25
+msgid "Een briefje bij de tafel"
+msgstr ""
+
+#. Kaart fisher_hut, sign [8, 5]: tekst op een bord
+#: scripts/maps/fisher_hut.gd:25
+msgid "Voor de Gouden Karper: niet met brood proberen. Hij is te slim voor brood. Probeer het in diep water."
+msgstr ""
+
+#. Naam van gebied depths1
+#: scripts/maps/depths1.gd:7
+msgid "De Kristalgangen"
+msgstr ""
+
+#. Naam van gebied depths1 midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "De Kristalgangen"
+msgid "de Kristalgangen"
+msgstr ""
+
+#. Kaart depths1, diepte_gate [21, 10]: melding als hij op slot zit
+#: scripts/maps/depths1.gd:46
+msgid "De kristalpoort zit op slot. Er hoort een sleutel bij."
+msgstr ""
+
+#. Kaart depths1, sign [9, 25]: tekst op een bord
+#: scripts/maps/depths1.gd:51
+msgid "Op de muur staan oude woorden:"
+msgstr ""
+
+#. Kaart depths1, sign [9, 25]: tekst op een bord
+#: scripts/maps/depths1.gd:51
+msgid "\"Wie de Wachter wekt, moet zelf wakker blijven.\""
+msgstr ""
+
+#. Kaart depths1, sign [21, 12]: tekst op een bord
+#: scripts/maps/depths1.gd:52
+msgid "Een kristalpoort met een sleutelgat in de vorm van een ster."
+msgstr ""
+
+#. Kaart depths1, sign [21, 12]: tekst op een bord
+#: scripts/maps/depths1.gd:52
+msgid "Ergens in deze gangen moet de sleutel liggen."
+msgstr ""
+
+#. Naam van gebied depths2
+#: scripts/maps/depths2.gd:7
+msgid "Het Hart van de Kaart"
+msgstr ""
+
+#. Naam van gebied depths2 midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "Het Hart van de Kaart"
+msgid "het Hart van de Kaart"
+msgstr ""
+
+#. Kaart depths2, diepte_gate [12, 18]: melding als hij op slot zit
+#: scripts/maps/depths2.gd:41
+msgid "De deur is dicht. Hij gaat pas weer open als het gevecht voorbij is."
+msgstr ""
+
+#. Kaart depths2, sign [15, 19]: tekst op een bord
+#: scripts/maps/depths2.gd:45
+msgid "Hierachter slaapt De Vergeten Wachter. Wie hem wakker maakt, kan pas terug als het gevecht voorbij is."
+msgstr ""
+
+#. Kaart depths2, sign [15, 19]: tekst op een bord
+#: scripts/maps/depths2.gd:46
+msgid "Sla dus eerst op bij het altaar en neem genoeg drankjes mee!"
+msgstr ""
+
+#. Kaart depths2, sign [15, 19]: tekst op een bord
+#: scripts/maps/depths2.gd:47
+msgid "Een tip van een oude held: laat hem tegen een muur of een pilaar knallen. Dan is hij even duizelig."
+msgstr ""
+
+#. Naam van gebied arena_hall
+#: scripts/maps/arena_hall.gd:6
+msgid "Arenahal"
+msgstr ""
+
+#. Kaart arena_hall, portal [8, 3]: melding als hij op slot zit
+#: scripts/maps/arena_hall.gd:36
+msgid "De arenadeur zit dicht. Schrijf je eerst in bij Bruno."
+msgstr ""
+
+#. Naam van gebied arena
+#: scripts/maps/arena.gd:7
+msgid "De Arena"
+msgstr ""
+
+#. Naam van gebied arena midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "De Arena"
+msgid "de Arena"
+msgstr ""
+
+#. Kaart arena, gate [12, 16]: melding als hij op slot zit
+#. Kaart arena, portal [12, 16]: melding als hij op slot zit
+#: scripts/maps/arena.gd:35 scripts/maps/arena.gd:36
+msgid "De poorten blijven dicht tot je alle rondes hebt gewonnen. Opgeven kan bij de gong."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek bram_intro)
+#. Naam van wie er praat (Gesprek bram_intro2)
+#. Naam van wie er praat (Gesprek bram_explain)
+#. Naam van wie er praat (Gesprek bram_accept)
+#. Naam van wie er praat (Gesprek bram_later)
+#. Naam van wie er praat (Gesprek bram_progress)
+#: scripts/ui/ending.gd:53 scripts/data/dialogue.gd:18 scripts/data/dialogue.gd:27 scripts/data/dialogue.gd:39
+msgid "Oudste Bram"
+msgstr ""
+
+#. Gesprek bram_intro, Oudste Bram zegt
+#: scripts/data/dialogue.gd:20
+msgid "Ah, een reiziger! Welkom in Dageraadsdorp."
+msgstr ""
+
+#. Gesprek bram_intro, Oudste Bram zegt
+#: scripts/data/dialogue.gd:21
+msgid "Ik ben Bram, de oudste van het dorp en de bewaker van de Blauwe Kaart."
+msgstr ""
+
+#. Gesprek bram_intro, Oudste Bram zegt
+#: scripts/data/dialogue.gd:22
+msgid "Kijk, in de tempel hangt de kaart van heel Azura, gemaakt van gloeiend kristal. Hij houdt de slijmen rustig en laat zien waar het land veilig is."
+msgstr ""
+
+#. Gesprek bram_intro2, Oudste Bram zegt
+#: scripts/data/dialogue.gd:29
+msgid "Maar drie nachten geleden barstte de kaart. De drie grote kristallen sprongen eruit en vlogen het land in: naar het Fluisterbos, de Vergeten Ruïne en de Echo-grot."
+msgstr ""
+
+#. Gesprek bram_intro2, Oudste Bram zegt
+#: scripts/data/dialogue.gd:30
+msgid "Sindsdien zijn de slijmen wild geworden. En onder de tempel... daar hoor ik iets groots bewegen."
+msgstr ""
+
+#. Gesprek bram_intro2: keuze van de speler
+#. Gesprek bram_explain: keuze van de speler
+#: scripts/data/dialogue.gd:33 scripts/data/dialogue.gd:45
+msgid "Ik help je!"
+msgstr ""
+
+#. Gesprek bram_intro2: keuze van de speler
+#: scripts/data/dialogue.gd:34
+msgid "Wat moet ik precies doen?"
+msgstr ""
+
+#. Gesprek bram_intro2: keuze van de speler
+#: scripts/data/dialogue.gd:35
+msgid "Ik moet er even over nadenken."
+msgstr ""
+
+#. Gesprek bram_explain, Oudste Bram zegt
+#: scripts/data/dialogue.gd:41
+msgid "Zoek de drie kaartkristallen en breng ze naar mij. Het Fluisterbos ligt over de brug in het oosten, de Wachter Hein houdt er een oogje op."
+msgstr ""
+
+#. Gesprek bram_explain, Oudste Bram zegt
+#: scripts/data/dialogue.gd:42
+msgid "Met een houten zwaard kom je niet ver. Greta de smid kan beter spul maken als je haar slijmgel brengt, en Tobias verkoopt drankjes."
+msgstr ""
+
+#. Gesprek bram_explain: keuze van de speler
+#: scripts/data/dialogue.gd:46
+msgid "Ik kom straks terug."
+msgstr ""
+
+#. Gesprek bram_accept, Oudste Bram zegt
+#: scripts/data/dialogue.gd:52
+msgid "Dank je, held! Neem dit mee voor onderweg."
+msgstr ""
+
+#. Gesprek bram_accept, Oudste Bram zegt
+#: scripts/data/dialogue.gd:53
+msgid "Een helddrank. Druk op H als je gewond bent. En rol met Shift om aanvallen te ontwijken, dan kan niets je raken!"
+msgstr ""
+
+#. Gesprek bram_later, Oudste Bram zegt
+#: scripts/data/dialogue.gd:59
+msgid "Neem de tijd. Maar de slijmen wachten niet..."
+msgstr ""
+
+#. Gesprek bram_progress, Oudste Bram zegt
+#: scripts/data/dialogue.gd:64
+msgid "Hoe gaat het met de zoektocht? Je hebt {crystals} van de 3 kristallen."
+msgstr ""
+
+#. Gesprek bram_progress, Oudste Bram zegt
+#: scripts/data/dialogue.gd:65
+msgid "Het Fluisterbos, de Vergeten Ruïne en de Echo-grot. Pas goed op jezelf!"
+msgstr ""
+
+#. Gesprek bram_crystals, Oudste Bram zegt
+#: scripts/data/dialogue.gd:71
+msgid "Je hebt ze alle drie! Ik kan het bijna niet geloven..."
+msgstr ""
+
+#. Gesprek bram_crystals, Oudste Bram zegt
+#: scripts/data/dialogue.gd:72
+msgid "Geef maar hier. Ik leg ze terug in de Blauwe Kaart."
+msgstr ""
+
+#. Gesprek bram_crystals2, Oudste Bram zegt
+#: scripts/data/dialogue.gd:80
+msgid "Kijk! De kaart gloeit weer. Maar luister... de deur van de tempel is opengesprongen."
+msgstr ""
+
+#. Gesprek bram_crystals2, Oudste Bram zegt
+#: scripts/data/dialogue.gd:81
+msgid "Daarbeneden zit de Slijmkoning. Hij dronk de kracht van de gebarsten kaart en is gigantisch geworden."
+msgstr ""
+
+#. Gesprek bram_crystals2, Oudste Bram zegt
+#: scripts/data/dialogue.gd:82
+msgid "Alleen jij kunt hem nog stoppen. Rust uit in de herberg, drink een drankje en neem je beste zwaard mee."
+msgstr ""
+
+#. Gesprek bram_crystals2, Oudste Bram zegt
+#: scripts/data/dialogue.gd:83
+msgid "Veel succes, held. Heel Azura rekent op je."
+msgstr ""
+
+#. Gesprek bram_boss_wait, Oudste Bram zegt
+#: scripts/data/dialogue.gd:89
+msgid "De tempeldeur staat open. Rust eerst goed uit in de herberg, dan ben je er klaar voor."
+msgstr ""
+
+#. Gesprek bram_done, Oudste Bram zegt
+#: scripts/data/dialogue.gd:94
+msgid "Dankzij jou is de Blauwe Kaart weer heel!"
+msgstr ""
+
+#. Gesprek bram_done, Oudste Bram zegt
+#: scripts/data/dialogue.gd:95
+msgid "Het dorp viert feest. Rust maar uit, held. Je hebt het verdiend."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek greta_intro)
+#. Naam van wie er praat (Gesprek greta_menu)
+#. Naam van wie er praat (Gesprek greta_iron)
+#. Naam van wie er praat (Gesprek greta_iron_ask)
+#. Naam van wie er praat (Gesprek greta_iron_no)
+#. Naam van wie er praat (Gesprek greta_iron_done)
+#: scripts/ui/ending.gd:54 scripts/data/dialogue.gd:101 scripts/data/dialogue.gd:110 scripts/data/dialogue.gd:119
+msgid "Greta"
+msgstr ""
+
+#. Gesprek greta_intro, Greta zegt
+#: scripts/data/dialogue.gd:103
+msgid "Hé! Jij bent dat reizigertje van Bram, hè? Ik ben Greta, de smid."
+msgstr ""
+
+#. Gesprek greta_intro, Greta zegt
+#: scripts/data/dialogue.gd:104
+msgid "Dat houten ding van jou is geen zwaard, het is een stok met ambitie."
+msgstr ""
+
+#. Gesprek greta_menu, Greta zegt
+#: scripts/data/dialogue.gd:111
+msgid "Wat kan ik voor je smeden?"
+msgstr ""
+
+#. Gesprek greta_menu: keuze van de speler
+#: scripts/data/dialogue.gd:113
+msgid "Een ijzeren zwaard"
+msgstr ""
+
+#. Gesprek greta_menu: keuze van de speler
+#: scripts/data/dialogue.gd:114
+msgid "Een kristalzwaard"
+msgstr ""
+
+#. Gesprek greta_menu: keuze van de speler
+#: scripts/data/dialogue.gd:115
+msgid "Niets, bedankt."
+msgstr ""
+
+#. Gesprek greta_iron, Greta zegt
+#: scripts/data/dialogue.gd:120
+msgid "Een ijzeren zwaard? Dat kost 5 slijmgel en 40 munten. Je hebt {gel} slijmgel en {coins} munten."
+msgstr ""
+
+#. Gesprek greta_iron_ask, Greta zegt
+#: scripts/data/dialogue.gd:128
+msgid "Dat kan! Zal ik hem voor je smeden?"
+msgstr ""
+
+#. Gesprek greta_iron_ask: keuze van de speler
+#. Gesprek greta_crystal_ask: keuze van de speler
+#: scripts/data/dialogue.gd:131 scripts/data/dialogue.gd:162
+msgid "Ja, smeed maar!"
+msgstr ""
+
+#. Gesprek greta_iron_ask: keuze van de speler
+#. Gesprek greta_crystal_ask: keuze van de speler
+#. Gesprek wereld_bed_menu: keuze van de speler
+#. Gesprek arena_bronze_ask: keuze van de speler
+#. Gesprek arena_silver_ask: keuze van de speler
+#. Gesprek arena_gold_ask: keuze van de speler
+#: scripts/data/dialogue.gd:135 scripts/data/dialogue.gd:166 scripts/data/ext/arena.gd:139 scripts/data/ext/arena.gd:158
+msgid "Nog even niet."
+msgstr ""
+
+#. Gesprek greta_iron_no, Greta zegt
+#: scripts/data/dialogue.gd:140
+msgid "Dan ben je nog niet klaar. Slijmen in het bos laten slijmgel vallen. Kom maar terug als je genoeg hebt."
+msgstr ""
+
+#. Gesprek greta_iron_done, Greta zegt
+#: scripts/data/dialogue.gd:144
+msgid "Zo! Voel dat gewicht eens. Dit raakt een stuk harder dan je stok."
+msgstr ""
+
+#. Gesprek greta_crystal, Greta zegt
+#: scripts/data/dialogue.gd:149
+msgid "Een kristalzwaard... Dat is werk voor een meester. Ik heb 2 kristalscherven nodig, 8 slijmgel en 80 munten."
+msgstr ""
+
+#. Gesprek greta_crystal, Greta zegt
+#: scripts/data/dialogue.gd:150
+msgid "Je hebt {shards} scherven, {gel} slijmgel en {coins} munten. Golems in de ruïne en de grot laten scherven vallen."
+msgstr ""
+
+#. Gesprek greta_crystal_ask, Greta zegt
+#: scripts/data/dialogue.gd:159
+msgid "Je hebt alles! Dit wordt mijn mooiste zwaard. Zal ik beginnen?"
+msgstr ""
+
+#. Gesprek greta_crystal_no, Greta zegt
+#: scripts/data/dialogue.gd:171
+msgid "Nog niet genoeg. Kom terug als je alles hebt, dan maak ik er iets moois van."
+msgstr ""
+
+#. Gesprek greta_crystal_done, Greta zegt
+#: scripts/data/dialogue.gd:175
+msgid "Kijk dat nou... het gloeit! Pas er goed op, dit is het beste wat ik ooit gemaakt heb."
+msgstr ""
+
+#. Gesprek greta_max, Greta zegt
+#: scripts/data/dialogue.gd:179
+msgid "Dat kristalzwaard is mijn beste werk. Meer kan ik er niet aan doen. Ga ze maar een lesje leren!"
+msgstr ""
+
+#. Gesprek greta_done, Greta zegt
+#: scripts/data/dialogue.gd:184
+msgid "De held van Azura in mijn smederij! Ik heb net nieuwe zwaarden gesmeed, voor op het feest. Nou ja, voor de taart."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek tobias_intro)
+#. Naam van wie er praat (Gesprek tobias_menu)
+#. Naam van wie er praat (Gesprek tobias_sell)
+#. Naam van wie er praat (Gesprek tobias_sold)
+#. Naam van wie er praat (Gesprek tobias_done)
+#: scripts/ui/ending.gd:55 scripts/data/dialogue.gd:194 scripts/data/dialogue.gd:200 scripts/data/dialogue.gd:209
+msgid "Tobias"
+msgstr ""
+
+#. Gesprek tobias_intro, Tobias zegt
+#: scripts/data/dialogue.gd:195
+msgid "Welkom, welkom! Tobias, koopman van de beste waar van heel Azura!"
+msgstr ""
+
+#. Gesprek tobias_intro, Tobias zegt
+#: scripts/data/dialogue.gd:195
+msgid "Of eigenlijk van het hele dorp. Maar dat is wel eerlijk gezegd het enige."
+msgstr ""
+
+#. Gesprek tobias_menu, Tobias zegt
+#: scripts/data/dialogue.gd:201
+msgid "Zeg het maar, wat mag het zijn?"
+msgstr ""
+
+#. Gesprek tobias_menu: keuze van de speler
+#: scripts/data/dialogue.gd:203
+msgid "Ik wil iets kopen."
+msgstr ""
+
+#. Gesprek tobias_menu: keuze van de speler
+#: scripts/data/dialogue.gd:204
+msgid "Ik wil slijmgel verkopen."
+msgstr ""
+
+#. Gesprek tobias_menu: keuze van de speler
+#. Gesprek meer_joris_menu: keuze van de speler
+#. Gesprek arena_bruno_menu: keuze van de speler
+#: scripts/data/dialogue.gd:205 scripts/data/ext/arena.gd:110 scripts/data/ext/meer.gd:186
+msgid "Tot ziens."
+msgstr ""
+
+#. Gesprek tobias_sell, Tobias zegt
+#: scripts/data/dialogue.gd:210
+msgid "Slijmgel? Prima spul! Ik geef 3 munten per stuk. Je hebt {gel} stuks. Pas op: Greta en Mila hebben het ook nodig."
+msgstr ""
+
+#. Gesprek tobias_sell: keuze van de speler
+#: scripts/data/dialogue.gd:212
+msgid "Verkoop alles."
+msgstr ""
+
+#. Gesprek tobias_sell: keuze van de speler
+#. Gesprek arena_bruno_ranks: keuze van de speler
+#: scripts/data/dialogue.gd:213 scripts/data/ext/arena.gd:120
+msgid "Toch maar niet."
+msgstr ""
+
+#. Gesprek tobias_sold, Tobias zegt
+#: scripts/data/dialogue.gd:218
+msgid "Prima zaken doen met jou!"
+msgstr ""
+
+#. Gesprek tobias_done, Tobias zegt
+#: scripts/data/dialogue.gd:223
+msgid "Mijn omzet is verdubbeld sinds de Slijmkoning weg is! Alles blijft voor jou gewoon hetzelfde. Maar dan wel met een knipoog."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek mila_intro)
+#. Naam van wie er praat (Gesprek mila_menu)
+#. Naam van wie er praat (Gesprek mila_rest)
+#. Naam van wie er praat (Gesprek mila_quest)
+#. Naam van wie er praat (Gesprek mila_quest_ok)
+#. Naam van wie er praat (Gesprek mila_potion_progress)
+#: scripts/ui/ending.gd:56 scripts/data/dialogue.gd:230 scripts/data/dialogue.gd:239 scripts/data/dialogue.gd:250
+msgid "Mila"
+msgstr ""
+
+#. Gesprek mila_intro, Mila zegt
+#: scripts/data/dialogue.gd:232
+msgid "Welkom in de herberg! Ik ben Mila."
+msgstr ""
+
+#. Gesprek mila_intro, Mila zegt
+#: scripts/data/dialogue.gd:233
+msgid "Je mag hier altijd uitrusten, dat is gratis voor een held. Je wordt helemaal beter en ik schrijf op waar je gebleven was."
+msgstr ""
+
+#. Gesprek mila_menu, Mila zegt
+#: scripts/data/dialogue.gd:240
+msgid "Hoe kan ik je helpen?"
+msgstr ""
+
+#. Gesprek mila_menu: keuze van de speler
+#: scripts/data/dialogue.gd:242
+msgid "Ik wil uitrusten."
+msgstr ""
+
+#. Gesprek mila_menu: keuze van de speler
+#: scripts/data/dialogue.gd:243
+msgid "Ik heb verse vis voor je! ({visgeld} munten)"
+msgstr ""
+
+#. Gesprek mila_menu: keuze van de speler
+#. Gesprek meer_joris_menu: keuze van de speler
+#. Gesprek meer_lena_menu: keuze van de speler
+#: scripts/data/dialogue.gd:244 scripts/data/ext/meer.gd:182 scripts/data/ext/meer.gd:330
+msgid "Heb je werk voor me?"
+msgstr ""
+
+#. Gesprek mila_menu: keuze van de speler
+#: scripts/data/dialogue.gd:245
+msgid "Mag ik hier slapen?"
+msgstr ""
+
+#. Gesprek mila_menu: keuze van de speler
+#. Gesprek meer_lena_menu: keuze van de speler
+#: scripts/data/dialogue.gd:246 scripts/data/ext/meer.gd:333
+msgid "Nee, bedankt."
+msgstr ""
+
+#. Gesprek mila_rest, Mila zegt
+#: scripts/data/dialogue.gd:251
+msgid "Zo, helemaal opgeknapt! Ik heb je voortgang opgeschreven."
+msgstr ""
+
+#. Gesprek mila_quest, Mila zegt
+#: scripts/data/dialogue.gd:256
+msgid "Eigenlijk wel! Ik wil helddrankjes brouwen voor het dorp, maar ik heb slijmgel nodig. Vijf stuks."
+msgstr ""
+
+#. Gesprek mila_quest, Mila zegt
+#: scripts/data/dialogue.gd:257
+msgid "Breng je ze mij, dan krijg je er drie drankjes en wat munten voor je moeite."
+msgstr ""
+
+#. Gesprek mila_quest: keuze van de speler
+#: scripts/data/dialogue.gd:260
+msgid "Dat doe ik."
+msgstr ""
+
+#. Gesprek mila_quest: keuze van de speler
+#. Gesprek pim_intro: keuze van de speler
+#. Gesprek meer_joris_karper_vraag: keuze van de speler
+#. Gesprek meer_lena_vraag: keuze van de speler
+#: scripts/data/dialogue.gd:261 scripts/data/dialogue.gd:294 scripts/data/ext/meer.gd:267 scripts/data/ext/meer.gd:365
+msgid "Misschien later."
+msgstr ""
+
+#. Gesprek mila_quest_ok, Mila zegt
+#: scripts/data/dialogue.gd:266
+msgid "Fijn! Slijmen in het bos laten het vaak vallen."
+msgstr ""
+
+#. Gesprek mila_potion_progress, Mila zegt
+#: scripts/data/dialogue.gd:270
+msgid "Heb je al genoeg slijmgel? Je hebt er {gel} van de 5."
+msgstr ""
+
+#. Gesprek mila_potion_done, Mila zegt
+#: scripts/data/dialogue.gd:274
+msgid "Slijmgel! Vijf stuks! Dan ga ik meteen aan de slag."
+msgstr ""
+
+#. Gesprek mila_potion_done, Mila zegt
+#: scripts/data/dialogue.gd:274
+msgid "Hier, drie helddrankjes en 25 munten. Dank je wel!"
+msgstr ""
+
+#. Gesprek mila_done, Mila zegt
+#: scripts/data/dialogue.gd:280
+msgid "De herberg zit vol met mensen die jou willen zien. Jouw bed is altijd vrij, held."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek pim_intro)
+#. Naam van wie er praat (Gesprek pim_ok)
+#. Naam van wie er praat (Gesprek pim_progress)
+#. Naam van wie er praat (Gesprek pim_cat_back)
+#. Naam van wie er praat (Gesprek pim_done)
+#. Naam van personage pim (boven zijn hoofd)
+#: scripts/ui/ending.gd:57 scripts/data/dialogue.gd:287 scripts/data/dialogue.gd:298 scripts/data/dialogue.gd:302
+msgid "Pim"
+msgstr ""
+
+#. Gesprek pim_intro, Pim zegt
+#: scripts/data/dialogue.gd:289
+msgid "Snif... Muis is weg!"
+msgstr ""
+
+#. Gesprek pim_intro, Pim zegt
+#: scripts/data/dialogue.gd:290
+msgid "Mijn kat Muis is gisteren het bos in gerend. Het is daar zo eng... Wil jij haar zoeken?"
+msgstr ""
+
+#. Gesprek pim_intro: keuze van de speler
+#: scripts/data/dialogue.gd:293
+msgid "Ik zoek haar wel!"
+msgstr ""
+
+#. Gesprek pim_ok, Pim zegt
+#: scripts/data/dialogue.gd:299
+msgid "Echt waar?! Dankjewel! Ze is wit met een zwart vlekje op haar neus."
+msgstr ""
+
+#. Gesprek pim_progress, Pim zegt
+#: scripts/data/dialogue.gd:303
+msgid "Heb je Muis al gezien? Ze is wit met een zwart vlekje op haar neus."
+msgstr ""
+
+#. Gesprek pim_cat_back, Pim zegt
+#: scripts/data/dialogue.gd:308
+msgid "Muis!!! Je hebt haar gevonden!"
+msgstr ""
+
+#. Gesprek pim_cat_back, Pim zegt
+#: scripts/data/dialogue.gd:309
+msgid "Dankjewel, dankjewel! Hier, dit vond ik in het bos. Het is vast iets waard."
+msgstr ""
+
+#. Gesprek pim_done, Pim zegt
+#: scripts/data/dialogue.gd:315
+msgid "Muis slaapt de hele dag op mijn bed. Ze is wel een beetje dik geworden van het bos."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek muis_bos)
+#. Naam van wie er praat (Gesprek muis_dorp)
+#. Naam van personage muis_bos (boven zijn hoofd)
+#. Naam van personage muis_dorp (boven zijn hoofd)
+#: scripts/data/dialogue.gd:318 scripts/data/dialogue.gd:326 scripts/data/npcs.gd:89 scripts/data/npcs.gd:93
+msgid "Muis"
+msgstr ""
+
+#. Gesprek muis_bos, Muis zegt
+#: scripts/data/dialogue.gd:320
+msgid "Miauw?"
+msgstr ""
+
+#. Gesprek muis_bos, Muis zegt
+#: scripts/data/dialogue.gd:321
+msgid "Muis snuffelt aan je hand en rent met een grote boog het bos uit, richting het dorp."
+msgstr ""
+
+#. Gesprek muis_dorp, Muis zegt
+#: scripts/data/dialogue.gd:327
+msgid "Miauw. (Ze rolt zich op en begint te spinnen.)"
+msgstr ""
+
+#. Naam van wie er praat (Gesprek hein_talk)
+#. Naam van wie er praat (Gesprek hein_done)
+#. Naam van personage hein (boven zijn hoofd)
+#: scripts/data/dialogue.gd:332 scripts/data/dialogue.gd:339 scripts/data/npcs.gd:58
+msgid "Wachter Hein"
+msgstr ""
+
+#. Gesprek hein_talk, Wachter Hein zegt
+#: scripts/data/dialogue.gd:334
+msgid "Halt! Oh, jij bent het. Het Fluisterbos is gevaarlijk: slijmen en vleermuizen overal."
+msgstr ""
+
+#. Gesprek hein_talk, Wachter Hein zegt
+#: scripts/data/dialogue.gd:335
+msgid "Een tip: met Shift rol je weg en kan niets je raken. En de blauwe altaren slaan je voortgang op."
+msgstr ""
+
+#. Gesprek hein_done, Wachter Hein zegt
+#: scripts/data/dialogue.gd:340
+msgid "Het bos is veel rustiger sinds je de Slijmkoning hebt verslagen. Bedankt, held!"
+msgstr ""
+
+#. Naam van wie er praat (Gesprek anja_talk)
+#. Naam van wie er praat (Gesprek anja_done)
+#. Naam van personage anja (boven zijn hoofd)
+#: scripts/data/dialogue.gd:343 scripts/data/dialogue.gd:350 scripts/data/npcs.gd:65
+msgid "Anja"
+msgstr ""
+
+#. Gesprek anja_talk, Anja zegt
+#: scripts/data/dialogue.gd:345
+msgid "De Blauwe Kaart is al duizend jaar oud. Mijn oma zei altijd dat hij het land beschermt."
+msgstr ""
+
+#. Gesprek anja_talk, Anja zegt
+#: scripts/data/dialogue.gd:346
+msgid "Als die kaart echt breekt, wordt Azura weer wild. Gelukkig heb jij nu die opdracht!"
+msgstr ""
+
+#. Gesprek anja_done, Anja zegt
+#: scripts/data/dialogue.gd:351
+msgid "Heb je het gehoord? De Blauwe Kaart straalt weer helderblauw! Alles dankzij jou."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek joost_done)
+#. Naam van wie er praat (Gesprek joost_talk)
+#. Naam van wie er praat (Gesprek joost_key)
+#. Naam van personage joost (boven zijn hoofd)
+#: scripts/data/dialogue.gd:354 scripts/data/dialogue.gd:358 scripts/data/dialogue.gd:365 scripts/data/npcs.gd:72
+msgid "Joost"
+msgstr ""
+
+#. Gesprek joost_done, Joost zegt
+#: scripts/data/dialogue.gd:355
+msgid "De slijmen zijn rustiger nu de kaart weer heel is. Ik gaf er een een appel. Hij at hem op. Het was raar."
+msgstr ""
+
+#. Gesprek joost_talk, Joost zegt
+#: scripts/data/dialogue.gd:360
+msgid "De Vergeten Ruïne is dichtgemetseld met een poortje. Je hebt de sleutel nodig."
+msgstr ""
+
+#. Gesprek joost_talk, Joost zegt
+#: scripts/data/dialogue.gd:361
+msgid "Ik hoorde dat er ergens in het bos een kist ligt, bewaakt door slijmen. Misschien zit daar iets in..."
+msgstr ""
+
+#. Gesprek joost_key, Joost zegt
+#: scripts/data/dialogue.gd:366
+msgid "Is dat een sleutel? Dan weet je wat je moet doen: naar het poortje van de ruïne, in het noordoosten van het bos!"
+msgstr ""
+
+#. Naam van wie er praat (Gesprek wilfred_intro)
+#. Naam van wie er praat (Gesprek wilfred_ok)
+#. Naam van wie er praat (Gesprek wilfred_progress)
+#. Naam van wie er praat (Gesprek wilfred_return)
+#. Naam van wie er praat (Gesprek wilfred_done)
+#. Naam van personage wilfred (boven zijn hoofd)
+#: scripts/data/dialogue.gd:371 scripts/data/dialogue.gd:382 scripts/data/dialogue.gd:386 scripts/data/dialogue.gd:390
+msgid "Wilfred"
+msgstr ""
+
+#. Gesprek wilfred_intro, Wilfred zegt
+#: scripts/data/dialogue.gd:373
+msgid "Ooooh... een levende! Wees niet bang, ik bijt niet. Ik ben Wilfred."
+msgstr ""
+
+#. Gesprek wilfred_intro, Wilfred zegt
+#: scripts/data/dialogue.gd:374
+msgid "Ik was de bewaker van deze ruïne, lang geleden. Mijn medaillon is zoekgeraakt... ik denk dat het in de Echo-grot ligt."
+msgstr ""
+
+#. Gesprek wilfred_intro: keuze van de speler
+#: scripts/data/dialogue.gd:377
+msgid "Ik breng het terug."
+msgstr ""
+
+#. Gesprek wilfred_intro: keuze van de speler
+#: scripts/data/dialogue.gd:378
+msgid "Sorry, geen tijd."
+msgstr ""
+
+#. Gesprek wilfred_ok, Wilfred zegt
+#: scripts/data/dialogue.gd:383
+msgid "Wat aardig van je. Het is een zilveren medaillon met mijn naam erin."
+msgstr ""
+
+#. Gesprek wilfred_progress, Wilfred zegt
+#: scripts/data/dialogue.gd:387
+msgid "Zoek je mijn medaillon nog? Het ligt in de Echo-grot, ergens diep onder de grond."
+msgstr ""
+
+#. Gesprek wilfred_return, Wilfred zegt
+#: scripts/data/dialogue.gd:392
+msgid "Mijn medaillon! Na al die jaren!"
+msgstr ""
+
+#. Gesprek wilfred_return, Wilfred zegt
+#: scripts/data/dialogue.gd:393
+msgid "Neem deze kristalscherven als dank. Ze zijn van een kaartkristal dat hier ooit brak."
+msgstr ""
+
+#. Gesprek wilfred_done, Wilfred zegt
+#: scripts/data/dialogue.gd:399
+msgid "Nu kan ik eindelijk rusten. Dank je, vriend."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek king_intro)
+#. Naam van vijand king
+#: scripts/data/dialogue.gd:404 scripts/data/enemies.gd:62
+msgid "De Slijmkoning"
+msgstr ""
+
+#. Gesprek king_intro, De Slijmkoning zegt
+#: scripts/data/dialogue.gd:406
+msgid "Blub... blub blub..."
+msgstr ""
+
+#. Gesprek king_intro, De Slijmkoning zegt
+#: scripts/data/dialogue.gd:407
+msgid "WIE DURFT MIJN TEMPEL BINNEN TE KOMEN?!"
+msgstr ""
+
+#. Gesprek king_intro, De Slijmkoning zegt
+#: scripts/data/dialogue.gd:408
+msgid "De kaart is van MIJ! Ik zal je tot gel verwerken!"
+msgstr ""
+
+#. Naam van wie er praat (Gesprek tessa_nobow)
+#. Naam van wie er praat (Gesprek tessa_intro)
+#. Naam van wie er praat (Gesprek tessa_menu)
+#. Naam van wie er praat (Gesprek tessa_go)
+#. Naam van wie er praat (Gesprek tessa_howto)
+#. Naam van wie er praat (Gesprek tessa_active)
+#: scripts/data/ext/boog.gd:77 scripts/data/ext/boog.gd:85 scripts/data/ext/boog.gd:94 scripts/data/ext/boog.gd:114
+msgid "Tessa"
+msgstr ""
+
+#. Gesprek tessa_nobow, Tessa zegt
+#: scripts/data/ext/boog.gd:79
+msgid "Hoi! Ik ben Tessa. Dit is mijn schietbaan."
+msgstr ""
+
+#. Gesprek tessa_nobow, Tessa zegt
+#: scripts/data/ext/boog.gd:80
+msgid "Zonder boog kun je hier niets doen, hoor. Tobias verkoopt ze in zijn winkel."
+msgstr ""
+
+#. Gesprek tessa_nobow, Tessa zegt
+#: scripts/data/ext/boog.gd:81
+msgid "Kom terug als je er een hebt. Dan leer ik je schieten!"
+msgstr ""
+
+#. Gesprek tessa_intro, Tessa zegt
+#: scripts/data/ext/boog.gd:87
+msgid "Hé, een boog! Kom maar hier."
+msgstr ""
+
+#. Gesprek tessa_intro, Tessa zegt
+#: scripts/data/ext/boog.gd:88
+msgid "Ik ben Tessa. Wachter Hein vindt het goed dat ik mijn schietbaan hier neerzet, vlak bij zijn post."
+msgstr ""
+
+#. Gesprek tessa_intro, Tessa zegt
+#: scripts/data/ext/boog.gd:89
+msgid "Zie je die drie doelwitten? Raak ze alle drie binnen 20 seconden, dan krijg je een beloning."
+msgstr ""
+
+#. Gesprek tessa_menu, Tessa zegt
+#: scripts/data/ext/boog.gd:95
+msgid "Zullen we schieten?"
+msgstr ""
+
+#. Gesprek tessa_menu: keuze van de speler
+#: scripts/data/ext/boog.gd:98
+msgid "Ik doe mee!"
+msgstr ""
+
+#. Gesprek tessa_menu: keuze van de speler
+#: scripts/data/ext/boog.gd:102
+msgid "Nog een poging!"
+msgstr ""
+
+#. Gesprek tessa_menu: keuze van de speler
+#: scripts/data/ext/boog.gd:106
+msgid "Oefenen, zonder beloning"
+msgstr ""
+
+#. Gesprek tessa_menu: keuze van de speler
+#: scripts/data/ext/boog.gd:109
+msgid "Hoe schiet ik?"
+msgstr ""
+
+#. Gesprek tessa_menu: keuze van de speler
+#: scripts/data/ext/boog.gd:110
+msgid "Straks misschien."
+msgstr ""
+
+#. Gesprek tessa_go, Tessa zegt
+#: scripts/data/ext/boog.gd:116
+msgid "Ga op de planken van de schietlijn staan. Van daar zie je alle drie de doelwitten."
+msgstr ""
+
+#. Gesprek tessa_go, Tessa zegt
+#: scripts/data/ext/boog.gd:117
+msgid "Ik tel af: 3, 2, 1... Bij \"Af!\" begint de tijd."
+msgstr ""
+
+#. Gesprek tessa_go, Tessa zegt
+#: scripts/data/ext/boog.gd:118
+msgid "Tijdens een poging schiet je met mijn pijlen. Dat kost jou dus niks. Succes!"
+msgstr ""
+
+#. Gesprek tessa_howto, Tessa zegt
+#: scripts/data/ext/boog.gd:124
+msgid "Druk op F om een pijl te schieten. Je schiet de kant op waarin je kijkt."
+msgstr ""
+
+#. Gesprek tessa_howto, Tessa zegt
+#: scripts/data/ext/boog.gd:125
+msgid "Loop je schuin? Dan vliegt je pijl ook schuin. Muren stoppen een pijl, maar over water vliegt hij gewoon heen."
+msgstr ""
+
+#. Gesprek tessa_howto, Tessa zegt
+#: scripts/data/ext/boog.gd:126
+msgid "Elk schot kost een pijl uit je pijlenkoker. Je kunt er 40 dragen. Hier op mijn baan leen je mijn pijlen."
+msgstr ""
+
+#. Gesprek tessa_active, Tessa zegt
+#: scripts/data/ext/boog.gd:132
+msgid "Het is je nog niet gelukt, hè? Geen zorgen. Iedereen mist wel eens."
+msgstr ""
+
+#. Gesprek tessa_done, Tessa zegt
+#: scripts/data/ext/boog.gd:138
+msgid "Daar is mijn beste schutter! De baan is altijd open."
+msgstr ""
+
+#. Gesprek tessa_done, Tessa zegt
+#: scripts/data/ext/boog.gd:139
+msgid "Een beloning krijg je maar één keer, maar oefenen mag zo vaak je wilt."
+msgstr ""
+
+#. Gesprek tessa_reward, Tessa zegt
+#: scripts/data/ext/boog.gd:145
+msgid "Alle drie raak! En nog binnen de tijd ook!"
+msgstr ""
+
+#. Gesprek tessa_reward_pay, Tessa zegt
+#: scripts/data/ext/boog.gd:154
+msgid "Hier is je beloning: 25 munten en 10 pijlen. Goed geschoten!"
+msgstr ""
+
+#. Gesprek tessa_reward_full, Tessa zegt
+#: scripts/data/ext/boog.gd:160
+msgid "Maar je pijlenkoker zit bijna vol. Mijn beloning past er dan niet meer in!"
+msgstr ""
+
+#. Gesprek tessa_reward_full, Tessa zegt
+#: scripts/data/ext/boog.gd:161
+msgid "Schiet eerst een paar pijlen af en kom dan terug."
+msgstr ""
+
+#. Gesprek meer_joris_intro, Visser Joris zegt
+#: scripts/data/ext/meer.gd:161
+msgid "Hmpf. Een bezoeker. Ik dacht dat de vissen het ergste waren, maar nee: mensen."
+msgstr ""
+
+#. Gesprek meer_joris_intro, Visser Joris zegt
+#: scripts/data/ext/meer.gd:162
+msgid "...Grapje. Ik ben Joris, visser van het Zilvermeer. Al veertig jaar. Ik heb meer vissen gezien dan jij haren hebt."
+msgstr ""
+
+#. Gesprek meer_joris_intro, Visser Joris zegt
+#: scripts/data/ext/meer.gd:163
+msgid "Je staat naar mijn hengel te kijken. Je wilt vissen, hè? Ik zie het aan je ogen. Ze glimmen als een baars."
+msgstr ""
+
+#. Gesprek meer_joris_hengel, Visser Joris zegt
+#: scripts/data/ext/meer.gd:171
+msgid "Hier, neem mijn reservehengel. Gratis. Maar behandel hem lief."
+msgstr ""
+
+#. Gesprek meer_joris_hengel, Visser Joris zegt
+#: scripts/data/ext/meer.gd:172
+msgid "Je vist bij een visplek: dat zijn de kringetjes in het water. Ga ernaast staan en druk op E. Wacht dan op een beet, en wees snel!"
+msgstr ""
+
+#. Gesprek meer_joris_menu, Visser Joris zegt
+#: scripts/data/ext/meer.gd:179
+msgid "Nou? Wat kan ik voor je doen?"
+msgstr ""
+
+#. Gesprek meer_joris_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:181
+msgid "Verkoop al mijn vis ({visgeld} munten)"
+msgstr ""
+
+#. Gesprek meer_joris_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:183
+msgid "Hoe is het met de Gouden Karper?"
+msgstr ""
+
+#. Gesprek meer_joris_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:184
+msgid "Heb je tips over vissen?"
+msgstr ""
+
+#. Gesprek meer_joris_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:185
+msgid "Hoe gaat het nu de Slijmkoning weg is?"
+msgstr ""
+
+#. Gesprek meer_joris_na, Visser Joris zegt
+#: scripts/data/ext/meer.gd:192
+msgid "De Slijmkoning is weg? Dat wist ik al. De vissen bijten weer als vanouds. Alleen die slijmen aan de overkant blijven brutaal."
+msgstr ""
+
+#. Gesprek meer_joris_na, Visser Joris zegt
+#: scripts/data/ext/meer.gd:193
+msgid "Ze eten nog steeds mijn aas. Maar ik begin ze bijna aardig te vinden. Vertel het niet door, ik heb een reputatie."
+msgstr ""
+
+#. Gesprek meer_joris_verkoop, Visser Joris zegt
+#: scripts/data/ext/meer.gd:199
+msgid "Laat maar zien... Hm. Hm-hm. Die zijn goed. Ik geef er een eerlijke prijs voor."
+msgstr ""
+
+#. Gesprek meer_joris_verkocht, Visser Joris zegt
+#: scripts/data/ext/meer.gd:209
+msgid "Zo. Eerlijk zaken doen, dat vind ik prettig. Kom maar terug als je meer hebt."
+msgstr ""
+
+#. Gesprek meer_joris_vol, Visser Joris zegt
+#: scripts/data/ext/meer.gd:214
+msgid "Pfff. Het hele dorp zit vol met vis. Ik heb vis in de kast, vis in de la en vis in mijn laarzen."
+msgstr ""
+
+#. Gesprek meer_joris_vol, Visser Joris zegt
+#: scripts/data/ext/meer.gd:215
+msgid "Vanaf nu betaal ik maar de helft. Dat is niet persoonlijk, hoor. Zo werkt de vismarkt."
+msgstr ""
+
+#. Gesprek meer_joris_vol_kort, Visser Joris zegt
+#: scripts/data/ext/meer.gd:221
+msgid "Hmpf. Het dorp zit nog steeds vol met vis. Ik betaal de helft, weet je nog?"
+msgstr ""
+
+#. Gesprek meer_joris_tips, Visser Joris zegt
+#: scripts/data/ext/meer.gd:225
+msgid "Tips? Ik heb alleen maar tips. Wat wil je weten?"
+msgstr ""
+
+#. Gesprek meer_joris_tips: keuze van de speler
+#: scripts/data/ext/meer.gd:227
+msgid "Hoe vang ik een vis?"
+msgstr ""
+
+#. Gesprek meer_joris_tips: keuze van de speler
+#: scripts/data/ext/meer.gd:228
+msgid "Waar zitten de grote vissen?"
+msgstr ""
+
+#. Gesprek meer_joris_tips: keuze van de speler
+#: scripts/data/ext/meer.gd:229
+msgid "Wat doe ik met mijn vis?"
+msgstr ""
+
+#. Gesprek meer_joris_tips: keuze van de speler
+#: scripts/data/ext/meer.gd:230
+msgid "Dank je, genoeg."
+msgstr ""
+
+#. Gesprek meer_joris_tip_vangen, Visser Joris zegt
+#: scripts/data/ext/meer.gd:236
+msgid "Gooi uit bij een visplek. Wacht tot de dobber zakt en er een uitroepteken verschijnt. Druk dan snel op E!"
+msgstr ""
+
+#. Gesprek meer_joris_tip_vangen, Visser Joris zegt
+#: scripts/data/ext/meer.gd:237
+msgid "Houd daarna E ingedrukt: dan stijgt de groene zone. Laat los, dan zakt hij. Houd de vis in het groen tot de balk vol is."
+msgstr ""
+
+#. Gesprek meer_joris_tip_diep, Visser Joris zegt
+#: scripts/data/ext/meer.gd:244
+msgid "In diep water. Aan het eind van de verre steiger, helemaal aan de oostkant van het meer."
+msgstr ""
+
+#. Gesprek meer_joris_tip_diep, Visser Joris zegt
+#: scripts/data/ext/meer.gd:245
+msgid "Daar zwemt de grootste vis van het meer. Ik heb hem één keer gezien. En nul keer gevangen."
+msgstr ""
+
+#. Gesprek meer_joris_tip_verkopen, Visser Joris zegt
+#: scripts/data/ext/meer.gd:252
+msgid "Verkopen, natuurlijk! Aan mij, of aan Mila in de herberg. Zij maakt er soep van."
+msgstr ""
+
+#. Gesprek meer_joris_tip_verkopen, Visser Joris zegt
+#: scripts/data/ext/meer.gd:253
+msgid "Maar pas op: als het dorp te veel vis heeft, gaat de prijs omlaag. Dat gaat zo met vis. Ook met mensen, trouwens."
+msgstr ""
+
+#. Gesprek meer_joris_karper_vraag, Visser Joris zegt
+#: scripts/data/ext/meer.gd:260
+msgid "Werk? Hmpf. Ja, eigenlijk wel. Maar je gaat me uitlachen."
+msgstr ""
+
+#. Gesprek meer_joris_karper_vraag, Visser Joris zegt
+#: scripts/data/ext/meer.gd:261
+msgid "Ik droom al jaren van de Gouden Karper. Een vis van puur goud. Grote ogen, glimmende schubben, veel te slim."
+msgstr ""
+
+#. Gesprek meer_joris_karper_vraag, Visser Joris zegt
+#: scripts/data/ext/meer.gd:262
+msgid "Ik heb hem één keer gezien, vanaf de verre steiger. Hij zwom langs, keek me aan en... lachte. Echt waar."
+msgstr ""
+
+#. Gesprek meer_joris_karper_vraag, Visser Joris zegt
+#: scripts/data/ext/meer.gd:263
+msgid "Vang hem voor me. Dan weet ik tenminste dat hij echt bestaat."
+msgstr ""
+
+#. Gesprek meer_joris_karper_vraag: keuze van de speler
+#: scripts/data/ext/meer.gd:266
+msgid "Ik ga hem vangen!"
+msgstr ""
+
+#. Gesprek meer_joris_karper_ok, Visser Joris zegt
+#: scripts/data/ext/meer.gd:273
+msgid "Echt? Goed zo. Probeer het in diep water, aan het eind van de verre steiger. Hij is niet gek: een gewone plek haalt hem niet."
+msgstr ""
+
+#. Gesprek meer_joris_karper_ok, Visser Joris zegt
+#: scripts/data/ext/meer.gd:274
+msgid "En geduld, hè. Veel geduld. Vissen is vooral wachten. En mopperen."
+msgstr ""
+
+#. Gesprek meer_joris_karper_voortgang, Visser Joris zegt
+#: scripts/data/ext/meer.gd:281
+msgid "Nog geen gouden vis? Diep water, aan het eind van de verre steiger. Hij laat zich niet zomaar zien."
+msgstr ""
+
+#. Gesprek meer_joris_karper_voortgang, Visser Joris zegt
+#: scripts/data/ext/meer.gd:282
+msgid "Hoe vaker je het probeert, hoe nieuwsgieriger hij wordt. Dat zeg ik tenminste tegen mezelf."
+msgstr ""
+
+#. Gesprek meer_joris_karper_direct, Visser Joris zegt
+#: scripts/data/ext/meer.gd:288
+msgid "Wat heb je daar in je tas? Is dat... Nee. Dat kan niet."
+msgstr ""
+
+#. Gesprek meer_joris_karper_direct, Visser Joris zegt
+#: scripts/data/ext/meer.gd:289
+msgid "Je hebt hem gewoon gevangen, zonder dat ik het je vroeg? Ik moet even gaan zitten."
+msgstr ""
+
+#. Gesprek meer_joris_karper_klaar, Visser Joris zegt
+#: scripts/data/ext/meer.gd:297
+msgid "De Gouden Karper! Hij glimt! Hij kijkt me aan! Hij lacht! Ik wist het!"
+msgstr ""
+
+#. Gesprek meer_joris_karper_klaar, Visser Joris zegt
+#: scripts/data/ext/meer.gd:298
+msgid "Veertig jaar heb ik gewacht. Hier, hier, neem dit. Het is minder dan hij waard is, maar het is alles wat ik heb."
+msgstr ""
+
+#. Gesprek meer_joris_karper_na, Visser Joris zegt
+#: scripts/data/ext/meer.gd:309
+msgid "Mijn Visserspet. Ik draag hem al veertig jaar. Nu is hij van jou. Ik heb er thuis nog drie, maar deze brengt geluk."
+msgstr ""
+
+#. Gesprek meer_joris_karper_na, Visser Joris zegt
+#: scripts/data/ext/meer.gd:310
+msgid "En voor je vis betalen Mila en ik voortaan 10% extra. Dat heet respect."
+msgstr ""
+
+#. Gesprek meer_joris_karper_na, Visser Joris zegt
+#: scripts/data/ext/meer.gd:311
+msgid "De Gouden Karper zet ik terug in het meer. Hij heeft het verdiend. Aan een haak hapt hij nooit meer, zo slim is hij wel. Maar soms zie je hem glinsteren."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek meer_lena_intro)
+#. Naam van wie er praat (Gesprek meer_lena_menu)
+#. Naam van wie er praat (Gesprek meer_lena_over)
+#. Naam van wie er praat (Gesprek meer_lena_diepte)
+#. Naam van wie er praat (Gesprek meer_lena_vraag)
+#. Naam van wie er praat (Gesprek meer_lena_ok)
+#: scripts/data/ext/meer.gd:317 scripts/data/ext/meer.gd:327 scripts/data/ext/meer.gd:337 scripts/data/ext/meer.gd:346
+msgid "Lena"
+msgstr ""
+
+#. Gesprek meer_lena_intro, Lena zegt
+#: scripts/data/ext/meer.gd:319
+msgid "Welkom in de bibliotheek van het Zilvermeer. Ik ben Lena."
+msgstr ""
+
+#. Gesprek meer_lena_intro, Lena zegt
+#: scripts/data/ext/meer.gd:320
+msgid "Je mag alles lezen. Alleen niet met natte vingers. En niet hardop. En niet... ach, ik zie dat je het begrijpt."
+msgstr ""
+
+#. Gesprek meer_lena_intro, Lena zegt
+#: scripts/data/ext/meer.gd:321
+msgid "De lessenaars met een open boek erop zijn voor jou: loop erheen en druk op E. Elk boek vertelt een stukje van Azura."
+msgstr ""
+
+#. Gesprek meer_lena_menu, Lena zegt
+#: scripts/data/ext/meer.gd:328
+msgid "Kan ik je ergens mee helpen?"
+msgstr ""
+
+#. Gesprek meer_lena_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:331
+msgid "Wat weet je over de Diepte?"
+msgstr ""
+
+#. Gesprek meer_lena_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:332
+msgid "Vertel eens iets over de boeken."
+msgstr ""
+
+#. Gesprek meer_lena_over, Lena zegt
+#: scripts/data/ext/meer.gd:339
+msgid "Alles wat de mensen van Azura ooit hebben opgeschreven, staat hier. Over de Blauwe Kaart, over de oude wachters, over slijmen."
+msgstr ""
+
+#. Gesprek meer_lena_over, Lena zegt
+#: scripts/data/ext/meer.gd:340
+msgid "Sommige boeken zijn zo oud dat ze 'Azura' nog met een andere letter schrijven. Die laat ik liever niet los."
+msgstr ""
+
+#. Gesprek meer_lena_over, Lena zegt
+#: scripts/data/ext/meer.gd:341
+msgid "Lees maar op de lessenaars. Daar staan de korte verhalen. De dikke boeken blijven in de kast. Die zijn zwaar."
+msgstr ""
+
+#. Gesprek meer_lena_diepte, Lena zegt
+#: scripts/data/ext/meer.gd:348
+msgid "De Diepte? Ik hoopte al dat je dat ging vragen. Het staat in alle boeken, maar op geen enkele bladzijde die je kunt vinden."
+msgstr ""
+
+#. Gesprek meer_lena_diepte, Lena zegt
+#: scripts/data/ext/meer.gd:349
+msgid "De Blauwe Kaart is een kopie. Het origineel, de Sterrenkaart, ligt ergens onder de Kristaltempel. Een oude Wachter bewaakt hem. Hij slaapt, maar hij slaapt licht."
+msgstr ""
+
+#. Gesprek meer_lena_diepte, Lena zegt
+#: scripts/data/ext/meer.gd:350
+msgid "De oude boeken zeggen: als de kaart weer heel is, gaat de weg naar beneden open. Of dat klopt, weet niemand. Ga je kijken? Neem dan veel drankjes mee."
+msgstr ""
+
+#. Gesprek meer_lena_vraag, Lena zegt
+#: scripts/data/ext/meer.gd:357
+msgid "Nu je het zegt... ja! Ik mis drie boeken. Ze zijn nooit teruggebracht."
+msgstr ""
+
+#. Gesprek meer_lena_vraag, Lena zegt
+#: scripts/data/ext/meer.gd:358
+msgid "Eén heb ik uitgeleend aan iemand die naar het eiland in het meer ging. Hij kwam nooit terug. Het boek ook niet."
+msgstr ""
+
+#. Gesprek meer_lena_vraag, Lena zegt
+#: scripts/data/ext/meer.gd:359
+msgid "Eén ligt vast in het huisje van Joris. Hij gebruikte het als onderzetter en heeft het daarna ergens opgeborgen. Ik wil er niet over nadenken."
+msgstr ""
+
+#. Gesprek meer_lena_vraag, Lena zegt
+#: scripts/data/ext/meer.gd:360
+msgid "En eentje heeft Sanne meegenomen. Ze vindt boeken zonder plaatjes saai, maar ze neemt ze wel mee. Kinderen!"
+msgstr ""
+
+#. Gesprek meer_lena_vraag, Lena zegt
+#: scripts/data/ext/meer.gd:361
+msgid "Wil je ze voor me zoeken? Dan krijg je een beloning. En iets bijzonders, achterin."
+msgstr ""
+
+#. Gesprek meer_lena_vraag: keuze van de speler
+#: scripts/data/ext/meer.gd:364
+msgid "Ik zoek ze wel!"
+msgstr ""
+
+#. Gesprek meer_lena_ok, Lena zegt
+#: scripts/data/ext/meer.gd:370
+msgid "Wat fijn! Eén op het eiland, één in het huisje van Joris en één bij Sanne. Je kunt ze niet missen. Nou ja, wel. Maar ze zijn er."
+msgstr ""
+
+#. Gesprek meer_lena_voortgang, Lena zegt
+#: scripts/data/ext/meer.gd:376
+msgid "Hoe gaat het met mijn boeken? Eén ligt op het eiland, één in het huisje van Joris en één is bij Sanne."
+msgstr ""
+
+#. Gesprek meer_lena_voortgang_0, Lena zegt
+#: scripts/data/ext/meer.gd:383
+msgid "Nog niets gevonden? Geen haast hoor. Boeken lopen niet weg. Nou ja, deze wel."
+msgstr ""
+
+#. Gesprek meer_lena_voortgang_1, Lena zegt
+#: scripts/data/ext/meer.gd:384
+msgid "Eén boek al! Dan zijn het er nog twee. Je bent een echte boekenzoeker."
+msgstr ""
+
+#. Gesprek meer_lena_voortgang_2, Lena zegt
+#: scripts/data/ext/meer.gd:385
+msgid "Twee boeken al! Nog eentje. Ik hoor de kasten al juichen."
+msgstr ""
+
+#. Gesprek meer_lena_boeken_terug, Lena zegt
+#: scripts/data/ext/meer.gd:389
+msgid "Jij hebt ze! Alle drie! Laat eens kijken..."
+msgstr ""
+
+#. Gesprek meer_lena_boeken_terug, Lena zegt
+#: scripts/data/ext/meer.gd:390
+msgid "'Sagen van het Zilvermeer', nog droog. 'Het Grote Vissenboek', met een koffiekring. En 'Sterren boven Azura'... met kleurpotloodvlekken."
+msgstr ""
+
+#. Gesprek meer_lena_boeken_terug, Lena zegt
+#: scripts/data/ext/meer.gd:391
+msgid "Het is perfect. Ik zet ze meteen terug. Hier is je beloning: dertig munten."
+msgstr ""
+
+#. Gesprek meer_lena_achterkamer, Lena zegt
+#: scripts/data/ext/meer.gd:402
+msgid "En nu iets bijzonders. Achter de kast aan de rechterkant van de zaal zit een geheim kamertje. Alleen leden mogen erin."
+msgstr ""
+
+#. Gesprek meer_lena_achterkamer, Lena zegt
+#: scripts/data/ext/meer.gd:403
+msgid "Vanaf nu ben jij lid. Kijk maar eens goed naar de rechterwand..."
+msgstr ""
+
+#. Gesprek meer_lena_achterkamer, Lena zegt
+#: scripts/data/ext/meer.gd:404
+msgid "Straks, als we uitgepraat zijn, schuift de kast opzij. Hij klemde al jaren. Achterin ligt het laatste boek van de oude bibliothecarissen, en een klein cadeautje."
+msgstr ""
+
+#. Gesprek meer_lena_klaar, Lena zegt
+#: scripts/data/ext/meer.gd:410
+msgid "Mijn favoriete lezer! Het achterkamertje staat altijd voor je open. Lees vooral alles. Lessenaars bijten niet."
+msgstr ""
+
+#. Gesprek meer_lena_alles_gelezen, Lena zegt
+#: scripts/data/ext/meer.gd:419
+msgid "Wacht eens... heb je álle lessenaars gelezen? Zelfs die in het geheime kamertje?"
+msgstr ""
+
+#. Gesprek meer_lena_alles_gelezen, Lena zegt
+#: scripts/data/ext/meer.gd:420
+msgid "Ik heb nog nooit zo'n goede lezer ontmoet. Jij weet nu meer over Azura dan Oudste Bram. Zeg dat maar niet tegen hem."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek meer_sanne_intro)
+#. Naam van wie er praat (Gesprek meer_sanne_menu)
+#. Naam van wie er praat (Gesprek meer_sanne_boek)
+#. Naam van wie er praat (Gesprek meer_sanne_laars)
+#. Naam van wie er praat (Gesprek meer_sanne_klaar)
+#. Naam van personage meer_sanne (boven zijn hoofd)
+#: scripts/data/ext/meer.gd:147 scripts/data/ext/meer.gd:428 scripts/data/ext/meer.gd:438 scripts/data/ext/meer.gd:448
+msgid "Sanne"
+msgstr ""
+
+#. Gesprek meer_sanne_intro, Sanne zegt
+#: scripts/data/ext/meer.gd:430
+msgid "Sssst! Je maakt de vissen bang!"
+msgstr ""
+
+#. Gesprek meer_sanne_intro, Sanne zegt
+#: scripts/data/ext/meer.gd:431
+msgid "Oh, sorry. Ik ben Sanne. Ik ben acht. En driekwart."
+msgstr ""
+
+#. Gesprek meer_sanne_intro, Sanne zegt
+#: scripts/data/ext/meer.gd:432
+msgid "Ik probeer al de hele dag een vis te vangen. Maar ik vang alleen laarzen. Kijk, ik heb er maar één aan. De andere is... ergens."
+msgstr ""
+
+#. Gesprek meer_sanne_menu, Sanne zegt
+#: scripts/data/ext/meer.gd:439
+msgid "Als jij een echte vis voor me hebt, geef ik je mijn schat. Het is een boek. Ik vind het saai, er staan geen plaatjes in."
+msgstr ""
+
+#. Gesprek meer_sanne_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:441
+msgid "Hier, een baars voor jou!"
+msgstr ""
+
+#. Gesprek meer_sanne_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:442
+msgid "Hier, een snoek voor jou!"
+msgstr ""
+
+#. Gesprek meer_sanne_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:443
+msgid "Is dit jouw laars?"
+msgstr ""
+
+#. Gesprek meer_sanne_menu: keuze van de speler
+#: scripts/data/ext/meer.gd:444
+msgid "Ik kom terug met een vis."
+msgstr ""
+
+#. Gesprek meer_sanne_boek, Sanne zegt
+#: scripts/data/ext/meer.gd:450
+msgid "Een echte vis! Hij is zo glad! En hij kijkt boos! Dankjewel!"
+msgstr ""
+
+#. Gesprek meer_sanne_boek, Sanne zegt
+#: scripts/data/ext/meer.gd:451
+msgid "Hier is mijn schat. Hij zat in mijn tas, maar er past niks meer in. Veel plezier ermee."
+msgstr ""
+
+#. Gesprek meer_sanne_laars, Sanne zegt
+#: scripts/data/ext/meer.gd:458
+msgid "MIJN LAARS! Ik zocht hem al een week! Hij stinkt precies zoals ik me herinner!"
+msgstr ""
+
+#. Gesprek meer_sanne_laars, Sanne zegt
+#: scripts/data/ext/meer.gd:459
+msgid "Je bent de beste. Hier, neem mijn schat maar. Ik moet nu eerst mijn laars aantrekken."
+msgstr ""
+
+#. Gesprek meer_sanne_klaar, Sanne zegt
+#: scripts/data/ext/meer.gd:466
+msgid "Bedankt voor je hulp! Ik ga nu nog meer vangen. Ik wil de Gouden Karper. Joris zegt dat hij lacht. Vissen lachen niet. Toch?"
+msgstr ""
+
+#. Gesprek meer_sanne_klaar, Sanne zegt
+#: scripts/data/ext/meer.gd:467
+msgid "Maar eerst moet ik stil zijn. Sssst."
+msgstr ""
+
+#. Gesprek meer_mila_vis, Mila zegt
+#: scripts/data/ext/meer.gd:474
+msgid "Verse vis! Daar maak ik soep van. Laat maar zien..."
+msgstr ""
+
+#. Gesprek meer_mila_klaar, Mila zegt
+#: scripts/data/ext/meer.gd:483
+msgid "Mmm, dit wordt de beste soep van het dorp. Dank je wel!"
+msgstr ""
+
+#. Gesprek meer_mila_vol, Mila zegt
+#: scripts/data/ext/meer.gd:487
+msgid "Mmm, soep! Al zit het dorp wel vol met vis: ik kan niet meer dan de halve prijs betalen. Maar dank je wel!"
+msgstr ""
+
+#. Gesprek wereld_bed_info, Mila zegt
+#: scripts/data/ext/wereld.gd:20
+msgid "Uitrusten blijft gratis, hoor! Maar in een echt bed slapen kost 5 munten."
+msgstr ""
+
+#. Gesprek wereld_bed_info, Mila zegt
+#: scripts/data/ext/wereld.gd:21
+msgid "Dan slaap je door tot de ochtend, en je wordt ook helemaal beter. Fijn als het buiten donker is!"
+msgstr ""
+
+#. Naam van wie er praat (Gesprek wereld_bed)
+#. Naam van wie er praat (Gesprek wereld_bed_menu)
+#. Naam van wie er praat (Gesprek wereld_bed_poor)
+#: scripts/data/ext/wereld.gd:26 scripts/data/ext/wereld.gd:33 scripts/data/ext/wereld.gd:41
+msgid "Bed"
+msgstr ""
+
+#. Gesprek wereld_bed_menu, Bed zegt
+#: scripts/data/ext/wereld.gd:34
+msgid "Een zacht bed met een blauwe deken. Wil je slapen tot het ochtend is?"
+msgstr ""
+
+#. Gesprek wereld_bed_menu: keuze van de speler
+#: scripts/data/ext/wereld.gd:36
+msgid "Slapen (5 munten)"
+msgstr ""
+
+#. Gesprek wereld_bed_poor, Bed zegt
+#: scripts/data/ext/wereld.gd:42
+msgid "Een zacht bed met een blauwe deken. Een nachtje slapen kost 5 munten, en zoveel heb je nu niet."
+msgstr ""
+
+#. Gesprek diepte_bram_hint, Oudste Bram zegt
+#: scripts/data/ext/diepte.gd:20
+msgid "Held! Wacht even, voor je gaat rusten."
+msgstr ""
+
+#. Gesprek diepte_bram_hint, Oudste Bram zegt
+#: scripts/data/ext/diepte.gd:21
+msgid "Sinds de Blauwe Kaart weer heel is, hoor ik een zacht gerommel onder de tempel."
+msgstr ""
+
+#. Gesprek diepte_bram_hint, Oudste Bram zegt
+#: scripts/data/ext/diepte.gd:22
+msgid "Mijn oma vertelde over een oude bewaker die diep onder de grond slaapt: De Vergeten Wachter."
+msgstr ""
+
+#. Gesprek diepte_bram_hint, Oudste Bram zegt
+#: scripts/data/ext/diepte.gd:23
+msgid "Hij bewaakt de Sterrenkaart. Dat is de allereerste kaart. Onze Blauwe Kaart is daar maar een kopie van."
+msgstr ""
+
+#. Gesprek diepte_bram_hint, Oudste Bram zegt
+#: scripts/data/ext/diepte.gd:24
+msgid "Kijk achter in de tempel, waar de Slijmkoning stond. Daar zit een oud zegel in de muur. Pas goed op!"
+msgstr ""
+
+#. Gesprek greta_star, Greta zegt
+#: scripts/data/ext/diepte.gd:32
+msgid "Wacht eens even... Is dat... het STERRENZWAARD?!"
+msgstr ""
+
+#. Gesprek greta_star, Greta zegt
+#: scripts/data/ext/diepte.gd:33
+msgid "Ik ken het alleen uit de oude verhalen van mijn opa. Het is niet van ijzer gemaakt, maar van sterrenlicht!"
+msgstr ""
+
+#. Gesprek greta_star, Greta zegt
+#: scripts/data/ext/diepte.gd:34
+msgid "Daar kan zelfs ik niets meer aan verbeteren. Pas er goed op, held!"
+msgstr ""
+
+#. Gesprek greta_star_again, Greta zegt
+#: scripts/data/ext/diepte.gd:40
+msgid "Mag ik het Sterrenzwaard nog één keertje vasthouden? ... Prachtig. Ga maar, held, de wereld wacht!"
+msgstr ""
+
+#. Naam van wie er praat (Gesprek guardian_intro)
+#. Naam van wie er praat (Gesprek guardian_defeat)
+#. Titel van opdracht diepte
+#. Naam van vijand guardian
+#: scripts/data/ext/diepte.gd:43 scripts/data/ext/diepte.gd:53 scripts/data/ext/diepte.gd:74 scripts/data/ext/diepte.gd:125
+msgid "De Vergeten Wachter"
+msgstr ""
+
+#. Gesprek guardian_intro, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:45
+msgid "..."
+msgstr ""
+
+#. Gesprek guardian_intro, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:46
+msgid "Wie... wekt... mij?"
+msgstr ""
+
+#. Gesprek guardian_intro, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:47
+msgid "Ik ben de Wachter van de Sterrenkaart. Al meer dan duizend jaar waak ik hier."
+msgstr ""
+
+#. Gesprek guardian_intro, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:48
+msgid "De Blauwe Kaart was maar een kopie. En toch hebben jullie hem aangeraakt!"
+msgstr ""
+
+#. Gesprek guardian_intro, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:49
+msgid "Alleen wie sterker is dan de Wachter, mag de Sterrenkaart zien. Laat maar zien wat je kunt!"
+msgstr ""
+
+#. Gesprek guardian_defeat, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:55
+msgid "Je bent sterk. En slim. Je rolde door mijn scherven alsof het niets was."
+msgstr ""
+
+#. Gesprek guardian_defeat, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:56
+msgid "Meer dan duizend jaar heb ik gewaakt. Nu mag ik eindelijk rusten."
+msgstr ""
+
+#. Gesprek guardian_defeat, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:57
+msgid "Het Sterrenzwaard is nu van jou. Het is gemaakt van het licht van de Sterrenkaart. Gebruik het goed, held van Azura."
+msgstr ""
+
+#. Gesprek guardian_defeat, De Vergeten Wachter zegt
+#: scripts/data/ext/diepte.gd:58
+msgid "En kijk omhoog... Dit is wat ik al die tijd heb bewaakt."
+msgstr ""
+
+#. Gesprek guardian_defeat2, verteller
+#: scripts/data/ext/diepte.gd:65
+msgid "Boven je hoofd gaan duizenden kleine lichtjes aan. Ze vormen samen een kaart van heel Azura: de Sterrenkaart!"
+msgstr ""
+
+#. Gesprek guardian_defeat2, verteller
+#: scripts/data/ext/diepte.gd:66
+msgid "Het Sterrenzwaard gloeit in je hand. Het is zo licht als een veertje en zo scherp als een sterrenstraal."
+msgstr ""
+
+#. Gesprek guardian_defeat2, verteller
+#: scripts/data/ext/diepte.gd:67
+msgid "Greta de smid gaat hier zeker van opkijken! Laat het haar maar eens zien in de smederij."
+msgstr ""
+
+#. Naam van wie er praat (Gesprek arena_bruno_intro)
+#. Naam van wie er praat (Gesprek arena_bruno_menu)
+#. Naam van wie er praat (Gesprek arena_bruno_ranks)
+#. Naam van wie er praat (Gesprek arena_bronze_info)
+#. Naam van wie er praat (Gesprek arena_bronze_ask)
+#. Naam van wie er praat (Gesprek arena_silver_info)
+#: scripts/data/ext/arena.gd:78 scripts/data/ext/arena.gd:94 scripts/data/ext/arena.gd:104 scripts/data/ext/arena.gd:114
+msgid "Arenameester Bruno"
+msgstr ""
+
+#. Gesprek arena_bruno_intro, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:96
+msgid "HA! Een nieuwe vechter! Welkom in de arena van Dageraadsdorp. Ik ben Bruno, de arenameester."
+msgstr ""
+
+#. Gesprek arena_bruno_intro, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:97
+msgid "Hier vecht je tegen golven vijanden, en het hele dorp kijkt toe. Dat hoor je aan het gejuich!"
+msgstr ""
+
+#. Gesprek arena_bruno_intro, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:98
+msgid "Na elke ronde krijg je even rust en een hartje van het publiek. Maar de poorten gaan pas weer open als je alle rondes hebt gewonnen."
+msgstr ""
+
+#. Gesprek arena_bruno_menu, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:105
+msgid "Hé {arena_title}! Wat kan ik voor je doen?"
+msgstr ""
+
+#. Gesprek arena_bruno_menu: keuze van de speler
+#: scripts/data/ext/arena.gd:107
+msgid "Ik wil meedoen."
+msgstr ""
+
+#. Gesprek arena_bruno_menu: keuze van de speler
+#: scripts/data/ext/arena.gd:108
+msgid "Hoe werkt het?"
+msgstr ""
+
+#. Gesprek arena_bruno_menu: keuze van de speler
+#: scripts/data/ext/arena.gd:109
+msgid "Mijn records."
+msgstr ""
+
+#. Gesprek arena_bruno_ranks, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:115
+msgid "Welke rang wil je proberen?"
+msgstr ""
+
+#. Gesprek arena_bruno_ranks: keuze van de speler
+#: scripts/data/ext/arena.gd:117
+msgid "Brons: 3 rondes, 10 munten"
+msgstr ""
+
+#. Gesprek arena_bruno_ranks: keuze van de speler
+#: scripts/data/ext/arena.gd:118
+msgid "Zilver: 5 rondes, 25 munten"
+msgstr ""
+
+#. Gesprek arena_bruno_ranks: keuze van de speler
+#: scripts/data/ext/arena.gd:119
+msgid "Goud: 7 rondes, 50 munten"
+msgstr ""
+
+#. Gesprek arena_bronze_info, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:126
+msgid "Brons: drie rondes met slijmen en vleermuizen. Pas op voor de rode slijmen aan het eind! Inschrijven kost 10 munten."
+msgstr ""
+
+#. Gesprek arena_bronze_info, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:127
+msgid "Win je, dan krijg je 50 munten en een bronzen trofee."
+msgstr ""
+
+#. Gesprek arena_bronze_ask, Arenameester Bruno zegt
+#. Gesprek arena_silver_ask, Arenameester Bruno zegt
+#. Gesprek arena_gold_ask, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:136 scripts/data/ext/arena.gd:155 scripts/data/ext/arena.gd:174
+msgid "Zal ik je inschrijven?"
+msgstr ""
+
+#. Gesprek arena_bronze_ask: keuze van de speler
+#. Gesprek arena_silver_ask: keuze van de speler
+#. Gesprek arena_gold_ask: keuze van de speler
+#: scripts/data/ext/arena.gd:138 scripts/data/ext/arena.gd:157 scripts/data/ext/arena.gd:176
+msgid "Ja, schrijf me in!"
+msgstr ""
+
+#. Gesprek arena_silver_info, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:145
+msgid "Zilver: vijf rondes, nu ook met skeletten die pijlen schieten. Inschrijven kost 25 munten."
+msgstr ""
+
+#. Gesprek arena_silver_info, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:146
+msgid "Win je, dan krijg je 150 munten en een zilveren trofee."
+msgstr ""
+
+#. Gesprek arena_gold_info, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:164
+msgid "Goud: zeven rondes, en in de laatste ronde komt er een kristalgolem uit de poort. Inschrijven kost 50 munten."
+msgstr ""
+
+#. Gesprek arena_gold_info, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:165
+msgid "Win je, dan krijg je 400 munten, een gouden trofee en een verrassing van mij. Tip: met een kristalzwaard kom je een stuk verder!"
+msgstr ""
+
+#. Gesprek arena_no_money, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:183
+msgid "Hmm, je hebt niet genoeg munten voor de inschrijving."
+msgstr ""
+
+#. Gesprek arena_no_money, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:184
+msgid "Versla wat slijmen en kom dan terug!"
+msgstr ""
+
+#. Gesprek arena_bruno_go, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:190
+msgid "Je staat op de lijst! Loop maar door de grote deur naar de arena. Succes, {arena_title}!"
+msgstr ""
+
+#. Gesprek arena_bruno_rules, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:195
+msgid "De regels zijn simpel. Zodra je binnen bent, sluiten de poorten. Je kunt pas weg als je alle rondes hebt gewonnen."
+msgstr ""
+
+#. Gesprek arena_bruno_rules, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:196
+msgid "Na elke ronde heb je drie seconden rust, en het publiek gooit je een hartje toe. Gaat het tijdens een ronde heel slecht? Dan gooit het publiek er nog eentje."
+msgstr ""
+
+#. Gesprek arena_bruno_rules, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:197
+msgid "Word je verslagen? Dan ben je je inschrijving kwijt, maar je bent meteen weer helemaal beter. Opgeven kan ook: sla op de gong bij de uitgang."
+msgstr ""
+
+#. Gesprek arena_bruno_rules, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:198
+msgid "Zilver gaat open als je Brons hebt gehaald, en Goud als je Zilver hebt gehaald. Let op: vijanden in de arena laten niets vallen. Het gaat om de eer!"
+msgstr ""
+
+#. Gesprek arena_bruno_rules, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:199
+msgid "Een rang nog een keer winnen mag altijd. Dan krijg je de helft van de munten, en misschien een nieuw record op het scorebord!"
+msgstr ""
+
+#. Gesprek arena_bruno_records, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:206
+msgid "Jouw titel: {arena_title}."
+msgstr ""
+
+#. Gesprek arena_bruno_records, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:207
+msgid "Je beste tijden. Brons: {arena_best_bronze}. Zilver: {arena_best_silver}. Goud: {arena_best_gold}."
+msgstr ""
+
+#. Gesprek arena_bruno_records, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:208
+msgid "Ben je sneller? Dan zet ik je nieuwe tijd meteen op het scorebord."
+msgstr ""
+
+#. Gesprek arena_bruno_registered, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:214
+msgid "Je staat al op de lijst! De grote deur naar de arena staat voor je open."
+msgstr ""
+
+#. Gesprek arena_bruno_registered: keuze van de speler
+#: scripts/data/ext/arena.gd:216
+msgid "Top, ik ga!"
+msgstr ""
+
+#. Gesprek arena_bruno_registered: keuze van de speler
+#: scripts/data/ext/arena.gd:217
+msgid "Toch niet. Geef mijn munten maar terug."
+msgstr ""
+
+#. Gesprek arena_bruno_cancelled, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:222
+msgid "Geen probleem. Hier zijn je munten. Kom maar terug als je er klaar voor bent!"
+msgstr ""
+
+#. Gesprek arena_bruno_won_bronze, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:229
+msgid "Wat een gevecht! Het publiek roept nog steeds je naam."
+msgstr ""
+
+#. Gesprek arena_bruno_first_bronze, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:239
+msgid "Je eerste rang! Vanaf nu ben je een Arenastrijder. Je trofee staat op de plank."
+msgstr ""
+
+#. Gesprek arena_bruno_first_bronze, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:240
+msgid "Zilver staat nu ook voor je open: vijf rondes, met skeletten die pijlen schieten. Succes!"
+msgstr ""
+
+#. Gesprek arena_bruno_won_silver, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:247
+msgid "Zilver! Dat doet niet iedereen je na."
+msgstr ""
+
+#. Gesprek arena_bruno_first_silver, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:257
+msgid "Arenaridder! Zo mag ik je nu noemen. Nog één rang te gaan: Goud."
+msgstr ""
+
+#. Gesprek arena_bruno_first_silver, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:258
+msgid "Zeven rondes, en in de laatste komt een kristalgolem uit de poort. Neem je beste zwaard mee!"
+msgstr ""
+
+#. Gesprek arena_bruno_won_gold, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:265
+msgid "GOUD! Het dak ging bijna van de arena af!"
+msgstr ""
+
+#. Gesprek arena_bruno_first_gold, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:275
+msgid "Jij bent de nieuwe Arenakampioen! Er is niemand in heel Azura die dit beter kan."
+msgstr ""
+
+#. Gesprek arena_bruno_first_gold, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:276
+msgid "En dit is mijn verrassing: de Arenahelm! Een echte kampioen draagt hem met trots. Kijk maar op de plank: er staat nu van alles op!"
+msgstr ""
+
+#. Gesprek arena_bruno_lost, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:284
+msgid "Au! Dat was een zware. Maar je bent weer helemaal beter, dat regel ik altijd."
+msgstr ""
+
+#. Gesprek arena_bruno_lost, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:285
+msgid "Je inschrijving ben je wel kwijt. Probeer het nog eens: vallen en opstaan, zo word je sterker!"
+msgstr ""
+
+#. Gesprek arena_bruno_quit, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:293
+msgid "Opgegeven? Geen schande hoor. Soms is stoppen slimmer dan doorvechten."
+msgstr ""
+
+#. Gesprek arena_bruno_quit, Arenameester Bruno zegt
+#: scripts/data/ext/arena.gd:294
+msgid "Je inschrijving ben je wel kwijt, maar je bent weer helemaal beter. Kom maar terug als je klaar bent!"
+msgstr ""
+
+#. Naam van wie er praat (Gesprek arena_forfeit_ask)
+#: scripts/data/ext/arena.gd:302
+msgid "Arenagong"
+msgstr ""
+
+#. Gesprek arena_forfeit_ask, Arenagong zegt
+#: scripts/data/ext/arena.gd:304
+msgid "Wil je opgeven? Dan galmt de gong en stopt het gevecht."
+msgstr ""
+
+#. Gesprek arena_forfeit_ask, Arenagong zegt
+#: scripts/data/ext/arena.gd:305
+msgid "Je inschrijving ben je dan kwijt. Je bent wel meteen weer helemaal beter."
+msgstr ""
+
+#. Gesprek arena_forfeit_ask: keuze van de speler
+#: scripts/data/ext/arena.gd:308
+msgid "Ja, ik geef op."
+msgstr ""
+
+#. Gesprek arena_forfeit_ask: keuze van de speler
+#: scripts/data/ext/arena.gd:309
+msgid "Nee, ik vecht door!"
+msgstr ""
+
+#. Naam van personage greta (boven zijn hoofd)
+#: scripts/data/npcs.gd:20
+msgid "Greta de smid"
+msgstr ""
+
+#. Naam van personage tobias (boven zijn hoofd)
+#: scripts/data/npcs.gd:31
+msgid "Tobias de koopman"
+msgstr ""
+
+#. Naam van personage mila (boven zijn hoofd)
+#: scripts/data/npcs.gd:39
+msgid "Mila de herbergierster"
+msgstr ""
+
+#. Naam van personage tessa (boven zijn hoofd)
+#: scripts/data/ext/boog.gd:51
+msgid "Tessa de boogschutter"
+msgstr ""
+
+#. Naam van personage meer_lena (boven zijn hoofd)
+#: scripts/data/ext/meer.gd:137
+msgid "Lena de bibliothecaresse"
+msgstr ""
+
+#. Titel van opdracht main
+#. Titel van boek blauwe_kaart (bibliotheek)
+#: scripts/data/quests.gd:10 scripts/data/ext/meer_boeken.gd:17
+msgid "De Blauwe Kaart"
+msgstr ""
+
+#. Opdracht main, stap 1
+#: scripts/data/quests.gd:14
+msgid "Vind de drie kaartkristallen: in het Fluisterbos, de Vergeten Ruïne en de Echo-grot. ({crystals}/3)"
+msgstr ""
+
+#. Opdracht main, stap 2
+#: scripts/data/quests.gd:17
+msgid "Breng de kristallen naar Oudste Bram bij de tempel."
+msgstr ""
+
+#. Opdracht main, stap 3
+#: scripts/data/quests.gd:18
+msgid "Versla de Slijmkoning in de Kristaltempel (de deur in het dorp staat nu open)."
+msgstr ""
+
+#. Titel van opdracht kat
+#: scripts/data/quests.gd:22
+msgid "Muis de kat"
+msgstr ""
+
+#. Opdracht kat, stap 1
+#: scripts/data/quests.gd:25
+msgid "Pim mist zijn kat Muis. Zoek haar in het Fluisterbos."
+msgstr ""
+
+#. Opdracht kat, stap 2
+#: scripts/data/quests.gd:28
+msgid "Muis is gevonden! Vertel het aan Pim in het dorp."
+msgstr ""
+
+#. Titel van opdracht medaillon
+#: scripts/data/quests.gd:32
+msgid "Het medaillon van Wilfred"
+msgstr ""
+
+#. Opdracht medaillon, stap 1
+#: scripts/data/quests.gd:35
+msgid "Wilfred, de geest in de Ruïne, zoekt zijn medaillon. Het ligt ergens in de Echo-grot."
+msgstr ""
+
+#. Opdracht medaillon, stap 2
+#: scripts/data/quests.gd:38
+msgid "Breng het medaillon naar Wilfred in de Vergeten Ruïne."
+msgstr ""
+
+#. Titel van opdracht drank
+#: scripts/data/quests.gd:42
+msgid "Slijmgel voor Mila"
+msgstr ""
+
+#. Opdracht drank, stap 1
+#: scripts/data/quests.gd:45
+msgid "Mila wil drankjes brouwen. Breng haar 5 slijmgel. ({gel}/5)"
+msgstr ""
+
+#. Opdracht drank, stap 2
+#: scripts/data/quests.gd:48
+msgid "Geef de slijmgel aan Mila in de herberg."
+msgstr ""
+
+#. Titel van opdracht boog_schietbaan
+#: scripts/data/ext/boog.gd:64
+msgid "Schietbaan"
+msgstr ""
+
+#. Opdracht boog_schietbaan, stap 1
+#: scripts/data/ext/boog.gd:67
+msgid "Raak alle drie de doelwitten op Tessa's schietbaan binnen 20 seconden. Praat met Tessa voor een poging."
+msgstr ""
+
+#. Opdracht boog_schietbaan, stap 2
+#: scripts/data/ext/boog.gd:70
+msgid "Gehaald! Ga naar Tessa voor je beloning."
+msgstr ""
+
+#. Titel van opdracht meer_karper
+#: scripts/data/ext/meer.gd:105
+msgid "De Gouden Karper"
+msgstr ""
+
+#. Opdracht meer_karper, stap 1
+#: scripts/data/ext/meer.gd:108
+msgid "Visser Joris droomt van de Gouden Karper. Vang hem in diep water, aan het eind van de verre steiger in het Zilvermeer."
+msgstr ""
+
+#. Opdracht meer_karper, stap 2
+#: scripts/data/ext/meer.gd:111
+msgid "Je hebt de Gouden Karper! Breng hem naar Visser Joris in het Zilvermeer."
+msgstr ""
+
+#. Titel van opdracht meer_boeken
+#. Naam van prestatie meer_boekenwurm
+#: scripts/data/ext/meer.gd:51 scripts/data/ext/meer.gd:115
+msgid "Boekenwurm"
+msgstr ""
+
+#. Opdracht meer_boeken, stap 1
+#: scripts/data/ext/meer.gd:118
+msgid "Lena van de bibliotheek mist drie boeken: één op het eiland in het Zilvermeer, één in het huisje van Joris en één bij Sanne. ({boeken}/3)"
+msgstr ""
+
+#. Opdracht meer_boeken, stap 2
+#: scripts/data/ext/meer.gd:121
+msgid "Je hebt alle drie de boeken! Breng ze naar Lena in de bibliotheek."
+msgstr ""
+
+#. Opdracht diepte, stap 1
+#: scripts/data/ext/diepte.gd:77
+msgid "Het rommelt onder de Kristaltempel. Zoek achterin de tempel naar een weg naar beneden."
+msgstr ""
+
+#. Opdracht diepte, stap 2
+#: scripts/data/ext/diepte.gd:81
+msgid "Het zegel is gebroken! Zoek in de Kristalgangen een sleutel voor de kristalpoort."
+msgstr ""
+
+#. Opdracht diepte, stap 3
+#: scripts/data/ext/diepte.gd:85
+msgid "De poort is open. Neem de trap naar Het Hart van de Kaart. Neem genoeg drankjes mee!"
+msgstr ""
+
+#. Opdracht diepte, stap 4
+#: scripts/data/ext/diepte.gd:89
+msgid "Versla De Vergeten Wachter! Rol door zijn scherven en sla toe na zijn aanval. Laat hem tegen een pilaar knallen: dan is hij even duizelig!"
+msgstr ""
+
+#. Titel van opdracht arena_kampioen
+#. Titel die je krijgt voor arena-rang gold ("Hé {arena_title}!")
+#: scripts/data/arena.gd:36 scripts/data/ext/arena.gd:61
+msgid "Arenakampioen"
+msgstr ""
+
+#. Opdracht arena_kampioen, stap 1
+#: scripts/data/ext/arena.gd:64
+msgid "Win de Brons-rang in de arena, in het noordoosten van het dorp. Arenameester Bruno schrijft je in."
+msgstr ""
+
+#. Opdracht arena_kampioen, stap 2
+#: scripts/data/ext/arena.gd:68
+msgid "Win de Zilver-rang in de arena."
+msgstr ""
+
+#. Opdracht arena_kampioen, stap 3
+#: scripts/data/ext/arena.gd:71
+msgid "Win de Goud-rang en word Arenakampioen! In de laatste ronde staat een kristalgolem."
+msgstr ""
+
+#. Naam van voorwerp coin
+#: scripts/data/items.gd:9
+msgid "Munt"
+msgstr ""
+
+#. Beschrijving van voorwerp coin
+#: scripts/data/items.gd:9
+msgid "Je betaalt er mee."
+msgstr ""
+
+#. Naam van voorwerp potion
+#: scripts/data/items.gd:11
+msgid "Helddrank"
+msgstr ""
+
+#. Beschrijving van voorwerp potion
+#: scripts/data/items.gd:12
+msgid "Geneest 3 hartjes. Druk op H om te drinken."
+msgstr ""
+
+#. Naam van voorwerp gel
+#: scripts/data/items.gd:15
+msgid "Slijmgel"
+msgstr ""
+
+#. Beschrijving van voorwerp gel
+#: scripts/data/items.gd:16
+msgid "Plakkerig spul van slijmen. Handig voor smeden en drankjes."
+msgstr ""
+
+#. Naam van voorwerp shard
+#: scripts/data/items.gd:19
+msgid "Kristalscherf"
+msgstr ""
+
+#. Beschrijving van voorwerp shard
+#: scripts/data/items.gd:20
+msgid "Een stukje kaartkristal. De smid kan er een bijzonder zwaard van maken."
+msgstr ""
+
+#. Naam van voorwerp ruin_key
+#: scripts/data/items.gd:23
+msgid "Ruïnesleutel"
+msgstr ""
+
+#. Beschrijving van voorwerp ruin_key
+#: scripts/data/items.gd:24
+msgid "Een roestige sleutel. Hij past op het poortje van de Vergeten Ruïne."
+msgstr ""
+
+#. Naam van voorwerp medallion
+#: scripts/data/items.gd:27
+msgid "Oud medaillon"
+msgstr ""
+
+#. Beschrijving van voorwerp medallion
+#: scripts/data/items.gd:28
+msgid "Een zilveren medaillon met een naam erin gegraveerd: Wilfred."
+msgstr ""
+
+#. Naam van voorwerp boots
+#: scripts/data/items.gd:31
+msgid "Snelle laarzen"
+msgstr ""
+
+#. Beschrijving van voorwerp boots
+#: scripts/data/items.gd:32
+msgid "Je loopt een stuk sneller. Altijd handig."
+msgstr ""
+
+#. Naam van voorwerp heart_container
+#: scripts/data/items.gd:35
+msgid "Hartcontainer"
+msgstr ""
+
+#. Beschrijving van voorwerp heart_container
+#: scripts/data/items.gd:37
+msgid "Je kunt er een hartje meer door hebben. Blijvend!"
+msgstr ""
+
+#. Voorwerp heart_container: melding (full_text)
+#: scripts/data/items.gd:36
+msgid "Je hebt al het maximum van 8 hartjes"
+msgstr ""
+
+#. Naam van voorwerp crystal_bos
+#: scripts/data/items.gd:40
+msgid "Kaartkristal van het Bos"
+msgstr ""
+
+#. Beschrijving van voorwerp crystal_bos
+#: scripts/data/items.gd:41
+msgid "Een gloeiend kristal uit het Fluisterbos. Hoort in de Blauwe Kaart."
+msgstr ""
+
+#. Naam van voorwerp crystal_ruine
+#: scripts/data/items.gd:44
+msgid "Kaartkristal van de Ruïne"
+msgstr ""
+
+#. Beschrijving van voorwerp crystal_ruine
+#: scripts/data/items.gd:45
+msgid "Een gloeiend kristal uit de Vergeten Ruïne. Hoort in de Blauwe Kaart."
+msgstr ""
+
+#. Naam van voorwerp crystal_grot
+#: scripts/data/items.gd:48
+msgid "Kaartkristal van de Grot"
+msgstr ""
+
+#. Beschrijving van voorwerp crystal_grot
+#: scripts/data/items.gd:49
+msgid "Een gloeiend kristal uit de Echo-grot. Hoort in de Blauwe Kaart."
+msgstr ""
+
+#. Naam van voorwerp sword_wood
+#. Naam van zwaard wood
+#: scripts/data/items.gd:51 scripts/data/items.gd:61
+msgid "Houten zwaard"
+msgstr ""
+
+#. Beschrijving van voorwerp sword_wood
+#: scripts/data/items.gd:51
+msgid "Klein, maar het werkt."
+msgstr ""
+
+#. Naam van voorwerp sword_iron
+#. Naam van zwaard iron
+#: scripts/data/items.gd:52 scripts/data/items.gd:62
+msgid "IJzeren zwaard"
+msgstr ""
+
+#. Beschrijving van voorwerp sword_iron
+#: scripts/data/items.gd:52
+msgid "Door Greta gesmeed. Raakt harder."
+msgstr ""
+
+#. Naam van voorwerp sword_crystal
+#. Naam van zwaard crystal
+#: scripts/data/items.gd:54 scripts/data/items.gd:63
+msgid "Kristalzwaard"
+msgstr ""
+
+#. Beschrijving van voorwerp sword_crystal
+#: scripts/data/items.gd:55
+msgid "Gloeit zachtblauw. Het sterkste zwaard van Azura."
+msgstr ""
+
+#. Naam van voorwerp bow
+#: scripts/data/ext/boog.gd:15
+msgid "Boog"
+msgstr ""
+
+#. Beschrijving van voorwerp bow
+#: scripts/data/ext/boog.gd:16
+msgid "Druk op F om een pijl te schieten. Een pijl doet 2 schade (bij bazen 1) en vliegt over water. Je krijgt er 5 pijlen bij, meer pijlen koop je apart."
+msgstr ""
+
+#. Naam van voorwerp arrow
+#: scripts/data/ext/boog.gd:19
+msgid "Pijl"
+msgstr ""
+
+#. Beschrijving van voorwerp arrow
+#: scripts/data/ext/boog.gd:23
+msgid "Pijlen voor je boog. Er passen er 40 in je pijlenkoker. Skeletten laten er soms een paar vallen."
+msgstr ""
+
+#. Voorwerp arrow: melding (full_text)
+#: scripts/data/ext/boog.gd:20
+msgid "Je pijlenkoker is vol"
+msgstr ""
+
+#. Voorwerp arrow: melding (almost_full_text)
+#: scripts/data/ext/boog.gd:21
+msgid "Je pijlenkoker zit bijna vol"
+msgstr ""
+
+#. Voorwerp arrow: melding (chest_full_text)
+#: scripts/data/ext/boog.gd:22
+msgid "Er zitten pijlen in deze kist, maar ze passen niet meer in je pijlenkoker. Schiet er eerst een paar af!"
+msgstr ""
+
+#. Naam van voorwerp fishing_rod
+#: scripts/data/ext/meer.gd:62
+msgid "Hengel"
+msgstr ""
+
+#. Beschrijving van voorwerp fishing_rod
+#: scripts/data/ext/meer.gd:63
+msgid "De reservehengel van Visser Joris. Ga bij een visplek in het Zilvermeer staan en druk op E."
+msgstr ""
+
+#. Naam van voorwerp meer_baars
+#: scripts/data/ext/meer.gd:66
+msgid "Baars"
+msgstr ""
+
+#. Beschrijving van voorwerp meer_baars
+#: scripts/data/ext/meer.gd:67
+msgid "Een gestreepte baars met rode vinnen. Joris en Mila kopen hem graag."
+msgstr ""
+
+#. Naam van voorwerp meer_snoek
+#: scripts/data/ext/meer.gd:70
+msgid "Snoek"
+msgstr ""
+
+#. Beschrijving van voorwerp meer_snoek
+#: scripts/data/ext/meer.gd:71
+msgid "Een lange snoek met een grote bek. Joris en Mila betalen er goed voor."
+msgstr ""
+
+#. Naam van voorwerp meer_gouden_karper
+#: scripts/data/ext/meer.gd:74
+msgid "Gouden Karper"
+msgstr ""
+
+#. Beschrijving van voorwerp meer_gouden_karper
+#: scripts/data/ext/meer.gd:75
+msgid "De beroemde vis van het Zilvermeer. Hij glinstert alsof hij van goud is. Visser Joris droomt van hem."
+msgstr ""
+
+#. Naam van voorwerp meer_laars
+#: scripts/data/ext/meer.gd:78
+msgid "Oude laars"
+msgstr ""
+
+#. Beschrijving van voorwerp meer_laars
+#: scripts/data/ext/meer.gd:79
+msgid "Een natte, stinkende laars. Joris verzamelt ze. Waarom, dat weet niemand."
+msgstr ""
+
+#. Naam van voorwerp fishers_cap
+#: scripts/data/ext/meer.gd:82
+msgid "Visserspet"
+msgstr ""
+
+#. Beschrijving van voorwerp fishers_cap
+#: scripts/data/ext/meer.gd:83
+msgid "De pet van Visser Joris. Met deze pet betalen Joris en Mila je 10% extra voor je vis."
+msgstr ""
+
+#. Naam van voorwerp meer_boek_eiland
+#: scripts/data/ext/meer.gd:86
+msgid "Sagen van het Zilvermeer"
+msgstr ""
+
+#. Beschrijving van voorwerp meer_boek_eiland
+#: scripts/data/ext/meer.gd:87
+msgid "Een van de drie boeken die Lena mist. Je vond het op het eiland."
+msgstr ""
+
+#. Naam van voorwerp meer_boek_hut
+#: scripts/data/ext/meer.gd:90
+msgid "Het Grote Vissenboek"
+msgstr ""
+
+#. Beschrijving van voorwerp meer_boek_hut
+#: scripts/data/ext/meer.gd:91
+msgid "Een van de drie boeken die Lena mist. Het lag in het huisje van Joris, met een koffiekring erop."
+msgstr ""
+
+#. Naam van voorwerp meer_boek_sanne
+#: scripts/data/ext/meer.gd:94
+msgid "Sterren boven Azura"
+msgstr ""
+
+#. Beschrijving van voorwerp meer_boek_sanne
+#: scripts/data/ext/meer.gd:95
+msgid "Een van de drie boeken die Lena mist. Sanne gaf het je."
+msgstr ""
+
+#. Naam van voorwerp meer_schelp
+#: scripts/data/ext/meer.gd:98
+msgid "Zilverschelp"
+msgstr ""
+
+#. Beschrijving van voorwerp meer_schelp
+#: scripts/data/ext/meer.gd:99
+msgid "Een roze schelp uit het Zilvermeer. Als je goed luistert, hoor je een rustig liedje. Een verzamelstuk."
+msgstr ""
+
+#. Naam van voorwerp sword_star
+#. Naam van zwaard star
+#: scripts/data/ext/diepte.gd:97 scripts/data/ext/diepte.gd:109
+msgid "Sterrenzwaard"
+msgstr ""
+
+#. Beschrijving van voorwerp sword_star
+#: scripts/data/ext/diepte.gd:98
+msgid "Het legendarische zwaard van de Sterrenkaart. Het schijnt als een ster en raakt harder dan alle andere zwaarden."
+msgstr ""
+
+#. Naam van voorwerp diepte_key
+#: scripts/data/ext/diepte.gd:101
+msgid "Kristalsleutel"
+msgstr ""
+
+#. Beschrijving van voorwerp diepte_key
+#: scripts/data/ext/diepte.gd:102
+msgid "Een sleutel van gloeiend kristal. Hij past op de kristalpoort in de Diepte."
+msgstr ""
+
+#. Naam van voorwerp arena_trophy_bronze
+#: scripts/data/ext/arena.gd:31
+msgid "Bronzen trofee"
+msgstr ""
+
+#. Beschrijving van voorwerp arena_trophy_bronze
+#: scripts/data/ext/arena.gd:32
+msgid "Voor het winnen van de Brons-rang in de arena. Staat mooi op de trofeeënplank."
+msgstr ""
+
+#. Naam van voorwerp arena_trophy_silver
+#: scripts/data/ext/arena.gd:35
+msgid "Zilveren trofee"
+msgstr ""
+
+#. Beschrijving van voorwerp arena_trophy_silver
+#: scripts/data/ext/arena.gd:36
+msgid "Voor het winnen van de Zilver-rang in de arena. Hij glimt als een spiegel."
+msgstr ""
+
+#. Naam van voorwerp arena_trophy_gold
+#: scripts/data/ext/arena.gd:39
+msgid "Gouden trofee"
+msgstr ""
+
+#. Beschrijving van voorwerp arena_trophy_gold
+#: scripts/data/ext/arena.gd:40
+msgid "Voor het winnen van de Goud-rang in de arena. De hoogste eer van Dageraadsdorp!"
+msgstr ""
+
+#. Naam van voorwerp arena_helm
+#: scripts/data/ext/arena.gd:43
+msgid "Arenahelm"
+msgstr ""
+
+#. Beschrijving van voorwerp arena_helm
+#: scripts/data/ext/arena.gd:44
+msgid "Een stalen helm met een rode pluim. Alleen een echte Arenakampioen mag hem dragen. Een verzamelstuk."
+msgstr ""
+
+#. Naam van vijand slime
+#: scripts/data/enemies.gd:13
+msgid "Slijm"
+msgstr ""
+
+#. Vijand slime: grappige beschrijving in het beestenboek
+#: scripts/data/enemies.gd:17
+msgid "Een vrolijk groen slijm. Hij wil alleen maar knuffelen, maar dat doet toch een beetje pijn."
+msgstr ""
+
+#. Naam van vijand slime_blue
+#: scripts/data/enemies.gd:20
+msgid "Blauw slijm"
+msgstr ""
+
+#. Vijand slime_blue: grappige beschrijving in het beestenboek
+#: scripts/data/enemies.gd:24
+msgid "Een blauw slijm dat net iets sneller is. Hij ruikt naar regen en natte sokken."
+msgstr ""
+
+#. Naam van vijand slime_red
+#: scripts/data/enemies.gd:27
+msgid "Rood slijm"
+msgstr ""
+
+#. Vijand slime_red: grappige beschrijving in het beestenboek
+#: scripts/data/enemies.gd:31
+msgid "Een rood slijm met een slecht humeur. Hij slaat harder dan zijn zachte buik doet vermoeden."
+msgstr ""
+
+#. Naam van vijand slime_mini
+#: scripts/data/enemies.gd:34
+msgid "Minislijm"
+msgstr ""
+
+#. Vijand slime_mini: grappige beschrijving in het beestenboek
+#: scripts/data/enemies.gd:38
+msgid "Een piepklein slijmpje uit de Slijmkoning. Ze komen nooit alleen en vallen om bij een kriebel."
+msgstr ""
+
+#. Naam van vijand bat
+#: scripts/data/enemies.gd:41
+msgid "Vleermuis"
+msgstr ""
+
+#. Vijand bat: grappige beschrijving in het beestenboek
+#: scripts/data/enemies.gd:45
+msgid "Een vleermuis die dol is op duiken. Hij komt altijd net uit de hoek waar je niet keek."
+msgstr ""
+
+#. Naam van vijand skeleton
+#: scripts/data/enemies.gd:48
+msgid "Skelet"
+msgstr ""
+
+#. Vijand skeleton: grappige beschrijving in het beestenboek
+#: scripts/data/enemies.gd:52
+msgid "Een skelet met een boog. Hij is al eeuwen dood, maar zijn mikken is nog prima."
+msgstr ""
+
+#. Naam van vijand golem
+#: scripts/data/enemies.gd:55
+msgid "Kristalgolem"
+msgstr ""
+
+#. Vijand golem: grappige beschrijving in het beestenboek
+#: scripts/data/enemies.gd:59
+msgid "Een reus van kristal en steen. Hij is traag, maar zijn klap voel je tot in je tenen."
+msgstr ""
+
+#. Vijand king: grappige beschrijving in het beestenboek
+#: scripts/data/enemies.gd:67
+msgid "De baas van alle slijmen. Hij springt, spuugt slijm en vindt zichzelf erg belangrijk."
+msgstr ""
+
+#. Naam van vijand mage
+#: scripts/data/ext/vijanden.gd:20
+msgid "Magiër"
+msgstr ""
+
+#. Vijand mage: grappige beschrijving in het beestenboek
+#: scripts/data/ext/vijanden.gd:28
+msgid "Zweeft in zijn gewaad en is nooit waar je hem verwacht: poef, weg! Zijn tovervonk is traag, dus sla hem gewoon kapot met je zwaard."
+msgstr ""
+
+#. Vijand mage: tip als je hem voor het eerst ziet
+#: scripts/data/ext/vijanden.gd:26
+msgid "Een Magiër! Sla zijn tovervonk stuk of wijk uit."
+msgstr ""
+
+#. Naam van vijand slime_spitter
+#: scripts/data/ext/vijanden.gd:31
+msgid "Slijmspuwer"
+msgstr ""
+
+#. Vijand slime_spitter: grappige beschrijving in het beestenboek
+#: scripts/data/ext/vijanden.gd:38
+msgid "Een slijm met een veel te grote mond, en hij gebruikt hem ook. Kom je te dichtbij, dan hupt hij weg om het opnieuw te proberen."
+msgstr ""
+
+#. Vijand slime_spitter: tip als je hem voor het eerst ziet
+#: scripts/data/ext/vijanden.gd:36
+msgid "Een Slijmspuwer! Rol weg als hij spuugt. Kom je dichtbij, dan hupt hij weg."
+msgstr ""
+
+#. Naam van vijand diepte_golem
+#: scripts/data/ext/diepte.gd:118
+msgid "Paarse kristalgolem"
+msgstr ""
+
+#. Vijand diepte_golem: grappige beschrijving in het beestenboek
+#: scripts/data/ext/diepte.gd:122
+msgid "Een golem van paars kristal die al eeuwen de Kristalgangen bewaakt. Hij is langzaam, maar zijn klap voel je tot in je tenen."
+msgstr ""
+
+#. Vijand guardian: grappige beschrijving in het beestenboek
+#: scripts/data/ext/diepte.gd:130
+msgid "De oude bewaker van de Sterrenkaart. Hij sliep meer dan duizend jaar onder de tempel en wilde liever niet gestoord worden."
+msgstr ""
+
+#. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
+#: scripts/data/enemies.gd:75
+msgctxt "aanval"
+msgid "pijl"
+msgstr ""
+
+#. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
+#: scripts/data/enemies.gd:75
+msgctxt "aanval"
+msgid "tovervonk"
+msgstr ""
+
+#. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
+#: scripts/data/enemies.gd:75
+msgctxt "aanval"
+msgid "slijmbal"
+msgstr ""
+
+#. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
+#: scripts/data/enemies.gd:75
+msgctxt "aanval"
+msgid "klap"
+msgstr ""
+
+#. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
+#: scripts/data/enemies.gd:75
+msgctxt "aanval"
+msgid "steen"
+msgstr ""
+
+#. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
+#: scripts/data/enemies.gd:75
+msgctxt "aanval"
+msgid "landing"
+msgstr ""
+
+#. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
+#: scripts/data/enemies.gd:75
+msgctxt "aanval"
+msgid "storm"
+msgstr ""
+
+#. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
+#: scripts/data/enemies.gd:75
+msgctxt "aanval"
+msgid "scherf"
+msgstr ""
+
+#. Naam van prestatie first_blood
+#: scripts/data/achievements.gd:17
+msgid "Eerste klap"
+msgstr ""
+
+#. Uitleg bij prestatie first_blood
+#: scripts/data/achievements.gd:17
+msgid "Versla je eerste vijand."
+msgstr ""
+
+#. Naam van prestatie slayer_50
+#: scripts/data/achievements.gd:21
+msgid "Slijmenjager"
+msgstr ""
+
+#. Uitleg bij prestatie slayer_50
+#: scripts/data/achievements.gd:21
+msgid "Versla 50 vijanden."
+msgstr ""
+
+#. Naam van prestatie slayer_200
+#: scripts/data/achievements.gd:25
+msgid "Schrik van Azura"
+msgstr ""
+
+#. Uitleg bij prestatie slayer_200
+#: scripts/data/achievements.gd:25
+msgid "Versla 200 vijanden."
+msgstr ""
+
+#. Naam van prestatie bestiary_all
+#: scripts/data/achievements.gd:29
+msgid "Beestenkenner"
+msgstr ""
+
+#. Uitleg bij prestatie bestiary_all
+#: scripts/data/achievements.gd:29
+msgid "Versla elke soort vijand uit het verhaal minstens één keer, ook de Slijmkoning."
+msgstr ""
+
+#. Naam van prestatie hearts_all
+#: scripts/data/achievements.gd:33
+msgid "Hart van goud"
+msgstr ""
+
+#. Uitleg bij prestatie hearts_all
+#: scripts/data/achievements.gd:33
+msgid "Vind de twee hartcontainers uit het verhaal."
+msgstr ""
+
+#. Naam van prestatie boots
+#: scripts/data/achievements.gd:37
+msgid "Snelle voeten"
+msgstr ""
+
+#. Uitleg bij prestatie boots
+#: scripts/data/achievements.gd:37
+msgid "Koop de snelle laarzen bij Tobias."
+msgstr ""
+
+#. Naam van prestatie crystal_bos
+#: scripts/data/achievements.gd:41
+msgid "Licht in het bos"
+msgstr ""
+
+#. Uitleg bij prestatie crystal_bos
+#: scripts/data/achievements.gd:41
+msgid "Vind het kaartkristal in het Fluisterbos."
+msgstr ""
+
+#. Naam van prestatie crystal_ruine
+#: scripts/data/achievements.gd:45
+msgid "Licht uit het verleden"
+msgstr ""
+
+#. Uitleg bij prestatie crystal_ruine
+#: scripts/data/achievements.gd:45
+msgid "Vind het kaartkristal in de Vergeten Ruïne."
+msgstr ""
+
+#. Naam van prestatie crystal_grot
+#: scripts/data/achievements.gd:49
+msgid "Echo van licht"
+msgstr ""
+
+#. Uitleg bij prestatie crystal_grot
+#: scripts/data/achievements.gd:49
+msgid "Vind het kaartkristal in de Echo-grot."
+msgstr ""
+
+#. Naam van prestatie golems
+#: scripts/data/achievements.gd:53
+msgid "Golemvechter"
+msgstr ""
+
+#. Uitleg bij prestatie golems
+#: scripts/data/achievements.gd:53
+msgid "Versla beide kristalgolems."
+msgstr ""
+
+#. Naam van prestatie king
+#: scripts/data/achievements.gd:57
+msgid "Einde van de Slijmkoning"
+msgstr ""
+
+#. Uitleg bij prestatie king
+#: scripts/data/achievements.gd:57
+msgid "Versla de Slijmkoning in de Kristaltempel."
+msgstr ""
+
+#. Naam van prestatie completed
+#: scripts/data/achievements.gd:61
+msgid "Held van Azura"
+msgstr ""
+
+#. Uitleg bij prestatie completed
+#: scripts/data/achievements.gd:61
+msgid "Speel het verhaal uit en herstel de Blauwe Kaart."
+msgstr ""
+
+#. Naam van prestatie speedrun
+#: scripts/data/achievements.gd:65
+msgid "Bliksemheld"
+msgstr ""
+
+#. Uitleg bij prestatie speedrun
+#: scripts/data/achievements.gd:65
+msgid "Speel het spel uit in minder dan 60 minuten."
+msgstr ""
+
+#. Naam van prestatie flawless_boss
+#: scripts/data/achievements.gd:69
+msgid "In één keer"
+msgstr ""
+
+#. Uitleg bij prestatie flawless_boss
+#: scripts/data/achievements.gd:69
+msgid "Versla de Slijmkoning zonder dat je in dat gevecht doodgaat."
+msgstr ""
+
+#. Naam van prestatie talked_all
+#: scripts/data/achievements.gd:73
+msgid "Gezellig babbelen"
+msgstr ""
+
+#. Uitleg bij prestatie talked_all
+#: scripts/data/achievements.gd:73
+msgid "Praat met alle personages."
+msgstr ""
+
+#. Naam van prestatie sidequests
+#: scripts/data/achievements.gd:77
+msgid "Vriend van het dorp"
+msgstr ""
+
+#. Uitleg bij prestatie sidequests
+#: scripts/data/achievements.gd:77
+msgid "Voltooi alle zij-opdrachten."
+msgstr ""
+
+#. Naam van prestatie potions_10
+#: scripts/data/achievements.gd:81
+msgid "Proost!"
+msgstr ""
+
+#. Uitleg bij prestatie potions_10
+#: scripts/data/achievements.gd:81
+msgid "Drink 10 helddrankjes."
+msgstr ""
+
+#. Naam van prestatie rolls_50
+#: scripts/data/achievements.gd:85
+msgid "Rolmeester"
+msgstr ""
+
+#. Uitleg bij prestatie rolls_50
+#: scripts/data/achievements.gd:85
+msgid "Rol 50 keer."
+msgstr ""
+
+#. Naam van prestatie fast_travel
+#: scripts/data/achievements.gd:89
+msgid "Wereldreiziger"
+msgstr ""
+
+#. Uitleg bij prestatie fast_travel
+#: scripts/data/achievements.gd:89
+msgid "Reis snel naar een ontdekt blauw altaar via de kaart."
+msgstr ""
+
+#. Naam van prestatie chests_all
+#: scripts/data/achievements.gd:93
+msgid "Schatzoeker"
+msgstr ""
+
+#. Uitleg bij prestatie chests_all
+#: scripts/data/achievements.gd:93
+msgid "Open een kist in de herberg, het bos, de ruïne en de grot."
+msgstr ""
+
+#. Naam van prestatie slept
+#: scripts/data/achievements.gd:97
+msgid "Welterusten"
+msgstr ""
+
+#. Uitleg bij prestatie slept
+#: scripts/data/achievements.gd:97
+msgid "Slaap een nachtje in de herberg."
+msgstr ""
+
+#. Naam van prestatie rich
+#: scripts/data/achievements.gd:102
+msgid "Goudkoorts"
+msgstr ""
+
+#. Uitleg bij prestatie rich
+#: scripts/data/achievements.gd:102
+msgid "Heb 150 munten tegelijk in je zak."
+msgstr ""
+
+#. Naam van prestatie boog_schietbaan
+#: scripts/data/ext/boog.gd:40
+msgid "Scherpschutter"
+msgstr ""
+
+#. Uitleg bij prestatie boog_schietbaan
+#: scripts/data/ext/boog.gd:40
+msgid "Haal Tessa's schietbaan: drie doelwitten binnen de tijd."
+msgstr ""
+
+#. Naam van prestatie boog_rivier
+#: scripts/data/ext/boog.gd:44
+msgid "Over de rivier"
+msgstr ""
+
+#. Uitleg bij prestatie boog_rivier
+#: scripts/data/ext/boog.gd:44
+msgid "Open het verborgen poortje in het Fluisterbos met je boog."
+msgstr ""
+
+#. Naam van prestatie vijanden_magier
+#: scripts/data/ext/vijanden.gd:48
+msgid "Spreuk gebroken"
+msgstr ""
+
+#. Uitleg bij prestatie vijanden_magier
+#: scripts/data/ext/vijanden.gd:48
+msgid "Versla een magiër."
+msgstr ""
+
+#. Naam van prestatie vijanden_spuwer
+#: scripts/data/ext/vijanden.gd:52
+msgid "Spuuglokker"
+msgstr ""
+
+#. Uitleg bij prestatie vijanden_spuwer
+#: scripts/data/ext/vijanden.gd:52
+msgid "Versla vijf slijmspuwers."
+msgstr ""
+
+#. Naam van prestatie meer_karper
+#: scripts/data/ext/meer.gd:47
+msgid "Legende van het meer"
+msgstr ""
+
+#. Uitleg bij prestatie meer_karper
+#: scripts/data/ext/meer.gd:47
+msgid "Vang de Gouden Karper en breng hem naar Visser Joris."
+msgstr ""
+
+#. Uitleg bij prestatie meer_boekenwurm
+#: scripts/data/ext/meer.gd:51
+msgid "Breng Lena haar drie verloren boeken terug."
+msgstr ""
+
+#. Naam van prestatie meer_lezer
+#: scripts/data/ext/meer.gd:55
+msgid "Kenner van Azura"
+msgstr ""
+
+#. Uitleg bij prestatie meer_lezer
+#: scripts/data/ext/meer.gd:55
+msgid "Lees alle oude boeken in de bibliotheek van het Zilvermeer."
+msgstr ""
+
+#. Naam van prestatie diepte_open
+#: scripts/data/ext/diepte.gd:148
+msgid "Onder de tempel"
+msgstr ""
+
+#. Uitleg bij prestatie diepte_open
+#: scripts/data/ext/diepte.gd:148
+msgid "Breek het zegel en daal af in De Diepte."
+msgstr ""
+
+#. Naam van prestatie diepte_wachter
+#: scripts/data/ext/diepte.gd:152
+msgid "Hoeder van de Sterrenkaart"
+msgstr ""
+
+#. Uitleg bij prestatie diepte_wachter
+#: scripts/data/ext/diepte.gd:152
+msgid "Versla De Vergeten Wachter."
+msgstr ""
+
+#. Naam van prestatie diepte_hartjes
+#: scripts/data/ext/diepte.gd:156
+msgid "Acht hartjes"
+msgstr ""
+
+#. Uitleg bij prestatie diepte_hartjes
+#: scripts/data/ext/diepte.gd:156
+msgid "Heb het maximum van acht hartjes."
+msgstr ""
+
+#. Naam van winkel tobias
+#: scripts/data/shops.gd:10
+msgid "Tobias' Winkel"
+msgstr ""
+
+#. Winkel tobias: naam in de lijst (bow)
+#: scripts/data/shops.gd:14
+msgid "Boog + 5 pijlen"
+msgstr ""
+
+#. Winkel tobias: naam in de lijst (arrow)
+#: scripts/data/shops.gd:15
+msgid "5 pijlen"
+msgstr ""
+
+#. Naam van arena-rang bronze
+#: scripts/data/arena.gd:16
+msgid "Brons"
+msgstr ""
+
+#. Titel die je krijgt voor arena-rang bronze ("Hé {arena_title}!")
+#: scripts/data/arena.gd:16
+msgid "Arenastrijder"
+msgstr ""
+
+#. Naam van arena-rang silver
+#: scripts/data/arena.gd:25
+msgid "Zilver"
+msgstr ""
+
+#. Titel die je krijgt voor arena-rang silver ("Hé {arena_title}!")
+#: scripts/data/arena.gd:25
+msgid "Arenaridder"
+msgstr ""
+
+#. Naam van arena-rang gold
+#: scripts/data/arena.gd:36
+msgid "Goud"
+msgstr ""
+
+#. Titel van boek geschiedenis (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:9
+msgid "Geschiedenis van Azura"
+msgstr ""
+
+#. Boek geschiedenis (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:11
+msgid "Lang geleden was Azura een wilde streek zonder naam. Er woonde niemand. Alleen de wind, het water en de slijmen."
+msgstr ""
+
+#. Boek geschiedenis (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:12
+msgid "Toen de eerste mensen kwamen, vonden ze een kaart vol sterren, zo groot als een plein: de Sterrenkaart. Hij liet zien waar het land veilig was."
+msgstr ""
+
+#. Boek geschiedenis (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:13
+msgid "De mensen bouwden hun dorpen precies waar de kaart het aanwees. Het eerste dorp lag in het eerste licht en heette daarom Dageraadsdorp."
+msgstr ""
+
+#. Boek blauwe_kaart (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:19
+msgid "De Sterrenkaart was veel te groot om mee te nemen. Daarom maakten de oudsten er een kopie van, uit gloeiend kristal: de Blauwe Kaart."
+msgstr ""
+
+#. Boek blauwe_kaart (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:20
+msgid "Een kopie is nooit zo sterk als het origineel. Daarom kon de Blauwe Kaart barsten. De Sterrenkaart barst nooit."
+msgstr ""
+
+#. Boek blauwe_kaart (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:21
+msgid "Wie de kopie goed bewaart, houdt de slijmen rustig. De oudsten van Dageraadsdorp deden dat al duizend jaar."
+msgstr ""
+
+#. Titel van boek wachter (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:25
+msgid "Over Wachters"
+msgstr ""
+
+#. Boek wachter (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:27
+msgid "Wie iets kostbaars heeft, laat het niet onbewaakt. De oudsten maakten daarom een Wachter van steen en sterrenlicht."
+msgstr ""
+
+#. Boek wachter (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:28
+msgid "Hij kreeg één opdracht: de Sterrenkaart bewaken, voor altijd. Dat is heel lang. Op een gegeven moment werd hij moe en ging hij slapen."
+msgstr ""
+
+#. Boek wachter (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:29
+msgid "De mensen vergaten waar hij sliep. Daarom heet hij in de oude boeken De Vergeten Wachter."
+msgstr ""
+
+#. Titel van boek diepte (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:33
+msgid "De Diepte"
+msgstr ""
+
+#. Boek diepte (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:35
+msgid "Onder de Kristaltempel ligt een plek die op geen enkele kaart staat. De oudsten noemden haar de Diepte."
+msgstr ""
+
+#. Boek diepte (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:36
+msgid "Daar slaapt de Wachter, en daar ligt de Sterrenkaart. De weg erheen is eeuwenlang dicht geweest."
+msgstr ""
+
+#. Boek diepte (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:37
+msgid "Zolang de Blauwe Kaart gebarsten is, blijft de weg dicht. Pas als het gevaar boven is bezworen, schuift de steen aan de kant."
+msgstr ""
+
+#. Titel van boek slijmen (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:41
+msgid "Slijmen voor beginners"
+msgstr ""
+
+#. Boek slijmen (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:43
+msgid "Slijmen zijn niet kwaad. Ze zijn gewoon dol op het licht van de Blauwe Kaart. Als het licht flikkert, worden ze wild."
+msgstr ""
+
+#. Boek slijmen (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:44
+msgid "Handige tips: lach nooit om een slijm. Ze begrijpen meer dan je denkt. En geef ze geen appels, want die eten ze op. (Bron: een boer uit Dageraadsdorp, die het zelf heeft geprobeerd.)"
+msgstr ""
+
+#. Boek slijmen (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:45
+msgid "Slijmgel is overigens prima voor drankjes en zwaarden. Bedank de slijm daarvoor. In gedachten, dat is genoeg."
+msgstr ""
+
+#. Titel van boek dagboek (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:49
+msgid "Dagboek van de laatste bibliothecaris"
+msgstr ""
+
+#. Boek dagboek (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:51
+msgid "Ik schrijf dit voor wie na mij komt. Ik heb mijn hele leven naar de Diepte gezocht, maar de weg nooit gevonden."
+msgstr ""
+
+#. Boek dagboek (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:52
+msgid "Dit weet ik zeker: wie de Wachter wil wekken, heeft drie dingen nodig. Een sterke arm, een hart dat niet opgeeft en genoeg drankjes."
+msgstr ""
+
+#. Boek dagboek (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:53
+msgid "De weg begint in de Kristaltempel. Pas als de Blauwe Kaart weer heel is, durft de steen te bewegen."
+msgstr ""
+
+#. Boek dagboek (bibliotheek)
+#: scripts/data/ext/meer_boeken.gd:54
+msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
+msgstr ""
+
+#. Legenda op het kaartje (menu): meer_visplek
+#: scripts/data/ext/meer.gd:35
+msgid "visplek"
+msgstr ""
+
+#. Legenda op het kaartje (menu): meer_diepe_visplek
+#: scripts/data/ext/meer.gd:36
+msgid "diepe visplek"
+msgstr ""
+
+#. Legenda op het kaartje (menu): meer_lessenaar
+#: scripts/data/ext/meer.gd:37
+msgid "lessenaar"
+msgstr ""
+
+#. Aftiteling (title)
+#: scripts/ui/title.gd:108 scripts/data/credits.gd:5
+msgid "Bluemap Quest"
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:7
+msgid "Een spel voor de WTP-community"
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:9
+msgid "Bedacht door"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:10
+msgid "de eigenaar van WTP"
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:12
+msgid "Gebouwd met"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:13
+msgid "Claude (Anthropic)"
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:15
+msgid "Verhaal en personages"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:16
+msgid "Oudste Bram, Greta, Tobias, Mila, Pim,"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:17
+msgid "Wachter Hein, Anja, Joost, Tessa, Wilfred en Muis"
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:19
+msgid "Pixel art"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:20
+msgid "Zelf getekend met code (tools/make_art.py)"
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:22
+msgid "Muziek en geluid"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:23
+msgid "Zelf gesynthetiseerd (tools/make_audio.py)"
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:25
+msgid "Techniek"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:26
+msgid "Godot Engine 4 (MIT-licentie)"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:27
+msgid "Python, Pillow en NumPy"
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:29
+msgid "Diep onder de tempel..."
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:30
+msgid "...slaapt De Vergeten Wachter nog. Voorlopig."
+msgstr ""
+
+#. Aftiteling (heading)
+#: scripts/data/credits.gd:33
+msgid "Speciale dank"
+msgstr ""
+
+#. Aftiteling (text)
+#: scripts/data/credits.gd:34
+msgid "Aan jou, voor het spelen!"
+msgstr ""
+
+#: scripts/core/daynight.gd:115
+msgid "Ochtend"
+msgstr ""
+
+#: scripts/core/daynight.gd:117
+msgid "Dag"
+msgstr ""
+
+#: scripts/core/daynight.gd:119
+msgid "Avond"
+msgstr ""
+
+#: scripts/core/daynight.gd:121
+msgid "Nacht"
+msgstr ""
+
+#: scripts/core/fast_travel.gd:98 scripts/core/fast_travel.gd:105
+msgid "Je kunt nu niet reizen."
+msgstr ""
+
+#: scripts/core/fast_travel.gd:100
+msgid "Wacht even, je bent al onderweg."
+msgstr ""
+
+#: scripts/core/fast_travel.gd:102
+msgid "Je kunt niet reizen tijdens een gesprek."
+msgstr ""
+
+#: scripts/core/fast_travel.gd:107
+msgid "Je kunt niet reizen tijdens een baasgevecht!"
+msgstr ""
+
+#: scripts/core/fast_travel.gd:109
+msgid "Je kunt niet reizen tijdens een arenagevecht!"
+msgstr ""
+
+#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:207
+msgid "Je hebt nog geen altaar ontdekt."
+msgstr ""
+
+#: scripts/core/fast_travel.gd:138
+msgid "Dat altaar heb je nog niet ontdekt."
+msgstr ""
+
+#. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
+#: scripts/core/game_state.gd:339
+msgid "Gekregen: %s. %s!"
+msgstr ""
+
+#. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
+#: scripts/core/game_state.gd:342
+msgid "Gekregen: %s x%d. %s!"
+msgstr ""
+
+#: scripts/core/game_state.gd:344
+msgid "Gekregen: %s"
+msgstr ""
+
+#. een voorwerp en hoeveel: "Gekregen: Pijl x5"
+#: scripts/core/game_state.gd:347
+msgid "Gekregen: %s x%d"
+msgstr ""
+
+#: scripts/core/game_state.gd:354
+msgid "Je tas is vol"
+msgstr ""
+
+#: scripts/core/game_state.gd:418
+msgid "Nieuwe opdracht: %s"
+msgstr ""
+
+#: scripts/core/game_state.gd:433
+msgid "Opdracht voltooid: %s"
+msgstr ""
+
+#: scripts/core/game_state.gd:474
+msgid "De Blauwe Kaart is hersteld!"
+msgstr ""
+
+#: scripts/core/game_state.gd:478
+msgid "Praat met Oudste Bram bij de tempel."
+msgstr ""
+
+#: scripts/core/game_state.gd:554
+msgid "Nieuw zwaard: %s"
+msgstr ""
+
+#. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
+#: scripts/core/game_state.gd:571
+msgid "Verkocht: %d x %s"
+msgstr ""
+
+#: scripts/data/arena.gd:101
+msgid "Je staat al ingeschreven. Loop maar naar de arenadeur!"
+msgstr ""
+
+#: scripts/data/arena.gd:104
+msgid "Die rang is nog niet open. Win eerst de vorige."
+msgstr ""
+
+#: scripts/data/arena.gd:108
+msgid "Je hebt niet genoeg munten (%d nodig)."
+msgstr ""
+
+#: scripts/data/arena.gd:114
+msgid "Ingeschreven voor %s! Loop door de deur naar de arena."
+msgstr ""
+
+#: scripts/data/arena.gd:125
+msgid "Je bent uitgeschreven. Je krijgt je munten terug."
+msgstr ""
+
+#. je titel in de arena zolang je nog niets gewonnen hebt, midden in een zin: "Hé nieuwkomer!"
+#: scripts/data/arena.gd:148
+msgid "nieuwkomer"
+msgstr ""
+
+#. op het scorebord en bij Bruno, in plaats van een beste tijd
+#: scripts/data/arena.gd:159
+msgid "nog niet gehaald"
+msgstr ""
+
+#: scripts/data/arena.gd:185
+msgid "Nieuwe titel: %s!"
+msgstr ""
+
+#: scripts/data/arena.gd:187
+msgid "Nieuw record: %s!"
+msgstr ""
+
+#: scripts/data/arena.gd:195
+msgid "Beloning: %d munt!"
+msgid_plural "Beloning: %d munten!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/data/arena.gd:198
+msgid "Beloning: %d munt en een bronzen trofee!"
+msgid_plural "Beloning: %d munten en een bronzen trofee!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/data/arena.gd:201
+msgid "Beloning: %d munt en een zilveren trofee!"
+msgid_plural "Beloning: %d munten en een zilveren trofee!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/data/arena.gd:204
+msgid "Beloning: %d munt, een gouden trofee en de Arenahelm!"
+msgid_plural "Beloning: %d munten, een gouden trofee en de Arenahelm!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/data/arena.gd:207
+msgid "Beloning: %d munt en een trofee: %s!"
+msgid_plural "Beloning: %d munten en een trofee: %s!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/data/ext/boog.gd:196
+msgid "Alle doelwitten geraakt!"
+msgstr ""
+
+#: scripts/data/ext/boog.gd:198
+msgid "Doelwit geraakt! (%d van %d)"
+msgstr ""
+
+#: scripts/data/ext/meer_logic.gd:106
+msgid "%d vis"
+msgid_plural "%d vissen"
+msgstr[0] ""
+msgstr[1] ""
+
+#. achter iets in de winkel dat je maar één keer kunt kopen en al hebt; anders de prijs
+#: scripts/data/ext/meer_logic.gd:107 scripts/ui/shop_ui.gd:98
+msgid "%d munt"
+msgid_plural "%d munten"
+msgstr[0] ""
+msgstr[1] ""
+
+#. bijvoorbeeld "Verkocht: 3 vissen voor 24 munten" (de eerste %s is "3 vissen", de tweede "24 munten")
+#: scripts/data/ext/meer_logic.gd:109
+msgid "Verkocht: %s voor %s"
+msgstr ""
+
+#: scripts/entities/arena_board.gd:42
+msgid "Scorebord"
+msgstr ""
+
+#: scripts/entities/arena_board.gd:44
+msgid "Trofeeënplank"
+msgstr ""
+
+#. %s is je arena-titel, zoals "Arenastrijder" of "nieuwkomer"
+#: scripts/entities/arena_board.gd:50
+msgid "Beste tijden in de arena. Jouw titel: %s."
+msgstr ""
+
+#: scripts/entities/arena_board.gd:57
+msgid "De trofeeënplank van de arena."
+msgstr ""
+
+#. achter een trofee op de plank: "Bronzen trofee: gewonnen!"
+#: scripts/entities/arena_board.gd:63
+msgid "een verzamelstuk voor kampioenen."
+msgstr ""
+
+#. achter een trofee op de plank: "Bronzen trofee: gewonnen!"
+#: scripts/entities/arena_board.gd:63
+msgid "gewonnen!"
+msgstr ""
+
+#: scripts/entities/arena_board.gd:66
+msgid "Nog niets op de plank. Win een rang en zet hier je eerste trofee neer!"
+msgstr ""
+
+#: scripts/entities/arena_board.gd:68
+msgid "Er is nog plek op de plank. Win meer rangen!"
+msgstr ""
+
+#: scripts/entities/arena_board.gd:70
+msgid "Een volle plank! Jij bent een echte kampioen."
+msgstr ""
+
+#: scripts/entities/arena_board.gd:116
+msgid "SCOREBORD"
+msgstr ""
+
+#: scripts/entities/arena_gong.gd:51
+msgid "Gong"
+msgstr ""
+
+#: scripts/entities/arena_gong.gd:51
+msgid "Een enorme bronzen gong. Bruno slaat hem aan het begin van elke ronde."
+msgstr ""
+
+#. naam van een arena-rang ("Brons-rang") en hoeveel rondes er komen
+#: scripts/entities/arena_master.gd:104
+msgid "%s-rang"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:105
+msgid "De poorten sluiten. %d ronde!"
+msgid_plural "De poorten sluiten. %d rondes!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/entities/arena_master.gd:167
+msgid "Ronde %d"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:167
+msgid "Laatste ronde!"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:278
+msgid "Ronde %d gehaald!"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:278
+msgid "Even rust..."
+msgstr ""
+
+#: scripts/entities/arena_master.gd:317
+msgid "Het publiek gooit een hartje!"
+msgstr ""
+
+#. naam van een arena-rang ("Brons gehaald!"); daaronder je tijd (1:36)
+#: scripts/entities/arena_master.gd:357
+msgid "%s gehaald!"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:358
+msgid "Nieuw record: %s"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:358
+msgid "Tijd: %s"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:386
+msgid "Verslagen!"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:386
+msgid "Bruno vangt je op in de hal."
+msgstr ""
+
+#: scripts/entities/arena_master.gd:386
+msgid "Opgegeven"
+msgstr ""
+
+#: scripts/entities/arena_master.gd:386
+msgid "Geen schande!"
+msgstr ""
+
+#. rang, ronde (2/5), aantal vijanden dat nog over is, tijd: "Brons · Ronde 2/3 · Vijanden 4 · 1:05"
+#: scripts/entities/arena_master.gd:558
+msgid "%s · Ronde %d/%d · Vijanden %d · %s"
+msgstr ""
+
+#: scripts/entities/arrow.gd:153
+msgid "Ketst af!"
+msgstr ""
+
+#: scripts/entities/arrow.gd:156
+msgid "Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."
+msgstr ""
+
+#: scripts/entities/atmosphere.gd:140
+msgid "Goedemorgen!"
+msgstr ""
+
+#: scripts/entities/atmosphere.gd:141
+msgid "Lekker geslapen! Je hebt weer alle hartjes."
+msgstr ""
+
+#: scripts/entities/chest.gd:38
+msgid "De kist is leeg."
+msgstr ""
+
+#: scripts/entities/chest.gd:45
+msgid "Je tas is te vol voor wat er in deze kist zit."
+msgstr ""
+
+#: scripts/entities/chest.gd:56 scripts/entities/guardian.gd:528
+msgid "Gevonden: %d munt"
+msgid_plural "Gevonden: %d munten"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/entities/diepte_seal.gd:71
+msgid "Zegel"
+msgstr ""
+
+#: scripts/entities/diepte_seal.gd:72
+msgid "Een zware steenplaat met een ster erin. De runen gloeien zachtjes."
+msgstr ""
+
+#: scripts/entities/diepte_seal.gd:73
+msgid "Hij zit muurvast. Misschien gaat hij pas open als de Blauwe Kaart weer heel is."
+msgstr ""
+
+#: scripts/entities/diepte_seal.gd:105
+msgid "Het zegel is gebroken! Er is een trap naar beneden."
+msgstr ""
+
+#: scripts/entities/enemy.gd:353
+msgid "Mislukt!"
+msgstr ""
+
+#: scripts/entities/gate.gd:57
+msgid "Je opent het poortje met de sleutel."
+msgstr ""
+
+#: scripts/entities/gate.gd:60
+msgid "De poort zit op slot."
+msgstr ""
+
+#: scripts/entities/guardian.gd:462
+msgid "Beschermd!"
+msgstr ""
+
+#: scripts/entities/meer_kast.gd:37
+msgid "De geheime kast schuift opzij!"
+msgstr ""
+
+#: scripts/entities/meer_lessenaar.gd:50
+msgid "Je hebt alle boeken in de bibliotheek gelezen!"
+msgstr ""
+
+#: scripts/entities/meer_visplek.gd:42
+msgid "Je hebt een hengel nodig. Misschien heeft Visser Joris er een."
+msgstr ""
+
+#: scripts/entities/meer_visplek.gd:69
+msgid "Diepe visplek"
+msgstr ""
+
+#: scripts/entities/meer_visplek.gd:69
+msgid "Visplek"
+msgstr ""
+
+#: scripts/entities/player.gd:209
+msgid "Geen pijlen!"
+msgstr ""
+
+#: scripts/entities/player.gd:231 scripts/ui/menu_ui.gd:259
+msgid "Je hebt al alle hartjes."
+msgstr ""
+
+#: scripts/entities/player.gd:233
+msgid "Je hebt geen helddrank."
+msgstr ""
+
+#: scripts/entities/savepoint.gd:62
+msgid "Voortgang opgeslagen. Je bent genezen!"
+msgstr ""
+
+#: scripts/entities/savepoint.gd:66
+msgid "Altaar ontdekt! Via de kaart (N) reis je er later snel naartoe."
+msgstr ""
+
+#: scripts/entities/shooting_range.gd:143
+msgid "Af!"
+msgstr ""
+
+#. %s is een tijd met één cijfer achter de komma (zie het decimaalteken)
+#: scripts/entities/shooting_range.gd:154
+msgid "Gehaald in %s seconden! Ga naar Tessa voor je beloning."
+msgstr ""
+
+#: scripts/entities/shooting_range.gd:156
+msgid "Gehaald in %s seconden!"
+msgstr ""
+
+#: scripts/entities/shooting_range.gd:163
+msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
+msgstr ""
+
+#. het decimaalteken in jouw taal (in het Engels een punt: ".")
+#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:34
+msgctxt "decimaalteken"
+msgid ","
+msgstr ""
+
+#. aftellen voor de schietbaan: "Klaar? 3"
+#: scripts/entities/shooting_range.gd:220
+msgid "Klaar? %d"
+msgstr ""
+
+#: scripts/entities/shooting_range.gd:226
+msgid "Gehaald!"
+msgstr ""
+
+#: scripts/entities/shooting_range.gd:229 scripts/ui/fishing_ui.gd:333
+msgid "Te laat!"
+msgstr ""
+
+#. wie er "praat" als je een bord leest
+#: scripts/entities/sign.gd:36
+msgid "Bord"
+msgstr ""
+
+#: scripts/ui/achievement_banner.gd:55 scripts/ui/achievement_banner.gd:66
+msgid "Prestatie behaald!"
+msgstr ""
+
+#: scripts/ui/achievement_banner.gd:73
+msgid "Al je prestaties zie je met T, het beestenboek met B."
+msgstr ""
+
+#. toetsen om verder te klikken in een gesprek (spatie = de spatiebalk)
+#: scripts/ui/dialogue_box.gd:127
+msgid "E / spatie  ▼"
+msgstr ""
+
+#. toetsen om verder te klikken in een gesprek (spatie = de spatiebalk)
+#: scripts/ui/dialogue_box.gd:127
+msgid "E / spatie  ✓"
+msgstr ""
+
+#: scripts/ui/dialogue_box.gd:193
+msgid "↑ ↓ kiezen  ·  E bevestigen"
+msgstr ""
+
+#: scripts/ui/ending.gd:48
+msgid "Met een enorme plof zakt de Slijmkoning in elkaar."
+msgstr ""
+
+#: scripts/ui/ending.gd:49
+msgid "Het groene gel trekt weg uit de tempel, sijpelt als een rivier door het land... en verdwijnt."
+msgstr ""
+
+#: scripts/ui/ending.gd:50
+msgid "Het wordt heel stil in de Kristaltempel."
+msgstr ""
+
+#: scripts/ui/ending.gd:53
+msgid "Dankzij jou is Azura weer veilig. De Blauwe Kaart laat weer zien waar het land rustig is."
+msgstr ""
+
+#: scripts/ui/ending.gd:54
+msgid "Ik smeed vanaf nu zwaarden voor op het feest. Nou ja, voor het snijden van de taart."
+msgstr ""
+
+#: scripts/ui/ending.gd:55
+msgid "Mijn winkel draait beter dan ooit! De eerste helddrank van de week is voor jou. Gratis. Ehm... bijna gratis."
+msgstr ""
+
+#: scripts/ui/ending.gd:56
+msgid "De herberg zit vol. Iedereen wil de held van Dageraadsdorp zien."
+msgstr ""
+
+#: scripts/ui/ending.gd:57
+msgid "Muis en ik gaan ook slijmen verslaan. Als ze groter worden dan Muis, rennen we weg."
+msgstr ""
+
+#: scripts/ui/ending.gd:212
+msgid "Kristaltempel"
+msgstr ""
+
+#: scripts/ui/ending.gd:212
+msgid "Vergeten Ruïne"
+msgstr ""
+
+#: scripts/ui/ending.gd:233
+msgid "De Blauwe Kaart is weer heel."
+msgstr ""
+
+#: scripts/ui/ending.gd:238
+msgid "Jouw avontuur"
+msgstr ""
+
+#: scripts/ui/ending.gd:245
+msgid "Speeltijd"
+msgstr ""
+
+#: scripts/ui/ending.gd:246
+msgid "Verslagen vijanden"
+msgstr ""
+
+#: scripts/ui/ending.gd:247
+msgid "Munten"
+msgstr ""
+
+#: scripts/ui/ending.gd:248
+msgid "Zwaard"
+msgstr ""
+
+#: scripts/ui/ending.gd:249
+msgid "Hartjes"
+msgstr ""
+
+#. aantal voltooide opdrachten: "5 van 9"
+#: scripts/ui/ending.gd:251
+msgid "Opdrachten voltooid"
+msgstr ""
+
+#. aantal voltooide opdrachten: "5 van 9"
+#: scripts/ui/ending.gd:251
+msgid "%d van %d"
+msgstr ""
+
+#: scripts/ui/ending.gd:282
+msgid "Bedankt voor het spelen!"
+msgstr ""
+
+#: scripts/ui/ending.gd:283
+msgid "Je voortgang is bewaard: je kunt verder in het dorp."
+msgstr ""
+
+#: scripts/ui/ending.gd:284
+msgid "Druk op E om naar het titelscherm te gaan"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:137
+msgid "Je hebt de Gouden Karper gevangen!"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:237
+msgid "Je gooit uit..."
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:240
+msgid "Wacht op een beet"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:240
+msgid "Esc: stoppen"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:282
+msgid "BEET!  Druk snel op E!"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:290
+msgid "Binnenhalen!"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:313
+msgid "Houd E ingedrukt: omhoog"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:314
+msgid "Houd de vis in het groen!"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:314
+msgid "Laat E los om te zakken  ·  Esc: stoppen"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:323
+msgid "Gevangen!"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:334
+msgid "De vis is ontsnapt."
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:335
+msgid "Druk sneller op E als de dobber zakt."
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:337
+msgid "Hij is ontsnapt!"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:338
+msgid "De lijn werd te slap."
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:339
+msgid "Houd de vis in de groene zone."
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:340
+msgid "E: nog een keer   ·   Esc: stoppen"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:346
+msgid "Zo zeldzaam! Breng hem naar Visser Joris!"
+msgstr ""
+
+#: scripts/ui/fishing_ui.gd:349
+msgid "Joris verzamelt ze. Waarde: %d munt"
+msgid_plural "Joris verzamelt ze. Waarde: %d munten"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/ui/fishing_ui.gd:350
+msgid "Waarde: %d munt"
+msgid_plural "Waarde: %d munten"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scripts/ui/hud.gd:43
+msgid "WASD lopen  ·  SPATIE zwaard  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze"
+msgstr ""
+
+#: scripts/ui/hud.gd:130 scripts/ui/hud.gd:216 scripts/ui/hud.gd:278
+msgid "Game over"
+msgstr ""
+
+#: scripts/ui/hud.gd:185
+msgid "Boog gekregen! Druk op F om te schieten."
+msgstr ""
+
+#. op het game-over-scherm; %s is wie je versloeg, bijvoorbeeld "Kristalgolem (klap)"
+#: scripts/ui/hud.gd:280
+msgid "Verslagen door: %s"
+msgstr ""
+
+#: scripts/ui/hud.gd:282
+msgid "Druk op R om verder te gaan vanaf je laatste opslag  ·  Esc voor het menu"
+msgstr ""
+
+#: scripts/ui/hud.gd:284
+msgid "Druk op R om opnieuw te beginnen  ·  Esc voor het menu"
+msgstr ""
+
+#. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
+#. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
+#: scripts/ui/hud.gd:296 scripts/ui/menu_pages.gd:220
+msgid "%s (%s)"
+msgstr ""
+
+#. het dagdeel bij de klok als het regent: "Avond  ·  regen"
+#: scripts/ui/hud.gd:315
+msgid "%s  ·  regen"
+msgstr ""
+
+#: scripts/ui/intro.gd:30
+msgid "Azura is een land vol bossen, ruïnes en grotten. Eeuwenlang werd het beschermd door de Blauwe Kaart."
+msgstr ""
+
+#: scripts/ui/intro.gd:31
+msgid "De kaart is gemaakt van gloeiend kristal. Hij houdt de slijmen rustig en laat zien waar het land veilig is."
+msgstr ""
+
+#: scripts/ui/intro.gd:32
+msgid "Maar op een nacht barstte de kaart. De drie grote kristallen vlogen het land in, en overal werden de slijmen wild."
+msgstr ""
+
+#: scripts/ui/intro.gd:35
+msgid "Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur... Maar let op: dit is Nieuw spel+. De slijmen zijn sterker geworden, en jij hebt je beste spullen mee!"
+msgstr ""
+
+#: scripts/ui/intro.gd:37
+msgid "Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur..."
+msgstr ""
+
+#: scripts/ui/intro.gd:109
+msgid "Esc = overslaan"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:174
+msgid "Prestaties"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:73
+msgid "%d / %d behaald"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:75
+msgid "Die houd je, ook als je een nieuw spel begint."
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:90
+msgid "Een geheime prestatie. Blijf het spel ontdekken!"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:174
+msgid "Beestenboek"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:134
+msgid "%d / %d ontdekt"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:169
+msgid "Dit beest ken je nog niet.\nVersla hem één keer, dan komt hij in je boek te staan!"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:174
+msgid "Baas"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:176
+msgid "Levens:  %d"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:177
+msgid "Schade:  %s"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:339
+msgid "Verslagen:  %d"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:184
+msgid "Laat vallen"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:187
+msgid "Niets."
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:204
+msgid "%d hartje"
+msgid_plural "%d hartjes"
+msgstr[0] ""
+msgstr[1] ""
+
+#. schade van een vijand, met die van zijn klap: "1 hartje (klap: 2)"
+#: scripts/ui/menu_pages.gd:207
+msgid "%s (klap: %d)"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:214
+msgid "Hartje"
+msgstr ""
+
+#. hoe vaak een vijand iets laat vallen (altijd, vaak, soms, zelden)
+#: scripts/ui/menu_pages.gd:229 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:227
+msgid "altijd"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:231 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:230
+msgid "vaak"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:233 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:232
+msgid "soms"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:235 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:234
+msgid "zelden"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:253
+msgid "Snel reizen"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:255
+msgid "Je hebt nog geen blauw altaar ontdekt. Gebruik een altaar (druk op E erbij), dan kun je er later snel naartoe reizen."
+msgstr ""
+
+#. in de lijst voor snel reizen achter het altaar in het gebied waar je nu bent
+#: scripts/ui/menu_pages.gd:268
+msgid "hier"
+msgstr ""
+
+#. %s is een gebied midden in een zin, zoals "de Vergeten Ruïne" (die staat apart in de vertaling)
+#: scripts/ui/menu_pages.gd:280
+msgid "Reizen naar %s?"
+msgstr ""
+
+#: scripts/ui/menu_pages.gd:281
+msgid "E  ja, reis maar    Esc  nee"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:174
+msgid "Voorwerpen"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:174 scripts/ui/menu_ui.gd:366
+msgid "Opdrachten"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:174
+msgid "Kaart"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:295
+msgid "↑ ↓  altaar kiezen   ·   E  reizen   ·   ← → of LB / RB  tabblad   ·   Esc  sluiten"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:297
+msgid "↑ ↓  bladeren   ·   ← → of LB / RB  tabblad   ·   I Q N T B  openen en sluiten   ·   Esc  sluiten"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:298
+msgid "← → of LB / RB  tabblad   ·   I Q N T B  openen en sluiten   ·   Esc  sluiten"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:309
+msgid "Je spullen"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:311
+msgid "Je hebt nog niets bij je."
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:331
+msgid "Druk op E om te drinken"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:334
+msgid "Zwaard:  %s (schade %d)"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:335
+msgid "Levens:  %d / %d"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:336
+msgid "Snelheid:  snel (laarzen)"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:336
+msgid "Snelheid:  normaal"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:337
+msgid "Munten:  %d"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:338
+msgid "Kristallen:  %d / 3"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:340
+msgid "Speeltijd:  %s"
+msgstr ""
+
+#. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
+#: scripts/ui/menu_ui.gd:345 scripts/ui/pause_menu.gd:108
+msgid "Nieuw spel+  ·  ronde %d"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:368
+msgid "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"
+msgstr ""
+
+#. titel van de hoofdopdracht in het opdrachtenlogboek
+#: scripts/ui/menu_ui.gd:376
+msgid "%s   (hoofdopdracht)"
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:379
+msgid "Voltooid."
+msgstr ""
+
+#: scripts/ui/menu_ui.gd:425
+msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
+msgstr ""
+
+#: scripts/ui/pause_menu.gd:70
+msgid "Pauze"
+msgstr ""
+
+#: scripts/ui/pause_menu.gd:71
+msgid "Verder spelen"
+msgstr ""
+
+#: scripts/ui/pause_menu.gd:72
+msgid "Laatste opslag laden"
+msgstr ""
+
+#: scripts/ui/pause_menu.gd:74
+msgid "Muziek"
+msgstr ""
+
+#: scripts/ui/pause_menu.gd:75
+msgid "Effecten"
+msgstr ""
+
+#: scripts/ui/pause_menu.gd:76
+msgid "Naar titelscherm"
+msgstr ""
+
+#: scripts/ui/pause_menu.gd:142 scripts/ui/title.gd:147
+msgid "Geluid: uit  (M)"
+msgstr ""
+
+#: scripts/ui/pause_menu.gd:142 scripts/ui/title.gd:147
+msgid "Geluid: aan  (M)"
+msgstr ""
+
+#: scripts/ui/shop_ui.gd:27 scripts/ui/shop_ui.gd:71
+msgid "Munten: %d"
+msgstr ""
+
+#: scripts/ui/shop_ui.gd:61
+msgid "↑ ↓ kiezen  ·  E kopen  ·  Esc sluiten"
+msgstr ""
+
+#. achter iets in de winkel dat je maar één keer kunt kopen en al hebt; anders de prijs
+#: scripts/ui/shop_ui.gd:98
+msgid "gekocht"
+msgstr ""
+
+#: scripts/ui/shop_ui.gd:113
+msgid "Je hebt alles gekocht!"
+msgstr ""
+
+#: scripts/ui/shop_ui.gd:134
+msgid "Je hebt niet genoeg munten."
+msgstr ""
+
+#: scripts/ui/shop_ui.gd:145
+msgid "Gekocht: %s"
+msgstr ""
+
+#. melding dat iets bijna vol is, met hoeveel je hebt en het maximum: "Je pijlenkoker zit bijna vol (38 van de 40)"
+#: scripts/ui/shop_ui.gd:154
+msgid "%s (%d van de %d)"
+msgstr ""
+
+#: scripts/ui/title.gd:109
+msgid "Een kleine fantasy-quest"
+msgstr ""
+
+#: scripts/ui/title.gd:110
+msgid "Doorgaan"
+msgstr ""
+
+#: scripts/ui/title.gd:111
+msgid "Nieuw spel"
+msgstr ""
+
+#: scripts/ui/title.gd:112
+msgid "Nieuw spel+"
+msgstr ""
+
+#: scripts/ui/title.gd:113
+msgid "Afsluiten"
+msgstr ""
+
+#: scripts/ui/title.gd:114
+msgid "WASD lopen  ·  SPATIE zwaard  ·  F boog  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze  ·  M geluid"
+msgstr ""

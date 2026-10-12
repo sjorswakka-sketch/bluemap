@@ -459,7 +459,7 @@ func hurt(damage: int, direction: Vector2) -> void:
 	if state == "waking" or state == "phase_shift":
 		# Beschermd: er springen alleen een paar vonken af, en je ziet dat je klap niet telt.
 		world.burst(global_position + direction.normalized() * 18.0, GLOW, 4)
-		world.damage_number(global_position + Vector2(0, -_size_px() * 0.35), "Beschermd!", Color(0.75, 0.8, 0.95))
+		world.damage_number(global_position + Vector2(0, -_size_px() * 0.35), tr("Beschermd!"), Color(0.75, 0.8, 0.95))
 		Sound.play("hit", -10.0, 1.8)
 		return
 	hp -= damage
@@ -525,7 +525,7 @@ func _finish() -> void:
 	Sound.play("star_fanfare")
 	GameState.set_flag(DEFEATED_FLAG)
 	GameState.add_coins(REWARD_COINS)
-	GameState.toast.emit("Gevonden: %d munten" % REWARD_COINS)
+	GameState.toast.emit(tr_n("Gevonden: %d munt", "Gevonden: %d munten", REWARD_COINS) % REWARD_COINS)
 	if GameState.weapon != REWARD_WEAPON:
 		GameState.run(["weapon", REWARD_WEAPON])
 	GameState.finish_quest("diepte")

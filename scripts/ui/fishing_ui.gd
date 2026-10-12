@@ -134,7 +134,7 @@ func _finish(result: String) -> void:
 		_splash(spot.global_position, 30.0, 14)
 		if catch_id == Vis.GOLDEN:
 			Sound.play("crystal", -2.0)
-			GameState.toast.emit("Je hebt de Gouden Karper gevangen!")
+			GameState.toast.emit(tr("Je hebt de Gouden Karper gevangen!"))
 	else:
 		Sound.play("meer_ontsnapt")
 
@@ -234,9 +234,10 @@ func _draw_content() -> void:
 		_draw_line_and_bobber()
 	match phase:
 		"cast":
-			_draw_status("Je gooit uit...", "")
+			_draw_status(tr("Je gooit uit..."), "")
 		"wait":
-			_draw_status("Wacht op een beet" + ".".repeat(1 + int(phase_time * 2.0) % 3), "Esc: stoppen")
+			# De puntjes erachter lopen: "Wacht op een beet.", "..", "...".
+			_draw_status(tr("Wacht op een beet") + ".".repeat(1 + int(phase_time * 2.0) % 3), tr("Esc: stoppen"))
 		"bite":
 			_draw_bite()
 		"reel":
@@ -278,7 +279,7 @@ func _draw_bite() -> void:
 	# Een uitroepteken boven het hoofd van de speler en een balk die leegloopt: nu snel!
 	var head := _screen(world.player.global_position) + Vector2(-32, -140 + sin(phase_time * 30.0) * 4.0)
 	root.draw_texture_rect_region(Art.tex("meer_ui"), Rect2(head, Vector2(16, 16) * ART_PIXEL), Rect2(Vector2(32, 0), Vector2(16, 16)))
-	_draw_status("BEET!  Druk snel op E!", "")
+	_draw_status(tr("BEET!  Druk snel op E!"), "")
 	var left := clampf(1.0 - phase_time / BITE_WINDOW, 0.0, 1.0)
 	root.draw_rect(Rect2(STATUS_PANEL.position + Vector2(10, STATUS_PANEL.size.y - 14), Vector2((STATUS_PANEL.size.x - 20.0) * left, 8)), Color(1.0, 0.45, 0.35))
 
@@ -286,7 +287,7 @@ func _draw_bite() -> void:
 func _draw_reel() -> void:
 	var panel := REEL_PANEL
 	_panel(panel)
-	_text(Vector2(panel.position.x, 160), "Binnenhalen!", 26, GOLD, panel.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+	_text(Vector2(panel.position.x, 160), tr("Binnenhalen!"), 26, GOLD, panel.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 	# De balk met de groene zone en de vis
 	root.draw_rect(BAR, Color(0.07, 0.13, 0.3))
 	for i in range(1, 10):
@@ -309,8 +310,8 @@ func _draw_reel() -> void:
 	var fill_color := Color(0.3, 0.9, 0.45) if reel.in_zone else Color(0.95, 0.55, 0.3)
 	root.draw_rect(Rect2(PROGRESS.position.x, PROGRESS.position.y + PROGRESS.size.y - filled, PROGRESS.size.x, filled), fill_color)
 	root.draw_rect(PROGRESS, Color(0.45, 0.75, 1.0), false, 3.0)
-	_text(Vector2(panel.position.x, 498), "Houd E ingedrukt: omhoog", 16, Color(1, 1, 1, 0.75), panel.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-	_draw_status("Houd de vis in het groen!", "Laat E los om te zakken  ·  Esc: stoppen")
+	_text(Vector2(panel.position.x, 498), tr("Houd E ingedrukt: omhoog"), 16, Color(1, 1, 1, 0.75), panel.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+	_draw_status(tr("Houd de vis in het groen!"), tr("Laat E los om te zakken  ·  Esc: stoppen"))
 
 
 func _draw_result() -> void:
@@ -319,32 +320,34 @@ func _draw_result() -> void:
 	var info := Items.info(catch_id)
 	match outcome:
 		"gevangen":
-			_text(Vector2(card.position.x, 196), "Gevangen!", 34, GOLD, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 196), tr("Gevangen!"), 34, GOLD, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 			var icon: int = int(info["icon"])
 			var bob := sin(phase_time * 5.0) * 4.0
 			root.draw_texture_rect_region(Art.tex(Items.sheet_of(catch_id)), Rect2(card.position.x + card.size.x / 2.0 - 48, 214 + bob, 96, 96),
 				Rect2(Vector2(icon * 16, 0), Vector2(16, 16)))
-			_text(Vector2(card.position.x, 346), info["name"], 28, Color.WHITE, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 346), tr(info["name"]), 28, Color.WHITE, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 			_text(Vector2(card.position.x, 378), _catch_note(), 18, Color(0.85, 0.93, 1.0), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 			if catch_id == Vis.GOLDEN:
 				_draw_sparkles(card)
 		"te_laat":
-			_text(Vector2(card.position.x, 250), "Te laat!", 34, Color(1.0, 0.55, 0.45), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-			_text(Vector2(card.position.x, 296), "De vis is ontsnapt.", 22, Color.WHITE, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-			_text(Vector2(card.position.x, 330), "Druk sneller op E als de dobber zakt.", 18, Color(0.85, 0.93, 1.0), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 250), tr("Te laat!"), 34, Color(1.0, 0.55, 0.45), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 296), tr("De vis is ontsnapt."), 22, Color.WHITE, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 330), tr("Druk sneller op E als de dobber zakt."), 18, Color(0.85, 0.93, 1.0), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 		_:
-			_text(Vector2(card.position.x, 250), "Hij is ontsnapt!", 34, Color(1.0, 0.55, 0.45), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-			_text(Vector2(card.position.x, 296), "De lijn werd te slap.", 22, Color.WHITE, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-			_text(Vector2(card.position.x, 330), "Houd de vis in de groene zone.", 18, Color(0.85, 0.93, 1.0), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-	_text(Vector2(card.position.x, 428), "E: nog een keer   ·   Esc: stoppen", 18, Color(1, 1, 1, 0.65), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 250), tr("Hij is ontsnapt!"), 34, Color(1.0, 0.55, 0.45), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 296), tr("De lijn werd te slap."), 22, Color.WHITE, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 330), tr("Houd de vis in de groene zone."), 18, Color(0.85, 0.93, 1.0), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+	_text(Vector2(card.position.x, 428), tr("E: nog een keer   ·   Esc: stoppen"), 18, Color(1, 1, 1, 0.65), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 
 
 ## Een zinnetje bij de vangst, met wat hij nu oplevert (minder als het dorp vol vis zit, meer met de pet).
 func _catch_note() -> String:
 	if catch_id == Vis.GOLDEN:
-		return "Zo zeldzaam! Breng hem naar Visser Joris!"
-	var value := Logic.price_now(catch_id)
-	return "%sWaarde: %d %s" % ["Joris verzamelt ze. " if catch_id == "meer_laars" else "", value, "munt" if value == 1 else "munten"]
+		return tr("Zo zeldzaam! Breng hem naar Visser Joris!")
+	var value: int = Logic.price_now(catch_id)
+	if catch_id == "meer_laars":
+		return tr_n("Joris verzamelt ze. Waarde: %d munt", "Joris verzamelt ze. Waarde: %d munten", value) % value
+	return tr_n("Waarde: %d munt", "Waarde: %d munten", value) % value
 
 
 func _draw_sparkles(card: Rect2) -> void:

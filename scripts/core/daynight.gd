@@ -108,5 +108,15 @@ static func rain_tint(level: float) -> Color:
 	return Color.WHITE.lerp(RAIN_TINT, clampf(level, 0.0, 1.0))
 
 
+## De naam van het dagdeel voor in beeld (vertaald). phase_at() geeft de vaste naam ("ochtend") voor voorwaarden.
 static func phase_label(t: float) -> String:
+	match phase_at(t):
+		"ochtend":
+			return TranslationServer.translate("Ochtend")
+		"dag":
+			return TranslationServer.translate("Dag")
+		"avond":
+			return TranslationServer.translate("Avond")
+		"nacht":
+			return TranslationServer.translate("Nacht")
 	return phase_at(t).capitalize()

@@ -35,13 +35,14 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	if opened:
-		GameState.toast.emit("De kist is leeg.")
+		GameState.toast.emit(tr("De kist is leeg."))
 		return
 	# Past iets niet meer (een volle pijlenkoker)? Dan blijft de kist dicht, zodat er niets verloren gaat.
 	for entry: Array in contents:
 		if entry[0] != "coins" and GameState.room(entry[0]) < int(entry[1]):
 			Sound.play("error", -3.0)
-			GameState.toast.emit(Items.info(entry[0]).get("chest_full_text", "Je tas is te vol voor wat er in deze kist zit."))
+			var info := Items.info(entry[0])
+			GameState.toast.emit(tr(info["chest_full_text"]) if info.has("chest_full_text") else tr("Je tas is te vol voor wat er in deze kist zit."))
 			return
 	opened = true
 	if unique_key != "":
@@ -51,7 +52,8 @@ func interact() -> void:
 	for entry: Array in contents:
 		if entry[0] == "coins":
 			GameState.add_coins(int(entry[1]))
-			GameState.toast.emit("Gevonden: %d munten" % int(entry[1]))
+			var coins := int(entry[1])
+			GameState.toast.emit(tr_n("Gevonden: %d munt", "Gevonden: %d munten", coins) % coins)
 		else:
 			GameState.give(entry[0], int(entry[1]))
 

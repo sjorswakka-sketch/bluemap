@@ -206,7 +206,7 @@ func _shoot() -> void:
 		Sound.play("error", -3.0)
 		if no_arrows_toast <= 0.0:
 			no_arrows_toast = NO_ARROWS_TOAST_TIME
-			GameState.toast.emit("Geen pijlen!")
+			GameState.toast.emit(tr("Geen pijlen!"))
 		return
 	if not lent:
 		GameState.take("arrow")
@@ -228,9 +228,9 @@ func _drink() -> void:
 			world.damage_number(global_position + Vector2(0, -18), "+", Color(0.5, 1.0, 0.6))
 			world.burst(global_position, Color(0.5, 1.0, 0.6), 10)
 	elif GameState.count("potion") > 0:
-		GameState.toast.emit("Je hebt al alle hartjes.")
+		GameState.toast.emit(tr("Je hebt al alle hartjes."))
 	else:
-		GameState.toast.emit("Je hebt geen helddrank.")
+		GameState.toast.emit(tr("Je hebt geen helddrank."))
 
 
 func _update_target() -> void:

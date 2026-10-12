@@ -5,8 +5,8 @@ const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Util := preload("res://scripts/core/util.gd")
 
-var lines: Array = []
-var speaker := "Bord"
+var lines: Array = [] # Nederlands, uit de kaart (vertaald bij het lezen)
+var speaker := "" # wie er "praat" (uit de kaart); leeg: "Bord"
 var world: Node
 var t := 0.0
 var player: Node2D
@@ -31,7 +31,9 @@ func _process(delta: float) -> void:
 
 
 func interact() -> void:
-	GameState.say(speaker, lines)
+	var shown_lines := lines.map(func(line: String) -> String: return tr(line) if line != "" else "")
+	# Vertalers: wie er "praat" als je een bord leest
+	GameState.say(tr(speaker) if speaker != "" else tr("Bord"), shown_lines)
 
 
 func _draw() -> void:

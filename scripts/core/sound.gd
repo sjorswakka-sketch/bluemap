@@ -136,6 +136,7 @@ func set_sfx_volume(value: float) -> void:
 
 func save_settings() -> void:
 	var config := ConfigFile.new()
+	config.load(SETTINGS_PATH) # de rest van het bestand (zoals de taal, zie lang.gd) blijft staan
 	config.set_value("audio", "muted", muted)
 	config.set_value("audio", "music", music_volume)
 	config.set_value("audio", "sfx", sfx_volume)

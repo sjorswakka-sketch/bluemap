@@ -59,11 +59,11 @@ func interact() -> void:
 	Sound.play("save")
 	flash = 0.6
 	world.burst(global_position + Vector2(0, -6), Color(0.5, 0.85, 1.0), 16)
-	GameState.toast.emit("Voortgang opgeslagen. Je bent genezen!")
+	GameState.toast.emit(tr("Voortgang opgeslagen. Je bent genezen!"))
 	if first_time:
 		Sound.play("wereld_altaar", -2.0)
 		world.ring(global_position + Vector2(0, -6), 54.0, Color(0.5, 0.85, 1.0))
-		GameState.toast.emit("Altaar ontdekt! Via de kaart (N) reis je er later snel naartoe.")
+		GameState.toast.emit(tr("Altaar ontdekt! Via de kaart (N) reis je er later snel naartoe."))
 
 
 func _draw() -> void:

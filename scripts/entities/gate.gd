@@ -9,7 +9,7 @@ var gate_id := ""
 var size_tiles := Vector2i(1, 1)
 var block_if: Array = []   # de poort is dicht zolang dit klopt
 var key_item := ""         # voorwerp dat de poort opent (wordt gebruikt)
-var locked_text := "De poort zit op slot."
+var locked_text := "" # de melding als hij dicht zit (Nederlands, uit de kaart; leeg: "De poort zit op slot.")
 var world: Node
 var blocked := true
 var shape: CollisionShape2D
@@ -44,7 +44,7 @@ func _refresh(first: bool) -> void:
 		Sound.play("door")
 	blocked = now
 	shape.set_deferred("disabled", not blocked)
-	if blocked and (key_item != "" or locked_text != ""):
+	if blocked: # dicht: je kunt hem aanspreken (een sleutel gebruiken, of horen waarom hij dicht is)
 		add_to_group("interactable")
 	else:
 		remove_from_group("interactable")
@@ -54,10 +54,10 @@ func interact() -> void:
 	if key_item != "" and GameState.count(key_item) > 0:
 		GameState.take(key_item)
 		GameState.set_flag("gate_" + gate_id)
-		GameState.toast.emit("Je opent het poortje met de sleutel.")
+		GameState.toast.emit(tr("Je opent het poortje met de sleutel."))
 	else:
 		Sound.play("error", -3.0)
-		GameState.toast.emit(locked_text)
+		GameState.toast.emit(tr(locked_text) if locked_text != "" else tr("De poort zit op slot."))
 
 
 func _draw() -> void:

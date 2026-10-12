@@ -23,12 +23,14 @@ pixel art, en te delen met vrienden en de community.
   - [x] **De Diepte en Nieuw spel+.** Na het einde een geheime dungeon onder de tempel, de geheime baas De Vergeten Wachter
         met drie fases, het Sterrenzwaard, en Nieuw spel+ met je beste spullen tegen sterkere vijanden
   - [x] **Arena.** Golven vijanden, drie rangen (Brons, Zilver, Goud), publiek, trofeeën, titels en beste tijden
+- [x] **Talen.** Vertaalsysteem (gettext, `translations/en.po`, `tools/i18n.py`), taalknop op het titelscherm en in het
+      pauzemenu. Nederlands is de brontaal; de Engelse vertaling wordt nog ingevuld
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen, schilden en uitrusting
 - Een echte wereldkaart met alle gebieden
-- Meerdere talen
+- Nog meer talen (een PO-bestand erbij, zie de README onder "Talen")
 - Echte pixel art van een kunstenaar en opgenomen muziek: vervang gewoon de bestanden in `assets/`
 
 Elke wijziging eindigt met een geslaagde `sh tools/run_tests.sh`.

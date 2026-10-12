@@ -1174,7 +1174,8 @@ func test_new_game_plus() -> void:
 	check(current_scene != null and current_scene.scene_file_path.ends_with("intro.tscn"), "het begint met de intro")
 	var intro: Control = current_scene
 	await frames(3)
-	check(intro.pages[intro.pages.size() - 1].find("Nieuw spel+") >= 0 and intro.PAGES[intro.PAGES.size() - 1].find("Nieuw spel+") < 0, "de intro heeft een extra zin bij Nieuw spel+")
+	var plain_pages: Array[String] = intro.build_pages(0)
+	check(intro.pages[intro.pages.size() - 1].find("Nieuw spel+") >= 0 and plain_pages[plain_pages.size() - 1].find("Nieuw spel+") < 0, "de intro heeft een extra zin bij Nieuw spel+")
 	intro.queue_free()
 	await frames(3)
 	gs.new_game()

@@ -25,7 +25,7 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | `Spatie` / `J` | X | Zwaard |
 | `F` / `L` | rechter trekker | Boog: een pijl schieten (zodra je een boog hebt) |
 | `Shift` / `K` | B | Rollen (je bent even onraakbaar) |
-| `E` / `Enter` | A | Praten, kisten en altaren openen, lezen, vissen bij een visplek, doorklikken |
+| `E` / `Enter` | A | Praten, kisten en altaren openen, lezen, vissen bij een visplek, doorklikken; op het titelscherm en in het pauzemenu: de gekozen knop indrukken |
 | `H` | Y | Helddrank drinken |
 | `I` / `Tab` | Back | Menu: voorwerpen |
 | `Q` | linker schouderknop | Menu: opdrachten |
@@ -36,6 +36,7 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | `↑` `↓` | d-pad | In het menu: kiezen en bladeren (ook door lange lijsten) |
 | `Esc` / `P` | Start | Pauze |
 | `M` | | Geluid aan/uit |
+| `↑` `↓` en `E` | d-pad en A | Taal wisselen: de knop *Taal: Nederlands* / *Language: English* op het titelscherm (rechtsboven) en in het pauzemenu |
 | `F11` | | Volledig scherm |
 | `R` | Start | Na game over: verder vanaf je laatste opslag |
 
@@ -84,6 +85,8 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 - **Opslaan:** automatisch bij het wisselen van gebied, en bij de blauwe altaren (die genezen je ook).
 - **Extra's:** titelscherm met "Doorgaan", intro, kaartje, geluid en muziek per gebied (volumes in het pauzemenu),
   ondersteuning voor een controller, en een eindscherm met aftiteling.
+- **Talen:** Nederlands, en Engels zodra de vertaling is ingevuld (zie [Talen](#talen)). Wisselen kan op het titelscherm en
+  in het pauzemenu.
 
 ## Tips voor spelers
 
@@ -103,9 +106,9 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 ## Mappen
 
 ```
-project.godot          Instellingen, toetsen en autoloads (GameState en Sound)
+project.godot          Instellingen, toetsen, vertalingen en autoloads (Lang, GameState en Sound)
 scenes/                title, intro, main (de wereld) en ending
-scripts/core/          GameState (voortgang, opslaan, voorwaarden en acties), Sound, hulpfuncties
+scripts/core/          GameState (voortgang, opslaan, voorwaarden en acties), Sound, Lang (de taal), hulpfuncties
 scripts/data/          ALLE INHOUD: items, vijanden, personages, dialoog, opdrachten, winkels, tegels, aftiteling
 scripts/data/ext/      Uitbreidingen als losse modules (zie scripts/data/content.gd), bijvoorbeeld meer.gd voor het Zilvermeer
 scripts/maps/          De kaarten (tekst!) en het register
@@ -113,7 +116,8 @@ scripts/entities/      Speler, vijand, personage, voorwerp, kist, poort, altaar,
 scripts/ui/            HUD, dialoogvenster, menu, winkel, pauze, titel, intro en einde
 scripts/world.gd       Laadt kaarten en zet alles neer
 assets/                Pixel art (PNG) en geluid (assets/audio, WAV)
-tools/                 Scripts die plaatjes, geluid en kaarten maken en controleren
+translations/          De vertalingen (en.po: Engels), zie "Talen"
+tools/                 Scripts die plaatjes, geluid en kaarten maken en controleren, en tools/i18n.py voor de vertalingen
 tests/                 De speltests (*_test.gd) en de balans-simulaties (*_sim.gd)
 export_presets.cfg     Instellingen voor de Windows-versie
 .github/workflows/     Automatisch een Windows-versie bouwen
@@ -121,7 +125,8 @@ export_presets.cfg     Instellingen voor de Windows-versie
 
 ## Zelf aanpassen
 
-Bijna alles wat met inhoud te maken heeft staat als leesbare tekst in `scripts/data/` en `scripts/maps/`.
+Bijna alles wat met inhoud te maken heeft staat als leesbare tekst in `scripts/data/` en `scripts/maps/`. Schrijf tekst
+gewoon in het Nederlands; heb je tekst veranderd of toegevoegd, werk dan de vertaling bij (zie [Talen](#talen)).
 
 - **Gesprekken:** `scripts/data/dialogue.gd`. Elk gesprek bestaat uit regels, eventueel keuzes en acties
   (een voorwerp geven, een opdracht starten...). De mogelijke voorwaarden en acties staan bovenaan `scripts/core/game_state.gd`.
@@ -192,6 +197,10 @@ Dat draait alle tests in `tests/` (`*_test.gd`):
   uitbreiding: gedrag, opdrachten van begin tot eind, opslaan en laden, en of alles op de kaarten bereikbaar is.
 - `samen_test.gd` test de samenhang tussen de uitbreidingen: oude opslagen, prestaties, het beestenboek, de arena-vijanden,
   snel reizen en de tekens in teksten.
+- `taal_test.gd` test de talen: de taalkeuze en de taalknoppen, het spel in het Engels (met een kleine test-vertaling) en
+  of `translations/en.po` bij de code past (zie [Talen](#talen)).
+
+De tests draaien in het Nederlands: `run_tests.sh` zet `BLUEMAP_LANG=nl`.
 
 Alles eindigt met `ALLE TESTS GESLAAGD`, en bij een scriptfout stopt het met een foutmelding. De tests schrijven in een
 eigen opslagmap (`.testdata`), dus je eigen spel blijft onaangeroerd.
@@ -205,6 +214,89 @@ Meer gereedschap:
   Pas je de rondes in `scripts/data/arena.gd` aan, draai dan deze bot weer.
 - `python3 tools/check_audio.py`: controleert geluiden en muzieklussen op clipping, tikjes en de juiste noten.
 - `python3 tools/gen_maps.py`: controleert of alles op de oorspronkelijke acht kaarten bereikbaar is.
+
+## Talen
+
+Het spel is in het Nederlands geschreven. Engels komt erbij via een vertaling: zolang een tekst nog geen Engelse
+vertaling heeft, staat hij in het Nederlands in beeld.
+
+### De taal kiezen
+
+Op het titelscherm (rechtsboven) en in het pauzemenu staat de knop **Taal: Nederlands** (in het Engels: **Language:
+English**). Eén druk (`E`, `Enter` of A op de controller) wisselt de taal, en alles op het scherm verandert meteen mee.
+De keuze wordt bewaard in `user://settings.cfg` (sectie `[taal]`, naast de instellingen van het geluid). Zonder
+bewaarde keuze bepaalt de omgevingsvariabele `BLUEMAP_LANG` de taal (`nl` of `en`), en anders je computer: Nederlands
+als die Nederlands is, anders Engels.
+
+### Hoe het werkt
+
+Het systeem is gettext met Godot's eigen `TranslationServer`. `translations/en.po` heeft voor elke tekst de Nederlandse
+brontekst (`msgid`) en de Engelse vertaling (`msgstr`). Nederlands heeft geen eigen bestand: in het Nederlands, of als
+een vertaling ontbreekt, blijft de brontekst staan (in `project.godot` is Nederlands de terugvaltaal). De autoload `Lang`
+(`scripts/core/lang.gd`) kiest de taal en geeft het signaal `changed` als hij verandert.
+
+Alle tekst gaat precies één keer door de vertaling, op het moment dat hij in beeld komt:
+
+- **Tekst in de code:** `tr("Je hebt geen helddrank.")`. In een statische functie of een content-module (die de naam
+  `Lang` niet mogen gebruiken) `TranslationServer.translate("...")`. Vertaal altijd eerst het sjabloon en vul het daarna
+  in: `tr("Gekregen: %s") % naam`. Een getal waar een meervoud bij hoort: `tr_n("%d munt", "%d munten", n) % n`. Plak
+  nooit stukken zinnen aan elkaar; schrijf liever twee hele zinnen.
+- **Tekst uit de data** (gesprekken, voorwerpen, kaarten...): blijft Nederlands in `scripts/data/` en `scripts/maps/`.
+  Het scherm dat hem toont doet `tr(tekst)` en vult daarna pas de `{tekens}` in (`GameState.fmt`).
+- Godot vertaalt de tekst van Labels en Buttons normaal zelf; dat staat uit (anders wordt tekst dubbel vertaald). Geef
+  een Label dus tekst die al vertaald is, en werk hem bij als `Lang.changed` komt.
+- Uitleg voor de vertalers zet je als commentaar vlak boven de regel: `# Vertalers: ...`.
+
+### De vertaling bijwerken na het wijzigen van tekst
+
+```
+python3 tools/i18n.py extract --godot /pad/naar/godot   # translations/en.po bijwerken
+python3 tools/i18n.py check                             # wat ontbreekt er, en kloppen de plaatsaanduidingen?
+```
+
+`extract` laat Godot de echte data doorlopen (`tools/i18n_extract.gd`: gesprekken, voorwerpen, opdrachten, kaarten,
+de aftiteling, alle uitbreidingen...) en zoekt in de code alle `tr(...)`, `tr_n(...)` en `TranslationServer.translate(...)`
+met letterlijke tekst. Nieuwe teksten komen erbij met een lege vertaling, bestaande vertalingen blijven staan en teksten
+die niet meer bestaan gaan eruit. Een veranderde Nederlandse zin is dus een nieuwe tekst die opnieuw vertaald moet worden.
+In plaats van `--godot` kun je ook `GODOT=/pad/naar/godot` zetten.
+
+### Vertalen (ook in delen)
+
+```
+python3 tools/i18n.py split --parts 7 --out vertaling/   # 7 PO-bestanden van ongeveer even veel woorden
+#   ... vul in elk deel de msgstr-regels in ...
+python3 tools/i18n.py merge vertaling/                    # de vertalingen terug in translations/en.po
+python3 tools/i18n.py check
+```
+
+Met `split --untranslated` krijg je alleen de teksten die nog geen vertaling hebben. Bij elke tekst staat uitleg (`#.`:
+wie het zegt, waar het staat) en waar hij in de scripts staat (`#:`). Regels om op te letten:
+
+- Plaatsaanduidingen blijven staan: `{crystals}`, `%s`, `%d`, `%.1f`... De `%`-tekens moeten in dezelfde volgorde blijven
+  (ze worden op volgorde ingevuld); `{tekens}` mogen overal in de zin. `check` en de test controleren dat.
+- Meervouden hebben twee vormen: `msgstr[0]` voor 1, `msgstr[1]` voor alle andere aantallen.
+- `msgctxt` maakt dezelfde Nederlandse tekst met een andere betekenis los, zoals `klap` (een aanval) en `,` (het
+  decimaalteken: in het Engels een punt).
+- Namen (Pim, Azura) mogen hetzelfde blijven; vul ze dan toch in, anders telt de tekst als ontbrekend.
+
+### Wanneer is de test streng?
+
+`tests/taal_test.gd` controleert altijd dat `en.po` bij de code past (elke tekst erin, geen verouderde teksten) en dat elke
+ingevulde vertaling dezelfde plaatsaanduidingen heeft. Of een **ontbrekende** vertaling een fout is:
+
+- zolang `en.po` nog helemaal leeg is: nee (de test meldt alleen hoeveel er nog te doen is);
+- zodra er minstens één vertaling in staat: ja, dan moet alles vertaald zijn;
+- met `I18N_ALLOW_MISSING=1 sh tools/run_tests.sh ...` nooit (handig zolang je nog aan het vertalen bent).
+
+### Een nieuwe taal toevoegen
+
+1. `python3 tools/i18n.py extract --lang de --godot /pad/naar/godot` maakt `translations/de.po` met alle teksten. Past
+   `Plural-Forms` in de kop niet bij de taal, pas hem dan aan (en draai extract opnieuw).
+2. Meld het bestand aan in `project.godot` (`internationalization/locale/translations`, of in de editor: Projectinstellingen >
+   Lokalisatie).
+3. Zet de taal in `LANGUAGES` in `scripts/core/lang.gd`, met de tekst voor de taalknop in die taal zelf, bijvoorbeeld
+   `"de": "Sprache: Deutsch"`. De knop wisselt dan Nederlands > Engels > Duits.
+4. Vertaal, en controleer met `python3 tools/i18n.py check translations/de.po`.
 
 ## Een Windows-versie (.exe) maken
 

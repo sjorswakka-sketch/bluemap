@@ -150,10 +150,10 @@ func _bounce(enemy: Node2D) -> void:
 	timer = BOUNCE_TIME
 	Sound.play("boog_kets", -4.0, randf_range(0.95, 1.08))
 	world.burst(global_position, SPARK, 8)
-	world.damage_number(global_position + Vector2(0, -18), "Ketst af!", SPARK)
+	world.damage_number(global_position + Vector2(0, -18), tr("Ketst af!"), SPARK)
 	if not enemy.has_meta("boog_kets_hint"):
 		enemy.set_meta("boog_kets_hint", true)
-		GameState.toast.emit("Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap.")
+		GameState.toast.emit(tr("Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."))
 
 
 func _is_boss(enemy: Node2D) -> bool:

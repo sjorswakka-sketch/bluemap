@@ -62,6 +62,7 @@ var banner_title: Label
 var banner_sub: Label
 var banner_time := 0.0
 var banner_total := 1.0
+var banner_text := Callable() # geeft [titel, ondertitel] in de huidige taal (zie _set_banner)
 var status_panel: PanelContainer
 var status: Label
 
@@ -75,6 +76,7 @@ func _ready() -> void:
 	field = Rect2(Vector2(f[0], f[1]) * TILE, Vector2(f[2] - f[0] + 1, f[3] - f[1] + 1) * TILE)
 	rng.randomize()
 	_build_ui()
+	Lang.changed.connect(_on_language_changed)
 	var signed_up := Arena.registered_rank()
 	if signed_up != "":
 		start_run(signed_up)
@@ -97,7 +99,10 @@ func start_run(rank_id: String) -> void:
 	phase = "intro"
 	timer = INTRO_TIME
 	var info: Dictionary = Arena.RANKS[rank]
-	_set_banner("%s-rang" % info["name"], "De poorten sluiten. %d rondes!" % rounds.size(), info["color"], INTRO_TIME)
+	var count := rounds.size()
+	# Vertalers: naam van een arena-rang ("Brons-rang") en hoeveel rondes er komen
+	_set_banner(func() -> Array: return [tr("%s-rang") % tr(info["name"]),
+		tr_n("De poorten sluiten. %d ronde!", "De poorten sluiten. %d rondes!", count) % count], info["color"], INTRO_TIME)
 	_hide_map_name.call_deferred() # onze banner vervangt de kaartnaam
 	_cheer_crowd(0.6)
 	Sound.play("arena_crowd", -6.0)
@@ -159,7 +164,7 @@ func _start_round(index: int) -> void:
 	heart_thrown = false
 	var last := index == rounds.size() - 1
 	var info: Dictionary = Arena.RANKS[rank]
-	_set_banner("Ronde %d" % (index + 1), "Laatste ronde!" if last else "", info["color"], 2.4)
+	_set_banner(func() -> Array: return [tr("Ronde %d") % (index + 1), tr("Laatste ronde!") if last else ""], info["color"], 2.4)
 	Sound.play("arena_gong")
 	_cheer_crowd(0.7)
 	world.shake(2.5)
@@ -269,7 +274,8 @@ func _round_clear() -> void:
 	phase = "rest"
 	timer = REST_TIME
 	_clear_projectiles() # een pijl die nog onderweg is mag je in de rust niet meer raken
-	_set_banner("Ronde %d gehaald!" % (round_index + 1), "Even rust...", Color(0.6, 1.0, 0.7), REST_TIME)
+	var done := round_index + 1
+	_set_banner(func() -> Array: return [tr("Ronde %d gehaald!") % done, tr("Even rust...")], Color(0.6, 1.0, 0.7), REST_TIME)
 	Sound.play("arena_crowd", -3.0)
 	_cheer_crowd(1.0)
 	if GameState.hp < GameState.max_hp():
@@ -308,7 +314,7 @@ func _check_low_hp() -> void:
 	flying_hearts.append({"heart": heart, "from": from, "land": _landing_spot(player.global_position), "t": 0.0})
 	_cheer_crowd(0.6)
 	Sound.play("arena_cheer", -4.0)
-	GameState.toast.emit("Het publiek gooit een hartje!")
+	GameState.toast.emit(tr("Het publiek gooit een hartje!"))
 
 
 ## Het hartje vliegt in een boog van de tribune naar het zand.
@@ -345,8 +351,11 @@ func _victory() -> void:
 	_release_run()
 	_clear_projectiles() # een pijl of steen die nog vliegt kan je na de overwinning niet meer raken
 	world.autosave() # de beloning is binnen, ook als je het spel nu afsluit
-	var shown := "Nieuw record: %s" if result["record"] and not result["first_time"] else "Tijd: %s"
-	_set_banner("%s gehaald!" % info["name"], shown % Arena.format_time(run_time), info["color"], 6.0)
+	var record: bool = result["record"] and not result["first_time"]
+	var time_text := Arena.format_time(run_time)
+	# Vertalers: naam van een arena-rang ("Brons gehaald!"); daaronder je tijd (1:36)
+	_set_banner(func() -> Array: return [tr("%s gehaald!") % tr(info["name"]),
+		(tr("Nieuw record: %s") if record else tr("Tijd: %s")) % time_text], info["color"], 6.0)
 	Sound.play("arena_fanfare")
 	Sound.play("arena_crowd")
 	Sound.play_music("arena")
@@ -374,7 +383,8 @@ func _lose(reason: String) -> void:
 	GameState.set_flag(Arena.SIGNED_FLAG % rank, false) # de inschrijving is gebruikt, ook als je opgeeft voor de eerste gong
 	GameState.transitioning = true # tot we in de hal staan kan niemand iets doen
 	var lost := reason == "defeat"
-	_set_banner("Verslagen!" if lost else "Opgegeven", "Bruno vangt je op in de hal." if lost else "Geen schande!", Color(1.0, 0.45, 0.4), DEFEAT_TIME + 0.4)
+	_set_banner(func() -> Array: return [tr("Verslagen!"), tr("Bruno vangt je op in de hal.")] if lost else [tr("Opgegeven"), tr("Geen schande!")],
+		Color(1.0, 0.45, 0.4), DEFEAT_TIME + 0.4)
 	Sound.play("arena_defeat" if lost else "arena_gong")
 	_clear_field()
 	await get_tree().create_timer(DEFEAT_TIME).timeout
@@ -510,13 +520,26 @@ func _build_ui() -> void:
 	status_panel.add_child(status)
 
 
-func _set_banner(title: String, sub: String, color: Color, duration: float) -> void:
-	banner_title.text = title
+## Een grote melding midden in beeld. `text_of` geeft [titel, ondertitel] in de huidige taal (een lege ondertitel
+## wordt niet getoond); wissel je in het pauzemenu van taal terwijl hij in beeld is, dan verandert hij meteen mee.
+func _set_banner(text_of: Callable, color: Color, duration: float) -> void:
+	banner_text = text_of
+	_fill_banner()
 	banner_title.add_theme_color_override("font_color", color)
-	banner_sub.text = sub
-	banner_sub.visible = sub != ""
 	banner_time = duration
 	banner_total = duration
+
+
+func _fill_banner() -> void:
+	var texts: Array = banner_text.call()
+	banner_title.text = texts[0]
+	banner_sub.text = texts[1]
+	banner_sub.visible = texts[1] != ""
+
+
+func _on_language_changed(_locale: String) -> void:
+	if banner_text.is_valid():
+		_fill_banner()
 
 
 func _update_banner(delta: float) -> void:
@@ -531,5 +554,6 @@ func _update_status() -> void:
 	status_panel.visible = phase in PHASES_ACTIVE and round_index >= 0
 	if not status_panel.visible:
 		return
-	status.text = "%s · Ronde %d/%d · Vijanden %d · %s" % [
-		Arena.RANKS[rank]["name"], round_index + 1, rounds.size(), foes_left(), Arena.format_time(run_time)]
+	# Vertalers: rang, ronde (2/5), aantal vijanden dat nog over is, tijd: "Brons · Ronde 2/3 · Vijanden 4 · 1:05"
+	status.text = tr("%s · Ronde %d/%d · Vijanden %d · %s") % [
+		tr(Arena.RANKS[rank]["name"]), round_index + 1, rounds.size(), foes_left(), Arena.format_time(run_time)]

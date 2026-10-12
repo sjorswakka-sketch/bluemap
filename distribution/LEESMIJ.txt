@@ -20,6 +20,10 @@ Besturing
   Een controller werkt ook: stick lopen, X zwaard, rechter trekker boog, B rollen, A praten, Y drankje, Start pauze.
   In het menu bladeren de schouderknoppen door de tabbladen.
 
+Taal / Language
+  Op het titelscherm (rechtsboven) en in het pauzemenu wissel je met de knop "Taal: Nederlands" van taal.
+  On the title screen (top right) and in the pause menu, the "Language: English" button switches the language.
+
 Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.

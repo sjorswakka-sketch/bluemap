@@ -350,7 +350,7 @@ func _mage_interrupt() -> void:
 	state = "idle"
 	state_time = 0.0
 	world.burst(global_position, MAGE_COLOR, 8)
-	world.damage_number(global_position + Vector2(0, -_size_px() * 0.9), "Mislukt!", MAGE_COLOR)
+	world.damage_number(global_position + Vector2(0, -_size_px() * 0.9), tr("Mislukt!"), MAGE_COLOR)
 
 
 ## Eenmalig een tip als je deze soort vijand voor het eerst tegenkomt (de vlag wordt mee opgeslagen).
@@ -360,7 +360,7 @@ func _show_hint() -> void:
 	var seen_flag := "vijanden_hint_" + kind
 	if hint != "" and not GameState.flag(seen_flag):
 		GameState.set_flag(seen_flag)
-		GameState.toast.emit(hint)
+		GameState.toast.emit(tr(hint))
 		special_timer = maxf(special_timer, HINT_DELAY)
 
 

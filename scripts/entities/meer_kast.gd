@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 		world.shake(4.0)
 		for cell in cells:
 			world.burst(Vector2(cell) * 32.0 + Vector2(16, 16), DUST, 14)
-		GameState.toast.emit("De geheime kast schuift opzij!")
+		GameState.toast.emit(tr("De geheime kast schuift opzij!"))
 
 
 func _clear_cells() -> void:

@@ -163,7 +163,8 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	player.camera.reset_smoothing()
 
 	Sound.play_music(map_data.get("music", "forest"))
-	hud.show_banner(map_data["name"])
+	var map_name: String = map_data["name"]
+	hud.show_banner(func() -> String: return tr(map_name))
 
 
 ## Hoeveel kunstlicht (fakkels, lantaarns, ramen) er nu nodig is: 0 overdag, 1 in het donker.
@@ -295,7 +296,7 @@ func _spawn_objects() -> void:
 			"sign":
 				var sign_node: StaticBody2D = SignScript.new()
 				sign_node.lines = obj["lines"]
-				sign_node.speaker = obj.get("speaker", "Bord")
+				sign_node.speaker = obj.get("speaker", "")
 				sign_node.world = self
 				sign_node.position = pos
 				entities.add_child(sign_node)
@@ -316,7 +317,7 @@ func _spawn_objects() -> void:
 				gate.size_tiles = Vector2i(gsize[0], gsize[1])
 				gate.block_if = obj.get("block_if", [])
 				gate.key_item = obj.get("key", "")
-				gate.locked_text = obj.get("locked_text", "De poort zit op slot.")
+				gate.locked_text = obj.get("locked_text", "")
 				gate.world = self
 				gate.position = pos
 				entities.add_child(gate)

@@ -78,7 +78,7 @@ func _warn_full(info: Dictionary) -> void:
 		return
 	_last_full_warning = Engine.get_process_frames()
 	Sound.play("error", -3.0)
-	GameState.toast.emit(info.get("full_text", "Je tas is vol"))
+	GameState.toast.emit(GameState.full_text(item))
 
 
 func _draw() -> void:

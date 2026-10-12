@@ -11,11 +11,11 @@ const Daynight := preload("res://scripts/core/daynight.gd")
 signal hp_changed
 signal items_changed
 signal quests_changed
-signal toast(text: String)
+signal toast(text: String) # tekst die al vertaald is (zie scripts/core/lang.gd)
 signal game_over
 signal ending_requested
 signal dialogue_requested(dialogue_id: String)
-signal text_dialogue_requested(speaker: String, lines: Array)
+signal text_dialogue_requested(speaker: String, lines: Array) # al vertaald, zie say()
 signal shop_requested(shop_id: String)
 signal save_requested
 signal world_action(action: Array)
@@ -324,7 +324,7 @@ func give(item_id: String, amount: int = 1, quiet: bool = false) -> void:
 		amount = space
 		if amount <= 0:
 			if not quiet:
-				toast.emit(Items.info(item_id).get("full_text", "Je tas is vol"))
+				toast.emit(full_text(item_id))
 			return
 	inventory[item_id] = count(item_id) + amount
 	if item_id == "heart_container":
@@ -332,10 +332,26 @@ func give(item_id: String, amount: int = 1, quiet: bool = false) -> void:
 		hp_changed.emit()
 	items_changed.emit()
 	if not quiet:
-		var label: String = Items.info(item_id)["name"]
-		var full := ". %s!" % Items.info(item_id).get("full_text", "Je tas is vol") if cut_off else ""
-		toast.emit("Gekregen: %s%s%s" % [label, "" if amount == 1 else " x%d" % amount, full])
+		var label := tr(Items.info(item_id)["name"])
+		if cut_off:
+			if amount == 1:
+				# Vertalers: een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
+				toast.emit(tr("Gekregen: %s. %s!") % [label, full_text(item_id)])
+			else:
+				# Vertalers: voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
+				toast.emit(tr("Gekregen: %s x%d. %s!") % [label, amount, full_text(item_id)])
+		elif amount == 1:
+			toast.emit(tr("Gekregen: %s") % label)
+		else:
+			# Vertalers: een voorwerp en hoeveel: "Gekregen: Pijl x5"
+			toast.emit(tr("Gekregen: %s x%d") % [label, amount])
 	_refresh_quests()
+
+
+## Waarom een voorwerp niet meer in je tas past (vertaald): de eigen `full_text` van het voorwerp, of "Je tas is vol".
+func full_text(item_id: String) -> String:
+	var info := Items.info(item_id)
+	return tr(info["full_text"]) if info.has("full_text") else tr("Je tas is vol")
 
 
 func take(item_id: String, amount: int = 1) -> void:
@@ -399,7 +415,7 @@ func start_quest(quest_id: String) -> void:
 	if quests.has(quest_id):
 		return
 	quests[quest_id] = {"state": "active", "step": 0}
-	toast.emit("Nieuwe opdracht: %s" % Quests.info(quest_id)["title"])
+	toast.emit(tr("Nieuwe opdracht: %s") % tr(Quests.info(quest_id)["title"]))
 	quests_changed.emit()
 	_refresh_quests()
 
@@ -414,7 +430,7 @@ func set_quest_step(quest_id: String, step: int) -> void:
 func finish_quest(quest_id: String) -> void:
 	if quests.has(quest_id) and quests[quest_id]["state"] != "done":
 		quests[quest_id]["state"] = "done"
-		toast.emit("Opdracht voltooid: %s" % Quests.info(quest_id)["title"])
+		toast.emit(tr("Opdracht voltooid: %s") % tr(Quests.info(quest_id)["title"]))
 		quests_changed.emit()
 
 
@@ -438,12 +454,13 @@ func _refresh_quests() -> void:
 		quests_changed.emit()
 
 
+## De tekst van de huidige stap, vertaald en met de {tekens} ingevuld.
 func quest_text(quest_id: String) -> String:
 	var steps: Array = Quests.info(quest_id)["steps"]
 	var step := clampi(quest_step(quest_id), 0, maxi(steps.size() - 1, 0))
 	if steps.is_empty():
 		return ""
-	return fmt(steps[step]["text"])
+	return fmt(tr(steps[step]["text"]))
 
 
 ## De opdracht die in beeld getoond wordt (de hoofdopdracht, anders de eerste lopende).
@@ -454,14 +471,15 @@ func tracked_text() -> String:
 		for quest_id: String in quests:
 			if quests[quest_id]["state"] == "active":
 				latest = quest_id
-		return quest_text(latest) if latest != "" else "De Blauwe Kaart is hersteld!"
+		return quest_text(latest) if latest != "" else tr("De Blauwe Kaart is hersteld!")
 	if quest_state("main") == "active":
 		return quest_text("main")
 	if quest_state("main") == "none":
-		return "Praat met Oudste Bram bij de tempel."
+		return tr("Praat met Oudste Bram bij de tempel.")
 	return ""
 
 
+## Vult de {tekens} in een tekst in. Vertaal de tekst eerst (tr), zodat de vertaling dezelfde tekens bevat.
 func fmt(text: String) -> String:
 	text = text \
 		.replace("{crystals}", str(crystal_count())) \
@@ -533,9 +551,9 @@ func run(action: Array) -> void:
 			full_heal()
 		"weapon":
 			set_weapon(action[1])
-			toast.emit("Nieuw zwaard: %s" % Items.WEAPONS[action[1]]["name"])
+			toast.emit(tr("Nieuw zwaard: %s") % tr(Items.WEAPONS[action[1]]["name"]))
 		"toast":
-			toast.emit(action[1])
+			toast.emit(tr(action[1])) # een melding uit de data (Nederlands): hier vertaald
 		"sound":
 			Sound.play(action[1])
 		"shop":
@@ -549,7 +567,8 @@ func run(action: Array) -> void:
 			if amount > 0:
 				add_coins(amount * int(Items.info(action[1]).get("sell", 1)))
 				take(action[1], amount)
-				toast.emit("Verkocht: %d x %s" % [amount, Items.info(action[1])["name"]])
+				# Vertalers: aantal en voorwerp: "Verkocht: 4 x Slijmgel"
+				toast.emit(tr("Verkocht: %d x %s") % [amount, tr(Items.info(action[1])["name"])])
 		"talk":
 			start_dialogue(action[1])
 		"boss_start", "music", "lock_arena":
@@ -568,7 +587,8 @@ func start_dialogue(dialogue_id: String) -> void:
 	dialogue_requested.emit(dialogue_id)
 
 
-## Een los berichtje (bijvoorbeeld een bord): spreker + regels.
+## Een los berichtje (bijvoorbeeld een bord): spreker + regels. Die zijn al vertaald door wie say() aanroept
+## (een bord doet tr() op de tekst uit de kaart); het dialoogvenster vult alleen nog de {tekens} in.
 func say(speaker: String, lines: Array) -> void:
 	text_dialogue_requested.emit(speaker, lines)
 

@@ -59,5 +59,5 @@ func _draw() -> void:
 	var tint := Color(1, 1, 1, 0.78 + sin(t * 3.0) * 0.1) if ghost else Color.WHITE
 	DrawUtil.sprite(self, Art.tex(data["sheet"]), int(t * 1.6) % 2, 0, Vector2(0, drop + float_y), Vector2i(16, 16), scale, tint)
 	if player and player.target == self:
-		DrawUtil.name_tag(self, Vector2(0, -24.0 - (2.0 - scale) * -4.0), data["name"])
+		DrawUtil.name_tag(self, Vector2(0, -24.0 - (2.0 - scale) * -4.0), tr(data["name"]))
 		DrawUtil.prompt(self, Vector2(0, -38.0), t)

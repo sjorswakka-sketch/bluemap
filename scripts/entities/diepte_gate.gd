@@ -17,7 +17,7 @@ func _ready() -> void:
 	size_tiles = Vector2i(size[0], size[1])
 	block_if = obj.get("block_if", [])
 	key_item = obj.get("key", "")
-	locked_text = obj.get("locked_text", "De poort zit op slot.")
+	locked_text = obj.get("locked_text", "")
 	super._ready()
 
 

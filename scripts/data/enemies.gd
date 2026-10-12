@@ -69,6 +69,12 @@ const BASE_ENEMIES := {
 }
 
 
+## Aanvallen die achter de naam van een vijand komen als hij je raakt, zoals "Kristalgolem (klap)": de bron van de schade
+## (player.hurt) die op het game-over-scherm staat. Dat scherm vertaalt de naam en de aanval los (zie hud.gd), en de
+## vertaling haalt de aanvallen uit deze lijst. Een nieuwe aanval in de code? Zet hem hier ook bij.
+const ATTACKS := ["pijl", "tovervonk", "slijmbal", "klap", "steen", "landing", "storm", "scherf"]
+
+
 ## Basis en uitbreidingen samen (zie content.gd).
 static var ENEMIES: Dictionary = Content.merged("ENEMIES", BASE_ENEMIES)
 

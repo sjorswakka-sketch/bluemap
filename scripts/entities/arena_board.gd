@@ -39,32 +39,35 @@ func _process(delta: float) -> void:
 func interact() -> void:
 	Sound.play("select", -6.0)
 	if board == "scores":
-		GameState.say("Scorebord", scoreboard_lines())
+		GameState.say(tr("Scorebord"), scoreboard_lines())
 	else:
-		GameState.say("Trofeeënplank", shelf_lines())
+		GameState.say(tr("Trofeeënplank"), shelf_lines())
 
 
-## De tekst van het scorebord (ook handig om te testen).
+## De tekst van het scorebord, vertaald (ook handig om te testen).
 func scoreboard_lines() -> Array:
-	var lines: Array = ["Beste tijden in de arena. Jouw titel: %s." % Arena.title()]
+	# Vertalers: %s is je arena-titel, zoals "Arenastrijder" of "nieuwkomer"
+	var lines: Array = [tr("Beste tijden in de arena. Jouw titel: %s.") % Arena.title()]
 	for rank: String in Arena.ORDER:
-		lines.append("%s: %s" % [Arena.RANKS[rank]["name"], Arena.record_text(rank)])
+		lines.append("%s: %s" % [tr(Arena.RANKS[rank]["name"]), Arena.record_text(rank)])
 	return lines
 
 
 func shelf_lines() -> Array:
-	var lines: Array = ["De trofeeënplank van de arena."]
+	var lines: Array = [tr("De trofeeënplank van de arena.")]
 	var owned := 0
 	for item_id: String in SLOTS:
 		if GameState.count(item_id) > 0:
 			owned += 1
-			lines.append("%s: %s" % [Arena.ITEMS[item_id]["name"], "een verzamelstuk voor kampioenen." if item_id == Arena.HELM else "gewonnen!"])
+			# Vertalers: achter een trofee op de plank: "Bronzen trofee: gewonnen!"
+			var note := tr("een verzamelstuk voor kampioenen.") if item_id == Arena.HELM else tr("gewonnen!")
+			lines.append("%s: %s" % [tr(Arena.ITEMS[item_id]["name"]), note])
 	if owned == 0:
-		lines.append("Nog niets op de plank. Win een rang en zet hier je eerste trofee neer!")
+		lines.append(tr("Nog niets op de plank. Win een rang en zet hier je eerste trofee neer!"))
 	elif owned < SLOTS.size():
-		lines.append("Er is nog plek op de plank. Win meer rangen!")
+		lines.append(tr("Er is nog plek op de plank. Win meer rangen!"))
 	else:
-		lines.append("Een volle plank! Jij bent een echte kampioen.")
+		lines.append(tr("Een volle plank! Jij bent een echte kampioen."))
 	return lines
 
 
@@ -110,13 +113,13 @@ func _draw_scores() -> void:
 	draw_rect(Rect2(left + 2, top, width - 4, height), Color(0.69, 0.46, 0.22), false, 2.0)
 	draw_rect(Rect2(left + 6, top + 4, width - 12, height - 8), Color(0.1, 0.14, 0.2))
 	var font := ThemeDB.fallback_font
-	draw_string(font, Vector2(left + 12, top + 16), "SCOREBORD", HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(1.0, 0.85, 0.4))
+	draw_string(font, Vector2(left + 12, top + 16), tr("SCOREBORD"), HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(1.0, 0.85, 0.4))
 	for i in Arena.ORDER.size():
 		var rank: String = Arena.ORDER[i]
 		var y := top + 30.0 + i * 13.0
 		var row_color := Color(Arena.RANKS[rank]["color"])
 		draw_rect(Rect2(left + 12, y - 8, 6, 6), row_color)
-		draw_string(font, Vector2(left + 22, y), Arena.RANKS[rank]["name"], HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(0.9, 0.93, 1.0))
+		draw_string(font, Vector2(left + 22, y), tr(Arena.RANKS[rank]["name"]), HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(0.9, 0.93, 1.0))
 		var has_record := Arena.best(rank) > 0.0
 		draw_string(font, Vector2(left + 62, y), Arena.format_time(Arena.best(rank)) if has_record else "--:--",
 			HORIZONTAL_ALIGNMENT_RIGHT, width - 82, 10, Color(1.0, 0.95, 0.6) if has_record else Color(0.5, 0.55, 0.65))

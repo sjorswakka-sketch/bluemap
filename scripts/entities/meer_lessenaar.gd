@@ -44,9 +44,10 @@ func interact() -> void:
 	var first_time := not is_read()
 	GameState.set_flag(Boeken.flag_name(book_id))
 	Sound.play("meer_blad", -4.0)
-	GameState.say(text["title"], text["lines"])
+	var lines: Array = text["lines"]
+	GameState.say(tr(text["title"]), lines.map(func(line: String) -> String: return tr(line)))
 	if first_time and Logic.read_count() == Boeken.TEXTS.size():
-		GameState.toast.emit("Je hebt alle boeken in de bibliotheek gelezen!")
+		GameState.toast.emit(tr("Je hebt alle boeken in de bibliotheek gelezen!"))
 
 
 func _draw() -> void:

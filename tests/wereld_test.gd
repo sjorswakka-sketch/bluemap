@@ -1170,7 +1170,7 @@ func test_achievements() -> void:
 	banner.hinted = false
 	await wait_for_map_name()
 	check(banner.is_showing() and gs.achievement_queue.is_empty(), "de melding verschijnt in beeld en de wachtrij is leeg")
-	check(toasts.has(banner.HINT), "bij de eerste melding hoor je waar je de prestaties (T) en het beestenboek (B) vindt")
+	check(toasts.has(banner.hint_text()), "bij de eerste melding hoor je waar je de prestaties (T) en het beestenboek (B) vindt")
 	check(banner.name_label.text == Achievements.info("first_blood")["name"], "met de naam van de prestatie")
 	gs.check_achievements()
 	check(unlocked.size() == 1, "dezelfde prestatie komt maar een keer")
@@ -1187,7 +1187,7 @@ func test_achievements() -> void:
 	gs.transitioning = false
 	await frames(5)
 	check(banner.is_showing() and gs.achievement_queue.is_empty() and banner.name_label.text == Achievements.info("boots")["name"], "na de overgang wordt hij getoond")
-	check(toasts.count(banner.HINT) == 1, "die tip krijg je maar een keer")
+	check(toasts.count(banner.hint_text()) == 1, "die tip krijg je maar een keer")
 	gs.toast.disconnect(catcher)
 	await frames(60 * 5)
 
@@ -1637,8 +1637,8 @@ func test_menu_navigation() -> void:
 	fresh_game()
 	await load_map("village")
 	var menu: Node = world.menu_ui
-	var tabs: int = menu.TABS.size()
-	var names: Array = menu.TABS
+	var tabs: int = menu.TAB_COUNT
+	var names: Array = menu.tab_titles()
 	check(tabs >= 5 and names[0] == "Voorwerpen" and names[menu.TAB_QUESTS] == "Opdrachten" and names[menu.TAB_MAP] == "Kaart" and names[menu.TAB_ACHIEVEMENTS] == "Prestaties" and names[menu.TAB_BESTIARY] == "Beestenboek", "de tabbladen: voorwerpen, opdrachten, kaart, prestaties en beestenboek (%d)" % tabs)
 	press("menu")
 	await frames(3)

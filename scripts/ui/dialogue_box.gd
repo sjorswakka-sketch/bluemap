@@ -1,6 +1,8 @@
 extends CanvasLayer
 ## Het dialoogvenster. Speelt gesprekken af uit scripts/data/dialogue.gd, inclusief keuzes,
 ## vertakkingen en acties. Het spel staat stil zolang het venster open is.
+## Gesprekken staan in het Nederlands in de data: dit venster vertaalt spreker, regels en keuzes op het moment van
+## tonen, en vult daarna pas de {tekens} in. Losse berichtjes (borden, GameState.say) zijn al vertaald.
 
 const UiStyle := preload("res://scripts/core/ui_style.gd")
 const Dialogue := preload("res://scripts/data/dialogue.gd")
@@ -18,6 +20,7 @@ var line_idx := 0
 var opened_frame := -1
 var shown_chars := 0.0
 var buttons: Array[Button] = []
+var from_data := true # het huidige stuk komt uit dialogue.gd (nog vertalen), of uit say() (al vertaald)
 
 
 func _ready() -> void:
@@ -80,6 +83,7 @@ func start_text(speaker: String, new_lines: Array) -> void:
 		return
 	_open()
 	node = {"speaker": speaker, "lines": new_lines}
+	from_data = false
 	_begin_node()
 
 
@@ -95,11 +99,17 @@ func _open() -> void:
 
 func _enter(talk_id: String) -> void:
 	node = Dialogue.get_talk(talk_id)
+	from_data = true
 	_begin_node()
 
 
+## Tekst uit het gesprek in de taal van de speler (tekst uit say() is al vertaald).
+func _text(source: String) -> String:
+	return tr(source) if from_data and source != "" else source
+
+
 func _begin_node() -> void:
-	speaker_label.text = node.get("speaker", "")
+	speaker_label.text = _text(node.get("speaker", ""))
 	lines = node.get("lines", [])
 	line_idx = 0
 	_clear_choices()
@@ -110,10 +120,11 @@ func _begin_node() -> void:
 
 
 func _show_line() -> void:
-	text_label.text = GameState.fmt(lines[line_idx])
+	text_label.text = GameState.fmt(_text(lines[line_idx]))
 	text_label.visible_characters = 0
 	shown_chars = 0.0
-	hint_label.text = "E / spatie  ▼" if line_idx < lines.size() - 1 else "E / spatie  ✓"
+	# Vertalers: toetsen om verder te klikken in een gesprek (spatie = de spatiebalk)
+	hint_label.text = tr("E / spatie  ▼") if line_idx < lines.size() - 1 else tr("E / spatie  ✓")
 
 
 func _process(delta: float) -> void:
@@ -172,14 +183,14 @@ func _show_choices(choices: Array) -> void:
 		if choice.has("if") and not GameState.check_all(choice["if"]):
 			continue
 		var button := Button.new()
-		button.text = GameState.fmt(choice["text"])
+		button.text = GameState.fmt(_text(choice["text"]))
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		UiStyle.style_button(button, 22)
 		button.custom_minimum_size = Vector2(0, 40)
 		button.pressed.connect(_choose.bind(choice))
 		choices_box.add_child(button)
 		buttons.append(button)
-	hint_label.text = "↑ ↓ kiezen  ·  E bevestigen"
+	hint_label.text = tr("↑ ↓ kiezen  ·  E bevestigen")
 	if buttons.is_empty():
 		_close()
 	else:

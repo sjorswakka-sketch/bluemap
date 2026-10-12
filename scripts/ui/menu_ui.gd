@@ -14,7 +14,7 @@ const Achievements := preload("res://scripts/data/achievements.gd")
 const Enemies := preload("res://scripts/data/enemies.gd")
 const FastTravel := preload("res://scripts/core/fast_travel.gd")
 
-const TABS := ["Voorwerpen", "Opdrachten", "Kaart", "Prestaties", "Beestenboek"]
+const TAB_COUNT := 5 # de namen staan in tab_titles()
 const TAB_QUESTS := 1
 const TAB_MAP := 2
 const TAB_ACHIEVEMENTS := 3
@@ -166,7 +166,12 @@ func _set_tab(new_tab: int) -> void:
 
 
 func _step_tab(step: int) -> void:
-	_set_tab((tab + step + TABS.size()) % TABS.size())
+	_set_tab((tab + step + TAB_COUNT) % TAB_COUNT)
+
+
+## De namen van de tabbladen in de taal van de speler: voorwerpen, opdrachten, kaart, prestaties en beestenboek.
+func tab_titles() -> Array[String]:
+	return [tr("Voorwerpen"), tr("Opdrachten"), tr("Kaart"), tr("Prestaties"), tr("Beestenboek")]
 
 
 ## Dezelfde toets opent het tabblad, en sluit het menu weer als je er al bent.
@@ -199,7 +204,7 @@ func _map_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("interact") or event.is_action_pressed("ui_accept"):
 		get_viewport().set_input_as_handled()
 		var world := Util.world(self)
-		var reason := "Je hebt nog geen altaar ontdekt." if altars.is_empty() or world == null else FastTravel.blocked_reason(world)
+		var reason := tr("Je hebt nog geen altaar ontdekt.") if altars.is_empty() or world == null else FastTravel.blocked_reason(world)
 		if reason != "":
 			travel_message = reason
 			travel_message_time = MESSAGE_TIME
@@ -251,7 +256,7 @@ func _drink() -> void:
 	if GameState.use_potion():
 		Sound.play("drink")
 	elif GameState.count("potion") > 0:
-		GameState.toast.emit("Je hebt al alle hartjes.")
+		GameState.toast.emit(tr("Je hebt al alle hartjes."))
 
 
 # --- Tekenen -------------------------------------------------------------------------------
@@ -261,12 +266,13 @@ func _draw_content() -> void:
 	var panel := UiStyle.flat(Color(0.06, 0.1, 0.22, 0.98), Color(0.45, 0.75, 1.0), 3)
 	content.draw_style_box(panel, Rect2(Vector2.ZERO, SIZE))
 	# Tabbladen
-	for i in TABS.size():
+	var titles := tab_titles()
+	for i in TAB_COUNT:
 		var rect := Rect2(24 + i * 186, 16, 178, 40)
 		var chosen := i == tab
 		content.draw_rect(rect, Color(0.2, 0.35, 0.65) if chosen else Color(0.1, 0.16, 0.3))
 		content.draw_rect(rect, Color(0.6, 0.85, 1.0) if chosen else Color(0.3, 0.45, 0.7), false, 2.0)
-		content.draw_string(font, rect.position + Vector2(0, 28), TABS[i], HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 22,
+		content.draw_string(font, rect.position + Vector2(0, 28), titles[i], HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 22,
 			Color.WHITE if chosen else Color(0.7, 0.8, 1.0))
 	content.draw_string(font, Vector2(24, SIZE.y - 16), _footer_hint(), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.55))
 	match tab:
@@ -284,14 +290,12 @@ func _draw_content() -> void:
 
 ## De toetsen die op dit tabblad iets doen.
 func _footer_hint() -> String:
-	var browse := "← → of LB / RB  tabblad   ·   "
-	var keys := "I Q N T B  openen en sluiten   ·   Esc  sluiten"
 	match tab:
 		TAB_MAP:
-			return "↑ ↓  altaar kiezen   ·   E  reizen   ·   " + browse + "Esc  sluiten"
+			return tr("↑ ↓  altaar kiezen   ·   E  reizen   ·   ← → of LB / RB  tabblad   ·   Esc  sluiten")
 		TAB_ACHIEVEMENTS, TAB_BESTIARY:
-			return "↑ ↓  bladeren   ·   " + browse + keys
-	return browse + keys
+			return tr("↑ ↓  bladeren   ·   ← → of LB / RB  tabblad   ·   I Q N T B  openen en sluiten   ·   Esc  sluiten")
+	return tr("← → of LB / RB  tabblad   ·   I Q N T B  openen en sluiten   ·   Esc  sluiten")
 
 
 func _text(font: Font, pos: Vector2, text: String, size: int, color := Color.WHITE, width := -1.0) -> float:
@@ -302,9 +306,9 @@ func _text(font: Font, pos: Vector2, text: String, size: int, color := Color.WHI
 func _draw_items(font: Font) -> void:
 	var owned := _owned()
 	selected = clampi(selected, 0, maxi(owned.size() - 1, 0))
-	_text(font, Vector2(24, 72), "Je spullen", 24, Color(0.6, 0.88, 1.0))
+	_text(font, Vector2(24, 72), tr("Je spullen"), 24, Color(0.6, 0.88, 1.0))
 	if owned.is_empty():
-		_text(font, Vector2(24, 112), "Je hebt nog niets bij je.", 20, Color(1, 1, 1, 0.6))
+		_text(font, Vector2(24, 112), tr("Je hebt nog niets bij je."), 20, Color(1, 1, 1, 0.6))
 	for i in owned.size():
 		var pos := Vector2(24 + (i % 6) * (SLOT + 8), 110 + (i / 6) * (SLOT + 8))
 		var chosen := i == selected
@@ -321,23 +325,24 @@ func _draw_items(font: Font) -> void:
 	var x := 620.0
 	if not owned.is_empty():
 		var info: Dictionary = Items.ITEMS[owned[selected]]
-		var h := _text(font, Vector2(x, 72), info["name"], 24, Color(1.0, 0.9, 0.5), 340)
-		h += _text(font, Vector2(x, 72 + h + 6), info["desc"], 18, Color(0.9, 0.93, 1.0), 340) + 6
+		var h := _text(font, Vector2(x, 72), tr(info["name"]), 24, Color(1.0, 0.9, 0.5), 340)
+		h += _text(font, Vector2(x, 72 + h + 6), tr(info["desc"]), 18, Color(0.9, 0.93, 1.0), 340) + 6
 		if owned[selected] == "potion":
-			_text(font, Vector2(x, 72 + h + 10), "Druk op E om te drinken", 18, Color(0.6, 1.0, 0.7))
+			_text(font, Vector2(x, 72 + h + 10), tr("Druk op E om te drinken"), 18, Color(0.6, 1.0, 0.7))
 	var weapon: Dictionary = Items.WEAPONS[GameState.weapon]
 	var lines := [
-		"Zwaard:  %s (schade %d)" % [weapon["name"], weapon["damage"]],
-		"Levens:  %d / %d" % [GameState.hp, GameState.max_hp()],
-		"Snelheid:  %s" % ("snel (laarzen)" if GameState.count("boots") > 0 else "normaal"),
-		"Munten:  %d" % GameState.coins,
-		"Kristallen:  %d / 3" % (3 if GameState.flag("gate_temple") else GameState.crystal_count()),
-		"Verslagen:  %d" % GameState.kills,
-		"Speeltijd:  %s" % format_time(GameState.play_time),
+		tr("Zwaard:  %s (schade %d)") % [tr(weapon["name"]), weapon["damage"]],
+		tr("Levens:  %d / %d") % [GameState.hp, GameState.max_hp()],
+		tr("Snelheid:  snel (laarzen)") if GameState.count("boots") > 0 else tr("Snelheid:  normaal"),
+		tr("Munten:  %d") % GameState.coins,
+		tr("Kristallen:  %d / 3") % (3 if GameState.flag("gate_temple") else GameState.crystal_count()),
+		tr("Verslagen:  %d") % GameState.kills,
+		tr("Speeltijd:  %s") % format_time(GameState.play_time),
 	]
 	if GameState.ng_plus > 0:
 		UiStyle.draw_star(content, Vector2(36, SIZE.y - 42), 11.0, Color(1.0, 0.85, 0.3))
-		_text(font, Vector2(56, SIZE.y - 56), "Nieuw spel+  ·  ronde %d" % GameState.ng_plus, 20, Color(1.0, 0.9, 0.5))
+		# Vertalers: Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
+		_text(font, Vector2(56, SIZE.y - 56), tr("Nieuw spel+  ·  ronde %d") % GameState.ng_plus, 20, Color(1.0, 0.9, 0.5))
 	content.draw_line(Vector2(x, 330), Vector2(x + 340, 330), Color(0.3, 0.45, 0.7), 2.0)
 	var y := 342.0
 	for line: String in lines:
@@ -358,16 +363,20 @@ func _draw_quests(font: Font) -> void:
 	for quest_id: String in Quests.QUESTS:
 		if GameState.quest_state(quest_id) == "done":
 			order.append(quest_id)
-	_text(font, Vector2(24, 72), "Opdrachten", 24, Color(0.6, 0.88, 1.0))
+	_text(font, Vector2(24, 72), tr("Opdrachten"), 24, Color(0.6, 0.88, 1.0))
 	if order.is_empty():
-		_text(font, Vector2(24, 112), "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!", 20, Color(1, 1, 1, 0.6))
+		_text(font, Vector2(24, 112), tr("Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"), 20, Color(1, 1, 1, 0.6))
 	var y := 112.0
 	for quest_id in order:
 		var done := GameState.quest_state(quest_id) == "done"
 		var info := Quests.info(quest_id)
-		var title: String = ("✓ " if done else "• ") + info["title"] + ("   (hoofdopdracht)" if info.get("main", false) and not done else "")
+		var title := tr(info["title"])
+		if info.get("main", false) and not done:
+			# Vertalers: titel van de hoofdopdracht in het opdrachtenlogboek
+			title = tr("%s   (hoofdopdracht)") % title
+		title = ("✓ " if done else "• ") + title
 		y += _text(font, Vector2(24, y), title, 22, Color(0.55, 1.0, 0.65) if done else Color(1.0, 0.9, 0.5)) + 4
-		var text := "Voltooid." if done else GameState.quest_text(quest_id)
+		var text := tr("Voltooid.") if done else GameState.quest_text(quest_id)
 		y += _text(font, Vector2(48, y), text, 19, Color(0.85, 0.9, 1.0), 900) + 16
 		if y > SIZE.y - 60:
 			break
@@ -383,7 +392,7 @@ func _draw_map(font: Font) -> void:
 	var cell := mini(int(MAP_WIDTH / w), int(390.0 / h))
 	cell = maxi(cell, 4)
 	var origin := Vector2(24.0 + (MAP_WIDTH - w * cell) / 2.0, 100.0)
-	_text(font, Vector2(24, 66), world.map_data["name"], 26, Color(0.6, 0.88, 1.0))
+	_text(font, Vector2(24, 66), tr(world.map_data["name"]), 26, Color(0.6, 0.88, 1.0))
 	for y in h:
 		var row: String = rows[y]
 		for x in w:
@@ -413,11 +422,11 @@ func _draw_map(font: Font) -> void:
 		var pulse := 0.6 + 0.4 * sin(time * 6.0)
 		content.draw_circle(pp, cell * 0.6 * (0.8 + pulse * 0.4), Color(1, 0.3, 0.3))
 		content.draw_circle(pp, cell * 0.3, Color(1, 1, 1))
-	content.draw_string(font, Vector2(24, SIZE.y - 40), "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.7))
+	content.draw_string(font, Vector2(24, SIZE.y - 40), tr("● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.7))
 	# Legenda voor de bijzondere plekken van uitbreidingen die op deze kaart staan.
 	var legend: Dictionary = {}
 	for mark: Dictionary in marks:
-		legend[mark["label"]] = mark["color"]
+		legend[tr(mark["label"])] = mark["color"]
 	var legend_x := 24.0
 	for label: String in legend:
 		content.draw_string(font, Vector2(legend_x, SIZE.y - 62), "◆ " + label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, legend[label])
@@ -426,6 +435,7 @@ func _draw_map(font: Font) -> void:
 
 
 ## De bijzondere plekken van uitbreidingen op een kaart (zie MAP_MARKERS in content.gd): [{"pos", "color", "label"}].
+## Het label is de Nederlandse naam uit de module; de legenda vertaalt hem bij het tekenen.
 func extension_marks(map_data: Dictionary) -> Array[Dictionary]:
 	var marks: Array[Dictionary] = []
 	for obj: Dictionary in map_data.get("objects", []):

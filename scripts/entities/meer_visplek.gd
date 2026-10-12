@@ -39,7 +39,7 @@ func interact() -> void:
 		Sound.play("error", -3.0)
 		if hint_wait <= 0.0: # vaak op E drukken stapelt geen rij met dezelfde melding op
 			hint_wait = HINT_COOLDOWN
-			GameState.toast.emit("Je hebt een hengel nodig. Misschien heeft Visser Joris er een.")
+			GameState.toast.emit(tr("Je hebt een hengel nodig. Misschien heeft Visser Joris er een."))
 		return
 	var ui: Node = world.get_node_or_null("Vissen")
 	if ui == null:
@@ -66,5 +66,5 @@ func _draw() -> void:
 			draw_rect(Rect2(Vector2(5, -6) - Vector2(1, size) / 2.0, Vector2(2, size)), GOLD_GLINT)
 			draw_rect(Rect2(Vector2(5, -6) - Vector2(size, 1) / 2.0, Vector2(size, 2)), GOLD_GLINT)
 	if player and player.target == self and not GameState.input_locked():
-		DrawUtil.name_tag(self, Vector2(0, -22.0), "Diepe visplek" if deep else "Visplek")
+		DrawUtil.name_tag(self, Vector2(0, -22.0), tr("Diepe visplek") if deep else tr("Visplek"))
 		DrawUtil.prompt(self, Vector2(0, -36.0), t)

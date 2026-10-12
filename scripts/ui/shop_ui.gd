@@ -24,7 +24,7 @@ func _ready() -> void:
 	GameState.shop_requested.connect(open)
 	GameState.items_changed.connect(func() -> void:
 		if active:
-			coins_label.text = "Munten: %d" % GameState.coins)
+			coins_label.text = tr("Munten: %d") % GameState.coins)
 
 
 func _build_ui() -> void:
@@ -58,7 +58,7 @@ func _build_ui() -> void:
 	desc_label.custom_minimum_size = Vector2(0, 54)
 	box.add_child(desc_label)
 	var hint := Label.new()
-	hint.text = "↑ ↓ kiezen  ·  E kopen  ·  Esc sluiten"
+	hint.text = tr("↑ ↓ kiezen  ·  E kopen  ·  Esc sluiten")
 	hint.add_theme_font_size_override("font_size", 16)
 	hint.modulate = Color(1, 1, 1, 0.6)
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -67,8 +67,8 @@ func _build_ui() -> void:
 
 func open(shop_id: String) -> void:
 	shop = Shops.info(shop_id)
-	title_label.text = shop["name"]
-	coins_label.text = "Munten: %d" % GameState.coins
+	title_label.text = tr(shop["name"])
+	coins_label.text = tr("Munten: %d") % GameState.coins
 	_populate(0)
 	active = true
 	root.visible = true
@@ -93,13 +93,15 @@ func _populate(focus_index: int) -> void:
 		var info := Items.info(entry["item"])
 		var owned: bool = entry.get("once", false) and GameState.count(entry["item"]) > 0
 		var button := Button.new()
-		button.text = "%s   —   %s" % [_label(entry), "gekocht" if owned else "%d munten" % entry["price"]]
+		var price: int = entry["price"]
+		# Vertalers: achter iets in de winkel dat je maar één keer kunt kopen en al hebt; anders de prijs
+		button.text = "%s   —   %s" % [_label(entry), tr("gekocht") if owned else tr_n("%d munt", "%d munten", price) % price]
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		UiStyle.style_button(button, 22)
 		button.disabled = owned
 		button.icon = Items.icon_tex(entry["item"])
 		button.pressed.connect(_buy.bind(entry, index))
-		button.focus_entered.connect(func() -> void: desc_label.text = info["desc"])
+		button.focus_entered.connect(func() -> void: desc_label.text = tr(info["desc"]))
 		list.add_child(button)
 		if first == null or index == focus_index:
 			if not owned:
@@ -108,15 +110,15 @@ func _populate(focus_index: int) -> void:
 	if first:
 		first.grab_focus.call_deferred()
 	else:
-		desc_label.text = "Je hebt alles gekocht!"
+		desc_label.text = tr("Je hebt alles gekocht!")
 
 
-## De naam van een winkelregel: een eigen `label`, anders de naam van het voorwerp (met het aantal erbij).
+## De naam van een winkelregel (vertaald): een eigen `label`, anders de naam van het voorwerp (met het aantal erbij).
 func _label(entry: Dictionary) -> String:
 	if entry.has("label"):
-		return entry["label"]
+		return tr(entry["label"])
 	var amount: int = entry.get("amount", 1)
-	var item_name: String = Items.info(entry["item"])["name"]
+	var item_name := tr(Items.info(entry["item"])["name"])
 	return item_name if amount == 1 else "%s x%d" % [item_name, amount]
 
 
@@ -129,7 +131,7 @@ func _buy(entry: Dictionary, index: int) -> void:
 		return # nog niet te koop
 	if GameState.coins < price:
 		Sound.play("error")
-		GameState.toast.emit("Je hebt niet genoeg munten.")
+		GameState.toast.emit(tr("Je hebt niet genoeg munten."))
 		return
 	if GameState.room(entry["item"]) < amount:
 		Sound.play("error")
@@ -140,7 +142,7 @@ func _buy(entry: Dictionary, index: int) -> void:
 	for extra: Array in entry.get("with", []):
 		GameState.give(extra[0], int(extra[1]), true)
 	Sound.play("buy")
-	GameState.toast.emit("Gekocht: %s" % _label(entry))
+	GameState.toast.emit(tr("Gekocht: %s") % _label(entry))
 	_populate(index)
 
 
@@ -148,8 +150,9 @@ func _buy(entry: Dictionary, index: int) -> void:
 func _no_room_text(item_id: String) -> String:
 	var info := Items.info(item_id)
 	if GameState.room(item_id) > 0 and info.has("almost_full_text"):
-		return "%s (%d van de %d)" % [info["almost_full_text"], GameState.count(item_id), int(info["max"])]
-	return info.get("full_text", "Je tas is vol")
+		# Vertalers: melding dat iets bijna vol is, met hoeveel je hebt en het maximum: "Je pijlenkoker zit bijna vol (38 van de 40)"
+		return tr("%s (%d van de %d)") % [tr(info["almost_full_text"]), GameState.count(item_id), int(info["max"])]
+	return GameState.full_text(item_id)
 
 
 func _unhandled_input(event: InputEvent) -> void:

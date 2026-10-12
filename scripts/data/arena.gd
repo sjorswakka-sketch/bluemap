@@ -3,6 +3,7 @@ extends RefCounted
 ##
 ## Alleen gegevens en regels. De golven zelf worden gespeeld door scripts/entities/arena_master.gd.
 ## Dit bestand wordt pas geladen als het nodig is (zie scripts/data/ext/arena.gd), dus het mag GameState en Sound gebruiken.
+## Namen en titels hieronder zijn Nederlands; meldingen en tekens (title(), record_text()) komen vertaald terug.
 ## Laad het in een test dus ook pas als het spel draait: load("res://scripts/data/arena.gd").
 
 const Ext := preload("res://scripts/data/ext/arena.gd")
@@ -55,7 +56,6 @@ const HELM := "arena_helm"
 const SIGNED_FLAG := "arena_signed_%s" # ingeschreven voor deze rang (nog niet begonnen)
 const DONE_FLAG := "arena_%s_done" # de rang is gehaald
 const QUEST := "arena_kampioen"
-const NO_RECORD := "nog niet gehaald"
 
 ## Een toernooi loopt (de poorten van de arena zijn dicht). Wordt gezet door de arenameester op de kaart.
 static var run_active := false
@@ -98,20 +98,20 @@ static func register(rank: String) -> bool:
 	if not RANKS.has(rank) or run_active:
 		return false
 	if registered_rank() != "":
-		GameState.toast.emit("Je staat al ingeschreven. Loop maar naar de arenadeur!")
+		GameState.toast.emit(TranslationServer.translate("Je staat al ingeschreven. Loop maar naar de arenadeur!"))
 		return false
 	if not unlocked(rank):
-		GameState.toast.emit("Die rang is nog niet open. Win eerst de vorige.")
+		GameState.toast.emit(TranslationServer.translate("Die rang is nog niet open. Win eerst de vorige."))
 		return false
 	var fee: int = RANKS[rank]["fee"]
 	if GameState.coins < fee:
-		GameState.toast.emit("Je hebt niet genoeg munten (%d nodig)." % fee)
+		GameState.toast.emit(TranslationServer.translate("Je hebt niet genoeg munten (%d nodig).") % fee)
 		Sound.play("error", -3.0)
 		return false
 	GameState.add_coins(-fee)
 	GameState.set_flag(SIGNED_FLAG % rank)
 	Sound.play("buy")
-	GameState.toast.emit("Ingeschreven voor %s! Loop door de deur naar de arena." % RANKS[rank]["name"])
+	GameState.toast.emit(TranslationServer.translate("Ingeschreven voor %s! Loop door de deur naar de arena.") % TranslationServer.translate(RANKS[rank]["name"]))
 	return true
 
 
@@ -122,7 +122,7 @@ static func cancel() -> bool:
 		return false
 	GameState.add_coins(int(RANKS[rank]["fee"]))
 	GameState.set_flag(SIGNED_FLAG % rank, false)
-	GameState.toast.emit("Je bent uitgeschreven. Je krijgt je munten terug.")
+	GameState.toast.emit(TranslationServer.translate("Je bent uitgeschreven. Je krijgt je munten terug."))
 	return true
 
 
@@ -139,11 +139,13 @@ static func best(rank: String) -> float:
 	return float(GameState.arena_records.get(rank, 0.0))
 
 
+## Je titel in de arena (vertaald): die van de hoogste rang die je gehaald hebt.
 static func title() -> String:
 	for i in range(ORDER.size() - 1, -1, -1):
 		if is_done(ORDER[i]):
-			return RANKS[ORDER[i]]["title"]
-	return "nieuwkomer"
+			return TranslationServer.translate(RANKS[ORDER[i]]["title"])
+	# Vertalers: je titel in de arena zolang je nog niets gewonnen hebt, midden in een zin: "Hé nieuwkomer!"
+	return TranslationServer.translate("nieuwkomer")
 
 
 @warning_ignore("integer_division")
@@ -153,7 +155,8 @@ static func format_time(seconds: float) -> String:
 
 
 static func record_text(rank: String) -> String:
-	return format_time(best(rank)) if best(rank) > 0.0 else NO_RECORD
+	# Vertalers: op het scorebord en bij Bruno, in plaats van een beste tijd
+	return format_time(best(rank)) if best(rank) > 0.0 else TranslationServer.translate("nog niet gehaald")
 
 
 ## Deelt de beloning uit voor een gehaalde rang (munten, trofee, titel, record) en geeft terug wat er gebeurd is.
@@ -165,13 +168,10 @@ static func complete(rank: String, seconds: float) -> Dictionary:
 	var old_best := best(rank)
 	var new_record := old_best <= 0.0 or seconds < old_best
 	GameState.add_coins(coins)
-	var prizes: Array[String] = ["%d munten" % coins]
 	if first_time:
 		GameState.give(info["trophy"], 1, true)
-		prizes.append("een %s" % ITEMS[info["trophy"]]["name"].to_lower())
 		if rank == ORDER[ORDER.size() - 1]:
 			GameState.give(HELM, 1, true)
-			prizes.append("de Arenahelm")
 		GameState.set_flag(DONE_FLAG % rank)
 		GameState.set_flag("arena_first_%s" % rank)
 		if rank == ORDER[ORDER.size() - 1]:
@@ -179,18 +179,33 @@ static func complete(rank: String, seconds: float) -> Dictionary:
 	if new_record:
 		GameState.arena_records[rank] = seconds
 	GameState.set_flag("arena_fresh_%s" % rank)
-	GameState.toast.emit("Beloning: %s!" % _join(prizes))
+	var reward := reward_text(rank, coins, first_time)
+	GameState.toast.emit(reward)
 	if first_time:
-		GameState.toast.emit("Nieuwe titel: %s!" % info["title"])
+		GameState.toast.emit(TranslationServer.translate("Nieuwe titel: %s!") % TranslationServer.translate(info["title"]))
 	if new_record and old_best > 0.0:
-		GameState.toast.emit("Nieuw record: %s!" % format_time(seconds))
-	return {"first_time": first_time, "coins": coins, "record": new_record, "prizes": prizes}
+		GameState.toast.emit(TranslationServer.translate("Nieuw record: %s!") % format_time(seconds))
+	return {"first_time": first_time, "coins": coins, "record": new_record, "reward": reward}
 
 
-static func _join(parts: Array[String]) -> String:
-	if parts.size() <= 1:
-		return "".join(parts)
-	return "%s en %s" % [", ".join(parts.slice(0, parts.size() - 1)), parts[-1]]
+## De melding met de beloning (vertaald), als hele zin per rang: de munten, en de eerste keer ook de trofee (en bij
+## de hoogste rang de Arenahelm).
+static func reward_text(rank: String, coins: int, first_time: bool) -> String:
+	if not first_time:
+		return TranslationServer.translate_plural("Beloning: %d munt!", "Beloning: %d munten!", coins) % coins
+	match rank:
+		"bronze":
+			return TranslationServer.translate_plural("Beloning: %d munt en een bronzen trofee!",
+				"Beloning: %d munten en een bronzen trofee!", coins) % coins
+		"silver":
+			return TranslationServer.translate_plural("Beloning: %d munt en een zilveren trofee!",
+				"Beloning: %d munten en een zilveren trofee!", coins) % coins
+		"gold":
+			return TranslationServer.translate_plural("Beloning: %d munt, een gouden trofee en de Arenahelm!",
+				"Beloning: %d munten, een gouden trofee en de Arenahelm!", coins) % coins
+	# Een rang die hier nog niet staat: de naam van de trofee als losse naam.
+	return TranslationServer.translate_plural("Beloning: %d munt en een trofee: %s!", "Beloning: %d munten en een trofee: %s!",
+		coins) % [coins, TranslationServer.translate(ITEMS[RANKS[rank]["trophy"]]["name"])]
 
 
 # --- Tekens in gesprekken ----------------------------------------------------------------------------------

@@ -15,10 +15,11 @@ const SHOW_TIME := 4.0 # seconden in beeld
 const SHOW_TIME_RUSH := 1.8 # als er meer dan twee wachten (bijvoorbeeld na het laden van een oude opslag)
 const SLIDE_TIME := 0.35 # seconden om in en uit te schuiven
 const TROPHY_FRAME := 3 # de gouden beker in assets/wereld_ui.png
-const HINT := "Al je prestaties zie je met T, het beestenboek met B."
 
 var root: Control
+var heading: Label
 var name_label: Label
+var shown_id := "" # de prestatie die nu in beeld is (om hem opnieuw te vertalen als je de taal wisselt)
 var time := 0.0 # hoe lang de huidige melding nog in beeld blijft
 var duration := SHOW_TIME # hoe lang de huidige melding in totaal in beeld is
 var hinted := false # de tip over T en B is al gegeven
@@ -50,14 +51,26 @@ func _ready() -> void:
 	var texts := VBoxContainer.new()
 	texts.alignment = BoxContainer.ALIGNMENT_CENTER
 	row.add_child(texts)
-	var heading := Label.new()
-	heading.text = "Prestatie behaald!"
+	heading = Label.new()
+	heading.text = tr("Prestatie behaald!")
 	heading.add_theme_font_size_override("font_size", 16)
 	heading.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3))
 	texts.add_child(heading)
 	name_label = Label.new()
 	name_label.add_theme_font_size_override("font_size", 24)
 	texts.add_child(name_label)
+	Lang.changed.connect(_on_language_changed)
+
+
+func _on_language_changed(_locale: String) -> void:
+	heading.text = tr("Prestatie behaald!")
+	if shown_id != "":
+		name_label.text = tr(Achievements.info(shown_id)["name"])
+
+
+## De tip bij de eerste melding: waar je al je prestaties en het beestenboek vindt.
+func hint_text() -> String:
+	return tr("Al je prestaties zie je met T, het beestenboek met B.")
 
 
 func is_showing() -> bool:
@@ -77,12 +90,13 @@ func _process(delta: float) -> void:
 		if GameState.achievement_queue.is_empty() or _screen_is_busy():
 			return
 		duration = SHOW_TIME if GameState.achievement_queue.size() <= 2 else SHOW_TIME_RUSH
-		name_label.text = Achievements.info(GameState.achievement_queue.pop_front())["name"]
+		shown_id = GameState.achievement_queue.pop_front()
+		name_label.text = tr(Achievements.info(shown_id)["name"])
 		time = duration
 		Sound.play("wereld_prestatie", -3.0)
 		if not hinted:
 			hinted = true
-			GameState.toast.emit(HINT)
+			GameState.toast.emit(hint_text())
 	time -= delta
 	var shown := minf(duration - time, time) / SLIDE_TIME
 	root.modulate.a = clampf(shown * 1.5, 0.0, 1.0)

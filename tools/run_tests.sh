@@ -8,6 +8,11 @@ cd "$(dirname "$0")/.." || exit 1
 # Eigen opslagmap voor de tests, zodat ze nooit in je echte spel of in een andere testrun schrijven.
 XDG_DATA_HOME="$(pwd)/.testdata"
 export XDG_DATA_HOME
+# De tests controleren Nederlandse tekst: het spel draait in het Nederlands (zie scripts/core/lang.gd). Een taalkeuze
+# die een eerdere (afgebroken) testrun in de instellingen heeft laten staan, gooien we weg: die zou voorgaan.
+BLUEMAP_LANG=nl
+export BLUEMAP_LANG
+rm -f "$XDG_DATA_HOME/godot/app_userdata/Bluemap Quest/settings.cfg"
 "$GODOT" --headless --path . --import > /dev/null 2>&1
 ORDER="smoke_test playthrough_test"
 for FILE in tests/*_test.gd; do

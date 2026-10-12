@@ -68,9 +68,9 @@ func _process(delta: float) -> void:
 func interact() -> void:
 	if breaking:
 		return
-	GameState.say("Zegel", [
-		"Een zware steenplaat met een ster erin. De runen gloeien zachtjes.",
-		"Hij zit muurvast. Misschien gaat hij pas open als de Blauwe Kaart weer heel is.",
+	GameState.say(tr("Zegel"), [
+		tr("Een zware steenplaat met een ster erin. De runen gloeien zachtjes."),
+		tr("Hij zit muurvast. Misschien gaat hij pas open als de Blauwe Kaart weer heel is."),
 	])
 
 
@@ -102,7 +102,7 @@ func _open() -> void:
 	world.burst(center, Color(1, 1, 1), 14)
 	world.ring(center, 90.0, Color(0.85, 0.75, 1.0))
 	world.shake(6.0)
-	GameState.toast.emit("Het zegel is gebroken! Er is een trap naar beneden.")
+	GameState.toast.emit(tr("Het zegel is gebroken! Er is een trap naar beneden."))
 	GameState.start_quest("diepte")
 	GameState.set_flag("diepte_opened")
 	queue_free()

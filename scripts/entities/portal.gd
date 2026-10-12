@@ -33,4 +33,4 @@ func _process(delta: float) -> void:
 		message_cooldown = 2.5
 		Sound.play("error", -3.0)
 		if locked_text != "":
-			GameState.toast.emit(locked_text)
+			GameState.toast.emit(tr(locked_text))

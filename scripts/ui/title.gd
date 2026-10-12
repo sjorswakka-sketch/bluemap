@@ -1,5 +1,6 @@
 extends Control
-## Titelscherm: een nachtelijke lucht, de personages uit het spel en het hoofdmenu.
+## Titelscherm: een nachtelijke lucht, de personages uit het spel en het hoofdmenu. Rechtsboven staat de taalknop
+## ("Taal: Nederlands" / "Language: English"): één druk wisselt de taal, en alle tekst verandert meteen mee.
 
 const Art := preload("res://scripts/core/art.gd")
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
@@ -14,6 +15,10 @@ const SPRITE_SCALE := 6.0
 
 var t := 0.0
 var stars: Array[Dictionary] = []
+var title_label: Label
+var subtitle_label: Label
+var hint_label: Label
+var language_button: Button
 var start_button: Button
 var ng_button: Button # Nieuw spel+: alleen als je het spel al hebt uitgespeeld
 var continue_button: Button
@@ -35,52 +40,98 @@ func _ready() -> void:
 	GameState.in_game = false
 	Sound.play_music("village")
 	Sound.mute_changed.connect(func(_muted: bool) -> void: _refresh_sound_label())
+	Lang.changed.connect(_on_language_changed)
 
 
 func _build_ui() -> void:
-	var title := UiStyle.make_label("Bluemap Quest", 84, Color(0.7, 0.92, 1.0))
-	title.position = Vector2(0, 22)
-	title.size = Vector2(1152, 110)
-	add_child(title)
+	title_label = UiStyle.make_label("", 84, Color(0.7, 0.92, 1.0))
+	title_label.position = Vector2(0, 22)
+	title_label.size = Vector2(1152, 110)
+	add_child(title_label)
 
-	var subtitle := UiStyle.make_label("Een kleine fantasy-quest", 28, Color(0.85, 0.9, 1.0))
-	subtitle.position = Vector2(0, 124)
-	subtitle.size = Vector2(1152, 40)
-	add_child(subtitle)
+	subtitle_label = UiStyle.make_label("", 28, Color(0.85, 0.9, 1.0))
+	subtitle_label.position = Vector2(0, 124)
+	subtitle_label.size = Vector2(1152, 40)
+	add_child(subtitle_label)
 
 	var menu := VBoxContainer.new()
 	menu.add_theme_constant_override("separation", 10)
 	menu.position = Vector2(576 - 170, 310)
 	add_child(menu)
-	continue_button = _button(menu, "Doorgaan", continue_game)
+	continue_button = _button(menu, "", continue_game)
 	# "Nieuw spel" en "Nieuw spel+" staan naast elkaar, zodat het menu niet hoger wordt (het kristal blijft vrij).
 	var new_row := HBoxContainer.new()
 	new_row.add_theme_constant_override("separation", 8)
 	menu.add_child(new_row)
-	start_button = _button(new_row, "Nieuw spel", start_game)
-	ng_button = _button(new_row, "Nieuw spel+", start_game_plus)
+	start_button = _button(new_row, "", start_game)
+	ng_button = _button(new_row, "", start_game_plus)
 	ng_button.visible = GameState.ng_plus_available()
 	if ng_button.visible:
 		for button: Button in [start_button, ng_button]:
 			button.custom_minimum_size.x = 166
 			button.add_theme_font_size_override("font_size", 24)
 	sound_button = _button(menu, "", Sound.toggle_mute)
-	quit_button = _button(menu, "Afsluiten", quit_game)
+	quit_button = _button(menu, "", quit_game)
 	continue_button.disabled = not GameState.has_save()
-	_refresh_sound_label()
 	(start_button if continue_button.disabled else continue_button).grab_focus()
 
-	var hint := UiStyle.make_label(
-		"WASD lopen  ·  SPATIE zwaard  ·  F boog  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze  ·  M geluid", 20)
-	hint.position = Vector2(0, 596)
-	hint.size = Vector2(1152, 30)
-	add_child(hint)
+	# De taalknop rechtsboven, in de taal zelf. Met de pijltjes of de controller kom je er vanuit het menu (omhoog
+	# vanaf de bovenste knop, of omlaag vanaf Afsluiten).
+	language_button = _button(self, "", _toggle_language)
+	language_button.custom_minimum_size = Vector2(250, 44)
+	language_button.add_theme_font_size_override("font_size", 20)
+	language_button.position = Vector2(1152 - 16 - 250, 16)
+	var top_row: Array[Button] = [continue_button]
+	if continue_button.disabled:
+		top_row = [start_button, ng_button]
+	for button in top_row:
+		button.focus_neighbor_top = button.get_path_to(language_button)
+	quit_button.focus_neighbor_bottom = quit_button.get_path_to(language_button)
+	language_button.focus_neighbor_bottom = language_button.get_path_to(top_row[0])
+	language_button.focus_neighbor_top = language_button.get_path_to(quit_button)
+
+	hint_label = UiStyle.make_label("", 20)
+	hint_label.position = Vector2(0, 596)
+	hint_label.size = Vector2(1152, 30)
+	add_child(hint_label)
 
 	var version := UiStyle.make_label("v" + str(ProjectSettings.get_setting("application/config/version", "")), 16)
 	version.position = Vector2(1152 - 120, 620)
 	version.size = Vector2(110, 22)
 	version.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	add_child(version)
+	_refresh_texts()
+
+
+## Alle tekst op het scherm in de huidige taal (bij het openen, en opnieuw als je de taal wisselt).
+func _refresh_texts() -> void:
+	title_label.text = tr("Bluemap Quest")
+	subtitle_label.text = tr("Een kleine fantasy-quest")
+	continue_button.text = tr("Doorgaan")
+	start_button.text = tr("Nieuw spel")
+	ng_button.text = tr("Nieuw spel+")
+	quit_button.text = tr("Afsluiten")
+	hint_label.text = tr("WASD lopen  ·  SPATIE zwaard  ·  F boog  ·  SHIFT rollen  ·  E praten  ·  I menu  ·  ESC pauze  ·  M geluid")
+	language_button.text = Lang.button_text()
+	_refresh_sound_label()
+
+
+func _toggle_language() -> void:
+	Sound.play("select")
+	Lang.toggle()
+
+
+## Met een controller (A) of met E druk je de gekozen knop in; Enter en spatie doet Godot zelf al (ui_accept).
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		var focused := get_viewport().gui_get_focus_owner()
+		if focused is Button and is_ancestor_of(focused) and not (focused as Button).disabled:
+			get_viewport().set_input_as_handled()
+			(focused as Button).pressed.emit()
+
+
+func _on_language_changed(_locale: String) -> void:
+	_refresh_texts()
 
 
 func _button(parent: Node, text: String, action: Callable) -> Button:
@@ -93,7 +144,7 @@ func _button(parent: Node, text: String, action: Callable) -> Button:
 
 
 func _refresh_sound_label() -> void:
-	sound_button.text = "Geluid: uit  (M)" if Sound.muted else "Geluid: aan  (M)"
+	sound_button.text = tr("Geluid: uit  (M)") if Sound.muted else tr("Geluid: aan  (M)")
 
 
 func start_game() -> void:

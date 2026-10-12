@@ -92,23 +92,23 @@ static func _preference(offset: Vector2i) -> int:
 	return side * 100 + absi(offset.x) * 10 + absi(offset.y)
 
 
-## Waarom je nu niet kunt reizen (een melding voor de speler), of "" als het mag.
+## Waarom je nu niet kunt reizen (een melding voor de speler, vertaald), of "" als het mag.
 static func blocked_reason(world: Node) -> String:
 	if GameState.ended:
-		return "Je kunt nu niet reizen."
+		return TranslationServer.translate("Je kunt nu niet reizen.")
 	if GameState.transitioning:
-		return "Wacht even, je bent al onderweg."
+		return TranslationServer.translate("Wacht even, je bent al onderweg.")
 	if GameState.dialogue_open:
-		return "Je kunt niet reizen tijdens een gesprek."
+		return TranslationServer.translate("Je kunt niet reizen tijdens een gesprek.")
 	for owner_name: String in GameState.ui_owners:
 		if owner_name != "menu":
-			return "Je kunt nu niet reizen."
+			return TranslationServer.translate("Je kunt nu niet reizen.")
 	if boss_fight(world):
-		return "Je kunt niet reizen tijdens een baasgevecht!"
+		return TranslationServer.translate("Je kunt niet reizen tijdens een baasgevecht!")
 	if "arena_fight" in Content.condition_names() and GameState.check(["arena_fight"]):
-		return "Je kunt niet reizen tijdens een arenagevecht!"
+		return TranslationServer.translate("Je kunt niet reizen tijdens een arenagevecht!")
 	if discovered_altars().is_empty():
-		return "Je hebt nog geen altaar ontdekt."
+		return TranslationServer.translate("Je hebt nog geen altaar ontdekt.")
 	return ""
 
 
@@ -135,7 +135,7 @@ static func boss_fight(world: Node) -> bool:
 static func travel(world: Node, altar: Dictionary) -> bool:
 	var reason := blocked_reason(world)
 	if reason == "" and not GameState.flag(altar["key"]):
-		reason = "Dat altaar heb je nog niet ontdekt."
+		reason = TranslationServer.translate("Dat altaar heb je nog niet ontdekt.")
 	if reason != "":
 		GameState.toast.emit(reason)
 		Sound.play("error", -3.0)

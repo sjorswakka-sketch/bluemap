@@ -140,26 +140,33 @@ func _go() -> void:
 	elapsed = 0.0
 	hits = 0
 	Sound.play("select", -2.0, 1.6)
-	_floating_text("Af!", Color(0.6, 1.0, 0.7))
+	_floating_text(tr("Af!"), Color(0.6, 1.0, 0.7))
 
 
 func _win() -> void:
 	state = "won"
 	end_left = END_TIME
 	Sound.play("quest")
-	var seconds := ("%.1f" % elapsed).replace(".", ",")
+	var seconds := decimal(elapsed)
 	if GameState.quest_state(QUEST) == "active" and not GameState.flag(WON_FLAG):
 		GameState.set_flag(WON_FLAG)
-		GameState.toast.emit("Gehaald in %s seconden! Ga naar Tessa voor je beloning." % seconds)
+		# Vertalers: %s is een tijd met één cijfer achter de komma (zie het decimaalteken)
+		GameState.toast.emit(tr("Gehaald in %s seconden! Ga naar Tessa voor je beloning.") % seconds)
 	else:
-		GameState.toast.emit("Gehaald in %s seconden!" % seconds)
+		GameState.toast.emit(tr("Gehaald in %s seconden!") % seconds)
 
 
 func _lose() -> void:
 	state = "lost"
 	end_left = END_TIME
 	Sound.play("error")
-	GameState.toast.emit("Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging." % [hits, targets().size()])
+	GameState.toast.emit(tr("Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging.") % [hits, targets().size()])
+
+
+## Een getal met één cijfer achter de komma, met het decimaalteken van de taal: "12,3" in het Nederlands.
+func decimal(value: float) -> String:
+	# Vertalers: het decimaalteken in jouw taal (in het Engels een punt: ".")
+	return ("%.1f" % value).replace(".", tr(",", "decimaalteken"))
 
 
 ## Het doelwit dat het laatst geraakt is.
@@ -209,16 +216,17 @@ func _draw_overlay() -> void:
 	var color := Color.WHITE
 	match state:
 		"ready":
-			text = "Klaar? %d" % maxi(ceili(ready_left), 1)
+			# Vertalers: aftellen voor de schietbaan: "Klaar? 3"
+			text = tr("Klaar? %d") % maxi(ceili(ready_left), 1)
 		"run":
-			text = "%s  %d/%d" % [("%.1f" % maxf(time_left, 0.0)).replace(".", ","), hits, targets().size()]
+			text = "%s  %d/%d" % [decimal(maxf(time_left, 0.0)), hits, targets().size()]
 			if time_left < LOW_TIME:
 				color = Color(1.0, 0.5, 0.45)
 		"won":
-			text = "Gehaald!"
+			text = tr("Gehaald!")
 			color = Color(0.6, 1.0, 0.7)
 		"lost":
-			text = "Te laat!"
+			text = tr("Te laat!")
 			color = Color(1.0, 0.5, 0.45)
 	var font := ThemeDB.fallback_font
 	var width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, 14).x

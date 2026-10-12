@@ -9,14 +9,7 @@ const W := 1152.0
 const H := 648.0
 const GAME_SCENE := "res://scenes/main.tscn"
 
-const PAGES := [
-	"Azura is een land vol bossen, ruïnes en grotten. Eeuwenlang werd het beschermd door de Blauwe Kaart.",
-	"De kaart is gemaakt van gloeiend kristal. Hij houdt de slijmen rustig en laat zien waar het land veilig is.",
-	"Maar op een nacht barstte de kaart. De drie grote kristallen vlogen het land in, en overal werden de slijmen wild.",
-	"Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur...",
-]
-
-var pages: Array = PAGES.duplicate() # bij Nieuw spel+ komt er een zin bij
+var pages: Array[String] = [] # in de taal van de speler; bij Nieuw spel+ heeft de laatste pagina een zin meer
 var page := 0
 var t := 0.0
 var typed := 0.0
@@ -28,8 +21,21 @@ func _ready() -> void:
 	GameState.in_game = false
 	get_tree().paused = false
 	Sound.play_music("temple")
-	if GameState.ng_plus > 0:
-		pages[pages.size() - 1] += " Maar let op: dit is Nieuw spel+. De slijmen zijn sterker geworden, en jij hebt je beste spullen mee!"
+	pages = build_pages(GameState.ng_plus)
+
+
+## De pagina's van de intro (vertaald). In Nieuw spel+ (ng_plus > 0) is de laatste pagina langer.
+func build_pages(ng_plus: int) -> Array[String]:
+	var result: Array[String] = [
+		tr("Azura is een land vol bossen, ruïnes en grotten. Eeuwenlang werd het beschermd door de Blauwe Kaart."),
+		tr("De kaart is gemaakt van gloeiend kristal. Hij houdt de slijmen rustig en laat zien waar het land veilig is."),
+		tr("Maar op een nacht barstte de kaart. De drie grote kristallen vlogen het land in, en overal werden de slijmen wild."),
+	]
+	if ng_plus > 0:
+		result.append(tr("Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur... Maar let op: dit is Nieuw spel+. De slijmen zijn sterker geworden, en jij hebt je beste spullen mee!"))
+	else:
+		result.append(tr("Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur..."))
+	return result
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -98,6 +104,6 @@ func _draw() -> void:
 	var font := ThemeDB.fallback_font
 	var line: String = pages[page]
 	draw_multiline_string(font, box.position + Vector2(30, 60), line.substr(0, int(typed)), HORIZONTAL_ALIGNMENT_LEFT, box.size.x - 60.0, 30, -1, Color.WHITE)
-	var hint := "E  ▼" if typed >= line.length() else ""
+	var hint := "E  ▼" if typed >= line.length() else "" # alleen een toets en een pijltje: niets te vertalen
 	draw_string(font, box.position + Vector2(box.size.x - 80, box.size.y - 18), hint, HORIZONTAL_ALIGNMENT_LEFT, -1, 20, Color(1, 1, 1, 0.6))
-	draw_string(font, Vector2(0, H - 24), "Esc = overslaan", HORIZONTAL_ALIGNMENT_CENTER, W, 18, Color(1, 1, 1, 0.4))
+	draw_string(font, Vector2(0, H - 24), tr("Esc = overslaan"), HORIZONTAL_ALIGNMENT_CENTER, W, 18, Color(1, 1, 1, 0.4))
