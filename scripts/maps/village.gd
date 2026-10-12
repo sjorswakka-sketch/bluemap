@@ -48,7 +48,7 @@ const DATA := {
 		{"type": "npc", "pos": [13, 15], "id": "anja"},
 		{"type": "npc", "pos": [22, 24], "id": "joost"},
 		{"type": "npc", "pos": [34, 11], "id": "hein"},
-		{"type": "npc", "pos": [16, 20], "id": "lotte"}, # polish: Lotte
+		{"type": "npc", "pos": [15, 25], "id": "lotte"}, # polish: Lotte (vrij pad)
 		{"type": "npc", "pos": [11, 18], "id": "kasper"}, # polish: Kasper
 		{"type": "npc", "pos": [20, 16], "id": "elke"}, # polish: Elke
 		{"type": "npc", "pos": [27, 14], "id": "willem"}, # polish: Willem
