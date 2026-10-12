@@ -103,5 +103,11 @@ const DATA := {
 		{"type": "pickup", "pos": [22, 15], "item": "arrow", "unique": true},
 		{"type": "pickup", "pos": [30, 10], "item": "arrow", "unique": true},
 		{"type": "pickup", "pos": [38, 25], "item": "arrow", "unique": true},
+		# Vijanden-uitbreiding (achteraan, zodat de plekken van de oude voorwerpen in opslagen niet verschuiven).
+		{"type": "sign", "pos": [14, 16], "lines": ["Pas op voor slijmspuwers!", "Een slijmspuwer spuugt drie slijmballen tegelijk. Rol weg met Shift!", "Kom je te dichtbij, dan hupt hij weg."]},
+		{"type": "enemy", "pos": [30, 28], "kind": "slime_spitter"},
+		{"type": "enemy", "pos": [12, 28], "kind": "slime_spitter"},
+		{"type": "enemy", "pos": [35, 16], "kind": "slime_spitter"},
+		{"type": "enemy", "pos": [42, 26], "kind": "slime_spitter"},
 	],
 }

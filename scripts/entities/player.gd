@@ -142,6 +142,9 @@ func _attack() -> void:
 		var margin: float = enemy.radius
 		if to_enemy.length() <= reach + margin and facing.dot(to_enemy.normalized()) > 0.2:
 			enemy.hurt(GameState.damage(), facing)
+	# Wat je kunt stukslaan (zoals de tovervonk van een Magiër) bepaalt zelf of je zwaard het raakt.
+	for thing: Node in get_tree().get_nodes_in_group("breakable"):
+		thing.sword_hit(global_position, facing, reach)
 
 
 # --- Boog -----------------------------------------------------------------------------

@@ -94,5 +94,9 @@ const DATA := {
 		{"type": "pickup", "pos": [17, 22], "item": "heart"},
 		{"type": "pickup", "pos": [35, 15], "item": "heart"},
 		{"type": "pickup", "pos": [24, 10], "item": "potion", "unique": true},
+		# Vijanden-uitbreiding (achteraan, zodat de plekken van de oude voorwerpen in opslagen niet verschuiven).
+		{"type": "sign", "pos": [9, 27], "lines": ["Pas op voor magiërs!", "Ook in de grot zweven ze rond. Hun tovervonk geeft paars licht: sla hem stuk met je zwaard!"]},
+		{"type": "enemy", "pos": [12, 20], "kind": "mage"},
+		{"type": "enemy", "pos": [40, 12], "kind": "mage"},
 	],
 }
