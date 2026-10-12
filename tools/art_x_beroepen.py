@@ -133,9 +133,117 @@ def stump():
     return outline(im)
 
 
+ICE = c("9fd8f0")
+ICE_DARK = c("5ea8cc")
+FROST = c("eaf7ff")
+BERRY_RED = c("d96a7e")
+PINE_WOOD = c("7a5c3d")
+PINE_DARK = c("5c4229")
+
+
+def iceflower():
+    im = blank()
+    line(im, (8, 14), (8, 6), c("6fae9a"), 1)
+    for x, y in [(8, 2), (5, 4), (11, 4), (6, 7), (10, 7)]:
+        polygon(im, [(x, y), (x + 1, y - 1), (x + 2, y), (x + 1, y + 1)], ICE)
+    rect(im, 7, 4, 8, 5, FROST)
+    rect(im, 7, 9, 8, 10, c("a5e8f2"))
+    return outline(im)
+
+
+def winterberry():
+    im = blank()
+    line(im, (8, 7), (9, 2), c("6fae9a"), 1)
+    polygon(im, [(9, 3), (13, 2), (12, 5), (9, 5)], c("cfe8dd"))
+    for x, y in [(4, 7), (8, 6), (6, 11), (10, 10)]:
+        ellipse(im, (x - 2, y - 2, x + 2, y + 2), BERRY_RED)
+        rect(im, x - 1, y - 2, x, y - 2, FROST)
+    return outline(im)
+
+
+def pinelog():
+    im = blank()
+    polygon(im, [(3, 6), (10, 3), (14, 8), (6, 13)], PINE_WOOD)
+    line(im, (5, 7), (11, 4), c("a9835e"))
+    line(im, (7, 10), (13, 7), PINE_DARK)
+    ellipse(im, (1, 6, 7, 13), c("c9a06a"))
+    ellipse(im, (3, 8, 5, 11), PINE_DARK)
+    return outline(im)
+
+
+def icecrystal():
+    im = blank()
+    polygon(im, [(7, 1), (10, 5), (9, 13), (6, 13), (5, 5)], ICE)
+    polygon(im, [(7, 2), (8, 5), (8, 12), (7, 12)], FROST)
+    polygon(im, [(11, 6), (13, 9), (12, 14), (10, 14), (10, 9)], ICE_DARK)
+    polygon(im, [(2, 8), (5, 10), (5, 14), (3, 14), (2, 11)], ICE_DARK)
+    return outline(im)
+
+
+def frosttonic():
+    im = blank()
+    rect(im, 6, 2, 9, 4, c("b9c9d8"))
+    rect(im, 6, 5, 9, 7, c("d2e9ec"))
+    ellipse(im, (3, 6, 12, 14), c("dceffb"))
+    ellipse(im, (4, 8, 11, 13), ICE)
+    polygon(im, [(8, 8), (6, 11), (8, 11), (7, 14), (10, 10), (8, 10)], FROST)
+    return outline(im)
+
+
+def winterbowl():
+    im = blank()
+    ellipse(im, (2, 7, 13, 13), c("885032"))
+    ellipse(im, (2, 5, 13, 10), LIGHT)
+    ellipse(im, (3, 6, 12, 9), BERRY_RED)
+    for x, y in [(5, 7), (9, 8), (8, 6)]:
+        rect(im, x, y, x + 1, y + 1, FROST)
+    rect(im, 7, 3, 7, 3, c("f4fbff"))
+    rect(im, 9, 2, 9, 2, c("f4fbff"))
+    return outline(im)
+
+
+def iceflower_bush():
+    im = blank()
+    ellipse(im, (2, 11, 13, 15), c("dfe9f2"))
+    for x, y in [(4, 8), (8, 5), (11, 9), (7, 10)]:
+        line(im, (x, 12), (x, y + 2), c("6fae9a"), 1)
+        polygon(im, [(x, y), (x + 1, y - 1), (x + 2, y), (x + 1, y + 1)], ICE)
+    rect(im, 8, 5, 9, 6, FROST)
+    return outline(im)
+
+
+def frostbush():
+    im = blank()
+    for x, y in [(5, 9), (10, 9), (8, 5)]:
+        ellipse(im, (x - 4, y - 3, x + 4, y + 3), c("7fae9f"))
+    for x, y in [(4, 8), (8, 5), (11, 9), (7, 11)]:
+        rect(im, x, y, x + 1, y + 1, BERRY_RED)
+    for x, y in [(3, 6), (9, 3), (12, 7)]:
+        rect(im, x, y, x + 1, y, FROST)
+    return outline(im)
+
+
+def pinestump():
+    im = blank()
+    polygon(im, [(4, 5), (12, 5), (12, 11), (14, 14), (2, 14), (4, 11)], c("8a6a4a"))
+    ellipse(im, (4, 3, 12, 8), c("c9a06a"))
+    ellipse(im, (6, 4, 10, 6), PINE_DARK)
+    rect(im, 4, 10, 6, 11, c("4a3b2c"))
+    rect(im, 10, 9, 12, 9, c("4a3b2c"))
+    rect(im, 5, 3, 11, 4, FROST)
+    return outline(im)
+
+
+def icevein():
+    im = rock(ICE, True)
+    rect(im, 3, 2, 4, 3, FROST)
+    rect(im, 11, 3, 12, 4, FROST)
+    return im
+
+
 def sheets():
-    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew")]
-    resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True)]
+    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl()]
+    resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein()]
     return {"items_beroepen": strip(icons), "resources_beroepen": strip(resources)}
 
 

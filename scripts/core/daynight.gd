@@ -96,6 +96,11 @@ static func raining(weather: String, day_count: int, t: float) -> bool:
 	return false
 
 
+## Sneeuwt het op dit moment? "snow" op de kaart betekent: het sneeuwt er altijd (zoals IJsdal).
+static func snowing(weather: String, _day_count: int, _t: float) -> bool:
+	return weather == "snow"
+
+
 ## Een vaste "willekeurige" waarde voor een vakje, zodat het weer bij elke dag hetzelfde is als je opnieuw laadt.
 static func _hash(n: int) -> int:
 	var h := (n * 73856093) ^ ((n + 17) * 19349663)
@@ -106,6 +111,11 @@ static func _hash(n: int) -> int:
 ## De tint van de lucht bij regen (0 = droog, 1 = volop regen).
 static func rain_tint(level: float) -> Color:
 	return Color.WHITE.lerp(RAIN_TINT, clampf(level, 0.0, 1.0))
+
+
+## De tint van de lucht bij sneeuw: iets koeler en bleker, maar het blijft licht (0 = geen sneeuw).
+static func snow_tint(level: float) -> Color:
+	return Color.WHITE.lerp(Color(0.94, 0.97, 1.04), clampf(level, 0.0, 1.0))
 
 
 ## De naam van het dagdeel voor in beeld (vertaald). phase_at() geeft de vaste naam ("ochtend") voor voorwaarden.

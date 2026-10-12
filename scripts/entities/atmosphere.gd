@@ -1,16 +1,19 @@
 extends Node
-## De lucht boven de wereld: de kleur van de dag, het weer (regen, met geluid) en de lichtjes 's nachts.
+## De lucht boven de wereld: de kleur van de dag, het weer (regen of sneeuw) en de lichtjes 's nachts.
 ## Dit hoort bij world.gd, dat deze node aanmaakt en bij elke kaartwissel `enter_map()` aanroept.
 ##
 ## In de kaart staat wat hier van toepassing is:  "outdoor": true  (de kaart volgt dag en nacht)
-## en  "weather": "rain" (altijd regen) of "random" (wisselt met de klok). Zie scripts/core/daynight.gd.
+## en  "weather": "rain" (altijd regen), "snow" (altijd sneeuw) of "random" (wisselt met de klok).
+## Zie scripts/core/daynight.gd.
 
 const Daynight := preload("res://scripts/core/daynight.gd")
 const RainScript := preload("res://scripts/entities/rain.gd")
+const SnowScript := preload("res://scripts/entities/snow.gd")
 const WindowGlowScript := preload("res://scripts/entities/window_glow.gd")
 const Tiles := preload("res://scripts/data/tiles.gd")
 
 const RAIN_FADE := 4.0 # seconden die de regen nodig heeft om aan of uit te gaan
+const SNOW_FADE := 4.0 # seconden die de sneeuw nodig heeft om aan of uit te gaan
 const RAIN_VOLUME_DB := -13.0 # zachte regen, bij volle regen
 const BED_PRICE := 5 # munten voor een nachtje in de herberg
 const SLEEP_FADE := 1.0 # seconden om naar zwart (en terug) te gaan bij het slapen
@@ -20,8 +23,10 @@ var world: Node2D
 var outdoor := false
 var weather := ""
 var rain_level := 0.0 # hoe hard het regent: 0..1
+var snow_level := 0.0 # hoe hard het sneeuwt: 0..1
 var light_need := 0.0 # hoeveel kunstlicht er nu nodig is: 0 = geen, 1 = zo donker als in de grot
 var rain: Node2D
+var snow: Node2D
 var rain_audio: AudioStreamPlayer
 var windows: Node2D
 
@@ -30,6 +35,9 @@ func _ready() -> void:
 	rain = RainScript.new()
 	rain.world = world
 	world.fx_layer.add_child(rain)
+	snow = SnowScript.new()
+	snow.world = world
+	world.fx_layer.add_child(snow)
 	rain_audio = AudioStreamPlayer.new()
 	rain_audio.bus = "SFX"
 	rain_audio.process_mode = Node.PROCESS_MODE_ALWAYS # de regen hoor je ook in het menu
@@ -57,7 +65,9 @@ func enter_map(data: Dictionary) -> void:
 	outdoor = data.get("outdoor", false)
 	weather = data.get("weather", "")
 	rain_level = _rain_target() # het regent meteen als het regent, en anders niet
+	snow_level = _snow_target() # idem voor sneeuw
 	rain.clear_splashes()
+	snow.clear_splashes()
 	_build_windows(data)
 	var night_lamp: bool = outdoor and world.darkness <= 0.0
 	world.player.set_lit(world.darkness > 0.0 or night_lamp, 1.0 if not night_lamp else NIGHT_LIGHT, 3.2 if not night_lamp else 2.2)
@@ -66,6 +76,7 @@ func enter_map(data: Dictionary) -> void:
 
 func _process(delta: float) -> void:
 	rain_level = move_toward(rain_level, _rain_target(), delta / RAIN_FADE)
+	snow_level = move_toward(snow_level, _snow_target(), delta / SNOW_FADE)
 	_apply()
 
 
@@ -74,16 +85,22 @@ func _rain_target() -> float:
 	return 1.0 if Daynight.raining(weather, GameState.day_count, GameState.day_time) else 0.0
 
 
+## Of het hier nu hoort te sneeuwen (1) of niet (0).
+func _snow_target() -> float:
+	return 1.0 if Daynight.snowing(weather, GameState.day_count, GameState.day_time) else 0.0
+
+
 func _apply() -> void:
 	if outdoor:
 		var t := GameState.day_time
-		world.canvas_mod.color = Daynight.tint_at(t) * Daynight.rain_tint(rain_level)
+		world.canvas_mod.color = Daynight.tint_at(t) * Daynight.rain_tint(rain_level) * Daynight.snow_tint(snow_level)
 		light_need = Daynight.night_at(t)
 		world.player.light.enabled = light_need > 0.02 and world.darkness <= 0.0
 		world.player.light.energy = NIGHT_LIGHT * light_need
 	else:
 		light_need = 1.0 if world.darkness > 0.0 else 0.0
 	rain.level = rain_level
+	snow.level = snow_level
 	_update_audio()
 
 
