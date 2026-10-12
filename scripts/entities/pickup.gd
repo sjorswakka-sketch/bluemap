@@ -19,6 +19,7 @@ var toss := Vector2.ZERO
 var t := randf() * TAU
 var age := 0.0
 var player: Node2D
+var collected := false
 
 
 func _ready() -> void:
@@ -31,32 +32,39 @@ func _process(delta: float) -> void:
 	if age < 0.4:
 		position += toss * delta
 		toss *= 0.9
-	if player == null:
+	if not is_instance_valid(player):
 		player = Util.player(self)
 	if player and not GameState.ended and not GameState.input_locked():
 		var dist := player.global_position.distance_to(global_position)
-		if age > 0.25 and (item == "coin" or (item == "heart" and GameState.hp < GameState.max_hp())) and dist < MAGNET_RANGE:
+		# Every dropped item follows the same magnet rule, even when it cannot
+		# be collected yet. Full hearts and capped stacks remain available.
+		if age > 0.25 and dist < MAGNET_RANGE:
 			global_position = global_position.move_toward(player.global_position, 170.0 * delta)
-		if age > 0.2 and dist < PICKUP_RANGE:
+		if age > 0.2 and player.global_position.distance_to(global_position) < PICKUP_RANGE:
 			_collect()
 	queue_redraw()
 
 
 func _collect() -> void:
+	if collected or is_queued_for_deletion():
+		return
+	# Claim before inventory signals fire: synchronous listeners cannot award
+	# a coin or a unique object twice before queue_free takes effect.
+	if item == "heart" and GameState.hp >= GameState.max_hp():
+		return
+	if item != "coin" and item != "heart" and GameState.room(item) <= 0:
+		_warn_full(Items.info(item))
+		return
+	collected = true
 	match item:
 		"coin":
 			GameState.add_coins(1)
 			Sound.play("coin", -4.0)
 		"heart":
-			if GameState.hp >= GameState.max_hp():
-				return # bewaren voor als je gewond bent
 			GameState.heal(1)
 			Sound.play("heart", -3.0)
 		_:
 			var info := Items.info(item)
-			if GameState.room(item) <= 0:
-				_warn_full(info) # het voorwerp blijft liggen voor later
-				return
 			if info.get("type", "") == "ammo":
 				# Pijlen vallen vaak een voor een: geen melding maar een klein plusje.
 				GameState.give(item, 1, true)

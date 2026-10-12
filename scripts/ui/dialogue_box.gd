@@ -28,6 +28,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build_ui()
 	panel.visible = false
+	panel.gui_input.connect(_pointer_input)
 	GameState.dialogue_requested.connect(start)
 	GameState.text_dialogue_requested.connect(start_text)
 
@@ -47,6 +48,7 @@ func _build_ui() -> void:
 	add_child(panel)
 
 	var box := VBoxContainer.new()
+	box.mouse_filter = Control.MOUSE_FILTER_PASS
 	box.add_theme_constant_override("separation", 6)
 	panel.add_child(box)
 	speaker_label = Label.new()
@@ -123,29 +125,42 @@ func _show_line() -> void:
 	text_label.text = GameState.fmt(_text(lines[line_idx]))
 	text_label.visible_characters = 0
 	shown_chars = 0.0
-	# Vertalers: toetsen om verder te klikken in een gesprek (spatie = de spatiebalk)
-	hint_label.text = tr("E / spatie  ▼") if line_idx < lines.size() - 1 else tr("E / spatie  ✓")
+	hint_label.text = Controls.action_label("ui_accept") + ("  ▼" if line_idx < lines.size() - 1 else "  ✓")
 
 
 func _process(delta: float) -> void:
+	if active:
+		hint_label.text = tr("↑ ↓ kiezen  ·  %s bevestigen  ·  %s sluiten") % [Controls.action_label("ui_accept"), Controls.action_label("ui_cancel")] if not buttons.is_empty() else tr("%s / klik  verder  ·  %s sluiten") % [Controls.action_label("ui_accept"), Controls.action_label("ui_cancel")]
 	if active and text_label.visible_characters >= 0 and text_label.visible_characters < text_label.text.length():
 		shown_chars += delta * 60.0
 		text_label.visible_characters = int(shown_chars)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not active or Engine.get_process_frames() == opened_frame:
+	if not Controls.allows_event(event):
 		return
-	if event.is_action_pressed("interact") or event.is_action_pressed("attack"):
+	if not active or Engine.get_process_frames() == opened_frame or event.is_echo():
+		return
+	if UiStyle.shortcut(event, "pause") or event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
-		if not buttons.is_empty():
-			# Met een keuze op het scherm bevestigt E de gekozen knop.
-			var focused := get_viewport().gui_get_focus_owner()
-			if focused is Button and focused in buttons:
-				(focused as Button).pressed.emit()
-			return
+		_close()
+	elif not buttons.is_empty():
+		if UiStyle.activate_focused(panel, event):
+			get_viewport().set_input_as_handled()
+	elif UiStyle.confirm(event) or UiStyle.shortcut(event, "attack"):
+		get_viewport().set_input_as_handled()
 		_advance()
 
+
+func _pointer_input(event: InputEvent) -> void:
+	if not active or Controls.controller_active or Engine.get_process_frames() == opened_frame:
+		return
+	if event is InputEventMouseButton and event.pressed:
+		panel.accept_event()
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_close()
+		elif event.button_index == MOUSE_BUTTON_LEFT and buttons.is_empty():
+			_advance()
 
 func _advance() -> void:
 	if text_label.visible_characters >= 0 and text_label.visible_characters < text_label.text.length():
@@ -190,14 +205,19 @@ func _show_choices(choices: Array) -> void:
 		button.pressed.connect(_choose.bind(choice))
 		choices_box.add_child(button)
 		buttons.append(button)
-	hint_label.text = tr("↑ ↓ kiezen  ·  E bevestigen")
+	hint_label.text = tr("↑ ↓ kiezen  ·  %s bevestigen") % Controls.action_label("ui_accept")
 	if buttons.is_empty():
 		_close()
 	else:
+		var controls: Array[Control] = []
+		controls.assign(buttons)
+		UiStyle.link_vertical(controls)
 		buttons[0].grab_focus()
 
 
 func _choose(choice: Dictionary) -> void:
+	if not active:
+		return
 	Sound.play("select", -4.0)
 	_clear_choices()
 	if choice.has("do"):
@@ -210,6 +230,7 @@ func _choose(choice: Dictionary) -> void:
 
 func _clear_choices() -> void:
 	for button in buttons:
+		choices_box.remove_child(button)
 		button.queue_free()
 	buttons.clear()
 
@@ -220,3 +241,9 @@ func _close() -> void:
 	active = false
 	GameState.dialogue_open = false
 	GameState.set_ui("dialogue", false)
+
+
+func _exit_tree() -> void:
+	if active:
+		GameState.dialogue_open = false
+		GameState.set_ui("dialogue", false)

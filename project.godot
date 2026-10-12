@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Bluemap Quest"
 config/description="Top-down avontuur/RPG gemaakt in Godot 4"
-config/version="0.5.0-preview"
+config/version="0.5.1-preview"
 run/main_scene="res://scenes/title.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Lang="*res://scripts/core/lang.gd"
+Controls="*res://scripts/core/input_manager.gd"
 GameState="*res://scripts/core/game_state.gd"
 Sound="*res://scripts/core/sound.gd"
 

@@ -60,7 +60,7 @@ func _run() -> void:
 	var seen: Dictionary = {0: true}
 	var all_visible := true
 	for i in owned.size() + 3:
-		press("ui_down")
+		press("ui_right")
 		await frames(1)
 		seen[menu.selected] = true
 		var first: int = menu.inventory_page_start()
@@ -68,8 +68,8 @@ func _run() -> void:
 	check(seen.size() == owned.size(), "elk voorwerp is selecteerbaar met toetsenbord/controller")
 	check(all_visible and menu.selected == owned.size() - 1, "gekozen voorwerp blijft binnen de zichtbare pagina")
 	for i in owned.size() + 3:
-		press("ui_up")
-	check(menu.selected == 0 and menu.inventory_page_start() == 0, "omhoog keert terug naar de eerste pagina")
+		press("ui_left")
+	check(menu.selected == 0 and menu.inventory_page_start() == 0, "links keert terug naar de eerste pagina")
 	gs.hp = 1
 	menu.selected = owned.find("prof_berry_meal")
 	press("interact")
@@ -78,8 +78,8 @@ func _run() -> void:
 	menu.selected = menu._owned().find("prof_tonic")
 	press("interact")
 	check(is_equal_approx(gs.movement.stamina, 70.0) and gs.count("prof_tonic") == 0, "energie-elixer vult echte stamina aan")
-	press("ui_right")
-	check(menu.tab == 1, "bestaande tabbladbesturing blijft werken")
+	press("ui_next_tab")
+	check(menu.tab == 1, "schouderknoppen wisselen tabblad los van de inventarisrichting")
 	press("pause")
 	await frames()
 	check(not paused and not world.pause_menu.open, "inventaris sluiten opent geen tweede menu")

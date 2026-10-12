@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.5.0-preview)
+BLUEMAP QUEST  (v0.5.1-preview)
 =======================
 
 Starten
@@ -6,8 +6,8 @@ Starten
 
 Besturing
   WASD / pijltjes   lopen
-  Spatie / J        zwaard
-  F / L             boog: een pijl schieten (nadat je een boog hebt gekocht)
+  Linkermuis / Spatie / J   zwaard
+  Rechtermuis / F / L       boog: een pijl schieten (nadat je een boog hebt gekocht)
   Shift / K         rollen (even onraakbaar)
   Ctrl vasthouden   sprinten; L3 vasthouden op een controller
   C                 beroepen, recepten en eten/drinken; R3 op een controller
@@ -15,12 +15,15 @@ Besturing
   H                 helddrank drinken
   I / Tab           menu: voorwerpen        Q: opdrachten        N: kaart
                     T: prestaties           B: beestenboek
-                    In het menu: pijltjes links/rechts = ander tabblad, omhoog/omlaag = kiezen
+                    In het menu: WASD/pijltjes = kiezen; PageUp/PageDown = ander tabblad
   Esc / P           pauze                   M: geluid aan/uit    F11: volledig scherm
   R                 na game over: verder vanaf je laatste opslag
 
-  Een controller werkt ook: stick lopen, X zwaard, rechter trekker boog, B rollen, A praten, Y drankje, Start pauze.
-  In het menu bladeren de schouderknoppen door de tabbladen.
+  Richten: muis of rechterstick; het richtkruis toont je mikpunt.
+  Een controller werkt ook: linkerstick lopen, X zwaard, rechter trekker boog, B rollen, A praten, Y drankje, Start pauze.
+  In het menu bladeren LB/RB door de tabbladen; A bevestigt, B gaat terug.
+  Via Bediening (titel- of pauzemenu) pas je toetsen, muis en controller apart aan.
+  Het laatst gebruikte apparaat is actief; controllergebruik verbergt de muis.
 
 Taal / Language
   Op het titelscherm (rechtsboven) en in het pauzemenu wissel je met de knop "Taal: Nederlands" van taal.
@@ -31,6 +34,8 @@ Doel
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
 
 Nieuw in deze preview
+  Alle losse items zijn magnetisch. Volle stapels en hartjes blijven beschikbaar.
+  Oogsten heeft animaties en gereedschapscontroles. Lopen of een menu onderbreekt de actie.
   Paden geven 20% extra loopsnelheid, zand remt 8% af. Ondergronden hebben eigen voetstappen.
   Sprinten gaat 50% sneller en kost stamina. Laat Ctrl los om te herstellen; een volle balk duurt vijf seconden.
   Smid, winkel, herberg, tempel, arena, vissershuisje en bibliotheek zijn herkenbaar aan hun nieuwe gevels.
@@ -40,10 +45,10 @@ Beroepen en maken
   Raap in het dorp takken en vuurstenen met E. Maak via C eerst een stenen bijl en een pikhouweel.
   Daarmee hak je oogstbare stronken en win je koper; later maak je beter gereedschap voor ijzer.
   Smeden doe je binnen bij Greta, alchemie in de bibliotheek en warm koken in de herberg.
-  Eten en energie-elixers gebruik je via C of I. Omhoog/omlaag selecteert elk voorwerp, E gebruikt het.
+  Eten en energie-elixers gebruik je via C of I. WASD/pijltjes kiest een voorwerp in het raster, E/Enter gebruikt het.
   Grondstoffen keren na 90 tot 180 seconden actieve speeltijd terug. Je beroepen worden mee opgeslagen.
 
-  Deze preview bevat nog niet het afzonderlijk geplande taalpakket.
+  Deze preview bevat het Nederlandse en Engelse taalpakket, inclusief de nieuwe menu's.
 
 Vissen
   Ten zuiden van het dorp ligt het Zilvermeer. Praat met Visser Joris voor een hengel, ga bij een visplek

@@ -75,6 +75,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Controls.capture_active or not Controls.allows_event(event):
+		return
 	if event.is_action_pressed("mute"):
 		toggle_mute()
 

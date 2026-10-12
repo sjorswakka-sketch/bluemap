@@ -15,6 +15,10 @@ var detail: Label
 var filter: OptionButton
 var recipes_button: Button
 var supplies_button: Button
+var close_button: Button
+var hint: Label
+var title_label: Label
+var intro_label: Label
 var active := false
 var opened_frame := -1
 var supplies := false
@@ -28,6 +32,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build_ui()
 	root.hide()
+	Lang.changed.connect(_refresh_language)
 
 
 func _build_ui() -> void:
@@ -45,9 +50,10 @@ func _build_ui() -> void:
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 6)
 	panel.add_child(box)
-	box.add_child(UiStyle.make_label(Data.TEXT["title"], 30, Color(0.73, 0.91, 0.67)))
-	var intro := _wrapped(Data.TEXT["intro"], 17)
-	box.add_child(intro)
+	title_label = UiStyle.make_label(tr(Data.TEXT["title"]), 30, Color(0.73, 0.91, 0.67))
+	box.add_child(title_label)
+	intro_label = _wrapped("", 17)
+	box.add_child(intro_label)
 	var content := HBoxContainer.new()
 	content.add_theme_constant_override("separation", 16)
 	box.add_child(content)
@@ -60,21 +66,26 @@ func _build_ui() -> void:
 	content.add_child(right)
 	var nav := HBoxContainer.new()
 	right.add_child(nav)
-	recipes_button = _button(Data.TEXT["recipes"])
+	recipes_button = _button(tr(Data.TEXT["recipes"]))
 	recipes_button.pressed.connect(func() -> void: supplies = false; _populate())
 	nav.add_child(recipes_button)
-	supplies_button = _button(Data.TEXT["supplies"])
+	supplies_button = _button(tr(Data.TEXT["supplies"]))
 	supplies_button.pressed.connect(func() -> void: supplies = true; _populate())
 	nav.add_child(supplies_button)
 	filter = OptionButton.new()
-	filter.add_theme_font_size_override("font_size", 18)
-	filter.add_item(Data.TEXT["skills"])
+	UiStyle.style_button(filter, 18)
+	filter.custom_minimum_size = Vector2(180, 38)
+	filter.add_item(tr(Data.TEXT["skills"]))
 	for skill: String in Data.SKILLS:
-		filter.add_item(Data.SKILLS[skill]["name"])
+		filter.add_item(tr(Data.SKILLS[skill]["name"]))
 	filter.item_selected.connect(func(index: int) -> void:
 		selected_skill = "" if index == 0 else str(Data.SKILLS.keys()[index - 1])
 		_populate())
 	nav.add_child(filter)
+	close_button = _button(tr("Sluiten"))
+	close_button.custom_minimum_size.x = 100
+	close_button.pressed.connect(close)
+	nav.add_child(close_button)
 	scroll = ScrollContainer.new()
 	scroll.custom_minimum_size = Vector2(740, 350)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -87,7 +98,8 @@ func _build_ui() -> void:
 	detail = _wrapped("", 17)
 	detail.custom_minimum_size = Vector2(0, 48)
 	box.add_child(detail)
-	box.add_child(UiStyle.make_label(Data.TEXT["hint"], 16, Color(0.72, 0.77, 0.85)))
+	hint = UiStyle.make_label("", 16, Color(0.72, 0.77, 0.85))
+	box.add_child(hint)
 
 
 func _button(text: String) -> Button:
@@ -109,6 +121,8 @@ func _wrapped(text: String, font_size: int) -> Label:
 func _process(_delta: float) -> void:
 	if not active:
 		return
+	hint.text = tr("↑ ↓ ← → kiezen  ·  %s bevestigen  ·  %s / %s recepten/voorraad  ·  %s sluiten") % [Controls.action_label("ui_accept"), Controls.action_label("ui_prev_tab"), Controls.action_label("ui_next_tab"), Controls.action_label("ui_cancel")]
+	intro_label.text = tr("Verzamel met %s. Maak eerst een stenen bijl en pikhouweel van losse takken en stenen. Gereedschap wordt automatisch gebruikt en slijt niet.") % Controls.action_label("interact")
 	# Font metrics, translations and window sizes can differ. Fit the complete
 	# panel before centering so the footer and every control stay on-screen.
 	panel.size = panel.get_combined_minimum_size()
@@ -148,22 +162,22 @@ func _populate() -> void:
 	detail.text = ""
 	for skill: String in Data.SKILLS:
 		var lv := Professions.level(skill)
-		var button := _button(Data.TEXT["skill_line"] % [Data.SKILLS[skill]["name"], lv])
+		var button := _button(tr(Data.TEXT["skill_line"]) % [tr(Data.SKILLS[skill]["name"]), lv])
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.pressed.connect(func() -> void:
 			supplies = false
 			selected_skill = skill
 			filter.select(Data.SKILLS.keys().find(skill) + 1)
 			_populate())
-		var xp_text: String = Data.TEXT["master"] if lv == Professions.MAX_LEVEL else Data.TEXT["xp"] % [Professions.xp(skill) - Professions.threshold(lv), Professions.threshold(lv + 1) - Professions.threshold(lv)]
-		button.focus_entered.connect(func() -> void: detail.text = Data.SKILLS[skill]["desc"] + "\n" + xp_text)
+		var xp_text: String = tr(Data.TEXT["master"]) if lv == Professions.MAX_LEVEL else tr(Data.TEXT["xp"]) % [Professions.xp(skill) - Professions.threshold(lv), Professions.threshold(lv + 1) - Professions.threshold(lv)]
+		button.focus_entered.connect(func() -> void: detail.text = tr(Data.SKILLS[skill]["desc"]) + "\n" + xp_text)
 		skill_list.add_child(button)
 		var progress := ProgressBar.new()
 		progress.custom_minimum_size = Vector2(0, 7)
 		progress.show_percentage = false
 		progress.max_value = 1.0 if lv == Professions.MAX_LEVEL else float(Professions.threshold(lv + 1) - Professions.threshold(lv))
 		progress.value = 1.0 if lv == Professions.MAX_LEVEL else float(Professions.xp(skill) - Professions.threshold(lv))
-		progress.tooltip_text = Data.TEXT["master"] if lv == Professions.MAX_LEVEL else Data.TEXT["xp"] % [int(progress.value), int(progress.max_value)]
+		progress.tooltip_text = tr(Data.TEXT["master"]) if lv == Professions.MAX_LEVEL else tr(Data.TEXT["xp"]) % [int(progress.value), int(progress.max_value)]
 		skill_list.add_child(progress)
 	filter.visible = not supplies
 	recipes_button.modulate = Color.WHITE if not supplies else Color(0.65, 0.65, 0.65)
@@ -173,21 +187,23 @@ func _populate() -> void:
 		for item: String in Professions.CONSUMABLES:
 			if GameState.count(item) <= 0:
 				continue
-			var button := _button(Data.TEXT["use"] % [Professions.item_name(item), GameState.count(item)])
+			var button := _button(tr(Data.TEXT["use"]) % [Professions.item_name(item), GameState.count(item)])
 			button.icon = Items.icon_tex(item)
 			button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			button.pressed.connect(_use.bind(item))
-			button.focus_entered.connect(func() -> void: detail.text = Items.info(item)["desc"] + "\n" + Professions.use_reason(item))
+			button.focus_entered.connect(func() -> void:
+				selected_entry = item
+				detail.text = tr(Items.info(item)["desc"]) + "\n" + Professions.use_reason(item))
 			rows.add_child(button)
 			if focus == null or selected_entry == item:
 				focus = button
 		if focus == null:
-			rows.add_child(_wrapped(Data.TEXT["none"], 20))
+			rows.add_child(_wrapped(tr(Data.TEXT["none"]), 20))
 	else:
 		if selected_skill != "":
-			rows.add_child(_wrapped(Data.SKILLS[selected_skill]["desc"], 18))
+			rows.add_child(_wrapped(tr(Data.SKILLS[selected_skill]["desc"]), 18))
 			var lv := Professions.level(selected_skill)
-			rows.add_child(_wrapped(Data.TEXT["master"] if lv == Professions.MAX_LEVEL else Data.TEXT["xp"] % [Professions.xp(selected_skill) - Professions.threshold(lv), Professions.threshold(lv + 1) - Professions.threshold(lv)], 17))
+			rows.add_child(_wrapped(tr(Data.TEXT["master"]) if lv == Professions.MAX_LEVEL else tr(Data.TEXT["xp"]) % [Professions.xp(selected_skill) - Professions.threshold(lv), Professions.threshold(lv + 1) - Professions.threshold(lv)], 17))
 		for recipe_id: String in Data.RECIPES:
 			var recipe: Dictionary = Data.RECIPES[recipe_id]
 			if selected_skill != "" and recipe["skill"] != selected_skill:
@@ -196,10 +212,11 @@ func _populate() -> void:
 			rows.add_child(button)
 			if focus == null or selected_entry == recipe_id:
 				focus = button
+	_link_focus()
 	if focus:
 		_focus_after_layout.call_deferred(focus, _population_version)
 	else:
-		recipes_button.grab_focus.call_deferred()
+		UiStyle.focus_if_visible.call_deferred(recipes_button)
 
 
 func _focus_after_layout(button: Button, version: int) -> void:
@@ -207,7 +224,7 @@ func _focus_after_layout(button: Button, version: int) -> void:
 	# their real bounds. A generation guard ignores an older filter/craft refresh.
 	await get_tree().process_frame
 	await get_tree().process_frame
-	if not active or version != _population_version or not is_instance_valid(button):
+	if not active or version != _population_version or not is_instance_valid(button) or not button.is_inside_tree() or not button.is_visible_in_tree():
 		return
 	button.grab_focus()
 	scroll.ensure_control_visible(button)
@@ -219,43 +236,107 @@ func _recipe_button(recipe_id: String) -> Button:
 	for item: String in recipe["inputs"]:
 		ingredients.append("%s %d/%d" % [Professions.item_name(item), GameState.count(item), int(recipe["inputs"][item])])
 	var reason := Professions.craft_reason(recipe_id)
-	var title: String = Data.TEXT["recipe_line"] % [Professions.item_name(recipe["output"]), int(recipe.get("amount", 1)), Data.SKILLS[recipe["skill"]]["name"], recipe["level"]]
-	var button := _button(title + "\n" + "  ·  ".join(ingredients) + "\n" + (Data.TEXT["ready"] if reason == "" else reason))
+	var title: String = tr(Data.TEXT["recipe_line"]) % [Professions.item_name(recipe["output"]), int(recipe.get("amount", 1)), tr(Data.SKILLS[recipe["skill"]]["name"]), recipe["level"]]
+	var button := _button(title + "\n" + "  ·  ".join(ingredients) + "\n" + (tr(Data.TEXT["ready"]) if reason == "" else reason))
 	button.custom_minimum_size.y = 90
 	button.icon = Items.icon_tex(recipe["output"])
 	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	button.modulate = Color.WHITE if reason == "" else Color(0.7, 0.75, 0.82)
 	button.pressed.connect(_craft.bind(recipe_id))
 	button.focus_entered.connect(func() -> void:
-		detail.text = Items.info(recipe["output"])["desc"] + "\n" + Data.TEXT["station"] % Data.TEXT.get(recipe.get("station", "anywhere"), Data.TEXT["anywhere"]))
+		selected_entry = recipe_id
+		detail.text = tr(Items.info(recipe["output"])["desc"]) + "\n" + tr(Data.TEXT["station"]) % tr(Data.TEXT.get(recipe.get("station", "anywhere"), Data.TEXT["anywhere"])))
 	return button
 
 
 func _craft(recipe_id: String) -> void:
+	if not active:
+		return
 	selected_entry = recipe_id
 	Sound.play("buy" if Professions.craft(recipe_id) else "error", -5.0)
 	_populate()
 
 
 func _use(item_id: String) -> void:
+	if not active:
+		return
 	selected_entry = item_id
 	Sound.play("drink" if Professions.use_item(item_id) else "error", -5.0)
 	_populate()
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not active or Engine.get_process_frames() == opened_frame:
+	if not Controls.allows_event(event):
 		return
-	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel") or event.is_action_pressed("crafting"):
+	if not active or Engine.get_process_frames() == opened_frame or event.is_echo():
+		return
+	if UiStyle.shortcut(event, "pause") or event.is_action_pressed("ui_cancel") or UiStyle.shortcut(event, "crafting"):
 		get_viewport().set_input_as_handled()
 		close()
-	elif event.is_action_pressed("interact"):
+	elif event.is_action_pressed("ui_prev_tab") or event.is_action_pressed("ui_next_tab"):
 		get_viewport().set_input_as_handled()
-		var focused := get_viewport().gui_get_focus_owner()
-		if focused is Button and not focused is OptionButton:
-			(focused as Button).pressed.emit()
+		supplies = not supplies
+		selected_entry = ""
+		_populate()
+	elif UiStyle.activate_focused(root, event):
+		get_viewport().set_input_as_handled()
 
+
+func _link_focus() -> void:
+	var skills: Array[Control] = []
+	var entries: Array[Control] = []
+	for child: Node in skill_list.get_children():
+		if child is Button:
+			skills.append(child)
+	for child: Node in rows.get_children():
+		if child is Button:
+			entries.append(child)
+	UiStyle.link_vertical(skills, false)
+	UiStyle.link_vertical(entries, false)
+	var header: Array[Control] = [recipes_button, supplies_button]
+	if filter.visible:
+		header.append(filter)
+	header.append(close_button)
+	var entry: Control = entries[0] if not entries.is_empty() else recipes_button
+	for i in header.size():
+		var button := header[i]
+		button.focus_neighbor_left = button.get_path_to(header[posmod(i - 1, header.size())])
+		button.focus_neighbor_right = button.get_path_to(header[(i + 1) % header.size()])
+		button.focus_neighbor_bottom = button.get_path_to(entry)
+		button.focus_neighbor_top = button.get_path_to(entry)
+	for button: Control in skills:
+		button.focus_neighbor_left = button.get_path_to(button)
+		button.focus_neighbor_right = button.get_path_to(entry)
+	for button: Control in entries:
+		var skill_index := maxi(Data.SKILLS.keys().find(selected_skill), 0)
+		button.focus_neighbor_left = button.get_path_to(skills[skill_index])
+		button.focus_neighbor_right = button.get_path_to(close_button)
+	if not entries.is_empty():
+		entries[0].focus_neighbor_top = entries[0].get_path_to(recipes_button)
+		entries[-1].focus_neighbor_bottom = entries[-1].get_path_to(close_button)
+	if not skills.is_empty():
+		skills[0].focus_neighbor_top = skills[0].get_path_to(recipes_button)
+		skills[-1].focus_neighbor_bottom = skills[-1].get_path_to(close_button)
+	# Tab/Shift+Tab traverses the complete menu in a predictable order.
+	var cycle: Array[Control] = header + skills + entries
+	for i in cycle.size():
+		cycle[i].focus_next = cycle[i].get_path_to(cycle[(i + 1) % cycle.size()])
+		cycle[i].focus_previous = cycle[i].get_path_to(cycle[posmod(i - 1, cycle.size())])
 
 func _exit_tree() -> void:
 	if active:
 		GameState.set_ui("crafting", false)
+
+
+func _refresh_language(_locale: String) -> void:
+	title_label.text = tr(Data.TEXT["title"])
+	recipes_button.text = tr(Data.TEXT["recipes"])
+	supplies_button.text = tr(Data.TEXT["supplies"])
+	close_button.text = tr("Sluiten")
+	filter.clear()
+	filter.add_item(tr(Data.TEXT["skills"]))
+	for skill: String in Data.SKILLS:
+		filter.add_item(tr(Data.SKILLS[skill]["name"]))
+	filter.select(Data.SKILLS.keys().find(selected_skill) + 1)
+	if active:
+		_populate()

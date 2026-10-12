@@ -24,6 +24,12 @@ const TAB_BESTIARY := 4
 const SIZE := Vector2(1000, 560)
 const SLOT := 76.0
 const INVENTORY_PAGE_SIZE := 24
+const GRID_COLUMNS := 6
+const QUEST_VISIBLE := 4
+const CLOSE_RECT := Rect2(956, 17, 28, 36)
+const PREVIOUS_PAGE := Rect2(24, 456, 38, 32)
+const NEXT_PAGE := Rect2(486, 456, 38, 32)
+const USE_RECT := Rect2(620, 268, 340, 40)
 const MAP_WIDTH := 600.0 # zoveel ruimte krijgt het kaartje; rechts ervan staat het lijstje voor snel reizen
 const MESSAGE_TIME := 3.0 # seconden dat een melding in het kaarttabblad blijft staan
 
@@ -31,6 +37,10 @@ var root: Control
 var content: Control
 var tab := 0
 var selected := 0
+var quest_selected := 0
+var quest_scroll := 0
+var repeat_action := ""
+var repeat_time := 0.0
 var active := false
 var opened_frame := -1
 var time := 0.0
@@ -60,11 +70,13 @@ func _ready() -> void:
 	content.position = (Vector2(1152, 648) - SIZE) / 2.0
 	content.size = SIZE
 	content.draw.connect(_draw_content)
+	content.gui_input.connect(_pointer_input)
 	root.add_child(content)
 
 
 func open(start_tab: int) -> void:
-	tab = start_tab
+	tab = clampi(start_tab, 0, TAB_COUNT - 1)
+	repeat_action = ""
 	selected = 0
 	travel_confirm = false
 	travel_message = ""
@@ -77,6 +89,7 @@ func open(start_tab: int) -> void:
 
 
 func close() -> void:
+	repeat_action = ""
 	active = false
 	root.visible = false
 	GameState.set_ui("menu", false)
@@ -89,80 +102,185 @@ func _process(delta: float) -> void:
 	if travel_message_time <= 0.0:
 		travel_message = ""
 	if active:
+		_repeat_navigation(delta)
 		content.queue_redraw()
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not Controls.allows_event(event):
+		return
 	if not active:
 		if GameState.input_locked():
 			return
+		var target := -1
 		if event.is_action_pressed("menu"):
-			open(0)
+			target = 0
 		elif event.is_action_pressed("quests"):
-			open(TAB_QUESTS)
+			target = TAB_QUESTS
 		elif event.is_action_pressed("map"):
-			open(TAB_MAP)
+			target = TAB_MAP
 		elif event.is_action_pressed("wereld_prestaties"):
-			open(TAB_ACHIEVEMENTS)
+			target = TAB_ACHIEVEMENTS
 		elif event.is_action_pressed("wereld_beestenboek"):
-			open(TAB_BESTIARY)
+			target = TAB_BESTIARY
+		if target >= 0:
+			get_viewport().set_input_as_handled()
+			open(target)
 		return
-	if Engine.get_process_frames() == opened_frame:
+	if Engine.get_process_frames() == opened_frame or event.is_echo():
 		return
 	if travel_confirm and _answer_travel_question(event):
 		return
-	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel") or event.is_action_pressed("menu"):
-		get_viewport().set_input_as_handled()
+	if UiStyle.shortcut(event, "pause") or event.is_action_pressed("ui_cancel") or UiStyle.shortcut(event, "menu"):
 		close()
-	elif event.is_action_pressed("quests"):
-		get_viewport().set_input_as_handled()
-		# Een controller bladert met de schouderknoppen; het toetsenbord springt naar het tabblad (en sluit het weer).
-		if event is InputEventJoypadButton:
-			_step_tab(-1)
-		else:
-			_toggle_tab(TAB_QUESTS)
-	elif event.is_action_pressed("map"):
-		get_viewport().set_input_as_handled()
-		if event is InputEventJoypadButton:
-			_step_tab(1)
-		else:
-			_toggle_tab(TAB_MAP)
-	elif event.is_action_pressed("wereld_prestaties"):
-		get_viewport().set_input_as_handled()
-		_toggle_tab(TAB_ACHIEVEMENTS)
-	elif event.is_action_pressed("wereld_beestenboek"):
-		get_viewport().set_input_as_handled()
-		_toggle_tab(TAB_BESTIARY)
-	elif event.is_action_pressed("ui_right"):
-		get_viewport().set_input_as_handled()
-		_step_tab(1)
-	elif event.is_action_pressed("ui_left"):
-		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("ui_prev_tab"):
 		_step_tab(-1)
-	elif tab == 0:
-		var count := _owned().size()
-		if event.is_action_pressed("ui_down") and count > 0:
-			selected = mini(selected + 1, count - 1)
-			get_viewport().set_input_as_handled()
-		elif event.is_action_pressed("ui_up"):
-			selected = maxi(selected - 1, 0)
-			get_viewport().set_input_as_handled()
-		elif event.is_action_pressed("interact") or event.is_action_pressed("ui_accept"):
-			get_viewport().set_input_as_handled()
-			_use_selected()
-		elif event.is_action_pressed("potion"):
-			get_viewport().set_input_as_handled()
-			_drink()
-	elif tab == TAB_MAP:
-		_map_input(event)
-	elif tab == TAB_ACHIEVEMENTS:
-		achievement_selected = _move_selection(event, achievement_selected, Achievements.ACHIEVEMENTS.size())
-	elif tab == TAB_BESTIARY:
-		bestiary_selected = _move_selection(event, bestiary_selected, Enemies.ENEMIES.size())
+	elif event.is_action_pressed("ui_next_tab"):
+		_step_tab(1)
+	elif UiStyle.shortcut(event, "quests"):
+		_toggle_tab(TAB_QUESTS)
+	elif UiStyle.shortcut(event, "map"):
+		_toggle_tab(TAB_MAP)
+	elif UiStyle.shortcut(event, "wereld_prestaties"):
+		_toggle_tab(TAB_ACHIEVEMENTS)
+	elif UiStyle.shortcut(event, "wereld_beestenboek"):
+		_toggle_tab(TAB_BESTIARY)
+	else:
+		for action: String in ["ui_left", "ui_right", "ui_up", "ui_down"]:
+			if event.is_action_pressed(action):
+				if event is InputEventJoypadMotion:
+					var stick := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+					var dominant: String = ("ui_left" if stick.x < 0 else "ui_right") if absf(stick.x) > absf(stick.y) else ("ui_up" if stick.y < 0 else "ui_down")
+					if action == repeat_action or action != dominant:
+						get_viewport().set_input_as_handled()
+						return
+				_navigate(action)
+				repeat_action = action
+				repeat_time = 0.35
+				get_viewport().set_input_as_handled()
+				return
+		if tab == 0:
+			if UiStyle.confirm(event):
+				_use_selected()
+			elif UiStyle.shortcut(event, "potion"):
+				_drink()
+		elif tab == TAB_MAP:
+			_map_input(event)
+	# Custom drawn menus own input while open; gameplay cannot receive the close/confirm press.
+	if event.is_pressed():
+		get_viewport().set_input_as_handled()
 
+
+func _repeat_navigation(delta: float) -> void:
+	if repeat_action == "":
+		return
+	if not Input.is_action_pressed(repeat_action):
+		repeat_action = ""
+		return
+	repeat_time -= delta
+	if repeat_time <= 0.0:
+		_navigate(repeat_action)
+		repeat_time = 0.11
+
+
+func _navigate(action: String) -> void:
+	travel_confirm = false
+	var step := -1 if action in ["ui_up", "ui_left"] else 1
+	match tab:
+		0:
+			var count := _owned().size()
+			if action in ["ui_up", "ui_down"]:
+				step *= GRID_COLUMNS
+			selected = clampi(selected + step, 0, maxi(count - 1, 0))
+		TAB_QUESTS:
+			quest_selected = clampi(quest_selected + step, 0, maxi(_quest_order().size() - 1, 0))
+		TAB_MAP:
+			travel_selected = clampi(travel_selected + step, 0, maxi(FastTravel.discovered_altars().size() - 1, 0))
+		TAB_ACHIEVEMENTS:
+			achievement_selected = clampi(achievement_selected + step, 0, Achievements.ACHIEVEMENTS.size() - 1)
+		TAB_BESTIARY:
+			bestiary_selected = clampi(bestiary_selected + step, 0, Enemies.ENEMIES.size() - 1)
+	Sound.play("select", -12.0)
+
+
+func _pointer_input(event: InputEvent) -> void:
+	if not active or Controls.controller_active or not event is InputEventMouseButton:
+		return
+	var click := event as InputEventMouseButton
+	if not click.pressed:
+		return
+	content.accept_event()
+	if click.button_index == MOUSE_BUTTON_RIGHT:
+		if travel_confirm:
+			travel_confirm = false
+		else:
+			close()
+		return
+	if click.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
+		_navigate("ui_up" if click.button_index == MOUSE_BUTTON_WHEEL_UP else "ui_down")
+		return
+	if click.button_index != MOUSE_BUTTON_LEFT:
+		return
+	var at := click.position
+	if CLOSE_RECT.has_point(at):
+		close()
+		return
+	for i in TAB_COUNT:
+		if Rect2(24 + i * 186, 16, 178, 40).has_point(at):
+			_set_tab(i)
+			return
+	match tab:
+		0:
+			var count := _owned().size()
+			if PREVIOUS_PAGE.has_point(at):
+				selected = maxi(inventory_page_start() - INVENTORY_PAGE_SIZE, 0)
+			elif NEXT_PAGE.has_point(at):
+				selected = mini(inventory_page_start() + INVENTORY_PAGE_SIZE, maxi(count - 1, 0))
+			elif USE_RECT.has_point(at):
+				_use_selected()
+			else:
+				for i in range(inventory_page_start(), mini(inventory_page_start() + INVENTORY_PAGE_SIZE, count)):
+					var index := i - inventory_page_start()
+					var slot := Rect2(24 + (index % GRID_COLUMNS) * (SLOT + 8), 110 + (index / GRID_COLUMNS) * (SLOT + 8), SLOT, SLOT)
+					if slot.has_point(at):
+						selected = i
+						if click.double_click:
+							_use_selected()
+						break
+		TAB_QUESTS:
+			if Rect2(24, 108, 938, QUEST_VISIBLE * 96).has_point(at):
+				quest_selected = mini(quest_scroll + int((at.y - 108) / 96), maxi(_quest_order().size() - 1, 0))
+		TAB_ACHIEVEMENTS:
+			if Rect2(24, MenuPages.LIST_TOP, 938, MenuPages.LIST_BOTTOM - MenuPages.LIST_TOP).has_point(at):
+				achievement_selected = mini(achievement_scroll + int((at.y - MenuPages.LIST_TOP) / MenuPages.ACHIEVEMENT_ROW), Achievements.ACHIEVEMENTS.size() - 1)
+		TAB_BESTIARY:
+			if Rect2(24, MenuPages.LIST_TOP, 300, MenuPages.LIST_BOTTOM - MenuPages.LIST_TOP).has_point(at):
+				bestiary_selected = mini(bestiary_scroll + int((at.y - MenuPages.LIST_TOP) / MenuPages.BEAST_ROW), Enemies.ENEMIES.size() - 1)
+		TAB_MAP:
+			var altars := FastTravel.discovered_altars()
+			for i in altars.size():
+				if Rect2(660, 104 + i * 48, 316, 42).has_point(at):
+					travel_selected = i
+					travel_confirm = false
+					_map_input(_confirm_event())
+					return
+			if travel_confirm:
+				var box_y := 104 + altars.size() * 48 + 12
+				if Rect2(672, box_y + 70, 142, 32).has_point(at):
+					_answer_travel_question(_confirm_event())
+				elif Rect2(826, box_y + 70, 138, 32).has_point(at):
+					travel_confirm = false
+
+
+func _confirm_event() -> InputEventAction:
+	var event := InputEventAction.new()
+	event.action = "ui_accept"
+	event.pressed = true
+	return event
 
 func _set_tab(new_tab: int) -> void:
 	tab = new_tab
+	repeat_action = ""
 	selected = 0
 	travel_confirm = false
 	Sound.play("select", -8.0)
@@ -204,7 +322,7 @@ func _map_input(event: InputEvent) -> void:
 	var altars := FastTravel.discovered_altars()
 	if event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up"):
 		travel_selected = _move_selection(event, clampi(travel_selected, 0, maxi(altars.size() - 1, 0)), altars.size())
-	elif event.is_action_pressed("interact") or event.is_action_pressed("ui_accept"):
+	elif UiStyle.confirm(event):
 		get_viewport().set_input_as_handled()
 		var world := Util.world(self)
 		var reason := tr("Je hebt nog geen altaar ontdekt.") if altars.is_empty() or world == null else FastTravel.blocked_reason(world)
@@ -219,7 +337,7 @@ func _map_input(event: InputEvent) -> void:
 
 ## De vraag "Reizen naar ...?" staat open. E bevestigt, Esc of een pijl annuleert. Geeft true terug als de toets op is.
 func _answer_travel_question(event: InputEvent) -> bool:
-	if event.is_action_pressed("interact") or event.is_action_pressed("ui_accept"):
+	if UiStyle.confirm(event):
 		get_viewport().set_input_as_handled()
 		var altars := FastTravel.discovered_altars()
 		var world := Util.world(self)
@@ -229,7 +347,7 @@ func _answer_travel_question(event: InputEvent) -> bool:
 			close()
 			FastTravel.travel(world, altar)
 		return true
-	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
+	if UiStyle.shortcut(event, "pause") or event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		travel_confirm = false
 		Sound.play("select", -8.0)
@@ -277,6 +395,8 @@ func _draw_content() -> void:
 		content.draw_rect(rect, Color(0.6, 0.85, 1.0) if chosen else Color(0.3, 0.45, 0.7), false, 2.0)
 		content.draw_string(font, rect.position + Vector2(0, 28), titles[i], HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 22,
 			Color.WHITE if chosen else Color(0.7, 0.8, 1.0))
+	content.draw_rect(CLOSE_RECT, Color(0.22, 0.3, 0.48))
+	content.draw_string(font, CLOSE_RECT.position + Vector2(0, 26), "×", HORIZONTAL_ALIGNMENT_CENTER, CLOSE_RECT.size.x, 24)
 	content.draw_string(font, Vector2(24, SIZE.y - 16), _footer_hint(), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.55))
 	match tab:
 		0:
@@ -293,15 +413,13 @@ func _draw_content() -> void:
 
 ## De toetsen die op dit tabblad iets doen.
 func _footer_hint() -> String:
-	match tab:
-		0:
-			return tr(ProfessionData.TEXT["inventory_navigation"]) + tr("← → of LB / RB  tabblad   ·   Esc  sluiten")
-		TAB_MAP:
-			return tr("↑ ↓  altaar kiezen   ·   E  reizen   ·   ← → of LB / RB  tabblad   ·   Esc  sluiten")
-		TAB_ACHIEVEMENTS, TAB_BESTIARY:
-			return tr("↑ ↓  bladeren   ·   ← → of LB / RB  tabblad   ·   I Q N T B  openen en sluiten   ·   Esc  sluiten")
-	return tr("← → of LB / RB  tabblad   ·   I Q N T B  openen en sluiten   ·   Esc  sluiten")
-
+	var browse := tr("%s / %s tabblad  ·  ") % [Controls.action_label("ui_prev_tab"), Controls.action_label("ui_next_tab")]
+	var close_hint := tr("%s sluiten") % Controls.action_label("ui_cancel")
+	if tab == 0:
+		return tr("↑ ↓ ← → kiezen  ·  %s gebruiken  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
+	if tab == TAB_MAP:
+		return tr("↑ ↓ altaar  ·  %s reizen  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
+	return tr("↑ ↓ bladeren  ·  ") + browse + close_hint
 
 func _text(font: Font, pos: Vector2, text: String, size: int, color := Color.WHITE, width := -1.0) -> float:
 	## Tekent (eventueel afgebroken) tekst en geeft de hoogte terug.
@@ -333,7 +451,11 @@ func _draw_items(font: Font) -> void:
 			content.draw_string_outline(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, 4, Color(0, 0, 0))
 			content.draw_string(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color.WHITE)
 	if owned.size() > INVENTORY_PAGE_SIZE:
-		_text(font, Vector2(24, 462), ProfessionData.TEXT["inventory_page"] % [first + 1, last, owned.size()], 17, Color(0.7, 0.8, 0.95))
+		_text(font, Vector2(76, 459), tr(ProfessionData.TEXT["inventory_page"]) % [first + 1, last, owned.size()], 17, Color(0.7, 0.8, 0.95))
+		for button_rect: Rect2 in [PREVIOUS_PAGE, NEXT_PAGE]:
+			content.draw_rect(button_rect, Color(0.15, 0.25, 0.45))
+		content.draw_string(font, PREVIOUS_PAGE.position + Vector2(0, 24), "‹", HORIZONTAL_ALIGNMENT_CENTER, 38, 24)
+		content.draw_string(font, NEXT_PAGE.position + Vector2(0, 24), "›", HORIZONTAL_ALIGNMENT_CENTER, 38, 24)
 
 	# Rechts: omschrijving en gegevens
 	var x := 620.0
@@ -342,7 +464,8 @@ func _draw_items(font: Font) -> void:
 		var h := _text(font, Vector2(x, 72), tr(info["name"]), 24, Color(1.0, 0.9, 0.5), 340)
 		h += _text(font, Vector2(x, 72 + h + 6), tr(info["desc"]), 18, Color(0.9, 0.93, 1.0), 340) + 6
 		if owned[selected] in Professions.CONSUMABLES:
-			_text(font, Vector2(x, 72 + h + 10), tr(ProfessionData.TEXT["inventory_use"]), 18, Color(0.6, 1.0, 0.7))
+			content.draw_rect(USE_RECT, Color(0.15, 0.32, 0.3))
+			content.draw_string(font, USE_RECT.position + Vector2(0, 27), tr("%s  Gebruiken") % Controls.action_label("ui_accept"), HORIZONTAL_ALIGNMENT_CENTER, USE_RECT.size.x, 20, Color(0.6, 1.0, 0.7))
 	var weapon: Dictionary = Items.WEAPONS[GameState.weapon]
 	var lines := [
 		tr("Zwaard:  %s (schade %d)") % [tr(weapon["name"]), weapon["damage"]],
@@ -369,32 +492,38 @@ static func format_time(seconds: float) -> String:
 	return "%d:%02d:%02d" % [total / 3600, (total / 60) % 60, total % 60]
 
 
-func _draw_quests(font: Font) -> void:
+func _quest_order() -> Array[String]:
 	var order: Array[String] = []
-	for quest_id: String in Quests.QUESTS:
-		if GameState.quest_state(quest_id) == "active":
-			order.append(quest_id)
-	for quest_id: String in Quests.QUESTS:
-		if GameState.quest_state(quest_id) == "done":
-			order.append(quest_id)
+	for state: String in ["active", "done"]:
+		for quest_id: String in Quests.QUESTS:
+			if GameState.quest_state(quest_id) == state:
+				order.append(quest_id)
+	return order
+
+
+func _draw_quests(font: Font) -> void:
+	var order := _quest_order()
 	_text(font, Vector2(24, 72), tr("Opdrachten"), 24, Color(0.6, 0.88, 1.0))
 	if order.is_empty():
 		_text(font, Vector2(24, 112), tr("Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"), 20, Color(1, 1, 1, 0.6))
-	var y := 112.0
-	for quest_id in order:
+		return
+	quest_selected = clampi(quest_selected, 0, order.size() - 1)
+	quest_scroll = MenuPages.follow(quest_selected, quest_scroll, QUEST_VISIBLE, order.size())
+	for index in range(quest_scroll, mini(quest_scroll + QUEST_VISIBLE, order.size())):
+		var quest_id := order[index]
 		var done := GameState.quest_state(quest_id) == "done"
 		var info := Quests.info(quest_id)
 		var title := tr(info["title"])
 		if info.get("main", false) and not done:
-			# Vertalers: titel van de hoofdopdracht in het opdrachtenlogboek
 			title = tr("%s   (hoofdopdracht)") % title
 		title = ("✓ " if done else "• ") + title
-		y += _text(font, Vector2(24, y), title, 22, Color(0.55, 1.0, 0.65) if done else Color(1.0, 0.9, 0.5)) + 4
-		var text := tr("Voltooid.") if done else GameState.quest_text(quest_id)
-		y += _text(font, Vector2(48, y), text, 19, Color(0.85, 0.9, 1.0), 900) + 16
-		if y > SIZE.y - 60:
-			break
-
+		var rect := Rect2(24, 108 + (index - quest_scroll) * 96, 936, 90)
+		content.draw_rect(rect, Color(0.18, 0.3, 0.55) if index == quest_selected else Color(0.1, 0.16, 0.3))
+		if index == quest_selected:
+			content.draw_rect(rect, Color(1.0, 0.88, 0.35), false, 2.0)
+		_text(font, rect.position + Vector2(12, 4), title, 21, Color(0.55, 1.0, 0.65) if done else Color(1.0, 0.9, 0.5), 908)
+		_text(font, rect.position + Vector2(24, 32), tr("Voltooid.") if done else GameState.quest_text(quest_id), 18, Color(0.85, 0.9, 1.0), 896)
+	MenuPages.scrollbar(content, quest_scroll, QUEST_VISIBLE, order.size(), 970)
 
 func _draw_map(font: Font) -> void:
 	var world := Util.world(self)
@@ -474,3 +603,7 @@ func _draw_altar_marker(p: Vector2, cell: int, obj: Dictionary, altars: Array) -
 	if not altars.is_empty() and altars[travel_selected]["key"] == key:
 		var pulse := 0.5 + 0.5 * sin(time * 6.0)
 		content.draw_arc(p, cell * (0.9 + pulse * 0.5), 0.0, TAU, 24, Color(1.0, 0.88, 0.35), 3.0)
+
+func _exit_tree() -> void:
+	if active:
+		GameState.set_ui("menu", false)

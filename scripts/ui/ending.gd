@@ -37,6 +37,7 @@ var finished := false
 
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	GameState.in_game = false
 	GameState.ui_owners = {}
 	get_tree().paused = false
@@ -93,7 +94,12 @@ func _next_page() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if not Controls.allows_event(event):
+		return
+	if event.is_echo():
+		return
+	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
 		_to_title()
 		return
 	if not (event.is_action_pressed("interact") or event.is_action_pressed("attack") or event.is_action_pressed("ui_accept")):
@@ -197,7 +203,7 @@ func _draw_text_page(current: Dictionary) -> void:
 	if current["speaker"] != "":
 		draw_string(font, box.position + Vector2(28, 44), current["speaker"], HORIZONTAL_ALIGNMENT_LEFT, -1, 26, Color(0.55, 0.85, 1.0))
 	draw_multiline_string(font, box.position + Vector2(28, 90), shown, HORIZONTAL_ALIGNMENT_LEFT, box.size.x - 56.0, 28, -1, Color.WHITE)
-	var hint := "E  ▼" if typed >= line.length() else ""
+	var hint := Controls.action_label("ui_accept") + "  ▼" if typed >= line.length() else ""
 	draw_string(font, box.position + Vector2(box.size.x - 70, box.size.y - 16), hint, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color(1, 1, 1, 0.6))
 
 
@@ -258,7 +264,7 @@ func _draw_stats() -> void:
 		draw_string(font, Vector2(box.position.x + 30, y), rows[i][0], HORIZONTAL_ALIGNMENT_LEFT, -1, 26, Color(0.8, 0.9, 1.0, shown))
 		draw_string(font, Vector2(box.position.x, y), rows[i][1], HORIZONTAL_ALIGNMENT_RIGHT, box.size.x - 30.0, 26, Color(1.0, 0.9, 0.5, shown))
 	if t > 3.0:
-		draw_string(font, Vector2(box.position.x, box.end.y + 40.0), "E  ▼", HORIZONTAL_ALIGNMENT_CENTER, box.size.x, 20, Color(1, 1, 1, 0.6))
+		draw_string(font, Vector2(box.position.x, box.end.y + 40.0), Controls.action_label("ui_accept") + "  ▼", HORIZONTAL_ALIGNMENT_CENTER, box.size.x, 20, Color(1, 1, 1, 0.6))
 
 
 func _draw_credits() -> void:
@@ -281,4 +287,4 @@ func _draw_end() -> void:
 	DrawUtil.sprite(self, Art.tex("crystal"), int(t * 1.4) % 2, 0, crystal, Vector2i(16, 16), 8.0)
 	_text_centered(tr("Bedankt voor het spelen!"), 400, 64, Color(0.7, 0.92, 1.0))
 	_text_centered(tr("Je voortgang is bewaard: je kunt verder in het dorp."), 450, 24, Color(0.85, 0.9, 1.0))
-	_text_centered(tr("Druk op E om naar het titelscherm te gaan"), 520, 26, Color(1, 1, 1, pulse))
+	_text_centered(tr("Druk op %s om naar het titelscherm te gaan") % Controls.action_label("ui_accept"), 520, 26, Color(1, 1, 1, pulse))

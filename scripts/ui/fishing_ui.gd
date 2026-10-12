@@ -166,7 +166,10 @@ func _process(delta: float) -> void:
 
 
 func _update_reel(delta: float) -> void:
-	reel.update(delta, Input.is_action_pressed("interact"))
+	var holding := Input.is_action_pressed("interact") or Input.is_action_pressed("ui_accept")
+	if not Controls.controller_active:
+		holding = holding or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	reel.update(delta, holding)
 	haspel_timer -= delta
 	if reel.in_zone and haspel_timer <= 0.0:
 		haspel_timer = HASPEL_INTERVAL
@@ -176,12 +179,14 @@ func _update_reel(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if phase == "idle" or Engine.get_process_frames() == opened_frame:
+	if not Controls.allows_event(event):
 		return
-	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
+	if phase == "idle" or Engine.get_process_frames() == opened_frame or event.is_echo():
+		return
+	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT):
 		get_viewport().set_input_as_handled()
 		close()
-	elif event.is_action_pressed("interact"):
+	elif event.is_action_pressed("interact") or event.is_action_pressed("ui_accept") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
 		get_viewport().set_input_as_handled()
 		if phase == "bite":
 			_start_reel()
@@ -236,8 +241,7 @@ func _draw_content() -> void:
 		"cast":
 			_draw_status(tr("Je gooit uit..."), "")
 		"wait":
-			# De puntjes erachter lopen: "Wacht op een beet.", "..", "...".
-			_draw_status(tr("Wacht op een beet") + ".".repeat(1 + int(phase_time * 2.0) % 3), tr("Esc: stoppen"))
+			_draw_status(tr("Wacht op een beet") + ".".repeat(1 + int(phase_time * 2.0) % 3), tr("%s: stoppen") % Controls.action_label("ui_cancel"))
 		"bite":
 			_draw_bite()
 		"reel":
@@ -279,7 +283,7 @@ func _draw_bite() -> void:
 	# Een uitroepteken boven het hoofd van de speler en een balk die leegloopt: nu snel!
 	var head := _screen(world.player.global_position) + Vector2(-32, -140 + sin(phase_time * 30.0) * 4.0)
 	root.draw_texture_rect_region(Art.tex("meer_ui"), Rect2(head, Vector2(16, 16) * ART_PIXEL), Rect2(Vector2(32, 0), Vector2(16, 16)))
-	_draw_status(tr("BEET!  Druk snel op E!"), "")
+	_draw_status(tr("BEET!  Druk snel op %s!") % Controls.action_label("interact"), "")
 	var left := clampf(1.0 - phase_time / BITE_WINDOW, 0.0, 1.0)
 	root.draw_rect(Rect2(STATUS_PANEL.position + Vector2(10, STATUS_PANEL.size.y - 14), Vector2((STATUS_PANEL.size.x - 20.0) * left, 8)), Color(1.0, 0.45, 0.35))
 
@@ -310,8 +314,8 @@ func _draw_reel() -> void:
 	var fill_color := Color(0.3, 0.9, 0.45) if reel.in_zone else Color(0.95, 0.55, 0.3)
 	root.draw_rect(Rect2(PROGRESS.position.x, PROGRESS.position.y + PROGRESS.size.y - filled, PROGRESS.size.x, filled), fill_color)
 	root.draw_rect(PROGRESS, Color(0.45, 0.75, 1.0), false, 3.0)
-	_text(Vector2(panel.position.x, 498), tr("Houd E ingedrukt: omhoog"), 16, Color(1, 1, 1, 0.75), panel.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-	_draw_status(tr("Houd de vis in het groen!"), tr("Laat E los om te zakken  ·  Esc: stoppen"))
+	_text(Vector2(panel.position.x, 498), tr("Houd %s ingedrukt: omhoog") % Controls.action_label("interact"), 16, Color(1, 1, 1, 0.75), panel.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+	_draw_status(tr("Houd de vis in het groen!"), tr("Loslaten: zakken  ·  %s: stoppen") % Controls.action_label("ui_cancel"))
 
 
 func _draw_result() -> void:
@@ -332,12 +336,12 @@ func _draw_result() -> void:
 		"te_laat":
 			_text(Vector2(card.position.x, 250), tr("Te laat!"), 34, Color(1.0, 0.55, 0.45), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 			_text(Vector2(card.position.x, 296), tr("De vis is ontsnapt."), 22, Color.WHITE, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-			_text(Vector2(card.position.x, 330), tr("Druk sneller op E als de dobber zakt."), 18, Color(0.85, 0.93, 1.0), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+			_text(Vector2(card.position.x, 330), tr("Druk op %s zodra de dobber zakt.") % Controls.action_label("interact"), 18, Color(0.85, 0.93, 1.0), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 		_:
 			_text(Vector2(card.position.x, 250), tr("Hij is ontsnapt!"), 34, Color(1.0, 0.55, 0.45), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 			_text(Vector2(card.position.x, 296), tr("De lijn werd te slap."), 22, Color.WHITE, card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 			_text(Vector2(card.position.x, 330), tr("Houd de vis in de groene zone."), 18, Color(0.85, 0.93, 1.0), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
-	_text(Vector2(card.position.x, 428), tr("E: nog een keer   ·   Esc: stoppen"), 18, Color(1, 1, 1, 0.65), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
+	_text(Vector2(card.position.x, 428), tr("%s: nog een keer  ·  %s: stoppen") % [Controls.action_label("interact"), Controls.action_label("ui_cancel")], 18, Color(1, 1, 1, 0.65), card.size.x, HORIZONTAL_ALIGNMENT_CENTER)
 
 
 ## Een zinnetje bij de vangst, met wat hij nu oplevert (minder als het dorp vol vis zit, meer met de pet).

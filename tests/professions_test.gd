@@ -129,7 +129,9 @@ func _world_ui() -> void:
 	check(get_nodes_in_group("profession_resources").size() == 6, "Village creates six usable resource nodes")
 	var node: Node = get_nodes_in_group("profession_resources")[0]
 	var resource_id: String = node.resource_id
+	world.player.global_position = node.global_position + Vector2(0, 24)
 	node.interact()
+	node.advance_harvest(Professions.gather_duration(node.kind))
 	check(Professions.remaining(resource_id) > 85, "World node starts its persistent timer")
 	world.load_map("forest", "start")
 	await frames(2)

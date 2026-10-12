@@ -125,7 +125,10 @@ func _exit_tree() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Controls.capture_active or not Controls.allows_event(event):
+		return
 	if GameState.ended and event.is_action_pressed("restart"):
+		get_viewport().set_input_as_handled()
 		restart_from_save(true)
 	elif event.is_action_pressed("crafting") and not GameState.input_locked():
 		crafting_ui.open()

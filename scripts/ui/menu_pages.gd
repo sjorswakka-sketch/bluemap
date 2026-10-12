@@ -252,7 +252,7 @@ static func draw_travel_panel(menu: Node, font: Font, altars: Array) -> void:
 	var width := SIZE.x - left - 24.0
 	text(canvas, font, Vector2(left, 66), TranslationServer.translate("Snel reizen"), 24, Color(0.6, 0.88, 1.0))
 	if altars.is_empty():
-		text(canvas, font, Vector2(left, 106), TranslationServer.translate("Je hebt nog geen blauw altaar ontdekt. Gebruik een altaar (druk op E erbij), dan kun je er later snel naartoe reizen."), 18, Color(0.8, 0.86, 0.98), width)
+		text(canvas, font, Vector2(left, 106), TranslationServer.translate("Je hebt nog geen blauw altaar ontdekt. Gebruik een altaar, dan kun je er later snel naartoe reizen."), 18, Color(0.8, 0.86, 0.98), width)
 		return
 	menu.travel_selected = clampi(menu.travel_selected, 0, altars.size() - 1)
 	for i in altars.size():
@@ -274,11 +274,11 @@ static func draw_travel_panel(menu: Node, font: Font, altars: Array) -> void:
 		var box := Rect2(left, box_y, width, 110) # ruimte voor een naam over twee regels
 		canvas.draw_rect(box, Color(0.2, 0.18, 0.06))
 		canvas.draw_rect(box, Color(1.0, 0.85, 0.3), false, 3.0)
-		# De kaartnaam midden in de zin ("de Vergeten Ruïne") is een eigen tekst om te vertalen (zie in_sentence).
-		var where := TranslationServer.translate(in_sentence(altar["name"]))
-		# Vertalers: %s is een gebied midden in een zin, zoals "de Vergeten Ruïne" (die staat apart in de vertaling)
-		text(canvas, font, box.position + Vector2(12, 8), TranslationServer.translate("Reizen naar %s?") % where, 20, GOLD, width - 24.0)
-		text(canvas, font, box.position + Vector2(12, 78), TranslationServer.translate("E  ja, reis maar    Esc  nee"), 18, Color(0.9, 0.95, 1.0))
+		text(canvas, font, box.position + Vector2(12, 8), TranslationServer.translate("Reizen naar %s?") % TranslationServer.translate(in_sentence(altar["name"])), 20, GOLD, width - 24.0)
+		canvas.draw_rect(Rect2(box.position + Vector2(12, 70), Vector2(142, 32)), Color(0.15, 0.36, 0.28))
+		canvas.draw_rect(Rect2(box.position + Vector2(166, 70), Vector2(138, 32)), Color(0.3, 0.24, 0.25))
+		text(canvas, font, box.position + Vector2(20, 74), TranslationServer.translate("%s  Reizen") % Controls.action_label("ui_accept"), 17, Color.WHITE)
+		text(canvas, font, box.position + Vector2(174, 74), TranslationServer.translate("%s  Terug") % Controls.action_label("ui_cancel"), 17, Color.WHITE)
 	elif menu.travel_message != "":
 		text(canvas, font, Vector2(left, box_y), menu.travel_message, 18, Color(1.0, 0.65, 0.55), width)
 
