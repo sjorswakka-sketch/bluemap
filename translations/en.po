@@ -29,6 +29,12 @@ msgstr "Resume"
 msgid "Muziek"
 msgstr "Music"
 
+msgid "Uitrusting"
+msgstr "Equipment"
+
+msgid "Na wisselen:"
+msgstr "After swap:"
+
 msgid "Dauwbos"
 msgstr "Dew Woods"
 
