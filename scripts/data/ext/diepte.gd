@@ -119,6 +119,7 @@ const ENEMIES := {
 		"speed": 26.0, "chase_speed": 40.0, "sight": 200.0,
 		"sheet": "golem_void", "cell": 32, "scale": 2.0, "radius": 13.0, "shadow": 22.0, "knockback": 40.0,
 		"drops": [["coin", 1.0, 10], ["shard", 1.0, 1], ["heart", 1.0, 1]],
+		"desc": "Een golem van paars kristal die al eeuwen de Kristalgangen bewaakt. Hij is langzaam, maar zijn klap voel je tot in je tenen.",
 	},
 	"guardian": {
 		"name": "De Vergeten Wachter", "hp": 110, "damage": 1, "slam_damage": 2, "behavior": "guardian", "boss": true,
@@ -126,6 +127,7 @@ const ENEMIES := {
 		"sheet": "guardian", "cell": 48, "scale": 2.0, "radius": 20.0, "shadow": 36.0,
 		"start_inactive": true, "knockback": 0.0,
 		"drops": [],
+		"desc": "De oude bewaker van de Sterrenkaart. Hij sliep meer dan duizend jaar onder de tempel en wilde liever niet gestoord worden.",
 	},
 }
 

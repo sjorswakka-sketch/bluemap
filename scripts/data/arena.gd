@@ -27,7 +27,7 @@ const RANKS := {
 			[["slime", 3], ["bat", 2]],
 			[["slime_blue", 3], ["slime", 2]],
 			[["skeleton", 2], ["slime", 3]],
-			[["slime_red", 1], ["slime_blue", 3], ["bat", 2]],
+			[["slime_red", 1], ["slime_blue", 3], ["slime_spitter", 1]], # de slijmspuwer uit het Fluisterbos
 			[["skeleton", 2], ["slime_red", 1], ["slime_blue", 3], ["bat", 1]],
 		],
 	},
@@ -39,7 +39,7 @@ const RANKS := {
 			[["skeleton", 2], ["slime_blue", 3]],
 			[["slime_red", 2], ["slime_blue", 3], ["bat", 2]],
 			[["skeleton", 3], ["slime_red", 2], ["bat", 3]],
-			[["slime_red", 3], ["skeleton", 2], ["slime_blue", 1]],
+			[["slime_red", 3], ["skeleton", 1], ["mage", 1]], # een magiër uit de Vergeten Ruïne
 			[["slime_red", 2], ["slime_blue", 3], ["skeleton", 2], ["bat", 3]],
 			[["golem", 1]],
 		],

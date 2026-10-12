@@ -20,12 +20,13 @@ const DATA := {
 	"spawns": {"start": [8, 8], "door": [8, 8]},
 	"objects": [
 		{"type": "npc", "pos": [8, 4], "id": "mila"},
-		{"type": "wereld_bed", "pos": [2, 6]},
-		{"type": "wereld_bed", "pos": [4, 6]},
-		{"type": "wereld_bed", "pos": [6, 6]},
 		{"type": "torch", "pos": [3, 2]},
 		{"type": "torch", "pos": [12, 2]},
 		{"type": "portal", "pos": [7, 9], "to": "village", "spawn": "from_inn", "size": [2, 1]},
 		{"type": "chest", "pos": [12, 7], "contents": [["potion", 1], ["coins", 15]]},
+		# Wereld (achteraan, zodat de plekken van de oude dingen in opslagen niet verschuiven): de bedden om in te slapen.
+		{"type": "wereld_bed", "pos": [2, 6]},
+		{"type": "wereld_bed", "pos": [4, 6]},
+		{"type": "wereld_bed", "pos": [6, 6]},
 	],
 }

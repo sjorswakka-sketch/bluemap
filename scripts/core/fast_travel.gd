@@ -6,6 +6,7 @@ extends RefCounted
 
 const Maps := preload("res://scripts/maps/registry.gd")
 const Tiles := preload("res://scripts/data/tiles.gd")
+const Content := preload("res://scripts/data/content.gd")
 
 const TILE := 32 # grootte van een tegel in de wereld (zie world.gd)
 const BOSS_RANGE := 360.0 # zo dichtbij een baas is het een baasgevecht (net als de baasbalk in beeld)
@@ -104,6 +105,8 @@ static func blocked_reason(world: Node) -> String:
 			return "Je kunt nu niet reizen."
 	if boss_fight(world):
 		return "Je kunt niet reizen tijdens een baasgevecht!"
+	if "arena_fight" in Content.condition_names() and GameState.check(["arena_fight"]):
+		return "Je kunt niet reizen tijdens een arenagevecht!"
 	if discovered_altars().is_empty():
 		return "Je hebt nog geen altaar ontdekt."
 	return ""
