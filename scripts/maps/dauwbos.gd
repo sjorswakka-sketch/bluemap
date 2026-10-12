@@ -1,7 +1,7 @@
 extends RefCounted
 ## Dauwbos – nieuw polish-gebied. Mistig bos ten noorden van het Fluisterbos.
 ## Rustig, met dauw, oude bomen en een kleine schuilplaats.
-## Gefixt: dauwsteen ligt nu als pickup.
+## Gefixt: dauwsteen ligt nu als pickup. Geen slime_spitter (test verbiedt die buiten forest/ruins/cave).
 
 const DATA := {
 	"name": "Dauwbos",
@@ -65,7 +65,7 @@ const DATA := {
 		{"type": "enemy", "pos": [10, 8], "kind": "slime"},
 		{"type": "enemy", "pos": [20, 15], "kind": "slime"},
 		{"type": "enemy", "pos": [30, 22], "kind": "bat"},
-		{"type": "enemy", "pos": [38, 12], "kind": "slime_spitter"},
+		{"type": "enemy", "pos": [38, 12], "kind": "slime"},
 		{"type": "wereld_lantaarn", "pos": [14, 14]},
 		{"type": "wereld_lantaarn", "pos": [26, 20]},
 	],
