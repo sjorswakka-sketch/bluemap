@@ -65,7 +65,7 @@ def outline(img, col=OUTLINE):
     return out
 
 
-def shade(img, light_offset=( -1, -1), highlight=None, shadow=None):
+def shade(img, light_offset=(-1, -1), highlight=None, shadow=None):
     """Eenvoudige directional shading: highlight boven-links, shadow onder-rechts."""
     if highlight is None:
         highlight = c("#ffffff", 80)
