@@ -190,8 +190,7 @@ func _run() -> void:
 		check(page.source_text("gear_cloth_hood").contains("Tobias"), "Tier-one source is derived from the real shop")
 		check(page.source_text("gear_bronze_helm").contains("2") and page.source_text("gear_bronze_helm").contains("0/1"), "Tier-two source includes its actual crafting level and materials")
 		if locale == "en":
-			# Tijdelijk niet-fataal: de volledige en.po is hersteld, maar deze check faalt nog op ontbrekende strings.
-			print("  info Equipment interface translation check skipped (en.po is minimal)")
+			check(menu.tab_titles()[6] != "Uitrusting" and not page.detail.text.contains("Na wisselen:"), "Equipment interface is translated to English")
 	lang.set_language("nl", false)
 	await tap_pad(JOY_BUTTON_B)
 	check(not menu.active and not paused and gs.ui_owners.is_empty(), "Equipment menu releases pause ownership on close")
