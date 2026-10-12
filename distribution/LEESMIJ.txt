@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.3.0)
+BLUEMAP QUEST  (v0.4.0)
 =======================
 
 Starten
@@ -28,14 +28,16 @@ Vissen
   Ten zuiden van het dorp ligt het Zilvermeer. Praat met Visser Joris voor een hengel, ga bij een visplek
   (kringetjes in het water) staan en druk op E. Als de dobber zakt, druk je snel op E. Houd daarna E ingedrukt
   om de groene zone omhoog te laten gaan en houd de vis erin. Esc stopt altijd.
+
 Na het einde
   Heb je de Slijmkoning verslagen? Dan is het avontuur nog niet voorbij. Oudste Bram wijst je een verzegelde
   trap achter in de Kristaltempel, en daaronder wacht De Vergeten Wachter. Op het titelscherm staat dan ook
   "Nieuw spel+": opnieuw beginnen met je beste spullen, tegen sterkere vijanden.
+
 De arena
   In het noordoosten van het dorp staat een arena. Je hebt een ijzeren zwaard nodig en Oudste Bram moet je kennen.
-  Arenameester Bruno schrijft je in (Brons, Zilver of Goud). In de arena sluiten de poorten tot alle vijanden van de
-  ronde verslagen zijn; daarna krijg je even rust en een hartje van het publiek. Winnen geeft munten, een trofee,
+  Arenameester Bruno schrijft je in (Brons, Zilver of Goud). In de arena sluiten de poorten tot je alle rondes
+  hebt gewonnen; na elke ronde krijg je even rust en een hartje van het publiek. Winnen geeft munten, een trofee,
   een titel en een beste tijd. Word je verslagen of geef je op (sla op de gong), dan ben je alleen je inschrijving kwijt.
 
 Opslaan
@@ -44,7 +46,7 @@ Opslaan
 
 Snel reizen, dag en nacht
   Een blauw altaar dat je gebruikt hebt is ontdekt. Open de kaart (N), kies een altaar en druk op E
-  om er snel naartoe te reizen. Dat kan niet tijdens een gesprek of een baasgevecht.
+  om er snel naartoe te reizen. Dat kan niet tijdens een gesprek, een baasgevecht of een arenagevecht.
   Het spel heeft dag en nacht en af en toe regen. In de herberg kun je slapen (5 munten) om het ochtend te maken.
   Je prestaties (T) blijven bewaard, ook als je een nieuw spel begint.
 

@@ -15,22 +15,19 @@ pixel art, en te delen met vrienden en de community.
 - [x] **Fase 6: verzamelen en upgraden.** Inventaris, winkel, smid, hartcontainers, laarzen, opslaan en laden
 - [x] **Einde.** Intro, eindbaas, eindscherm met herstelde Blauwe Kaart, epiloog, statistieken en aftiteling
 - [x] **Controller en volledig scherm**
-- [x] **Het Zilvermeer.** Een rustig gebied met een visspel, de Gouden Karper, een bibliotheek met oude boeken, drie
-      personages en twee opdrachten (De Gouden Karper en Boekenwurm)
-- [x] **De Diepte en Nieuw spel+.** Na het einde een geheime dungeon onder de tempel, de geheime baas De Vergeten Wachter
-      met drie fases, het Sterrenzwaard, en Nieuw spel+ met je beste spullen tegen sterkere vijanden
+- [x] **Fase 7: uitbreidingen.** Zes uitbreidingen, elk als eigen module (scripts/data/ext/):
+  - [x] **Boog en pijlen.** Tweede wapen, doelwit-puzzels in bos en ruïne, Tessa's schietbaan
+  - [x] **Nieuwe vijanden.** De magiër (teleporteert, tovervonk) en de slijmspuwer (waaier van slijmballen)
+  - [x] **Het Zilvermeer.** Visspel, de Gouden Karper, een bibliotheek met oude boeken, drie personages en twee opdrachten
+  - [x] **Wereld.** Dag en nacht, regen, slapen in de herberg, snel reizen tussen altaren, 32 prestaties en een beestenboek
+  - [x] **De Diepte en Nieuw spel+.** Na het einde een geheime dungeon onder de tempel, de geheime baas De Vergeten Wachter
+        met drie fases, het Sterrenzwaard, en Nieuw spel+ met je beste spullen tegen sterkere vijanden
+  - [x] **Arena.** Golven vijanden, drie rangen (Brons, Zilver, Goud), publiek, trofeeën, titels en beste tijden
 
 ## Ideeën voor later
-- Meer zij-opdrachten en personages, bijvoorbeeld een visser, een bibliotheek of een arena
-- [x] **Arena.** Gevechtsarena met golven vijanden, drie rangen (Brons, Zilver, Goud met een kristalgolem), publiek,
-      trofeeën, titels en beste tijden. Rondes staan als data, dus nieuwe vijanden zijn eenvoudig toe te voegen.
-
-## Ideeën voor later
-- Een tweede gebied-reeks na het einde (nieuw spel+, hogere moeilijkheid, geheime baas)
-- Meer zij-opdrachten en personages, bijvoorbeeld een visser of een bibliotheek
-- Meer vijanden (magiër, slijmvuurspuwer), een vijand die muren doorbreekt
-- Een boog of magie als tweede wapen, schilden en uitrusting
-- Dag en nacht, weer, en een echte wereldkaart met snel reizen
+- Meer zij-opdrachten en personages
+- Een vijand die muren doorbreekt, magie als derde wapen, schilden en uitrusting
+- Een echte wereldkaart met alle gebieden
 - Meerdere talen
 - Echte pixel art van een kunstenaar en opgenomen muziek: vervang gewoon de bestanden in `assets/`
 
