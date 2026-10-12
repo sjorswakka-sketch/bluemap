@@ -20,15 +20,18 @@ const ProgressionPage := preload("res://scripts/ui/progression_page.gd")
 
 const EquipmentPage := preload("res://scripts/ui/equipment_page.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
+const AppearancePage := preload("res://scripts/ui/appearance_page.gd")
+const Appearance := preload("res://scripts/core/appearance.gd")
 
-const TAB_COUNT := 7 # de namen staan in tab_titles()
+const TAB_COUNT := 8 # de namen staan in tab_titles()
 const TAB_QUESTS := 1
 const TAB_MAP := 2
 const TAB_ACHIEVEMENTS := 3
 const TAB_BESTIARY := 4
 const TAB_PROGRESSION := 5
 const TAB_EQUIPMENT := 6
-const TAB_FONT_SIZE := 17
+const TAB_APPEARANCE := 7
+const TAB_FONT_SIZE := 14 # acht tabbladen moeten naast elkaar passen
 const SIZE := Vector2(1000, 560)
 const SLOT := 76.0
 const INVENTORY_PAGE_SIZE := 24
@@ -45,6 +48,7 @@ var root: Control
 var content: Control
 var progression_page: Control
 var equipment_page: Control
+var appearance_page: Control
 var tab := 0
 var selected := 0
 var quest_selected := 0
@@ -94,6 +98,12 @@ func _ready() -> void:
 	equipment_page.visible = false
 	equipment_page.close_requested.connect(close)
 	content.add_child(equipment_page)
+	appearance_page = AppearancePage.new()
+	appearance_page.position = Vector2(24, 72)
+	appearance_page.size = Vector2(952, 444)
+	appearance_page.visible = false
+	appearance_page.close_requested.connect(close)
+	content.add_child(appearance_page)
 
 
 func open(start_tab: int) -> void:
@@ -189,6 +199,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				_drink()
 		elif tab == TAB_EQUIPMENT and UiStyle.confirm(event):
 			equipment_page.confirm()
+		elif tab == TAB_APPEARANCE and UiStyle.confirm(event):
+			appearance_page.confirm()
 		elif tab == TAB_MAP:
 			_map_input(event)
 	# Custom drawn menus own input while open; gameplay cannot receive the close/confirm press.
@@ -225,6 +237,8 @@ func _navigate(action: String) -> void:
 			achievement_selected = clampi(achievement_selected + step, 0, Achievements.ACHIEVEMENTS.size() - 1)
 		TAB_EQUIPMENT:
 			equipment_page.navigate(action)
+		TAB_APPEARANCE:
+			appearance_page.navigate(action)
 		TAB_PROGRESSION:
 			progression_page.navigate(action)
 		TAB_BESTIARY:
@@ -322,7 +336,7 @@ func _step_tab(step: int) -> void:
 
 ## De namen van de tabbladen in de taal van de speler: voorwerpen, opdrachten, kaart, prestaties en beestenboek.
 func tab_titles() -> Array[String]:
-	return [tr("Voorwerpen"), tr("Opdrachten"), tr("Kaart"), tr("Prestaties"), tr("Beestenboek"), tr("Voortgang"), tr("Uitrusting")]
+	return [tr("Voorwerpen"), tr("Opdrachten"), tr("Kaart"), tr("Prestaties"), tr("Beestenboek"), tr("Voortgang"), tr("Uitrusting"), tr("Uiterlijk")]
 
 
 ## Dezelfde toets opent het tabblad, en sluit het menu weer als je er al bent.
@@ -402,6 +416,9 @@ func _use_selected() -> void:
 	if Equipment.slot_of(owned[selected]) != "":
 		if Equipment.equip(owned[selected]):
 			Sound.play("select", -5.0)
+	elif Appearance.clothing_slot_of(owned[selected]) != "":
+		if Appearance.wear(owned[selected]):
+			Sound.play("select", -5.0)
 	elif owned[selected] in Professions.CONSUMABLES:
 		Sound.play("drink" if Professions.use_item(owned[selected]) else "error", -5.0)
 
@@ -452,6 +469,8 @@ func _footer_hint() -> String:
 		return tr("↑ ↓ ← → kiezen  ·  %s gebruiken  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
 	if tab == TAB_EQUIPMENT:
 		return tr("↑ ↓ kiezen  ·  ← → vakken  ·  %s bevestigen  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
+	if tab == TAB_APPEARANCE:
+		return tr("↑ ↓ rij  ·  ← → aanpassen  ·  %s verf  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
 	if tab == TAB_PROGRESSION:
 		return tr("↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  ") + browse + close_hint
 	if tab == TAB_MAP:
@@ -661,6 +680,9 @@ func _refresh_progression_page() -> void:
 	equipment_page.visible = tab == TAB_EQUIPMENT
 	if equipment_page.visible:
 		equipment_page.refresh()
+	appearance_page.visible = tab == TAB_APPEARANCE
+	if appearance_page.visible:
+		appearance_page.queue_redraw()
 	progression_page.visible = tab == TAB_PROGRESSION
 	if progression_page.visible:
 		progression_page.refresh()

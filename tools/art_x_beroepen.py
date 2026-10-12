@@ -353,8 +353,130 @@ def sandwort_bush():
     return outline(im)
 
 
+# --- kleding (uiterlijk): pictogrammen op vaste plekken 31 t/m 42 -------------------------
+
+CLOTH = c("b08a5a")   # neutrale stof; de verfkleur zie je pas als je het draagt
+CLOTH_D = c("8a6a42")
+CLOTH_L = c("d4b083")
+
+
+def straw_hat():
+    im = blank()
+    ellipse(im, (4, 2, 11, 8), c("e8cc7a"))
+    rect(im, 2, 8, 13, 10, c("dcc06a"))
+    rect(im, 4, 7, 11, 8, c("c8a44e"))
+    rect(im, 5, 4, 10, 5, c("f2dd96"))
+    return outline(im)
+
+
+def beret():
+    im = blank()
+    ellipse(im, (3, 4, 13, 11), c("a04a5a"))
+    ellipse(im, (5, 5, 11, 8), c("bc6070"))
+    rect(im, 7, 1, 8, 4, c("a04a5a"))
+    return outline(im)
+
+
+def beanie():
+    im = blank()
+    ellipse(im, (4, 3, 11, 10), c("5a7ab0"))
+    rect(im, 3, 9, 12, 11, c("46608e"))
+    for x in (5, 8, 11):
+        vline(im, x, 4, 8, c("6e92c8"))
+    ellipse(im, (7, 1, 9, 3), c("e8ecf4"))  # pompon
+    return outline(im)
+
+
+def cape():
+    im = blank()
+    polygon(im, [(8, 2), (4, 6), (3, 14), (13, 14), (12, 6)], c("7a4a8a"))
+    polygon(im, [(8, 3), (6, 6), (5, 13), (7, 13)], c("9662a8"))
+    put(im, 8, 3, c("ffd83a"))  # sluiting
+    return outline(im)
+
+
+def scarf():
+    im = blank()
+    rect(im, 3, 4, 12, 6, c("c8543c"))
+    rect(im, 3, 4, 12, 4, c("e06a50"))
+    rect(im, 5, 6, 7, 13, c("c8543c"))
+    rect(im, 5, 12, 7, 13, c("a04028"))
+    for x in (9, 11):
+        put(im, x, 5, c("8e3822"))
+    return outline(im)
+
+
+def tunic():
+    im = blank()
+    rect(im, 5, 3, 10, 11, c("4a7a4e"))
+    rect(im, 3, 3, 4, 7, c("4a7a4e"))
+    rect(im, 11, 3, 12, 7, c("4a7a4e"))
+    rect(im, 5, 10, 10, 11, c("3a603e"))
+    rect(im, 5, 7, 10, 8, CLOTH_D)  # ceintuur
+    put(im, 7, 4, c("6a9a6e"))
+    return outline(im)
+
+
+def blouse():
+    im = blank()
+    rect(im, 5, 3, 10, 10, c("e8e0d0"))
+    rect(im, 3, 3, 4, 6, c("e8e0d0"))
+    rect(im, 11, 3, 12, 6, c("e8e0d0"))
+    rect(im, 7, 3, 8, 10, c("d0c4ac"))
+    for y in (4, 6, 8):
+        put(im, 7, y, CLOTH_D)  # knoopjes
+    rect(im, 5, 10, 10, 11, c("c8b89a"))
+    return outline(im)
+
+
+def shirt():
+    im = blank()
+    rect(im, 4, 3, 11, 11, c("4a6a9a"))
+    rect(im, 4, 3, 11, 4, c("5e80b4"))
+    rect(im, 7, 3, 8, 5, c("2e4464"))  # kraag
+    rect(im, 4, 8, 11, 9, c("3a567e"))
+    return outline(im)
+
+
+def trousers():
+    im = blank()
+    rect(im, 4, 2, 11, 4, c("5a5a6e"))
+    rect(im, 4, 4, 7, 13, c("5a5a6e"))
+    rect(im, 8, 4, 11, 13, c("4c4c5e"))
+    rect(im, 4, 12, 7, 13, c("3e3e4e"))
+    rect(im, 8, 12, 11, 13, c("3e3e4e"))
+    return outline(im)
+
+
+def skirt():
+    im = blank()
+    rect(im, 5, 2, 10, 4, c("a04a6a"))
+    polygon(im, [(5, 4), (10, 4), (13, 13), (2, 13)], c("a04a6a"))
+    polygon(im, [(6, 4), (8, 4), (6, 13), (4, 13)], c("bc6080"))
+    rect(im, 2, 12, 13, 13, c("7e3852"))
+    return outline(im)
+
+
+def shoes():
+    im = blank()
+    for x0 in (3, 9):
+        rect(im, x0, 7, x0 + 4, 11, c("6e4a2e"))
+        rect(im, x0, 10, x0 + 4, 12, c("4e341e"))
+        rect(im, x0 + 1, 7, x0 + 2, 8, c("8a6238"))
+    return outline(im)
+
+
+def slippers():
+    im = blank()
+    for x0 in (3, 9):
+        ellipse(im, (x0, 6, x0 + 4, 12), c("c85a7a"))
+        ellipse(im, (x0 + 1, 7, x0 + 3, 9), c("e87a9a"))
+        put(im, x0 + 2, 6, c("f4f0e8"))  # bontje
+    return outline(im)
+
+
 def sheets():
-    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast()]
+    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast(), straw_hat(), beret(), beanie(), cape(), scarf(), tunic(), blouse(), shirt(), trousers(), skirt(), shoes(), slippers()]
     resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein(), cactusfig_bush(), sandwort_bush(), sandstone_rock()]
     return {"items_beroepen": strip(icons), "resources_beroepen": strip(resources)}
 
