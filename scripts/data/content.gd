@@ -52,6 +52,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/arena.gd"),
 	preload("res://scripts/data/ext/beroepen.gd"),
 	preload("res://scripts/data/ext/uitrusting.gd"),
+	preload("res://scripts/data/ext/polijst.gd"), # polish: Dauwbos + extra quests & NPC's
 ]
 
 
