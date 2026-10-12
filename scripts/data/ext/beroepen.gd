@@ -47,6 +47,12 @@ const ITEMS := {
 	"prof_fish_meal": {"name": "Gebakken baars", "sheet": "items_beroepen", "icon": 15, "type": "use", "heal": 3, "desc": "Herstelt 3 hartjes. Gemaakt in de herberg. Gebruik via Beroepen → Eten & drinken."},
 	"prof_mushroom": {"name": "Honingzwam", "sheet": "items_beroepen", "icon": 16, "type": "material", "desc": "Een eetbare zwam uit het Fluisterbos. Voor stevige paddenstoelensoep."},
 	"prof_stew": {"name": "Paddenstoelensoep", "sheet": "items_beroepen", "icon": 17, "type": "use", "heal": 2, "desc": "Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."},
+	"prof_ijsbloem": {"name": "IJsbloem", "sheet": "items_beroepen", "icon": 18, "type": "material", "desc": "Een bloem die alleen in het IJsdal bloeit. Koud en helder; basis voor vorstelixers."},
+	"prof_winterbes": {"name": "Winterbes", "sheet": "items_beroepen", "icon": 19, "type": "material", "desc": "Zoete bes die juist in de sneeuw rijpt. Lekker en verwarmend."},
+	"prof_dennenhout": {"name": "Dennenhout", "sheet": "items_beroepen", "icon": 20, "type": "material", "desc": "Harsachtig hout uit het IJsdal. Brandt lang en warm."},
+	"prof_ijskristal": {"name": "IJskristal", "sheet": "items_beroepen", "icon": 21, "type": "material", "desc": "Een zuivere kristalspalk uit een bevroren ader. Gezocht door alchemisten."},
+	"prof_frost_tonic": {"name": "Vorstelixer", "sheet": "items_beroepen", "icon": 22, "type": "use", "stamina": 40, "desc": "Herstelt 40 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
+	"prof_winter_gloed": {"name": "Wintergloed", "sheet": "items_beroepen", "icon": 23, "type": "use", "heal": 2, "desc": "Een warme winterbespap. Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."},
 }
 const RECIPES := {
 	"stone_axe": {"skill": "woodcutting", "level": 1, "xp": 8, "inputs": {"prof_branch": 2, "prof_stone": 2}, "output": "prof_axe"},
@@ -66,6 +72,8 @@ const RECIPES := {
 	"smith_gloves": {"skill": "smithing", "level": 2, "xp": 18, "station": "smithy", "inputs": {"prof_iron_bar": 2, "gel": 2}, "output": "gear_smith_gloves"},
 	"crystal_amulet": {"skill": "alchemy", "level": 3, "xp": 25, "station": "library", "inputs": {"prof_copper_bar": 2, "prof_herb": 6, "gel": 3}, "output": "gear_crystal_amulet"},
 	"crystal_ring": {"skill": "alchemy", "level": 2, "xp": 18, "station": "library", "inputs": {"prof_copper_bar": 1, "prof_herb": 4, "gel": 4}, "output": "gear_crystal_ring"},
+	"frost_tonic": {"skill": "alchemy", "level": 2, "xp": 12, "station": "library", "inputs": {"prof_ijsbloem": 2, "prof_winterbes": 2}, "output": "prof_frost_tonic"},
+	"winter_glow": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_winterbes": 3, "prof_ijsbloem": 1}, "output": "prof_winter_gloed"},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},
@@ -76,6 +84,10 @@ const RESOURCES := {
 	"stump": {"name": "Berkenstronk", "skill": "woodcutting", "item": "prof_log", "amount": 2, "xp": 8, "cooldown": 150.0, "tools": ["prof_iron_axe", "prof_axe"], "duration": 1.1, "animation": "woodcutting", "color": Color("cbac70")},
 	"copper": {"name": "Koperader", "skill": "mining", "item": "prof_copper_ore", "amount": 2, "xp": 10, "cooldown": 180.0, "tools": ["prof_copper_pickaxe", "prof_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("e39760")},
 	"iron": {"name": "IJzerader", "skill": "mining", "item": "prof_iron_ore", "amount": 2, "xp": 12, "cooldown": 180.0, "level": 2, "tools": ["prof_copper_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("bdcfdd")},
+	"winterherbs": {"name": "IJsbloemen", "skill": "foraging", "item": "prof_ijsbloem", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("a5e8f2")},
+	"frostberries": {"name": "Winterbessenstruik", "skill": "foraging", "item": "prof_winterbes", "amount": 3, "xp": 8, "cooldown": 150.0, "color": Color("e8a5b5")},
+	"pine_stump": {"name": "Dennenstronk", "skill": "woodcutting", "item": "prof_dennenhout", "amount": 2, "xp": 8, "cooldown": 150.0, "tools": ["prof_iron_axe", "prof_axe"], "duration": 1.1, "animation": "woodcutting", "color": Color("7a5c3d")},
+	"ice_vein": {"name": "IJskristalader", "skill": "mining", "item": "prof_ijskristal", "amount": 2, "xp": 12, "cooldown": 180.0, "level": 2, "tools": ["prof_copper_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("9fd8f0")},
 }
 # Explicit IDs keep cooldowns stable when maps or the original object lists change.
 # Nodes are small, non-blocking props on walkable tiles away from doors and quest items.
@@ -84,6 +96,7 @@ const RESOURCE_PLACEMENTS := {
 	"forest": [["twigs_entry", "branches", 4, 15], ["flint_entry", "stones", 3, 20], ["birch_west", "stump", 7, 21], ["birch_north", "stump", 12, 12], ["herbs_west", "herbs", 8, 20], ["berries_west", "berries", 10, 21], ["mushrooms_west", "mushrooms", 8, 25], ["copper_west", "copper", 5, 26], ["copper_east", "copper", 30, 20], ["birch_east", "stump", 32, 22], ["mushrooms_east", "mushrooms", 43, 23]],
 	"lake": [["herbs_north", "herbs", 17, 10], ["berries_north", "berries", 25, 10], ["twigs_shore", "branches", 6, 13], ["flint_shore", "stones", 35, 12]],
 	"cave": [["copper_entry", "copper", 9, 32], ["iron_entry", "iron", 3, 29], ["iron_west", "iron", 10, 22], ["iron_east", "iron", 29, 28]],
+	"ijsdal": [["ijsbloem_west", "winterherbs", 5, 14], ["ijsbloem_meer", "winterherbs", 16, 25], ["ijsbloem_noord", "winterherbs", 30, 5], ["winterbes_west", "frostberries", 4, 19], ["winterbes_oost", "frostberries", 42, 6], ["den_west", "pine_stump", 7, 16], ["den_oost", "pine_stump", 33, 20], ["ijskristal_mijn", "ice_vein", 40, 24], ["ijskristal_diep", "ice_vein", 44, 28], ["vuursteen_mijn", "stones", 38, 26], ["takken_plein", "branches", 28, 19]],
 }
 
 

@@ -52,6 +52,15 @@ pixel art, en te delen met vrienden en de community.
 - [x] Uitrustingsmenu met bonussen, vereisten en bediening voor muis, toetsenbord en controller
 - [x] Kijkrichting volgt lopen; aanvallen en schieten volgen onafhankelijk het richtkruis
 
+## In de 0.6.0-preview
+- [x] Het IJsdal: een besneeuwd bergdorp ten noorden van het Dauwbos, met eigen sneeuwklimaat, bevroren meer,
+      mijnhoek en een altaar voor snel reizen
+- [x] Sneeuwtegels, dennen, ijs en sneeuwvoetstappen; sneeuwvlokken en een koude tint door de dag-nachtcyclus
+- [x] Winterse grondstoffen: ijsbloemen, winterbessen, dennenhout en ijskristal, met een vorstelixer (alchemie)
+      en wintergloed (koken) als nieuwe recepten
+- [x] Twee nieuwe opdrachten (Warmte voor IJsdal, De Ijswacht), drie nieuwe personages en de prestatie Sneeuwvoeten
+- [x] Richtkruis laat los zodra de linkerstick weer een nieuwe looprichting geeft
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen en schilden

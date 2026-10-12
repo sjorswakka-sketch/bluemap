@@ -17,6 +17,8 @@ const NAMES: Array[String] = [
 	"void_floor", "void_wall", "void_crystal", "rune_pad", "void_stairs",
 	# De arena (spoor arena)
 	"arena_sand", "arena_wall", "arena_tribune", "arena_gate", "arena_arch",
+	# IJsdal (spoor sneeuw)
+	"snow", "snow_tufts", "snow_bush", "pine", "ice",
 ]
 
 ## Tegels waar je niet doorheen kunt lopen.
@@ -27,6 +29,7 @@ const SOLID: Array[String] = [
 	"meer_reeds", "meer_lelie", "meer_paal",
 	"void_wall", "void_crystal",
 	"arena_wall", "arena_tribune", "arena_gate",
+	"snow_bush", "pine",
 ]
 
 ## Teken in de kaart -> tegel. Het gras (".") krijgt automatisch wat afwisseling.
@@ -45,6 +48,8 @@ const CHARS := {
 	"d": "void_floor", "V": "void_wall", "K": "void_crystal", "*": "rune_pad", ">": "void_stairs",
 	# De arena
 	":": "arena_sand", "+": "arena_wall", "-": "arena_tribune", "!": "arena_gate", "n": "arena_arch",
+	# IJsdal (z = sneeuw, f = sneeuwpluk, G = besneeuwde struik, P = den, i = ijs)
+	"z": "snow", "f": "snow_tufts", "G": "snow_bush", "P": "pine", "i": "ice",
 }
 
 
@@ -56,7 +61,7 @@ static func is_solid_name(tile_name: String) -> bool:
 	return tile_name in SOLID
 
 
-## Tegelnaam voor een teken op positie (x, y). Gras wisselt af zodat het niet saai wordt.
+## Tegelnaam voor een teken op positie (x, y). Gras en sneeuw wisselen af zodat het niet saai wordt.
 static func name_for(c: String, x: int, y: int) -> String:
 	var tile_name: String = CHARS.get(c, "grass")
 	if tile_name == "grass":
@@ -65,6 +70,10 @@ static func name_for(c: String, x: int, y: int) -> String:
 			return "grass_flowers"
 		if h < 5:
 			return "grass_tufts"
+	if tile_name == "snow":
+		var h := (x * 7 + y * 13 + x * y) % 11
+		if h < 3:
+			return "snow_tufts"
 	return tile_name
 
 
@@ -83,12 +92,14 @@ static func name_at(rows: Array, foot_position: Vector2, tile_size := 32.0) -> S
 	return name_for(row[cell.x], cell.x, cell.y)
 
 
-## Het gewone gras houdt zijn oorspronkelijke snelheid; een pad loont, zand is wat zwaarder.
+## Het gewone gras houdt zijn oorspronkelijke snelheid; een pad loont, zand en diepe sneeuw zijn wat zwaarder.
 static func movement_multiplier(tile_name: String) -> float:
 	if tile_name == "path":
 		return 1.2
 	if tile_name in ["meer_sand", "arena_sand"]:
 		return 0.92
+	if tile_name in ["snow", "snow_tufts"]:
+		return 0.95
 	return 1.0
 
 
@@ -105,13 +116,19 @@ static func footstep_surface(tile_name: String) -> String:
 		return "wood"
 	if tile_name in ["carpet", "mat", "meer_tapijt"]:
 		return "cloth"
+	if tile_name in ["snow", "snow_tufts"]:
+		return "snow"
 	return "stone"
 
 
 ## Kleur van een tegel op de kaartjes (kaarttabblad en einde).
 static func map_color(tile_name: String) -> Color:
 	var color := Color(0.5, 0.5, 0.55)
-	if tile_name.begins_with("meer_"):
+	if tile_name.begins_with("snow") or tile_name == "ice":
+		color = _sneeuw_color(tile_name)
+	elif tile_name == "pine":
+		color = Color(0.16, 0.38, 0.34)
+	elif tile_name.begins_with("meer_"):
 		color = _meer_color(tile_name)
 	elif tile_name.begins_with("grass"):
 		color = Color(0.36, 0.66, 0.3)
@@ -162,3 +179,17 @@ static func _meer_color(tile_name: String) -> Color:
 		"meer_tapijt":
 			return Color(0.2, 0.45, 0.38)
 	return Color(0.62, 0.45, 0.28) # de bibliotheekvloer
+
+
+## Kleuren van de tegels van IJsdal op het kaartje.
+static func _sneeuw_color(tile_name: String) -> Color:
+	match tile_name:
+		"snow":
+			return Color(0.88, 0.92, 0.97)
+		"snow_tufts":
+			return Color(0.78, 0.85, 0.9)
+		"snow_bush":
+			return Color(0.6, 0.68, 0.72)
+		"ice":
+			return Color(0.62, 0.82, 0.94)
+	return Color(0.88, 0.92, 0.97)
