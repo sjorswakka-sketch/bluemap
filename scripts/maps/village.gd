@@ -48,10 +48,6 @@ const DATA := {
 		{"type": "npc", "pos": [13, 15], "id": "anja"},
 		{"type": "npc", "pos": [22, 24], "id": "joost"},
 		{"type": "npc", "pos": [34, 11], "id": "hein"},
-		{"type": "npc", "pos": [15, 25], "id": "lotte"}, # polish: Lotte (vrij pad)
-		{"type": "npc", "pos": [11, 18], "id": "kasper"}, # polish: Kasper
-		{"type": "npc", "pos": [20, 16], "id": "elke"}, # polish: Elke
-		{"type": "npc", "pos": [27, 14], "id": "willem"}, # polish: Willem
 		{"type": "savepoint", "pos": [22, 12]},
 		{"type": "wereld_lantaarn", "pos": [18, 7]},
 		{"type": "wereld_lantaarn", "pos": [21, 7]},
@@ -93,5 +89,10 @@ const DATA := {
 		# Zilvermeer (achteraan, zodat de plekken van de oude dingen in opslagen niet verschuiven): de weg naar het zuiden.
 		{"type": "sign", "pos": [18, 24], "lines": ["Zuidelijke weg: het Zilvermeer.", "Rustig water, grote vissen en een bibliotheek."]},
 		{"type": "portal", "pos": [19, 26], "to": "lake", "spawn": "from_village", "size": [2, 2]},
+		# Polish: extra NPC's helemaal achteraan zodat de oude objectvolgorde intact blijft
+		{"type": "npc", "pos": [15, 25], "id": "lotte"},
+		{"type": "npc", "pos": [11, 18], "id": "kasper"},
+		{"type": "npc", "pos": [20, 16], "id": "elke"},
+		{"type": "npc", "pos": [27, 14], "id": "willem"},
 	],
 }
