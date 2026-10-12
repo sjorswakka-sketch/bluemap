@@ -35,7 +35,7 @@ const DATA := {
 		"###################,,###################",
 		"###################,,###################",
 	],
-	"spawns": {"start": [19, 9], "from_forest": [36, 13], "from_smithy": [6, 12], "from_shop": [13, 12], "from_inn": [30, 11], "from_temple": [19, 8]},
+	"spawns": {"start": [19, 9], "from_forest": [36, 13], "from_smithy": [6, 12], "from_shop": [13, 12], "from_inn": [30, 11], "from_temple": [19, 8], "from_lake": [19, 24]},
 	"objects": [
 		{"type": "npc", "pos": [17, 8], "id": "bram"},
 		{"type": "npc", "pos": [24, 18], "id": "pim"},
@@ -60,5 +60,8 @@ const DATA := {
 		{"type": "boog_target", "pos": [37, 16], "range": "schietbaan"},
 		{"type": "boog_target", "pos": [34, 17], "range": "schietbaan"},
 		{"type": "sign", "pos": [29, 17], "lines": ["Schietbaan van Tessa.", "Raak de doelwitten met je boog. Praat met Tessa om te beginnen."]},
+		# Zilvermeer (achteraan, zodat de plekken van de oude dingen in opslagen niet verschuiven): de weg naar het zuiden.
+		{"type": "sign", "pos": [18, 24], "lines": ["Zuidelijke weg: het Zilvermeer.", "Rustig water, grote vissen en een bibliotheek."]},
+		{"type": "portal", "pos": [19, 26], "to": "lake", "spawn": "from_village", "size": [2, 2]},
 	],
 }

@@ -8,6 +8,7 @@ extends RefCounted
 ##   NPCS     (npcs.gd)       SHOPS  (shops.gd)    MAPS (maps/registry.gd)
 ##   SOUNDS / TRACKS (lijsten met namen van .wav-bestanden in assets/audio, zie scripts/core/sound.gd)
 ##   OBJECTS  (soort object op de kaart -> script, zie hieronder)
+##   MAP_MARKERS (soort object -> {"color": Color, "label": "naam"}): een stipje op het kaartje in het menu (N)
 ##
 ## Eigen voorwaarden en acties voor gesprekken, poortjes enzovoort:
 ##
@@ -18,23 +19,29 @@ extends RefCounted
 ##
 ## Eigen soorten objecten op de kaart ({"type": "doelwit", "pos": [3, 4], ...}):
 ##
-##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}
-##
-## Het pad staat als tekst (geen preload): een preload laadt het objectscript al terwijl GameState nog wordt opgebouwd,
-## en dan kent dat script GameState en Sound nog niet. Zo kan een objectscript ze gewoon bij naam gebruiken.
+##   const OBJECTS := {"doelwit": "res://scripts/entities/target.gd"}   # het PAD als tekst, geen preload()
 ##
 ## Het script is een Node2D met de variabelen `world` (de wereld), `obj` (het woordenboek uit de kaart)
 ## en `key` (een unieke naam voor deze plek, handig als vlag). De wereld vult ze in vóór add_child().
 ##
-## Je hoeft alleen de constanten op te nemen die je nodig hebt. Namen (sleutels) mogen niet al bestaan.
+## Eigen {tekens} in gesprekken en opdrachtteksten (zoals {gel} en {coins} in game_state.gd):
 ##
-## Let op: gebruik in de module zelf GameState en Sound niet bij naam (compileerfout, want game_state.gd laadt dit
-## bestand al). Haal ze in check() en run() uit de scenetree: (Engine.get_main_loop() as SceneTree).root.get_node("GameState").
+##   const FORMATS := ["boeken"]                    # de namen van de tekens
+##   static func format(text: String) -> String     # vult jouw tekens in en laat de rest van de tekst staan
+##
+## LET OP (compileervolgorde): game_state.gd laadt dit bestand en dus alle modules al terwijl de autoloads GameState en
+## Sound nog niet bestaan. Gebruik in een module (en in alles wat hij met preload() laadt) daarom nooit de namen GameState
+## of Sound. Haal GameState in check() en run() op via (Engine.get_main_loop() as SceneTree).root.get_node("GameState"),
+## of zet de code in een apart script dat je met load() aanroept (zie ext/meer.gd en ext/meer_logic.gd). Daarom staan
+## objectscripts als pad in OBJECTS: ze worden pas geladen als de wereld ze nodig heeft.
+##
+## Je hoeft alleen de constanten op te nemen die je nodig hebt. Namen (sleutels) mogen niet al bestaan.
 
 const MODULES: Array = [
 	# preload("res://scripts/data/ext/voorbeeld.gd"),
 	preload("res://scripts/data/ext/boog.gd"),
 	preload("res://scripts/data/ext/vijanden.gd"),
+	preload("res://scripts/data/ext/meer.gd"), # het Zilvermeer: vissen, bibliotheek, Joris, Lena en Sanne
 ]
 
 
@@ -92,6 +99,16 @@ static func run_action(action: Array) -> bool:
 	return false
 
 
+## Laat de modules hun eigen {tekens} invullen in een tekst (zie FORMATS bovenaan dit bestand).
+static func format(text: String) -> String:
+	if not "{" in text:
+		return text
+	for module: Script in MODULES:
+		if module.get_script_constant_map().has("FORMATS"):
+			text = module.call("format", text)
+	return text
+
+
 ## Soorten objecten (naam -> script) die de modules toevoegen. Paden (tekst) worden hier geladen.
 static func object_types() -> Dictionary:
 	var types := merged("OBJECTS", {})
@@ -99,3 +116,8 @@ static func object_types() -> Dictionary:
 		if types[type_name] is String:
 			types[type_name] = load(types[type_name])
 	return types
+
+
+## Kleur van het stipje op het kaartje (menu) voor soorten objecten van de modules.
+static func map_markers() -> Dictionary:
+	return merged("MAP_MARKERS", {})

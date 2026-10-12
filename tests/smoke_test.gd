@@ -118,11 +118,11 @@ func test_data() -> void:
 		if not (solid_name in Tiles.NAMES):
 			tiles_ok = false
 	check(tiles_ok, "alle tekens en muren verwijzen naar bestaande tegels")
-	var items_tex := Art.tex("items")
-	var max_icon := 0
+	var icons_ok := true
 	for item_id: String in Items.ITEMS:
-		max_icon = maxi(max_icon, int(Items.ITEMS[item_id]["icon"]))
-	check(items_tex.get_width() >= (max_icon + 1) * 16, "items.png heeft genoeg iconen")
+		# elk voorwerp heeft zijn icoon in items.png, of in het eigen plaatje van een uitbreiding
+		icons_ok = icons_ok and Art.tex(Items.sheet_of(item_id)).get_width() >= (int(Items.ITEMS[item_id]["icon"]) + 1) * 16
+	check(icons_ok, "elk voorwerp heeft een icoon in zijn plaatje")
 	var sheets_ok := true
 	for kind: String in Enemies.ENEMIES:
 		var tex := Art.tex(Enemies.ENEMIES[kind]["sheet"])
@@ -748,7 +748,7 @@ func test_menus() -> void:
 	await frames(2)
 	check(sound.muted == was_muted, "M terug")
 	check(sound.streams.size() >= 20, "alle geluidseffecten geladen (%d)" % sound.streams.size())
-	check(sound.tracks.size() == 7, "alle muziekstukken geladen (%d)" % sound.tracks.size())
+	check(sound.tracks.size() == sound.TRACKS.size() and sound.tracks.size() >= 7, "alle muziekstukken geladen (%d)" % sound.tracks.size())
 
 	print("Game over")
 	gs.hurt(gs.max_hp())

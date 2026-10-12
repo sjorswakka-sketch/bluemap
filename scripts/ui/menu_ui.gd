@@ -7,6 +7,7 @@ const Util := preload("res://scripts/core/util.gd")
 const Items := preload("res://scripts/data/items.gd")
 const Quests := preload("res://scripts/data/quests.gd")
 const Tiles := preload("res://scripts/data/tiles.gd")
+const Content := preload("res://scripts/data/content.gd")
 
 const TABS := ["Voorwerpen", "Opdrachten", "Kaart"]
 const SIZE := Vector2(1000, 560)
@@ -19,6 +20,7 @@ var selected := 0
 var active := false
 var opened_frame := -1
 var time := 0.0
+var markers: Dictionary = Content.map_markers() # extra stipjes op het kaartje voor soorten objecten van uitbreidingen
 
 
 func _ready() -> void:
@@ -270,6 +272,9 @@ func _draw_map(font: Font) -> void:
 				content.draw_circle(p, cell * 0.45, Color(0.35, 0.6, 1.0))
 			"chest":
 				content.draw_rect(Rect2(p - Vector2(cell, cell) * 0.35, Vector2(cell, cell) * 0.7), Color(1.0, 0.8, 0.2))
+	var marks := extension_marks(world.map_data)
+	for mark: Dictionary in marks:
+		_draw_diamond(origin + (Vector2(float(mark["pos"][0]), float(mark["pos"][1])) + Vector2(0.5, 0.5)) * cell, cell * 0.5, mark["color"])
 	var player := Util.player(self)
 	if player:
 		var pp := origin + (player.global_position / 32.0) * cell
@@ -277,3 +282,26 @@ func _draw_map(font: Font) -> void:
 		content.draw_circle(pp, cell * 0.6 * (0.8 + pulse * 0.4), Color(1, 0.3, 0.3))
 		content.draw_circle(pp, cell * 0.3, Color(1, 1, 1))
 	content.draw_string(font, Vector2(24, SIZE.y - 40), "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.7))
+	# Legenda voor de bijzondere plekken van uitbreidingen die op deze kaart staan.
+	var legend: Dictionary = {}
+	for mark: Dictionary in marks:
+		legend[mark["label"]] = mark["color"]
+	var legend_x := 24.0
+	for label: String in legend:
+		content.draw_string(font, Vector2(legend_x, SIZE.y - 62), "◆ " + label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, legend[label])
+		legend_x += font.get_string_size("◆ " + label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16).x + 24.0
+
+
+## De bijzondere plekken van uitbreidingen op een kaart (zie MAP_MARKERS in content.gd): [{"pos", "color", "label"}].
+func extension_marks(map_data: Dictionary) -> Array[Dictionary]:
+	var marks: Array[Dictionary] = []
+	for obj: Dictionary in map_data.get("objects", []):
+		if markers.has(obj["type"]) and (not obj.has("if") or GameState.check_all(obj["if"])):
+			marks.append({"pos": obj["pos"], "color": markers[obj["type"]]["color"], "label": markers[obj["type"]]["label"]})
+	return marks
+
+
+## Een klein ruitje, voor de bijzondere plekken van uitbreidingen op het kaartje.
+func _draw_diamond(center: Vector2, radius: float, color: Color) -> void:
+	content.draw_colored_polygon(PackedVector2Array([
+		center + Vector2(0, -radius), center + Vector2(radius, 0), center + Vector2(0, radius), center + Vector2(-radius, 0)]), color)

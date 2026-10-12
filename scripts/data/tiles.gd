@@ -11,6 +11,8 @@ const NAMES: Array[String] = [
 	"ruin_floor", "ruin_wall", "ruin_pillar", "ruin_cracked",
 	"temple_floor", "temple_wall", "temple_rune", "carpet",
 	"wood_floor", "wood_wall", "counter", "shelf", "bed", "mat",
+	# Zilvermeer (spoor meer)
+	"meer_sand", "meer_reeds", "meer_lelie", "meer_paal", "meer_bibvloer", "meer_tapijt",
 ]
 
 ## Tegels waar je niet doorheen kunt lopen.
@@ -18,6 +20,7 @@ const SOLID: Array[String] = [
 	"tree", "water", "stone", "fence", "roof", "house_wall", "house_window", "rock", "bush", "dead_tree",
 	"well", "crate", "cave_wall", "cave_crystal", "stalagmite", "ruin_wall", "ruin_pillar", "temple_wall",
 	"wood_wall", "counter", "shelf", "bed",
+	"meer_reeds", "meer_lelie", "meer_paal",
 ]
 
 ## Teken in de kaart -> tegel. Het gras (".") krijgt automatisch wat afwisseling.
@@ -30,6 +33,8 @@ const CHARS := {
 	"r": "ruin_floor", "M": "ruin_wall", "I": "ruin_pillar", "k": "ruin_cracked",
 	"_": "temple_floor", "Z": "temple_wall", "u": "temple_rune", "%": "carpet",
 	"w": "wood_floor", "N": "wood_wall", "C": "counter", "S": "shelf", "B": "bed", "m": "mat",
+	# Zilvermeer
+	"s": "meer_sand", ";": "meer_reeds", "l": "meer_lelie", "p": "meer_paal", "Q": "meer_bibvloer", "J": "meer_tapijt",
 }
 
 
@@ -60,7 +65,9 @@ static func is_solid_char(c: String) -> bool:
 ## Kleur van een tegel op de kaartjes (kaarttabblad en einde).
 static func map_color(tile_name: String) -> Color:
 	var color := Color(0.5, 0.5, 0.55)
-	if tile_name.begins_with("grass"):
+	if tile_name.begins_with("meer_"):
+		color = _meer_color(tile_name)
+	elif tile_name.begins_with("grass"):
 		color = Color(0.36, 0.66, 0.3)
 	elif tile_name in ["tree", "bush", "dead_tree"]:
 		color = Color(0.14, 0.4, 0.2)
@@ -87,3 +94,19 @@ static func map_color(tile_name: String) -> Color:
 	if is_solid_name(tile_name):
 		color = color.darkened(0.3)
 	return color
+
+
+## Kleuren van de tegels van het Zilvermeer op het kaartje.
+static func _meer_color(tile_name: String) -> Color:
+	match tile_name:
+		"meer_sand":
+			return Color(0.93, 0.85, 0.6)
+		"meer_reeds":
+			return Color(0.35, 0.6, 0.4)
+		"meer_lelie":
+			return Color(0.3, 0.6, 0.6)
+		"meer_paal":
+			return Color(0.5, 0.35, 0.2)
+		"meer_tapijt":
+			return Color(0.2, 0.45, 0.38)
+	return Color(0.62, 0.45, 0.28) # de bibliotheekvloer

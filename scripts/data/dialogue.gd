@@ -240,6 +240,7 @@ const BASE_TALKS := {
 		"lines": ["Hoe kan ik je helpen?"],
 		"choices": [
 			{"text": "Ik wil uitrusten.", "do": [["heal"], ["save"]], "next": "mila_rest"},
+			{"text": "Ik heb verse vis voor je! ({visgeld} munten)", "if": [["meer_vis"]], "next": "meer_mila_vis"}, # Zilvermeer (ext/meer.gd)
 			{"text": "Heb je werk voor me?", "if": [["quest", "drank", "none"]], "next": "mila_quest"},
 			{"text": "Nee, bedankt."},
 		],

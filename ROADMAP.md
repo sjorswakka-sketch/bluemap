@@ -15,6 +15,8 @@ pixel art, en te delen met vrienden en de community.
 - [x] **Fase 6: verzamelen en upgraden.** Inventaris, winkel, smid, hartcontainers, laarzen, opslaan en laden
 - [x] **Einde.** Intro, eindbaas, eindscherm met herstelde Blauwe Kaart, epiloog, statistieken en aftiteling
 - [x] **Controller en volledig scherm**
+- [x] **Het Zilvermeer.** Een rustig gebied met een visspel, de Gouden Karper, een bibliotheek met oude boeken, drie
+      personages en twee opdrachten (De Gouden Karper en Boekenwurm)
 
 ## Ideeën voor later
 - Een tweede gebied-reeks na het einde (nieuw spel+, hogere moeilijkheid, geheime baas)
