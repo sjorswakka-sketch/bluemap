@@ -1,6 +1,7 @@
 extends RefCounted
 ## Grote polish-uitbreiding: Dauwbos, langere quests, meer NPC's.
 ## Gefixt: herb-item + dauwsteen is nu echt te vinden.
+## Icon-indices aangepast naar bestaande slots in items.png.
 
 const MAPS := {
 	"dauwbos": preload("res://scripts/maps/dauwbos.gd"),
@@ -45,15 +46,15 @@ const QUESTS := {
 
 const ITEMS := {
 	"special_lantern": {
-		"name": "Nachtlantaarn", "sheet": "items", "icon": 20, "type": "quest",
+		"name": "Nachtlantaarn", "sheet": "items", "icon": 1, "type": "quest",
 		"desc": "Een lantaarn die 's nachts verder en warmer schijnt dan een gewone fakkel.",
 	},
 	"dauwsteen": {
-		"name": "Dauwsteen", "sheet": "items", "icon": 21, "type": "quest",
+		"name": "Dauwsteen", "sheet": "items", "icon": 3, "type": "quest",
 		"desc": "Een steen die altijd bedekt is met fijne dauw. Hij voelt koel en levend.",
 	},
 	"herb": {
-		"name": "Verse kruiden", "sheet": "items", "icon": 22, "type": "material", "sell": 2,
+		"name": "Verse kruiden", "sheet": "items", "icon": 2, "type": "material", "sell": 2,
 		"desc": "Verse kruiden uit het bos. Elke de kruidenier heeft ze nodig.",
 	},
 }
