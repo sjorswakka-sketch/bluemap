@@ -1,7 +1,6 @@
 extends RefCounted
 ## Polish-uitbreiding: extra content zonder nieuwe systemen.
-## Korte side-quest "De Verdwenen Lantaarn" met bestaande stijl.
-## Plaats de NPC op een kaart (bijv. village.gd) om hem te activeren.
+## Quest "De Verdwenen Lantaarn" + meer NPC's met dialoog.
 
 const QUESTS := {
 	"lantaarn": {
@@ -12,6 +11,16 @@ const QUESTS := {
 				"advance_if": [["has", "special_lantern", 1]],
 			},
 			{"text": "Breng de nachtlantaarn terug naar Lotte in het dorp."},
+		],
+	},
+	"kruiden": {
+		"title": "Verse kruiden voor Elke",
+		"steps": [
+			{
+				"text": "Elke de kruidenier wil 4 verse kruiden. Ze groeien in het bos.",
+				"advance_if": [["has", "herb", 4]],
+			},
+			{"text": "Breng de kruiden naar Elke in het dorp."},
 		],
 	},
 }
@@ -25,11 +34,33 @@ const ITEMS := {
 
 const NPCS := {
 	"lotte": {
-		"name": "Lotte de lantaarnmaker", "sheet": "npc_greta", # tijdelijk hergebruik; eigen art later
+		"name": "Lotte de lantaarnmaker", "sheet": "npc_greta",
 		"rules": [
 			{"if": [["step", "lantaarn", 1]], "talk": "lotte_klaar"},
 			{"if": [["no_flag", "lotte_ontmoet"]], "talk": "lotte_intro"},
 			{"talk": "lotte_menu"},
+		],
+	},
+	"kasper": {
+		"name": "Kasper de handelaar", "sheet": "npc_tobias",
+		"rules": [
+			{"if": [["no_flag", "kasper_ontmoet"]], "talk": "kasper_intro"},
+			{"talk": "kasper_menu"},
+		],
+	},
+	"elke": {
+		"name": "Elke de kruidenier", "sheet": "npc_mila",
+		"rules": [
+			{"if": [["step", "kruiden", 1]], "talk": "elke_klaar"},
+			{"if": [["no_flag", "elke_ontmoet"]], "talk": "elke_intro"},
+			{"talk": "elke_menu"},
+		],
+	},
+	"willem": {
+		"name": "Willem de verhalenverteller", "sheet": "npc_bram",
+		"rules": [
+			{"if": [["no_flag", "willem_ontmoet"]], "talk": "willem_intro"},
+			{"talk": "willem_menu"},
 		],
 	},
 }
@@ -73,11 +104,111 @@ const TALKS := {
 		],
 		"do": [
 			["take", "special_lantern"],
-			["give", "special_lantern"], # player keeps it as gear-like
+			["give", "special_lantern"],
 			["coins", 25],
 			["finish_quest", "lantaarn"],
 			["sound", "quest"],
 		],
+	},
+
+	"kasper_intro": {
+		"speaker": "Kasper",
+		"lines": [
+			"Ha, een reiziger! Ik ben Kasper. Ik verhandel alles wat de slijmen niet opeten.",
+			"Munten, kruiden, geruchten... als het waarde heeft, koop of verkoop ik het.",
+		],
+		"do": [["set_flag", "kasper_ontmoet"]],
+		"next": "kasper_menu",
+	},
+	"kasper_menu": {
+		"speaker": "Kasper",
+		"lines": ["Wat brengt je naar mijn kraam?"],
+		"choices": [
+			{"text": "Heb je iets bijzonders?", "next": "kasper_bijzonder"},
+			{"text": "Hoe gaat de handel?", "next": "kasper_handel"},
+			{"text": "Tot later."},
+		],
+	},
+	"kasper_bijzonder": {
+		"speaker": "Kasper",
+		"lines": ["Bijzonders? Alles is bijzonder als je het hard genoeg wilt. Maar echte schatten liggen buiten het dorp."],
+		"next": "kasper_menu",
+	},
+	"kasper_handel": {
+		"speaker": "Kasper",
+		"lines": ["De handel bloeit. Zolang de Slijmkoning weg blijft, blijft mijn tas vol."],
+		"next": "kasper_menu",
+	},
+
+	"elke_intro": {
+		"speaker": "Elke",
+		"lines": [
+			"Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.",
+			"De verse kruiden uit het bos zijn het beste. Die mis ik nu." ,
+		],
+		"do": [["set_flag", "elke_ontmoet"]],
+		"next": "elke_vraag",
+	},
+	"elke_vraag": {
+		"speaker": "Elke",
+		"lines": ["Wil je 4 verse kruiden voor me plukken in het Fluisterbos?"],
+		"choices": [
+			{"text": "Ik haal ze.", "do": [["start_quest", "kruiden"]], "next": "elke_ok"},
+			{"text": "Misschien later."},
+		],
+	},
+	"elke_ok": {
+		"speaker": "Elke",
+		"lines": ["Fijn. Ze groeien bij de bomen aan de rand van het bos."],
+		"do": [["sound", "quest"]],
+	},
+	"elke_menu": {
+		"speaker": "Elke",
+		"lines": ["Heb je de kruiden al?"],
+		"choices": [
+			{"text": "Nog niet."},
+			{"text": "Tot zo."},
+		],
+	},
+	"elke_klaar": {
+		"speaker": "Elke",
+		"lines": ["Prachtig vers! Hier, een drankje en wat munten. Kom gerust terug."],
+		"do": [
+			["take", "herb", 4],
+			["give", "potion"],
+			["coins", 15],
+			["finish_quest", "kruiden"],
+			["sound", "quest"],
+		],
+	},
+
+	"willem_intro": {
+		"speaker": "Willem",
+		"lines": [
+			"Ah, een luisteraar! Ik ben Willem. Ik ken alle verhalen van Azura.",
+			"Van de gebarsten kaart tot de oude wachters in de Diepte." ,
+		],
+		"do": [["set_flag", "willem_ontmoet"]],
+		"next": "willem_menu",
+	},
+	"willem_menu": {
+		"speaker": "Willem",
+		"lines": ["Welk verhaal wil je horen?"],
+		"choices": [
+			{"text": "Over de Blauwe Kaart.", "next": "willem_kaart"},
+			{"text": "Over de Diepte.", "next": "willem_diepte"},
+			{"text": "Een ander keer."},
+		],
+	},
+	"willem_kaart": {
+		"speaker": "Willem",
+		"lines": ["De Blauwe Kaart hield Azura bijeen. Toen hij barstte, vlogen de kristallen het land in. Zonder hen raakt alles uit balans."],
+		"next": "willem_menu",
+	},
+	"willem_diepte": {
+		"speaker": "Willem",
+		"lines": ["Onder de tempel slaapt een oude wachter. Hij bewaakt het origineel van de kaart. Wees voorzichtig als je hem wekt."],
+		"next": "willem_menu",
 	},
 }
 
@@ -86,5 +217,10 @@ const ACHIEVEMENTS := {
 		"name": "Licht in de duisternis",
 		"desc": "Vind en terugbreng de nachtlantaarn van Lotte.",
 		"if": [["quest", "lantaarn", "done"]],
+	},
+	"kruiden_gehaald": {
+		"name": "Groene vingers",
+		"desc": "Breng verse kruiden naar Elke.",
+		"if": [["quest", "kruiden", "done"]],
 	},
 }
