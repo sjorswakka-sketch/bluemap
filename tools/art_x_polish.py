@@ -11,6 +11,15 @@ def _head(img, dy=0):
     put(img, 6, 6 + dy, OUTLINE)
     put(img, 9, 6 + dy, OUTLINE)
 
+
+def _legs(img, color, dark):
+    """Twee benen met schoenen, in de kleuren van het personage."""
+    rect(img, 5, 12, 7, 14, color)
+    rect(img, 8, 12, 10, 14, color)
+    rect(img, 8, 12, 8, 14, dark)
+    rect(img, 5, 15, 7, 15, dark)
+    rect(img, 8, 15, 10, 15, dark)
+
 def lotte(frame):
     """Lantaarnmaker: leren schort, gereedschapsriem, lantaarn in de hand."""
     hy = 1 if frame else 0
@@ -93,7 +102,7 @@ def mira(frame):
     """Dauwbewaarder: lichte mantel, dauwdruppels, zilveren accenten."""
     hy = 1 if frame else 0
     img = blank()
-    hair = c("#a0c0e0"))
+    hair = c("#a0c0e0")
     rect(img, 4, 2 + hy, 11, 4 + hy, hair)
     rect(img, 4, 5 + hy, 4, 8 + hy, hair)
     rect(img, 11, 5 + hy, 11, 8 + hy, hair)
