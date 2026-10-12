@@ -1,6 +1,7 @@
 extends RefCounted
 ## Grote polish-uitbreiding: Dauwbos, langere quests, meer NPC's.
-## Unieke outfits via art_x_polish.py.
+## Unieke outfits via art_x_polish.py (sheets moeten nog gegenereerd worden).
+## Tijdelijk op bestaande sheets zodat de build slaagt.
 
 const MAPS := {
 	"dauwbos": preload("res://scripts/maps/dauwbos.gd"),
@@ -60,7 +61,7 @@ const ITEMS := {
 
 const NPCS := {
 	"lotte": {
-		"name": "Lotte de lantaarnmaker", "sheet": "npc_lotte",
+		"name": "Lotte de lantaarnmaker", "sheet": "npc_greta",
 		"rules": [
 			{"if": [["step", "lantaarn", 1]], "talk": "lotte_klaar"},
 			{"if": [["no_flag", "lotte_ontmoet"]], "talk": "lotte_intro"},
@@ -68,14 +69,14 @@ const NPCS := {
 		],
 	},
 	"kasper": {
-		"name": "Kasper de handelaar", "sheet": "npc_kasper",
+		"name": "Kasper de handelaar", "sheet": "npc_tobias",
 		"rules": [
 			{"if": [["no_flag", "kasper_ontmoet"]], "talk": "kasper_intro"},
 			{"talk": "kasper_menu"},
 		],
 	},
 	"elke": {
-		"name": "Elke de kruidenier", "sheet": "npc_elke",
+		"name": "Elke de kruidenier", "sheet": "npc_mila",
 		"rules": [
 			{"if": [["step", "kruiden", 1]], "talk": "elke_klaar"},
 			{"if": [["no_flag", "elke_ontmoet"]], "talk": "elke_intro"},
@@ -83,14 +84,14 @@ const NPCS := {
 		],
 	},
 	"willem": {
-		"name": "Willem de verhalenverteller", "sheet": "npc_willem",
+		"name": "Willem de verhalenverteller", "sheet": "npc_bram",
 		"rules": [
 			{"if": [["no_flag", "willem_ontmoet"]], "talk": "willem_intro"},
 			{"talk": "willem_menu"},
 		],
 	},
 	"mira": {
-		"name": "Mira de dauwbewaarder", "sheet": "npc_mira",
+		"name": "Mira de dauwbewaarder", "sheet": "npc_mila",
 		"rules": [
 			{"if": [["step", "dauw", 2]], "talk": "mira_klaar"},
 			{"if": [["step", "dauw", 1]], "talk": "mira_steen"},
@@ -99,14 +100,14 @@ const NPCS := {
 		],
 	},
 	"tomas": {
-		"name": "Tomas de oude", "sheet": "npc_tomas",
+		"name": "Tomas de oude", "sheet": "npc_bram",
 		"rules": [
 			{"if": [["no_flag", "tomas_ontmoet"]], "talk": "tomas_intro"},
 			{"talk": "tomas_menu"},
 		],
 	},
 	"noor": {
-		"name": "Noor de verzamelaar", "sheet": "npc_noor",
+		"name": "Noor de verzamelaar", "sheet": "npc_tobias",
 		"rules": [
 			{"if": [["no_flag", "noor_ontmoet"]], "talk": "noor_intro"},
 			{"talk": "noor_menu"},
