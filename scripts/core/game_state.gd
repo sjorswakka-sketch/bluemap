@@ -11,12 +11,14 @@ const Movement := preload("res://scripts/core/movement.gd")
 const Professions := preload("res://scripts/core/professions.gd")
 const Progression := preload("res://scripts/core/progression.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
+const Appearance := preload("res://scripts/core/appearance.gd")
 
 signal hp_changed
 signal items_changed
 signal quests_changed
 signal progression_changed
 signal equipment_changed
+signal appearance_changed # haar, ogen of kleding veranderd (uiterlijk, puur visueel)
 signal toast(text: String) # tekst die al vertaald is (zie scripts/core/lang.gd)
 signal game_over
 signal ending_requested
@@ -50,6 +52,8 @@ var hero_xp: int = 0 # totale held-ervaring; levels worden hieruit berekend
 var meer: Dictionary = {} # eigen opslag van het Zilvermeer (zie scripts/data/ext/meer.gd): verkochte en gevangen vis
 var professions: Dictionary = {} # beroepenervaring en verzamelde grondstoffen (eigen stabiele sleutels)
 var equipment: Dictionary = {} # vak -> gekozen voorwerp; alleen geldig zolang je het bezit
+var appearance: Dictionary = {} # geslacht, haar, ogen (zie scripts/core/appearance.gd); leeg = standaard
+var clothing: Dictionary = {} # kledingvak -> {"item": id, "dye": kleurindex}; puur visueel, over de uitrusting heen
 var movement := Movement.new() # stamina blijft bij gebiedsovergangen behouden
 
 # Wereld: de klok, tellers voor prestaties en het beestenboek (worden opgeslagen).
@@ -129,6 +133,8 @@ func new_game() -> void:
 	meer = {}
 	professions = {}
 	equipment = {}
+	appearance = Appearance.normalize_appearance({})
+	clothing = {}
 	movement.reset()
 	day_time = Daynight.START
 	day_count = 0
@@ -156,6 +162,7 @@ func new_game() -> void:
 	quests_changed.emit()
 	progression_changed.emit()
 	equipment_changed.emit()
+	appearance_changed.emit()
 
 
 ## Schermen (menu, winkel, dialoog, pauze) zetten het spel stil zolang ze open staan.
@@ -412,6 +419,7 @@ func take(item_id: String, amount: int = 1) -> void:
 	else:
 		inventory.erase(item_id)
 	Equipment.reconcile()
+	Appearance.reconcile()
 	items_changed.emit()
 	_refresh_quests()
 
@@ -664,6 +672,8 @@ func save_game(pos: Vector2) -> bool:
 		"talked": talked.keys(), "achievements": achievements.keys(), "arena_records": arena_records,
 		"professions": professions, "hero_xp": Progression.normalize(hero_xp),
 		"equipment": Equipment.normalize(equipment, inventory),
+		"appearance": Appearance.normalize_appearance(appearance),
+		"clothing": Appearance.normalize_clothing(clothing, inventory),
 	}
 	data["ng_plus"] = ng_plus # de ronde van Nieuw spel+ (zie onderaan)
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -727,6 +737,8 @@ func load_game() -> bool:
 		else:
 			inventory[item_id] = int(data["inventory"][item_id])
 	equipment = Equipment.normalize(data.get("equipment", {}), inventory)
+	appearance = Appearance.normalize_appearance(data.get("appearance", {}))
+	clothing = Appearance.normalize_clothing(data.get("clothing", {}), inventory)
 	movement.reset()
 	for flag_name: String in data.get("flags", {}):
 		flags[flag_name] = true
@@ -741,6 +753,7 @@ func load_game() -> bool:
 	quests_changed.emit()
 	progression_changed.emit()
 	equipment_changed.emit()
+	appearance_changed.emit()
 	return true
 
 

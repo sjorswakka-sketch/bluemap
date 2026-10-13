@@ -35,39 +35,26 @@ def body_front(img, buckle):
 
 
 def player(direction, step):
+    # De basis-speler is kaal en zonder ogen: haarstijl en ogen komen uit de
+    # uiterlijk-laag (scripts/core/appearance_draw.gd), zodat de speler ze kan kiezen.
     img = blank()
     if direction == "down":
-        rect(img, 4, 1, 11, 4, HAIR)
+        rect(img, 4, 1, 11, 6, SKIN)
         rect(img, 5, 5, 10, 7, SKIN)
-        rect(img, 4, 5, 4, 6, HAIR)
-        rect(img, 11, 5, 11, 6, HAIR)
         rect(img, 5, 7, 10, 7, SKIN_D)
-        put(img, 6, 6, OUTLINE)
-        put(img, 9, 6, OUTLINE)
-        put(img, 4, 4, HAIR_D)
-        put(img, 11, 4, HAIR_D)
-        put(img, 7, 2, c("#9a6334"))
-        put(img, 8, 2, c("#9a6334"))
         body_front(img, buckle=True)
         legs_front(img, step)
     elif direction == "up":
-        rect(img, 4, 1, 11, 6, HAIR)
-        rect(img, 4, 5, 11, 6, HAIR_D)
+        rect(img, 4, 1, 11, 7, SKIN)
         rect(img, 6, 7, 9, 7, SKIN_D)
-        put(img, 7, 2, c("#9a6334"))
-        put(img, 8, 2, c("#9a6334"))
         body_front(img, buckle=False)
         legs_front(img, step)
     else:  # rechts
-        rect(img, 4, 1, 11, 3, HAIR)
-        rect(img, 4, 4, 6, 6, HAIR)
+        rect(img, 4, 1, 11, 3, SKIN)
+        rect(img, 4, 4, 6, 6, SKIN)
         rect(img, 7, 4, 11, 7, SKIN)
         rect(img, 7, 7, 10, 7, SKIN_D)
-        put(img, 9, 5, OUTLINE)
         put(img, 11, 6, SKIN_D)
-        put(img, 5, 5, HAIR_D)
-        put(img, 6, 2, c("#9a6334"))
-        put(img, 7, 2, c("#9a6334"))
         rect(img, 5, 8, 10, 10, TUN)
         rect(img, 10, 8, 10, 10, TUN_D)
         rect(img, 7, 9, 8, 9, TUN_L)

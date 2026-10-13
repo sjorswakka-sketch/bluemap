@@ -94,5 +94,7 @@ const DATA := {
 		{"type": "npc", "pos": [11, 18], "id": "kasper"},
 		{"type": "npc", "pos": [20, 16], "id": "elke"},
 		{"type": "npc", "pos": [27, 14], "id": "willem"},
+		# Uiterlijk: de kleermaakster verkoopt kleding voor over je uitrusting
+		{"type": "npc", "pos": [26, 16], "id": "vera"},
 	],
 }

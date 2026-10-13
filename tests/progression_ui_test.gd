@@ -82,17 +82,20 @@ func _run() -> void:
 	var page: Node = menu.progression_page
 	var hud: Node = world.hud
 	var lang: Node = root.get_node("Lang")
-	check(menu.TAB_COUNT == 7 and menu.TAB_PROGRESSION == 5, "Progression retains index five with the seventh equipment tab")
+	check(menu.TAB_COUNT == 8 and menu.TAB_PROGRESSION == 5, "Progression retains index five with the eighth appearance tab")
 	check(hud.xp_bar.position.y >= hud.stamina_bar.position.y + hud.stamina_bar.size.y, "XP bar sits below stamina without overlap")
 	check(not hud.xp_bar.get_rect().intersects(hud.clock.get_rect()), "XP bar does not overlap the clock")
 	check(hud.xp_label().contains("1") and hud.xp_label().contains("0/50 XP"), "HUD shows initial hero level and actual XP threshold")
 	await tap_key(KEY_I)
 	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
 	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
-	check(menu.active and menu.tab == 5 and page.visible and paused, "LB reaches the visible progression page through equipment")
+	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
+	check(menu.active and menu.tab == 5 and page.visible and paused, "LB reaches the visible progression page through appearance and equipment")
+	await tap_pad(JOY_BUTTON_RIGHT_SHOULDER)
 	await tap_pad(JOY_BUTTON_RIGHT_SHOULDER)
 	await tap_pad(JOY_BUTTON_RIGHT_SHOULDER)
 	check(menu.tab == 0 and not page.visible, "RB wraps back to inventory and hides progression content")
+	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
 	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
 	await tap_pad(JOY_BUTTON_LEFT_SHOULDER)
 	var location: Vector2 = world.player.position

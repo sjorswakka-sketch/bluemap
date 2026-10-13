@@ -68,6 +68,24 @@ pixel art, en te delen met vrienden en de community.
       (koken) als nieuwe recepten
 - [x] Twee nieuwe opdrachten (Vellen en vlees, Cactusvijgen voor Sana), drie nieuwe personages en de
       prestatie Zandvoeten
+- [x] Het Dauwbos hersteld: de heggenmuren hadden geen openingen op de padcorridors, waardoor het grootste
+      deel van het gebied (inclusief beide portalen en het altaar) onbereikbaar was. Een padvindingstest
+      bewaakt nu de hele route
+- [x] Uiterlijk: het menu heeft een achtste tabblad waar je geslacht, haarstijl (30 per geslacht), haarkleur
+      (10), oogstijl (10) en oogkleur (8) kiest, met een live voorvertoning van drie kanten
+- [x] Kleding: vijf eigen vakken (hoofd, rug, bovenlijf, onderlijf, voeten) die je óver je uitrusting draagt —
+      puur voor de look, zonder bonussen. Vera de kleermaakster verkoopt twaalf stukken in Dageraadsdorp en
+      elk gedragen stuk is in twaalf verfkleuren te verven. Alles wordt opgeslagen
+- [x] Gebiedenpolis: Dauwbos, IJsdal en Dorstvallei zijn volledig opnieuw vormgegeven en zien er nu alle
+      drie anders uit — een organisch mistbos met kronkelpaden, vijver en paddenstoelenkring; een bergdorp
+      rond een groot bevroren meer met een herkenbare mijnhoek; en een kloof met zandsteenwanden, een groene
+      oase als hart en cactusvelden bij de jachtgronden
+- [x] Beroepsplekken liggen nu op logische plekken met passend decor: vuursteen bij rotspartijen, winterbessen
+      bij besneeuwde struiken, cactusvijgen tussen de cactusvelden. Het Dauwbos heeft nu ook eigen plekken:
+      paddenstoelen, kruiden, bessen, takken, een oude stronk en vuursteen bij de vijver
+- [x] Alle veertien personages uit de uitbreidingen hebben hun eigen uiterlijk gekregen (outfits passend bij
+      hun rol en gebied) in plaats van de sheets van de basis-personages; een padvindingstest bewaakt nu alle
+      drie de gebieden
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
