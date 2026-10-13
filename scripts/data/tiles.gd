@@ -21,6 +21,8 @@ const NAMES: Array[String] = [
 	"snow", "snow_tufts", "snow_bush", "pine", "ice",
 	# Dorstvallei (spoor dorst)
 	"dune_sand", "dune_tufts", "cactus", "sandstone", "oasis_grass",
+	# Kruipmoeras (spoor moeras)
+	"marsh_grass", "marsh_tufts", "mud", "bog_water", "reed", "willow",
 ]
 
 ## Tegels waar je niet doorheen kunt lopen.
@@ -33,6 +35,7 @@ const SOLID: Array[String] = [
 	"arena_wall", "arena_tribune", "arena_gate",
 	"snow_bush", "pine",
 	"cactus", "sandstone",
+	"bog_water", "reed", "willow",
 ]
 
 ## Teken in de kaart -> tegel. Het gras (".") krijgt automatisch wat afwisseling.
@@ -55,6 +58,8 @@ const CHARS := {
 	"z": "snow", "f": "snow_tufts", "G": "snow_bush", "P": "pine", "i": "ice",
 	# Dorstvallei (a = duinzand, e = droog gras, g = cactus, q = zandsteen, L = oasegras)
 	"a": "dune_sand", "e": "dune_tufts", "g": "cactus", "q": "sandstone", "L": "oasis_grass",
+	# Kruipmoeras (U = moerasgras, j = pol, 2 = modder, F = drijfmest, R = riet, Y = knotwilg)
+	"U": "marsh_grass", "j": "marsh_tufts", "2": "mud", "F": "bog_water", "R": "reed", "Y": "willow",
 }
 
 
@@ -83,6 +88,10 @@ static func name_for(c: String, x: int, y: int) -> String:
 		var h := (x * 7 + y * 13 + x * y) % 11
 		if h < 3:
 			return "dune_tufts"
+	if tile_name == "marsh_grass":
+		var h := (x * 7 + y * 13 + x * y) % 11
+		if h < 3:
+			return "marsh_tufts"
 	return tile_name
 
 
@@ -105,6 +114,8 @@ static func name_at(rows: Array, foot_position: Vector2, tile_size := 32.0) -> S
 static func movement_multiplier(tile_name: String) -> float:
 	if tile_name == "path":
 		return 1.2
+	if tile_name == "mud":
+		return 0.88 # wegzakken in de blubber
 	if tile_name in ["meer_sand", "arena_sand", "dune_sand", "dune_tufts"]:
 		return 0.92
 	if tile_name in ["snow", "snow_tufts"]:
@@ -127,6 +138,10 @@ static func footstep_surface(tile_name: String) -> String:
 		return "cloth"
 	if tile_name in ["snow", "snow_tufts"]:
 		return "snow"
+	if tile_name in ["marsh_grass", "marsh_tufts"]:
+		return "grass"
+	if tile_name == "mud":
+		return "sand" # natte, zachte blubber
 	return "stone"
 
 
@@ -137,6 +152,8 @@ static func map_color(tile_name: String) -> Color:
 		color = _sneeuw_color(tile_name)
 	elif tile_name.begins_with("dune") or tile_name in ["cactus", "sandstone", "oasis_grass"]:
 		color = _dorst_color(tile_name)
+	elif tile_name.begins_with("marsh") or tile_name in ["mud", "bog_water", "reed", "willow"]:
+		color = _moeras_color(tile_name)
 	elif tile_name == "pine":
 		color = Color(0.16, 0.38, 0.34)
 	elif tile_name.begins_with("meer_"):
@@ -220,3 +237,21 @@ static func _dorst_color(tile_name: String) -> Color:
 		"oasis_grass":
 			return Color(0.45, 0.68, 0.3)
 	return Color(0.92, 0.78, 0.5)
+
+
+## Kleuren van de tegels van het Kruipmoeras op het kaartje: drassig groenbruin met donker water.
+static func _moeras_color(tile_name: String) -> Color:
+	match tile_name:
+		"marsh_grass":
+			return Color(0.34, 0.44, 0.24)
+		"marsh_tufts":
+			return Color(0.3, 0.4, 0.22)
+		"mud":
+			return Color(0.42, 0.34, 0.22)
+		"bog_water":
+			return Color(0.2, 0.3, 0.24)
+		"reed":
+			return Color(0.5, 0.52, 0.3)
+		"willow":
+			return Color(0.2, 0.34, 0.18)
+	return Color(0.34, 0.44, 0.24)

@@ -249,32 +249,32 @@ msgid "Zilvermeer"
 msgstr "Silver Lake"
 
 #. Kaart lake, sign [20, 4]: tekst op een bord
-#: scripts/maps/lake.gd:52
+#: scripts/maps/lake.gd:53
 msgid "Het Zilvermeer"
 msgstr "Silver Lake"
 
 #. Kaart lake, sign [20, 4]: tekst op een bord
-#: scripts/maps/lake.gd:52
+#: scripts/maps/lake.gd:53
 msgid "Vissen mag. Mopperen ook. Maar niet allebei tegelijk. - Joris"
 msgstr "Fishing is allowed. Grumbling too. Just not both at once. - Joris"
 
 #. Kaart lake, sign [23, 13]: tekst op een bord
-#: scripts/maps/lake.gd:53
+#: scripts/maps/lake.gd:54
 msgid "Steiger"
 msgstr "Dock"
 
 #. Kaart lake, sign [23, 13]: tekst op een bord
-#: scripts/maps/lake.gd:53
+#: scripts/maps/lake.gd:54
 msgid "Niet rennen. Niet duwen. En niet boos worden op de vis."
 msgstr "No running. No pushing. And no getting mad at the fish."
 
 #. Kaart lake, sign [36, 19]: tekst op een bord
-#: scripts/maps/lake.gd:54
+#: scripts/maps/lake.gd:55
 msgid "De verre steiger"
 msgstr "The Far Dock"
 
 #. Kaart lake, sign [36, 19]: tekst op een bord
-#: scripts/maps/lake.gd:54
+#: scripts/maps/lake.gd:55
 msgid "Het water is hier diep. Grote vissen zwemmen graag in diep water."
 msgstr "The water is deep here. Big fish love deep water."
 
@@ -289,40 +289,50 @@ msgid "Visser Joris"
 msgstr "Joris the Fisher"
 
 #. Kaart lake, sign [10, 7]: tekst op een bord
-#: scripts/maps/lake.gd:55
+#: scripts/maps/lake.gd:56
 msgid "Bellen kan niet, er is geen bel. Kloppen mag."
 msgstr "No use ringing. There's no bell. Knocking is fine."
 
 #. Kaart lake, sign [34, 7]: tekst op een bord
 #. Naam van gebied library
-#: scripts/maps/lake.gd:56 scripts/maps/library.gd:6
+#: scripts/maps/lake.gd:57 scripts/maps/library.gd:6
 msgid "Bibliotheek van Lena"
 msgstr "Lena's Library"
 
 #. Kaart lake, sign [34, 7]: tekst op een bord
-#: scripts/maps/lake.gd:56
+#: scripts/maps/lake.gd:57
 msgid "Stil zijn graag. De boeken slapen."
 msgstr "Quiet, please. The books are sleeping."
 
 #. Kaart lake, sign [20, 24]: tekst op een bord
-#: scripts/maps/lake.gd:57
+#: scripts/maps/lake.gd:58
 msgid "Eilandje"
 msgstr "Little Island"
 
 #. Kaart lake, sign [20, 24]: tekst op een bord
-#: scripts/maps/lake.gd:57
+#: scripts/maps/lake.gd:58
 msgid "Rustig, groen en een beetje nat."
 msgstr "Quiet, green, and a little bit wet."
 
 #. Kaart lake, sign [23, 2]: tekst op een bord
-#: scripts/maps/lake.gd:58
+#: scripts/maps/lake.gd:59
 msgid "Noordelijk pad: Dageraadsdorp"
 msgstr "Northern path: Daybreak Village"
 
 #. Kaart lake, sign [23, 2]: tekst op een bord
-#: scripts/maps/lake.gd:58
+#: scripts/maps/lake.gd:59
 msgid "Over de heuvels ligt het dorp in de morgenzon."
 msgstr "Beyond the hills lies the village in the morning sun."
+
+#. Kaart lake, sign [19, 29]: tekst op een bord
+#: scripts/maps/lake.gd:60
+msgid "Zuidelijk veenpad: Kruipmoeras"
+msgstr "Southern peat path: Creeping Swamp"
+
+#. Kaart lake, sign [19, 29]: tekst op een bord
+#: scripts/maps/lake.gd:60
+msgid "Drassig land met kwakkende vorsten. Stevige schoenen mee!"
+msgstr "Soggy land with croaking toads. Bring sturdy shoes!"
 
 #. Naam van gebied fisher_hut
 #: scripts/maps/fisher_hut.gd:6
@@ -526,7 +536,8 @@ msgid "De zon brandt, het zand waait. De oase geeft leven."
 msgstr "The sun scorches, the sand drifts. The oasis gives life."
 
 #. Kaart dorstvallei, sign [40, 21]: tekst op een bord
-#: scripts/maps/dorstvallei.gd:54
+#. Kaart kruipmoeras, sign [31, 23]: tekst op een bord
+#: scripts/maps/dorstvallei.gd:54 scripts/maps/kruipmoeras.gd:57
 msgid "Jachtgronden"
 msgstr "Hunting grounds"
 
@@ -539,6 +550,52 @@ msgstr "Desert foxes and sand hares. Get too close and they bolt."
 #: scripts/maps/dorstvallei.gd:55
 msgid "Voorbij de rotsen wacht groen en koelte."
 msgstr "Beyond the rocks, greenery and coolness await."
+
+#. Naam van gebied kruipmoeras
+#. Kaart kruipmoeras, sign [26, 4]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:9 scripts/maps/kruipmoeras.gd:54
+msgid "Kruipmoeras"
+msgstr "Creeping Swamp"
+
+#. Kaart kruipmoeras, sign [22, 3]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:53
+msgid "Noordelijk veenpad: Zilvermeer"
+msgstr "Northern peat path: Silver Lake"
+
+#. Kaart kruipmoeras, sign [22, 3]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:53
+msgid "Voorbij de knotwilgen wordt de grond weer vast en helder."
+msgstr "Past the pollard willows the ground turns firm and bright again."
+
+#. Kaart kruipmoeras, sign [26, 4]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:54
+msgid "Het land kwakt en borrelt. Blijf op de modderpaden."
+msgstr "The land croaks and bubbles. Stay on the mud paths."
+
+#. Kaart kruipmoeras, sign [5, 22]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:55
+msgid "Turfvelden"
+msgstr "Peat Fields"
+
+#. Kaart kruipmoeras, sign [5, 22]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:55
+msgid "Stien steekt hier turf. Let op je voeten: het is drassig."
+msgstr "Stien cuts peat here. Mind your step: it is soggy."
+
+#. Kaart kruipmoeras, sign [36, 7]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:56
+msgid "Rietland"
+msgstr "Reedland"
+
+#. Kaart kruipmoeras, sign [36, 7]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:56
+msgid "Mees vlecht riet tot manden. Het riet knettert in de wind."
+msgstr "Mees weaves reeds into baskets. The reeds crackle in the wind."
+
+#. Kaart kruipmoeras, sign [31, 23]: tekst op een bord
+#: scripts/maps/kruipmoeras.gd:57
+msgid "Moerasvorsten en waterslangen. Ze zijn sneller dan ze lijken."
+msgstr "Marsh toads and water snakes. They are quicker than they look."
 
 #. Naam van wie er praat (Gesprek bram_intro)
 #. Naam van wie er praat (Gesprek bram_intro2)
@@ -934,6 +991,7 @@ msgstr "I'll do it."
 #. Gesprek meer_joris_karper_vraag: keuze van de speler
 #. Gesprek meer_lena_vraag: keuze van de speler
 #. Gesprek elke_vraag: keuze van de speler
+#. Gesprek mees_vraag: keuze van de speler
 #: scripts/data/dialogue.gd:261 scripts/data/dialogue.gd:294 scripts/data/ext/meer.gd:267 scripts/data/ext/meer.gd:365
 msgid "Misschien later."
 msgstr "Maybe later."
@@ -2276,7 +2334,7 @@ msgstr "Have you found the night lantern yet?"
 #. Gesprek mira_mist_menu: keuze van de speler
 #. Gesprek noor_menu: keuze van de speler
 #. Gesprek fenna_menu: keuze van de speler
-#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/polijst.gd:146 scripts/data/ext/polijst.gd:186
+#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/moeras.gd:111 scripts/data/ext/moeras.gd:133
 msgid "Nog niet."
 msgstr "Not yet."
 
@@ -2386,7 +2444,7 @@ msgstr "Do you have the herbs yet?"
 #. Gesprek fenna_menu: keuze van de speler
 #. Gesprek jelle_menu: keuze van de speler
 #. Gesprek sana_menu: keuze van de speler
-#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/polijst.gd:186 scripts/data/ext/polijst.gd:226
+#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/moeras.gd:111 scripts/data/ext/moeras.gd:133
 msgid "Tot zo."
 msgstr "See you soon."
 
@@ -2895,7 +2953,8 @@ msgid "Over de hitte."
 msgstr "About the heat."
 
 #. Gesprek nour_menu: keuze van de speler
-#: scripts/data/ext/dorst.gd:143
+#. Gesprek wouda_menu: keuze van de speler
+#: scripts/data/ext/dorst.gd:143 scripts/data/ext/moeras.gd:161
 msgid "Een andere keer."
 msgstr "Another time."
 
@@ -2975,6 +3034,219 @@ msgstr "Open your menu and go to the Appearance tab. There you put on a piece of
 #: scripts/data/ext/uiterlijk.gd:272
 msgid "Je haar en je ogen kun je daar trouwens ook helemaal veranderen. Vijfenveertig kapsels! Ik knip ze allemaal zelf."
 msgstr "You can change your hair and your eyes there too, by the way. Forty-five haircuts! I cut them all myself."
+
+#. Naam van wie er praat (Gesprek stien_intro)
+#. Naam van wie er praat (Gesprek stien_vraag)
+#. Naam van wie er praat (Gesprek stien_ok)
+#. Naam van wie er praat (Gesprek stien_menu)
+#. Naam van wie er praat (Gesprek stien_klaar)
+#: scripts/data/ext/moeras.gd:97 scripts/data/ext/moeras.gd:103 scripts/data/ext/moeras.gd:110 scripts/data/ext/moeras.gd:111
+msgid "Stien"
+msgstr "Stien"
+
+#. Gesprek stien_intro, Stien zegt
+#: scripts/data/ext/moeras.gd:98
+msgid "Hé daar, oppassen waar je loopt! De turfvelden verrassen je, voor je het weet zak je tot je enkels."
+msgstr "Hey there, watch your step! The peat fields catch you off guard; before you know it you sink to your ankles."
+
+#. Gesprek stien_intro, Stien zegt
+#: scripts/data/ext/moeras.gd:98
+msgid "Ik ben Stien. Ik steek turf, zodat het dorp warm blijft in de winter."
+msgstr "I am Stien. I cut peat, so the village stays warm in winter."
+
+#. Gesprek stien_vraag, Stien zegt
+#: scripts/data/ext/moeras.gd:104
+msgid "Ik werk hier van ochtend tot avond en vergeet steeds te eten. Pluk je 5 veenbessen voor me? Dan maak ik mijn beroemde veenbespap."
+msgstr "I work here from dawn to dusk and keep forgetting to eat. Will you pick 5 cranberries for me? Then I will make my famous cranberry porridge."
+
+#. Gesprek stien_vraag, Stien zegt
+#: scripts/data/ext/moeras.gd:104
+msgid "Ze groeien laag bij de plassen; zoek de rode stipjes tussen het groen."
+msgstr "They grow low near the pools; look for the red dots among the green."
+
+#. Gesprek stien_vraag: keuze van de speler
+#: scripts/data/ext/moeras.gd:106
+msgid "Ik pluk ze voor je."
+msgstr "I will pick them for you."
+
+#. Gesprek stien_vraag: keuze van de speler
+#: scripts/data/ext/moeras.gd:107
+msgid "Nu even niet."
+msgstr "Not right now."
+
+#. Gesprek stien_ok, Stien zegt
+#: scripts/data/ext/moeras.gd:110
+msgid "Lekker bezig. En als je een vors hoort kwaken, kwak maar terug. Werkt altijd."
+msgstr "Good going. And if you hear a toad croak, just croak back. Always works."
+
+#. Gesprek stien_menu, Stien zegt
+#: scripts/data/ext/moeras.gd:111
+msgid "Heb je de veenbessen al? Mijn maag knort luider dan de vorsten."
+msgstr "Got the cranberries yet? My stomach growls louder than the toads."
+
+#. Gesprek stien_klaar, Stien zegt
+#: scripts/data/ext/moeras.gd:114
+msgid "Oooh, prachtige bessen! Zo rood als de zon achter de wilgen."
+msgstr "Oooh, beautiful berries! Red as the sun behind the willows."
+
+#. Gesprek stien_klaar, Stien zegt
+#: scripts/data/ext/moeras.gd:114
+msgid "Hier, een klomp ijzeroer uit mijn veld. En een paar munten; een deal is een deal."
+msgstr "Here, a lump of bog iron from my field. And some coins; a deal is a deal."
+
+#. Naam van wie er praat (Gesprek mees_intro)
+#. Naam van wie er praat (Gesprek mees_vraag)
+#. Naam van wie er praat (Gesprek mees_ok)
+#. Naam van wie er praat (Gesprek mees_menu)
+#. Naam van wie er praat (Gesprek mees_klaar)
+#: scripts/data/ext/moeras.gd:119 scripts/data/ext/moeras.gd:125 scripts/data/ext/moeras.gd:132 scripts/data/ext/moeras.gd:133
+msgid "Mees"
+msgstr "Mees"
+
+#. Gesprek mees_intro, Mees zegt
+#: scripts/data/ext/moeras.gd:120
+msgid "Welkom in het rietland. Hoor je dat knetteren? Dat is het riet dat met de wind praat."
+msgstr "Welcome to the reedland. Hear that crackling? That is the reeds talking to the wind."
+
+#. Gesprek mees_intro, Mees zegt
+#: scripts/data/ext/moeras.gd:120
+msgid "Ik ben Mees. Van riet en wilg vlecht ik manden, hoeden en af en toe een leugen van een visverhaal."
+msgstr "I am Mees. From reed and willow I weave baskets, hats, and the occasional whopper of a fish story."
+
+#. Gesprek mees_vraag, Mees zegt
+#: scripts/data/ext/moeras.gd:126
+msgid "Mijn beste mand vraagt om wilgentwijgen; buigzaam en sterk tegelijk. Snijd je er 4 voor me bij de geknotte wilgen?"
+msgstr "My best basket calls for willow twigs; supple and strong at once. Will you cut 4 for me at the pollard willows?"
+
+#. Gesprek mees_vraag, Mees zegt
+#: scripts/data/ext/moeras.gd:126
+msgid "Neem wel een bijl mee, anders word je niet vrolijk van dat hout."
+msgstr "Do bring an axe, or that wood will not make you happy."
+
+#. Gesprek mees_vraag: keuze van de speler
+#: scripts/data/ext/moeras.gd:128
+msgid "Ik snijd ze wel."
+msgstr "I will cut them."
+
+#. Gesprek mees_ok, Mees zegt
+#: scripts/data/ext/moeras.gd:132
+msgid "Mooi. De wilgen staan hier overal, maar de beste twijgen groeien bij de hut van Wouda in het noordwesten."
+msgstr "Good. Willows grow all over, but the best twigs grow near Wouda's hut in the northwest."
+
+#. Gesprek mees_menu, Mees zegt
+#: scripts/data/ext/moeras.gd:133
+msgid "Zijn de twijgen al gesneden?"
+msgstr "Have the twigs been cut yet?"
+
+#. Gesprek mees_klaar, Mees zegt
+#: scripts/data/ext/moeras.gd:136
+msgid "Ah, kijk die buigen! Hier wordt een mand van waar je U tegen zegt."
+msgstr "Ah, look at them bend! This will make a basket to say wow about."
+
+#. Gesprek mees_klaar, Mees zegt
+#: scripts/data/ext/moeras.gd:136
+msgid "Voor jou: een bos watermunt uit mijn eigen voorraad. Fris voor in de thee, of sterker spul als je Wouda vraagt."
+msgstr "For you: a bunch of water mint from my own stock. Fresh in tea, or stronger stuff if you ask Wouda."
+
+#. Naam van wie er praat (Gesprek wouda_intro)
+#. Naam van wie er praat (Gesprek wouda_vraag)
+#. Naam van wie er praat (Gesprek wouda_ok)
+#. Naam van wie er praat (Gesprek wouda_menu)
+#. Naam van wie er praat (Gesprek wouda_amulet)
+#. Naam van wie er praat (Gesprek wouda_kruiden)
+#: scripts/data/ext/moeras.gd:141 scripts/data/ext/moeras.gd:147 scripts/data/ext/moeras.gd:154 scripts/data/ext/moeras.gd:156
+msgid "Wouda"
+msgstr "Wouda"
+
+#. Gesprek wouda_intro, Wouda zegt
+#: scripts/data/ext/moeras.gd:142
+msgid "Ah... een wandelaar uit het noorden. Ik ben Wouda; het moeras kent mij en ik ken het moeras."
+msgstr "Ah... a wanderer from the north. I am Wouda; the swamp knows me and I know the swamp."
+
+#. Gesprek wouda_intro, Wouda zegt
+#: scripts/data/ext/moeras.gd:142
+msgid "Weet je wat dit land ooit was? De zilverzijde van het meer. De zon lag hier op het water en de schijf werd aanbeden."
+msgstr "Do you know what this land once was? The silver side of the lake. The sun lay on this water and the disk was worshipped."
+
+#. Gesprek wouda_intro, Wouda zegt
+#: scripts/data/ext/moeras.gd:142
+msgid "Toen zakte de grond, steeg het veen, en verdween de tempel onder de drijfmest."
+msgstr "Then the ground sank, the peat rose, and the temple vanished under the quickmire."
+
+#. Gesprek wouda_vraag, Wouda zegt
+#: scripts/data/ext/moeras.gd:148
+msgid "Op het eilandje in de grote plas ligt nog het zonneschijfamulet, het laatste stuk van die oude wereld."
+msgstr "On the islet in the great pool still lies the sun disk amulet, the last piece of that old world."
+
+#. Gesprek wouda_vraag, Wouda zegt
+#: scripts/data/ext/moeras.gd:148
+msgid "De loopbruggen houden je droog... meestal. Haal het voor me, dan vertel ik je wat de Diepte met dit alles te maken heeft."
+msgstr "The footbridges keep you dry... mostly. Fetch it for me, and I will tell you what the Depths have to do with all this."
+
+#. Gesprek wouda_vraag: keuze van de speler
+#: scripts/data/ext/moeras.gd:150
+msgid "Ik zoek het amulet."
+msgstr "I will find the amulet."
+
+#. Gesprek wouda_vraag: keuze van de speler
+#: scripts/data/ext/moeras.gd:151
+msgid "Dat klinkt gevaarlijk."
+msgstr "That sounds dangerous."
+
+#. Gesprek wouda_ok, Wouda zegt
+#: scripts/data/ext/moeras.gd:154
+msgid "Volg de modderpaden naar het hart van het veen. Het eiland wacht al honderd jaar; hij wacht jou ook wel af."
+msgstr "Follow the mud paths to the heart of the peat. The island has waited a hundred years; it will wait for you too."
+
+#. Gesprek wouda_menu, Wouda zegt
+#: scripts/data/ext/moeras.gd:157
+msgid "Het moeras ademt, hoor je dat? Vraag maar wat je wilt weten."
+msgstr "The swamp breathes, do you hear it? Ask whatever you want to know."
+
+#. Gesprek wouda_menu: keuze van de speler
+#: scripts/data/ext/moeras.gd:159
+msgid "Over het amulet."
+msgstr "About the amulet."
+
+#. Gesprek wouda_menu: keuze van de speler
+#: scripts/data/ext/moeras.gd:160
+msgid "Over de kruiden hier."
+msgstr "About the herbs here."
+
+#. Gesprek wouda_amulet, Wouda zegt
+#: scripts/data/ext/moeras.gd:164
+msgid "Het amulet ligt op het eilandje, midden in de drijfmestplas. Over de loopbruggen kom je er."
+msgstr "The amulet lies on the islet, in the middle of the quickmire pool. The footbridges get you there."
+
+#. Gesprek wouda_amulet, Wouda zegt
+#: scripts/data/ext/moeras.gd:164
+msgid "Het is goud dat nooit roestte, omdat het de zon zelf bewaarde. Dat zeggen ze tenminste."
+msgstr "It is gold that never rusted, because it kept the sun itself. That is what they say, anyway."
+
+#. Gesprek wouda_kruiden, Wouda zegt
+#: scripts/data/ext/moeras.gd:165
+msgid "Watermunt langs de paden, veenbessen bij de plassen. En diep in de turf zit ijzeroer, het bloed van het veen."
+msgstr "Water mint along the paths, cranberries near the pools. And deep in the peat sits bog iron, the blood of the moor."
+
+#. Gesprek wouda_kruiden, Wouda zegt
+#: scripts/data/ext/moeras.gd:165
+msgid "Met munt en bes brouw ik een elixer dat je benen nieuw leven geeft. De bibliotheek heeft het fornuis ervoor."
+msgstr "With mint and berry I brew an elixir that gives your legs new life. The library has the stove for it."
+
+#. Gesprek wouda_klaar, Wouda zegt
+#: scripts/data/ext/moeras.gd:168
+msgid "De zonneschijf... honderd jaar veen en hij gloeit nog. Voel je dat? Warm."
+msgstr "The sun disk... a hundred years of peat and it still glows. Do you feel that? Warm."
+
+#. Gesprek wouda_klaar, Wouda zegt
+#: scripts/data/ext/moeras.gd:168
+msgid "De Diepte onder de grot en dit moeras zijn zussen: waar het water de wereld opslokte, bleef het licht in kleine dingen wonen."
+msgstr "The Depths below the cave and this swamp are sisters: where water swallowed the world, the light lived on in little things."
+
+#. Gesprek wouda_klaar, Wouda zegt
+#: scripts/data/ext/moeras.gd:168
+msgid "Neem mijn moeraselixer mee. En kom terug als het veen je weer roept."
+msgstr "Take my swamp elixir. And come back when the moor calls you again."
 
 #. Naam van personage greta (boven zijn hoofd)
 #: scripts/data/npcs.gd:20
@@ -3070,6 +3342,21 @@ msgstr "Nour the desert guide"
 #: scripts/data/ext/uiterlijk.gd:240
 msgid "Vera de kleermaakster"
 msgstr "Vera the tailor"
+
+#. Naam van personage stien (boven zijn hoofd)
+#: scripts/data/ext/moeras.gd:70
+msgid "Stien de turfsterke"
+msgstr "Stien the peat cutter"
+
+#. Naam van personage mees (boven zijn hoofd)
+#: scripts/data/ext/moeras.gd:78
+msgid "Mees de rietvlechter"
+msgstr "Mees the reed weaver"
+
+#. Naam van personage wouda (boven zijn hoofd)
+#: scripts/data/ext/moeras.gd:86
+msgid "Wouda de kruidenheks"
+msgstr "Wouda the herb witch"
 
 #. Titel van opdracht main
 #. Titel van boek blauwe_kaart (bibliotheek)
@@ -3348,6 +3635,51 @@ msgstr "Sana at the oasis needs 5 cactus figs for her cool drinks. They grow on 
 #: scripts/data/ext/dorst.gd:54
 msgid "Breng de cactusvijgen naar Sana bij de oase."
 msgstr "Bring the cactus figs to Sana at the oasis."
+
+#. Titel van opdracht veenbessen
+#: scripts/data/ext/moeras.gd:37
+msgid "Veenbessen voor Stien"
+msgstr "Cranberries for Stien"
+
+#. Opdracht veenbessen, stap 1
+#: scripts/data/ext/moeras.gd:40
+msgid "Stien de turfsterke heeft 5 veenbessen nodig voor haar pap. Ze groeien laag bij de plassen van het Kruipmoeras."
+msgstr "Stien the peat cutter needs 5 cranberries for her porridge. They grow low near the pools of the Creeping Swamp."
+
+#. Opdracht veenbessen, stap 2
+#: scripts/data/ext/moeras.gd:43
+msgid "Breng de veenbessen naar Stien op de turfvelden."
+msgstr "Bring the cranberries to Stien at the peat fields."
+
+#. Titel van opdracht wilgentwijgen
+#: scripts/data/ext/moeras.gd:47
+msgid "Wilgentwijgen voor Mees"
+msgstr "Willow twigs for Mees"
+
+#. Opdracht wilgentwijgen, stap 1
+#: scripts/data/ext/moeras.gd:50
+msgid "Mees de rietvlechter heeft 4 wilgentwijgen nodig voor een nieuwe mand. Snijd ze bij de geknotte wilgen."
+msgstr "Mees the reed weaver needs 4 willow twigs for a new basket. Cut them at the pollard willows."
+
+#. Opdracht wilgentwijgen, stap 2
+#: scripts/data/ext/moeras.gd:53
+msgid "Breng de wilgentwijgen naar Mees in het rietland."
+msgstr "Bring the willow twigs to Mees in the reedland."
+
+#. Titel van opdracht zonneschijf
+#: scripts/data/ext/moeras.gd:57
+msgid "De zonneschijf van Wouda"
+msgstr "Wouda's sun disk"
+
+#. Opdracht zonneschijf, stap 1
+#: scripts/data/ext/moeras.gd:60
+msgid "Wouda de kruidenheks vertelde over een zonneschijfamulet op het eilandje in de drijfmestplas. Zoek het."
+msgstr "Wouda the herb witch told of a sun disk amulet on the islet in the quickmire pool. Find it."
+
+#. Opdracht zonneschijf, stap 2
+#: scripts/data/ext/moeras.gd:63
+msgid "Breng het amulet naar Wouda bij de wilgenhut."
+msgstr "Bring the amulet to Wouda at the willow hut."
 
 #. Naam van voorwerp coin
 #. Haarkleur (tabblad Uiterlijk)
@@ -3717,7 +4049,7 @@ msgstr "A sharp loose stone. You can pick it up without tools."
 
 #. Naam van voorwerp prof_herb
 #. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:92
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:100
 msgid "Zilverkruid"
 msgstr "Silverleaf"
 
@@ -3948,7 +4280,7 @@ msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks
 
 #. Naam van voorwerp prof_zandkruid
 #. Oogstbare grondstof sandwort
-#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:103
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:111
 msgid "Zandkruid"
 msgstr "Sandwort"
 
@@ -4006,6 +4338,67 @@ msgstr "Dew soup"
 #: scripts/data/ext/beroepen.gd:62
 msgid "Lichte soep van honingzwammen met dauwklauw. Herstelt 2 hartjes en 10 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
 msgstr "Light soup of honey fungi with dewclaw. Restores 2 hearts and 10 stamina. Use via Professions → Food & drink."
+
+#. Naam van voorwerp prof_veenbes
+#: scripts/data/ext/beroepen.gd:63
+msgid "Veenbes"
+msgstr "Cranberry"
+
+#. Beschrijving van voorwerp prof_veenbes
+#: scripts/data/ext/beroepen.gd:63
+msgid "Een rode, zure bes die laag boven het veenwater groeit. Voor pap en elixers."
+msgstr "A red, tart berry that grows low above the moor water. For porridge and elixirs."
+
+#. Naam van voorwerp prof_watermunt
+#. Oogstbare grondstof watermunt
+#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:115
+msgid "Watermunt"
+msgstr "Water mint"
+
+#. Beschrijving van voorwerp prof_watermunt
+#: scripts/data/ext/beroepen.gd:64
+msgid "Fris kruid uit de plasranden van het Kruipmoeras. Prikt lekker in thee en brouwsels."
+msgstr "Fresh herb from the pool edges of the Creeping Swamp. Lovely kick in tea and brews."
+
+#. Naam van voorwerp prof_wilgentwijg
+#: scripts/data/ext/beroepen.gd:65
+msgid "Wilgentwijg"
+msgstr "Willow twig"
+
+#. Beschrijving van voorwerp prof_wilgentwijg
+#: scripts/data/ext/beroepen.gd:65
+msgid "Buigzame twijg van een geknotte wilg. Rietvlechters zweren erbij."
+msgstr "Supple twig from a pollard willow. Reed weavers swear by it."
+
+#. Naam van voorwerp prof_ijzeroer
+#: scripts/data/ext/beroepen.gd:66
+msgid "IJzeroer"
+msgstr "Bog iron"
+
+#. Beschrijving van voorwerp prof_ijzeroer
+#: scripts/data/ext/beroepen.gd:66
+msgid "Bruin erts uit de turfvelden, het bloed van het veen. Alchemisten smeden er rare dingen mee."
+msgstr "Brown ore from the peat fields, the blood of the moor. Alchemists forge strange things with it."
+
+#. Naam van voorwerp prof_moeraselixer
+#: scripts/data/ext/beroepen.gd:67
+msgid "Moeraselixer"
+msgstr "Swamp elixir"
+
+#. Beschrijving van voorwerp prof_moeraselixer
+#: scripts/data/ext/beroepen.gd:67
+msgid "Kolkend groen brouwsel van watermunt en veenbes. Herstelt 45 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Bubbling green brew of water mint and cranberry. Restores 45 stamina. Use via Professions → Food & drink."
+
+#. Naam van voorwerp prof_veenbespap
+#: scripts/data/ext/beroepen.gd:68
+msgid "Veenbespap"
+msgstr "Cranberry porridge"
+
+#. Beschrijving van voorwerp prof_veenbespap
+#: scripts/data/ext/beroepen.gd:68
+msgid "Warme pap met veenbessen, zoals Stien hem maakt. Herstelt 2 hartjes en 5 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Warm porridge with cranberries, the way Stien makes it. Restores 2 hearts and 5 stamina. Use via Professions → Food & drink."
 
 #. Naam van voorwerp gear_cloth_hood
 #: scripts/data/ext/uitrusting.gd:14
@@ -4407,6 +4800,26 @@ msgstr "Sandals"
 msgid "Lichte sandalen voor zwoele zomerdagen. Puur voor de look; draag ze over je uitrusting."
 msgstr "Light sandals for sultry summer days. Purely for looks; wear them over your equipment."
 
+#. Naam van voorwerp moeras_huid
+#: scripts/data/ext/moeras.gd:31
+msgid "Moerashuid"
+msgstr "Marsh hide"
+
+#. Beschrijving van voorwerp moeras_huid
+#: scripts/data/ext/moeras.gd:31
+msgid "Een taaie, waterdichte huid van moeraswild. Kleermakers werken er graag mee."
+msgstr "A tough, waterproof hide from swamp game. Tailors love working with it."
+
+#. Naam van voorwerp zonneschijf_amulet
+#: scripts/data/ext/moeras.gd:32
+msgid "Zonneschijfamulet"
+msgstr "Sun disk amulet"
+
+#. Beschrijving van voorwerp zonneschijf_amulet
+#: scripts/data/ext/moeras.gd:32
+msgid "Een gouden schijfje aan een verweerd koord. Het voelt warm, alsof de zon er nog in zit."
+msgstr "A golden disk on a weathered cord. It feels warm, as if the sun still sits inside."
+
 #. Naam van vijand slime
 #: scripts/data/enemies.gd:13
 msgid "Slijm"
@@ -4546,6 +4959,26 @@ msgstr "Sand hare"
 #: scripts/data/ext/dorst.gd:26
 msgid "Een haas die tussen de duinen huppelt. Zijn achterpoten zijn sneller dan je zwaard, bijna dan."
 msgstr "A hare that hops between the dunes. Its hind legs are faster than your sword — almost."
+
+#. Naam van vijand moerasvors
+#: scripts/data/ext/moeras.gd:15
+msgid "Moerasvors"
+msgstr "Marsh toad"
+
+#. Vijand moerasvors: grappige beschrijving in het beestenboek
+#: scripts/data/ext/moeras.gd:19
+msgid "Een trage vors met een kwak die door het hele veen galmt. Tot hij springt; dan is hij verdwenen."
+msgstr "A slow toad with a croak that echoes across the moor. Until it leaps; then it is gone."
+
+#. Naam van vijand waterslang
+#: scripts/data/ext/moeras.gd:22
+msgid "Waterslang"
+msgstr "Water snake"
+
+#. Vijand waterslang: grappige beschrijving in het beestenboek
+#: scripts/data/ext/moeras.gd:26
+msgid "Een gladde slang die tussen het riet glijdt. Ongevaarlijk, maar je grijpt hem zelden bij de staart."
+msgstr "A slick snake that slides between the reeds. Harmless, but you rarely catch it by the tail."
 
 #. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
 #: scripts/data/enemies.gd:75
@@ -4969,6 +5402,16 @@ msgstr "Sand feet"
 #: scripts/data/ext/dorst.gd:153
 msgid "Ontdek de Dorstvallei en praat met Jelle, Sana en Nour."
 msgstr "Discover Dorstvallei and talk to Jelle, Sana and Nour."
+
+#. Naam van prestatie kruipmoeras_ontdekt
+#: scripts/data/ext/moeras.gd:175
+msgid "Veenvoeten"
+msgstr "Peat feet"
+
+#. Uitleg bij prestatie kruipmoeras_ontdekt
+#: scripts/data/ext/moeras.gd:175
+msgid "Ontdek het Kruipmoeras en praat met Stien, Mees en Wouda."
+msgstr "Discover the Creeping Swamp and talk to Stien, Mees and Wouda."
 
 #. Naam van winkel tobias
 #: scripts/data/shops.gd:10
@@ -5490,74 +5933,89 @@ msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme g
 msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
 
 #. Oogstbare grondstof branches
-#: scripts/data/ext/beroepen.gd:90
+#: scripts/data/ext/beroepen.gd:98
 msgid "Losse takken"
 msgstr "Loose Branches"
 
 #. Oogstbare grondstof stones
-#: scripts/data/ext/beroepen.gd:91
+#: scripts/data/ext/beroepen.gd:99
 msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof berries
-#: scripts/data/ext/beroepen.gd:93
+#: scripts/data/ext/beroepen.gd:101
 msgid "Bosbessenstruik"
 msgstr "Blueberry Bush"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:94
+#: scripts/data/ext/beroepen.gd:102
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
 #. Oogstbare grondstof stump
-#: scripts/data/ext/beroepen.gd:95
+#: scripts/data/ext/beroepen.gd:103
 msgid "Berkenstronk"
 msgstr "Birch Stump"
 
 #. Oogstbare grondstof copper
-#: scripts/data/ext/beroepen.gd:96
+#: scripts/data/ext/beroepen.gd:104
 msgid "Koperader"
 msgstr "Copper Vein"
 
 #. Oogstbare grondstof iron
-#: scripts/data/ext/beroepen.gd:97
+#: scripts/data/ext/beroepen.gd:105
 msgid "IJzerader"
 msgstr "Iron Vein"
 
 #. Oogstbare grondstof winterherbs
-#: scripts/data/ext/beroepen.gd:98
+#: scripts/data/ext/beroepen.gd:106
 msgid "IJsbloemen"
 msgstr "Ice flowers"
 
 #. Oogstbare grondstof frostberries
-#: scripts/data/ext/beroepen.gd:99
+#: scripts/data/ext/beroepen.gd:107
 msgid "Winterbessenstruik"
 msgstr "Winter berry bush"
 
 #. Oogstbare grondstof pine_stump
-#: scripts/data/ext/beroepen.gd:100
+#: scripts/data/ext/beroepen.gd:108
 msgid "Dennenstronk"
 msgstr "Pine stump"
 
 #. Oogstbare grondstof ice_vein
-#: scripts/data/ext/beroepen.gd:101
+#: scripts/data/ext/beroepen.gd:109
 msgid "IJskristalader"
 msgstr "Ice crystal vein"
 
 #. Oogstbare grondstof cactusfigs
-#: scripts/data/ext/beroepen.gd:102
+#: scripts/data/ext/beroepen.gd:110
 msgid "Cactusvijgen"
 msgstr "Cactus figs"
 
 #. Oogstbare grondstof sandstone_rock
-#: scripts/data/ext/beroepen.gd:104
+#: scripts/data/ext/beroepen.gd:112
 msgid "Zandsteenklip"
 msgstr "Sandstone crag"
 
 #. Oogstbare grondstof dauwklauw
-#: scripts/data/ext/beroepen.gd:105
+#: scripts/data/ext/beroepen.gd:113
 msgid "Dauwklauwen"
 msgstr "Dewclaws"
+
+#. Oogstbare grondstof veenbessen
+#: scripts/data/ext/beroepen.gd:114
+msgid "Veenbessenstruik"
+msgstr "Cranberry bush"
+
+#. Oogstbare grondstof wilgstronk
+#: scripts/data/ext/beroepen.gd:116
+msgid "Geknotte wilg"
+msgstr "Pollard willow"
+
+#. Oogstbare grondstof ijzeroer_ader
+#: scripts/data/ext/beroepen.gd:117
+msgid "IJzeroerklomp"
+msgstr "Bog iron lump"
 
 #. Geslacht m (tabblad Uiterlijk)
 #: scripts/data/ext/uiterlijk.gd:22
@@ -6515,19 +6973,19 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/core/daynight.gd:151
+#: scripts/core/daynight.gd:163
 msgid "Ochtend"
 msgstr "Morning"
 
-#: scripts/core/daynight.gd:153
+#: scripts/core/daynight.gd:165
 msgid "Dag"
 msgstr "Day"
 
-#: scripts/core/daynight.gd:155
+#: scripts/core/daynight.gd:167
 msgid "Avond"
 msgstr "Evening"
 
-#: scripts/core/daynight.gd:157
+#: scripts/core/daynight.gd:169
 msgid "Nacht"
 msgstr "Night"
 
@@ -6930,11 +7388,11 @@ msgstr "Bounced off!"
 msgid "Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."
 msgstr "Your arrow bounces off the crystal! Shoot when the golem winds up for a slam."
 
-#: scripts/entities/atmosphere.gd:236
+#: scripts/entities/atmosphere.gd:243
 msgid "Goedemorgen!"
 msgstr "Good morning!"
 
-#: scripts/entities/atmosphere.gd:237
+#: scripts/entities/atmosphere.gd:244
 msgid "Lekker geslapen! Je hebt weer alle hartjes."
 msgstr "Slept like a log! All your hearts are back."
 
@@ -7046,7 +7504,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:40
+#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:43
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."

@@ -4,7 +4,7 @@ extends Node
 ##
 ## In de kaart staat wat hier van toepassing is:  "outdoor": true  (de kaart volgt dag en nacht)
 ## en  "weather": "rain" (altijd regen), "snow" (altijd sneeuw), "heat" (altijd snikheet)
-## of "random" (wisselt met de klok). Zie scripts/core/daynight.gd.
+## of "swamp" (altijd een vochtige waas), of "random" (wisselt met de klok). Zie scripts/core/daynight.gd.
 
 const Daynight := preload("res://scripts/core/daynight.gd")
 const RainScript := preload("res://scripts/entities/rain.gd")
@@ -29,6 +29,7 @@ var weather := ""
 var rain_level := 0.0 # hoe hard het regent: 0..1
 var snow_level := 0.0 # hoe hard het sneeuwt: 0..1
 var dust_level := 0.0 # hoeveel zand er dwarrelt: 0..1
+var haze_level := 0.0 # hoe dik het moeraswaas is: 0..1
 var light_need := 0.0 # hoeveel kunstlicht er nu nodig is: 0 = geen, 1 = zo donker als in de grot
 var rain: Node2D
 var snow: Node2D
@@ -84,6 +85,7 @@ func enter_map(data: Dictionary) -> void:
 	rain_level = _rain_target() # het regent meteen als het regent, en anders niet
 	snow_level = _snow_target() # idem voor sneeuw
 	dust_level = _dust_target() # idem voor dwarrelzand
+	haze_level = _haze_target() # idem voor het moeraswaas
 	rain.clear_splashes()
 	snow.clear_splashes()
 	dust.clear_splashes()
@@ -138,10 +140,15 @@ func _dust_target() -> float:
 	return 1.0 if Daynight.scorching(weather, GameState.day_count, GameState.day_time) else 0.0
 
 
+## Of er hier nu een moeraswaas hoort te hangen (1) of niet (0).
+func _haze_target() -> float:
+	return 1.0 if Daynight.swampy(weather, GameState.day_count, GameState.day_time) else 0.0
+
+
 func _apply() -> void:
 	if outdoor:
 		var t := GameState.day_time
-		world.canvas_mod.color = Daynight.tint_at(t) * Daynight.rain_tint(rain_level) * Daynight.snow_tint(snow_level) * Daynight.heat_tint(dust_level)
+		world.canvas_mod.color = Daynight.tint_at(t) * Daynight.rain_tint(rain_level) * Daynight.snow_tint(snow_level) * Daynight.heat_tint(dust_level) * Daynight.swamp_tint(haze_level)
 		light_need = Daynight.night_at(t)
 		world.player.light.enabled = light_need > 0.02 and world.darkness <= 0.0
 		world.player.light.energy = NIGHT_LIGHT * light_need

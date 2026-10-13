@@ -1,5 +1,5 @@
 extends SceneTree
-## Test van het dagritme-geluid (spoor "amb"): de twaalf sfeerlussen, de klimaat- en dagdeelmapping,
+## Test van het dagritme-geluid (spoor "amb"): de zestien sfeerlussen, de klimaat- en dagdeelmapping,
 ## en de sfeerspeler van de atmosfeer (wisselen tussen dagdelen, kaartklimaten en stilte binnen).
 ##
 ##   sh tools/run_tests.sh /pad/naar/godot      (alle tests), of alleen deze:
@@ -9,7 +9,7 @@ extends SceneTree
 
 const Daynight := preload("res://scripts/core/daynight.gd")
 
-const CLIMATES := ["bos", "sneeuw", "dorst"]
+const CLIMATES := ["bos", "sneeuw", "dorst", "moeras"]
 const PHASES := ["ochtend", "dag", "avond", "nacht"]
 ## Een klokstand midden in elk dagdeel (zie Daynight.phase_at).
 const PHASE_TIMES := {"ochtend": 0.05, "dag": 0.35, "avond": 0.6, "nacht": 0.85}
@@ -65,11 +65,13 @@ func test_data() -> void:
 			check(sound.streams.has(key), "sfeerlus geladen: " + key)
 
 	check(Daynight.climate("snow") == "sneeuw" and Daynight.climate("heat") == "dorst", "sneeuw- en hittekaarten krijgen hun eigen klimaat")
+	check(Daynight.climate("swamp") == "moeras", "het Kruipmoeras krijgt het moerasklimaat")
 	check(Daynight.climate("random") == "bos" and Daynight.climate("") == "bos" and Daynight.climate("rain") == "bos", "gematigde kaarten krijgen het bosklimaat")
 	for phase: String in PHASES:
 		var t: float = PHASE_TIMES[phase]
 		check(Daynight.phase_at(t) == phase, "de klokstand van de test zit midden in de fase " + phase)
 		check(Daynight.ambience("snow", t) == "amb_sneeuw_" + phase, "het IJsdal klinkt in de %s als sneeuw" % phase)
+		check(Daynight.ambience("swamp", t) == "amb_moeras_" + phase, "het Kruipmoeras klinkt in de %s als moeras" % phase)
 
 
 # --- Deel 2: de wereld zelf -----------------------------------------------------------------------------
@@ -98,13 +100,16 @@ func test_world() -> void:
 	await frames(FADE_FRAMES)
 	check(amb.amb_level > 0.9, "de nachtlus is weer op volle sterkte")
 
-	# Een koude kaart klinkt als sneeuw, een hete als dorst.
+	# Een koude kaart klinkt als sneeuw, een hete als dorst, een drassige als moeras.
 	world.load_map("ijsdal", "start")
 	await frames(5)
 	check(amb.amb_key == "amb_sneeuw_nacht", "het IJsdal klinkt als sneeuw (zelfde dagdeel)")
 	world.load_map("dorstvallei", "start")
 	await frames(5)
 	check(amb.amb_key == "amb_dorst_nacht", "de Dorstvallei klinkt als dorst (zelfde dagdeel)")
+	world.load_map("kruipmoeras", "start")
+	await frames(5)
+	check(amb.amb_key == "amb_moeras_nacht", "het Kruipmoeras klinkt als moeras (zelfde dagdeel)")
 
 	# Binnen is het stil.
 	world.load_map("cave", "start")

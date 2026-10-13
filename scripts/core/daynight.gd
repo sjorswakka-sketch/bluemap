@@ -59,13 +59,15 @@ static func phase_at(t: float) -> String:
 	return "nacht"
 
 
-## Het klimaat van een kaart op basis van haar weer: "bos" (gematigd), "sneeuw" of "dorst".
+## Het klimaat van een kaart op basis van haar weer: "bos" (gematigd), "sneeuw", "dorst" of "moeras".
 static func climate(weather: String) -> String:
 	match weather:
 		"snow":
 			return "sneeuw"
 		"heat":
 			return "dorst"
+		"swamp":
+			return "moeras"
 	return "bos"
 
 
@@ -137,6 +139,16 @@ static func rain_tint(level: float) -> Color:
 ## De tint van de lucht bij sneeuw: iets koeler en bleker, maar het blijft licht (0 = geen sneeuw).
 static func snow_tint(level: float) -> Color:
 	return Color.WHITE.lerp(Color(0.94, 0.97, 1.04), clampf(level, 0.0, 1.0))
+
+
+## Is het er drassig? "swamp" op de kaart betekent: er hangt altijd een vochtige waas (zoals het Kruipmoeras).
+static func swampy(weather: String, _day_count: int, _t: float) -> bool:
+	return weather == "swamp"
+
+
+## De tint van de lucht in het moeras: gedempt en groenig, alsof het licht door een waas valt (0 = geen waas).
+static func swamp_tint(level: float) -> Color:
+	return Color.WHITE.lerp(Color(0.92, 0.97, 0.9), clampf(level, 0.0, 1.0))
 
 
 ## De tint van de lucht bij hitte: warmer en geler, alsof de lucht boven het zand trilt (0 = geen hitte).
