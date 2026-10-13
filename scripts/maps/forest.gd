@@ -114,5 +114,6 @@ const DATA := {
 		# Portaal naar Dauwbos – vrije grass-tegels (gecontroleerd op niet-solid)
 		{"type": "portal", "pos": [3, 10], "to": "dauwbos", "spawn": "from_forest", "size": [1, 2]},
 		{"type": "sign", "pos": [5, 12], "lines": ["Noordelijk pad: Dauwbos", "Mistig en stil. Mira bewaakt de dauw."]},
+		{"type": "sign", "pos": [3, 16], "lines": ["Westelijk pad: Dageraadsdorp", "Terug naar het dorp, waar de geur van vers brood je tegemoet komt."]},
 	],
 }

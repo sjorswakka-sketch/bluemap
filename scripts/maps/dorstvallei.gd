@@ -52,6 +52,7 @@ const DATA := {
 		{"type": "savepoint", "pos": [31, 14], "spawn": "altar"},
 		{"type": "sign", "pos": [27, 14], "lines": ["Dorstvallei", "De zon brandt, het zand waait. De oase geeft leven."]},
 		{"type": "sign", "pos": [40, 21], "lines": ["Jachtgronden", "Woestijnvossen en zandhazen. Kom je te dichtbij, dan rennen ze weg."]},
+		{"type": "sign", "pos": [27, 30], "lines": ["Zuidelijk pad: Dauwbos", "Voorbij de rotsen wacht groen en koelte."]},
 		{"type": "npc", "pos": [28, 15], "id": "jelle"},
 		{"type": "npc", "pos": [11, 12], "id": "sana"},
 		{"type": "npc", "pos": [32, 18], "id": "nour"},
