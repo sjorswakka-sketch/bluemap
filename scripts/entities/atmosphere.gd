@@ -17,6 +17,8 @@ const RAIN_FADE := 4.0 # seconden die de regen nodig heeft om aan of uit te gaan
 const SNOW_FADE := 4.0 # seconden die de sneeuw nodig heeft om aan of uit te gaan
 const DUST_FADE := 4.0 # seconden die het dwarrelzand nodig heeft om aan of uit te gaan
 const RAIN_VOLUME_DB := -13.0 # zachte regen, bij volle regen
+const AMB_FADE := 2.0 # seconden die de achtergrondsfeer nodig heeft om te wisselen
+const AMB_VOLUME_DB := -17.0 # de sfeer blijft zachtjes onder de muziek en de regen
 const BED_PRICE := 5 # munten voor een nachtje in de herberg
 const SLEEP_FADE := 1.0 # seconden om naar zwart (en terug) te gaan bij het slapen
 const NIGHT_LIGHT := 0.3 # hoe sterk je eigen lamp 's nachts buiten schijnt (1 = zoals in de grot)
@@ -32,6 +34,10 @@ var rain: Node2D
 var snow: Node2D
 var dust: Node2D
 var rain_audio: AudioStreamPlayer
+var amb_audio: AudioStreamPlayer
+var amb_key := "" # welke sfeerlus nu klinkt ("" = geen), bijvoorbeeld "amb_bos_ochtend"
+var amb_level := 0.0 # hoe hard die klinkt tijdens een overgang: 0..1
+var amb_loops := {} # sleutel -> loopende stream (Wordt eenmalig klaargezet)
 var windows: Node2D
 
 
@@ -57,6 +63,10 @@ func _ready() -> void:
 		loop.loop_end = roundi(loop.get_length() * loop.mix_rate)
 		rain_audio.stream = loop
 	add_child(rain_audio)
+	amb_audio = AudioStreamPlayer.new()
+	amb_audio.bus = "SFX"
+	amb_audio.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(amb_audio)
 	GameState.achievement_unlocked.connect(_celebrate)
 
 
@@ -80,6 +90,15 @@ func enter_map(data: Dictionary) -> void:
 	_build_windows(data)
 	var night_lamp: bool = outdoor and world.darkness <= 0.0
 	world.player.set_lit(world.darkness > 0.0 or night_lamp, 1.0 if not night_lamp else NIGHT_LIGHT, 3.2 if not night_lamp else 2.2)
+	# De achtergrondsfeer wisselt meteen mee met de kaart (geen hoorbare overgang bij een kaartwissel).
+	amb_key = _amb_target()
+	amb_level = 1.0 if amb_key != "" else 0.0
+	if amb_key != "":
+		amb_audio.stream = _amb_loop(amb_key)
+		if not amb_audio.playing:
+			amb_audio.play()
+	elif amb_audio.playing:
+		amb_audio.stop()
 	_apply()
 
 
@@ -87,6 +106,20 @@ func _process(delta: float) -> void:
 	rain_level = move_toward(rain_level, _rain_target(), delta / RAIN_FADE)
 	snow_level = move_toward(snow_level, _snow_target(), delta / SNOW_FADE)
 	dust_level = move_toward(dust_level, _dust_target(), delta / DUST_FADE)
+	# De sfeer loopt zachtjes over als het dagdeel kantelt: eerst uitfaden, dan de nieuwe lus infaden.
+	var want := _amb_target()
+	if want != amb_key:
+		amb_level = move_toward(amb_level, 0.0, delta / AMB_FADE)
+		if amb_level <= 0.0:
+			amb_key = want
+			if amb_key != "":
+				amb_audio.stream = _amb_loop(amb_key)
+				if not amb_audio.playing:
+					amb_audio.play()
+			elif amb_audio.playing:
+				amb_audio.stop()
+	elif amb_key != "":
+		amb_level = move_toward(amb_level, 1.0, delta / AMB_FADE)
 	_apply()
 
 
@@ -121,15 +154,45 @@ func _apply() -> void:
 
 
 func _update_audio() -> void:
-	if rain_audio.stream == null:
-		return
-	if rain_level <= 0.01:
-		if rain_audio.playing:
-			rain_audio.stop()
-		return
-	rain_audio.volume_db = RAIN_VOLUME_DB + linear_to_db(rain_level)
-	if not rain_audio.playing:
-		rain_audio.play()
+	if rain_audio.stream != null:
+		if rain_level <= 0.01:
+			if rain_audio.playing:
+				rain_audio.stop()
+		else:
+			rain_audio.volume_db = RAIN_VOLUME_DB + linear_to_db(rain_level)
+			if not rain_audio.playing:
+				rain_audio.play()
+	if amb_audio.stream != null:
+		if amb_level <= 0.01:
+			if amb_audio.playing:
+				amb_audio.stop()
+		else:
+			amb_audio.volume_db = AMB_VOLUME_DB + linear_to_db(amb_level)
+			if not amb_audio.playing:
+				amb_audio.play()
+
+
+## Welke sfeerlus hier nu hoort te klinken ("" = stil, bijvoorbeeld binnen).
+func _amb_target() -> String:
+	if not outdoor:
+		return ""
+	return Daynight.ambience(weather, GameState.day_time)
+
+
+## De sfeerlus als naadloos doorlopende stream; elke sleutel wordt eenmalig klaargezet.
+func _amb_loop(key: String) -> AudioStream:
+	if not amb_loops.has(key):
+		var stream: AudioStream = Sound.streams.get(key)
+		if stream is AudioStreamWAV:
+			var loop: AudioStreamWAV = stream.duplicate()
+			loop.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			loop.loop_begin = 0
+			# In samples, uit de lengte gerekend (de data is ingepakt, zie het .import-bestand).
+			loop.loop_end = roundi(loop.get_length() * loop.mix_rate)
+			amb_loops[key] = loop
+		else:
+			amb_loops[key] = stream
+	return amb_loops[key]
 
 
 ## De ramen van de huizen op een buitenkaart gaan 's nachts gloeien.
