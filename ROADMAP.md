@@ -92,6 +92,11 @@ pixel art, en te delen met vrienden en de community.
       Zilvermeer heeft meer lelievelden, dikkere rietkragen en stenen bij de oeverplekken. De
       padvindingstest dekt nu ook deze drie gebieden
 
+- [x] Donjons gepolijst: de Vergeten Ruïne heeft gebarsten vloeren en extra pilaren in de noordoostzaal,
+      de Echo-grot heeft stalagmieten langs de wanden en kristaladers bij de mijnplekken, en de
+      Kristaltempel heeft extra runen en tapijt in de voorhal. De padvindingstest dekt nu alle negen
+      de overwelfde en open gebieden
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen en schilden

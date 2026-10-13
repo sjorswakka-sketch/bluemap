@@ -11,6 +11,9 @@ const Dorstvallei := preload("res://scripts/maps/dorstvallei.gd")
 const Village := preload("res://scripts/maps/village.gd")
 const Forest := preload("res://scripts/maps/forest.gd")
 const Lake := preload("res://scripts/maps/lake.gd")
+const Ruins := preload("res://scripts/maps/ruins.gd")
+const Cave := preload("res://scripts/maps/cave.gd")
+const Temple := preload("res://scripts/maps/temple.gd")
 
 ## Objecten zonder fysieke tegel (markeringen, banen) en objecten die op het water horen.
 const NIET_FYSIEK := ["meer_water", "trigger", "boog_baan"]
@@ -99,5 +102,8 @@ func _initialize() -> void:
 	check_map("village", Village.DATA)
 	check_map("forest", Forest.DATA)
 	check_map("lake", Lake.DATA)
+	check_map("ruins", Ruins.DATA)
+	check_map("cave", Cave.DATA)
+	check_map("temple", Temple.DATA)
 	print("GEBIEDEN ROUTE OK" if failures == 0 else "GEBIEDEN ROUTE FAILED: %d" % failures)
 	quit(0 if failures == 0 else 1)
