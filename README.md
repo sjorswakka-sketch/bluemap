@@ -1,7 +1,19 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.8.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.9.0-preview.**
 Deze branch bevat de gezamenlijke game en bouwt bij elke update een Windows-download via Actions.
+
+Nieuw in 0.9: **Een levendig begin**. Een korte aankomst brengt je direct naar het plein.
+Nelle leent je haar tuinhark: maak het rooster vrij, open het sluisrad en zie de fontein
+en bloembakken weer tot leven komen. Het gevonden prismateken leidt je naar Greta.
+Je mag de dorpsopdracht ook laten liggen en meteen het bestaande avontuur volgen.
+
+Nelle verzorgt de bloemen, Bo bezorgt brood en haalt water; 's avonds rusten ze uit.
+Hun routes gebruiken echte botsing en padzoeken. Greta hamert aan haar werkbank en
+de fontein krijgt eigen plaatselijk watergeluid. Personages, gereedschap en geluiden
+zijn in code gemaakt: `tools/art_x_opening.py` bouwt de nieuwe assets opnieuw.
+De eerste HUD toont alleen relevante informatie en actuele toetsen/controllerknoppen.
+Oude saves en Nieuw spel+ behouden hun werkende fontein en volledige bediening.
 
 Nieuw in 0.8: **Een wereld die verandert**. Begin bij de prismabank links in Greta’s smederij,
 of bij het herstelbord in de noordelijke kamer van de Prismamijn. Richt drie spiegels,

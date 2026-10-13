@@ -27,6 +27,8 @@ func _ready() -> void:
 
 ## De pagina's van de intro (vertaald). In Nieuw spel+ (ng_plus > 0) is de laatste pagina langer.
 func build_pages(ng_plus: int) -> Array[String]:
+	if ng_plus == 0:
+		return [tr("Je komt aan in Dageraadsdorp. Brood wordt bezorgd, de smid is aan het werk… maar op het plein sputtert de fontein. Een hovenier kan je hulp gebruiken.")]
 	var result: Array[String] = [
 		tr("Azura is een land vol bossen, ruïnes en grotten. Eeuwenlang werd het beschermd door de Blauwe Kaart."),
 		tr("De kaart is gemaakt van gloeiend kristal. Hij houdt de slijmen rustig en laat zien waar het land veilig is."),
@@ -89,7 +91,7 @@ func _draw() -> void:
 	# Plaatje bij het verhaal: de kaartkristallen
 	var center := Vector2(W / 2.0, 150.0)
 	var items := Art.tex("items")
-	match page:
+	match page if GameState.ng_plus>0 else 3:
 		0, 1:
 			draw_circle(center, 80.0 + sin(t * 2.0) * 6.0, Color(0.4, 0.8, 1.0, 0.14))
 			DrawUtil.sprite(self, Art.tex("crystal"), int(t * 1.4) % 2, 0, center, Vector2i(16, 16), 8.0)
@@ -102,7 +104,7 @@ func _draw() -> void:
 				draw_circle(pos, 36.0, Color(0.4, 0.8, 1.0, 0.14))
 				draw_texture_rect_region(items, Rect2(pos - Vector2(32, 32), Vector2(64, 64)), Rect2(Vector2((8 + i) * 16, 0), Vector2(16, 16)))
 		3:
-			DrawUtil.sprite(self, Art.tex("npc_bram"), int(t * 1.6) % 2, 0, center + Vector2(-80, 20), Vector2i(16, 16), 6.0)
+			DrawUtil.sprite(self, Art.tex("npc_bram" if GameState.ng_plus>0 else "op_gardener"), int(t * 1.6) % 2, 0, center + Vector2(-80, 20), Vector2i(16, 16), 6.0)
 			DrawUtil.sprite(self, Art.tex("player"), 1 + int(t * 4.0) % 2, 2, center + Vector2(80, 20), Vector2i(16, 16), 6.0)
 
 	var box := Rect2(120, 300, W - 240, 220)

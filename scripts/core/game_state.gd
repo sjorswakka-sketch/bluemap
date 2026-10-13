@@ -122,6 +122,7 @@ func new_game() -> void:
 	coins = 0
 	inventory = {}
 	flags = {}
+	flags["op_new_adventure"] = true
 	quests = {}
 	weapon = "wood"
 	map_id = "village"
@@ -693,6 +694,8 @@ func load_game() -> bool:
 		return false
 	var data: Dictionary = parsed
 	new_game()
+	# Nieuwe-avontuurvlaggen mogen niet naar een bestaande opslag lekken.
+	flags.clear()
 	map_id = data.get("map", "village")
 	var pos: Array = data.get("pos", [0, 0])
 	load_pos = Vector2(pos[0], pos[1])
@@ -847,6 +850,7 @@ func new_game_plus() -> bool:
 		return false
 	new_game()
 	ng_plus = int(meta["rounds"])
+	flags.erase("op_new_adventure")
 	weapon = meta["weapon"]
 	hero_xp = meta["hero_xp"]
 	if int(meta["hearts"]) > 0:

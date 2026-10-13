@@ -64,6 +64,7 @@ func _run() -> void:
 
 func _test_levels() -> void:
 	gs.new_game()
+	var previous_flags: Dictionary = gs.flags.duplicate(true)
 	check(Progression.state() == gs and Progression.xp() == 0 and Progression.level() == 1, "A new hero starts at level one with zero XP")
 	check(Progression.progress() == {"level": 1, "xp": 0, "current": 0, "needed": 50, "max_level": false, "next_reward": 15}, "Progress reports the next threshold and upgrade coin reward")
 	for raw: Variant in [null, "100", true, [], {}, NAN, INF, -INF, -2]:
@@ -89,7 +90,7 @@ func _test_levels() -> void:
 	var capped_changes := changes
 	gs.add_hero_xp(500)
 	check(changes == capped_changes and gs.coins == 135 and Progression.progress()["max_level"] and Progression.progress()["needed"] == 0 and Progression.progress()["next_reward"] == 0, "The level cap grants no repeat reward or invalid next-level progress")
-	check(gs.damage() == previous_damage and gs.reach() == previous_reach and gs.speed_multiplier() == previous_speed and gs.max_hp() == gs.BASE_HP and gs.weapon == "wood" and gs.flags.is_empty(), "Hero levels preserve combat stats and all existing upgrade gates")
+	check(gs.damage() == previous_damage and gs.reach() == previous_reach and gs.speed_multiplier() == previous_speed and gs.max_hp() == gs.BASE_HP and gs.weapon == "wood" and gs.flags == previous_flags, "Hero levels preserve combat stats and all existing upgrade gates")
 
 
 func _test_quests() -> void:

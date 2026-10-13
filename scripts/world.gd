@@ -175,6 +175,8 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	else:
 		var spawns: Dictionary = map_data["spawns"]
 		start = _tile_center(spawns.get(spawn, spawns["start"]))
+		if map_id=="village" and spawn=="start" and GameState.play_time<1 and preload("res://scripts/core/opening.gd").enabled():
+			start += Vector2(0,48) # het hele plein is bij aankomst meteen in beeld
 	player.global_position = _safe_fountain_spawn(start)
 	player.velocity = Vector2.ZERO
 	player.knockback = Vector2.ZERO
@@ -187,11 +189,19 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	living_scenery.world = self
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
+	if map_id == "village":
+		var opening: Node2D = load("res://scripts/entities/village_opening.gd").new()
+		opening.world = self
+		ground.add_child(opening)
 	player.camera.reset_smoothing()
 
 	Sound.play_music(map_data.get("music", "forest"))
 	var map_name: String = map_data["name"]
 	hud.show_banner(func() -> String: return tr(map_name))
+	hud.refresh_opening()
+	if map_id == "forest" and preload("res://scripts/core/opening.gd").enabled() and not GameState.flag("op_combat_hint"):
+		GameState.set_flag("op_combat_hint")
+		GameState.toast.emit(tr("Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein.") % [Controls.action_label("attack"),Controls.action_label("dodge")])
 
 
 ## Hoeveel kunstlicht (fakkels, lantaarns, ramen) er nu nodig is: 0 overdag, 1 in het donker.

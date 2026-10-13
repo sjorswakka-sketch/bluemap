@@ -8,6 +8,7 @@ const Items := preload("res://scripts/data/items.gd")
 const Progression := preload("res://scripts/core/progression.gd")
 const Daynight := preload("res://scripts/core/daynight.gd")
 const AchievementBanner := preload("res://scripts/ui/achievement_banner.gd")
+const Opening := preload("res://scripts/core/opening.gd")
 
 var hearts: Control
 var stats: Control
@@ -32,6 +33,8 @@ var banner_time := 0.0
 var banner_text := Callable() # geeft de tekst van de banner in de huidige taal (zie show_banner)
 var boss: Node2D = null
 var had_bow := false # om te zien wanneer je de boog voor het eerst krijgt
+var opening_hint: Label
+var opening_quiet := false
 
 
 func _ready() -> void:
@@ -47,9 +50,8 @@ func _ready() -> void:
 	GameState.toast.connect(_queue_toast)
 	GameState.game_over.connect(_show_game_over)
 	_refresh_tracker()
-	_queue_toast(tr("%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing") % [Controls.action_label("attack"), Controls.action_label("interact"), Controls.action_label("menu"), Controls.action_label("pause")])
-	_queue_toast(tr("%s vasthouden: rennen  ·  %s: beroepen en maken  ·  Paden geven extra snelheid") % [Controls.action_label("sprint"), Controls.action_label("crafting")])
-	_queue_toast(tr("Je XP, beroepen en volgende upgrades staan in %s → Voortgang.") % Controls.action_label("menu"))
+	if not Opening.quiet_hud():
+		_queue_toast(tr("%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing") % [Controls.action_label("attack"), Controls.action_label("interact"), Controls.action_label("menu"), Controls.action_label("pause")])
 	# Boog: de pijlenteller (met "[F]") staat in beeld zodra je een boog hebt, en bij het krijgen ervan komt een melding.
 	had_bow = GameState.count("bow") > 0
 	GameState.items_changed.connect(_check_bow)
@@ -117,6 +119,16 @@ func _build_ui() -> void:
 	tracker.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tracker.custom_minimum_size = Vector2(340, 0)
 	tracker_panel.add_child(tracker)
+	opening_hint = UiStyle.make_label("",18,Color(0.95,0.97,1))
+	opening_hint.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	opening_hint.offset_left = 24
+	opening_hint.offset_right = -24
+	opening_hint.offset_top = -34
+	opening_hint.offset_bottom = -8
+	opening_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	opening_hint.add_theme_color_override("font_outline_color",Color(0.04,0.07,0.12))
+	opening_hint.add_theme_constant_override("outline_size",6)
+	add_child(opening_hint)
 
 	toast_panel = PanelContainer.new()
 	toast_panel.anchor_left = 0.5
@@ -132,6 +144,8 @@ func _build_ui() -> void:
 	add_child(toast_panel)
 	toast_label = Label.new()
 	toast_label.add_theme_font_size_override("font_size", 22)
+	toast_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	toast_label.custom_minimum_size = Vector2(850,0)
 	toast_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	toast_panel.add_child(toast_label)
 
@@ -204,6 +218,10 @@ func _draw_stats() -> void:
 		[Items.ITEMS["potion"]["icon"], "%d [%s]" % [GameState.count("potion"), Controls.action_label("potion")], Color(1, 0.6, 0.7)],
 		[Items.ITEMS[Items.WEAPONS[GameState.weapon]["item"]]["icon"], "", Color.WHITE, Items.sheet_of(Items.WEAPONS[GameState.weapon]["item"])],
 	]
+	if Opening.quiet_hud():
+		entries = [entries[0]] if GameState.coins>0 else []
+		if GameState.count("potion")>0:
+			entries.append([Items.ITEMS["potion"]["icon"], "%d [%s]" % [GameState.count("potion"),Controls.action_label("potion")],Color(1,0.6,0.7)])
 	if GameState.count("bow") > 0: # de pijlenteller
 		entries.append([Items.ITEMS["arrow"]["icon"], arrow_text(), arrow_color(), Items.sheet_of("arrow")])
 	for entry: Array in entries:
@@ -238,6 +256,10 @@ func _check_bow() -> void:
 
 func _refresh_tracker() -> void:
 	var text := GameState.tracked_text()
+	if Opening.enabled() and GameState.quest_state("first_water")=="active" and GameState.map_id in ["village","smithy"]:
+		text = GameState.quest_text("first_water")
+	elif Opening.quiet_hud():
+		text = tr("Volg het gesputter naar de fontein. Nelle kan je hulp gebruiken.")
 	tracker_panel.visible = text != ""
 	tracker.text = text
 
@@ -273,7 +295,28 @@ func _on_language_changed(_locale: String) -> void:
 	boss_bar.queue_redraw()
 
 
+func refresh_opening() -> void:
+	var quiet := Opening.quiet_hud()
+	if quiet != opening_quiet:
+		opening_quiet = quiet
+		stats.queue_redraw()
+	clock.visible = not quiet
+	xp_bar.visible = not quiet or GameState.hero_xp>0
+	stamina_bar.visible = not quiet or GameState.flag("op_sprint_seen") or GameState.movement.stamina<GameState.movement.capacity()
+	stats.visible = not quiet or GameState.coins>0 or GameState.count("potion")>0
+	opening_hint.visible = quiet and not GameState.input_locked() and toast_time<=0
+	if quiet:
+		if GameState.flag("op_water"):
+			opening_hint.text = tr("Rennen: %s vasthouden   ·   Je spullen bekijken: %s") % [Controls.action_label("sprint"),Controls.action_label("menu")]
+		elif GameState.count("op_rake")>0:
+			opening_hint.text = tr("%s: gereedschap gebruiken bij het rooster. Blijf even staan tijdens het harken.") % Controls.action_label("interact")
+		else:
+			opening_hint.text = tr("Lopen: %s / %s / %s / %s   ·   Praten: %s") % [Controls.action_label("move_up"),Controls.action_label("move_left"),Controls.action_label("move_down"),Controls.action_label("move_right"),Controls.action_label("interact")]
+	_refresh_tracker()
+
+
 func _process(delta: float) -> void:
+	refresh_opening()
 	stamina_bar.queue_redraw()
 	# Meldingen komen een voor een, en wachten tot een gesprek klaar is.
 	if toast_time > 0.0:

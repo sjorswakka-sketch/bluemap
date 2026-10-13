@@ -514,7 +514,7 @@ msgstr "Where the mist grows thinner, the familiar trees begin."
 msgid "Deze route opent zodra je het gebied hebt hersteld. Kijk bij de gemarkeerde wereldopdracht."
 msgstr "This route opens when you restore the area. Look for the marked world quest."
 
-#. Kaart dauwbos, sign [41, 29]: tekst op een bord
+#. Kaart dauwbos, sign [42, 31]: tekst op een bord
 #: scripts/data/living_maps.gd:245
 msgid "Oostelijk lichtpad: De Dauwtuin."
 msgstr "Eastern light path: The Dew Garden."
@@ -761,6 +761,11 @@ msgstr "Prism lantern: reveals forest runes and keeps mist stalkers at bay."
 msgid "Mist verdreven, Dauwtuin geopend en verkennersjas ontvangen."
 msgstr "Mist dispelled, Dew Garden opened and scout coat received."
 
+#. Blijvend gevolg van opdracht first_water
+#: scripts/data/ext/opening.gd:8
+msgid "De fontein stroomt, Nelle verzorgt de bloembakken en Greta herkent het oude prismateken."
+msgstr "The fountain flows, Nelle tends the flower beds and Greta recognises the old prism symbol."
+
 #. Naam van wie er praat (Gesprek bram_intro)
 #. Naam van wie er praat (Gesprek bram_intro2)
 #. Naam van wie er praat (Gesprek bram_explain)
@@ -903,7 +908,7 @@ msgstr "The village is celebrating. Get some rest, hero. You've earned it."
 #. Naam van wie er praat (Gesprek greta_iron_ask)
 #. Naam van wie er praat (Gesprek greta_iron_no)
 #. Naam van wie er praat (Gesprek greta_iron_done)
-#: scripts/ui/ending.gd:55 scripts/data/dialogue.gd:101 scripts/data/dialogue.gd:110 scripts/data/dialogue.gd:119
+#: scripts/ui/ending.gd:55 scripts/core/opening.gd:20 scripts/data/dialogue.gd:101 scripts/data/dialogue.gd:110
 msgid "Greta"
 msgstr "Greta"
 
@@ -3384,7 +3389,7 @@ msgid "Neem mijn moeraselixer mee. En kom terug als het veen je weer roept."
 msgstr "Take my swamp elixir. And come back when the moor calls you again."
 
 #. Naam van wie er praat (Gesprek lw_core)
-#: scripts/entities/living_object.gd:33 scripts/data/ext/living.gd:138
+#: scripts/entities/living_object.gd:43 scripts/data/ext/living.gd:138
 msgid "Prismakern"
 msgstr "Prism core"
 
@@ -3424,7 +3429,7 @@ msgid "Ik maak hem zelf via Beroepen → Maken."
 msgstr "I will craft it myself via Professions → Craft."
 
 #. Naam van wie er praat (Gesprek lw_bridge)
-#: scripts/entities/living_object.gd:38 scripts/data/ext/living.gd:210
+#: scripts/entities/living_object.gd:48 scripts/data/ext/living.gd:210
 msgid "De oude lier"
 msgstr "The old winch"
 
@@ -3961,6 +3966,26 @@ msgstr "Bring your prism lantern. Investigate the markings by the western roots,
 msgid "Ontsteek de drie runen in de volgorde van het gedicht: water, wortel, ster. Een fout dooft de reeks, niet je aanwijzingen."
 msgstr "Light the three runes in the order of the poem: water, root, star. A mistake resets the sequence, not your clues."
 
+#. Titel van opdracht first_water
+#: scripts/data/ext/opening.gd:4
+msgid "Water voor het plein"
+msgstr "Water for the Square"
+
+#. Opdracht first_water, stap 1
+#: scripts/data/ext/opening.gd:5
+msgid "Help Nelle bij het rooster ten westen van de fontein. Gebruik haar hark om het riet los te maken."
+msgstr "Help Nelle at the grate west of the fountain. Use her rake to clear the reeds."
+
+#. Opdracht first_water, stap 2
+#: scripts/data/ext/opening.gd:6
+msgid "Het rooster is vrij. Draai het sluisrad iets zuidelijker open en volg het water naar de fontein."
+msgstr "The grate is clear. Open the sluice wheel a little to the south and follow the water to the fountain."
+
+#. Opdracht first_water, stap 3
+#: scripts/data/ext/opening.gd:7
+msgid "Er zit een prismateken onder het riet. Laat Greta in de smederij aan de westkant van het plein weten wat je vond."
+msgstr "There is a prism symbol beneath the reeds. Tell Greta what you found at the smithy west of the square."
+
 #. Naam van voorwerp coin
 #. Haarkleur (tabblad Uiterlijk)
 #: scripts/data/items.gd:9 scripts/data/ext/uiterlijk.gd:137
@@ -4329,7 +4354,7 @@ msgstr "A sharp loose stone. You can pick it up without tools."
 
 #. Naam van voorwerp prof_herb
 #. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:156
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:155
 msgid "Zilverkruid"
 msgstr "Silverleaf"
 
@@ -4560,7 +4585,7 @@ msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks
 
 #. Naam van voorwerp prof_zandkruid
 #. Oogstbare grondstof sandwort
-#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:167
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:166
 msgid "Zandkruid"
 msgstr "Sandwort"
 
@@ -4631,7 +4656,7 @@ msgstr "A red, tart berry that grows low above the moor water. For porridge and 
 
 #. Naam van voorwerp prof_watermunt
 #. Oogstbare grondstof watermunt
-#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:171
+#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:170
 msgid "Watermunt"
 msgstr "Water mint"
 
@@ -5169,6 +5194,16 @@ msgstr "Living resin"
 #: scripts/data/ext/living.gd:133
 msgid "Watermunt en slijmgel verbinden het gebroken hout van de oversteek."
 msgstr "Watermint and slime gel bind the crossing’s broken timbers."
+
+#. Naam van voorwerp op_rake
+#: scripts/data/ext/opening.gd:11
+msgid "Nelles tuinhark"
+msgstr "Nelle’s Garden Rake"
+
+#. Beschrijving van voorwerp op_rake
+#: scripts/data/ext/opening.gd:12
+msgid "Geleend van Nelle. Gebruik bij het verstopte rooster naast de dorpsfontein; daarna krijgt ze hem terug."
+msgstr "Borrowed from Nelle. Use it at the blocked grate beside the village fountain, then return it to her."
 
 #. Naam van vijand slime
 #: scripts/data/enemies.gd:13
@@ -6348,87 +6383,87 @@ msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme g
 msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
 
 #. Oogstbare grondstof branches
-#: scripts/data/ext/beroepen.gd:154
+#: scripts/data/ext/beroepen.gd:153
 msgid "Losse takken"
 msgstr "Loose Branches"
 
 #. Oogstbare grondstof stones
-#: scripts/data/ext/beroepen.gd:155
+#: scripts/data/ext/beroepen.gd:154
 msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof berries
-#: scripts/data/ext/beroepen.gd:157
+#: scripts/data/ext/beroepen.gd:156
 msgid "Bosbessenstruik"
 msgstr "Blueberry Bush"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:158
+#: scripts/data/ext/beroepen.gd:157
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
 #. Oogstbare grondstof stump
-#: scripts/data/ext/beroepen.gd:159
+#: scripts/data/ext/beroepen.gd:158
 msgid "Berkenstronk"
 msgstr "Birch Stump"
 
 #. Oogstbare grondstof copper
-#: scripts/data/ext/beroepen.gd:160
+#: scripts/data/ext/beroepen.gd:159
 msgid "Koperader"
 msgstr "Copper Vein"
 
 #. Oogstbare grondstof iron
-#: scripts/data/ext/beroepen.gd:161
+#: scripts/data/ext/beroepen.gd:160
 msgid "IJzerader"
 msgstr "Iron Vein"
 
 #. Oogstbare grondstof winterherbs
-#: scripts/data/ext/beroepen.gd:162
+#: scripts/data/ext/beroepen.gd:161
 msgid "IJsbloemen"
 msgstr "Ice flowers"
 
 #. Oogstbare grondstof frostberries
-#: scripts/data/ext/beroepen.gd:163
+#: scripts/data/ext/beroepen.gd:162
 msgid "Winterbessenstruik"
 msgstr "Winter berry bush"
 
 #. Oogstbare grondstof pine_stump
-#: scripts/data/ext/beroepen.gd:164
+#: scripts/data/ext/beroepen.gd:163
 msgid "Dennenstronk"
 msgstr "Pine stump"
 
 #. Oogstbare grondstof ice_vein
-#: scripts/data/ext/beroepen.gd:165
+#: scripts/data/ext/beroepen.gd:164
 msgid "IJskristalader"
 msgstr "Ice crystal vein"
 
 #. Oogstbare grondstof cactusfigs
-#: scripts/data/ext/beroepen.gd:166
+#: scripts/data/ext/beroepen.gd:165
 msgid "Cactusvijgen"
 msgstr "Cactus figs"
 
 #. Oogstbare grondstof sandstone_rock
-#: scripts/data/ext/beroepen.gd:168
+#: scripts/data/ext/beroepen.gd:167
 msgid "Zandsteenklip"
 msgstr "Sandstone crag"
 
 #. Oogstbare grondstof dauwklauw
-#: scripts/data/ext/beroepen.gd:169
+#: scripts/data/ext/beroepen.gd:168
 msgid "Dauwklauwen"
 msgstr "Dewclaws"
 
 #. Oogstbare grondstof veenbessen
-#: scripts/data/ext/beroepen.gd:170
+#: scripts/data/ext/beroepen.gd:169
 msgid "Veenbessenstruik"
 msgstr "Cranberry bush"
 
 #. Oogstbare grondstof wilgstronk
-#: scripts/data/ext/beroepen.gd:172
+#: scripts/data/ext/beroepen.gd:171
 msgid "Geknotte wilg"
 msgstr "Pollard willow"
 
 #. Oogstbare grondstof ijzeroer_ader
-#: scripts/data/ext/beroepen.gd:173
+#: scripts/data/ext/beroepen.gd:172
 msgid "IJzeroerklomp"
 msgstr "Bog iron lump"
 
@@ -7388,6 +7423,10 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
+#: scripts/world.gd:203
+msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
+msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
+
 #: scripts/core/daynight.gd:163
 msgid "Ochtend"
 msgstr "Morning"
@@ -7457,55 +7496,55 @@ msgid "Dat altaar heb je nog niet ontdekt."
 msgstr "You haven't found that altar yet."
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
-#: scripts/core/game_state.gd:265
+#: scripts/core/game_state.gd:266
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
 msgstr "Hero level %d! +%d coins for your equipment."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:397
+#: scripts/core/game_state.gd:398
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:400
+#: scripts/core/game_state.gd:401
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:402
+#: scripts/core/game_state.gd:403
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:405
+#: scripts/core/game_state.gd:406
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:412
+#: scripts/core/game_state.gd:413
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:478
+#: scripts/core/game_state.gd:479
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:493
+#: scripts/core/game_state.gd:494
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:535
+#: scripts/core/game_state.gd:536
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:539
+#: scripts/core/game_state.gd:540
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:615
+#: scripts/core/game_state.gd:616
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:632
+#: scripts/core/game_state.gd:633
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -7600,6 +7639,14 @@ msgstr "Look at the houses: the families are back. The Mountain Pass behind the 
 #: scripts/core/living_world.gd:91
 msgid "Mijn turf gaat weer over de brug. Aan de drooggevallen oever kun je nu vissen."
 msgstr "My peat is crossing the bridge again. You can now fish by the exposed bank."
+
+#: scripts/core/opening.gd:20
+msgid "Dat teken ken ik! De oude waterbouwers gebruikten hetzelfde prisma als mijn werkbank. Je hebt meer hersteld dan alleen een fontein."
+msgstr "I know that symbol! The old waterworks use the same prism as my workbench. You have restored more than a fountain."
+
+#: scripts/core/opening.gd:20
+msgid "Kijk gerust bij de prismabank links van me. Voor de mijn heb je later een ijzeren zwaard nodig. Oudste Bram bij de tempel kan je eerst op weg helpen."
+msgstr "Take a look at the prism bench on my left. You will need an iron sword for the mine later. Elder Bram by the temple can help you get started."
 
 #: scripts/core/professions.gd:97
 msgid "Nog vergrendeld: herstel de prismabank of Mees’ oversteek."
@@ -7893,119 +7940,119 @@ msgstr "The gate is locked."
 msgid "Beschermd!"
 msgstr "Shielded!"
 
-#: scripts/entities/living_object.gd:32
+#: scripts/entities/living_object.gd:42
 msgid "Prismaspiegel"
 msgstr "Prism mirror"
 
-#: scripts/entities/living_object.gd:34
+#: scripts/entities/living_object.gd:44
 msgid "Prismabank"
 msgstr "Prism bench"
 
-#: scripts/entities/living_object.gd:35
+#: scripts/entities/living_object.gd:45
 msgid "Verborgen bosrune"
 msgstr "Hidden forest rune"
 
-#: scripts/entities/living_object.gd:36
+#: scripts/entities/living_object.gd:46
 msgid "Vuurkorf"
 msgstr "Brazier"
 
-#: scripts/entities/living_object.gd:37
+#: scripts/entities/living_object.gd:47 scripts/entities/opening_device.gd:22
 msgid "Sluisrad"
 msgstr "Sluice wheel"
 
-#: scripts/entities/living_object.gd:39
+#: scripts/entities/living_object.gd:49
 msgid "Herstelbord"
 msgstr "Restoration notice"
 
-#: scripts/entities/living_object.gd:47
+#: scripts/entities/living_object.gd:57
 msgid "De drie spiegels horen één lichtpad te vormen: oost, zuid, west. Draai ze naar hun ontvangers en activeer daarna de kern."
 msgstr "The three mirrors should form one path of light: east, south, west. Turn them towards their receivers, then activate the core."
 
-#: scripts/entities/living_object.gd:47
+#: scripts/entities/living_object.gd:57
 msgid "Greta zoekt deze kern voor haar oude werkplaats. Aardingspoeder uit de bibliotheek biedt een rustige oplossing; de bewakers verslaan kan ook."
 msgstr "Greta needs this core for her old workshop. Grounding powder from the library offers a peaceful solution; defeating the guardians also works."
 
-#: scripts/entities/living_object.gd:59
+#: scripts/entities/living_object.gd:69
 msgid "De kern is stabiel. Greta wacht bij haar prismabank."
 msgstr "The core is stable. Greta is waiting by her prism bench."
 
-#: scripts/entities/living_object.gd:61
+#: scripts/entities/living_object.gd:71
 msgid "Volg het lichtpad: richt eerst alle drie de spiegels op de ontvangers."
 msgstr "Follow the light: first aim all three mirrors at their receivers."
 
-#: scripts/entities/living_object.gd:68
+#: scripts/entities/living_object.gd:78
 msgid "Mijn prismabank mist zijn kern. Zoek in de Prismamijn, via de Echo-grot. Een ijzeren zwaard opent die zijroute."
 msgstr "My prism bench is missing its core. Search the Prism Mine through the Echo Cave. An iron sword opens that side route."
 
-#: scripts/entities/living_object.gd:82
+#: scripts/entities/living_object.gd:92
 msgid "Dit huis blijft warm. De bewoners zijn terug."
 msgstr "This house stays warm. Its residents are back."
 
-#: scripts/entities/living_object.gd:90
+#: scripts/entities/living_object.gd:100
 msgid "De waterstand is veilig. De sluizen blijven zo staan."
 msgstr "The water level is safe. The sluices will stay in this position."
 
-#: scripts/entities/living_object.gd:96
+#: scripts/entities/living_object.gd:106
 msgid "Het water zakt. De oostelijke oever en het Rietarchief vallen droog."
 msgstr "The water is falling. The eastern bank and Reed Archive are emerging."
 
-#: scripts/entities/living_object.gd:98
+#: scripts/entities/living_object.gd:108
 msgid "Sluis: open"
 msgstr "Sluice: open"
 
-#: scripts/entities/living_object.gd:98
+#: scripts/entities/living_object.gd:108
 msgid "Sluis: dicht"
 msgstr "Sluice: closed"
 
-#: scripts/entities/living_object.gd:104
+#: scripts/entities/living_object.gd:114
 msgid "De oversteek is hersteld. Vertel het aan Mees in het oostelijke rietland."
 msgstr "The crossing is restored. Tell Mees in the eastern reed beds."
 
-#: scripts/entities/living_object.gd:127
+#: scripts/entities/living_object.gd:137
 msgid "Eerst de waterdruk verlagen: west open, oost dicht. Je materialen blijven in je tas."
 msgstr "Lower the water pressure first: west open, east closed. Your materials stay in your bag."
 
-#: scripts/entities/living_object.gd:147
+#: scripts/entities/living_object.gd:157
 msgid "Het licht stroomt weer door de wortels."
 msgstr "Light flows through the roots again."
 
-#: scripts/entities/living_object.gd:150
+#: scripts/entities/living_object.gd:160
 msgid "Onder de mist zitten tekens. Een prismalantaarn uit Greta’s herstelde werkplaats kan ze onthullen."
 msgstr "Markings lie beneath the mist. A prism lantern from Greta’s restored workshop can reveal them."
 
-#: scripts/entities/living_object.gd:155
+#: scripts/entities/living_object.gd:165
 msgid "Eerst drinkt het WATER het licht. Zoek de andere tekens bij de wortels en de oostelijke steen."
 msgstr "First the WATER drinks the light. Look for the other markings by the roots and the eastern stone."
 
-#: scripts/entities/living_object.gd:156
+#: scripts/entities/living_object.gd:166
 msgid "Dan draagt de WORTEL het licht. Zoek de andere tekens bij de vijver en de oostelijke steen."
 msgstr "Then the ROOT carries the light. Look for the other markings by the pond and the eastern stone."
 
-#: scripts/entities/living_object.gd:157
+#: scripts/entities/living_object.gd:167
 msgid "Ten slotte wijst de STER naar de tuin. De volgorde is water, wortel, ster."
 msgstr "Finally the STAR points to the garden. The order is water, root, star."
 
-#: scripts/entities/living_object.gd:166
+#: scripts/entities/living_object.gd:176
 msgid "De lichtkring dooft. Probeer opnieuw: water, wortel, ster."
 msgstr "The circle of light fades. Try again: water, root, star."
 
-#: scripts/entities/living_object.gd:172
+#: scripts/entities/living_object.gd:182
 msgid "De mist wijkt! De Dauwtuin in het zuidoosten is open. Je ontving een verkennersjas."
 msgstr "The mist clears! The Dew Garden to the southeast is open. You received a scout coat."
 
-#: scripts/entities/living_object.gd:194
+#: scripts/entities/living_object.gd:204
 msgid "Een beweging in de verte… let op de gemarkeerde plekken."
 msgstr "Movement in the distance… watch the marked spots."
 
-#: scripts/entities/living_object.gd:202
+#: scripts/entities/living_object.gd:212
 msgid "De mijn is stabiel. Neem de lens naar de prismabank in Greta’s smederij."
 msgstr "The mine is stable. Take the lens to the prism bench in Greta’s smithy."
 
-#: scripts/entities/living_object.gd:205
+#: scripts/entities/living_object.gd:215
 msgid "De brug ligt weer! Handelaren gebruiken de korte route. Mees wacht op het goede nieuws."
 msgstr "The bridge is back! Traders are using the shortcut. Mees is waiting for the good news."
 
-#: scripts/entities/living_object.gd:210
+#: scripts/entities/living_object.gd:220
 msgid "Het huis is warm. De bewoners keren terug."
 msgstr "The house is warm. Its residents are returning."
 
@@ -8028,6 +8075,34 @@ msgstr "Deep fishing spot"
 #: scripts/entities/meer_visplek.gd:69
 msgid "Visplek"
 msgstr "Fishing spot"
+
+#: scripts/entities/opening_device.gd:22
+msgid "Verstopt rooster"
+msgstr "Blocked Grate"
+
+#: scripts/entities/opening_device.gd:28
+msgid "Onder het riet zit een oud prismateken. Het rooster is schoon; het sluisrad staat iets zuidelijker."
+msgstr "An old prism symbol lies beneath the reeds. The grate is clear; the sluice wheel is a little further south."
+
+#: scripts/entities/opening_device.gd:30
+msgid "Het riet zit vast. Nelle, de hovenier met de strohoed, staat naast de fontein. Ze heeft een hark."
+msgstr "The reeds are stuck. Nelle, the gardener in a straw hat, is standing beside the fountain. She has a rake."
+
+#: scripts/entities/opening_device.gd:36
+msgid "Eerst het riet uit het rooster halen. Anders loopt het water over het plein."
+msgstr "Clear the reeds from the grate first, or the water will flood the square."
+
+#: scripts/entities/opening_device.gd:43
+msgid "Het water stroomt! Nelle heeft haar hark terug. Het prismateken lijkt op dat van Greta’s werkbank."
+msgstr "The water is flowing! Nelle has her rake back. The prism symbol resembles the one on Greta’s workbench."
+
+#: scripts/entities/opening_device.gd:46
+msgid "Het water stroomt naar de fontein en de bloembakken."
+msgstr "Water flows to the fountain and the flower beds."
+
+#: scripts/entities/opening_device.gd:60
+msgid "Het rooster is vrij. Draai nu het sluisrad aan de zuidkant open."
+msgstr "The grate is clear. Now open the sluice wheel to the south."
 
 #: scripts/entities/player.gd:280
 msgid "Je hebt een boog nodig. Tobias verkoopt er een."
@@ -8071,7 +8146,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:43 scripts/entities/living_scenery.gd:71 scripts/entities/living_scenery.gd:74
+#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:43 scripts/entities/living_scenery.gd:80 scripts/entities/living_scenery.gd:83
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -8093,6 +8168,54 @@ msgstr "Too late!"
 #: scripts/entities/sign.gd:36
 msgid "Bord"
 msgstr "Sign"
+
+#: scripts/entities/village_actor.gd:30
+msgid "Nelle de hovenier"
+msgstr "Nelle the Gardener"
+
+#: scripts/entities/village_actor.gd:30
+msgid "Bo de broodbezorger"
+msgstr "Bo the Bread Courier"
+
+#: scripts/entities/village_actor.gd:39
+msgid "Hoor je dat gesputter? Er zit riet in het rooster. Hier, leen mijn hark. Het rooster ligt vlak ten zuiden van me."
+msgstr "Hear that spluttering? The grate is full of reeds. Here, borrow my rake. The grate is just south of me."
+
+#: scripts/entities/village_actor.gd:39
+msgid "Gebruik de hark bij het rooster, blijf even staan en draai daarna het sluisrad open. Dan krijgen het plein en mijn bloemen weer water."
+msgstr "Use the rake at the grate, stand still for a moment, then open the sluice wheel. That will bring water back to the square and my flowers."
+
+#: scripts/entities/village_actor.gd:41
+msgid "Eerst het rooster schoonmaken met mijn hark. Daarna het sluisrad open. Je kunt de markering naast de fontein volgen."
+msgstr "Clear the grate with my rake first, then open the sluice wheel. Follow the marker beside the fountain."
+
+#: scripts/entities/village_actor.gd:43
+msgid "Daar is het water weer! Bo hoeft zijn kruiken niet meer naar het meer te dragen. Bedankt — ik kan mijn bloemen weer verzorgen."
+msgstr "The water is back! Bo no longer has to carry his jugs to the lake. Thank you — I can tend my flowers again."
+
+#: scripts/entities/village_actor.gd:45
+msgid "Een beetje water en geduld. Meer hebben deze bloemen niet nodig."
+msgstr "A little water and patience. That is all these flowers need."
+
+#: scripts/entities/village_actor.gd:47
+msgid "Mijn brood blijft nu droog en de kruiken vul ik hier. Mooi werk aan de fontein!"
+msgstr "My bread stays dry and I can fill my jugs here. Nice work on the fountain!"
+
+#: scripts/entities/village_actor.gd:47
+msgid "Brood voor de herberg, lege kruiken mee terug. Hopelijk krijgt Nelle de fontein snel aan de praat."
+msgstr "Bread for the inn, empty jugs on the way back. I hope Nelle gets the fountain working soon."
+
+#: scripts/entities/village_opening.gd:76
+msgid "Daar is het water!"
+msgstr "Here comes the water!"
+
+#: scripts/entities/village_opening.gd:78
+msgid "Dat scheelt een tocht naar het meer!"
+msgstr "That saves a trip to the lake!"
+
+#: scripts/entities/village_opening.gd:89
+msgid "Even helpen? De fontein zit verstopt."
+msgstr "Could you help? The fountain is blocked."
 
 #: scripts/ui/achievement_banner.gd:55 scripts/ui/achievement_banner.gd:66
 msgid "Prestatie behaald!"
@@ -8488,90 +8611,102 @@ msgid_plural "Waarde: %d munten"
 msgstr[0] "Worth: %d coin"
 msgstr[1] "Worth: %d coins"
 
-#: scripts/ui/hud.gd:50
+#: scripts/ui/hud.gd:53
 msgid "%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing"
 msgstr "%s sword  ·  %s talk  ·  %s menu  ·  %s pause and controls"
 
-#: scripts/ui/hud.gd:51
-msgid "%s vasthouden: rennen  ·  %s: beroepen en maken  ·  Paden geven extra snelheid"
-msgstr "Hold %s: sprint  ·  %s: professions and crafting  ·  Paths make you faster"
-
-#: scripts/ui/hud.gd:52
-msgid "Je XP, beroepen en volgende upgrades staan in %s → Voortgang."
-msgstr "Find your XP, professions and next upgrades in %s → Progress."
-
-#: scripts/ui/hud.gd:167 scripts/ui/hud.gd:266 scripts/ui/hud.gd:330
+#: scripts/ui/hud.gd:180 scripts/ui/hud.gd:287 scripts/ui/hud.gd:365
 msgid "Game over"
 msgstr "Game over"
 
-#: scripts/ui/hud.gd:179
+#: scripts/ui/hud.gd:192
 msgid "Even op adem komen..."
 msgstr "Catching your breath..."
 
-#: scripts/ui/hud.gd:179
+#: scripts/ui/hud.gd:192
 msgid "Uithouding  ·  %s"
 msgstr "Stamina  ·  %s"
 
-#: scripts/ui/hud.gd:235
+#: scripts/ui/hud.gd:252
 msgid "Boog gekregen! Druk op %s om te schieten."
 msgstr "Bow acquired! Press %s to shoot."
 
-#: scripts/ui/hud.gd:332
+#: scripts/ui/hud.gd:261
+msgid "Volg het gesputter naar de fontein. Nelle kan je hulp gebruiken."
+msgstr "Follow the spluttering to the fountain. Nelle could use your help."
+
+#: scripts/ui/hud.gd:306
+msgid "Rennen: %s vasthouden   ·   Je spullen bekijken: %s"
+msgstr "Sprint: hold %s   ·   View your items: %s"
+
+#: scripts/ui/hud.gd:308
+msgid "%s: gereedschap gebruiken bij het rooster. Blijf even staan tijdens het harken."
+msgstr "%s: use your tool at the grate. Stand still while raking."
+
+#: scripts/ui/hud.gd:310
+msgid "Lopen: %s / %s / %s / %s   ·   Praten: %s"
+msgstr "Move: %s / %s / %s / %s   ·   Talk: %s"
+
+#: scripts/ui/hud.gd:367
 msgid "Verslagen door: %s"
 msgstr "Defeated by: %s"
 
-#: scripts/ui/hud.gd:335
+#: scripts/ui/hud.gd:370
 msgid "%s voor het menu"
 msgstr "%s for the menu"
 
-#: scripts/ui/hud.gd:336
+#: scripts/ui/hud.gd:371
 msgid "Druk op %s om verder te gaan vanaf je laatste opslag"
 msgstr "Press %s to continue from your last save"
 
-#: scripts/ui/hud.gd:336
+#: scripts/ui/hud.gd:371
 msgid "Druk op %s om opnieuw te beginnen"
 msgstr "Press %s to start again"
 
 #. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
 #. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
-#: scripts/ui/hud.gd:348 scripts/ui/menu_pages.gd:220
+#: scripts/ui/hud.gd:383 scripts/ui/menu_pages.gd:220
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
 #. het dagdeel bij de klok als het regent: "Avond  ·  regen"
-#: scripts/ui/hud.gd:367
+#: scripts/ui/hud.gd:402
 msgid "%s  ·  regen"
 msgstr "%s  ·  rain"
 
-#: scripts/ui/hud.gd:382
+#: scripts/ui/hud.gd:417
 msgid "Held %d · maximaal niveau"
 msgstr "Hero %d · maximum level"
 
-#: scripts/ui/hud.gd:382
+#: scripts/ui/hud.gd:417
 msgid "Held %d · %d/%d XP"
 msgstr "Hero %d · %d/%d XP"
 
 #: scripts/ui/intro.gd:31
+msgid "Je komt aan in Dageraadsdorp. Brood wordt bezorgd, de smid is aan het werk… maar op het plein sputtert de fontein. Een hovenier kan je hulp gebruiken."
+msgstr "You arrive in Dawnhaven. Bread is being delivered, the smith is at work… but the fountain in the square is spluttering. A gardener could use your help."
+
+#: scripts/ui/intro.gd:33
 msgid "Azura is een land vol bossen, ruïnes en grotten. Eeuwenlang werd het beschermd door de Blauwe Kaart."
 msgstr "Azura is a land full of forests, ruins and caves. For hundreds of years, it was protected by the Blue Map."
 
-#: scripts/ui/intro.gd:32
+#: scripts/ui/intro.gd:34
 msgid "De kaart is gemaakt van gloeiend kristal. Hij houdt de slijmen rustig en laat zien waar het land veilig is."
 msgstr "The map is made of glowing crystal. It keeps the slimes calm and shows where the land is safe."
 
-#: scripts/ui/intro.gd:33
+#: scripts/ui/intro.gd:35
 msgid "Maar op een nacht barstte de kaart. De drie grote kristallen vlogen het land in, en overal werden de slijmen wild."
 msgstr "But one night, the map cracked. Its three big crystals flew off across the land, and everywhere the slimes went wild."
 
-#: scripts/ui/intro.gd:36
+#: scripts/ui/intro.gd:38
 msgid "Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur... Maar let op: dit is Nieuw spel+. De slijmen zijn sterker geworden, en jij hebt je beste spullen mee!"
 msgstr "You arrive in Daybreak Village, the little village below the temple where the map hangs. That's where your adventure begins... But watch out: this is New Game+. The slimes have gotten stronger, and you've brought your best gear!"
 
-#: scripts/ui/intro.gd:38
+#: scripts/ui/intro.gd:40
 msgid "Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur..."
 msgstr "You arrive in Daybreak Village, the little village below the temple where the map hangs. That's where your adventure begins..."
 
-#: scripts/ui/intro.gd:115
+#: scripts/ui/intro.gd:117
 msgid "%s = overslaan"
 msgstr "%s = skip"
 

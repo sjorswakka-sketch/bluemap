@@ -12,6 +12,7 @@ const FOAM := Color("bceff5")
 var footprint := Rect2i(0, 0, 2, 2)
 var clock := 0.0
 var animation_frame := 0
+var water_strength := 1.0
 
 
 func setup(cells: Rect2i) -> void:
@@ -20,6 +21,7 @@ func setup(cells: Rect2i) -> void:
 
 
 func _ready() -> void:
+	water_strength = 1.0 if preload("res://scripts/core/opening.gd").flowing() else 0.15
 	add_to_group("fountains")
 	collision_layer = 1
 	collision_mask = 0
@@ -32,6 +34,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	water_strength = move_toward(water_strength,1.0 if preload("res://scripts/core/opening.gd").flowing() else 0.15,delta*0.5)
 	clock = fmod(clock + maxf(delta, 0.0), 12.0)
 	var next_frame := int(clock * 12.0)
 	if next_frame != animation_frame:
@@ -78,12 +81,14 @@ func _draw() -> void:
 	_r(-12, -18, 24, 8, INK)
 	_r(-10, -18, 20, 4, LIGHT)
 	_r(-8, -16, 16, 2, Color("64b9d1"))
-	_r(-2, -34, 4, 18, Color("5cc5df"))
-	_r(0, -34, 2, 18, FOAM)
+	var jet_height := floorf(18*water_strength/2)*2
+	_r(-2, -16-jet_height, 4, jet_height, Color("5cc5df"))
+	_r(0, -16-jet_height, 2, jet_height, FOAM)
 	for side in [-1.0, 1.0]:
 		for i in 5:
+			if water_strength<0.5 and (i>0 or animation_frame%24>7): continue
 			var p := fmod(phase * 0.85 + i * 0.2, 1.0)
-			var drop := Vector2(side * (2.0 + p * 16.0), -34.0 - sin(p * PI) * 8.0 + p * p * 34.0)
+			var drop := Vector2(side * (2.0 + p * 16.0*water_strength), -16.0-jet_height - sin(p * PI) * 8.0*water_strength + p * p * (16+jet_height))
 			drop = (drop / 2.0).floor() * 2.0
 			_r(drop.x, drop.y, 2, 4, FOAM if i % 2 == 0 else Color("74d8e8"))
 		var splash := 2.0 + float(animation_frame % 3) * 2.0
