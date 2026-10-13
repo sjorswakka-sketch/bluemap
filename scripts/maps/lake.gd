@@ -55,6 +55,7 @@ const DATA := {
 		{"type": "sign", "pos": [10, 7], "lines": ["Visser Joris", "Bellen kan niet, er is geen bel. Kloppen mag."]},
 		{"type": "sign", "pos": [34, 7], "lines": ["Bibliotheek van Lena", "Stil zijn graag. De boeken slapen."]},
 		{"type": "sign", "pos": [20, 24], "lines": ["Eilandje", "Rustig, groen en een beetje nat."]},
+		{"type": "sign", "pos": [23, 2], "lines": ["Noordelijk pad: Dageraadsdorp", "Over de heuvels ligt het dorp in de morgenzon."]},
 		{"type": "meer_visplek", "pos": [20, 16]},
 		{"type": "meer_visplek", "pos": [23, 18]},
 		{"type": "meer_visplek", "pos": [8, 18]},

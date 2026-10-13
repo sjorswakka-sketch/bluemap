@@ -53,6 +53,7 @@ const DATA := {
 		{"type": "savepoint", "pos": [25, 12], "spawn": "altar"},
 		{"type": "sign", "pos": [22, 13], "lines": ["IJsdal", "Wit en stil. De sneeuw knarst onder je laarzen."]},
 		{"type": "sign", "pos": [37, 25], "lines": ["Mijn van IJsdal", "Ijskristal diep in de rotsen. Nodig: een koperen pikhouweel."]},
+		{"type": "sign", "pos": [26, 32], "lines": ["Zuidelijk pad: Dauwbos", "De sneeuw wordt mist en de wind wordt zacht."]},
 		{"type": "npc", "pos": [13, 13], "id": "fenna"},
 		{"type": "npc", "pos": [37, 13], "id": "roos"},
 		{"type": "npc", "pos": [26, 18], "id": "olav"},

@@ -117,6 +117,11 @@ pixel art, en te delen met vrienden en de community.
       voorwerp in je rugzak ademt zachtjes; en alle bladzijden delen nu dezelfde marges (buitenmarge,
       kopregel en bovenkant van lijsten)
 
+- [x] Doorgangen zichtbaar: elke portal tekent nu een zachte, pulserende gloed met zwevende vonkjes,
+      zodat je in elk gebied meteen ziet waar je naar een andere plek kunt. En elke doorgang tussen
+      twee buitengebieden heeft nu een wegwijzer die het doelgebied noemt (vijf nieuwe borden in het
+      Fluisterbos, bij het Zilvermeer, in het Dauwbos, het IJsdal en de Dorstvallei)
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen en schilden

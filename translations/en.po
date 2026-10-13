@@ -155,6 +155,16 @@ msgstr "Northern path: Dew Woods"
 msgid "Mistig en stil. Mira bewaakt de dauw."
 msgstr "Misty and silent. Mira guards the dew."
 
+#. Kaart forest, sign [3, 16]: tekst op een bord
+#: scripts/maps/forest.gd:117
+msgid "Westelijk pad: Dageraadsdorp"
+msgstr "Western path: Daybreak Village"
+
+#. Kaart forest, sign [3, 16]: tekst op een bord
+#: scripts/maps/forest.gd:117
+msgid "Terug naar het dorp, waar de geur van vers brood je tegemoet komt."
+msgstr "Back to the village, where the smell of fresh bread comes to meet you."
+
 #. Naam van gebied ruins
 #: scripts/maps/ruins.gd:6
 msgid "De Vergeten Ruïne"
@@ -304,6 +314,16 @@ msgstr "Little Island"
 msgid "Rustig, groen en een beetje nat."
 msgstr "Quiet, green, and a little bit wet."
 
+#. Kaart lake, sign [23, 2]: tekst op een bord
+#: scripts/maps/lake.gd:58
+msgid "Noordelijk pad: Dageraadsdorp"
+msgstr "Northern path: Daybreak Village"
+
+#. Kaart lake, sign [23, 2]: tekst op een bord
+#: scripts/maps/lake.gd:58
+msgid "Over de heuvels ligt het dorp in de morgenzon."
+msgstr "Beyond the hills lies the village in the morning sun."
+
 #. Naam van gebied fisher_hut
 #: scripts/maps/fisher_hut.gd:6
 msgid "Het huisje van Joris"
@@ -452,6 +472,16 @@ msgstr "Northern path: IJsdal"
 msgid "Hoge toppen, diepe sneeuw. Warm aan de lantaarns blijven."
 msgstr "High peaks, deep snow. Stay warm near the lanterns."
 
+#. Kaart dauwbos, sign [4, 19]: tekst op een bord
+#: scripts/maps/dauwbos.gd:60
+msgid "Westelijk pad: Fluisterbos"
+msgstr "Western path: Whispering Woods"
+
+#. Kaart dauwbos, sign [4, 19]: tekst op een bord
+#: scripts/maps/dauwbos.gd:60
+msgid "Waar de mist dunner wordt, beginnen de vertrouwde bomen."
+msgstr "Where the mist grows thinner, the familiar trees begin."
+
 #. Naam van gebied ijsdal
 #. Kaart ijsdal, sign [22, 13]: tekst op een bord
 #: scripts/maps/ijsdal.gd:8 scripts/maps/ijsdal.gd:54
@@ -473,6 +503,17 @@ msgstr "IJsdal Mine"
 msgid "Ijskristal diep in de rotsen. Nodig: een koperen pikhouweel."
 msgstr "Ice crystal deep in the rocks. Requires: a copper pickaxe."
 
+#. Kaart ijsdal, sign [26, 32]: tekst op een bord
+#. Kaart dorstvallei, sign [27, 30]: tekst op een bord
+#: scripts/maps/dorstvallei.gd:55 scripts/maps/ijsdal.gd:56
+msgid "Zuidelijk pad: Dauwbos"
+msgstr "Southern path: Dew Woods"
+
+#. Kaart ijsdal, sign [26, 32]: tekst op een bord
+#: scripts/maps/ijsdal.gd:56
+msgid "De sneeuw wordt mist en de wind wordt zacht."
+msgstr "The snow turns to mist and the wind turns soft."
+
 #. Naam van gebied dorstvallei
 #. Kaart dorstvallei, sign [27, 14]: tekst op een bord
 #: scripts/maps/dorstvallei.gd:9 scripts/maps/dorstvallei.gd:53
@@ -493,6 +534,11 @@ msgstr "Hunting grounds"
 #: scripts/maps/dorstvallei.gd:54
 msgid "Woestijnvossen en zandhazen. Kom je te dichtbij, dan rennen ze weg."
 msgstr "Desert foxes and sand hares. Get too close and they bolt."
+
+#. Kaart dorstvallei, sign [27, 30]: tekst op een bord
+#: scripts/maps/dorstvallei.gd:55
+msgid "Voorbij de rotsen wacht groen en koelte."
+msgstr "Beyond the rocks, greenery and coolness await."
 
 #. Naam van wie er praat (Gesprek bram_intro)
 #. Naam van wie er praat (Gesprek bram_intro2)
@@ -5913,22 +5959,22 @@ msgid "Beroepen / maken"
 msgstr "Professions / crafting"
 
 #. Instelbare bediening: quests
-#: scripts/ui/menu_ui.gd:339 scripts/ui/menu_ui.gd:568 scripts/core/input_manager.gd:15
+#: scripts/ui/menu_ui.gd:387 scripts/ui/menu_ui.gd:633 scripts/core/input_manager.gd:15
 msgid "Opdrachten"
 msgstr "Quests"
 
 #. Instelbare bediening: map
-#: scripts/ui/menu_ui.gd:339 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:16
 msgid "Kaart"
 msgstr "Map"
 
 #. Instelbare bediening: wereld_prestaties
-#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:339 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:16
 msgid "Prestaties"
 msgstr "Achievements"
 
 #. Instelbare bediening: wereld_beestenboek
-#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:339 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:16
 msgid "Beestenboek"
 msgstr "Bestiary"
 
@@ -6127,19 +6173,19 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/core/daynight.gd:135
+#: scripts/core/daynight.gd:151
 msgid "Ochtend"
 msgstr "Morning"
 
-#: scripts/core/daynight.gd:137
+#: scripts/core/daynight.gd:153
 msgid "Dag"
 msgstr "Day"
 
-#: scripts/core/daynight.gd:139
+#: scripts/core/daynight.gd:155
 msgid "Avond"
 msgstr "Evening"
 
-#: scripts/core/daynight.gd:141
+#: scripts/core/daynight.gd:157
 msgid "Nacht"
 msgstr "Night"
 
@@ -6183,7 +6229,7 @@ msgstr "You can't travel during a boss fight!"
 msgid "Je kunt niet reizen tijdens een arenagevecht!"
 msgstr "You can't travel during an arena fight!"
 
-#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:372
+#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:420
 msgid "Je hebt nog geen altaar ontdekt."
 msgstr "You haven't found an altar yet."
 
@@ -6542,11 +6588,11 @@ msgstr "Bounced off!"
 msgid "Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."
 msgstr "Your arrow bounces off the crystal! Shoot when the golem winds up for a slam."
 
-#: scripts/entities/atmosphere.gd:173
+#: scripts/entities/atmosphere.gd:236
 msgid "Goedemorgen!"
 msgstr "Good morning!"
 
-#: scripts/entities/atmosphere.gd:174
+#: scripts/entities/atmosphere.gd:237
 msgid "Lekker geslapen! Je hebt weer alle hartjes."
 msgstr "Slept like a log! All your hearts are back."
 
@@ -6624,7 +6670,7 @@ msgstr "You need a bow. Tobias sells one."
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:297 scripts/ui/menu_ui.gd:430
+#: scripts/entities/player.gd:297 scripts/ui/menu_ui.gd:478
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
@@ -6927,7 +6973,7 @@ msgstr "Automatically active"
 msgid "Deze plek volgt je bestaande upgrades."
 msgstr "This slot follows your existing upgrades."
 
-#: scripts/ui/equipment_page.gd:216 scripts/ui/menu_ui.gd:527
+#: scripts/ui/equipment_page.gd:216 scripts/ui/menu_ui.gd:592
 msgid "Uitgerust"
 msgstr "Equipped"
 
@@ -6939,7 +6985,7 @@ msgstr "Owned"
 msgid "Niet in bezit"
 msgstr "Not owned"
 
-#: scripts/ui/equipment_page.gd:218 scripts/ui/menu_ui.gd:527
+#: scripts/ui/equipment_page.gd:218 scripts/ui/menu_ui.gd:592
 msgid "%s  Uitrusten"
 msgstr "%s  Equip"
 
@@ -7198,7 +7244,7 @@ msgstr "Health:  %d"
 msgid "Schade:  %s"
 msgstr "Damage:  %s"
 
-#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:538
+#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:603
 msgid "Verslagen:  %d"
 msgstr "Defeated:  %d"
 
@@ -7267,120 +7313,120 @@ msgstr "%s  Travel"
 msgid "%s  Terug"
 msgstr "%s  Back"
 
-#: scripts/ui/menu_ui.gd:339
+#: scripts/ui/menu_ui.gd:387
 msgid "Voorwerpen"
 msgstr "Items"
 
-#: scripts/ui/menu_ui.gd:339
+#: scripts/ui/menu_ui.gd:387
 msgid "Voortgang"
 msgstr "Progress"
 
-#: scripts/ui/menu_ui.gd:339
+#: scripts/ui/menu_ui.gd:387
 msgid "Uitrusting"
 msgstr "Equipment"
 
-#: scripts/ui/menu_ui.gd:339
+#: scripts/ui/menu_ui.gd:387
 msgid "Uiterlijk"
 msgstr "Appearance"
 
-#: scripts/ui/menu_ui.gd:466
+#: scripts/ui/menu_ui.gd:528
 msgid "%s / %s tabblad  ·  "
 msgstr "%s / %s tab  ·  "
 
-#: scripts/ui/menu_ui.gd:467
+#: scripts/ui/menu_ui.gd:529
 msgid "%s sluiten"
 msgstr "%s close"
 
-#: scripts/ui/menu_ui.gd:469
+#: scripts/ui/menu_ui.gd:531
 msgid "↑ ↓ ← → kiezen  ·  %s gebruiken  ·  "
 msgstr "↑ ↓ ← → select  ·  %s use  ·  "
 
-#: scripts/ui/menu_ui.gd:471
+#: scripts/ui/menu_ui.gd:533
 msgid "↑ ↓ kiezen  ·  ← → vakken  ·  %s bevestigen  ·  "
 msgstr "↑ ↓ select  ·  ← → panels  ·  %s confirm  ·  "
 
-#: scripts/ui/menu_ui.gd:473
+#: scripts/ui/menu_ui.gd:535
 msgid "↑ ↓ rij  ·  ← → aanpassen  ·  %s verf  ·  "
 msgstr "↑ ↓ row  ·  ← → adjust  ·  %s dye  ·  "
 
-#: scripts/ui/menu_ui.gd:475
+#: scripts/ui/menu_ui.gd:537
 msgid "↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  "
 msgstr "↑ ↓ select  ·  ← → scroll details  ·  "
 
-#: scripts/ui/menu_ui.gd:477
+#: scripts/ui/menu_ui.gd:539
 msgid "↑ ↓ altaar  ·  %s reizen  ·  "
 msgstr "↑ ↓ altar  ·  %s travel  ·  "
 
-#: scripts/ui/menu_ui.gd:478
+#: scripts/ui/menu_ui.gd:540
 msgid "↑ ↓ bladeren  ·  "
 msgstr "↑ ↓ browse  ·  "
 
-#: scripts/ui/menu_ui.gd:492
+#: scripts/ui/menu_ui.gd:554
 msgid "Je spullen"
 msgstr "Your stuff"
 
-#: scripts/ui/menu_ui.gd:494
+#: scripts/ui/menu_ui.gd:556
 msgid "Je hebt nog niets bij je."
 msgstr "You're not carrying anything yet."
 
-#: scripts/ui/menu_ui.gd:525
+#: scripts/ui/menu_ui.gd:590
 msgid "Uitgerust · %s"
 msgstr "Equipped · %s"
 
-#: scripts/ui/menu_ui.gd:525
+#: scripts/ui/menu_ui.gd:590
 msgid "Bonus: %s"
 msgstr "Bonus: %s"
 
-#: scripts/ui/menu_ui.gd:530
+#: scripts/ui/menu_ui.gd:595
 msgid "%s  Gebruiken"
 msgstr "%s  Use"
 
-#: scripts/ui/menu_ui.gd:533
+#: scripts/ui/menu_ui.gd:598
 msgid "Zwaard:  %s (schade %d)"
 msgstr "Sword:  %s (damage %d)"
 
-#: scripts/ui/menu_ui.gd:534
+#: scripts/ui/menu_ui.gd:599
 msgid "Levens:  %d / %d"
 msgstr "Health:  %d / %d"
 
-#: scripts/ui/menu_ui.gd:535
+#: scripts/ui/menu_ui.gd:600
 msgid "Snelheid:  snel (laarzen)"
 msgstr "Speed:  fast (boots)"
 
-#: scripts/ui/menu_ui.gd:535
+#: scripts/ui/menu_ui.gd:600
 msgid "Snelheid:  normaal"
 msgstr "Speed:  normal"
 
-#: scripts/ui/menu_ui.gd:536
+#: scripts/ui/menu_ui.gd:601
 msgid "Munten:  %d"
 msgstr "Coins:  %d"
 
-#: scripts/ui/menu_ui.gd:537
+#: scripts/ui/menu_ui.gd:602
 msgid "Kristallen:  %d / 3"
 msgstr "Crystals:  %d / 3"
 
-#: scripts/ui/menu_ui.gd:539
+#: scripts/ui/menu_ui.gd:604
 msgid "Speeltijd:  %s"
 msgstr "Play time:  %s"
 
 #. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-#: scripts/ui/menu_ui.gd:544 scripts/ui/pause_menu.gd:111
+#: scripts/ui/menu_ui.gd:609 scripts/ui/pause_menu.gd:111
 msgid "Nieuw spel+  ·  ronde %d"
 msgstr "New Game+  ·  round %d"
 
-#: scripts/ui/menu_ui.gd:570
+#: scripts/ui/menu_ui.gd:635
 msgid "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"
 msgstr "You don't have any quests yet. Talk to the people in the village!"
 
-#: scripts/ui/menu_ui.gd:580
+#: scripts/ui/menu_ui.gd:645
 msgid "%s   (hoofdopdracht)"
 msgstr "%s   (main quest)"
 
-#: scripts/ui/menu_ui.gd:587
+#: scripts/ui/menu_ui.gd:652
 msgid "Voltooid."
 msgstr "Completed."
 
-#: scripts/ui/menu_ui.gd:630
+#: scripts/ui/menu_ui.gd:695
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
 

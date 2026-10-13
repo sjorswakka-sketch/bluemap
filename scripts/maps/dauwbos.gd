@@ -57,6 +57,7 @@ const DATA := {
 		{"type": "savepoint", "pos": [8, 18]},
 		{"type": "sign", "pos": [6, 22], "lines": ["Dauwbos", "Hier hangt de dauw zwaar. De bomen fluisteren zachter."]},
 		{"type": "sign", "pos": [27, 4], "lines": ["Noordelijk pad: IJsdal", "Hoge toppen, diepe sneeuw. Warm aan de lantaarns blijven."]},
+		{"type": "sign", "pos": [4, 19], "lines": ["Westelijk pad: Fluisterbos", "Waar de mist dunner wordt, beginnen de vertrouwde bomen."]},
 		{"type": "npc", "pos": [15, 12], "id": "mira"},
 		{"type": "npc", "pos": [28, 18], "id": "tomas"},
 		{"type": "npc", "pos": [22, 28], "id": "noor"},

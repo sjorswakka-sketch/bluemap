@@ -370,6 +370,7 @@ func _spawn_objects() -> void:
 				var portal: Node2D = PortalScript.new()
 				var size: Array = obj.get("size", [1, 1])
 				portal.rect = Rect2(Vector2(float(obj["pos"][0]), float(obj["pos"][1])) * TILE, Vector2(float(size[0]), float(size[1])) * TILE)
+				portal.position = portal.rect.position # de node zelf staat op de plek, voor y-sortering van de gloed
 				portal.target_map = obj["to"]
 				portal.target_spawn = obj.get("spawn", "start")
 				portal.conditions = obj.get("requires", [])
