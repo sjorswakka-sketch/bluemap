@@ -93,6 +93,8 @@ static func craft_reason(recipe_id: String) -> String:
 		return TranslationServer.translate(Data.TEXT["unknown"])
 	var gs := _ensure()
 	var recipe: Dictionary = Data.RECIPES[recipe_id]
+	if recipe.has("unlock") and not gs.flag(recipe["unlock"]):
+		return TranslationServer.translate("Nog vergrendeld: herstel de prismabank of Mees’ oversteek.")
 	var skill: String = recipe["skill"]
 	if level(skill) < int(recipe["level"]):
 		return TranslationServer.translate(Data.TEXT["skill_required"]) % [TranslationServer.translate(Data.SKILLS[skill]["name"]), recipe["level"]]
@@ -124,6 +126,8 @@ static func craft(recipe_id: String) -> bool:
 		gs.take(item, int(recipe["inputs"][item]))
 	gs.give(recipe["output"], int(recipe.get("amount", 1)), true)
 	add_xp(recipe["skill"], int(recipe["xp"]))
+	if recipe["output"] == "lw_lantern":
+		load("res://scripts/core/living_world.gd").lantern_made()
 	gs.toast.emit(TranslationServer.translate(Data.TEXT["made"]) % [item_name(recipe["output"]), int(recipe.get("amount", 1))])
 	_busy = false
 	return true

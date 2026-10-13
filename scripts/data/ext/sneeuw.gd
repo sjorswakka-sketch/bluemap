@@ -10,16 +10,7 @@ const MAPS := {
 const SOUNDS := ["step_snow"]
 
 const QUESTS := {
-	"warmte": {
-		"title": "Warmte voor IJsdal",
-		"steps": [
-			{
-				"text": "Fenna in IJsdal heeft 4 ijsbloemen nodig voor haar warme brouwsels. Ze bloeien in de sneeuw van het dal.",
-				"advance_if": [["has", "prof_ijsbloem", 4]],
-			},
-			{"text": "Breng de ijsbloemen naar Fenna in IJsdal."},
-		],
-	},
+	"warmte": preload("res://scripts/data/ext/living.gd").REWORKED_QUESTS["warmte"],
 	"ijswacht": {
 		"title": "De Ijswacht",
 		"steps": [
@@ -36,7 +27,7 @@ const NPCS := {
 	"fenna": {
 		"name": "Fenna de kruidenvrouwe", "sheet": "npc_fenna",
 		"rules": [
-			{"if": [["step", "warmte", 1], ["has", "prof_ijsbloem", 4]], "talk": "fenna_klaar"},
+			{"if": [["step", "warmte", 1], ["flag", "lw_heat"]], "talk": "fenna_klaar"},
 			{"if": [["no_flag", "fenna_ontmoet"]], "talk": "fenna_intro"},
 			{"if": [["quest", "warmte", "none"]], "talk": "fenna_intro"},
 			{"talk": "fenna_menu"},
@@ -62,26 +53,63 @@ const NPCS := {
 
 const TALKS := {
 	"fenna_intro": {
-		"speaker": "Fenna",
-		"lines": ["Welkom in IJsdal, reiziger. Ik ben Fenna. Ik brouw warme drankjes van wat er in de sneeuw groeit.", "De ijsbloem is mijn beste ingrediënt, maar mijn voorraad is op."],
-		"do": [["set_flag", "fenna_ontmoet"]],
-		"next": "fenna_vraag",
-	},
+	"speaker": "Fenna",
+	"lines": [
+		"De noordelijke huizen zijn verlaten sinds hun vuurkorven uitgingen. Help je de warmte terugbrengen? Takken vind je langs het plein; koken of prismatechniek werkt ook."
+	],
+	"do": [
+		[
+			"set_flag",
+			"fenna_ontmoet"
+		]
+	],
+	"next": "fenna_vraag"
+},
 	"fenna_vraag": {
-		"speaker": "Fenna",
-		"lines": ["Wil je 4 ijsbloemen voor me plukken? Ze bloeien in het dal, zelfs onder de sneeuw."],
-		"choices": [
-			{"text": "Ik pluk ze wel.", "do": [["start_quest", "warmte"]], "next": "fenna_ok"},
-			{"text": "Later misschien."},
-		],
-	},
-	"fenna_ok": {"speaker": "Fenna", "lines": ["Dank je. Zoek naar bleke bloempjes in de sneeuw, bij het bosje en het meer."], "do": [["sound", "quest"]]},
-	"fenna_menu": {"speaker": "Fenna", "lines": ["Heb je de ijsbloemen al?"], "choices": [{"text": "Nog niet."}, {"text": "Tot zo."}]},
+	"speaker": "Fenna",
+	"lines": ["Help je de warmte terugbrengen?"],
+	"choices": [
+		{
+			"text": "Ik herstel de vuurkorven.",
+			"next": "fenna_ok",
+			"do": [
+				[
+					"start_quest",
+					"warmte"
+				]
+			]
+		},
+		{
+			"text": "Later misschien."
+		}
+	]
+},
+	"fenna_ok": {"speaker": "Fenna", "lines": ["De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."], "do": [["sound", "quest"]]},
+	"fenna_menu": {"speaker": "Fenna", "lines": ["De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."], "choices": [{"text": "Tot zo."}]},
 	"fenna_klaar": {
-		"speaker": "Fenna",
-		"lines": ["Prachtig! Hiermee brouw ik de hele winter. Hier, mijn eerste vorstelixer is voor jou.", "En wat munten voor je koude vingers."],
-		"do": [["take", "prof_ijsbloem", 4], ["give", "prof_frost_tonic"], ["coins", 30], ["finish_quest", "warmte"], ["sound", "quest"]],
-	},
+	"speaker": "Fenna",
+	"lines": [
+		"De ramen gloeien weer! De families keren terug en de bergpas is open. Draag dit wachtharnas als je bescherming boven snelheid kiest."
+	],
+	"do": [
+		[
+			"give",
+			"gear_bastion_coat"
+		],
+		[
+			"coins",
+			30
+		],
+		[
+			"finish_quest",
+			"warmte"
+		],
+		[
+			"sound",
+			"quest"
+		]
+	]
+},
 
 	"roos_intro": {
 		"speaker": "Roos",

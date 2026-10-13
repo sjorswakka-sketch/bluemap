@@ -58,6 +58,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/uiterlijk.gd"), # uiterlijk: kleding over je uitrusting, haarstijlen, ogen en verf
 	preload("res://scripts/data/ext/dagritme.gd"), # dagritme: achtergrondsfeer per klimaat en dagdeel
 	preload("res://scripts/data/ext/moeras.gd"), # Kruipmoeras: veenland, waas, wild en de zonneschijf
+	preload("res://scripts/data/ext/living.gd"),
 	preload("res://scripts/data/ext/echo.gd"), # Prismamijn en Resonantieproef
 ]
 

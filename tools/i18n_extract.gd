@@ -147,6 +147,8 @@ static func collect_data(c: Collector) -> void:
 			if obj.has("locked_text"):
 				c.add(obj["locked_text"], where + ": melding als hij op slot zit")
 			_add_actions(c, obj.get("do", []), where)
+	for quest_id: String in Quests.QUESTS:
+		c.add(Quests.QUESTS[quest_id].get("effect", ""), "Blijvend gevolg van opdracht " + quest_id)
 	# Gesprekken.
 	for talk_id: String in Dialogue.TALKS:
 		var talk: Dictionary = Dialogue.TALKS[talk_id]

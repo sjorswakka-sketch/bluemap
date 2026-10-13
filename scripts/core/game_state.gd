@@ -221,7 +221,7 @@ func reach() -> float:
 
 
 func speed_multiplier() -> float:
-	return BOOTS_SPEED_MULTIPLIER if count("boots") > 0 else 1.0
+	return (BOOTS_SPEED_MULTIPLIER if count("boots") > 0 else 1.0) * (1.0 + Equipment.bonus("move_speed"))
 
 
 func attack_cooldown_multiplier() -> float:

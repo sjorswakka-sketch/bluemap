@@ -11,6 +11,33 @@ const SLOTS := {
 }
 
 const ITEMS := {
+	"gear_scout_coat": {
+	"name": "Verkennersjas",
+	"sheet": "items_equipment",
+	"icon": 2,
+	"type": "gear",
+	"max": 1,
+	"slot": "chest",
+	"bonuses": {
+		"move_speed": 0.08,
+		"stamina_max": 10.0
+	},
+	"desc": "8% sneller en 10 extra stamina, maar geen pantser. Voor verkennen en ontwijken."
+},
+	"gear_bastion_coat": {
+	"name": "Wachtharnas",
+	"sheet": "items_equipment",
+	"icon": 3,
+	"type": "gear",
+	"max": 1,
+	"slot": "chest",
+	"bonuses": {
+		"armor": 2.0,
+		"move_speed": -0.08
+	},
+	"desc": "2 pantser, maar 8% langzamer. Elke treffer doet minimaal 1 schade. Voor standhouden bij een vuurkorf."
+},
+
 	"gear_cloth_hood": {"name": "Linnen kap", "sheet": "items_equipment", "icon": 0, "type": "gear", "max": 1, "slot": "head", "bonuses": {"stamina_max": 15.0}, "desc": "Een lichte reiskap. Draag hem op je hoofd voor 15 extra uithoudingsvermogen."},
 	"gear_bronze_helm": {"name": "Bronzen helm", "sheet": "items_equipment", "icon": 1, "type": "gear", "max": 1, "slot": "head", "bonuses": {"stamina_max": 30.0}, "desc": "Een stevige helm voor lange tochten. Draag hem op je hoofd voor 30 extra uithoudingsvermogen."},
 	"gear_leather_armor": {"name": "Leren harnas", "sheet": "items_equipment", "icon": 2, "type": "gear", "max": 1, "slot": "chest", "bonuses": {"armor": 1.0}, "desc": "Vangt zware klappen op. Vermindert schade met 1, tot minimaal 1 schade per treffer."},

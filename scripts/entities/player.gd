@@ -223,6 +223,8 @@ func _attack() -> void:
 		var to_enemy := enemy.global_position - global_position
 		var margin: float = enemy.radius
 		if to_enemy.length() <= reach + margin and attack_direction.dot(to_enemy.normalized()) > (-0.35 if combo_sweep else 0.2) and _attack_clear(enemy.global_position):
+			if combo_sweep and GameState.flag("lw_workshop") and enemy.has_method("break_guard"):
+				enemy.break_guard()
 			enemy.hurt(GameState.damage(), attack_direction)
 	for thing: Node in get_tree().get_nodes_in_group("breakable"):
 		if _attack_clear(thing.global_position):

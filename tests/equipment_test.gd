@@ -57,7 +57,7 @@ func give_all() -> void:
 
 func _test_selection() -> void:
 	gs.new_game()
-	check(Equipment.SLOTS.keys() == ["head", "chest", "hands", "neck", "ring"] and Data.ITEMS.size() == 10, "Five distinct slots and two real items each")
+	check(Equipment.SLOTS.keys() == ["head", "chest", "hands", "neck", "ring"] and Data.ITEMS.size() == 12, "Five distinct slots, ten original pieces and two chest alternatives")
 	check(not Equipment.equip("gear_cloth_hood") and not Equipment.equip("boots") and not Equipment.unequip("head"), "Missing and legacy items cannot be equipped in a new slot")
 	for item: String in Data.ITEMS:
 		var info := Items.info(item)
@@ -236,11 +236,11 @@ func _test_save() -> void:
 	check(gs.save_game(Vector2.ZERO), "Equipment saves through the existing save path")
 	gs.equipment = {}
 	gs.inventory = {}
-	check(gs.load_game() and gs.equipment == selected and gs.inventory.size() == 10 and gs.movement.capacity() == 130.0 and gs.attack_cooldown_multiplier() == 0.84, "Saved choices and their effects survive a full reload")
+	check(gs.load_game() and gs.equipment == selected and gs.inventory.size() == Data.ITEMS.size() and gs.movement.capacity() == 130.0 and gs.attack_cooldown_multiplier() == 0.84, "Saved choices and their effects survive a full reload")
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(gs.SAVE_PATH))
 	data.erase("equipment")
 	_write_save(data)
-	check(gs.load_game() and gs.equipment.is_empty() and Equipment.bonus("armor") == 0 and gs.inventory.size() == 10, "An old save starts unequipped without losing owned items")
+	check(gs.load_game() and gs.equipment.is_empty() and Equipment.bonus("armor") == 0 and gs.inventory.size() == Data.ITEMS.size(), "An old save starts unequipped without losing owned items")
 	data["equipment"] = {"head": "gear_smith_gloves", "hands": [], "chest": "unknown", "ring": {"bonuses": {"magnet_range": 999}}, "neck": "gear_crystal_amulet", "unknown_slot": "gear_bronze_helm"}
 	data["inventory"].erase("gear_crystal_amulet")
 	data["inventory"]["gear_cloth_hood"] = "999"
@@ -266,14 +266,14 @@ func _test_new_game_plus() -> void:
 	var selected: Dictionary = gs.equipment.duplicate()
 	gs.set_flag("game_completed")
 	gs.record_completion()
-	check(gs.new_game_plus() and gs.equipment == selected and gs.inventory.size() == 10 and gs.movement.capacity() == 115.0, "New Game+ retains all owned alternatives and the exact chosen equipment")
+	check(gs.new_game_plus() and gs.equipment == selected and gs.inventory.size() == Data.ITEMS.size() and gs.movement.capacity() == 115.0, "New Game+ retains all owned alternatives and the exact chosen equipment")
 	for item: String in Data.ITEMS:
 		check(gs.count(item) == 1, "New Game+ carries one copy: " + item)
 	Equipment.unequip("head")
 	gs.set_flag("game_completed")
 	gs.record_completion()
 	gs.new_game_plus()
-	check(Equipment.equipped("head") == "" and gs.count("gear_cloth_hood") == 1 and gs.count("gear_bronze_helm") == 1 and gs.inventory.size() == 10, "Intentional unequipping survives repeated rounds without losing or duplicating alternatives")
+	check(Equipment.equipped("head") == "" and gs.count("gear_cloth_hood") == 1 and gs.count("gear_bronze_helm") == 1 and gs.inventory.size() == Data.ITEMS.size(), "Intentional unequipping survives repeated rounds without losing or duplicating alternatives")
 	gs.save_meta({"completed": true, "rounds": 1, "weapon": "wood", "hearts": 0, "boots": false})
 	check(gs.new_game_plus() and gs.equipment.is_empty() and gs.inventory.is_empty(), "Old metadata without equipment is still supported")
 	var config := ConfigFile.new()

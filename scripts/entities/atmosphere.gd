@@ -142,7 +142,7 @@ func _dust_target() -> float:
 
 ## Of er hier nu een moeraswaas hoort te hangen (1) of niet (0).
 func _haze_target() -> float:
-	return 1.0 if Daynight.swampy(weather, GameState.day_count, GameState.day_time) else 0.0
+	return (0.3 if GameState.flag("lw_drained") and GameState.map_id == "kruipmoeras" else 1.0) if Daynight.swampy(weather, GameState.day_count, GameState.day_time) else 0.0
 
 
 func _apply() -> void:
@@ -150,8 +150,8 @@ func _apply() -> void:
 		var t := GameState.day_time
 		world.canvas_mod.color = Daynight.tint_at(t) * Daynight.rain_tint(rain_level) * Daynight.snow_tint(snow_level) * Daynight.heat_tint(dust_level) * Daynight.swamp_tint(haze_level)
 		light_need = Daynight.night_at(t)
-		world.player.light.enabled = light_need > 0.02 and world.darkness <= 0.0
-		world.player.light.energy = NIGHT_LIGHT * light_need
+		world.player.light.enabled = (light_need > 0.02 and world.darkness <= 0.0) or GameState.count("lw_lantern") > 0
+		world.player.light.energy = maxf(NIGHT_LIGHT * light_need, 0.45 if GameState.count("lw_lantern") > 0 else 0.0)
 	else:
 		light_need = 1.0 if world.darkness > 0.0 else 0.0
 	rain.level = rain_level
@@ -183,6 +183,8 @@ func _update_audio() -> void:
 func _amb_target() -> String:
 	if not outdoor:
 		return ""
+	if GameState.map_id == "kruipmoeras" and GameState.flag("lw_drained"):
+		return Daynight.ambience("", GameState.day_time)
 	return Daynight.ambience(weather, GameState.day_time)
 
 

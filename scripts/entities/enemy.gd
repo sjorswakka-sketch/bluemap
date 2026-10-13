@@ -9,6 +9,10 @@ const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Util := preload("res://scripts/core/util.gd")
 const Enemies := preload("res://scripts/data/enemies.gd")
+const LivingAI := preload("res://scripts/entities/living_enemy.gd")
+var guard_broken := 0.0
+var defend_target: Node2D
+
 const EchoAI := preload("res://scripts/entities/echo_enemy.gd")
 
 const FIRST_DELAY := 1.2 # seconden tussen "hij ziet je" en de eerste teleport of spuugbeurt
@@ -112,6 +116,7 @@ func activate() -> void:
 
 func _physics_process(delta: float) -> void:
 	t += delta
+	guard_broken = maxf(guard_broken - delta, 0.0)
 	anim += delta * 5.0
 	flash = maxf(flash - delta, 0.0)
 	touch_cooldown = maxf(touch_cooldown - delta, 0.0)
@@ -127,6 +132,8 @@ func _physics_process(delta: float) -> void:
 	state_time += delta
 	desired = Vector2.ZERO
 	match data["behavior"]:
+		"lw_guard", "lw_flank", "lw_support":
+			LivingAI.update(self, delta)
 		"echo_charge", "echo_volley":
 			EchoAI.update(self, delta)
 		"chase":
@@ -643,6 +650,13 @@ func hurt(damage: int, direction: Vector2) -> void:
 		return
 	if kind == "king" and state == "hop":
 		return # in de lucht
+	if LivingAI.blocks(self, direction):
+		world.ring(global_position, 18, Color(0.7, 0.9, 1))
+		Sound.play("hit", -10.0, 1.5)
+		return
+	if data["behavior"] == "lw_support":
+		state = "idle"
+		state_time = 0.0
 	hp -= damage
 	knockback = direction.normalized() * float(data.get("knockback", 240.0))
 	flash = 0.15
@@ -661,6 +675,13 @@ func hurt(damage: int, direction: Vector2) -> void:
 	else:
 		Sound.play("hit", -2.0, randf_range(0.9, 1.1))
 		world.hitstop(0.035)
+
+
+func break_guard() -> void:
+	if data["behavior"] != "lw_guard": return
+	guard_broken = 1.8
+	world.ring(global_position, 32, Color(1, 0.7, 0.3))
+	Sound.play("hit", -3.0, 0.65)
 
 
 func _die() -> void:
@@ -709,6 +730,8 @@ func _draw() -> void:
 	var chasing: bool = player != null and active and _to_player().length() < float(data["sight"])
 
 	match data["behavior"]:
+		"lw_guard", "lw_flank", "lw_support":
+			LivingAI.draw(self, sheet, tint)
 		"echo_charge", "echo_volley":
 			EchoAI.draw(self, sheet, tint)
 		"animal":

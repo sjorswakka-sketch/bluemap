@@ -649,7 +649,7 @@ func _draw_quests(font: Font) -> void:
 		if index == quest_selected:
 			page.draw_rect(rect, Color(1.0, 0.88, 0.35), false, 2.0)
 		_text(font, rect.position + Vector2(12, 4), title, 21, Color(0.55, 1.0, 0.65) if done else Color(1.0, 0.9, 0.5), 908)
-		_text(font, rect.position + Vector2(24, 32), tr("Voltooid.") if done else GameState.quest_text(quest_id), 18, Color(0.85, 0.9, 1.0), 896)
+		_text(font, rect.position + Vector2(24, 32), tr(Quests.info(quest_id).get("effect", "Voltooid.")) if done else GameState.quest_text(quest_id), 18, Color(0.85, 0.9, 1.0), 896)
 	MenuPages.scrollbar(page, quest_scroll, QUEST_VISIBLE, order.size(), 970)
 
 func _draw_map(font: Font) -> void:

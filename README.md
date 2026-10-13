@@ -1,7 +1,32 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.7.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.8.0-preview.**
 Deze branch bevat de gezamenlijke game en bouwt bij elke update een Windows-download via Actions.
+
+Nieuw in 0.8: **Een wereld die verandert**. Begin bij de prismabank links in Greta’s smederij,
+of bij het herstelbord in de noordelijke kamer van de Prismamijn. Richt drie spiegels,
+stabiliseer de kern met alchemie of een gevecht, herstel de werkplaats en maak een prismalantaarn.
+Die onthult drie aanwijzingen in het Dauwbos. Herstel de lichtkring om de mist te verdrijven
+en de Dauwtuin te openen, met nieuwe kruiden en een lichte verkennersjas.
+
+**Warmte voor IJsdal** draait nu om twee vuurkorven verdedigen: verwarm de huizen met takken,
+een gekookte wintergloed of de herstelde prismatechniek. Blijf tijdens het opwarmen in de buurt
+en houd aanvallers bij de vlam weg. De bewoners keren terug en de Bergpas opent. Fenna geeft een
+wachtharnas: meer pantser, maar minder snelheid. De verkennersjas kiest juist snelheid en stamina.
+
+**De oversteek van Mees** vervangt zijn twijgenopdracht. Bedien de sluizen (west open, oost dicht)
+en herstel de brug met gemaakte onderdelen, alchemistische hars of via de bewaakte lier.
+Het lage water opent een visplek en het Rietarchief; de brug wordt een echte korte route voor
+jou en het turftransport. Mees leert je een nieuw recept. De veranderde tegels, routes en beloningen
+blijven na opslaan bestaan. Oude afgeronde opdrachten krijgen hun wereldgevolg zonder dubbele XP;
+lopende warmte- en brugopdrachten krijgen het nieuwe doel, met behoud van verzamelde materialen.
+
+Drie nieuwe vijandrollen: **schildwachter** (frontaal schild, flankeren), **mistjager**
+(omcirkelen en uitvallen, terugwijken voor prismalicht) en **rietzanger** (onderbreekbare genezing).
+De herstelde werkplaats leert je derde zwaardcomboslag schilden breken. De bestaande aanvalsknop
+blijft werken op toetsenbord, muis en controller; apparaten gebruiken de gewone interactieknop.
+Het opdrachtenmenu benoemt blijvende gevolgen, het heldmenu de geleerde techniek, en alle teksten
+zijn ook in het Engelse taalpakket opgenomen.
 
 Nieuw in 0.7: de **Prismamijn** en **Resonantiekamer**, bereikbaar via de noordwestelijke kamer
 van de Echo-grot (ijzeren zwaard vereist). Kristalkevers kondigen hun stormaanval aan met een lichtspoor;

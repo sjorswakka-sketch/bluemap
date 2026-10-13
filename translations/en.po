@@ -507,6 +507,18 @@ msgstr "Western path: Whispering Woods"
 msgid "Waar de mist dunner wordt, beginnen de vertrouwde bomen."
 msgstr "Where the mist grows thinner, the familiar trees begin."
 
+#. Kaart dauwbos, portal [43, 30]: melding als hij op slot zit
+#. Kaart ijsdal, portal [43, 3]: melding als hij op slot zit
+#. Kaart kruipmoeras, portal [24, 17]: melding als hij op slot zit
+#: scripts/data/living_maps.gd:116 scripts/data/living_maps.gd:168 scripts/data/living_maps.gd:213
+msgid "Deze route opent zodra je het gebied hebt hersteld. Kijk bij de gemarkeerde wereldopdracht."
+msgstr "This route opens when you restore the area. Look for the marked world quest."
+
+#. Kaart dauwbos, sign [41, 29]: tekst op een bord
+#: scripts/data/living_maps.gd:245
+msgid "Oostelijk lichtpad: De Dauwtuin."
+msgstr "Eastern light path: The Dew Garden."
+
 #. Naam van gebied ijsdal
 #. Kaart ijsdal, sign [22, 13]: tekst op een bord
 #: scripts/maps/ijsdal.gd:8 scripts/maps/ijsdal.gd:54
@@ -538,6 +550,11 @@ msgstr "Southern path: Dew Woods"
 #: scripts/maps/ijsdal.gd:56
 msgid "De sneeuw wordt mist en de wind wordt zacht."
 msgstr "The snow turns to mist and the wind turns soft."
+
+#. Kaart ijsdal, sign [41, 4]: tekst op een bord
+#: scripts/data/living_maps.gd:247
+msgid "Noordelijke route: De Bergpas."
+msgstr "Northern route: The Mountain Pass."
 
 #. Naam van gebied dorstvallei
 #. Kaart dorstvallei, sign [27, 14]: tekst op een bord
@@ -612,6 +629,63 @@ msgstr "Mees weaves reeds into baskets. The reeds crackle in the wind."
 msgid "Moerasvorsten en waterslangen. Ze zijn sneller dan ze lijken."
 msgstr "Marsh toads and water snakes. They are quicker than they look."
 
+#. Naam van gebied mistgarden
+#: scripts/maps/mistgarden.gd:4
+msgid "De Dauwtuin"
+msgstr "The Dew Garden"
+
+#. Naam van gebied mistgarden midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "De Dauwtuin"
+msgid "de Dauwtuin"
+msgstr "the Dew Garden"
+
+#. Kaart mistgarden, sign [4, 12]: tekst op een bord
+#: scripts/maps/mistgarden.gd:50
+msgid "Terug naar Dauwbos: zuidwestelijk lichtpad."
+msgstr "Return to Dewwood: southwestern light path."
+
+#. Kaart mistgarden, sign [4, 12]: tekst op een bord
+#: scripts/maps/mistgarden.gd:51
+msgid "Het licht heeft de tuin gewekt. Dauwklauwen groeien langs de stroom; honingzwammen onder de oude bomen."
+msgstr "The light has awakened the garden. Dewclaws grow along the stream; honey mushrooms beneath the old trees."
+
+#. Naam van gebied ridgepass
+#: scripts/maps/ridgepass.gd:4
+msgid "De Bergpas"
+msgstr "The Mountain Pass"
+
+#. Naam van gebied ridgepass midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "De Bergpas"
+msgid "de Bergpas"
+msgstr "the Mountain Pass"
+
+#. Kaart ridgepass, sign [4, 12]: tekst op een bord
+#: scripts/maps/ridgepass.gd:51
+msgid "Terug naar IJsdal: zuidwestelijk lichtpad."
+msgstr "Return to Frostvale: southwestern light path."
+
+#. Kaart ridgepass, sign [4, 12]: tekst op een bord
+#: scripts/maps/ridgepass.gd:52
+msgid "De korven markeren de veilige route. Boven de pas bewaakt een schildwachter de oude voorraad; een rietzanger houdt hem op de been."
+msgstr "The braziers mark the safe route. Above the pass a shield warden guards the old supplies; a reed singer keeps it standing."
+
+#. Naam van gebied reedvault
+#: scripts/maps/reedvault.gd:4
+msgid "Het Rietarchief"
+msgstr "The Reed Archive"
+
+#. Naam van gebied reedvault midden in een zin ("Reizen naar %s?"); de vorm met hoofdletter is "Het Rietarchief"
+msgid "het Rietarchief"
+msgstr "the Reed Archive"
+
+#. Kaart reedvault, sign [4, 12]: tekst op een bord
+#: scripts/maps/reedvault.gd:51
+msgid "Het water verbergt geen geschiedenis meer. De schildwachten beschermen hun zanger; breek de formatie of gebruik de pilaren als dekking."
+msgstr "Water no longer hides this history. The shield wardens protect their singer; break the formation or use the pillars as cover."
+
+#. Kaart reedvault, sign [24, 15]: tekst op een bord
+#: scripts/maps/reedvault.gd:116
+msgid "De bewoners van Azura voerden het licht door de bergen, de wortels en het water. Hun bouwwerken delen dezelfde oorsprong."
+msgstr "Azura’s people carried light through mountains, roots and water. Their structures share the same origin."
+
 #. Naam van gebied prismamine
 #. Kaart prismamine, sign [8, 24]: tekst op een bord
 #: scripts/maps/prismamine.gd:4 scripts/maps/prismamine.gd:86
@@ -661,6 +735,31 @@ msgstr "Crystal beetles charge straight ahead after showing their light trail. P
 #: scripts/maps/resonance.gd:69
 msgid "Win drie golven voor een kristallen amulet en 120 munten. De beloning krijg je eenmaal per avontuur."
 msgstr "Win three waves for a crystal amulet and 120 coins. You receive this reward once per adventure."
+
+#. Blijvend gevolg van opdracht warmte
+#: scripts/data/ext/living.gd:76
+msgid "Huizen verwarmd, bewoners terug en Bergpas geopend."
+msgstr "Houses heated, residents returned and Mountain Pass opened."
+
+#. Blijvend gevolg van opdracht wilgentwijgen
+#: scripts/data/ext/living.gd:94
+msgid "Water verlaagd, handelsbrug hersteld, visplek en Rietarchief geopend."
+msgstr "Water lowered, trade bridge restored, fishing spot and Reed Archive opened."
+
+#. Blijvend gevolg van opdracht prisma_herstel
+#: scripts/data/ext/living.gd:29
+msgid "Prismawerkplaats, nieuwe ertsaders en de schildbreker-combo vrijgespeeld."
+msgstr "Unlocked the prism workshop, new ore veins and the guard-breaking combo."
+
+#. Blijvend gevolg van opdracht lichtwerk
+#: scripts/data/ext/living.gd:38
+msgid "Prismalantaarn: onthult bosrunen en houdt mistjagers op afstand."
+msgstr "Prism lantern: reveals forest runes and keeps mist stalkers at bay."
+
+#. Blijvend gevolg van opdracht mistsporen
+#: scripts/data/ext/living.gd:56
+msgid "Mist verdreven, Dauwtuin geopend en verkennersjas ontvangen."
+msgstr "Mist dispelled, Dew Garden opened and scout coat received."
 
 #. Naam van wie er praat (Gesprek bram_intro)
 #. Naam van wie er praat (Gesprek bram_intro2)
@@ -1056,7 +1155,6 @@ msgstr "I'll do it."
 #. Gesprek meer_joris_karper_vraag: keuze van de speler
 #. Gesprek meer_lena_vraag: keuze van de speler
 #. Gesprek elke_vraag: keuze van de speler
-#. Gesprek mees_vraag: keuze van de speler
 #: scripts/data/dialogue.gd:261 scripts/data/dialogue.gd:294 scripts/data/ext/meer.gd:267 scripts/data/ext/meer.gd:365
 msgid "Misschien later."
 msgstr "Maybe later."
@@ -2379,7 +2477,8 @@ msgstr "I'll find it."
 #. Gesprek mira_mist_vraag: keuze van de speler
 #. Gesprek fenna_vraag: keuze van de speler
 #. Gesprek jelle_vraag: keuze van de speler
-#: scripts/data/ext/dorst.gd:99 scripts/data/ext/polijst.gd:145 scripts/data/ext/polijst.gd:251 scripts/data/ext/sneeuw.gd:75
+#. Gesprek mees_vraag: keuze van de speler
+#: scripts/data/ext/dorst.gd:99 scripts/data/ext/moeras.gd:140 scripts/data/ext/polijst.gd:145 scripts/data/ext/polijst.gd:251
 msgid "Later misschien."
 msgstr "Maybe later."
 
@@ -2398,8 +2497,8 @@ msgstr "Have you found the night lantern yet?"
 #. Gesprek mira_menu: keuze van de speler
 #. Gesprek mira_mist_menu: keuze van de speler
 #. Gesprek noor_menu: keuze van de speler
-#. Gesprek fenna_menu: keuze van de speler
-#: scripts/data/ext/dorst.gd:103 scripts/data/ext/dorst.gd:125 scripts/data/ext/moeras.gd:114 scripts/data/ext/moeras.gd:136
+#. Gesprek roos_menu: keuze van de speler
+#: scripts/data/ext/dorst.gd:103 scripts/data/ext/dorst.gd:125 scripts/data/ext/moeras.gd:105 scripts/data/ext/polijst.gd:149
 msgid "Nog niet."
 msgstr "Not yet."
 
@@ -2407,7 +2506,7 @@ msgstr "Not yet."
 #. Gesprek kasper_menu: keuze van de speler
 #. Gesprek tomas_menu: keuze van de speler
 #. Gesprek roos_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:149 scripts/data/ext/polijst.gd:168 scripts/data/ext/polijst.gd:273 scripts/data/ext/sneeuw.gd:101
+#: scripts/data/ext/polijst.gd:149 scripts/data/ext/polijst.gd:168 scripts/data/ext/polijst.gd:273 scripts/data/ext/sneeuw.gd:129
 msgid "Tot later."
 msgstr "See you later."
 
@@ -2509,7 +2608,7 @@ msgstr "Do you have the herbs yet?"
 #. Gesprek fenna_menu: keuze van de speler
 #. Gesprek jelle_menu: keuze van de speler
 #. Gesprek sana_menu: keuze van de speler
-#: scripts/data/ext/dorst.gd:103 scripts/data/ext/dorst.gd:125 scripts/data/ext/moeras.gd:114 scripts/data/ext/moeras.gd:136
+#: scripts/data/ext/dorst.gd:103 scripts/data/ext/dorst.gd:125 scripts/data/ext/moeras.gd:105 scripts/data/ext/moeras.gd:145
 msgid "Tot zo."
 msgstr "See you soon."
 
@@ -2553,7 +2652,7 @@ msgstr "About the Depths."
 
 #. Gesprek willem_menu: keuze van de speler
 #. Gesprek olav_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:208 scripts/data/ext/sneeuw.gd:121
+#: scripts/data/ext/polijst.gd:208 scripts/data/ext/sneeuw.gd:149
 msgid "Een ander keer."
 msgstr "Another time."
 
@@ -2643,9 +2742,8 @@ msgid "Wil je 3 dauwklauwen voor me plukken? Bij de vijver en langs de westelijk
 msgstr "Will you pick 3 dewclaws for me? They grow thickest by the pond and along the western paths."
 
 #. Gesprek mira_mist_vraag: keuze van de speler
-#. Gesprek fenna_vraag: keuze van de speler
 #. Gesprek sana_vraag: keuze van de speler
-#: scripts/data/ext/dorst.gd:120 scripts/data/ext/polijst.gd:250 scripts/data/ext/sneeuw.gd:74
+#: scripts/data/ext/dorst.gd:120 scripts/data/ext/polijst.gd:250
 msgid "Ik pluk ze wel."
 msgstr "I'll pick them."
 
@@ -2722,97 +2820,88 @@ msgstr "Have you found anything beautiful in the forest?"
 #. Naam van wie er praat (Gesprek fenna_ok)
 #. Naam van wie er praat (Gesprek fenna_menu)
 #. Naam van wie er praat (Gesprek fenna_klaar)
-#: scripts/data/ext/sneeuw.gd:65 scripts/data/ext/sneeuw.gd:71 scripts/data/ext/sneeuw.gd:78 scripts/data/ext/sneeuw.gd:79
+#: scripts/data/ext/sneeuw.gd:56 scripts/data/ext/sneeuw.gd:69 scripts/data/ext/sneeuw.gd:87 scripts/data/ext/sneeuw.gd:88
 msgid "Fenna"
 msgstr "Fenna"
 
 #. Gesprek fenna_intro, Fenna zegt
-#: scripts/data/ext/sneeuw.gd:66
-msgid "Welkom in IJsdal, reiziger. Ik ben Fenna. Ik brouw warme drankjes van wat er in de sneeuw groeit."
-msgstr "Welcome to IJsdal, traveller. I am Fenna. I brew warm drinks from whatever grows in the snow."
-
-#. Gesprek fenna_intro, Fenna zegt
-#: scripts/data/ext/sneeuw.gd:66
-msgid "De ijsbloem is mijn beste ingrediënt, maar mijn voorraad is op."
-msgstr "The ice flower is my finest ingredient, but my supply has run out."
+#: scripts/data/ext/sneeuw.gd:58
+msgid "De noordelijke huizen zijn verlaten sinds hun vuurkorven uitgingen. Help je de warmte terugbrengen? Takken vind je langs het plein; koken of prismatechniek werkt ook."
+msgstr "The northern houses have been abandoned since their braziers went out. Will you bring back their warmth? Find branches around the square; cooking or prism technology works too."
 
 #. Gesprek fenna_vraag, Fenna zegt
-#: scripts/data/ext/sneeuw.gd:72
-msgid "Wil je 4 ijsbloemen voor me plukken? Ze bloeien in het dal, zelfs onder de sneeuw."
-msgstr "Will you pick 4 ice flowers for me? They bloom in the valley, even under the snow."
+#: scripts/data/ext/sneeuw.gd:70
+msgid "Help je de warmte terugbrengen?"
+msgstr "Will you help bring back the warmth?"
+
+#. Gesprek fenna_vraag: keuze van de speler
+#: scripts/data/ext/sneeuw.gd:73
+msgid "Ik herstel de vuurkorven."
+msgstr "I will restore the braziers."
 
 #. Gesprek fenna_ok, Fenna zegt
-#: scripts/data/ext/sneeuw.gd:78
-msgid "Dank je. Zoek naar bleke bloempjes in de sneeuw, bij het bosje en het meer."
-msgstr "Thank you. Look for pale little flowers in the snow, near the copse and the lake."
-
 #. Gesprek fenna_menu, Fenna zegt
-#: scripts/data/ext/sneeuw.gd:79
-msgid "Heb je de ijsbloemen al?"
-msgstr "Do you have the ice flowers yet?"
+#: scripts/data/ext/sneeuw.gd:87 scripts/data/ext/sneeuw.gd:88
+msgid "De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."
+msgstr "The braziers stand outside the two northern houses. Keep enemies away until the fire is stable. Together we will bring back the warmth."
 
 #. Gesprek fenna_klaar, Fenna zegt
-#: scripts/data/ext/sneeuw.gd:82
-msgid "Prachtig! Hiermee brouw ik de hele winter. Hier, mijn eerste vorstelixer is voor jou."
-msgstr "Wonderful! With these I can brew all winter long. Here, my first frost tonic is for you."
-
-#. Gesprek fenna_klaar, Fenna zegt
-#: scripts/data/ext/sneeuw.gd:82
-msgid "En wat munten voor je koude vingers."
-msgstr "And some coins for your cold fingers."
+#: scripts/data/ext/sneeuw.gd:92
+msgid "De ramen gloeien weer! De families keren terug en de bergpas is open. Draag dit wachtharnas als je bescherming boven snelheid kiest."
+msgstr "The windows glow again! Families are returning and the mountain pass is open. Wear this warden coat when you value protection over speed."
 
 #. Naam van wie er praat (Gesprek roos_intro)
 #. Naam van wie er praat (Gesprek roos_vraag)
 #. Naam van wie er praat (Gesprek roos_ok)
 #. Naam van wie er praat (Gesprek roos_menu)
 #. Naam van wie er praat (Gesprek roos_klaar)
-#: scripts/data/ext/sneeuw.gd:87 scripts/data/ext/sneeuw.gd:93 scripts/data/ext/sneeuw.gd:100 scripts/data/ext/sneeuw.gd:101
+#: scripts/data/ext/sneeuw.gd:115 scripts/data/ext/sneeuw.gd:121 scripts/data/ext/sneeuw.gd:128 scripts/data/ext/sneeuw.gd:129
 msgid "Roos"
 msgstr "Roos"
 
 #. Gesprek roos_intro, Roos zegt
-#: scripts/data/ext/sneeuw.gd:88
+#: scripts/data/ext/sneeuw.gd:116
 msgid "Stil maar. Ik ben Roos, jageres van IJsdal. Ik houd de paden vrij van slijmen."
 msgstr "Quiet now. I am Roos, huntress of IJsdal. I keep the paths clear of slimes."
 
 #. Gesprek roos_intro, Roos zegt
-#: scripts/data/ext/sneeuw.gd:88
+#: scripts/data/ext/sneeuw.gd:116
 msgid "De ijsblauwe slijmen worden brutaal deze winter. Ze verschuilen zich tussen de rotsen."
 msgstr "The ice-blue slimes grow bold this winter. They hide among the rocks."
 
 #. Gesprek roos_vraag, Roos zegt
-#: scripts/data/ext/sneeuw.gd:94
+#: scripts/data/ext/sneeuw.gd:122
 msgid "Wil je de ijswacht helpen? Versla 4 ijsblauwe slijmen in het dal."
 msgstr "Will you help the ice watch? Defeat 4 ice-blue slimes in the valley."
 
 #. Gesprek roos_vraag: keuze van de speler
-#: scripts/data/ext/sneeuw.gd:96
+#: scripts/data/ext/sneeuw.gd:124
 msgid "Ik regel het."
 msgstr "I'm on it."
 
 #. Gesprek roos_vraag: keuze van de speler
 #. Gesprek sana_vraag: keuze van de speler
-#: scripts/data/ext/dorst.gd:121 scripts/data/ext/sneeuw.gd:97
+#: scripts/data/ext/dorst.gd:121 scripts/data/ext/sneeuw.gd:125
 msgid "Niet nu."
 msgstr "Not now."
 
 #. Gesprek roos_ok, Roos zegt
-#: scripts/data/ext/sneeuw.gd:100
+#: scripts/data/ext/sneeuw.gd:128
 msgid "Goed. Ze zitten bij de mijnhoek en het westelijke bosje. Kijk uit voor het gladde ijs."
 msgstr "Good. They lurk by the mine corner and the western copse. Watch out for the slippery ice."
 
 #. Gesprek roos_menu, Roos zegt
-#: scripts/data/ext/sneeuw.gd:101
+#: scripts/data/ext/sneeuw.gd:129
 msgid "Zijn de paden al veilig?"
 msgstr "Are the paths safe yet?"
 
 #. Gesprek roos_klaar, Roos zegt
-#: scripts/data/ext/sneeuw.gd:104
+#: scripts/data/ext/sneeuw.gd:132
 msgid "Vier stuks? Netjes. Het dal ademt weer."
 msgstr "Four of them? Well done. The valley breathes again."
 
 #. Gesprek roos_klaar, Roos zegt
-#: scripts/data/ext/sneeuw.gd:104
+#: scripts/data/ext/sneeuw.gd:132
 msgid "Hier, een warme wintergloed en wat munten. De ijswacht vergeet dit niet."
 msgstr "Here, a warm winter glow and some coins. The ice watch will not forget this."
 
@@ -2821,67 +2910,67 @@ msgstr "Here, a warm winter glow and some coins. The ice watch will not forget t
 #. Naam van wie er praat (Gesprek olav_dorp)
 #. Naam van wie er praat (Gesprek olav_altaar)
 #. Naam van wie er praat (Gesprek olav_kristal)
-#: scripts/data/ext/sneeuw.gd:109 scripts/data/ext/sneeuw.gd:115 scripts/data/ext/sneeuw.gd:124 scripts/data/ext/sneeuw.gd:125
+#: scripts/data/ext/sneeuw.gd:137 scripts/data/ext/sneeuw.gd:143 scripts/data/ext/sneeuw.gd:152 scripts/data/ext/sneeuw.gd:153
 msgid "Olav"
 msgstr "Olav"
 
 #. Gesprek olav_intro, Olav zegt
-#: scripts/data/ext/sneeuw.gd:110
+#: scripts/data/ext/sneeuw.gd:138
 msgid "Ah, een nieuw gezicht bij het altaar. Ik ben Olav. Ik bewaar de kaarten van het noorden."
 msgstr "Ah, a new face at the altar. I am Olav. I keep the maps of the north."
 
 #. Gesprek olav_intro, Olav zegt
-#: scripts/data/ext/sneeuw.gd:110
+#: scripts/data/ext/sneeuw.gd:138
 msgid "IJsdal staat op geen enkele oude kaart. Wij vonden het toen de sneeuw ons hier dreef."
 msgstr "IJsdal is on no old map. We found it when the snow drove us here."
 
 #. Gesprek olav_menu, Olav zegt
-#: scripts/data/ext/sneeuw.gd:116
+#: scripts/data/ext/sneeuw.gd:144
 msgid "Wat wil je weten van het noorden?"
 msgstr "What do you want to know about the north?"
 
 #. Gesprek olav_menu: keuze van de speler
-#: scripts/data/ext/sneeuw.gd:118
+#: scripts/data/ext/sneeuw.gd:146
 msgid "Over IJsdal."
 msgstr "About IJsdal."
 
 #. Gesprek olav_menu: keuze van de speler
-#: scripts/data/ext/sneeuw.gd:119
+#: scripts/data/ext/sneeuw.gd:147
 msgid "Over het altaar."
 msgstr "About the altar."
 
 #. Gesprek olav_menu: keuze van de speler
-#: scripts/data/ext/sneeuw.gd:120
+#: scripts/data/ext/sneeuw.gd:148
 msgid "Over het ijskristal."
 msgstr "About the ice crystal."
 
 #. Gesprek olav_dorp, Olav zegt
-#: scripts/data/ext/sneeuw.gd:124
+#: scripts/data/ext/sneeuw.gd:152
 msgid "IJsdal leeft van de mijn en de kruiden. De sneeuw geeft en de sneeuw neemt."
 msgstr "IJsdal lives off the mine and the herbs. The snow gives and the snow takes."
 
 #. Gesprek olav_dorp, Olav zegt
-#: scripts/data/ext/sneeuw.gd:124
+#: scripts/data/ext/sneeuw.gd:152
 msgid "Het meer is dichtgevroren. De vissen slapen eronder tot de lente, zeggen ze."
 msgstr "The lake has frozen over. The fish sleep beneath it until spring, they say."
 
 #. Gesprek olav_altaar, Olav zegt
-#: scripts/data/ext/sneeuw.gd:125
+#: scripts/data/ext/sneeuw.gd:153
 msgid "Het blauwe altaar hier is ouder dan het dorp. Raak het aan en je reist ermee naar elk altaar dat je kent."
 msgstr "The blue altar here is older than the village. Touch it and you can travel to any altar you know."
 
 #. Gesprek olav_altaar, Olav zegt
-#: scripts/data/ext/sneeuw.gd:125
+#: scripts/data/ext/sneeuw.gd:153
 msgid "Handig, als je ten zuiden weer groen gras wilt zien."
 msgstr "Handy, when you want to see green grass in the south again."
 
 #. Gesprek olav_kristal, Olav zegt
-#: scripts/data/ext/sneeuw.gd:126
+#: scripts/data/ext/sneeuw.gd:154
 msgid "In de mijnhoek groeit ijskristal: koud, helder en harder dan koper."
 msgstr "Ice crystal grows in the mine corner: cold, clear and harder than copper."
 
 #. Gesprek olav_kristal, Olav zegt
-#: scripts/data/ext/sneeuw.gd:126
+#: scripts/data/ext/sneeuw.gd:154
 msgid "Je hebt er een koperen pikhouweel en wat mijnservaring voor nodig. Alchemisten betalen goed."
 msgstr "You need a copper pickaxe and some mining experience for it. Alchemists pay well."
 
@@ -3019,7 +3108,7 @@ msgstr "About the heat."
 
 #. Gesprek nour_menu: keuze van de speler
 #. Gesprek wouda_menu: keuze van de speler
-#: scripts/data/ext/dorst.gd:145 scripts/data/ext/moeras.gd:164
+#: scripts/data/ext/dorst.gd:145 scripts/data/ext/moeras.gd:197
 msgid "Een andere keer."
 msgstr "Another time."
 
@@ -3105,57 +3194,57 @@ msgstr "You can change your hair and your eyes there too, by the way. Forty-five
 #. Naam van wie er praat (Gesprek stien_ok)
 #. Naam van wie er praat (Gesprek stien_menu)
 #. Naam van wie er praat (Gesprek stien_klaar)
-#: scripts/data/ext/moeras.gd:100 scripts/data/ext/moeras.gd:106 scripts/data/ext/moeras.gd:113 scripts/data/ext/moeras.gd:114
+#: scripts/data/ext/moeras.gd:91 scripts/data/ext/moeras.gd:97 scripts/data/ext/moeras.gd:104 scripts/data/ext/moeras.gd:105
 msgid "Stien"
 msgstr "Stien"
 
 #. Gesprek stien_intro, Stien zegt
-#: scripts/data/ext/moeras.gd:101
+#: scripts/data/ext/moeras.gd:92
 msgid "Hé daar, oppassen waar je loopt! De turfvelden verrassen je, voor je het weet zak je tot je enkels."
 msgstr "Hey there, watch your step! The peat fields catch you off guard; before you know it you sink to your ankles."
 
 #. Gesprek stien_intro, Stien zegt
-#: scripts/data/ext/moeras.gd:101
+#: scripts/data/ext/moeras.gd:92
 msgid "Ik ben Stien. Ik steek turf, zodat het dorp warm blijft in de winter."
 msgstr "I am Stien. I cut peat, so the village stays warm in winter."
 
 #. Gesprek stien_vraag, Stien zegt
-#: scripts/data/ext/moeras.gd:107
+#: scripts/data/ext/moeras.gd:98
 msgid "Ik werk hier van ochtend tot avond en vergeet steeds te eten. Pluk je 5 veenbessen voor me? Dan maak ik mijn beroemde veenbespap."
 msgstr "I work here from dawn to dusk and keep forgetting to eat. Will you pick 5 cranberries for me? Then I will make my famous cranberry porridge."
 
 #. Gesprek stien_vraag, Stien zegt
-#: scripts/data/ext/moeras.gd:107
+#: scripts/data/ext/moeras.gd:98
 msgid "Ze groeien laag bij de plassen; zoek de rode stipjes tussen het groen."
 msgstr "They grow low near the pools; look for the red dots among the green."
 
 #. Gesprek stien_vraag: keuze van de speler
-#: scripts/data/ext/moeras.gd:109
+#: scripts/data/ext/moeras.gd:100
 msgid "Ik pluk ze voor je."
 msgstr "I will pick them for you."
 
 #. Gesprek stien_vraag: keuze van de speler
-#: scripts/data/ext/moeras.gd:110
+#: scripts/data/ext/moeras.gd:101
 msgid "Nu even niet."
 msgstr "Not right now."
 
 #. Gesprek stien_ok, Stien zegt
-#: scripts/data/ext/moeras.gd:113
+#: scripts/data/ext/moeras.gd:104
 msgid "Lekker bezig. En als je een vors hoort kwaken, kwak maar terug. Werkt altijd."
 msgstr "Good going. And if you hear a toad croak, just croak back. Always works."
 
 #. Gesprek stien_menu, Stien zegt
-#: scripts/data/ext/moeras.gd:114
+#: scripts/data/ext/moeras.gd:105
 msgid "Heb je de veenbessen al? Mijn maag knort luider dan de vorsten."
 msgstr "Got the cranberries yet? My stomach growls louder than the toads."
 
 #. Gesprek stien_klaar, Stien zegt
-#: scripts/data/ext/moeras.gd:117
+#: scripts/data/ext/moeras.gd:108
 msgid "Oooh, prachtige bessen! Zo rood als de zon achter de wilgen."
 msgstr "Oooh, beautiful berries! Red as the sun behind the willows."
 
 #. Gesprek stien_klaar, Stien zegt
-#: scripts/data/ext/moeras.gd:117
+#: scripts/data/ext/moeras.gd:108
 msgid "Hier, een klomp ijzeroer uit mijn veld. En een paar munten; een deal is een deal."
 msgstr "Here, a lump of bog iron from my field. And some coins; a deal is a deal."
 
@@ -3164,54 +3253,35 @@ msgstr "Here, a lump of bog iron from my field. And some coins; a deal is a deal
 #. Naam van wie er praat (Gesprek mees_ok)
 #. Naam van wie er praat (Gesprek mees_menu)
 #. Naam van wie er praat (Gesprek mees_klaar)
-#: scripts/data/ext/moeras.gd:122 scripts/data/ext/moeras.gd:128 scripts/data/ext/moeras.gd:135 scripts/data/ext/moeras.gd:136
+#: scripts/data/ext/moeras.gd:113 scripts/data/ext/moeras.gd:126 scripts/data/ext/moeras.gd:144 scripts/data/ext/moeras.gd:145
 msgid "Mees"
 msgstr "Mees"
 
 #. Gesprek mees_intro, Mees zegt
-#: scripts/data/ext/moeras.gd:123
-msgid "Welkom in het rietland. Hoor je dat knetteren? Dat is het riet dat met de wind praat."
-msgstr "Welcome to the reedland. Hear that crackling? That is the reeds talking to the wind."
-
-#. Gesprek mees_intro, Mees zegt
-#: scripts/data/ext/moeras.gd:123
-msgid "Ik ben Mees. Van riet en wilg vlecht ik manden, hoeden en af en toe een leugen van een visverhaal."
-msgstr "I am Mees. From reed and willow I weave baskets, hats, and the occasional whopper of a fish story."
+#: scripts/data/ext/moeras.gd:115
+msgid "De westelijke oversteek is gebroken. Kijk bij de lier naast het eiland: eerst de sluizen goed zetten, dan repareren. Bouw, brouw, of neem de gevaarlijke route langs de bewakers."
+msgstr "The western crossing is broken. Look at the winch beside the island: set the sluices first, then repair it. Build, brew, or take the dangerous route past the guardians."
 
 #. Gesprek mees_vraag, Mees zegt
-#: scripts/data/ext/moeras.gd:129
-msgid "Mijn beste mand vraagt om wilgentwijgen; buigzaam en sterk tegelijk. Snijd je er 4 voor me bij de geknotte wilgen?"
-msgstr "My best basket calls for willow twigs; supple and strong at once. Will you cut 4 for me at the pollard willows?"
-
-#. Gesprek mees_vraag, Mees zegt
-#: scripts/data/ext/moeras.gd:129
-msgid "Neem wel een bijl mee, anders word je niet vrolijk van dat hout."
-msgstr "Do bring an axe, or that wood will not make you happy."
+#: scripts/data/ext/moeras.gd:127
+msgid "Help je de oversteek herstellen?"
+msgstr "Will you help restore the crossing?"
 
 #. Gesprek mees_vraag: keuze van de speler
-#: scripts/data/ext/moeras.gd:131
-msgid "Ik snijd ze wel."
-msgstr "I will cut them."
+#: scripts/data/ext/moeras.gd:130
+msgid "Ik herstel de oversteek."
+msgstr "I will restore the crossing."
 
 #. Gesprek mees_ok, Mees zegt
-#: scripts/data/ext/moeras.gd:135
-msgid "Mooi. De wilgen staan hier overal, maar de beste twijgen groeien bij de hut van Wouda in het noordwesten."
-msgstr "Good. Willows grow all over, but the best twigs grow near Wouda's hut in the northwest."
-
 #. Gesprek mees_menu, Mees zegt
-#: scripts/data/ext/moeras.gd:136
-msgid "Zijn de twijgen al gesneden?"
-msgstr "Have the twigs been cut yet?"
+#: scripts/data/ext/moeras.gd:144 scripts/data/ext/moeras.gd:145
+msgid "De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."
+msgstr "The winch is west of the island. Open the western sluice and close the eastern one. Then use bridge components, living resin or the guarded winch."
 
 #. Gesprek mees_klaar, Mees zegt
-#: scripts/data/ext/moeras.gd:139
-msgid "Ah, kijk die buigen! Hier wordt een mand van waar je U tegen zegt."
-msgstr "Ah, look at them bend! This will make a basket to say wow about."
-
-#. Gesprek mees_klaar, Mees zegt
-#: scripts/data/ext/moeras.gd:139
-msgid "Voor jou: een bos watermunt uit mijn eigen voorraad. Fris voor in de thee, of sterker spul als je Wouda vraagt."
-msgstr "For you: a bunch of water mint from my own stock. Fresh in tea, or stronger stuff if you ask Wouda."
+#: scripts/data/ext/moeras.gd:149
+msgid "Stien brengt haar turf alweer over de brug. Met het lage water is ook het Rietarchief open. Ik leer je nu hoe je een lichte verkennersjas maakt."
+msgstr "Stien is carrying peat across the bridge again. The low water has also opened the Reed Archive. I will teach you to make a lightweight scout coat."
 
 #. Naam van wie er praat (Gesprek wouda_intro)
 #. Naam van wie er praat (Gesprek wouda_vraag)
@@ -3219,99 +3289,199 @@ msgstr "For you: a bunch of water mint from my own stock. Fresh in tea, or stron
 #. Naam van wie er praat (Gesprek wouda_menu)
 #. Naam van wie er praat (Gesprek wouda_amulet)
 #. Naam van wie er praat (Gesprek wouda_kruiden)
-#: scripts/data/ext/moeras.gd:144 scripts/data/ext/moeras.gd:150 scripts/data/ext/moeras.gd:157 scripts/data/ext/moeras.gd:159
+#: scripts/data/ext/moeras.gd:177 scripts/data/ext/moeras.gd:183 scripts/data/ext/moeras.gd:190 scripts/data/ext/moeras.gd:192
 msgid "Wouda"
 msgstr "Wouda"
 
 #. Gesprek wouda_intro, Wouda zegt
-#: scripts/data/ext/moeras.gd:145
+#: scripts/data/ext/moeras.gd:178
 msgid "Ah... een wandelaar uit het noorden. Ik ben Wouda; het moeras kent mij en ik ken het moeras."
 msgstr "Ah... a wanderer from the north. I am Wouda; the swamp knows me and I know the swamp."
 
 #. Gesprek wouda_intro, Wouda zegt
-#: scripts/data/ext/moeras.gd:145
+#: scripts/data/ext/moeras.gd:178
 msgid "Weet je wat dit land ooit was? De zilverzijde van het meer. De zon lag hier op het water en de schijf werd aanbeden."
 msgstr "Do you know what this land once was? The silver side of the lake. The sun lay on this water and the disk was worshipped."
 
 #. Gesprek wouda_intro, Wouda zegt
-#: scripts/data/ext/moeras.gd:145
+#: scripts/data/ext/moeras.gd:178
 msgid "Toen zakte de grond, steeg het veen, en verdween de tempel onder de drijfmest."
 msgstr "Then the ground sank, the peat rose, and the temple vanished under the quickmire."
 
 #. Gesprek wouda_vraag, Wouda zegt
-#: scripts/data/ext/moeras.gd:151
+#: scripts/data/ext/moeras.gd:184
 msgid "Op het eilandje in de grote plas ligt nog het zonneschijfamulet, het laatste stuk van die oude wereld."
 msgstr "On the islet in the great pool still lies the sun disk amulet, the last piece of that old world."
 
 #. Gesprek wouda_vraag, Wouda zegt
-#: scripts/data/ext/moeras.gd:151
+#: scripts/data/ext/moeras.gd:184
 msgid "De loopbruggen houden je droog... meestal. Haal het voor me, dan vertel ik je wat de Diepte met dit alles te maken heeft."
 msgstr "The footbridges keep you dry... mostly. Fetch it for me, and I will tell you what the Depths have to do with all this."
 
 #. Gesprek wouda_vraag: keuze van de speler
-#: scripts/data/ext/moeras.gd:153
+#: scripts/data/ext/moeras.gd:186
 msgid "Ik zoek het amulet."
 msgstr "I will find the amulet."
 
 #. Gesprek wouda_vraag: keuze van de speler
-#: scripts/data/ext/moeras.gd:154
+#: scripts/data/ext/moeras.gd:187
 msgid "Dat klinkt gevaarlijk."
 msgstr "That sounds dangerous."
 
 #. Gesprek wouda_ok, Wouda zegt
-#: scripts/data/ext/moeras.gd:157
+#: scripts/data/ext/moeras.gd:190
 msgid "Volg de modderpaden naar het hart van het veen. Het eiland wacht al honderd jaar; hij wacht jou ook wel af."
 msgstr "Follow the mud paths to the heart of the peat. The island has waited a hundred years; it will wait for you too."
 
 #. Gesprek wouda_menu, Wouda zegt
-#: scripts/data/ext/moeras.gd:160
+#: scripts/data/ext/moeras.gd:193
 msgid "Het moeras ademt, hoor je dat? Vraag maar wat je wilt weten."
 msgstr "The swamp breathes, do you hear it? Ask whatever you want to know."
 
 #. Gesprek wouda_menu: keuze van de speler
-#: scripts/data/ext/moeras.gd:162
+#: scripts/data/ext/moeras.gd:195
 msgid "Over het amulet."
 msgstr "About the amulet."
 
 #. Gesprek wouda_menu: keuze van de speler
-#: scripts/data/ext/moeras.gd:163
+#: scripts/data/ext/moeras.gd:196
 msgid "Over de kruiden hier."
 msgstr "About the herbs here."
 
 #. Gesprek wouda_amulet, Wouda zegt
-#: scripts/data/ext/moeras.gd:167
+#: scripts/data/ext/moeras.gd:200
 msgid "Het amulet ligt op het eilandje, midden in de drijfmestplas. Over de loopbruggen kom je er."
 msgstr "The amulet lies on the islet, in the middle of the quickmire pool. The footbridges get you there."
 
 #. Gesprek wouda_amulet, Wouda zegt
-#: scripts/data/ext/moeras.gd:167
+#: scripts/data/ext/moeras.gd:200
 msgid "Het is goud dat nooit roestte, omdat het de zon zelf bewaarde. Dat zeggen ze tenminste."
 msgstr "It is gold that never rusted, because it kept the sun itself. That is what they say, anyway."
 
 #. Gesprek wouda_kruiden, Wouda zegt
-#: scripts/data/ext/moeras.gd:168
+#: scripts/data/ext/moeras.gd:201
 msgid "Watermunt langs de paden, veenbessen bij de plassen. En diep in de turf zit ijzeroer, het bloed van het veen."
 msgstr "Water mint along the paths, cranberries near the pools. And deep in the peat sits bog iron, the blood of the moor."
 
 #. Gesprek wouda_kruiden, Wouda zegt
-#: scripts/data/ext/moeras.gd:168
+#: scripts/data/ext/moeras.gd:201
 msgid "Met munt en bes brouw ik een elixer dat je benen nieuw leven geeft. De bibliotheek heeft het fornuis ervoor."
 msgstr "With mint and berry I brew an elixir that gives your legs new life. The library has the stove for it."
 
 #. Gesprek wouda_klaar, Wouda zegt
-#: scripts/data/ext/moeras.gd:171
+#: scripts/data/ext/moeras.gd:204
 msgid "De zonneschijf... honderd jaar veen en hij gloeit nog. Voel je dat? Warm."
 msgstr "The sun disk... a hundred years of peat and it still glows. Do you feel that? Warm."
 
 #. Gesprek wouda_klaar, Wouda zegt
-#: scripts/data/ext/moeras.gd:171
+#: scripts/data/ext/moeras.gd:204
 msgid "De Diepte onder de grot en dit moeras zijn zussen: waar het water de wereld opslokte, bleef het licht in kleine dingen wonen."
 msgstr "The Depths below the cave and this swamp are sisters: where water swallowed the world, the light lived on in little things."
 
 #. Gesprek wouda_klaar, Wouda zegt
-#: scripts/data/ext/moeras.gd:171
+#: scripts/data/ext/moeras.gd:204
 msgid "Neem mijn moeraselixer mee. En kom terug als het veen je weer roept."
 msgstr "Take my swamp elixir. And come back when the moor calls you again."
+
+#. Naam van wie er praat (Gesprek lw_core)
+#: scripts/entities/living_object.gd:33 scripts/data/ext/living.gd:138
+msgid "Prismakern"
+msgstr "Prism core"
+
+#. Gesprek lw_core, Prismakern zegt
+#: scripts/data/ext/living.gd:140
+msgid "De spiegels voeden de kern. De bewakers reageren op elke poging hem los te maken. Hoe wil je hem stabiliseren?"
+msgstr "The mirrors feed the core. Its guardians react to any attempt to free it. How will you stabilize it?"
+
+#. Gesprek lw_core: keuze van de speler
+#: scripts/data/ext/living.gd:144
+msgid "Ik neem het op tegen de bewakers."
+msgstr "I will face the guardians."
+
+#. Gesprek lw_core: keuze van de speler
+#: scripts/data/ext/living.gd:153
+msgid "Gebruik aardingspoeder (1)."
+msgstr "Use grounding powder (1)."
+
+#. Gesprek lw_core: keuze van de speler
+#: scripts/data/ext/living.gd:169
+msgid "Eerst voorbereiden."
+msgstr "Prepare first."
+
+#. Gesprek lw_forge, Greta zegt
+#: scripts/data/ext/living.gd:176
+msgid "De werkplaats leeft weer! Je derde comboslag kan nu een schild breken. Maak hier ook een lantaarn voor Mira."
+msgstr "The workshop is alive again! Your third combo strike can now break a shield. You can also make a lantern for Mira here."
+
+#. Gesprek lw_forge: keuze van de speler
+#: scripts/data/ext/living.gd:180
+msgid "Monteer mijn lantaarn (40 munten)."
+msgstr "Assemble my lantern (40 coins)."
+
+#. Gesprek lw_forge: keuze van de speler
+#: scripts/data/ext/living.gd:205
+msgid "Ik maak hem zelf via Beroepen → Maken."
+msgstr "I will craft it myself via Professions → Craft."
+
+#. Naam van wie er praat (Gesprek lw_bridge)
+#: scripts/entities/living_object.gd:38 scripts/data/ext/living.gd:210
+msgid "De oude lier"
+msgstr "The old winch"
+
+#. Gesprek lw_bridge, De oude lier zegt
+#: scripts/data/ext/living.gd:212
+msgid "De oversteek brak door de waterdruk. West open, oost dicht: zo voert het water veilig af. Onderzoek beide sluizen vóór de reparatie."
+msgstr "Water pressure broke the crossing. West open, east closed: that drains the water safely. Inspect both sluices before repairing it."
+
+#. Gesprek lw_bridge: keuze van de speler
+#: scripts/data/ext/living.gd:216
+msgid "Plaats brugonderdelen (1)."
+msgstr "Fit bridge components (1)."
+
+#. Gesprek lw_bridge: keuze van de speler
+#: scripts/data/ext/living.gd:232
+msgid "Verbind het hout met levende hars (1)."
+msgstr "Bind the timber with living resin (1)."
+
+#. Gesprek lw_bridge: keuze van de speler
+#: scripts/data/ext/living.gd:248
+msgid "Gebruik de lier; verjaag de bewakers."
+msgstr "Use the winch; drive off its guardians."
+
+#. Gesprek lw_bridge: keuze van de speler
+#: scripts/data/ext/living.gd:257
+msgid "Ik bekijk eerst de sluizen."
+msgstr "I will inspect the sluices first."
+
+#. Naam van wie er praat (Gesprek lw_heat)
+#: scripts/data/ext/living.gd:262
+msgid "Verlaten vuurkorf"
+msgstr "Abandoned brazier"
+
+#. Gesprek lw_heat, Verlaten vuurkorf zegt
+#: scripts/data/ext/living.gd:264
+msgid "Blijf bij de korf terwijl hij twintig seconden opwarmt. Vijanden vlak bij de vlam houden de opwarming tegen. Versla alle aanvallers om het huis veilig te maken."
+msgstr "Stay near the brazier as it warms up for twenty seconds. Enemies next to the flame stop it warming. Defeat all attackers to secure the house."
+
+#. Gesprek lw_heat: keuze van de speler
+#: scripts/data/ext/living.gd:268
+msgid "Gebruik drie takken."
+msgstr "Use three branches."
+
+#. Gesprek lw_heat: keuze van de speler
+#: scripts/data/ext/living.gd:284
+msgid "Gebruik een wintergloed."
+msgstr "Use a winter glow."
+
+#. Gesprek lw_heat: keuze van de speler
+#: scripts/data/ext/living.gd:300
+msgid "Gebruik de herstelde prismatechniek."
+msgstr "Use the restored prism technology."
+
+#. Gesprek lw_heat: keuze van de speler
+#: scripts/data/ext/living.gd:315
+msgid "Ik kom voorbereid terug."
+msgstr "I will return prepared."
 
 #. Naam van personage greta (boven zijn hoofd)
 #: scripts/data/npcs.gd:20
@@ -3374,17 +3544,17 @@ msgid "Noor de verzamelaar"
 msgstr "Noor the Collector"
 
 #. Naam van personage fenna (boven zijn hoofd)
-#: scripts/data/ext/sneeuw.gd:37
+#: scripts/data/ext/sneeuw.gd:28
 msgid "Fenna de kruidenvrouwe"
 msgstr "Fenna the herbalist"
 
 #. Naam van personage roos (boven zijn hoofd)
-#: scripts/data/ext/sneeuw.gd:46
+#: scripts/data/ext/sneeuw.gd:37
 msgid "Roos de jageres"
 msgstr "Roos the huntress"
 
 #. Naam van personage olav (boven zijn hoofd)
-#: scripts/data/ext/sneeuw.gd:55
+#: scripts/data/ext/sneeuw.gd:46
 msgid "Olav de kaartenbewaarder"
 msgstr "Olav the map keeper"
 
@@ -3409,17 +3579,17 @@ msgid "Vera de kleermaakster"
 msgstr "Vera the tailor"
 
 #. Naam van personage stien (boven zijn hoofd)
-#: scripts/data/ext/moeras.gd:70
+#: scripts/data/ext/moeras.gd:61
 msgid "Stien de turfsterke"
 msgstr "Stien the peat cutter"
 
 #. Naam van personage mees (boven zijn hoofd)
-#: scripts/data/ext/moeras.gd:79
+#: scripts/data/ext/moeras.gd:70
 msgid "Mees de rietvlechter"
 msgstr "Mees the reed weaver"
 
 #. Naam van personage wouda (boven zijn hoofd)
-#: scripts/data/ext/moeras.gd:88
+#: scripts/data/ext/moeras.gd:79
 msgid "Wouda de kruidenheks"
 msgstr "Wouda the herb witch"
 
@@ -3642,32 +3812,32 @@ msgid "Breng de dauwklauwen naar Mira in het Dauwbos."
 msgstr "Bring the dewclaws to Mira in the Dew Forest."
 
 #. Titel van opdracht warmte
-#: scripts/data/ext/sneeuw.gd:14
+#: scripts/data/ext/living.gd:61
 msgid "Warmte voor IJsdal"
 msgstr "Warmth for IJsdal"
 
 #. Opdracht warmte, stap 1
-#: scripts/data/ext/sneeuw.gd:17
-msgid "Fenna in IJsdal heeft 4 ijsbloemen nodig voor haar warme brouwsels. Ze bloeien in de sneeuw van het dal."
-msgstr "Fenna in IJsdal needs 4 ice flowers for her warm brews. They bloom in the valley's snow."
+#: scripts/data/ext/living.gd:64
+msgid "Herstel de twee vuurkorven voor de noordelijke huizen. Voed ze met hout, wintergloed of de prismatechniek; houd koudevijanden weg tijdens het opwarmen."
+msgstr "Restore the two braziers outside the northern houses. Fuel them with wood, winter glow or prism technology; keep cold enemies away while they warm up."
 
 #. Opdracht warmte, stap 2
-#: scripts/data/ext/sneeuw.gd:20
-msgid "Breng de ijsbloemen naar Fenna in IJsdal."
-msgstr "Bring the ice flowers to Fenna in IJsdal."
+#: scripts/data/ext/living.gd:73
+msgid "Beide huizen zijn warm. Vertel Fenna dat de bergpas weer veilig bereikbaar is."
+msgstr "Both houses are warm. Tell Fenna that the mountain pass is accessible again."
 
 #. Titel van opdracht ijswacht
-#: scripts/data/ext/sneeuw.gd:24
+#: scripts/data/ext/sneeuw.gd:15
 msgid "De Ijswacht"
 msgstr "The Ice Watch"
 
 #. Opdracht ijswacht, stap 1
-#: scripts/data/ext/sneeuw.gd:27
+#: scripts/data/ext/sneeuw.gd:18
 msgid "Roos de jageres houdt de paden van IJsdal veilig. Versla 4 ijsblauwe slijmen in het dal."
 msgstr "Roos the huntress keeps the paths of IJsdal safe. Defeat 4 ice-blue slimes in the valley."
 
 #. Opdracht ijswacht, stap 2
-#: scripts/data/ext/sneeuw.gd:30
+#: scripts/data/ext/sneeuw.gd:21
 msgid "Vertel Roos dat de paden weer veilig zijn."
 msgstr "Tell Roos the paths are safe again."
 
@@ -3717,34 +3887,79 @@ msgid "Breng de veenbessen naar Stien op de turfvelden."
 msgstr "Bring the cranberries to Stien at the peat fields."
 
 #. Titel van opdracht wilgentwijgen
-#: scripts/data/ext/moeras.gd:47
-msgid "Wilgentwijgen voor Mees"
-msgstr "Willow twigs for Mees"
+#: scripts/data/ext/living.gd:79
+msgid "De oversteek van Mees"
+msgstr "Mees’s crossing"
 
 #. Opdracht wilgentwijgen, stap 1
-#: scripts/data/ext/moeras.gd:50
-msgid "Mees de rietvlechter heeft 4 wilgentwijgen nodig voor een nieuwe mand. Snijd ze bij de geknotte wilgen."
-msgstr "Mees the reed weaver needs 4 willow twigs for a new basket. Cut them at the pollard willows."
+#: scripts/data/ext/living.gd:82
+msgid "Onderzoek de lier ten westen van het moeraseiland. Zet de westelijke sluis open en de oostelijke dicht; herstel daarna de oversteek met een bouwpakket, hars of de bewaakte lier."
+msgstr "Inspect the winch west of the marsh island. Open the west sluice and close the east one; then restore the crossing with a bridge kit, resin or the guarded winch."
 
 #. Opdracht wilgentwijgen, stap 2
-#: scripts/data/ext/moeras.gd:53
-msgid "Breng de wilgentwijgen naar Mees in het rietland."
-msgstr "Bring the willow twigs to Mees in the reedland."
+#: scripts/data/ext/living.gd:91
+msgid "Het water staat lager en de brug is bruikbaar. Breng Mees het goede nieuws."
+msgstr "The water is lower and the bridge is usable. Give Mees the good news."
 
 #. Titel van opdracht zonneschijf
-#: scripts/data/ext/moeras.gd:57
+#: scripts/data/ext/moeras.gd:48
 msgid "De zonneschijf van Wouda"
 msgstr "Wouda's sun disk"
 
 #. Opdracht zonneschijf, stap 1
-#: scripts/data/ext/moeras.gd:60
+#: scripts/data/ext/moeras.gd:51
 msgid "Wouda de kruidenheks vertelde over een zonneschijfamulet op het eilandje in de drijfmestplas. Zoek het."
 msgstr "Wouda the herb witch told of a sun disk amulet on the islet in the quickmire pool. Find it."
 
 #. Opdracht zonneschijf, stap 2
-#: scripts/data/ext/moeras.gd:63
+#: scripts/data/ext/moeras.gd:54
 msgid "Breng het amulet naar Wouda bij de wilgenhut."
 msgstr "Bring the amulet to Wouda at the willow hut."
+
+#. Titel van opdracht prisma_herstel
+#: scripts/data/ext/living.gd:5
+msgid "Licht onder de bergen"
+msgstr "Light beneath the mountains"
+
+#. Opdracht prisma_herstel, stap 1
+#: scripts/data/ext/living.gd:8
+msgid "Prismamijn: richt de drie spiegels van de noordelijke kamer op hun gemarkeerde ontvangers. Elke aanraking draait een kwartslag."
+msgstr "Prism Mine: turn the three mirrors in the northern chamber towards their marked receivers. Each interaction turns a quarter turn."
+
+#. Opdracht prisma_herstel, stap 2
+#: scripts/data/ext/living.gd:17
+msgid "Activeer de kern naast de laatste ontvanger. Versla de bewakers of gebruik aardingspoeder."
+msgstr "Activate the core beside the final receiver. Defeat its guardians or use grounding powder."
+
+#. Opdracht prisma_herstel, stap 3
+#: scripts/data/ext/living.gd:26
+msgid "De mijn is stabiel. Herstel de prismabank links in Greta’s smederij."
+msgstr "The mine is stable. Restore the prism bench on the left in Greta’s smithy."
+
+#. Titel van opdracht lichtwerk
+#: scripts/data/ext/living.gd:32
+msgid "Een licht voor Mira"
+msgstr "A light for Mira"
+
+#. Opdracht lichtwerk, stap 1
+#: scripts/data/ext/living.gd:35
+msgid "Maak een prismalantaarn bij Greta: via Maken met de prismalens en twee takken, of laat Greta hem voor 40 munten monteren."
+msgstr "Make a prism lantern at Greta’s: craft it with the prism lens and two branches, or pay Greta 40 coins to assemble it."
+
+#. Titel van opdracht mistsporen
+#: scripts/data/ext/living.gd:41
+msgid "Wat de mist verbergt"
+msgstr "What the mist hides"
+
+#. Opdracht mistsporen, stap 1
+#: scripts/data/ext/living.gd:44
+msgid "Neem je prismalantaarn mee. Onderzoek de tekens bij de westelijke wortels, de vijver en de oostelijke steen in het Dauwbos."
+msgstr "Bring your prism lantern. Investigate the markings by the western roots, the pond and the eastern stone in Dewwood."
+
+#. Opdracht mistsporen, stap 2
+#: scripts/data/ext/living.gd:53
+msgid "Ontsteek de drie runen in de volgorde van het gedicht: water, wortel, ster. Een fout dooft de reeks, niet je aanwijzingen."
+msgstr "Light the three runes in the order of the poem: water, root, star. A mistake resets the sequence, not your clues."
 
 #. Naam van voorwerp coin
 #. Haarkleur (tabblad Uiterlijk)
@@ -4114,7 +4329,7 @@ msgstr "A sharp loose stone. You can pick it up without tools."
 
 #. Naam van voorwerp prof_herb
 #. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:100
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:156
 msgid "Zilverkruid"
 msgstr "Silverleaf"
 
@@ -4345,7 +4560,7 @@ msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks
 
 #. Naam van voorwerp prof_zandkruid
 #. Oogstbare grondstof sandwort
-#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:111
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:167
 msgid "Zandkruid"
 msgstr "Sandwort"
 
@@ -4416,7 +4631,7 @@ msgstr "A red, tart berry that grows low above the moor water. For porridge and 
 
 #. Naam van voorwerp prof_watermunt
 #. Oogstbare grondstof watermunt
-#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:115
+#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:171
 msgid "Watermunt"
 msgstr "Water mint"
 
@@ -4465,103 +4680,123 @@ msgstr "Cranberry porridge"
 msgid "Warme pap met veenbessen, zoals Stien hem maakt. Herstelt 2 hartjes en 5 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
 msgstr "Warm porridge with cranberries, the way Stien makes it. Restores 2 hearts and 5 stamina. Use via Professions → Food & drink."
 
+#. Naam van voorwerp gear_scout_coat
+#: scripts/data/ext/uitrusting.gd:15
+msgid "Verkennersjas"
+msgstr "Scout coat"
+
+#. Beschrijving van voorwerp gear_scout_coat
+#: scripts/data/ext/uitrusting.gd:25
+msgid "8% sneller en 10 extra stamina, maar geen pantser. Voor verkennen en ontwijken."
+msgstr "8% faster and 10 extra stamina, but no armor. For exploration and dodging."
+
+#. Naam van voorwerp gear_bastion_coat
+#: scripts/data/ext/uitrusting.gd:28
+msgid "Wachtharnas"
+msgstr "Warden coat"
+
+#. Beschrijving van voorwerp gear_bastion_coat
+#: scripts/data/ext/uitrusting.gd:38
+msgid "2 pantser, maar 8% langzamer. Elke treffer doet minimaal 1 schade. Voor standhouden bij een vuurkorf."
+msgstr "2 armor, but 8% slower. Every hit deals at least 1 damage. For holding your ground by a brazier."
+
 #. Naam van voorwerp gear_cloth_hood
-#: scripts/data/ext/uitrusting.gd:14
+#: scripts/data/ext/uitrusting.gd:41
 msgid "Linnen kap"
 msgstr "Linen hood"
 
 #. Beschrijving van voorwerp gear_cloth_hood
-#: scripts/data/ext/uitrusting.gd:14
+#: scripts/data/ext/uitrusting.gd:41
 msgid "Een lichte reiskap. Draag hem op je hoofd voor 15 extra uithoudingsvermogen."
 msgstr "A light traveling hood. Wear it on your head for 15 extra stamina."
 
 #. Naam van voorwerp gear_bronze_helm
-#: scripts/data/ext/uitrusting.gd:15
+#: scripts/data/ext/uitrusting.gd:42
 msgid "Bronzen helm"
 msgstr "Bronze helmet"
 
 #. Beschrijving van voorwerp gear_bronze_helm
-#: scripts/data/ext/uitrusting.gd:15
+#: scripts/data/ext/uitrusting.gd:42
 msgid "Een stevige helm voor lange tochten. Draag hem op je hoofd voor 30 extra uithoudingsvermogen."
 msgstr "A sturdy helmet for long journeys. Wear it on your head for 30 extra stamina."
 
 #. Naam van voorwerp gear_leather_armor
-#: scripts/data/ext/uitrusting.gd:16
+#: scripts/data/ext/uitrusting.gd:43
 msgid "Leren harnas"
 msgstr "Leather armor"
 
 #. Beschrijving van voorwerp gear_leather_armor
-#: scripts/data/ext/uitrusting.gd:16
+#: scripts/data/ext/uitrusting.gd:43
 msgid "Vangt zware klappen op. Vermindert schade met 1, tot minimaal 1 schade per treffer."
 msgstr "Absorbs heavy blows. Reduces damage by 1, to a minimum of 1 damage per hit."
 
 #. Naam van voorwerp gear_iron_armor
-#: scripts/data/ext/uitrusting.gd:17
+#: scripts/data/ext/uitrusting.gd:44
 msgid "IJzeren harnas"
 msgstr "Iron armor"
 
 #. Beschrijving van voorwerp gear_iron_armor
-#: scripts/data/ext/uitrusting.gd:17
+#: scripts/data/ext/uitrusting.gd:44
 msgid "Gesmede bescherming. Vermindert schade met 2, tot minimaal 1 schade per treffer."
 msgstr "Forged protection. Reduces damage by 2, to a minimum of 1 damage per hit."
 
 #. Naam van voorwerp gear_novice_gloves
-#: scripts/data/ext/uitrusting.gd:18
+#: scripts/data/ext/uitrusting.gd:45
 msgid "Leerlinghandschoenen"
 msgstr "Apprentice gloves"
 
 #. Beschrijving van voorwerp gear_novice_gloves
-#: scripts/data/ext/uitrusting.gd:18
+#: scripts/data/ext/uitrusting.gd:45
 msgid "Een goede grip op je zwaard. Draag ze voor 8% kortere wachttijd tussen zwaardaanvallen."
 msgstr "A firm grip on your sword. Wear them for an 8% shorter cooldown between sword attacks."
 
 #. Naam van voorwerp gear_smith_gloves
-#: scripts/data/ext/uitrusting.gd:19
+#: scripts/data/ext/uitrusting.gd:46
 msgid "Smeedhandschoenen"
 msgstr "Smith's gloves"
 
 #. Beschrijving van voorwerp gear_smith_gloves
-#: scripts/data/ext/uitrusting.gd:19
+#: scripts/data/ext/uitrusting.gd:46
 msgid "Perfect passende handschoenen. Draag ze voor 16% kortere wachttijd tussen zwaardaanvallen."
 msgstr "Perfectly fitted gloves. Wear them for a 16% shorter cooldown between sword attacks."
 
 #. Naam van voorwerp gear_copper_amulet
-#: scripts/data/ext/uitrusting.gd:20
+#: scripts/data/ext/uitrusting.gd:47
 msgid "Koperen amulet"
 msgstr "Copper amulet"
 
 #. Beschrijving van voorwerp gear_copper_amulet
-#: scripts/data/ext/uitrusting.gd:20
+#: scripts/data/ext/uitrusting.gd:47
 msgid "Een warm koperen sieraad. Draag het om je hals voor 15% sneller herstel van uithoudingsvermogen."
 msgstr "A warm copper charm. Wear it around your neck for 15% faster stamina recovery."
 
 #. Naam van voorwerp gear_crystal_amulet
-#: scripts/data/ext/uitrusting.gd:21
+#: scripts/data/ext/uitrusting.gd:48
 msgid "Kristallen amulet"
 msgstr "Crystal amulet"
 
 #. Beschrijving van voorwerp gear_crystal_amulet
-#: scripts/data/ext/uitrusting.gd:21
+#: scripts/data/ext/uitrusting.gd:48
 msgid "Alchemie laat gel kristalliseren rond koper. Draag het voor 30% sneller herstel van uithoudingsvermogen."
 msgstr "Alchemy crystallizes gel around copper. Wear it for 30% faster stamina recovery."
 
 #. Naam van voorwerp gear_copper_ring
-#: scripts/data/ext/uitrusting.gd:22
+#: scripts/data/ext/uitrusting.gd:49
 msgid "Koperen ring"
 msgstr "Copper ring"
 
 #. Beschrijving van voorwerp gear_copper_ring
-#: scripts/data/ext/uitrusting.gd:22
+#: scripts/data/ext/uitrusting.gd:49
 msgid "Een ring die verloren spullen aantrekt. Vergroot je magnetische oppakbereik met 12 pixels."
 msgstr "A ring that attracts lost belongings. Increases your magnetic pickup range by 12 pixels."
 
 #. Naam van voorwerp gear_crystal_ring
-#: scripts/data/ext/uitrusting.gd:23
+#: scripts/data/ext/uitrusting.gd:50
 msgid "Kristallen ring"
 msgstr "Crystal ring"
 
 #. Beschrijving van voorwerp gear_crystal_ring
-#: scripts/data/ext/uitrusting.gd:23
+#: scripts/data/ext/uitrusting.gd:50
 msgid "Een ring van koper en alchemistisch kristal. Vergroot je magnetische oppakbereik met 24 pixels."
 msgstr "A ring of copper and alchemical crystal. Increases your magnetic pickup range by 24 pixels."
 
@@ -4885,6 +5120,56 @@ msgstr "Sun disk amulet"
 msgid "Een gouden schijfje aan een verweerd koord. Het voelt warm, alsof de zon er nog in zit."
 msgstr "A golden disk on a weathered cord. It feels warm, as if the sun still sits inside."
 
+#. Naam van voorwerp lw_lens
+#: scripts/data/ext/living.gd:99
+msgid "Prismalens"
+msgstr "Prism lens"
+
+#. Beschrijving van voorwerp lw_lens
+#: scripts/data/ext/living.gd:104
+msgid "De gestabiliseerde kern uit de Prismamijn. Greta kan er een lantaarn van maken."
+msgstr "The stabilized core from the Prism Mine. Greta can turn it into a lantern."
+
+#. Naam van voorwerp lw_lantern
+#: scripts/data/ext/living.gd:107
+msgid "Prismalantaarn"
+msgstr "Prism lantern"
+
+#. Beschrijving van voorwerp lw_lantern
+#: scripts/data/ext/living.gd:112
+msgid "Onthult de verborgen bosrunen. Mistjagers wijken terug binnen de lichtkring. Werkt automatisch zolang je hem draagt."
+msgstr "Reveals hidden forest runes. Mist stalkers retreat inside its light. Works automatically while carried."
+
+#. Naam van voorwerp lw_powder
+#: scripts/data/ext/living.gd:115
+msgid "Aardingspoeder"
+msgstr "Grounding powder"
+
+#. Beschrijving van voorwerp lw_powder
+#: scripts/data/ext/living.gd:119
+msgid "Stabiliseert de mijnkern zonder gevecht. Meng steen met slijmgel aan de alchemietafel."
+msgstr "Stabilizes the mine core without combat. Mix stone and slime gel at the alchemy table."
+
+#. Naam van voorwerp lw_bridge_kit
+#: scripts/data/ext/living.gd:122
+msgid "Brugonderdelen"
+msgstr "Bridge components"
+
+#. Beschrijving van voorwerp lw_bridge_kit
+#: scripts/data/ext/living.gd:126
+msgid "Een houten constructie voor Mees’ oversteek. Te maken zonder werkbank."
+msgstr "A wooden structure for Mees’s crossing. Can be crafted without a workbench."
+
+#. Naam van voorwerp lw_resin
+#: scripts/data/ext/living.gd:129
+msgid "Levende hars"
+msgstr "Living resin"
+
+#. Beschrijving van voorwerp lw_resin
+#: scripts/data/ext/living.gd:133
+msgid "Watermunt en slijmgel verbinden het gebroken hout van de oversteek."
+msgstr "Watermint and slime gel bind the crossing’s broken timbers."
+
 #. Naam van vijand slime
 #: scripts/data/enemies.gd:13
 msgid "Slijm"
@@ -5044,6 +5329,36 @@ msgstr "Water snake"
 #: scripts/data/ext/moeras.gd:26
 msgid "Een gladde slang die tussen het riet glijdt. Ongevaarlijk, maar je grijpt hem zelden bij de staart."
 msgstr "A slick snake that slides between the reeds. Harmless, but you rarely catch it by the tail."
+
+#. Naam van vijand lw_warden
+#: scripts/data/ext/living.gd:322
+msgid "Schildwachter"
+msgstr "Shield warden"
+
+#. Vijand lw_warden: grappige beschrijving in het beestenboek
+#: scripts/data/ext/living.gd:341
+msgid "Blokkeert frontale treffers. Flankeer hem of breek zijn schild met je vrijgespeelde derde comboslag."
+msgstr "Blocks frontal hits. Flank it or break its shield with your unlocked third combo strike."
+
+#. Naam van vijand lw_stalker
+#: scripts/data/ext/living.gd:344
+msgid "Mistjager"
+msgstr "Mist stalker"
+
+#. Vijand lw_stalker: grappige beschrijving in het beestenboek
+#: scripts/data/ext/living.gd:363
+msgid "Loopt om je heen voor een korte uitval. Wijkt terug voor prismalicht en brandende vuurkorven."
+msgstr "Circles around you before a short lunge. Retreats from prism light and burning braziers."
+
+#. Naam van vijand lw_singer
+#: scripts/data/ext/living.gd:366
+msgid "Rietzanger"
+msgstr "Reed singer"
+
+#. Vijand lw_singer: grappige beschrijving in het beestenboek
+#: scripts/data/ext/living.gd:385
+msgid "Helpt gewonde vijanden met een zichtbaar lied. Een zwaardtreffer onderbreekt de genezing."
+msgstr "Helps wounded enemies with a visible song. A sword hit interrupts its healing."
 
 #. Naam van vijand crystal_beetle
 #: scripts/data/ext/echo.gd:23
@@ -5469,12 +5784,12 @@ msgid "Pluk dauwklauwen voor Mira en proef het mistedrank."
 msgstr "Pick dewclaws for Mira and taste the mist tonic."
 
 #. Naam van prestatie ijsdal_ontdekt
-#: scripts/data/ext/sneeuw.gd:131
+#: scripts/data/ext/sneeuw.gd:159
 msgid "Sneeuwvoeten"
 msgstr "Snow feet"
 
 #. Uitleg bij prestatie ijsdal_ontdekt
-#: scripts/data/ext/sneeuw.gd:131
+#: scripts/data/ext/sneeuw.gd:159
 msgid "Ontdek IJsdal en praat met Fenna, Roos en Olav."
 msgstr "Discover IJsdal and talk to Fenna, Roos and Olav."
 
@@ -5489,12 +5804,12 @@ msgid "Ontdek de Dorstvallei en praat met Jelle, Sana en Nour."
 msgstr "Discover Dorstvallei and talk to Jelle, Sana and Nour."
 
 #. Naam van prestatie kruipmoeras_ontdekt
-#: scripts/data/ext/moeras.gd:178
+#: scripts/data/ext/moeras.gd:211
 msgid "Veenvoeten"
 msgstr "Peat feet"
 
 #. Uitleg bij prestatie kruipmoeras_ontdekt
-#: scripts/data/ext/moeras.gd:178
+#: scripts/data/ext/moeras.gd:211
 msgid "Ontdek het Kruipmoeras en praat met Stien, Mees en Wouda."
 msgstr "Discover the Creeping Swamp and talk to Stien, Mees and Wouda."
 
@@ -5694,6 +6009,11 @@ msgstr "reading stand"
 #: scripts/data/ext/beroepen.gd:6
 msgid "grondstof"
 msgstr "resource"
+
+#. Legenda op het kaartje (menu): living_object
+#: scripts/data/ext/living.gd:389
+msgid "Wereldopdracht"
+msgstr "World quest"
 
 #. Uitrustingsslot head: name
 #. Kledingvak hat: name
@@ -6028,87 +6348,87 @@ msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme g
 msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
 
 #. Oogstbare grondstof branches
-#: scripts/data/ext/beroepen.gd:98
+#: scripts/data/ext/beroepen.gd:154
 msgid "Losse takken"
 msgstr "Loose Branches"
 
 #. Oogstbare grondstof stones
-#: scripts/data/ext/beroepen.gd:99
+#: scripts/data/ext/beroepen.gd:155
 msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof berries
-#: scripts/data/ext/beroepen.gd:101
+#: scripts/data/ext/beroepen.gd:157
 msgid "Bosbessenstruik"
 msgstr "Blueberry Bush"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:102
+#: scripts/data/ext/beroepen.gd:158
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
 #. Oogstbare grondstof stump
-#: scripts/data/ext/beroepen.gd:103
+#: scripts/data/ext/beroepen.gd:159
 msgid "Berkenstronk"
 msgstr "Birch Stump"
 
 #. Oogstbare grondstof copper
-#: scripts/data/ext/beroepen.gd:104
+#: scripts/data/ext/beroepen.gd:160
 msgid "Koperader"
 msgstr "Copper Vein"
 
 #. Oogstbare grondstof iron
-#: scripts/data/ext/beroepen.gd:105
+#: scripts/data/ext/beroepen.gd:161
 msgid "IJzerader"
 msgstr "Iron Vein"
 
 #. Oogstbare grondstof winterherbs
-#: scripts/data/ext/beroepen.gd:106
+#: scripts/data/ext/beroepen.gd:162
 msgid "IJsbloemen"
 msgstr "Ice flowers"
 
 #. Oogstbare grondstof frostberries
-#: scripts/data/ext/beroepen.gd:107
+#: scripts/data/ext/beroepen.gd:163
 msgid "Winterbessenstruik"
 msgstr "Winter berry bush"
 
 #. Oogstbare grondstof pine_stump
-#: scripts/data/ext/beroepen.gd:108
+#: scripts/data/ext/beroepen.gd:164
 msgid "Dennenstronk"
 msgstr "Pine stump"
 
 #. Oogstbare grondstof ice_vein
-#: scripts/data/ext/beroepen.gd:109
+#: scripts/data/ext/beroepen.gd:165
 msgid "IJskristalader"
 msgstr "Ice crystal vein"
 
 #. Oogstbare grondstof cactusfigs
-#: scripts/data/ext/beroepen.gd:110
+#: scripts/data/ext/beroepen.gd:166
 msgid "Cactusvijgen"
 msgstr "Cactus figs"
 
 #. Oogstbare grondstof sandstone_rock
-#: scripts/data/ext/beroepen.gd:112
+#: scripts/data/ext/beroepen.gd:168
 msgid "Zandsteenklip"
 msgstr "Sandstone crag"
 
 #. Oogstbare grondstof dauwklauw
-#: scripts/data/ext/beroepen.gd:113
+#: scripts/data/ext/beroepen.gd:169
 msgid "Dauwklauwen"
 msgstr "Dewclaws"
 
 #. Oogstbare grondstof veenbessen
-#: scripts/data/ext/beroepen.gd:114
+#: scripts/data/ext/beroepen.gd:170
 msgid "Veenbessenstruik"
 msgstr "Cranberry bush"
 
 #. Oogstbare grondstof wilgstronk
-#: scripts/data/ext/beroepen.gd:116
+#: scripts/data/ext/beroepen.gd:172
 msgid "Geknotte wilg"
 msgstr "Pollard willow"
 
 #. Oogstbare grondstof ijzeroer_ader
-#: scripts/data/ext/beroepen.gd:117
+#: scripts/data/ext/beroepen.gd:173
 msgid "IJzeroerklomp"
 msgstr "Bog iron lump"
 
@@ -7085,22 +7405,26 @@ msgid "Nacht"
 msgstr "Night"
 
 #: scripts/core/equipment.gd:114
+msgid "%+d%% snelheid · %d pantser · %+d stamina"
+msgstr "%+d%% speed · %d armor · %+d stamina"
+
+#: scripts/core/equipment.gd:116
 msgid "+%d uithoudingsvermogen"
 msgstr "+%d stamina"
 
-#: scripts/core/equipment.gd:116
+#: scripts/core/equipment.gd:118
 msgid "+%d pantser (minimaal 1 schade)"
 msgstr "+%d armor (minimum 1 damage)"
 
-#: scripts/core/equipment.gd:118
+#: scripts/core/equipment.gd:120
 msgid "%d%% kortere wachttijd tussen zwaardaanvallen"
 msgstr "%d%% shorter sword attack cooldown"
 
-#: scripts/core/equipment.gd:120
+#: scripts/core/equipment.gd:122
 msgid "+%d%% herstel van uithoudingsvermogen"
 msgstr "+%d%% stamina recovery"
 
-#: scripts/core/equipment.gd:122
+#: scripts/core/equipment.gd:124
 msgid "+%d pixels magnetisch oppakbereik"
 msgstr "+%d pixels magnetic pickup range"
 
@@ -7264,6 +7588,22 @@ msgstr "That input is already assigned to %s. Choose an unused button."
 #: scripts/core/input_manager.gd:345
 msgid "Bediening kon niet worden opgeslagen."
 msgstr "Controls could not be saved."
+
+#: scripts/core/living_world.gd:85
+msgid "Je hebt de oude lichtkring hersteld. In de Dauwtuin bloeien de kruiden weer."
+msgstr "You have restored the old circle of light. Herbs are flowering in the Dew Garden again."
+
+#: scripts/core/living_world.gd:88
+msgid "Kijk naar de huizen: de families zijn terug. De Bergpas achter het oostelijke huis is open."
+msgstr "Look at the houses: the families are back. The Mountain Pass behind the eastern house is open."
+
+#: scripts/core/living_world.gd:91
+msgid "Mijn turf gaat weer over de brug. Aan de drooggevallen oever kun je nu vissen."
+msgstr "My peat is crossing the bridge again. You can now fish by the exposed bank."
+
+#: scripts/core/professions.gd:97
+msgid "Nog vergrendeld: herstel de prismabank of Mees’ oversteek."
+msgstr "Still locked: restore the prism bench or Mees’s crossing."
 
 #: scripts/data/arena.gd:101
 msgid "Je staat al ingeschreven. Loop maar naar de arenadeur!"
@@ -7483,11 +7823,11 @@ msgstr "Bounced off!"
 msgid "Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."
 msgstr "Your arrow bounces off the crystal! Shoot when the golem winds up for a slam."
 
-#: scripts/entities/atmosphere.gd:243
+#: scripts/entities/atmosphere.gd:245
 msgid "Goedemorgen!"
 msgstr "Good morning!"
 
-#: scripts/entities/atmosphere.gd:244
+#: scripts/entities/atmosphere.gd:246
 msgid "Lekker geslapen! Je hebt weer alle hartjes."
 msgstr "Slept like a log! All your hearts are back."
 
@@ -7529,15 +7869,15 @@ msgstr "The crystals sing your name. You have already completed this trial."
 msgid "Drie golven. Volg de lichtstralen. De uitgang blijft open als je wilt terugtrekken."
 msgstr "Three waves. Follow the light rays. The exit stays open if you want to retreat."
 
-#: scripts/entities/echo_trial.gd:63
+#: scripts/entities/echo_trial.gd:67
 msgid "Resonantieproef: golf %d / 3"
 msgstr "Resonance Trial: wave %d / 3"
 
-#: scripts/entities/echo_trial.gd:72
+#: scripts/entities/echo_trial.gd:76
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:373
+#: scripts/entities/enemy.gd:380
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -7552,6 +7892,122 @@ msgstr "The gate is locked."
 #: scripts/entities/guardian.gd:462
 msgid "Beschermd!"
 msgstr "Shielded!"
+
+#: scripts/entities/living_object.gd:32
+msgid "Prismaspiegel"
+msgstr "Prism mirror"
+
+#: scripts/entities/living_object.gd:34
+msgid "Prismabank"
+msgstr "Prism bench"
+
+#: scripts/entities/living_object.gd:35
+msgid "Verborgen bosrune"
+msgstr "Hidden forest rune"
+
+#: scripts/entities/living_object.gd:36
+msgid "Vuurkorf"
+msgstr "Brazier"
+
+#: scripts/entities/living_object.gd:37
+msgid "Sluisrad"
+msgstr "Sluice wheel"
+
+#: scripts/entities/living_object.gd:39
+msgid "Herstelbord"
+msgstr "Restoration notice"
+
+#: scripts/entities/living_object.gd:47
+msgid "De drie spiegels horen één lichtpad te vormen: oost, zuid, west. Draai ze naar hun ontvangers en activeer daarna de kern."
+msgstr "The three mirrors should form one path of light: east, south, west. Turn them towards their receivers, then activate the core."
+
+#: scripts/entities/living_object.gd:47
+msgid "Greta zoekt deze kern voor haar oude werkplaats. Aardingspoeder uit de bibliotheek biedt een rustige oplossing; de bewakers verslaan kan ook."
+msgstr "Greta needs this core for her old workshop. Grounding powder from the library offers a peaceful solution; defeating the guardians also works."
+
+#: scripts/entities/living_object.gd:59
+msgid "De kern is stabiel. Greta wacht bij haar prismabank."
+msgstr "The core is stable. Greta is waiting by her prism bench."
+
+#: scripts/entities/living_object.gd:61
+msgid "Volg het lichtpad: richt eerst alle drie de spiegels op de ontvangers."
+msgstr "Follow the light: first aim all three mirrors at their receivers."
+
+#: scripts/entities/living_object.gd:68
+msgid "Mijn prismabank mist zijn kern. Zoek in de Prismamijn, via de Echo-grot. Een ijzeren zwaard opent die zijroute."
+msgstr "My prism bench is missing its core. Search the Prism Mine through the Echo Cave. An iron sword opens that side route."
+
+#: scripts/entities/living_object.gd:82
+msgid "Dit huis blijft warm. De bewoners zijn terug."
+msgstr "This house stays warm. Its residents are back."
+
+#: scripts/entities/living_object.gd:90
+msgid "De waterstand is veilig. De sluizen blijven zo staan."
+msgstr "The water level is safe. The sluices will stay in this position."
+
+#: scripts/entities/living_object.gd:96
+msgid "Het water zakt. De oostelijke oever en het Rietarchief vallen droog."
+msgstr "The water is falling. The eastern bank and Reed Archive are emerging."
+
+#: scripts/entities/living_object.gd:98
+msgid "Sluis: open"
+msgstr "Sluice: open"
+
+#: scripts/entities/living_object.gd:98
+msgid "Sluis: dicht"
+msgstr "Sluice: closed"
+
+#: scripts/entities/living_object.gd:104
+msgid "De oversteek is hersteld. Vertel het aan Mees in het oostelijke rietland."
+msgstr "The crossing is restored. Tell Mees in the eastern reed beds."
+
+#: scripts/entities/living_object.gd:127
+msgid "Eerst de waterdruk verlagen: west open, oost dicht. Je materialen blijven in je tas."
+msgstr "Lower the water pressure first: west open, east closed. Your materials stay in your bag."
+
+#: scripts/entities/living_object.gd:147
+msgid "Het licht stroomt weer door de wortels."
+msgstr "Light flows through the roots again."
+
+#: scripts/entities/living_object.gd:150
+msgid "Onder de mist zitten tekens. Een prismalantaarn uit Greta’s herstelde werkplaats kan ze onthullen."
+msgstr "Markings lie beneath the mist. A prism lantern from Greta’s restored workshop can reveal them."
+
+#: scripts/entities/living_object.gd:155
+msgid "Eerst drinkt het WATER het licht. Zoek de andere tekens bij de wortels en de oostelijke steen."
+msgstr "First the WATER drinks the light. Look for the other markings by the roots and the eastern stone."
+
+#: scripts/entities/living_object.gd:156
+msgid "Dan draagt de WORTEL het licht. Zoek de andere tekens bij de vijver en de oostelijke steen."
+msgstr "Then the ROOT carries the light. Look for the other markings by the pond and the eastern stone."
+
+#: scripts/entities/living_object.gd:157
+msgid "Ten slotte wijst de STER naar de tuin. De volgorde is water, wortel, ster."
+msgstr "Finally the STAR points to the garden. The order is water, root, star."
+
+#: scripts/entities/living_object.gd:166
+msgid "De lichtkring dooft. Probeer opnieuw: water, wortel, ster."
+msgstr "The circle of light fades. Try again: water, root, star."
+
+#: scripts/entities/living_object.gd:172
+msgid "De mist wijkt! De Dauwtuin in het zuidoosten is open. Je ontving een verkennersjas."
+msgstr "The mist clears! The Dew Garden to the southeast is open. You received a scout coat."
+
+#: scripts/entities/living_object.gd:194
+msgid "Een beweging in de verte… let op de gemarkeerde plekken."
+msgstr "Movement in the distance… watch the marked spots."
+
+#: scripts/entities/living_object.gd:202
+msgid "De mijn is stabiel. Neem de lens naar de prismabank in Greta’s smederij."
+msgstr "The mine is stable. Take the lens to the prism bench in Greta’s smithy."
+
+#: scripts/entities/living_object.gd:205
+msgid "De brug ligt weer! Handelaren gebruiken de korte route. Mees wacht op het goede nieuws."
+msgstr "The bridge is back! Traders are using the shortcut. Mees is waiting for the good news."
+
+#: scripts/entities/living_object.gd:210
+msgid "Het huis is warm. De bewoners keren terug."
+msgstr "The house is warm. Its residents are returning."
 
 #: scripts/entities/meer_kast.gd:37
 msgid "De geheime kast schuift opzij!"
@@ -7573,19 +8029,19 @@ msgstr "Deep fishing spot"
 msgid "Visplek"
 msgstr "Fishing spot"
 
-#: scripts/entities/player.gd:278
+#: scripts/entities/player.gd:280
 msgid "Je hebt een boog nodig. Tobias verkoopt er een."
 msgstr "You need a bow. Tobias sells one."
 
-#: scripts/entities/player.gd:289
+#: scripts/entities/player.gd:291
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:313 scripts/ui/menu_ui.gd:478
+#: scripts/entities/player.gd:315 scripts/ui/menu_ui.gd:478
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
-#: scripts/entities/player.gd:315
+#: scripts/entities/player.gd:317
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
 
@@ -7615,7 +8071,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:43
+#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:43 scripts/entities/living_scenery.gd:71 scripts/entities/living_scenery.gd:74
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -7920,7 +8376,7 @@ msgstr "Buy swift boots from Tobias. They become active automatically."
 msgid "Bekijk Voortgang voor prijs en locatie. Deze bestaande upgrade hoef je niet aan of uit te zetten."
 msgstr "See Progress for price and location. This existing upgrade does not need to be equipped or unequipped."
 
-#: scripts/ui/equipment_page.gd:253 scripts/ui/progression_page.gd:173 scripts/ui/progression_page.gd:242
+#: scripts/ui/equipment_page.gd:253 scripts/ui/progression_page.gd:173 scripts/ui/progression_page.gd:243
 msgid "Nu: %s"
 msgstr "Current: %s"
 
@@ -7944,7 +8400,7 @@ msgstr "Not owned yet. Gathering or buying does not automatically change your eq
 msgid "Tobias · dorpswinkel · %d munten (je hebt %d)"
 msgstr "Tobias · village shop · %d coins (you have %d)"
 
-#: scripts/ui/equipment_page.gd:272 scripts/ui/progression_page.gd:232 scripts/ui/crafting_ui.gd:237
+#: scripts/ui/equipment_page.gd:272 scripts/ui/progression_page.gd:233 scripts/ui/crafting_ui.gd:237
 msgid "%s %d/%d"
 msgstr "%s %d/%d"
 
@@ -8329,10 +8785,6 @@ msgstr "You don't have any quests yet. Talk to the people in the village!"
 msgid "%s   (hoofdopdracht)"
 msgstr "%s   (main quest)"
 
-#: scripts/ui/menu_ui.gd:652
-msgid "Voltooid."
-msgstr "Completed."
-
 #: scripts/ui/menu_ui.gd:695
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
@@ -8433,7 +8885,7 @@ msgstr "Change head, chest, hands, neck and ring gear on the Equipment tab."
 msgid "Je hebt het sterkste zwaard van Azura."
 msgstr "You have the strongest sword in Azura."
 
-#: scripts/ui/progression_page.gd:180 scripts/ui/progression_page.gd:209 scripts/ui/progression_page.gd:246
+#: scripts/ui/progression_page.gd:180 scripts/ui/progression_page.gd:210 scripts/ui/progression_page.gd:247
 msgid "Volgende upgrade: %s"
 msgstr "Next upgrade: %s"
 
@@ -8449,7 +8901,7 @@ msgstr "First restore the Blue Map. Then descend beneath the Crystal Temple and 
 msgid "Greta · smederij in het noordwesten van het dorp"
 msgstr "Greta · smithy in the northwest of the village"
 
-#: scripts/ui/progression_page.gd:186 scripts/ui/progression_page.gd:209
+#: scripts/ui/progression_page.gd:186 scripts/ui/progression_page.gd:210
 msgid "Munten: %d / %d"
 msgstr "Coins: %d / %d"
 
@@ -8465,95 +8917,103 @@ msgstr "Slimes drop slime gel; golem guards in the ruins and cave drop shards."
 msgid "Praat met Greta om te laten smeden. Heldniveau en beroep Smeden zijn hiervoor niet vereist."
 msgstr "Talk to Greta to have it forged. No hero or Smithing level is required."
 
-#: scripts/ui/progression_page.gd:208
+#: scripts/ui/progression_page.gd:192
+msgid "Schildbreker geleerd: de derde comboslag breekt een frontaal schild (18 stamina)."
+msgstr "Guard breaker learned: your third combo strike breaks a frontal shield (18 stamina)."
+
+#: scripts/ui/progression_page.gd:192
+msgid "Nieuwe techniek: herstel Greta’s prismabank om met je derde comboslag schilden te breken."
+msgstr "New technique: restore Greta’s prism bench to break shields with your third combo strike."
+
+#: scripts/ui/progression_page.gd:209
 msgid "Uitgerust: %s"
 msgstr "Equipped: %s"
 
-#: scripts/ui/progression_page.gd:208 scripts/ui/progression_page.gd:209
+#: scripts/ui/progression_page.gd:209 scripts/ui/progression_page.gd:210
 msgid "Blijvend %d%% sneller lopen en rennen."
 msgstr "Permanently walk and sprint %d%% faster."
 
-#: scripts/ui/progression_page.gd:208
+#: scripts/ui/progression_page.gd:209
 msgid "Je hebt de beste laarzen. Paden en rennen geven daarbovenop hun eigen snelheidsbonus."
 msgstr "You have the best boots. Paths and sprinting add their own speed bonuses."
 
-#: scripts/ui/progression_page.gd:209
+#: scripts/ui/progression_page.gd:210
 msgid "Nu: gewone schoenen"
 msgstr "Current: ordinary shoes"
 
-#: scripts/ui/progression_page.gd:209
+#: scripts/ui/progression_page.gd:210
 msgid "Tobias · winkel naast de smederij in het dorp"
 msgstr "Tobias · shop beside the village smithy"
 
-#: scripts/ui/progression_page.gd:209
+#: scripts/ui/progression_page.gd:210
 msgid "Geen niveau of materialen vereist. Koop ze via het gesprek met Tobias."
 msgstr "No level or materials required. Talk to Tobias to buy them."
 
-#: scripts/ui/progression_page.gd:214
+#: scripts/ui/progression_page.gd:215
 msgid "Levens: %d / %d hartjes maximaal"
 msgstr "Health capacity: %d / %d hearts"
 
-#: scripts/ui/progression_page.gd:216
+#: scripts/ui/progression_page.gd:217
 msgid "Alle hartcontainers verzameld."
 msgstr "All heart containers collected."
 
-#: scripts/ui/progression_page.gd:218
+#: scripts/ui/progression_page.gd:219
 msgid "Elke hartcontainer geeft blijvend +1 hartje. Geen muntkosten."
 msgstr "Each heart container permanently adds 1 heart. No coins required."
 
-#: scripts/ui/progression_page.gd:220
+#: scripts/ui/progression_page.gd:221
 msgid "Pim · bij zijn kat in het oosten van het dorp"
 msgstr "Pim · beside his cat in the east of the village"
 
-#: scripts/ui/progression_page.gd:220
+#: scripts/ui/progression_page.gd:221
 msgid "Pim · oosten van het dorp: vind zijn kat Muis in het Fluisterbos en keer bij hem terug."
 msgstr "Pim · east of the village: find his cat Muis in the Whispering Woods, then return to him."
 
-#: scripts/ui/progression_page.gd:221
+#: scripts/ui/progression_page.gd:222
 msgid "Beloning van Pim ontvangen."
 msgstr "Pim's reward received."
 
-#: scripts/ui/progression_page.gd:221
+#: scripts/ui/progression_page.gd:222
 msgid "Nog te verdienen: één hartcontainer van Pim."
 msgstr "Still to earn: one heart container from Pim."
 
-#: scripts/ui/progression_page.gd:223
+#: scripts/ui/progression_page.gd:224
 msgid "Andere hartcontainers: een kist in het noordoosten van de Echo-grot en de beloningskist van De Vergeten Wachter in de Diepte."
 msgstr "Other heart containers: a chest in the northeast of Echo Cave, and the Forgotten Guardian's reward chest in the Depths."
 
-#: scripts/ui/progression_page.gd:224
+#: scripts/ui/progression_page.gd:225
 msgid "De Diepte opent nadat de Blauwe Kaart is hersteld."
 msgstr "The Depths open after you restore the Blue Map."
 
-#: scripts/ui/progression_page.gd:234
+#: scripts/ui/progression_page.gd:235
 msgid "%s niveau %d · %s"
 msgstr "%s level %d · %s"
 
-#: scripts/ui/progression_page.gd:238
+#: scripts/ui/progression_page.gd:239
 msgid "Gereedschap wordt automatisch gebruikt en slijt niet."
 msgstr "Tools are used automatically and never wear out."
 
-#: scripts/ui/progression_page.gd:238
+#: scripts/ui/progression_page.gd:239
 msgid "Open %s om te maken; materialen en vereiste niveaus staan hieronder."
 msgstr "Open %s to craft; materials and required levels are shown below."
 
-#: scripts/ui/progression_page.gd:242
+#: scripts/ui/progression_page.gd:243
 msgid "Nog geen gereedschap"
 msgstr "No tool yet"
 
-#: scripts/ui/progression_page.gd:250
+#: scripts/ui/progression_page.gd:251
 msgid "Hengel: in bezit"
 msgstr "Fishing rod: owned"
 
-#: scripts/ui/progression_page.gd:250
+#: scripts/ui/progression_page.gd:251
 msgid "Hengel: gratis van Visser Joris aan het Zilvermeer."
 msgstr "Fishing rod: free from Joris the Fisher at Silver Lake."
 
-#: scripts/ui/progression_page.gd:251
+#: scripts/ui/progression_page.gd:252
 msgid "Boog: in bezit"
 msgstr "Bow: owned"
 
-#: scripts/ui/progression_page.gd:251
+#: scripts/ui/progression_page.gd:252
 msgid "Boog: %d munten bij Tobias, met %d pijlen. Geen niveau vereist."
 msgstr "Bow: %d coins from Tobias, including %d arrows. No level required."
 

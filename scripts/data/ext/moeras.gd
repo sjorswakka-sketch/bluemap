@@ -43,16 +43,7 @@ const QUESTS := {
 			{"text": "Breng de veenbessen naar Stien op de turfvelden."},
 		],
 	},
-	"wilgentwijgen": {
-		"title": "Wilgentwijgen voor Mees",
-		"steps": [
-			{
-				"text": "Mees de rietvlechter heeft 4 wilgentwijgen nodig voor een nieuwe mand. Snijd ze bij de geknotte wilgen.",
-				"advance_if": [["has", "prof_wilgentwijg", 4]],
-			},
-			{"text": "Breng de wilgentwijgen naar Mees in het rietland."},
-		],
-	},
+	"wilgentwijgen": preload("res://scripts/data/ext/living.gd").REWORKED_QUESTS["wilgentwijgen"],
 	"zonneschijf": {
 		"title": "De zonneschijf van Wouda",
 		"steps": [
@@ -78,7 +69,7 @@ const NPCS := {
 	"mees": {
 		"name": "Mees de rietvlechter", "sheet": "npc_mees",
 		"rules": [
-			{"if": [["step", "wilgentwijgen", 1], ["has", "prof_wilgentwijg", 4]], "talk": "mees_klaar"},
+			{"if": [["step", "wilgentwijgen", 1], ["flag", "lw_bridge"]], "talk": "mees_klaar"},
 			{"if": [["no_flag", "mees_ontmoet"]], "talk": "mees_intro"},
 			{"if": [["quest", "wilgentwijgen", "none"]], "talk": "mees_intro"},
 			{"talk": "mees_menu"},
@@ -119,26 +110,68 @@ const TALKS := {
 	},
 
 	"mees_intro": {
-		"speaker": "Mees",
-		"lines": ["Welkom in het rietland. Hoor je dat knetteren? Dat is het riet dat met de wind praat.", "Ik ben Mees. Van riet en wilg vlecht ik manden, hoeden en af en toe een leugen van een visverhaal."],
-		"do": [["set_flag", "mees_ontmoet"]],
-		"next": "mees_vraag",
-	},
+	"speaker": "Mees",
+	"lines": [
+		"De westelijke oversteek is gebroken. Kijk bij de lier naast het eiland: eerst de sluizen goed zetten, dan repareren. Bouw, brouw, of neem de gevaarlijke route langs de bewakers."
+	],
+	"do": [
+		[
+			"set_flag",
+			"mees_ontmoet"
+		]
+	],
+	"next": "mees_vraag"
+},
 	"mees_vraag": {
-		"speaker": "Mees",
-		"lines": ["Mijn beste mand vraagt om wilgentwijgen; buigzaam en sterk tegelijk. Snijd je er 4 voor me bij de geknotte wilgen?", "Neem wel een bijl mee, anders word je niet vrolijk van dat hout."],
-		"choices": [
-			{"text": "Ik snijd ze wel.", "do": [["start_quest", "wilgentwijgen"]], "next": "mees_ok"},
-			{"text": "Misschien later."},
-		],
-	},
-	"mees_ok": {"speaker": "Mees", "lines": ["Mooi. De wilgen staan hier overal, maar de beste twijgen groeien bij de hut van Wouda in het noordwesten."], "do": [["sound", "quest"]]},
-	"mees_menu": {"speaker": "Mees", "lines": ["Zijn de twijgen al gesneden?"], "choices": [{"text": "Nog niet."}, {"text": "Tot zo."}]},
+	"speaker": "Mees",
+	"lines": ["Help je de oversteek herstellen?"],
+	"choices": [
+		{
+			"text": "Ik herstel de oversteek.",
+			"next": "mees_ok",
+			"do": [
+				[
+					"start_quest",
+					"wilgentwijgen"
+				]
+			]
+		},
+		{
+			"text": "Later misschien."
+		}
+	]
+},
+	"mees_ok": {"speaker": "Mees", "lines": ["De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."], "do": [["sound", "quest"]]},
+	"mees_menu": {"speaker": "Mees", "lines": ["De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."], "choices": [{"text": "Tot zo."}]},
 	"mees_klaar": {
-		"speaker": "Mees",
-		"lines": ["Ah, kijk die buigen! Hier wordt een mand van waar je U tegen zegt.", "Voor jou: een bos watermunt uit mijn eigen voorraad. Fris voor in de thee, of sterker spul als je Wouda vraagt."],
-		"do": [["take", "prof_wilgentwijg", 4], ["give", "prof_watermunt", 2], ["coins", 25], ["finish_quest", "wilgentwijgen"], ["sound", "quest"]],
-	},
+	"speaker": "Mees",
+	"lines": [
+		"Stien brengt haar turf alweer over de brug. Met het lage water is ook het Rietarchief open. Ik leer je nu hoe je een lichte verkennersjas maakt."
+	],
+	"do": [
+		[
+			"give",
+			"prof_watermunt",
+			2
+		],
+		[
+			"coins",
+			25
+		],
+		[
+			"finish_quest",
+			"wilgentwijgen"
+		],
+		[
+			"set_flag",
+			"lw_tailoring"
+		],
+		[
+			"sound",
+			"quest"
+		]
+	]
+},
 
 	"wouda_intro": {
 		"speaker": "Wouda",

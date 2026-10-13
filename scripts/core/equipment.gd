@@ -4,7 +4,7 @@ extends RefCounted
 
 const Data := preload("res://scripts/data/ext/uitrusting.gd")
 const SLOTS := Data.SLOTS
-const BONUS_LIMITS := {"stamina_max": 30.0, "armor": 2.0, "attack_cooldown_reduction": 0.16, "stamina_regen": 0.30, "magnet_range": 24.0}
+const BONUS_LIMITS := {"move_speed": 0.12, "stamina_max": 30.0, "armor": 2.0, "attack_cooldown_reduction": 0.16, "stamina_regen": 0.30, "magnet_range": 24.0}
 
 
 static func state() -> Node:
@@ -103,13 +103,15 @@ static func bonus(stat: String) -> float:
 		var item := equipped(slot)
 		var value: Variant = Data.ITEMS.get(item, {}).get("bonuses", {}).get(stat, 0.0)
 		if (value is int or value is float) and is_finite(float(value)):
-			total += maxf(float(value), 0.0)
-	return minf(total, BONUS_LIMITS[stat])
+			total += float(value) if stat == "move_speed" else maxf(float(value), 0.0)
+	return clampf(total, -BONUS_LIMITS[stat], BONUS_LIMITS[stat])
 
 
 ## Reeds vertaald; de UI moet deze tekst niet nogmaals door tr() halen.
 static func stats_text(item_id: String) -> String:
 	var bonuses: Dictionary = Data.ITEMS.get(item_id, {}).get("bonuses", {})
+	if bonuses.has("move_speed"):
+		return TranslationServer.translate("%+d%% snelheid · %d pantser · %+d stamina") % [roundi(bonuses["move_speed"] * 100.0), int(bonuses.get("armor", 0)), int(bonuses.get("stamina_max", 0))]
 	if bonuses.has("stamina_max"):
 		return TranslationServer.translate("+%d uithoudingsvermogen") % int(bonuses["stamina_max"])
 	if bonuses.has("armor"):

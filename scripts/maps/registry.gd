@@ -20,4 +20,6 @@ static var MAPS: Dictionary = Content.merged("MAPS", BASE_MAPS)
 
 
 static func get_map(map_id: String) -> Dictionary:
-	return MAPS[map_id].DATA
+	var data: Dictionary = MAPS[map_id].DATA.duplicate(true)
+	preload("res://scripts/data/living_maps.gd").enrich(map_id, data)
+	return data

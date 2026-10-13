@@ -189,6 +189,7 @@ func _weapon_text() -> String:
 			lines.append(tr("Slijmen geven slijmgel; golembewakers in de ruïne en grot geven scherven."))
 			lines.append(tr("Praat met Greta om te laten smeden. Heldniveau en beroep Smeden zijn hiervoor niet vereist."))
 	var path: Array[String] = []
+	lines.append(tr("Schildbreker geleerd: de derde comboslag breekt een frontaal schild (18 stamina).") if GameState.flag("lw_workshop") else tr("Nieuwe techniek: herstel Greta’s prismabank om met je derde comboslag schilden te breken."))
 	for weapon: String in ["wood", "iron", "crystal", "star"]:
 		path.append(tr(Items.WEAPONS[weapon]["name"]))
 	lines.append("\n" + " → ".join(path))

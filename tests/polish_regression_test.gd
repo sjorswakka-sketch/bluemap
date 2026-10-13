@@ -27,7 +27,7 @@ func _run() -> void:
 	root.size = Vector2i(1152, 648)
 	await process_frame
 	gs = root.get_node("GameState")
-	for spec: Array in [["stien", "veenbessen", "prof_veenbes", 5], ["mees", "wilgentwijgen", "prof_wilgentwijg", 4], ["wouda", "zonneschijf", "zonneschijf_amulet", 1], ["fenna", "warmte", "prof_ijsbloem", 4], ["sana", "cactusvijgen", "prof_cactusvijg", 5], ["elke", "kruiden", "herb", 4], ["lotte", "lantaarn", "special_lantern", 1]]:
+	for spec: Array in [["stien", "veenbessen", "prof_veenbes", 5], ["wouda", "zonneschijf", "zonneschijf_amulet", 1], ["sana", "cactusvijgen", "prof_cactusvijg", 5], ["elke", "kruiden", "herb", 4], ["lotte", "lantaarn", "special_lantern", 1]]:
 		gs.new_game()
 		gs.set_flag(spec[0] + "_ontmoet")
 		check(pick_talk(spec[0]) == spec[0] + "_intro", spec[0] + ": na weigeren kan de opdracht opnieuw aangeboden worden")

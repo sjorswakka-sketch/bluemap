@@ -4,6 +4,9 @@ extends Node2D
 ##
 ## De kaarten zelf staan als tekst in scripts/maps/*.gd (zie README).
 
+const Living := preload("res://scripts/core/living_world.gd")
+const LivingScenery := preload("res://scripts/entities/living_scenery.gd")
+
 const PlayerScript := preload("res://scripts/entities/player.gd")
 const EnemyScript := preload("res://scripts/entities/enemy.gd")
 const NpcScript := preload("res://scripts/entities/npc.gd")
@@ -149,6 +152,7 @@ func restart_from_save(full_heal := false) -> void:
 # --- Kaarten ----------------------------------------------------------------------
 
 func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> void:
+	Living.migrate()
 	GameState.map_id = map_id
 	GameState.spawn_name = spawn
 	map_data = Maps.get_map(map_id).duplicate(true)
@@ -179,6 +183,10 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	var landmarks := BuildingLandmarksScript.new()
 	landmarks.setup(map_id, self)
 	ground.add_child(landmarks)
+	var living_scenery := LivingScenery.new()
+	living_scenery.world = self
+	ground.add_child(living_scenery)
+	living_scenery.refresh()
 	player.camera.reset_smoothing()
 
 	Sound.play_music(map_data.get("music", "forest"))

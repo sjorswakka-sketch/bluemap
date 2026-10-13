@@ -44,6 +44,10 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	GameState.note_talked(npc_id)
+	var reaction: Array = preload("res://scripts/core/living_world.gd").npc_lines(npc_id)
+	if not reaction.is_empty():
+		GameState.say(tr(data["name"]), reaction)
+		return
 	for rule: Dictionary in data["rules"]:
 		if not rule.has("if") or GameState.check_all(rule["if"]):
 			GameState.start_dialogue(rule["talk"])

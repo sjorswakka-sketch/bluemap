@@ -347,12 +347,16 @@ func test_quests() -> void:
 	check(gs.quest_state("warmte") == "active", "Fenna geeft de opdracht Warmte voor IJsdal")
 	check(gs.flag("fenna_ontmoet"), "Fenna onthoudt dat je haar hebt ontmoet")
 	gs.give("prof_ijsbloem", 4, true)
+	check(gs.quest_step("warmte") == 0, "bloemen alleen herstellen geen huizen")
+	gs.set_flag("lw_heat_west")
+	gs.set_flag("lw_heat_east")
+	gs.set_flag("lw_heat")
 	await frames(2)
-	check(gs.quest_step("warmte") == 1, "vier ijsbloemen zetten de opdracht op de volgende stap")
+	check(gs.quest_step("warmte") == 1, "twee verwarmde huizen zetten de opdracht op de volgende stap")
 	var coins_before: int = gs.coins
 	await talk_npc("fenna")
 	check(gs.quest_state("warmte") == "done", "Fenna rondt de opdracht af")
-	check(gs.count("prof_ijsbloem") == 0 and gs.count("prof_frost_tonic") == 1, "ijsboemen ingeruild voor een vorstelixer")
+	check(gs.count("prof_ijsbloem") == 4 and gs.count("gear_bastion_coat") == 1, "wereldherstel geeft een harnas zonder bloemen af te nemen")
 	check(gs.coins == coins_before + 30, "Fenna betaalt dertig munten")
 
 	# Roos: de ijswachtopdracht.

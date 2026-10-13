@@ -93,6 +93,61 @@ const RECIPES := {
 	"dauw_soep": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_mushroom": 2, "prof_dauwklauw": 1}, "output": "prof_dauwsoep"},
 	"moeras_elixer": {"skill": "alchemy", "level": 2, "xp": 12, "station": "library", "inputs": {"prof_watermunt": 2, "prof_veenbes": 1}, "output": "prof_moeraselixer"},
 	"veenbes_pap": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_veenbes": 3, "prof_watermunt": 1}, "output": "prof_veenbespap"},
+	"prism_lantern": {
+	"skill": "smithing",
+	"level": 1,
+	"xp": 20,
+	"station": "smithy",
+	"unlock": "lw_workshop",
+	"inputs": {
+		"lw_lens": 1,
+		"prof_branch": 2
+	},
+	"output": "lw_lantern"
+},
+	"grounding_powder": {
+	"skill": "alchemy",
+	"level": 1,
+	"xp": 12,
+	"station": "library",
+	"inputs": {
+		"prof_stone": 2,
+		"gel": 2
+	},
+	"output": "lw_powder"
+},
+	"bridge_components": {
+	"skill": "woodcutting",
+	"level": 1,
+	"xp": 15,
+	"inputs": {
+		"prof_wilgentwijg": 4,
+		"prof_branch": 2
+	},
+	"output": "lw_bridge_kit"
+},
+	"living_resin": {
+	"skill": "alchemy",
+	"level": 1,
+	"xp": 15,
+	"station": "library",
+	"inputs": {
+		"prof_watermunt": 2,
+		"gel": 2
+	},
+	"output": "lw_resin"
+},
+	"scout_coat": {
+	"skill": "woodcutting",
+	"level": 1,
+	"xp": 20,
+	"unlock": "lw_tailoring",
+	"inputs": {
+		"prof_wilgentwijg": 2,
+		"moeras_huid": 2
+	},
+	"output": "gear_scout_coat"
+},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},

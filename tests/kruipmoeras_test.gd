@@ -397,11 +397,14 @@ func test_quests() -> void:
 	await talk_npc("mees", [0])
 	check(gs.quest_state("wilgentwijgen") == "active", "Mees geeft de opdracht Wilgentwijgen voor Mees")
 	gs.give("prof_wilgentwijg", 4, true)
+	check(gs.quest_step("wilgentwijgen") == 0, "twijgen in de tas herstellen nog geen brug")
+	gs.set_flag("lw_drained")
+	gs.set_flag("lw_bridge")
 	await frames(2)
-	check(gs.quest_step("wilgentwijgen") == 1, "vier twijgen zetten de opdracht op de volgende stap")
+	check(gs.quest_step("wilgentwijgen") == 1, "de herstelde oversteek zet de opdracht op de volgende stap")
 	await talk_npc("mees")
 	check(gs.quest_state("wilgentwijgen") == "done", "Mees rondt de opdracht af")
-	check(gs.count("prof_wilgentwijg") == 0 and gs.count("prof_watermunt") == 2, "twijgen ingeruild voor watermunt")
+	check(gs.count("prof_wilgentwijg") == 4 and gs.count("prof_watermunt") == 2 and gs.flag("lw_tailoring"), "reparatie opent recept en behoudt ongebruikte twijgen")
 
 	# Wouda: het verhaal van de zonneschijf.
 	await talk_npc("wouda", [0])
