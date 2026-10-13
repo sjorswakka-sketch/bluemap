@@ -112,6 +112,11 @@ pixel art, en te delen met vrienden en de community.
       insectengespin in de Dorstvallei. Bij een nieuw dagdeel loopt de sfeer zachtjes over; binnen is
       het stil
 
+- [x] Menu-polis: de tabmarkering glijdt naar het gekozen tabblad en elke bladzijde faden en schuift
+      zacht naar binnen bij een wissel; tabbladen en de sluitknop lichten op onder de muis; het gekozen
+      voorwerp in je rugzak ademt zachtjes; en alle bladzijden delen nu dezelfde marges (buitenmarge,
+      kopregel en bovenkant van lijsten)
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen en schilden
