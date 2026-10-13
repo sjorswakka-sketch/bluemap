@@ -97,5 +97,6 @@ const DATA := {
 		{"type": "sign", "pos": [9, 18], "lines": ["Pas op voor magiërs!", "Ze verdwijnen in een rookwolkje en schieten een tovervonk. Die is traag: sla hem stuk met je zwaard."]},
 		{"type": "enemy", "pos": [18, 14], "kind": "mage"},
 		{"type": "enemy", "pos": [24, 27], "kind": "mage"},
+		{"type":"route_object","pos":[12,30],"kind":"memorial","id":"rf_memorial","talk":"rf_inscription"},
 	],
 }

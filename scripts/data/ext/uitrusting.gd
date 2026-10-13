@@ -11,6 +11,8 @@ const SLOTS := {
 }
 
 const ITEMS := {
+	"gear_rf_keepsake": {"name":"Wilfreds herinnering","sheet":"rf_gear","icon":0,"type":"gear","max":1,"slot":"ring","bonuses":{"stamina_regen":0.15,"magnet_range":6.0},"desc":"Een ring uit de herdenkingsplek: 15% sneller staminaherstel en 6 extra oppakbereik. Minder bereik dan een koperen ring."},
+	"gear_rf_cord": {"name":"Stiltekoord","sheet":"rf_gear","icon":1,"type":"gear","max":1,"slot":"neck","bonuses":{"stamina_max":20.0},"desc":"Een oud koord uit de schuilroute. Geeft gedragen 20 extra stamina; amuletten voor sneller herstel gebruiken hetzelfde halsvak."},
 	"gear_scout_coat": {
 	"name": "Verkennersjas",
 	"sheet": "items_equipment",

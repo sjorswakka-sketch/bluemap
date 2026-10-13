@@ -132,6 +132,8 @@ func _physics_process(delta: float) -> void:
 	state_time += delta
 	desired = Vector2.ZERO
 	match data["behavior"]:
+		"rf_ambush", "rf_listen":
+			preload("res://scripts/entities/route_enemy.gd").update(self,delta)
 		"lw_guard", "lw_flank", "lw_support":
 			LivingAI.update(self, delta)
 		"echo_charge", "echo_volley":
@@ -657,6 +659,9 @@ func hurt(damage: int, direction: Vector2) -> void:
 	if data["behavior"] == "lw_support":
 		state = "idle"
 		state_time = 0.0
+	if data["behavior"] in ["rf_ambush","rf_listen"]:
+		state="rf_rest"
+		state_time=0
 	hp -= damage
 	knockback = direction.normalized() * float(data.get("knockback", 240.0))
 	flash = 0.15
@@ -730,6 +735,8 @@ func _draw() -> void:
 	var chasing: bool = player != null and active and _to_player().length() < float(data["sight"])
 
 	match data["behavior"]:
+		"rf_ambush", "rf_listen":
+			preload("res://scripts/entities/route_enemy.gd").draw(self,sheet,tint)
 		"lw_guard", "lw_flank", "lw_support":
 			LivingAI.draw(self, sheet, tint)
 		"echo_charge", "echo_volley":

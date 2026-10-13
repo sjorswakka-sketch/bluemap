@@ -60,6 +60,7 @@ const MODULES: Array = [
 	preload("res://scripts/data/ext/moeras.gd"), # Kruipmoeras: veenland, waas, wild en de zonneschijf
 	preload("res://scripts/data/ext/living.gd"),
 	preload("res://scripts/data/ext/opening.gd"),
+	preload("res://scripts/data/ext/first_route.gd"),
 	preload("res://scripts/data/ext/echo.gd"), # Prismamijn en Resonantieproef
 ]
 

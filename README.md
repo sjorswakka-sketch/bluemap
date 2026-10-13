@@ -1,7 +1,29 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.9.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.10.0-preview.**
 Deze branch bevat de gezamenlijke game en bouwt bij elke update een Windows-download via Actions.
+
+Nieuw in 0.10: **Een eerste reis met een eigen ritme**. In het Fluisterbos wijzen pootafdrukken
+naar Muis. Rennen, rollen en aanvallen schrikken haar af; praat met haar en blijf even rustig
+staan tot de vertrouwensbalk vol is. Praat daarna nogmaals om haar naar huis te laten gaan.
+Vogels reageren op lawaai en twee struiksluipers verraden hun sprong met geritsel en een aanloop.
+
+In de Vergeten Ruïne onthullen het reliëf in de westelijke zaal en het wachtersboek in de
+zuidoostelijke kamer waarom Wilfred bleef. Breng zijn medaillon terug en kies een inscriptie
+bij zijn gedenksteen. Er komen bloemen en licht; de gekozen herinnering blijft opgeslagen.
+De ring **Wilfreds herinnering** geeft gedragen 15% sneller staminaherstel en 6 extra oppakbereik.
+
+De Echo-grot heeft drie klankschalen: bij de ingang, in de middelste kamer en bij de westelijke
+schuilplaats. Gebruik de gewone interactieknop en blijf 1,5 seconde stil. Blauwe tekens geven
+dezelfde aanwijzingen als het geluid, dus de route is ook zonder audio speelbaar. De steenluisteraars
+slapen zolang je rustig langs ze loopt; lawaai lokt een aangekondigde sprong naar de geluidsbron.
+Je kunt ook vechten. De oude schuilplaats krijgt blijvend licht en je verdient een **Stiltekoord**
+voor het halsvak (+20 stamina, in plaats van een amulet voor sneller herstel). Bram reageert op
+je terugkeer zodra beide nieuwe verhalen afgerond zijn.
+
+Kristallen, bestaande kisten, medaillon- en kattenbeloningen houden hun opslagcodes. Een oude
+afgeronde medaillonopdracht krijgt de herdenkingsplek zonder opnieuw XP of uitrusting uit te keren.
+De nieuwe sprites en geluiden zijn zelf gegenereerd met `tools/art_x_route.py`.
 
 Nieuw in 0.9: **Een levendig begin**. Een korte aankomst brengt je direct naar het plein.
 Nelle leent je haar tuinhark: maak het rooster vrij, open het sluisrad en zie de fontein

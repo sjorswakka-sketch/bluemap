@@ -766,6 +766,16 @@ msgstr "Mist dispelled, Dew Garden opened and scout coat received."
 msgid "De fontein stroomt, Nelle verzorgt de bloembakken en Greta herkent het oude prismateken."
 msgstr "The fountain flows, Nelle tends the flower beds and Greta recognises the old prism symbol."
 
+#. Blijvend gevolg van opdracht rf_memory
+#: scripts/data/ext/first_route.gd:4
+msgid "Een verlichte herdenkingsplek in de Ruïne; jouw inscriptie blijft staan."
+msgstr "A lit memorial in the Ruins; your chosen inscription remains."
+
+#. Blijvend gevolg van opdracht rf_echo
+#: scripts/data/ext/first_route.gd:8
+msgid "Blijvende lichtbakens wijzen naar de oude schuilplaats met het medaillon."
+msgstr "Permanent light markers lead to the old refuge holding the medallion."
+
 #. Naam van wie er praat (Gesprek bram_intro)
 #. Naam van wie er praat (Gesprek bram_intro2)
 #. Naam van wie er praat (Gesprek bram_explain)
@@ -1216,13 +1226,13 @@ msgstr "I'll find her!"
 
 #. Gesprek pim_ok, Pim zegt
 #: scripts/data/dialogue.gd:299
-msgid "Echt waar?! Dankjewel! Ze is wit met een zwart vlekje op haar neus."
-msgstr "Really?! Thank you! She's white with a little black spot on her nose."
+msgid "Echt waar?! Ze is wit met een zwart vlekje op haar neus. Volg de pootafdrukken ten zuiden van het bospad. Ze schrikt van rennen: praat rustig en wacht tot ze je vertrouwt."
+msgstr "Really?! She is white with a black spot on her nose. Follow the pawprints south of the forest path. Running frightens her: speak gently and wait for her to trust you."
 
 #. Gesprek pim_progress, Pim zegt
 #: scripts/data/dialogue.gd:303
-msgid "Heb je Muis al gezien? Ze is wit met een zwart vlekje op haar neus."
-msgstr "Have you seen Mouse yet? She's white with a little black spot on her nose."
+msgid "Heb je Muis al gezien? Zoek de pootafdrukken bij het zuidelijke bospad. Geef haar rust als ze schrikt."
+msgstr "Have you seen Muis? Look for pawprints by the southern forest path. Give her time to settle if she gets scared."
 
 #. Gesprek pim_cat_back, Pim zegt
 #: scripts/data/dialogue.gd:308
@@ -1236,8 +1246,8 @@ msgstr "Thank you, thank you! Here, I found this in the woods. It must be worth 
 
 #. Gesprek pim_done, Pim zegt
 #: scripts/data/dialogue.gd:315
-msgid "Muis slaapt de hele dag op mijn bed. Ze is wel een beetje dik geworden van het bos."
-msgstr "Mouse sleeps on my bed all day. All that time in the woods made her a little chubby."
+msgid "Muis ligt weer naast me te spinnen. Zodra iemand begint te rennen, steekt ze haar oren op. Bij jou voelt ze zich veilig."
+msgstr "Muis is purring beside me again. Her ears prick up whenever someone runs. She feels safe with you."
 
 #. Naam van wie er praat (Gesprek muis_bos)
 #. Naam van wie er praat (Gesprek muis_dorp)
@@ -1351,8 +1361,8 @@ msgstr "Ooooh... someone alive! Don't be scared, I don't bite. I'm Wilfred."
 
 #. Gesprek wilfred_intro, Wilfred zegt
 #: scripts/data/dialogue.gd:374
-msgid "Ik was de bewaker van deze ruïne, lang geleden. Mijn medaillon is zoekgeraakt... ik denk dat het in de Echo-grot ligt."
-msgstr "I was the keeper of these ruins, long ago. I lost my medallion... I think it's somewhere in the Echo Cave."
+msgid "Ik was hier bewaker. Mijn medaillon ligt in de Echo-grot, maar ik weet niet meer waarom ik bleef. Het reliëf in de westelijke zaal en het boek in de zuidoostelijke kamer kunnen het vertellen."
+msgstr "I was a guard here. My medallion is in the Echo Cave, but I cannot remember why I stayed. The relief in the western hall and the book in the southeast room may tell us."
 
 #. Gesprek wilfred_intro: keuze van de speler
 #: scripts/data/dialogue.gd:377
@@ -3488,6 +3498,31 @@ msgstr "Use the restored prism technology."
 msgid "Ik kom voorbereid terug."
 msgstr "I will return prepared."
 
+#. Naam van wie er praat (Gesprek rf_inscription)
+#: scripts/entities/route_object.gd:50 scripts/data/ext/first_route.gd:14
+msgid "Wilfreds gedenksteen"
+msgstr "Wilfred's Memorial"
+
+#. Gesprek rf_inscription, Wilfreds gedenksteen zegt
+#: scripts/data/ext/first_route.gd:14
+msgid "Het wachtersboek en het reliëf vertellen hetzelfde: Wilfred bleef bij de poort zodat anderen de grot konden bereiken. Wat schrijf je op de steen?"
+msgstr "The guardbook and relief tell the same story: Wilfred stayed at the gate so others could reach the cave. What will you inscribe?"
+
+#. Gesprek rf_inscription: keuze van de speler
+#: scripts/data/ext/first_route.gd:15
+msgid "De bewaker die bleef."
+msgstr "The guard who stayed."
+
+#. Gesprek rf_inscription: keuze van de speler
+#: scripts/data/ext/first_route.gd:16
+msgid "De gids die anderen liet ontsnappen."
+msgstr "The guide who helped others escape."
+
+#. Gesprek rf_inscription: keuze van de speler
+#: scripts/data/ext/first_route.gd:17
+msgid "Ik wil er nog over nadenken."
+msgstr "I want to think about it."
+
 #. Naam van personage greta (boven zijn hoofd)
 #: scripts/data/npcs.gd:20
 msgid "Greta de smid"
@@ -3985,6 +4020,46 @@ msgstr "The grate is clear. Open the sluice wheel a little to the south and foll
 #: scripts/data/ext/opening.gd:7
 msgid "Er zit een prismateken onder het riet. Laat Greta in de smederij aan de westkant van het plein weten wat je vond."
 msgstr "There is a prism symbol beneath the reeds. Tell Greta what you found at the smithy west of the square."
+
+#. Titel van opdracht rf_memory
+#: scripts/data/ext/first_route.gd:4
+msgid "De naam op de stenen"
+msgstr "The Name on the Stones"
+
+#. Opdracht rf_memory, stap 1
+#: scripts/data/ext/first_route.gd:5
+msgid "Onderzoek het beschadigde reliëf in de westelijke zaal en het wachtersboek in de zuidoostelijke kamer van de Ruïne."
+msgstr "Examine the damaged relief in the western hall and the guardbook in the southeast room of the Ruins."
+
+#. Opdracht rf_memory, stap 2
+#: scripts/data/ext/first_route.gd:6
+msgid "De bewaker hield de doorgang open voor vluchtelingen. Breng zijn medaillon uit de Echo-grot terug naar Wilfred."
+msgstr "The guard kept the passage open for refugees. Return his medallion from the Echo Cave to Wilfred."
+
+#. Opdracht rf_memory, stap 3
+#: scripts/data/ext/first_route.gd:7
+msgid "Kies bij de gedenksteen naast Wilfred hoe zijn verhaal herinnerd wordt."
+msgstr "Choose how his story will be remembered at the memorial beside Wilfred."
+
+#. Titel van opdracht rf_echo
+#: scripts/data/ext/first_route.gd:8
+msgid "Wat de stilte vertelt"
+msgstr "What Silence Tells"
+
+#. Opdracht rf_echo, stap 1
+#: scripts/data/ext/first_route.gd:9
+msgid "Luister bij de klankschaal aan de ingang van de Echo-grot."
+msgstr "Listen at the singing bowl near the Echo Cave entrance."
+
+#. Opdracht rf_echo, stap 2
+#: scripts/data/ext/first_route.gd:10
+msgid "Volg de blauwe tekens naar de schaal in de middelste kamer. Lopen is stil; rennen, rollen en aanvallen wekken de luisteraars."
+msgstr "Follow the blue marks to the bowl in the middle chamber. Walking is quiet; sprinting, rolling and attacking wake the listeners."
+
+#. Opdracht rf_echo, stap 3
+#: scripts/data/ext/first_route.gd:11
+msgid "Volg de westelijke echo naar de laatste schaal. Luister rustig: de oude schuilplaats ligt achter de bocht."
+msgstr "Follow the western echo to the final bowl. Listen quietly: the old refuge is around the bend."
 
 #. Naam van voorwerp coin
 #. Haarkleur (tabblad Uiterlijk)
@@ -4705,123 +4780,143 @@ msgstr "Cranberry porridge"
 msgid "Warme pap met veenbessen, zoals Stien hem maakt. Herstelt 2 hartjes en 5 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
 msgstr "Warm porridge with cranberries, the way Stien makes it. Restores 2 hearts and 5 stamina. Use via Professions → Food & drink."
 
-#. Naam van voorwerp gear_scout_coat
+#. Naam van voorwerp gear_rf_keepsake
+#: scripts/data/ext/uitrusting.gd:14
+msgid "Wilfreds herinnering"
+msgstr "Wilfred's Keepsake"
+
+#. Beschrijving van voorwerp gear_rf_keepsake
+#: scripts/data/ext/uitrusting.gd:14
+msgid "Een ring uit de herdenkingsplek: 15% sneller staminaherstel en 6 extra oppakbereik. Minder bereik dan een koperen ring."
+msgstr "A memorial ring: 15% faster stamina recovery and 6 extra pickup range. Less range than a copper ring."
+
+#. Naam van voorwerp gear_rf_cord
 #: scripts/data/ext/uitrusting.gd:15
+msgid "Stiltekoord"
+msgstr "Cord of Stillness"
+
+#. Beschrijving van voorwerp gear_rf_cord
+#: scripts/data/ext/uitrusting.gd:15
+msgid "Een oud koord uit de schuilroute. Geeft gedragen 20 extra stamina; amuletten voor sneller herstel gebruiken hetzelfde halsvak."
+msgstr "An old cord from the refuge route. Grants 20 extra stamina when worn; recovery amulets use the same neck slot."
+
+#. Naam van voorwerp gear_scout_coat
+#: scripts/data/ext/uitrusting.gd:17
 msgid "Verkennersjas"
 msgstr "Scout coat"
 
 #. Beschrijving van voorwerp gear_scout_coat
-#: scripts/data/ext/uitrusting.gd:25
+#: scripts/data/ext/uitrusting.gd:27
 msgid "8% sneller en 10 extra stamina, maar geen pantser. Voor verkennen en ontwijken."
 msgstr "8% faster and 10 extra stamina, but no armor. For exploration and dodging."
 
 #. Naam van voorwerp gear_bastion_coat
-#: scripts/data/ext/uitrusting.gd:28
+#: scripts/data/ext/uitrusting.gd:30
 msgid "Wachtharnas"
 msgstr "Warden coat"
 
 #. Beschrijving van voorwerp gear_bastion_coat
-#: scripts/data/ext/uitrusting.gd:38
+#: scripts/data/ext/uitrusting.gd:40
 msgid "2 pantser, maar 8% langzamer. Elke treffer doet minimaal 1 schade. Voor standhouden bij een vuurkorf."
 msgstr "2 armor, but 8% slower. Every hit deals at least 1 damage. For holding your ground by a brazier."
 
 #. Naam van voorwerp gear_cloth_hood
-#: scripts/data/ext/uitrusting.gd:41
+#: scripts/data/ext/uitrusting.gd:43
 msgid "Linnen kap"
 msgstr "Linen hood"
 
 #. Beschrijving van voorwerp gear_cloth_hood
-#: scripts/data/ext/uitrusting.gd:41
+#: scripts/data/ext/uitrusting.gd:43
 msgid "Een lichte reiskap. Draag hem op je hoofd voor 15 extra uithoudingsvermogen."
 msgstr "A light traveling hood. Wear it on your head for 15 extra stamina."
 
 #. Naam van voorwerp gear_bronze_helm
-#: scripts/data/ext/uitrusting.gd:42
+#: scripts/data/ext/uitrusting.gd:44
 msgid "Bronzen helm"
 msgstr "Bronze helmet"
 
 #. Beschrijving van voorwerp gear_bronze_helm
-#: scripts/data/ext/uitrusting.gd:42
+#: scripts/data/ext/uitrusting.gd:44
 msgid "Een stevige helm voor lange tochten. Draag hem op je hoofd voor 30 extra uithoudingsvermogen."
 msgstr "A sturdy helmet for long journeys. Wear it on your head for 30 extra stamina."
 
 #. Naam van voorwerp gear_leather_armor
-#: scripts/data/ext/uitrusting.gd:43
+#: scripts/data/ext/uitrusting.gd:45
 msgid "Leren harnas"
 msgstr "Leather armor"
 
 #. Beschrijving van voorwerp gear_leather_armor
-#: scripts/data/ext/uitrusting.gd:43
+#: scripts/data/ext/uitrusting.gd:45
 msgid "Vangt zware klappen op. Vermindert schade met 1, tot minimaal 1 schade per treffer."
 msgstr "Absorbs heavy blows. Reduces damage by 1, to a minimum of 1 damage per hit."
 
 #. Naam van voorwerp gear_iron_armor
-#: scripts/data/ext/uitrusting.gd:44
+#: scripts/data/ext/uitrusting.gd:46
 msgid "IJzeren harnas"
 msgstr "Iron armor"
 
 #. Beschrijving van voorwerp gear_iron_armor
-#: scripts/data/ext/uitrusting.gd:44
+#: scripts/data/ext/uitrusting.gd:46
 msgid "Gesmede bescherming. Vermindert schade met 2, tot minimaal 1 schade per treffer."
 msgstr "Forged protection. Reduces damage by 2, to a minimum of 1 damage per hit."
 
 #. Naam van voorwerp gear_novice_gloves
-#: scripts/data/ext/uitrusting.gd:45
+#: scripts/data/ext/uitrusting.gd:47
 msgid "Leerlinghandschoenen"
 msgstr "Apprentice gloves"
 
 #. Beschrijving van voorwerp gear_novice_gloves
-#: scripts/data/ext/uitrusting.gd:45
+#: scripts/data/ext/uitrusting.gd:47
 msgid "Een goede grip op je zwaard. Draag ze voor 8% kortere wachttijd tussen zwaardaanvallen."
 msgstr "A firm grip on your sword. Wear them for an 8% shorter cooldown between sword attacks."
 
 #. Naam van voorwerp gear_smith_gloves
-#: scripts/data/ext/uitrusting.gd:46
+#: scripts/data/ext/uitrusting.gd:48
 msgid "Smeedhandschoenen"
 msgstr "Smith's gloves"
 
 #. Beschrijving van voorwerp gear_smith_gloves
-#: scripts/data/ext/uitrusting.gd:46
+#: scripts/data/ext/uitrusting.gd:48
 msgid "Perfect passende handschoenen. Draag ze voor 16% kortere wachttijd tussen zwaardaanvallen."
 msgstr "Perfectly fitted gloves. Wear them for a 16% shorter cooldown between sword attacks."
 
 #. Naam van voorwerp gear_copper_amulet
-#: scripts/data/ext/uitrusting.gd:47
+#: scripts/data/ext/uitrusting.gd:49
 msgid "Koperen amulet"
 msgstr "Copper amulet"
 
 #. Beschrijving van voorwerp gear_copper_amulet
-#: scripts/data/ext/uitrusting.gd:47
+#: scripts/data/ext/uitrusting.gd:49
 msgid "Een warm koperen sieraad. Draag het om je hals voor 15% sneller herstel van uithoudingsvermogen."
 msgstr "A warm copper charm. Wear it around your neck for 15% faster stamina recovery."
 
 #. Naam van voorwerp gear_crystal_amulet
-#: scripts/data/ext/uitrusting.gd:48
+#: scripts/data/ext/uitrusting.gd:50
 msgid "Kristallen amulet"
 msgstr "Crystal amulet"
 
 #. Beschrijving van voorwerp gear_crystal_amulet
-#: scripts/data/ext/uitrusting.gd:48
+#: scripts/data/ext/uitrusting.gd:50
 msgid "Alchemie laat gel kristalliseren rond koper. Draag het voor 30% sneller herstel van uithoudingsvermogen."
 msgstr "Alchemy crystallizes gel around copper. Wear it for 30% faster stamina recovery."
 
 #. Naam van voorwerp gear_copper_ring
-#: scripts/data/ext/uitrusting.gd:49
+#: scripts/data/ext/uitrusting.gd:51
 msgid "Koperen ring"
 msgstr "Copper ring"
 
 #. Beschrijving van voorwerp gear_copper_ring
-#: scripts/data/ext/uitrusting.gd:49
+#: scripts/data/ext/uitrusting.gd:51
 msgid "Een ring die verloren spullen aantrekt. Vergroot je magnetische oppakbereik met 12 pixels."
 msgstr "A ring that attracts lost belongings. Increases your magnetic pickup range by 12 pixels."
 
 #. Naam van voorwerp gear_crystal_ring
-#: scripts/data/ext/uitrusting.gd:50
+#: scripts/data/ext/uitrusting.gd:52
 msgid "Kristallen ring"
 msgstr "Crystal ring"
 
 #. Beschrijving van voorwerp gear_crystal_ring
-#: scripts/data/ext/uitrusting.gd:50
+#: scripts/data/ext/uitrusting.gd:52
 msgid "Een ring van koper en alchemistisch kristal. Vergroot je magnetische oppakbereik met 24 pixels."
 msgstr "A ring of copper and alchemical crystal. Increases your magnetic pickup range by 24 pixels."
 
@@ -5394,6 +5489,26 @@ msgstr "Reed singer"
 #: scripts/data/ext/living.gd:385
 msgid "Helpt gewonde vijanden met een zichtbaar lied. Een zwaardtreffer onderbreekt de genezing."
 msgstr "Helps wounded enemies with a visible song. A sword hit interrupts its healing."
+
+#. Naam van vijand rf_bramble
+#: scripts/data/ext/first_route.gd:26
+msgid "Struiksluiper"
+msgstr "Bramble Prowler"
+
+#. Vijand rf_bramble: grappige beschrijving in het beestenboek
+#: scripts/data/ext/first_route.gd:26
+msgid "Ritselende bladeren verraden zijn sprong. Stap opzij tijdens de aanloop en raak hem wanneer hij uitrust."
+msgstr "Rustling leaves give away its leap. Step aside during the windup and strike while it rests."
+
+#. Naam van vijand rf_listener
+#: scripts/data/ext/first_route.gd:27
+msgid "Steenluisteraar"
+msgstr "Stone Listener"
+
+#. Vijand rf_listener: grappige beschrijving in het beestenboek
+#: scripts/data/ext/first_route.gd:27
+msgid "Slaapt op trillingen. Hij springt naar de plek van een hard geluid, niet naar waar je daarna heen loopt. Rustig passeren kan ook."
+msgstr "Dozes amid vibrations. It leaps at the source of a loud noise, not wherever you move afterwards. You can also pass quietly."
 
 #. Naam van vijand crystal_beetle
 #: scripts/data/ext/echo.gd:23
@@ -6049,6 +6164,11 @@ msgstr "resource"
 #: scripts/data/ext/living.gd:389
 msgid "Wereldopdracht"
 msgstr "World quest"
+
+#. Legenda op het kaartje (menu): route_object
+#: scripts/data/ext/first_route.gd:21
+msgid "Herinnering"
+msgstr "Memory"
 
 #. Uitrustingsslot head: name
 #. Kledingvak hat: name
@@ -7423,7 +7543,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:203
+#: scripts/world.gd:210
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -7494,6 +7614,22 @@ msgstr "You haven't found an altar yet."
 #: scripts/core/fast_travel.gd:138
 msgid "Dat altaar heb je nog niet ontdekt."
 msgstr "You haven't found that altar yet."
+
+#: scripts/core/first_route.gd:26
+msgid "Volg de pootafdrukken vanaf het zuidelijke bospad. Bij Muis: stop met rennen, praat met haar en blijf rustig staan."
+msgstr "Follow the pawprints from the southern forest path. Near Muis: stop sprinting, talk to her and stand still."
+
+#: scripts/core/first_route.gd:34
+msgid "Muis schrikt van het lawaai. Geef haar even rust."
+msgstr "The noise frightens Muis. Give her a moment to settle."
+
+#: scripts/core/first_route.gd:37
+msgid "Je steekt rustig je hand uit. Blijf bij Muis staan tot ze je vertrouwt."
+msgstr "You gently offer your hand. Stand beside Muis until she trusts you."
+
+#: scripts/core/first_route.gd:41
+msgid "De oude route licht weer op. En Wilfred heeft eindelijk een naam op zijn steen. De Blauwe Kaart gaat over de mensen tussen de kristallen, net zo goed als over de kristallen zelf."
+msgstr "The old route shines again. And Wilfred finally has a name on his stone. The Blue Map is about the people between the crystals as much as the crystals themselves."
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
 #: scripts/core/game_state.gd:266
@@ -7924,7 +8060,7 @@ msgstr "Resonance Trial: wave %d / 3"
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:380
+#: scripts/entities/enemy.gd:382
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -7956,7 +8092,7 @@ msgstr "Hidden forest rune"
 msgid "Vuurkorf"
 msgstr "Brazier"
 
-#: scripts/entities/living_object.gd:47 scripts/entities/opening_device.gd:22
+#: scripts/entities/living_object.gd:47 scripts/entities/opening_device.gd:23
 msgid "Sluisrad"
 msgstr "Sluice wheel"
 
@@ -8076,31 +8212,31 @@ msgstr "Deep fishing spot"
 msgid "Visplek"
 msgstr "Fishing spot"
 
-#: scripts/entities/opening_device.gd:22
+#: scripts/entities/opening_device.gd:23
 msgid "Verstopt rooster"
 msgstr "Blocked Grate"
 
-#: scripts/entities/opening_device.gd:28
+#: scripts/entities/opening_device.gd:29
 msgid "Onder het riet zit een oud prismateken. Het rooster is schoon; het sluisrad staat iets zuidelijker."
 msgstr "An old prism symbol lies beneath the reeds. The grate is clear; the sluice wheel is a little further south."
 
-#: scripts/entities/opening_device.gd:30
+#: scripts/entities/opening_device.gd:31
 msgid "Het riet zit vast. Nelle, de hovenier met de strohoed, staat naast de fontein. Ze heeft een hark."
 msgstr "The reeds are stuck. Nelle, the gardener in a straw hat, is standing beside the fountain. She has a rake."
 
-#: scripts/entities/opening_device.gd:36
+#: scripts/entities/opening_device.gd:39
 msgid "Eerst het riet uit het rooster halen. Anders loopt het water over het plein."
 msgstr "Clear the reeds from the grate first, or the water will flood the square."
 
-#: scripts/entities/opening_device.gd:43
+#: scripts/entities/opening_device.gd:46
 msgid "Het water stroomt! Nelle heeft haar hark terug. Het prismateken lijkt op dat van Greta’s werkbank."
 msgstr "The water is flowing! Nelle has her rake back. The prism symbol resembles the one on Greta’s workbench."
 
-#: scripts/entities/opening_device.gd:46
+#: scripts/entities/opening_device.gd:49
 msgid "Het water stroomt naar de fontein en de bloembakken."
 msgstr "Water flows to the fountain and the flower beds."
 
-#: scripts/entities/opening_device.gd:60
+#: scripts/entities/opening_device.gd:63
 msgid "Het rooster is vrij. Draai nu het sluisrad aan de zuidkant open."
 msgstr "The grate is clear. Now open the sluice wheel to the south."
 
@@ -8119,6 +8255,58 @@ msgstr "You already have all your hearts."
 #: scripts/entities/player.gd:317
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
+
+#: scripts/entities/route_object.gd:47
+msgid "Pootafdrukken"
+msgstr "Pawprints"
+
+#: scripts/entities/route_object.gd:48
+msgid "Beschadigd reliëf"
+msgstr "Damaged Relief"
+
+#: scripts/entities/route_object.gd:49
+msgid "Wachtersboek"
+msgstr "Guardbook"
+
+#: scripts/entities/route_object.gd:51
+msgid "Klankschaal"
+msgstr "Singing Bowl"
+
+#: scripts/entities/route_object.gd:58
+msgid "Kleine pootjes, een witte haar. De afdrukken lopen zuidwaarts langs de vijver. Muis lijkt bang voor haastige stappen."
+msgstr "Tiny paws and a white hair. The tracks head south beside the pond. Muis seems afraid of hurried footsteps."
+
+#: scripts/entities/route_object.gd:63
+msgid "Een bewaker houdt een poort omhoog. Achter hem trekken families naar een grot. Het medaillon op zijn borst lijkt op dat van Wilfred."
+msgstr "A guard holds up a gate. Behind him, families head for a cave. The medallion on his chest resembles Wilfred's."
+
+#: scripts/entities/route_object.gd:63
+msgid "Laatste wacht: de poort bleef open. De families volgden drie klankschalen naar de westelijke schuilplaats. Wilfred keerde niet terug. Hij bewaakte mensen, niet het goud."
+msgstr "Final watch: the gate stayed open. The families followed three singing bowls to the western refuge. Wilfred did not return. He guarded people, not gold."
+
+#: scripts/entities/route_object.gd:66
+msgid "Hier wordt Wilfred herinnerd: de gids die anderen liet ontsnappen."
+msgstr "Here we remember Wilfred: the guide who helped others escape."
+
+#: scripts/entities/route_object.gd:66
+msgid "Hier wordt Wilfred herinnerd: de bewaker die bleef."
+msgstr "Here we remember Wilfred: the guard who stayed."
+
+#: scripts/entities/route_object.gd:72
+msgid "De steen mist zijn verhaal. Onderzoek het reliëf en het wachtersboek, en breng Wilfred zijn medaillon terug."
+msgstr "The stone is missing its story. Examine the relief and guardbook, and return the medallion to Wilfred."
+
+#: scripts/entities/route_object.gd:77
+msgid "De schaal blijft stil. Begin bij de ingang en volg daarna de blauwe tekens via de middelste kamer naar het westen."
+msgstr "The bowl stays silent. Begin at the entrance, then follow the blue marks through the middle chamber to the west."
+
+#: scripts/entities/route_object.gd:113
+msgid "De oude schuilplaats licht op. In de westelijke kamer staat een kist. Je vindt ook een stiltekoord: draag het via Uitrusting."
+msgstr "The old refuge lights up. There is a chest in the western room. You also find a Cord of Stillness: wear it through Equipment."
+
+#: scripts/entities/route_object.gd:115
+msgid "Een echo antwoordt. Volg de oplichtende tekens; rustig lopen laat de steenluisteraars slapen."
+msgstr "An echo answers. Follow the glowing marks; walking quietly leaves the stone listeners asleep."
 
 #: scripts/entities/savepoint.gd:62
 msgid "Voortgang opgeslagen. Je bent genezen!"
@@ -8169,51 +8357,51 @@ msgstr "Too late!"
 msgid "Bord"
 msgstr "Sign"
 
-#: scripts/entities/village_actor.gd:30
+#: scripts/entities/village_actor.gd:32
 msgid "Nelle de hovenier"
 msgstr "Nelle the Gardener"
 
-#: scripts/entities/village_actor.gd:30
+#: scripts/entities/village_actor.gd:32
 msgid "Bo de broodbezorger"
 msgstr "Bo the Bread Courier"
 
-#: scripts/entities/village_actor.gd:39
+#: scripts/entities/village_actor.gd:41
 msgid "Hoor je dat gesputter? Er zit riet in het rooster. Hier, leen mijn hark. Het rooster ligt vlak ten zuiden van me."
 msgstr "Hear that spluttering? The grate is full of reeds. Here, borrow my rake. The grate is just south of me."
 
-#: scripts/entities/village_actor.gd:39
+#: scripts/entities/village_actor.gd:41
 msgid "Gebruik de hark bij het rooster, blijf even staan en draai daarna het sluisrad open. Dan krijgen het plein en mijn bloemen weer water."
 msgstr "Use the rake at the grate, stand still for a moment, then open the sluice wheel. That will bring water back to the square and my flowers."
 
-#: scripts/entities/village_actor.gd:41
+#: scripts/entities/village_actor.gd:43
 msgid "Eerst het rooster schoonmaken met mijn hark. Daarna het sluisrad open. Je kunt de markering naast de fontein volgen."
 msgstr "Clear the grate with my rake first, then open the sluice wheel. Follow the marker beside the fountain."
 
-#: scripts/entities/village_actor.gd:43
+#: scripts/entities/village_actor.gd:45
 msgid "Daar is het water weer! Bo hoeft zijn kruiken niet meer naar het meer te dragen. Bedankt — ik kan mijn bloemen weer verzorgen."
 msgstr "The water is back! Bo no longer has to carry his jugs to the lake. Thank you — I can tend my flowers again."
 
-#: scripts/entities/village_actor.gd:45
+#: scripts/entities/village_actor.gd:47
 msgid "Een beetje water en geduld. Meer hebben deze bloemen niet nodig."
 msgstr "A little water and patience. That is all these flowers need."
 
-#: scripts/entities/village_actor.gd:47
+#: scripts/entities/village_actor.gd:49
 msgid "Mijn brood blijft nu droog en de kruiken vul ik hier. Mooi werk aan de fontein!"
 msgstr "My bread stays dry and I can fill my jugs here. Nice work on the fountain!"
 
-#: scripts/entities/village_actor.gd:47
+#: scripts/entities/village_actor.gd:49
 msgid "Brood voor de herberg, lege kruiken mee terug. Hopelijk krijgt Nelle de fontein snel aan de praat."
 msgstr "Bread for the inn, empty jugs on the way back. I hope Nelle gets the fountain working soon."
 
-#: scripts/entities/village_opening.gd:76
+#: scripts/entities/village_opening.gd:103
 msgid "Daar is het water!"
 msgstr "Here comes the water!"
 
-#: scripts/entities/village_opening.gd:78
+#: scripts/entities/village_opening.gd:105
 msgid "Dat scheelt een tocht naar het meer!"
 msgstr "That saves a trip to the lake!"
 
-#: scripts/entities/village_opening.gd:89
+#: scripts/entities/village_opening.gd:116
 msgid "Even helpen? De fontein zit verstopt."
 msgstr "Could you help? The fountain is blocked."
 
@@ -8611,74 +8799,74 @@ msgid_plural "Waarde: %d munten"
 msgstr[0] "Worth: %d coin"
 msgstr[1] "Worth: %d coins"
 
-#: scripts/ui/hud.gd:53
+#: scripts/ui/hud.gd:54
 msgid "%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing"
 msgstr "%s sword  ·  %s talk  ·  %s menu  ·  %s pause and controls"
 
-#: scripts/ui/hud.gd:180 scripts/ui/hud.gd:287 scripts/ui/hud.gd:365
+#: scripts/ui/hud.gd:181 scripts/ui/hud.gd:290 scripts/ui/hud.gd:375
 msgid "Game over"
 msgstr "Game over"
 
-#: scripts/ui/hud.gd:192
+#: scripts/ui/hud.gd:193
 msgid "Even op adem komen..."
 msgstr "Catching your breath..."
 
-#: scripts/ui/hud.gd:192
+#: scripts/ui/hud.gd:193
 msgid "Uithouding  ·  %s"
 msgstr "Stamina  ·  %s"
 
-#: scripts/ui/hud.gd:252
+#: scripts/ui/hud.gd:253
 msgid "Boog gekregen! Druk op %s om te schieten."
 msgstr "Bow acquired! Press %s to shoot."
 
-#: scripts/ui/hud.gd:261
+#: scripts/ui/hud.gd:264
 msgid "Volg het gesputter naar de fontein. Nelle kan je hulp gebruiken."
 msgstr "Follow the spluttering to the fountain. Nelle could use your help."
 
-#: scripts/ui/hud.gd:306
+#: scripts/ui/hud.gd:312
 msgid "Rennen: %s vasthouden   ·   Je spullen bekijken: %s"
 msgstr "Sprint: hold %s   ·   View your items: %s"
 
-#: scripts/ui/hud.gd:308
+#: scripts/ui/hud.gd:314
 msgid "%s: gereedschap gebruiken bij het rooster. Blijf even staan tijdens het harken."
 msgstr "%s: use your tool at the grate. Stand still while raking."
 
-#: scripts/ui/hud.gd:310
+#: scripts/ui/hud.gd:316
 msgid "Lopen: %s / %s / %s / %s   ·   Praten: %s"
 msgstr "Move: %s / %s / %s / %s   ·   Talk: %s"
 
-#: scripts/ui/hud.gd:367
+#: scripts/ui/hud.gd:377
 msgid "Verslagen door: %s"
 msgstr "Defeated by: %s"
 
-#: scripts/ui/hud.gd:370
+#: scripts/ui/hud.gd:380
 msgid "%s voor het menu"
 msgstr "%s for the menu"
 
-#: scripts/ui/hud.gd:371
+#: scripts/ui/hud.gd:381
 msgid "Druk op %s om verder te gaan vanaf je laatste opslag"
 msgstr "Press %s to continue from your last save"
 
-#: scripts/ui/hud.gd:371
+#: scripts/ui/hud.gd:381
 msgid "Druk op %s om opnieuw te beginnen"
 msgstr "Press %s to start again"
 
 #. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
 #. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
-#: scripts/ui/hud.gd:383 scripts/ui/menu_pages.gd:220
+#: scripts/ui/hud.gd:393 scripts/ui/menu_pages.gd:220
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
 #. het dagdeel bij de klok als het regent: "Avond  ·  regen"
-#: scripts/ui/hud.gd:402
+#: scripts/ui/hud.gd:412
 msgid "%s  ·  regen"
 msgstr "%s  ·  rain"
 
-#: scripts/ui/hud.gd:417
+#: scripts/ui/hud.gd:427
 msgid "Held %d · maximaal niveau"
 msgstr "Hero %d · maximum level"
 
-#: scripts/ui/hud.gd:417
+#: scripts/ui/hud.gd:427
 msgid "Held %d · %d/%d XP"
 msgstr "Hero %d · %d/%d XP"
 

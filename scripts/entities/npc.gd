@@ -12,6 +12,9 @@ var world: Node
 var exists_if: Array = [] # voorwaarden om er te blijven (de kat verdwijnt als je haar gevonden hebt)
 var t := randf() * TAU
 var player: Node2D
+var route_wait := false
+var route_calm := 0.0
+var route_panic := 0.0
 
 
 func setup(id: String) -> void:
@@ -35,6 +38,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var previous_beat := floori(t*2.4/PI)
 	t += delta
+	preload("res://scripts/entities/route_npc.gd").update(self,delta)
 	if npc_id=="greta" and floori(t*2.4/PI)!=previous_beat and GameState.day_time>0.12 and GameState.day_time<0.78 and is_instance_valid(world.player):
 		var distance: float = position.distance_to(world.player.position)
 		if distance<160: Sound.play("op_hammer",-14-distance/12)
@@ -47,7 +51,9 @@ func _process(delta: float) -> void:
 
 
 func interact() -> void:
+	if GameState.input_locked(): return
 	GameState.note_talked(npc_id)
+	if preload("res://scripts/core/first_route.gd").npc_interact(self): return
 	if npc_id == "greta" and preload("res://scripts/core/opening.gd").greta_intro():
 		return
 	var reaction: Array = preload("res://scripts/core/living_world.gd").npc_lines(npc_id)
@@ -77,3 +83,4 @@ func _draw() -> void:
 	if player and player.target == self:
 		DrawUtil.name_tag(self, Vector2(0, -24.0 - (2.0 - scale) * -4.0), tr(data["name"]))
 		DrawUtil.prompt(self, Vector2(0, -38.0), t)
+	preload("res://scripts/entities/route_npc.gd").draw(self)

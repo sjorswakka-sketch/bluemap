@@ -494,6 +494,7 @@ func finish_quest(quest_id: String) -> void:
 		toast.emit(tr("Opdracht voltooid: %s") % tr(Quests.info(quest_id)["title"]))
 		add_hero_xp(Progression.quest_xp(quest_id))
 		quests_changed.emit()
+		_refresh_quests() # Ook opdrachten die op deze afronding wachten direct bijwerken.
 
 
 ## Gaat naar de volgende stap zodra de voorwaarden van de huidige stap kloppen.

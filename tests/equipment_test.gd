@@ -57,11 +57,12 @@ func give_all() -> void:
 
 func _test_selection() -> void:
 	gs.new_game()
-	check(Equipment.SLOTS.keys() == ["head", "chest", "hands", "neck", "ring"] and Data.ITEMS.size() == 12, "Five distinct slots, ten original pieces and two chest alternatives")
+	check(Equipment.SLOTS.keys() == ["head", "chest", "hands", "neck", "ring"] and Data.ITEMS.size() == 14, "Five distinct slots, ten original pieces, two chest alternatives and two route rewards")
 	check(not Equipment.equip("gear_cloth_hood") and not Equipment.equip("boots") and not Equipment.unequip("head"), "Missing and legacy items cannot be equipped in a new slot")
 	for item: String in Data.ITEMS:
 		var info := Items.info(item)
-		check(info.get("slot", "") == Equipment.slot_of(item) and info.get("max", 0) == 1 and info.get("sheet", "") == "items_equipment", "Registered gear data: " + item)
+		var expected_sheet := "rf_gear" if item in ["gear_rf_keepsake","gear_rf_cord"] else "items_equipment"
+		check(info.get("slot", "") == Equipment.slot_of(item) and info.get("max", 0) == 1 and info.get("sheet", "") == expected_sheet, "Registered gear data: " + item)
 		check(not Equipment.stats_text(item).is_empty(), "Each item exposes its actual effect: " + item)
 	give_all()
 	check(gs.equipment.is_empty() and Equipment.bonus("stamina_max") == 0 and gs.attack_cooldown_multiplier() == 1.0, "Ownership never equips or grants effects automatically")

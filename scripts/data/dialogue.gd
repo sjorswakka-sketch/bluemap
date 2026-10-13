@@ -296,11 +296,11 @@ const BASE_TALKS := {
 	},
 	"pim_ok": {
 		"speaker": "Pim",
-		"lines": ["Echt waar?! Dankjewel! Ze is wit met een zwart vlekje op haar neus."],
+		"lines": ["Echt waar?! Ze is wit met een zwart vlekje op haar neus. Volg de pootafdrukken ten zuiden van het bospad. Ze schrikt van rennen: praat rustig en wacht tot ze je vertrouwt."],
 	},
 	"pim_progress": {
 		"speaker": "Pim",
-		"lines": ["Heb je Muis al gezien? Ze is wit met een zwart vlekje op haar neus."],
+		"lines": ["Heb je Muis al gezien? Zoek de pootafdrukken bij het zuidelijke bospad. Geef haar rust als ze schrikt."],
 	},
 	"pim_cat_back": {
 		"speaker": "Pim",
@@ -312,7 +312,7 @@ const BASE_TALKS := {
 	},
 	"pim_done": {
 		"speaker": "Pim",
-		"lines": ["Muis slaapt de hele dag op mijn bed. Ze is wel een beetje dik geworden van het bos."],
+		"lines": ["Muis ligt weer naast me te spinnen. Zodra iemand begint te rennen, steekt ze haar oren op. Bij jou voelt ze zich veilig."],
 	},
 	"muis_bos": {
 		"speaker": "Muis",
@@ -371,10 +371,10 @@ const BASE_TALKS := {
 		"speaker": "Wilfred",
 		"lines": [
 			"Ooooh... een levende! Wees niet bang, ik bijt niet. Ik ben Wilfred.",
-			"Ik was de bewaker van deze ruïne, lang geleden. Mijn medaillon is zoekgeraakt... ik denk dat het in de Echo-grot ligt.",
+			"Ik was hier bewaker. Mijn medaillon ligt in de Echo-grot, maar ik weet niet meer waarom ik bleef. Het reliëf in de westelijke zaal en het boek in de zuidoostelijke kamer kunnen het vertellen.",
 		],
 		"choices": [
-			{"text": "Ik breng het terug.", "do": [["start_quest", "medaillon"]], "next": "wilfred_ok"},
+			{"text": "Ik breng het terug.", "do": [["start_quest", "medaillon"], ["start_quest", "rf_memory"]], "next": "wilfred_ok"},
 			{"text": "Sorry, geen tijd."},
 		],
 	},

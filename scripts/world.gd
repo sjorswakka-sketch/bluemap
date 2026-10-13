@@ -153,9 +153,11 @@ func restart_from_save(full_heal := false) -> void:
 
 func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> void:
 	Living.migrate()
+	preload("res://scripts/core/first_route.gd").migrate()
 	GameState.map_id = map_id
 	GameState.spawn_name = spawn
 	map_data = Maps.get_map(map_id).duplicate(true)
+	preload("res://scripts/entities/first_route.gd").prepare(map_data,map_id)
 	# Achteraan toevoegen: bestaande kisten en unieke voorwerpen houden hun opslag-ID.
 	map_data["objects"].append_array(Beroepen.resource_objects(map_id))
 	_clear_map()
@@ -189,6 +191,10 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	living_scenery.world = self
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
+	if map_id in ["forest","ruins","cave"]:
+		var route: Node2D=load("res://scripts/entities/first_route.gd").new()
+		route.world=self
+		ground.add_child(route)
 	if map_id == "village":
 		var opening: Node2D = load("res://scripts/entities/village_opening.gd").new()
 		opening.world = self

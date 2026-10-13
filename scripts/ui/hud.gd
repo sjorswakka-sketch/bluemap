@@ -256,6 +256,8 @@ func _check_bow() -> void:
 
 func _refresh_tracker() -> void:
 	var text := GameState.tracked_text()
+	var route_text: String=preload("res://scripts/core/first_route.gd").tracker()
+	if route_text!="": text=route_text
 	if Opening.enabled() and GameState.quest_state("first_water")=="active" and GameState.map_id in ["village","smithy"]:
 		text = GameState.quest_text("first_water")
 	elif Opening.quiet_hud():
