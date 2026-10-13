@@ -8,22 +8,54 @@ const Data := preload("res://scripts/data/ext/uiterlijk.gd")
 
 
 static func behind(canvas: CanvasItem, origin: Vector2, px: float, row: int, clothing: Dictionary) -> void:
-	# De cape hangt achter het lijf.
-	var cape: Variant = clothing.get("back", {})
-	if cape is Dictionary and str(cape.get("item", "")) == "cloth_cape":
-		var dye: Color = Data.DYE_COLORS[clampi(int(cape.get("dye", 0)), 0, Data.DYE_COLORS.size() - 1)]["color"]
-		var shade := dye.darkened(0.3)
-		match row:
-			0: # voor: alleen de punten langs de schouders zichtbaar
-				_px(canvas, origin, px, 3, 8, 1, 4, dye)
-				_px(canvas, origin, px, 12, 8, 1, 4, shade)
-			1: # achter: de hele cape
-				_px(canvas, origin, px, 3, 7, 10, 6, dye)
-				_px(canvas, origin, px, 3, 12, 10, 1, shade)
-				_px(canvas, origin, px, 3, 7, 1, 6, shade)
-			_: # zijkant: hangt achter het lijf
-				_px(canvas, origin, px, 3, 7, 2, 5, dye, row == 3)
-				_px(canvas, origin, px, 3, 11, 2, 1, shade, row == 3)
+	# Rugkleding hangt achter het lijf.
+	var back: Variant = clothing.get("back", {})
+	if not back is Dictionary:
+		return
+	var item := str(back.get("item", ""))
+	if item == "":
+		return
+	var dye: Color = Data.DYE_COLORS[clampi(int(back.get("dye", 0)), 0, Data.DYE_COLORS.size() - 1)]["color"]
+	var shade := dye.darkened(0.3)
+	var light := dye.lightened(0.2)
+	match item:
+		"cloth_cape":
+			match row:
+				0: # voor: alleen de punten langs de schouders zichtbaar
+					_px(canvas, origin, px, 3, 8, 1, 4, dye)
+					_px(canvas, origin, px, 12, 8, 1, 4, shade)
+				1: # achter: de hele cape
+					_px(canvas, origin, px, 3, 7, 10, 6, dye)
+					_px(canvas, origin, px, 3, 12, 10, 1, shade)
+					_px(canvas, origin, px, 3, 7, 1, 6, shade)
+				_: # zijkant: hangt achter het lijf
+					_px(canvas, origin, px, 3, 7, 2, 5, dye, row == 3)
+					_px(canvas, origin, px, 3, 11, 2, 1, shade, row == 3)
+		"cloth_cloak": # mantel met capuchon
+			match row:
+				0: # voor: schouderpunten en de rand van de capuchon naast het hoofd
+					_px(canvas, origin, px, 3, 8, 1, 4, dye)
+					_px(canvas, origin, px, 12, 8, 1, 4, shade)
+					_px(canvas, origin, px, 4, 1, 1, 3, shade)
+					_px(canvas, origin, px, 11, 1, 1, 3, shade)
+				1: # achter: de hele mantel met een bult voor de capuchon
+					_px(canvas, origin, px, 3, 7, 10, 6, dye)
+					_px(canvas, origin, px, 3, 12, 10, 1, shade)
+					_px(canvas, origin, px, 5, 2, 6, 5, dye)
+					_px(canvas, origin, px, 5, 6, 6, 1, shade)
+				_:
+					_px(canvas, origin, px, 3, 7, 2, 5, dye, row == 3)
+					_px(canvas, origin, px, 3, 11, 2, 1, shade, row == 3)
+					_px(canvas, origin, px, 3, 2, 2, 4, dye, row == 3)
+		"cloth_backpack": # rugzak: alleen van achteren en opzij zichtbaar
+			match row:
+				1:
+					_px(canvas, origin, px, 5, 7, 6, 5, dye)
+					_px(canvas, origin, px, 5, 7, 6, 2, light) # klep
+					_px(canvas, origin, px, 7, 10, 2, 1, shade) # gesp
+				2, 3:
+					_px(canvas, origin, px, 2, 7, 3, 4, dye, row == 3)
+					_px(canvas, origin, px, 2, 7, 3, 1, light, row == 3)
 
 
 static func front(canvas: CanvasItem, origin: Vector2, px: float, row: int, column: int, appearance: Dictionary, clothing: Dictionary) -> void:
@@ -114,6 +146,10 @@ static func _hair_front(canvas: CanvasItem, origin: Vector2, px: float, style: D
 	if style.get("curl", false):
 		for x: int in [4, 6, 8, 10, 12]:
 			_px(canvas, origin, px, x, 0, 1, 1, base)
+	if int(style.get("spiky", 0)) != 0:
+		for x: int in [4, 7, 10, 13]:
+			_px(canvas, origin, px, x, 0, 1, 2, base)
+			_px(canvas, origin, px, x, 0, 1, 1, light)
 	if style.get("bun", false):
 		_px(canvas, origin, px, 3, 1, 1, 2, base)
 		_px(canvas, origin, px, 12, 1, 1, 2, base)
@@ -124,6 +160,9 @@ static func _hair_front(canvas: CanvasItem, origin: Vector2, px: float, style: D
 		2:
 			for i: int in 5:
 				_px(canvas, origin, px, 12, 5 + i, 1, 1, base if i % 2 == 0 else shade)
+	if int(style.get("sidetail", 0)) != 0:
+		_px(canvas, origin, px, 13, 4, 1, 4, base) # losse lok naast het gezicht
+		_px(canvas, origin, px, 13, 8, 1, 1, shade)
 
 
 static func _hair_back(canvas: CanvasItem, origin: Vector2, px: float, style: Dictionary, length: int, base: Color, shade: Color) -> void:
@@ -157,6 +196,12 @@ static func _hair_back(canvas: CanvasItem, origin: Vector2, px: float, style: Di
 	if style.get("curl", false):
 		for x: int in [4, 6, 8, 10]:
 			_px(canvas, origin, px, x, 5 if length < 3 else 10, 1, 1, shade)
+	if int(style.get("spiky", 0)) != 0:
+		for x: int in [4, 7, 10, 13]:
+			_px(canvas, origin, px, x, 0, 1, 2, base)
+	if int(style.get("sidetail", 0)) != 0:
+		_px(canvas, origin, px, 13, 4, 1, 4, base)
+		_px(canvas, origin, px, 13, 8, 1, 1, shade)
 
 
 static func _hair_side(canvas: CanvasItem, origin: Vector2, px: float, style: Dictionary, length: int, base: Color, shade: Color, mirror: bool) -> void:
@@ -200,6 +245,12 @@ static func _hair_side(canvas: CanvasItem, origin: Vector2, px: float, style: Di
 		2:
 			for i: int in 5:
 				_px(canvas, origin, px, 2, 5 + i, 2, 1, base if i % 2 == 0 else shade, mirror)
+	if int(style.get("spiky", 0)) != 0:
+		for x: int in [5, 8, 11]:
+			_px(canvas, origin, px, x, 0, 1, 2, base, mirror)
+	if int(style.get("sidetail", 0)) != 0:
+		_px(canvas, origin, px, 12, 4, 1, 5, base, mirror) # de lok hangt vóór het gezicht
+		_px(canvas, origin, px, 12, 8, 1, 1, shade, mirror)
 
 
 # --- Ogen -----------------------------------------------------------------------------------
@@ -252,6 +303,25 @@ static func _eye_front(canvas: CanvasItem, origin: Vector2, px: float, style: St
 		"vriendelijk":
 			_px(canvas, origin, px, x, y, 1, 1, color)
 			_px(canvas, origin, px, x, y - 1, 1, 1, Color("e8c9a0")) # zachte wenkbrauw
+		"dicht": # blij dichtgeknepen: een lachend boogje
+			_px(canvas, origin, px, x, y, 1, 1, dark)
+			_px(canvas, origin, px, x + (1 if right_eye else -1), y - 1, 1, 1, dark)
+		"smal": # gefocust: donker ooglid erover
+			_px(canvas, origin, px, x, y, 1, 1, color)
+			_px(canvas, origin, px, x, y - 1, 1, 1, dark)
+		"ovaal":
+			_px(canvas, origin, px, x, y - 1, 1, 2, color)
+			_px(canvas, origin, px, x, y - 1, 1, 1, white)
+		"wijs": # halve oogleden met een grijze wenkbrauw erboven
+			_px(canvas, origin, px, x, y, 1, 1, color)
+			_px(canvas, origin, px, x, y - 2, 1, 1, Color("c8c8ce"))
+		"straler": # twee glinsteringen boven het oog
+			_px(canvas, origin, px, x, y, 1, 1, color)
+			_px(canvas, origin, px, x - 1, y - 1, 1, 1, white)
+			_px(canvas, origin, px, x + 1, y - 1, 1, 1, white)
+		"dromerig": # glinstering schuin naar buiten
+			_px(canvas, origin, px, x, y, 1, 1, color)
+			_px(canvas, origin, px, x + (1 if right_eye else -1), y - 1, 1, 1, white)
 
 
 static func _eye_side(canvas: CanvasItem, origin: Vector2, px: float, style: String, color: Color, dark: Color, white: Color, lash: Color, x: int, y: int, mirror: bool) -> void:
@@ -280,6 +350,25 @@ static func _eye_side(canvas: CanvasItem, origin: Vector2, px: float, style: Str
 		"vriendelijk":
 			_px(canvas, origin, px, x, y, 1, 1, color, mirror)
 			_px(canvas, origin, px, x, y - 1, 1, 1, Color("e8c9a0"), mirror)
+		"dicht":
+			_px(canvas, origin, px, x, y, 1, 1, dark, mirror)
+			_px(canvas, origin, px, x - 1, y - 1, 2, 1, dark, mirror)
+		"smal":
+			_px(canvas, origin, px, x, y, 1, 1, color, mirror)
+			_px(canvas, origin, px, x, y - 1, 1, 1, dark, mirror)
+		"ovaal":
+			_px(canvas, origin, px, x, y - 1, 1, 2, color, mirror)
+			_px(canvas, origin, px, x, y - 1, 1, 1, white, mirror)
+		"wijs":
+			_px(canvas, origin, px, x, y, 1, 1, color, mirror)
+			_px(canvas, origin, px, x, y - 2, 1, 1, Color("c8c8ce"), mirror)
+		"straler":
+			_px(canvas, origin, px, x, y, 1, 1, color, mirror)
+			_px(canvas, origin, px, x - 1, y - 1, 1, 1, white, mirror)
+			_px(canvas, origin, px, x + 1, y - 1, 1, 1, white, mirror)
+		"dromerig":
+			_px(canvas, origin, px, x, y, 1, 1, color, mirror)
+			_px(canvas, origin, px, x + 1, y - 1, 1, 1, white, mirror)
 		_:
 			_px(canvas, origin, px, x, y, 1, 1, color, mirror)
 
@@ -314,28 +403,72 @@ static func _draw_hat(canvas: CanvasItem, origin: Vector2, px: float, row: int, 
 			_px(canvas, origin, px, 4, 0, 8, 3, dye, mirror)
 			_px(canvas, origin, px, 4, 2, 8, 1, shade, mirror) # omgeslagen rand
 			_px(canvas, origin, px, 7, 0, 2, 1, light, mirror) # pompon
+		"cloth_headband":
+			_px(canvas, origin, px, 4, 3, 8, 1, dye, mirror) # band over de haargrens
+			if row == 1:
+				_px(canvas, origin, px, 7, 3, 2, 1, shade) # knoop achter
+			elif row == 0:
+				_px(canvas, origin, px, 11, 2, 1, 2, shade) # knoop opzij
+			else:
+				_px(canvas, origin, px, 4, 2, 1, 2, shade, mirror) # knoop achterop
+		"cloth_felt_hat": # hogere bol dan de strohoed, met een lint
+			if row == 1:
+				_px(canvas, origin, px, 2, 3, 12, 1, dye)
+				_px(canvas, origin, px, 5, 0, 6, 3, dye)
+				_px(canvas, origin, px, 5, 2, 6, 1, shade)
+			else:
+				_px(canvas, origin, px, 2, 3, 12, 1, dye, mirror)
+				_px(canvas, origin, px, 2, 4, 12, 1, shade, mirror)
+				_px(canvas, origin, px, 5, 0, 6, 3, dye, mirror)
+				_px(canvas, origin, px, 5, 2, 6, 1, shade, mirror) # lint
+		"cloth_nightcap": # slappe muts die naar één kant afhangt
+			_px(canvas, origin, px, 4, 0, 8, 2, dye, mirror)
+			_px(canvas, origin, px, 4, 2, 8, 1, shade, mirror) # rand
+			if mirror:
+				_px(canvas, origin, px, 11, 1, 2, 3, dye)
+				_px(canvas, origin, px, 12, 4, 1, 1, light) # pompon aan het puntje
+			else:
+				_px(canvas, origin, px, 3, 1, 2, 3, dye)
+				_px(canvas, origin, px, 3, 4, 1, 1, light)
 	if row == 0 and item == "cloth_beret":
 		_px(canvas, origin, px, 4, 2, 4, 1, shade)
 
 
 static func _draw_clothing_body(canvas: CanvasItem, origin: Vector2, px: float, row: int, column: int, clothing: Dictionary) -> void:
 	var mirror := row == 3
-	# rug: sjaal (de cape zit in behind())
+	# rug: sjaal, rugzakbanden of mantelsluiting (de cape en de mantel zelf zitten in behind())
 	var back: Variant = clothing.get("back", {})
-	if back is Dictionary and str(back.get("item", "")) == "cloth_scarf":
-		var scarf := _dye(back)
-		var scarf_shade := scarf.darkened(0.3)
-		match row:
-			0:
-				_px(canvas, origin, px, 5, 7, 6, 1, scarf)
-				_px(canvas, origin, px, 5, 8, 6, 1, scarf_shade)
-				_px(canvas, origin, px, 9, 9, 1, 3, scarf) # losse punt
-			1:
-				_px(canvas, origin, px, 5, 7, 6, 1, scarf)
-				_px(canvas, origin, px, 5, 8, 6, 1, scarf_shade)
-			_:
-				_px(canvas, origin, px, 6, 7, 5, 1, scarf, mirror)
-				_px(canvas, origin, px, 4, 8, 1, 2, scarf_shade, mirror)
+	if back is Dictionary:
+		var back_item := str(back.get("item", ""))
+		match back_item:
+			"cloth_scarf":
+				var scarf := _dye(back)
+				var scarf_shade := scarf.darkened(0.3)
+				match row:
+					0:
+						_px(canvas, origin, px, 5, 7, 6, 1, scarf)
+						_px(canvas, origin, px, 5, 8, 6, 1, scarf_shade)
+						_px(canvas, origin, px, 9, 9, 1, 3, scarf) # losse punt
+					1:
+						_px(canvas, origin, px, 5, 7, 6, 1, scarf)
+						_px(canvas, origin, px, 5, 8, 6, 1, scarf_shade)
+					_:
+						_px(canvas, origin, px, 6, 7, 5, 1, scarf, mirror)
+						_px(canvas, origin, px, 4, 8, 1, 2, scarf_shade, mirror)
+			"cloth_backpack":
+				var pack := _dye(back)
+				var pack_shade := pack.darkened(0.3)
+				match row:
+					0: # schouderbanden over het lijf
+						_px(canvas, origin, px, 5, 7, 1, 3, pack)
+						_px(canvas, origin, px, 10, 7, 1, 3, pack_shade)
+					_:
+						_px(canvas, origin, px, 6, 7, 1, 3, pack, mirror)
+			"cloth_cloak":
+				var cloak := _dye(back)
+				if row == 0: # kraag en sluiting aan de voorkant
+					_px(canvas, origin, px, 5, 7, 6, 1, cloak)
+					_px(canvas, origin, px, 7, 7, 2, 1, cloak.lightened(0.3))
 	# bovenlijf
 	var top: Variant = clothing.get("top", {})
 	if top is Dictionary and str(top.get("item", "")) != "":
@@ -347,6 +480,9 @@ static func _draw_clothing_body(canvas: CanvasItem, origin: Vector2, px: float, 
 			_px(canvas, origin, px, 5, 8, 6, 3, dye, mirror)
 			_px(canvas, origin, px, 10, 8, 1, 3, shade, mirror)
 			_px(canvas, origin, px, 7, 9, 2, 1, light, mirror)
+			if item == "cloth_dress": # de rok van de jurk valt over de benen
+				_px(canvas, origin, px, 4, 11, 7, 2, dye, mirror)
+				_px(canvas, origin, px, 4, 12, 7, 1, shade, mirror)
 		else:
 			_px(canvas, origin, px, 4, 8, 8, 3, dye)
 			_px(canvas, origin, px, 3, 8, 1, 2, dye) # mouwen
@@ -361,18 +497,40 @@ static func _draw_clothing_body(canvas: CanvasItem, origin: Vector2, px: float, 
 				"cloth_shirt":
 					_px(canvas, origin, px, 6, 8, 4, 1, light) # kraag
 					_px(canvas, origin, px, 5, 9, 1, 1, shade) # borstzak
+				"cloth_sweater":
+					_px(canvas, origin, px, 6, 8, 4, 1, light) # opstaande kraag
+					_px(canvas, origin, px, 4, 10, 8, 1, shade) # gebreide boord
+				"cloth_vest":
+					_px(canvas, origin, px, 7, 8, 2, 3, shade) # opengevallen midden
+					_px(canvas, origin, px, 6, 8, 1, 3, light) # revers
+					_px(canvas, origin, px, 9, 8, 1, 3, light)
+				"cloth_dress":
+					_px(canvas, origin, px, 4, 10, 8, 1, light) # tailleband
+					_px(canvas, origin, px, 4, 11, 8, 2, dye) # wijde rok
+					_px(canvas, origin, px, 4, 12, 8, 1, shade)
 	# onderlijf
 	var bottom: Variant = clothing.get("bottom", {})
 	if bottom is Dictionary and str(bottom.get("item", "")) != "":
 		var dye := _dye(bottom)
 		var shade := dye.darkened(0.3)
-		if str(bottom["item"]) == "cloth_skirt":
+		var light := dye.lightened(0.25)
+		var bottom_item := str(bottom["item"])
+		if bottom_item == "cloth_skirt":
 			if row == 2 or row == 3:
 				_px(canvas, origin, px, 4, 11, 7, 3, dye, mirror)
 				_px(canvas, origin, px, 4, 13, 7, 1, shade, mirror)
 			else:
 				_px(canvas, origin, px, 4, 11, 8, 3, dye)
 				_px(canvas, origin, px, 4, 13, 8, 1, shade)
+		elif bottom_item == "cloth_shorts": # korte pijpen: één rij hoog
+			if row == 2 or row == 3:
+				var short_back: Vector2i = Vector2i(6, 7) if column == 0 else (Vector2i(5, 6) if column == 1 else Vector2i(7, 8))
+				var short_front: Vector2i = Vector2i(8, 9) if column == 0 else (Vector2i(9, 10) if column == 1 else Vector2i(7, 8))
+				_px(canvas, origin, px, short_back.x, 12, short_back.y - short_back.x + 1, 1, shade, mirror)
+				_px(canvas, origin, px, short_front.x, 12, short_front.y - short_front.x + 1, 1, dye, mirror)
+			else:
+				_px(canvas, origin, px, 5, 12, 2, 1, dye)
+				_px(canvas, origin, px, 9, 12, 2, 1, dye)
 		else: # broek volgt de benen, ook tijdens een stap
 			var left_up := column == 1
 			var right_up := column == 2
@@ -381,27 +539,52 @@ static func _draw_clothing_body(canvas: CanvasItem, origin: Vector2, px: float, 
 				var front_leg: Vector2i = Vector2i(8, 9) if column == 0 else (Vector2i(9, 10) if column == 1 else Vector2i(7, 8))
 				_px(canvas, origin, px, back_leg.x, 12, back_leg.y - back_leg.x + 1, 2, shade, mirror)
 				_px(canvas, origin, px, front_leg.x, 12, front_leg.y - front_leg.x + 1, 2, dye, mirror)
+				if bottom_item == "cloth_overalls":
+					_px(canvas, origin, px, front_leg.x + 1, 12, 1, 1, light, mirror) # knielap
 			else:
 				_px(canvas, origin, px, 5, 12, 2, 1 if left_up else 2, dye)
 				_px(canvas, origin, px, 9, 12, 2, 1 if right_up else 2, dye)
+				if bottom_item == "cloth_overalls":
+					_px(canvas, origin, px, 5, 12, 1, 1, light) # knielappen
+					_px(canvas, origin, px, 9, 12, 1, 1, light)
 	# voeten
 	var feet: Variant = clothing.get("feet", {})
 	if feet is Dictionary and str(feet.get("item", "")) != "":
 		var dye := _dye(feet)
 		var shade := dye.darkened(0.3)
+		var feet_item := str(feet["item"])
 		if row == 2 or row == 3:
 			var back_foot: Vector2i = Vector2i(6, 7) if column == 0 else (Vector2i(5, 6) if column == 1 else Vector2i(7, 8))
 			var front_foot: Vector2i = Vector2i(8, 9) if column == 0 else (Vector2i(9, 10) if column == 1 else Vector2i(7, 8))
-			_px(canvas, origin, px, back_foot.x, 13 if column == 2 else 14, back_foot.y - back_foot.x + 1, 1, shade, mirror)
-			_px(canvas, origin, px, front_foot.x, 14, front_foot.y - front_foot.x + 1, 1, dye, mirror)
+			if feet_item == "cloth_boots": # hoge schacht
+				_px(canvas, origin, px, back_foot.x, 12 if column == 2 else 13, back_foot.y - back_foot.x + 1, 2, shade, mirror)
+				_px(canvas, origin, px, front_foot.x, 13, front_foot.y - front_foot.x + 1, 2, dye, mirror)
+			elif feet_item == "cloth_sandals": # alleen een zool met een bandje
+				_px(canvas, origin, px, back_foot.x, 13 if column == 2 else 14, back_foot.y - back_foot.x + 1, 1, shade, mirror)
+				_px(canvas, origin, px, front_foot.x, 14, front_foot.y - front_foot.x + 1, 1, dye, mirror)
+				_px(canvas, origin, px, front_foot.x, 13, 1, 1, dye.lightened(0.3), mirror)
+			else:
+				_px(canvas, origin, px, back_foot.x, 13 if column == 2 else 14, back_foot.y - back_foot.x + 1, 1, shade, mirror)
+				_px(canvas, origin, px, front_foot.x, 14, front_foot.y - front_foot.x + 1, 1, dye, mirror)
 		else:
 			var left_up := column == 1
 			var right_up := column == 2
-			_px(canvas, origin, px, 5, 13 if left_up else 14, 2, 1, dye)
-			_px(canvas, origin, px, 9, 13 if right_up else 14, 2, 1, dye)
-			if str(feet["item"]) == "cloth_slippers":
-				_px(canvas, origin, px, 5, 13 if left_up else 14, 1, 1, dye.lightened(0.3))
-				_px(canvas, origin, px, 9, 13 if right_up else 14, 1, 1, dye.lightened(0.3))
+			if feet_item == "cloth_boots":
+				_px(canvas, origin, px, 5, 12 if left_up else 13, 2, 2, dye)
+				_px(canvas, origin, px, 9, 12 if right_up else 13, 2, 2, dye)
+				_px(canvas, origin, px, 5, 13 if left_up else 14, 2, 1, shade) # zool
+				_px(canvas, origin, px, 9, 13 if right_up else 14, 2, 1, shade)
+			elif feet_item == "cloth_sandals":
+				_px(canvas, origin, px, 5, 13 if left_up else 14, 2, 1, dye)
+				_px(canvas, origin, px, 9, 13 if right_up else 14, 2, 1, dye)
+				_px(canvas, origin, px, 5, 12 if left_up else 13, 1, 1, dye.lightened(0.3)) # bandje
+				_px(canvas, origin, px, 9, 12 if right_up else 13, 1, 1, dye.lightened(0.3))
 			else:
-				_px(canvas, origin, px, 6, 13 if left_up else 14, 1, 1, shade)
-				_px(canvas, origin, px, 10, 13 if right_up else 14, 1, 1, shade)
+				_px(canvas, origin, px, 5, 13 if left_up else 14, 2, 1, dye)
+				_px(canvas, origin, px, 9, 13 if right_up else 14, 2, 1, dye)
+				if feet_item == "cloth_slippers":
+					_px(canvas, origin, px, 5, 13 if left_up else 14, 1, 1, dye.lightened(0.3))
+					_px(canvas, origin, px, 9, 13 if right_up else 14, 1, 1, dye.lightened(0.3))
+				else:
+					_px(canvas, origin, px, 6, 13 if left_up else 14, 1, 1, shade)
+					_px(canvas, origin, px, 10, 13 if right_up else 14, 1, 1, shade)

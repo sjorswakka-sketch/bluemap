@@ -16,6 +16,7 @@ const ROW_HEIGHT := 40.0
 const ROW_X := 330.0
 const ROW_W := 612.0
 const SWATCH := 18.0
+const SWATCH_COLS := 10 # twee rijen van tien passen in de breedte van een menu-rij
 
 signal close_requested
 
@@ -144,7 +145,9 @@ func _pointer_input(event: InputEvent) -> void:
 
 func _swatch_rect(index: int) -> Rect2:
 	var row := row_rect(selected)
-	return Rect2(ROW_X + 20 + index * (SWATCH + 6), row.end.y + 6, SWATCH, SWATCH)
+	var column := index % SWATCH_COLS
+	var line := index / SWATCH_COLS
+	return Rect2(ROW_X + 20 + column * (SWATCH + 6), row.end.y + 30 + line * (SWATCH + 6), SWATCH, SWATCH)
 
 
 func _draw() -> void:
@@ -236,14 +239,18 @@ func _draw_row(font: Font, index: int) -> void:
 
 func _draw_swatches(font: Font) -> void:
 	var row := row_rect(selected)
-	_text(Vector2(ROW_X, row.end.y + 2), tr("Verf:"), 16, BLUE)
+	var lines := ceili(float(Data.DYE_COLORS.size()) / SWATCH_COLS)
+	var panel := Rect2(ROW_X - 6, row.end.y + 4, 40 + SWATCH_COLS * (SWATCH + 6), 30 + lines * (SWATCH + 6) + 22)
+	draw_rect(panel, Color(0.07, 0.12, 0.22, 0.95)) # eigen paneeltje over de rijen eronder
+	draw_rect(panel, Color(0.3, 0.45, 0.7), false, 1.0)
+	_text(Vector2(ROW_X + 8, row.end.y + 24), tr("Verf:"), 16, BLUE)
 	var worn := Appearance.worn(slot_of_row(selected))
 	var current := clampi(int(worn.get("dye", 0)), 0, Data.DYE_COLORS.size() - 1)
 	for index in Data.DYE_COLORS.size():
 		var rect := _swatch_rect(index)
 		draw_rect(rect, Data.DYE_COLORS[index]["color"])
 		draw_rect(rect, GOLD if index == current else Color(1, 1, 1, 0.35), false, 2.0 if index == current else 1.0)
-	var name_pos := Vector2(ROW_X + 20, row.end.y + 6 + SWATCH + 22)
+	var name_pos := Vector2(ROW_X + 20, row.end.y + 30 + lines * (SWATCH + 6) + 14)
 	_text(name_pos, tr(Data.DYE_COLORS[current]["name"]), 17, Color.WHITE)
 
 

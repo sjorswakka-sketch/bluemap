@@ -121,6 +121,12 @@ pixel art, en te delen met vrienden en de community.
       zodat je in elk gebied meteen ziet waar je naar een andere plek kunt. En elke doorgang tussen
       twee buitengebieden heeft nu een wegwijzer die het doelgebied noemt (vijf nieuwe borden in het
       Fluisterbos, bij het Zilvermeer, in het Dauwbos, het IJsdal en de Dorstvallei)
+- [x] Uiterlijk XL: 45 haarstijlen per geslacht (met twee nieuwe vormparameters: stekels en een
+      zijlok), 16 oogstijlen, 16 haarkleuren, 12 oogkleuren, 24 kledingstukken (hoofdband, vilthoed,
+      nachtmuts, rugzak, mantel met capuchon, trui, gilet, jurk, korte broek, werkbroek, laarzen en
+      sandalen — elk met eigen pictogram én passende pixels op alle vier de looprichtingen) en 20
+      verfkleuren in een overzichtelijke strook van twee rijen. Vera's winkel en haar verhaal
+      groeiden mee, en een render-smoke in de test tekent elke stijl en elk stuk een keer echt
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages

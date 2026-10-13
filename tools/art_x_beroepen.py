@@ -530,8 +530,131 @@ def slippers():
     return outline(im)
 
 
+# --- kleding II (uiterlijk XL): pictogrammen op vaste plekken 46 t/m 57 ----------------------
+
+def headband():
+    im = blank()
+    rect(im, 2, 6, 13, 8, CLOTH)
+    rect(im, 2, 6, 13, 6, CLOTH_L)
+    ellipse(im, (11, 3, 14, 6), CLOTH_D)  # knoop opzij
+    rect(im, 12, 8, 13, 11, CLOTH_D)  # losse uiteinden
+    return outline(im)
+
+
+def felt_hat():
+    im = blank()
+    ellipse(im, (4, 1, 11, 8), CLOTH)
+    rect(im, 1, 8, 14, 10, CLOTH_D)  # rand
+    rect(im, 4, 6, 11, 8, c("6a4a2e"))  # lint
+    put(im, 7, 2, CLOTH_D)  # kneep in de bol
+    put(im, 8, 2, CLOTH_D)
+    return outline(im)
+
+
+def nightcap():
+    im = blank()
+    polygon(im, [(3, 10), (4, 4), (7, 1), (11, 3), (13, 8), (12, 10)], CLOTH)
+    rect(im, 2, 10, 12, 12, CLOTH_D)  # omgeslagen rand
+    ellipse(im, (11, 7, 14, 10), CLOTH_L)  # pompon aan het puntje
+    return outline(im)
+
+
+def backpack():
+    im = blank()
+    rect(im, 4, 3, 11, 13, CLOTH)
+    rect(im, 4, 3, 11, 6, CLOTH_L)  # klep
+    rect(im, 6, 9, 9, 12, CLOTH_D)  # voorzak
+    put(im, 7, 7, CLOTH_D)  # gespen
+    put(im, 8, 7, CLOTH_D)
+    return outline(im)
+
+
+def cloak():
+    im = blank()
+    ellipse(im, (5, 1, 10, 5), CLOTH_L)  # capuchon
+    polygon(im, [(8, 3), (4, 6), (3, 14), (13, 14), (12, 6)], CLOTH)
+    polygon(im, [(8, 4), (6, 6), (5, 13), (7, 13)], CLOTH_D)
+    put(im, 8, 5, c("ffd83a"))  # sluiting
+    return outline(im)
+
+
+def sweater():
+    im = blank()
+    rect(im, 5, 3, 10, 11, CLOTH)
+    rect(im, 3, 3, 4, 8, CLOTH)
+    rect(im, 11, 3, 12, 8, CLOTH)
+    rect(im, 6, 2, 9, 3, CLOTH_L)  # opstaande kraag
+    rect(im, 5, 10, 10, 11, CLOTH_D)  # boord
+    rect(im, 3, 7, 4, 8, CLOTH_D)  # manchetten
+    rect(im, 11, 7, 12, 8, CLOTH_D)
+    return outline(im)
+
+
+def vest():
+    im = blank()
+    rect(im, 4, 3, 6, 11, CLOTH)
+    rect(im, 9, 3, 11, 11, CLOTH)
+    rect(im, 4, 3, 4, 11, CLOTH_L)  # revers
+    rect(im, 11, 3, 11, 11, CLOTH_L)
+    put(im, 5, 5, CLOTH_D)  # zakjes
+    put(im, 10, 5, CLOTH_D)
+    return outline(im)
+
+
+def dress():
+    im = blank()
+    rect(im, 5, 2, 10, 6, CLOTH)
+    rect(im, 5, 6, 10, 7, CLOTH_D)  # tailleband
+    polygon(im, [(5, 7), (10, 7), (13, 13), (2, 13)], CLOTH)
+    polygon(im, [(6, 7), (8, 7), (6, 13), (4, 13)], CLOTH_L)
+    rect(im, 2, 12, 13, 13, CLOTH_D)
+    return outline(im)
+
+
+def shorts():
+    im = blank()
+    rect(im, 4, 3, 11, 5, CLOTH)
+    rect(im, 4, 5, 7, 9, CLOTH)
+    rect(im, 8, 5, 11, 9, CLOTH)
+    rect(im, 4, 8, 7, 9, CLOTH_D)  # pijpranden
+    rect(im, 8, 8, 11, 9, CLOTH_D)
+    return outline(im)
+
+
+def overalls():
+    im = blank()
+    vline(im, 5, 2, 6, CLOTH_D)  # bretels
+    vline(im, 10, 2, 6, CLOTH_D)
+    rect(im, 6, 4, 9, 7, CLOTH)  # borstlap
+    rect(im, 4, 7, 11, 8, CLOTH_D)  # tailleband
+    rect(im, 4, 8, 7, 13, CLOTH)
+    rect(im, 8, 8, 11, 13, CLOTH)
+    put(im, 5, 10, CLOTH_L)  # knielappen
+    put(im, 9, 10, CLOTH_L)
+    return outline(im)
+
+
+def boots():
+    im = blank()
+    for x0 in (3, 9):
+        rect(im, x0, 3, x0 + 3, 9, CLOTH)  # schacht
+        rect(im, x0, 3, x0 + 3, 4, CLOTH_L)  # rand
+        rect(im, x0, 9, x0 + 4, 12, CLOTH)  # voet
+        rect(im, x0, 11, x0 + 4, 12, CLOTH_D)  # zool
+    return outline(im)
+
+
+def sandals():
+    im = blank()
+    for x0 in (3, 9):
+        rect(im, x0, 10, x0 + 4, 12, CLOTH_D)  # zool
+        rect(im, x0 + 1, 6, x0 + 2, 10, CLOTH)  # bandjes
+        rect(im, x0 + 1, 6, x0 + 3, 7, CLOTH_L)
+    return outline(im)
+
+
 def sheets():
-    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast(), straw_hat(), beret(), beanie(), cape(), scarf(), tunic(), blouse(), shirt(), trousers(), skirt(), shoes(), slippers(), dauwklauw(), mistdrank(), dauwsoep()]
+    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast(), straw_hat(), beret(), beanie(), cape(), scarf(), tunic(), blouse(), shirt(), trousers(), skirt(), shoes(), slippers(), dauwklauw(), mistdrank(), dauwsoep(), headband(), felt_hat(), nightcap(), backpack(), cloak(), sweater(), vest(), dress(), shorts(), overalls(), boots(), sandals()]
     resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein(), cactusfig_bush(), sandwort_bush(), sandstone_rock(), dauwklauw_bush()]
     return {"items_beroepen": strip(icons), "resources_beroepen": strip(resources)}
 
