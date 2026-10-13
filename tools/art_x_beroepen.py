@@ -353,6 +353,61 @@ def sandwort_bush():
     return outline(im)
 
 
+# --- Dauwbos: dauwklauw, mistedrank en dauwsoep ------------------------------------------
+
+DAUW = c("a8d8e8")    # bleke dauwkleur
+DAUW_D = c("6aa8c0")
+
+
+def dauwklauw():
+    """Bleke bloem met dauwdruppels, zoals ze in het mistige Dauwbos groeien."""
+    im = blank()
+    rect(im, 7, 8, 8, 14, LEAF)  # steel
+    for x, y in [(7, 3), (5, 5), (10, 5), (6, 7), (9, 7)]:
+        ellipse(im, (x - 1, y - 1, x + 2, y + 2), DAUW)  # kroonbladen
+    ellipse(im, (7, 5, 9, 7), c("f2f6fa"))  # hart
+    put(im, 5, 4, c("ffffff"))  # dauwdruppel
+    put(im, 11, 6, c("ffffff"))
+    return outline(im)
+
+
+def mistdrank():
+    """Kolkend blauwgroen elixer in een ronde fles."""
+    im = blank()
+    rect(im, 6, 2, 9, 4, LIGHT)
+    rect(im, 6, 5, 9, 7, c("cfe4ea"))
+    ellipse(im, (3, 6, 12, 14), c("d8ecf2"))
+    ellipse(im, (4, 8, 11, 13), c("5ab8c8"))
+    for x, y in [(6, 9), (9, 11), (7, 12)]:
+        put(im, x, y, c("c8f0f8"))  # mistbelletjes
+    return outline(im)
+
+
+def dauwsoep():
+    """Lichte soep met paddenstoelen en een dauwklauw erop."""
+    im = blank()
+    ellipse(im, (2, 7, 13, 13), c("885032"))
+    ellipse(im, (2, 5, 13, 10), LIGHT)
+    ellipse(im, (3, 6, 12, 9), c("d8cf9a"))
+    rect(im, 5, 6, 6, 7, c("d8a44f"))  # stukje honingzwam
+    rect(im, 9, 7, 10, 8, c("d8a44f"))
+    put(im, 8, 6, DAUW)  # dauwklauwblaadjes
+    put(im, 7, 7, DAUW)
+    return outline(im)
+
+
+def dauwklauw_bush():
+    """Waar je dauwklauwen plukt: een mistig polletje met bleke bloemen."""
+    im = blank()
+    ellipse(im, (2, 12, 13, 15), c("3a5a44"))  # donker mos
+    for x0, x1, y in [(8, 8, 4), (6, 5, 6), (10, 11, 6), (5, 4, 9), (11, 12, 9)]:
+        line(im, (x0, 12), (x1, y), LEAF)
+        ellipse(im, (x1 - 1, y - 2, x1 + 1, y), DAUW)
+    put(im, 7, 8, c("ffffff"))  # dauwdruppels
+    put(im, 10, 10, c("ffffff"))
+    return outline(im)
+
+
 # --- kleding (uiterlijk): pictogrammen op vaste plekken 31 t/m 42 -------------------------
 
 CLOTH = c("b08a5a")   # neutrale stof; de verfkleur zie je pas als je het draagt
@@ -476,8 +531,8 @@ def slippers():
 
 
 def sheets():
-    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast(), straw_hat(), beret(), beanie(), cape(), scarf(), tunic(), blouse(), shirt(), trousers(), skirt(), shoes(), slippers()]
-    resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein(), cactusfig_bush(), sandwort_bush(), sandstone_rock()]
+    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast(), straw_hat(), beret(), beanie(), cape(), scarf(), tunic(), blouse(), shirt(), trousers(), skirt(), shoes(), slippers(), dauwklauw(), mistdrank(), dauwsoep()]
+    resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein(), cactusfig_bush(), sandwort_bush(), sandstone_rock(), dauwklauw_bush()]
     return {"items_beroepen": strip(icons), "resources_beroepen": strip(resources)}
 
 
