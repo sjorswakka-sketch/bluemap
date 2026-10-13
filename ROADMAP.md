@@ -87,6 +87,11 @@ pixel art, en te delen met vrienden en de community.
       hun rol en gebied) in plaats van de sheets van de basis-personages; een padvindingstest bewaakt nu alle
       drie de gebieden
 
+- [x] Basisgebieden gepolijst: Dageraadsdorp heeft een buurttuin met hekjes, kratten bij de smederij en
+      meer groen in de hoeken; het Fluisterbos heeft extra bosvlekken en decor bij de beroepsplekken; het
+      Zilvermeer heeft meer lelievelden, dikkere rietkragen en stenen bij de oeverplekken. De
+      padvindingstest dekt nu ook deze drie gebieden
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen en schilden

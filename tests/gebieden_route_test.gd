@@ -8,6 +8,13 @@ const Beroepen := preload("res://scripts/data/ext/beroepen.gd")
 const Dauwbos := preload("res://scripts/maps/dauwbos.gd")
 const IJsdal := preload("res://scripts/maps/ijsdal.gd")
 const Dorstvallei := preload("res://scripts/maps/dorstvallei.gd")
+const Village := preload("res://scripts/maps/village.gd")
+const Forest := preload("res://scripts/maps/forest.gd")
+const Lake := preload("res://scripts/maps/lake.gd")
+
+## Objecten zonder fysieke tegel (markeringen, banen) en objecten die op het water horen.
+const NIET_FYSIEK := ["meer_water", "trigger", "boog_baan"]
+const OP_WATER := ["meer_visplek", "meer_diepe_visplek"]
 
 var failures := 0
 
@@ -47,6 +54,14 @@ func near(seen: Dictionary, rows: Array, pos: Vector2i) -> bool:
 	return false
 
 
+func dichtbij_oever(seen: Dictionary, pos: Vector2i, radius: int) -> bool:
+	for dy: int in range(-radius, radius + 1):
+		for dx: int in range(-radius, radius + 1):
+			if seen.has(pos + Vector2i(dx, dy)):
+				return true
+	return false
+
+
 func check_map(map_id: String, data: Dictionary) -> void:
 	var rows: Array = data["rows"]
 	var spawns: Dictionary = data["spawns"]
@@ -57,9 +72,14 @@ func check_map(map_id: String, data: Dictionary) -> void:
 		var pos := Vector2i(int(spawns[key][0]), int(spawns[key][1]))
 		check(tile_free(rows, pos), "%s: spawn '%s' begaanbaar" % [map_id, key])
 	for obj: Dictionary in data["objects"]:
+		if obj["type"] in NIET_FYSIEK:
+			continue
 		var pos := Vector2i(int(obj["pos"][0]), int(obj["pos"][1]))
 		var size: Array = obj.get("size", [1, 1])
 		var label := "%s %s (%d,%d)" % [obj["type"], obj.get("id", obj.get("item", "")), pos.x, pos.y]
+		if obj["type"] in OP_WATER:
+			check(dichtbij_oever(seen, pos, 4), "%s: %s bij bereikbare oever" % [map_id, label])
+			continue
 		var bereikbaar := false
 		for dy: int in int(size[1]):
 			for dx: int in int(size[0]):
@@ -76,5 +96,8 @@ func _initialize() -> void:
 	check_map("dauwbos", Dauwbos.DATA)
 	check_map("ijsdal", IJsdal.DATA)
 	check_map("dorstvallei", Dorstvallei.DATA)
+	check_map("village", Village.DATA)
+	check_map("forest", Forest.DATA)
+	check_map("lake", Lake.DATA)
 	print("GEBIEDEN ROUTE OK" if failures == 0 else "GEBIEDEN ROUTE FAILED: %d" % failures)
 	quit(0 if failures == 0 else 1)

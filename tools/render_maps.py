@@ -37,9 +37,10 @@ MARKERS = {"npc": (0, 255, 255, 255), "portal": (255, 255, 255, 255), "savepoint
            "chest": (255, 200, 40, 255), "pickup": (255, 120, 255, 255), "enemy": (255, 60, 60, 255),
            "sign": (200, 200, 200, 255), "wereld_lantaarn": (255, 230, 120, 255)}
 
-for map_id in ["dauwbos", "ijsdal", "dorstvallei"]:
+import sys
+for map_id in (sys.argv[1:] or ["dauwbos", "ijsdal", "dorstvallei"]):
     src = io.open("scripts/maps/%s.gd" % map_id, encoding="utf-8").read()
-    rows = re.findall(r'^\s+"([#~.,=+|^HhDEATobtOxcXyvrMIk_Zu%wNCSBms;lpQJdVK*>:!nzaegqLfGiP]+)",?\s*$', src, re.M)
+    rows = re.findall(r'^\s+"([^"]+)",?\s*$', src, re.M)
     rows = [r for r in rows if len(set(r) - set(CHARS)) == 0 and len(r) > 20]
     w, h = len(rows[0]), len(rows)
     img = Image.new("RGBA", (w * 16, h * 16))
@@ -53,7 +54,8 @@ for map_id in ["dauwbos", "ijsdal", "dorstvallei"]:
         for dx in range(16):
             for dy in range(16):
                 if dx in (0, 15) or dy in (0, 15):
-                    img.putpixel((x + dx, y + dy), color)
+                    if 0 <= x + dx < img.width and 0 <= y + dy < img.height:
+                        img.putpixel((x + dx, y + dy), color)
     img = img.resize((w * 8, h * 8), Image.NEAREST)
     img.save("tools/map_%s.png" % map_id)
     print("tools/map_%s.png  %dx%d tegels, %d objecten" % (map_id, w, h, len(objects)))
