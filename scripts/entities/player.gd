@@ -54,6 +54,9 @@ var work_kind := ""
 var work_elapsed := 0.0
 var work_duration := 1.0
 var drink_anim := 0.0
+var combo_step := 0
+var combo_window := 0.0
+var combo_sweep := false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -103,6 +106,9 @@ func is_rolling() -> bool:
 
 func _physics_process(delta: float) -> void:
 	time += delta
+	combo_window = maxf(combo_window - delta, 0.0)
+	if combo_window <= 0.0:
+		combo_step = 0
 	var dir := Vector2.ZERO
 	var locked := GameState.input_locked()
 	if not locked:
@@ -190,6 +196,8 @@ func _roll() -> void:
 		return
 	cancel_work_animation()
 	attack_timer = 0.0
+	combo_step = 0
+	combo_window = 0.0
 	var dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	roll_dir = dir.normalized() if dir != Vector2.ZERO else facing
 	facing = roll_dir
@@ -204,17 +212,25 @@ func _attack() -> void:
 	cancel_work_animation()
 	_update_aim()
 	attack_direction = aim_direction
+	combo_step = combo_step % 3 + 1 if combo_window > 0.0 else 1
+	combo_window = 0.9
+	combo_sweep = combo_step == 3 and GameState.movement.spend(18.0)
 	attack_timer = ATTACK_TIME
 	cooldown = ATTACK_COOLDOWN * GameState.attack_cooldown_multiplier()
 	Sound.play("swing", -4.0, randf_range(0.92, 1.08))
-	var reach := GameState.reach()
+	var reach := GameState.reach() + (8.0 if combo_sweep else 0.0)
 	for enemy: Node2D in get_tree().get_nodes_in_group("enemies"):
 		var to_enemy := enemy.global_position - global_position
 		var margin: float = enemy.radius
-		if to_enemy.length() <= reach + margin and attack_direction.dot(to_enemy.normalized()) > 0.2:
+		if to_enemy.length() <= reach + margin and attack_direction.dot(to_enemy.normalized()) > (-0.35 if combo_sweep else 0.2) and _attack_clear(enemy.global_position):
 			enemy.hurt(GameState.damage(), attack_direction)
 	for thing: Node in get_tree().get_nodes_in_group("breakable"):
-		thing.sword_hit(global_position, attack_direction, reach)
+		if _attack_clear(thing.global_position):
+			thing.sword_hit(global_position, attack_direction, reach)
+
+func _attack_clear(target_position: Vector2) -> bool:
+	var query := PhysicsRayQueryParameters2D.create(global_position, target_position, 1)
+	return get_world_2d().direct_space_state.intersect_ray(query).is_empty()
 
 const BOW_COOLDOWN := 0.4
 const BOW_ANIM_TIME := 0.25
@@ -476,9 +492,32 @@ func _draw_bow() -> void:
 	draw_line(string_mid, points[8], Color(1, 1, 1, 0.9), 1.0)
 
 func _draw_sword() -> void:
-	var weapon_id: String = str(GameState.get("weapon"))
-	var weapon: Dictionary = Items.WEAPONS.get(weapon_id, {})
-	var color: Color = weapon.get("color", Color(0.9, 0.85, 0.4))
-	var tip := attack_direction * 18.0
-	draw_line(Vector2.ZERO, tip, color, 3.0)
-	draw_line(tip, tip + attack_direction.orthogonal() * 4.0, color.lightened(0.3), 2.0)
+	var weapon: Dictionary = Items.WEAPONS[GameState.weapon]
+	var reach: float = weapon["reach"]
+	var color: Color = weapon["color"]
+	var progress := 1.0 - attack_timer / ATTACK_TIME
+	var arc := 3.8 if combo_sweep else 2.0
+	var angle := attack_direction.angle() - arc * 0.5 + progress * arc
+	if combo_sweep:
+		reach += 8.0
+		color = Color(0.5, 0.95, 1.0)
+	draw_arc(Vector2.ZERO, reach - 4.0, angle - 0.55, angle + 0.55, 10, Color(color, 0.55), 6.0)
+	var hilt := Vector2.from_angle(angle) * 8.0
+	var tip := Vector2.from_angle(angle) * (reach - 6.0)
+	draw_line(Vector2.ZERO, hilt, Color(0.45, 0.3, 0.15), 4.0)
+	draw_line(hilt, tip, color, 4.0)
+	draw_line(hilt, tip, Color(1, 1, 1, 0.7), 1.5)
+	draw_line(hilt + Vector2.from_angle(angle + PI / 2.0) * 4.0, hilt + Vector2.from_angle(angle - PI / 2.0) * 4.0,
+		Color(0.9, 0.75, 0.3), 3.0)
+	if weapon.get("sparkle", false):
+		_draw_sword_sparkles(angle, reach, progress)
+
+
+## Sterretjes langs de zwaai van een bijzonder zwaard (het Sterrenzwaard).
+func _draw_sword_sparkles(angle: float, reach: float, progress: float) -> void:
+	for i in 4:
+		var spread := angle - 0.55 + (progress * 0.5 + float(i) * 0.25) * 1.1
+		var p := Vector2.from_angle(spread) * (reach - 2.0 - float(i) * 6.0)
+		var size := 2.0 + float((i + int(progress * 4.0)) % 3)
+		draw_line(p - Vector2(size, 0), p + Vector2(size, 0), Color(1, 1, 1, 0.9), 1.5)
+		draw_line(p - Vector2(0, size), p + Vector2(0, size), Color(1, 1, 1, 0.9), 1.5)

@@ -69,24 +69,27 @@ const NPCS := {
 	"stien": {
 		"name": "Stien de turfsterke", "sheet": "npc_stien",
 		"rules": [
-			{"if": [["step", "veenbessen", 1]], "talk": "stien_klaar"},
+			{"if": [["step", "veenbessen", 1], ["has", "prof_veenbes", 5]], "talk": "stien_klaar"},
 			{"if": [["no_flag", "stien_ontmoet"]], "talk": "stien_intro"},
+			{"if": [["quest", "veenbessen", "none"]], "talk": "stien_intro"},
 			{"talk": "stien_menu"},
 		],
 	},
 	"mees": {
 		"name": "Mees de rietvlechter", "sheet": "npc_mees",
 		"rules": [
-			{"if": [["step", "wilgentwijgen", 1]], "talk": "mees_klaar"},
+			{"if": [["step", "wilgentwijgen", 1], ["has", "prof_wilgentwijg", 4]], "talk": "mees_klaar"},
 			{"if": [["no_flag", "mees_ontmoet"]], "talk": "mees_intro"},
+			{"if": [["quest", "wilgentwijgen", "none"]], "talk": "mees_intro"},
 			{"talk": "mees_menu"},
 		],
 	},
 	"wouda": {
 		"name": "Wouda de kruidenheks", "sheet": "npc_wouda",
 		"rules": [
-			{"if": [["step", "zonneschijf", 1]], "talk": "wouda_klaar"},
+			{"if": [["step", "zonneschijf", 1], ["has", "zonneschijf_amulet", 1]], "talk": "wouda_klaar"},
 			{"if": [["no_flag", "wouda_ontmoet"]], "talk": "wouda_intro"},
+			{"if": [["quest", "zonneschijf", "none"]], "talk": "wouda_intro"},
 			{"talk": "wouda_menu"},
 		],
 	},

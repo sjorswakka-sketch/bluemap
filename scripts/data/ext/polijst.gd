@@ -72,8 +72,9 @@ const NPCS := {
 	"lotte": {
 		"name": "Lotte de lantaarnmaker", "sheet": "npc_lotte",
 		"rules": [
-			{"if": [["step", "lantaarn", 1]], "talk": "lotte_klaar"},
+			{"if": [["step", "lantaarn", 1], ["has", "special_lantern", 1]], "talk": "lotte_klaar"},
 			{"if": [["no_flag", "lotte_ontmoet"]], "talk": "lotte_intro"},
+			{"if": [["quest", "lantaarn", "none"]], "talk": "lotte_intro"},
 			{"talk": "lotte_menu"},
 		],
 	},
@@ -87,8 +88,9 @@ const NPCS := {
 	"elke": {
 		"name": "Elke de kruidenier", "sheet": "npc_elke",
 		"rules": [
-			{"if": [["step", "kruiden", 1]], "talk": "elke_klaar"},
+			{"if": [["step", "kruiden", 1], ["has", "herb", 4]], "talk": "elke_klaar"},
 			{"if": [["no_flag", "elke_ontmoet"]], "talk": "elke_intro"},
+			{"if": [["quest", "kruiden", "none"]], "talk": "elke_intro"},
 			{"talk": "elke_menu"},
 		],
 	},
@@ -102,12 +104,13 @@ const NPCS := {
 	"mira": {
 		"name": "Mira de dauwbewaarder", "sheet": "npc_mira",
 		"rules": [
-			{"if": [["step", "dauw", 2]], "talk": "mira_klaar"},
+			{"if": [["step", "dauw", 2], ["has", "dauwsteen", 1]], "talk": "mira_klaar"},
 			{"if": [["step", "dauw", 1]], "talk": "mira_steen"},
-			{"if": [["step", "mistbloemen", 1]], "talk": "mira_mist_klaar"},
+			{"if": [["step", "mistbloemen", 1], ["has", "prof_dauwklauw", 3]], "talk": "mira_mist_klaar"},
 			{"if": [["step", "mistbloemen", 0]], "talk": "mira_mist_menu"},
-			{"if": [["quest", "dauw", "done"], ["no_flag", "mira_mist_gevraagd"]], "talk": "mira_mist_intro"},
+			{"if": [["quest", "dauw", "done"], ["quest", "mistbloemen", "none"]], "talk": "mira_mist_intro"},
 			{"if": [["no_flag", "mira_ontmoet"]], "talk": "mira_intro"},
+			{"if": [["quest", "dauw", "none"]], "talk": "mira_intro"},
 			{"talk": "mira_menu"},
 		],
 	},

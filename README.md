@@ -1,5 +1,20 @@
 # Bluemap Quest
 
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.7.0-preview.**
+Deze branch bevat de gezamenlijke game en bouwt bij elke update een Windows-download via Actions.
+
+Nieuw in 0.7: de **Prismamijn** en **Resonantiekamer**, bereikbaar via de noordwestelijke kamer
+van de Echo-grot (ijzeren zwaard vereist). Kristalkevers kondigen hun stormaanval aan met een lichtspoor;
+prismamotten richten drie kristalvonken die je kunt ontwijken of met je zwaard onderbreken.
+De vrijwillige Resonantieproef heeft drie golven, zichtbare spawnwaarschuwingen en een open uitgang.
+Winnen geeft eenmaal per avontuur een kristallen amulet en 120 munten; gebruik het altaar in de mijn.
+
+Met de bestaande zwaardknop voer je nu een **combo van drie slagen** uit: druk steeds binnen 0,9 seconde
+opnieuw. De derde slag veegt breder en kost 18 stamina; zonder genoeg energie blijft hij een gewone slag.
+Richten blijft onafhankelijk van je looprichting. Zwaardaanvallen gaan niet door muren heen.
+Uitgestelde zijopdrachten kunnen opnieuw worden aangenomen en inleveren vereist de spullen nog in je tas.
+Het kleurpaneel voor kleding werkt met de muis en blijft ook bij de onderste kledingvakken in beeld.
+
 Een top-down fantasy-avontuur gemaakt in **Godot 4.4**, met pixel art, verhaal, gevechten, baasgevechten,
 opslaan en een einde. Gemaakt voor de WTP-community.
 

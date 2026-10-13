@@ -44,7 +44,7 @@ const DATA := {
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXyXXyyXXyXXXXXXX",
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 	],
-	"spawns": {"start": [5, 31], "altar": [21, 10]},
+	"spawns": {"start": [5, 31], "altar": [21, 10], "from_prismamine": [6, 8]},
 	"objects": [
 		{"type": "portal", "pos": [4, 33], "to": "forest", "spawn": "from_cave"},
 		{"type": "torch", "pos": [3, 28]},
@@ -98,5 +98,8 @@ const DATA := {
 		{"type": "sign", "pos": [9, 27], "lines": ["Pas op voor magiërs!", "Ook in de grot zweven ze rond. Hun tovervonk geeft paars licht: sla hem stuk met je zwaard!"]},
 		{"type": "enemy", "pos": [12, 20], "kind": "mage"},
 		{"type": "enemy", "pos": [40, 12], "kind": "mage"},
+		# Nieuwe objecten achteraan houden alle bestaande opslagcodes gelijk.
+		{"type": "portal", "pos": [4, 7], "to": "prismamine", "spawn": "start", "requires": [["echo_ready"]], "locked_text": "De Prismamijn is gevaarlijk. Haal eerst een ijzeren zwaard bij Greta."},
+		{"type": "sign", "pos": [6, 7], "lines": ["Westelijke doorgang: Prismamijn", "Volg de turquoise kristallen naar twee nieuwe grotten en de Resonantieproef."]},
 	],
 }

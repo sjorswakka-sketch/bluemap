@@ -77,3 +77,15 @@ func advance(delta: float, sprinting: bool) -> void:
 	stamina = minf(stamina + regen_rate() * recovery_time, capacity())
 	if exhausted and stamina >= recovery_threshold():
 		exhausted = false
+
+
+## Speciale aanvallen delen de staminabalk met sprinten; geen gratis herstel.
+func spend(amount: float) -> bool:
+	if not is_finite(amount) or amount <= 0.0 or exhausted or stamina < amount:
+		return false
+	stamina -= amount
+	regen_delay = REGEN_DELAY
+	if stamina <= 0.001:
+		stamina = 0.0
+		exhausted = true
+	return true

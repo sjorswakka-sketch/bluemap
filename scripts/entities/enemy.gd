@@ -9,6 +9,7 @@ const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Util := preload("res://scripts/core/util.gd")
 const Enemies := preload("res://scripts/data/enemies.gd")
+const EchoAI := preload("res://scripts/entities/echo_enemy.gd")
 
 const FIRST_DELAY := 1.2 # seconden tussen "hij ziet je" en de eerste teleport of spuugbeurt
 const SPITTER_AFTER_HOP := 0.7 # na een hupje spuugt hij pas even later
@@ -126,6 +127,8 @@ func _physics_process(delta: float) -> void:
 	state_time += delta
 	desired = Vector2.ZERO
 	match data["behavior"]:
+		"echo_charge", "echo_volley":
+			EchoAI.update(self, delta)
 		"chase":
 			_ai_chase(delta)
 		"bat":
@@ -647,6 +650,9 @@ func hurt(damage: int, direction: Vector2) -> void:
 		panic = 5.0 # een geraakt dier vlucht, ook als de pijl van ver kwam
 	if data["behavior"] == "mage" and (state == "appear" or state == "cast"):
 		_mage_interrupt()
+	if data["behavior"] == "echo_volley" and state == "echo_warn":
+		state = "echo_rest"
+		state_time = 0.0
 	world.damage_number(global_position + Vector2(0, -_size_px() * 0.35), str(damage), Color(1, 0.95, 0.6))
 	world.burst(global_position, Color(1, 1, 1), 5)
 	if hp <= 0:
@@ -703,6 +709,8 @@ func _draw() -> void:
 	var chasing: bool = player != null and active and _to_player().length() < float(data["sight"])
 
 	match data["behavior"]:
+		"echo_charge", "echo_volley":
+			EchoAI.draw(self, sheet, tint)
 		"animal":
 			# Wild dier: twee stapplaatjes, twee vluchtplaatjes (het kijkt naar rechts, net als de slijmen)
 			DrawUtil.ellipse(self, Vector2(0, size * 0.44), Vector2(shadow, shadow * 0.35), Color(0, 0, 0, 0.3))

@@ -12,6 +12,7 @@ const DEFAULT_LIFE := 5.0 # zo lang vliegt een projectiel hoogstens
 ## leeft (seconden) en breakable = je kunt hem met je zwaard stukslaan (player.gd roept dan sword_hit aan).
 const TRAITS := {
 	"arcane_orb": {"turn": 1.0, "life": 3.0, "breakable": true},
+	"prism_spark": {"turn": 0.0, "life": 3.0, "breakable": true},
 }
 const ORB_COLOR := Color(0.75, 0.5, 1.0)
 const ORB_FADE := 0.4 # de bol vervaagt in zijn laatste seconden
@@ -38,7 +39,7 @@ func _ready() -> void:
 	turn = traits.get("turn", 0.0)
 	if traits.get("breakable", false):
 		add_to_group("breakable")
-	if kind == "arcane_orb" and world != null and world.darkness > 0.0:
+	if kind in ["arcane_orb", "prism_spark"] and world != null and world.darkness > 0.0:
 		# In donkere gebieden geeft de bol zelf licht, anders zie je hem niet aankomen.
 		var light := PointLight2D.new()
 		light.texture = Art.light_texture()
@@ -60,14 +61,14 @@ func _process(delta: float) -> void:
 		velocity = velocity.rotated(clampf(velocity.angle_to(wanted), -turn * delta, turn * delta))
 	position += velocity * delta
 	if age > max_age or world.is_solid(global_position):
-		world.burst(global_position, ORB_COLOR if kind == "arcane_orb" else Color(0.9, 0.9, 0.9), 4)
+		world.burst(global_position, ORB_COLOR if kind in ["arcane_orb", "prism_spark"] else Color(0.9, 0.9, 0.9), 4)
 		queue_free()
 		return
 	if player and not GameState.ended and global_position.distance_to(player.global_position + Vector2(0, 4)) < 11.0:
 		player.hurt(global_position - velocity.normalized() * 8.0, damage, source)
 		queue_free()
 		return
-	if kind == "arcane_orb":
+	if kind in ["arcane_orb", "prism_spark"]:
 		trail_timer += delta
 		if trail_timer >= ORB_TRAIL_STEP:
 			trail_timer = 0.0
@@ -95,7 +96,7 @@ func shatter() -> void:
 
 
 func _draw() -> void:
-	if kind == "arcane_orb":
+	if kind in ["arcane_orb", "prism_spark"]:
 		_draw_orb()
 		return
 	var column: int = FRAMES.get(kind, 0)

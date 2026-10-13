@@ -36,8 +36,9 @@ const NPCS := {
 	"fenna": {
 		"name": "Fenna de kruidenvrouwe", "sheet": "npc_fenna",
 		"rules": [
-			{"if": [["step", "warmte", 1]], "talk": "fenna_klaar"},
+			{"if": [["step", "warmte", 1], ["has", "prof_ijsbloem", 4]], "talk": "fenna_klaar"},
 			{"if": [["no_flag", "fenna_ontmoet"]], "talk": "fenna_intro"},
+			{"if": [["quest", "warmte", "none"]], "talk": "fenna_intro"},
 			{"talk": "fenna_menu"},
 		],
 	},
@@ -46,6 +47,7 @@ const NPCS := {
 		"rules": [
 			{"if": [["step", "ijswacht", 1]], "talk": "roos_klaar"},
 			{"if": [["no_flag", "roos_ontmoet"]], "talk": "roos_intro"},
+			{"if": [["quest", "ijswacht", "none"]], "talk": "roos_intro"},
 			{"talk": "roos_menu"},
 		],
 	},

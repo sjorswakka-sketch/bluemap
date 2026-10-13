@@ -11,6 +11,7 @@ const ENEMY_XP := {
 	"slime_red": 12, "slime_spitter": 12, "mage": 16,
 	"golem": 45, "diepte_golem": 60, "king": 150, "guardian": 200,
 	"slime_mini": 0, # eindeloos opgeroepen hulpjes geven geen ervaring
+	"crystal_beetle": 12, "prism_moth": 14,
 }
 
 

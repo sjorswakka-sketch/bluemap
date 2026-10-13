@@ -119,6 +119,16 @@ func _pointer_input(event: InputEvent) -> void:
 		return
 	if event.button_index != MOUSE_BUTTON_LEFT:
 		return
+	# De kleuren liggen boven andere rijen: behandel het bovenste paneel eerst.
+	if dye_mode and selected >= 5:
+		for index in Data.DYE_COLORS.size():
+			if _swatch_rect(index).has_point(event.position):
+				Appearance.dye(slot_of_row(selected), index)
+				accept_event()
+				return
+		if _dye_panel_rect().has_point(event.position):
+			accept_event()
+			return
 	for index in ROWS:
 		var rect := row_rect(index)
 		if not rect.has_point(event.position):
@@ -135,19 +145,19 @@ func _pointer_input(event: InputEvent) -> void:
 			confirm()
 		accept_event()
 		return
-	if dye_mode and selected >= 5:
-		for index in Data.DYE_COLORS.size():
-			if _swatch_rect(index).has_point(event.position):
-				Appearance.dye(slot_of_row(selected), index)
-				accept_event()
-				return
 
 
 func _swatch_rect(index: int) -> Rect2:
-	var row := row_rect(selected)
 	var column := index % SWATCH_COLS
 	var line := index / SWATCH_COLS
-	return Rect2(ROW_X + 20 + column * (SWATCH + 6), row.end.y + 30 + line * (SWATCH + 6), SWATCH, SWATCH)
+	return Rect2(_dye_panel_rect().position + Vector2(26 + column * (SWATCH + 6), 26 + line * (SWATCH + 6)), Vector2(SWATCH, SWATCH))
+
+
+func _dye_panel_rect() -> Rect2:
+	var height := 52.0 + ceili(float(Data.DYE_COLORS.size()) / SWATCH_COLS) * (SWATCH + 6)
+	var below := row_rect(selected).end.y + 4.0
+	var top := below if below + height <= size.y else row_rect(selected).position.y - height - 4.0
+	return Rect2(ROW_X - 6, top, 40 + SWATCH_COLS * (SWATCH + 6), height)
 
 
 func _draw() -> void:
@@ -238,19 +248,18 @@ func _draw_row(font: Font, index: int) -> void:
 
 
 func _draw_swatches(font: Font) -> void:
-	var row := row_rect(selected)
 	var lines := ceili(float(Data.DYE_COLORS.size()) / SWATCH_COLS)
-	var panel := Rect2(ROW_X - 6, row.end.y + 4, 40 + SWATCH_COLS * (SWATCH + 6), 30 + lines * (SWATCH + 6) + 22)
+	var panel := _dye_panel_rect()
 	draw_rect(panel, Color(0.07, 0.12, 0.22, 0.95)) # eigen paneeltje over de rijen eronder
 	draw_rect(panel, Color(0.3, 0.45, 0.7), false, 1.0)
-	_text(Vector2(ROW_X + 8, row.end.y + 24), tr("Verf:"), 16, BLUE)
+	_text(panel.position + Vector2(14, 20), tr("Verf:"), 16, BLUE)
 	var worn := Appearance.worn(slot_of_row(selected))
 	var current := clampi(int(worn.get("dye", 0)), 0, Data.DYE_COLORS.size() - 1)
 	for index in Data.DYE_COLORS.size():
 		var rect := _swatch_rect(index)
 		draw_rect(rect, Data.DYE_COLORS[index]["color"])
 		draw_rect(rect, GOLD if index == current else Color(1, 1, 1, 0.35), false, 2.0 if index == current else 1.0)
-	var name_pos := Vector2(ROW_X + 20, row.end.y + 30 + lines * (SWATCH + 6) + 14)
+	var name_pos := panel.position + Vector2(26, 40 + lines * (SWATCH + 6))
 	_text(name_pos, tr(Data.DYE_COLORS[current]["name"]), 17, Color.WHITE)
 
 

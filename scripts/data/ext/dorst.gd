@@ -60,16 +60,18 @@ const NPCS := {
 	"jelle": {
 		"name": "Jelle de vellenhandelaar", "sheet": "npc_jelle",
 		"rules": [
-			{"if": [["step", "vellen_en_vlees", 1]], "talk": "jelle_klaar"},
+			{"if": [["step", "vellen_en_vlees", 1], ["has", "jacht_vlees", 2], ["has", "jacht_vacht", 2]], "talk": "jelle_klaar"},
 			{"if": [["no_flag", "jelle_ontmoet"]], "talk": "jelle_intro"},
+			{"if": [["quest", "vellen_en_vlees", "none"]], "talk": "jelle_intro"},
 			{"talk": "jelle_menu"},
 		],
 	},
 	"sana": {
 		"name": "Sana van de oase", "sheet": "npc_sana",
 		"rules": [
-			{"if": [["step", "cactusvijgen", 1]], "talk": "sana_klaar"},
+			{"if": [["step", "cactusvijgen", 1], ["has", "prof_cactusvijg", 5]], "talk": "sana_klaar"},
 			{"if": [["no_flag", "sana_ontmoet"]], "talk": "sana_intro"},
+			{"if": [["quest", "cactusvijgen", "none"]], "talk": "sana_intro"},
 			{"talk": "sana_menu"},
 		],
 	},
