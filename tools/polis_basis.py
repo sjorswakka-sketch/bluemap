@@ -65,8 +65,11 @@ def polis(path, map_id, decor, vrije_zones=()):
         for y in range(y0, y1 + 1):
             for x in range(x0, x1 + 1):
                 keep.add((x, y))
+    uitgebreid = []
+    for d in decor:
+        uitgebreid.extend(d(g, keep) if callable(d) else [d])
     geplaatst = 0
-    for x, y, ch, basis in decor:
+    for x, y, ch, basis in uitgebreid:
         if (x, y) in keep or not (0 <= x < w and 0 <= y < h):
             continue
         if g[y][x] == basis:
@@ -96,6 +99,16 @@ def polis(path, map_id, decor, vrije_zones=()):
     print("ok %s: %d decorstukken geplaatst, alles bereikbaar%s" % (path, geplaatst, "" if "--write" in sys.argv else " (droog)"))
     return True
 
+
+def strooi(g, keep, ch, basis, regio, aantal, seed):
+    """Plaats <aantal> stuks <ch> op willekeurige vrije tegels in de regio."""
+    import random as _r
+    rng = _r.Random(seed)
+    x0, y0, x1, y1 = regio
+    kandidaten = [(x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1)
+                  if g[y][x] == basis and (x, y) not in keep]
+    rng.shuffle(kandidaten)
+    return [(x, y, ch, basis) for x, y in kandidaten[:aantal]]
 
 # ------------------------------------------------------------- Dageraadsdorp
 DORP_DECOR = [
@@ -164,4 +177,48 @@ ok = True
 ok = polis("scripts/maps/village.gd", "village", DORP_DECOR, DORP_VRIJ) and ok
 ok = polis("scripts/maps/forest.gd", "forest", BOS_DECOR, BOS_VRIJ) and ok
 ok = polis("scripts/maps/lake.gd", "lake", MEER_DECOR) and ok
+
+# ------------------------------------------------------------- Vergeten Ruine
+# Alleen begaanbaar "gebarsten" decor in de westelijke hal: daar ligt de pijlpuzzel
+# (doelwitten op (18,8) en (2,16)) en die banen moeten vrij blijven.
+RUINE_DECOR = [
+    # Gebarsten tegels: verval in de looproutes van de westhal.
+    (5, 5, "k", "r"), (9, 4, "k", "r"), (6, 10, "k", "r"), (10, 14, "k", "r"),
+    (15, 16, "k", "r"), (21, 10, "k", "r"), (14, 12, "k", "r"),
+    # Noordoostelijke zaal: pilaarparen en brokstukken.
+    (28, 7, "I", "r"), (36, 7, "I", "r"), (28, 15, "I", "r"), (37, 14, "I", "r"),
+    (33, 7, "k", "r"), (36, 11, "k", "r"), (31, 13, "k", "r"),
+    # Zuidzijde: brokstukken in de vertrekken.
+    (24, 24, "k", "r"), (25, 27, "k", "r"), (23, 29, "k", "r"), (6, 27, "k", "r"), (12, 29, "k", "r"),
+]
+
+# ------------------------------------------------------------- Echo-grot
+GROT_DECOR = [
+    # Stalagmieten langs de wanden van de zalen.
+    (4, 5, "v", "c"), (10, 28, "v", "c"), (21, 16, "v", "c"), (35, 6, "v", "c"),
+    (31, 26, "v", "c"), (38, 30, "v", "c"), (14, 17, "v", "c"),
+    # Kristaladers bij de mijnplekken (koper en ijzer).
+    (6, 30, "y", "c"), (11, 32, "y", "c"), (13, 21, "y", "c"), (30, 27, "y", "c"),
+    (5, 28, "y", "c"), (32, 29, "y", "c"),
+    # Losse kristallen als diepte-accent.
+    (23, 8, "y", "c"), (18, 11, "y", "c"), (38, 12, "y", "c"),
+]
+
+# ------------------------------------------------------------- Kristaltempel
+# Alleen begaanbaar decor (runen en tapijt): de baasruimte blijft vrij.
+TEMPEL_DECOR = [
+    (5, 8, "u", "_"), (18, 8, "u", "_"), (5, 10, "u", "_"), (18, 10, "u", "_"),
+    (6, 3, "u", "_"), (17, 3, "u", "_"), (10, 17, "%", "_"), (13, 17, "%", "_"),
+    (13, 19, "%", "_"), (10, 13, "u", "_"), (13, 13, "u", "_"),
+]
+
+ok = polis("scripts/maps/ruins.gd", "ruins", RUINE_DECOR) and ok
+GROT_STROOI = [
+    lambda g, k: strooi(g, k, "v", "c", (2, 2, 24, 33), 6, 41),   # westzalen
+    lambda g, k: strooi(g, k, "v", "c", (26, 2, 45, 33), 6, 42),   # oostzalen
+    lambda g, k: strooi(g, k, "y", "c", (2, 2, 45, 33), 5, 43),    # kristallen
+]
+ok = polis("scripts/maps/cave.gd", "cave", GROT_DECOR + GROT_STROOI) and ok
+ok = polis("scripts/maps/temple.gd", "temple", TEMPEL_DECOR) and ok
+
 sys.exit(0 if ok else 1)
