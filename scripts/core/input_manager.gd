@@ -10,6 +10,7 @@ const AIM_DEADZONE := 0.24
 const ACTION_NAMES := {
 	"move_up": "Omhoog lopen", "move_down": "Omlaag lopen",
 	"move_left": "Naar links lopen", "move_right": "Naar rechts lopen",
+	"technique": "Techniek (vasthouden + zwaard / boog)",
 	"attack": "Zwaard", "bow": "Boog", "interact": "Praten / gebruiken",
 	"dodge": "Rollen", "sprint": "Rennen (vasthouden)", "potion": "Drankje",
 	"menu": "Inventaris", "crafting": "Beroepen / maken", "quests": "Opdrachten",
@@ -77,6 +78,7 @@ func _define(action: String, events: Array, deadzone := 0.3) -> void:
 
 
 func _install_defaults() -> void:
+	_define("technique", [_key(KEY_V), _axis(JOY_AXIS_TRIGGER_LEFT, 1.0)], 0.5)
 	InputMap.action_add_event("attack", _mouse(MOUSE_BUTTON_LEFT))
 	InputMap.action_add_event("bow", _mouse(MOUSE_BUTTON_RIGHT))
 	for spec in [["ui_left", KEY_LEFT, KEY_A, JOY_AXIS_LEFT_X, -1.0, JOY_BUTTON_DPAD_LEFT],
@@ -351,6 +353,7 @@ func _load_bindings() -> void:
 		return
 	for action: String in ACTION_NAMES:
 		for device: String in ["keyboard", "controller"]:
+			if not config.has_section_key(device,action): continue
 			var stored: Variant = config.get_value(device, action, null)
 			if not stored is Array or stored.size() > 8:
 				continue
@@ -360,3 +363,18 @@ func _load_bindings() -> void:
 					valid.append(event)
 			if valid.size() == stored.size():
 				_bindings[action][device] = valid
+	# An older custom scheme may already use V or LT. Keep those bindings and
+	# choose a free technique modifier instead of silently firing two actions.
+	for device: String in ["keyboard","controller"]:
+		if config.has_section_key(device,"technique"): continue
+		var choices: Array = [_key(KEY_V),_key(KEY_G),_key(KEY_Z)] if device == "keyboard" else [_axis(JOY_AXIS_TRIGGER_LEFT,1.0),_axis(JOY_AXIS_TRIGGER_RIGHT,1.0),_button(JOY_BUTTON_RIGHT_STICK)]
+		_bindings.technique[device] = []
+		for candidate: InputEvent in choices:
+			var used := false
+			for action: String in ACTION_NAMES:
+				if action == "technique": continue
+				for binding: InputEvent in _bindings[action][device]:
+					if _same_binding(candidate,binding): used = true
+			if not used:
+				_bindings.technique[device] = [candidate]
+				break

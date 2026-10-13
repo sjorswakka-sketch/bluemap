@@ -57,6 +57,7 @@ var drink_anim := 0.0
 var combo_step := 0
 var combo_window := 0.0
 var combo_sweep := false
+var combat := preload("res://scripts/entities/combat_actions.gd").new()
 
 func _ready() -> void:
 	add_to_group("player")
@@ -98,6 +99,7 @@ func _refresh_controls() -> void:
 			trigger_sign = signf(event.axis_value)
 
 func _device_changed(_controller: bool) -> void:
+	combat.cancel()
 	trigger_down = false
 	stick_aim = Vector2.ZERO
 
@@ -105,6 +107,7 @@ func is_rolling() -> bool:
 	return roll_timer > 0.0
 
 func _physics_process(delta: float) -> void:
+	combat.update(self, delta)
 	time += delta
 	combo_window = maxf(combo_window - delta, 0.0)
 	if combo_window <= 0.0:
@@ -124,7 +127,7 @@ func _physics_process(delta: float) -> void:
 	var tile_name := ground_tile()
 	var wants_sprint: bool = moving and not locked and not rolling and not pushed \
 		and attack_timer <= 0.0 and bow_anim <= 0.0 and Input.is_action_pressed("sprint") \
-		and GameState.movement.can_sprint()
+		and GameState.movement.can_sprint() and not combat.busy()
 	var run_multiplier: float = GameState.movement.sprint_multiplier(delta) if wants_sprint else 1.0
 	if rolling:
 		velocity = roll_dir * ROLL_SPEED
@@ -134,6 +137,9 @@ func _physics_process(delta: float) -> void:
 		velocity = dir * SPEED * GameState.speed_multiplier() * Tiles.movement_multiplier(tile_name) * run_multiplier + knockback
 	knockback = knockback.move_toward(Vector2.ZERO, 900.0 * delta)
 	var before := global_position
+	if combat.phase == "prepare":
+		velocity *= 0.35
+		sprinting = false
 	move_and_slide()
 	var distance := (global_position - before).length()
 	var walking := moving and not locked and not rolling and not pushed and distance > 4.0 * delta
@@ -201,12 +207,17 @@ func _roll() -> void:
 	var dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	roll_dir = dir.normalized() if dir != Vector2.ZERO else facing
 	facing = roll_dir
+	combat.cancel()
 	roll_timer = ROLL_TIME
 	roll_cooldown = ROLL_COOLDOWN
 	GameState.note_roll()
 	Sound.play("dodge", -3.0, randf_range(0.95, 1.05))
 
 func _attack() -> void:
+	if combat.busy(): return
+	if Input.is_action_pressed("technique"):
+		combat.begin(self, false)
+		return
 	if cooldown > 0.0 or roll_timer > 0.0:
 		return
 	cancel_work_animation()
@@ -260,6 +271,7 @@ func _notification(what: int) -> void:
 		trigger_down = _trigger_held()
 	elif what == NOTIFICATION_PAUSED:
 		cancel_work_animation()
+		combat.cancel()
 
 func _trigger_held() -> bool:
 	if trigger_axis < 0 or not Controls.controller_active:
@@ -271,7 +283,11 @@ func _lent_arrow() -> bool:
 	var shooting_range: Node = get_tree().get_first_node_in_group("boog_range")
 	return shooting_range != null and shooting_range.lends_arrows()
 
-func _shoot() -> void:
+func _shoot(allow_technique := true, precise := false, locked_direction := Vector2.ZERO) -> void:
+	if allow_technique and combat.busy(): return
+	if allow_technique and Input.is_action_pressed("technique"):
+		combat.begin(self, true)
+		return
 	if world == null or bow_cooldown > 0.0 or roll_timer > 0.0:
 		return
 	if GameState.count("bow") <= 0:
@@ -282,7 +298,7 @@ func _shoot() -> void:
 		return
 	cancel_work_animation()
 	_update_aim()
-	bow_cooldown = BOW_COOLDOWN
+	bow_cooldown = 0.8 if precise else BOW_COOLDOWN
 	var lent := _lent_arrow()
 	if GameState.count("arrow") <= 0 and not lent:
 		Sound.play("error", -3.0)
@@ -293,10 +309,15 @@ func _shoot() -> void:
 	if not lent:
 		GameState.take("arrow")
 	bow_anim = BOW_ANIM_TIME
-	bow_direction = aim_direction
+	bow_direction = locked_direction if precise else aim_direction
 	var arrow: Node2D = ArrowScript.new()
 	arrow.world = world
 	arrow.direction = bow_direction
+	arrow.precise = precise
+	if precise:
+		arrow.damage = 3
+		arrow.speed = 420.0
+		arrow.max_range = 400.0
 	arrow.position = global_position + ARROW_HEIGHT
 	world.entities.add_child(arrow)
 	arrow.launch(ARROW_START)
@@ -376,6 +397,7 @@ func hurt(from_pos: Vector2, amount: int = 1, source := "") -> void:
 	if invuln > 0.0 or GameState.ended or (roll_timer > ROLL_TIME - ROLL_SAFE_TIME):
 		return
 	cancel_work_animation()
+	combat.cancel()
 	GameState.last_damage_source = source
 	GameState.damage_log[source] = int(GameState.damage_log.get(source, 0)) + GameState.damage_after_armor(amount)
 	GameState.hurt(amount)
@@ -431,6 +453,7 @@ func _draw() -> void:
 		DrawUtil.sprite(self, Art.tex("player"), column, _direction_row(), Vector2(0, bob) + lean, Vector2i(16, 16), 2.0, tint)
 		AppearanceDraw.front(self, origin, 2.0, _direction_row(), column, GameState.appearance, GameState.clothing)
 	_draw_equipped_gear()
+	combat.draw(self)
 	if sprinting:
 		for i in 3:
 			var phase := fmod(walk_time * 5.0 + i * 0.33, 1.0)

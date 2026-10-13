@@ -12,7 +12,7 @@ static func mark(id: String) -> void:
 	gs().set_flag(id)
 	gs().save_requested.emit()
 static func loud(player: Node2D) -> bool:
-	return player.sprinting or player.roll_timer>0 or player.attack_timer>0 or player.bow_anim>0
+	return player.sprinting or player.roll_timer>0 or player.attack_timer>0 or player.bow_anim>0 or player.combat.phase != ""
 static func choose(choice: String) -> void:
 	if pending==null or choice not in ["guard","guide"]: return
 	var node: Variant=pending.get_ref()

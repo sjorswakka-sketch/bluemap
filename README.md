@@ -1,6 +1,17 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.12.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.13.0-preview.**
+
+Nieuw in 0.13: **Gevechten met meer mogelijkheden**. Houd V (controller: LT) vast
+en druk op zwaard of boog: hout steekt snel, ijzer slaat breed, kristal reikt verder,
+en de boog krijgt een voorbereid precisieschot. Gewone aanvallen blijven beschikbaar
+zonder stamina. Richting ligt bij de voorbereiding vast; rollen, geraakt worden of
+een menu openen onderbreekt de techniek. Alles is opnieuw te binden via Besturing.
+
+Keirammen stormen na een waarschuwing recht vooruit; doornschutters houden afstand.
+Gebruik rotsen, stap opzij of onderbreek hun aanval. Schildwachters beschermen nabije
+schutters en genezers. Het vaandel ten zuiden van de bosingang leidt naar een
+vrijwillig oefenerf met drie oefeningen. Zie [COMBAT_VARIETY.md](COMBAT_VARIETY.md).
 Deze branch bevat de gezamenlijke game en bouwt bij elke update een Windows-download via Actions.
 
 Nieuw in 0.12: **Iedere streek een eigen avontuur**. Sana's oude vijgenopdracht is

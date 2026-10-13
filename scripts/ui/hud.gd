@@ -35,6 +35,7 @@ var boss: Node2D = null
 var had_bow := false # om te zien wanneer je de boog voor het eerst krijgt
 var opening_hint: Label
 var opening_quiet := false
+var combat_hint: Label
 
 
 func _ready() -> void:
@@ -56,6 +57,11 @@ func _ready() -> void:
 	had_bow = GameState.count("bow") > 0
 	GameState.items_changed.connect(_check_bow)
 	Lang.changed.connect(_on_language_changed)
+	get_tree().process_frame.connect(_refresh_combat)
+
+func _exit_tree() -> void:
+	if get_tree().process_frame.is_connected(_refresh_combat):
+		get_tree().process_frame.disconnect(_refresh_combat)
 
 
 func _ignore_mouse(node: Node) -> void:
@@ -74,6 +80,13 @@ func _refresh_controls() -> void:
 
 
 func _build_ui() -> void:
+	combat_hint = UiStyle.make_label("",14,Color(0.7,0.9,1))
+	combat_hint.position = Vector2(20,242)
+	combat_hint.size = Vector2(260,64)
+	combat_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	combat_hint.add_theme_color_override("font_outline_color",Color(0.02,0.04,0.07))
+	combat_hint.add_theme_constant_override("outline_size",4)
+	add_child(combat_hint)
 	hearts = Control.new()
 	hearts.position = Vector2(20, 14)
 	hearts.size = Vector2(560, 40)
@@ -343,6 +356,22 @@ func _process(delta: float) -> void:
 
 	_update_clock()
 	_update_boss()
+
+func _refresh_combat() -> void:
+	combat_hint.visible = false
+	if GameState.input_locked() or opening_quiet: return
+	var player: Node2D = get_tree().get_first_node_in_group("player")
+	if player == null: return
+	var nearby: bool = GameState.map_id == "watchyard" or player.combat.busy()
+	if not nearby:
+		for foe: Node2D in get_tree().get_nodes_in_group("enemies"):
+			if foe.data.behavior != "animal" and foe.global_position.distance_to(player.global_position) < 170:
+				nearby = true
+				break
+	if not nearby: return
+	var profile: Dictionary = preload("res://scripts/entities/combat_actions.gd").PROFILES.get(GameState.weapon,{})
+	combat_hint.text = tr("%s + %s: %s (%d stamina)\n%s + %s: precisieschot (20)") % [Controls.action_label("technique"),Controls.action_label("attack"),player.combat.display_name(GameState.weapon),int(profile.get("cost",0)),Controls.action_label("technique"),Controls.action_label("bow")]
+	combat_hint.visible = true
 
 
 func _update_boss() -> void:

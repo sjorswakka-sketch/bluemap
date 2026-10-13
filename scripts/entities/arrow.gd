@@ -37,6 +37,9 @@ static var _over_tiles: Array = []
 var world: Node
 var direction := Vector2.RIGHT
 var damage := DAMAGE
+var speed := SPEED
+var max_range := RANGE
+var precise := false
 var traveled := 0.0
 var state := "flying" # flying, stuck, fading of bounce (afgeketst)
 var timer := 0.0
@@ -46,7 +49,7 @@ var spin := 0.0
 func _physics_process(delta: float) -> void:
 	match state:
 		"flying":
-			_advance(SPEED * delta)
+			_advance(speed * delta)
 		"bounce":
 			position -= direction * BOUNCE_SPEED * (timer / BOUNCE_TIME) * delta
 			spin += BOUNCE_SPIN * delta
@@ -80,14 +83,15 @@ func _advance(distance: float) -> void:
 		left -= step
 		var from := position
 		var to := from + direction * step
-		if _hit_something(from, to):
-			return
+		# Solid cover wins over an overlapping target in the same 8px step.
 		if _blocked(to) or _blocked_by_body(from, to):
 			_stick(from)
 			return
+		if _hit_something(from, to):
+			return
 		position = to
 		traveled += step
-		if traveled >= RANGE:
+		if traveled >= max_range:
 			_land()
 			return
 
@@ -209,6 +213,8 @@ func _land() -> void:
 
 
 func _draw() -> void:
+	if precise and state == "flying":
+		draw_line(-direction*24,Vector2.ZERO,Color(0.4,0.85,1,0.8),3)
 	var alpha := 1.0
 	if state == "fading":
 		alpha = clampf(timer / FADE_TIME, 0.0, 1.0)

@@ -34,12 +34,20 @@ tentoonstelling. Eigen ingangen, rotswanden, meubels, reliëfs, gerei en geluide
 De regionale audit staat in REGIONAL_ADVENTURES.md. Sana behoudt haar oude quest-ID;
 afgeronde saves krijgen de wereldgevolgen zonder opnieuw XP of spullen te ontvangen.
 
-## 3. Gevechten met meer mogelijkheden — wacht op go
+## 3. Gevechten met meer mogelijkheden — afgerond in 0.13
 
 Wapens krijgen verschillende mogelijkheden en afwegingen. Vijanden reageren op afstand,
 geluid, dekking en medestanders. Ontmoetingen combineren dit zonder onleesbare drukte.
 Werk animaties, waarschuwingen, raakreacties, stamina en controllerbediening samen uit.
 Acceptatie: aanvallen zijn leesbaar en ontwijkbaar, meerdere speelstijlen zijn bruikbaar.
+
+Opgeleverd: drie zwaardtechnieken met verschillende aanloop, bereik, hoek en
+staminakosten; voorbereid precisieschot; eigen keiram en doornschutter met vaste
+waarschuwingsbanen, dekking, geluidsgevoeligheid en herstelmomenten. Schildwachters
+schermen kwetsbare bondgenoten af. Bestaande ontmoetingen variëren zonder extra
+drukte; een vrijwillig oefenerf leert de rollen afzonderlijk en gecombineerd.
+Eigen pixel-art, animaties en geluiden, NL/EN-hints, aanpasbare V/LT-modifier en
+veilige migratie van oude eigen bindings. Details: COMBAT_VARIETY.md.
 
 ## 4. Beroepen en uitrusting verbinden — wacht op go
 

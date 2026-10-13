@@ -9,6 +9,7 @@ const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Util := preload("res://scripts/core/util.gd")
 const Enemies := preload("res://scripts/data/enemies.gd")
+const CombatAI := preload("res://scripts/entities/combat_enemy.gd")
 const LivingAI := preload("res://scripts/entities/living_enemy.gd")
 var guard_broken := 0.0
 var defend_target: Node2D
@@ -132,6 +133,8 @@ func _physics_process(delta: float) -> void:
 	state_time += delta
 	desired = Vector2.ZERO
 	match data["behavior"]:
+		"cv_ram", "cv_slinger":
+			CombatAI.update(self, delta)
 		"rf_ambush", "rf_listen":
 			preload("res://scripts/entities/route_enemy.gd").update(self,delta)
 		"lw_guard", "lw_flank", "lw_support":
@@ -160,6 +163,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	var touch_range: float = radius + 9.0
+	if data["behavior"] in ["cv_ram","cv_slinger"] and state != "cv_charge": touch_range = 0.0
 	if state in ["hop", "vanish", "appear"] or data["behavior"] == "animal":
 		touch_range = 0.0 # in de lucht, als rookwolkje of als vreedzaam dier kan hij niemand raken
 	if global_position.distance_to(player.global_position) < touch_range and touch_cooldown <= 0.0:
@@ -662,6 +666,8 @@ func hurt(damage: int, direction: Vector2) -> void:
 	if data["behavior"] in ["rf_ambush","rf_listen"]:
 		state="rf_rest"
 		state_time=0
+	if data["behavior"] in ["cv_ram","cv_slinger"]:
+		CombatAI.transition(self,"cv_rest")
 	hp -= damage
 	knockback = direction.normalized() * float(data.get("knockback", 240.0))
 	flash = 0.15
@@ -692,12 +698,12 @@ func break_guard() -> void:
 func _die() -> void:
 	dead = true
 	remove_from_group("enemies")
-	GameState.register_kill(kind)
+	if not has_meta("practice"): GameState.register_kill(kind)
 	Sound.play("die", -2.0, randf_range(0.9, 1.1))
 	world.burst(global_position, data.get("death_color", Color(0.7, 1.0, 0.7)), 16)
 	if unique_flag != "":
 		GameState.set_flag(unique_flag)
-	for drop: Array in data["drops"]:
+	for drop: Array in ([] if has_meta("practice") else data["drops"]):
 		if randf() < drop[1]:
 			var amount := GameState.ng_coins(int(drop[2])) if drop[0] == "coin" else int(drop[2]) # Nieuw spel+: meer munten
 			for i in amount:
@@ -735,6 +741,8 @@ func _draw() -> void:
 	var chasing: bool = player != null and active and _to_player().length() < float(data["sight"])
 
 	match data["behavior"]:
+		"cv_ram", "cv_slinger":
+			CombatAI.draw(self,sheet,tint)
 		"rf_ambush", "rf_listen":
 			preload("res://scripts/entities/route_enemy.gd").draw(self,sheet,tint)
 		"lw_guard", "lw_flank", "lw_support":

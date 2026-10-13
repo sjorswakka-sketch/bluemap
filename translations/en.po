@@ -165,6 +165,11 @@ msgstr "Western path: Daybreak Village"
 msgid "Terug naar het dorp, waar de geur van vers brood je tegemoet komt."
 msgstr "Back to the village, where the smell of fresh bread comes to meet you."
 
+#. Kaart forest, sign [2, 23]: tekst op een bord
+#: scripts/data/combat_maps.gd:11
+msgid "Oefenerf: stap in de gloed bij het vaandel."
+msgstr "Practice Yard: step into the glow beside the banner."
+
 #. Naam van gebied ruins
 #: scripts/maps/ruins.gd:6
 msgid "De Vergeten Ruïne"
@@ -257,6 +262,21 @@ msgstr "The door is shut. There's no way back!"
 #: scripts/maps/temple.gd:51
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
+
+#. Naam van gebied watchyard
+#: scripts/entities/combat_post.gd:32 scripts/entities/combat_post.gd:41 scripts/maps/watchyard.gd:4
+msgid "Oefenerf"
+msgstr "Practice Yard"
+
+#. Kaart watchyard, sign [16, 18]: tekst op een bord
+#: scripts/maps/watchyard.gd:73
+msgid "Terug naar Fluisterbos: volg het zuidelijke pad."
+msgstr "Back to Whispering Woods: follow the southern path."
+
+#. Kaart watchyard, sign [16, 18]: tekst op een bord
+#: scripts/maps/watchyard.gd:74
+msgid "Oranje lijnen: stap opzij. Blauwe vonken: de vijand rust uit. Rotsen houden stormlopen en doornen tegen."
+msgstr "Orange lines: step aside. Blue sparks: the enemy is recovering. Rocks stop charges and thorns."
 
 #. Naam van gebied sunwell
 #. Kaart dorstvallei, sign [22, 6]: tekst op een bord
@@ -4621,7 +4641,7 @@ msgstr "Light fish broth: restores 1 heart and 60 stamina. Use through Professio
 
 #. Naam van voorwerp bow
 #. Instelbare bediening: bow
-#: scripts/core/input_manager.gd:13 scripts/data/ext/boog.gd:15
+#: scripts/core/input_manager.gd:14 scripts/data/ext/boog.gd:15
 msgid "Boog"
 msgstr "Bow"
 
@@ -5803,6 +5823,26 @@ msgstr "A giant made of crystal and stone. It's slow, but you'll feel its punch 
 #: scripts/data/enemies.gd:67
 msgid "De baas van alle slijmen. Hij springt, spuugt slijm en vindt zichzelf erg belangrijk."
 msgstr "The boss of all slimes. He jumps, spits slime, and thinks he's very important."
+
+#. Naam van vijand cv_ram
+#: scripts/data/ext/combat.gd:6
+msgid "Keiram"
+msgstr "Cairn Ram"
+
+#. Vijand cv_ram: grappige beschrijving in het beestenboek
+#: scripts/data/ext/combat.gd:6
+msgid "Een oranje baan verraadt zijn stormloop. De richting ligt vast: stap opzij of lok hem tegen een rots. Na de botsing is hij kwetsbaar. Hard geluid trekt eerder zijn aandacht."
+msgstr "An orange lane warns of its charge. Its direction is fixed: step aside or lure it into a rock. It is vulnerable after the impact. Loud noise attracts its attention from farther away."
+
+#. Naam van vijand cv_slinger
+#: scripts/data/ext/combat.gd:7
+msgid "Doornschutter"
+msgstr "Thorn Slinger"
+
+#. Vijand cv_slinger: grappige beschrijving in het beestenboek
+#: scripts/data/ext/combat.gd:7
+msgid "Houdt afstand en richt langs een oranje baan. Dekking stopt zijn doorn; je zwaard kan die ook stukslaan. Een treffer onderbreekt de voorbereiding."
+msgstr "Keeps its distance and aims along an orange lane. Cover stops its thorn; your sword can shatter it too. A hit interrupts its preparation."
 
 #. Naam van vijand mage
 #: scripts/data/ext/vijanden.gd:20
@@ -7738,153 +7778,158 @@ msgstr "Move left"
 msgid "Naar rechts lopen"
 msgstr "Move right"
 
+#. Instelbare bediening: technique
+#: scripts/core/input_manager.gd:13
+msgid "Techniek (vasthouden + zwaard / boog)"
+msgstr "Technique (hold + sword / bow)"
+
 #. Instelbare bediening: attack
-#: scripts/ui/ending.gd:254 scripts/ui/equipment_page.gd:201 scripts/ui/progression_page.gd:126 scripts/core/input_manager.gd:13
+#: scripts/ui/ending.gd:254 scripts/ui/equipment_page.gd:201 scripts/ui/progression_page.gd:126 scripts/core/input_manager.gd:14
 msgid "Zwaard"
 msgstr "Sword"
 
 #. Instelbare bediening: interact
-#: scripts/core/input_manager.gd:13
+#: scripts/core/input_manager.gd:14
 msgid "Praten / gebruiken"
 msgstr "Talk / interact"
 
 #. Instelbare bediening: dodge
-#: scripts/core/input_manager.gd:14
+#: scripts/core/input_manager.gd:15
 msgid "Rollen"
 msgstr "Dodge roll"
 
 #. Instelbare bediening: sprint
-#: scripts/core/input_manager.gd:14
+#: scripts/core/input_manager.gd:15
 msgid "Rennen (vasthouden)"
 msgstr "Sprint (hold)"
 
 #. Instelbare bediening: potion
-#: scripts/core/input_manager.gd:14
+#: scripts/core/input_manager.gd:15
 msgid "Drankje"
 msgstr "Potion"
 
 #. Instelbare bediening: menu
-#: scripts/core/input_manager.gd:15
+#: scripts/core/input_manager.gd:16
 msgid "Inventaris"
 msgstr "Inventory"
 
 #. Instelbare bediening: crafting
-#: scripts/core/input_manager.gd:15
+#: scripts/core/input_manager.gd:16
 msgid "Beroepen / maken"
 msgstr "Professions / crafting"
 
 #. Instelbare bediening: quests
-#: scripts/ui/menu_ui.gd:387 scripts/ui/menu_ui.gd:633 scripts/core/input_manager.gd:15
+#: scripts/ui/menu_ui.gd:387 scripts/ui/menu_ui.gd:633 scripts/core/input_manager.gd:16
 msgid "Opdrachten"
 msgstr "Quests"
 
 #. Instelbare bediening: map
-#: scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:17
 msgid "Kaart"
 msgstr "Map"
 
 #. Instelbare bediening: wereld_prestaties
-#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:17
 msgid "Prestaties"
 msgstr "Achievements"
 
 #. Instelbare bediening: wereld_beestenboek
-#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:17
 msgid "Beestenboek"
 msgstr "Bestiary"
 
 #. Instelbare bediening: pause
-#: scripts/ui/pause_menu.gd:72 scripts/core/input_manager.gd:17
+#: scripts/ui/pause_menu.gd:72 scripts/core/input_manager.gd:18
 msgid "Pauze"
 msgstr "Paused"
 
 #. Instelbare bediening: restart
-#: scripts/core/input_manager.gd:17
+#: scripts/core/input_manager.gd:18
 msgid "Opnieuw na verlies"
 msgstr "Restart after defeat"
 
 #. Instelbare bediening: mute
-#: scripts/core/input_manager.gd:17
+#: scripts/core/input_manager.gd:18
 msgid "Geluid aan / uit"
 msgstr "Sound on / off"
 
 #. Instelbare bediening: fullscreen
-#: scripts/core/input_manager.gd:17
+#: scripts/core/input_manager.gd:18
 msgid "Volledig scherm"
 msgstr "Fullscreen"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "A / kruis"
 msgstr "A / cross"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "B / cirkel"
 msgstr "B / circle"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "X / vierkant"
 msgstr "X / square"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "Y / driehoek"
 msgstr "Y / triangle"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "Select / View"
 msgstr "Select / View"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "Home"
 msgstr "Home"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "Start / Menu"
 msgstr "Start / Menu"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "L3"
 msgstr "L3"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "R3"
 msgstr "R3"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "LB / L1"
 msgstr "LB / L1"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "RB / R1"
 msgstr "RB / R1"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "D-pad omhoog"
 msgstr "D-pad up"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "D-pad omlaag"
 msgstr "D-pad down"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "D-pad links"
 msgstr "D-pad left"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:19
+#: scripts/core/input_manager.gd:20
 msgid "D-pad rechts"
 msgstr "D-pad right"
 
@@ -8129,83 +8174,83 @@ msgstr "New sword: %s"
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
-#: scripts/core/input_manager.gd:231
+#: scripts/core/input_manager.gd:233
 msgid "Niet ingesteld"
 msgstr "Unassigned"
 
-#: scripts/core/input_manager.gd:243
+#: scripts/core/input_manager.gd:245
 msgid "Linkermuis"
 msgstr "Left mouse"
 
-#: scripts/core/input_manager.gd:244
+#: scripts/core/input_manager.gd:246
 msgid "Rechtermuis"
 msgstr "Right mouse"
 
-#: scripts/core/input_manager.gd:245
+#: scripts/core/input_manager.gd:247
 msgid "Middelmuisknop"
 msgstr "Middle mouse"
 
-#: scripts/core/input_manager.gd:246
+#: scripts/core/input_manager.gd:248
 msgid "Wiel omhoog"
 msgstr "Wheel up"
 
-#: scripts/core/input_manager.gd:247
+#: scripts/core/input_manager.gd:249
 msgid "Wiel omlaag"
 msgstr "Wheel down"
 
-#: scripts/core/input_manager.gd:248
+#: scripts/core/input_manager.gd:250
 msgid "Muisknop %d"
 msgstr "Mouse button %d"
 
-#: scripts/core/input_manager.gd:250
+#: scripts/core/input_manager.gd:252
 msgid "Knop %d"
 msgstr "Button %d"
 
-#: scripts/core/input_manager.gd:258
+#: scripts/core/input_manager.gd:260
 msgid "Linkerstick links"
 msgstr "Left stick left"
 
-#: scripts/core/input_manager.gd:258
+#: scripts/core/input_manager.gd:260
 msgid "Linkerstick rechts"
 msgstr "Left stick right"
 
-#: scripts/core/input_manager.gd:259
+#: scripts/core/input_manager.gd:261
 msgid "Linkerstick omhoog"
 msgstr "Left stick up"
 
-#: scripts/core/input_manager.gd:259
+#: scripts/core/input_manager.gd:261
 msgid "Linkerstick omlaag"
 msgstr "Left stick down"
 
-#: scripts/core/input_manager.gd:265
+#: scripts/core/input_manager.gd:267
 msgid "Kies een geldige toets of controllerknop."
 msgstr "Choose a valid key or controller button."
 
-#: scripts/core/input_manager.gd:268
+#: scripts/core/input_manager.gd:270
 msgid "De rechterstick blijft beschikbaar om te richten."
 msgstr "The right stick is reserved for aiming."
 
-#: scripts/core/input_manager.gd:270
+#: scripts/core/input_manager.gd:272
 msgid "Beweeg de stick of trigger verder."
 msgstr "Move the stick or trigger further."
 
-#: scripts/core/input_manager.gd:272
+#: scripts/core/input_manager.gd:274
 msgid "Kies een toets, muisknop, stickrichting of trigger."
 msgstr "Choose a key, mouse button, stick direction or trigger."
 
-#: scripts/core/input_manager.gd:274
+#: scripts/core/input_manager.gd:276
 msgid "Esc blijft beschikbaar om menu's te sluiten."
 msgstr "Esc is reserved for closing menus."
 
-#: scripts/core/input_manager.gd:302
+#: scripts/core/input_manager.gd:304
 msgid "Deze invoer hoort bij meerdere acties; kies een andere."
 msgstr "This input is assigned to several actions; choose another."
 
-#: scripts/core/input_manager.gd:306
+#: scripts/core/input_manager.gd:308
 msgid "Die invoer is al gekoppeld aan %s. Kies een vrije knop."
 msgstr "That input is already assigned to %s. Choose an unused button."
 
-#: scripts/core/input_manager.gd:345
+#: scripts/core/input_manager.gd:347
 msgid "Bediening kon niet worden opgeslagen."
 msgstr "Controls could not be saved."
 
@@ -8483,11 +8528,11 @@ msgstr "No shame in that!"
 msgid "%s · Ronde %d/%d · Vijanden %d · %s"
 msgstr "%s · Round %d/%d · Enemies %d · %s"
 
-#: scripts/entities/arrow.gd:153
+#: scripts/entities/arrow.gd:157
 msgid "Ketst af!"
 msgstr "Bounced off!"
 
-#: scripts/entities/arrow.gd:156
+#: scripts/entities/arrow.gd:160
 msgid "Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."
 msgstr "Your arrow bounces off the crystal! Shoot when the golem winds up for a slam."
 
@@ -8512,6 +8557,54 @@ msgid "Gevonden: %d munt"
 msgid_plural "Gevonden: %d munten"
 msgstr[0] "Found: %d coin"
 msgstr[1] "Found: %d coins"
+
+#: scripts/entities/combat_actions.gd:19 scripts/entities/combat_actions.gd:6
+msgid "Breekslag"
+msgstr "Breaking Slash"
+
+#: scripts/entities/combat_actions.gd:20 scripts/entities/combat_actions.gd:7
+msgid "Kristalsteek"
+msgstr "Crystal Thrust"
+
+#: scripts/entities/combat_actions.gd:21 scripts/entities/combat_actions.gd:5
+msgid "Snelle steek"
+msgstr "Quick Thrust"
+
+#: scripts/entities/combat_actions.gd:38
+msgid "Deze techniek vraagt %d stamina. Gewone aanvallen blijven beschikbaar."
+msgstr "This technique needs %d stamina. Ordinary attacks remain available."
+
+#: scripts/entities/combat_post.gd:32
+msgid "Het verlichte pad naast dit vaandel leidt naar het oefenerf. Probeer technieken en leer aanvalssignalen lezen. De uitgang blijft open."
+msgstr "The lit path beside this banner leads to the practice yard. Try techniques and learn to read attack signals. The exit stays open."
+
+#: scripts/entities/combat_post.gd:36
+msgid "Oefening gestopt. Je kunt meteen opnieuw beginnen."
+msgstr "Practice stopped. You can start again immediately."
+
+#: scripts/entities/combat_post.gd:42
+msgid "Houd %s vast en druk op %s voor je zwaardtechniek, of op %s voor een precisieschot. Gewone aanvallen kosten geen stamina."
+msgstr "Hold %s and press %s for your sword technique, or %s for a precise shot. Ordinary attacks cost no stamina."
+
+#: scripts/entities/combat_post.gd:43
+msgid "Hout: snelle steek, 16 stamina. IJzer: brede breekslag, 28. Kristal: verre smalle steek, 24. Alle technieken openen een schild. Precisieschot: 20 stamina, 1 pijl, langere voorbereiding en groter bereik."
+msgstr "Wood: quick thrust, 16 stamina. Iron: wide breaking slash, 28. Crystal: long narrow thrust, 24. Every technique opens a shield. Precise shot: 20 stamina, 1 arrow, longer preparation and greater range."
+
+#: scripts/entities/combat_post.gd:44
+msgid "Tijdens voorbereiding loop je langzaam. Rollen, een treffer of een menu onderbreekt de techniek; bestede stamina komt vanzelf terug. De pijl wordt pas bij het schot verbruikt."
+msgstr "You walk slowly while preparing. Rolling, a hit or a menu interrupts the technique; spent stamina recovers naturally. The arrow is only consumed when you fire."
+
+#: scripts/entities/combat_post.gd:45
+msgid "Gebruik dit vaandel opnieuw: eerst de keiram, dan de doornschutter, daarna samen met een schildwachter. Aanvallen doen echte schade. Gebruik het vaandel om te stoppen. Geen buit of XP; de uitgang blijft vrij."
+msgstr "Use this banner again: first the cairn ram, then the thorn slinger, then both with a shield warden. Attacks deal real damage. Use the banner to stop. No loot or XP; the exit stays clear."
+
+#: scripts/entities/combat_post.gd:49
+msgid "Oefening %d / 3: houd de oranje banen in de gaten."
+msgstr "Practice %d / 3: watch the orange lanes."
+
+#: scripts/entities/combat_post.gd:82
+msgid "Goed geoefend. Bij het vaandel kun je de volgende oefening starten."
+msgstr "Good practice. Start the next exercise at the banner."
 
 #: scripts/entities/diepte_seal.gd:71
 msgid "Zegel"
@@ -8545,7 +8638,7 @@ msgstr "Resonance Trial: wave %d / 3"
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:382
+#: scripts/entities/enemy.gd:386
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -8725,63 +8818,63 @@ msgstr "Water flows to the fountain and the flower beds."
 msgid "Het rooster is vrij. Draai nu het sluisrad aan de zuidkant open."
 msgstr "The grate is clear. Now open the sluice wheel to the south."
 
-#: scripts/entities/player.gd:280
+#: scripts/entities/player.gd:296
 msgid "Je hebt een boog nodig. Tobias verkoopt er een."
 msgstr "You need a bow. Tobias sells one."
 
-#: scripts/entities/player.gd:291
+#: scripts/entities/player.gd:307
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:315 scripts/ui/menu_ui.gd:478
+#: scripts/entities/player.gd:336 scripts/ui/menu_ui.gd:478
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
-#: scripts/entities/player.gd:317
+#: scripts/entities/player.gd:338
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
 
-#: scripts/entities/regional_adventures.gd:51
+#: scripts/entities/regional_adventures.gd:50
 msgid "Waterzak gevuld: 3 slokken. Schaduw houdt je koel; de blauwe luifels hebben water."
 msgstr "Waterskin filled: 3 sips. Shade keeps you cool; blue shelters have water."
 
-#: scripts/entities/regional_adventures.gd:81
+#: scripts/entities/regional_adventures.gd:80
 msgid "De hitte wordt te veel. Je rust bij de laatste luifel; je spullen en hartjes blijven behouden."
 msgstr "The heat is too much. You rest at the last shelter; your items and hearts are safe."
 
-#: scripts/entities/regional_adventures.gd:90
+#: scripts/entities/regional_adventures.gd:89
 msgid "Een windstoot! Wacht naast de wimpel tot hij weer slap hangt, of gebruik het vastgezette touw."
 msgstr "A gust! Wait beside the pennant until it hangs loose again, or use the secured rope."
 
-#: scripts/entities/regional_adventures.gd:100
+#: scripts/entities/regional_adventures.gd:99
 msgid "De bron stroomt — de kloof is koel"
 msgstr "The spring flows — the gorge is cool"
 
-#: scripts/entities/regional_adventures.gd:100
+#: scripts/entities/regional_adventures.gd:99
 msgid "Water: %d/3 • %s"
 msgstr "Water: %d/3 • %s"
 
-#: scripts/entities/regional_adventures.gd:100
+#: scripts/entities/regional_adventures.gd:99
 msgid "In de schaduw"
 msgstr "In the shade"
 
-#: scripts/entities/regional_adventures.gd:100
+#: scripts/entities/regional_adventures.gd:99
 msgid "Zoek de volgende blauwe luifel"
 msgstr "Find the next blue shelter"
 
-#: scripts/entities/regional_adventures.gd:103
+#: scripts/entities/regional_adventures.gd:102
 msgid "Touw vast — veilige oversteek"
 msgstr "Rope secured — safe crossing"
 
-#: scripts/entities/regional_adventures.gd:103
+#: scripts/entities/regional_adventures.gd:102
 msgid "Windstil — steek nu over"
 msgstr "Calm — cross now"
 
-#: scripts/entities/regional_adventures.gd:103
+#: scripts/entities/regional_adventures.gd:102
 msgid "Wimpels spannen — zoek dekking"
 msgstr "Pennants tighten — find cover"
 
-#: scripts/entities/regional_adventures.gd:103
+#: scripts/entities/regional_adventures.gd:102
 msgid "Windstoot — wacht naast de pas"
 msgstr "Gust — wait beside the pass"
 
@@ -9114,7 +9207,7 @@ msgstr "Menus: WASD / arrows / left stick / D-pad · Enter / A to select · Esc 
 msgid "Nieuwe invoer voor %s (%s). Esc of 8 seconden wachten annuleert."
 msgstr "New input for %s (%s). Press Esc or wait 8 seconds to cancel."
 
-#: scripts/ui/controls_menu.gd:153 scripts/core/input_manager.gd:35 scripts/core/input_manager.gd:98 scripts/core/input_manager.gd:191
+#: scripts/ui/controls_menu.gd:153 scripts/core/input_manager.gd:36 scripts/core/input_manager.gd:100 scripts/core/input_manager.gd:193
 msgid "controller"
 msgstr "controller"
 
@@ -9424,74 +9517,78 @@ msgid_plural "Waarde: %d munten"
 msgstr[0] "Worth: %d coin"
 msgstr[1] "Worth: %d coins"
 
-#: scripts/ui/hud.gd:54
+#: scripts/ui/hud.gd:55
 msgid "%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing"
 msgstr "%s sword  ·  %s talk  ·  %s menu  ·  %s pause and controls"
 
-#: scripts/ui/hud.gd:181 scripts/ui/hud.gd:294 scripts/ui/hud.gd:379
+#: scripts/ui/hud.gd:194 scripts/ui/hud.gd:307 scripts/ui/hud.gd:408
 msgid "Game over"
 msgstr "Game over"
 
-#: scripts/ui/hud.gd:193
+#: scripts/ui/hud.gd:206
 msgid "Even op adem komen..."
 msgstr "Catching your breath..."
 
-#: scripts/ui/hud.gd:193
+#: scripts/ui/hud.gd:206
 msgid "Uithouding  ·  %s"
 msgstr "Stamina  ·  %s"
 
-#: scripts/ui/hud.gd:253
+#: scripts/ui/hud.gd:266
 msgid "Boog gekregen! Druk op %s om te schieten."
 msgstr "Bow acquired! Press %s to shoot."
 
-#: scripts/ui/hud.gd:268
+#: scripts/ui/hud.gd:281
 msgid "Volg het gesputter naar de fontein. Nelle kan je hulp gebruiken."
 msgstr "Follow the spluttering to the fountain. Nelle could use your help."
 
-#: scripts/ui/hud.gd:316
+#: scripts/ui/hud.gd:329
 msgid "Rennen: %s vasthouden   ·   Je spullen bekijken: %s"
 msgstr "Sprint: hold %s   ·   View your items: %s"
 
-#: scripts/ui/hud.gd:318
+#: scripts/ui/hud.gd:331
 msgid "%s: gereedschap gebruiken bij het rooster. Blijf even staan tijdens het harken."
 msgstr "%s: use your tool at the grate. Stand still while raking."
 
-#: scripts/ui/hud.gd:320
+#: scripts/ui/hud.gd:333
 msgid "Lopen: %s / %s / %s / %s   ·   Praten: %s"
 msgstr "Move: %s / %s / %s / %s   ·   Talk: %s"
 
-#: scripts/ui/hud.gd:381
+#: scripts/ui/hud.gd:373
+msgid "%s + %s: %s (%d stamina)\n%s + %s: precisieschot (20)"
+msgstr "%s + %s: %s (%d stamina)\n%s + %s: precise shot (20)"
+
+#: scripts/ui/hud.gd:410
 msgid "Verslagen door: %s"
 msgstr "Defeated by: %s"
 
-#: scripts/ui/hud.gd:384
+#: scripts/ui/hud.gd:413
 msgid "%s voor het menu"
 msgstr "%s for the menu"
 
-#: scripts/ui/hud.gd:385
+#: scripts/ui/hud.gd:414
 msgid "Druk op %s om verder te gaan vanaf je laatste opslag"
 msgstr "Press %s to continue from your last save"
 
-#: scripts/ui/hud.gd:385
+#: scripts/ui/hud.gd:414
 msgid "Druk op %s om opnieuw te beginnen"
 msgstr "Press %s to start again"
 
 #. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
 #. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
-#: scripts/ui/hud.gd:397 scripts/ui/menu_pages.gd:220
+#: scripts/ui/hud.gd:426 scripts/ui/menu_pages.gd:220
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
 #. het dagdeel bij de klok als het regent: "Avond  ·  regen"
-#: scripts/ui/hud.gd:416
+#: scripts/ui/hud.gd:445
 msgid "%s  ·  regen"
 msgstr "%s  ·  rain"
 
-#: scripts/ui/hud.gd:431
+#: scripts/ui/hud.gd:460
 msgid "Held %d · maximaal niveau"
 msgstr "Hero %d · maximum level"
 
-#: scripts/ui/hud.gd:431
+#: scripts/ui/hud.gd:460
 msgid "Held %d · %d/%d XP"
 msgstr "Hero %d · %d/%d XP"
 

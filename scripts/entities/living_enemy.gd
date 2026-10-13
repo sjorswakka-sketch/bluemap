@@ -9,13 +9,24 @@ static func update(foe: Node2D, delta: float) -> void:
 		return
 	match foe.data["behavior"]:
 		"lw_guard":
+			# Interpose between the player and a nearby vulnerable ranged ally.
+			# Event targets (braziers etc.) retain priority.
+			if not is_instance_valid(foe.defend_target) and distance < 260:
+				var nearest := 150.0
+				for ally: Node2D in foe.get_tree().get_nodes_in_group("enemies"):
+					var separation := foe.global_position.distance_to(ally.global_position)
+					if ally != foe and not ally.dead and ally.data.behavior in ["lw_support","cv_slinger"] and separation < nearest and foe._clear_line(foe.global_position,ally.global_position):
+						nearest = separation
+						var screen: Vector2 = ally.global_position + (foe.player.global_position-ally.global_position).normalized()*45
+						offset = screen - foe.global_position
+						distance = offset.length()
 			if is_instance_valid(foe.defend_target):
 				offset = foe.defend_target.global_position - foe.global_position
 				distance = offset.length()
 			if distance > 320:
 				foe._wander(delta)
 				return
-			foe.aim_dir = foe.aim_dir.slerp(offset.normalized(), minf(1, delta * 2.5))
+			foe.aim_dir = foe.aim_dir.slerp((foe.player.global_position-foe.global_position).normalized(), minf(1, delta * 2.5))
 			if distance > 24: foe.desired = foe._free_direction(offset.normalized()) * 37
 		"lw_flank":
 			if Living.light_at(foe.global_position):

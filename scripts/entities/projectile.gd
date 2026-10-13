@@ -11,6 +11,7 @@ const DEFAULT_LIFE := 5.0 # zo lang vliegt een projectiel hoogstens
 ## Bijzondere projectielen. turn = hoe snel hij bijdraait naar de speler (radialen per seconde), life = hoelang hij
 ## leeft (seconden) en breakable = je kunt hem met je zwaard stukslaan (player.gd roept dan sword_hit aan).
 const TRAITS := {
+	"cv_thorn": {"turn":0.0,"life":2.2,"breakable":true},
 	"arcane_orb": {"turn": 1.0, "life": 3.0, "breakable": true},
 	"prism_spark": {"turn": 0.0, "life": 3.0, "breakable": true},
 }
@@ -59,7 +60,19 @@ func _process(delta: float) -> void:
 		# Langzaam bijdraaien naar de speler: je kunt hem ontwijken, maar hij laat je niet los.
 		var wanted := player.global_position + Vector2(0, 4) - global_position
 		velocity = velocity.rotated(clampf(velocity.angle_to(wanted), -turn * delta, turn * delta))
-	position += velocity * delta
+	var destination := position + velocity * delta
+	if kind == "cv_thorn":
+		var ray := PhysicsRayQueryParameters2D.create(position,destination,1)
+		ray.hit_from_inside = true
+		var blocked := not get_world_2d().direct_space_state.intersect_ray(ray).is_empty()
+		var steps := maxi(1,ceili(position.distance_to(destination)/6))
+		for i in range(1,steps+1):
+			if world.is_solid(position.lerp(destination,float(i)/steps)): blocked = true
+		if blocked:
+			world.burst(position,Color(0.8,0.7,0.4),4)
+			queue_free()
+			return
+	position = destination
 	if age > max_age or world.is_solid(global_position):
 		world.burst(global_position, ORB_COLOR if kind in ["arcane_orb", "prism_spark"] else Color(0.9, 0.9, 0.9), 4)
 		queue_free()
@@ -96,6 +109,11 @@ func shatter() -> void:
 
 
 func _draw() -> void:
+	if kind == "cv_thorn":
+		draw_set_transform(Vector2.ZERO, velocity.angle(),Vector2.ONE)
+		draw_colored_polygon(PackedVector2Array([Vector2(9,0),Vector2(-5,-4),Vector2(-2,0),Vector2(-5,4)]),Color(0.85,0.65,0.3))
+		draw_line(Vector2(-12,0),Vector2(0,0),Color(0.7,0.9,0.4,0.5),2)
+		return
 	if kind in ["arcane_orb", "prism_spark"]:
 		_draw_orb()
 		return
