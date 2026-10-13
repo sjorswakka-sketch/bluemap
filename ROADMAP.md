@@ -106,6 +106,12 @@ pixel art, en te delen met vrienden en de community.
       vijver en de westelijke paden), een mistedrank (alchemie in de bibliotheek) en dauwsoep (koken in de
       herberg) als recepten, een nieuwe opdracht bij Mira (Bloemen in de mist) en de prestatie Mistvanger
 
+- [x] Dagritme-geluid: elke buitenkaart heeft nu een achtergrondsfeer die meebeweegt met de klok —
+      twaalf zelfgemaakte lussen (drie klimaten x vier dagdelen): vogels in de ochtend, ritselend blad
+      overdag, krekels in de avond en een uil in de nacht; koude wind in het IJsdal en droge wind met
+      insectengespin in de Dorstvallei. Bij een nieuw dagdeel loopt de sfeer zachtjes over; binnen is
+      het stil
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen en schilden

@@ -214,7 +214,7 @@ De plaatjes in `assets/` zijn zelf gemaakt met `python3 tools/make_art.py` en de
 | `guardian.png`, `golem_void.png`, `depths_*.png`, `items_diepte.png` | De Diepte: de Wachter (48x48, 8 vakjes), de paarse golem, pilaar, zegel, lamp, poort, scherf en iconen. Zie `tools/art_x_diepte.py` |
 | `wereld_ui.png` | zon, lage zon, maan, drie bekers en een altaarspeldje, zie `tools/art_x_wereld.py` |
 | `wereld_lantaarn.png` | 3 vakjes van 16x32: uit, aan, aan (flikkert) |
-| `audio/*.wav` | geluidseffecten; `audio/music_<gebied>.wav` zijn lussen van 25 tot 45 seconden; `wereld_regen.wav` is een lus van 6 seconden |
+| `audio/*.wav` | geluidseffecten; `audio/music_<gebied>.wav` zijn lussen van 25 tot 45 seconden; `wereld_regen.wav` en `amb_<klimaat>_<dagdeel>.wav` (bos/sneeuw/dorst x ochtend/dag/avond/nacht) zijn lussen van 6 seconden |
 
 ## Testen
 

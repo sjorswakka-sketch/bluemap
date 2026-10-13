@@ -59,6 +59,22 @@ static func phase_at(t: float) -> String:
 	return "nacht"
 
 
+## Het klimaat van een kaart op basis van haar weer: "bos" (gematigd), "sneeuw" of "dorst".
+static func climate(weather: String) -> String:
+	match weather:
+		"snow":
+			return "sneeuw"
+		"heat":
+			return "dorst"
+	return "bos"
+
+
+## De achtergrondsfeer die bij dit weer en dit dagdeel hoort (een lus uit assets/audio), of "" voor
+## kaarten zonder eigen sfeer (binnenruimtes en donjons houden het stil).
+static func ambience(weather: String, t: float) -> String:
+	return "amb_%s_%s" % [climate(weather), phase_at(t)]
+
+
 ## Het vakje in de zon/maan-plaat (assets/wereld_ui.png): 0 zon, 1 lage zon, 2 maan.
 static func icon_frame(t: float) -> int:
 	match phase_at(t):
