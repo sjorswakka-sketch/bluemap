@@ -14,9 +14,13 @@ const Lake := preload("res://scripts/maps/lake.gd")
 const Ruins := preload("res://scripts/maps/ruins.gd")
 const Cave := preload("res://scripts/maps/cave.gd")
 const Temple := preload("res://scripts/maps/temple.gd")
+const Arena := preload("res://scripts/maps/arena.gd")
+const ArenaHall := preload("res://scripts/maps/arena_hall.gd")
+const Depths1 := preload("res://scripts/maps/depths1.gd")
+const Depths2 := preload("res://scripts/maps/depths2.gd")
 
 ## Objecten zonder fysieke tegel (markeringen, banen) en objecten die op het water horen.
-const NIET_FYSIEK := ["meer_water", "trigger", "boog_baan"]
+const NIET_FYSIEK := ["meer_water", "trigger", "boog_baan", "arena_crowd", "arena_prop"]
 const OP_WATER := ["meer_visplek", "meer_diepe_visplek"]
 
 var failures := 0
@@ -105,5 +109,9 @@ func _initialize() -> void:
 	check_map("ruins", Ruins.DATA)
 	check_map("cave", Cave.DATA)
 	check_map("temple", Temple.DATA)
+	check_map("arena", Arena.DATA)
+	check_map("arena_hall", ArenaHall.DATA)
+	check_map("depths1", Depths1.DATA)
+	check_map("depths2", Depths2.DATA)
 	print("GEBIEDEN ROUTE OK" if failures == 0 else "GEBIEDEN ROUTE FAILED: %d" % failures)
 	quit(0 if failures == 0 else 1)

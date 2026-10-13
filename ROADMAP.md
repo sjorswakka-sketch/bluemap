@@ -97,6 +97,11 @@ pixel art, en te delen met vrienden en de community.
       Kristaltempel heeft extra runen en tapijt in de voorhal. De padvindingstest dekt nu alle negen
       de overwelfde en open gebieden
 
+- [x] Arena en De Diepte: de Kristalgangen hebben extra kristallen en runen op de kruispunten; de
+      gevechtsarena's (Arena en Het Hart van de Kaart) en de al volledige arena-hal zijn bewust ongemoeid
+      gelaten. Nieuw decor wordt voortaan alleen in wandhoeken geplaatst, zodat de zichtlijnen van
+      magiërsbollen intact blijven; de padvindingstest dekt nu alle dertien gebieden
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen en schilden
