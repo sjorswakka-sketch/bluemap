@@ -57,6 +57,9 @@ const ITEMS := {
 	"prof_zandkruid": {"name": "Zandkruid", "sheet": "items_beroepen", "icon": 25, "type": "material", "desc": "Een taai, geurig kruid dat tussen het duinzand groeit. Voor balsems en braadstukken."},
 	"prof_zandsteen": {"name": "Zandsteen", "sheet": "items_beroepen", "icon": 26, "type": "material", "desc": "Warme, gelaagde steen uit de klippen van de Dorstvallei. Licht en goed te bewerken."},
 	"prof_zandbalsem": {"name": "Zandbalsem", "sheet": "items_beroepen", "icon": 27, "type": "use", "stamina": 30, "desc": "Verkoelende balsem van zandkruid en cactusvijg. Herstelt 30 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
+	"prof_dauwklauw": {"name": "Dauwklauw", "sheet": "items_beroepen", "icon": 43, "type": "material", "sell": 3, "desc": "Een bleke bloem die alleen in de mist van het Dauwbos bloeit. Basis voor het mistedrank."},
+	"prof_mistdrank": {"name": "Mistedrank", "sheet": "items_beroepen", "icon": 44, "type": "use", "stamina": 35, "desc": "Een koel, kolkend elixer van dauwklauwen en honingzwam. Herstelt 35 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
+	"prof_dauwsoep": {"name": "Dauwsoep", "sheet": "items_beroepen", "icon": 45, "type": "use", "heal": 2, "stamina": 10, "desc": "Lichte soep van honingzwammen met dauwklauw. Herstelt 2 hartjes en 10 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
 }
 const RECIPES := {
 	"stone_axe": {"skill": "woodcutting", "level": 1, "xp": 8, "inputs": {"prof_branch": 2, "prof_stone": 2}, "output": "prof_axe"},
@@ -80,6 +83,8 @@ const RECIPES := {
 	"winter_glow": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_winterbes": 3, "prof_ijsbloem": 1}, "output": "prof_winter_gloed"},
 	"sand_balm": {"skill": "alchemy", "level": 2, "xp": 12, "station": "library", "inputs": {"prof_zandkruid": 2, "prof_cactusvijg": 1}, "output": "prof_zandbalsem"},
 	"roast_meat": {"skill": "cooking", "level": 2, "xp": 12, "station": "inn", "inputs": {"jacht_vlees": 2, "prof_zandkruid": 1}, "output": "jacht_braadstuk"},
+	"mist_drank": {"skill": "alchemy", "level": 2, "xp": 12, "station": "library", "inputs": {"prof_dauwklauw": 2, "prof_mushroom": 1}, "output": "prof_mistdrank"},
+	"dauw_soep": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_mushroom": 2, "prof_dauwklauw": 1}, "output": "prof_dauwsoep"},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},
@@ -97,6 +102,7 @@ const RESOURCES := {
 	"cactusfigs": {"name": "Cactusvijgen", "skill": "foraging", "item": "prof_cactusvijg", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("e87a9a")},
 	"sandwort": {"name": "Zandkruid", "skill": "foraging", "item": "prof_zandkruid", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("b3a04f")},
 	"sandstone_rock": {"name": "Zandsteenklip", "skill": "mining", "item": "prof_zandsteen", "amount": 2, "xp": 10, "cooldown": 180.0, "tools": ["prof_copper_pickaxe", "prof_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("c08a54")},
+	"dauwklauw": {"name": "Dauwklauwen", "skill": "foraging", "item": "prof_dauwklauw", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("a8d8e8")},
 }
 # Explicit IDs keep cooldowns stable when maps or the original object lists change.
 # Nodes are small, non-blocking props on walkable tiles away from doors and quest items.
@@ -107,7 +113,7 @@ const RESOURCE_PLACEMENTS := {
 	"cave": [["copper_entry", "copper", 9, 32], ["iron_entry", "iron", 3, 29], ["iron_west", "iron", 10, 22], ["iron_east", "iron", 29, 28]],
 	"ijsdal": [["ijsbloem_west", "winterherbs", 5, 14], ["ijsbloem_meer", "winterherbs", 16, 25], ["ijsbloem_noord", "winterherbs", 30, 5], ["winterbes_west", "frostberries", 4, 19], ["winterbes_oost", "frostberries", 42, 6], ["den_west", "pine_stump", 7, 16], ["den_oost", "pine_stump", 33, 20], ["ijskristal_mijn", "ice_vein", 40, 24], ["ijskristal_diep", "ice_vein", 44, 28], ["vuursteen_mijn", "stones", 38, 26], ["takken_plein", "branches", 28, 19]],
 	"dorstvallei": [["vijgen_west", "cactusfigs", 6, 7], ["vijgen_oost", "cactusfigs", 41, 8], ["vijgen_zuidoost", "cactusfigs", 38, 12], ["kruid_noord", "sandwort", 11, 8], ["kruid_midden", "sandwort", 20, 12], ["kruid_oost", "sandwort", 37, 22], ["zandsteen_west", "sandstone_rock", 7, 27], ["zandsteen_noord", "sandstone_rock", 25, 4], ["zandsteen_zuid", "sandstone_rock", 13, 30], ["vuursteen_zuid", "stones", 21, 26], ["kruiden_oase", "herbs", 12, 13]],
-	"dauwbos": [["padden_kring", "mushrooms", 20, 9], ["padden_zuid", "mushrooms", 27, 27], ["kruiden_plein", "herbs", 20, 20], ["kruiden_oost", "herbs", 36, 22], ["bessen_heg", "berries", 16, 16], ["bessen_noord", "berries", 30, 6], ["takken_west", "branches", 8, 24], ["stronk_oud", "stump", 34, 10], ["vuursteen_vijver", "stones", 38, 29]],
+	"dauwbos": [["padden_kring", "mushrooms", 20, 9], ["padden_zuid", "mushrooms", 27, 27], ["kruiden_plein", "herbs", 20, 20], ["kruiden_oost", "herbs", 36, 22], ["bessen_heg", "berries", 16, 16], ["bessen_noord", "berries", 30, 6], ["takken_west", "branches", 8, 24], ["stronk_oud", "stump", 34, 10], ["vuursteen_vijver", "stones", 38, 29], ["klauw_west", "dauwklauw", 7, 16], ["klauw_vijver", "dauwklauw", 30, 24], ["klauw_zuid", "dauwklauw", 14, 22]],
 }
 
 

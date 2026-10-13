@@ -780,7 +780,7 @@ msgstr "I want to sell Slime Gel."
 #. Gesprek arena_bruno_menu: keuze van de speler
 #. Gesprek noor_menu: keuze van de speler
 #. Gesprek vera_menu: keuze van de speler
-#: scripts/data/dialogue.gd:205 scripts/data/ext/arena.gd:110 scripts/data/ext/meer.gd:186 scripts/data/ext/polijst.gd:257
+#: scripts/data/dialogue.gd:205 scripts/data/ext/arena.gd:110 scripts/data/ext/meer.gd:186 scripts/data/ext/polijst.gd:291
 msgid "Tot ziens."
 msgstr "Goodbye."
 
@@ -2182,54 +2182,55 @@ msgstr "No, I'll keep fighting!"
 #. Naam van wie er praat (Gesprek lotte_ok)
 #. Naam van wie er praat (Gesprek lotte_menu)
 #. Naam van wie er praat (Gesprek lotte_klaar)
-#: scripts/data/ext/polijst.gd:119 scripts/data/ext/polijst.gd:125 scripts/data/ext/polijst.gd:132 scripts/data/ext/polijst.gd:133
+#: scripts/data/ext/polijst.gd:132 scripts/data/ext/polijst.gd:138 scripts/data/ext/polijst.gd:145 scripts/data/ext/polijst.gd:146
 msgid "Lotte"
 msgstr "Lotte"
 
 #. Gesprek lotte_intro, Lotte zegt
-#: scripts/data/ext/polijst.gd:120
+#: scripts/data/ext/polijst.gd:133
 msgid "Ik ben Lotte. Ik maak lantaarns voor het dorp."
 msgstr "I'm Lotte. I make lanterns for the village."
 
 #. Gesprek lotte_intro, Lotte zegt
-#: scripts/data/ext/polijst.gd:120
+#: scripts/data/ext/polijst.gd:133
 msgid "Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten."
 msgstr "My finest work, the night lantern, has gone missing. I took it to the ruins and left it there."
 
 #. Gesprek lotte_vraag, Lotte zegt
-#: scripts/data/ext/polijst.gd:126
+#: scripts/data/ext/polijst.gd:139
 msgid "Wil je hem voor me zoeken? Hij geeft veel beter licht in het donker."
 msgstr "Will you find it for me? It gives much better light in the dark."
 
 #. Gesprek lotte_vraag: keuze van de speler
-#: scripts/data/ext/polijst.gd:128
+#: scripts/data/ext/polijst.gd:141
 msgid "Ik zoek hem wel."
 msgstr "I'll find it."
 
 #. Gesprek lotte_vraag: keuze van de speler
+#. Gesprek mira_mist_vraag: keuze van de speler
 #. Gesprek fenna_vraag: keuze van de speler
 #. Gesprek jelle_vraag: keuze van de speler
-#: scripts/data/ext/dorst.gd:97 scripts/data/ext/polijst.gd:129 scripts/data/ext/sneeuw.gd:73
+#: scripts/data/ext/dorst.gd:97 scripts/data/ext/polijst.gd:142 scripts/data/ext/polijst.gd:248 scripts/data/ext/sneeuw.gd:73
 msgid "Later misschien."
 msgstr "Maybe later."
 
 #. Gesprek lotte_ok, Lotte zegt
-#: scripts/data/ext/polijst.gd:132
+#: scripts/data/ext/polijst.gd:145
 msgid "Dank je. Kijk in de Vergeten Ruïne, ergens bij de oude gangen."
 msgstr "Thank you. Look in the Forgotten Ruins, somewhere near the old corridors."
 
 #. Gesprek lotte_menu, Lotte zegt
-#: scripts/data/ext/polijst.gd:133
+#: scripts/data/ext/polijst.gd:146
 msgid "Heb je de nachtlantaarn al gevonden?"
 msgstr "Have you found the night lantern yet?"
 
 #. Gesprek lotte_menu: keuze van de speler
 #. Gesprek elke_menu: keuze van de speler
 #. Gesprek mira_menu: keuze van de speler
+#. Gesprek mira_mist_menu: keuze van de speler
 #. Gesprek noor_menu: keuze van de speler
 #. Gesprek fenna_menu: keuze van de speler
-#. Gesprek roos_menu: keuze van de speler
-#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/polijst.gd:133 scripts/data/ext/polijst.gd:173
+#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/polijst.gd:146 scripts/data/ext/polijst.gd:186
 msgid "Nog niet."
 msgstr "Not yet."
 
@@ -2237,17 +2238,17 @@ msgstr "Not yet."
 #. Gesprek kasper_menu: keuze van de speler
 #. Gesprek tomas_menu: keuze van de speler
 #. Gesprek roos_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:133 scripts/data/ext/polijst.gd:152 scripts/data/ext/polijst.gd:236 scripts/data/ext/sneeuw.gd:99
+#: scripts/data/ext/polijst.gd:146 scripts/data/ext/polijst.gd:165 scripts/data/ext/polijst.gd:270 scripts/data/ext/sneeuw.gd:99
 msgid "Tot later."
 msgstr "See you later."
 
 #. Gesprek lotte_klaar, Lotte zegt
-#: scripts/data/ext/polijst.gd:136
+#: scripts/data/ext/polijst.gd:149
 msgid "Je hebt hem! Hij werkt nog. Neem hem maar, hij helpt je beter in het donker dan een gewone."
 msgstr "You found it! It still works. Take it — it will help you in the dark far better than a normal one."
 
 #. Gesprek lotte_klaar, Lotte zegt
-#: scripts/data/ext/polijst.gd:136
+#: scripts/data/ext/polijst.gd:149
 msgid "En hier wat munten voor de moeite."
 msgstr "And here are some coins for your trouble."
 
@@ -2255,42 +2256,42 @@ msgstr "And here are some coins for your trouble."
 #. Naam van wie er praat (Gesprek kasper_menu)
 #. Naam van wie er praat (Gesprek kasper_bijzonder)
 #. Naam van wie er praat (Gesprek kasper_handel)
-#: scripts/data/ext/polijst.gd:141 scripts/data/ext/polijst.gd:147 scripts/data/ext/polijst.gd:155 scripts/data/ext/polijst.gd:156
+#: scripts/data/ext/polijst.gd:154 scripts/data/ext/polijst.gd:160 scripts/data/ext/polijst.gd:168 scripts/data/ext/polijst.gd:169
 msgid "Kasper"
 msgstr "Kasper"
 
 #. Gesprek kasper_intro, Kasper zegt
-#: scripts/data/ext/polijst.gd:142
+#: scripts/data/ext/polijst.gd:155
 msgid "Ha, een reiziger! Ik ben Kasper. Ik verhandel alles wat de slijmen niet opeten."
 msgstr "Ha, a traveller! I'm Kasper. I trade everything the slimes won't eat."
 
 #. Gesprek kasper_intro, Kasper zegt
-#: scripts/data/ext/polijst.gd:142
+#: scripts/data/ext/polijst.gd:155
 msgid "Munten, kruiden, geruchten... als het waarde heeft, koop of verkoop ik het."
 msgstr "Coins, herbs, rumours... if it has value, I buy or sell it."
 
 #. Gesprek kasper_menu, Kasper zegt
-#: scripts/data/ext/polijst.gd:148
+#: scripts/data/ext/polijst.gd:161
 msgid "Wat brengt je naar mijn kraam?"
 msgstr "What brings you to my stall?"
 
 #. Gesprek kasper_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:150
+#: scripts/data/ext/polijst.gd:163
 msgid "Heb je iets bijzonders?"
 msgstr "Got anything special?"
 
 #. Gesprek kasper_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:151
+#: scripts/data/ext/polijst.gd:164
 msgid "Hoe gaat de handel?"
 msgstr "How's business?"
 
 #. Gesprek kasper_bijzonder, Kasper zegt
-#: scripts/data/ext/polijst.gd:155
+#: scripts/data/ext/polijst.gd:168
 msgid "Bijzonders? Alles is bijzonder als je het hard genoeg wilt. Maar echte schatten liggen buiten het dorp."
 msgstr "Special? Everything is special if you want it badly enough. But real treasures lie outside the village."
 
 #. Gesprek kasper_handel, Kasper zegt
-#: scripts/data/ext/polijst.gd:156
+#: scripts/data/ext/polijst.gd:169
 msgid "De handel bloeit. Zolang de Slijmkoning weg blijft, blijft mijn tas vol."
 msgstr "Business is blooming. As long as the Slime King stays away, my bag stays full."
 
@@ -2299,51 +2300,52 @@ msgstr "Business is blooming. As long as the Slime King stays away, my bag stays
 #. Naam van wie er praat (Gesprek elke_ok)
 #. Naam van wie er praat (Gesprek elke_menu)
 #. Naam van wie er praat (Gesprek elke_klaar)
-#: scripts/data/ext/polijst.gd:159 scripts/data/ext/polijst.gd:165 scripts/data/ext/polijst.gd:172 scripts/data/ext/polijst.gd:173
+#: scripts/data/ext/polijst.gd:172 scripts/data/ext/polijst.gd:178 scripts/data/ext/polijst.gd:185 scripts/data/ext/polijst.gd:186
 msgid "Elke"
 msgstr "Elke"
 
 #. Gesprek elke_intro, Elke zegt
-#: scripts/data/ext/polijst.gd:160
+#: scripts/data/ext/polijst.gd:173
 msgid "Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is."
 msgstr "Welcome to my herbs. I'm Elke. I dry, grind and brew everything green."
 
 #. Gesprek elke_intro, Elke zegt
-#: scripts/data/ext/polijst.gd:160
+#: scripts/data/ext/polijst.gd:173
 msgid "De verse kruiden uit het bos zijn het beste. Die mis ik nu."
 msgstr "Fresh herbs from the forest are the best. Those I am missing now."
 
 #. Gesprek elke_vraag, Elke zegt
-#: scripts/data/ext/polijst.gd:166
+#: scripts/data/ext/polijst.gd:179
 msgid "Wil je 4 verse kruiden voor me plukken in het Fluisterbos of Dauwbos?"
 msgstr "Will you pick 4 fresh herbs for me in the Whispering Woods or Dew Woods?"
 
 #. Gesprek elke_vraag: keuze van de speler
-#: scripts/data/ext/polijst.gd:168
+#: scripts/data/ext/polijst.gd:181
 msgid "Ik haal ze."
 msgstr "I'll get them."
 
 #. Gesprek elke_ok, Elke zegt
-#: scripts/data/ext/polijst.gd:172
+#: scripts/data/ext/polijst.gd:185
 msgid "Fijn. Ze liggen in kisten of op de grond in de bossen."
 msgstr "Good. They lie in chests or on the ground in the woods."
 
 #. Gesprek elke_menu, Elke zegt
-#: scripts/data/ext/polijst.gd:173
+#: scripts/data/ext/polijst.gd:186
 msgid "Heb je de kruiden al?"
 msgstr "Do you have the herbs yet?"
 
 #. Gesprek elke_menu: keuze van de speler
 #. Gesprek mira_menu: keuze van de speler
+#. Gesprek mira_mist_menu: keuze van de speler
 #. Gesprek fenna_menu: keuze van de speler
 #. Gesprek jelle_menu: keuze van de speler
 #. Gesprek sana_menu: keuze van de speler
-#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/polijst.gd:173 scripts/data/ext/polijst.gd:213
+#: scripts/data/ext/dorst.gd:101 scripts/data/ext/dorst.gd:123 scripts/data/ext/polijst.gd:186 scripts/data/ext/polijst.gd:226
 msgid "Tot zo."
 msgstr "See you soon."
 
 #. Gesprek elke_klaar, Elke zegt
-#: scripts/data/ext/polijst.gd:176
+#: scripts/data/ext/polijst.gd:189
 msgid "Prachtig vers! Hier, een drankje en wat munten. Kom gerust terug."
 msgstr "Beautifully fresh! Here, a potion and some coins. Come back anytime."
 
@@ -2351,48 +2353,48 @@ msgstr "Beautifully fresh! Here, a potion and some coins. Come back anytime."
 #. Naam van wie er praat (Gesprek willem_menu)
 #. Naam van wie er praat (Gesprek willem_kaart)
 #. Naam van wie er praat (Gesprek willem_diepte)
-#: scripts/data/ext/polijst.gd:181 scripts/data/ext/polijst.gd:187 scripts/data/ext/polijst.gd:195 scripts/data/ext/polijst.gd:196
+#: scripts/data/ext/polijst.gd:194 scripts/data/ext/polijst.gd:200 scripts/data/ext/polijst.gd:208 scripts/data/ext/polijst.gd:209
 msgid "Willem"
 msgstr "Willem"
 
 #. Gesprek willem_intro, Willem zegt
-#: scripts/data/ext/polijst.gd:182
+#: scripts/data/ext/polijst.gd:195
 msgid "Ah, een luisteraar! Ik ben Willem. Ik ken alle verhalen van Azura."
 msgstr "Ah, a listener! I'm Willem. I know all the stories of Azura."
 
 #. Gesprek willem_intro, Willem zegt
-#: scripts/data/ext/polijst.gd:182
+#: scripts/data/ext/polijst.gd:195
 msgid "Van de gebarsten kaart tot de oude wachters in de Diepte."
 msgstr "From the cracked map to the old watchers in the Depths."
 
 #. Gesprek willem_menu, Willem zegt
-#: scripts/data/ext/polijst.gd:188
+#: scripts/data/ext/polijst.gd:201
 msgid "Welk verhaal wil je horen?"
 msgstr "Which story do you want to hear?"
 
 #. Gesprek willem_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:190
+#: scripts/data/ext/polijst.gd:203
 msgid "Over de Blauwe Kaart."
 msgstr "About the Blue Map."
 
 #. Gesprek willem_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:191
+#: scripts/data/ext/polijst.gd:204
 msgid "Over de Diepte."
 msgstr "About the Depths."
 
 #. Gesprek willem_menu: keuze van de speler
 #. Gesprek olav_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:192 scripts/data/ext/sneeuw.gd:119
+#: scripts/data/ext/polijst.gd:205 scripts/data/ext/sneeuw.gd:119
 msgid "Een ander keer."
 msgstr "Another time."
 
 #. Gesprek willem_kaart, Willem zegt
-#: scripts/data/ext/polijst.gd:195
+#: scripts/data/ext/polijst.gd:208
 msgid "De Blauwe Kaart hield Azura bijeen. Toen hij barstte, vlogen de kristallen het land in. Zonder hen raakt alles uit balans."
 msgstr "The Blue Map held Azura together. When it cracked, the crystals flew into the land. Without them, everything falls out of balance."
 
 #. Gesprek willem_diepte, Willem zegt
-#: scripts/data/ext/polijst.gd:196
+#: scripts/data/ext/polijst.gd:209
 msgid "Onder de tempel slaapt een oude wachter. Hij bewaakt het origineel van de kaart. Wees voorzichtig als je hem wekt."
 msgstr "An old watcher sleeps beneath the temple. He guards the original of the map. Be careful if you wake him."
 
@@ -2402,105 +2404,147 @@ msgstr "An old watcher sleeps beneath the temple. He guards the original of the 
 #. Naam van wie er praat (Gesprek mira_menu)
 #. Naam van wie er praat (Gesprek mira_steen)
 #. Naam van wie er praat (Gesprek mira_klaar)
-#: scripts/data/ext/polijst.gd:199 scripts/data/ext/polijst.gd:205 scripts/data/ext/polijst.gd:212 scripts/data/ext/polijst.gd:213
+#: scripts/data/ext/polijst.gd:212 scripts/data/ext/polijst.gd:218 scripts/data/ext/polijst.gd:225 scripts/data/ext/polijst.gd:226
 msgid "Mira"
 msgstr "Mira"
 
 #. Gesprek mira_intro, Mira zegt
-#: scripts/data/ext/polijst.gd:200
+#: scripts/data/ext/polijst.gd:213
 msgid "Welkom in het Dauwbos. Ik ben Mira. Ik bewaar de dauw hier."
 msgstr "Welcome to the Dew Woods. I'm Mira. I keep the dew here."
 
 #. Gesprek mira_intro, Mira zegt
-#: scripts/data/ext/polijst.gd:200
+#: scripts/data/ext/polijst.gd:213
 msgid "De mist wordt dikker. Ik zoek een oude dauwsteen om het evenwicht te herstellen."
 msgstr "The mist is growing thicker. I'm looking for an old dew stone to restore the balance."
 
 #. Gesprek mira_vraag, Mira zegt
-#: scripts/data/ext/polijst.gd:206
+#: scripts/data/ext/polijst.gd:219
 msgid "Wil je de dauwsteen voor me zoeken? Hij ligt ergens in dit bos."
 msgstr "Will you find the dew stone for me? It lies somewhere in this forest."
 
 #. Gesprek mira_vraag: keuze van de speler
-#: scripts/data/ext/polijst.gd:208
+#: scripts/data/ext/polijst.gd:221
 msgid "Ik zoek hem."
 msgstr "I'll find it."
 
 #. Gesprek mira_vraag: keuze van de speler
-#: scripts/data/ext/polijst.gd:209
+#: scripts/data/ext/polijst.gd:222
 msgid "Later."
 msgstr "Later."
 
 #. Gesprek mira_ok, Mira zegt
-#: scripts/data/ext/polijst.gd:212
+#: scripts/data/ext/polijst.gd:225
 msgid "Dank je. Zoek in het noorden of bij de kisten."
 msgstr "Thank you. Search the north or near the chests."
 
 #. Gesprek mira_menu, Mira zegt
-#: scripts/data/ext/polijst.gd:213
+#: scripts/data/ext/polijst.gd:226
 msgid "Heb je de steen al?"
 msgstr "Do you have the stone yet?"
 
 #. Gesprek mira_steen, Mira zegt
-#: scripts/data/ext/polijst.gd:216
+#: scripts/data/ext/polijst.gd:229
 msgid "Je hebt de steen! Prachtig. Nu moet ik het oude verhaal horen. Praat met Tomas."
 msgstr "You have the stone! Wonderful. Now I must hear the old story. Talk to Tomas."
 
 #. Gesprek mira_klaar, Mira zegt
-#: scripts/data/ext/polijst.gd:221
+#: scripts/data/ext/polijst.gd:234
 msgid "Het verhaal klopt. De steen werkt. De dauw blijft, maar de mist wordt zachter."
 msgstr "The story is true. The stone works. The dew stays, but the mist softens."
 
 #. Gesprek mira_klaar, Mira zegt
-#: scripts/data/ext/polijst.gd:221
+#: scripts/data/ext/polijst.gd:234
 msgid "Hier, een beloning voor je hulp."
 msgstr "Here, a reward for your help."
+
+#. Gesprek mira_mist_intro, Mira zegt
+#: scripts/data/ext/polijst.gd:239
+msgid "De mist is zacht nu, dankzij jou. Precies goed voor de dauwklauw: een bleke bloem die alleen in zachte mist bloeit."
+msgstr "The mist is soft now, thanks to you. Just right for the dewclaw: a pale flower that only blooms in soft mist."
+
+#. Gesprek mira_mist_intro, Mira zegt
+#: scripts/data/ext/polijst.gd:239
+msgid "Ik brouw er mistedrank van — koel en helder, net als het bos zelf."
+msgstr "I brew mist tonic from it — cool and clear, just like the forest itself."
+
+#. Gesprek mira_mist_vraag, Mira zegt
+#: scripts/data/ext/polijst.gd:245
+msgid "Wil je 3 dauwklauwen voor me plukken? Bij de vijver en langs de westelijke paden groeien ze het dichtst."
+msgstr "Will you pick 3 dewclaws for me? They grow thickest by the pond and along the western paths."
+
+#. Gesprek mira_mist_vraag: keuze van de speler
+#. Gesprek fenna_vraag: keuze van de speler
+#. Gesprek sana_vraag: keuze van de speler
+#: scripts/data/ext/dorst.gd:118 scripts/data/ext/polijst.gd:247 scripts/data/ext/sneeuw.gd:72
+msgid "Ik pluk ze wel."
+msgstr "I'll pick them."
+
+#. Gesprek mira_mist_ok, Mira zegt
+#: scripts/data/ext/polijst.gd:251
+msgid "Dank je. Zoek de bleke bloemen met de dauwdruppels — die glinsteren zelfs in de mist."
+msgstr "Thank you. Look for the pale flowers with dewdrops — they glisten even in the mist."
+
+#. Gesprek mira_mist_menu, Mira zegt
+#: scripts/data/ext/polijst.gd:252
+msgid "Heb je de dauwklauwen al?"
+msgstr "Do you have the dewclaws yet?"
+
+#. Gesprek mira_mist_klaar, Mira zegt
+#: scripts/data/ext/polijst.gd:255
+msgid "Prachtig, ze zijn vers. Kijk — zo brouw ik het mistedrank."
+msgstr "Beautiful, they're fresh. Look — this is how I brew the mist tonic."
+
+#. Gesprek mira_mist_klaar, Mira zegt
+#: scripts/data/ext/polijst.gd:255
+msgid "De eerste fles is voor jou. En leer het recept: zo kun je er zelf meer maken in de bibliotheek."
+msgstr "The first bottle is for you. And learn the recipe: that way you can brew more yourself in the library."
 
 #. Naam van wie er praat (Gesprek tomas_intro)
 #. Naam van wie er praat (Gesprek tomas_menu)
 #. Naam van wie er praat (Gesprek tomas_verhaal)
-#: scripts/data/ext/polijst.gd:226 scripts/data/ext/polijst.gd:232 scripts/data/ext/polijst.gd:240
+#: scripts/data/ext/polijst.gd:260 scripts/data/ext/polijst.gd:266 scripts/data/ext/polijst.gd:274
 msgid "Tomas"
 msgstr "Tomas"
 
 #. Gesprek tomas_intro, Tomas zegt
-#: scripts/data/ext/polijst.gd:227
+#: scripts/data/ext/polijst.gd:261
 msgid "Ik ben Tomas. Ik woon al lang in dit bos. De dauw kent me."
 msgstr "I'm Tomas. I have lived in this forest for a long time. The dew knows me."
 
 #. Gesprek tomas_menu, Tomas zegt
-#: scripts/data/ext/polijst.gd:233
+#: scripts/data/ext/polijst.gd:267
 msgid "Wat wil je weten?"
 msgstr "What do you want to know?"
 
 #. Gesprek tomas_menu: keuze van de speler
-#: scripts/data/ext/polijst.gd:235
+#: scripts/data/ext/polijst.gd:269
 msgid "Vertel het oude verhaal."
 msgstr "Tell me the old story."
 
 #. Gesprek tomas_verhaal, Tomas zegt
-#: scripts/data/ext/polijst.gd:241
+#: scripts/data/ext/polijst.gd:275
 msgid "Lang geleden viel de dauwsteen uit de sterren. Hij houdt de mist levend. Zonder hem wordt het bos dor."
 msgstr "Long ago the dew stone fell from the stars. It keeps the mist alive. Without it the forest turns dry."
 
 #. Gesprek tomas_verhaal, Tomas zegt
-#: scripts/data/ext/polijst.gd:241
+#: scripts/data/ext/polijst.gd:275
 msgid "Mira weet wat ze doet. Geef haar de steen."
 msgstr "Mira knows what she is doing. Give her the stone."
 
 #. Naam van wie er praat (Gesprek noor_intro)
 #. Naam van wie er praat (Gesprek noor_menu)
-#: scripts/data/ext/polijst.gd:247 scripts/data/ext/polijst.gd:253
+#: scripts/data/ext/polijst.gd:281 scripts/data/ext/polijst.gd:287
 msgid "Noor"
 msgstr "Noor"
 
 #. Gesprek noor_intro, Noor zegt
-#: scripts/data/ext/polijst.gd:248
+#: scripts/data/ext/polijst.gd:282
 msgid "Ik ben Noor. Ik verzamel alles wat glimt in de dauw."
 msgstr "I'm Noor. I collect everything that glimmers in the dew."
 
 #. Gesprek noor_menu, Noor zegt
-#: scripts/data/ext/polijst.gd:254
+#: scripts/data/ext/polijst.gd:288
 msgid "Heb je iets moois gevonden in het bos?"
 msgstr "Have you found anything beautiful in the forest?"
 
@@ -2527,12 +2571,6 @@ msgstr "The ice flower is my finest ingredient, but my supply has run out."
 #: scripts/data/ext/sneeuw.gd:70
 msgid "Wil je 4 ijsbloemen voor me plukken? Ze bloeien in het dal, zelfs onder de sneeuw."
 msgstr "Will you pick 4 ice flowers for me? They bloom in the valley, even under the snow."
-
-#. Gesprek fenna_vraag: keuze van de speler
-#. Gesprek sana_vraag: keuze van de speler
-#: scripts/data/ext/dorst.gd:118 scripts/data/ext/sneeuw.gd:72
-msgid "Ik pluk ze wel."
-msgstr "I'll pick them."
 
 #. Gesprek fenna_ok, Fenna zegt
 #: scripts/data/ext/sneeuw.gd:76
@@ -2918,37 +2956,37 @@ msgid "Lena de bibliothecaresse"
 msgstr "Lena the Librarian"
 
 #. Naam van personage lotte (boven zijn hoofd)
-#: scripts/data/ext/polijst.gd:63
+#: scripts/data/ext/polijst.gd:73
 msgid "Lotte de lantaarnmaker"
 msgstr "Lotte the Lantern Maker"
 
 #. Naam van personage kasper (boven zijn hoofd)
-#: scripts/data/ext/polijst.gd:71
+#: scripts/data/ext/polijst.gd:81
 msgid "Kasper de handelaar"
 msgstr "Kasper the Trader"
 
 #. Naam van personage elke (boven zijn hoofd)
-#: scripts/data/ext/polijst.gd:78
+#: scripts/data/ext/polijst.gd:88
 msgid "Elke de kruidenier"
 msgstr "Elke the Herbalist"
 
 #. Naam van personage willem (boven zijn hoofd)
-#: scripts/data/ext/polijst.gd:86
+#: scripts/data/ext/polijst.gd:96
 msgid "Willem de verhalenverteller"
 msgstr "Willem the Storyteller"
 
 #. Naam van personage mira (boven zijn hoofd)
-#: scripts/data/ext/polijst.gd:93
+#: scripts/data/ext/polijst.gd:103
 msgid "Mira de dauwbewaarder"
 msgstr "Mira the Dew Keeper"
 
 #. Naam van personage tomas (boven zijn hoofd)
-#: scripts/data/ext/polijst.gd:102
+#: scripts/data/ext/polijst.gd:115
 msgid "Tomas de oude"
 msgstr "Old Tomas"
 
 #. Naam van personage noor (boven zijn hoofd)
-#: scripts/data/ext/polijst.gd:109
+#: scripts/data/ext/polijst.gd:122
 msgid "Noor de verzamelaar"
 msgstr "Noor the Collector"
 
@@ -3189,6 +3227,21 @@ msgstr "Bring the dew stone to Mira and hear the story of Tomas."
 #: scripts/data/ext/polijst.gd:41
 msgid "Keer terug naar Mira om het evenwicht te herstellen."
 msgstr "Return to Mira to restore the balance."
+
+#. Titel van opdracht mistbloemen
+#: scripts/data/ext/polijst.gd:45
+msgid "Bloemen in de mist"
+msgstr "Flowers in the mist"
+
+#. Opdracht mistbloemen, stap 1
+#: scripts/data/ext/polijst.gd:48
+msgid "Mira wil 3 dauwklauwen voor haar mistedrank. Ze bloeien waar de mist het zachtst is: bij de vijver en langs de westelijke paden."
+msgstr "Mira wants 3 dewclaws for her mist tonic. They bloom where the mist is softest: by the pond and along the western paths."
+
+#. Opdracht mistbloemen, stap 2
+#: scripts/data/ext/polijst.gd:51
+msgid "Breng de dauwklauwen naar Mira in het Dauwbos."
+msgstr "Bring the dewclaws to Mira in the Dew Forest."
 
 #. Titel van opdracht warmte
 #: scripts/data/ext/sneeuw.gd:14
@@ -3617,7 +3670,7 @@ msgstr "A sharp loose stone. You can pick it up without tools."
 
 #. Naam van voorwerp prof_herb
 #. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:87
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:92
 msgid "Zilverkruid"
 msgstr "Silverleaf"
 
@@ -3848,7 +3901,7 @@ msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks
 
 #. Naam van voorwerp prof_zandkruid
 #. Oogstbare grondstof sandwort
-#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:98
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:103
 msgid "Zandkruid"
 msgstr "Sandwort"
 
@@ -3876,6 +3929,36 @@ msgstr "Sand balm"
 #: scripts/data/ext/beroepen.gd:59
 msgid "Verkoelende balsem van zandkruid en cactusvijg. Herstelt 30 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
 msgstr "Cooling balm of sandwort and cactus fig. Restores 30 stamina. Use through Professions → Food & drink."
+
+#. Naam van voorwerp prof_dauwklauw
+#: scripts/data/ext/beroepen.gd:60
+msgid "Dauwklauw"
+msgstr "Dewclaw"
+
+#. Beschrijving van voorwerp prof_dauwklauw
+#: scripts/data/ext/beroepen.gd:60
+msgid "Een bleke bloem die alleen in de mist van het Dauwbos bloeit. Basis voor het mistedrank."
+msgstr "A pale flower that only blooms in the mist of the Dew Forest. The base for mist tonic."
+
+#. Naam van voorwerp prof_mistdrank
+#: scripts/data/ext/beroepen.gd:61
+msgid "Mistedrank"
+msgstr "Mist tonic"
+
+#. Beschrijving van voorwerp prof_mistdrank
+#: scripts/data/ext/beroepen.gd:61
+msgid "Een koel, kolkend elixer van dauwklauwen en honingzwam. Herstelt 35 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "A cool, swirling elixir of dewclaws and honey fungus. Restores 35 stamina. Use via Professions → Food & drink."
+
+#. Naam van voorwerp prof_dauwsoep
+#: scripts/data/ext/beroepen.gd:62
+msgid "Dauwsoep"
+msgstr "Dew soup"
+
+#. Beschrijving van voorwerp prof_dauwsoep
+#: scripts/data/ext/beroepen.gd:62
+msgid "Lichte soep van honingzwammen met dauwklauw. Herstelt 2 hartjes en 10 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Light soup of honey fungi with dewclaw. Restores 2 hearts and 10 stamina. Use via Professions → Food & drink."
 
 #. Naam van voorwerp gear_cloth_hood
 #: scripts/data/ext/uitrusting.gd:14
@@ -3978,32 +4061,32 @@ msgid "Een ring van koper en alchemistisch kristal. Vergroot je magnetische oppa
 msgstr "A ring of copper and alchemical crystal. Increases your magnetic pickup range by 24 pixels."
 
 #. Naam van voorwerp special_lantern
-#: scripts/data/ext/polijst.gd:48
+#: scripts/data/ext/polijst.gd:58
 msgid "Nachtlantaarn"
 msgstr "Night Lantern"
 
 #. Beschrijving van voorwerp special_lantern
-#: scripts/data/ext/polijst.gd:49
+#: scripts/data/ext/polijst.gd:59
 msgid "Een lantaarn die 's nachts verder en warmer schijnt dan een gewone fakkel."
 msgstr "A lantern that shines farther and warmer at night than a normal torch."
 
 #. Naam van voorwerp dauwsteen
-#: scripts/data/ext/polijst.gd:52
+#: scripts/data/ext/polijst.gd:62
 msgid "Dauwsteen"
 msgstr "Dew Stone"
 
 #. Beschrijving van voorwerp dauwsteen
-#: scripts/data/ext/polijst.gd:53
+#: scripts/data/ext/polijst.gd:63
 msgid "Een steen die altijd bedekt is met fijne dauw. Hij voelt koel en levend."
 msgstr "A stone always covered in fine dew. It feels cool and alive."
 
 #. Naam van voorwerp herb
-#: scripts/data/ext/polijst.gd:56
+#: scripts/data/ext/polijst.gd:66
 msgid "Verse kruiden"
 msgstr "Fresh Herbs"
 
 #. Beschrijving van voorwerp herb
-#: scripts/data/ext/polijst.gd:57
+#: scripts/data/ext/polijst.gd:67
 msgid "Verse kruiden uit het bos. Elke de kruidenier heeft ze nodig."
 msgstr "Fresh herbs from the forest. Elke the herbalist needs them."
 
@@ -4661,34 +4744,44 @@ msgid "Heb het maximum van acht hartjes."
 msgstr "Reach the max of eight hearts."
 
 #. Naam van prestatie lantaarn_gevonden
-#: scripts/data/ext/polijst.gd:263
+#: scripts/data/ext/polijst.gd:297
 msgid "Licht in de duisternis"
 msgstr "Light in the Darkness"
 
 #. Uitleg bij prestatie lantaarn_gevonden
-#: scripts/data/ext/polijst.gd:263
+#: scripts/data/ext/polijst.gd:297
 msgid "Vind en terugbreng de nachtlantaarn van Lotte."
 msgstr "Find and return Lotte's night lantern."
 
 #. Naam van prestatie kruiden_gehaald
-#: scripts/data/ext/polijst.gd:264
+#: scripts/data/ext/polijst.gd:298
 msgid "Groene vingers"
 msgstr "Green Fingers"
 
 #. Uitleg bij prestatie kruiden_gehaald
-#: scripts/data/ext/polijst.gd:264
+#: scripts/data/ext/polijst.gd:298
 msgid "Breng verse kruiden naar Elke."
 msgstr "Bring fresh herbs to Elke."
 
 #. Naam van prestatie dauw_hersteld
-#: scripts/data/ext/polijst.gd:265
+#: scripts/data/ext/polijst.gd:299
 msgid "Bewaarder van de dauw"
 msgstr "Keeper of the Dew"
 
 #. Uitleg bij prestatie dauw_hersteld
-#: scripts/data/ext/polijst.gd:265
+#: scripts/data/ext/polijst.gd:299
 msgid "Herstel het evenwicht in het Dauwbos."
 msgstr "Restore the balance in the Dew Woods."
+
+#. Naam van prestatie mist_gebrouwen
+#: scripts/data/ext/polijst.gd:300
+msgid "Mistvanger"
+msgstr "Mistcatcher"
+
+#. Uitleg bij prestatie mist_gebrouwen
+#: scripts/data/ext/polijst.gd:300
+msgid "Pluk dauwklauwen voor Mira en proef het mistedrank."
+msgstr "Pick dewclaws for Mira and taste the mist tonic."
 
 #. Naam van prestatie ijsdal_ontdekt
 #: scripts/data/ext/sneeuw.gd:129
@@ -5228,69 +5321,74 @@ msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme g
 msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
 
 #. Oogstbare grondstof branches
-#: scripts/data/ext/beroepen.gd:85
+#: scripts/data/ext/beroepen.gd:90
 msgid "Losse takken"
 msgstr "Loose Branches"
 
 #. Oogstbare grondstof stones
-#: scripts/data/ext/beroepen.gd:86
+#: scripts/data/ext/beroepen.gd:91
 msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof berries
-#: scripts/data/ext/beroepen.gd:88
+#: scripts/data/ext/beroepen.gd:93
 msgid "Bosbessenstruik"
 msgstr "Blueberry Bush"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:89
+#: scripts/data/ext/beroepen.gd:94
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
 #. Oogstbare grondstof stump
-#: scripts/data/ext/beroepen.gd:90
+#: scripts/data/ext/beroepen.gd:95
 msgid "Berkenstronk"
 msgstr "Birch Stump"
 
 #. Oogstbare grondstof copper
-#: scripts/data/ext/beroepen.gd:91
+#: scripts/data/ext/beroepen.gd:96
 msgid "Koperader"
 msgstr "Copper Vein"
 
 #. Oogstbare grondstof iron
-#: scripts/data/ext/beroepen.gd:92
+#: scripts/data/ext/beroepen.gd:97
 msgid "IJzerader"
 msgstr "Iron Vein"
 
 #. Oogstbare grondstof winterherbs
-#: scripts/data/ext/beroepen.gd:93
+#: scripts/data/ext/beroepen.gd:98
 msgid "IJsbloemen"
 msgstr "Ice flowers"
 
 #. Oogstbare grondstof frostberries
-#: scripts/data/ext/beroepen.gd:94
+#: scripts/data/ext/beroepen.gd:99
 msgid "Winterbessenstruik"
 msgstr "Winter berry bush"
 
 #. Oogstbare grondstof pine_stump
-#: scripts/data/ext/beroepen.gd:95
+#: scripts/data/ext/beroepen.gd:100
 msgid "Dennenstronk"
 msgstr "Pine stump"
 
 #. Oogstbare grondstof ice_vein
-#: scripts/data/ext/beroepen.gd:96
+#: scripts/data/ext/beroepen.gd:101
 msgid "IJskristalader"
 msgstr "Ice crystal vein"
 
 #. Oogstbare grondstof cactusfigs
-#: scripts/data/ext/beroepen.gd:97
+#: scripts/data/ext/beroepen.gd:102
 msgid "Cactusvijgen"
 msgstr "Cactus figs"
 
 #. Oogstbare grondstof sandstone_rock
-#: scripts/data/ext/beroepen.gd:99
+#: scripts/data/ext/beroepen.gd:104
 msgid "Zandsteenklip"
 msgstr "Sandstone crag"
+
+#. Oogstbare grondstof dauwklauw
+#: scripts/data/ext/beroepen.gd:105
+msgid "Dauwklauwen"
+msgstr "Dewclaws"
 
 #. Geslacht m (tabblad Uiterlijk)
 #: scripts/data/ext/uiterlijk.gd:20

@@ -41,6 +41,16 @@ const QUESTS := {
 			{"text": "Keer terug naar Mira om het evenwicht te herstellen."},
 		],
 	},
+	"mistbloemen": {
+		"title": "Bloemen in de mist",
+		"steps": [
+			{
+				"text": "Mira wil 3 dauwklauwen voor haar mistedrank. Ze bloeien waar de mist het zachtst is: bij de vijver en langs de westelijke paden.",
+				"advance_if": [["has", "prof_dauwklauw", 3]],
+			},
+			{"text": "Breng de dauwklauwen naar Mira in het Dauwbos."},
+		],
+	},
 }
 
 const ITEMS := {
@@ -94,6 +104,9 @@ const NPCS := {
 		"rules": [
 			{"if": [["step", "dauw", 2]], "talk": "mira_klaar"},
 			{"if": [["step", "dauw", 1]], "talk": "mira_steen"},
+			{"if": [["step", "mistbloemen", 1]], "talk": "mira_mist_klaar"},
+			{"if": [["step", "mistbloemen", 0]], "talk": "mira_mist_menu"},
+			{"if": [["quest", "dauw", "done"], ["no_flag", "mira_mist_gevraagd"]], "talk": "mira_mist_intro"},
 			{"if": [["no_flag", "mira_ontmoet"]], "talk": "mira_intro"},
 			{"talk": "mira_menu"},
 		],
@@ -221,6 +234,27 @@ const TALKS := {
 		"lines": ["Het verhaal klopt. De steen werkt. De dauw blijft, maar de mist wordt zachter.", "Hier, een beloning voor je hulp."],
 		"do": [["take", "dauwsteen"], ["coins", 35], ["give", "potion"], ["finish_quest", "dauw"], ["sound", "quest"]],
 	},
+	"mira_mist_intro": {
+		"speaker": "Mira",
+		"lines": ["De mist is zacht nu, dankzij jou. Precies goed voor de dauwklauw: een bleke bloem die alleen in zachte mist bloeit.", "Ik brouw er mistedrank van — koel en helder, net als het bos zelf."],
+		"do": [["set_flag", "mira_mist_gevraagd"]],
+		"next": "mira_mist_vraag",
+	},
+	"mira_mist_vraag": {
+		"speaker": "Mira",
+		"lines": ["Wil je 3 dauwklauwen voor me plukken? Bij de vijver en langs de westelijke paden groeien ze het dichtst."],
+		"choices": [
+			{"text": "Ik pluk ze wel.", "do": [["start_quest", "mistbloemen"]], "next": "mira_mist_ok"},
+			{"text": "Later misschien."},
+		],
+	},
+	"mira_mist_ok": {"speaker": "Mira", "lines": ["Dank je. Zoek de bleke bloemen met de dauwdruppels — die glinsteren zelfs in de mist."], "do": [["sound", "quest"]]},
+	"mira_mist_menu": {"speaker": "Mira", "lines": ["Heb je de dauwklauwen al?"], "choices": [{"text": "Nog niet."}, {"text": "Tot zo."}]},
+	"mira_mist_klaar": {
+		"speaker": "Mira",
+		"lines": ["Prachtig, ze zijn vers. Kijk — zo brouw ik het mistedrank.", "De eerste fles is voor jou. En leer het recept: zo kun je er zelf meer maken in de bibliotheek."],
+		"do": [["take", "prof_dauwklauw", 3], ["give", "prof_mistdrank"], ["coins", 30], ["finish_quest", "mistbloemen"], ["sound", "quest"]],
+	},
 
 	"tomas_intro": {
 		"speaker": "Tomas",
@@ -263,4 +297,5 @@ const ACHIEVEMENTS := {
 	"lantaarn_gevonden": {"name": "Licht in de duisternis", "desc": "Vind en terugbreng de nachtlantaarn van Lotte.", "if": [["quest", "lantaarn", "done"]]},
 	"kruiden_gehaald": {"name": "Groene vingers", "desc": "Breng verse kruiden naar Elke.", "if": [["quest", "kruiden", "done"]]},
 	"dauw_hersteld": {"name": "Bewaarder van de dauw", "desc": "Herstel het evenwicht in het Dauwbos.", "if": [["quest", "dauw", "done"]]},
+	"mist_gebrouwen": {"name": "Mistvanger", "desc": "Pluk dauwklauwen voor Mira en proef het mistedrank.", "if": [["quest", "mistbloemen", "done"]]},
 }

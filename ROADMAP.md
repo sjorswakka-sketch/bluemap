@@ -102,6 +102,10 @@ pixel art, en te delen met vrienden en de community.
       gelaten. Nieuw decor wordt voortaan alleen in wandhoeken geplaatst, zodat de zichtlijnen van
       magiërsbollen intact blijven; de padvindingstest dekt nu alle dertien gebieden
 
+- [x] Dauwbos-alchemie: het Dauwbos heeft nu ook een eigen grondstof (dauwklauwen, drie plekken bij de
+      vijver en de westelijke paden), een mistedrank (alchemie in de bibliotheek) en dauwsoep (koken in de
+      herberg) als recepten, een nieuwe opdracht bij Mira (Bloemen in de mist) en de prestatie Mistvanger
+
 ## Ideeën voor later
 - Meer zij-opdrachten en personages
 - Een vijand die muren doorbreekt, magie als derde wapen en schilden
