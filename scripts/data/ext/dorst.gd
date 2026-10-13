@@ -45,15 +45,32 @@ const QUESTS := {
 		],
 	},
 	"cactusvijgen": {
-		"title": "Cactusvijgen voor Sana",
-		"steps": [
-			{
-				"text": "Sana bij de oase heeft 5 cactusvijgen nodig voor haar koele drankjes. Ze groeien op de cactussen van de vallei.",
-				"advance_if": [["has", "prof_cactusvijg", 5]],
-			},
-			{"text": "Breng de cactusvijgen naar Sana bij de oase."},
-		],
-	},
+	"title": "De bron achter het zand",
+	"effect": "De oase stroomt weer; kies een drinkplaats voor wild of een rustplaats voor reizigers.",
+	"steps": [
+		{
+			"text": "Vul Nours waterzak bij het blauwe waterpunt naast Sana in de Dorstvallei.",
+			"advance_if": [
+				[
+					"flag",
+					"ra_prepared"
+				]
+			]
+		},
+		{
+			"text": "Zoek de Zonnekloof in de noordelijke zandsteenwand, rechts van de oase. Volg de blauwe luifels naar de oude bron en kies een aftakking.",
+			"advance_if": [
+				[
+					"flag",
+					"ra_spring"
+				]
+			]
+		},
+		{
+			"text": "Vertel Sana bij de oase dat de bron weer stroomt."
+		}
+	]
+},
 }
 
 const NPCS := {
@@ -67,14 +84,52 @@ const NPCS := {
 		],
 	},
 	"sana": {
-		"name": "Sana van de oase", "sheet": "npc_sana",
-		"rules": [
-			{"if": [["step", "cactusvijgen", 1], ["has", "prof_cactusvijg", 5]], "talk": "sana_klaar"},
-			{"if": [["no_flag", "sana_ontmoet"]], "talk": "sana_intro"},
-			{"if": [["quest", "cactusvijgen", "none"]], "talk": "sana_intro"},
-			{"talk": "sana_menu"},
-		],
-	},
+	"name": "Sana van de oase",
+	"sheet": "npc_sana",
+	"rules": [
+		{
+			"if": [
+				[
+					"quest",
+					"cactusvijgen",
+					"done"
+				]
+			],
+			"talk": "ra_sana_done"
+		},
+		{
+			"if": [
+				[
+					"flag",
+					"ra_spring"
+				]
+			],
+			"talk": "sana_klaar"
+		},
+		{
+			"if": [
+				[
+					"no_flag",
+					"sana_ontmoet"
+				]
+			],
+			"talk": "sana_intro"
+		},
+		{
+			"if": [
+				[
+					"quest",
+					"cactusvijgen",
+					"none"
+				]
+			],
+			"talk": "sana_intro"
+		},
+		{
+			"talk": "sana_menu"
+		}
+	]
+},
 	"nour": {
 		"name": "Nour de woestijngids", "sheet": "npc_nour",
 		"rules": [
@@ -114,20 +169,80 @@ const TALKS := {
 		"next": "sana_vraag",
 	},
 	"sana_vraag": {
-		"speaker": "Sana",
-		"lines": ["Wil je 5 cactusvijgen voor me plukken? Ze groeien op de cactussen, vooral in het noordwesten en het oosten."],
-		"choices": [
-			{"text": "Ik pluk ze wel.", "do": [["start_quest", "cactusvijgen"]], "next": "sana_ok"},
-			{"text": "Niet nu."},
-		],
-	},
-	"sana_ok": {"speaker": "Sana", "lines": ["Dank je. Pas op voor de stekels, en groet de hazen van me als je ze ziet."], "do": [["sound", "quest"]]},
-	"sana_menu": {"speaker": "Sana", "lines": ["Heb je de cactusvijgen al?"], "choices": [{"text": "Nog niet."}, {"text": "Tot zo."}]},
+	"speaker": "Sana",
+	"lines": [
+		"Meer vijgen helpen niet zolang de bron achter het zand dichtzit. Wil je de oude waterroute onderzoeken? Nour heeft een waterzak klaargelegd bij de blauwe luifel naast mij."
+	],
+	"choices": [
+		{
+			"text": "Ik zoek de bron.",
+			"do": [
+				[
+					"start_quest",
+					"cactusvijgen"
+				]
+			],
+			"next": "sana_ok"
+		},
+		{
+			"text": "Niet nu."
+		}
+	]
+},
+	"sana_ok": {
+	"speaker": "Sana",
+	"lines": [
+		"Vul eerst de waterzak naast mij. Zoek daarna de opening in de noordelijke zandsteenwand, rechts van de oase. Rust onder blauwe luifels en vul daar gratis bij."
+	],
+	"do": [
+		[
+			"sound",
+			"quest"
+		]
+	]
+},
+	"sana_menu": {
+	"speaker": "Sana",
+	"lines": [
+		"Volg de blauwe luifels in de Zonnekloof naar de oude bron. De ingang ligt in de noordelijke zandsteenwand, rechts van de oase."
+	],
+	"choices": [
+		{
+			"text": "Ik ga kijken."
+		},
+		{
+			"text": "Tot zo."
+		}
+	]
+},
 	"sana_klaar": {
-		"speaker": "Sana",
-		"lines": ["Wat een mooie vijgen! Hier wordt de hele vallei blij van.", "Neem mijn zandbalsem mee; die maakte ik van het zandkruid dat hier groeit."],
-		"do": [["take", "prof_cactusvijg", 5], ["give", "prof_zandbalsem"], ["coins", 30], ["finish_quest", "cactusvijgen"], ["sound", "quest"]],
-	},
+	"speaker": "Sana",
+	"lines": [
+		"Ik hoor het water alweer! Je hebt de bron teruggevonden. De oase krijgt genoeg, en jouw aftakking helpt de rest van de vallei.",
+		"Neem mijn zandbalsem mee voor je volgende reis."
+	],
+	"do": [
+		[
+			"give",
+			"prof_zandbalsem"
+		],
+		[
+			"coins",
+			30
+		],
+		[
+			"finish_quest",
+			"cactusvijgen"
+		],
+		[
+			"save"
+		],
+		[
+			"sound",
+			"quest"
+		]
+	]
+},
 
 	"nour_intro": {
 		"speaker": "Nour",
@@ -147,7 +262,14 @@ const TALKS := {
 	},
 	"nour_oase": {"speaker": "Nour", "lines": ["De oase is ouder dan elk dorp in het westen. Zonder dit water was hier alleen zand geweest.", "Sana waakt erover. Pluk gerust vijgen, maar laat het water met rust."], "next": "nour_menu"},
 	"nour_wild": {"speaker": "Nour", "lines": ["De vossen en hazen zijn schuw, niet gevaarlijk. Kom je te dichtbij, dan verdwijnen ze als een stofwolk.", "Jelle betaalt goed voor vel en vlees. En met een boog haal je ze neer voordat ze weg zijn."], "next": "nour_menu"},
-	"nour_hitte": {"speaker": "Nour", "lines": ["De zon brandt hier de hele dag en het zand waait nooit helemaal stil.", "Draag iets luchts, drink genoeg, en zoek op het heetst de schaduw van de klippen op."], "next": "nour_menu"},
+	"nour_hitte": {
+	"speaker": "Nour",
+	"lines": [
+		"Bij Sana staat mijn blauwe waterpunt. Neem gratis een waterzak mee voor de Zonnekloof. Je drinkt daar vanzelf; onder blauwe luifels kun je hem hervullen.",
+		"Zonder water keer je terug naar je laatste schuilplek. Je verliest geen spullen of hartjes. De bron ligt achterin de kloof."
+	],
+	"next": "nour_menu"
+},
 }
 
 const ACHIEVEMENTS := {

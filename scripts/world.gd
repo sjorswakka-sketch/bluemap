@@ -153,6 +153,7 @@ func restart_from_save(full_heal := false) -> void:
 
 func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> void:
 	Living.migrate()
+	preload("res://scripts/core/regional_adventures.gd").migrate()
 	preload("res://scripts/core/first_route.gd").migrate()
 	GameState.map_id = map_id
 	GameState.spawn_name = spawn
@@ -179,7 +180,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 		start = _tile_center(spawns.get(spawn, spawns["start"]))
 		if map_id=="village" and spawn=="start" and GameState.play_time<1 and preload("res://scripts/core/opening.gd").enabled():
 			start += Vector2(0,48) # het hele plein is bij aankomst meteen in beeld
-	player.global_position = _safe_fountain_spawn(start)
+	player.global_position = _safe_fountain_spawn(preload("res://scripts/core/regional_adventures.gd").safe_position(map_id,start))
 	player.velocity = Vector2.ZERO
 	player.knockback = Vector2.ZERO
 	_set_camera_limits()
@@ -203,6 +204,10 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 		var supper: Node2D=load("res://scripts/entities/lake_supper.gd").new()
 		supper.world=self
 		ground.add_child(supper)
+	if map_id in ["dorstvallei","sunwell","ijsdal","ridgepass","kruipmoeras","reedvault"]:
+		var region: Node2D=load("res://scripts/entities/regional_adventures.gd").new()
+		region.world=self
+		ground.add_child(region)
 	player.camera.reset_smoothing()
 
 	Sound.play_music(map_data.get("music", "forest"))

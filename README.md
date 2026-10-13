@@ -1,7 +1,16 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.11.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.12.0-preview.**
 Deze branch bevat de gezamenlijke game en bouwt bij elke update een Windows-download via Actions.
+
+Nieuw in 0.12: **Iedere streek een eigen avontuur**. Sana's oude vijgenopdracht is
+nu een expeditie naar de Zonnekloof, met een gratis waterzak, schuilplaatsen en een
+blijvende keuze voor de wateraftakking. De Bergpas heeft leesbare windvlagen,
+een vast te zetten klimlijn en een weerkaart om terug te brengen. In het Rietarchief
+reconstrueer je de geschiedenis uit drie eigen reliëfs en richt je bij Mees een
+tentoonstelling in. Klimhandschoenen en een archiefkompas geven verschillende voordelen.
+Alle nieuwe pixel art en geluiden zijn zelf gegenereerd met `tools/art_x_regions.py`.
+Zie [de regionale audit](REGIONAL_ADVENTURES.md) en [het faseplan](DEVELOPMENT_PHASES.md).
 
 Nieuw in 0.11: **Een plek aan tafel**. Lees het bord bij het Zilvermeer of praat met Mila.
 Leen Joris’ hengel en haal de losgeraakte vismand links van de middelste steiger binnen.

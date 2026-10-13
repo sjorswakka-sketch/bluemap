@@ -137,6 +137,7 @@ func _snow_target() -> float:
 
 ## Of de hitte hier nu zand hoort te doen dwarrelen (1) of niet (0).
 func _dust_target() -> float:
+	if GameState.map_id=="sunwell" and GameState.flag("ra_spring"): return 0.0
 	return 1.0 if Daynight.scorching(weather, GameState.day_count, GameState.day_time) else 0.0
 
 

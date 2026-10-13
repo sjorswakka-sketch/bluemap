@@ -140,6 +140,8 @@ static func collect_data(c: Collector) -> void:
 		for i in objects.size():
 			var obj: Dictionary = objects[i]
 			var where := "Kaart %s, %s %s" % [map_id, obj.get("type", "?"), str(obj.get("pos", ""))]
+			for text_key in ["name","clue"]:
+				if obj.has(text_key): c.add(obj[text_key],where+": "+text_key)
 			for line: String in obj.get("lines", []):
 				c.add(line, where + ": tekst op een bord")
 			if obj.has("speaker"):

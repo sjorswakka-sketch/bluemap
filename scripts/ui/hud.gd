@@ -260,6 +260,8 @@ func _refresh_tracker() -> void:
 	if route_text!="": text=route_text
 	var supper_text: String=preload("res://scripts/core/lake_supper.gd").tracker()
 	if supper_text!="": text=supper_text
+	var region_text: String=preload("res://scripts/core/regional_adventures.gd").tracker()
+	if region_text!="": text=region_text
 	if Opening.enabled() and GameState.quest_state("first_water")=="active" and GameState.map_id in ["village","smithy"]:
 		text = GameState.quest_text("first_water")
 	elif Opening.quiet_hud():

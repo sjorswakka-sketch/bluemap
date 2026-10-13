@@ -27,7 +27,7 @@ func _run() -> void:
 	root.size = Vector2i(1152, 648)
 	await process_frame
 	gs = root.get_node("GameState")
-	for spec: Array in [["stien", "veenbessen", "prof_veenbes", 5], ["wouda", "zonneschijf", "zonneschijf_amulet", 1], ["sana", "cactusvijgen", "prof_cactusvijg", 5], ["elke", "kruiden", "herb", 4], ["lotte", "lantaarn", "special_lantern", 1]]:
+	for spec: Array in [["stien", "veenbessen", "prof_veenbes", 5], ["wouda", "zonneschijf", "zonneschijf_amulet", 1], ["elke", "kruiden", "herb", 4], ["lotte", "lantaarn", "special_lantern", 1]]:
 		gs.new_game()
 		gs.set_flag(spec[0] + "_ontmoet")
 		check(pick_talk(spec[0]) == spec[0] + "_intro", spec[0] + ": na weigeren kan de opdracht opnieuw aangeboden worden")
@@ -38,6 +38,16 @@ func _run() -> void:
 		check(pick_talk(spec[0]) != spec[0] + "_klaar", spec[0] + ": verbruikte spullen geven geen gratis beloning")
 		gs.give(spec[2], spec[3], true)
 		check(pick_talk(spec[0]) == spec[0] + "_klaar", spec[0] + ": opnieuw verzamelen herstelt inleveren")
+	gs.new_game()
+	gs.set_flag("sana_ontmoet")
+	check(pick_talk("sana")=="sana_intro","Sana offers her expedition again after declining")
+	gs.start_quest("cactusvijgen")
+	gs.give("prof_cactusvijg",5,true)
+	check(pick_talk("sana")!="sana_klaar","old delivery items cannot complete the spring expedition")
+	gs.set_flag("ra_spring")
+	check(pick_talk("sana")=="sana_klaar","restored spring allows Sana's reward")
+	gs.finish_quest("cactusvijgen")
+	check(pick_talk("sana")=="ra_sana_done","Sana's world reaction replaces repeated payouts")
 	gs.new_game()
 	gs.set_flag("roos_ontmoet")
 	check(pick_talk("roos") == "roos_intro", "Roos kan haar gevechtsopdracht opnieuw aanbieden")

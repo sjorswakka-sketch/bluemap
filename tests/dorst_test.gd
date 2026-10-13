@@ -384,15 +384,19 @@ func test_quests() -> void:
 	check(gs.count("jacht_vacht") == 0 and gs.count("jacht_braadstuk") == 1, "de buit ingeruild voor een braadstuk")
 	check(gs.coins == coins_before + 40, "Jelle betaalt veertig munten")
 
-	# Sana: de cactusvijgenopdracht.
+	# Sana's existing save ID now follows the spring expedition instead of a delivery.
 	await talk_npc("sana", [0])
-	check(gs.quest_state("cactusvijgen") == "active", "Sana geeft de opdracht Cactusvijgen voor Sana")
+	check(gs.quest_state("cactusvijgen") == "active", "Sana starts the spring adventure")
 	gs.give("prof_cactusvijg", 5, true)
-	await frames(2)
-	check(gs.quest_step("cactusvijgen") == 1, "vijf cactusvijgen zetten de opdracht op de volgende stap")
+	check(gs.quest_step("cactusvijgen") == 0, "figs alone do not skip the expedition")
+	gs.set_flag("ra_prepared")
+	gs.set_flag("ra_spring")
 	await talk_npc("sana")
-	check(gs.quest_state("cactusvijgen") == "done", "Sana rondt de opdracht af")
-	check(gs.count("prof_cactusvijg") == 0 and gs.count("prof_zandbalsem") == 1, "vijgen ingeruild voor een zandbalsem")
+	check(gs.quest_state("cactusvijgen") == "done", "Sana acknowledges the flowing spring")
+	check(gs.count("prof_cactusvijg") == 5 and gs.count("prof_zandbalsem") == 1, "figs retained; original balm reward preserved")
+	var paid: int=gs.coins
+	await talk_npc("sana")
+	check(gs.coins==paid, "completed spring has no duplicate payout")
 
 	# Nour vertelt over de vallei.
 	await talk_npc("nour")

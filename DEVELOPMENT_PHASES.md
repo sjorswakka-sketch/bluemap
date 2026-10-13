@@ -19,7 +19,7 @@ Bij nieuw werk eerst de actuele remote en lokale wijzigingen controleren.
 - Acceptatie: route echt doorlopen, bediening met toetsenbord/controller, geen dubbele
   beloningen, koken opnieuw mogelijk wanneer alle porties zijn opgegeten, visuele review.
 
-## 2. Iedere streek een eigen avontuur — wacht op volgende go
+## 2. Iedere streek een eigen avontuur — afgerond in 0.12
 
 Begin met een audit van de huidige quests en reeds gebouwde wereldgevolgen. Werk de
 resterende streken uit rond verschillende spelvormen: ontdekken/omgevingspuzzels,
@@ -27,6 +27,12 @@ voorbereiden/expedities en bewoners/herstel/keuzes. Geen kopie van de eerste rou
 Maak bestaande grotten herkenbaar en geef uitbreiding een functie in die streek.
 Acceptatie: iedere aangepakte streek heeft eigen doelen, herkenningspunten, uitdagingen
 en een reden om terug te keren. Bestaande kristal- en hoofdverhaalroutes blijven werken.
+
+Opgeleverd: Zonnekloof met voorbereiding, water en schuilplaatsen; Bergpas met
+windritme en een blijvende klimlijn; Rietarchief met beeldonderzoek en een aanpasbare
+tentoonstelling. Eigen ingangen, rotswanden, meubels, reliëfs, gerei en geluiden.
+De regionale audit staat in REGIONAL_ADVENTURES.md. Sana behoudt haar oude quest-ID;
+afgeronde saves krijgen de wereldgevolgen zonder opnieuw XP of spullen te ontvangen.
 
 ## 3. Gevechten met meer mogelijkheden — wacht op go
 
