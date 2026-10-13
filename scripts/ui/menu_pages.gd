@@ -64,7 +64,7 @@ static func _trophy(canvas: Control, pos: Vector2, size: float, frame: int) -> v
 # --- Prestaties ---------------------------------------------------------------------------------
 
 static func draw_achievements(menu: Node, font: Font) -> void:
-	var canvas: Control = menu.content
+	var canvas: Control = menu.page
 	var ids: Array = Achievements.ACHIEVEMENTS.keys()
 	var visible := int((LIST_BOTTOM - LIST_TOP) / ACHIEVEMENT_ROW)
 	menu.achievement_selected = clampi(menu.achievement_selected, 0, maxi(ids.size() - 1, 0))
@@ -122,7 +122,7 @@ static func _enemy_sprite(canvas: Control, kind: String, center: Vector2, box: f
 
 
 static func draw_bestiary(menu: Node, font: Font) -> void:
-	var canvas: Control = menu.content
+	var canvas: Control = menu.page
 	var kinds: Array = Enemies.ENEMIES.keys()
 	var visible := int((LIST_BOTTOM - LIST_TOP) / BEAST_ROW)
 	menu.bestiary_selected = clampi(menu.bestiary_selected, 0, maxi(kinds.size() - 1, 0))
@@ -247,7 +247,7 @@ static func _draw_drop_icon(canvas: Control, item: String, pos: Vector2) -> void
 
 ## Rechts naast de kaart: de ontdekte altaren, met een vraag om te bevestigen als je er een gekozen hebt.
 static func draw_travel_panel(menu: Node, font: Font, altars: Array) -> void:
-	var canvas: Control = menu.content
+	var canvas: Control = menu.page
 	var left := 660.0
 	var width := SIZE.x - left - 24.0
 	text(canvas, font, Vector2(left, 66), TranslationServer.translate("Snel reizen"), 24, Color(0.6, 0.88, 1.0))

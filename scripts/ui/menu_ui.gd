@@ -33,6 +33,9 @@ const TAB_EQUIPMENT := 6
 const TAB_APPEARANCE := 7
 const TAB_FONT_SIZE := 14 # acht tabbladen moeten naast elkaar passen
 const SIZE := Vector2(1000, 560)
+const MARGIN := 24.0 # de buitenmarge van elke bladzijde
+const HEADER_Y := 72.0 # de kopregel van elke bladzijde
+const LIST_TOP := MenuPages.LIST_TOP # daaronder begint de inhoud (108)
 const SLOT := 76.0
 const INVENTORY_PAGE_SIZE := 24
 const GRID_COLUMNS := 6
@@ -43,13 +46,21 @@ const NEXT_PAGE := Rect2(486, 456, 38, 32)
 const USE_RECT := Rect2(620, 268, 340, 40)
 const MAP_WIDTH := 600.0 # zoveel ruimte krijgt het kaartje; rechts ervan staat het lijstje voor snel reizen
 const MESSAGE_TIME := 3.0 # seconden dat een melding in het kaarttabblad blijft staan
+const TAB_ANIM_TIME := 0.16 # seconden die een tabwissel duurt (markering glijdt, pagina faden)
+const PAGE_SLIDE := 10.0 # hoeveel pixels de pagina bij een tabwissel meebeweegt
 
 var root: Control
 var content: Control
+var page: Control # de bladzijde onder de tabbladen; schuift en faden zacht bij een tabwissel
 var progression_page: Control
 var equipment_page: Control
 var appearance_page: Control
 var tab := 0
+var tab_visual := 0.0 # waar de glijdende tabmarkering nu staat (in tabbladen)
+var tab_from := 0.0 # waar de markering vandaan kwam bij de laatste wissel
+var tab_anim := 1.0 # hoe ver de wissel is: 0 = net begonnen, 1 = klaar
+var hover_tab := -1 # het tabblad onder de muis (-1 = geen)
+var hover_close := false # de sluitknop onder de muis
 var selected := 0
 var quest_selected := 0
 var quest_scroll := 0
@@ -86,32 +97,43 @@ func _ready() -> void:
 	content.draw.connect(_draw_content)
 	content.gui_input.connect(_pointer_input)
 	root.add_child(content)
+	page = Control.new()
+	page.position = Vector2.ZERO
+	page.size = SIZE
+	page.mouse_filter = Control.MOUSE_FILTER_IGNORE # muisklikken blijven bij content horen
+	page.draw.connect(_draw_page)
+	content.add_child(page)
 	progression_page = ProgressionPage.new()
 	progression_page.position = Vector2(24, 72)
 	progression_page.size = Vector2(952, 444)
 	progression_page.visible = false
 	progression_page.close_requested.connect(close)
-	content.add_child(progression_page)
+	page.add_child(progression_page)
 	equipment_page = EquipmentPage.new()
 	equipment_page.position = Vector2(24, 72)
 	equipment_page.size = Vector2(952, 444)
 	equipment_page.visible = false
 	equipment_page.close_requested.connect(close)
-	content.add_child(equipment_page)
+	page.add_child(equipment_page)
 	appearance_page = AppearancePage.new()
 	appearance_page.position = Vector2(24, 72)
 	appearance_page.size = Vector2(952, 444)
 	appearance_page.visible = false
 	appearance_page.close_requested.connect(close)
-	content.add_child(appearance_page)
+	page.add_child(appearance_page)
 
 
 func open(start_tab: int) -> void:
 	tab = clampi(start_tab, 0, TAB_COUNT - 1)
+	tab_from = tab
+	tab_visual = tab
+	tab_anim = 0.0 # het menu faden zacht in
 	repeat_action = ""
 	selected = 0
 	travel_confirm = false
 	travel_message = ""
+	hover_tab = -1
+	hover_close = false
 	active = true
 	root.visible = true
 	_refresh_progression_page()
@@ -134,9 +156,20 @@ func _process(delta: float) -> void:
 	travel_message_time = maxf(travel_message_time - delta, 0.0)
 	if travel_message_time <= 0.0:
 		travel_message = ""
-	if active:
-		_repeat_navigation(delta)
-		content.queue_redraw()
+	if not active:
+		return
+	_repeat_navigation(delta)
+	# De tabwissel: de markering glijdt naar het nieuwe tabblad, de bladzijde faden en schuift zacht mee.
+	if tab_anim < 1.0:
+		tab_anim = minf(tab_anim + delta / TAB_ANIM_TIME, 1.0)
+	var eased := 1.0 - pow(1.0 - tab_anim, 3.0) # vlot beginnen, zacht landen
+	tab_visual = lerpf(tab_from, float(tab), eased)
+	page.modulate.a = eased
+	page.position.y = PAGE_SLIDE * (1.0 - eased)
+	# De muis licht tabbladen en de sluitknop op (met een controller is er geen aanwijzer).
+	update_hover(content.get_local_mouse_position())
+	content.queue_redraw()
+	page.queue_redraw()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -321,8 +354,23 @@ func _confirm_event() -> InputEventAction:
 	event.pressed = true
 	return event
 
+
+## Werkt de hover bij voor een muispositie (plaatselijk in het menu). Met een controller is er geen aanwijzer.
+func update_hover(mouse: Vector2) -> void:
+	if Controls.controller_active:
+		hover_tab = -1
+		hover_close = false
+		return
+	hover_tab = -1
+	for i in TAB_COUNT:
+		if tab_rect(i).has_point(mouse):
+			hover_tab = i
+	hover_close = CLOSE_RECT.has_point(mouse)
+
 func _set_tab(new_tab: int) -> void:
+	tab_from = tab_visual
 	tab = new_tab
+	tab_anim = 0.0 # de markering glijdt en de bladzijde faden naar het nieuwe tabblad
 	repeat_action = ""
 	selected = 0
 	travel_confirm = false
@@ -436,18 +484,32 @@ func _draw_content() -> void:
 	var font := ThemeDB.fallback_font
 	var panel := UiStyle.flat(Color(0.06, 0.1, 0.22, 0.98), Color(0.45, 0.75, 1.0), 3)
 	content.draw_style_box(panel, Rect2(Vector2.ZERO, SIZE))
-	# Tabbladen
+	# Tabbladen: eerst de rustige achtergronden (met een lichtere tint onder de muis), dan de
+	# markering die naar het gekozen tabblad glijdt, dan de titels.
+	for i in TAB_COUNT:
+		var rect := tab_rect(i)
+		var fill := Color(0.1, 0.16, 0.3)
+		if i == hover_tab and i != tab:
+			fill = fill.lightened(0.25)
+		content.draw_rect(rect, fill)
+		content.draw_rect(rect, Color(0.3, 0.45, 0.7), false, 2.0)
+	var mark := tab_rect(tab)
+	mark.position.x = MARGIN + tab_visual * _tab_stride()
+	content.draw_rect(mark, Color(0.2, 0.35, 0.65))
+	content.draw_rect(mark, Color(0.6, 0.85, 1.0), false, 2.0)
 	var titles := tab_titles()
 	for i in TAB_COUNT:
 		var rect := tab_rect(i)
-		var chosen := i == tab
-		content.draw_rect(rect, Color(0.2, 0.35, 0.65) if chosen else Color(0.1, 0.16, 0.3))
-		content.draw_rect(rect, Color(0.6, 0.85, 1.0) if chosen else Color(0.3, 0.45, 0.7), false, 2.0)
 		content.draw_string(font, rect.position + Vector2(0, 28), titles[i], HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, TAB_FONT_SIZE,
-			Color.WHITE if chosen else Color(0.7, 0.8, 1.0))
-	content.draw_rect(CLOSE_RECT, Color(0.22, 0.3, 0.48))
+			Color.WHITE if i == tab else Color(0.7, 0.8, 1.0))
+	content.draw_rect(CLOSE_RECT, Color(0.32, 0.42, 0.62) if hover_close else Color(0.22, 0.3, 0.48))
 	content.draw_string(font, CLOSE_RECT.position + Vector2(0, 26), "×", HORIZONTAL_ALIGNMENT_CENTER, CLOSE_RECT.size.x, 24)
-	content.draw_string(font, Vector2(24, SIZE.y - 16), _footer_hint(), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.55))
+	content.draw_string(font, Vector2(MARGIN, SIZE.y - 16), _footer_hint(), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.55))
+
+
+## De bladzijde van het gekozen tabblad (tekent op `page`, zodat de tabwissel zacht kan overgaan).
+func _draw_page() -> void:
+	var font := ThemeDB.fallback_font
 	match tab:
 		0:
 			_draw_items(font)
@@ -478,8 +540,8 @@ func _footer_hint() -> String:
 	return tr("↑ ↓ bladeren  ·  ") + browse + close_hint
 
 func _text(font: Font, pos: Vector2, text: String, size: int, color := Color.WHITE, width := -1.0) -> float:
-	## Tekent (eventueel afgebroken) tekst en geeft de hoogte terug.
-	return MenuPages.text(content, font, pos, text, size, color, width)
+	## Tekent (eventueel afgebroken) tekst op de bladzijde en geeft de hoogte terug.
+	return MenuPages.text(page, font, pos, text, size, color, width)
 
 
 func inventory_page_start() -> int:
@@ -489,45 +551,48 @@ func inventory_page_start() -> int:
 func _draw_items(font: Font) -> void:
 	var owned := _owned()
 	selected = clampi(selected, 0, maxi(owned.size() - 1, 0))
-	_text(font, Vector2(24, 72), tr("Je spullen"), 24, Color(0.6, 0.88, 1.0))
+	_text(font, Vector2(MARGIN, HEADER_Y), tr("Je spullen"), 24, Color(0.6, 0.88, 1.0))
 	if owned.is_empty():
-		_text(font, Vector2(24, 112), tr("Je hebt nog niets bij je."), 20, Color(1, 1, 1, 0.6))
+		_text(font, Vector2(MARGIN, 112), tr("Je hebt nog niets bij je."), 20, Color(1, 1, 1, 0.6))
 	var first := inventory_page_start()
 	var last := mini(first + INVENTORY_PAGE_SIZE, owned.size())
 	for i in range(first, last):
 		var local_index := i - first
-		var pos := Vector2(24 + (local_index % 6) * (SLOT + 8), 110 + floori(float(local_index) / 6.0) * (SLOT + 8))
+		var pos := Vector2(MARGIN + (local_index % 6) * (SLOT + 8), LIST_TOP + floori(float(local_index) / 6.0) * (SLOT + 8))
 		var chosen := i == selected
-		content.draw_rect(Rect2(pos, Vector2(SLOT, SLOT)), Color(0.18, 0.3, 0.55) if chosen else Color(0.1, 0.16, 0.3))
-		content.draw_rect(Rect2(pos, Vector2(SLOT, SLOT)), Color(1.0, 0.88, 0.35) if chosen else Color(0.3, 0.45, 0.7), false, 3.0 if chosen else 2.0)
+		page.draw_rect(Rect2(pos, Vector2(SLOT, SLOT)), Color(0.18, 0.3, 0.55) if chosen else Color(0.1, 0.16, 0.3))
+		page.draw_rect(Rect2(pos, Vector2(SLOT, SLOT)), Color(1.0, 0.88, 0.35) if chosen else Color(0.3, 0.45, 0.7), false, 3.0 if chosen else 2.0)
 		var icon: int = Items.ITEMS[owned[i]]["icon"]
-		content.draw_texture_rect_region(Art.tex(Items.sheet_of(owned[i])), Rect2(pos + Vector2(10, 6), Vector2(56, 56)), Rect2(Vector2(icon * 16, 0), Vector2(16, 16)))
+		# Het gekozen icoon ademt zachtjes, zodat duidelijk is waar je staat.
+		var icon_size := 56.0 * (1.0 + 0.05 * sin(time * 5.0)) if chosen else 56.0
+		var icon_pos := pos + (Vector2(SLOT, SLOT) - Vector2(icon_size, icon_size)) / 2.0 + Vector2(0, -4)
+		page.draw_texture_rect_region(Art.tex(Items.sheet_of(owned[i])), Rect2(icon_pos, Vector2(icon_size, icon_size)), Rect2(Vector2(icon * 16, 0), Vector2(16, 16)))
 		var count := GameState.count(owned[i])
 		if count > 1:
-			content.draw_string_outline(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, 4, Color(0, 0, 0))
-			content.draw_string(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color.WHITE)
+			page.draw_string_outline(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, 4, Color(0, 0, 0))
+			page.draw_string(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color.WHITE)
 	if owned.size() > INVENTORY_PAGE_SIZE:
 		_text(font, Vector2(76, 459), tr(ProfessionData.TEXT["inventory_page"]) % [first + 1, last, owned.size()], 17, Color(0.7, 0.8, 0.95))
 		for button_rect: Rect2 in [PREVIOUS_PAGE, NEXT_PAGE]:
-			content.draw_rect(button_rect, Color(0.15, 0.25, 0.45))
-		content.draw_string(font, PREVIOUS_PAGE.position + Vector2(0, 24), "‹", HORIZONTAL_ALIGNMENT_CENTER, 38, 24)
-		content.draw_string(font, NEXT_PAGE.position + Vector2(0, 24), "›", HORIZONTAL_ALIGNMENT_CENTER, 38, 24)
+			page.draw_rect(button_rect, Color(0.15, 0.25, 0.45))
+		page.draw_string(font, PREVIOUS_PAGE.position + Vector2(0, 24), "‹", HORIZONTAL_ALIGNMENT_CENTER, 38, 24)
+		page.draw_string(font, NEXT_PAGE.position + Vector2(0, 24), "›", HORIZONTAL_ALIGNMENT_CENTER, 38, 24)
 
 	# Rechts: omschrijving en gegevens
 	var x := 620.0
 	if not owned.is_empty():
 		var info: Dictionary = Items.ITEMS[owned[selected]]
-		var h := _text(font, Vector2(x, 72), tr(info["name"]), 24, Color(1.0, 0.9, 0.5), 340)
-		h += _text(font, Vector2(x, 72 + h + 6), tr(info["desc"]), 18, Color(0.9, 0.93, 1.0), 340) + 6
+		var h := _text(font, Vector2(x, HEADER_Y), tr(info["name"]), 24, Color(1.0, 0.9, 0.5), 340)
+		h += _text(font, Vector2(x, HEADER_Y + h + 6), tr(info["desc"]), 18, Color(0.9, 0.93, 1.0), 340) + 6
 		var equipment_slot := Equipment.slot_of(owned[selected])
 		if equipment_slot != "":
 			var equipped := Equipment.equipped(equipment_slot) == owned[selected]
 			_text(font, Vector2(x, 216), tr("Uitgerust · %s") % Equipment.stats_text(owned[selected]) if equipped else tr("Bonus: %s") % Equipment.stats_text(owned[selected]), 17, Color(0.6, 0.95, 0.8), 340)
-			content.draw_rect(USE_RECT, Color(0.12, 0.2, 0.3) if equipped else Color(0.15, 0.32, 0.3))
-			content.draw_string(font, USE_RECT.position + Vector2(0, 27), tr("Uitgerust") if equipped else tr("%s  Uitrusten") % Controls.action_label("ui_accept"), HORIZONTAL_ALIGNMENT_CENTER, USE_RECT.size.x, 20, Color(0.6, 1.0, 0.7))
+			page.draw_rect(USE_RECT, Color(0.12, 0.2, 0.3) if equipped else Color(0.15, 0.32, 0.3))
+			page.draw_string(font, USE_RECT.position + Vector2(0, 27), tr("Uitgerust") if equipped else tr("%s  Uitrusten") % Controls.action_label("ui_accept"), HORIZONTAL_ALIGNMENT_CENTER, USE_RECT.size.x, 20, Color(0.6, 1.0, 0.7))
 		elif owned[selected] in Professions.CONSUMABLES:
-			content.draw_rect(USE_RECT, Color(0.15, 0.32, 0.3))
-			content.draw_string(font, USE_RECT.position + Vector2(0, 27), tr("%s  Gebruiken") % Controls.action_label("ui_accept"), HORIZONTAL_ALIGNMENT_CENTER, USE_RECT.size.x, 20, Color(0.6, 1.0, 0.7))
+			page.draw_rect(USE_RECT, Color(0.15, 0.32, 0.3))
+			page.draw_string(font, USE_RECT.position + Vector2(0, 27), tr("%s  Gebruiken") % Controls.action_label("ui_accept"), HORIZONTAL_ALIGNMENT_CENTER, USE_RECT.size.x, 20, Color(0.6, 1.0, 0.7))
 	var weapon: Dictionary = Items.WEAPONS[GameState.weapon]
 	var lines := [
 		tr("Zwaard:  %s (schade %d)") % [tr(weapon["name"]), weapon["damage"]],
@@ -539,10 +604,10 @@ func _draw_items(font: Font) -> void:
 		tr("Speeltijd:  %s") % format_time(GameState.play_time),
 	]
 	if GameState.ng_plus > 0:
-		UiStyle.draw_star(content, Vector2(36, SIZE.y - 42), 11.0, Color(1.0, 0.85, 0.3))
+		UiStyle.draw_star(page, Vector2(36, SIZE.y - 42), 11.0, Color(1.0, 0.85, 0.3))
 		# Vertalers: Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
 		_text(font, Vector2(56, SIZE.y - 56), tr("Nieuw spel+  ·  ronde %d") % GameState.ng_plus, 20, Color(1.0, 0.9, 0.5))
-	content.draw_line(Vector2(x, 330), Vector2(x + 340, 330), Color(0.3, 0.45, 0.7), 2.0)
+	page.draw_line(Vector2(x, 330), Vector2(x + 340, 330), Color(0.3, 0.45, 0.7), 2.0)
 	var y := 342.0
 	for line: String in lines:
 		_text(font, Vector2(x, y), line, 20, Color(0.85, 0.92, 1.0))
@@ -565,9 +630,9 @@ func _quest_order() -> Array[String]:
 
 func _draw_quests(font: Font) -> void:
 	var order := _quest_order()
-	_text(font, Vector2(24, 72), tr("Opdrachten"), 24, Color(0.6, 0.88, 1.0))
+	_text(font, Vector2(MARGIN, HEADER_Y), tr("Opdrachten"), 24, Color(0.6, 0.88, 1.0))
 	if order.is_empty():
-		_text(font, Vector2(24, 112), tr("Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"), 20, Color(1, 1, 1, 0.6))
+		_text(font, Vector2(MARGIN, 112), tr("Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"), 20, Color(1, 1, 1, 0.6))
 		return
 	quest_selected = clampi(quest_selected, 0, order.size() - 1)
 	quest_scroll = MenuPages.follow(quest_selected, quest_scroll, QUEST_VISIBLE, order.size())
@@ -579,13 +644,13 @@ func _draw_quests(font: Font) -> void:
 		if info.get("main", false) and not done:
 			title = tr("%s   (hoofdopdracht)") % title
 		title = ("✓ " if done else "• ") + title
-		var rect := Rect2(24, 108 + (index - quest_scroll) * 96, 936, 90)
-		content.draw_rect(rect, Color(0.18, 0.3, 0.55) if index == quest_selected else Color(0.1, 0.16, 0.3))
+		var rect := Rect2(MARGIN, LIST_TOP + (index - quest_scroll) * 96, 936, 90)
+		page.draw_rect(rect, Color(0.18, 0.3, 0.55) if index == quest_selected else Color(0.1, 0.16, 0.3))
 		if index == quest_selected:
-			content.draw_rect(rect, Color(1.0, 0.88, 0.35), false, 2.0)
+			page.draw_rect(rect, Color(1.0, 0.88, 0.35), false, 2.0)
 		_text(font, rect.position + Vector2(12, 4), title, 21, Color(0.55, 1.0, 0.65) if done else Color(1.0, 0.9, 0.5), 908)
 		_text(font, rect.position + Vector2(24, 32), tr("Voltooid.") if done else GameState.quest_text(quest_id), 18, Color(0.85, 0.9, 1.0), 896)
-	MenuPages.scrollbar(content, quest_scroll, QUEST_VISIBLE, order.size(), 970)
+	MenuPages.scrollbar(page, quest_scroll, QUEST_VISIBLE, order.size(), 970)
 
 func _draw_map(font: Font) -> void:
 	var world := Util.world(self)
@@ -594,15 +659,15 @@ func _draw_map(font: Font) -> void:
 	var rows: Array = world.map_data["rows"]
 	var w: int = rows[0].length()
 	var h: int = rows.size()
-	var cell := mini(int(MAP_WIDTH / w), int(390.0 / h))
+	var cell := mini(int(MAP_WIDTH / w), int(380.0 / h))
 	cell = maxi(cell, 4)
-	var origin := Vector2(24.0 + (MAP_WIDTH - w * cell) / 2.0, 100.0)
-	_text(font, Vector2(24, 66), tr(world.map_data["name"]), 26, Color(0.6, 0.88, 1.0))
+	var origin := Vector2(MARGIN + (MAP_WIDTH - w * cell) / 2.0, LIST_TOP)
+	_text(font, Vector2(MARGIN, HEADER_Y), tr(world.map_data["name"]), 24, Color(0.6, 0.88, 1.0))
 	for y in h:
 		var row: String = rows[y]
 		for x in w:
-			content.draw_rect(Rect2(origin + Vector2(x, y) * cell, Vector2(cell, cell)), Tiles.map_color(Tiles.name_for(row[x], x, y)))
-	content.draw_rect(Rect2(origin, Vector2(w, h) * cell), Color(0.9, 0.95, 1.0), false, 2.0)
+			page.draw_rect(Rect2(origin + Vector2(x, y) * cell, Vector2(cell, cell)), Tiles.map_color(Tiles.name_for(row[x], x, y)))
+	page.draw_rect(Rect2(origin, Vector2(w, h) * cell), Color(0.9, 0.95, 1.0), false, 2.0)
 	var altars := FastTravel.discovered_altars()
 	travel_selected = clampi(travel_selected, 0, maxi(altars.size() - 1, 0))
 	for obj: Dictionary in world.map_data.get("objects", []):
@@ -611,13 +676,13 @@ func _draw_map(font: Font) -> void:
 		var p := origin + (Vector2(float(obj["pos"][0]), float(obj["pos"][1])) + Vector2(0.5, 0.5)) * cell
 		match obj["type"]:
 			"npc":
-				content.draw_circle(p, cell * 0.45, Color(0.4, 1.0, 1.0))
+				page.draw_circle(p, cell * 0.45, Color(0.4, 1.0, 1.0))
 			"portal":
-				content.draw_rect(Rect2(p - Vector2(cell, cell) * 0.4, Vector2(cell, cell) * 0.8), Color(1, 1, 1))
+				page.draw_rect(Rect2(p - Vector2(cell, cell) * 0.4, Vector2(cell, cell) * 0.8), Color(1, 1, 1))
 			"savepoint":
 				_draw_altar_marker(p, cell, obj, altars)
 			"chest":
-				content.draw_rect(Rect2(p - Vector2(cell, cell) * 0.35, Vector2(cell, cell) * 0.7), Color(1.0, 0.8, 0.2))
+				page.draw_rect(Rect2(p - Vector2(cell, cell) * 0.35, Vector2(cell, cell) * 0.7), Color(1.0, 0.8, 0.2))
 	var marks := extension_marks(world.map_data)
 	for mark: Dictionary in marks:
 		_draw_diamond(origin + (Vector2(float(mark["pos"][0]), float(mark["pos"][1])) + Vector2(0.5, 0.5)) * cell, cell * 0.5, mark["color"])
@@ -625,16 +690,16 @@ func _draw_map(font: Font) -> void:
 	if player:
 		var pp := origin + (player.global_position / 32.0) * cell
 		var pulse := 0.6 + 0.4 * sin(time * 6.0)
-		content.draw_circle(pp, cell * 0.6 * (0.8 + pulse * 0.4), Color(1, 0.3, 0.3))
-		content.draw_circle(pp, cell * 0.3, Color(1, 1, 1))
-	content.draw_string(font, Vector2(24, SIZE.y - 40), tr("● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.7))
+		page.draw_circle(pp, cell * 0.6 * (0.8 + pulse * 0.4), Color(1, 0.3, 0.3))
+		page.draw_circle(pp, cell * 0.3, Color(1, 1, 1))
+	page.draw_string(font, Vector2(MARGIN, SIZE.y - 40), tr("● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color(1, 1, 1, 0.7))
 	# Legenda voor de bijzondere plekken van uitbreidingen die op deze kaart staan.
 	var legend: Dictionary = {}
 	for mark: Dictionary in marks:
 		legend[tr(mark["label"])] = mark["color"]
-	var legend_x := 24.0
+	var legend_x := MARGIN
 	for label: String in legend:
-		content.draw_string(font, Vector2(legend_x, SIZE.y - 62), "◆ " + label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, legend[label])
+		page.draw_string(font, Vector2(legend_x, SIZE.y - 62), "◆ " + label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, legend[label])
 		legend_x += font.get_string_size("◆ " + label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16).x + 24.0
 	MenuPages.draw_travel_panel(self, font, altars)
 
@@ -651,7 +716,7 @@ func extension_marks(map_data: Dictionary) -> Array[Dictionary]:
 
 ## Een klein ruitje, voor de bijzondere plekken van uitbreidingen op het kaartje.
 func _draw_diamond(center: Vector2, radius: float, color: Color) -> void:
-	content.draw_colored_polygon(PackedVector2Array([
+	page.draw_colored_polygon(PackedVector2Array([
 		center + Vector2(0, -radius), center + Vector2(radius, 0), center + Vector2(0, radius), center + Vector2(-radius, 0)]), color)
 
 
@@ -659,21 +724,24 @@ func _draw_diamond(center: Vector2, radius: float, color: Color) -> void:
 func _draw_altar_marker(p: Vector2, cell: int, obj: Dictionary, altars: Array) -> void:
 	var key := FastTravel.altar_key(GameState.map_id, Vector2i(int(obj["pos"][0]), int(obj["pos"][1])))
 	var found := GameState.flag(key)
-	content.draw_circle(p, cell * 0.45, Color(0.35, 0.6, 1.0) if found else Color(0.25, 0.4, 0.65))
+	page.draw_circle(p, cell * 0.45, Color(0.35, 0.6, 1.0) if found else Color(0.25, 0.4, 0.65))
 	if found:
-		content.draw_arc(p, cell * 0.6, 0.0, TAU, 16, Color(1, 1, 1), 2.0)
+		page.draw_arc(p, cell * 0.6, 0.0, TAU, 16, Color(1, 1, 1), 2.0)
 	if not altars.is_empty() and altars[travel_selected]["key"] == key:
 		var pulse := 0.5 + 0.5 * sin(time * 6.0)
-		content.draw_arc(p, cell * (0.9 + pulse * 0.5), 0.0, TAU, 24, Color(1.0, 0.88, 0.35), 3.0)
+		page.draw_arc(p, cell * (0.9 + pulse * 0.5), 0.0, TAU, 24, Color(1.0, 0.88, 0.35), 3.0)
 
 func _exit_tree() -> void:
 	if active:
 		GameState.set_ui("menu", false)
 
 
+func _tab_stride() -> float:
+	return (CLOSE_RECT.position.x - MARGIN - 8.0) / TAB_COUNT
+
+
 func tab_rect(index: int) -> Rect2:
-	var stride := (CLOSE_RECT.position.x - 32.0) / TAB_COUNT
-	return Rect2(24.0 + index * stride, 16, stride - 8.0, 40)
+	return Rect2(MARGIN + index * _tab_stride(), 16, _tab_stride() - 8.0, 40)
 
 
 func _refresh_progression_page() -> void:
