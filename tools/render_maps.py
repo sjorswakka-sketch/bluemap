@@ -40,8 +40,9 @@ MARKERS = {"npc": (0, 255, 255, 255), "portal": (255, 255, 255, 255), "savepoint
 import sys
 for map_id in (sys.argv[1:] or ["dauwbos", "ijsdal", "dorstvallei"]):
     src = io.open("scripts/maps/%s.gd" % map_id, encoding="utf-8").read()
-    rows = re.findall(r'^\s+"([^"]+)",?\s*$', src, re.M)
-    rows = [r for r in rows if len(set(r) - set(CHARS)) == 0 and len(r) > 20]
+    rows = [r for r in re.findall(r'^\s+"([^"]+)",?\s*$', src, re.M) if len(set(r) - set(CHARS)) == 0 and len(r) > 10]
+    breedte = max({len(r) for r in rows}, key=[len(r) for r in rows].count)
+    rows = [r for r in rows if len(r) == breedte]
     w, h = len(rows[0]), len(rows)
     img = Image.new("RGBA", (w * 16, h * 16))
     for y, row in enumerate(rows):

@@ -10,7 +10,7 @@ import io
 import re
 import sys
 
-SOLID_CHARS = set("#~W|^HhoOtxXMZINCS;lpgGqP")  # zie tiles.gd SOLID (D en = zijn begaanbaar)
+SOLID_CHARS = set("#~W|^HhobtOxXyvMIZNCSB;lpVK+-!GqP")  # zie tiles.gd SOLID (D en = zijn begaanbaar)
 
 
 def is_solid(ch):
@@ -19,7 +19,9 @@ def is_solid(ch):
 
 def load(path):
     src = io.open(path, encoding="utf-8").read()
-    rows = [r for r in re.findall(r'^\s+"([^"]+)",?\s*$', src, re.M) if len(r) > 20]
+    kand = [r for r in re.findall(r'^\s+"([^"]+)",?\s*$', src, re.M) if len(r) > 10]
+    breedte = max({len(r) for r in kand}, key=[len(r) for r in kand].count)
+    rows = [r for r in kand if len(r) == breedte]
     objects = re.findall(r'\{"type": "([^"]+)", "pos": \[(\d+), (\d+)\][^}]*\}', src)
     fysiek = [(int(x), int(y)) for typ, x, y in objects if typ not in ("meer_water", "trigger", "boog_baan")]
     spawns = re.search(r'"spawns": \{([^}]*)\}', src).group(1)
@@ -52,8 +54,10 @@ def laad_resources():
     return res
 
 
-def polis(path, map_id, decor, vrije_zones=()):
-    """decor: lijst van (x, y, teken, basis) — basis is '.' of '~'."""
+def polis(path, map_id, decor, vrije_zones=(), alleen_rand=False):
+    """decor: lijst van (x, y, teken, basis) — basis is '.' of '~'.
+    alleen_rand: solide stukken alleen naast bestaand solide plaatsen,
+    zodat ze geen zichtlijnen (magiërsbollen) in open ruimtes blokkeren."""
     src, g, objects, spawns = load(path)
     h, w = len(g), len(g[0])
     keep = set()
@@ -69,12 +73,19 @@ def polis(path, map_id, decor, vrije_zones=()):
     for d in decor:
         uitgebreid.extend(d(g, keep) if callable(d) else [d])
     geplaatst = 0
+    oorspronkelijk = [r[:] for r in g]
     for x, y, ch, basis in uitgebreid:
         if (x, y) in keep or not (0 <= x < w and 0 <= y < h):
             continue
-        if g[y][x] == basis:
-            g[y][x] = ch
-            geplaatst += 1
+        if g[y][x] != basis:
+            continue
+        if alleen_rand and is_solid(ch):
+            buren = [(x + dx, y + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if (dx, dy) != (0, 0)]
+            solide_buren = sum(1 for bx, by in buren if 0 <= bx < w and 0 <= by < h and is_solid(oorspronkelijk[by][bx]))
+            if solide_buren < 2:
+                continue
+        g[y][x] = ch
+        geplaatst += 1
     # Bewijs: vanaf elke spawn blijft elk object bereikbaar.
     fouten = []
     for start in spawns:
@@ -175,7 +186,7 @@ MEER_DECOR = [
 RESOURCES = laad_resources()
 ok = True
 ok = polis("scripts/maps/village.gd", "village", DORP_DECOR, DORP_VRIJ) and ok
-ok = polis("scripts/maps/forest.gd", "forest", BOS_DECOR, BOS_VRIJ) and ok
+ok = polis("scripts/maps/forest.gd", "forest", BOS_DECOR, BOS_VRIJ, alleen_rand=True) and ok
 ok = polis("scripts/maps/lake.gd", "lake", MEER_DECOR) and ok
 
 # ------------------------------------------------------------- Vergeten Ruine
@@ -212,13 +223,23 @@ TEMPEL_DECOR = [
     (13, 19, "%", "_"), (10, 13, "u", "_"), (13, 13, "u", "_"),
 ]
 
-ok = polis("scripts/maps/ruins.gd", "ruins", RUINE_DECOR) and ok
+ok = polis("scripts/maps/ruins.gd", "ruins", RUINE_DECOR, alleen_rand=True) and ok
 GROT_STROOI = [
     lambda g, k: strooi(g, k, "v", "c", (2, 2, 24, 33), 6, 41),   # westzalen
     lambda g, k: strooi(g, k, "v", "c", (26, 2, 45, 33), 6, 42),   # oostzalen
     lambda g, k: strooi(g, k, "y", "c", (2, 2, 45, 33), 5, 43),    # kristallen
 ]
-ok = polis("scripts/maps/cave.gd", "cave", GROT_DECOR + GROT_STROOI) and ok
+ok = polis("scripts/maps/cave.gd", "cave", GROT_DECOR + GROT_STROOI, alleen_rand=True) and ok
 ok = polis("scripts/maps/temple.gd", "temple", TEMPEL_DECOR) and ok
+
+# ------------------------------------------------------------- De Diepte
+# Arena, arena-hal en Het Hart (depths2) blijven bewust ongemoeid: de gevechts-
+# arena's moeten open blijven en de hal is al volledig aangekleed.
+DIEPTE_STROOI = [
+    lambda g, k: strooi(g, k, "K", "d", (2, 2, 38, 27), 6, 61),   # extra kristallen
+    lambda g, k: strooi(g, k, "*", "d", (2, 2, 38, 27), 4, 62),   # runen op kruispunten
+]
+ok = polis("scripts/maps/depths1.gd", "depths1", DIEPTE_STROOI) and ok
+
 
 sys.exit(0 if ok else 1)
