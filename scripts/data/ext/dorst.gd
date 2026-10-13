@@ -58,7 +58,7 @@ const QUESTS := {
 
 const NPCS := {
 	"jelle": {
-		"name": "Jelle de vellenhandelaar", "sheet": "npc_joost",
+		"name": "Jelle de vellenhandelaar", "sheet": "npc_jelle",
 		"rules": [
 			{"if": [["step", "vellen_en_vlees", 1]], "talk": "jelle_klaar"},
 			{"if": [["no_flag", "jelle_ontmoet"]], "talk": "jelle_intro"},
@@ -66,7 +66,7 @@ const NPCS := {
 		],
 	},
 	"sana": {
-		"name": "Sana van de oase", "sheet": "npc_anja",
+		"name": "Sana van de oase", "sheet": "npc_sana",
 		"rules": [
 			{"if": [["step", "cactusvijgen", 1]], "talk": "sana_klaar"},
 			{"if": [["no_flag", "sana_ontmoet"]], "talk": "sana_intro"},
@@ -74,7 +74,7 @@ const NPCS := {
 		],
 	},
 	"nour": {
-		"name": "Nour de woestijngids", "sheet": "npc_hein",
+		"name": "Nour de woestijngids", "sheet": "npc_nour",
 		"rules": [
 			{"if": [["no_flag", "nour_ontmoet"]], "talk": "nour_intro"},
 			{"talk": "nour_menu"},

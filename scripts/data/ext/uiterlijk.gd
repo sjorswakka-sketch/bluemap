@@ -169,7 +169,7 @@ const ITEMS := {
 ## Vera de kleermaakster verkoopt de hele collectie in Dageraadsdorp.
 const NPCS := {
 	"vera": {
-		"name": "Vera de kleermaakster", "sheet": "npc_mila",
+		"name": "Vera de kleermaakster", "sheet": "npc_vera",
 		"rules": [
 			{"if": [["no_flag", "vera_ontmoet"]], "talk": "vera_intro"},
 			{"talk": "vera_menu"},

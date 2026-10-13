@@ -68,8 +68,9 @@ Het laatst bewust gebruikte apparaat is actief. De controller verbergt de muiscu
   ingrediënten, benodigde niveaus en werkplekken. De gewone inventaris bladert nu door alle spullen en meerdere pagina's.
 
 - **Zeventien gebieden:** Dageraadsdorp met smederij, winkel en herberg, het Fluisterbos, de Vergeten Ruïne, de Echo-grot,
-  de Kristaltempel, het Zilvermeer met het huisje van Joris en de bibliotheek, de Arena met haar hal, het besneeuwde
-  IJsdal met zijn bevroren meer en mijnhoek, de snikhete Dorstvallei met oase en jachtgronden, en na het einde
+  de Kristaltempel, het Zilvermeer met het huisje van Joris en de bibliotheek, de Arena met haar hal, het mistige
+  Dauwbos met kronkelpaden, een vijver en een paddenstoelenkring, het besneeuwde IJsdal met zijn bevroren meer en
+  mijnhoek, de snikhete Dorstvallei met zandsteenkloof, oase en jachtgronden, en na het einde
   De Diepte (de Kristalgangen en Het Hart van de Kaart). In donkere gebieden heb je licht van je eigen lamp en fakkels.
 - **Verhaal:** een hoofdopdracht en twaalf zij-opdrachten, eenentwintig personages en gesprekken met keuzes.
 - **Gevechten:** zwaard in vier niveaus (hout, ijzer, kristal en het geheime Sterrenzwaard), ontwijkrol, slijmen in drie
