@@ -66,12 +66,12 @@ func _run() -> void:
 	gs.in_game = true
 
 	# --- data ---------------------------------------------------------------------
-	check(Data.HAIR_M.size() == 30, "30 haarstijlen voor mannen")
-	check(Data.HAIR_V.size() == 30, "30 haarstijlen voor vrouwen")
-	check(Data.EYES.size() == 10, "10 oogstijlen")
-	check(Data.HAIR_COLORS.size() == 10, "10 haarkleuren")
-	check(Data.EYE_COLORS.size() == 8, "8 oogkleuren")
-	check(Data.DYE_COLORS.size() == 12, "12 verfkleuren")
+	check(Data.HAIR_M.size() == 45, "45 haarstijlen voor mannen")
+	check(Data.HAIR_V.size() == 45, "45 haarstijlen voor vrouwen")
+	check(Data.EYES.size() == 16, "16 oogstijlen")
+	check(Data.HAIR_COLORS.size() == 16, "16 haarkleuren")
+	check(Data.EYE_COLORS.size() == 12, "12 oogkleuren")
+	check(Data.DYE_COLORS.size() == 20, "20 verfkleuren")
 	check(Appearance.SLOTS.size() == 5, "5 kledingvakken naast de uitrusting")
 	var signatures := {}
 	var unique_params := true
@@ -79,7 +79,7 @@ func _run() -> void:
 		signatures.clear()
 		for id: String in gender:
 			var style: Dictionary = gender[id]
-			var signature := "%s%d%d%d%d%s%s%s" % [style.get("bald", false), int(style.get("len", -1)), int(style.get("bangs", 0)), int(style.get("top", 0)), int(style.get("tail", 0)), style.get("bun", false), style.get("curl", false), style.get("vol", 0)]
+			var signature := "%s%d%d%d%d%s%s%s%d%d" % [style.get("bald", false), int(style.get("len", -1)), int(style.get("bangs", 0)), int(style.get("top", 0)), int(style.get("tail", 0)), style.get("bun", false), style.get("curl", false), style.get("vol", 0), int(style.get("spiky", 0)), int(style.get("sidetail", 0))]
 			if signatures.has(signature):
 				unique_params = false
 				print("    dubbele stijlvorm:", id)
@@ -99,14 +99,14 @@ func _run() -> void:
 		if icons.has(int(info["icon"])):
 			icons_ok = false
 		icons[int(info["icon"])] = true
-	check(Data.ITEMS.size() == 12 and icons_ok, "12 kledingstukken met unieke pictogrammen")
+	check(Data.ITEMS.size() == 24 and icons_ok, "24 kledingstukken met unieke pictogrammen")
 	check(slots_ok, "alle kleding is type cloth met een geldig vak")
 
 	# --- staat ---------------------------------------------------------------------
 	var defaults := Appearance.normalize_appearance({})
 	check(defaults["gender"] == "m" and Data.HAIR_M.has(defaults["hair"]) and Data.EYES.has(defaults["eyes"]), "standaard uiterlijk is geldig")
 	var junk := Appearance.normalize_appearance({"gender": "x", "hair": "bestaat_niet", "hair_color": 99, "eyes": 7, "eye_color": -3})
-	check(junk["gender"] == "m" and Data.HAIR_M.has(junk["hair"]) and junk["hair_color"] == 9 and junk["eyes"] == "rond" and junk["eye_color"] == 0, "oude of kapotte opslag valt terug op geldige waarden")
+	check(junk["gender"] == "m" and Data.HAIR_M.has(junk["hair"]) and junk["hair_color"] == 15 and junk["eyes"] == "rond" and junk["eye_color"] == 0, "oude of kapotte opslag valt terug op geldige waarden")
 	var vrouw := Appearance.normalize_appearance({"gender": "v", "hair": "m_kort"})
 	check(vrouw["gender"] == "v" and Data.HAIR_V.has(vrouw["hair"]), "geslachtswissel kiest een kapsel dat voor dat geslacht bestaat")
 
@@ -154,7 +154,7 @@ func _run() -> void:
 	gs.add_coins(500)
 	shop.open("vera")
 	await frames(6)
-	check(shop.list.get_child_count() == 12, "Vera verkoopt alle twaalf kledingstukken")
+	check(shop.list.get_child_count() == 24, "Vera verkoopt alle 24 kledingstukken")
 	await tap_pad(JOY_BUTTON_A)
 	check(gs.count("cloth_straw_hat") == 1, "kopen bij Vera werkt")
 	check(Appearance.worn("hat").is_empty(), "gekochte kleding trekt niet vanzelf aan")
@@ -189,6 +189,27 @@ func _run() -> void:
 	check(int(Appearance.worn("back")["dye"]) == posmod(dye_before + 1, Data.DYE_COLORS.size()), "pijltje kiest een andere verfkleur")
 	await tap_pad(JOY_BUTTON_A)
 	check(not page.dye_mode, "bevestigen sluit de verfkleuren weer")
+	# render-smoke: elke haarstijl, oogstijl en elk kledingstuk een keer echt tekenen
+	Appearance.set_gender("m")
+	for hair_id: String in Data.HAIR_M:
+		Appearance.set_hair(hair_id)
+		page.queue_redraw()
+		await process_frame
+	Appearance.set_gender("v")
+	for hair_id: String in Data.HAIR_V:
+		Appearance.set_hair(hair_id)
+		page.queue_redraw()
+		await process_frame
+	for eyes_id: String in Data.EYES:
+		Appearance.set_eyes(eyes_id)
+		page.queue_redraw()
+		await process_frame
+	for item_id: String in Data.ITEMS:
+		gs.give(item_id, 1, true)
+		Appearance.wear(item_id)
+		page.queue_redraw()
+		await process_frame
+	check(true, "alle haarstijlen, oogstijlen en kledingstukken tekenen zonder fouten")
 	page.selected = 0
 	await tap_pad(JOY_BUTTON_DPAD_RIGHT)
 	check(str(gs.appearance.get("gender", "")) == "m", "geslacht wisselt via de pagina")

@@ -2932,49 +2932,49 @@ msgstr "Wear something airy, drink plenty, and at the hottest hour seek the shad
 #. Naam van wie er praat (Gesprek vera_intro)
 #. Naam van wie er praat (Gesprek vera_menu)
 #. Naam van wie er praat (Gesprek vera_verf)
-#: scripts/data/ext/uiterlijk.gd:182 scripts/data/ext/uiterlijk.gd:192 scripts/data/ext/uiterlijk.gd:201
+#: scripts/data/ext/uiterlijk.gd:250 scripts/data/ext/uiterlijk.gd:260 scripts/data/ext/uiterlijk.gd:269
 msgid "Vera"
 msgstr "Vera"
 
 #. Gesprek vera_intro, Vera zegt
-#: scripts/data/ext/uiterlijk.gd:184
+#: scripts/data/ext/uiterlijk.gd:252
 msgid "Ah, een nieuw gezicht! Ik ben Vera, kleermaakster van Dageraadsdorp."
 msgstr "Ah, a new face! I'm Vera, the tailor of Daybreak Village."
 
 #. Gesprek vera_intro, Vera zegt
-#: scripts/data/ext/uiterlijk.gd:185
+#: scripts/data/ext/uiterlijk.gd:253
 msgid "Ik maak kleding die je gewoon óver je uitrusting draagt. Geen gedoe met omkleden: het gaat er zo overheen."
 msgstr "I make clothing you simply wear over your equipment. No fussing with changing clothes: it goes right on top."
 
 #. Gesprek vera_intro, Vera zegt
-#: scripts/data/ext/uiterlijk.gd:186
+#: scripts/data/ext/uiterlijk.gd:254
 msgid "En met mijn verfpotten maak je elk stuk in de kleur die jij mooi vindt. Kijk maar in het tabblad Uiterlijk van je menu!"
 msgstr "And with my dye pots you can make every piece any color you like. Just look at the Appearance tab in your menu!"
 
 #. Gesprek vera_menu, Vera zegt
-#: scripts/data/ext/uiterlijk.gd:193
+#: scripts/data/ext/uiterlijk.gd:261
 msgid "Zeg het maar, mag het een beetje kleur zijn?"
 msgstr "Tell me, can I interest you in a little color?"
 
 #. Gesprek vera_menu: keuze van de speler
-#: scripts/data/ext/uiterlijk.gd:195
+#: scripts/data/ext/uiterlijk.gd:263
 msgid "Ik wil kleding kopen."
 msgstr "I want to buy clothing."
 
 #. Gesprek vera_menu: keuze van de speler
-#: scripts/data/ext/uiterlijk.gd:196
+#: scripts/data/ext/uiterlijk.gd:264
 msgid "Hoe werkt het verven?"
 msgstr "How does dyeing work?"
 
 #. Gesprek vera_verf, Vera zegt
-#: scripts/data/ext/uiterlijk.gd:203
-msgid "Open je menu en ga naar het tabblad Uiterlijk. Daar trek je een kledingstuk aan en kies je er een verfkleur bij."
-msgstr "Open your menu and go to the Appearance tab. There you put on a piece of clothing and pick a dye color for it."
+#: scripts/data/ext/uiterlijk.gd:271
+msgid "Open je menu en ga naar het tabblad Uiterlijk. Daar trek je een kledingstuk aan en kies je er een verfkleur bij — twintig potten heb ik inmiddels op voorraad."
+msgstr "Open your menu and go to the Appearance tab. There you put on a piece of clothing and pick a dye colour — I have twenty pots in stock by now."
 
 #. Gesprek vera_verf, Vera zegt
-#: scripts/data/ext/uiterlijk.gd:204
-msgid "Je haar en je ogen kun je daar trouwens ook helemaal veranderen. Dertig kapsels! Ik knip ze allemaal zelf."
-msgstr "You can completely change your hair and eyes there too, by the way. Thirty haircuts! I cut them all myself."
+#: scripts/data/ext/uiterlijk.gd:272
+msgid "Je haar en je ogen kun je daar trouwens ook helemaal veranderen. Vijfenveertig kapsels! Ik knip ze allemaal zelf."
+msgstr "You can change your hair and your eyes there too, by the way. Forty-five haircuts! I cut them all myself."
 
 #. Naam van personage greta (boven zijn hoofd)
 #: scripts/data/npcs.gd:20
@@ -3067,7 +3067,7 @@ msgid "Nour de woestijngids"
 msgstr "Nour the desert guide"
 
 #. Naam van personage vera (boven zijn hoofd)
-#: scripts/data/ext/uiterlijk.gd:172
+#: scripts/data/ext/uiterlijk.gd:240
 msgid "Vera de kleermaakster"
 msgstr "Vera the tailor"
 
@@ -3350,7 +3350,8 @@ msgid "Breng de cactusvijgen naar Sana bij de oase."
 msgstr "Bring the cactus figs to Sana at the oasis."
 
 #. Naam van voorwerp coin
-#: scripts/data/items.gd:9
+#. Haarkleur (tabblad Uiterlijk)
+#: scripts/data/items.gd:9 scripts/data/ext/uiterlijk.gd:137
 msgid "Munt"
 msgstr "Coin"
 
@@ -4167,124 +4168,244 @@ msgid "Sappig gebraden vlees met zandkruid. Herstelt 3 hartjes. Gebruik via Bero
 msgstr "Juicy roasted meat with sandwort. Restores 3 hearts. Use through Professions → Food & drink."
 
 #. Naam van voorwerp cloth_straw_hat
-#: scripts/data/ext/uiterlijk.gd:155
+#: scripts/data/ext/uiterlijk.gd:211
 msgid "Strohoed"
 msgstr "Straw hat"
 
 #. Beschrijving van voorwerp cloth_straw_hat
-#: scripts/data/ext/uiterlijk.gd:155
+#: scripts/data/ext/uiterlijk.gd:211
 msgid "Een zonnehoed van gevlochten stro. Puur voor de look; draag hem over je uitrusting."
 msgstr "A sun hat of woven straw. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_beret
-#: scripts/data/ext/uiterlijk.gd:156
+#: scripts/data/ext/uiterlijk.gd:212
 msgid "Baret"
 msgstr "Beret"
 
 #. Beschrijving van voorwerp cloth_beret
-#: scripts/data/ext/uiterlijk.gd:156
+#: scripts/data/ext/uiterlijk.gd:212
 msgid "Een kunstzinnige baret, schuin op je hoofd. Puur voor de look; draag hem over je uitrusting."
 msgstr "An artistic beret, tilted on your head. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_beanie
-#: scripts/data/ext/uiterlijk.gd:157
+#: scripts/data/ext/uiterlijk.gd:213
 msgid "Muts"
 msgstr "Beanie"
 
 #. Beschrijving van voorwerp cloth_beanie
-#: scripts/data/ext/uiterlijk.gd:157
+#: scripts/data/ext/uiterlijk.gd:213
 msgid "Een warme gebreide muts met pompon. Puur voor de look; draag hem over je uitrusting."
 msgstr "A warm knitted beanie with a pompom. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_cape
-#: scripts/data/ext/uiterlijk.gd:158
+#: scripts/data/ext/uiterlijk.gd:214
 msgid "Cape"
 msgstr "Cape"
 
 #. Beschrijving van voorwerp cloth_cape
-#: scripts/data/ext/uiterlijk.gd:158
+#: scripts/data/ext/uiterlijk.gd:214
 msgid "Een wapperende cape voor over je schouders. Puur voor de look; draag hem over je uitrusting."
 msgstr "A fluttering cape for over your shoulders. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_scarf
-#: scripts/data/ext/uiterlijk.gd:159
+#: scripts/data/ext/uiterlijk.gd:215
 msgid "Sjaal"
 msgstr "Scarf"
 
 #. Beschrijving van voorwerp cloth_scarf
-#: scripts/data/ext/uiterlijk.gd:159
+#: scripts/data/ext/uiterlijk.gd:215
 msgid "Een zachte sjaal met een losse punt. Puur voor de look; draag hem over je uitrusting."
 msgstr "A soft scarf with a loose end. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_tunic
-#: scripts/data/ext/uiterlijk.gd:160
+#: scripts/data/ext/uiterlijk.gd:216
 msgid "Tuniek"
 msgstr "Tunic"
 
 #. Beschrijving van voorwerp cloth_tunic
-#: scripts/data/ext/uiterlijk.gd:160
+#: scripts/data/ext/uiterlijk.gd:216
 msgid "Een ruimvallende tuniek met ceintuur. Puur voor de look; draag hem over je uitrusting."
 msgstr "A loose tunic with a belt. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_blouse
-#: scripts/data/ext/uiterlijk.gd:161
+#: scripts/data/ext/uiterlijk.gd:217
 msgid "Blouse"
 msgstr "Blouse"
 
 #. Beschrijving van voorwerp cloth_blouse
-#: scripts/data/ext/uiterlijk.gd:161
+#: scripts/data/ext/uiterlijk.gd:217
 msgid "Een fijne blouse met knoopjes. Puur voor de look; draag hem over je uitrusting."
 msgstr "A fine blouse with buttons. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_shirt
-#: scripts/data/ext/uiterlijk.gd:162
+#: scripts/data/ext/uiterlijk.gd:218
 msgid "Hemd"
 msgstr "Shirt"
 
 #. Beschrijving van voorwerp cloth_shirt
-#: scripts/data/ext/uiterlijk.gd:162
+#: scripts/data/ext/uiterlijk.gd:218
 msgid "Een stevig hemd met kraag. Puur voor de look; draag hem over je uitrusting."
 msgstr "A sturdy shirt with a collar. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_trousers
-#: scripts/data/ext/uiterlijk.gd:163
+#: scripts/data/ext/uiterlijk.gd:219
 msgid "Broek"
 msgstr "Trousers"
 
 #. Beschrijving van voorwerp cloth_trousers
-#: scripts/data/ext/uiterlijk.gd:163
+#: scripts/data/ext/uiterlijk.gd:219
 msgid "Een nette broek met stevige pijpen. Puur voor de look; draag hem over je uitrusting."
 msgstr "Neat trousers with sturdy legs. Purely for looks; wear them over your equipment."
 
 #. Naam van voorwerp cloth_skirt
-#: scripts/data/ext/uiterlijk.gd:164
+#: scripts/data/ext/uiterlijk.gd:220
 msgid "Rok"
 msgstr "Skirt"
 
 #. Beschrijving van voorwerp cloth_skirt
-#: scripts/data/ext/uiterlijk.gd:164
+#: scripts/data/ext/uiterlijk.gd:220
 msgid "Een zwierige rok tot over de knieën. Puur voor de look; draag hem over je uitrusting."
 msgstr "A flowing skirt down to the knees. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_shoes
-#: scripts/data/ext/uiterlijk.gd:165
+#: scripts/data/ext/uiterlijk.gd:221
 msgid "Schoenen"
 msgstr "Shoes"
 
 #. Beschrijving van voorwerp cloth_shoes
-#: scripts/data/ext/uiterlijk.gd:165
+#: scripts/data/ext/uiterlijk.gd:221
 msgid "Stevige leren schoenen. Puur voor de look; draag ze over je uitrusting."
 msgstr "Sturdy leather shoes. Purely for looks; wear them over your equipment."
 
 #. Naam van voorwerp cloth_slippers
-#: scripts/data/ext/uiterlijk.gd:166
+#: scripts/data/ext/uiterlijk.gd:222
 msgid "Sloffen"
 msgstr "Slippers"
 
 #. Beschrijving van voorwerp cloth_slippers
-#: scripts/data/ext/uiterlijk.gd:166
+#: scripts/data/ext/uiterlijk.gd:222
 msgid "Zachte sloffen met een bontje. Puur voor de look; draag ze over je uitrusting."
 msgstr "Soft slippers with a fluffy trim. Purely for looks; wear them over your equipment."
+
+#. Naam van voorwerp cloth_headband
+#: scripts/data/ext/uiterlijk.gd:223
+msgid "Hoofdband"
+msgstr "Headband"
+
+#. Beschrijving van voorwerp cloth_headband
+#: scripts/data/ext/uiterlijk.gd:223
+msgid "Een stoere band die je haar uit je gezicht houdt. Puur voor de look; draag hem over je uitrusting."
+msgstr "A sturdy band that keeps your hair out of your face. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_felt_hat
+#: scripts/data/ext/uiterlijk.gd:224
+msgid "Vilthoed"
+msgstr "Felt hat"
+
+#. Beschrijving van voorwerp cloth_felt_hat
+#: scripts/data/ext/uiterlijk.gd:224
+msgid "Een elegante hoed van zacht vilt, met een lint om de bol. Puur voor de look; draag hem over je uitrusting."
+msgstr "An elegant hat of soft felt, with a ribbon around the crown. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_nightcap
+#: scripts/data/ext/uiterlijk.gd:225
+msgid "Nachtmuts"
+msgstr "Nightcap"
+
+#. Beschrijving van voorwerp cloth_nightcap
+#: scripts/data/ext/uiterlijk.gd:225
+msgid "Een slap hangende muts met een pompon. Zo knus dat je erin zou willen slapen. Puur voor de look; draag hem over je uitrusting."
+msgstr "A floppy cap with a pompom. So cosy you could sleep in it. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_backpack
+#: scripts/data/ext/uiterlijk.gd:226
+msgid "Rugzak"
+msgstr "Backpack"
+
+#. Beschrijving van voorwerp cloth_backpack
+#: scripts/data/ext/uiterlijk.gd:226
+msgid "Een stevige rugzak voor de echte avonturier. Puur voor de look; draag hem over je uitrusting."
+msgstr "A sturdy backpack for the true adventurer. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_cloak
+#: scripts/data/ext/uiterlijk.gd:227
+msgid "Mantel"
+msgstr "Cloak"
+
+#. Beschrijving van voorwerp cloth_cloak
+#: scripts/data/ext/uiterlijk.gd:227
+msgid "Een warme mantel met capuchon, voor reizen door koude streken. Puur voor de look; draag hem over je uitrusting."
+msgstr "A warm cloak with a hood, for journeys through cold lands. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_sweater
+#: scripts/data/ext/uiterlijk.gd:228
+msgid "Trui"
+msgstr "Sweater"
+
+#. Beschrijving van voorwerp cloth_sweater
+#: scripts/data/ext/uiterlijk.gd:228
+msgid "Een zachte gebreide trui met een opstaande kraag. Puur voor de look; draag hem over je uitrusting."
+msgstr "A soft knitted sweater with a stand-up collar. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_vest
+#: scripts/data/ext/uiterlijk.gd:229
+msgid "Gilet"
+msgstr "Vest"
+
+#. Beschrijving van voorwerp cloth_vest
+#: scripts/data/ext/uiterlijk.gd:229
+msgid "Een net gilet dat open over je hemd valt. Puur voor de look; draag hem over je uitrusting."
+msgstr "A neat vest worn open over your shirt. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_dress
+#: scripts/data/ext/uiterlijk.gd:230
+msgid "Jurk"
+msgstr "Dress"
+
+#. Beschrijving van voorwerp cloth_dress
+#: scripts/data/ext/uiterlijk.gd:230
+msgid "Een zwierige jurk met een wijde rok. Puur voor de look; draag hem over je uitrusting."
+msgstr "A flowing dress with a wide skirt. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_shorts
+#: scripts/data/ext/uiterlijk.gd:231
+msgid "Korte broek"
+msgstr "Shorts"
+
+#. Beschrijving van voorwerp cloth_shorts
+#: scripts/data/ext/uiterlijk.gd:231
+msgid "Een luchtige korte broek voor warme dagen. Puur voor de look; draag hem over je uitrusting."
+msgstr "An airy pair of shorts for warm days. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_overalls
+#: scripts/data/ext/uiterlijk.gd:232
+msgid "Werkbroek"
+msgstr "Work trousers"
+
+#. Beschrijving van voorwerp cloth_overalls
+#: scripts/data/ext/uiterlijk.gd:232
+msgid "Een stevige werkbroek met verstevigde knieën. Puur voor de look; draag hem over je uitrusting."
+msgstr "Sturdy work trousers with reinforced knees. Purely for looks; wear it over your equipment."
+
+#. Naam van voorwerp cloth_boots
+#: scripts/ui/equipment_page.gd:201 scripts/ui/progression_page.gd:126 scripts/data/ext/uiterlijk.gd:233
+msgid "Laarzen"
+msgstr "Boots"
+
+#. Beschrijving van voorwerp cloth_boots
+#: scripts/data/ext/uiterlijk.gd:233
+msgid "Hoge laarzen die modder en sneeuw trotseren. Puur voor de look; draag ze over je uitrusting."
+msgstr "Tall boots that defy mud and snow. Purely for looks; wear them over your equipment."
+
+#. Naam van voorwerp cloth_sandals
+#: scripts/data/ext/uiterlijk.gd:234
+msgid "Sandalen"
+msgstr "Sandals"
+
+#. Beschrijving van voorwerp cloth_sandals
+#: scripts/data/ext/uiterlijk.gd:234
+msgid "Lichte sandalen voor zwoele zomerdagen. Puur voor de look; draag ze over je uitrusting."
+msgstr "Light sandals for sultry summer days. Purely for looks; wear them over your equipment."
 
 #. Naam van vijand slime
 #: scripts/data/enemies.gd:13
@@ -4865,7 +4986,7 @@ msgid "5 pijlen"
 msgstr "5 Arrows"
 
 #. Naam van winkel vera
-#: scripts/data/ext/uiterlijk.gd:212
+#: scripts/data/ext/uiterlijk.gd:280
 msgid "Vera's Kleerkast"
 msgstr "Vera's Wardrobe"
 
@@ -4890,7 +5011,9 @@ msgid "Arenaridder"
 msgstr "Arena Knight"
 
 #. Naam van arena-rang gold
-#: scripts/data/arena.gd:36
+#. Oogkleur (tabblad Uiterlijk)
+#. Verfkleur voor kleding (tabblad Uiterlijk)
+#: scripts/data/arena.gd:36 scripts/data/ext/uiterlijk.gd:172 scripts/data/ext/uiterlijk.gd:200
 msgid "Goud"
 msgstr "Gold"
 
@@ -5036,7 +5159,7 @@ msgstr "resource"
 
 #. Uitrustingsslot head: name
 #. Kledingvak hat: name
-#: scripts/data/ext/uiterlijk.gd:129 scripts/data/ext/uitrusting.gd:6
+#: scripts/data/ext/uiterlijk.gd:177 scripts/data/ext/uitrusting.gd:6
 msgid "Hoofd"
 msgstr "Head"
 
@@ -5437,471 +5560,690 @@ msgid "Dauwklauwen"
 msgstr "Dewclaws"
 
 #. Geslacht m (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:20
+#: scripts/data/ext/uiterlijk.gd:22
 msgid "Man"
 msgstr "Man"
 
 #. Geslacht v (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:21
+#: scripts/data/ext/uiterlijk.gd:23
 msgid "Vrouw"
 msgstr "Woman"
 
 #. Haarstijl m_kaal voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_kaal voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:25 scripts/data/ext/uiterlijk.gd:87
+#: scripts/data/ext/uiterlijk.gd:27 scripts/data/ext/uiterlijk.gd:104
 msgid "Kaal"
 msgstr "Bald"
 
 #. Haarstijl m_buzz voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:26
+#: scripts/data/ext/uiterlijk.gd:28
 msgid "Buzz cut"
 msgstr "Buzz cut"
 
 #. Haarstijl m_kort voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_kort voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:27 scripts/data/ext/uiterlijk.gd:82
+#: scripts/data/ext/uiterlijk.gd:29 scripts/data/ext/uiterlijk.gd:99
 msgid "Kort"
 msgstr "Short"
 
 #. Haarstijl m_kort_kuif voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:28
+#: scripts/data/ext/uiterlijk.gd:30
 msgid "Kort met kuif"
 msgstr "Short with a quiff"
 
 #. Haarstijl m_kuif voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:29
+#: scripts/data/ext/uiterlijk.gd:31
 msgid "Hoge kuif"
 msgstr "High quiff"
 
 #. Haarstijl m_mohawk voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_mohawk voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:30 scripts/data/ext/uiterlijk.gd:84
+#: scripts/data/ext/uiterlijk.gd:32 scripts/data/ext/uiterlijk.gd:101
 msgid "Mohawk"
 msgstr "Mohawk"
 
 #. Haarstijl m_mohawk_lang voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:31
+#: scripts/data/ext/uiterlijk.gd:33
 msgid "Lange mohawk"
 msgstr "Long mohawk"
 
 #. Haarstijl m_scheiding voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:32
+#: scripts/data/ext/uiterlijk.gd:34
 msgid "Scheiding"
 msgstr "Side part"
 
 #. Haarstijl m_scheiding_lang voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:33
+#: scripts/data/ext/uiterlijk.gd:35
 msgid "Scheiding met lengte"
 msgstr "Side part with length"
 
 #. Haarstijl m_krullen voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_krullen voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:34 scripts/data/ext/uiterlijk.gd:70
+#: scripts/data/ext/uiterlijk.gd:36 scripts/data/ext/uiterlijk.gd:87
 msgid "Krullen"
 msgstr "Curls"
 
 #. Haarstijl m_krullen_lang voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_krullen_lang voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:35 scripts/data/ext/uiterlijk.gd:71
+#: scripts/data/ext/uiterlijk.gd:37 scripts/data/ext/uiterlijk.gd:88
 msgid "Lange krullen"
 msgstr "Long curls"
 
 #. Haarstijl m_bos voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:36
+#: scripts/data/ext/uiterlijk.gd:38
 msgid "Wilderbos"
 msgstr "Wild mane"
 
 #. Haarstijl m_staart voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_staart voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:37 scripts/data/ext/uiterlijk.gd:64
+#: scripts/data/ext/uiterlijk.gd:39 scripts/data/ext/uiterlijk.gd:81
 msgid "Staart"
 msgstr "Ponytail"
 
 #. Haarstijl m_staart_lang voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:38
+#: scripts/data/ext/uiterlijk.gd:40
 msgid "Lange staart"
 msgstr "Long ponytail"
 
 #. Haarstijl m_vlecht voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_vlecht voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:39 scripts/data/ext/uiterlijk.gd:66
+#: scripts/data/ext/uiterlijk.gd:41 scripts/data/ext/uiterlijk.gd:83
 msgid "Vlecht"
 msgstr "Braid"
 
 #. Haarstijl m_knot voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:40
+#: scripts/data/ext/uiterlijk.gd:42
 msgid "Manenknot"
 msgstr "Man bun"
 
 #. Haarstijl m_lang voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:41
+#: scripts/data/ext/uiterlijk.gd:43
 msgid "Lang haar"
 msgstr "Long hair"
 
 #. Haarstijl m_lang_vol voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:42
+#: scripts/data/ext/uiterlijk.gd:44
 msgid "Vol lang haar"
 msgstr "Full long hair"
 
 #. Haarstijl m_pony voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:43
+#: scripts/data/ext/uiterlijk.gd:45
 msgid "Pony"
 msgstr "Bangs"
 
 #. Haarstijl m_pony_lang voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:44
+#: scripts/data/ext/uiterlijk.gd:46
 msgid "Pony met lengte"
 msgstr "Bangs with length"
 
 #. Haarstijl m_zijpony voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_zijpony voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:45 scripts/data/ext/uiterlijk.gd:75
+#: scripts/data/ext/uiterlijk.gd:47 scripts/data/ext/uiterlijk.gd:92
 msgid "Zijpony"
 msgstr "Side fringe"
 
 #. Haarstijl m_gordijn voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_gordijn voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:46 scripts/data/ext/uiterlijk.gd:73
+#: scripts/data/ext/uiterlijk.gd:48 scripts/data/ext/uiterlijk.gd:90
 msgid "Gordijntjes"
 msgstr "Curtains"
 
 #. Haarstijl m_krul_kuif voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:47
+#: scripts/data/ext/uiterlijk.gd:49
 msgid "Krullende kuif"
 msgstr "Curly quiff"
 
 #. Haarstijl m_halflang voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_halflang voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:48 scripts/data/ext/uiterlijk.gd:76
+#: scripts/data/ext/uiterlijk.gd:50 scripts/data/ext/uiterlijk.gd:93
 msgid "Halflang"
 msgstr "Medium length"
 
 #. Haarstijl m_halflang_vol voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_halflang_vol voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:49 scripts/data/ext/uiterlijk.gd:77
+#: scripts/data/ext/uiterlijk.gd:51 scripts/data/ext/uiterlijk.gd:94
 msgid "Vol halflang"
 msgstr "Full medium length"
 
 #. Haarstijl m_knot_kort voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:50
+#: scripts/data/ext/uiterlijk.gd:52
 msgid "Knotje"
 msgstr "Small bun"
 
 #. Haarstijl m_vlecht_kort voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:51
+#: scripts/data/ext/uiterlijk.gd:53
 msgid "Korte vlecht"
 msgstr "Short braid"
 
 #. Haarstijl m_golvend voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_golvend voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:52 scripts/data/ext/uiterlijk.gd:72
+#: scripts/data/ext/uiterlijk.gd:54 scripts/data/ext/uiterlijk.gd:89
 msgid "Golvend"
 msgstr "Wavy"
 
 #. Haarstijl m_dreads voor mannen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:53
+#: scripts/data/ext/uiterlijk.gd:55
 msgid "Dreads"
 msgstr "Dreads"
 
 #. Haarstijl m_emopony voor mannen (tabblad Uiterlijk)
 #. Haarstijl v_emopony voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:54 scripts/data/ext/uiterlijk.gd:86
+#: scripts/data/ext/uiterlijk.gd:56 scripts/data/ext/uiterlijk.gd:103
 msgid "Emopony"
 msgstr "Emo fringe"
 
-#. Haarstijl v_bob voor vrouwen (tabblad Uiterlijk)
+#. Haarstijl m_stekels voor mannen (tabblad Uiterlijk)
+#. Haarstijl v_stekels voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:57 scripts/data/ext/uiterlijk.gd:105
+msgid "Stekels"
+msgstr "Spikes"
+
+#. Haarstijl m_stekels_lang voor mannen (tabblad Uiterlijk)
 #: scripts/data/ext/uiterlijk.gd:58
+msgid "Lange stekels"
+msgstr "Long spikes"
+
+#. Haarstijl m_zijstaart voor mannen (tabblad Uiterlijk)
+#. Haarstijl v_zijstaart voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:59 scripts/data/ext/uiterlijk.gd:106
+msgid "Zijstaart"
+msgstr "Side ponytail"
+
+#. Haarstijl m_zijstaart_lang voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:60
+msgid "Lange zijstaart"
+msgstr "Long side ponytail"
+
+#. Haarstijl m_stekelmohawk voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:61
+msgid "Stekelmohawk"
+msgstr "Spiky mohawk"
+
+#. Haarstijl m_waterval voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:62
+msgid "Waterval"
+msgstr "Waterfall"
+
+#. Haarstijl m_pagenkop voor mannen (tabblad Uiterlijk)
+#. Haarstijl v_pagenkop voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:63 scripts/data/ext/uiterlijk.gd:111
+msgid "Pagenkop"
+msgstr "Pageboy"
+
+#. Haarstijl m_wetenschapper voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:64
+msgid "Wetenschapper"
+msgstr "Scientist"
+
+#. Haarstijl m_krulbob voor mannen (tabblad Uiterlijk)
+#. Haarstijl v_krulbob voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:65 scripts/data/ext/uiterlijk.gd:110
+msgid "Krulbob"
+msgstr "Curly bob"
+
+#. Haarstijl m_vlechtkroon voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:66
+msgid "Vlechtkroon"
+msgstr "Braid crown"
+
+#. Haarstijl m_opgestoken voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:67
+msgid "Opgestoken"
+msgstr "Swept up"
+
+#. Haarstijl m_surfer voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:68
+msgid "Surfer"
+msgstr "Surfer"
+
+#. Haarstijl m_krulstaart voor mannen (tabblad Uiterlijk)
+#. Haarstijl v_krulstaart voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:69 scripts/data/ext/uiterlijk.gd:102
+msgid "Krulstaart"
+msgstr "Curly ponytail"
+
+#. Haarstijl m_warrig voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:70
+msgid "Warrige bos"
+msgstr "Shaggy mop"
+
+#. Haarstijl m_samurai voor mannen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:71
+msgid "Samoeraiknot"
+msgstr "Samurai knot"
+
+#. Haarstijl v_bob voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:75
 msgid "Bob"
 msgstr "Bob"
 
 #. Haarstijl v_bob_krul voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:59
+#: scripts/data/ext/uiterlijk.gd:76
 msgid "Krullende bob"
 msgstr "Curly bob"
 
 #. Haarstijl v_pixie voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:60
+#: scripts/data/ext/uiterlijk.gd:77
 msgid "Pixie"
 msgstr "Pixie"
 
 #. Haarstijl v_pixie_kuif voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:61
+#: scripts/data/ext/uiterlijk.gd:78
 msgid "Pixie met kuif"
 msgstr "Pixie with a quiff"
 
 #. Haarstijl v_lang voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:62
+#: scripts/data/ext/uiterlijk.gd:79
 msgid "Lang"
 msgstr "Long"
 
 #. Haarstijl v_lang_pony voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:63
+#: scripts/data/ext/uiterlijk.gd:80
 msgid "Lang met pony"
 msgstr "Long with bangs"
 
 #. Haarstijl v_staart_vol voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:65
+#: scripts/data/ext/uiterlijk.gd:82
 msgid "Volle staart"
 msgstr "Full ponytail"
 
 #. Haarstijl v_vlechtjes voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:67
+#: scripts/data/ext/uiterlijk.gd:84
 msgid "Dubbele vlecht"
 msgstr "Double braid"
 
 #. Haarstijl v_knot voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:68
+#: scripts/data/ext/uiterlijk.gd:85
 msgid "Knot"
 msgstr "Bun"
 
 #. Haarstijl v_knot_lang voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:69
+#: scripts/data/ext/uiterlijk.gd:86
 msgid "Knot met lengte"
 msgstr "Bun with length"
 
 #. Haarstijl v_gordijn_lang voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:74
+#: scripts/data/ext/uiterlijk.gd:91
 msgid "Lange gordijntjes"
 msgstr "Long curtains"
 
 #. Haarstijl v_bob_lang voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:78
+#: scripts/data/ext/uiterlijk.gd:95
 msgid "Lange bob"
 msgstr "Long bob"
 
 #. Haarstijl v_afro voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:79
+#: scripts/data/ext/uiterlijk.gd:96
 msgid "Afro"
 msgstr "Afro"
 
 #. Haarstijl v_knotjes voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:80
+#: scripts/data/ext/uiterlijk.gd:97
 msgid "Dubbele knotjes"
 msgstr "Double buns"
 
 #. Haarstijl v_kroonvlecht voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:81
+#: scripts/data/ext/uiterlijk.gd:98
 msgid "Kroonvlecht"
 msgstr "Crown braid"
 
 #. Haarstijl v_kort_pony voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:83
+#: scripts/data/ext/uiterlijk.gd:100
 msgid "Kort met pony"
 msgstr "Short with bangs"
 
-#. Haarstijl v_krulstaart voor vrouwen (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:85
-msgid "Krulstaart"
-msgstr "Curly ponytail"
+#. Haarstijl v_zijvlecht voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:107
+msgid "Zijvlecht"
+msgstr "Side braid"
+
+#. Haarstijl v_waterval voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:108
+msgid "Watervalvlecht"
+msgstr "Waterfall braid"
+
+#. Haarstijl v_hoge_staart voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:109
+msgid "Hoge staart"
+msgstr "High ponytail"
+
+#. Haarstijl v_laagjes voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:112
+msgid "Laagjes"
+msgstr "Layers"
+
+#. Haarstijl v_vlechtband voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:113
+msgid "Vlechtenband"
+msgstr "Braided band"
+
+#. Haarstijl v_opgestoken voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:114
+msgid "Opgestoken knot"
+msgstr "Updo knot"
+
+#. Haarstijl v_wilde_krullen voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:115
+msgid "Wilde krullen"
+msgstr "Wild curls"
+
+#. Haarstijl v_halfop voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:116
+msgid "Half opgestoken"
+msgstr "Half-up"
+
+#. Haarstijl v_stekelpixie voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:117
+msgid "Stekelpixie"
+msgstr "Spiky pixie"
+
+#. Haarstijl v_dubbelstaart voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:118
+msgid "Dubbele staart"
+msgstr "Twin tails"
+
+#. Haarstijl v_kort_golvend voor vrouwen (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:119
+msgid "Kort golvend"
+msgstr "Short waves"
 
 #. Haarkleur (tabblad Uiterlijk)
 #. Oogkleur (tabblad Uiterlijk)
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:91 scripts/data/ext/uiterlijk.gd:125 scripts/data/ext/uiterlijk.gd:149
+#: scripts/data/ext/uiterlijk.gd:123 scripts/data/ext/uiterlijk.gd:169 scripts/data/ext/uiterlijk.gd:197
 msgid "Zwart"
 msgstr "Black"
 
 #. Haarkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:92
+#: scripts/data/ext/uiterlijk.gd:124
 msgid "Donkerbruin"
 msgstr "Dark brown"
 
 #. Haarkleur (tabblad Uiterlijk)
 #. Oogkleur (tabblad Uiterlijk)
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:93 scripts/data/ext/uiterlijk.gd:118 scripts/data/ext/uiterlijk.gd:147
+#: scripts/data/ext/uiterlijk.gd:125 scripts/data/ext/uiterlijk.gd:162 scripts/data/ext/uiterlijk.gd:195
 msgid "Bruin"
 msgstr "Brown"
 
 #. Haarkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:94
+#. Verfkleur voor kleding (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:126 scripts/data/ext/uiterlijk.gd:205
 msgid "Kastanje"
 msgstr "Chestnut"
 
 #. Haarkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:95
+#: scripts/data/ext/uiterlijk.gd:127
 msgid "Koper"
 msgstr "Copper"
 
 #. Haarkleur (tabblad Uiterlijk)
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:96 scripts/data/ext/uiterlijk.gd:138
+#: scripts/data/ext/uiterlijk.gd:128 scripts/data/ext/uiterlijk.gd:186
 msgid "Rood"
 msgstr "Red"
 
 #. Haarkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:97
+#: scripts/data/ext/uiterlijk.gd:129
 msgid "Blond"
 msgstr "Blond"
 
 #. Haarkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:98
+#: scripts/data/ext/uiterlijk.gd:130
 msgid "Goudblond"
 msgstr "Golden blond"
 
 #. Haarkleur (tabblad Uiterlijk)
 #. Oogkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:99 scripts/data/ext/uiterlijk.gd:121
+#: scripts/data/ext/uiterlijk.gd:131 scripts/data/ext/uiterlijk.gd:165
 msgid "Grijs"
 msgstr "Gray"
 
 #. Haarkleur (tabblad Uiterlijk)
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:100 scripts/data/ext/uiterlijk.gd:148
+#: scripts/data/ext/uiterlijk.gd:132 scripts/data/ext/uiterlijk.gd:196
 msgid "Wit"
 msgstr "White"
 
+#. Haarkleur (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:133
+msgid "Zeeblauw"
+msgstr "Sea blue"
+
+#. Haarkleur (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:134
+msgid "Bosgroen"
+msgstr "Forest green"
+
+#. Haarkleur (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:135
+msgid "Flamingo"
+msgstr "Flamingo"
+
+#. Haarkleur (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:136
+msgid "Lavendel"
+msgstr "Lavender"
+
+#. Haarkleur (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:138
+msgid "Asblond"
+msgstr "Ash blond"
+
 #. Oogstijl rond (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:105
+#: scripts/data/ext/uiterlijk.gd:143
 msgid "Rond"
 msgstr "Round"
 
 #. Oogstijl stip (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:106
+#: scripts/data/ext/uiterlijk.gd:144
 msgid "Stip"
 msgstr "Dot"
 
 #. Oogstijl groot (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:107
+#: scripts/data/ext/uiterlijk.gd:145
 msgid "Groot"
 msgstr "Big"
 
 #. Oogstijl wimpers (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:108
+#: scripts/data/ext/uiterlijk.gd:146
 msgid "Wimpers"
 msgstr "Lashes"
 
 #. Oogstijl knipoog (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:109
+#: scripts/data/ext/uiterlijk.gd:147
 msgid "Knipoog"
 msgstr "Wink"
 
 #. Oogstijl slaperig (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:110
+#: scripts/data/ext/uiterlijk.gd:148
 msgid "Slaperig"
 msgstr "Sleepy"
 
 #. Oogstijl boos (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:111
+#: scripts/data/ext/uiterlijk.gd:149
 msgid "Boos"
 msgstr "Angry"
 
 #. Oogstijl sterretjes (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:112
+#: scripts/data/ext/uiterlijk.gd:150
 msgid "Sterretjes"
 msgstr "Starry"
 
 #. Oogstijl vonkel (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:113
+#: scripts/data/ext/uiterlijk.gd:151
 msgid "Vonkel"
 msgstr "Sparkle"
 
 #. Oogstijl vriendelijk (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:114
+#: scripts/data/ext/uiterlijk.gd:152
 msgid "Vriendelijk"
 msgstr "Friendly"
 
+#. Oogstijl dicht (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:153
+msgid "Dicht"
+msgstr "Closed"
+
+#. Oogstijl smal (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:154
+msgid "Smal"
+msgstr "Narrow"
+
+#. Oogstijl ovaal (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:155
+msgid "Ovaal"
+msgstr "Oval"
+
+#. Oogstijl wijs (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:156
+msgid "Wijs"
+msgstr "Wise"
+
+#. Oogstijl straler (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:157
+msgid "Straler"
+msgstr "Sparkler"
+
+#. Oogstijl dromerig (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:158
+msgid "Dromerig"
+msgstr "Dreamy"
+
 #. Oogkleur (tabblad Uiterlijk)
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:119 scripts/data/ext/uiterlijk.gd:143
+#: scripts/data/ext/uiterlijk.gd:163 scripts/data/ext/uiterlijk.gd:191
 msgid "Blauw"
 msgstr "Blue"
 
 #. Oogkleur (tabblad Uiterlijk)
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:120 scripts/data/ext/uiterlijk.gd:141
+#: scripts/data/ext/uiterlijk.gd:164 scripts/data/ext/uiterlijk.gd:189
 msgid "Groen"
 msgstr "Green"
 
 #. Oogkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:122
+#: scripts/data/ext/uiterlijk.gd:166
 msgid "Hazelnoot"
 msgstr "Hazel"
 
 #. Oogkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:123
+#: scripts/data/ext/uiterlijk.gd:167
 msgid "Amber"
 msgstr "Amber"
 
 #. Oogkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:124
+#: scripts/data/ext/uiterlijk.gd:168
 msgid "Violet"
 msgstr "Violet"
 
+#. Oogkleur (tabblad Uiterlijk)
+#. Verfkleur voor kleding (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:170 scripts/data/ext/uiterlijk.gd:198
+msgid "Turkoois"
+msgstr "Turquoise"
+
+#. Oogkleur (tabblad Uiterlijk)
+#. Verfkleur voor kleding (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:171 scripts/data/ext/uiterlijk.gd:199
+msgid "Limoen"
+msgstr "Lime"
+
+#. Oogkleur (tabblad Uiterlijk)
+#. Verfkleur voor kleding (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:173 scripts/data/ext/uiterlijk.gd:201
+msgid "Wijnrood"
+msgstr "Wine red"
+
 #. Kledingvak hat: desc
-#: scripts/data/ext/uiterlijk.gd:129
+#: scripts/data/ext/uiterlijk.gd:177
 msgid "Hoeden en mutsen boven je haar."
 msgstr "Hats and beanies above your hair."
 
 #. Kledingvak back: name
-#: scripts/data/ext/uiterlijk.gd:130
+#: scripts/data/ext/uiterlijk.gd:178
 msgid "Rug"
 msgstr "Back"
 
 #. Kledingvak back: desc
-#: scripts/data/ext/uiterlijk.gd:130
+#: scripts/data/ext/uiterlijk.gd:178
 msgid "Capes en sjals over je schouders."
 msgstr "Capes and shawls over your shoulders."
 
 #. Kledingvak top: name
-#: scripts/data/ext/uiterlijk.gd:131
+#: scripts/data/ext/uiterlijk.gd:179
 msgid "Bovenlijf"
 msgstr "Torso"
 
 #. Kledingvak top: desc
-#: scripts/data/ext/uiterlijk.gd:131
+#: scripts/data/ext/uiterlijk.gd:179
 msgid "Tunieken, blouses en hemden over je harnas."
 msgstr "Tunics, blouses and shirts over your armor."
 
 #. Kledingvak bottom: name
-#: scripts/data/ext/uiterlijk.gd:132
+#: scripts/data/ext/uiterlijk.gd:180
 msgid "Onderlijf"
 msgstr "Legs"
 
 #. Kledingvak bottom: desc
-#: scripts/data/ext/uiterlijk.gd:132
+#: scripts/data/ext/uiterlijk.gd:180
 msgid "Broeken en rokken."
 msgstr "Trousers and skirts."
 
 #. Kledingvak feet: name
-#: scripts/data/ext/uiterlijk.gd:133
+#: scripts/data/ext/uiterlijk.gd:181
 msgid "Voeten"
 msgstr "Feet"
 
 #. Kledingvak feet: desc
-#: scripts/data/ext/uiterlijk.gd:133
+#: scripts/data/ext/uiterlijk.gd:181
 msgid "Schoenen en sloffen."
 msgstr "Shoes and slippers."
 
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:139
+#: scripts/data/ext/uiterlijk.gd:187
 msgid "Oranje"
 msgstr "Orange"
 
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:140
+#: scripts/data/ext/uiterlijk.gd:188
 msgid "Geel"
 msgstr "Yellow"
 
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:142
+#: scripts/data/ext/uiterlijk.gd:190
 msgid "Mosgroen"
 msgstr "Moss green"
 
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:144
+#: scripts/data/ext/uiterlijk.gd:192
 msgid "Marine"
 msgstr "Navy"
 
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:145
+#: scripts/data/ext/uiterlijk.gd:193
 msgid "Paars"
 msgstr "Purple"
 
 #. Verfkleur voor kleding (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:146
+#: scripts/data/ext/uiterlijk.gd:194
 msgid "Roze"
 msgstr "Pink"
+
+#. Verfkleur voor kleding (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:202
+msgid "Hemelblauw"
+msgstr "Sky blue"
+
+#. Verfkleur voor kleding (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:203
+msgid "Zalm"
+msgstr "Salmon"
+
+#. Verfkleur voor kleding (tabblad Uiterlijk)
+#: scripts/data/ext/uiterlijk.gd:204
+msgid "Crème"
+msgstr "Cream"
 
 #. Instelbare bediening: move_up
 #: scripts/core/input_manager.gd:11
@@ -6735,43 +7077,43 @@ msgstr "Achievement unlocked!"
 msgid "Al je prestaties zie je met T, het beestenboek met B."
 msgstr "See all your achievements with T, and the bestiary with B."
 
-#: scripts/ui/appearance_page.gd:152
+#: scripts/ui/appearance_page.gd:155
 msgid "Uiterlijk en kleding"
 msgstr "Appearance and clothing"
 
-#: scripts/ui/appearance_page.gd:153
+#: scripts/ui/appearance_page.gd:156
 msgid "Kleding draag je over je uitrusting; verf kies je per stuk."
 msgstr "Clothing is worn over your equipment; you pick a dye per piece."
 
-#: scripts/ui/appearance_page.gd:181 scripts/ui/appearance_page.gd:206
+#: scripts/ui/appearance_page.gd:184 scripts/ui/appearance_page.gd:209
 msgid "Haarkleur"
 msgstr "Hair color"
 
-#: scripts/ui/appearance_page.gd:185 scripts/ui/appearance_page.gd:214
+#: scripts/ui/appearance_page.gd:188 scripts/ui/appearance_page.gd:217
 msgid "Oogkleur"
 msgstr "Eye color"
 
-#: scripts/ui/appearance_page.gd:198
+#: scripts/ui/appearance_page.gd:201
 msgid "Geslacht"
 msgstr "Gender"
 
-#: scripts/ui/appearance_page.gd:203
+#: scripts/ui/appearance_page.gd:206
 msgid "Haarstijl"
 msgstr "Hairstyle"
 
-#: scripts/ui/appearance_page.gd:211
+#: scripts/ui/appearance_page.gd:214
 msgid "Oogstijl"
 msgstr "Eye style"
 
-#: scripts/ui/appearance_page.gd:222
+#: scripts/ui/appearance_page.gd:225
 msgid "Niets in bezit"
 msgstr "None owned"
 
-#: scripts/ui/appearance_page.gd:222
+#: scripts/ui/appearance_page.gd:225
 msgid "Niets aan"
 msgstr "Nothing worn"
 
-#: scripts/ui/appearance_page.gd:239
+#: scripts/ui/appearance_page.gd:246
 msgid "Verf:"
 msgstr "Dye:"
 
@@ -6956,10 +7298,6 @@ msgstr "Choose equipment"
 #: scripts/ui/equipment_page.gd:194
 msgid "Vijf verwisselbare plekken; zwaard en laarzen werken automatisch."
 msgstr "Five swappable slots; your sword and boots work automatically."
-
-#: scripts/ui/equipment_page.gd:201 scripts/ui/progression_page.gd:126
-msgid "Laarzen"
-msgstr "Boots"
 
 #: scripts/ui/equipment_page.gd:203
 msgid "Leeg"

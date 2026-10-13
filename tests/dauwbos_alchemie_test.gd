@@ -118,7 +118,7 @@ func test_data() -> void:
 	for item: String in DAUW_ITEMS:
 		check(Items.ITEMS.has(item), "voorwerp geregistreerd: " + item)
 	var icons_tex := Art.tex("items_beroepen")
-	check(icons_tex.get_width() == 46 * 16, "items_beroepen.png heeft 46 iconen")
+	check(icons_tex.get_width() == 58 * 16, "items_beroepen.png heeft 58 iconen")
 	for item: String in DAUW_ITEMS:
 		var def: Dictionary = Items.ITEMS[item]
 		check(def.get("sheet") == "items_beroepen" and int(def["icon"]) * 16 < icons_tex.get_width(), "icoon van %s valt in de sheet" % item)
