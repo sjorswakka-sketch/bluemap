@@ -653,9 +653,155 @@ def sandals():
     return outline(im)
 
 
+# --- Kruipmoeras: veenbes, watermunt, wilgentwijg, ijzeroer, moerashuid, drank en pap --------
+
+VEEN = c("c23a52")    # veenbesrood
+VEEN_D = c("8a2438")
+MUNT = c("4fae6a")    # watermuntgroen
+MUNT_D = c("35804c")
+OER = c("8a5a34")     # ijzeroerbruin
+OER_D = c("5e3c22")
+MOERHUID = c("6a7a4a")    # groene moerashuid
+MOERHUID_D = c("4a5632")
+
+
+def veenbes():
+    """Rode veenbessen aan een laag lopend takje."""
+    im = blank()
+    line(im, (3, 12), (12, 7), c("6a8a4a"), 2)
+    polygon(im, [(11, 6), (14, 5), (13, 8), (10, 8)], LEAF)
+    for x, y in [(5, 10), (8, 12), (11, 10), (7, 8)]:
+        ellipse(im, (x - 2, y - 2, x + 2, y + 2), VEEN)
+        put(im, x - 1, y - 1, c("f2a0ae"))
+        put(im, x + 1, y + 1, VEEN_D)
+    return outline(im)
+
+
+def watermunt():
+    """Frisse muntblaadjes met waterdruppels."""
+    im = blank()
+    line(im, (8, 14), (8, 4), MUNT_D, 2)
+    for x, y, s in [(7, 11, -1), (9, 9, 1), (7, 7, -1), (9, 5, 1)]:
+        ellipse(im, (x - 1 if s < 0 else x, y - 2, x + 3 if s < 0 else x + 4, y + 1), MUNT)
+    rect(im, 7, 2, 9, 3, c("c8f2d8"))  # topje
+    put(im, 5, 12, c("a8d8f0"))  # druppels
+    put(im, 11, 13, c("a8d8f0"))
+    return outline(im)
+
+
+def wilgentwijg():
+    """Buigzame wilgentwijg met katjes."""
+    im = blank()
+    line(im, (3, 13), (12, 3), c("9a7a52"), 2)
+    line(im, (7, 9), (12, 9), c("b08a5e"), 2)
+    for x, y in [(6, 8), (9, 5), (11, 8)]:
+        ellipse(im, (x - 1, y - 2, x + 1, y), c("e8ddb0"))  # wilgenkatjes
+    return outline(im)
+
+
+def ijzeroer():
+    """Bruine klomp ijzeroer, vers uit het veen."""
+    im = blank()
+    polygon(im, [(2, 11), (4, 5), (9, 3), (13, 7), (14, 12), (9, 14), (3, 13)], c("6a5a48"))
+    polygon(im, [(4, 5), (9, 3), (10, 8), (3, 10)], c("84725c"))
+    polygon(im, [(6, 6), (9, 5), (10, 8), (7, 10)], OER)
+    rect(im, 10, 10, 12, 12, OER)
+    rect(im, 4, 10, 5, 12, OER_D)
+    put(im, 7, 7, c("d8935a"))  # roestvlek
+    return outline(im)
+
+
+def moerashuid():
+    """Groene huid van moeraswild, taai en waterdicht."""
+    im = blank()
+    polygon(im, [(4, 3), (12, 3), (14, 7), (13, 12), (3, 12), (2, 7)], MOERHUID)
+    polygon(im, [(5, 4), (11, 4), (12, 8), (11, 11), (5, 11), (4, 8)], c("8a9a5e"))
+    for x, y in [(3, 2), (13, 2), (2, 13), (14, 13)]:
+        put(im, x, y, MOERHUID_D)
+    put(im, 8, 7, MOERHUID_D)  # stekel litteken
+    put(im, 9, 7, MOERHUID_D)
+    return outline(im)
+
+
+def moeraselixer():
+    """Kolkend groen elixer van watermunt en veenbes."""
+    im = blank()
+    rect(im, 6, 2, 9, 4, LIGHT)
+    rect(im, 6, 5, 9, 7, c("d2e9ec"))
+    ellipse(im, (3, 6, 12, 14), c("d8ecd0"))
+    ellipse(im, (4, 8, 11, 13), c("5aa84e"))
+    for x, y in [(6, 9), (9, 11), (7, 12)]:
+        put(im, x, y, c("c8f0a8"))  # belletjes
+    put(im, 9, 9, VEEN)  # zwevende veenbes
+    return outline(im)
+
+
+def veenbespap():
+    """Warme pap met veenbessen, rood als de zonsondergang."""
+    im = blank()
+    ellipse(im, (2, 7, 13, 13), c("885032"))
+    ellipse(im, (2, 5, 13, 10), LIGHT)
+    ellipse(im, (3, 6, 12, 9), c("e8d8a8"))  # pap
+    for x, y in [(5, 7), (9, 8), (7, 6)]:
+        ellipse(im, (x - 1, y - 1, x + 1, y + 1), VEEN)
+    put(im, 10, 6, c("f2a0ae"))
+    return outline(im)
+
+
+def veenbes_bush():
+    """Waar je veenbessen plukt: een laag struikje vol rode bessen op het veen."""
+    im = blank()
+    ellipse(im, (2, 12, 13, 15), c("4a3a2c"))  # veenbodem
+    for x, y in [(5, 9), (10, 9), (8, 5)]:
+        ellipse(im, (x - 4, y - 3, x + 4, y + 3), c("4a7a3e"))
+    for x, y in [(4, 8), (8, 5), (11, 9), (7, 11), (10, 6)]:
+        ellipse(im, (x - 1, y - 1, x + 1, y + 1), VEEN)
+    return outline(im)
+
+
+def watermunt_plant():
+    """Waar je watermunt plukt: frisse munt in een plasrand."""
+    im = blank()
+    ellipse(im, (2, 12, 13, 15), c("4a6a52"))  # natte oever
+    line(im, (5, 12), (5, 5), MUNT_D, 2)
+    line(im, (10, 12), (10, 4), MUNT_D, 2)
+    for x, y, s in [(4, 9, -1), (6, 7, 1), (9, 8, -1), (11, 6, 1)]:
+        ellipse(im, (x - 1 if s < 0 else x, y - 1, x + 2 if s < 0 else x + 3, y + 1), MUNT)
+    put(im, 5, 4, c("c8f2d8"))
+    put(im, 10, 3, c("c8f2d8"))
+    put(im, 12, 13, c("a8d8f0"))
+    return outline(im)
+
+
+def wilg_stump():
+    """Waar je wilgentwijgen snijdt: een geknotte wilg met verse uitlopers."""
+    im = blank()
+    polygon(im, [(4, 5), (12, 5), (12, 11), (14, 14), (2, 14), (4, 11)], c("8a7a5e"))
+    ellipse(im, (4, 3, 12, 8), c("b09a72"))
+    ellipse(im, (6, 4, 10, 6), c("6a5a42"))
+    line(im, (4, 3), (2, 1), c("9a7a52"), 2)  # uitlopers
+    line(im, (12, 4), (14, 2), c("9a7a52"), 2)
+    put(im, 2, 0, c("e8ddb0"))  # katjes
+    put(im, 14, 1, c("e8ddb0"))
+    return outline(im)
+
+
+def ijzeroer_rock():
+    """Waar je ijzeroer delft: een bruine kei in de turf, vol roestvlekken."""
+    im = blank()
+    ellipse(im, (2, 12, 13, 15), c("4a3a2c"))  # turfgrond
+    polygon(im, [(2, 11), (4, 5), (9, 3), (13, 7), (14, 12), (9, 14), (3, 13)], c("6a5a48"))
+    polygon(im, [(4, 5), (9, 3), (10, 8), (3, 10)], c("84725c"))
+    rect(im, 6, 6, 8, 8, OER)
+    rect(im, 10, 9, 12, 11, OER)
+    put(im, 7, 7, c("d8935a"))
+    put(im, 11, 10, c("d8935a"))
+    return outline(im)
+
+
 def sheets():
-    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast(), straw_hat(), beret(), beanie(), cape(), scarf(), tunic(), blouse(), shirt(), trousers(), skirt(), shoes(), slippers(), dauwklauw(), mistdrank(), dauwsoep(), headband(), felt_hat(), nightcap(), backpack(), cloak(), sweater(), vest(), dress(), shorts(), overalls(), boots(), sandals()]
-    resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein(), cactusfig_bush(), sandwort_bush(), sandstone_rock(), dauwklauw_bush()]
+    icons = [branch(), rock(), herb(), berry(), log(), rock(COPPER, True), rock(IRON, True), ingot(COPPER), ingot(IRON), tool(STONE), tool(STONE, True), tool(COPPER, True), tool(IRON), tonic(), bowl("berries"), bowl("fish"), mushroom(), bowl("stew"), iceflower(), winterberry(), pinelog(), icecrystal(), frosttonic(), winterbowl(), cactusfig(), sandwort(), sandstone_rock(), sandbalm(), rawmeat(), hide(), roast(), straw_hat(), beret(), beanie(), cape(), scarf(), tunic(), blouse(), shirt(), trousers(), skirt(), shoes(), slippers(), dauwklauw(), mistdrank(), dauwsoep(), headband(), felt_hat(), nightcap(), backpack(), cloak(), sweater(), vest(), dress(), shorts(), overalls(), boots(), sandals(), veenbes(), watermunt(), wilgentwijg(), ijzeroer(), moerashuid(), moeraselixer(), veenbespap()]
+    resources = [branch(), rock(), herb(), bush(), mushroom(), stump(), rock(COPPER, True), rock(IRON, True), iceflower_bush(), frostbush(), pinestump(), icevein(), cactusfig_bush(), sandwort_bush(), sandstone_rock(), dauwklauw_bush(), veenbes_bush(), watermunt_plant(), wilg_stump(), ijzeroer_rock()]
     return {"items_beroepen": strip(icons), "resources_beroepen": strip(resources)}
 
 

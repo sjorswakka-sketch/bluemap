@@ -118,15 +118,16 @@ func test_data() -> void:
 	for item: String in DAUW_ITEMS:
 		check(Items.ITEMS.has(item), "voorwerp geregistreerd: " + item)
 	var icons_tex := Art.tex("items_beroepen")
-	check(icons_tex.get_width() == 58 * 16, "items_beroepen.png heeft 58 iconen")
+	check(icons_tex.get_width() >= 58 * 16, "items_beroepen.png heeft minstens 58 iconen")
 	for item: String in DAUW_ITEMS:
 		var def: Dictionary = Items.ITEMS[item]
 		check(def.get("sheet") == "items_beroepen" and int(def["icon"]) * 16 < icons_tex.get_width(), "icoon van %s valt in de sheet" % item)
 
-	# De grondstof staat als laatste in RESOURCES, passend bij het laatste frame van de sheet.
+	# De grondstof staat op zijn vaste plek in RESOURCES, passend bij zijn frame van de sheet
+	# (nieuwere gebieden voegen achteraan toe, dus de sheet kan meer frames hebben).
 	check(Beroepen.RESOURCES.has("dauwklauw"), "grondstof dauwklauw geregistreerd")
 	check(Beroepen.RESOURCES.keys().find("dauwklauw") == DAUWKLAUW_FRAME, "dauwklauw is frame %d van de grondstofsheet" % DAUWKLAUW_FRAME)
-	check(Art.tex("resources_beroepen").get_width() == (DAUWKLAUW_FRAME + 1) * 16, "resources_beroepen.png heeft %d frames" % (DAUWKLAUW_FRAME + 1))
+	check(Art.tex("resources_beroepen").get_width() >= (DAUWKLAUW_FRAME + 1) * 16, "resources_beroepen.png heeft minstens %d frames" % (DAUWKLAUW_FRAME + 1))
 	var plekken: Array = Beroepen.RESOURCE_PLACEMENTS.get("dauwbos", []).filter(
 		func(p: Array) -> bool: return p[1] == "dauwklauw")
 	check(plekken.size() == 3, "drie dauwklauwplekken in het Dauwbos (%d)" % plekken.size())

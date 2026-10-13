@@ -127,6 +127,15 @@ pixel art, en te delen met vrienden en de community.
       sandalen — elk met eigen pictogram én passende pixels op alle vier de looprichtingen) en 20
       verfkleuren in een overzichtelijke strook van twee rijen. Vera's winkel en haar verhaal
       groeiden mee, en een render-smoke in de test tekent elke stijl en elk stuk een keer echt
+- [x] Het Kruipmoeras: een drassig veenland ten zuiden van het Zilvermeer, met zes eigen tegels
+      (moerasgras, polgras, modder, drijfmest, riet en knotwilg), een groenige waas als vierde
+      klimaat met eigen sfeergeluiden per dagdeel (kabbelend water en kikkerkoortjes), een
+      drijfmestplas met eilandje en loopbruggen, turfvelden en een rietland. Drie personages met
+      eigen opdrachten (Stien de turfsterke, Mees de rietvlechter en Wouda de kruidenheks, die het
+      verhaal van de zonneschijf vertelt), twee nieuwe vreedzame dieren (moerasvors en waterslang)
+      met moerashuid als buit, vier eigen grondstoffen (veenbes, watermunt, wilgentwijg en
+      ijzeroer) en twee nieuwe recepten (moeraselixer en veenbespap). Snel reizen via het eigen
+      altaar, bereikbaar via het zuidelijke veenpad van het Zilvermeer
 
 ## Ideeën voor later
 - Meer zij-opdrachten en personages

@@ -60,6 +60,12 @@ const ITEMS := {
 	"prof_dauwklauw": {"name": "Dauwklauw", "sheet": "items_beroepen", "icon": 43, "type": "material", "sell": 3, "desc": "Een bleke bloem die alleen in de mist van het Dauwbos bloeit. Basis voor het mistedrank."},
 	"prof_mistdrank": {"name": "Mistedrank", "sheet": "items_beroepen", "icon": 44, "type": "use", "stamina": 35, "desc": "Een koel, kolkend elixer van dauwklauwen en honingzwam. Herstelt 35 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
 	"prof_dauwsoep": {"name": "Dauwsoep", "sheet": "items_beroepen", "icon": 45, "type": "use", "heal": 2, "stamina": 10, "desc": "Lichte soep van honingzwammen met dauwklauw. Herstelt 2 hartjes en 10 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
+	"prof_veenbes": {"name": "Veenbes", "sheet": "items_beroepen", "icon": 58, "type": "material", "sell": 3, "desc": "Een rode, zure bes die laag boven het veenwater groeit. Voor pap en elixers."},
+	"prof_watermunt": {"name": "Watermunt", "sheet": "items_beroepen", "icon": 59, "type": "material", "sell": 3, "desc": "Fris kruid uit de plasranden van het Kruipmoeras. Prikt lekker in thee en brouwsels."},
+	"prof_wilgentwijg": {"name": "Wilgentwijg", "sheet": "items_beroepen", "icon": 60, "type": "material", "sell": 2, "desc": "Buigzame twijg van een geknotte wilg. Rietvlechters zweren erbij."},
+	"prof_ijzeroer": {"name": "IJzeroer", "sheet": "items_beroepen", "icon": 61, "type": "material", "sell": 5, "desc": "Bruin erts uit de turfvelden, het bloed van het veen. Alchemisten smeden er rare dingen mee."},
+	"prof_moeraselixer": {"name": "Moeraselixer", "sheet": "items_beroepen", "icon": 63, "type": "use", "stamina": 45, "desc": "Kolkend groen brouwsel van watermunt en veenbes. Herstelt 45 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
+	"prof_veenbespap": {"name": "Veenbespap", "sheet": "items_beroepen", "icon": 64, "type": "use", "heal": 2, "stamina": 5, "desc": "Warme pap met veenbessen, zoals Stien hem maakt. Herstelt 2 hartjes en 5 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
 }
 const RECIPES := {
 	"stone_axe": {"skill": "woodcutting", "level": 1, "xp": 8, "inputs": {"prof_branch": 2, "prof_stone": 2}, "output": "prof_axe"},
@@ -85,6 +91,8 @@ const RECIPES := {
 	"roast_meat": {"skill": "cooking", "level": 2, "xp": 12, "station": "inn", "inputs": {"jacht_vlees": 2, "prof_zandkruid": 1}, "output": "jacht_braadstuk"},
 	"mist_drank": {"skill": "alchemy", "level": 2, "xp": 12, "station": "library", "inputs": {"prof_dauwklauw": 2, "prof_mushroom": 1}, "output": "prof_mistdrank"},
 	"dauw_soep": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_mushroom": 2, "prof_dauwklauw": 1}, "output": "prof_dauwsoep"},
+	"moeras_elixer": {"skill": "alchemy", "level": 2, "xp": 12, "station": "library", "inputs": {"prof_watermunt": 2, "prof_veenbes": 1}, "output": "prof_moeraselixer"},
+	"veenbes_pap": {"skill": "cooking", "level": 2, "xp": 10, "station": "inn", "inputs": {"prof_veenbes": 3, "prof_watermunt": 1}, "output": "prof_veenbespap"},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},
@@ -103,6 +111,10 @@ const RESOURCES := {
 	"sandwort": {"name": "Zandkruid", "skill": "foraging", "item": "prof_zandkruid", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("b3a04f")},
 	"sandstone_rock": {"name": "Zandsteenklip", "skill": "mining", "item": "prof_zandsteen", "amount": 2, "xp": 10, "cooldown": 180.0, "tools": ["prof_copper_pickaxe", "prof_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("c08a54")},
 	"dauwklauw": {"name": "Dauwklauwen", "skill": "foraging", "item": "prof_dauwklauw", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("a8d8e8")},
+	"veenbessen": {"name": "Veenbessenstruik", "skill": "foraging", "item": "prof_veenbes", "amount": 3, "xp": 8, "cooldown": 150.0, "color": Color("c23a52")},
+	"watermunt": {"name": "Watermunt", "skill": "foraging", "item": "prof_watermunt", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("4fae6a")},
+	"wilgstronk": {"name": "Geknotte wilg", "skill": "woodcutting", "item": "prof_wilgentwijg", "amount": 2, "xp": 8, "cooldown": 150.0, "tools": ["prof_iron_axe", "prof_axe"], "duration": 1.1, "animation": "woodcutting", "color": Color("9a7a52")},
+	"ijzeroer_ader": {"name": "IJzeroerklomp", "skill": "mining", "item": "prof_ijzeroer", "amount": 2, "xp": 12, "cooldown": 180.0, "level": 2, "tools": ["prof_copper_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("8a5a34")},
 }
 # Explicit IDs keep cooldowns stable when maps or the original object lists change.
 # Nodes are small, non-blocking props on walkable tiles away from doors and quest items.
@@ -114,6 +126,7 @@ const RESOURCE_PLACEMENTS := {
 	"ijsdal": [["ijsbloem_west", "winterherbs", 5, 14], ["ijsbloem_meer", "winterherbs", 16, 25], ["ijsbloem_noord", "winterherbs", 30, 5], ["winterbes_west", "frostberries", 4, 19], ["winterbes_oost", "frostberries", 42, 6], ["den_west", "pine_stump", 7, 16], ["den_oost", "pine_stump", 33, 20], ["ijskristal_mijn", "ice_vein", 40, 24], ["ijskristal_diep", "ice_vein", 44, 28], ["vuursteen_mijn", "stones", 38, 26], ["takken_plein", "branches", 28, 19]],
 	"dorstvallei": [["vijgen_west", "cactusfigs", 6, 7], ["vijgen_oost", "cactusfigs", 41, 8], ["vijgen_zuidoost", "cactusfigs", 38, 12], ["kruid_noord", "sandwort", 11, 8], ["kruid_midden", "sandwort", 20, 12], ["kruid_oost", "sandwort", 37, 22], ["zandsteen_west", "sandstone_rock", 7, 27], ["zandsteen_noord", "sandstone_rock", 25, 4], ["zandsteen_zuid", "sandstone_rock", 13, 30], ["vuursteen_zuid", "stones", 21, 26], ["kruiden_oase", "herbs", 12, 13]],
 	"dauwbos": [["padden_kring", "mushrooms", 20, 9], ["padden_zuid", "mushrooms", 27, 27], ["kruiden_plein", "herbs", 20, 20], ["kruiden_oost", "herbs", 36, 22], ["bessen_heg", "berries", 16, 16], ["bessen_noord", "berries", 30, 6], ["takken_west", "branches", 8, 24], ["stronk_oud", "stump", 34, 10], ["vuursteen_vijver", "stones", 38, 29], ["klauw_west", "dauwklauw", 7, 16], ["klauw_vijver", "dauwklauw", 30, 24], ["klauw_zuid", "dauwklauw", 14, 22]],
+	"kruipmoeras": [["veenbes_west", "veenbessen", 17, 13], ["veenbes_zuid", "veenbessen", 33, 18], ["veenbes_oost", "veenbessen", 30, 21], ["munt_noord", "watermunt", 25, 6], ["munt_pad", "watermunt", 21, 24], ["munt_zuid", "watermunt", 13, 21], ["wilg_west", "wilgstronk", 5, 10], ["wilg_oost", "wilgstronk", 40, 20], ["oer_west", "ijzeroer_ader", 7, 27], ["oer_oost", "ijzeroer_ader", 12, 24], ["takken_ingang", "branches", 21, 5], ["vuursteen_turf", "stones", 9, 23]],
 }
 
 
