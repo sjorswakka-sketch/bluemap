@@ -227,7 +227,7 @@ static func collect_data(c: Collector) -> void:
 	# Receptnamen komen nu van hun uitvoervoorwerp. Neem eventuele eigen
 	# beschrijvingen ook mee als een uitbreiding ze later toevoegt.
 	for recipe_id: String in Beroepen.RECIPES:
-		for field: String in ["name", "desc", "hint"]:
+		for field: String in ["name", "desc", "hint", "unlock_hint"]:
 			c.add(Beroepen.RECIPES[recipe_id].get(field, ""), "Recept %s: %s" % [recipe_id, field])
 	# Uiterlijk: geslachten, haarstijlen, ogen, kleuren en kledingvakken zijn data.
 	var uiterlijk: GDScript = load("res://scripts/data/ext/uiterlijk.gd")

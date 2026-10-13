@@ -243,6 +243,7 @@ const BASE_TALKS := {
 			{"text": "Ik heb verse vis voor je! ({visgeld} munten)", "if": [["meer_vis"]], "next": "meer_mila_vis"}, # Zilvermeer (ext/meer.gd)
 			{"text": "Heb je werk voor me?", "if": [["quest", "drank", "none"]], "next": "mila_quest"},
 			{"text": "Mag ik hier slapen?", "next": "wereld_bed_info"},
+			{"text": "Vertel over de dorpstafel.", "next": "ls_invite"},
 			{"text": "Nee, bedankt."},
 		],
 	},

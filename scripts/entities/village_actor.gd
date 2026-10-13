@@ -45,6 +45,8 @@ func interact() -> void:
 			GameState.say(actor_name(),[tr("Daar is het water weer! Bo hoeft zijn kruiken niet meer naar het meer te dragen. Bedankt — ik kan mijn bloemen weer verzorgen.")])
 		else:
 			GameState.say(actor_name(),[tr("Een beetje water en geduld. Meer hebben deze bloemen niet nodig.")])
+	elif GameState.flag("ls_served"):
+		GameState.say(actor_name(),[tr("Mila houdt de tafel gedekt. Ik neem voortaan wat extra brood mee voor iedereen die aanschuift.")])
 	else:
 		GameState.say(actor_name(),[tr("Mijn brood blijft nu droog en de kruiken vul ik hier. Mooi werk aan de fontein!") if Opening.flowing() else tr("Brood voor de herberg, lege kruiken mee terug. Hopelijk krijgt Nelle de fontein snel aan de praat.")])
 	GameState.save_requested.emit()

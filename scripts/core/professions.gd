@@ -6,7 +6,7 @@ extends RefCounted
 const Data := preload("res://scripts/data/ext/beroepen.gd")
 const MAX_LEVEL := 10
 const MAX_XP := 1350 # 30 * (10 - 1) * 10 / 2
-const CONSUMABLES := ["potion", "prof_berry_meal", "prof_stew", "prof_fish_meal", "prof_tonic"]
+const CONSUMABLES := ["potion", "prof_berry_meal", "prof_stew", "prof_fish_meal", "prof_tonic", "ls_chowder", "ls_broth"]
 static var _busy := false
 
 
@@ -94,6 +94,7 @@ static func craft_reason(recipe_id: String) -> String:
 	var gs := _ensure()
 	var recipe: Dictionary = Data.RECIPES[recipe_id]
 	if recipe.has("unlock") and not gs.flag(recipe["unlock"]):
+		if recipe.has("unlock_hint"): return TranslationServer.translate(recipe["unlock_hint"])
 		return TranslationServer.translate("Nog vergrendeld: herstel de prismabank of Mees’ oversteek.")
 	var skill: String = recipe["skill"]
 	if level(skill) < int(recipe["level"]):
@@ -208,10 +209,10 @@ static func use_reason(item_id: String) -> String:
 	if not item_id in CONSUMABLES or gs.count(item_id) <= 0:
 		return TranslationServer.translate(Data.TEXT["missing_item"])
 	var info := _item_info(item_id)
-	if info.has("heal") and gs.hp >= gs.max_hp():
-		return TranslationServer.translate(Data.TEXT["health_full"])
-	if info.has("stamina") and gs.movement.stamina >= gs.movement.capacity():
-		return TranslationServer.translate(Data.TEXT["stamina_full"])
+	var heals: bool=info.has("heal") and gs.hp < gs.max_hp()
+	var restores: bool=info.has("stamina") and gs.movement.stamina < gs.movement.capacity()
+	if not heals and not restores:
+		return TranslationServer.translate(Data.TEXT["health_full"] if info.has("heal") else Data.TEXT["stamina_full"])
 	return ""
 
 

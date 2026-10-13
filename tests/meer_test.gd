@@ -843,7 +843,7 @@ func test_quest_karper() -> void:
 	await talk_npc("meer_joris", [0])
 	check(gs.coins == 49, "met de Visserspet krijg je 9 munten voor een baars")
 
-	check(Dialogue.TALKS["meer_joris_menu"]["choices"].filter(func(c: Dictionary) -> bool: return gs.check_all(c.get("if", []))).size() == 2, "Joris' menu na de opdracht: tips en weggaan")
+	check(Dialogue.TALKS["meer_joris_menu"]["choices"].filter(func(c: Dictionary) -> bool: return gs.check_all(c.get("if", []))).size() == 3, "Joris' menu na de opdracht: tips, dorpstafel en weggaan")
 	gs.set_flag("game_completed")
 	await talk_npc("meer_joris", [1]) # 'Hoe gaat het nu de Slijmkoning weg is?', daarna weggaan
 	check(not world.dialogue.active and not paused, "na het einde van het verhaal heeft Joris ook een praatje, en het gesprek sluit netjes")
@@ -1027,7 +1027,7 @@ func test_menu_and_save() -> void:
 		var labels := {}
 		for mark: Dictionary in world.menu_ui.extension_marks(world.map_data):
 			labels[mark["label"]] = int(labels.get(mark["label"], 0)) + 1
-		var want: Dictionary = {"lake": {"visplek": 5, "diepe visplek": 1, "grondstof": 4}, "fisher_hut": {}, "library": {"lessenaar": 6}}[map_id]
+		var want: Dictionary = {"lake": {"visplek": 5, "diepe visplek": 1, "grondstof": 4, "Dorpsmaaltijd": 3}, "fisher_hut": {}, "library": {"lessenaar": 6}}[map_id]
 		check(labels == want, "de bijzondere plekken op het kaartje: %s" % [labels])
 		press("pause")
 		await frames(3)

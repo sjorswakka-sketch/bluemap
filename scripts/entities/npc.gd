@@ -84,3 +84,7 @@ func _draw() -> void:
 		DrawUtil.name_tag(self, Vector2(0, -24.0 - (2.0 - scale) * -4.0), tr(data["name"]))
 		DrawUtil.prompt(self, Vector2(0, -38.0), t)
 	preload("res://scripts/entities/route_npc.gd").draw(self)
+	if npc_id=="mila" and not GameState.dialogue_open:
+		# A ladle and mixing bowl make her work readable behind the existing counter.
+		draw_circle(Vector2(12,10),6,Color("596e79"))
+		draw_line(Vector2(7,2),Vector2(12+sin(t*2)*3,9),Color("dcc092"),2)

@@ -1,7 +1,25 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.10.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.11.0-preview.**
 Deze branch bevat de gezamenlijke game en bouwt bij elke update een Windows-download via Actions.
+
+Nieuw in 0.11: **Een plek aan tafel**. Lees het bord bij het Zilvermeer of praat met Mila.
+Leen Joris’ hengel en haal de losgeraakte vismand links van de middelste steiger binnen.
+Bij het nettenrek kun je optioneel een net herstellen: boven, onder, boven. Dat levert
+reservevis en zilverkruid op. Joris heeft overdag een echte werkroute en blijft ook
+bij zijn avondplek aanspreekbaar; zijn bestaande visquests zijn behouden.
+
+Het fornuis rechts in de herberg opent **Koken met Mila**. Kies Zilvermeerstoof
+(3 hartjes + 20 stamina) of Oeverbouillon (1 hartje + 60 stamina), en snijd, roer en
+schep op. Je eerste mand levert twee porties op. Annuleren kost geen ingrediënten.
+Deel één portie aan de grote tafel in de nieuwe eetkamer; Joris, Bo en Nelle schuiven aan
+zonder dat je op een tijdstip hoeft te wachten. Ze reageren op de fontein, Muis en Wilfred.
+De gedekte tafel en beide recepten blijven beschikbaar. Later kook je met baars en kruiden
+of bessen. Opgegeten porties blokkeren de quest niet: je kunt opnieuw koken.
+
+De oude kisten, bedden, deur en opslagcodes blijven behouden. Nieuwe meubels hebben
+voetbotsing en oude saveposities worden waar nodig vrijgezet. Nieuwe beelden en geluiden
+komen uit `tools/art_x_supper.py`. Het grotere fasenplan staat in [DEVELOPMENT_PHASES.md](DEVELOPMENT_PHASES.md).
 
 Nieuw in 0.10: **Een eerste reis met een eigen ritme**. In het Fluisterbos wijzen pootafdrukken
 naar Muis. Rennen, rollen en aanvallen schrikken haar af; praat met haar en blijf even rustig

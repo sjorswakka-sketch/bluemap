@@ -148,6 +148,8 @@ const RECIPES := {
 	},
 	"output": "gear_scout_coat"
 },
+	"ls_chowder":{"skill":"cooking","level":1,"xp":12,"station":"inn","unlock":"ls_served","unlock_hint":"Deel eerst een maaltijd aan Mila’s dorpstafel.","inputs":{"meer_baars":2,"prof_herb":1},"output":"ls_chowder"},
+	"ls_broth":{"skill":"cooking","level":1,"xp":12,"station":"inn","unlock":"ls_served","unlock_hint":"Deel eerst een maaltijd aan Mila’s dorpstafel.","inputs":{"meer_baars":1,"prof_berry":2},"output":"ls_broth"},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},

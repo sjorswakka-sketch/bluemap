@@ -183,6 +183,7 @@ const TALKS := {
 			{"text": "Hoe is het met de Gouden Karper?", "if": [["quest", "meer_karper", "active"]], "next": "meer_joris_karper_voortgang"},
 			{"text": "Heb je tips over vissen?", "next": "meer_joris_tips"},
 			{"text": "Hoe gaat het nu de Slijmkoning weg is?", "if": [["flag", "game_completed"]], "next": "meer_joris_na"},
+			{"text": "Waar is de mand voor Mila?", "next": "ls_invite"},
 			{"text": "Tot ziens."},
 		],
 	},

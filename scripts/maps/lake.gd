@@ -77,5 +77,8 @@ const DATA := {
 		{"type": "enemy", "pos": [40, 23], "kind": "slime"},
 		{"type": "enemy", "pos": [38, 27], "kind": "slime"},
 		{"type": "enemy", "pos": [31, 29], "kind": "slime"},
+		{"type":"supper_object","kind":"notice","pos":[18,9]},
+		{"type":"supper_object","kind":"net","pos":[18,12]},
+		{"type":"supper_object","kind":"basket","pos":[20,14]},
 	],
 }

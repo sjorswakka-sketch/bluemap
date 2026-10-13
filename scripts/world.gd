@@ -199,6 +199,10 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 		var opening: Node2D = load("res://scripts/entities/village_opening.gd").new()
 		opening.world = self
 		ground.add_child(opening)
+	if map_id in ["lake","inn"]:
+		var supper: Node2D=load("res://scripts/entities/lake_supper.gd").new()
+		supper.world=self
+		ground.add_child(supper)
 	player.camera.reset_smoothing()
 
 	Sound.play_music(map_data.get("music", "forest"))
@@ -362,7 +366,7 @@ func _spawn_objects() -> void:
 		var key := "%s:%s:%d" % [obj["type"], GameState.map_id, i]
 		match obj["type"]:
 			"npc":
-				var npc: StaticBody2D = NpcScript.new()
+				var npc: Node2D = load("res://scripts/entities/supper_actor.gd").new() if obj["id"]=="meer_joris" and GameState.map_id=="lake" else NpcScript.new()
 				npc.setup(obj["id"])
 				npc.world = self
 				npc.exists_if = obj.get("exists_if", [])
