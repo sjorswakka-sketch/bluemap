@@ -1,6 +1,17 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.17.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.18.0-preview.**
+
+Nieuw in 0.18: **Meewerken op bestaande werkplekken**. Stel met Greta haar
+werkbankklem af, of sorteer en meng kruiden met Lena. De eerste reparatie
+blijft zichtbaar en geeft één keer Smeden-XP en het slagbandenpatroon.
+Lena's echte fles gebruikt de gewone receptkosten en Alchemie-XP; haar eerste
+bereiding leert het richtlenspatroon. Vrij oefenen kost niets en geeft geen
+items of XP. Annuleren vóór bottelen behoudt je ingrediënten. Beide opties
+staan in de bestaande gesprekken; ook Greta's latere begroetingen bieden ze.
+Eigen art, animaties en geluid, passende focus en schalende werkpanelen.
+Meldingen wachten tijdens gesprekken en werk. De rustige buitenroutes en hun
+inhoud zijn behouden. Details: [WORK_TOGETHER.md](WORK_TOGETHER.md).
 
 Nieuw in 0.17: **Ruimte en rust op de eerste route**. Een korte Bosrand met een
 open weide, boszoom en een rustige vijver verbindt dorp en Fluisterbos. Er staan

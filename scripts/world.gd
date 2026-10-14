@@ -197,6 +197,10 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
 	if map_id=="forest_edge":ground.add_child(load("res://scripts/entities/edge_scenery.gd").new())
+	if map_id in ["smithy","library"]:
+		var workshop: Node2D=load("res://scripts/entities/workshop.gd").new()
+		workshop.world=self
+		ground.add_child(workshop)
 	var memory := preload("res://scripts/entities/world_memory.gd").new()
 	memory.world = self
 	ground.add_child(memory)

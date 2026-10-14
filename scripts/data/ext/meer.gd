@@ -331,6 +331,7 @@ const TALKS := {
 			{"text": "Heb je werk voor me?", "if": [["quest", "meer_boeken", "none"]], "next": "meer_lena_vraag"},
 			{"text": "Wat weet je over de Diepte?", "if": [["flag", "game_completed"]], "next": "meer_lena_diepte"},
 			{"text": "Vertel eens iets over de boeken.", "next": "meer_lena_over"},
+			{"text": "Samen een kruidendrankje bereiden.", "do": [["wt_open","alchemy"]]},
 			{"text": "Nee, bedankt."},
 		],
 	},

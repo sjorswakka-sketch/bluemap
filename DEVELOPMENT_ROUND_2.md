@@ -4,8 +4,8 @@ Plan van 14 oktober 2026. Basis: 0.16.0-preview, commit
 `efe71193c68ae279b99969c94eed50141c2bb00c` op
 `claude/affectionate-mendel-vc1idx`. Alle zes fases uit DEVELOPMENT_PHASES.md
 zijn afgerond. Op verzoek aangepast: de kleine wereld eerst meer ademruimte
-geven; daarna bestaande plekken verdiepen. Fase 1 is uitgevoerd in 0.17,
-overige fases wachten op een volgend go.
+geven; daarna bestaande plekken verdiepen. Fase 1 is uitgevoerd in 0.17 en
+fase 2 in 0.18. Overige fases wachten op een volgend go.
 
 ## Beste volgende stap
 
@@ -72,9 +72,9 @@ de dorpsstraat. Gewoon rondzwerven blijft bij de beginplek; gewone slijmen
 keren terug als ze te ver worden weggelokt. Het meer behoudt zijn indeling.
 Bestaande objectslots en opgeslagen posities blijven bruikbaar; doelen volgen
 de nieuwe verbinding. Geen nieuwe quests, bewoners of beloningen.
-Details en controle: [WORLD_SPACE.md](WORLD_SPACE.md). De volgende go start fase 2.
+Details en controle: [WORLD_SPACE.md](WORLD_SPACE.md).
 
-## 2. Bewoners laten je meewerken — volgende fase
+## 2. Bewoners laten je meewerken — uitgevoerd in 0.18
 
 Hooguit twee korte activiteiten bij bestaande werkplekken, gekozen na beoordeling
 van fase 1: een reparatie met Greta en een kruiden- of keukenhandeling met
@@ -90,7 +90,17 @@ een nieuw valuta- of reputatiesysteem en onbeperkt XP door dezelfde klik.
 de speler het resultaat fysiek ziet en de beloning begrijpt. Kosten, afbreken,
 herhalen, save/load en bestaande craftregels zijn gecontroleerd.
 
-## 3. Monsters horen bij hun omgeving
+Opgeleverd: Greta's werkbankklem afstellen en Lena's kruiden sorteren/mengen,
+via hun bestaande gesprekken en binnenruimtes. Eerste klemherstel blijft zichtbaar
+en geeft eenmaal 6 Smeden-XP en het bestaande slagbandenpatroon. Lena gebruikt
+het gewone drankje-recept, met kosten pas bij bottelen; haar eerste echte
+bereiding leert het bestaande richtlenspatroon en verandert haar doseerrek.
+Gratis oefenen geeft geen extra buit/XP. Kleine props op vaste toonbanken,
+geen nieuwe NPC's, opdrachten, colliders of buitenroute-activiteiten.
+Oudere/latere saves, invoer, annuleren en meldingen worden gecontroleerd.
+Details: [WORK_TOGETHER.md](WORK_TOGETHER.md). De volgende go start fase 3.
+
+## 3. Monsters horen bij hun omgeving — volgende fase
 
 Twee nieuwe vijanden met eigen gedrag en assets. Ontwerprichting:
 een wortelwaker die aangekondigde grondstroken beheerst, en een schemermot

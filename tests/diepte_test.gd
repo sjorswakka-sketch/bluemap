@@ -511,12 +511,13 @@ func test_access() -> void:
 	var greta: Node = children_with_script("npc.gd").filter(func(npc: Node) -> bool: return npc.npc_id == "greta")[0]
 	greta.interact()
 	await frames(3)
-	check(world.dialogue.active and world.dialogue.node == Dialogue.TALKS["greta_star"], "met het Sterrenzwaard wil Greta het meteen zien (ook als je haar nog niet kende)")
+	check(world.dialogue.active and world.dialogue.node.lines == Dialogue.TALKS["greta_star"].lines and world.dialogue.node["do"] == Dialogue.TALKS["greta_star"]["do"], "met het Sterrenzwaard behoudt Greta haar oorspronkelijke begroeting en gevolgen")
+	check(world.dialogue.node.choices.size()==2 and not Dialogue.TALKS["greta_star"].has("choices"),"optionele samenwerking laat gedeelde sterbegroeting ongewijzigd")
 	await finish_dialogue()
 	check(gs.flag("greta_star_seen") and gs.flag("met_greta"), "dat onthoudt ze")
 	greta.interact()
 	await frames(3)
-	check(world.dialogue.active and world.dialogue.node == Dialogue.TALKS["greta_star_again"] and world.dialogue.buttons.is_empty(), "daarna een kort praatje, zonder een lege smeedvraag")
+	check(world.dialogue.active and world.dialogue.node.lines == Dialogue.TALKS["greta_star_again"].lines and world.dialogue.buttons.is_empty(), "daarna hetzelfde korte sterpraatje; samenwerking volgt pas na de tekst")
 	await finish_dialogue()
 
 

@@ -27,6 +27,7 @@ var hinted := false # de tip over T en B is al gegeven
 
 func _ready() -> void:
 	layer = 12
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	root = Control.new()
 	root.position = Vector2((1152.0 - PANEL_SIZE.x) / 2.0, -PANEL_SIZE.y)
 	root.size = PANEL_SIZE
@@ -84,11 +85,15 @@ func is_showing() -> bool:
 ## Tijdens een overgang in de wereld (deur, reizen, slapen, het einde) is het scherm zwart, en daarna staat de naam van
 ## de kaart groot in beeld (op dezelfde hoogte). Dan wachten we met de volgende melding.
 func _screen_is_busy() -> bool:
+	if GameState.dialogue_open or GameState.ui_owners.has("work_together"):return true
 	var world := get_tree().get_first_node_in_group("world")
 	return world != null and (GameState.transitioning or world.hud.banner_time > 0.0 or world.hud.boss_bar.visible)
 
 
 func _process(delta: float) -> void:
+	if get_tree().paused:
+		root.modulate.a=0 # hide immediately, but keep the timer and queue untouched
+		return
 	if time>0 and _screen_is_busy():root.modulate.a=0;return
 	if time <= 0.0:
 		root.modulate.a = 0.0

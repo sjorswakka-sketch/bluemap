@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	var previous_beat := floori(t*2.4/PI)
 	t += delta
 	preload("res://scripts/entities/route_npc.gd").update(self,delta)
-	if npc_id=="greta" and floori(t*2.4/PI)!=previous_beat and GameState.day_time>0.12 and GameState.day_time<0.78 and is_instance_valid(world.player):
+	if npc_id=="greta" and not GameState.input_locked() and floori(t*2.4/PI)!=previous_beat and GameState.day_time>0.12 and GameState.day_time<0.78 and is_instance_valid(world.player):
 		var distance: float = position.distance_to(world.player.position)
 		if distance<160: Sound.play("op_hammer",-14-distance/12)
 	if player == null:
@@ -74,12 +74,14 @@ func _draw() -> void:
 	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(5.0 * scale, 2.0 * scale), Color(0, 0, 0, 0.12 if ghost else 0.3))
 	var tint := Color(1, 1, 1, 0.78 + sin(t * 3.0) * 0.1) if ghost else Color.WHITE
 	DrawUtil.sprite(self, Art.tex(data["sheet"]), int(t * 1.6) % 2, 0, Vector2(0, drop + float_y), Vector2i(16, 16), scale, tint)
-	if npc_id == "greta" and not GameState.dialogue_open and GameState.day_time>0.12 and GameState.day_time<0.78:
+	if npc_id == "greta" and not GameState.dialogue_open and not GameState.ui_owners.has("work_together") and GameState.day_time>0.12 and GameState.day_time<0.78:
 		var lift := -absf(sin(t*2.4))*12
 		draw_line(Vector2(10,4),Vector2(20,lift),Color("bc955e"),3)
 		draw_rect(Rect2(16,lift-3,10,6),Color("8eabb8"))
 		if absf(sin(t*2.4))<0.18:
 			draw_line(Vector2(22,5),Vector2(27,0),Color("ffcd70"),2)
+	if npc_id=="meer_lena" and GameState.flag("wt_alchemy_done") and not GameState.dialogue_open and not GameState.ui_owners.has("work_together") and GameState.day_time>0.12 and GameState.day_time<0.78:
+		draw_line(Vector2(12,2),Vector2(34+sin(t*2)*3,-8),Color("dcc7a7"),2)
 	if player and player.target == self:
 		DrawUtil.name_tag(self, Vector2(0, -24.0 - (2.0 - scale) * -4.0), tr(data["name"]))
 		DrawUtil.prompt(self, Vector2(0, -38.0), t)

@@ -112,6 +112,7 @@ const BASE_TALKS := {
 		"choices": [
 			{"text": "Een ijzeren zwaard", "if": [["weapon", "wood"]], "next": "greta_iron"},
 			{"text": "Een kristalzwaard", "if": [["weapon", "iron"]], "next": "greta_crystal"},
+			{"text": "Samen je werkbankklem afstellen.", "do": [["wt_open","smith"]]},
 			{"text": "Niets, bedankt."},
 		],
 	},
@@ -418,4 +419,11 @@ static var TALKS: Dictionary = Content.merged("TALKS", BASE_TALKS)
 
 
 static func get_talk(talk_id: String) -> Dictionary:
-	return TALKS[talk_id]
+	var data: Dictionary=TALKS[talk_id]
+	# Existing late-game greetings must still offer the optional workplace.
+	# Keep their text/effects and normal exit first; never mutate shared talk data.
+	if talk_id in ["greta_max","greta_star","greta_star_again","greta_done"] and not data.has("choices") and not data.has("next"):
+		var with_work: Dictionary=data.duplicate(true)
+		with_work["choices"]=[{"text":"Niets, bedankt."},{"text":"Samen je werkbankklem afstellen.","do":[["wt_open","smith"]]}]
+		return with_work
+	return data

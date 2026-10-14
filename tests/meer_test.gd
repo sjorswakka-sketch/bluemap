@@ -1004,10 +1004,10 @@ func test_library() -> void:
 	check(not gs.check(["flag", "game_completed"]), "voor het einde van het verhaal weet Lena niets over de Diepte te vertellen")
 	var lena_choices: Array = Dialogue.TALKS["meer_lena_menu"]["choices"]
 	var menu_choices: Array = lena_choices.filter(func(c: Dictionary) -> bool: return gs.check_all(c.get("if", [])))
-	check(menu_choices.size() == 2, "Lena's menu heeft nu 2 keuzes (over de boeken, en weggaan)")
+	check(menu_choices.size() == 3, "Lena behoudt boeken en weggaan, met de optionele kruidenbereiding erbij")
 	gs.set_flag("game_completed")
 	menu_choices = lena_choices.filter(func(c: Dictionary) -> bool: return gs.check_all(c.get("if", [])))
-	check(menu_choices.size() == 3, "na het einde van het verhaal komt de vraag over de Diepte erbij")
+	check(menu_choices.size() == 4, "na het einde komt de Diepte erbij; de samenwerking blijft optioneel")
 	await talk("meer_lena_menu", [0]) # 'Wat weet je over de Diepte?'
 	var diepte_text: String = " ".join(Dialogue.TALKS["meer_lena_diepte"]["lines"])
 	check("Sterrenkaart" in diepte_text and "Kristaltempel" in diepte_text and "Wachter" in diepte_text, "Lena vertelt over de Sterrenkaart, de Kristaltempel en de Wachter")

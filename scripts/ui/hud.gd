@@ -40,6 +40,7 @@ var combat_hint: Label
 
 func _ready() -> void:
 	layer = 10
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build_ui()
 	_ignore_mouse(self)
 	Controls.device_changed.connect(func(_pad: bool) -> void: _refresh_controls())
@@ -335,10 +336,15 @@ func refresh_opening() -> void:
 
 
 func _process(delta: float) -> void:
+	if get_tree().paused:
+		toast_panel.modulate.a=0
+		return # modal input already pauses the world; keep HUD timers/queues intact
 	refresh_opening()
 	stamina_bar.queue_redraw()
 	# Meldingen komen een voor een, en wachten tot een gesprek klaar is.
-	if toast_time > 0.0:
+	if GameState.dialogue_open or GameState.ui_owners.has("work_together"):
+		toast_panel.modulate.a=0 # keep queued/current notices for after the collaboration
+	elif toast_time > 0.0:
 		toast_time -= delta
 		toast_panel.modulate.a = clampf(toast_time * 2.0, 0.0, 1.0) if toast_time < 0.5 else 1.0
 	elif not toast_queue.is_empty() and not GameState.dialogue_open:
