@@ -1579,6 +1579,11 @@ msgstr "WHO DARES TO ENTER MY TEMPLE?!"
 msgid "De kaart is van MIJ! Ik zal je tot gel verwerken!"
 msgstr "The map is MINE! I'll squish you into goo!"
 
+#. Gesprek king_intro, De Slijmkoning zegt
+#: scripts/data/dialogue.gd:410
+msgid "Zie je die ring op de vloer? Daar land ik. Blijf vooral staan, als je durft!"
+msgstr "See that ring on the floor? That's where I land. Stay right there, if you dare!"
+
 #. Gesprek ra_spring, De oude bron zegt
 #: scripts/data/ext/regional.gd:54
 msgid "De bron is vrij. De oase krijgt altijd water; kies waar het overschot stroomt. Je kunt later hier terugkomen om de aftakking te veranderen."
@@ -7964,22 +7969,22 @@ msgid "Beroepen / maken"
 msgstr "Professions / crafting"
 
 #. Instelbare bediening: quests
-#: scripts/ui/menu_ui.gd:387 scripts/ui/menu_ui.gd:637 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_ui.gd:428 scripts/ui/menu_ui.gd:680 scripts/core/input_manager.gd:16
 msgid "Opdrachten"
 msgstr "Quests"
 
 #. Instelbare bediening: map
-#: scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_ui.gd:428 scripts/core/input_manager.gd:17
 msgid "Kaart"
 msgstr "Map"
 
 #. Instelbare bediening: wereld_prestaties
-#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:428 scripts/core/input_manager.gd:17
 msgid "Prestaties"
 msgstr "Achievements"
 
 #. Instelbare bediening: wereld_beestenboek
-#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:387 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:428 scripts/core/input_manager.gd:17
 msgid "Beestenboek"
 msgstr "Bestiary"
 
@@ -8178,7 +8183,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:226
+#: scripts/world.gd:227
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -8314,7 +8319,7 @@ msgstr "You can't travel during a boss fight!"
 msgid "Je kunt niet reizen tijdens een arenagevecht!"
 msgstr "You can't travel during an arena fight!"
 
-#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:420
+#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:461
 msgid "Je hebt nog geen altaar ontdekt."
 msgstr "You haven't found an altar yet."
 
@@ -8339,55 +8344,55 @@ msgid "De oude route licht weer op. En Wilfred heeft eindelijk een naam op zijn 
 msgstr "The old route shines again. And Wilfred finally has a name on his stone. The Blue Map is about the people between the crystals as much as the crystals themselves."
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
-#: scripts/core/game_state.gd:266
+#: scripts/core/game_state.gd:270
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
 msgstr "Hero level %d! +%d coins for your equipment."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:398
+#: scripts/core/game_state.gd:402
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:401
+#: scripts/core/game_state.gd:405
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:403
+#: scripts/core/game_state.gd:407
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:406
+#: scripts/core/game_state.gd:410
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:413
+#: scripts/core/game_state.gd:417
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:479
+#: scripts/core/game_state.gd:483
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:494
+#: scripts/core/game_state.gd:498
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:537
+#: scripts/core/game_state.gd:543
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:541
+#: scripts/core/game_state.gd:547
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:617
+#: scripts/core/game_state.gd:623
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:634
+#: scripts/core/game_state.gd:640
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -8470,6 +8475,118 @@ msgstr "That input is already assigned to %s. Choose an unused button."
 #: scripts/core/input_manager.gd:347
 msgid "Bediening kon niet worden opgeslagen."
 msgstr "Controls could not be saved."
+
+#: scripts/core/journey.gd:82
+msgid "Je bent in het juiste gebied: %s."
+msgstr "You're in the right area: %s."
+
+#: scripts/core/journey.gd:86
+msgid "Doelgebied: %s."
+msgstr "Destination: %s."
+
+#: scripts/core/journey.gd:90
+msgid "Onderzoek de gemarkeerde doorgang."
+msgstr "Investigate the marked passage."
+
+#: scripts/core/journey.gd:92
+msgid "Open het ruïnepoortje met de bossleutel."
+msgstr "Open the ruin gate with the forest key."
+
+#: scripts/core/journey.gd:93
+msgid "Route naar %s nog gesloten. %s"
+msgstr "Route to %s still closed. %s"
+
+#: scripts/core/journey.gd:97
+msgid "Naar %s: neem de doorgang naar %s (%d, %d op de kaart)."
+msgstr "To %s: take the passage to %s (%d, %d on the map)."
+
+#: scripts/core/journey.gd:103
+msgid "Via %s → %s"
+msgstr "Via %s → %s"
+
+#: scripts/core/journey.gd:103
+msgid "Doel: %s"
+msgstr "Goal: %s"
+
+#: scripts/core/journey.gd:108
+msgid "Greta smeedt ijzer voor 5 slijmgel en 40 munten. Een korter gevecht geeft meer ruimte om te ontwijken."
+msgstr "Greta forges iron for 5 slime gel and 40 coins. A shorter fight leaves more room to dodge."
+
+#: scripts/core/journey.gd:109
+msgid "De mijnpoort vraagt een ijzeren zwaard. Richt spiegels vóór je de kern benadert; aardingspoeder is een alternatief voor het gevecht."
+msgstr "The mine gate requires an iron sword. Align the mirrors before approaching the core; grounding powder is an alternative to combat."
+
+#: scripts/core/journey.gd:110
+msgid "Lopen is stil. Wissel gevechten af met luisteren bij de schalen; sprinten en rollen trekken luisteraars aan."
+msgstr "Walking is quiet. Alternate fights with listening at the bowls; sprinting and rolling attract listeners."
+
+#: scripts/core/journey.gd:112
+msgid "Voor een zwaar gevecht: Greta smeedt kristal voor 2 scherven, 8 slijmgel en 80 munten. Dit is voorbereiding, geen verplichte levelgrens."
+msgstr "Before a tough fight: Greta forges crystal for 2 shards, 8 slime gel and 80 coins. This is preparation, not a required level gate."
+
+#: scripts/core/journey.gd:113
+msgid "Gebruik het altaar vóór je de arena inloopt. Het herstelt hartjes én stamina. Voorbij de gevechtsdeur kun je pas terug na de baas."
+msgstr "Use the altar before entering the arena. It restores hearts and stamina. Beyond the combat door, you can return only after the boss."
+
+#: scripts/core/journey.gd:114
+msgid "Meer ruimte voor fouten? Pim geeft een extra hartje als Muis thuis is. Wilfred geeft twee scherven voor je kristalzwaard wanneer je zijn medaillon terugbrengt."
+msgstr "Want more room for mistakes? Pim gives an extra heart when Muis is home. Wilfred gives two shards for your crystal sword when you return his medallion."
+
+#: scripts/core/journey.gd:115
+msgid "De huizen kunnen met hout, wintergloed of de prismatechniek worden verwarmd. Houd aanvallers bij de vuurkorven weg; je hoeft niet alle drie de middelen te verzamelen."
+msgstr "You can warm the houses with wood, Winterglow or the prism technique. Keep attackers away from the braziers; you don't need to collect all three supplies."
+
+#: scripts/core/journey.gd:116
+msgid "Het kamp geeft klimtouw. Wacht op slappe wimpels vóór de oversteek; de vastgezette lijn maakt latere bezoeken veilig."
+msgstr "The camp provides climbing rope. Wait for slack pennants before crossing; the secured line makes later visits safe."
+
+#: scripts/core/journey.gd:117
+msgid "Vul eerst de waterzak bij Sana. De blauwe luifels in de kloof vullen water bij en geven schaduw. Een lege zak brengt je veilig terug naar je laatste waterpunt."
+msgstr "Fill the waterskin by Sana first. The blue shelters in the canyon refill water and provide shade. An empty skin returns you safely to your last water point."
+
+#: scripts/core/journey.gd:118
+msgid "De westelijke sluis open en de oostelijke dicht verlagen het water. Herstel daarna de brug; het archief draait om onderzoeken, geen verzamelquotum."
+msgstr "Open the western sluice and close the eastern one to lower the water. Then restore the bridge; the archive is about investigation, not a gathering quota."
+
+#: scripts/core/journey.gd:119
+msgid "Hier is ruimte voor een rustiger bezoek: vissen, koken, lezen of kruiden zoeken. Deze route wacht gewoon op je als je eerst ergens anders heen wilt."
+msgstr "There's room for a calmer visit here: fishing, cooking, reading or finding herbs. This route will wait if you want to go elsewhere first."
+
+#: scripts/core/journey.gd:120
+msgid "De arena is optioneel. Bruno toont iedere rang en inzet vóór je begint; een gewone avonturenroute vraagt geen arenarang."
+msgstr "The arena is optional. Bruno shows each rank and entry cost before you start; ordinary adventures don't require an arena rank."
+
+#: scripts/core/journey.gd:121
+msgid "De lichtkring vraagt een prismalantaarn. Na de mijn kun je die bij Greta maken met een lens en twee takken, of laten monteren voor 40 munten."
+msgstr "The light circle needs a prism lantern. After the mine, craft it at Greta's with a lens and two twigs, or pay 40 coins to have it assembled."
+
+#: scripts/core/journey.gd:123
+msgid "Bij je: %d helddrankjes · %d/%d hartjes · %.0f/%.0f stamina."
+msgstr "Carrying: %d hero potions · %d/%d hearts · %.0f/%.0f stamina."
+
+#: scripts/core/journey.gd:124
+msgid "Gedragen pantser: %.0f. Bonussen komen alleen van je gedragen set."
+msgstr "Worn armour: %.0f. Bonuses come only from your worn set."
+
+#: scripts/core/journey.gd:129
+msgid "Deze opdracht is afgerond. Kies een lopende opdracht om op het scherm te volgen."
+msgstr "This quest is complete. Choose an active quest to track on screen."
+
+#: scripts/core/journey.gd:130
+msgid "Huidige stap"
+msgstr "Current step"
+
+#: scripts/core/journey.gd:132
+msgid "Voor je verdergaat"
+msgstr "Before you continue"
+
+#: scripts/core/journey.gd:133
+msgid "Snel terug? Ontdekte altaren staan op de kaart. Reizen vult niets bij; rusten bij het altaar wel."
+msgstr "Quick return? Discovered altars are on the map. Travel refills nothing; resting at the altar does."
+
+#: scripts/core/journey.gd:138
+msgid "Volg: %s"
+msgstr "Track: %s"
 
 #: scripts/core/lake_supper.gd:27
 msgid "Kook bij Mila's fornuis in de herberg."
@@ -9087,7 +9204,7 @@ msgstr "Resonance Trial: wave %d / 3"
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:386
+#: scripts/entities/enemy.gd:391
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -9279,7 +9396,7 @@ msgstr "You need a bow. Tobias sells one."
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:336 scripts/ui/menu_ui.gd:478
+#: scripts/entities/player.gd:336 scripts/ui/menu_ui.gd:519
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
@@ -9842,7 +9959,7 @@ msgstr "Automatically active"
 msgid "Deze plek volgt je bestaande upgrades."
 msgstr "This slot follows your existing upgrades."
 
-#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:596
+#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:639
 msgid "Uitgerust"
 msgstr "Equipped"
 
@@ -9854,7 +9971,7 @@ msgstr "Owned"
 msgid "Niet in bezit"
 msgstr "Not owned"
 
-#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:596
+#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:639
 msgid "%s  Uitrusten"
 msgstr "%s  Equip"
 
@@ -10141,7 +10258,7 @@ msgstr "Health:  %d"
 msgid "Schade:  %s"
 msgstr "Damage:  %s"
 
-#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:607
+#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:650
 msgid "Verslagen:  %d"
 msgstr "Defeated:  %d"
 
@@ -10194,138 +10311,170 @@ msgid "Je hebt nog geen blauw altaar ontdekt. Gebruik een altaar, dan kun je er 
 msgstr "You have not discovered a blue altar yet. Use an altar to unlock fast travel to it."
 
 #. in de lijst voor snel reizen achter het altaar in het gebied waar je nu bent
-#: scripts/ui/menu_pages.gd:268
+#: scripts/ui/menu_pages.gd:273
 msgid "hier"
 msgstr "here"
 
 #: scripts/ui/menu_pages.gd:277
+msgid "Altaren %d–%d / %d · ↑ ↓ bladeren"
+msgstr "Altars %d–%d / %d · ↑ ↓ browse"
+
+#: scripts/ui/menu_pages.gd:284
 msgid "Reizen naar %s?"
 msgstr "Travel to %s?"
 
-#: scripts/ui/menu_pages.gd:280
+#: scripts/ui/menu_pages.gd:287
 msgid "%s  Reizen"
 msgstr "%s  Travel"
 
-#: scripts/ui/menu_pages.gd:281
+#: scripts/ui/menu_pages.gd:288
 msgid "%s  Terug"
 msgstr "%s  Back"
 
-#: scripts/ui/menu_ui.gd:387
+#: scripts/ui/menu_ui.gd:428
 msgid "Voorwerpen"
 msgstr "Items"
 
-#: scripts/ui/menu_ui.gd:387
+#: scripts/ui/menu_ui.gd:428
 msgid "Voortgang"
 msgstr "Progress"
 
-#: scripts/ui/menu_ui.gd:387
+#: scripts/ui/menu_ui.gd:428
 msgid "Uitrusting"
 msgstr "Equipment"
 
-#: scripts/ui/menu_ui.gd:387
+#: scripts/ui/menu_ui.gd:428
 msgid "Uiterlijk"
 msgstr "Appearance"
 
-#: scripts/ui/menu_ui.gd:528
+#: scripts/ui/menu_ui.gd:569
 msgid "%s / %s tabblad  ·  "
 msgstr "%s / %s tab  ·  "
 
-#: scripts/ui/menu_ui.gd:529
+#: scripts/ui/menu_ui.gd:570
 msgid "%s sluiten"
 msgstr "%s close"
 
-#: scripts/ui/menu_ui.gd:531
+#: scripts/ui/menu_ui.gd:572
 msgid "↑ ↓ ← → kiezen  ·  %s gebruiken  ·  "
 msgstr "↑ ↓ ← → select  ·  %s use  ·  "
 
-#: scripts/ui/menu_ui.gd:533
+#: scripts/ui/menu_ui.gd:574
 msgid "↑ ↓ kiezen  ·  ← → vakken  ·  %s bevestigen  ·  "
 msgstr "↑ ↓ select  ·  ← → panels  ·  %s confirm  ·  "
 
-#: scripts/ui/menu_ui.gd:535
+#: scripts/ui/menu_ui.gd:576
 msgid "↑ ↓ rij  ·  ← → aanpassen  ·  %s verf  ·  "
 msgstr "↑ ↓ row  ·  ← → adjust  ·  %s dye  ·  "
 
-#: scripts/ui/menu_ui.gd:537
+#: scripts/ui/menu_ui.gd:578
 msgid "↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  "
 msgstr "↑ ↓ select  ·  ← → scroll details  ·  "
 
-#: scripts/ui/menu_ui.gd:539
+#: scripts/ui/menu_ui.gd:580
 msgid "↑ ↓ altaar  ·  %s reizen  ·  "
 msgstr "↑ ↓ altar  ·  %s travel  ·  "
 
-#: scripts/ui/menu_ui.gd:540
+#: scripts/ui/menu_ui.gd:582
+msgid "↑ ↓ opdracht  ·  → uitleg  ·  ← lijst  ·  %s volgen  ·  "
+msgstr "↑ ↓ quest  ·  → details  ·  ← list  ·  %s track  ·  "
+
+#: scripts/ui/menu_ui.gd:583
 msgid "↑ ↓ bladeren  ·  "
 msgstr "↑ ↓ browse  ·  "
 
-#: scripts/ui/menu_ui.gd:554
+#: scripts/ui/menu_ui.gd:597
 msgid "Je spullen"
 msgstr "Your stuff"
 
-#: scripts/ui/menu_ui.gd:556
+#: scripts/ui/menu_ui.gd:599
 msgid "Je hebt nog niets bij je."
 msgstr "You're not carrying anything yet."
 
-#: scripts/ui/menu_ui.gd:589
+#: scripts/ui/menu_ui.gd:632
 msgid "Vindplaats: %s"
 msgstr "Source: %s"
 
-#: scripts/ui/menu_ui.gd:594
+#: scripts/ui/menu_ui.gd:637
 msgid "Uitgerust · %s"
 msgstr "Equipped · %s"
 
-#: scripts/ui/menu_ui.gd:594
+#: scripts/ui/menu_ui.gd:637
 msgid "Bonus: %s"
 msgstr "Bonus: %s"
 
-#: scripts/ui/menu_ui.gd:599
+#: scripts/ui/menu_ui.gd:642
 msgid "%s  Gebruiken"
 msgstr "%s  Use"
 
-#: scripts/ui/menu_ui.gd:602
+#: scripts/ui/menu_ui.gd:645
 msgid "Zwaard:  %s (schade %d)"
 msgstr "Sword:  %s (damage %d)"
 
-#: scripts/ui/menu_ui.gd:603
+#: scripts/ui/menu_ui.gd:646
 msgid "Levens:  %d / %d"
 msgstr "Health:  %d / %d"
 
-#: scripts/ui/menu_ui.gd:604
+#: scripts/ui/menu_ui.gd:647
 msgid "Snelheid:  snel (laarzen)"
 msgstr "Speed:  fast (boots)"
 
-#: scripts/ui/menu_ui.gd:604
+#: scripts/ui/menu_ui.gd:647
 msgid "Snelheid:  normaal"
 msgstr "Speed:  normal"
 
-#: scripts/ui/menu_ui.gd:605
+#: scripts/ui/menu_ui.gd:648
 msgid "Munten:  %d"
 msgstr "Coins:  %d"
 
-#: scripts/ui/menu_ui.gd:606
+#: scripts/ui/menu_ui.gd:649
 msgid "Kristallen:  %d / 3"
 msgstr "Crystals:  %d / 3"
 
-#: scripts/ui/menu_ui.gd:608
+#: scripts/ui/menu_ui.gd:651
 msgid "Speeltijd:  %s"
 msgstr "Play time:  %s"
 
 #. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-#: scripts/ui/menu_ui.gd:613 scripts/ui/pause_menu.gd:111
+#: scripts/ui/menu_ui.gd:656 scripts/ui/pause_menu.gd:111
 msgid "Nieuw spel+  ·  ronde %d"
 msgstr "New Game+  ·  round %d"
 
-#: scripts/ui/menu_ui.gd:639
+#: scripts/ui/menu_ui.gd:682
 msgid "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"
 msgstr "You don't have any quests yet. Talk to the people in the village!"
 
-#: scripts/ui/menu_ui.gd:649
-msgid "%s   (hoofdopdracht)"
-msgstr "%s   (main quest)"
+#: scripts/ui/menu_ui.gd:697
+msgid "Afgerond"
+msgstr "Complete"
 
-#: scripts/ui/menu_ui.gd:699
+#: scripts/ui/menu_ui.gd:697
+msgid "Stap %d / %d"
+msgstr "Step %d / %d"
+
+#: scripts/ui/menu_ui.gd:698
+msgid "Hoofdverhaal"
+msgstr "Main story"
+
+#: scripts/ui/menu_ui.gd:709
+msgid "Stop met volgen"
+msgstr "Stop tracking"
+
+#: scripts/ui/menu_ui.gd:709
+msgid "Volg deze opdracht"
+msgstr "Track this quest"
+
+#: scripts/ui/menu_ui.gd:709
+msgid "Deze opdracht is afgerond"
+msgstr "This quest is complete"
+
+#: scripts/ui/menu_ui.gd:771
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
+
+#: scripts/ui/menu_ui.gd:776
+msgid "Gouden ring: volgende doorgang voor je gevolgde opdracht."
+msgstr "Gold ring: next passage for your tracked quest."
 
 #: scripts/ui/pause_menu.gd:73
 msgid "Verder spelen"

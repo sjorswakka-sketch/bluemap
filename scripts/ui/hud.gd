@@ -270,11 +270,11 @@ func _check_bow() -> void:
 func _refresh_tracker() -> void:
 	var text := GameState.tracked_text()
 	var route_text: String=preload("res://scripts/core/first_route.gd").tracker()
-	if route_text!="": text=route_text
+	if route_text!="" and preload("res://scripts/core/journey.gd").focus()=="": text=route_text
 	var supper_text: String=preload("res://scripts/core/lake_supper.gd").tracker()
-	if supper_text!="": text=supper_text
+	if supper_text!="" and preload("res://scripts/core/journey.gd").focus()=="": text=supper_text
 	var region_text: String=preload("res://scripts/core/regional_adventures.gd").tracker()
-	if region_text!="": text=region_text
+	if region_text!="" and preload("res://scripts/core/journey.gd").focus()=="": text=region_text
 	if Opening.enabled() and GameState.quest_state("first_water")=="active" and GameState.map_id in ["village","smithy"]:
 		text = GameState.quest_text("first_water")
 	elif Opening.quiet_hud():

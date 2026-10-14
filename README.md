@@ -1,6 +1,25 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.15.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.16.0-preview.**
+
+Nieuw in 0.16: **Het avontuur als geheel**. Kies in Opdrachten wat je volgt;
+je keuze blijft bewaard en wordt op het scherm getoond. De uitleg heeft echte
+routes en doorgangcoördinaten, ontbrekende voorwaarden, voorbereiding en je
+huidige voorraad. Rechts opent de uitleg, omhoog/omlaag scrollt, links keert
+terug naar de lijst; Enter/A of de knop volgt een opdracht. Op de kaart geeft
+een gouden ring de volgende doorgang aan. Het hoofdverhaal blijft herkenbaar.
+
+Alle twaalf ontdekte altaren passen nu in een scrollende reislijst met een
+zichtbare bevestiging. Kaartlegenda's blijven naast de kaart. Aankomst en laden
+controleren echte voetbotsingen, ook bij bewoners; reizen binnen dezelfde kaart
+brengt geen verslagen vijanden terug. Een korte aankomstbescherming geeft tijd
+om je te oriënteren. Reizen vult niets bij; bewust rusten bij een altaar herstelt
+hartjes én stamina.
+
+De Slijmkoning legt zijn landingsplek vast bij het begin van de waarschuwing.
+Een vloerring toont de hele raakzone, die niet halverwege een sprong van grootte
+verandert. Hij landt op vrije grond en laat na de landing meer ruimte voor een
+tegenaanval. Details en controle: [WHOLE_ADVENTURE.md](WHOLE_ADVENTURE.md).
 
 Nieuw in 0.15: **De wereld onthoudt je vooruitgang**. Acht nieuwe bewoners gebruiken
 de herstelde Prismamijn, Dauwtuin, huizen van IJsdal, moerasbrug, bron, Rietarchief

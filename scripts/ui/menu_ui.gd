@@ -15,6 +15,7 @@ const Enemies := preload("res://scripts/data/enemies.gd")
 const FastTravel := preload("res://scripts/core/fast_travel.gd")
 const Professions := preload("res://scripts/core/professions.gd")
 const ProfessionData := preload("res://scripts/data/ext/beroepen.gd")
+const Journey := preload("res://scripts/core/journey.gd")
 
 const ProgressionPage := preload("res://scripts/ui/progression_page.gd")
 
@@ -39,7 +40,10 @@ const LIST_TOP := MenuPages.LIST_TOP # daaronder begint de inhoud (108)
 const SLOT := 76.0
 const INVENTORY_PAGE_SIZE := 24
 const GRID_COLUMNS := 6
-const QUEST_VISIBLE := 4
+const QUEST_VISIBLE := 5
+const QUEST_ROW := 72
+const FOLLOW_RECT := Rect2(470,474,490,44)
+const TRAVEL_VISIBLE := 5
 const CLOSE_RECT := Rect2(956, 17, 28, 36)
 const PREVIOUS_PAGE := Rect2(24, 456, 38, 32)
 const NEXT_PAGE := Rect2(486, 456, 38, 32)
@@ -75,6 +79,9 @@ var achievement_scroll := 0
 var bestiary_selected := 0
 var bestiary_scroll := 0
 var travel_selected := 0 # het gekozen altaar op de kaart
+var travel_scroll := 0
+var quest_detail: RichTextLabel
+var quest_detail_mode := false
 var travel_confirm := false # wacht op "E" om echt te reizen
 var travel_message := ""
 var travel_message_time := 0.0
@@ -103,6 +110,16 @@ func _ready() -> void:
 	page.mouse_filter = Control.MOUSE_FILTER_IGNORE # muisklikken blijven bij content horen
 	page.draw.connect(_draw_page)
 	content.add_child(page)
+	quest_detail = RichTextLabel.new()
+	quest_detail.position = Vector2(470,108)
+	quest_detail.size = Vector2(490,350)
+	quest_detail.add_theme_font_size_override("normal_font_size",18)
+	quest_detail.add_theme_color_override("default_color",Color(0.88,0.94,1))
+	quest_detail.focus_mode = Control.FOCUS_ALL
+	quest_detail.focus_entered.connect(func() -> void:quest_detail_mode=true)
+	quest_detail.mouse_filter = Control.MOUSE_FILTER_STOP
+	quest_detail.visible = false
+	page.add_child(quest_detail)
 	progression_page = ProgressionPage.new()
 	progression_page.position = Vector2(24, 72)
 	progression_page.size = Vector2(952, 444)
@@ -135,6 +152,8 @@ func open(start_tab: int) -> void:
 	hover_tab = -1
 	hover_close = false
 	active = true
+	_fit()
+	quest_detail_mode = false
 	root.visible = true
 	_refresh_progression_page()
 	opened_frame = Engine.get_process_frames()
@@ -158,6 +177,7 @@ func _process(delta: float) -> void:
 		travel_message = ""
 	if not active:
 		return
+	_fit()
 	_repeat_navigation(delta)
 	# De tabwissel: de markering glijdt naar het nieuwe tabblad, de bladzijde faden en schuift zacht mee.
 	if tab_anim < 1.0:
@@ -170,6 +190,12 @@ func _process(delta: float) -> void:
 	update_hover(content.get_local_mouse_position())
 	content.queue_redraw()
 	page.queue_redraw()
+
+func _fit() -> void:
+	var view:=get_viewport().get_visible_rect().size
+	var factor:=minf(1.0,minf((view.x-48)/SIZE.x,(view.y-48)/SIZE.y))
+	content.scale=Vector2.ONE*maxf(factor,0.1)
+	content.position=(view-SIZE*content.scale)*0.5
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -236,6 +262,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			appearance_page.confirm()
 		elif tab == TAB_MAP:
 			_map_input(event)
+		elif tab == TAB_QUESTS and UiStyle.confirm(event):
+			_follow_quest()
 	# Custom drawn menus own input while open; gameplay cannot receive the close/confirm press.
 	if event.is_pressed():
 		get_viewport().set_input_as_handled()
@@ -263,9 +291,17 @@ func _navigate(action: String) -> void:
 				step *= GRID_COLUMNS
 			selected = clampi(selected + step, 0, maxi(count - 1, 0))
 		TAB_QUESTS:
-			quest_selected = clampi(quest_selected + step, 0, maxi(_quest_order().size() - 1, 0))
+			if action=="ui_right":
+				quest_detail_mode=true;quest_detail.grab_focus()
+			elif action=="ui_left":
+				quest_detail_mode=false;quest_detail.release_focus()
+			elif quest_detail_mode:
+				quest_detail.get_v_scroll_bar().value += step*48
+			else:
+				quest_selected = clampi(quest_selected + step, 0, maxi(_quest_order().size() - 1, 0))
 		TAB_MAP:
 			travel_selected = clampi(travel_selected + step, 0, maxi(FastTravel.discovered_altars().size() - 1, 0))
+			refresh_travel_scroll()
 		TAB_ACHIEVEMENTS:
 			achievement_selected = clampi(achievement_selected + step, 0, Achievements.ACHIEVEMENTS.size() - 1)
 		TAB_EQUIPMENT:
@@ -324,8 +360,11 @@ func _pointer_input(event: InputEvent) -> void:
 							_use_selected()
 						break
 		TAB_QUESTS:
-			if Rect2(24, 108, 938, QUEST_VISIBLE * 96).has_point(at):
-				quest_selected = mini(quest_scroll + int((at.y - 108) / 96), maxi(_quest_order().size() - 1, 0))
+			if FOLLOW_RECT.has_point(at): _follow_quest()
+			elif Rect2(24, 108, 420, QUEST_VISIBLE * QUEST_ROW).has_point(at):
+				quest_detail_mode=false
+				quest_detail.release_focus()
+				quest_selected = mini(quest_scroll + int((at.y - 108) / QUEST_ROW), maxi(_quest_order().size() - 1, 0))
 		TAB_ACHIEVEMENTS:
 			if Rect2(24, MenuPages.LIST_TOP, 938, MenuPages.LIST_BOTTOM - MenuPages.LIST_TOP).has_point(at):
 				achievement_selected = mini(achievement_scroll + int((at.y - MenuPages.LIST_TOP) / MenuPages.ACHIEVEMENT_ROW), Achievements.ACHIEVEMENTS.size() - 1)
@@ -334,14 +373,15 @@ func _pointer_input(event: InputEvent) -> void:
 				bestiary_selected = mini(bestiary_scroll + int((at.y - MenuPages.LIST_TOP) / MenuPages.BEAST_ROW), Enemies.ENEMIES.size() - 1)
 		TAB_MAP:
 			var altars := FastTravel.discovered_altars()
-			for i in altars.size():
-				if Rect2(660, 104 + i * 48, 316, 42).has_point(at):
+			refresh_travel_scroll(altars.size())
+			for i in range(travel_scroll,mini(travel_scroll+TRAVEL_VISIBLE,altars.size())):
+				if Rect2(660, 104 + (i-travel_scroll) * 48, 316, 42).has_point(at):
 					travel_selected = i
 					travel_confirm = false
 					_map_input(_confirm_event())
 					return
 			if travel_confirm:
-				var box_y := 104 + altars.size() * 48 + 12
+				var box_y := travel_box_y(altars.size())
 				if Rect2(672, box_y + 70, 142, 32).has_point(at):
 					_answer_travel_question(_confirm_event())
 				elif Rect2(826, box_y + 70, 138, 32).has_point(at):
@@ -374,6 +414,7 @@ func _set_tab(new_tab: int) -> void:
 	repeat_action = ""
 	selected = 0
 	travel_confirm = false
+	quest_detail_mode = false
 	Sound.play("select", -8.0)
 	_refresh_progression_page()
 
@@ -537,6 +578,8 @@ func _footer_hint() -> String:
 		return tr("↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  ") + browse + close_hint
 	if tab == TAB_MAP:
 		return tr("↑ ↓ altaar  ·  %s reizen  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
+	if tab == TAB_QUESTS:
+		return tr("↑ ↓ opdracht  ·  → uitleg  ·  ← lijst  ·  %s volgen  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
 	return tr("↑ ↓ bladeren  ·  ") + browse + close_hint
 
 func _text(font: Font, pos: Vector2, text: String, size: int, color := Color.WHITE, width := -1.0) -> float:
@@ -645,16 +688,39 @@ func _draw_quests(font: Font) -> void:
 		var done := GameState.quest_state(quest_id) == "done"
 		var info := Quests.info(quest_id)
 		var title := tr(info["title"])
-		if info.get("main", false) and not done:
-			title = tr("%s   (hoofdopdracht)") % title
-		title = ("✓ " if done else "• ") + title
-		var rect := Rect2(MARGIN, LIST_TOP + (index - quest_scroll) * 96, 936, 90)
+		title = ("✓ " if done else "◆ " if Journey.focus()==quest_id else "• ") + title
+		var rect := Rect2(MARGIN, LIST_TOP + (index - quest_scroll) * QUEST_ROW, 420, QUEST_ROW-6)
 		page.draw_rect(rect, Color(0.18, 0.3, 0.55) if index == quest_selected else Color(0.1, 0.16, 0.3))
 		if index == quest_selected:
 			page.draw_rect(rect, Color(1.0, 0.88, 0.35), false, 2.0)
-		_text(font, rect.position + Vector2(12, 4), title, 21, Color(0.55, 1.0, 0.65) if done else Color(1.0, 0.9, 0.5), 908)
-		_text(font, rect.position + Vector2(24, 32), tr(Quests.info(quest_id).get("effect", "Voltooid.")) if done else GameState.quest_text(quest_id), 18, Color(0.85, 0.9, 1.0), 896)
-	MenuPages.scrollbar(page, quest_scroll, QUEST_VISIBLE, order.size(), 970)
+		_text(font, rect.position + Vector2(12, 4), title, 19, Color(0.55, 1.0, 0.65) if done else Color(1.0, 0.9, 0.5), 392)
+		var status := tr("Afgerond") if done else tr("Stap %d / %d") % [GameState.quest_step(quest_id)+1,info.steps.size()]
+		if info.get("main",false) and not done:status=tr("Hoofdverhaal")+" · "+status
+		_text(font, rect.position + Vector2(12, 36), status, 16, Color(0.85, 0.9, 1.0), 392)
+	MenuPages.scrollbar(page, quest_scroll, QUEST_VISIBLE, order.size(), 450,LIST_TOP+QUEST_VISIBLE*QUEST_ROW)
+	var chosen: String=order[quest_selected]
+	var detail_text:=Journey.detail(chosen)
+	if quest_detail.text!=detail_text:
+		quest_detail.text=detail_text
+		quest_detail.scroll_to_line(0)
+	page.draw_rect(Rect2(466,104,498,358),Color(0.65,0.86,1) if quest_detail_mode else Color(0.3,0.45,0.7),false,2)
+	var can_follow:=GameState.quest_state(chosen)=="active"
+	page.draw_rect(FOLLOW_RECT,Color(0.15,0.36,0.28) if can_follow else Color(0.15,0.2,0.28))
+	var label:=tr("Stop met volgen") if Journey.focus()==chosen else tr("Volg deze opdracht") if can_follow else tr("Deze opdracht is afgerond")
+	page.draw_string(font,FOLLOW_RECT.position+Vector2(12,29),label,HORIZONTAL_ALIGNMENT_CENTER,FOLLOW_RECT.size.x-24,19,Color.WHITE)
+
+func _follow_quest() -> void:
+	var order:=_quest_order()
+	if order.is_empty():return
+	if Journey.toggle(order[clampi(quest_selected,0,order.size()-1)]):Sound.play("select",-6)
+	else:Sound.play("error",-8)
+
+func refresh_travel_scroll(total: int=-1) -> void:
+	if total<0:total=FastTravel.discovered_altars().size()
+	travel_scroll=MenuPages.follow(travel_selected,travel_scroll,TRAVEL_VISIBLE,total)
+
+func travel_box_y(total: int) -> float:
+	return 104+mini(total,TRAVEL_VISIBLE)*48+12+(16 if total>TRAVEL_VISIBLE else 0)
 
 func _draw_map(font: Font) -> void:
 	var world := Util.world(self)
@@ -663,7 +729,7 @@ func _draw_map(font: Font) -> void:
 	var rows: Array = world.map_data["rows"]
 	var w: int = rows[0].length()
 	var h: int = rows.size()
-	var cell := mini(int(MAP_WIDTH / w), int(380.0 / h))
+	var cell := mini(int(MAP_WIDTH / w), int(320.0 / h))
 	cell = maxi(cell, 4)
 	var origin := Vector2(MARGIN + (MAP_WIDTH - w * cell) / 2.0, LIST_TOP)
 	_text(font, Vector2(MARGIN, HEADER_Y), tr(world.map_data["name"]), 24, Color(0.6, 0.88, 1.0))
@@ -672,6 +738,11 @@ func _draw_map(font: Font) -> void:
 		for x in w:
 			page.draw_rect(Rect2(origin + Vector2(x, y) * cell, Vector2(cell, cell)), Tiles.map_color(Tiles.name_for(row[x], x, y)))
 	page.draw_rect(Rect2(origin, Vector2(w, h) * cell), Color(0.9, 0.95, 1.0), false, 2.0)
+	for x in range(4,w,5):page.draw_string(font,origin+Vector2((x+0.5)*cell-4,-4),str(x+1),HORIZONTAL_ALIGNMENT_LEFT,-1,10,Color(0.75,0.84,0.95))
+	for y in range(4,h,5):page.draw_string(font,origin+Vector2(-16,(y+0.5)*cell+3),str(y+1),HORIZONTAL_ALIGNMENT_LEFT,-1,10,Color(0.75,0.84,0.95))
+	var focused:=Journey.focus()
+	var route: Array[String]=[]
+	if focused!="":route=Journey.path(GameState.map_id,Journey.target(focused),false)
 	var altars := FastTravel.discovered_altars()
 	travel_selected = clampi(travel_selected, 0, maxi(altars.size() - 1, 0))
 	for obj: Dictionary in world.map_data.get("objects", []):
@@ -683,6 +754,7 @@ func _draw_map(font: Font) -> void:
 				page.draw_circle(p, cell * 0.45, Color(0.4, 1.0, 1.0))
 			"portal":
 				page.draw_rect(Rect2(p - Vector2(cell, cell) * 0.4, Vector2(cell, cell) * 0.8), Color(1, 1, 1))
+				if route.size()>1 and obj.to==route[1]:page.draw_arc(p,cell*0.9,0,TAU,24,Color(1,0.86,0.4),2)
 			"savepoint":
 				_draw_altar_marker(p, cell, obj, altars)
 			"chest":
@@ -701,11 +773,23 @@ func _draw_map(font: Font) -> void:
 	var legend: Dictionary = {}
 	for mark: Dictionary in marks:
 		legend[tr(mark["label"])] = mark["color"]
-	var legend_x := MARGIN
-	for label: String in legend:
-		page.draw_string(font, Vector2(legend_x, SIZE.y - 62), "◆ " + label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, legend[label])
-		legend_x += font.get_string_size("◆ " + label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16).x + 24.0
+	if route.size()>1:_text(font,Vector2(MARGIN,438),tr("Gouden ring: volgende doorgang voor je gevolgde opdracht."),14,Color(1,0.86,0.4),MAP_WIDTH)
+	for entry: Dictionary in map_legend_layout(legend,font):
+		page.draw_string(font,entry.at,entry.text,HORIZONTAL_ALIGNMENT_LEFT,-1,14,entry.color)
 	MenuPages.draw_travel_panel(self, font, altars)
+
+func map_legend_layout(legend: Dictionary,font: Font) -> Array[Dictionary]:
+	var result: Array[Dictionary]=[]
+	var x:=MARGIN
+	var row:=0
+	for label: String in legend:
+		var text: String="◆ "+label
+		var width:=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,14).x
+		if x+width>MARGIN+MAP_WIDTH:x=MARGIN;row+=1
+		if row>1:break
+		result.append({"text":text,"at":Vector2(x,478+row*22),"color":legend[label],"width":width})
+		x+=width+16
+	return result
 
 
 ## De bijzondere plekken van uitbreidingen op een kaart (zie MAP_MARKERS in content.gd): [{"pos", "color", "label"}].
@@ -749,6 +833,7 @@ func tab_rect(index: int) -> Rect2:
 
 
 func _refresh_progression_page() -> void:
+	quest_detail.visible = tab == TAB_QUESTS
 	equipment_page.visible = tab == TAB_EQUIPMENT
 	if equipment_page.visible:
 		equipment_page.refresh()

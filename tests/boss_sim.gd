@@ -8,7 +8,7 @@ extends SceneTree
 ## rustig is, rolt weg voor kogels en drinkt een drankje als hij bijna dood is.
 
 const MAX_SECONDS := 150.0
-const EPISODES := 6
+var episodes := 6
 
 var gs: Node
 var world: Node2D
@@ -115,7 +115,7 @@ func fight(boss_kind: String, weapon: String, containers: int, potions: int) -> 
 		# Aanloop en sprong: wegrennen van de plek waar hij landt
 		if boss.state == "crouch" or boss.state == "hop":
 			danger = true
-			var landing: Vector2 = boss.hop_to if boss.state == "hop" else player.global_position
+			var landing: Vector2 = boss.hop_to if boss.state == "hop" or boss.has_method("king_charge_time") else player.global_position
 			var shock: float = 56.0
 			if boss_kind == "king":
 				shock = 64.0 + (10.0 if boss._king_phase() >= 2 else 0.0) + (12.0 if boss._king_phase() == 3 else 0.0)
@@ -175,18 +175,24 @@ func fight(boss_kind: String, weapon: String, containers: int, potions: int) -> 
 
 
 func _run() -> void:
+	if not OS.get_user_data_dir().get_file().begins_with("Bluemap-Codex-Tests-"):
+		printerr("Use an isolated test project for balance simulations.");quit(1);return
+	for arg: String in OS.get_cmdline_user_args():
+		if arg.begins_with("--episodes="):episodes=clampi(int(arg.trim_prefix("--episodes=")),1,12)
 	gs = root.get_node("GameState")
 	var configs := [
 		["king", "wood", 0, 3], ["king", "iron", 0, 3], ["king", "iron", 1, 3], ["king", "crystal", 0, 3],
 		["king", "crystal", 1, 3], ["golem", "wood", 0, 2], ["golem", "iron", 0, 2],
 	]
+	var config_index:=0
 	for config in configs:
 		var wins := 0
 		var total_time := 0.0
 		var total_damage := 0
 		var total_potions := 0
 		var by_source := {}
-		for i in EPISODES:
+		for i in episodes:
+			seed(16000+config_index*101+i)
 			var result: Array = await fight(config[0], config[1], config[2], config[3])
 			if result[0]:
 				wins += 1
@@ -197,9 +203,10 @@ func _run() -> void:
 				by_source[src] = int(by_source.get(src, 0)) + int(result[5][src])
 		var avg_time := total_time / maxf(float(wins), 1.0)
 		print("%-6s zwaard %-8s hartjes %d  drankjes %d:  gewonnen %d/%d  gem. tijd %5.1fs  schade/gevecht %.1f  drankjes/gevecht %.1f" % [
-			config[0], config[1], 5 + config[2], config[3], wins, EPISODES, avg_time, float(total_damage) / EPISODES, float(total_potions) / EPISODES])
+			config[0], config[1], 5 + config[2], config[3], wins, episodes, avg_time, float(total_damage) / episodes, float(total_potions) / episodes])
 		var parts: Array = []
 		for src in by_source:
-			parts.append("%s %.1f" % [src, float(by_source[src]) / EPISODES])
+			parts.append("%s %.1f" % [src, float(by_source[src]) / episodes])
 		print("        schade per bron: ", ", ".join(parts))
+		config_index+=1
 	quit()

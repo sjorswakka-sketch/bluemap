@@ -215,6 +215,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 		var region: Node2D=load("res://scripts/entities/regional_adventures.gd").new()
 		region.world=self
 		ground.add_child(region)
+	player.global_position = safe_spawn_position(player.global_position)
 	player.camera.reset_smoothing()
 
 	Sound.play_music(map_data.get("music", "forest"))
@@ -242,6 +243,7 @@ func travel(map_id: String, spawn: String) -> void:
 	Sound.play("door", -4.0)
 	await fader.fade_out(0.25)
 	load_map(map_id, spawn)
+	player.invuln = maxf(player.invuln,1.25) # arriving gives time to read the new area
 	autosave()
 	await fader.fade_in(0.25)
 	GameState.transitioning = false
@@ -281,6 +283,40 @@ func is_solid(pos: Vector2) -> bool:
 
 func clamp_to_map(pos: Vector2) -> Vector2:
 	return Vector2(clampf(pos.x, TILE * 1.5, map_size.x * TILE - TILE * 1.5), clampf(pos.y, TILE * 1.5, map_size.y * TILE - TILE * 1.5))
+
+## Check actual foot shapes, including moving residents, before restoring or travelling.
+## Reading shapes directly also works before the next physics frame registers a new map.
+func spawn_fits(at: Vector2) -> bool:
+	if not is_finite(at.x) or not is_finite(at.y):return false
+	var foot:=at+Vector2(0,8)
+	for offset in [Vector2.ZERO,Vector2(8,0),Vector2(-8,0),Vector2(0,8),Vector2(0,-8),Vector2(6,6),Vector2(-6,6),Vector2(6,-6),Vector2(-6,-6)]:
+		if is_solid(foot+offset):return false
+	for body in entities.get_children():
+		if body==player or body.is_queued_for_deletion() or not body is PhysicsBody2D or not (body.collision_layer & 1):continue
+		if body is GateScript and not body.blocked:continue
+		for collider in body.get_children():
+			if not collider is CollisionShape2D or collider.disabled or collider.shape==null:continue
+			if collider.shape is RectangleShape2D:
+				var size: Vector2=collider.shape.size*collider.global_scale.abs()
+				var bounds:=Rect2(collider.global_position-size/2,size)
+				var nearest:=Vector2(clampf(foot.x,bounds.position.x,bounds.end.x),clampf(foot.y,bounds.position.y,bounds.end.y))
+				if nearest.distance_to(foot)<8:return false
+			elif collider.shape is CircleShape2D:
+				if collider.global_position.distance_to(foot)<8+collider.shape.radius*maxf(absf(collider.global_scale.x),absf(collider.global_scale.y)):return false
+	for spec: Dictionary in map_data.objects:
+		if spec.type!="portal":continue
+		var size: Array=spec.get("size",[1,1])
+		if Rect2(Vector2(spec.pos[0],spec.pos[1])*TILE,Vector2(size[0],size[1])*TILE).has_point(at):return false
+	return true
+
+func safe_spawn_position(at: Vector2) -> Vector2:
+	if spawn_fits(at):return at
+	var cell:=Vector2i(at/TILE) if is_finite(at.x) and is_finite(at.y) else Vector2i(map_data.spawns.start[0],map_data.spawns.start[1])
+	for radius in range(1,9):
+		for offset: Vector2i in preload("res://scripts/core/fast_travel.gd")._ring(radius):
+			var candidate: Vector2=(Vector2(cell+offset)+Vector2(0.5,0.5))*TILE
+			if spawn_fits(candidate):return candidate
+	return _tile_center(map_data.spawns.start)
 
 
 # --- Tegels ---------------------------------------------------------------------------

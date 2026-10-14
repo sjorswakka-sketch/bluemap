@@ -407,6 +407,7 @@ const BASE_TALKS := {
 			"Blub... blub blub...",
 			"WIE DURFT MIJN TEMPEL BINNEN TE KOMEN?!",
 			"De kaart is van MIJ! Ik zal je tot gel verwerken!",
+			"Zie je die ring op de vloer? Daar land ik. Blijf vooral staan, als je durft!",
 		],
 	},
 }

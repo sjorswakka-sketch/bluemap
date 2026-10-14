@@ -41,10 +41,10 @@ static func follow(selected: int, scroll: int, visible: int, total: int) -> int:
 
 
 ## Een dunne schuifbalk rechts van een lijst, alleen als er meer is dan in beeld past.
-static func scrollbar(canvas: Control, scroll: int, visible: int, total: int, x: float) -> void:
+static func scrollbar(canvas: Control, scroll: int, visible: int, total: int, x: float, bottom:=LIST_BOTTOM) -> void:
 	if total <= visible:
 		return
-	var height := LIST_BOTTOM - LIST_TOP
+	var height: float = bottom - LIST_TOP
 	canvas.draw_rect(Rect2(x, LIST_TOP, 6, height), Color(0.1, 0.16, 0.3))
 	var thumb := height * float(visible) / float(total)
 	var top := LIST_TOP + (height - thumb) * float(scroll) / float(total - visible)
@@ -255,20 +255,27 @@ static func draw_travel_panel(menu: Node, font: Font, altars: Array) -> void:
 		text(canvas, font, Vector2(left, 106), TranslationServer.translate("Je hebt nog geen blauw altaar ontdekt. Gebruik een altaar, dan kun je er later snel naartoe reizen."), 18, Color(0.8, 0.86, 0.98), width)
 		return
 	menu.travel_selected = clampi(menu.travel_selected, 0, altars.size() - 1)
-	for i in altars.size():
+	menu.refresh_travel_scroll(altars.size())
+	for i in range(menu.travel_scroll,mini(menu.travel_scroll+menu.TRAVEL_VISIBLE,altars.size())):
 		var altar: Dictionary = altars[i]
-		var rect := Rect2(left, 104 + i * 48.0, width, 42)
+		var rect := Rect2(left, 104 + (i-menu.travel_scroll) * 48.0, width, 42)
 		var chosen: bool = i == menu.travel_selected
 		canvas.draw_rect(rect, Color(0.18, 0.3, 0.55) if chosen else PANEL)
 		canvas.draw_rect(rect, Color(1.0, 0.88, 0.35) if chosen else FRAME, false, 3.0 if chosen else 2.0)
 		canvas.draw_texture_rect_region(Art.tex("wereld_ui"), Rect2(rect.position + Vector2(8, 5), Vector2(32, 32)), Rect2(Vector2(6 * 16, 0), Vector2(16, 16)))
-		text(canvas, font, rect.position + Vector2(50, 8), TranslationServer.translate(altar["name"]), 20, Color.WHITE)
+		var label := TranslationServer.translate(altar["name"])
+		var available := width-58.0
+		var label_size:=20
+		while label_size>15 and font.get_string_size(label,HORIZONTAL_ALIGNMENT_LEFT,-1,label_size).x>available:label_size-=1
+		text(canvas, font, rect.position + Vector2(50, 4), label, label_size, Color.WHITE)
 		if altar["map"] == GameState.map_id:
 			# Vertalers: in de lijst voor snel reizen achter het altaar in het gebied waar je nu bent
 			var here := TranslationServer.translate("hier")
 			var here_width := font.get_string_size(here, HORIZONTAL_ALIGNMENT_LEFT, -1, 16).x
-			text(canvas, font, rect.position + Vector2(rect.size.x - here_width - 10, 12), here, 16, DIM)
-	var box_y := 104 + altars.size() * 48.0 + 12.0
+			text(canvas, font, rect.position + Vector2(rect.size.x - here_width - 10, 25), here, 12, DIM)
+	if altars.size()>menu.TRAVEL_VISIBLE:
+		text(canvas,font,Vector2(left+4,344),TranslationServer.translate("Altaren %d–%d / %d · ↑ ↓ bladeren") % [menu.travel_scroll+1,mini(menu.travel_scroll+menu.TRAVEL_VISIBLE,altars.size()),altars.size()],14,DIM)
+	var box_y: float = menu.travel_box_y(altars.size())
 	if menu.travel_confirm:
 		var altar: Dictionary = altars[menu.travel_selected]
 		var box := Rect2(left, box_y, width, 110) # ruimte voor een naam over twee regels

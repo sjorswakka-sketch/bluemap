@@ -52,7 +52,7 @@ func discovery_key() -> String:
 
 
 func interact() -> void:
-	GameState.full_heal()
+	GameState.full_rest()
 	var first_time := not GameState.flag(discovery_key())
 	GameState.set_flag(discovery_key())
 	world.autosave()

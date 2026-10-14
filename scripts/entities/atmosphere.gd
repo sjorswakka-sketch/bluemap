@@ -237,7 +237,7 @@ func sleep_in_bed() -> void:
 	GameState.add_coins(-BED_PRICE)
 	Sound.play("wereld_slapen")
 	await world.fader.fade_out(SLEEP_FADE)
-	GameState.full_heal()
+	GameState.full_rest()
 	GameState.skip_to_morning()
 	GameState.set_flag("wereld_geslapen")
 	world.autosave()

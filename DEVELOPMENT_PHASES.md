@@ -79,12 +79,24 @@ de herberg wijst op nieuwe ontmoetingen en onthoudt eerdere gesprekken.
 Bestaande flags sturen herstel, nieuwe ontmoetingflags gebruiken hetzelfde savebestand.
 Details en geteste grenzen: WORLD_MEMORY.md.
 
-## 6. Het avontuur als geheel — wacht op go
+## 6. Het avontuur als geheel — afgerond in 0.16
 
 Beoordeel de volledige reis vanuit nieuwe én bestaande saves: moeilijkheid, rust,
 afwisseling, beloningen, reisafstanden en doelduidelijkheid. Verbeter de samenhang.
 Acceptatie: geen doodlopende opdrachten, onredelijke sprongen in moeilijkheid,
 visuele blokkades of bedieningsproblemen in de geteste routes.
+
+Opgeleverd: een opgeslagen opdrachtkeuze, route- en voorbereidingsuitleg voor
+alle 31 opdrachten/69 stappen, een volgende doorgang op de kaart, scrollende
+altaren met bevestiging en begrensde kaartlegenda's. Alle aankomstpunten worden
+tegen de huidige wereldbotsingen gecontroleerd, inclusief bewegende bewoners;
+rusten herstelt nu ook stamina. De eindbaassprong heeft een vaste bestemming,
+een volledige vloermarkering en een vast impactformaat per waarschuwing.
+Nieuwe en bestaande saves, alle kaartspawns en altaren, invoer en drie
+beeldformaten zijn gecontroleerd. Details: WHOLE_ADVENTURE.md.
+
+Alle zes afgesproken fases zijn hiermee uitgevoerd. Een volgende ontwikkelronde
+krijgt een nieuw plan; een losse go start hier niet automatisch verzonnen fases.
 
 ## Vast bij iedere fase
 

@@ -212,6 +212,10 @@ func full_heal() -> void:
 	hp = max_hp()
 	hp_changed.emit()
 
+func full_rest() -> void:
+	full_heal()
+	movement.reset()
+
 
 func damage() -> int:
 	return Items.WEAPONS[weapon]["damage"]
@@ -528,6 +532,8 @@ func quest_text(quest_id: String) -> String:
 
 ## De opdracht die in beeld getoond wordt (de hoofdopdracht, anders de eerste lopende).
 func tracked_text() -> String:
+	var focused := preload("res://scripts/core/journey.gd").tracker()
+	if focused!="": return focused
 	if quest_state("main") == "done":
 		# Na het einde: de lopende opdracht die je het laatst bent begonnen (bijvoorbeeld De Vergeten Wachter).
 		var latest := ""
@@ -611,7 +617,7 @@ func run(action: Array) -> void:
 		"coins":
 			add_coins(action[1])
 		"heal":
-			full_heal()
+			full_rest()
 		"weapon":
 			set_weapon(action[1])
 			toast.emit(tr("Nieuw zwaard: %s") % tr(Items.WEAPONS[action[1]]["name"]))

@@ -58,6 +58,7 @@ var hop_to := Vector2.ZERO
 var hop_count := 0
 var slam_ring := 0.0
 var dead := false
+var hop_phase := 1
 # Wilde dieren (gedrag "animal"): vreedzaam wild dat wegrent als je te dichtbij komt of het raakt
 var panic := 0.0 # hoe lang het dier nog vlucht na een klap
 var fleeing := false # rent het dier nu weg (voor het plaatje)
@@ -96,6 +97,10 @@ func _ready() -> void:
 	shape.shape = circle
 	shape.position = Vector2(0, _size_px() * 0.28)
 	add_child(shape)
+	if kind=="king":
+		var warning:=preload("res://scripts/entities/king_warning.gd").new()
+		warning.king=weakref(self)
+		world.ground.add_child(warning)
 
 	if data["behavior"] == "mage" and world != null and world.darkness > 0.0:
 		# In donkere gebieden is de Magiër zelf een lichtje (en zie je de aanloop goed).
@@ -593,33 +598,50 @@ func _king_phase() -> int:
 
 func _ai_king(_delta: float) -> void:
 	var phase := _king_phase()
-	var to_player := _to_player()
 	match state:
 		"idle":
 			if state_time > (0.9 if phase == 1 else 0.6 if phase == 2 else 0.4):
+				hop_phase=phase
+				hop_to=_king_destination(player.global_position+player.velocity*0.2)
 				state = "crouch"
 				state_time = 0.0
 		"crouch":
-			if state_time > (0.5 if phase < 3 else 0.35):
+			if state_time > king_charge_time():
 				state = "hop"
 				state_time = 0.0
 				hop_from = global_position
-				hop_to = global_position + to_player + player.velocity * 0.35
-				hop_to = world.clamp_to_map(hop_to)
 		"hop":
-			var duration := 0.8 if phase < 3 else 0.6
+			var duration := king_hop_time()
 			var p := clampf(state_time / duration, 0.0, 1.0)
 			air_height = sin(p * PI) * 52.0
 			global_position = hop_from.lerp(hop_to, p)
 			if p >= 1.0:
 				air_height = 0.0
-				_king_land(phase)
+				_king_land(hop_phase)
 				state = "land"
 				state_time = 0.0
 		"land":
-			if state_time > 0.5:
+			if state_time > 0.65:
 				state = "idle"
 				state_time = 0.0
+
+func king_charge_time() -> float:
+	return 0.65 if hop_phase==1 else 0.6 if hop_phase==2 else 0.5
+
+func king_hop_time() -> float:
+	return 0.8 if hop_phase<3 else 0.6
+
+func king_shock() -> float:
+	return 64.0 if hop_phase==1 else 74.0 if hop_phase==2 else 86.0
+
+func _king_destination(proposed: Vector2) -> Vector2:
+	var goal: Vector2=world.clamp_to_map(proposed)
+	if _fits_at(goal):return goal
+	for radius in range(1,5):
+		for i in 8:
+			var candidate:=goal+Vector2.from_angle(i*TAU/8)*radius*24
+			if _fits_at(candidate):return candidate
+	return global_position
 
 
 func _king_land(phase: int) -> void:
@@ -628,7 +650,7 @@ func _king_land(phase: int) -> void:
 	Sound.play("slam")
 	world.shake(7.0)
 	world.burst(global_position + Vector2(0, 30), Color(0.5, 0.95, 0.55), 16)
-	world.ring(global_position + Vector2(0, 30), shock, Color(0.5, 0.95, 0.55))
+	world.ring(global_position, shock, Color(0.5, 0.95, 0.55))
 	slam_ring = 0.35
 	if global_position.distance_to(player.global_position) < shock:
 		player.hurt(global_position, 1 if phase == 1 else int(data.get("slam_damage", 2)), data["name"] + " (landing)")
@@ -835,9 +857,6 @@ func _draw() -> void:
 			if _king_phase() == 3 and active and int(t * 6.0) % 2 == 0 and flash <= 0.0:
 				tint = Color(1.5, 0.8, 0.8)
 			DrawUtil.sprite(self, sheet, column, 0, Vector2(0, -lift), cell, scale, tint)
-			if state == "crouch":
-				var shock := 64.0 if _king_phase() == 1 else 74.0 if _king_phase() == 2 else 86.0
-				draw_arc(Vector2(0, size * 0.3), shock * 0.5, 0.0, TAU, 32, Color(1, 0.3, 0.3, 0.35), 3.0)
 
 
 ## De aanloop van de Magiër: zijn handen gloeien en boven zijn hoofd groeit een bol.

@@ -149,12 +149,13 @@ static func travel(world: Node, altar: Dictionary) -> bool:
 		GameState.transitioning = false
 		return false
 	if altar["map"] == GameState.map_id:
-		_move_player(world, altar["pos"])
+		_move_player(world, world.safe_spawn_position(altar["pos"]))
 	else:
 		world.load_map(altar["map"], altar["spawn"], altar["pos"])
+	world.player.invuln=maxf(world.player.invuln,1.25)
 	GameState.set_flag("wereld_snel_gereisd")
 	world.autosave()
-	world.ring(altar["pos"], 44.0, Color(0.5, 0.85, 1.0))
+	world.ring(world.player.global_position, 44.0, Color(0.5, 0.85, 1.0))
 	await world.fader.fade_in(FADE)
 	GameState.transitioning = false
 	return true

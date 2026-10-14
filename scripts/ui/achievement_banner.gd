@@ -50,6 +50,7 @@ func _ready() -> void:
 	row.add_child(icon)
 	var texts := VBoxContainer.new()
 	texts.alignment = BoxContainer.ALIGNMENT_CENTER
+	texts.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 	row.add_child(texts)
 	heading = Label.new()
 	heading.text = tr("Prestatie behaald!")
@@ -58,6 +59,9 @@ func _ready() -> void:
 	texts.add_child(heading)
 	name_label = Label.new()
 	name_label.add_theme_font_size_override("font_size", 24)
+	name_label.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
+	name_label.clip_text=true
+	name_label.custom_minimum_size.x=380
 	texts.add_child(name_label)
 	Lang.changed.connect(_on_language_changed)
 
@@ -81,10 +85,11 @@ func is_showing() -> bool:
 ## de kaart groot in beeld (op dezelfde hoogte). Dan wachten we met de volgende melding.
 func _screen_is_busy() -> bool:
 	var world := get_tree().get_first_node_in_group("world")
-	return world != null and (GameState.transitioning or world.hud.banner_time > 0.0)
+	return world != null and (GameState.transitioning or world.hud.banner_time > 0.0 or world.hud.boss_bar.visible)
 
 
 func _process(delta: float) -> void:
+	if time>0 and _screen_is_busy():root.modulate.a=0;return
 	if time <= 0.0:
 		root.modulate.a = 0.0
 		if GameState.achievement_queue.is_empty() or _screen_is_busy():
@@ -100,4 +105,13 @@ func _process(delta: float) -> void:
 	time -= delta
 	var shown := minf(duration - time, time) / SLIDE_TIME
 	root.modulate.a = clampf(shown * 1.5, 0.0, 1.0)
-	root.position.y = lerpf(-PANEL_SIZE.y, TOP, ease(clampf(shown, 0.0, 1.0), 0.4))
+	var view:=get_viewport().get_visible_rect().size
+	root.position.x=(view.x-PANEL_SIZE.x)*0.5
+	var world:=get_tree().get_first_node_in_group("world")
+	if world!=null:
+		# A side entrance keeps the centre/player and the right-hand goals clear.
+		# Leave the bottom strip for ordinary toasts.
+		root.position.y=maxf(TOP,view.y-PANEL_SIZE.y-140)
+		root.position.x=lerpf(-PANEL_SIZE.x,20,ease(clampf(shown,0,1),0.4))
+	else:
+		root.position.y = lerpf(-PANEL_SIZE.y, TOP, ease(clampf(shown, 0.0, 1.0), 0.4))
