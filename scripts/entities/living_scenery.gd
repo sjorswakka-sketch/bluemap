@@ -73,7 +73,6 @@ func refresh() -> void:
 			if GameState.flag("lw_bridge"):
 				for x in range(18,23):
 					for y in [16,17]: tile(x,y,"=")
-				resident("npc_stien", Vector2(21.5,16.5))
 		"dauwbos":
 			if GameState.flag("lw_forest"):
 				resource("dauwklauw","lw_revealed_flower",Vector2i(40,31))
@@ -81,9 +80,7 @@ func refresh() -> void:
 		"ijsdal":
 			if GameState.flag("lw_heat_west"):
 				for x in range(10,15): tile(x,12,",")
-				resident("npc_fenna", Vector2(9.5,11.8))
 			if GameState.flag("lw_heat_east"):
-				resident("npc_roos", Vector2(34.5,11.8))
 				for y in range(3,13): tile(40,y,",")
 				for x in range(40,44): tile(x,3,",")
 

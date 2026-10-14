@@ -1,6 +1,18 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.14.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.15.0-preview.**
+
+Nieuw in 0.15: **De wereld onthoudt je vooruitgang**. Acht nieuwe bewoners gebruiken
+de herstelde Prismamijn, Dauwtuin, huizen van IJsdal, moerasbrug, bron, Rietarchief
+en klimlijn. Ze werken, wandelen en rusten, blijven aanspreekbaar in de avond en
+reageren op regen, hitte, andere herstelde gebieden en je bron- en archiefkeuzes.
+Ravi verplaatst zijn halte naar de gekozen waterkant.
+
+Het reizigersboek in de herberg toont welke ontmoetingen beschikbaar zijn en wie
+je al hebt gesproken. Bewoners herkennen een volgend bezoek, ook na opslaan en
+laden. Ze hebben eigen pixel-art, gerei en werkbewegingen; de vroegere stilstaande
+winterbewoners en de dubbelganger op de brug zijn vervangen. Oude opdrachten en
+eenmalige beloningen blijven behouden. Zie [WORLD_MEMORY.md](WORLD_MEMORY.md).
 
 Nieuw in 0.14: **Beroepen en uitrusting verbinden**. Ontdek Greta's werktekeningen,
 Lena's lensonderzoek en Joris' vlechtpatroon. Maak slagbanden voor zuiniger technieken,

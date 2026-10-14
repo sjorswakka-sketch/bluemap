@@ -196,6 +196,9 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	living_scenery.world = self
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
+	var memory := preload("res://scripts/entities/world_memory.gd").new()
+	memory.world = self
+	ground.add_child(memory)
 	if map_id in ["forest","ruins","cave"]:
 		var route: Node2D=load("res://scripts/entities/first_route.gd").new()
 		route.world=self

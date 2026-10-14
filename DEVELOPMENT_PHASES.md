@@ -64,12 +64,20 @@ Paginering houdt gearlijsten vrij van overlap; lokale scrollcoördinaten houden 
 recepten zichtbaar wanneer het menu schaalt. Streekerts en hout hebben nieuwe toepassingen;
 acht regionale gerechten en elixers zijn nu ook bruikbaar via het menu. Details: CRAFT_PROGRESSION.md.
 
-## 5. De wereld onthoudt je vooruitgang — wacht op go
+## 5. De wereld onthoudt je vooruitgang — afgerond in 0.15
 
 Verbind regionale gevolgen aan bewoners, routes, bezoeken en nieuwe ontmoetingen.
 Eerder herstelde plekken krijgen blijvend gebruik. Dag, avond en weer ondersteunen dit
 zonder tijdsloten die het avontuur blokkeren. Hergebruik de bestaande opgeslagen flags.
 Acceptatie: terugkeer toont betekenisvolle veranderingen, ook na opslaan en laden.
+
+Opgeleverd: acht aanspreekbare bewoners met eigen art, werkzaamheden en fysieke
+routes in zeven herstelde gebieden. Dag, avond, regen en hitte veranderen activiteiten;
+geen gesprek of route is aan een tijdslot gebonden. Bronkeuzes verplaatsen Ravi,
+de tentoonstelling en herstel elders veranderen gesprekken. Het reizigersboek in
+de herberg wijst op nieuwe ontmoetingen en onthoudt eerdere gesprekken.
+Bestaande flags sturen herstel, nieuwe ontmoetingflags gebruiken hetzelfde savebestand.
+Details en geteste grenzen: WORLD_MEMORY.md.
 
 ## 6. Het avontuur als geheel — wacht op go
 

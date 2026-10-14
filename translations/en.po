@@ -5710,7 +5710,7 @@ msgid "Een stevige werkbroek met verstevigde knieën. Puur voor de look; draag h
 msgstr "Sturdy work trousers with reinforced knees. Purely for looks; wear it over your equipment."
 
 #. Naam van voorwerp cloth_boots
-#: scripts/ui/equipment_page.gd:213 scripts/ui/progression_page.gd:126 scripts/data/ext/uiterlijk.gd:233
+#: scripts/ui/equipment_page.gd:220 scripts/ui/progression_page.gd:126 scripts/data/ext/uiterlijk.gd:233
 msgid "Laarzen"
 msgstr "Boots"
 
@@ -6668,6 +6668,11 @@ msgstr "The way begins in the Crystal Temple. Only when the Blue Map is whole ag
 #: scripts/data/ext/meer_boeken.gd:54
 msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
 msgstr "The Star Map isn't easy to read. The Guardian will test you first. Take it slow. Get a good night's sleep first. And eat something."
+
+#. Legenda op het kaartje (menu): memory_book
+#: scripts/data/ext/world_memory.gd:4
+msgid "Reizigersboek"
+msgstr "Travellers' book"
 
 #. Legenda op het kaartje (menu): craft_notes
 #: scripts/data/ext/craft_progression.gd:4
@@ -7924,7 +7929,7 @@ msgid "Techniek (vasthouden + zwaard / boog)"
 msgstr "Technique (hold + sword / bow)"
 
 #. Instelbare bediening: attack
-#: scripts/ui/ending.gd:254 scripts/ui/equipment_page.gd:213 scripts/ui/progression_page.gd:126 scripts/core/input_manager.gd:14
+#: scripts/ui/ending.gd:254 scripts/ui/equipment_page.gd:220 scripts/ui/progression_page.gd:126 scripts/core/input_manager.gd:14
 msgid "Zwaard"
 msgstr "Sword"
 
@@ -8173,7 +8178,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:223
+#: scripts/world.gd:226
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -8526,9 +8531,241 @@ msgstr "I know that symbol! The old waterworks use the same prism as my workbenc
 msgid "Kijk gerust bij de prismabank links van me. Voor de mijn heb je later een ijzeren zwaard nodig. Oudste Bram bij de tempel kan je eerst op weg helpen."
 msgstr "Take a look at the prism bench on my left. You will need an iron sword for the mine later. Elder Bram by the temple can help you get started."
 
-#: scripts/core/professions.gd:102 scripts/core/craft_journal.gd:73 scripts/ui/equipment_page.gd:287
+#: scripts/core/professions.gd:102 scripts/core/craft_journal.gd:73 scripts/ui/equipment_page.gd:294
 msgid "Nog vergrendeld: herstel de prismabank of Mees’ oversteek."
 msgstr "Still locked: restore the prism bench or Mees’s crossing."
+
+#: scripts/core/world_memory.gd:23
+msgid "Ivo de mijnwerker"
+msgstr "Ivo the miner"
+
+#: scripts/core/world_memory.gd:24
+msgid "Tess de tuinier"
+msgstr "Tess the gardener"
+
+#: scripts/core/world_memory.gd:25
+msgid "Edda van de winterkeuken"
+msgstr "Edda of the winter kitchen"
+
+#: scripts/core/world_memory.gd:26
+msgid "Wout de lampenmaker"
+msgstr "Wout the lamp maker"
+
+#: scripts/core/world_memory.gd:27
+msgid "Ada de veenkoerier"
+msgstr "Ada the peat courier"
+
+#: scripts/core/world_memory.gd:28
+msgid "Ravi de reiziger"
+msgstr "Ravi the traveller"
+
+#: scripts/core/world_memory.gd:29
+msgid "Fien de verteller"
+msgstr "Fien the storyteller"
+
+#: scripts/core/world_memory.gd:30
+msgid "Cas de bergpost"
+msgstr "Cas the mountain postman"
+
+#: scripts/core/world_memory.gd:34
+msgid "Nu de kern rustig is, kan ik hier weer werken. Ik ben Ivo. Mijn gereedschap trilt eindelijk niet meer uit mijn handen!"
+msgstr "Now the core is calm, I can work here again. I'm Ivo. My tools finally stop shaking out of my hands!"
+
+#: scripts/core/world_memory.gd:35
+msgid "Tess, aangenaam. Ik zag het lichtpad opengaan en kwam kijken. Deze tuin verdient meer dan een bezoek voor één bloem."
+msgstr "Tess, pleased to meet you. I saw the light path open and came to look. This garden deserves more than a visit for one flower."
+
+#: scripts/core/world_memory.gd:36
+msgid "Ik ben Edda. Dat warme huis heeft ons teruggebracht. De winterkeuken is weer open, ook wanneer jij laat langskomt."
+msgstr "I'm Edda. That warm house brought us back. The winter kitchen is open again, even when you arrive late."
+
+#: scripts/core/world_memory.gd:37
+msgid "Wout is de naam. Dankzij het vuur kan ik mijn lampen hier weer herstellen. Het oostelijke pad hoeft nooit meer dicht."
+msgstr "Wout's the name. Thanks to the fire, I can repair my lamps here again. The eastern path never has to close again."
+
+#: scripts/core/world_memory.gd:38
+msgid "Ada. Vroeger moest ik met elke mand om het water heen. Je brug maakt van twee oevers weer één buurt."
+msgstr "Ada. I used to carry every basket all the way around the water. Your bridge makes two banks one neighbourhood again."
+
+#: scripts/core/world_memory.gd:39
+msgid "Ik ben Ravi. Sana vertelde over de bron. Nu durven reizigers hier weer te stoppen in plaats van door te haasten."
+msgstr "I'm Ravi. Sana told me about the spring. Travellers now dare to stop here instead of rushing through."
+
+#: scripts/core/world_memory.gd:40
+msgid "Fien. Mees stuurde me naar het geordende archief. Er passen hier meer stemmen dan alleen die van onderzoekers."
+msgstr "Fien. Mees sent me to the restored archive. There's room for more voices here than just researchers."
+
+#: scripts/core/world_memory.gd:41
+msgid "Cas, bergpost! Door jouw klimlijn kan de post ook bij harde wind over de pas. Geen brieven meer onder een steen verstoppen."
+msgstr "Cas, mountain post! Your climbing line lets the mail cross the pass even in strong winds. No more hiding letters under a rock."
+
+#: scripts/core/world_memory.gd:45
+msgid "Ik sorteer de nieuwe ertslagen. Het ijzer en koper bij de lichtkring zijn nu veilig te verzamelen; je pikhouweel blijft nodig."
+msgstr "I'm sorting the new ore seams. Iron and copper near the light circle are now safe to gather; you still need your pickaxe."
+
+#: scripts/core/world_memory.gd:45
+msgid "Even mijn gereedschap nakijken bij de rustige kern. Morgen werk ik verder; het erts blijft bereikbaar."
+msgstr "Just checking my tools by the calm core. I'll work again tomorrow; the ore stays accessible."
+
+#: scripts/core/world_memory.gd:46
+msgid "Ik geef de jonge planten water. Dauwklauwen staan langs de stroom, honingzwammen onder de bomen. Laat de vogels ook wat ruimte."
+msgstr "I'm watering the young plants. Dewclaws grow by the stream, honey mushrooms under the trees. Leave the birds some room too."
+
+#: scripts/core/world_memory.gd:46
+msgid "Ik sorteer zaden op de droge hoek van de tuin. Regen en avond veranderen mijn werk, maar de kruiden blijven bereikbaar."
+msgstr "I'm sorting seeds in the dry corner of the garden. Rain and evening change my work, but the herbs stay accessible."
+
+#: scripts/core/world_memory.gd:47
+msgid "Ik roer de wintersoep. IJsbloemen en winterbessen zijn weer de moeite waard om mee te nemen naar de kookplek."
+msgstr "I'm stirring the winter soup. Ice flowers and winter berries are worth bringing to the cooking spot again."
+
+#: scripts/core/world_memory.gd:47
+msgid "De soep staat zachtjes te dampen. We blijven bij het huis; je hoeft voor een gesprek nooit op de ochtend te wachten."
+msgstr "The soup is gently steaming. We stay near the house; you never have to wait until morning for a chat."
+
+#: scripts/core/world_memory.gd:48
+msgid "Ik controleer de lonten voor vanavond. De Bergpas is open; zoek de klimlijn en neem wat hout mee voor je werkpak."
+msgstr "I'm checking the wicks for tonight. The Mountain Pass is open; look for the climbing line and take some wood for your workpack."
+
+#: scripts/core/world_memory.gd:48
+msgid "Nu mogen de lampen hun werk doen. Ook in het donker blijft het pad naar de Bergpas open."
+msgstr "Now the lamps can do their work. The path to the Mountain Pass stays open after dark too."
+
+#: scripts/core/world_memory.gd:49
+msgid "Ik bind de veenmanden vast voor het volgende transport. De brug blijft vrij voor jou. Aan de lage oever kun je vissen en watermunt vinden."
+msgstr "I'm tying the peat baskets for the next delivery. The bridge stays clear for you. You can fish and find water mint on the low bank."
+
+#: scripts/core/world_memory.gd:49
+msgid "De manden staan droog voor de nacht. De brug en de ingang van het Rietarchief blijven gewoon open."
+msgstr "The baskets are dry for the night. The bridge and Reed Archive entrance stay open."
+
+#: scripts/core/world_memory.gd:50
+msgid "Ik vul mijn kruiken en verdeel de bagage. Deze halte bestaat dankzij de bron; de Zonnekloof kun je blijven bezoeken."
+msgstr "I'm filling my jars and dividing the luggage. This stop exists because of the spring; you can keep visiting the Sun Canyon."
+
+#: scripts/core/world_memory.gd:50
+msgid "In de hitte en tegen de avond zoek ik schaduw. Mijn kruiken zijn gevuld; er is geen haast om nu de kloof in te gaan."
+msgstr "In the heat and towards evening, I find shade. My jars are full; there's no hurry to enter the canyon now."
+
+#: scripts/core/world_memory.gd:51
+msgid "Ik lees de drie beelden voor: riet, aanlegplaats, overstroming. Een bezoeker kan nu zelf begrijpen wat hier gebeurd is."
+msgstr "I read the three pictures aloud: reeds, landing, flood. A visitor can now understand what happened here for themselves."
+
+#: scripts/core/world_memory.gd:51
+msgid "Even aantekeningen maken voor mijn volgende verhaal. Het archief blijft open; de beelden verliezen hun volgorde niet."
+msgstr "Just making notes for my next story. The archive stays open; the pictures keep their order."
+
+#: scripts/core/world_memory.gd:52
+msgid "Ik maak een postbundel vast met hetzelfde vlechtwerk als de klimlijn. Die lijn blijft veilig, ook wanneer de wind opnieuw aantrekt."
+msgstr "I'm tying a mail bundle with the same weaving as the climbing line. That line stays safe even when the wind picks up again."
+
+#: scripts/core/world_memory.gd:52
+msgid "De post ligt droog bij het kamp. Morgen gaat de volgende bundel mee. Jij kunt de klimlijn op elk moment gebruiken."
+msgstr "The mail is dry by the camp. Tomorrow the next bundle goes out. You can use the climbing line at any time."
+
+#: scripts/core/world_memory.gd:58
+msgid "Greta gebruikt onze rustige lichtkern in haar werkplaats. Dat is herstel dat verder reikt dan deze grot."
+msgstr "Greta uses our calm light core in her workshop. That's restoration reaching beyond this cave."
+
+#: scripts/core/world_memory.gd:58
+msgid "Greta kan iets met de herstelde kern. Zoek haar werkbank in de smederij wanneer je terug in het dorp bent."
+msgstr "Greta could use the restored core. Find her workbench in the smithy when you're back in the village."
+
+#: scripts/core/world_memory.gd:60
+msgid "Door de open moerasbrug kunnen kruiden ook naar de andere oever. Een tuin is pas echt levend als mensen haar gebruiken."
+msgstr "The open marsh bridge lets herbs reach the other bank too. A garden truly comes alive when people use it."
+
+#: scripts/core/world_memory.gd:60
+msgid "Verderop ligt het Kruipmoeras. Als die brug weer open is, kunnen onze kruiden ook naar de andere oever."
+msgstr "The Creeping Marsh lies ahead. Once that bridge is open again, our herbs can reach the other bank too."
+
+#: scripts/core/world_memory.gd:62
+msgid "Cas bezorgt weer post over de klimlijn. Twee warme huizen en een veilige pas brengen de buurt bij elkaar."
+msgstr "Cas is delivering mail over the climbing line again. Two warm houses and a safe pass bring the neighbourhood together."
+
+#: scripts/core/world_memory.gd:62
+msgid "Boven ons wacht de Bergpas. Een vaste klimlijn zou ook de post weer op gang helpen."
+msgstr "The Mountain Pass waits above us. A fixed climbing line could get the mail moving again too."
+
+#: scripts/core/world_memory.gd:64
+msgid "Mees toont veilige vluchtroutes. Ada gebruikt de oude aanlegplaatsen nu als herkenningspunten voor transport."
+msgstr "Mees displays safe escape routes. Ada now uses the old landing sites as landmarks for deliveries."
+
+#: scripts/core/world_memory.gd:64
+msgid "Mees bewaart de verhalen van de bewoners. Fien neemt ze mee in haar vertellingen tussen de archiefbeelden."
+msgstr "Mees preserves the residents' stories. Fien includes them in her tales among the archive pictures."
+
+#: scripts/core/world_memory.gd:64
+msgid "Nu de oever droog is, kun je de beelden in het Rietarchief onderzoeken. Mees wacht op wat je daar ontdekt."
+msgstr "Now the bank is dry, you can study the pictures in the Reed Archive. Mees is waiting to hear what you discover there."
+
+#: scripts/core/world_memory.gd:66
+msgid "Je koos ruimte voor het wild. Ik vul mijn kruiken, maar laat de rustige waterkant aan de dieren."
+msgstr "You chose room for wildlife. I fill my jars but leave the quiet water's edge to the animals."
+
+#: scripts/core/world_memory.gd:66
+msgid "Je koos een halte voor reizigers. We houden de kruiken en bagage aan deze kant, zodat het water bereikbaar blijft."
+msgstr "You chose a stop for travellers. We keep the jars and luggage on this side so the water stays accessible."
+
+#: scripts/core/world_memory.gd:68
+msgid "Joris' bergwerkpak gebruikt hetzelfde vlechtwerk. Handig wanneer je onderweg hout of kruiden verzamelt."
+msgstr "Joris' mountain workpack uses the same weaving. Handy when you gather wood or herbs along the way."
+
+#: scripts/core/world_memory.gd:68
+msgid "Bij het Zilvermeer ligt Joris' vlechtpatroon. Nu je de klimlijn kent, kun je zijn werkpak verder verbeteren."
+msgstr "Joris' weaving pattern lies by Silver Lake. Now you know the climbing line, you can improve his workpack."
+
+#: scripts/core/world_memory.gd:75
+msgid "Daar ben je weer! Hoor je hoe rustig het hier klinkt? Zo klinkt een mijn waar je kunt werken."
+msgstr "There you are again! Hear how calm it sounds? That's the sound of a mine you can work in."
+
+#: scripts/core/world_memory.gd:76
+msgid "Welkom terug tussen het groen. Ik heb de nieuwe scheuten al gezien; de tuin blijft groeien."
+msgstr "Welcome back among the greenery. I've already seen the new shoots; the garden keeps growing."
+
+#: scripts/core/world_memory.gd:77
+msgid "Ah, een bekend gezicht. Het vuur is gebleven, dus onze keuken ook."
+msgstr "Ah, a familiar face. The fire stayed, and so did our kitchen."
+
+#: scripts/core/world_memory.gd:78
+msgid "Je bent terug! Kijk vanavond naar de ramen: die warmte zit nu in het dagelijkse leven."
+msgstr "You're back! Look at the windows tonight: that warmth is now part of daily life."
+
+#: scripts/core/world_memory.gd:79
+msgid "Dag weer! Sinds jouw brug open is, ken ik ook de mensen aan de andere kant bij naam."
+msgstr "Hello again! Since your bridge opened, I know the people on the other side by name too."
+
+#: scripts/core/world_memory.gd:80
+msgid "Je vindt me weer bij het water. Een echte halte herken je aan mensen die terugkomen."
+msgstr "You've found me by the water again. You recognise a real stop by the people who return."
+
+#: scripts/core/world_memory.gd:81
+msgid "Mooi, je komt nog eens lezen. De beelden veranderen niet, maar ieder bezoek brengt een ander verhaal."
+msgstr "Lovely, you've come to read again. The pictures don't change, but each visit brings another story."
+
+#: scripts/core/world_memory.gd:82
+msgid "Weer op de pas? De post gaat inmiddels geregeld heen en terug. Jouw lijn doet nog steeds haar werk."
+msgstr "Back on the pass? The mail now travels back and forth regularly. Your line is still doing its job."
+
+#: scripts/core/world_memory.gd:91
+msgid "Dit boek wordt bijgehouden door reizigers. Herstelde plekken krijgen opnieuw bewoners. Ga gerust overdag of in de avond langs."
+msgstr "Travellers keep this book. Restored places have residents again. Visit during the day or evening whenever you like."
+
+#: scripts/core/world_memory.gd:95
+msgid "%s — %s. %s"
+msgstr "%s — %s. %s"
+
+#: scripts/core/world_memory.gd:95
+msgid "Al ontmoet; het werk gaat verder."
+msgstr "Already met; the work continues."
+
+#: scripts/core/world_memory.gd:95
+msgid "Nieuwe ontmoeting na je herstel."
+msgstr "A new encounter after your restoration."
+
+#: scripts/core/world_memory.gd:96
+msgid "De eerste berichten komen wanneer je de lichtkern, de tuin, een huis, een bron, een brug, het archief of de klimlijn herstelt."
+msgstr "The first reports arrive when you restore the light core, garden, a house, spring, bridge, archive or climbing line."
 
 #: scripts/data/arena.gd:101
 msgid "Je staat al ingeschreven. Loop maar naar de arenadeur!"
@@ -9002,6 +9239,10 @@ msgstr "Deep fishing spot"
 msgid "Visplek"
 msgstr "Fishing spot"
 
+#: scripts/entities/memory_book.gd:22 scripts/entities/memory_book.gd:27
+msgid "Het reizigersboek"
+msgstr "The travellers' book"
+
 #: scripts/entities/opening_device.gd:23
 msgid "Verstopt rooster"
 msgstr "Blocked Grate"
@@ -9216,7 +9457,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:43 scripts/entities/living_scenery.gd:80 scripts/entities/living_scenery.gd:83
+#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:43 scripts/entities/living_scenery.gd:79 scripts/entities/living_scenery.gd:82
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -9455,31 +9696,31 @@ msgstr "Material goal: %s"
 msgid "Alles bij je: maak via %s."
 msgstr "Everything ready: craft with %s."
 
-#: scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:384 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
+#: scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:403 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
 msgid "Sluiten"
 msgstr "Close"
 
-#: scripts/ui/crafting_ui.gd:146
+#: scripts/ui/crafting_ui.gd:147
 msgid "↑ ↓ ← → kiezen  ·  %s bevestigen  ·  %s / %s recepten/voorraad  ·  %s sluiten"
 msgstr "↑ ↓ ← → select  ·  %s confirm  ·  %s / %s recipes/supplies  ·  %s close"
 
-#: scripts/ui/crafting_ui.gd:147
+#: scripts/ui/crafting_ui.gd:148
 msgid "Verzamel met %s. Vindplaatsen staan bij het recept; stel een materiaaldoel in. Gereedschap slijt niet."
 msgstr "Gather with %s. Sources are listed with each recipe; set a material goal. Tools never wear out."
 
-#: scripts/ui/crafting_ui.gd:267
+#: scripts/ui/crafting_ui.gd:284
 msgid "Materialen compleet: %d/%d"
 msgstr "Materials ready: %d/%d"
 
-#: scripts/ui/crafting_ui.gd:366
+#: scripts/ui/crafting_ui.gd:385
 msgid "Materiaaldoel verwijderen"
 msgstr "Remove material goal"
 
-#: scripts/ui/crafting_ui.gd:366
+#: scripts/ui/crafting_ui.gd:385
 msgid "Dit recept als materiaaldoel volgen"
 msgstr "Track this recipe as a material goal"
 
-#: scripts/ui/crafting_ui.gd:367
+#: scripts/ui/crafting_ui.gd:386
 msgid "Vindplaatsen staan in de uitleg. Rechts gaat naar de uitleg; omhoog/omlaag scrolt, rechts gaat naar Materiaaldoel."
 msgstr "Sources are in the explanation. Right opens it; up/down scrolls, right goes to Material Goal."
 
@@ -9581,107 +9822,107 @@ msgstr "Your progress is saved: you can keep playing in the village."
 msgid "Druk op %s om naar het titelscherm te gaan"
 msgstr "Press %s to return to the title screen"
 
-#: scripts/ui/equipment_page.gd:205
+#: scripts/ui/equipment_page.gd:212
 msgid "Uitrusting kiezen"
 msgstr "Choose equipment"
 
-#: scripts/ui/equipment_page.gd:206
+#: scripts/ui/equipment_page.gd:213
 msgid "Vijf verwisselbare plekken; zwaard en laarzen werken automatisch."
 msgstr "Five swappable slots; your sword and boots work automatically."
 
-#: scripts/ui/equipment_page.gd:215
+#: scripts/ui/equipment_page.gd:222
 msgid "Leeg"
 msgstr "Empty"
 
-#: scripts/ui/equipment_page.gd:218
+#: scripts/ui/equipment_page.gd:225
 msgid "Automatisch actief"
 msgstr "Automatically active"
 
-#: scripts/ui/equipment_page.gd:219
+#: scripts/ui/equipment_page.gd:226
 msgid "Deze plek volgt je bestaande upgrades."
 msgstr "This slot follows your existing upgrades."
 
-#: scripts/ui/equipment_page.gd:233 scripts/ui/menu_ui.gd:596
+#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:596
 msgid "Uitgerust"
 msgstr "Equipped"
 
-#: scripts/ui/equipment_page.gd:233
+#: scripts/ui/equipment_page.gd:240
 msgid "In bezit"
 msgstr "Owned"
 
-#: scripts/ui/equipment_page.gd:233
+#: scripts/ui/equipment_page.gd:240
 msgid "Niet in bezit"
 msgstr "Not owned"
 
-#: scripts/ui/equipment_page.gd:235 scripts/ui/menu_ui.gd:596
+#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:596
 msgid "%s  Uitrusten"
 msgstr "%s  Equip"
 
-#: scripts/ui/equipment_page.gd:236
+#: scripts/ui/equipment_page.gd:243
 msgid "Afdoen"
 msgstr "Unequip"
 
-#: scripts/ui/equipment_page.gd:266
+#: scripts/ui/equipment_page.gd:273
 msgid "Zwaard: %s · schade %d · bereik %d"
 msgstr "Sword: %s · damage %d · reach %d"
 
-#: scripts/ui/equipment_page.gd:266
+#: scripts/ui/equipment_page.gd:273
 msgid "Je beste zwaard blijft automatisch actief. Bekijk Voortgang voor Greta's prijzen en de route naar het Sterrenzwaard."
 msgstr "Your best sword stays active automatically. See Progress for Greta's prices and the path to the Starblade."
 
-#: scripts/ui/equipment_page.gd:268
+#: scripts/ui/equipment_page.gd:275
 msgid "Snelle laarzen zijn actief: +%d%% loopsnelheid."
 msgstr "Swift boots are active: +%d%% movement speed."
 
-#: scripts/ui/equipment_page.gd:268
+#: scripts/ui/equipment_page.gd:275
 msgid "Koop snelle laarzen bij Tobias. Daarna zijn ze automatisch actief."
 msgstr "Buy swift boots from Tobias. They become active automatically."
 
-#: scripts/ui/equipment_page.gd:268
+#: scripts/ui/equipment_page.gd:275
 msgid "Bekijk Voortgang voor prijs en locatie. Deze bestaande upgrade hoef je niet aan of uit te zetten."
 msgstr "See Progress for price and location. This existing upgrade does not need to be equipped or unequipped."
 
-#: scripts/ui/equipment_page.gd:270 scripts/ui/progression_page.gd:173 scripts/ui/progression_page.gd:243
+#: scripts/ui/equipment_page.gd:277 scripts/ui/progression_page.gd:173 scripts/ui/progression_page.gd:243
 msgid "Nu: %s"
 msgstr "Current: %s"
 
-#: scripts/ui/equipment_page.gd:270
+#: scripts/ui/equipment_page.gd:277
 msgid "Geen bonus"
 msgstr "No bonus"
 
-#: scripts/ui/equipment_page.gd:270
+#: scripts/ui/equipment_page.gd:277
 msgid "Na wisselen: %s"
 msgstr "After swapping: %s"
 
-#: scripts/ui/equipment_page.gd:278
+#: scripts/ui/equipment_page.gd:285
 msgid "Tobias · dorpswinkel · %d munten (je hebt %d)"
 msgstr "Tobias · village shop · %d coins (you have %d)"
 
-#: scripts/ui/equipment_page.gd:285 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:90 scripts/ui/crafting_ui.gd:261
+#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:90 scripts/ui/crafting_ui.gd:278
 msgid "%s %d/%d"
 msgstr "%s %d/%d"
 
-#: scripts/ui/equipment_page.gd:286
+#: scripts/ui/equipment_page.gd:293
 msgid "Maken via %s · %s niveau %d · %s"
 msgstr "Craft via %s · %s level %d · %s"
 
-#: scripts/ui/equipment_page.gd:290
+#: scripts/ui/equipment_page.gd:297
 msgid "Beloning: breng de weerkaart terug naar het kamp in de Bergpas."
 msgstr "Reward: return the weather chart to the Mountain Pass camp."
 
-#: scripts/ui/equipment_page.gd:291
+#: scripts/ui/equipment_page.gd:298
 msgid "Beloning: orden de gebeurtenissen in het Rietarchief."
 msgstr "Reward: sort the events in the Reed Archive."
 
-#: scripts/ui/equipment_page.gd:292
+#: scripts/ui/equipment_page.gd:299
 msgid "Beloning: voltooi Wilfreds gedenksteen in de Ruïne."
 msgstr "Reward: complete Wilfred’s memorial in the Ruins."
 
-#: scripts/ui/equipment_page.gd:293
+#: scripts/ui/equipment_page.gd:300
 msgid "Vind de schuilplaats achter de klankschalen in de Echo-grot."
 msgstr "Find the refuge beyond the singing bowls in Echo Cave."
 
-#: scripts/ui/equipment_page.gd:294
+#: scripts/ui/equipment_page.gd:301
 msgid "Beloning: verdedig de twee vuurkorven in IJsdal."
 msgstr "Reward: defend both braziers in IJsdal."
 

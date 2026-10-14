@@ -150,7 +150,7 @@ func _run() -> void:
 	await frames()
 	check(get_nodes_in_group("living_residents").size()==2,"twee bewoners verschijnen buiten de huizen")
 	for resident in get_nodes_in_group("living_residents"):
-		check(resident is StaticBody2D and resident.get_parent()==world.entities and not world.is_solid(resident.position),"bewoner heeft botsing en y-sortering op vrije grond")
+		check(resident is CharacterBody2D and resident.get_parent()==world.entities and not world.is_solid(resident.position),"bewoner heeft botsing en y-sortering op vrije grond")
 		for npc in get_nodes_in_group("npc"):
 			check(resident.position.distance_to(npc.position)>32,"bewoner overlapt geen bestaande NPC")
 	await load_map("kruipmoeras")
