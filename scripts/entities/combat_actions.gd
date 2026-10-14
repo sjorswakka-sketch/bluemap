@@ -14,6 +14,13 @@ var direction := Vector2.DOWN
 var ranged := false
 var hint_time := 0.0
 
+static func effective_profile(weapon: String, bow := false) -> Dictionary:
+	var equipment: Script = preload("res://scripts/core/equipment.gd")
+	var result: Dictionary = {"name":"Precisieschot","cost":20.0,"windup":0.65} if bow else PROFILES.get(weapon,PROFILES.wood).duplicate()
+	result.cost = maxf(1,roundf(float(result.cost)*(1-equipment.bonus("technique_cost_reduction"))))
+	if bow: result.windup = float(result.windup)*(1-equipment.bonus("bow_preparation_reduction"))
+	return result
+
 static func display_name(weapon: String) -> String:
 	match weapon:
 		"iron": return TranslationServer.translate("Breekslag")
@@ -32,7 +39,7 @@ func begin(p: Node2D, bow: bool) -> void:
 	if bow and (GameState.count("bow") <= 0 or (GameState.count("arrow") <= 0 and not p._lent_arrow())):
 		p._shoot(false)
 		return
-	profile = {"name":"Precisieschot", "cost":20.0, "windup":0.65} if bow else PROFILES.get(GameState.weapon, PROFILES.wood).duplicate()
+	profile = effective_profile(GameState.weapon,bow)
 	if not GameState.movement.spend(profile.cost):
 		if hint_time <= 0:
 			GameState.toast.emit(tr("Deze techniek vraagt %d stamina. Gewone aanvallen blijven beschikbaar.") % int(profile.cost))

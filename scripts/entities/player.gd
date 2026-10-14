@@ -472,6 +472,20 @@ func _draw() -> void:
 		pass
 
 func _draw_equipped_gear() -> void:
+	var equipment: Script = preload("res://scripts/core/equipment.gd")
+	var chest: String = equipment.equipped("chest")
+	if chest.begins_with("gear_pg_pack"):
+		if _direction_row() == 1:
+			draw_rect(Rect2(-7,-4,14,15),Color(0.69,0.53,0.31))
+			for y in [0,4,8]: draw_line(Vector2(-6,y),Vector2(6,y),Color(0.88,0.72,0.44),1)
+		else:
+			draw_line(Vector2(-6,-3),Vector2(-4,9),Color(0.78,0.68,0.4),2)
+			draw_line(Vector2(6,-3),Vector2(4,9),Color(0.78,0.68,0.4),2)
+	if equipment.equipped("hands").begins_with("gear_pg_grip"):
+		draw_rect(Rect2(-12,3,4,4),Color(0.9,0.72,0.4))
+		draw_rect(Rect2(8,3,4,4),Color(0.9,0.72,0.4))
+	if equipment.equipped("neck").begins_with("gear_pg_focus") and _direction_row() != 1:
+		draw_circle(Vector2(0,4),2.5,Color(0.5,0.85,0.9))
 	var weapon_id: String = str(GameState.get("weapon"))
 	if weapon_id != "" and weapon_id != "null":
 		var side := Vector2(10, 2) if facing.x >= 0 else Vector2(-10, 2)

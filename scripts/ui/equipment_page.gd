@@ -10,6 +10,8 @@ const GOLD := Color(1.0, 0.88, 0.4)
 const BLUE := Color(0.65, 0.85, 1.0)
 const EQUIP_RECT := Rect2(344, 386, 292, 42)
 const REMOVE_RECT := Rect2(650, 386, 302, 42)
+const PREV_RECT := Rect2(844,18,28,28)
+const NEXT_RECT := Rect2(924,18,28,28)
 
 signal close_requested
 
@@ -90,7 +92,14 @@ func refresh() -> void:
 		return
 	selected_item = clampi(selected_item, 0, maxi(alternatives().size() - 1, 0))
 	detail.text = detail_text()
+	_fit_detail.call_deferred()
 	queue_redraw()
+
+func _fit_detail() -> void:
+	if not is_instance_valid(detail): return
+	for font_size in range(17,14,-1):
+		detail.add_theme_font_size_override("normal_font_size",font_size)
+		if detail.get_content_height() <= detail.size.y: break
 
 
 func navigate(action: String) -> void:
@@ -162,12 +171,16 @@ func _pointer_input(event: InputEvent) -> void:
 		return
 	if event.button_index != MOUSE_BUTTON_LEFT:
 		return
+	if alternatives().size() > 2 and (PREV_RECT.has_point(event.position) or NEXT_RECT.has_point(event.position)):
+		selected_item = clampi(selected_item+(-2 if PREV_RECT.has_point(event.position) else 2),0,alternatives().size()-1)
+		zone = 1
+		refresh(); accept_event(); return
 	for index in slots().size():
 		if slot_rect(index).has_point(event.position):
 			select_slot(index)
 			accept_event()
 			return
-	for index in alternatives().size():
+	for index in visible_indices():
 		if item_rect(index).has_point(event.position):
 			selected_item = index
 			zone = 1
@@ -186,7 +199,13 @@ func slot_rect(index: int) -> Rect2:
 
 
 func item_rect(index: int) -> Rect2:
-	return Rect2(344, 62 + index * 65, 608, 59)
+	return Rect2(344, 62 + (index-(selected_item/2)*2) * 65, 608, 59)
+
+func visible_indices() -> Array[int]:
+	var result: Array[int] = []
+	var first := (selected_item/2)*2
+	for index in range(first,mini(first+2,alternatives().size())): result.append(index)
+	return result
 
 
 func _draw() -> void:
@@ -206,13 +225,18 @@ func _draw() -> void:
 		_text(Vector2(356, 92), tr("Automatisch actief"), 24, GOLD)
 		_text(Vector2(356, 126), tr("Deze plek volgt je bestaande upgrades."), 18, BLUE)
 	else:
-		for index in options.size():
+		if options.size() > 2:
+			_box(PREV_RECT,false,false); _box(NEXT_RECT,false,false)
+			_text(PREV_RECT.position+Vector2(6,22),"‹",22,BLUE)
+			_text(NEXT_RECT.position+Vector2(6,22),"›",22,BLUE)
+			draw_string(ThemeDB.fallback_font,Vector2(874,40),"%d/%d" % [selected_item/2+1,ceili(options.size()/2.0)],HORIZONTAL_ALIGNMENT_CENTER,48,15,BLUE)
+		for index in visible_indices():
 			var item: String = options[index]
 			var rect := item_rect(index)
 			_box(rect, index == selected_item, zone == 1 and index == selected_item)
 			_icon(item, rect.position + Vector2(9, 12))
 			_text(rect.position + Vector2(52, 24), tr(Items.info(item)["name"]), 19, Color.WHITE)
-			_text(rect.position + Vector2(52, 47), Equipment.stats_text(item), 16, BLUE)
+			draw_string(ThemeDB.fallback_font,rect.position+Vector2(52,47),Equipment.stats_text(item),HORIZONTAL_ALIGNMENT_LEFT,540,14,BLUE)
 			var status := tr("Uitgerust") if Equipment.equipped(slot_id()) == item else tr("In bezit") if GameState.count(item) > 0 else tr("Niet in bezit")
 			draw_string(ThemeDB.fallback_font, rect.position + Vector2(416, 24), status, HORIZONTAL_ALIGNMENT_RIGHT, 182, 15, GOLD if GameState.count(item) > 0 else Color(0.65, 0.7, 0.8))
 		_draw_action(EQUIP_RECT, tr("%s  Uitrusten") % Controls.action_label("ui_accept"), can_equip(), zone == 2 and action_index == 0)
@@ -250,11 +274,7 @@ func detail_text() -> String:
 	if slot_id() == "boots":
 		return (tr("Snelle laarzen zijn actief: +%d%% loopsnelheid.") % roundi((GameState.BOOTS_SPEED_MULTIPLIER - 1.0) * 100.0) if GameState.count("boots") > 0 else tr("Koop snelle laarzen bij Tobias. Daarna zijn ze automatisch actief.")) + "\n\n" + tr("Bekijk Voortgang voor prijs en locatie. Deze bestaande upgrade hoef je niet aan of uit te zetten.")
 	var current := Equipment.equipped(slot_id())
-	var lines: Array[String] = [tr("Nu: %s") % (tr("Geen bonus") if current == "" else Equipment.stats_text(current)), tr("Na wisselen: %s") % Equipment.stats_text(candidate()), ""]
-	if GameState.count(candidate()) > 0:
-		lines.append(tr("In je tas. Kies Uitrusten om te wisselen; je oude voorwerp blijft bewaard."))
-	else:
-		lines.append(tr("Nog niet in bezit. Verzamelen of kopen verandert je uitrusting niet automatisch."))
+	var lines: Array[String] = [tr("Nu: %s") % (tr("Geen bonus") if current == "" else Equipment.stats_text(current)), tr("Na wisselen: %s") % Equipment.stats_text(candidate()), Equipment.comparison_text(candidate())]
 	lines.append(source_text(candidate()))
 	return "\n".join(lines)
 
@@ -270,5 +290,13 @@ func source_text(item: String) -> String:
 		var needs: Array[String] = []
 		for material: String in recipe["inputs"]:
 			needs.append(tr("%s %d/%d") % [tr(Items.info(material)["name"]), GameState.count(material), recipe["inputs"][material]])
-		return tr("Maken via %s · %s niveau %d · %s") % [Controls.action_label("crafting"), tr(Recipes.SKILLS[recipe["skill"]]["name"]), recipe["level"], tr(Recipes.TEXT[recipe.get("station", "anywhere")])] + "\n" + ", ".join(needs)
+		var text := tr("Maken via %s · %s niveau %d · %s") % [Controls.action_label("crafting"), tr(Recipes.SKILLS[recipe["skill"]]["name"]), recipe["level"], tr(Recipes.TEXT[recipe.get("station", "anywhere")])] + "\n" + ", ".join(needs)
+		if recipe.has("unlock") and not GameState.flag(recipe.unlock): text += "\n" + tr(recipe.get("unlock_hint","Nog vergrendeld: herstel de prismabank of Mees’ oversteek."))
+		return text
+	match item:
+		"gear_ra_grip": return tr("Beloning: breng de weerkaart terug naar het kamp in de Bergpas.")
+		"gear_ra_compass": return tr("Beloning: orden de gebeurtenissen in het Rietarchief.")
+		"gear_rf_keepsake": return tr("Beloning: voltooi Wilfreds gedenksteen in de Ruïne.")
+		"gear_rf_cord": return tr("Vind de schuilplaats achter de klankschalen in de Echo-grot.")
+		"gear_bastion_coat": return tr("Beloning: verdedig de twee vuurkorven in IJsdal.")
 	return ""

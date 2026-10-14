@@ -369,8 +369,9 @@ func _refresh_combat() -> void:
 				nearby = true
 				break
 	if not nearby: return
-	var profile: Dictionary = preload("res://scripts/entities/combat_actions.gd").PROFILES.get(GameState.weapon,{})
-	combat_hint.text = tr("%s + %s: %s (%d stamina)\n%s + %s: precisieschot (20)") % [Controls.action_label("technique"),Controls.action_label("attack"),player.combat.display_name(GameState.weapon),int(profile.get("cost",0)),Controls.action_label("technique"),Controls.action_label("bow")]
+	var profile: Dictionary = player.combat.effective_profile(GameState.weapon)
+	var bow: Dictionary = player.combat.effective_profile(GameState.weapon,true)
+	combat_hint.text = tr("%s + %s: %s (%d stamina)\n%s + %s: precisieschot (%d)") % [Controls.action_label("technique"),Controls.action_label("attack"),player.combat.display_name(GameState.weapon),int(profile.cost),Controls.action_label("technique"),Controls.action_label("bow"),int(bow.cost)]
 	combat_hint.visible = true
 
 

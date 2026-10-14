@@ -11,6 +11,7 @@ const SLOTS := {
 }
 
 const ITEMS := {
+
 	"gear_ra_grip":{"name":"Klimhandschoenen","sheet":"ra_items","icon":1,"type":"gear","max":1,"slot":"hands","bonuses":{"move_speed":0.04,"stamina_max":15.0},"desc":"Grip en een lichte tred: 4% sneller lopen en 15 extra stamina. Gebruikt hetzelfde handvak als aanvalshandschoenen."},
 	"gear_ra_compass":{"name":"Archiefkompas","sheet":"ra_items","icon":2,"type":"gear","max":1,"slot":"neck","bonuses":{"magnet_range":16.0,"stamina_regen":0.10},"desc":"Een kompas uit het Rietarchief: 16 extra oppakbereik en 10% sneller staminaherstel. Draag het in je halsvak."},
 	"gear_rf_keepsake": {"name":"Wilfreds herinnering","sheet":"rf_gear","icon":0,"type":"gear","max":1,"slot":"ring","bonuses":{"stamina_regen":0.15,"magnet_range":6.0},"desc":"Een ring uit de herdenkingsplek: 15% sneller staminaherstel en 6 extra oppakbereik. Minder bereik dan een koperen ring."},
@@ -52,4 +53,10 @@ const ITEMS := {
 	"gear_crystal_amulet": {"name": "Kristallen amulet", "sheet": "items_equipment", "icon": 7, "type": "gear", "max": 1, "slot": "neck", "bonuses": {"stamina_regen": 0.30}, "desc": "Alchemie laat gel kristalliseren rond koper. Draag het voor 30% sneller herstel van uithoudingsvermogen."},
 	"gear_copper_ring": {"name": "Koperen ring", "sheet": "items_equipment", "icon": 8, "type": "gear", "max": 1, "slot": "ring", "bonuses": {"magnet_range": 12.0}, "desc": "Een ring die verloren spullen aantrekt. Vergroot je magnetische oppakbereik met 12 pixels."},
 	"gear_crystal_ring": {"name": "Kristallen ring", "sheet": "items_equipment", "icon": 9, "type": "gear", "max": 1, "slot": "ring", "bonuses": {"magnet_range": 24.0}, "desc": "Een ring van koper en alchemistisch kristal. Vergroot je magnetische oppakbereik met 24 pixels."},
+	"gear_pg_grip":{"name":"Slagbanden","sheet":"pg_gear","icon":0,"type":"gear","max":1,"slot":"hands","bonuses":{"technique_cost_reduction":0.10},"desc":"10% minder stamina voor voorbereide zwaardtechnieken en precisieschoten. Gewone slagen en sprinten veranderen niet."},
+	"gear_pg_grip_plus":{"name":"Geharde slagbanden","sheet":"pg_gear","icon":1,"type":"gear","max":1,"slot":"hands","bonuses":{"technique_cost_reduction":0.20,"attack_cooldown_reduction":0.06},"desc":"20% minder techniekstamina en 6% kortere wachttijd tussen gewone zwaardaanvallen. Verbeterde slagbanden met zandsteen uit Dorstvallei."},
+	"gear_pg_focus":{"name":"Richtlens","sheet":"pg_gear","icon":2,"type":"gear","max":1,"slot":"neck","bonuses":{"bow_preparation_reduction":0.15},"desc":"15% kortere voorbereiding van je precisieschot. Draag de lens in het halsvak; pijlschade en staminakosten blijven gelijk."},
+	"gear_pg_focus_plus":{"name":"Heldere richtlens","sheet":"pg_gear","icon":3,"type":"gear","max":1,"slot":"neck","bonuses":{"bow_preparation_reduction":0.25,"stamina_regen":0.10},"desc":"25% kortere voorbereiding van precisieschoten en 10% sneller staminaherstel. Gebruikt ijskristal en watermunt na je onderzoek in het Rietarchief."},
+	"gear_pg_pack":{"name":"Werkpak","sheet":"pg_gear","icon":4,"type":"gear","max":1,"slot":"chest","bonuses":{"harvest_time_reduction":0.15},"desc":"15% korter verzamelen met kruiden, bijl en pikhouweel. Een gevlochten werkpak voor ambachten; geeft geen pantser."},
+	"gear_pg_pack_plus":{"name":"Bergwerkpak","sheet":"pg_gear","icon":5,"type":"gear","max":1,"slot":"chest","bonuses":{"harvest_time_reduction":0.25,"magnet_range":10.0},"desc":"25% korter verzamelen en 10 extra oppakbereik. Versterkt met dennenhout en wilgentwijgen na het vastzetten van de klimlijn; geeft geen pantser."},
 }

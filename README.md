@@ -1,6 +1,19 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.13.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.14.0-preview.**
+
+Nieuw in 0.14: **Beroepen en uitrusting verbinden**. Ontdek Greta's werktekeningen,
+Lena's lensonderzoek en Joris' vlechtpatroon. Maak slagbanden voor zuiniger technieken,
+een richtlens voor snellere precisieschoten of een werkpak voor sneller verzamelen.
+De bron in de Zonnekloof, de klimlijn in de Bergpas en het Rietarchief openen elk
+een passende verbetering met streekmaterialen.
+
+Volg één recept als materiaaldoel via Beroepen. Het doel blijft in beeld en wordt
+opgeslagen; de uitleg toont echte vindplaatsen en gereedschapseisen. De gearpagina
+heeft twee keuzes per pagina en vergelijkt alle bonussen van je gedragen set.
+Een gedragen basisstuk wordt bij verbeteren direct vervangen. IJzeroer en dennenhout
+kunnen nu ook worden verwerkt; alle regionale maaltijden/elixers zijn bruikbaar.
+Zie [CRAFT_PROGRESSION.md](CRAFT_PROGRESSION.md).
 
 Nieuw in 0.13: **Gevechten met meer mogelijkheden**. Houd V (controller: LT) vast
 en druk op zwaard of boog: hout steekt snel, ijzer slaat breed, kristal reikt verder,

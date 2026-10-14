@@ -150,6 +150,16 @@ const RECIPES := {
 },
 	"ls_chowder":{"skill":"cooking","level":1,"xp":12,"station":"inn","unlock":"ls_served","unlock_hint":"Deel eerst een maaltijd aan Mila’s dorpstafel.","inputs":{"meer_baars":2,"prof_herb":1},"output":"ls_chowder"},
 	"ls_broth":{"skill":"cooking","level":1,"xp":12,"station":"inn","unlock":"ls_served","unlock_hint":"Deel eerst een maaltijd aan Mila’s dorpstafel.","inputs":{"meer_baars":1,"prof_berry":2},"output":"ls_broth"},
+	"pg_grip":{"skill":"smithing","level":2,"xp":18,"station":"smithy","unlock":"pg_smith_notes","unlock_hint":"Lees Greta’s werktekeningen naast de prismabank.","inputs":{"prof_copper_bar":2,"prof_log":1},"output":"gear_pg_grip"},
+	"pg_grip_plus":{"skill":"smithing","level":2,"xp":20,"station":"smithy","unlock":"ra_spring","unlock_hint":"Herstel eerst de bron in de Zonnekloof bij Sana’s expeditie.","upgrade_from":"gear_pg_grip","inputs":{"gear_pg_grip":1,"prof_iron_bar":2,"prof_zandsteen":2},"output":"gear_pg_grip_plus"},
+	"pg_focus":{"skill":"alchemy","level":1,"xp":15,"station":"library","unlock":"pg_focus_notes","unlock_hint":"Lees Lena’s lensonderzoek aan de alchemietafel.","inputs":{"prof_copper_bar":1,"prof_herb":2},"output":"gear_pg_focus"},
+	"pg_focus_plus":{"skill":"alchemy","level":2,"xp":20,"station":"library","unlock":"ra_archive_done","unlock_hint":"Orden eerst de drie gebeurtenissen in het Rietarchief.","upgrade_from":"gear_pg_focus","inputs":{"gear_pg_focus":1,"prof_ijskristal":2,"prof_watermunt":2},"output":"gear_pg_focus_plus"},
+	"pg_pack":{"skill":"woodcutting","level":1,"xp":15,"unlock":"pg_pack_notes","unlock_hint":"Lees Joris’ vlechtpatroon op de westelijke oever van het Zilvermeer.","inputs":{"prof_log":2,"prof_branch":2},"output":"gear_pg_pack"},
+	"pg_pack_plus":{"skill":"woodcutting","level":2,"xp":20,"unlock":"ra_rope","unlock_hint":"Zet eerst de klimlijn vast aan de oostelijke touwpaal in de Bergpas.","upgrade_from":"gear_pg_pack","inputs":{"gear_pg_pack":1,"prof_dennenhout":2,"prof_wilgentwijg":2},"output":"gear_pg_pack_plus"},
+	"pine_copper_bar":{"skill":"smithing","level":1,"xp":10,"station":"smithy","inputs":{"prof_copper_ore":2,"prof_dennenhout":1},"output":"prof_copper_bar"},
+	"bog_iron_bar":{"skill":"smithing","level":2,"xp":12,"station":"smithy","inputs":{"prof_ijzeroer":2,"prof_dennenhout":1},"output":"prof_iron_bar"},
+	"pine_arrows":{"skill":"woodcutting","level":2,"xp":5,"inputs":{"prof_dennenhout":1,"prof_stone":1},"output":"arrow","amount":5},
+
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},

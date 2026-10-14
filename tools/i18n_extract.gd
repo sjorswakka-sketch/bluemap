@@ -28,6 +28,7 @@ const Content := preload("res://scripts/data/content.gd")
 const Boeken := preload("res://scripts/data/ext/meer_boeken.gd")
 const Beroepen := preload("res://scripts/data/ext/beroepen.gd")
 const EquipmentData := preload("res://scripts/data/ext/uitrusting.gd")
+const CraftNotes := preload("res://scripts/data/ext/craft_progression.gd")
 
 const CODE_ROOT := "res://scripts"
 ## Sleutels in de data waarvan de waarde nooit tekst voor de speler is (de guard in find_unclaimed slaat ze over).
@@ -221,6 +222,9 @@ static func collect_data(c: Collector) -> void:
 			c.add(EquipmentData.SLOTS[slot_id].get(field, ""), "Uitrustingsslot %s: %s" % [slot_id, field])
 	for text_id: String in Beroepen.TEXT:
 		c.add(Beroepen.TEXT[text_id], "Beroepen: tekst of sjabloon %s" % text_id)
+	for id: String in CraftNotes.NOTES:
+		c.add(CraftNotes.NOTES[id].name,"Werktekening "+id)
+		for line: String in CraftNotes.NOTES[id].lines: c.add(line,"Werktekening "+id)
 	for skill_id: String in Beroepen.SKILLS:
 		for field: String in ["name", "desc"]:
 			c.add(Beroepen.SKILLS[skill_id].get(field, ""), "Beroep %s: %s" % [skill_id, field])

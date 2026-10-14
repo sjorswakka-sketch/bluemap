@@ -24,4 +24,5 @@ static func get_map(map_id: String) -> Dictionary:
 	preload("res://scripts/data/living_maps.gd").enrich(map_id, data)
 	preload("res://scripts/data/regional_maps.gd").enrich(map_id,data)
 	preload("res://scripts/data/combat_maps.gd").enrich(map_id,data)
+	preload("res://scripts/data/craft_maps.gd").enrich(map_id,data)
 	return data

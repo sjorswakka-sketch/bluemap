@@ -4,9 +4,11 @@ extends RefCounted
 ## not respawn a node. Saves from before this module normalize to empty progress.
 
 const Data := preload("res://scripts/data/ext/beroepen.gd")
+const Journal := preload("res://scripts/core/craft_journal.gd")
+const Equipment := preload("res://scripts/core/equipment.gd")
 const MAX_LEVEL := 10
 const MAX_XP := 1350 # 30 * (10 - 1) * 10 / 2
-const CONSUMABLES := ["potion", "prof_berry_meal", "prof_stew", "prof_fish_meal", "prof_tonic", "ls_chowder", "ls_broth"]
+const CONSUMABLES := ["potion", "prof_berry_meal", "prof_stew", "prof_fish_meal", "prof_tonic", "ls_chowder", "ls_broth", "prof_frost_tonic", "prof_winter_gloed", "prof_zandbalsem", "jacht_braadstuk", "prof_mistdrank", "prof_dauwsoep", "prof_moeraselixer", "prof_veenbespap"]
 static var _busy := false
 
 
@@ -18,6 +20,8 @@ static func normalize(raw: Variant, clock: float = 0.0) -> Dictionary:
 	var result := {"xp": {}, "cooldowns": {}}
 	if not raw is Dictionary:
 		return result
+	var goal: Variant = raw.get("goal", "")
+	if goal is String and Data.RECIPES.has(goal): result["goal"] = goal
 	var xp: Variant = raw.get("xp", {})
 	if xp is Dictionary:
 		for skill: String in Data.SKILLS:
@@ -121,16 +125,21 @@ static func craft(recipe_id: String) -> bool:
 		return false
 	_busy = true
 	var recipe: Dictionary = Data.RECIPES[recipe_id]
+	var old_gear: String = recipe.get("upgrade_from", "")
+	var worn: bool = old_gear != "" and Equipment.equipped(Equipment.slot_of(old_gear)) == old_gear
 	# Validate the complete recipe first; all input removal precedes the output.
 	# The guard also prevents synchronous item signals from crafting recursively.
 	for item: String in recipe["inputs"]:
 		gs.take(item, int(recipe["inputs"][item]))
 	gs.give(recipe["output"], int(recipe.get("amount", 1)), true)
+	if worn: Equipment.equip(recipe["output"])
+	Journal.crafted(recipe_id)
 	add_xp(recipe["skill"], int(recipe["xp"]))
 	if recipe["output"] == "lw_lantern":
 		load("res://scripts/core/living_world.gd").lantern_made()
 	gs.toast.emit(TranslationServer.translate(Data.TEXT["made"]) % [item_name(recipe["output"]), int(recipe.get("amount", 1))])
 	_busy = false
+	gs.save_requested.emit()
 	return true
 
 
@@ -166,7 +175,7 @@ static func gather_amount(kind: String) -> int:
 
 
 static func gather_duration(kind: String) -> float:
-	return float(Data.RESOURCES.get(kind, {}).get("duration", 0.65))
+	return float(Data.RESOURCES.get(kind, {}).get("duration", 0.65)) * (1.0 - Equipment.bonus("harvest_time_reduction"))
 
 
 static func gather_animation(kind: String) -> String:

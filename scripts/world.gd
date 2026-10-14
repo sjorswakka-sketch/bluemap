@@ -54,6 +54,7 @@ var hud: CanvasLayer
 var dialogue: CanvasLayer
 var shop_ui: CanvasLayer
 var menu_ui: CanvasLayer
+var craft_goal: CanvasLayer
 var crafting_ui: CanvasLayer
 var pause_menu: CanvasLayer
 var map_data: Dictionary = {}
@@ -92,6 +93,9 @@ func _ready() -> void:
 
 	hud = HudScript.new()
 	add_child(hud)
+	craft_goal = preload("res://scripts/ui/craft_goal.gd").new()
+	craft_goal.world = self
+	add_child(craft_goal)
 	dialogue = DialogueScript.new()
 	add_child(dialogue)
 	shop_ui = ShopScript.new()

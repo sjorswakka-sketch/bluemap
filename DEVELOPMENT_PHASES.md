@@ -49,12 +49,20 @@ drukte; een vrijwillig oefenerf leert de rollen afzonderlijk en gecombineerd.
 Eigen pixel-art, animaties en geluiden, NL/EN-hints, aanpasbare V/LT-modifier en
 veilige migratie van oude eigen bindings. Details: COMBAT_VARIETY.md.
 
-## 4. Beroepen en uitrusting verbinden — wacht op go
+## 4. Beroepen en uitrusting verbinden — afgerond in 0.14
 
 Materialen, vindplaatsen, ontdekte recepten en beloningen vormen begrijpelijke vooruitgang.
 Uitrusting ondersteunt verschillende speelstijlen. Vergelijken, upgraden en vereisten
 worden duidelijker. Beperk nutteloze buit en verplicht herhalen van verzamelwerk.
 Acceptatie: de speler begrijpt waarvoor hij verzamelt en voelt het voordeel van een vondst.
+
+Opgeleverd: drie te ontdekken werkpatronen en drie gearketens met elk een regionale
+verbetering. Techniekstamina, boogvoorbereiding en verzameltijd ondersteunen eigen
+speelstijlen. Een opgeslagen materiaaldoel, echte vindplaatsen, gereedschapseisen,
+alle gearbonussen en vergelijking van de gedragen set maken keuzes duidelijker.
+Paginering houdt gearlijsten vrij van overlap; lokale scrollcoördinaten houden gekozen
+recepten zichtbaar wanneer het menu schaalt. Streekerts en hout hebben nieuwe toepassingen;
+acht regionale gerechten en elixers zijn nu ook bruikbaar via het menu. Details: CRAFT_PROGRESSION.md.
 
 ## 5. De wereld onthoudt je vooruitgang — wacht op go
 

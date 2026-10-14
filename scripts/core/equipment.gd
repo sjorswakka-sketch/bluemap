@@ -4,7 +4,7 @@ extends RefCounted
 
 const Data := preload("res://scripts/data/ext/uitrusting.gd")
 const SLOTS := Data.SLOTS
-const BONUS_LIMITS := {"move_speed": 0.12, "stamina_max": 30.0, "armor": 2.0, "attack_cooldown_reduction": 0.16, "stamina_regen": 0.30, "magnet_range": 24.0}
+const BONUS_LIMITS := {"move_speed": 0.12, "stamina_max": 30.0, "armor": 2.0, "attack_cooldown_reduction": 0.16, "stamina_regen": 0.30, "magnet_range": 24.0, "technique_cost_reduction":0.20, "bow_preparation_reduction":0.25, "harvest_time_reduction":0.25}
 
 
 static func state() -> Node:
@@ -107,19 +107,34 @@ static func bonus(stat: String) -> float:
 	return clampf(total, -BONUS_LIMITS[stat], BONUS_LIMITS[stat])
 
 
-## Reeds vertaald; de UI moet deze tekst niet nogmaals door tr() halen.
-static func stats_text(item_id: String) -> String:
-	var bonuses: Dictionary = Data.ITEMS.get(item_id, {}).get("bonuses", {})
-	if bonuses.has("move_speed"):
-		return TranslationServer.translate("%+d%% snelheid · %d pantser · %+d stamina") % [roundi(bonuses["move_speed"] * 100.0), int(bonuses.get("armor", 0)), int(bonuses.get("stamina_max", 0))]
-	if bonuses.has("stamina_max"):
-		return TranslationServer.translate("+%d uithoudingsvermogen") % int(bonuses["stamina_max"])
-	if bonuses.has("armor"):
-		return TranslationServer.translate("+%d pantser (minimaal 1 schade)") % int(bonuses["armor"])
-	if bonuses.has("attack_cooldown_reduction"):
-		return TranslationServer.translate("%d%% kortere wachttijd tussen zwaardaanvallen") % roundi(float(bonuses["attack_cooldown_reduction"]) * 100.0)
-	if bonuses.has("stamina_regen"):
-		return TranslationServer.translate("+%d%% herstel van uithoudingsvermogen") % roundi(float(bonuses["stamina_regen"]) * 100.0)
-	if bonuses.has("magnet_range"):
-		return TranslationServer.translate("+%d pixels magnetisch oppakbereik") % int(bonuses["magnet_range"])
+## All bonuses are visible; comparison uses effective whole-set caps.
+static func stat_text(stat: String, value: float) -> String:
+	match stat:
+		"move_speed": return TranslationServer.translate("%+d%% snelheid") % roundi(value*100)
+		"stamina_max": return TranslationServer.translate("%+d stamina") % roundi(value)
+		"armor": return TranslationServer.translate("%+d pantser") % roundi(value)
+		"attack_cooldown_reduction": return TranslationServer.translate("%+d%% zwaardwachttijd") % -roundi(value*100)
+		"stamina_regen": return TranslationServer.translate("%+d%% staminaherstel") % roundi(value*100)
+		"magnet_range": return TranslationServer.translate("%+d oppakbereik") % roundi(value)
+		"technique_cost_reduction": return TranslationServer.translate("%+d%% techniekstamina") % -roundi(value*100)
+		"bow_preparation_reduction": return TranslationServer.translate("%+d%% boogvoorbereiding") % -roundi(value*100)
+		"harvest_time_reduction": return TranslationServer.translate("%+d%% verzameltijd") % -roundi(value*100)
 	return ""
+static func stats_text(item_id: String) -> String:
+	var values: Dictionary = Data.ITEMS.get(item_id,{}).get("bonuses",{})
+	var pieces: Array[String] = []
+	for stat: String in values: pieces.append(stat_text(stat,float(values[stat])))
+	return " · ".join(pieces)
+static func preview_bonus(stat: String, candidate: String) -> float:
+	var total := 0.0
+	var replace := slot_of(candidate)
+	for slot: String in SLOTS:
+		var item := candidate if slot == replace else equipped(slot)
+		total += float(Data.ITEMS.get(item,{}).get("bonuses",{}).get(stat,0.0))
+	return clampf(total,-float(BONUS_LIMITS[stat]),float(BONUS_LIMITS[stat]))
+static func comparison_text(candidate: String) -> String:
+	var changes: Array[String] = []
+	for stat: String in BONUS_LIMITS:
+		var difference := preview_bonus(stat,candidate)-bonus(stat)
+		if absf(difference) > 0.001: changes.append(stat_text(stat,difference))
+	return TranslationServer.translate("Geen verandering in je gedragen set.") if changes.is_empty() else TranslationServer.translate("Verschil gedragen set: %s") % " · ".join(changes)

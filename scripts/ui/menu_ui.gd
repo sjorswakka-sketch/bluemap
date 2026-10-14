@@ -584,6 +584,10 @@ func _draw_items(font: Font) -> void:
 		var info: Dictionary = Items.ITEMS[owned[selected]]
 		var h := _text(font, Vector2(x, HEADER_Y), tr(info["name"]), 24, Color(1.0, 0.9, 0.5), 340)
 		h += _text(font, Vector2(x, HEADER_Y + h + 6), tr(info["desc"]), 18, Color(0.9, 0.93, 1.0), 340) + 6
+		if info.get("type","") == "material":
+			var journal: Script = preload("res://scripts/core/craft_journal.gd")
+			h += _text(font,Vector2(x,HEADER_Y+h+6),tr("Vindplaats: %s") % journal.source(owned[selected]),16,Color(0.65,0.85,1),340)+6
+			_text(font,Vector2(x,HEADER_Y+h+6),journal.uses_text(owned[selected]),16,Color(0.75,0.92,0.72),340)
 		var equipment_slot := Equipment.slot_of(owned[selected])
 		if equipment_slot != "":
 			var equipped := Equipment.equipped(equipment_slot) == owned[selected]
