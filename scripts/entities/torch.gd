@@ -11,6 +11,7 @@ var light: PointLight2D
 
 
 func _ready() -> void:
+	add_to_group("world_lights")
 	if world != null and (world.darkness > 0.0 or world.is_outdoor()):
 		light = PointLight2D.new()
 		light.texture = Art.light_texture()

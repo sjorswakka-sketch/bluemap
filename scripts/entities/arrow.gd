@@ -143,6 +143,9 @@ func _can_be_hit(enemy: Node2D) -> bool:
 ## Ketst de pijl nu af op het pantser van deze vijand?
 func _armored(enemy: Node2D) -> bool:
 	var info: Variant = enemy.get("data")
+	if info is Dictionary and info.get("behavior","")=="hb_root":
+		if precise:enemy.break_guard()
+		return preload("res://scripts/entities/habitat_enemy.gd").blocks(enemy)
 	if not (info is Dictionary) or not ARMOR.has((info as Dictionary).get("behavior", "")):
 		return false
 	return not (enemy.get("state") in ARMOR[(info as Dictionary)["behavior"]])
@@ -157,7 +160,10 @@ func _bounce(enemy: Node2D) -> void:
 	world.damage_number(global_position + Vector2(0, -18), tr("Ketst af!"), SPARK)
 	if not enemy.has_meta("boog_kets_hint"):
 		enemy.set_meta("boog_kets_hint", true)
-		GameState.toast.emit(tr("Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."))
+		if enemy.data.behavior=="hb_root":
+			GameState.toast.emit(tr("De bast is gesloten. Schiet tijdens het herstel, of open hem met een precisieschot of zwaardtechniek."))
+		else:
+			GameState.toast.emit(tr("Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."))
 
 
 func _is_boss(enemy: Node2D) -> bool:

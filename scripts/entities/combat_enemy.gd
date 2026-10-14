@@ -10,7 +10,7 @@ static func transition(foe: Node2D, state: String) -> void:
 
 static func slot_free(foe: Node2D) -> bool:
 	for other: Node2D in foe.get_tree().get_nodes_in_group("enemies"):
-		if other != foe and other.global_position.distance_to(foe.global_position) < 240 and other.state in ["cv_warn","cv_charge","lw_warn","lw_lunge","echo_warn","rf_warn"]:
+		if other != foe and other.global_position.distance_to(foe.global_position) < 240 and other.state in ["cv_warn","cv_charge","lw_warn","lw_lunge","echo_warn","rf_warn","hb_root_warn","hb_root_hit","hb_moth_warn","hb_moth_dash"]:
 			return false
 	return true
 

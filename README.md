@@ -1,6 +1,14 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.18.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.19.0-preview.**
+
+Nieuw in 0.19: **Monsters horen bij hun omgeving**. Twee Wortelwakers vervangen
+bestaande slijmen in het bos; twee Schemermotten vervangen vleermuizen op de
+oostelijke grotroute. Wortels hebben een vaste grondwaarschuwing en een lang
+kwetsbaar herstel. Motten kun je naar bestaande fakkels lokken. Eigen sprites,
+animaties en zachte geluiden, met muren en rustpunten als grenzen. Het aantal
+vijandplekken, de stille luisterroute en de rustige buitenroutes blijven gelijk.
+Details: [HABITAT_ENCOUNTERS.md](HABITAT_ENCOUNTERS.md).
 
 Nieuw in 0.18: **Meewerken op bestaande werkplekken**. Stel met Greta haar
 werkbankklem af, of sorteer en meng kruiden met Lena. De eerste reparatie

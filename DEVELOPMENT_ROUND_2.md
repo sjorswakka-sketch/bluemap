@@ -5,7 +5,7 @@ Plan van 14 oktober 2026. Basis: 0.16.0-preview, commit
 `claude/affectionate-mendel-vc1idx`. Alle zes fases uit DEVELOPMENT_PHASES.md
 zijn afgerond. Op verzoek aangepast: de kleine wereld eerst meer ademruimte
 geven; daarna bestaande plekken verdiepen. Fase 1 is uitgevoerd in 0.17 en
-fase 2 in 0.18. Overige fases wachten op een volgend go.
+fase 2 in 0.18 en fase 3 in 0.19. Overige fases wachten op een volgend go.
 
 ## Beste volgende stap
 
@@ -98,9 +98,9 @@ bereiding leert het bestaande richtlenspatroon en verandert haar doseerrek.
 Gratis oefenen geeft geen extra buit/XP. Kleine props op vaste toonbanken,
 geen nieuwe NPC's, opdrachten, colliders of buitenroute-activiteiten.
 Oudere/latere saves, invoer, annuleren en meldingen worden gecontroleerd.
-Details: [WORK_TOGETHER.md](WORK_TOGETHER.md). De volgende go start fase 3.
+Details: [WORK_TOGETHER.md](WORK_TOGETHER.md). Fase 3 volgt hieronder.
 
-## 3. Monsters horen bij hun omgeving — volgende fase
+## 3. Monsters horen bij hun omgeving — uitgevoerd in 0.19
 
 Twee nieuwe vijanden met eigen gedrag en assets. Ontwerprichting:
 een wortelwaker die aangekondigde grondstroken beheerst, en een schemermot
@@ -116,7 +116,16 @@ technieken, boog en rol moeten aantoonbaar verschillende kansen bieden.
 met echte schadegebieden overeenkomen en muren, rustige haltes en aankomstpunten
 veilig blijven. Controleer solo én samen met bestaande vijanden.
 
-## 4. Twee optionele grotuitstapjes
+Opgeleverd: twee stationaire Wortelwakers op bestaande slijmplekken in het bos
+en twee door fakkels afleidbare Schemermotten op bestaande vleermuisplekken van
+de oostelijke grot. Vaste grondwaarschuwingen, lange herstelmomenten, dekking,
+territorium en veilige aankomst-/altaarzones. Technieken openen bast; gewone
+pijlen werken tijdens herstel. Eigen animaties en geluiden, bestaande opslag.
+De achttien bosplekken, uitgedunde plekken en stille luisterroute behouden.
+Geen nieuwe vijandplekken, quests, doorgangen of markers.
+Details: [HABITAT_ENCOUNTERS.md](HABITAT_ENCOUNTERS.md).
+
+## 4. Twee optionele grotuitstapjes — volgende fase
 
 Ontwerp twee compacte zijruimtes bij bestaande gebieden, elk met eigen
 silhouetten, geluiden en spelvorm. Ontwerprichting: een verlaten mijnkamer

@@ -9,6 +9,13 @@ const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Util := preload("res://scripts/core/util.gd")
 const Enemies := preload("res://scripts/data/enemies.gd")
+const HabitatAI := preload("res://scripts/entities/habitat_enemy.gd")
+var habitat_origin := Vector2.ZERO
+var habitat_length := 0.0
+var habitat_traveled := 0.0
+var habitat_hit := false
+var habitat_distracted := false
+
 const CombatAI := preload("res://scripts/entities/combat_enemy.gd")
 const LivingAI := preload("res://scripts/entities/living_enemy.gd")
 var guard_broken := 0.0
@@ -100,6 +107,10 @@ func _ready() -> void:
 	shape.shape = circle
 	shape.position = Vector2(0, _size_px() * 0.28)
 	add_child(shape)
+	if data.behavior in ["hb_root","hb_moth"]:
+		var warning:=preload("res://scripts/entities/habitat_warning.gd").new()
+		warning.enemy=weakref(self)
+		world.ground.add_child(warning)
 	if kind=="king":
 		var warning:=preload("res://scripts/entities/king_warning.gd").new()
 		warning.king=weakref(self)
@@ -141,6 +152,8 @@ func _physics_process(delta: float) -> void:
 	state_time += delta
 	desired = Vector2.ZERO
 	match data["behavior"]:
+		"hb_root", "hb_moth":
+			HabitatAI.update(self,delta)
 		"cv_ram", "cv_slinger":
 			CombatAI.update(self, delta)
 		"rf_ambush", "rf_listen":
@@ -168,10 +181,13 @@ func _physics_process(delta: float) -> void:
 
 	velocity = desired + knockback
 	knockback = knockback.move_toward(Vector2.ZERO, 700.0 * delta)
+	var before:=global_position
 	move_and_slide()
+	if data.behavior in ["hb_root","hb_moth"]:HabitatAI.after_move(self,before)
 
 	var touch_range: float = radius + 9.0
 	if data["behavior"] in ["cv_ram","cv_slinger"] and state != "cv_charge": touch_range = 0.0
+	if data.behavior in ["hb_root","hb_moth"]:touch_range=0.0
 	if state in ["hop", "vanish", "appear"] or data["behavior"] == "animal":
 		touch_range = 0.0 # in de lucht, als rookwolkje of als vreedzaam dier kan hij niemand raken
 	if global_position.distance_to(player.global_position) < touch_range and touch_cooldown <= 0.0:
@@ -684,6 +700,11 @@ func hurt(damage: int, direction: Vector2) -> void:
 		return
 	if kind == "king" and state == "hop":
 		return # in de lucht
+	if HabitatAI.blocks(self):
+		world.ring(global_position,14,Color("b3ab7e"))
+		Sound.play("hit",-14.0,0.7)
+		return
+	if data.behavior in ["hb_root","hb_moth"]:HabitatAI.interrupt(self)
 	if LivingAI.blocks(self, direction):
 		world.ring(global_position, 18, Color(0.7, 0.9, 1))
 		Sound.play("hit", -10.0, 1.5)
@@ -717,6 +738,9 @@ func hurt(damage: int, direction: Vector2) -> void:
 
 
 func break_guard() -> void:
+	if data.behavior=="hb_root":
+		HabitatAI.interrupt(self,true)
+		return
 	if data["behavior"] != "lw_guard": return
 	guard_broken = 1.8
 	world.ring(global_position, 32, Color(1, 0.7, 0.3))
@@ -769,6 +793,8 @@ func _draw() -> void:
 	var chasing: bool = player != null and active and _to_player().length() < float(data["sight"])
 
 	match data["behavior"]:
+		"hb_root", "hb_moth":
+			HabitatAI.draw(self,sheet,tint)
 		"cv_ram", "cv_slinger":
 			CombatAI.draw(self,sheet,tint)
 		"rf_ambush", "rf_listen":

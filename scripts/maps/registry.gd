@@ -27,5 +27,6 @@ static func get_map(map_id: String) -> Dictionary:
 	preload("res://scripts/data/combat_maps.gd").enrich(map_id,data)
 	preload("res://scripts/data/craft_maps.gd").enrich(map_id,data)
 	preload("res://scripts/data/space_maps.gd").enrich(map_id,data)
+	preload("res://scripts/data/habitat_maps.gd").enrich(map_id,data)
 	if map_id == "inn": data["objects"].append({"type":"memory_book","pos":[10,7]})
 	return data

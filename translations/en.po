@@ -5918,6 +5918,26 @@ msgstr "A giant made of crystal and stone. It's slow, but you'll feel its punch 
 msgid "De baas van alle slijmen. Hij springt, spuugt slijm en vindt zichzelf erg belangrijk."
 msgstr "The boss of all slimes. He jumps, spits slime, and thinks he's very important."
 
+#. Naam van vijand hb_root
+#: scripts/data/ext/habitat.gd:5
+msgid "Wortelwaker"
+msgstr "Rootwarden"
+
+#. Vijand hb_root: grappige beschrijving in het beestenboek
+#: scripts/data/ext/habitat.gd:5
+msgid "Blijft bij zijn wortels. De amberkleurige grondstrook ligt vast voordat de wortels toeslaan. Stap of rol opzij en sla tijdens het lange herstel. Zijn gesloten bast houdt gewone slagen en pijlen tegen; een techniek opent hem eerder."
+msgstr "Stays by its roots. The amber ground strip is fixed before the roots strike. Step or roll aside, then attack during the long recovery. Closed bark blocks ordinary hits and arrows; a technique opens it sooner."
+
+#. Naam van vijand hb_moth
+#: scripts/data/ext/habitat.gd:6
+msgid "Schemermot"
+msgstr "Dusk Moth"
+
+#. Vijand hb_moth: grappige beschrijving in het beestenboek
+#: scripts/data/ext/habitat.gd:6
+msgid "Volgt dichtbij zichtbaar licht binnen zijn eigen hoek van de grot. Lok hem naar een bestaande fakkel: daar houdt hij rustig de wacht. Zonder afleiding kondigt hij een korte rechte duik aan. Een treffer onderbreekt die; muren, rustplaatsen en aankomsten blijven buiten zijn bereik."
+msgstr "Follows nearby visible light within its own corner of the cave. Lead it to an existing torch, where it settles quietly. Without a distraction, it warns before a short straight dive. A hit interrupts it; walls, rest stops and arrivals remain safe."
+
 #. Naam van vijand cv_ram
 #: scripts/data/ext/combat.gd:6
 msgid "Keiram"
@@ -9123,11 +9143,15 @@ msgstr "No shame in that!"
 msgid "%s · Ronde %d/%d · Vijanden %d · %s"
 msgstr "%s · Round %d/%d · Enemies %d · %s"
 
-#: scripts/entities/arrow.gd:157
+#: scripts/entities/arrow.gd:160
 msgid "Ketst af!"
 msgstr "Bounced off!"
 
-#: scripts/entities/arrow.gd:160
+#: scripts/entities/arrow.gd:164
+msgid "De bast is gesloten. Schiet tijdens het herstel, of open hem met een precisieschot of zwaardtechniek."
+msgstr "The bark is closed. Shoot during recovery, or open it with a precise shot or sword technique."
+
+#: scripts/entities/arrow.gd:166
 msgid "Je pijl ketst af op het kristal! Schiet als de golem uithaalt voor een klap."
 msgstr "Your arrow bounces off the crystal! Shoot when the golem winds up for a slam."
 
@@ -9233,7 +9257,7 @@ msgstr "Resonance Trial: wave %d / 3"
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:397
+#: scripts/entities/enemy.gd:413
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
