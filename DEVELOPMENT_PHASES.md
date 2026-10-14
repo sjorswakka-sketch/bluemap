@@ -98,6 +98,10 @@ beeldformaten zijn gecontroleerd. Details: WHOLE_ADVENTURE.md.
 Alle zes afgesproken fases zijn hiermee uitgevoerd. Een volgende ontwikkelronde
 krijgt een nieuw plan; een losse go start hier niet automatisch verzonnen fases.
 
+De gebruiker heeft de volgende ronde inmiddels afgesproken in
+[DEVELOPMENT_ROUND_2.md](DEVELOPMENT_ROUND_2.md). Dat plan stuurt nieuwe go's;
+dit document blijft het verslag van de eerste zes afgeronde fases.
+
 ## Vast bij iedere fase
 
 Eigen gemaakte assets, actuele NL/EN-teksten, bestaande saves behouden, relevante

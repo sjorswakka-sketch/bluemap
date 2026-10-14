@@ -9,6 +9,7 @@ const BASE_MAPS := {
 	"shop": preload("res://scripts/maps/shop.gd"),
 	"inn": preload("res://scripts/maps/inn.gd"),
 	"forest": preload("res://scripts/maps/forest.gd"),
+	"forest_edge": preload("res://scripts/maps/forest_edge.gd"),
 	"ruins": preload("res://scripts/maps/ruins.gd"),
 	"cave": preload("res://scripts/maps/cave.gd"),
 	"temple": preload("res://scripts/maps/temple.gd"),
@@ -25,5 +26,6 @@ static func get_map(map_id: String) -> Dictionary:
 	preload("res://scripts/data/regional_maps.gd").enrich(map_id,data)
 	preload("res://scripts/data/combat_maps.gd").enrich(map_id,data)
 	preload("res://scripts/data/craft_maps.gd").enrich(map_id,data)
+	preload("res://scripts/data/space_maps.gd").enrich(map_id,data)
 	if map_id == "inn": data["objects"].append({"type":"memory_book","pos":[10,7]})
 	return data

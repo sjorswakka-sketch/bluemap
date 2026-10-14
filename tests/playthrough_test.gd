@@ -127,6 +127,7 @@ func _run() -> void:
 	check(gs.quest_state("main") == "active" and gs.count("potion") == 1, "Bram geeft de hoofdopdracht")
 
 	print("Fluisterbos")
+	await through_portal("forest_edge")
 	await through_portal("forest")
 	var key_chest: Node = find_node("interactable", func(n): return n.has_method("interact") and "contents" in n and n.contents[0][0] == "ruin_key")
 	check(key_chest != null, "de sleutelkist staat in het bos")
@@ -174,6 +175,7 @@ func _run() -> void:
 	print("Terug naar het dorp")
 	gs.give("gel", 13, true)
 	gs.coins = 400
+	await through_portal("forest_edge")
 	await through_portal("village")
 	check(gs.quest_step("main") == 1, "met drie kristallen: breng ze naar Bram")
 	await talk("pim_cat_back")

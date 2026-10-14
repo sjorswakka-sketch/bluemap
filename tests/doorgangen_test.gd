@@ -68,7 +68,7 @@ func test_signs() -> void:
 			var py := int(obj["pos"][1])
 			var found := ""
 			for other: Dictionary in def["objects"]:
-				if other["type"] != "sign":
+				if other["type"] != "sign" or not other.get("enabled",true):
 					continue
 				var distance := maxi(absi(int(other["pos"][0]) - px), absi(int(other["pos"][1]) - py))
 				if distance <= MAX_SIGN_DISTANCE and String(other["lines"][0]).contains(target["name"]):

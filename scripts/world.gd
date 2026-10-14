@@ -196,6 +196,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	living_scenery.world = self
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
+	if map_id=="forest_edge":ground.add_child(load("res://scripts/entities/edge_scenery.gd").new())
 	var memory := preload("res://scripts/entities/world_memory.gd").new()
 	memory.world = self
 	ground.add_child(memory)
@@ -408,6 +409,7 @@ func _spawn_objects() -> void:
 	var objects: Array = map_data.get("objects", [])
 	for i in objects.size():
 		var obj: Dictionary = objects[i]
+		if not obj.get("enabled",true): continue # retained slots preserve existing save IDs
 		if obj.has("if") and not GameState.check_all(obj["if"]):
 			continue
 		var pos := _tile_center(obj["pos"])
@@ -423,7 +425,8 @@ func _spawn_objects() -> void:
 			"enemy":
 				var flag: String = obj.get("flag", "")
 				if flag == "" or not GameState.flag(flag):
-					spawn_enemy(obj["kind"], pos, flag)
+					var enemy:=spawn_enemy(obj["kind"], pos, flag)
+					enemy.patrol_radius=float(obj.get("patrol_radius",0.0))
 			"pickup":
 				var unique: bool = obj.get("unique", false)
 				if not (unique and GameState.flag(key)):

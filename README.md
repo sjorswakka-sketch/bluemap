@@ -1,6 +1,19 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.16.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.17.0-preview.**
+
+Nieuw in 0.17: **Ruimte en rust op de eerste route**. Een korte Bosrand met een
+open weide, boszoom en een rustige vijver verbindt dorp en Fluisterbos. Er staan
+alleen doorgangen en twee wegwijzers; de oversteek duurt ongeveer elf seconden
+lopend. Het Fluisterbos heeft achttien vijandplekken in plaats van zesentwintig.
+De eerste hinderlaag ligt opzij, het oefenerf ligt verder langs zijn zijpad en
+de westelijke aankomst/altaarroute geeft ruimte om te oriënteren. Elke staat
+naast het zuidelijke dorpspad. Gewone slijmen keren terug naar hun omgeving
+wanneer je ze te ver weg lokt; rondzwerven blijft bij hun beginplek. Bazen en
+oefengevechten behouden hun gedrag. Het Zilvermeer behoudt zijn indeling.
+Details: [WORLD_SPACE.md](WORLD_SPACE.md). De volgende ronde staat in
+[DEVELOPMENT_ROUND_2.md](DEVELOPMENT_ROUND_2.md): rust bewaren, bestaande plekken
+verdiepen en nieuwe avonturen via optionele zijpaden aanbieden.
 
 Nieuw in 0.16: **Het avontuur als geheel**. Kies in Opdrachten wat je volgt;
 je keuze blijft bewaard en wordt op het scherm getoond. De uitleg heeft echte
@@ -223,7 +236,7 @@ Het laatst bewust gebruikte apparaat is actief. De controller verbergt de muiscu
   niveaus. Er zijn 47 verzamelplekken en recepten voor gereedschap, eten, drankjes en uitrusting. In `C` zie je je voortgang,
   ingrediënten, benodigde niveaus en werkplekken. De gewone inventaris bladert nu door alle spullen en meerdere pagina's.
 
-- **Zeventien gebieden:** Dageraadsdorp met smederij, winkel en herberg, het Fluisterbos, de Vergeten Ruïne, de Echo-grot,
+- **Gebieden:** Dageraadsdorp met smederij, winkel en herberg, de rustige Bosrand, het Fluisterbos, de Vergeten Ruïne, de Echo-grot,
   de Kristaltempel, het Zilvermeer met het huisje van Joris en de bibliotheek, de Arena met haar hal, het mistige
   Dauwbos met kronkelpaden, een vijver en een paddenstoelenkring, het besneeuwde IJsdal met zijn bevroren meer en
   mijnhoek, de snikhete Dorstvallei met zandsteenkloof, oase en jachtgronden, en na het einde

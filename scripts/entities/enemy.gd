@@ -51,6 +51,8 @@ var state_time := randf_range(0.0, 1.0)
 var aim_dir := Vector2.DOWN
 var wander_dir := Vector2.ZERO
 var wander_timer := 0.0
+var home_position := Vector2.ZERO
+var patrol_radius := 0.0 # opt-in for ordinary outdoor spawns; bosses/trials stay unrestricted
 var strafe := 1.0
 var air_height := 0.0
 var hop_from := Vector2.ZERO
@@ -85,6 +87,7 @@ func _ready() -> void:
 	if data.is_empty():
 		setup(kind)
 	add_to_group("enemies")
+	home_position=global_position
 	if data.get("boss", false):
 		add_to_group("boss")
 	collision_layer = 4
@@ -182,6 +185,9 @@ func _to_player() -> Vector2:
 
 
 func _wander(delta: float) -> void:
+	if patrol_radius>0 and global_position.distance_to(home_position)>patrol_radius*0.45:
+		desired=_free_direction((home_position-global_position).normalized())*data["speed"]
+		return
 	wander_timer -= delta
 	if wander_timer <= 0.0:
 		wander_timer = randf_range(0.8, 2.0)
@@ -193,7 +199,7 @@ func _wander(delta: float) -> void:
 
 func _ai_chase(delta: float) -> void:
 	var to_player := _to_player()
-	if to_player.length() < data["sight"]:
+	if to_player.length() < data["sight"] and (patrol_radius<=0 or home_position.distance_to(player.global_position)<patrol_radius):
 		desired = to_player.normalized() * data["chase_speed"]
 	else:
 		_wander(delta)

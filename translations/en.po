@@ -20,9 +20,9 @@ msgid "Tempel van de Blauwe Kaart. Bewaker: Oudste Bram."
 msgstr "Temple of the Blue Map. Keeper: Elder Bram."
 
 #. Kaart village, sign [37, 12]: tekst op een bord
-#: scripts/maps/village.gd:67
-msgid "Oostelijke weg: Fluisterbos."
-msgstr "East road: Whispering Woods."
+#: scripts/data/space_maps.gd:11
+msgid "Oostelijke weg: Bosrand en Fluisterbos."
+msgstr "Eastern road: Forest Edge and Whispering Woods."
 
 #. Kaart village, sign [37, 12]: tekst op een bord
 #: scripts/maps/village.gd:67
@@ -85,10 +85,14 @@ msgid "Herberg De Blauwe Slijm"
 msgstr "The Blue Slime Inn"
 
 #. Naam van gebied forest
-#. Kaart forest, sign [5, 19]: tekst op een bord
 #: scripts/ui/ending.gd:218 scripts/maps/forest.gd:6 scripts/maps/forest.gd:54
 msgid "Fluisterbos"
 msgstr "Whispering Woods"
+
+#. Kaart forest, sign [5, 19]: tekst op een bord
+#: scripts/data/space_maps.gd:16
+msgid "Westelijk pad: Bosrand en Dageraadsdorp."
+msgstr "Western path: Forest Edge and Daybreak Village."
 
 #. Kaart forest, sign [5, 19]: tekst op een bord
 #: scripts/maps/forest.gd:54
@@ -165,10 +169,25 @@ msgstr "Western path: Daybreak Village"
 msgid "Terug naar het dorp, waar de geur van vers brood je tegemoet komt."
 msgstr "Back to the village, where the smell of fresh bread comes to meet you."
 
-#. Kaart forest, sign [2, 23]: tekst op een bord
+#. Kaart forest, sign [2, 26]: tekst op een bord
 #: scripts/data/combat_maps.gd:11
 msgid "Oefenerf: stap in de gloed bij het vaandel."
 msgstr "Practice Yard: step into the glow beside the banner."
+
+#. Naam van gebied forest_edge
+#: scripts/maps/forest_edge.gd:5
+msgid "Bosrand"
+msgstr "Forest Edge"
+
+#. Kaart forest_edge, sign [3, 11]: tekst op een bord
+#: scripts/maps/forest_edge.gd:36
+msgid "Westelijk pad: Dageraadsdorp."
+msgstr "Western path: Daybreak Village."
+
+#. Kaart forest_edge, sign [40, 8]: tekst op een bord
+#: scripts/maps/forest_edge.gd:37
+msgid "Oostelijk pad: Fluisterbos."
+msgstr "Eastern path: Whispering Woods."
 
 #. Naam van gebied ruins
 #: scripts/maps/ruins.gd:6
@@ -8183,7 +8202,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:227
+#: scripts/world.gd:228
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -9204,7 +9223,7 @@ msgstr "Resonance Trial: wave %d / 3"
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:391
+#: scripts/entities/enemy.gd:397
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -9693,11 +9712,11 @@ msgstr "That saves a trip to the lake!"
 msgid "Even helpen? De fontein zit verstopt."
 msgstr "Could you help? The fountain is blocked."
 
-#: scripts/ui/achievement_banner.gd:55 scripts/ui/achievement_banner.gd:66
+#: scripts/ui/achievement_banner.gd:56 scripts/ui/achievement_banner.gd:70
 msgid "Prestatie behaald!"
 msgstr "Achievement unlocked!"
 
-#: scripts/ui/achievement_banner.gd:73
+#: scripts/ui/achievement_banner.gd:77
 msgid "Al je prestaties zie je met T, het beestenboek met B."
 msgstr "See all your achievements with T, and the bestiary with B."
 
@@ -10468,11 +10487,11 @@ msgstr "Track this quest"
 msgid "Deze opdracht is afgerond"
 msgstr "This quest is complete"
 
-#: scripts/ui/menu_ui.gd:771
+#: scripts/ui/menu_ui.gd:772
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
 
-#: scripts/ui/menu_ui.gd:776
+#: scripts/ui/menu_ui.gd:777
 msgid "Gouden ring: volgende doorgang voor je gevolgde opdracht."
 msgstr "Gold ring: next passage for your tracked quest."
 

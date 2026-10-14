@@ -49,6 +49,7 @@ const PREVIOUS_PAGE := Rect2(24, 456, 38, 32)
 const NEXT_PAGE := Rect2(486, 456, 38, 32)
 const USE_RECT := Rect2(620, 268, 340, 40)
 const MAP_WIDTH := 600.0 # zoveel ruimte krijgt het kaartje; rechts ervan staat het lijstje voor snel reizen
+const MAP_HEADER_Y := 60.0 # clear of tab buttons above and coordinate labels below
 const MESSAGE_TIME := 3.0 # seconden dat een melding in het kaarttabblad blijft staan
 const TAB_ANIM_TIME := 0.16 # seconden die een tabwissel duurt (markering glijdt, pagina faden)
 const PAGE_SLIDE := 10.0 # hoeveel pixels de pagina bij een tabwissel meebeweegt
@@ -732,7 +733,7 @@ func _draw_map(font: Font) -> void:
 	var cell := mini(int(MAP_WIDTH / w), int(320.0 / h))
 	cell = maxi(cell, 4)
 	var origin := Vector2(MARGIN + (MAP_WIDTH - w * cell) / 2.0, LIST_TOP)
-	_text(font, Vector2(MARGIN, HEADER_Y), tr(world.map_data["name"]), 24, Color(0.6, 0.88, 1.0))
+	_text(font, Vector2(MARGIN, MAP_HEADER_Y), tr(world.map_data["name"]), 24, Color(0.6, 0.88, 1.0))
 	for y in h:
 		var row: String = rows[y]
 		for x in w:
@@ -746,6 +747,7 @@ func _draw_map(font: Font) -> void:
 	var altars := FastTravel.discovered_altars()
 	travel_selected = clampi(travel_selected, 0, maxi(altars.size() - 1, 0))
 	for obj: Dictionary in world.map_data.get("objects", []):
+		if not obj.get("enabled",true):continue
 		if obj.has("if") and not GameState.check_all(obj["if"]):
 			continue
 		var p := origin + (Vector2(float(obj["pos"][0]), float(obj["pos"][1])) + Vector2(0.5, 0.5)) * cell
@@ -797,6 +799,7 @@ func map_legend_layout(legend: Dictionary,font: Font) -> Array[Dictionary]:
 func extension_marks(map_data: Dictionary) -> Array[Dictionary]:
 	var marks: Array[Dictionary] = []
 	for obj: Dictionary in map_data.get("objects", []):
+		if not obj.get("enabled",true):continue
 		if markers.has(obj["type"]) and (not obj.has("if") or GameState.check_all(obj["if"])):
 			marks.append({"pos": obj["pos"], "color": markers[obj["type"]]["color"], "label": markers[obj["type"]]["label"]})
 	return marks

@@ -277,7 +277,7 @@ func run() -> void:
 	p.position = Vector2(13.5,20.5)*32
 	await frames(80)
 	check(gs.map_id == "forest" and not world.is_solid(world.player.position),"yard exit returns to clear forest tile")
-	world.player.position = Vector2(3.5,22.5)*32
+	world.player.position = Vector2(3.5,27.5)*32
 	await frames(80)
 	check(gs.map_id == "watchyard","forest entrance leads into practice yard")
 	world.queue_free()

@@ -19,8 +19,10 @@ static func prepare(data: Dictionary, map: String) -> void:
 		if spec.type!="enemy": continue
 		if map=="forest":
 			if spec.pos in [[8,17],[31,24]]: spec.kind="rf_bramble"
+			# Let the west entrance/altar breathe; the first ambush belongs in a side clearing.
+			if spec.pos==[8,17]: spec.pos=[20,11]
 			# De kattenplek is een adempauze; gevechten liggen langs het pad ernaartoe.
-			if spec.pos==[7,31]: spec.pos=[6,22]
+			if spec.pos==[7,31]: spec.pos=[8,24]
 			if spec.pos==[14,29]: spec.pos=[19,26]
 			if spec.pos==[12,28]: spec.pos=[20,25]
 		elif map=="cave":
