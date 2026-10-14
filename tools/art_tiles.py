@@ -640,6 +640,8 @@ def tile_names(root):
 
 
 def tiles_sheet(root):
+    from art_x_coast import NAMES as coast_names, tile as coast_tile
+    PAINTERS.update({n: (lambda name=n: coast_tile(name)) for n in coast_names})
     names = tile_names(root)
     missing = [n for n in names if n not in PAINTERS]
     assert not missing, f"geen tekening voor tegels: {missing}"

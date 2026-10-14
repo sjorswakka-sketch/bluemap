@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.5.3-preview)
+BLUEMAP QUEST  (v0.20.0-preview)
 =======================
 
 Starten

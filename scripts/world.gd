@@ -197,6 +197,13 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
 	if map_id=="forest_edge":ground.add_child(load("res://scripts/entities/edge_scenery.gd").new())
+	if map_id in ["coast","gull_island"]:
+		var scenery: Node2D=load("res://scripts/entities/coast_scenery.gd").new()
+		scenery.world=self
+		ground.add_child(scenery)
+		var voyage: CanvasLayer=load("res://scripts/ui/coast_voyage.gd").new()
+		voyage.world=self
+		ground.add_child(voyage)
 	if map_id in ["smithy","library"]:
 		var workshop: Node2D=load("res://scripts/entities/workshop.gd").new()
 		workshop.world=self
@@ -241,11 +248,11 @@ func is_outdoor() -> bool:
 	return atmosphere.outdoor
 
 
-func travel(map_id: String, spawn: String) -> void:
+func travel(map_id: String, spawn: String, cue: String="door") -> void:
 	if GameState.transitioning:
 		return
 	GameState.transitioning = true
-	Sound.play("door", -4.0)
+	if cue!="":Sound.play(cue, -4.0)
 	await fader.fade_out(0.25)
 	load_map(map_id, spawn)
 	player.invuln = maxf(player.invuln,1.25) # arriving gives time to read the new area

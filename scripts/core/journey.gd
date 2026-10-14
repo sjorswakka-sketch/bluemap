@@ -57,7 +57,7 @@ static func title(map: String) -> String:
 static func graph() -> Dictionary:
 	if not links.is_empty(): return links
 	for map: String in Maps.MAPS:
-		links[map]=Maps.get_map(map).objects.filter(func(o: Dictionary) -> bool:return o.type=="portal")
+		links[map]=Maps.get_map(map).objects.filter(func(o: Dictionary) -> bool:return o.type in ["portal","coast_dock"])
 	return links
 static func portal_open(from: String,portal: Dictionary) -> bool:
 	if from=="forest" and portal.to=="ruins" and not gs().flag("gate_ruin"): return false

@@ -282,6 +282,26 @@ msgstr "The door is shut. There's no way back!"
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
 
+#. Naam van gebied coast
+#: scripts/maps/coast.gd:4
+msgid "Blauwe Kust"
+msgstr "Blue Coast"
+
+#. Kaart coast, sign [4, 15]: tekst op een bord
+#: scripts/maps/coast.gd:91
+msgid "Westelijk pad: Zilvermeer"
+msgstr "Western path: Silver Lake"
+
+#. Kaart coast, sign [4, 15]: tekst op een bord
+#: scripts/maps/coast.gd:92
+msgid "West: Zilvermeer. Oost: strand en veer naar Meeuweneiland."
+msgstr "West: Silver Lake. East: beach and ferry to Gull Island."
+
+#. Naam van gebied gull_island
+#: scripts/maps/gull_island.gd:4
+msgid "Meeuweneiland"
+msgstr "Gull Island"
+
 #. Naam van gebied watchyard
 #: scripts/entities/combat_post.gd:32 scripts/entities/combat_post.gd:41 scripts/maps/watchyard.gd:4
 msgid "Oefenerf"
@@ -423,6 +443,16 @@ msgstr "Southern peat path: Creeping Swamp"
 #: scripts/maps/lake.gd:60
 msgid "Drassig land met kwakkende vorsten. Stevige schoenen mee!"
 msgstr "Soggy land with croaking toads. Bring sturdy shoes!"
+
+#. Kaart lake, sign [40, 7]: tekst op een bord
+#: scripts/data/coast_maps.gd:11
+msgid "Oostelijk pad: Blauwe Kust"
+msgstr "Eastern path: Blue Coast"
+
+#. Kaart lake, sign [40, 7]: tekst op een bord
+#: scripts/data/coast_maps.gd:11
+msgid "Volg de riviermonding naar het strand. De veerboot brengt je gratis naar Meeuweneiland en terug."
+msgstr "Follow the river mouth to the beach. The ferry takes you to Gull Island and back for free."
 
 #. Naam van gebied fisher_hut
 #: scripts/maps/fisher_hut.gd:6
@@ -1607,6 +1637,52 @@ msgstr "The map is MINE! I'll squish you into goo!"
 #: scripts/data/dialogue.gd:411
 msgid "Zie je die ring op de vloer? Daar land ik. Blijf vooral staan, als je durft!"
 msgstr "See that ring on the floor? That's where I land. Stay right there, if you dare!"
+
+#. Naam van wie er praat (Gesprek ce_sail_island)
+#. Naam van wie er praat (Gesprek ce_sail_coast)
+#: scripts/data/ext/coast.gd:10 scripts/data/ext/coast.gd:11
+msgid "Veerboot"
+msgstr "Ferry"
+
+#. Gesprek ce_sail_island, Veerboot zegt
+#: scripts/data/ext/coast.gd:10
+msgid "De riviermonding komt hier uit op de Blauwe Kust. De kleine veerboot ligt klaar voor Meeuweneiland."
+msgstr "The river reaches the sea here on the Blue Coast. The small ferry is ready for Gull Island."
+
+#. Gesprek ce_sail_island, Veerboot zegt
+#: scripts/data/ext/coast.gd:10
+msgid "De overtocht is gratis. Op het eiland ligt dezelfde boot klaar voor de terugvaart."
+msgstr "The crossing is free. The same boat waits on the island for the return trip."
+
+#. Gesprek ce_sail_island: keuze van de speler
+#: scripts/data/ext/coast.gd:10
+msgid "Vaar naar Meeuweneiland."
+msgstr "Sail to Gull Island."
+
+#. Gesprek ce_sail_island: keuze van de speler
+#: scripts/data/ext/coast.gd:10
+msgid "Blijf op de kust."
+msgstr "Stay on the coast."
+
+#. Gesprek ce_sail_coast, Veerboot zegt
+#: scripts/data/ext/coast.gd:11
+msgid "De veerboot brengt je terug naar de Blauwe Kust. Vanaf daar volg je het westelijke pad naar het Zilvermeer."
+msgstr "The ferry takes you back to the Blue Coast. From there, follow the western path to Silver Lake."
+
+#. Gesprek ce_sail_coast, Veerboot zegt
+#: scripts/data/ext/coast.gd:11
+msgid "De overtocht is gratis; je spullen en gezondheid blijven zoals ze zijn."
+msgstr "The crossing is free; your belongings and health stay as they are."
+
+#. Gesprek ce_sail_coast: keuze van de speler
+#: scripts/data/ext/coast.gd:11
+msgid "Vaar terug naar de kust."
+msgstr "Sail back to the coast."
+
+#. Gesprek ce_sail_coast: keuze van de speler
+#: scripts/data/ext/coast.gd:11
+msgid "Blijf op het eiland."
+msgstr "Stay on the island."
 
 #. Gesprek ra_spring, De oude bron zegt
 #: scripts/data/ext/regional.gd:54
@@ -6723,6 +6799,11 @@ msgstr "The way begins in the Crystal Temple. Only when the Blue Map is whole ag
 msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
 msgstr "The Star Map isn't easy to read. The Guardian will test you first. Take it slow. Get a good night's sleep first. And eat something."
 
+#. Legenda op het kaartje (menu): coast_dock
+#: scripts/data/ext/coast.gd:4
+msgid "Veersteiger"
+msgstr "Ferry Dock"
+
 #. Legenda op het kaartje (menu): memory_book
 #: scripts/data/ext/world_memory.gd:4
 msgid "Reizigersboek"
@@ -8232,7 +8313,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:232
+#: scripts/world.gd:239
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -9177,6 +9258,26 @@ msgid_plural "Gevonden: %d munten"
 msgstr[0] "Found: %d coin"
 msgstr[1] "Found: %d coins"
 
+#: scripts/entities/coast_dock.gd:11
+msgid "Veer naar Meeuweneiland"
+msgstr "Ferry to Gull Island"
+
+#: scripts/entities/coast_dock.gd:11
+msgid "Veer naar de Blauwe Kust"
+msgstr "Ferry to the Blue Coast"
+
+#: scripts/entities/coast_note.gd:9
+msgid "Strandsteen bij het uitzicht"
+msgstr "Shore Stone at the Viewpoint"
+
+#: scripts/entities/coast_note.gd:12
+msgid "Aan de horizon ligt een verre kust. Hier hoor je alleen de wind en de zee."
+msgstr "A distant coast lies on the horizon. Here, you hear only the wind and the sea."
+
+#: scripts/entities/coast_note.gd:12
+msgid "Je hoeft hier niets te verzamelen. De veerboot wacht aan de westelijke steiger; je kunt altijd terug."
+msgstr "You do not need to collect anything here. The ferry waits at the western dock; you can always return."
+
 #: scripts/entities/combat_actions.gd:26 scripts/entities/combat_actions.gd:6
 msgid "Breekslag"
 msgstr "Breaking Slash"
@@ -9627,7 +9728,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/tiles.gd:43 scripts/entities/living_scenery.gd:79 scripts/entities/living_scenery.gd:82
+#: scripts/entities/shooting_range.gd:169 scripts/data/coast_maps.gd:8 scripts/data/tiles.gd:45 scripts/entities/living_scenery.gd:79
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -9793,6 +9894,26 @@ msgstr "Nothing worn"
 #: scripts/ui/appearance_page.gd:255
 msgid "Verf:"
 msgstr "Dye:"
+
+#: scripts/ui/coast_voyage.gd:51
+msgid "Overtocht naar Meeuweneiland"
+msgstr "Crossing to Gull Island"
+
+#: scripts/ui/coast_voyage.gd:51
+msgid "Terug naar de Blauwe Kust"
+msgstr "Back to the Blue Coast"
+
+#: scripts/ui/coast_voyage.gd:52
+msgid "Een korte, gratis overtocht. Je spullen en gezondheid veranderen niet."
+msgstr "A short, free crossing. Your belongings and health do not change."
+
+#: scripts/ui/coast_voyage.gd:53
+msgid "Meteen aankomen"
+msgstr "Arrive now"
+
+#: scripts/ui/coast_voyage.gd:53
+msgid "Terug naar de steiger"
+msgstr "Return to the dock"
 
 #: scripts/ui/controls_menu.gd:102
 msgid "Standaardbediening hersteld voor dit apparaat."

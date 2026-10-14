@@ -1,5 +1,11 @@
 # Ruimte, rust en betekenis — tweede ontwikkelronde
 
+Op 14 oktober 2026 na fase 3 herzien op verzoek van sjors.
+Het actieve plan is [DEVELOPMENT_COAST.md](DEVELOPMENT_COAST.md).
+De uitgevoerde fases 1–3 blijven hieronder als geschiedenis.
+De nog niet gestarte fases 4–6 worden meegenomen in de nieuwe kustronde;
+een volgende go volgt uitsluitend DEVELOPMENT_COAST.md.
+
 Plan van 14 oktober 2026. Basis: 0.16.0-preview, commit
 `efe71193c68ae279b99969c94eed50141c2bb00c` op
 `claude/affectionate-mendel-vc1idx`. Alle zes fases uit DEVELOPMENT_PHASES.md

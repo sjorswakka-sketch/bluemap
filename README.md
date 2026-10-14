@@ -1,6 +1,15 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.19.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.20.0-preview.**
+
+Nieuw in 0.20: **Eerste kustexpeditie**. Het oostelijke pad van het Zilvermeer
+leidt naar de Blauwe Kust: strand, duinen, gras en een kleine veersteiger.
+Vaar gratis naar Meeuweneiland, wandel naar het uitzicht en keer altijd terug.
+De korte bootpresentatie is over te slaan of af te breken; eigen art, animaties,
+muziek en geluiden. Geen extra vijanden, grind of verzamelopdracht.
+Oude meerobjecten en save-ID's behouden; NL/EN en bediening bijgewerkt.
+Details: [COAST_EXPEDITION.md](COAST_EXPEDITION.md).
+Het actieve grotere faseplan is [DEVELOPMENT_COAST.md](DEVELOPMENT_COAST.md).
 
 Nieuw in 0.19: **Monsters horen bij hun omgeving**. Twee Wortelwakers vervangen
 bestaande slijmen in het bos; twee Schemermotten vervangen vleermuizen op de

@@ -23,6 +23,7 @@ const NAMES: Array[String] = [
 	"dune_sand", "dune_tufts", "cactus", "sandstone", "oasis_grass",
 	# Kruipmoeras (spoor moeras)
 	"marsh_grass", "marsh_tufts", "mud", "bog_water", "reed", "willow",
+	"ce_sea", "ce_sand", "ce_dune", "ce_grass", "ce_cliff", "ce_shore", "ce_boardwalk",
 ]
 
 ## Tegels waar je niet doorheen kunt lopen.
@@ -36,6 +37,7 @@ const SOLID: Array[String] = [
 	"snow_bush", "pine",
 	"cactus", "sandstone",
 	"bog_water", "reed", "willow",
+	"ce_sea", "ce_shore", "ce_cliff",
 ]
 
 ## Teken in de kaart -> tegel. Het gras (".") krijgt automatisch wat afwisseling.
@@ -59,6 +61,7 @@ const CHARS := {
 	# Dorstvallei (a = duinzand, e = droog gras, g = cactus, q = zandsteen, L = oasegras)
 	"a": "dune_sand", "e": "dune_tufts", "g": "cactus", "q": "sandstone", "L": "oasis_grass",
 	# Kruipmoeras (U = moerasgras, j = pol, 2 = modder, F = drijfmest, R = riet, Y = knotwilg)
+	"3":"ce_sea", "4":"ce_sand", "5":"ce_dune", "6":"ce_grass", "7":"ce_cliff", "8":"ce_shore", "9":"ce_boardwalk",
 	"U": "marsh_grass", "j": "marsh_tufts", "2": "mud", "F": "bog_water", "R": "reed", "Y": "willow",
 }
 
@@ -112,6 +115,7 @@ static func name_at(rows: Array, foot_position: Vector2, tile_size := 32.0) -> S
 
 ## Het gewone gras houdt zijn oorspronkelijke snelheid; een pad loont, zand en diepe sneeuw zijn wat zwaarder.
 static func movement_multiplier(tile_name: String) -> float:
+	if tile_name in ["ce_sand","ce_dune"]:return 0.92
 	if tile_name == "path":
 		return 1.2
 	if tile_name == "mud":
@@ -124,6 +128,9 @@ static func movement_multiplier(tile_name: String) -> float:
 
 
 static func footstep_surface(tile_name: String) -> String:
+	if tile_name in ["ce_sand","ce_dune"]:return "sand"
+	if tile_name=="ce_grass":return "grass"
+	if tile_name=="ce_boardwalk":return "wood"
 	if tile_name == "" or is_solid_name(tile_name):
 		return ""
 	if tile_name.begins_with("grass"):
@@ -148,6 +155,8 @@ static func footstep_surface(tile_name: String) -> String:
 ## Kleur van een tegel op de kaartjes (kaarttabblad en einde).
 static func map_color(tile_name: String) -> Color:
 	var color := Color(0.5, 0.5, 0.55)
+	if tile_name.begins_with("ce_"):
+		return {"ce_sea":Color("397c92"),"ce_shore":Color("4c94a0"),"ce_sand":Color("d6c6a0"),"ce_dune":Color("c4b58a"),"ce_grass":Color("7e936d"),"ce_cliff":Color("526965"),"ce_boardwalk":Color("997b52")}.get(tile_name,color)
 	if tile_name.begins_with("snow") or tile_name == "ice":
 		color = _sneeuw_color(tile_name)
 	elif tile_name.begins_with("dune") or tile_name in ["cactus", "sandstone", "oasis_grass"]:
