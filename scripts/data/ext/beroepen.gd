@@ -20,7 +20,7 @@ const TEXT := {
 	"level": "Niveau %d / %d", "xp": "%d / %d XP tot volgend niveau", "master": "Meester • maximaal niveau",
 	"station": "Werkplek: %s", "anywhere": "Overal", "smithy": "Greta's smederij", "inn": "Keuken van de herberg", "library": "Alchemietafel in de bibliotheek",
 	"required": "Nodig: %s", "skill_required": "%s niveau %d vereist", "station_required": "Ga naar: %s",
-	"missing": "Te weinig: %s", "full": "Geen ruimte voor: %s", "ready": "Klaar om te maken", "made": "Gemaakt: %s x%d", "unknown": "Onbekend recept",
+	"missing": "Te weinig: %s", "full": "Geen ruimte voor: %s", "ready": "Klaar om te maken", "made": "Gemaakt: %s x%d", "unknown": "Onbekend recept", "coast_workshop":"Rafs havenwerkplaats",
 	"skill_up": "%s: niveau %d!", "gathered": "%s x%d  ·  +%d XP %s", "recovering": "%s groeit / verschijnt opnieuw over %d s",
 	"tool_required": "Nodig: %s", "gather_hint": "Verzamelen", "depleted": "Herstelt over %d s", "harvesting": "Verzamelen…",
 	"use": "Gebruik %s (%d)", "used": "Gebruikt: %s", "none": "Je hebt nog geen eten of drankjes. Maak iets op het tabblad Maken.",
@@ -104,6 +104,7 @@ const RECIPES := {
 		"prof_branch": 2
 	},
 	"output": "lw_lantern"
+
 },
 	"grounding_powder": {
 	"skill": "alchemy",
@@ -160,6 +161,13 @@ const RECIPES := {
 	"bog_iron_bar":{"skill":"smithing","level":2,"xp":12,"station":"smithy","inputs":{"prof_ijzeroer":2,"prof_dennenhout":1},"output":"prof_iron_bar"},
 	"pine_arrows":{"skill":"woodcutting","level":2,"xp":5,"inputs":{"prof_dennenhout":1,"prof_stone":1},"output":"arrow","amount":5},
 
+	"cw_hook":{"skill":"woodcutting","level":1,"xp":12,"station":"coast_workshop","unlock":"cw_raf_notes","unlock_hint":"Spreek Raf de nettenmaker op de havenkade; hij deelt zijn lijnpatroon.","inputs":{"cw_driftwood":2,"cw_reed":2,"prof_copper_bar":1},"output":"cw_hook"},
+	"cw_anchor":{"skill":"smithing","level":1,"xp":15,"station":"smithy","unlock":"pg_smith_notes","unlock_hint":"Lees Greta’s werktekeningen in de smederij.","inputs":{"cw_driftwood":2,"cw_seaglass":2,"prof_copper_bar":1},"output":"gear_cw_anchor"},
+	"cw_fan":{"skill":"alchemy","level":1,"xp":15,"station":"library","unlock":"pg_focus_notes","unlock_hint":"Lees Lena’s lensonderzoek in de bibliotheek.","inputs":{"cw_reed":2,"cw_seaglass":2,"prof_herb":1},"output":"gear_cw_fan"},
+	"cw_shelf":{"skill":"woodcutting","level":1,"xp":8,"station":"coast_workshop","unlock":"cw_raf_notes","unlock_hint":"Spreek Raf de nettenmaker op de havenkade; hij deelt zijn lijnpatroon.","inputs":{"cw_driftwood":2,"prof_branch":2},"output":"cw_shelf"},
+	"cw_lamp":{"skill":"alchemy","level":1,"xp":8,"station":"library","unlock":"pg_focus_notes","unlock_hint":"Lees Lena’s lensonderzoek in de bibliotheek.","inputs":{"cw_seaglass":2,"gel":1},"output":"cw_lamp"},
+	"cw_broth":{"skill":"cooking","level":1,"xp":10,"station":"inn","inputs":{"meer_baars":1,"cw_saltleaf":1},"output":"cw_broth"},
+
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},
@@ -182,10 +190,18 @@ const RESOURCES := {
 	"watermunt": {"name": "Watermunt", "skill": "foraging", "item": "prof_watermunt", "amount": 2, "xp": 8, "cooldown": 150.0, "color": Color("4fae6a")},
 	"wilgstronk": {"name": "Geknotte wilg", "skill": "woodcutting", "item": "prof_wilgentwijg", "amount": 2, "xp": 8, "cooldown": 150.0, "tools": ["prof_iron_axe", "prof_axe"], "duration": 1.1, "animation": "woodcutting", "color": Color("9a7a52")},
 	"ijzeroer_ader": {"name": "IJzeroerklomp", "skill": "mining", "item": "prof_ijzeroer", "amount": 2, "xp": 12, "cooldown": 180.0, "level": 2, "tools": ["prof_copper_pickaxe"], "duration": 1.35, "animation": "mining", "color": Color("8a5a34")},
+ "cw_driftwood":{"name":"Droog zoutdrijfhout","skill":"woodcutting","item":"cw_driftwood","amount":6,"xp":8,"cooldown":300.0,"tools":["prof_iron_axe","prof_axe"],"duration":1.1,"animation":"woodcutting","color":Color("d1b57e"),"sheet":"cw_resources","frame":0},
+ "cw_reed":{"name":"Oevervezels","skill":"foraging","item":"cw_reed","amount":6,"xp":6,"cooldown":300.0,"duration":0.8,"color":Color("b9c88e"),"sheet":"cw_resources","frame":1},
+ "cw_seaglass":{"name":"Zeeagaatader","skill":"mining","item":"cw_seaglass","amount":6,"xp":10,"cooldown":300.0,"tools":["prof_copper_pickaxe","prof_pickaxe"],"duration":1.35,"animation":"mining","color":Color("83d2d1"),"sheet":"cw_resources","frame":2},
+ "cw_saltleaf":{"name":"Zoutbladpol","skill":"foraging","item":"cw_saltleaf","amount":4,"xp":6,"cooldown":300.0,"duration":0.65,"color":Color("aabfa1"),"sheet":"cw_resources","frame":3},
 }
 # Explicit IDs keep cooldowns stable when maps or the original object lists change.
 # Nodes are small, non-blocking props on walkable tiles away from doors and quest items.
 const RESOURCE_PLACEMENTS := {
+	"coast":[["cw_driftwood","cw_driftwood",23,29]],
+	"river_mouth":[["cw_reed","cw_reed",5,22]],
+	"headland":[["cw_saltleaf","cw_saltleaf",19,17]],
+	"tidal_hollow":[["cw_seaglass","cw_seaglass",22,31]],
 	"village": [["twigs_west", "branches", 10, 16], ["twigs_south", "branches", 16, 22], ["flint_west", "stones", 5, 16], ["flint_south", "stones", 23, 22], ["herbs_south", "herbs", 25, 23], ["berries_west", "berries", 8, 17]],
 	"forest": [["twigs_entry", "branches", 4, 15], ["flint_entry", "stones", 3, 20], ["birch_west", "stump", 7, 21], ["birch_north", "stump", 12, 12], ["herbs_west", "herbs", 8, 20], ["berries_west", "berries", 10, 21], ["mushrooms_west", "mushrooms", 8, 25], ["copper_west", "copper", 5, 26], ["copper_east", "copper", 30, 20], ["birch_east", "stump", 32, 22], ["mushrooms_east", "mushrooms", 43, 23]],
 	"lake": [["herbs_north", "herbs", 17, 10], ["berries_north", "berries", 25, 10], ["twigs_shore", "branches", 6, 13], ["flint_shore", "stones", 35, 12]],

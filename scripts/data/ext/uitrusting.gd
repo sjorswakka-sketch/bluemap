@@ -5,12 +5,14 @@ extends RefCounted
 const SLOTS := {
 	"head": {"name": "Hoofd", "desc": "Kappen en helmen vergroten je uithoudingsvermogen."},
 	"chest": {"name": "Borst", "desc": "Harnassen verminderen zware treffers. Een treffer doet altijd minstens 1 schade."},
-	"hands": {"name": "Handen", "desc": "Handschoenen verkorten de wachttijd tussen zwaardaanvallen."},
+	"hands": {"name": "Handen", "desc": "Handschoenen en banden helpen met aanvalstempo, gereedschap of een eigen kusttechniek."},
 	"neck": {"name": "Hals", "desc": "Amuletten laten je uithoudingsvermogen sneller herstellen."},
 	"ring": {"name": "Ring", "desc": "Ringen trekken voorwerpen van verder weg naar je toe."},
 }
 
 const ITEMS := {
+	"gear_cw_anchor":{"name":"Ankerbanden","type":"gear","max":1,"slot":"hands","sheet":"cw_items","icon":5,"bonuses":{"armor":1.0,"stamina_max":10.0},"desc":"Draag in je handvak: 1 pantser en 10 stamina. Techniek + zwaard wordt een korte frontale ankerwacht. Na een tijdige blokkade geeft een gewone zwaarddruk een gerichte tegenstoot; zij- en rugtreffers blijven gevaarlijk."},
+	"gear_cw_fan":{"name":"Waaierbanden","type":"gear","max":1,"slot":"hands","sheet":"cw_items","icon":6,"bonuses":{"harvest_time_reduction":0.15,"magnet_range":8.0},"desc":"Draag in hetzelfde handvak: 15% korter verzamelen en 8 oppakbereik, zonder pantser. Techniek + boog wordt een brede waaier van drie lichte pijlen. Kost drie pijlen; gewone en andere zwaardtechnieken blijven beschikbaar."},
 
 	"gear_ra_grip":{"name":"Klimhandschoenen","sheet":"ra_items","icon":1,"type":"gear","max":1,"slot":"hands","bonuses":{"move_speed":0.04,"stamina_max":15.0},"desc":"Grip en een lichte tred: 4% sneller lopen en 15 extra stamina. Gebruikt hetzelfde handvak als aanvalshandschoenen."},
 	"gear_ra_compass":{"name":"Archiefkompas","sheet":"ra_items","icon":2,"type":"gear","max":1,"slot":"neck","bonuses":{"magnet_range":16.0,"stamina_regen":0.10},"desc":"Een kompas uit het Rietarchief: 16 extra oppakbereik en 10% sneller staminaherstel. Draag het in je halsvak."},

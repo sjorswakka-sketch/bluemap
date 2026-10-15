@@ -1,11 +1,13 @@
 extends RefCounted
 ## Deliberate techniques: pay stamina on preparation, commit aim, then recover.
 ## No extra save state. A cancelled preparation never spends an arrow.
+const CoastalStyles:=preload("res://scripts/entities/coastal_styles.gd")
 const PROFILES := {
 	"wood": {"name":"Snelle steek", "cost":16.0, "windup":0.18, "reach":16.0, "cone":0.8, "bonus":0},
 	"iron": {"name":"Breekslag", "cost":28.0, "windup":0.42, "reach":4.0, "cone":-0.25, "bonus":1},
 	"crystal": {"name":"Kristalsteek", "cost":24.0, "windup":0.32, "reach":34.0, "cone":0.9, "bonus":1},
 }
+var origin_map:=""
 var phase := ""
 var elapsed := 0.0
 var recovery := 0.0
@@ -17,11 +19,14 @@ var hint_time := 0.0
 static func effective_profile(weapon: String, bow := false) -> Dictionary:
 	var equipment: Script = preload("res://scripts/core/equipment.gd")
 	var result: Dictionary = {"name":"Precisieschot","cost":20.0,"windup":0.65} if bow else PROFILES.get(weapon,PROFILES.wood).duplicate()
+	var coastal:=CoastalStyles.profile(bow)
+	if not coastal.is_empty():result=coastal
 	result.cost = maxf(1,roundf(float(result.cost)*(1-equipment.bonus("technique_cost_reduction"))))
 	if bow: result.windup = float(result.windup)*(1-equipment.bonus("bow_preparation_reduction"))
 	return result
 
 static func display_name(weapon: String) -> String:
+	if CoastalStyles.mode(false)=="cw_anchor":return TranslationServer.translate("Ankerwacht")
 	match weapon:
 		"iron": return TranslationServer.translate("Breekslag")
 		"crystal": return TranslationServer.translate("Kristalsteek")
@@ -39,7 +44,10 @@ func begin(p: Node2D, bow: bool) -> void:
 	if bow and (GameState.count("bow") <= 0 or (GameState.count("arrow") <= 0 and not p._lent_arrow())):
 		p._shoot(false)
 		return
+	origin_map=GameState.map_id
 	profile = effective_profile(GameState.weapon,bow)
+	if profile.get("mode","")=="cw_fan" and not CoastalStyles.arrows_ready(p):
+		GameState.toast.emit(tr("Een waaierschot vraagt drie pijlen. Je verliest niets als ze ontbreken."));return
 	if not GameState.movement.spend(profile.cost):
 		if hint_time <= 0:
 			GameState.toast.emit(tr("Deze techniek vraagt %d stamina. Gewone aanvallen blijven beschikbaar.") % int(profile.cost))
@@ -58,16 +66,19 @@ func begin(p: Node2D, bow: bool) -> void:
 func update(p: Node2D, delta: float) -> void:
 	hint_time = maxf(0.0, hint_time - delta)
 	recovery = maxf(0.0, recovery - delta)
-	if GameState.input_locked():
+	if GameState.input_locked() or (origin_map!="" and origin_map!=GameState.map_id):
 		cancel()
 		return
 	if phase == "": return
 	elapsed += delta
+	if CoastalStyles.update(self,p):return
 	if phase == "prepare" and elapsed >= float(profile.windup):
 		phase = "strike"
 		elapsed = 0.0
 		recovery = 0.5 if ranged else 0.4
-		if ranged:
+		if ranged and profile.get("mode","")=="cw_fan":
+			CoastalStyles.release_fan(self,p)
+		elif ranged:
 			# Validate inventory again; menus and device changes cancel preparation.
 			if GameState.count("bow") > 0 and (GameState.count("arrow") > 0 or p._lent_arrow()):
 				p._shoot(false, true, direction)
@@ -84,8 +95,12 @@ func update(p: Node2D, delta: float) -> void:
 	elif phase == "strike" and elapsed >= 0.2:
 		phase = ""
 
+func try_block(p: Node2D,from: Vector2) -> bool:return CoastalStyles.block(self,p,from)
+func counter(p: Node2D) -> bool:return CoastalStyles.counter(self,p)
+
 func draw(p: Node2D) -> void:
 	if phase == "": return
+	if CoastalStyles.draw(self,p):return
 	var color := Color(0.55,0.9,1)
 	if phase == "prepare":
 		var progress := clampf(elapsed / float(profile.windup),0,1)

@@ -1,6 +1,7 @@
 extends RefCounted
 ## Source information derives from the actual recipe/resource tables, not a second cost list.
 const Data := preload("res://scripts/data/ext/beroepen.gd")
+const Home:=preload("res://scripts/core/coastal_home.gd")
 const Notes := preload("res://scripts/data/ext/craft_progression.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
 static func state() -> Node: return (Engine.get_main_loop() as SceneTree).root.get_node("GameState")
@@ -73,6 +74,8 @@ static func recipe_text(id: String) -> String:
 	if recipe.has("unlock") and not state().flag(recipe.unlock): lines.append(TranslationServer.translate(recipe.get("unlock_hint","Nog vergrendeld: herstel de prismabank of Mees’ oversteek.")))
 	for item: String in recipe.inputs:
 		lines.append(TranslationServer.translate("%s: %d/%d · %s") % [name_of(item),state().count(item),int(recipe.inputs[item]),source(item)])
+	for item: String in recipe.inputs:
+		if Home.count(item)>0:lines.append(TranslationServer.translate("In de havenkist: %s ×%d. Haal dit eerst terug naar je tas.") % [name_of(item),Home.count(item)])
 	var effect := Equipment.stats_text(recipe.output)
 	if effect != "": lines.append(effect)
 	if recipe.has("upgrade_from"): lines.append(TranslationServer.translate("Verbeteren verbruikt het oude voorwerp. Een gedragen exemplaar wordt meteen vervangen; stamina wordt niet bijgevuld."))

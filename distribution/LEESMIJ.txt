@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.22.0-preview)
+BLUEMAP QUEST  (v0.24.0-preview)
 =======================
 
 Starten
@@ -34,9 +34,28 @@ Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
 
-Nieuw in deze preview
-  I -> Uitrusting: vijf nieuwe slots voor hoofd, borst, handen, hals en ring, naast zwaard en laarzen.
-  Tien nieuwe stukken: koop de eerste bij Tobias en maak betere via C bij de smid of alchemietafel.
+Nieuw in 0.24: kustambachten en terugkeerplek
+  Spreek Raf op de havenkade. De deurmat onder zijn nettenloods opent een gratis werkplaats.
+  De materiaalkist bewaart 12 soorten, tot 99 per soort. Verplaats 1, 5 of het getoonde aantal.
+  Maken gebruikt je tas: haal opgeslagen ingrediënten eerst terug. Geen huur of onderhoud.
+  Vier rustige vindplaatsen: zoutdrijfhout aan de Blauwe Kust, oevervezel bij Zilvermonding,
+  zeeagaat in de veilige zuidelijke Tijholte en zoutblad op Lichtkaap. Eén oogst per plek
+  levert genoeg nieuwe materialen voor de eerste plannen; gewone ingrediënten blijven nodig.
+  Raf maakt lijn/houtwerk, Greta ankerbanden, Lena waaierbanden/lamp en Mila kustbouillon.
+  Gebruik de twee rivierpalen met je herbruikbare oeverlijn; de hoge brug blijft altijd open.
+  De wandrek- en lampplaats staan vast buiten de looproute. Een rustaltaar maakt snel terugreizen mogelijk.
+
+  Twee banden gebruiken hetzelfde handvak. Alleen gedragen gear werkt:
+  Ankerbanden: V + zwaard (LT + X) voor een korte frontale wacht; na een blokkade
+  druk je gewoon op zwaard voor één tegenstoot. Zij- en rugtreffers blijven gevaarlijk.
+  Waaierbanden: V + boog (LT + RT) voor drie lichte pijlen in een waaier; kost drie pijlen.
+  V is de standaard techniektoets; bestaande aangepaste bindings blijven gelden.
+  De vrijwillige proefopstelling leent pijlen ter plaatse en geeft geen schade, buit of XP.
+  Eigen boog/banden en echte stamina blijven nodig. Buitenroutes krijgen geen extra vijanden.
+
+Eerdere previewfuncties
+  I -> Uitrusting: vijf slots voor hoofd, borst, handen, hals en ring, naast zwaard en laarzen.
+  Tien basisstukken: koop de eerste bij Tobias en maak betere via C bij de smid of alchemietafel.
   Selecteer een stuk en kies Uitrusten. Alleen gedragen spullen geven bonussen; wisselen kost niets.
   Je uitrustingskeuze blijft bewaard bij opslaan en Nieuw Spel+.
   Een grotere fontein met bewegend water staat midden op het dorpsplein.
@@ -55,7 +74,7 @@ Beroepen en maken
   Daarmee hak je oogstbare stronken en win je koper; later maak je beter gereedschap voor ijzer.
   Smeden doe je binnen bij Greta, alchemie in de bibliotheek en warm koken in de herberg.
   Eten en energie-elixers gebruik je via C of I. WASD/pijltjes kiest een voorwerp in het raster, E/Enter gebruikt het.
-  Grondstoffen keren na 90 tot 180 seconden actieve speeltijd terug. Je beroepen worden mee opgeslagen.
+  Grondstoffen keren na 90 tot 300 seconden actieve speeltijd terug. Je beroepen worden mee opgeslagen.
 
   Deze preview bevat het Nederlandse en Engelse taalpakket, inclusief de nieuwe menu's.
 

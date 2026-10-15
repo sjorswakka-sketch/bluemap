@@ -8,7 +8,7 @@ const Journal := preload("res://scripts/core/craft_journal.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
 const MAX_LEVEL := 10
 const MAX_XP := 1350 # 30 * (10 - 1) * 10 / 2
-const CONSUMABLES := ["potion", "prof_berry_meal", "prof_stew", "prof_fish_meal", "prof_tonic", "ls_chowder", "ls_broth", "prof_frost_tonic", "prof_winter_gloed", "prof_zandbalsem", "jacht_braadstuk", "prof_mistdrank", "prof_dauwsoep", "prof_moeraselixer", "prof_veenbespap"]
+const CONSUMABLES := ["cw_broth","potion", "prof_berry_meal", "prof_stew", "prof_fish_meal", "prof_tonic", "ls_chowder", "ls_broth", "prof_frost_tonic", "prof_winter_gloed", "prof_zandbalsem", "jacht_braadstuk", "prof_mistdrank", "prof_dauwsoep", "prof_moeraselixer", "prof_veenbespap"]
 static var _busy := false
 
 

@@ -1,6 +1,16 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.23.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.24.0-preview.**
+
+Nieuw in 0.24: **Ambachten met een eigen terugkeerplek**. Vier rustige
+streekvindplaatsen leveren hout, oevervezel, zeeagaat en zoutblad voor zes gerichte
+recepten. Rafs bestaande nettenloods opent als werkplaats met materiaalkist,
+vaste meubels en een rustaltaar. Een herbruikbare oeverlijn verkort de rivierroute;
+de hoge brug blijft vrij. Twee banden gebruiken hetzelfde handvak: ankerwacht
+met tegenstoot, of sneller verzamelen en een brede boogwaaier. Eerst apart getest,
+met een vrijwillige proefopstelling zonder schade, buit of XP. Alle zeven bestaande
+beroepen, oude gear en rustige buitenroutes blijven bruikbaar.
+Details: [COASTAL_CRAFT.md](COASTAL_CRAFT.md).
 
 Nieuw in 0.23: **Eigen kustavonturen**. Onderzoek wraksporen, lees een oude
 loodsenroute, herstel een tijrad en kies hoe je de Schelpenhoeder benadert.

@@ -10,6 +10,6 @@ const NPCS:={
 }
 const TALKS:={
 	"rg_ise":{"speaker":"Ise de veervrouw","lines":["Ik houd de overtochten kort. De veer vaart naar de Blauwe Kust, Meeuweneiland en de Getijdenbaai, ook bij hoogwater.","Liever wandelen? Achter de kade loopt een vrij hoog pad naar Lichtkaap. Over de westelijke rivierbrug kom je terug aan de Blauwe Kust."],"choices":[{"text":"Bekijk de veerbestemmingen.","do":[["rg_routes"]]},{"text":"Ik loop zelf verder."}]},
-	"rg_raf":{"speaker":"Raf de nettenmaker","lines":["Ik knoop mijn netten hier, uit de loop. De weidse riviermonding ligt achter de westelijke brug; de vuurtoren staat op de oostelijke kaap.","Ik teken de paden en veerroutes op dezelfde kaart. De hoge loopbruggen blijven bij hoogwater vrij, zodat iedereen weer naar huis kan."],"choices":[{"text":"Laat de regiokaart zien.","do":[["rg_atlas"]]},{"text":"Ik kijk rustig rond."}]}
+	"rg_raf":{"speaker":"Raf de nettenmaker","lines":["Ik knoop mijn netten hier, uit de loop. De weidse riviermonding ligt achter de westelijke brug; de vuurtoren staat op de oostelijke kaap.","De deurmat onder mijn nettenloods leidt naar een gratis werkplaats met materiaalkist. Ik deel mijn oeverlijnpatroon; de hoge brug blijft voor iedereen open. Ik teken de paden en veerroutes op dezelfde kaart. De hoge loopbruggen blijven bij hoogwater vrij, zodat iedereen weer naar huis kan."],"choices":[{"text":"Laat de regiokaart zien.","do":[["rg_atlas"]]},{"text":"Ik kijk rustig rond."}]}
 }
 static func run(action: Array):load("res://scripts/core/coastal_region.gd").choose(str(action[0]))

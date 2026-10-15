@@ -282,6 +282,22 @@ msgstr "The door is shut. There's no way back!"
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
 
+#. Naam van gebied coast_workshop
+#. Beroepen: tekst of sjabloon coast_workshop
+#: scripts/entities/coastal_workstation.gd:20 scripts/ui/coastal_home_ui.gd:54 scripts/data/ext/beroepen.gd:23 scripts/maps/coast_workshop.gd:4
+msgid "Rafs havenwerkplaats"
+msgstr "Raf's Harbor Workshop"
+
+#. Kaart coast_workshop, sign [16, 19]: tekst op een bord
+#: scripts/maps/coast_workshop.gd:63
+msgid "Rafs havenwerkplaats · terug naar Rietwenk Haven"
+msgstr "Raf's Harbor Workshop · back to Reedhaven"
+
+#. Kaart coast_workshop, sign [16, 19]: tekst op een bord
+#: scripts/maps/coast_workshop.gd:64
+msgid "Gratis materiaalkist en vaste meubelplekken. Raf deelt het lijnpatroon; Greta en Lena helpen met hun bestaande werkplekken. Geen huur of onderhoud."
+msgstr "Free material storage and fixed furniture spots. Raf shares his line pattern; Greta and Lena help at their existing workplaces. No rent or upkeep."
+
 #. Naam van gebied tidal_hollow
 #: scripts/maps/tidal_hollow.gd:4
 msgid "Tijholte"
@@ -1832,8 +1848,8 @@ msgstr "I knot my nets here, out of the way. The wide estuary lies beyond the we
 
 #. Gesprek rg_raf, Raf de nettenmaker zegt
 #: scripts/data/ext/coastal_region.gd:13
-msgid "Ik teken de paden en veerroutes op dezelfde kaart. De hoge loopbruggen blijven bij hoogwater vrij, zodat iedereen weer naar huis kan."
-msgstr "I draw the paths and ferry routes on the same map. The high boardwalks stay clear at high tide, so everyone can get home."
+msgid "De deurmat onder mijn nettenloods leidt naar een gratis werkplaats met materiaalkist. Ik deel mijn oeverlijnpatroon; de hoge brug blijft voor iedereen open. Ik teken de paden en veerroutes op dezelfde kaart. De hoge loopbruggen blijven bij hoogwater vrij, zodat iedereen weer naar huis kan."
+msgstr "The mat below my net shed leads to a free workshop with material storage. I share my river-line pattern; the high bridge stays open to everyone. I draw paths and ferry routes on the same map. The high walkways stay clear at high tide, so everyone can get home."
 
 #. Gesprek rg_raf: keuze van de speler
 #: scripts/data/ext/coastal_region.gd:13
@@ -4361,7 +4377,7 @@ msgid "Leg bij het werkboek op de havenkade uit waar het wrakhout vandaan kwam."
 msgstr "Explain where the wreckage came from at the work ledger on the harbor quay."
 
 #. Titel van opdracht ad_pilot
-#: scripts/entities/coastal_adventure.gd:17 scripts/data/ext/coastal_adventures.gd:8
+#: scripts/entities/coastal_adventure.gd:25 scripts/data/ext/coastal_adventures.gd:8
 msgid "De oude loodsenroute"
 msgstr "The Old Pilot Trail"
 
@@ -4976,6 +4992,86 @@ msgstr "Crystal Sword"
 msgid "Gloeit zachtblauw. Het sterkste zwaard van Azura."
 msgstr "Glows a soft blue. The strongest sword in Azura."
 
+#. Naam van voorwerp cw_driftwood
+#: scripts/data/ext/coastal_craft.gd:7
+msgid "Zoutdrijfhout"
+msgstr "Saltwood"
+
+#. Beschrijving van voorwerp cw_driftwood
+#: scripts/data/ext/coastal_craft.gd:7
+msgid "Droog hout van een rustige zijplek aan de Blauwe Kust. Voor Rafs herbruikbare oeverlijn en meubels."
+msgstr "Dry timber from a quiet side spot on the Blue Coast. For Raf's reusable river line and furniture."
+
+#. Naam van voorwerp cw_reed
+#: scripts/data/ext/coastal_craft.gd:8
+msgid "Oevervezel"
+msgstr "Bank fiber"
+
+#. Beschrijving van voorwerp cw_reed
+#: scripts/data/ext/coastal_craft.gd:8
+msgid "Soepele vezels uit één rietplek bij Zilvermonding. Voor een herbruikbare lijn en waaierbanden."
+msgstr "Flexible fibers from one reed patch at Silver Estuary. For a reusable line and fan bands."
+
+#. Naam van voorwerp cw_seaglass
+#: scripts/data/ext/coastal_craft.gd:9
+msgid "Zeeagaat"
+msgstr "Sea agate"
+
+#. Beschrijving van voorwerp cw_seaglass
+#: scripts/data/ext/coastal_craft.gd:9
+msgid "Win in de veilige zuidelijke gang van de Tijholte met een stenen of koperen pikhouweel. Voor kustuitrusting en een werkplaatslamp."
+msgstr "Mine it in the safe southern passage of Tidal Hollow with a stone or copper pickaxe. For coastal equipment and a workshop lamp."
+
+#. Naam van voorwerp cw_saltleaf
+#: scripts/data/ext/coastal_craft.gd:10
+msgid "Zoutblad"
+msgstr "Saltleaf"
+
+#. Beschrijving van voorwerp cw_saltleaf
+#: scripts/data/ext/coastal_craft.gd:10
+msgid "Een kruid van de open graslanden van Lichtkaap. Met een baars van Joris maak je er kustbouillon van."
+msgstr "An herb from the open meadows of Beacon Headland. Combine it with Joris's perch to make coastal broth."
+
+#. Naam van voorwerp cw_hook
+#: scripts/ui/coastal_home_ui.gd:83 scripts/data/ext/coastal_craft.gd:11
+msgid "Herbruikbare oeverlijn"
+msgstr "Reusable river line"
+
+#. Beschrijving van voorwerp cw_hook
+#: scripts/data/ext/coastal_craft.gd:11
+msgid "Rafs haak en lijn. Verbindt de twee lijnpalen aan Zilvermonding. Niet verbruikt; de hoge rivierbrug blijft altijd open."
+msgstr "Raf's hook and line. Connects the two line posts at Silver Estuary. Never consumed; the high river bridge always stays open."
+
+#. Naam van voorwerp cw_shelf
+#: scripts/data/ext/coastal_craft.gd:12
+msgid "Drijfhouten wandrek"
+msgstr "Saltwood wall rack"
+
+#. Beschrijving van voorwerp cw_shelf
+#: scripts/data/ext/coastal_craft.gd:12
+msgid "Plaats of berg het gratis op via de inrichttafel in de havenwerkplaats. Heeft een vaste plek tegen de wand; geen onderhoud."
+msgstr "Place or store it for free at the workshop furnishing table. It has a fixed spot by the wall and needs no upkeep."
+
+#. Naam van voorwerp cw_lamp
+#: scripts/data/ext/coastal_craft.gd:13
+msgid "Zeeagaatlamp"
+msgstr "Sea-agate lamp"
+
+#. Beschrijving van voorwerp cw_lamp
+#: scripts/data/ext/coastal_craft.gd:13
+msgid "Lena's lamp voor de vaste sokkel in de havenwerkplaats. Kies warm licht, zeelicht of uit. Plaatsen verbruikt hem niet."
+msgstr "Lena's lamp for the fixed plinth in the harbor workshop. Choose warm light, sea light or off. Placing it does not consume it."
+
+#. Naam van voorwerp cw_broth
+#: scripts/data/ext/coastal_craft.gd:14
+msgid "Kustbouillon"
+msgstr "Coastal broth"
+
+#. Beschrijving van voorwerp cw_broth
+#: scripts/data/ext/coastal_craft.gd:14
+msgid "Baars van het Zilvermeer met zoutblad van Lichtkaap. Herstelt 2 hartjes en 20 stamina. Gebruik via Beroepen → Eten & drinken."
+msgstr "Silverlake perch with saltleaf from Beacon Headland. Restores 2 hearts and 20 stamina. Use through Professions → Food & drink."
+
 #. Naam van voorwerp td_line
 #: scripts/data/ext/tides.gd:5
 msgid "Landingslijn"
@@ -5245,7 +5341,7 @@ msgstr "A sharp loose stone. You can pick it up without tools."
 
 #. Naam van voorwerp prof_herb
 #. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:167
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:175
 msgid "Zilverkruid"
 msgstr "Silverleaf"
 
@@ -5476,7 +5572,7 @@ msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks
 
 #. Naam van voorwerp prof_zandkruid
 #. Oogstbare grondstof sandwort
-#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:178
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:186
 msgid "Zandkruid"
 msgstr "Sandwort"
 
@@ -5547,7 +5643,7 @@ msgstr "A red, tart berry that grows low above the moor water. For porridge and 
 
 #. Naam van voorwerp prof_watermunt
 #. Oogstbare grondstof watermunt
-#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:182
+#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:190
 msgid "Watermunt"
 msgstr "Water mint"
 
@@ -5596,223 +5692,243 @@ msgstr "Cranberry porridge"
 msgid "Warme pap met veenbessen, zoals Stien hem maakt. Herstelt 2 hartjes en 5 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
 msgstr "Warm porridge with cranberries, the way Stien makes it. Restores 2 hearts and 5 stamina. Use via Professions → Food & drink."
 
-#. Naam van voorwerp gear_ra_grip
+#. Naam van voorwerp gear_cw_anchor
+#: scripts/data/ext/uitrusting.gd:14
+msgid "Ankerbanden"
+msgstr "Anchor bands"
+
+#. Beschrijving van voorwerp gear_cw_anchor
+#: scripts/data/ext/uitrusting.gd:14
+msgid "Draag in je handvak: 1 pantser en 10 stamina. Techniek + zwaard wordt een korte frontale ankerwacht. Na een tijdige blokkade geeft een gewone zwaarddruk een gerichte tegenstoot; zij- en rugtreffers blijven gevaarlijk."
+msgstr "Wear in your hand slot: 1 armor and 10 stamina. Technique + sword becomes a brief frontal anchor guard. After a timely block, a normal sword press delivers a directed counterthrust; side and rear hits remain dangerous."
+
+#. Naam van voorwerp gear_cw_fan
 #: scripts/data/ext/uitrusting.gd:15
+msgid "Waaierbanden"
+msgstr "Fan bands"
+
+#. Beschrijving van voorwerp gear_cw_fan
+#: scripts/data/ext/uitrusting.gd:15
+msgid "Draag in hetzelfde handvak: 15% korter verzamelen en 8 oppakbereik, zonder pantser. Techniek + boog wordt een brede waaier van drie lichte pijlen. Kost drie pijlen; gewone en andere zwaardtechnieken blijven beschikbaar."
+msgstr "Wear in the same hand slot: 15% faster gathering and 8 pickup range, without armor. Technique + bow becomes a wide fan of three light arrows. Costs three arrows; normal attacks and other sword techniques remain available."
+
+#. Naam van voorwerp gear_ra_grip
+#: scripts/data/ext/uitrusting.gd:17
 msgid "Klimhandschoenen"
 msgstr "Climbing gloves"
 
 #. Beschrijving van voorwerp gear_ra_grip
-#: scripts/data/ext/uitrusting.gd:15
+#: scripts/data/ext/uitrusting.gd:17
 msgid "Grip en een lichte tred: 4% sneller lopen en 15 extra stamina. Gebruikt hetzelfde handvak als aanvalshandschoenen."
 msgstr "Grip and a light step: 4% faster movement and 15 extra stamina. Uses the same hand slot as attack gloves."
 
 #. Naam van voorwerp gear_ra_compass
-#: scripts/data/ext/uitrusting.gd:16
+#: scripts/data/ext/uitrusting.gd:18
 msgid "Archiefkompas"
 msgstr "Archive compass"
 
 #. Beschrijving van voorwerp gear_ra_compass
-#: scripts/data/ext/uitrusting.gd:16
+#: scripts/data/ext/uitrusting.gd:18
 msgid "Een kompas uit het Rietarchief: 16 extra oppakbereik en 10% sneller staminaherstel. Draag het in je halsvak."
 msgstr "A compass from the Reed Archive: 16 extra pickup range and 10% faster stamina regeneration. Wear it in your neck slot."
 
 #. Naam van voorwerp gear_rf_keepsake
-#: scripts/data/ext/uitrusting.gd:17
+#: scripts/data/ext/uitrusting.gd:19
 msgid "Wilfreds herinnering"
 msgstr "Wilfred's Keepsake"
 
 #. Beschrijving van voorwerp gear_rf_keepsake
-#: scripts/data/ext/uitrusting.gd:17
+#: scripts/data/ext/uitrusting.gd:19
 msgid "Een ring uit de herdenkingsplek: 15% sneller staminaherstel en 6 extra oppakbereik. Minder bereik dan een koperen ring."
 msgstr "A memorial ring: 15% faster stamina recovery and 6 extra pickup range. Less range than a copper ring."
 
 #. Naam van voorwerp gear_rf_cord
-#: scripts/data/ext/uitrusting.gd:18
+#: scripts/data/ext/uitrusting.gd:20
 msgid "Stiltekoord"
 msgstr "Cord of Stillness"
 
 #. Beschrijving van voorwerp gear_rf_cord
-#: scripts/data/ext/uitrusting.gd:18
+#: scripts/data/ext/uitrusting.gd:20
 msgid "Een oud koord uit de schuilroute. Geeft gedragen 20 extra stamina; amuletten voor sneller herstel gebruiken hetzelfde halsvak."
 msgstr "An old cord from the refuge route. Grants 20 extra stamina when worn; recovery amulets use the same neck slot."
 
 #. Naam van voorwerp gear_scout_coat
-#: scripts/data/ext/uitrusting.gd:20
+#: scripts/data/ext/uitrusting.gd:22
 msgid "Verkennersjas"
 msgstr "Scout coat"
 
 #. Beschrijving van voorwerp gear_scout_coat
-#: scripts/data/ext/uitrusting.gd:30
+#: scripts/data/ext/uitrusting.gd:32
 msgid "8% sneller en 10 extra stamina, maar geen pantser. Voor verkennen en ontwijken."
 msgstr "8% faster and 10 extra stamina, but no armor. For exploration and dodging."
 
 #. Naam van voorwerp gear_bastion_coat
-#: scripts/data/ext/uitrusting.gd:33
+#: scripts/data/ext/uitrusting.gd:35
 msgid "Wachtharnas"
 msgstr "Warden coat"
 
 #. Beschrijving van voorwerp gear_bastion_coat
-#: scripts/data/ext/uitrusting.gd:43
+#: scripts/data/ext/uitrusting.gd:45
 msgid "2 pantser, maar 8% langzamer. Elke treffer doet minimaal 1 schade. Voor standhouden bij een vuurkorf."
 msgstr "2 armor, but 8% slower. Every hit deals at least 1 damage. For holding your ground by a brazier."
 
 #. Naam van voorwerp gear_cloth_hood
-#: scripts/data/ext/uitrusting.gd:46
+#: scripts/data/ext/uitrusting.gd:48
 msgid "Linnen kap"
 msgstr "Linen hood"
 
 #. Beschrijving van voorwerp gear_cloth_hood
-#: scripts/data/ext/uitrusting.gd:46
+#: scripts/data/ext/uitrusting.gd:48
 msgid "Een lichte reiskap. Draag hem op je hoofd voor 15 extra uithoudingsvermogen."
 msgstr "A light traveling hood. Wear it on your head for 15 extra stamina."
 
 #. Naam van voorwerp gear_bronze_helm
-#: scripts/data/ext/uitrusting.gd:47
+#: scripts/data/ext/uitrusting.gd:49
 msgid "Bronzen helm"
 msgstr "Bronze helmet"
 
 #. Beschrijving van voorwerp gear_bronze_helm
-#: scripts/data/ext/uitrusting.gd:47
+#: scripts/data/ext/uitrusting.gd:49
 msgid "Een stevige helm voor lange tochten. Draag hem op je hoofd voor 30 extra uithoudingsvermogen."
 msgstr "A sturdy helmet for long journeys. Wear it on your head for 30 extra stamina."
 
 #. Naam van voorwerp gear_leather_armor
-#: scripts/data/ext/uitrusting.gd:48
+#: scripts/data/ext/uitrusting.gd:50
 msgid "Leren harnas"
 msgstr "Leather armor"
 
 #. Beschrijving van voorwerp gear_leather_armor
-#: scripts/data/ext/uitrusting.gd:48
+#: scripts/data/ext/uitrusting.gd:50
 msgid "Vangt zware klappen op. Vermindert schade met 1, tot minimaal 1 schade per treffer."
 msgstr "Absorbs heavy blows. Reduces damage by 1, to a minimum of 1 damage per hit."
 
 #. Naam van voorwerp gear_iron_armor
-#: scripts/data/ext/uitrusting.gd:49
+#: scripts/data/ext/uitrusting.gd:51
 msgid "IJzeren harnas"
 msgstr "Iron armor"
 
 #. Beschrijving van voorwerp gear_iron_armor
-#: scripts/data/ext/uitrusting.gd:49
+#: scripts/data/ext/uitrusting.gd:51
 msgid "Gesmede bescherming. Vermindert schade met 2, tot minimaal 1 schade per treffer."
 msgstr "Forged protection. Reduces damage by 2, to a minimum of 1 damage per hit."
 
 #. Naam van voorwerp gear_novice_gloves
-#: scripts/data/ext/uitrusting.gd:50
+#: scripts/data/ext/uitrusting.gd:52
 msgid "Leerlinghandschoenen"
 msgstr "Apprentice gloves"
 
 #. Beschrijving van voorwerp gear_novice_gloves
-#: scripts/data/ext/uitrusting.gd:50
+#: scripts/data/ext/uitrusting.gd:52
 msgid "Een goede grip op je zwaard. Draag ze voor 8% kortere wachttijd tussen zwaardaanvallen."
 msgstr "A firm grip on your sword. Wear them for an 8% shorter cooldown between sword attacks."
 
 #. Naam van voorwerp gear_smith_gloves
-#: scripts/data/ext/uitrusting.gd:51
+#: scripts/data/ext/uitrusting.gd:53
 msgid "Smeedhandschoenen"
 msgstr "Smith's gloves"
 
 #. Beschrijving van voorwerp gear_smith_gloves
-#: scripts/data/ext/uitrusting.gd:51
+#: scripts/data/ext/uitrusting.gd:53
 msgid "Perfect passende handschoenen. Draag ze voor 16% kortere wachttijd tussen zwaardaanvallen."
 msgstr "Perfectly fitted gloves. Wear them for a 16% shorter cooldown between sword attacks."
 
 #. Naam van voorwerp gear_copper_amulet
-#: scripts/data/ext/uitrusting.gd:52
+#: scripts/data/ext/uitrusting.gd:54
 msgid "Koperen amulet"
 msgstr "Copper amulet"
 
 #. Beschrijving van voorwerp gear_copper_amulet
-#: scripts/data/ext/uitrusting.gd:52
+#: scripts/data/ext/uitrusting.gd:54
 msgid "Een warm koperen sieraad. Draag het om je hals voor 15% sneller herstel van uithoudingsvermogen."
 msgstr "A warm copper charm. Wear it around your neck for 15% faster stamina recovery."
 
 #. Naam van voorwerp gear_crystal_amulet
-#: scripts/data/ext/uitrusting.gd:53
+#: scripts/data/ext/uitrusting.gd:55
 msgid "Kristallen amulet"
 msgstr "Crystal amulet"
 
 #. Beschrijving van voorwerp gear_crystal_amulet
-#: scripts/data/ext/uitrusting.gd:53
+#: scripts/data/ext/uitrusting.gd:55
 msgid "Alchemie laat gel kristalliseren rond koper. Draag het voor 30% sneller herstel van uithoudingsvermogen."
 msgstr "Alchemy crystallizes gel around copper. Wear it for 30% faster stamina recovery."
 
 #. Naam van voorwerp gear_copper_ring
-#: scripts/data/ext/uitrusting.gd:54
+#: scripts/data/ext/uitrusting.gd:56
 msgid "Koperen ring"
 msgstr "Copper ring"
 
 #. Beschrijving van voorwerp gear_copper_ring
-#: scripts/data/ext/uitrusting.gd:54
+#: scripts/data/ext/uitrusting.gd:56
 msgid "Een ring die verloren spullen aantrekt. Vergroot je magnetische oppakbereik met 12 pixels."
 msgstr "A ring that attracts lost belongings. Increases your magnetic pickup range by 12 pixels."
 
 #. Naam van voorwerp gear_crystal_ring
-#: scripts/data/ext/uitrusting.gd:55
+#: scripts/data/ext/uitrusting.gd:57
 msgid "Kristallen ring"
 msgstr "Crystal ring"
 
 #. Beschrijving van voorwerp gear_crystal_ring
-#: scripts/data/ext/uitrusting.gd:55
+#: scripts/data/ext/uitrusting.gd:57
 msgid "Een ring van koper en alchemistisch kristal. Vergroot je magnetische oppakbereik met 24 pixels."
 msgstr "A ring of copper and alchemical crystal. Increases your magnetic pickup range by 24 pixels."
 
 #. Naam van voorwerp gear_pg_grip
-#: scripts/data/ext/uitrusting.gd:56
+#: scripts/data/ext/uitrusting.gd:58
 msgid "Slagbanden"
 msgstr "Strike Wraps"
 
 #. Beschrijving van voorwerp gear_pg_grip
-#: scripts/data/ext/uitrusting.gd:56
+#: scripts/data/ext/uitrusting.gd:58
 msgid "10% minder stamina voor voorbereide zwaardtechnieken en precisieschoten. Gewone slagen en sprinten veranderen niet."
 msgstr "10% less stamina for prepared sword techniques and precise shots. Ordinary swings and sprinting are unchanged."
 
 #. Naam van voorwerp gear_pg_grip_plus
-#: scripts/data/ext/uitrusting.gd:57
+#: scripts/data/ext/uitrusting.gd:59
 msgid "Geharde slagbanden"
 msgstr "Hardened Strike Wraps"
 
 #. Beschrijving van voorwerp gear_pg_grip_plus
-#: scripts/data/ext/uitrusting.gd:57
+#: scripts/data/ext/uitrusting.gd:59
 msgid "20% minder techniekstamina en 6% kortere wachttijd tussen gewone zwaardaanvallen. Verbeterde slagbanden met zandsteen uit Dorstvallei."
 msgstr "20% less technique stamina and 6% shorter cooldown between ordinary sword attacks. Strike wraps hardened with Dorstvallei sandstone."
 
 #. Naam van voorwerp gear_pg_focus
-#: scripts/data/ext/uitrusting.gd:58
+#: scripts/data/ext/uitrusting.gd:60
 msgid "Richtlens"
 msgstr "Aiming Lens"
 
 #. Beschrijving van voorwerp gear_pg_focus
-#: scripts/data/ext/uitrusting.gd:58
+#: scripts/data/ext/uitrusting.gd:60
 msgid "15% kortere voorbereiding van je precisieschot. Draag de lens in het halsvak; pijlschade en staminakosten blijven gelijk."
 msgstr "15% shorter preparation for your precise shot. Wear the lens in your neck slot; arrow damage and stamina cost stay the same."
 
 #. Naam van voorwerp gear_pg_focus_plus
-#: scripts/data/ext/uitrusting.gd:59
+#: scripts/data/ext/uitrusting.gd:61
 msgid "Heldere richtlens"
 msgstr "Clear Aiming Lens"
 
 #. Beschrijving van voorwerp gear_pg_focus_plus
-#: scripts/data/ext/uitrusting.gd:59
+#: scripts/data/ext/uitrusting.gd:61
 msgid "25% kortere voorbereiding van precisieschoten en 10% sneller staminaherstel. Gebruikt ijskristal en watermunt na je onderzoek in het Rietarchief."
 msgstr "25% shorter precise shot preparation and 10% faster stamina recovery. Uses ice crystal and water mint after your Reed Archive research."
 
 #. Naam van voorwerp gear_pg_pack
-#: scripts/data/ext/uitrusting.gd:60
+#: scripts/data/ext/uitrusting.gd:62
 msgid "Werkpak"
 msgstr "Work Harness"
 
 #. Beschrijving van voorwerp gear_pg_pack
-#: scripts/data/ext/uitrusting.gd:60
+#: scripts/data/ext/uitrusting.gd:62
 msgid "15% korter verzamelen met kruiden, bijl en pikhouweel. Een gevlochten werkpak voor ambachten; geeft geen pantser."
 msgstr "15% less time gathering herbs, chopping and mining. A woven harness for crafting; provides no armor."
 
 #. Naam van voorwerp gear_pg_pack_plus
-#: scripts/data/ext/uitrusting.gd:61
+#: scripts/data/ext/uitrusting.gd:63
 msgid "Bergwerkpak"
 msgstr "Mountain Work Harness"
 
 #. Beschrijving van voorwerp gear_pg_pack_plus
-#: scripts/data/ext/uitrusting.gd:61
+#: scripts/data/ext/uitrusting.gd:63
 msgid "25% korter verzamelen en 10 extra oppakbereik. Versterkt met dennenhout en wilgentwijgen na het vastzetten van de klimlijn; geeft geen pantser."
 msgstr "25% less gathering time and 10 extra pickup range. Reinforced with pine wood and willow twigs after securing the climbing line; provides no armor."
 
@@ -6527,7 +6643,7 @@ msgid "steen"
 msgstr "rock"
 
 #. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
-#: scripts/data/enemies.gd:75 scripts/maps/tide_cove.gd:110 scripts/maps/tide_cove.gd:122
+#: scripts/data/coastal_craft_maps.gd:7 scripts/data/coastal_craft_maps.gd:8 scripts/data/enemies.gd:75 scripts/maps/tide_cove.gd:110
 msgctxt "aanval"
 msgid "landing"
 msgstr "landing"
@@ -7106,6 +7222,11 @@ msgstr "The way begins in the Crystal Temple. Only when the Blue Map is whole ag
 msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
 msgstr "The Star Map isn't easy to read. The Guardian will test you first. Take it slow. Get a good night's sleep first. And eat something."
 
+#. Legenda op het kaartje (menu): cw_station
+#: scripts/data/ext/coastal_craft.gd:4
+msgid "Kustwerkplaats of lijnpaal"
+msgstr "Coastal workshop or line post"
+
 #. Legenda op het kaartje (menu): coast_adventure
 #: scripts/data/ext/coastal_adventures.gd:4
 msgid "Kustverhaal of waarneming"
@@ -7209,8 +7330,8 @@ msgstr "Hands"
 
 #. Uitrustingsslot hands: desc
 #: scripts/data/ext/uitrusting.gd:8
-msgid "Handschoenen verkorten de wachttijd tussen zwaardaanvallen."
-msgstr "Gloves reduce the cooldown between sword attacks."
+msgid "Handschoenen en banden helpen met aanvalstempo, gereedschap of een eigen kusttechniek."
+msgstr "Gloves and bands help with attack speed, tools or a distinct coastal technique."
 
 #. Uitrustingsslot neck: name
 #: scripts/data/ext/uitrusting.gd:9
@@ -7455,6 +7576,11 @@ msgstr "Copper wraps spread the force of a sword technique. Craft strike wraps a
 
 #. Werktekening smith
 #: scripts/data/ext/craft_progression.gd:6
+msgid "Met zeeagaat uit de veilige Tijholte en zoutdrijfhout smeed je ankerbanden voor een gerichte wacht en tegenstoot. Hetzelfde handvak vraagt een keuze; oude handschoenen blijven bruikbaar."
+msgstr "Sea agate from safe Tidal Hollow and saltwood make anchor bands for a directed guard and counterthrust. The same hand slot calls for a choice; old gloves stay useful."
+
+#. Werktekening smith
+#: scripts/data/ext/craft_progression.gd:6
 msgid "Na herstel van Sana’s bron kun je met ijzer en zandsteen hardere banden smeden. Het gedragen paar wordt bij verbeteren meteen vervangen."
 msgstr "After restoring Sana’s spring, forge harder wraps from iron and sandstone. A worn pair is replaced immediately when upgraded."
 
@@ -7467,6 +7593,11 @@ msgstr "Lena’s Lens Research"
 #: scripts/data/ext/craft_progression.gd:7
 msgid "Een kleine lens helpt je boog sneller voorbereiden. Maak een richtlens aan de alchemietafel en draag hem in je halsvak."
 msgstr "A small lens helps prepare your bow faster. Craft an aiming lens at the alchemy table and wear it in your neck slot."
+
+#. Werktekening focus
+#: scripts/data/ext/craft_progression.gd:7
+msgid "Zeeagaat en oevervezels maken waaierbanden: drie lichte pijlen voor spreiding, met drie pijlen als kosten. De havenwerkplaats heeft een veilige proefopstelling."
+msgstr "Sea agate and bank fibers make fan bands: three light arrows for spread, costing three arrows. The harbor workshop has a safe practice setup."
 
 #. Werktekening focus
 #: scripts/data/ext/craft_progression.gd:7
@@ -7559,125 +7690,162 @@ msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme g
 msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
 
 #. Oogstbare grondstof branches
-#: scripts/data/ext/beroepen.gd:165
+#: scripts/data/ext/beroepen.gd:173
 msgid "Losse takken"
 msgstr "Loose Branches"
 
 #. Oogstbare grondstof stones
-#: scripts/data/ext/beroepen.gd:166
+#: scripts/data/ext/beroepen.gd:174
 msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof berries
-#: scripts/data/ext/beroepen.gd:168
+#: scripts/data/ext/beroepen.gd:176
 msgid "Bosbessenstruik"
 msgstr "Blueberry Bush"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:169
+#: scripts/data/ext/beroepen.gd:177
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
 #. Oogstbare grondstof stump
-#: scripts/data/ext/beroepen.gd:170
+#: scripts/data/ext/beroepen.gd:178
 msgid "Berkenstronk"
 msgstr "Birch Stump"
 
 #. Oogstbare grondstof copper
-#: scripts/data/ext/beroepen.gd:171
+#: scripts/data/ext/beroepen.gd:179
 msgid "Koperader"
 msgstr "Copper Vein"
 
 #. Oogstbare grondstof iron
-#: scripts/data/ext/beroepen.gd:172
+#: scripts/data/ext/beroepen.gd:180
 msgid "IJzerader"
 msgstr "Iron Vein"
 
 #. Oogstbare grondstof winterherbs
-#: scripts/data/ext/beroepen.gd:173
+#: scripts/data/ext/beroepen.gd:181
 msgid "IJsbloemen"
 msgstr "Ice flowers"
 
 #. Oogstbare grondstof frostberries
-#: scripts/data/ext/beroepen.gd:174
+#: scripts/data/ext/beroepen.gd:182
 msgid "Winterbessenstruik"
 msgstr "Winter berry bush"
 
 #. Oogstbare grondstof pine_stump
-#: scripts/data/ext/beroepen.gd:175
+#: scripts/data/ext/beroepen.gd:183
 msgid "Dennenstronk"
 msgstr "Pine stump"
 
 #. Oogstbare grondstof ice_vein
-#: scripts/data/ext/beroepen.gd:176
+#: scripts/data/ext/beroepen.gd:184
 msgid "IJskristalader"
 msgstr "Ice crystal vein"
 
 #. Oogstbare grondstof cactusfigs
-#: scripts/data/ext/beroepen.gd:177
+#: scripts/data/ext/beroepen.gd:185
 msgid "Cactusvijgen"
 msgstr "Cactus figs"
 
 #. Oogstbare grondstof sandstone_rock
-#: scripts/data/ext/beroepen.gd:179
+#: scripts/data/ext/beroepen.gd:187
 msgid "Zandsteenklip"
 msgstr "Sandstone crag"
 
 #. Oogstbare grondstof dauwklauw
-#: scripts/data/ext/beroepen.gd:180
+#: scripts/data/ext/beroepen.gd:188
 msgid "Dauwklauwen"
 msgstr "Dewclaws"
 
 #. Oogstbare grondstof veenbessen
-#: scripts/data/ext/beroepen.gd:181
+#: scripts/data/ext/beroepen.gd:189
 msgid "Veenbessenstruik"
 msgstr "Cranberry bush"
 
 #. Oogstbare grondstof wilgstronk
-#: scripts/data/ext/beroepen.gd:183
+#: scripts/data/ext/beroepen.gd:191
 msgid "Geknotte wilg"
 msgstr "Pollard willow"
 
 #. Oogstbare grondstof ijzeroer_ader
-#: scripts/data/ext/beroepen.gd:184
+#: scripts/data/ext/beroepen.gd:192
 msgid "IJzeroerklomp"
 msgstr "Bog iron lump"
 
+#. Oogstbare grondstof cw_driftwood
+#: scripts/data/ext/beroepen.gd:193
+msgid "Droog zoutdrijfhout"
+msgstr "Dry saltwood"
+
+#. Oogstbare grondstof cw_reed
+#: scripts/data/ext/beroepen.gd:194
+msgid "Oevervezels"
+msgstr "Bank fibers"
+
+#. Oogstbare grondstof cw_seaglass
+#: scripts/data/ext/beroepen.gd:195
+msgid "Zeeagaatader"
+msgstr "Sea-agate vein"
+
+#. Oogstbare grondstof cw_saltleaf
+#: scripts/data/ext/beroepen.gd:196
+msgid "Zoutbladpol"
+msgstr "Saltleaf patch"
+
 #. Recept ls_chowder: unlock_hint
 #. Recept ls_broth: unlock_hint
-#: scripts/data/ext/beroepen.gd:151 scripts/data/ext/beroepen.gd:152
+#: scripts/data/ext/beroepen.gd:152 scripts/data/ext/beroepen.gd:153
 msgid "Deel eerst een maaltijd aan Mila’s dorpstafel."
 msgstr "First share a meal at Mila’s village table."
 
 #. Recept pg_grip: unlock_hint
-#: scripts/data/ext/beroepen.gd:153
+#: scripts/data/ext/beroepen.gd:154
 msgid "Lees Greta’s werktekeningen naast de prismabank."
 msgstr "Read Greta’s workshop sketches beside the prism bench."
 
 #. Recept pg_grip_plus: unlock_hint
-#: scripts/data/ext/beroepen.gd:154
+#: scripts/data/ext/beroepen.gd:155
 msgid "Herstel eerst de bron in de Zonnekloof bij Sana’s expeditie."
 msgstr "Restore the Sunwell Gorge spring on Sana’s expedition first."
 
 #. Recept pg_focus: unlock_hint
-#: scripts/data/ext/beroepen.gd:155
+#: scripts/data/ext/beroepen.gd:156
 msgid "Lees Lena’s lensonderzoek aan de alchemietafel."
 msgstr "Read Lena’s lens research at the alchemy table."
 
 #. Recept pg_focus_plus: unlock_hint
-#: scripts/data/ext/beroepen.gd:156
+#: scripts/data/ext/beroepen.gd:157
 msgid "Orden eerst de drie gebeurtenissen in het Rietarchief."
 msgstr "Sort the three events in the Reed Archive first."
 
 #. Recept pg_pack: unlock_hint
-#: scripts/data/ext/beroepen.gd:157
+#: scripts/data/ext/beroepen.gd:158
 msgid "Lees Joris’ vlechtpatroon op de westelijke oever van het Zilvermeer."
 msgstr "Read Joris’ weaving pattern on the western shore of Silver Lake."
 
 #. Recept pg_pack_plus: unlock_hint
-#: scripts/data/ext/beroepen.gd:158
+#: scripts/data/ext/beroepen.gd:159
 msgid "Zet eerst de klimlijn vast aan de oostelijke touwpaal in de Bergpas."
 msgstr "Secure the climbing line to the eastern rope post in the Mountain Pass first."
+
+#. Recept cw_hook: unlock_hint
+#. Recept cw_shelf: unlock_hint
+#: scripts/data/ext/beroepen.gd:164 scripts/data/ext/beroepen.gd:167
+msgid "Spreek Raf de nettenmaker op de havenkade; hij deelt zijn lijnpatroon."
+msgstr "Talk to Raf the net maker on the harbor quay; he shares his line pattern."
+
+#. Recept cw_anchor: unlock_hint
+#: scripts/data/ext/beroepen.gd:165
+msgid "Lees Greta’s werktekeningen in de smederij."
+msgstr "Read Greta's working drawings in the smithy."
+
+#. Recept cw_fan: unlock_hint
+#. Recept cw_lamp: unlock_hint
+#: scripts/data/ext/beroepen.gd:166 scripts/data/ext/beroepen.gd:168
+msgid "Lees Lena’s lensonderzoek in de bibliotheek."
+msgstr "Read Lena's lens research in the library."
 
 #. Geslacht m (tabblad Uiterlijk)
 #: scripts/data/ext/uiterlijk.gd:22
@@ -8668,55 +8836,59 @@ msgstr "A grassy ridge, beach and viewpoint. The eastern boardwalk leads to Tida
 msgid "Getijdenbaai: zandbank bij laagwater, hoge loopbrug altijd open. Gratis leenlijn en veer bij de westelijke steiger."
 msgstr "Tidal Cove: sandbank at low tide, high boardwalk always open. Free loan line and ferry by the western jetty."
 
-#: scripts/core/craft_journal.gd:28
+#: scripts/core/craft_journal.gd:29
 msgid "Werktekening geleerd: %s. Kies een materiaaldoel via Beroepen."
 msgstr "Pattern learned: %s. Choose a material goal in Professions."
 
-#: scripts/core/craft_journal.gd:55
+#: scripts/core/craft_journal.gd:56
 msgid "%s niveau %d"
 msgstr "%s level %d"
 
-#: scripts/core/craft_journal.gd:60
+#: scripts/core/craft_journal.gd:61
 msgid "Maken: %s · %s niveau %d"
 msgstr "Craft: %s · %s level %d"
 
-#: scripts/core/craft_journal.gd:62
+#: scripts/core/craft_journal.gd:63
 msgid "Slijmen in het Fluisterbos en de Ruïne."
 msgstr "Slimes in Whispering Woods and the Ruins."
 
-#: scripts/core/craft_journal.gd:63
+#: scripts/core/craft_journal.gd:64
 msgid "Hengel van Joris; visplekken bij het Zilvermeer."
 msgstr "Fishing rod from Joris; fishing spots at Silver Lake."
 
-#: scripts/core/craft_journal.gd:64
+#: scripts/core/craft_journal.gd:65
 msgid "Jachtwild in de Dorstvallei."
 msgstr "Huntable wildlife in Dorstvallei."
 
-#: scripts/core/craft_journal.gd:65
+#: scripts/core/craft_journal.gd:66
 msgid "Moeraswild in het Kruipmoeras."
 msgstr "Marsh wildlife in Creeping Marsh."
 
-#: scripts/core/craft_journal.gd:66
+#: scripts/core/craft_journal.gd:67
 msgid "Golembewakers in de Ruïne en de Echo-grot."
 msgstr "Golem guardians in the Ruins and Echo Cave."
 
-#: scripts/core/craft_journal.gd:67
+#: scripts/core/craft_journal.gd:68
 msgid "Ontdek dit voorwerp tijdens je avonturen."
 msgstr "Discover this item during your adventures."
 
-#: scripts/core/craft_journal.gd:72 scripts/ui/progression_page.gd:235
+#: scripts/core/craft_journal.gd:73 scripts/ui/progression_page.gd:235
 msgid "%s niveau %d · %s"
 msgstr "%s level %d · %s"
 
-#: scripts/core/craft_journal.gd:75
+#: scripts/core/craft_journal.gd:76
 msgid "%s: %d/%d · %s"
 msgstr "%s: %d/%d · %s"
 
 #: scripts/core/craft_journal.gd:78
+msgid "In de havenkist: %s ×%d. Haal dit eerst terug naar je tas."
+msgstr "In harbor storage: %s ×%d. Take it back into your bag first."
+
+#: scripts/core/craft_journal.gd:81
 msgid "Verbeteren verbruikt het oude voorwerp. Een gedragen exemplaar wordt meteen vervangen; stamina wordt niet bijgevuld."
 msgstr "Upgrading consumes the old item. A worn item is replaced immediately; stamina is not refilled."
 
-#: scripts/core/craft_journal.gd:86
+#: scripts/core/craft_journal.gd:89
 msgid "Voor: %s"
 msgstr "Used for: %s"
 
@@ -8825,55 +8997,55 @@ msgid "De oude route licht weer op. En Wilfred heeft eindelijk een naam op zijn 
 msgstr "The old route shines again. And Wilfred finally has a name on his stone. The Blue Map is about the people between the crystals as much as the crystals themselves."
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
-#: scripts/core/game_state.gd:270
+#: scripts/core/game_state.gd:273
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
 msgstr "Hero level %d! +%d coins for your equipment."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:402
+#: scripts/core/game_state.gd:405
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:405
+#: scripts/core/game_state.gd:408
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:407
+#: scripts/core/game_state.gd:410
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:410
+#: scripts/core/game_state.gd:413
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:417
+#: scripts/core/game_state.gd:420
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:483
+#: scripts/core/game_state.gd:486
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:498
+#: scripts/core/game_state.gd:501
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:543
+#: scripts/core/game_state.gd:546
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:547
+#: scripts/core/game_state.gd:550
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:623
+#: scripts/core/game_state.gd:626
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:640
+#: scripts/core/game_state.gd:643
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -9137,7 +9309,7 @@ msgstr "I know that symbol! The old waterworks use the same prism as my workbenc
 msgid "Kijk gerust bij de prismabank links van me. Voor de mijn heb je later een ijzeren zwaard nodig. Oudste Bram bij de tempel kan je eerst op weg helpen."
 msgstr "Take a look at the prism bench on my left. You will need an iron sword for the mine later. Elder Bram by the temple can help you get started."
 
-#: scripts/core/professions.gd:102 scripts/core/craft_journal.gd:73 scripts/ui/equipment_page.gd:294
+#: scripts/core/professions.gd:102 scripts/core/craft_journal.gd:74 scripts/ui/equipment_page.gd:294
 msgid "Nog vergrendeld: herstel de prismabank of Mees’ oversteek."
 msgstr "Still locked: restore the prism bench or Mees’s crossing."
 
@@ -9649,63 +9821,107 @@ msgstr "A distant coast lies on the horizon. Here, you hear only the wind and th
 msgid "Je hoeft hier niets te verzamelen. De veerboot wacht aan de westelijke steiger; je kunt altijd terug."
 msgstr "You do not need to collect anything here. The ferry waits at the western dock; you can always return."
 
-#: scripts/entities/coastal_adventure.gd:13
+#: scripts/entities/coastal_adventure.gd:21
 msgid "Aangespoeld logboek"
 msgstr "Washed-up logbook"
 
-#: scripts/entities/coastal_adventure.gd:14
+#: scripts/entities/coastal_adventure.gd:22
 msgid "Breuksporen in het wrakhout"
 msgstr "Fractures in the wreckage"
 
-#: scripts/entities/coastal_adventure.gd:15
+#: scripts/entities/coastal_adventure.gd:23
 msgid "Afzetting aan de oever"
 msgstr "Sediment on the bank"
 
-#: scripts/entities/coastal_adventure.gd:16
+#: scripts/entities/coastal_adventure.gd:24
 msgid "Werkboek van de haven"
 msgstr "Harbor work ledger"
 
-#: scripts/entities/coastal_adventure.gd:18
+#: scripts/entities/coastal_adventure.gd:26
 msgid "Gespleten rots"
 msgstr "Split rock"
 
-#: scripts/entities/coastal_adventure.gd:19
+#: scripts/entities/coastal_adventure.gd:27
 msgid "Bleek zoutgras"
 msgstr "Pale saltgrass"
 
-#: scripts/entities/coastal_adventure.gd:20
+#: scripts/entities/coastal_adventure.gd:28
 msgid "Beschutte rustplek"
 msgstr "Sheltered resting place"
 
-#: scripts/entities/coastal_adventure.gd:21
+#: scripts/entities/coastal_adventure.gd:29
 msgid "Zijgrot · Tijholte"
 msgstr "Side cave · Tidal Hollow"
 
-#: scripts/entities/coastal_adventure.gd:22
+#: scripts/entities/coastal_adventure.gd:30
 msgid "Vastgelopen tijrad"
 msgstr "Jammed tide wheel"
 
-#: scripts/entities/coastal_adventure.gd:23
+#: scripts/entities/coastal_adventure.gd:31
 msgid "Rustende Schelpenhoeder"
 msgstr "Resting Shellkeeper"
 
-#: scripts/entities/coastal_adventure.gd:24
+#: scripts/entities/coastal_adventure.gd:32
 msgid "Sluistafel · Schelpenhoeder"
 msgstr "Sluice table · Shellkeeper"
 
-#: scripts/entities/combat_actions.gd:26 scripts/entities/combat_actions.gd:6
+#: scripts/entities/coastal_practice.gd:12
+msgid "Vrije proef: geen schade, buit of XP. Pijlen zijn hier geleend; stamina blijft echt. Gebruik het rustaltaar als je wilt bijvullen."
+msgstr "Free practice: no damage, loot or XP. Arrows are borrowed here; stamina is real. Use the resting altar if you want to refill it."
+
+#: scripts/entities/coastal_styles.gd:9 scripts/entities/combat_actions.gd:28
+msgid "Ankerwacht"
+msgstr "Anchor guard"
+
+#: scripts/entities/coastal_styles.gd:10
+msgid "Waaierschot"
+msgstr "Fan shot"
+
+#: scripts/entities/coastal_target.gd:18
+msgid "Oefenpop · tik voor wachtproef"
+msgstr "Practice dummy · tap for guard practice"
+
+#: scripts/entities/coastal_target.gd:33
+msgid "Geen blokkade. De oefenpop doet geen schade; probeer de korte frontale wacht nog eens."
+msgstr "No block. The practice dummy does no damage; try the brief frontal guard again."
+
+#: scripts/entities/coastal_workstation.gd:21
+msgid "Werkbank en kustpatronen"
+msgstr "Workbench and coastal patterns"
+
+#: scripts/entities/coastal_workstation.gd:22
+msgid "Materiaalkist"
+msgstr "Material chest"
+
+#: scripts/entities/coastal_workstation.gd:23 scripts/ui/coastal_home_ui.gd:63
+msgid "Werkplaats inrichten"
+msgstr "Furnish the workshop"
+
+#: scripts/entities/coastal_workstation.gd:24
+msgid "Oeverlijn · korte rivierroute"
+msgstr "River line · short crossing"
+
+#: scripts/entities/coastal_workstation.gd:25
+msgid "Proefopstelling · kuststijlen"
+msgstr "Practice setup · coastal styles"
+
+#: scripts/entities/combat_actions.gd:30 scripts/entities/combat_actions.gd:7
 msgid "Breekslag"
 msgstr "Breaking Slash"
 
-#: scripts/entities/combat_actions.gd:27 scripts/entities/combat_actions.gd:7
+#: scripts/entities/combat_actions.gd:31 scripts/entities/combat_actions.gd:8
 msgid "Kristalsteek"
 msgstr "Crystal Thrust"
 
-#: scripts/entities/combat_actions.gd:28 scripts/entities/combat_actions.gd:5
+#: scripts/entities/combat_actions.gd:32 scripts/entities/combat_actions.gd:6
 msgid "Snelle steek"
 msgstr "Quick Thrust"
 
-#: scripts/entities/combat_actions.gd:45
+#: scripts/entities/combat_actions.gd:48
+msgid "Een waaierschot vraagt drie pijlen. Je verliest niets als ze ontbreken."
+msgstr "A fan shot needs three arrows. You lose nothing if you do not have them."
+
+#: scripts/entities/combat_actions.gd:51
 msgid "Deze techniek vraagt %d stamina. Gewone aanvallen blijven beschikbaar."
 msgstr "This technique needs %d stamina. Ordinary attacks remain available."
 
@@ -9957,19 +10173,19 @@ msgstr "Water flows to the fountain and the flower beds."
 msgid "Het rooster is vrij. Draai nu het sluisrad aan de zuidkant open."
 msgstr "The grate is clear. Now open the sluice wheel to the south."
 
-#: scripts/entities/player.gd:296
+#: scripts/entities/player.gd:297
 msgid "Je hebt een boog nodig. Tobias verkoopt er een."
 msgstr "You need a bow. Tobias sells one."
 
-#: scripts/entities/player.gd:307
+#: scripts/entities/player.gd:308
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:336 scripts/ui/menu_ui.gd:520
+#: scripts/entities/player.gd:337 scripts/ui/menu_ui.gd:520
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
-#: scripts/entities/player.gd:338
+#: scripts/entities/player.gd:339
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
 
@@ -10370,7 +10586,7 @@ msgstr "Coastal region · map and connections"
 msgid "Goud: wandelpad · blauw: gekozen veerroute · witte ring: hier"
 msgstr "Gold: footpath · blue: selected ferry route · white ring: here"
 
-#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:403 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
+#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:405 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
 msgid "Sluiten"
 msgstr "Close"
 
@@ -10586,13 +10802,169 @@ msgstr "Leave the pool in peace · peaceful outcome"
 msgid "Voed het havenrad · vrijwillige krachtproef"
 msgstr "Feed the harbor wheel · voluntary trial"
 
-#: scripts/ui/coastal_adventure_ui.gd:98
+#: scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90
 msgid "Annuleren"
 msgstr "Cancel"
 
 #: scripts/ui/coastal_adventure_ui.gd:109
 msgid "Het slib verklaart de breuk niet. Schelpgruis in schoon gebroken hout wijst naar de harde buitenbank. Vergelijk je aantekeningen en probeer gerust opnieuw."
 msgstr "The silt does not explain the break. Shell grit in cleanly fractured timber points to the hard outer shoal. Compare your notes and try again."
+
+#: scripts/ui/coastal_home_ui.gd:55
+msgid "Een gratis terugkeerplek in de bestaande nettenloods. Binnen staan een materiaalkist, werkbank, inrichttafel en rustaltaar. Geen huur, onderhoud of nieuwe bewoners. Raf deelt het oeverlijnpatroon als je hem op de kade spreekt."
+msgstr "A free return point inside the existing net shed. It has a material chest, workbench, furnishing table and resting altar. No rent, upkeep or new residents. Raf shares the river-line pattern when you talk to him on the quay."
+
+#: scripts/ui/coastal_home_ui.gd:56
+msgid "Ga de werkplaats in"
+msgstr "Enter the workshop"
+
+#: scripts/ui/coastal_home_ui.gd:58
+msgid "Werkbank · zeven bestaande beroepen"
+msgstr "Workbench · seven existing professions"
+
+#: scripts/ui/coastal_home_ui.gd:59
+msgid "Raf helpt met lijn en houtwerk. Greta smeedt ankerbanden; Lena maakt waaierbanden en een lamp. Zoutblad en Joris' baars gaan naar Mila's keuken. De vier kustplekken leveren per oogst genoeg voor de eerste plannen; je hoeft geen dagelijkse ronde te doen."
+msgstr "Raf helps with line and woodwork. Greta forges anchor bands; Lena makes fan bands and a lamp. Saltleaf and Joris's perch go to Mila's kitchen. Each of the four coastal sources yields enough for the first plans; no daily circuit needed."
+
+#: scripts/ui/coastal_home_ui.gd:60
+msgid "Oeverlijn · bekijk echte kosten"
+msgstr "River line · see actual costs"
+
+#: scripts/ui/coastal_home_ui.gd:61
+msgid "Wandrek · bekijk echte kosten"
+msgstr "Wall rack · see actual costs"
+
+#: scripts/ui/coastal_home_ui.gd:62
+msgid "Gearkeuzes en bestaande werkplekken"
+msgstr "Gear choices and existing workplaces"
+
+#: scripts/ui/coastal_home_ui.gd:65
+msgid "Twee keuzes voor hetzelfde handvak"
+msgstr "Two choices for the same hand slot"
+
+#: scripts/ui/coastal_home_ui.gd:66
+msgid "Ankerbanden: pantser en een korte frontale wacht met tegenstoot. Waaierbanden: sneller verzamelen en een brede boogwaaier. Bezit geeft geen bonus; draag één paar via Uitrusting. Oude handschoenen en alle gewone aanvallen blijven bruikbaar."
+msgstr "Anchor bands: armor and a brief frontal guard with a counterthrust. Fan bands: faster gathering and a wide arrow fan. Ownership grants no bonus; wear one pair through Equipment. Old gloves and all normal attacks stay useful."
+
+#: scripts/ui/coastal_home_ui.gd:67
+msgid "Ankerbanden · smeden bij Greta"
+msgstr "Anchor bands · smithing with Greta"
+
+#: scripts/ui/coastal_home_ui.gd:68
+msgid "Waaierbanden · alchemie bij Lena"
+msgstr "Fan bands · alchemy with Lena"
+
+#: scripts/ui/coastal_home_ui.gd:69
+msgid "Zeeagaatlamp · alchemie bij Lena"
+msgstr "Sea-agate lamp · alchemy with Lena"
+
+#: scripts/ui/coastal_home_ui.gd:70
+msgid "Kustbouillon · koken bij Mila"
+msgstr "Coastal broth · cooking with Mila"
+
+#: scripts/ui/coastal_home_ui.gd:73
+msgid "Vaste meubelplekken"
+msgstr "Fixed furniture spots"
+
+#: scripts/ui/coastal_home_ui.gd:74
+msgid "Het wandrek en de lamp hebben ieder een vaste sokkel buiten de looproute. Plaatsen, weghalen en licht wisselen kosten niets en verbruiken geen meubel. Je materiaalkist blijft altijd bruikbaar, ook zonder meubels."
+msgstr "The wall rack and lamp each have a fixed plinth away from the walking route. Placing, removing and changing the light cost nothing and do not consume furniture. Your material chest always works, even without furniture."
+
+#: scripts/ui/coastal_home_ui.gd:75
+msgid "Wandrek opbergen"
+msgstr "Store the wall rack"
+
+#: scripts/ui/coastal_home_ui.gd:75
+msgid "Wandrek plaatsen"
+msgstr "Place the wall rack"
+
+#: scripts/ui/coastal_home_ui.gd:77
+msgid "Lamp uit"
+msgstr "Lamp off"
+
+#: scripts/ui/coastal_home_ui.gd:78
+msgid "Warm licht"
+msgstr "Warm light"
+
+#: scripts/ui/coastal_home_ui.gd:79
+msgid "Zeelicht"
+msgstr "Sea light"
+
+#: scripts/ui/coastal_home_ui.gd:80
+msgid "Wandrekrecept · werkbank"
+msgstr "Wall-rack recipe · workbench"
+
+#: scripts/ui/coastal_home_ui.gd:81
+msgid "Lamprecept · Lena"
+msgstr "Lamp recipe · Lena"
+
+#: scripts/ui/coastal_home_ui.gd:84
+msgid "Nodig: Rafs oeverlijn, gemaakt in de havenwerkplaats. De lijn wordt niet verbruikt en werkt aan beide palen. Zonder lijn neem je de hoge rivierbrug. De korte oversteek is af te breken; er verdwijnen geen spullen of stamina."
+msgstr "Requires Raf's river line, made in the harbor workshop. The line is never consumed and works at both posts. Without it, take the high river bridge. The short crossing can be cancelled; no items or stamina are lost."
+
+#: scripts/ui/coastal_home_ui.gd:85
+msgid "Steek over · lijn blijft bij je"
+msgstr "Cross · keep your line"
+
+#: scripts/ui/coastal_home_ui.gd:87
+msgid "Kuststijlen · vrije proefopstelling"
+msgstr "Coastal styles · free practice"
+
+#: scripts/ui/coastal_home_ui.gd:88
+msgid "Draag je eigen banden. Houd %s vast en gebruik %s voor de ankerwacht, of %s voor de boogwaaier. Na een tijdige frontale blokkade: druk gewoon op zwaard voor de tegenstoot. De poppen doen geen schade en geven geen buit of XP. Tijdens de proef leen je pijlen; een eigen boog blijft nodig."
+msgstr "Wear your own bands. Hold %s and use %s for the anchor guard, or %s for the arrow fan. After a timely frontal block, press sword normally to counterthrust. The dummies do no damage and give no loot or XP. Arrows are borrowed during practice; you still need your own bow."
+
+#: scripts/ui/coastal_home_ui.gd:89
+msgid "Start vrije proef · leenpijlen, geen XP"
+msgstr "Start free practice · borrowed arrows, no XP"
+
+#: scripts/ui/coastal_home_ui.gd:101
+msgid "Materiaalkist · %d/%d soorten"
+msgstr "Material chest · %d/%d types"
+
+#: scripts/ui/coastal_home_ui.gd:102
+msgid "Alleen materialen, maximaal 99 per soort. Maken gebruikt je tas; haal opgeslagen ingrediënten eerst terug. Je ziet steeds het exacte aantal dat verplaatst wordt."
+msgstr "Materials only, up to 99 of each type. Crafting uses your bag; withdraw stored ingredients first. You always see the exact transfer amount."
+
+#: scripts/ui/coastal_home_ui.gd:104
+msgid "Tas → kist"
+msgstr "Bag → chest"
+
+#: scripts/ui/coastal_home_ui.gd:105
+msgid "Kist → tas"
+msgstr "Chest → bag"
+
+#: scripts/ui/coastal_home_ui.gd:113
+msgid " · tas %d · kist %d"
+msgstr " · bag %d · chest %d"
+
+#: scripts/ui/coastal_home_ui.gd:115
+msgid "Hier zijn geen materialen"
+msgstr "There are no materials here"
+
+#: scripts/ui/coastal_home_ui.gd:117
+msgid "Vorige"
+msgstr "Previous"
+
+#: scripts/ui/coastal_home_ui.gd:117
+msgid "Volgende"
+msgstr "Next"
+
+#: scripts/ui/coastal_home_ui.gd:120
+msgid "Verplaats 1"
+msgstr "Move 1"
+
+#: scripts/ui/coastal_home_ui.gd:121
+msgid "Verplaats 5"
+msgstr "Move 5"
+
+#: scripts/ui/coastal_home_ui.gd:122
+msgid "Verplaats %d"
+msgstr "Move %d"
+
+#: scripts/ui/coastal_home_ui.gd:151
+msgid "De landingsplek is bezet. De hoge brug blijft open."
+msgstr "The landing is occupied. The high bridge stays open."
 
 #: scripts/ui/controls_menu.gd:102
 msgid "Standaardbediening hersteld voor dit apparaat."
@@ -10674,19 +11046,19 @@ msgstr "↑ ↓ ← → select  ·  %s confirm  ·  %s / %s recipes/supplies  ·
 msgid "Verzamel met %s. Vindplaatsen staan bij het recept; stel een materiaaldoel in. Gereedschap slijt niet."
 msgstr "Gather with %s. Sources are listed with each recipe; set a material goal. Tools never wear out."
 
-#: scripts/ui/crafting_ui.gd:284
+#: scripts/ui/crafting_ui.gd:286
 msgid "Materialen compleet: %d/%d"
 msgstr "Materials ready: %d/%d"
 
-#: scripts/ui/crafting_ui.gd:385
+#: scripts/ui/crafting_ui.gd:387
 msgid "Materiaaldoel verwijderen"
 msgstr "Remove material goal"
 
-#: scripts/ui/crafting_ui.gd:385
+#: scripts/ui/crafting_ui.gd:387
 msgid "Dit recept als materiaaldoel volgen"
 msgstr "Track this recipe as a material goal"
 
-#: scripts/ui/crafting_ui.gd:386
+#: scripts/ui/crafting_ui.gd:388
 msgid "Vindplaatsen staan in de uitleg. Rechts gaat naar de uitleg; omhoog/omlaag scrolt, rechts gaat naar Materiaaldoel."
 msgstr "Sources are in the explanation. Right opens it; up/down scrolls, right goes to Material Goal."
 
@@ -10864,7 +11236,7 @@ msgstr "After swapping: %s"
 msgid "Tobias · dorpswinkel · %d munten (je hebt %d)"
 msgstr "Tobias · village shop · %d coins (you have %d)"
 
-#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:90 scripts/ui/crafting_ui.gd:278
+#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:93 scripts/ui/crafting_ui.gd:280
 msgid "%s %d/%d"
 msgstr "%s %d/%d"
 
@@ -10976,7 +11348,7 @@ msgstr[1] "Worth: %d coins"
 msgid "%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing"
 msgstr "%s sword  ·  %s talk  ·  %s menu  ·  %s pause and controls"
 
-#: scripts/ui/hud.gd:195 scripts/ui/hud.gd:308 scripts/ui/hud.gd:415
+#: scripts/ui/hud.gd:195 scripts/ui/hud.gd:308 scripts/ui/hud.gd:417
 msgid "Game over"
 msgstr "Game over"
 
@@ -11009,41 +11381,49 @@ msgid "Lopen: %s / %s / %s / %s   ·   Praten: %s"
 msgstr "Move: %s / %s / %s / %s   ·   Talk: %s"
 
 #: scripts/ui/hud.gd:380
-msgid "%s + %s: %s (%d stamina)\n%s + %s: precisieschot (%d)"
-msgstr "%s + %s: %s (%d stamina)\n%s + %s: precise shot (%d)"
+msgid "%s + %s: %s (%d stamina)\n%s + %s: %s (%d)"
+msgstr "%s + %s: %s (%d stamina)\n%s + %s: %s (%d)"
 
-#: scripts/ui/hud.gd:417
+#: scripts/ui/hud.gd:381
+msgid "Nu: %s voor de tegenstoot"
+msgstr "Now: %s to counterthrust"
+
+#: scripts/ui/hud.gd:382
+msgid "3 pijlen"
+msgstr "3 arrows"
+
+#: scripts/ui/hud.gd:419
 msgid "Verslagen door: %s"
 msgstr "Defeated by: %s"
 
-#: scripts/ui/hud.gd:420
+#: scripts/ui/hud.gd:422
 msgid "%s voor het menu"
 msgstr "%s for the menu"
 
-#: scripts/ui/hud.gd:421
+#: scripts/ui/hud.gd:423
 msgid "Druk op %s om verder te gaan vanaf je laatste opslag"
 msgstr "Press %s to continue from your last save"
 
-#: scripts/ui/hud.gd:421
+#: scripts/ui/hud.gd:423
 msgid "Druk op %s om opnieuw te beginnen"
 msgstr "Press %s to start again"
 
 #. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
 #. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
-#: scripts/ui/hud.gd:433 scripts/ui/menu_pages.gd:220
+#: scripts/ui/hud.gd:435 scripts/ui/menu_pages.gd:220
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
 #. het dagdeel bij de klok als het regent: "Avond  ·  regen"
-#: scripts/ui/hud.gd:452
+#: scripts/ui/hud.gd:454
 msgid "%s  ·  regen"
 msgstr "%s  ·  rain"
 
-#: scripts/ui/hud.gd:467
+#: scripts/ui/hud.gd:469
 msgid "Held %d · maximaal niveau"
 msgstr "Hero %d · maximum level"
 
-#: scripts/ui/hud.gd:467
+#: scripts/ui/hud.gd:469
 msgid "Held %d · %d/%d XP"
 msgstr "Hero %d · %d/%d XP"
 

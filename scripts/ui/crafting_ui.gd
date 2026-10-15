@@ -155,10 +155,12 @@ func _process(_delta: float) -> void:
 	panel.position = (view - panel.size * panel.scale) * 0.5
 
 
-func open() -> void:
+func open(recipe_id: String = "") -> void:
 	if active or GameState.input_locked():
 		return
-	if Journal.goal() != "":
+	if Data.RECIPES.has(recipe_id):
+		selected_entry=recipe_id;selected_skill=Data.RECIPES[recipe_id].skill;supplies=false;filter.select(Data.SKILLS.keys().find(selected_skill)+1)
+	elif Journal.goal() != "":
 		selected_entry = Journal.goal()
 		selected_skill = Data.RECIPES[selected_entry].skill
 		supplies = false

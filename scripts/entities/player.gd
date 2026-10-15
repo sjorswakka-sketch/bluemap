@@ -137,7 +137,7 @@ func _physics_process(delta: float) -> void:
 		velocity = dir * SPEED * GameState.speed_multiplier() * Tiles.movement_multiplier(tile_name) * run_multiplier + knockback
 	knockback = knockback.move_toward(Vector2.ZERO, 900.0 * delta)
 	var before := global_position
-	if combat.phase == "prepare":
+	if combat.phase in ["prepare","guard","counter"]:
 		velocity *= 0.35
 		sprinting = false
 	move_and_slide()
@@ -214,6 +214,7 @@ func _roll() -> void:
 	Sound.play("dodge", -3.0, randf_range(0.95, 1.05))
 
 func _attack() -> void:
+	if combat.counter(self):return
 	if combat.busy(): return
 	if Input.is_action_pressed("technique"):
 		combat.begin(self, false)
@@ -396,6 +397,7 @@ func is_working() -> bool:
 func hurt(from_pos: Vector2, amount: int = 1, source := "") -> void:
 	if invuln > 0.0 or GameState.ended or (roll_timer > ROLL_TIME - ROLL_SAFE_TIME):
 		return
+	if combat.try_block(self,from_pos):return
 	cancel_work_animation()
 	combat.cancel()
 	GameState.last_damage_source = source
@@ -473,6 +475,11 @@ func _draw() -> void:
 
 func _draw_equipped_gear() -> void:
 	var equipment: Script = preload("res://scripts/core/equipment.gd")
+	var hands: String=equipment.equipped("hands")
+	if hands in ["gear_cw_anchor","gear_cw_fan"]:
+		var color:=Color("8bbcc7") if hands=="gear_cw_anchor" else Color("b8bd88")
+		for x in [-11,9]:draw_rect(Rect2(x,3,4,5),color)
+		if hands=="gear_cw_anchor":draw_arc(Vector2(-10,6),5,0,PI,8,Color("d6e0ca"),1)
 	var chest: String = equipment.equipped("chest")
 	if chest.begins_with("gear_pg_pack"):
 		if _direction_row() == 1:

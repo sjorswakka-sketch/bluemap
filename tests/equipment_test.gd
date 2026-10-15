@@ -57,13 +57,14 @@ func give_all() -> void:
 
 func _test_selection() -> void:
 	gs.new_game()
-	check(Equipment.SLOTS.keys() == ["head", "chest", "hands", "neck", "ring"] and Data.ITEMS.size() == 22, "Five slots, existing gear and three regional two-stage crafting chains")
+	check(Equipment.SLOTS.keys() == ["head", "chest", "hands", "neck", "ring"] and Data.ITEMS.size() == 24 and Data.ITEMS.has("gear_cw_anchor") and Data.ITEMS.has("gear_cw_fan"), "Five slots, existing gear, regional crafting chains and two coastal hand-slot choices")
 	check(not Equipment.equip("gear_cloth_hood") and not Equipment.equip("boots") and not Equipment.unequip("head"), "Missing and legacy items cannot be equipped in a new slot")
 	for item: String in Data.ITEMS:
 		var info := Items.info(item)
 		var expected_sheet := "rf_gear" if item in ["gear_rf_keepsake","gear_rf_cord"] else "items_equipment"
 		if item in ["gear_ra_grip","gear_ra_compass"]: expected_sheet="ra_items"
 		if item.begins_with("gear_pg_"): expected_sheet="pg_gear"
+		if item.begins_with("gear_cw_"): expected_sheet="cw_items"
 		check(info.get("slot", "") == Equipment.slot_of(item) and info.get("max", 0) == 1 and info.get("sheet", "") == expected_sheet, "Registered gear data: " + item)
 		check(not Equipment.stats_text(item).is_empty(), "Each item exposes its actual effect: " + item)
 	give_all()

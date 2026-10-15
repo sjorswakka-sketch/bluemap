@@ -6,6 +6,8 @@ func setup(id: String):
 	obj={"role":"routes","to":"coast","spawn":"from_island","routes":[{"to":"coast","spawn":"from_island"},{"to":"gull_island","spawn":"from_coast"},{"to":"tide_cove","spawn":"from_coast"}]} if id=="rg_ise" else {"role":"atlas"}
 func interact():
 	if GameState.input_locked():return
+	if npc_id=="rg_raf" and not GameState.flag("cw_raf_notes"):
+		GameState.set_flag("cw_raf_notes");GameState.save_requested.emit()
 	GameState.note_talked(npc_id);Region.open(self,"rg_ise" if npc_id=="rg_ise" else "rg_raf")
 func open_service(action: String):
 	if GameState.input_locked() or is_queued_for_deletion() or GameState.map_id!="harbor" or position.distance_to(world.player.position)>64:return

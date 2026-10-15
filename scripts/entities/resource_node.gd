@@ -130,9 +130,9 @@ func _draw() -> void:
 	var wait := Professions.remaining(resource_id)
 	var tint := Color(0.55, 0.55, 0.55, 0.4) if wait > 0.0 else Color.WHITE
 	DrawUtil.ellipse(self, Vector2(0, 7), Vector2(11, 4), Color(0, 0, 0, 0.24))
-	var frame: int = Data.RESOURCES.keys().find(kind)
+	var frame: int = int(Data.RESOURCES[kind].get("frame",Data.RESOURCES.keys().find(kind)))
 	var jostle := Vector2(sin(harvest_time * 34.0) * 1.5, -absf(sin(harvest_time * 17.0))) if harvesting else Vector2.ZERO
-	draw_texture_rect_region(Art.tex("resources_beroepen"), Rect2(Vector2(-16, -24) + jostle, Vector2(32, 32)), Rect2(frame * 16, 0, 16, 16), tint)
+	draw_texture_rect_region(Art.tex(str(Data.RESOURCES[kind].get("sheet","resources_beroepen"))), Rect2(Vector2(-16, -24) + jostle, Vector2(32, 32)), Rect2(frame * 16, 0, 16, 16), tint)
 	if wait <= 0.0:
 		var color: Color = Data.RESOURCES[kind]["color"]
 		draw_circle(Vector2(10, -18 + sin(t * 2.0) * 2.0), 1.5, color)

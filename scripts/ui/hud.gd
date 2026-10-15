@@ -377,7 +377,9 @@ func _refresh_combat() -> void:
 	if not nearby: return
 	var profile: Dictionary = player.combat.effective_profile(GameState.weapon)
 	var bow: Dictionary = player.combat.effective_profile(GameState.weapon,true)
-	combat_hint.text = tr("%s + %s: %s (%d stamina)\n%s + %s: precisieschot (%d)") % [Controls.action_label("technique"),Controls.action_label("attack"),player.combat.display_name(GameState.weapon),int(profile.cost),Controls.action_label("technique"),Controls.action_label("bow"),int(bow.cost)]
+	combat_hint.text = tr("%s + %s: %s (%d stamina)\n%s + %s: %s (%d)") % [Controls.action_label("technique"),Controls.action_label("attack"),player.combat.display_name(GameState.weapon),int(profile.cost),Controls.action_label("technique"),Controls.action_label("bow"),tr(str(bow.name)),int(bow.cost)]
+	if player.combat.phase=="counter":combat_hint.text=tr("Nu: %s voor de tegenstoot") % Controls.action_label("attack")
+	elif bow.get("mode","")=="cw_fan":combat_hint.text+=" · "+tr("3 pijlen")
 	combat_hint.visible = true
 
 

@@ -59,7 +59,7 @@ static func title(map: String) -> String:
 static func graph() -> Dictionary:
 	if not links.is_empty(): return links
 	for map: String in Maps.MAPS:
-		links[map]=Maps.get_map(map).objects.filter(func(o: Dictionary) -> bool:return o.type in ["portal","coast_dock"])
+		links[map]=Maps.get_map(map).objects.filter(func(o: Dictionary) -> bool:return o.type in ["portal","coast_dock"] or o.get("travel_link",false))
 		for object: Dictionary in Maps.get_map(map).objects:
 			if object.type=="tide_station" and object.get("role","")=="routes":
 				for route: Dictionary in object.routes:

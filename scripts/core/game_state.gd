@@ -11,6 +11,7 @@ const Movement := preload("res://scripts/core/movement.gd")
 const Professions := preload("res://scripts/core/professions.gd")
 const Progression := preload("res://scripts/core/progression.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
+const CoastalHome := preload("res://scripts/core/coastal_home.gd")
 const Appearance := preload("res://scripts/core/appearance.gd")
 
 signal hp_changed
@@ -51,6 +52,7 @@ var kills: int = 0
 var hero_xp: int = 0 # totale held-ervaring; levels worden hieruit berekend
 var meer: Dictionary = {} # eigen opslag van het Zilvermeer (zie scripts/data/ext/meer.gd): verkochte en gevangen vis
 var professions: Dictionary = {} # beroepenervaring en verzamelde grondstoffen (eigen stabiele sleutels)
+var coastal_storage: Dictionary = {}
 var equipment: Dictionary = {} # vak -> gekozen voorwerp; alleen geldig zolang je het bezit
 var appearance: Dictionary = {} # geslacht, haar, ogen (zie scripts/core/appearance.gd); leeg = standaard
 var clothing: Dictionary = {} # kledingvak -> {"item": id, "dye": kleurindex}; puur visueel, over de uitrusting heen
@@ -133,6 +135,7 @@ func new_game() -> void:
 	hero_xp = 0
 	meer = {}
 	professions = {}
+	coastal_storage = {}
 	equipment = {}
 	appearance = Appearance.normalize_appearance({})
 	clothing = {}
@@ -678,6 +681,7 @@ func save_game(pos: Vector2) -> bool:
 		"day_time": day_time, "day_count": day_count, "kills_by": kills_by, "rolls": rolls,
 		"potions_drunk": potions_drunk, "deaths": deaths, "boss_deaths": boss_deaths,
 		"talked": talked.keys(), "achievements": achievements.keys(), "arena_records": arena_records,
+		"coastal_storage": CoastalHome.normalize(coastal_storage),
 		"professions": professions, "hero_xp": Progression.normalize(hero_xp),
 		"equipment": Equipment.normalize(equipment, inventory),
 		"appearance": Appearance.normalize_appearance(appearance),
@@ -712,6 +716,7 @@ func load_game() -> bool:
 	ng_plus = int(data.get("ng_plus", 0)) # de ronde van Nieuw spel+ (oude opslagen: 0)
 	play_time = float(data.get("play_time", 0.0))
 	professions = Professions.normalize(data.get("professions", {}), play_time)
+	coastal_storage = CoastalHome.normalize(data.get("coastal_storage", {}))
 	hero_xp = Progression.normalize(data.get("hero_xp", 0))
 	kills = int(data.get("kills", 0))
 	for stat: String in data.get("meer", {}):

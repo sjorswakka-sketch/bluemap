@@ -117,7 +117,7 @@ hoederproef. Boei, windscherm, korte brug, rustige poel of havenrad blijven zich
 De zes buitengebieden blijven zonder extra vijanden. De zuidelijke grotgang is
 altijd open; geen tweede grot of extra verzamelquota.
 
-## 5. Beroepen, uitrusting en terugkeerplek — volgende fase
+## 5. Beroepen, uitrusting en terugkeerplek — uitgevoerd in 0.24
 
 Gebruik de bestaande zeven beroepen. Eerst drie tot vijf streekmaterialen,
 gerichte recepten en twee duidelijke gearkeuzes in bestaande slots.
@@ -131,7 +131,16 @@ nieuwe wapens moeten een andere aanpak bieden, niet alleen hogere getallen.
 **Klaar wanneer:** kosten, gearafwegingen, opslaan, afbreken en bestaande
 craftregels kloppen; oude uitrusting blijft bruikbaar.
 
-## 6. Het grotere avontuur als geheel
+Uitgevoerd: vier streekmaterialen met één vindplaats per soort, zes recepten,
+twee alternatieven voor het bestaande handvak en een herbruikbare rivierlijn.
+Rafs nettenloods krijgt één interieur met begrensde materiaalkist, twee vaste
+meubelplekken en een rustaltaar. Greta, Lena, Mila en Joris blijven de oude
+werkplekken en visroute verbinden. Ankerwacht/tegenstoot en driepijlswaaier zijn
+eerst los beproefd en daarna met echte invoer, schade en projectielen getest.
+De vrije proef geeft geen spullen of XP; leenpijlen bestaan alleen ter plaatse.
+Geen dagelijkse klusdruk, extra buitenvijanden of gewijzigde oude kaartvloeren.
+
+## 6. Het grotere avontuur als geheel — volgende fase
 
 Nieuwe-spelroute, hervatten van oude en voltooide saves, terugkeer naar oude
 bewoners, optionele routes en wereldgevolgen controleren. Meet framekosten,
