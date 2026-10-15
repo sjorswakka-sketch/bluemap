@@ -1,6 +1,13 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.20.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.21.0-preview.**
+
+Nieuw in 0.21: **Getijdenbaai en duidelijke kustreizen**. Kies je bestemming op
+de reisborden bij de steigers. De aparte baai heeft een zandbank bij laagwater,
+een hoge loopbrug die altijd open blijft en een korte oversteek met een gratis
+geleende, herbruikbare landingslijn. Geen vijanden, verzamelplicht of tijdsdruk.
+Een afzonderlijke proefhaven laat je vrijblijvend sturen; de veer blijft de reisroute.
+Details: [TIDAL_ROUTES.md](TIDAL_ROUTES.md).
 
 Nieuw in 0.20: **Eerste kustexpeditie**. Het oostelijke pad van het Zilvermeer
 leidt naar de Blauwe Kust: strand, duinen, gras en een kleine veersteiger.

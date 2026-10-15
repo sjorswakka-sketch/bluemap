@@ -282,6 +282,21 @@ msgstr "The door is shut. There's no way back!"
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
 
+#. Naam van gebied tide_cove
+#: scripts/maps/tide_cove.gd:4
+msgid "Getijdenbaai"
+msgstr "Tidal Cove"
+
+#. Kaart tide_cove, sign [3, 24]: tekst op een bord
+#: scripts/maps/tide_cove.gd:81
+msgid "Westelijke loopbrug: Meeuweneiland"
+msgstr "Western boardwalk: Gull Island"
+
+#. Kaart tide_cove, sign [3, 24]: tekst op een bord
+#: scripts/maps/tide_cove.gd:82
+msgid "Het hoge pad langs de noordkant blijft bij ieder getij open."
+msgstr "The high path along the north side stays open at every tide."
+
 #. Naam van gebied coast
 #: scripts/maps/coast.gd:4
 msgid "Blauwe Kust"
@@ -301,6 +316,16 @@ msgstr "West: Silver Lake. East: beach and ferry to Gull Island."
 #: scripts/maps/gull_island.gd:4
 msgid "Meeuweneiland"
 msgstr "Gull Island"
+
+#. Kaart gull_island, sign [43, 21]: tekst op een bord
+#: scripts/data/coast_maps.gd:14
+msgid "Oostelijke loopbrug: Getijdenbaai"
+msgstr "Eastern boardwalk: Tidal Cove"
+
+#. Kaart gull_island, sign [43, 21]: tekst op een bord
+#: scripts/data/coast_maps.gd:14
+msgid "Een hoge loopbrug, een zandbank bij laagwater en een gratis te lenen landingslijn. De veer blijft beschikbaar."
+msgstr "A high boardwalk, a sandbank at low tide and a free landing line to borrow. The ferry remains available."
 
 #. Naam van gebied watchyard
 #: scripts/entities/combat_post.gd:32 scripts/entities/combat_post.gd:41 scripts/maps/watchyard.gd:4
@@ -445,12 +470,12 @@ msgid "Drassig land met kwakkende vorsten. Stevige schoenen mee!"
 msgstr "Soggy land with croaking toads. Bring sturdy shoes!"
 
 #. Kaart lake, sign [40, 7]: tekst op een bord
-#: scripts/data/coast_maps.gd:11
+#: scripts/data/coast_maps.gd:23
 msgid "Oostelijk pad: Blauwe Kust"
 msgstr "Eastern path: Blue Coast"
 
 #. Kaart lake, sign [40, 7]: tekst op een bord
-#: scripts/data/coast_maps.gd:11
+#: scripts/data/coast_maps.gd:23
 msgid "Volg de riviermonding naar het strand. De veerboot brengt je gratis naar Meeuweneiland en terug."
 msgstr "Follow the river mouth to the beach. The ferry takes you to Gull Island and back for free."
 
@@ -1640,7 +1665,7 @@ msgstr "See that ring on the floor? That's where I land. Stay right there, if yo
 
 #. Naam van wie er praat (Gesprek ce_sail_island)
 #. Naam van wie er praat (Gesprek ce_sail_coast)
-#: scripts/data/ext/coast.gd:10 scripts/data/ext/coast.gd:11
+#: scripts/ui/coast_voyage.gd:57 scripts/data/ext/coast.gd:10 scripts/data/ext/coast.gd:11
 msgid "Veerboot"
 msgstr "Ferry"
 
@@ -4709,6 +4734,16 @@ msgstr "Crystal Sword"
 msgid "Gloeit zachtblauw. Het sterkste zwaard van Azura."
 msgstr "Glows a soft blue. The strongest sword in Azura."
 
+#. Naam van voorwerp td_line
+#: scripts/data/ext/tides.gd:5
+msgid "Landingslijn"
+msgstr "Landing line"
+
+#. Beschrijving van voorwerp td_line
+#: scripts/data/ext/tides.gd:5
+msgid "Gratis geleend bij de kist in de Getijdenbaai. Herbruikbaar bij beide lijnpalen; wordt nooit verbruikt."
+msgstr "Borrowed free from the chest in Tidal Cove. Reusable at either line post; never consumed."
+
 #. Naam van voorwerp ra_waterskin
 #: scripts/data/ext/regional.gd:159
 msgid "Nours waterzak"
@@ -6220,7 +6255,7 @@ msgid "steen"
 msgstr "rock"
 
 #. Een aanval van een vijand, tussen haakjes achter zijn naam: "Kristalgolem (klap)" op het game-over-scherm
-#: scripts/data/enemies.gd:75
+#: scripts/data/enemies.gd:75 scripts/maps/tide_cove.gd:110 scripts/maps/tide_cove.gd:122
 msgctxt "aanval"
 msgid "landing"
 msgstr "landing"
@@ -6798,6 +6833,11 @@ msgstr "The way begins in the Crystal Temple. Only when the Blue Map is whole ag
 #: scripts/data/ext/meer_boeken.gd:54
 msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
 msgstr "The Star Map isn't easy to read. The Guardian will test you first. Take it slow. Get a good night's sleep first. And eat something."
+
+#. Legenda op het kaartje (menu): tide_station
+#: scripts/data/ext/tides.gd:4
+msgid "Kustroutes en hulpmiddelen"
+msgstr "Coastal routes and tools"
 
 #. Legenda op het kaartje (menu): coast_dock
 #: scripts/data/ext/coast.gd:4
@@ -8313,7 +8353,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:239
+#: scripts/world.gd:247
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -8606,115 +8646,119 @@ msgstr "That input is already assigned to %s. Choose an unused button."
 msgid "Bediening kon niet worden opgeslagen."
 msgstr "Controls could not be saved."
 
-#: scripts/core/journey.gd:82
+#: scripts/core/journey.gd:86
 msgid "Je bent in het juiste gebied: %s."
 msgstr "You're in the right area: %s."
 
-#: scripts/core/journey.gd:86
+#: scripts/core/journey.gd:90
 msgid "Doelgebied: %s."
 msgstr "Destination: %s."
 
-#: scripts/core/journey.gd:90
+#: scripts/core/journey.gd:94
 msgid "Onderzoek de gemarkeerde doorgang."
 msgstr "Investigate the marked passage."
 
-#: scripts/core/journey.gd:92
+#: scripts/core/journey.gd:96
 msgid "Open het ruïnepoortje met de bossleutel."
 msgstr "Open the ruin gate with the forest key."
 
-#: scripts/core/journey.gd:93
+#: scripts/core/journey.gd:97
 msgid "Route naar %s nog gesloten. %s"
 msgstr "Route to %s still closed. %s"
 
-#: scripts/core/journey.gd:97
+#: scripts/core/journey.gd:101
+msgid "Naar %s: kies de veer op het reisbord (%d, %d op de kaart)."
+msgstr "To %s: choose the ferry at the route board (%d, %d on the map)."
+
+#: scripts/core/journey.gd:102
 msgid "Naar %s: neem de doorgang naar %s (%d, %d op de kaart)."
 msgstr "To %s: take the passage to %s (%d, %d on the map)."
 
-#: scripts/core/journey.gd:103
+#: scripts/core/journey.gd:108
 msgid "Via %s → %s"
 msgstr "Via %s → %s"
 
-#: scripts/core/journey.gd:103
+#: scripts/core/journey.gd:108
 msgid "Doel: %s"
 msgstr "Goal: %s"
 
-#: scripts/core/journey.gd:108
+#: scripts/core/journey.gd:113
 msgid "Greta smeedt ijzer voor 5 slijmgel en 40 munten. Een korter gevecht geeft meer ruimte om te ontwijken."
 msgstr "Greta forges iron for 5 slime gel and 40 coins. A shorter fight leaves more room to dodge."
 
-#: scripts/core/journey.gd:109
+#: scripts/core/journey.gd:114
 msgid "De mijnpoort vraagt een ijzeren zwaard. Richt spiegels vóór je de kern benadert; aardingspoeder is een alternatief voor het gevecht."
 msgstr "The mine gate requires an iron sword. Align the mirrors before approaching the core; grounding powder is an alternative to combat."
 
-#: scripts/core/journey.gd:110
+#: scripts/core/journey.gd:115
 msgid "Lopen is stil. Wissel gevechten af met luisteren bij de schalen; sprinten en rollen trekken luisteraars aan."
 msgstr "Walking is quiet. Alternate fights with listening at the bowls; sprinting and rolling attract listeners."
 
-#: scripts/core/journey.gd:112
+#: scripts/core/journey.gd:117
 msgid "Voor een zwaar gevecht: Greta smeedt kristal voor 2 scherven, 8 slijmgel en 80 munten. Dit is voorbereiding, geen verplichte levelgrens."
 msgstr "Before a tough fight: Greta forges crystal for 2 shards, 8 slime gel and 80 coins. This is preparation, not a required level gate."
 
-#: scripts/core/journey.gd:113
+#: scripts/core/journey.gd:118
 msgid "Gebruik het altaar vóór je de arena inloopt. Het herstelt hartjes én stamina. Voorbij de gevechtsdeur kun je pas terug na de baas."
 msgstr "Use the altar before entering the arena. It restores hearts and stamina. Beyond the combat door, you can return only after the boss."
 
-#: scripts/core/journey.gd:114
+#: scripts/core/journey.gd:119
 msgid "Meer ruimte voor fouten? Pim geeft een extra hartje als Muis thuis is. Wilfred geeft twee scherven voor je kristalzwaard wanneer je zijn medaillon terugbrengt."
 msgstr "Want more room for mistakes? Pim gives an extra heart when Muis is home. Wilfred gives two shards for your crystal sword when you return his medallion."
 
-#: scripts/core/journey.gd:115
+#: scripts/core/journey.gd:120
 msgid "De huizen kunnen met hout, wintergloed of de prismatechniek worden verwarmd. Houd aanvallers bij de vuurkorven weg; je hoeft niet alle drie de middelen te verzamelen."
 msgstr "You can warm the houses with wood, Winterglow or the prism technique. Keep attackers away from the braziers; you don't need to collect all three supplies."
 
-#: scripts/core/journey.gd:116
+#: scripts/core/journey.gd:121
 msgid "Het kamp geeft klimtouw. Wacht op slappe wimpels vóór de oversteek; de vastgezette lijn maakt latere bezoeken veilig."
 msgstr "The camp provides climbing rope. Wait for slack pennants before crossing; the secured line makes later visits safe."
 
-#: scripts/core/journey.gd:117
+#: scripts/core/journey.gd:122
 msgid "Vul eerst de waterzak bij Sana. De blauwe luifels in de kloof vullen water bij en geven schaduw. Een lege zak brengt je veilig terug naar je laatste waterpunt."
 msgstr "Fill the waterskin by Sana first. The blue shelters in the canyon refill water and provide shade. An empty skin returns you safely to your last water point."
 
-#: scripts/core/journey.gd:118
+#: scripts/core/journey.gd:123
 msgid "De westelijke sluis open en de oostelijke dicht verlagen het water. Herstel daarna de brug; het archief draait om onderzoeken, geen verzamelquotum."
 msgstr "Open the western sluice and close the eastern one to lower the water. Then restore the bridge; the archive is about investigation, not a gathering quota."
 
-#: scripts/core/journey.gd:119
+#: scripts/core/journey.gd:124
 msgid "Hier is ruimte voor een rustiger bezoek: vissen, koken, lezen of kruiden zoeken. Deze route wacht gewoon op je als je eerst ergens anders heen wilt."
 msgstr "There's room for a calmer visit here: fishing, cooking, reading or finding herbs. This route will wait if you want to go elsewhere first."
 
-#: scripts/core/journey.gd:120
+#: scripts/core/journey.gd:125
 msgid "De arena is optioneel. Bruno toont iedere rang en inzet vóór je begint; een gewone avonturenroute vraagt geen arenarang."
 msgstr "The arena is optional. Bruno shows each rank and entry cost before you start; ordinary adventures don't require an arena rank."
 
-#: scripts/core/journey.gd:121
+#: scripts/core/journey.gd:126
 msgid "De lichtkring vraagt een prismalantaarn. Na de mijn kun je die bij Greta maken met een lens en twee takken, of laten monteren voor 40 munten."
 msgstr "The light circle needs a prism lantern. After the mine, craft it at Greta's with a lens and two twigs, or pay 40 coins to have it assembled."
 
-#: scripts/core/journey.gd:123
+#: scripts/core/journey.gd:128
 msgid "Bij je: %d helddrankjes · %d/%d hartjes · %.0f/%.0f stamina."
 msgstr "Carrying: %d hero potions · %d/%d hearts · %.0f/%.0f stamina."
 
-#: scripts/core/journey.gd:124
+#: scripts/core/journey.gd:129
 msgid "Gedragen pantser: %.0f. Bonussen komen alleen van je gedragen set."
 msgstr "Worn armour: %.0f. Bonuses come only from your worn set."
 
-#: scripts/core/journey.gd:129
+#: scripts/core/journey.gd:134
 msgid "Deze opdracht is afgerond. Kies een lopende opdracht om op het scherm te volgen."
 msgstr "This quest is complete. Choose an active quest to track on screen."
 
-#: scripts/core/journey.gd:130
+#: scripts/core/journey.gd:135
 msgid "Huidige stap"
 msgstr "Current step"
 
-#: scripts/core/journey.gd:132
+#: scripts/core/journey.gd:137
 msgid "Voor je verdergaat"
 msgstr "Before you continue"
 
-#: scripts/core/journey.gd:133
+#: scripts/core/journey.gd:138
 msgid "Snel terug? Ontdekte altaren staan op de kaart. Reizen vult niets bij; rusten bij het altaar wel."
 msgstr "Quick return? Discovered altars are on the map. Travel refills nothing; resting at the altar does."
 
-#: scripts/core/journey.gd:138
+#: scripts/core/journey.gd:143
 msgid "Volg: %s"
 msgstr "Track: %s"
 
@@ -8781,6 +8825,22 @@ msgstr "Take a look at the prism bench on my left. You will need an iron sword f
 #: scripts/core/professions.gd:102 scripts/core/craft_journal.gd:73 scripts/ui/equipment_page.gd:294
 msgid "Nog vergrendeld: herstel de prismabank of Mees’ oversteek."
 msgstr "Still locked: restore the prism bench or Mees’s crossing."
+
+#: scripts/core/tides.gd:14
+msgid "Laagwater · zandbank open"
+msgstr "Low tide · sandbank open"
+
+#: scripts/core/tides.gd:15
+msgid "Opkomend water · verlaat de zandbank"
+msgstr "Rising tide · leave the sandbank"
+
+#: scripts/core/tides.gd:16
+msgid "Hoogwater · neem het hoge pad"
+msgstr "High tide · take the high path"
+
+#: scripts/core/tides.gd:17
+msgid "Aflopend water · hoog pad blijft open"
+msgstr "Falling tide · high path stays open"
 
 #: scripts/core/world_memory.gd:23
 msgid "Ivo de mijnwerker"
@@ -9728,7 +9788,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/coast_maps.gd:8 scripts/data/tiles.gd:45 scripts/entities/living_scenery.gd:79
+#: scripts/entities/shooting_range.gd:169 scripts/data/coast_maps.gd:20 scripts/data/tiles.gd:45 scripts/entities/living_scenery.gd:79
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -9802,6 +9862,34 @@ msgstr "There is a place for everyone. Talk to the guests; both recipes are now 
 #: scripts/entities/supper_object.gd:128
 msgid "De vangst is gered! Breng de maaltijdmand naar Mila's fornuis in de herberg."
 msgstr "The catch is safe! Bring the meal hamper to Mila’s stove inside the inn."
+
+#: scripts/entities/tide_cove.gd:36
+msgid "Het water komt op. Neem de hoge loopbrug of de lijnpalen; je kunt altijd terug."
+msgstr "The tide is rising. Take the high boardwalk or the line posts; you can always return."
+
+#: scripts/entities/tide_cove.gd:42
+msgid "Zandbank sluit zodra je veilig op de oever bent."
+msgstr "Sandbank closes once you are safely on shore."
+
+#: scripts/entities/tide_cove.gd:42
+msgid "Hoge loopbrug: altijd open · veer: altijd beschikbaar"
+msgstr "High boardwalk: always open · ferry: always available"
+
+#: scripts/entities/tide_station.gd:11
+msgid "Leenkist en proefvaart"
+msgstr "Loan chest and practice sailing"
+
+#: scripts/entities/tide_station.gd:12
+msgid "Landingslijn gebruiken"
+msgstr "Use landing line"
+
+#: scripts/entities/tide_station.gd:13
+msgid "Getijde en veilige routes"
+msgstr "Tide and safe routes"
+
+#: scripts/entities/tide_station.gd:14 scripts/ui/coast_routes.gd:61
+msgid "Bestemmingen en reisroutes"
+msgstr "Destinations and travel routes"
 
 #: scripts/entities/village_actor.gd:41
 msgid "Hoor je dat gesputter? Er zit riet in het rooster. Hier, leen mijn hark. Het rooster ligt vlak ten zuiden van me."
@@ -9895,25 +9983,85 @@ msgstr "Nothing worn"
 msgid "Verf:"
 msgstr "Dye:"
 
-#: scripts/ui/coast_voyage.gd:51
-msgid "Overtocht naar Meeuweneiland"
-msgstr "Crossing to Gull Island"
+#: scripts/ui/coast_routes.gd:58
+msgid "Proefhaven · vrij varen"
+msgstr "Practice harbour · free sailing"
 
-#: scripts/ui/coast_voyage.gd:51
-msgid "Terug naar de Blauwe Kust"
-msgstr "Back to the Blue Coast"
+#: scripts/ui/coast_routes.gd:62
+msgid "Alle veren zijn gratis en varen bij ieder getij. Meeuweneiland heeft een loopbrug naar de Getijdenbaai. De hoge route in de baai blijft open."
+msgstr "All ferries are free and run at every tide. Gull Island has a boardwalk to Tidal Cove. The cove's high route stays open."
 
-#: scripts/ui/coast_voyage.gd:52
+#: scripts/ui/coast_routes.gd:65
+msgid "Veer naar %s · gratis"
+msgstr "Ferry to %s · free"
+
+#: scripts/ui/coast_routes.gd:67
+msgid "Leenkist aan de baai"
+msgstr "Cove loan chest"
+
+#: scripts/ui/coast_routes.gd:68
+msgid "Leen een landingslijn voor beide lijnpalen. Zo steek je de baai over zonder de noordelijke omweg. Gratis, herbruikbaar en zonder verbruik. Je kunt ook gewoon over het hoge pad lopen."
+msgstr "Borrow a landing line for either line post. Cross the cove without the northern detour. Free, reusable and never consumed. You can also walk along the high path."
+
+#: scripts/ui/coast_routes.gd:69
+msgid "Landingslijn is al in je tas"
+msgstr "Landing line already in your bag"
+
+#: scripts/ui/coast_routes.gd:69
+msgid "Leen de landingslijn · gratis"
+msgstr "Borrow the landing line · free"
+
+#: scripts/ui/coast_routes.gd:70
+msgid "Probeer vrij varen in de proefhaven"
+msgstr "Try free sailing in the practice harbour"
+
+#: scripts/ui/coast_routes.gd:72
+msgid "Lijnpaal · korte oversteek"
+msgstr "Line post · short crossing"
+
+#: scripts/ui/coast_routes.gd:73
+msgid "Nodig: landingslijn uit de gratis leenkist bij de westelijke steiger. De lijn blijft in je tas. Zonder lijn: volg het hoge pad naar het noorden."
+msgstr "Required: landing line from the free loan chest by the western jetty. The line stays in your bag. Without a line, follow the high path to the north."
+
+#: scripts/ui/coast_routes.gd:74
+msgid "Steek over met je landingslijn"
+msgstr "Cross with your landing line"
+
+#: scripts/ui/coast_routes.gd:74
+msgid "Ontbreekt: landingslijn · leen bij de steiger"
+msgstr "Missing: landing line · borrow at the jetty"
+
+#: scripts/ui/coast_routes.gd:76
+msgid "Getijdenbaai · drie routes"
+msgstr "Tidal Cove · three routes"
+
+#: scripts/ui/coast_routes.gd:77
+msgid "Zandbank: kort bij laagwater. Noordelijke loopbrug: altijd open. Lijnpalen: kort met een geleende landingslijn. De boot en westelijke loopbrug brengen je altijd terug."
+msgstr "Sandbank: short route at low tide. Northern boardwalk: always open. Line posts: short route with a borrowed landing line. The boat and western boardwalk always take you back."
+
+#: scripts/ui/coast_routes.gd:78 scripts/ui/coast_voyage.gd:59
+msgid "Terug naar de steiger"
+msgstr "Return to the dock"
+
+#: scripts/ui/coast_routes.gd:78 scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:403 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
+msgid "Sluiten"
+msgstr "Close"
+
+#: scripts/ui/coast_routes.gd:86
+msgid "Stuur met %s / %s / %s / %s. Laat los om af te remmen. Vaar door de drie boeien; er is geen timer, schade of beloning. De gewone veer blijft je reisroute."
+msgstr "Steer with %s / %s / %s / %s. Release to slow down. Sail through the three buoys; there is no timer, damage or reward. The regular ferry remains your travel route."
+
+#: scripts/ui/coast_voyage.gd:57
+msgid "Overtocht naar %s"
+msgstr "Crossing to %s"
+
+#: scripts/ui/coast_voyage.gd:58
 msgid "Een korte, gratis overtocht. Je spullen en gezondheid veranderen niet."
 msgstr "A short, free crossing. Your belongings and health do not change."
 
-#: scripts/ui/coast_voyage.gd:53
+#: scripts/ui/coast_voyage.gd:59
 msgid "Meteen aankomen"
 msgstr "Arrive now"
-
-#: scripts/ui/coast_voyage.gd:53
-msgid "Terug naar de steiger"
-msgstr "Return to the dock"
 
 #: scripts/ui/controls_menu.gd:102
 msgid "Standaardbediening hersteld voor dit apparaat."
@@ -9986,10 +10134,6 @@ msgstr "Material goal: %s"
 #: scripts/ui/craft_goal.gd:27
 msgid "Alles bij je: maak via %s."
 msgstr "Everything ready: craft with %s."
-
-#: scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:403 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
-msgid "Sluiten"
-msgstr "Close"
 
 #: scripts/ui/crafting_ui.gd:147
 msgid "↑ ↓ ← → kiezen  ·  %s bevestigen  ·  %s / %s recepten/voorraad  ·  %s sluiten"

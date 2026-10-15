@@ -58,6 +58,10 @@ static func graph() -> Dictionary:
 	if not links.is_empty(): return links
 	for map: String in Maps.MAPS:
 		links[map]=Maps.get_map(map).objects.filter(func(o: Dictionary) -> bool:return o.type in ["portal","coast_dock"])
+		for object: Dictionary in Maps.get_map(map).objects:
+			if object.type=="tide_station" and object.get("role","")=="routes":
+				for route: Dictionary in object.routes:
+					links[map].append({"type":"coast_route","pos":object.pos,"to":route.to,"spawn":route.spawn})
 	return links
 static func portal_open(from: String,portal: Dictionary) -> bool:
 	if from=="forest" and portal.to=="ruins" and not gs().flag("gate_ruin"): return false
@@ -94,6 +98,7 @@ static func route_text(id: String) -> String:
 	var next:=route[1] if route.size()>1 else to
 	for portal: Dictionary in graph()[gs().map_id]:
 		if portal.to==next:
+			if portal.type=="coast_route":return TranslationServer.translate("Naar %s: kies de veer op het reisbord (%d, %d op de kaart).") % [title(to),int(portal.pos[0])+1,int(portal.pos[1])+1]
 			return TranslationServer.translate("Naar %s: neem de doorgang naar %s (%d, %d op de kaart).") % [title(to),title(next),int(portal.pos[0])+1,int(portal.pos[1])+1]
 	return ""
 static func compact_route(id: String) -> String:

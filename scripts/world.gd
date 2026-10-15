@@ -166,6 +166,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	# Achteraan toevoegen: bestaande kisten en unieke voorwerpen houden hun opslag-ID.
 	map_data["objects"].append_array(Beroepen.resource_objects(map_id))
 	_clear_map()
+	if map_id=="tide_cove":preload("res://scripts/core/tides.gd").prepare(map_data,GameState.day_time)
 	_build_tiles(map_data["rows"])
 	_build_fountains()
 
@@ -197,13 +198,20 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
 	if map_id=="forest_edge":ground.add_child(load("res://scripts/entities/edge_scenery.gd").new())
-	if map_id in ["coast","gull_island"]:
+	if map_id in ["coast","gull_island","tide_cove"]:
 		var scenery: Node2D=load("res://scripts/entities/coast_scenery.gd").new()
 		scenery.world=self
 		ground.add_child(scenery)
 		var voyage: CanvasLayer=load("res://scripts/ui/coast_voyage.gd").new()
 		voyage.world=self
 		ground.add_child(voyage)
+		var routes: CanvasLayer=load("res://scripts/ui/coast_routes.gd").new()
+		routes.world=self
+		ground.add_child(routes)
+	if map_id=="tide_cove":
+		var tide: Node2D=load("res://scripts/entities/tide_cove.gd").new()
+		tide.world=self
+		ground.add_child(tide)
 	if map_id in ["smithy","library"]:
 		var workshop: Node2D=load("res://scripts/entities/workshop.gd").new()
 		workshop.world=self

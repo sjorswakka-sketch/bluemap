@@ -43,10 +43,10 @@ dubbele transacties of nieuwe druk op Bosrand/bosroute. Drie schermformaten,
 NL/EN, dag/nacht/weer en volledige regressiesuite plus Windows-export gecontroleerd.
 Opgeleverd: de heen- en terugreis slaagt met echte loopbeweging, toetsen, native
 muis en gesimuleerde controller. De directe kustwandeling duurt 12,2 s.
-Alle 49 tests slagen; 2.300 Engelse teksten volledig. De volgende go start fase 2.
+Alle 49 tests slagen; 2.300 Engelse teksten volledig. Fase 2 is hieronder uitgevoerd.
 Details en bewijs: COAST_EXPEDITION.md.
 
-## 2. Reizen en regionale spelregels — volgende fase
+## 2. Reizen en regionale spelregels — uitgevoerd in 0.21
 
 Bestemmingskeuze en route-informatie uitwerken. Getijde eerst op één aparte
 testkaart, met altijd een veilige route of eenvoudige uitweg. Een functionele
@@ -58,7 +58,19 @@ De huidige automatische veer blijft een betrouwbare terugweg.
 **Klaar wanneer:** getijde nooit een save of terugreis blokkeert, het hulpmiddel
 een echte keuze geeft en ontbrekende eisen vooraf duidelijk zijn.
 
-## 3. De regio ruimte geven
+Opgeleverd: één aparte Getijdenbaai (52×36), hoge looproute zonder eisen,
+waarschuwing voor opkomend water en veilig sluiten van de lage zandbank.
+Een aanwezige wandelaar mag eerst de oever bereiken; hervatten op een inmiddels
+overstroomde plek gebruikt de bestaande veilige voetplaatsing op droog land.
+De gratis leenlijn werkt aan beide oevers, met een korte afbreekbare animatie.
+Reisborden bieden echte bestemmingen met vooraf route-informatie. Het getijde
+loopt op de bestaande opgeslagen wereldklok en pauzeert met menu's.
+De afzonderlijke proefhaven heeft sturen, remmen, boeien en botsingen; geen
+wereldvaart of vervanging van de veer. Eerst feedback voordat vrij varen groeit.
+Eigen kaart/props/icoon; bestaande eigen kustmuziek en lijn-/watergeluiden.
+Controle en grenzen: TIDAL_ROUTES.md. De volgende go start alleen fase 3.
+
+## 3. De regio ruimte geven — volgende fase
 
 Uitbreiden naar in totaal zes tot acht samenhangende kaarten, na beoordeling
 van de eerste expeditie. Ontwerprichting: riviermonding, kustpad, kleine haven,

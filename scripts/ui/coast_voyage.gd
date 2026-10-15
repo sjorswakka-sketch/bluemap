@@ -37,10 +37,16 @@ func _ready():
 func valid_source() -> bool:
 	if source==null:return false
 	var dock: Node2D=source.get_ref()
-	return is_instance_valid(dock) and not dock.is_queued_for_deletion() and dock.world==world and GameState.map_id==from_map and not GameState.transitioning and not GameState.ended and world.player.position.distance_to(dock.position)<=64
+	if not is_instance_valid(dock) or dock.is_queued_for_deletion() or dock.world!=world or GameState.map_id!=from_map or GameState.transitioning or GameState.ended or world.player.position.distance_to(dock.position)>64:return false
+	if dock.obj.has("routes"):return {"to":target,"spawn":spawn} in dock.obj.routes
+	return dock.obj.to==target and dock.obj.spawn==spawn
 func offer(dock: Node2D):
 	source=weakref(dock);from_map=GameState.map_id;target=dock.obj.to;spawn=dock.obj.spawn
 	if valid_source():GameState.start_dialogue(dock.obj.talk)
+func choose_route(station: Node2D,route: Dictionary):
+	if active or committing or GameState.input_locked() or route not in station.obj.get("routes",[]):return
+	source=weakref(station);from_map=GameState.map_id;target=route.to;spawn=route.spawn
+	begin()
 func begin():
 	if active or committing or GameState.input_locked() or not valid_source():return
 	active=true;elapsed=0;opened_frame=Engine.get_process_frames()
@@ -48,7 +54,7 @@ func begin():
 	arrive.grab_focus();Sound.play("ce_rope",-14.0)
 func language_changed(_language: String):refresh()
 func refresh():
-	title.text=tr("Overtocht naar Meeuweneiland") if target=="gull_island" else tr("Terug naar de Blauwe Kust")
+	title.text=tr("Overtocht naar %s") % tr(load("res://scripts/maps/registry.gd").MAPS[target].DATA.name) if target!="" else tr("Veerboot")
 	detail.text=tr("Een korte, gratis overtocht. Je spullen en gezondheid veranderen niet.")
 	arrive.text=tr("Meteen aankomen");back.text=tr("Terug naar de steiger")
 func layout():
