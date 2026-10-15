@@ -65,6 +65,9 @@ func run():
 	world=load("res://scenes/main.tscn").instantiate();root.add_child(world);current_scene=world;await frames(12);p=world.player
 	var hp: int=gs.hp;var inventory: Dictionary=gs.inventory.duplicate(true);var coins: int=gs.coins;var xp: int=gs.hero_xp
 	await enter("coast","from_estuary");await cross("coast",Vector2(14.5,3.5),"river_mouth","move_up")
+	await safe_route(Vector2i(13,42))
+	await tap(KEY_E);check(world.dialogue.active,"riverside return sign is supported and actually readable from dry floor");world.dialogue._close()
+	await safe_route(Vector2i(14,42))
 	var river_steps:=await safe_route(Vector2i(72,18))
 	check(gs.hp==hp,"real estuary walk is peaceful without extra invulnerability")
 	await cross("river_mouth",Vector2(72.5,18.5),"harbor","move_right")

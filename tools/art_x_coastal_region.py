@@ -37,6 +37,8 @@ def data(kind):
   path(c,[(14,45),(14,32),(18,27),(20,19),(43,19),(55,18),(75,18)])
   for y in [18,19]:
    for x in range(22,41):c[y][x]='9'
+  for y in [41,42]:
+   for x in [12,13]:c[y][x]='9'
   # Dry fork along the western reed bank; no collecting props.
   path(c,[(14,32),(8,27),(9,15),(16,10)],1)
   for x,y in [(6,7),(7,7),(63,7),(64,8),(57,31),(58,31)]:c[y][x]='7'

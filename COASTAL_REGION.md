@@ -16,9 +16,9 @@ branch claude/affectionate-mendel-vc1idx. Bestaande getijdenfase behouden.
 - Meeuweneiland en Getijdenbaai: bestaande paden, uitzicht, getijde en leenlijn
   behouden. De veerborden bieden ook de haven aan.
 
-Nieuwe kaarten: 76×46, 74×46 en 76×46. Samen 6.525 terreinvloertegels, plus vier
+Nieuwe kaarten: 76×46, 74×46 en 76×46. Samen 6.529 terreinvloertegels, plus vier
 nieuwe aansluittegels aan de kust. De statische audit groeit van 16.921 naar
-23.450 (+38,6%). Dit telt vloer vóór gebouwvoetafdrukken en andere bezetting;
+23.454 (+38,6%). Dit telt vloer vóór gebouwvoetafdrukken en andere bezetting;
 het is geen claim dat iedere tegel leeg of vrij bereikbaar is.
 De nieuwe gebouwen blokkeren werkelijk 26 vloerlocaties en hebben fysieke
 rechthoeken; veilige aankomst controleert ook personen en andere botsvormen.

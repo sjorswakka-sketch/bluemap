@@ -84,7 +84,7 @@ geen eis om lege kaarten of extra omwegen toe te voegen.
 en elke drukke plek een rustige aanloop/terugweg heeft.
 
 Opgeleverd: de kustregio telt nu zes kaarten. Zilvermonding (76×46),
-Rietwenk Haven (74×46) en Lichtkaap (76×46) voegen 6.525 terreinvloertegels toe;
+Rietwenk Haven (74×46) en Lichtkaap (76×46) voegen 6.529 terreinvloertegels toe;
 de optionele noordelijke aansluiting aan de kust nog vier. Dat is ongeveer
 38,6% meer statische vloer ten opzichte van 0.21, vóór gebouwen/overige bezetting.
 De twee werkplekken en vuurtoren hebben echte voetafdrukken. De oude meerroute,
