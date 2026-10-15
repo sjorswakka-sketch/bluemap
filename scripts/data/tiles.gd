@@ -24,6 +24,7 @@ const NAMES: Array[String] = [
 	# Kruipmoeras (spoor moeras)
 	"marsh_grass", "marsh_tufts", "mud", "bog_water", "reed", "willow",
 	"ce_sea", "ce_sand", "ce_dune", "ce_grass", "ce_cliff", "ce_shore", "ce_boardwalk",
+	"ad_wetstone", "ad_seawall",
 ]
 
 ## Tegels waar je niet doorheen kunt lopen.
@@ -37,11 +38,12 @@ const SOLID: Array[String] = [
 	"snow_bush", "pine",
 	"cactus", "sandstone",
 	"bog_water", "reed", "willow",
-	"ce_sea", "ce_shore", "ce_cliff",
+	"ce_sea", "ce_shore", "ce_cliff", "ad_seawall",
 ]
 
 ## Teken in de kaart -> tegel. Het gras (".") krijgt automatisch wat afwisseling.
 const CHARS := {
+	"0":"ad_wetstone", "1":"ad_seawall",
 	".": "grass", ",": "path", "#": "tree", "~": "water", "W": "stone", "=": "bridge", "|": "fence",
 	"^": "roof", "H": "house_wall", "h": "house_window", "D": "door", "E": "cave_mouth",
 	"A": "ruin_stairs", "T": "temple_door",

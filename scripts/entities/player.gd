@@ -505,7 +505,9 @@ func _draw_work() -> void:
 		var tip := hand + Vector2.from_angle(angle) * 17.0
 		var side := Vector2.from_angle(angle).orthogonal()
 		draw_line(hand, tip, Color(0.45, 0.28, 0.13), 3.0)
-		if work_kind == "mining":
+		if work_kind == "repair":
+			draw_arc(tip,5,angle+0.6,angle+TAU-0.6,12,Color("b7d0d0"),3)
+		elif work_kind == "mining":
 			draw_line(tip - side * 8.0, tip + side * 8.0, Color(0.7, 0.8, 0.86), 3.0)
 		else:
 			draw_colored_polygon(PackedVector2Array([tip - side * 2.0, tip + side * 8.0 - work_facing * 4.0, tip + side * 8.0 + work_facing * 4.0]), Color(0.72, 0.8, 0.85))

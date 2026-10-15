@@ -1,6 +1,14 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.22.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.23.0-preview.**
+
+Nieuw in 0.23: **Eigen kustavonturen**. Onderzoek wraksporen, lees een oude
+loodsenroute, herstel een tijrad en kies hoe je de Schelpenhoeder benadert.
+Eén optionele Tijholte heeft twee nieuwe vijandtypen en een vrijwillige
+krachtproef met eigen, zichtbare aanvalspatronen. De brede zuidelijke gang blijft
+veilig en open. Vier verhalen, blijvende wereldgevolgen, eigen pixelart en audio;
+de zes buitengebieden blijven zonder nieuwe vijanden of verzamelquota.
+Details: [COASTAL_ADVENTURES.md](COASTAL_ADVENTURES.md).
 
 Nieuw in 0.22: **De kustregio krijgt ruimte**. Zilvermonding, Rietwenk Haven
 en Lichtkaap brengen de regio op zes verschillende gebieden. Brede rivieroevers,

@@ -99,7 +99,7 @@ Eigen exterieurs/landschap, lichtbundel en rustige animaties; camera geeft hoge
 gebouwen meer ruimte en reset bij vertrek. Bestaande slots en saves behouden.
 Controle: COASTAL_REGION.md. De volgende go start alleen fase 4.
 
-## 4. Eigen avonturen, monsters en challenges — volgende fase
+## 4. Eigen avonturen, monsters en challenges — uitgevoerd in 0.23
 
 Vier tot zes verschillende verhaallijnen met onderzoek, navigatie, een
 herstelhandeling, een keuze met zichtbare gevolgen en een bijzondere ontmoeting.
@@ -111,7 +111,13 @@ ruimte hebben. Een tweede grot mag vervallen; geen kopie van spiegels of klanksc
 **Klaar wanneer:** doelen verschillende handelingen vragen, gevolgen begrijpelijk
 zijn en solo/gecombineerde gevechten, waarschuwingen en rustzones getest zijn.
 
-## 5. Beroepen, uitrusting en terugkeerplek
+Uitgevoerd: vier verhalen (wrakonderzoek, loodsenroute, tijrad en Schelpenhoeder),
+één optionele Tijholte, Rotskrab, Getijdenlicht en vrijwillige tweedelige
+hoederproef. Boei, windscherm, korte brug, rustige poel of havenrad blijven zichtbaar.
+De zes buitengebieden blijven zonder extra vijanden. De zuidelijke grotgang is
+altijd open; geen tweede grot of extra verzamelquota.
+
+## 5. Beroepen, uitrusting en terugkeerplek — volgende fase
 
 Gebruik de bestaande zeven beroepen. Eerst drie tot vijf streekmaterialen,
 gerichte recepten en twee duidelijke gearkeuzes in bestaande slots.

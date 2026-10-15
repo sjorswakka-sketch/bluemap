@@ -4,6 +4,8 @@ const Maps := preload("res://scripts/maps/registry.gd")
 const Quests := preload("res://scripts/data/quests.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
 const TARGETS := {
+	"ad_message":["gull_island","harbor"], "ad_pilot":["headland","headland","headland"],
+	"ad_wheel":["tidal_hollow","tidal_hollow"], "ad_keeper":["tidal_hollow"],
 	"main":["forest","village","temple"], "kat":["forest","village"],
 	"medaillon":["cave","ruins"], "drank":["forest","inn"],
 	"ra_ridge":["ridgepass","ridgepass","ridgepass","ridgepass"], "ra_archive":["reedvault"],
@@ -109,6 +111,7 @@ static func compact_route(id: String) -> String:
 static func preparation(map: String) -> Array[String]:
 	var result: Array[String]=[]
 	match map:
+		"tidal_hollow":result.append(TranslationServer.translate("De brede zuidelijke gang blijft veilig. De korte brug vraagt alleen herstel met gereedschap ter plaatse. Noordelijke poelen en de krachtproef zijn optioneel; je kunt altijd teruglopen."))
 		"ruins","cave","prismamine":
 			if gs().weapon=="wood": result.append(TranslationServer.translate("Greta smeedt ijzer voor 5 slijmgel en 40 munten. Een korter gevecht geeft meer ruimte om te ontwijken."))
 			if map=="prismamine":result.append(TranslationServer.translate("De mijnpoort vraagt een ijzeren zwaard. Richt spiegels vóór je de kern benadert; aardingspoeder is een alternatief voor het gevecht."))

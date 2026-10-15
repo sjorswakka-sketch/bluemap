@@ -282,6 +282,31 @@ msgstr "The door is shut. There's no way back!"
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
 
+#. Naam van gebied tidal_hollow
+#: scripts/maps/tidal_hollow.gd:4
+msgid "Tijholte"
+msgstr "Tidal Hollow"
+
+#. Kaart tidal_hollow, sign [4, 27]: tekst op een bord
+#: scripts/maps/tidal_hollow.gd:77
+msgid "Tijholte · terug naar Zilvermonding"
+msgstr "Tidal Hollow · back to Silver Estuary"
+
+#. Kaart tidal_hollow, sign [4, 27]: tekst op een bord
+#: scripts/maps/tidal_hollow.gd:78
+msgid "De brede zuidelijke gang en lange brug blijven veilig. Noordelijke zijpoelen zijn optioneel: amberkleurige schaarwaaiers en lichtkringen met een open sector."
+msgstr "The broad southern passage and long bridge stay safe. The northern side pools are optional: amber claw fans and light rings with an open sector."
+
+#. Kaart tidal_hollow, sign [32, 27]: tekst op een bord
+#: scripts/maps/tidal_hollow.gd:130
+msgid "Zuidelijke omweg: altijd open"
+msgstr "Southern detour: always open"
+
+#. Kaart tidal_hollow, sign [32, 27]: tekst op een bord
+#: scripts/maps/tidal_hollow.gd:131
+msgid "Na herstel van het tijrad kun je ook over de korte brug in het midden. De poelen boven de gang horen bij de dieren; je hoeft daar niet langs."
+msgstr "Once the tide wheel is repaired, you can also cross the short central bridge. The pools above the passage belong to the creatures; you do not need to enter them."
+
 #. Naam van gebied river_mouth
 #: scripts/maps/river_mouth.gd:4
 msgid "Zilvermonding"
@@ -1028,6 +1053,26 @@ msgstr "Crystal beetles charge straight ahead after showing their light trail. P
 #: scripts/maps/resonance.gd:69
 msgid "Win drie golven voor een kristallen amulet en 120 munten. De beloning krijg je eenmaal per avontuur."
 msgstr "Win three waves for a crystal amulet and 120 coins. You receive this reward once per adventure."
+
+#. Blijvend gevolg van opdracht ad_message
+#: scripts/data/ext/coastal_adventures.gd:7
+msgid "De haven markeert de gevaarlijke buitenbank met een waarschuwingsboei."
+msgstr "The harbor marks the dangerous outer shoal with a warning buoy."
+
+#. Blijvend gevolg van opdracht ad_pilot
+#: scripts/data/ext/coastal_adventures.gd:8
+msgid "Bij de bank staat weer een laag windscherm. De kaap blijft vrij en rustig."
+msgstr "A low windbreak stands by the bench again. The headland stays open and quiet."
+
+#. Blijvend gevolg van opdracht ad_wheel
+#: scripts/data/ext/coastal_adventures.gd:9
+msgid "Het tijrad draait en de korte brug is droog. De lange zuidelijke route blijft altijd open."
+msgstr "The tide wheel turns and the short bridge is dry. The long southern route always stays open."
+
+#. Blijvend gevolg van opdracht ad_keeper
+#: scripts/data/ext/coastal_adventures.gd:10
+msgid "Je keuze verandert de poel of het havenrad. Beide uitkomsten sluiten het verhaal af."
+msgstr "Your choice changes the pool or the harbor wheel. Both outcomes complete the story."
 
 #. Blijvend gevolg van opdracht ra_ridge
 #: scripts/data/ext/regional.gd:6
@@ -4300,6 +4345,66 @@ msgstr "Mila wants to brew potions. Bring her 5 Slime Gel. ({gel}/5)"
 msgid "Geef de slijmgel aan Mila in de herberg."
 msgstr "Give the Slime Gel to Mila at the inn."
 
+#. Titel van opdracht ad_message
+#: scripts/data/ext/coastal_adventures.gd:7
+msgid "Een bericht zonder afzender"
+msgstr "A Message Without a Sender"
+
+#. Opdracht ad_message, stap 1
+#: scripts/data/ext/coastal_adventures.gd:7
+msgid "Lees het aangespoelde logboek op Meeuweneiland. Bekijk de breuksporen aan het eilandstrand en de afzetting bij Zilvermonding."
+msgstr "Read the washed-up logbook on Gull Island. Examine the broken timber on the island beach and the sediment at Silver Estuary."
+
+#. Opdracht ad_message, stap 2
+#: scripts/data/ext/coastal_adventures.gd:7
+msgid "Leg bij het werkboek op de havenkade uit waar het wrakhout vandaan kwam."
+msgstr "Explain where the wreckage came from at the work ledger on the harbor quay."
+
+#. Titel van opdracht ad_pilot
+#: scripts/entities/coastal_adventure.gd:17 scripts/data/ext/coastal_adventures.gd:8
+msgid "De oude loodsenroute"
+msgstr "The Old Pilot Trail"
+
+#. Opdracht ad_pilot, stap 1
+#: scripts/data/ext/coastal_adventures.gd:8
+msgid "Zoek vanaf de loodsenpaal op Lichtkaap de lage, gespleten rots in het noordwestelijke grasland."
+msgstr "From the pilot post on Beacon Headland, find the low split rock in the northwestern meadow."
+
+#. Opdracht ad_pilot, stap 2
+#: scripts/data/ext/coastal_adventures.gd:8
+msgid "Volg de beschrijving bij de rots naar de bleke zoutgraspol, oostelijk op de kaap."
+msgstr "Follow the description at the rock to the pale saltgrass on the eastern headland."
+
+#. Opdracht ad_pilot, stap 3
+#: scripts/data/ext/coastal_adventures.gd:8
+msgid "Lees bij het zoutgras waar de loodsen hun beschutte rustplek maakten."
+msgstr "Read at the saltgrass where the pilots made their sheltered resting place."
+
+#. Titel van opdracht ad_wheel
+#: scripts/data/ext/coastal_adventures.gd:9
+msgid "Water dat weer loopt"
+msgstr "Water Running Again"
+
+#. Opdracht ad_wheel, stap 1
+#: scripts/data/ext/coastal_adventures.gd:9
+msgid "Onderzoek het vastgelopen tijrad in de Tijholte, aan het einde van de westelijke zijroute van Zilvermonding."
+msgstr "Examine the jammed tide wheel in Tidal Hollow, at the end of the western side trail in Silver Estuary."
+
+#. Opdracht ad_wheel, stap 2
+#: scripts/data/ext/coastal_adventures.gd:9
+msgid "Maak het rad vrij met het gereedschap ter plaatse. Annuleren kost niets."
+msgstr "Free the wheel using the tools on site. Cancelling costs nothing."
+
+#. Titel van opdracht ad_keeper
+#: scripts/data/ext/coastal_adventures.gd:10
+msgid "De Schelpenhoeder"
+msgstr "The Shellkeeper"
+
+#. Opdracht ad_keeper, stap 1
+#: scripts/data/ext/coastal_adventures.gd:10
+msgid "Kies bij de sluistafel in de Tijholte: geef de poel rust, of open de werksluis en benader de hoeder voor een vrijwillige krachtproef."
+msgstr "Choose at the sluice table in Tidal Hollow: leave the pool in peace, or open the working sluice and approach the keeper for a voluntary trial of strength."
+
 #. Titel van opdracht ra_ridge
 #: scripts/data/ext/regional.gd:5
 msgid "Een lijn door de storm"
@@ -6166,6 +6271,36 @@ msgstr "A giant made of crystal and stone. It's slow, but you'll feel its punch 
 msgid "De baas van alle slijmen. Hij springt, spuugt slijm en vindt zichzelf erg belangrijk."
 msgstr "The boss of all slimes. He jumps, spits slime, and thinks he's very important."
 
+#. Naam van vijand ad_crab
+#: scripts/data/ext/coastal_adventures.gd:13
+msgid "Rotskrab"
+msgstr "Rock Crab"
+
+#. Vijand ad_crab: grappige beschrijving in het beestenboek
+#: scripts/data/ext/coastal_adventures.gd:13
+msgid "Bewoont de noordelijke zijpoel. De amberkleurige waaier staat stil vóór de schaar sluit. Stap opzij en val tijdens het lange herstel aan. Het zuidelijke pad blijft buiten zijn territorium."
+msgstr "Lives in the northern side pool. The amber fan stays fixed before its claw closes. Step aside and attack during the long recovery. The southern path lies outside its territory."
+
+#. Naam van vijand ad_wisp
+#: scripts/data/ext/coastal_adventures.gd:14
+msgid "Getijdenlicht"
+msgstr "Tidelight"
+
+#. Vijand ad_wisp: grappige beschrijving in het beestenboek
+#: scripts/data/ext/coastal_adventures.gd:14
+msgid "Kondigt een uitdijende lichtkring aan. De open sector blijft veilig; hij draait niet achter je aan. Verlaat de poel of loop door de opening. Geen contactschade."
+msgstr "Warns of an expanding ring of light. The open sector stays safe and does not turn to follow you. Leave the pool or walk through the gap. No contact damage."
+
+#. Naam van vijand ad_keeper
+#: scripts/data/ext/coastal_adventures.gd:15
+msgid "Schelpenhoeder"
+msgstr "Shellkeeper"
+
+#. Vijand ad_keeper: grappige beschrijving in het beestenboek
+#: scripts/data/ext/coastal_adventures.gd:15
+msgid "Een vrijwillige krachtproef na de werksluiskeuze. Twee afzonderlijk aangekondigde schaarbogen, daarna een lang herstel. De zuidelijke gang blijft open; terugtrekken stopt de aanval."
+msgstr "A voluntary trial after choosing the working sluice. Two separately announced claw arcs, then a long recovery. The southern passage stays open; retreating stops the attack."
+
 #. Naam van vijand hb_root
 #: scripts/data/ext/habitat.gd:5
 msgid "Wortelwaker"
@@ -6970,6 +7105,11 @@ msgstr "The way begins in the Crystal Temple. Only when the Blue Map is whole ag
 #: scripts/data/ext/meer_boeken.gd:54
 msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
 msgstr "The Star Map isn't easy to read. The Guardian will test you first. Take it slow. Get a good night's sleep first. And eat something."
+
+#. Legenda op het kaartje (menu): coast_adventure
+#: scripts/data/ext/coastal_adventures.gd:4
+msgid "Kustverhaal of waarneming"
+msgstr "Coastal story or observation"
 
 #. Legenda op het kaartje (menu): region_landmark
 #: scripts/data/ext/coastal_region.gd:4
@@ -8500,7 +8640,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:255
+#: scripts/world.gd:259
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -8817,119 +8957,123 @@ msgstr "That input is already assigned to %s. Choose an unused button."
 msgid "Bediening kon niet worden opgeslagen."
 msgstr "Controls could not be saved."
 
-#: scripts/core/journey.gd:86
+#: scripts/core/journey.gd:88
 msgid "Je bent in het juiste gebied: %s."
 msgstr "You're in the right area: %s."
 
-#: scripts/core/journey.gd:90
+#: scripts/core/journey.gd:92
 msgid "Doelgebied: %s."
 msgstr "Destination: %s."
 
-#: scripts/core/journey.gd:94
+#: scripts/core/journey.gd:96
 msgid "Onderzoek de gemarkeerde doorgang."
 msgstr "Investigate the marked passage."
 
-#: scripts/core/journey.gd:96
+#: scripts/core/journey.gd:98
 msgid "Open het ruïnepoortje met de bossleutel."
 msgstr "Open the ruin gate with the forest key."
 
-#: scripts/core/journey.gd:97
+#: scripts/core/journey.gd:99
 msgid "Route naar %s nog gesloten. %s"
 msgstr "Route to %s still closed. %s"
 
-#: scripts/core/journey.gd:101
+#: scripts/core/journey.gd:103
 msgid "Naar %s: kies de veer op het reisbord (%d, %d op de kaart)."
 msgstr "To %s: choose the ferry at the route board (%d, %d on the map)."
 
-#: scripts/core/journey.gd:102
+#: scripts/core/journey.gd:104
 msgid "Naar %s: neem de doorgang naar %s (%d, %d op de kaart)."
 msgstr "To %s: take the passage to %s (%d, %d on the map)."
 
-#: scripts/core/journey.gd:108
+#: scripts/core/journey.gd:110
 msgid "Via %s → %s"
 msgstr "Via %s → %s"
 
-#: scripts/core/journey.gd:108
+#: scripts/core/journey.gd:110
 msgid "Doel: %s"
 msgstr "Goal: %s"
 
-#: scripts/core/journey.gd:113
+#: scripts/core/journey.gd:114
+msgid "De brede zuidelijke gang blijft veilig. De korte brug vraagt alleen herstel met gereedschap ter plaatse. Noordelijke poelen en de krachtproef zijn optioneel; je kunt altijd teruglopen."
+msgstr "The broad southern passage stays safe. The short bridge only needs repair with the tools on site. The northern pools and trial are optional; you can always walk back."
+
+#: scripts/core/journey.gd:116
 msgid "Greta smeedt ijzer voor 5 slijmgel en 40 munten. Een korter gevecht geeft meer ruimte om te ontwijken."
 msgstr "Greta forges iron for 5 slime gel and 40 coins. A shorter fight leaves more room to dodge."
 
-#: scripts/core/journey.gd:114
+#: scripts/core/journey.gd:117
 msgid "De mijnpoort vraagt een ijzeren zwaard. Richt spiegels vóór je de kern benadert; aardingspoeder is een alternatief voor het gevecht."
 msgstr "The mine gate requires an iron sword. Align the mirrors before approaching the core; grounding powder is an alternative to combat."
 
-#: scripts/core/journey.gd:115
+#: scripts/core/journey.gd:118
 msgid "Lopen is stil. Wissel gevechten af met luisteren bij de schalen; sprinten en rollen trekken luisteraars aan."
 msgstr "Walking is quiet. Alternate fights with listening at the bowls; sprinting and rolling attract listeners."
 
-#: scripts/core/journey.gd:117
+#: scripts/core/journey.gd:120
 msgid "Voor een zwaar gevecht: Greta smeedt kristal voor 2 scherven, 8 slijmgel en 80 munten. Dit is voorbereiding, geen verplichte levelgrens."
 msgstr "Before a tough fight: Greta forges crystal for 2 shards, 8 slime gel and 80 coins. This is preparation, not a required level gate."
 
-#: scripts/core/journey.gd:118
+#: scripts/core/journey.gd:121
 msgid "Gebruik het altaar vóór je de arena inloopt. Het herstelt hartjes én stamina. Voorbij de gevechtsdeur kun je pas terug na de baas."
 msgstr "Use the altar before entering the arena. It restores hearts and stamina. Beyond the combat door, you can return only after the boss."
 
-#: scripts/core/journey.gd:119
+#: scripts/core/journey.gd:122
 msgid "Meer ruimte voor fouten? Pim geeft een extra hartje als Muis thuis is. Wilfred geeft twee scherven voor je kristalzwaard wanneer je zijn medaillon terugbrengt."
 msgstr "Want more room for mistakes? Pim gives an extra heart when Muis is home. Wilfred gives two shards for your crystal sword when you return his medallion."
 
-#: scripts/core/journey.gd:120
+#: scripts/core/journey.gd:123
 msgid "De huizen kunnen met hout, wintergloed of de prismatechniek worden verwarmd. Houd aanvallers bij de vuurkorven weg; je hoeft niet alle drie de middelen te verzamelen."
 msgstr "You can warm the houses with wood, Winterglow or the prism technique. Keep attackers away from the braziers; you don't need to collect all three supplies."
 
-#: scripts/core/journey.gd:121
+#: scripts/core/journey.gd:124
 msgid "Het kamp geeft klimtouw. Wacht op slappe wimpels vóór de oversteek; de vastgezette lijn maakt latere bezoeken veilig."
 msgstr "The camp provides climbing rope. Wait for slack pennants before crossing; the secured line makes later visits safe."
 
-#: scripts/core/journey.gd:122
+#: scripts/core/journey.gd:125
 msgid "Vul eerst de waterzak bij Sana. De blauwe luifels in de kloof vullen water bij en geven schaduw. Een lege zak brengt je veilig terug naar je laatste waterpunt."
 msgstr "Fill the waterskin by Sana first. The blue shelters in the canyon refill water and provide shade. An empty skin returns you safely to your last water point."
 
-#: scripts/core/journey.gd:123
+#: scripts/core/journey.gd:126
 msgid "De westelijke sluis open en de oostelijke dicht verlagen het water. Herstel daarna de brug; het archief draait om onderzoeken, geen verzamelquotum."
 msgstr "Open the western sluice and close the eastern one to lower the water. Then restore the bridge; the archive is about investigation, not a gathering quota."
 
-#: scripts/core/journey.gd:124
+#: scripts/core/journey.gd:127
 msgid "Hier is ruimte voor een rustiger bezoek: vissen, koken, lezen of kruiden zoeken. Deze route wacht gewoon op je als je eerst ergens anders heen wilt."
 msgstr "There's room for a calmer visit here: fishing, cooking, reading or finding herbs. This route will wait if you want to go elsewhere first."
 
-#: scripts/core/journey.gd:125
+#: scripts/core/journey.gd:128
 msgid "De arena is optioneel. Bruno toont iedere rang en inzet vóór je begint; een gewone avonturenroute vraagt geen arenarang."
 msgstr "The arena is optional. Bruno shows each rank and entry cost before you start; ordinary adventures don't require an arena rank."
 
-#: scripts/core/journey.gd:126
+#: scripts/core/journey.gd:129
 msgid "De lichtkring vraagt een prismalantaarn. Na de mijn kun je die bij Greta maken met een lens en twee takken, of laten monteren voor 40 munten."
 msgstr "The light circle needs a prism lantern. After the mine, craft it at Greta's with a lens and two twigs, or pay 40 coins to have it assembled."
 
-#: scripts/core/journey.gd:128
+#: scripts/core/journey.gd:131
 msgid "Bij je: %d helddrankjes · %d/%d hartjes · %.0f/%.0f stamina."
 msgstr "Carrying: %d hero potions · %d/%d hearts · %.0f/%.0f stamina."
 
-#: scripts/core/journey.gd:129
+#: scripts/core/journey.gd:132
 msgid "Gedragen pantser: %.0f. Bonussen komen alleen van je gedragen set."
 msgstr "Worn armour: %.0f. Bonuses come only from your worn set."
 
-#: scripts/core/journey.gd:134
+#: scripts/core/journey.gd:137
 msgid "Deze opdracht is afgerond. Kies een lopende opdracht om op het scherm te volgen."
 msgstr "This quest is complete. Choose an active quest to track on screen."
 
-#: scripts/core/journey.gd:135
+#: scripts/core/journey.gd:138
 msgid "Huidige stap"
 msgstr "Current step"
 
-#: scripts/core/journey.gd:137
+#: scripts/core/journey.gd:140
 msgid "Voor je verdergaat"
 msgstr "Before you continue"
 
-#: scripts/core/journey.gd:138
+#: scripts/core/journey.gd:141
 msgid "Snel terug? Ontdekte altaren staan op de kaart. Reizen vult niets bij; rusten bij het altaar wel."
 msgstr "Quick return? Discovered altars are on the map. Travel refills nothing; resting at the altar does."
 
-#: scripts/core/journey.gd:143
+#: scripts/core/journey.gd:146
 msgid "Volg: %s"
 msgstr "Track: %s"
 
@@ -9505,6 +9649,50 @@ msgstr "A distant coast lies on the horizon. Here, you hear only the wind and th
 msgid "Je hoeft hier niets te verzamelen. De veerboot wacht aan de westelijke steiger; je kunt altijd terug."
 msgstr "You do not need to collect anything here. The ferry waits at the western dock; you can always return."
 
+#: scripts/entities/coastal_adventure.gd:13
+msgid "Aangespoeld logboek"
+msgstr "Washed-up logbook"
+
+#: scripts/entities/coastal_adventure.gd:14
+msgid "Breuksporen in het wrakhout"
+msgstr "Fractures in the wreckage"
+
+#: scripts/entities/coastal_adventure.gd:15
+msgid "Afzetting aan de oever"
+msgstr "Sediment on the bank"
+
+#: scripts/entities/coastal_adventure.gd:16
+msgid "Werkboek van de haven"
+msgstr "Harbor work ledger"
+
+#: scripts/entities/coastal_adventure.gd:18
+msgid "Gespleten rots"
+msgstr "Split rock"
+
+#: scripts/entities/coastal_adventure.gd:19
+msgid "Bleek zoutgras"
+msgstr "Pale saltgrass"
+
+#: scripts/entities/coastal_adventure.gd:20
+msgid "Beschutte rustplek"
+msgstr "Sheltered resting place"
+
+#: scripts/entities/coastal_adventure.gd:21
+msgid "Zijgrot · Tijholte"
+msgstr "Side cave · Tidal Hollow"
+
+#: scripts/entities/coastal_adventure.gd:22
+msgid "Vastgelopen tijrad"
+msgstr "Jammed tide wheel"
+
+#: scripts/entities/coastal_adventure.gd:23
+msgid "Rustende Schelpenhoeder"
+msgstr "Resting Shellkeeper"
+
+#: scripts/entities/coastal_adventure.gd:24
+msgid "Sluistafel · Schelpenhoeder"
+msgstr "Sluice table · Shellkeeper"
+
 #: scripts/entities/combat_actions.gd:26 scripts/entities/combat_actions.gd:6
 msgid "Breekslag"
 msgstr "Breaking Slash"
@@ -9585,7 +9773,7 @@ msgstr "Resonance Trial: wave %d / 3"
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:413
+#: scripts/entities/enemy.gd:426
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -9979,7 +10167,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/coast_maps.gd:20 scripts/data/tiles.gd:45 scripts/entities/living_scenery.gd:79
+#: scripts/entities/shooting_range.gd:169 scripts/data/coast_maps.gd:20 scripts/data/tiles.gd:47 scripts/entities/living_scenery.gd:79
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -10182,7 +10370,7 @@ msgstr "Coastal region · map and connections"
 msgid "Goud: wandelpad · blauw: gekozen veerroute · witte ring: hier"
 msgstr "Gold: footpath · blue: selected ferry route · white ring: here"
 
-#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:403 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
+#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:403 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
 msgid "Sluiten"
 msgstr "Close"
 
@@ -10277,6 +10465,134 @@ msgstr "A short, free crossing. Your belongings and health do not change."
 #: scripts/ui/coast_voyage.gd:59
 msgid "Meteen aankomen"
 msgstr "Arrive now"
+
+#: scripts/ui/coastal_adventure_ui.gd:52
+msgid "Een los logboek: ‘Niet langs de buitenbank. Het hout brak terwijl het water terugliep.’ De afzender ontbreekt. Vergelijk het wrakhout aan het zuidelijke eilandstrand met de afzetting aan de oostelijke rivieroever. Het werkboek op de havenkade wacht op je conclusie."
+msgstr "A loose logbook: ‘Keep away from the outer shoal. The timber broke as the water receded.’ The sender is missing. Compare the wreckage on the southern island beach with the sediment on the eastern riverbank. The harbor work ledger awaits your conclusion."
+
+#: scripts/ui/coastal_adventure_ui.gd:54
+msgid "De breuk is scherp en schoon; er zit wit schelpgruis tussen de vezels. Dit hout heeft tegen een harde buitenbank geschuurd, niet lang op een modderige rivierbodem gelegen."
+msgstr "The fracture is sharp and clean, with white shell grit between the fibers. This timber scraped against a hard outer shoal; it has not spent long on a muddy riverbed."
+
+#: scripts/ui/coastal_adventure_ui.gd:55
+msgid "Noteer het schelpgruis"
+msgstr "Note the shell grit"
+
+#: scripts/ui/coastal_adventure_ui.gd:57
+msgid "De rivieroever draagt fijn donker slib en afgerond riet. Het lichte schelpgruis van het wrakhout ontbreekt hier. De rivier heeft het hout aangevoerd, maar de breuk ontstond ergens anders."
+msgstr "The riverbank carries fine dark silt and rounded reeds. The pale shell grit from the wreckage is absent. The river carried the timber here, but the break happened elsewhere."
+
+#: scripts/ui/coastal_adventure_ui.gd:58
+msgid "Noteer het donkere slib"
+msgstr "Note the dark silt"
+
+#: scripts/ui/coastal_adventure_ui.gd:60
+msgid "Het havenboek kan een waarschuwing bij de juiste vaarroute plaatsen. Vergelijk beide waarnemingen voordat je een conclusie trekt. Een vergissing kost niets."
+msgstr "The harbor ledger can place a warning on the correct sailing route. Compare both observations before drawing a conclusion. A mistake costs nothing."
+
+#: scripts/ui/coastal_adventure_ui.gd:61
+msgid "De buitenbank staat gemarkeerd. Bij het einde van de werkkade dobbert de nieuwe waarschuwingsboei."
+msgstr "The outer shoal is marked. A new warning buoy floats near the end of the working quay."
+
+#: scripts/ui/coastal_adventure_ui.gd:63
+msgid "De buitenbank brak het hout; markeer die route"
+msgstr "The outer shoal broke the timber; mark that route"
+
+#: scripts/ui/coastal_adventure_ui.gd:64
+msgid "Het hout brak op de modderige rivieroever"
+msgstr "The timber broke on the muddy riverbank"
+
+#: scripts/ui/coastal_adventure_ui.gd:66
+msgid "De loodsen volgden herkenbare vormen, zonder klok of verzamelopdracht. Begin bij de lage gespleten rots in het noordwestelijke grasland, boven het hoge havenpad. Lees daar het oude richtteken."
+msgstr "The pilots followed recognizable shapes, without a timer or collection task. Start at the low split rock in the northwestern meadow, above the high harbor path. Read the old direction mark there."
+
+#: scripts/ui/coastal_adventure_ui.gd:67
+msgid "Volg de oude loodsenroute"
+msgstr "Follow the old pilot trail"
+
+#: scripts/ui/coastal_adventure_ui.gd:69
+msgid "In de spleet wijst een oude kerf naar het oosten: zoek de bleke zoutgraspol voorbij het midden van de kaap, ten noorden van het vuurtorenpad."
+msgstr "An old notch in the split points east: find the pale saltgrass beyond the middle of the headland, north of the lighthouse path."
+
+#: scripts/ui/coastal_adventure_ui.gd:70
+msgid "Lees het richtteken"
+msgstr "Read the direction mark"
+
+#: scripts/ui/coastal_adventure_ui.gd:72
+msgid "Tussen het bleke gras ligt een loodsensteen met een lage golf erin. Volg de kaap naar de bank aan de zuidoostelijke afslag; daar liggen de oude schermlatten klaar."
+msgstr "A pilot stone with a low wave carved into it lies among the pale grass. Follow the headland to the bench on the southeastern branch; the old windbreak slats are waiting there."
+
+#: scripts/ui/coastal_adventure_ui.gd:73
+msgid "Volg de lage golf naar de rustplek"
+msgstr "Follow the low wave to the resting place"
+
+#: scripts/ui/coastal_adventure_ui.gd:75
+msgid "Een bank boven zee. De oude schermlatten liggen hier al: zet ze langs de windzijde terug. Geen spullen nodig; het uitzicht en de route blijven open."
+msgstr "A bench above the sea. The old slats are already here: put them back along the windward side. No supplies needed; the view and route stay open."
+
+#: scripts/ui/coastal_adventure_ui.gd:76
+msgid "Zet het lage windscherm terug"
+msgstr "Put back the low windbreak"
+
+#: scripts/ui/coastal_adventure_ui.gd:77
+msgid "Het lage windscherm staat weer. Neem gerust de tijd; de hoge terugweg naar de haven blijft vrij."
+msgstr "The low windbreak stands again. Take your time; the high route back to the harbor stays clear."
+
+#: scripts/ui/coastal_adventure_ui.gd:79
+msgid "Tijholte · optionele zijgrot. Volg de korte noordelijke afslag naar de ingang. Binnen blijft de brede zuidelijke gang veilig; de noordelijke poelen bevatten krabben en lichtkringen. Je kunt altijd omkeren."
+msgstr "Tidal Hollow · optional side cave. Follow the short northern branch to the entrance. Inside, the broad southern passage stays safe; the northern pools contain crabs and light rings. You can always turn back."
+
+#: scripts/ui/coastal_adventure_ui.gd:80
+msgid "Onderzoek het tijrad in de zijgrot"
+msgstr "Investigate the tide wheel in the side cave"
+
+#: scripts/ui/coastal_adventure_ui.gd:84
+msgid "Een losgeraakte pen houdt het rad tegen. Het passende gereedschap ligt hier. Maak de pen vrij en stel het rad af; dat duurt even. Annuleer met Terug of een looptoets. Je verliest niets. De zuidelijke omweg blijft open."
+msgstr "A loose pin has jammed the wheel. The right tools are here. Free the pin and adjust the wheel; it takes a moment. Cancel with Back or a movement key. You lose nothing. The southern detour stays open."
+
+#: scripts/ui/coastal_adventure_ui.gd:85
+msgid "Het rad draait. De korte brug over de middelste watergeul is droog; de brede zuidelijke route blijft ook open."
+msgstr "The wheel turns. The short bridge over the central channel is dry; the broad southern route stays open too."
+
+#: scripts/ui/coastal_adventure_ui.gd:86
+msgid "Maak het rad vrij · gereedschap ligt hier"
+msgstr "Free the wheel · tools provided here"
+
+#: scripts/ui/coastal_adventure_ui.gd:88
+msgid "De hoeder rust aan de rand van zijn poel. Hij valt je niet zomaar aan. Bij de sluistafel in de zuidelijke gang kun je na herstel van het tijrad kiezen hoe het water stroomt."
+msgstr "The keeper rests at the edge of its pool. It will not attack you unprovoked. Once the tide wheel is repaired, you can choose how the water flows at the sluice table in the southern passage."
+
+#: scripts/ui/coastal_adventure_ui.gd:90
+msgid "Het herstelde rad kan het water verdelen. Geef de hoeder zijn rustige poel, of voed het havenrad en neem vrijwillig zijn krachtproef aan. De keuze blijft zichtbaar. De beloning voor het verhaal is gelijk; terugtrekken uit de proef blijft mogelijk."
+msgstr "The repaired wheel can divide the flow. Leave the keeper its quiet pool, or feed the harbor wheel and voluntarily take its trial of strength. Your choice stays visible. The story reward is equal; you can still retreat from the trial."
+
+#: scripts/ui/coastal_adventure_ui.gd:92
+msgid "Het riet groeit rond de rustige poel. De hoeder heeft zich teruggetrokken."
+msgstr "Reeds grow around the quiet pool. The keeper has withdrawn."
+
+#: scripts/ui/coastal_adventure_ui.gd:92
+msgid "Het havenrad draait. De Schelpenhoeder heeft je krachtproef aanvaard; de doorgang blijft vrij."
+msgstr "The harbor wheel turns. The Shellkeeper has accepted your trial of strength; the passage stays clear."
+
+#: scripts/ui/coastal_adventure_ui.gd:93
+msgid "Herstel eerst het tijrad in de veilige zuidelijke gang. De hoeder wacht; de terugweg blijft vrij."
+msgstr "First repair the tide wheel in the safe southern passage. The keeper will wait; the way back stays open."
+
+#: scripts/ui/coastal_adventure_ui.gd:96
+msgid "Geef de poel rust · vreedzame afloop"
+msgstr "Leave the pool in peace · peaceful outcome"
+
+#: scripts/ui/coastal_adventure_ui.gd:97
+msgid "Voed het havenrad · vrijwillige krachtproef"
+msgstr "Feed the harbor wheel · voluntary trial"
+
+#: scripts/ui/coastal_adventure_ui.gd:98
+msgid "Annuleren"
+msgstr "Cancel"
+
+#: scripts/ui/coastal_adventure_ui.gd:109
+msgid "Het slib verklaart de breuk niet. Schelpgruis in schoon gebroken hout wijst naar de harde buitenbank. Vergelijk je aantekeningen en probeer gerust opnieuw."
+msgstr "The silt does not explain the break. Shell grit in cleanly fractured timber points to the hard outer shoal. Compare your notes and try again."
 
 #: scripts/ui/controls_menu.gd:102
 msgid "Standaardbediening hersteld voor dit apparaat."

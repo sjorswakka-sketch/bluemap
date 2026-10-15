@@ -7,6 +7,7 @@ const MAX_LEVEL := 10
 const MAX_XP := 2250
 const LEVEL_REWARD := 15
 const ENEMY_XP := {
+	"ad_crab":12, "ad_wisp":14, "ad_keeper":26,
 	"slime": 5, "bat": 5, "slime_blue": 8, "skeleton": 10,
 	"slime_red": 12, "slime_spitter": 12, "mage": 16,
 	"golem": 45, "diepte_golem": 60, "king": 150, "guardian": 200,

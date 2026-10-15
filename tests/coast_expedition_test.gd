@@ -87,7 +87,7 @@ func run():
 	check(Maps.get_map("forest_edge").objects.size()==4,"quiet Bosrand remains untouched")
 	check(Journey.path("village","gull_island")==["village","lake","coast","gull_island"],"quest graph recognises ferry links as well as portals")
 	check(Journey.path("gull_island","village")==["gull_island","coast","lake","village"],"route home is available without unlocks")
-	check(Tiles.NAMES.size()==78 and load("res://assets/tiles.png").get_width()==78*16,"atlas has all legacy and seven new tiles")
+	check(Tiles.NAMES.slice(71,78)==["ce_sea","ce_sand","ce_dune","ce_grass","ce_cliff","ce_shore","ce_boardwalk"] and load("res://assets/tiles.png").get_width()==Tiles.NAMES.size()*16,"atlas has all legacy and seven new tiles")
 	check(Tiles.footstep_surface("ce_sand")=="sand" and Tiles.footstep_surface("ce_boardwalk")=="wood" and Tiles.movement_multiplier("ce_sand")==0.92,"coastal terrain uses appropriate walking speed and sounds")
 	world=load("res://scenes/main.tscn").instantiate();root.add_child(world);current_scene=world;await frames(12);p=world.player
 	await enter("lake","from_coast")

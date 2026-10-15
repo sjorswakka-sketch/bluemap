@@ -167,6 +167,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	map_data["objects"].append_array(Beroepen.resource_objects(map_id))
 	_clear_map()
 	if map_id=="tide_cove":preload("res://scripts/core/tides.gd").prepare(map_data,GameState.day_time)
+	if map_id=="tidal_hollow":preload("res://scripts/core/coastal_adventures.gd").prepare(map_data)
 	_build_tiles(map_data["rows"])
 	_build_fountains()
 
@@ -216,6 +217,9 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 		var region_scenery: Node2D=load("res://scripts/entities/coastal_region_scenery.gd").new()
 		region_scenery.world=self
 		ground.add_child(region_scenery)
+	if map_id=="tidal_hollow":
+		var adventure: Node2D=load("res://scripts/entities/coastal_adventure_director.gd").new()
+		adventure.world=self;entities.add_child(adventure)
 	if map_id=="tide_cove":
 		var tide: Node2D=load("res://scripts/entities/tide_cove.gd").new()
 		tide.world=self

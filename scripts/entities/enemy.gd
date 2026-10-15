@@ -16,6 +16,12 @@ var habitat_traveled := 0.0
 var habitat_hit := false
 var habitat_distracted := false
 
+const CoastalAI := preload("res://scripts/entities/coastal_enemy.gd")
+var ad_origin:=Vector2.ZERO
+var ad_radius:=0.0
+var ad_hit:=false
+var ad_combo:=0
+
 const CombatAI := preload("res://scripts/entities/combat_enemy.gd")
 const LivingAI := preload("res://scripts/entities/living_enemy.gd")
 var guard_broken := 0.0
@@ -111,6 +117,10 @@ func _ready() -> void:
 		var warning:=preload("res://scripts/entities/habitat_warning.gd").new()
 		warning.enemy=weakref(self)
 		world.ground.add_child(warning)
+	if data.behavior in ["ad_crab","ad_wisp","ad_keeper"]:
+		ad_origin=position
+		var mark:=preload("res://scripts/entities/coastal_warning.gd").new()
+		mark.enemy=weakref(self);world.ground.add_child(mark)
 	if kind=="king":
 		var warning:=preload("res://scripts/entities/king_warning.gd").new()
 		warning.king=weakref(self)
@@ -152,6 +162,8 @@ func _physics_process(delta: float) -> void:
 	state_time += delta
 	desired = Vector2.ZERO
 	match data["behavior"]:
+		"ad_crab", "ad_wisp", "ad_keeper":
+			CoastalAI.update(self,delta)
 		"hb_root", "hb_moth":
 			HabitatAI.update(self,delta)
 		"cv_ram", "cv_slinger":
@@ -184,10 +196,11 @@ func _physics_process(delta: float) -> void:
 	var before:=global_position
 	move_and_slide()
 	if data.behavior in ["hb_root","hb_moth"]:HabitatAI.after_move(self,before)
+	if data.behavior in ["ad_crab","ad_wisp","ad_keeper"]:CoastalAI.after_move(self,before)
 
 	var touch_range: float = radius + 9.0
 	if data["behavior"] in ["cv_ram","cv_slinger"] and state != "cv_charge": touch_range = 0.0
-	if data.behavior in ["hb_root","hb_moth"]:touch_range=0.0
+	if data.behavior in ["hb_root","hb_moth","ad_crab","ad_wisp","ad_keeper"]:touch_range=0.0
 	if state in ["hop", "vanish", "appear"] or data["behavior"] == "animal":
 		touch_range = 0.0 # in de lucht, als rookwolkje of als vreedzaam dier kan hij niemand raken
 	if global_position.distance_to(player.global_position) < touch_range and touch_cooldown <= 0.0:
@@ -705,6 +718,7 @@ func hurt(damage: int, direction: Vector2) -> void:
 		Sound.play("hit",-14.0,0.7)
 		return
 	if data.behavior in ["hb_root","hb_moth"]:HabitatAI.interrupt(self)
+	if data.behavior in ["ad_crab","ad_wisp","ad_keeper"] and state not in ["ad_swing","ad_pulse"]:CoastalAI.change(self,"ad_rest")
 	if LivingAI.blocks(self, direction):
 		world.ring(global_position, 18, Color(0.7, 0.9, 1))
 		Sound.play("hit", -10.0, 1.5)
@@ -793,6 +807,8 @@ func _draw() -> void:
 	var chasing: bool = player != null and active and _to_player().length() < float(data["sight"])
 
 	match data["behavior"]:
+		"ad_crab", "ad_wisp", "ad_keeper":
+			CoastalAI.draw(self,sheet,tint)
 		"hb_root", "hb_moth":
 			HabitatAI.draw(self,sheet,tint)
 		"cv_ram", "cv_slinger":

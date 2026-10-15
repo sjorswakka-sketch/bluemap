@@ -43,6 +43,7 @@ extends RefCounted
 ## Je hoeft alleen de constanten op te nemen die je nodig hebt. Namen (sleutels) mogen niet al bestaan.
 
 const MODULES: Array = [
+	preload("res://scripts/data/ext/coastal_adventures.gd"),
 	preload("res://scripts/data/ext/coastal_region.gd"),
 	preload("res://scripts/data/ext/tides.gd"),
 	preload("res://scripts/data/ext/coast.gd"),
