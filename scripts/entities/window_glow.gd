@@ -6,7 +6,7 @@ const Art := preload("res://scripts/core/art.gd")
 
 const TILE := 32.0 # grootte van een tegel in de wereld
 const PANES: Array[Rect2] = [ # de vier ruitjes van het raam, in pixels van de tegel (16x16)
-	Rect2(4, 4, 3, 3), Rect2(8, 4, 4, 3), Rect2(4, 8, 3, 4), Rect2(8, 8, 4, 4),
+	Rect2(4, 3.5, 3.5, 3.5), Rect2(8.5, 3.5, 3.5, 3.5), Rect2(4, 8, 3.5, 3.5), Rect2(8.5, 8, 3.5, 3.5),
 ]
 const GLASS := Color(1.0, 0.86, 0.48)
 const WINDOW_LIGHT := 0.55 # zachter dan een lantaarn

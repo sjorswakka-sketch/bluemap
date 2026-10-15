@@ -83,16 +83,25 @@ func _poly(points: Array, color: Color) -> void:
 
 
 func _roof(width: float, color: Color) -> void:
-	_r(0, 0, width, 64, INK)
-	_r(2, 2, width - 4, 56, color)
+	_r(0,0,width,64,INK)
+	_r(1,1,width-2,60,color.darkened(.12))
 	for row in 7:
-		var y := 4 + row * 8
-		_r(2, y, width - 4, 2, color.lightened(0.15))
-		_r(2, y + 6, width - 4, 2, color.darkened(0.28))
-		for x in range(4 + (row % 2) * 12, int(width - 2), 24):
-			_r(x, y + 2, 2, 4, color.darkened(0.22))
-	_r(0, 58, width, 6, color.darkened(0.45))
-	_r(2, 58, width - 4, 2, color.lightened(0.22))
+		var y:=2+row*8
+		for x in range(-14+(row%2)*12,int(width),24):
+			var left:=maxi(2,x);var right:=mini(int(width)-2,x+23)
+			if right<=left:continue
+			var face:=color.lightened(.035*float(posmod(x*7+row*3,4)))
+			_r(left,y,right-left,7,face)
+			_r(left,y,right-left,1,face.lightened(.23))
+			_r(left,y+6,right-left,1,color.darkened(.32))
+			_r(right,y+1,1,5,color.darkened(.26))
+			if x>0:_r(x+4,y+3,1,2,face.lightened(.16))
+	_r(0,0,width,3,color.lightened(.32))
+	_r(0,58,width,6,color.darkened(.5))
+	_r(2,58,width-4,2,color.lightened(.24))
+	_r(2,63,width-4,3,Color(0.1,.15,.17,.36))
+	_r(0,3,2,56,color.lightened(.18))
+	_r(width-2,3,2,56,color.darkened(.35))
 
 
 func _plaque(pos: Vector2, icon: String, color: Color) -> void:

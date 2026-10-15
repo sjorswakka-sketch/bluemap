@@ -74,6 +74,14 @@ func _draw() -> void:
 		var y := -16.0 + float((i * 7) % 24)
 		var radius := 2.0 + floorf(p * 3.0) * 2.0
 		_r(x - radius, y, radius * 2.0, 2, Color(FOAM, (1.0 - p) * 0.7))
+	# Native-pixel chisel marks, damp seams and specular edge accents.
+	for p in [Vector2(-25,-27),Vector2(18,-28),Vector2(-29,11),Vector2(27,-7),Vector2(-13,20),Vector2(13,21)]:
+		_r(p.x,p.y,3,1,Color("d5ddd0"))
+		_r(p.x+1,p.y+1,3,1,Color("6c8990"))
+	for x in [-18,-2,14]:
+		_r(x,-23,8,1,Color("315c70"))
+	_r(-27,17,53,1,Color("e0e3cd"))
+	_r(-29,24,58,2,Color("5b7884"))
 	# Centrale zuil en schaal; de fontein spuit boven het bassin uit.
 	_r(-8, -12, 16, 22, INK)
 	_r(-6, -12, 12, 20, STONE)

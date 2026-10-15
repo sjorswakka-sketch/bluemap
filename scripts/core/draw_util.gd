@@ -7,8 +7,10 @@ extends RefCounted
 static func sprite(canvas: CanvasItem, texture: Texture2D, col: int, row: int,
 		center := Vector2.ZERO, cell := Vector2i(16, 16), scale := 2.0, tint := Color.WHITE) -> void:
 	var size := Vector2(cell) * scale
-	var source := Rect2(Vector2(col * cell.x, row * cell.y), Vector2(cell))
-	canvas.draw_texture_rect_region(texture, Rect2(center - size / 2.0, size), source, tint)
+	var art := preload("res://scripts/core/art.gd").detailed(texture)
+	var density := 2.0 if art != texture else 1.0
+	var source := Rect2(Vector2(col * cell.x, row * cell.y)*density, Vector2(cell)*density)
+	canvas.draw_texture_rect_region(art, Rect2(center - size / 2.0, size), source, tint)
 
 
 ## Gevulde ellips (gebruikt voor schaduwen).

@@ -8,16 +8,21 @@ static func _box(bg: Color, border: Color, width := 3, filled := true) -> StyleB
 	box.draw_center = filled
 	box.border_color = border
 	box.set_border_width_all(width)
-	box.set_corner_radius_all(8)
+	box.set_corner_radius_all(2)
+	box.anti_aliasing = false
+	if filled:
+		box.shadow_color = Color(0.02,0.04,0.06,0.42)
+		box.shadow_size = 3
+		box.shadow_offset = Vector2(0,3)
 	box.set_content_margin_all(10)
 	return box
 
 
 static func style_button(button: Button, font_size := 28) -> void:
 	button.add_theme_stylebox_override("disabled", _box(Color(0.07, 0.11, 0.22), Color(0.22, 0.3, 0.45)))
-	button.add_theme_stylebox_override("normal", _box(Color(0.10, 0.17, 0.34), Color(0.35, 0.55, 0.9)))
-	button.add_theme_stylebox_override("hover", _box(Color(0.16, 0.27, 0.52), Color(0.6, 0.85, 1.0)))
-	button.add_theme_stylebox_override("pressed", _box(Color(0.22, 0.36, 0.66), Color(0.8, 0.95, 1.0)))
+	button.add_theme_stylebox_override("normal", _box(Color("243b49"), Color("8da393")))
+	button.add_theme_stylebox_override("hover", _box(Color("36576a"), Color("c1d3b1")))
+	button.add_theme_stylebox_override("pressed", _box(Color("4c6b76"), Color("e6d4a2")))
 	# De rand om de knop die met het toetsenbord is geselecteerd.
 	button.add_theme_stylebox_override("focus", _box(Color(0, 0, 0, 0), Color(1.0, 0.88, 0.35), 4, false))
 	button.add_theme_font_size_override("font_size", font_size)
@@ -29,7 +34,7 @@ static func style_button(button: Button, font_size := 28) -> void:
 
 
 static func style_panel(panel: PanelContainer) -> void:
-	panel.add_theme_stylebox_override("panel", _box(Color(0.06, 0.1, 0.22, 0.96), Color(0.45, 0.75, 1.0)))
+	panel.add_theme_stylebox_override("panel", _box(Color(0.09,0.16,0.20,0.97), Color("8daaa6")))
 
 
 static func make_label(text: String, font_size: int, color := Color.WHITE) -> Label:

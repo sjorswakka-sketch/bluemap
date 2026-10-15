@@ -11,6 +11,7 @@ var signature := ""
 var time := 0.0
 var addons: Array[Node2D] = []
 var fog := 1.0
+var terrain_changed := false
 
 func state_signature() -> String:
 	return str([GameState.flag("lw_mine"), GameState.flag("lw_forest"), GameState.flag("lw_heat_west"), GameState.flag("lw_heat_east"), GameState.flag("lw_drained"), GameState.flag("lw_bridge")])
@@ -22,11 +23,12 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 func tile(x: int, y: int, symbol: String) -> void:
+	terrain_changed = true
 	var row: String = world.map_data["rows"][y]
 	world.map_data["rows"][y] = row.substr(0,x) + symbol + row.substr(x+1)
 	var cell := Vector2i(x,y)
 	var name := Tiles.name_for(symbol,x,y)
-	world.tile_layer.set_cell(cell,0,Vector2i(Tiles.index_of(name),0))
+	world.tile_layer.set_cell(cell,0,preload("res://scripts/core/pixel_landscape.gd").atlas(name,x,y))
 	if Tiles.is_solid_name(name): world.solid_cells[cell] = true
 	else: world.solid_cells.erase(cell)
 
@@ -47,6 +49,7 @@ func resident(sheet: String, at: Vector2) -> void:
 	addons.append(node)
 
 func refresh() -> void:
+	terrain_changed = false
 	signature = state_signature()
 	for node in addons:
 		if is_instance_valid(node):
@@ -59,9 +62,9 @@ func refresh() -> void:
 				resource("iron","lw_mine_iron",Vector2i(27,5))
 				resource("copper","lw_mine_copper",Vector2i(34,9))
 		"kruipmoeras":
+			var changes:=preload("res://scripts/core/marsh_waterworks.gd").changes(world.map_data.rows,GameState.flag("lw_drained"),GameState.flag("lw_bridge"))
+			for cell: Vector2i in changes:tile(cell.x,cell.y,changes[cell])
 			if GameState.flag("lw_drained"):
-				for x in range(27,34):
-					for y in [16,17]: tile(x,y,"2")
 				resource("watermunt","lw_shore_mint",Vector2i(30,17))
 				var spot := Fishing.new()
 				spot.world = world
@@ -70,9 +73,6 @@ func refresh() -> void:
 				spot.position = Vector2(29.5,15.5)*32
 				world.entities.add_child(spot)
 				addons.append(spot)
-			if GameState.flag("lw_bridge"):
-				for x in range(18,23):
-					for y in [16,17]: tile(x,y,"=")
 		"dauwbos":
 			if GameState.flag("lw_forest"):
 				resource("dauwklauw","lw_revealed_flower",Vector2i(40,31))
@@ -83,6 +83,7 @@ func refresh() -> void:
 			if GameState.flag("lw_heat_east"):
 				for y in range(3,13): tile(40,y,",")
 				for x in range(40,44): tile(x,3,",")
+	if terrain_changed and is_instance_valid(world.landscape):world.landscape.refresh()
 
 func _draw() -> void:
 	match GameState.map_id:

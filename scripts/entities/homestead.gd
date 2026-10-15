@@ -75,7 +75,7 @@ func update_hint():
  var at:=aim_cell()
  var near: bool=Farm.garden(Vector2i((world.player.position/32).floor())) or Farm.garden(at)
  var active: bool=Farm.mode!="" or GameState.flag("hs_garden_help")
- panel.visible=active and near and not GameState.input_locked() and world.player.target==null and world.hud.toast_time<=0 and world.hud.toast_queue.is_empty() and world.hud.banner_time<=0
+ panel.visible=active and near and not world.hud.access_panel.visible and not GameState.input_locked() and world.player.target==null and world.hud.toast_time<=0 and world.hud.toast_queue.is_empty() and world.hud.banner_time<=0
  if not panel.visible:return
  var palette: Script=load("res://scripts/ui/home_ui.gd")
  label.text=tr("%s · %s gebruiken · %s standen") % [palette.mode_name(Farm.mode),Controls.action_label("interact"),palette.shortcut()]
@@ -117,6 +117,11 @@ func _draw():
   for x in range(4*32+5,9*32,9):draw_line(Vector2(x,6*32-3),Vector2(x,6*32),Color("c5b88e"),2);draw_line(Vector2(x,8*32),Vector2(x,8*32+3),Color("c5b88e"),2)
   return
  if GameState.map_id!="village":return
+ # A lightly worn grass trail points south without consuming editable garden cells.
+ for y in range(29,41):
+  if not Farm.state().cells.has("19,"+str(y)):
+   draw_rect(Rect2(19*32+8,y*32,17,32),Color(.55,.59,.40,.42))
+   for i in 3:draw_rect(Rect2(19*32+10+(i*7+y)%12,y*32+6+i*9,2,1),Color(.66,.66,.45,.55))
  GardenArt.field(self,Farm,time)
  for e: Dictionary in effects:GardenArt.work_effect(self,e)
  if Farm.mode!="" and Farm.garden(aim_cell()) and not GameState.input_locked() and world.player.target==null:GardenArt.preview(self,Farm,aim_cell(),world)

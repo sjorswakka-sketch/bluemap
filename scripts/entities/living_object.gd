@@ -44,7 +44,7 @@ func label() -> String:
 		"forge": return tr("Prismabank")
 		"rune": return tr("Verborgen bosrune")
 		"brazier": return tr("Vuurkorf")
-		"sluice": return tr("Sluisrad")
+		"sluice": return (tr("Westelijke sluis") if id=="lw_sluice_west" else tr("Oostelijke sluis"))+" · "+(tr("open") if GameState.flag(id) else tr("dicht"))
 		"bridge": return tr("De oude lier")
 	return tr("Herstelbord")
 

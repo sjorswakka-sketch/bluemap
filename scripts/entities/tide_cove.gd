@@ -28,10 +28,11 @@ func sync():
 		for y in range(Tide.BANK.position.y,Tide.BANK.end.y):
 			for x in range(Tide.BANK.position.x,Tide.BANK.end.x):
 				var cell:=Vector2i(x,y)
-				world.tile_layer.set_cell(cell,0,Vector2i(Tiles.index_of("ce_shore" if flooded else "ce_sand"),0))
+				world.tile_layer.set_cell(cell,0,preload("res://scripts/core/pixel_landscape.gd").atlas("ce_shore" if flooded else "ce_sand",cell.x,cell.y))
 				if flooded:world.solid_cells[cell]=true
 				else:world.solid_cells.erase(cell)
 		world.tile_layer.update_internals()
+		if is_instance_valid(world.landscape):world.landscape.refresh()
 	if state=="rising" and last_state!="rising":
 		GameState.toast.emit(tr("Het water komt op. Neem de hoge loopbrug of de lijnpalen; je kunt altijd terug."))
 	last_state=state

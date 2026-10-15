@@ -1,6 +1,16 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.27.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.28.0-preview.**
+
+Nieuw in 0.28: **Eigen pixelart-upgrade**. Native 32px terrein met materiaalvarianten,
+aansluitende oevers, rafelige padranden en contactschaduwen; grotere bomen onthullen
+nabije spelers, NPC’s en vijanden. Nieuwe slijmen, fijnere sprites, rustige wateranimatie,
+gedetailleerde wijnvaten/bijenkasten, dakmaterialen en scherpere menuvensters sluiten
+aan op de bestaande stijl. Kaartindeling, loopruimte en voortgang blijven behouden.
+Details: [VISUAL_UPGRADE.md](VISUAL_UPGRADE.md).
+Ook hersteld: itemmeldingen rechts, directe doorgangsinformatie, de volledige
+moerasbrug met zichtbare sluizen/laagwater en de meeruitgang aan de zuidrand.
+Zie [BUGFIX_WATERWORKS.md](BUGFIX_WATERWORKS.md).
 
 Nieuw in 0.27: **Landbouw en irrigatie — ontwikkelronde 1**. Een compact gereedschapsmenu,
 duidelijke werkmarkering en concrete meldingen over gewassen, water en benodigdheden.

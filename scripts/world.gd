@@ -37,7 +37,7 @@ const Tiles := preload("res://scripts/data/tiles.gd")
 const Content := preload("res://scripts/data/content.gd")
 
 const TILE := 32 # grootte van een tegel in de spelwereld
-const ART_TILE := 16 # pixels per tegel in assets/tiles.png (wordt 2x vergroot getoond)
+const ART_TILE := 32 # native pixel landscape; world footprints remain 32x32
 const VIEW := Vector2(576, 324) # wat je ziet: 1152x648 gedeeld door de camerazoom (2)
 const DARK_COLOR := Color(0.1, 0.12, 0.24)
 
@@ -48,6 +48,7 @@ var fx_layer: Node2D
 var canvas_mod: CanvasModulate
 var atmosphere: Node # dag en nacht, weer en lichtjes (scripts/entities/atmosphere.gd)
 var tile_set: TileSet
+var landscape: Node2D
 var tile_layer: TileMapLayer
 var fader: CanvasLayer
 var hud: CanvasLayer
@@ -171,6 +172,9 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	if map_id=="tide_cove":preload("res://scripts/core/tides.gd").prepare(map_data,GameState.day_time)
 	if map_id=="tidal_hollow":preload("res://scripts/core/coastal_adventures.gd").prepare(map_data)
 	_build_tiles(map_data["rows"])
+	landscape = preload("res://scripts/entities/pixel_landscape.gd").new()
+	landscape.world = self
+	ground.add_child(landscape)
 	_build_fountains()
 
 	darkness = map_data.get("dark", 0.0)
@@ -201,6 +205,10 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	living_scenery.world = self
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
+	if map_id=="kruipmoeras":
+		var waterworks:=preload("res://scripts/entities/marsh_waterworks.gd").new()
+		waterworks.world=self
+		ground.add_child(waterworks)
 	if map_id=="forest_edge":ground.add_child(load("res://scripts/entities/edge_scenery.gd").new())
 	if map_id in ["coast","gull_island","tide_cove","river_mouth","harbor","headland"]:
 		var scenery: Node2D=load("res://scripts/entities/coast_scenery.gd").new()
@@ -364,18 +372,20 @@ func _build_tile_set() -> void:
 	tile_set.tile_size = Vector2i(ART_TILE, ART_TILE)
 	tile_set.add_physics_layer()
 	var source := TileSetAtlasSource.new()
-	source.texture = Art.tex("tiles")
+	source.texture = Art.tex("pixel_landscape")
 	source.texture_region_size = Vector2i(ART_TILE, ART_TILE)
 	tile_set.add_source(source, 0)
 	var half := ART_TILE / 2.0
 	var square := PackedVector2Array([
 		Vector2(-half, -half), Vector2(half, -half), Vector2(half, half), Vector2(-half, half)])
 	for i in Tiles.NAMES.size():
-		source.create_tile(Vector2i(i, 0))
-		if Tiles.is_solid_name(Tiles.NAMES[i]):
-			var data := source.get_tile_data(Vector2i(i, 0), 0)
-			data.add_collision_polygon(0)
-			data.set_collision_polygon_points(0, 0, square)
+		for variant in 8:
+			var coords := Vector2i(i,variant)
+			source.create_tile(coords)
+			if Tiles.is_solid_name(Tiles.NAMES[i]):
+				var data := source.get_tile_data(coords, 0)
+				data.add_collision_polygon(0)
+				data.set_collision_polygon_points(0, 0, square)
 
 
 func _build_tiles(rows: Array) -> void:
@@ -388,7 +398,7 @@ func _build_tiles(rows: Array) -> void:
 		var row: String = rows[y]
 		for x in row.length():
 			var tile_name := Tiles.name_for(row[x], x, y)
-			tile_layer.set_cell(Vector2i(x, y), 0, Vector2i(Tiles.index_of(tile_name), 0))
+			tile_layer.set_cell(Vector2i(x, y), 0, preload("res://scripts/core/pixel_landscape.gd").atlas(tile_name,x,y))
 			if Tiles.is_solid_name(tile_name):
 				solid_cells[Vector2i(x, y)] = true
 

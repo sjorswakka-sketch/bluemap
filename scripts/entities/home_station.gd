@@ -23,16 +23,10 @@ func _draw():
    for x in [-20,2,20]:draw_line(Vector2(x,4),Vector2(x+3,-5),Color("baa36b"),3)
    draw_rect(Rect2(-33,13,66,7),Color("a98d61"));draw_line(Vector2(-18,-25),Vector2(-15,-31+sin(time)*3),Color("a5b8a2"),2)
   "wine":
-   draw_style_box(preload("res://scripts/core/ui_style.gd").flat(Color("9b7049"),Color("4d3c31"),2),Rect2(-17,-27,34,42))
-   for y in [-20,4]:draw_rect(Rect2(-17,y,34,5),Color("73828a"))
-   draw_line(Vector2(0,-25),Vector2(0,13),Color("bd9360"),2);draw_circle(Vector2(11,4),3,Color("d7b778"))
+   draw_texture(preload("res://scripts/core/art.gd").tex("pixel_station_wine"),Vector2(-40,-47))
   "hive":
-   for y in [-22,-11,0]:draw_rect(Rect2(-18,y,36,9),Color("d6ad60"));draw_rect(Rect2(-18,y+7,36,2),Color("8e683c"))
-   draw_line(Vector2(-23,-24),Vector2(0,-34),Color("624b35"),5);draw_line(Vector2(0,-34),Vector2(23,-24),Color("624b35"),5)
-   draw_rect(Rect2(-7,1,14,5),Color("352f2b"))
-   if Farm.flowers()>=3:
-    for i in 3:
-     var at:=Vector2(sin(time*1.5+i*2)*38,cos(time*2+i*2)*19-17);draw_circle(at+Vector2(0,-2),2,Color("dce4d1"));draw_line(at-Vector2(3,0),at+Vector2(3,0),Color("e6bd5d"),3);draw_line(at,at+Vector2(1,0),Color("3d392f"),3)
+   draw_texture(preload("res://scripts/core/art.gd").tex("pixel_station_hive"),Vector2(-40,-47))
+   _bees()
   "bed":
    draw_rect(Rect2(-18,-32,36,52),Color("a78258"));draw_rect(Rect2(-15,-28,30,10),Color("ede2c4"));draw_rect(Rect2(-15,-16,30,32),Color("72989a"))
   "shelf":
@@ -72,3 +66,11 @@ func _draw():
    draw_rect(Rect2(-13,y,26,4),Color("354944"));draw_rect(Rect2(-12,y+1,24*minf(progress,1),2),Color("b5cf9a") if progress>=1 else Color("d3b579"))
    if progress>=1:draw_line(Vector2(7,y-7),Vector2(10,y-4),Color("dbe9b3"),2);draw_line(Vector2(10,y-4),Vector2(15,y-10),Color("dbe9b3"),2)
  if world.player.target==self:DrawUtil.prompt(self,Vector2(0,-49 if obj.role=="compost" else -40),time)
+
+func _bees():
+ if Farm.flowers()<3:return
+ for i in 3:
+  var at:=(Vector2(sin(time*1.5+i*2)*35,cos(time*2+i*2)*17-17)).round()
+  draw_rect(Rect2(at+Vector2(-1,-3),Vector2(3,2)),Color("dce4d1"))
+  draw_rect(Rect2(at+Vector2(-3,0),Vector2(6,2)),Color("d6b66a"))
+  draw_rect(Rect2(at,Vector2(1,2)),Color("384236"))

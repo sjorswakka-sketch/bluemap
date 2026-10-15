@@ -43,3 +43,13 @@ static func light_texture() -> Texture2D:
 	texture.height = 128
 	_cache["_light"] = texture
 	return texture
+
+
+## Keep legacy atlas dimensions for direct UI drawing; sprite helper opts into native detail.
+static func detailed(texture: Texture2D) -> Texture2D:
+	var key := texture.resource_path.get_file().get_basename()
+	if key=="" or key.begins_with("pixel_"):return texture
+	var path := "res://assets/pixel_%s.png" % key
+	if not _cache.has(path):
+		_cache[path] = tex("pixel_"+key) if ResourceLoader.exists(path) else texture
+	return _cache[path]

@@ -4,6 +4,8 @@ Afgesproken met sjors op 15 oktober 2026, op basis van 0.26.1-preview.
 Dit plan vervangt het eerdere voorstel van 40 afzonderlijke punten en de oudere
 afgeronde kustrondes als volgorde voor een volgend go.
 
+Extra uitgevoerd na fase 1: grafische ronde 0.28, plus meldingen, moerassluizen/brug en de zuidelijke meeruitgang; dit verbruikt geen fase, dus het volgende gewone go blijft fase 2.
+
 Eén go start één volledige volgende ronde, met ontwerp, eigen art/audio, NL/EN,
 implementatie, visuele controle, volledige speltests en een Windows-build op
 claude/affectionate-mendel-vc1idx zonder force-push. Eerst de actuele remote

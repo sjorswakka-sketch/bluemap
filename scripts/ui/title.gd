@@ -226,14 +226,14 @@ func _draw_scene() -> void:
 		content.draw_rect(Rect2(star["pos"], Vector2(3, 3)), Color(1, 1, 1, twinkle))
 
 	# Grond: twee rijen gras met wat afwisseling.
-	var tiles := Art.tex("tiles")
+	var tiles := Art.tex("pixel_landscape")
 	var tile := 16.0 * GROUND_SCALE
 	var ground_y := h - tile * 2.0
 	for row in 2:
 		for col in int(ceil(w / tile)):
 			var variant := 5 if (col * 3 + row * 5) % 7 == 0 else 6 if (col * 2 + row) % 5 == 0 else 0
 			content.draw_texture_rect_region(tiles, Rect2(col * tile, ground_y + row * tile, tile, tile),
-				Rect2(variant * 16.0, 0, 16, 16))
+				Rect2(variant * 32.0, ((col+row)%8)*32, 32, 32))
 
 	# De personages, op de grond.
 	var feet_y := ground_y + 30.0

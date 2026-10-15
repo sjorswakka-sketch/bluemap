@@ -7,6 +7,12 @@ static func gs() -> Node:
 
 static func migrate() -> void:
 	var state := gs()
+	# Completed saves must show the same safe gate positions as newly solved sluices.
+	if state.flag("lw_drained") or state.quest_state("wilgentwijgen")=="done":
+		state.flags["lw_sluice_west"]=true
+		state.flags["lw_sluice_east"]=false
+		state.flags["lw_sluice_west_seen"]=true
+		state.flags["lw_sluice_east_seen"]=true
 	if state.flag("lw_revision_1"):
 		return
 	# Oude afgeronde opdrachten verdienen hun nieuwe wereldgevolg ook.

@@ -14,7 +14,7 @@ static func put(data: Dictionary,cell: Vector2i,value: String):
  var row: String=data.rows[cell.y];row[cell.x]=value;data.rows[cell.y]=row
 static func enrich(id: String,data: Dictionary):
  if id=="village":
-  # The original lake portal remains at 19,26; a separate western walk reaches the garden.
+  # The lake exit follows the enlarged village to its southern edge.
   for y in range(26,44):
    if y>=data.rows.size():data.rows.append("##....................................##" if y<43 else "########################################")
    for x in range(4,17):
@@ -24,6 +24,15 @@ static func enrich(id: String,data: Dictionary):
   for y in [31,37]:
    for x in range(18,24):put(data,Vector2i(x,y),"=")
   put(data,Vector2i(28,28),"=")
+  for y in range(26,29):put(data,Vector2i(19,y),",")
+  for y in range(41,44):
+   for x in [18,19]:put(data,Vector2i(x,y),",")
+  for y in range(41,44):
+   put(data,Vector2i(20,y),"=" if y<43 else ",")
+  for obj: Dictionary in data.objects:
+   if obj.type=="portal" and obj.to=="lake":obj.pos=[19,42]
+   elif obj.type=="sign" and obj.pos==[18,24]:obj.pos=[17,40]
+  data.spawns["from_lake"]=[19,40]
   data.spawns["from_home"]=[7,22];data.spawns["home_altar"]=[9,24]
   data.objects.append_array([
    {"type":"portal","pos":[7,21],"to":"player_home","spawn":"start"},

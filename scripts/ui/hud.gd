@@ -38,6 +38,7 @@ var opening_quiet := false
 var combat_hint: Label
 var access_panel: PanelContainer
 var access_text: Label
+var item_receipts: Control
 
 
 func _ready() -> void:
@@ -146,6 +147,9 @@ func _build_ui() -> void:
 	opening_hint.add_theme_constant_override("outline_size",6)
 	add_child(opening_hint)
 
+	item_receipts=preload("res://scripts/ui/item_receipts.gd").new()
+	item_receipts.tracker=tracker_panel
+	add_child(item_receipts)
 	access_panel=PanelContainer.new()
 	access_panel.add_theme_stylebox_override("panel",UiStyle.flat(Color(0.04,0.07,0.13,0.9),Color("92bcc4"),1))
 	add_child(access_panel)
@@ -297,7 +301,10 @@ func _refresh_tracker() -> void:
 # --- Meldingen en kaartnaam ----------------------------------------------------------------
 
 func _queue_toast(text: String) -> void:
-	toast_queue.append(text)
+	if item_receipts!=null and item_receipts.accepts(text):
+		item_receipts.push(text)
+	else:
+		toast_queue.append(text)
 
 
 ## Grote tekst midden bovenin: de naam van een gebied, of "Goedemorgen!". `text_of` geeft de tekst in de huidige taal,
@@ -372,6 +379,7 @@ func _process(delta: float) -> void:
 		banner.modulate.a = 0.0
 
 	_refresh_access()
+	if access_panel.visible and toast_time>0:toast_time+=delta
 	_update_clock()
 	_update_boss()
 
@@ -493,7 +501,7 @@ func _draw_xp() -> void:
 
 func _refresh_access() -> void:
 	access_panel.hide()
-	if GameState.input_locked() or toast_time>0 or not toast_queue.is_empty() or banner_time>0:return
+	if GameState.input_locked():return
 	var world: Node=get_tree().get_first_node_in_group("world")
 	if world==null:return
 	var hint: Dictionary=preload("res://scripts/core/access_points.gd").nearby(world)
@@ -510,4 +518,5 @@ func _refresh_access() -> void:
 	if access_panel.get_global_rect().intersects(actor_bounds):
 		access_panel.position.y=maxf(24,actor_bounds.position.y-access_panel.size.y-16)
 	access_panel.show()
+	toast_panel.modulate.a=0 # doorway information has immediate priority; notices resume after leaving
 	opening_hint.hide()

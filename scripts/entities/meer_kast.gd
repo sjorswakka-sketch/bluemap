@@ -39,7 +39,9 @@ func _process(_delta: float) -> void:
 
 func _clear_cells() -> void:
 	opened = true
-	var floor_index := Tiles.index_of("meer_bibvloer")
 	for cell in cells:
-		world.tile_layer.set_cell(cell, 0, Vector2i(floor_index, 0))
+		var row: String=world.map_data.rows[cell.y]
+		world.map_data.rows[cell.y]=row.substr(0,cell.x)+"Q"+row.substr(cell.x+1)
+		world.tile_layer.set_cell(cell, 0, preload("res://scripts/core/pixel_landscape.gd").atlas("meer_bibvloer",cell.x,cell.y))
 		world.solid_cells.erase(cell)
+	if is_instance_valid(world.landscape):world.landscape.refresh()
