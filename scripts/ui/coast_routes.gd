@@ -64,6 +64,7 @@ func rebuild():
 		var maps: Script=load("res://scripts/maps/registry.gd")
 		for route: Dictionary in station.obj.routes:
 			add_option(tr("Veer naar %s · gratis") % tr(maps.MAPS[route.to].DATA.name),choose_route.bind(route))
+		add_option(tr("Bekijk de kustregio"),open_atlas)
 	elif station.obj.role=="kit":
 		title.text=tr("Leenkist aan de baai")
 		detail.text=tr("Leen een landingslijn voor beide lijnpalen. Zo steek je de baai over zonder de noordelijke omweg. Gratis, herbruikbaar en zonder verbruik. Je kunt ook gewoon over het hoge pad lopen.")
@@ -103,6 +104,11 @@ func choose_route(route: Dictionary):
 	close()
 	for voyage in get_tree().get_nodes_in_group("coast_voyage"):
 		if not voyage.is_queued_for_deletion() and voyage.world==world: voyage.choose_route(station,route);return
+func open_atlas():
+	if not active or not valid_source():return
+	var node: Node2D=source.get_ref();close()
+	for ui in get_tree().get_nodes_in_group("coast_atlas"):
+		if not ui.is_queued_for_deletion() and ui.world==world:ui.open(node);return
 func start_sailing():
 	if not active or not valid_source() or source.get_ref().obj.role!="kit":return
 	sailing=true;visited=[false,false,false];boat=Vector2(85,110);boat_velocity=Vector2.ZERO;boat_angle=0;elapsed=0;rebuild()

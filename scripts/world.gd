@@ -188,6 +188,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	player.global_position = _safe_fountain_spawn(preload("res://scripts/core/regional_adventures.gd").safe_position(map_id,start))
 	player.velocity = Vector2.ZERO
 	player.knockback = Vector2.ZERO
+	player.camera.offset=Vector2.ZERO
 	_set_camera_limits()
 	_spawn_objects()
 	var landmarks := BuildingLandmarksScript.new()
@@ -198,7 +199,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	ground.add_child(living_scenery)
 	living_scenery.refresh()
 	if map_id=="forest_edge":ground.add_child(load("res://scripts/entities/edge_scenery.gd").new())
-	if map_id in ["coast","gull_island","tide_cove"]:
+	if map_id in ["coast","gull_island","tide_cove","river_mouth","harbor","headland"]:
 		var scenery: Node2D=load("res://scripts/entities/coast_scenery.gd").new()
 		scenery.world=self
 		ground.add_child(scenery)
@@ -208,6 +209,13 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 		var routes: CanvasLayer=load("res://scripts/ui/coast_routes.gd").new()
 		routes.world=self
 		ground.add_child(routes)
+		var atlas: CanvasLayer=load("res://scripts/ui/coast_atlas.gd").new()
+		atlas.world=self
+		ground.add_child(atlas)
+	if map_id in ["river_mouth","harbor","headland"]:
+		var region_scenery: Node2D=load("res://scripts/entities/coastal_region_scenery.gd").new()
+		region_scenery.world=self
+		ground.add_child(region_scenery)
 	if map_id=="tide_cove":
 		var tide: Node2D=load("res://scripts/entities/tide_cove.gd").new()
 		tide.world=self
@@ -435,7 +443,7 @@ func _spawn_objects() -> void:
 		var key := "%s:%s:%d" % [obj["type"], GameState.map_id, i]
 		match obj["type"]:
 			"npc":
-				var npc: Node2D = load("res://scripts/entities/supper_actor.gd").new() if obj["id"]=="meer_joris" and GameState.map_id=="lake" else NpcScript.new()
+				var npc: Node2D = load("res://scripts/entities/coast_resident.gd").new() if obj["id"] in ["rg_ise","rg_raf"] else load("res://scripts/entities/supper_actor.gd").new() if obj["id"]=="meer_joris" and GameState.map_id=="lake" else NpcScript.new()
 				npc.setup(obj["id"])
 				npc.world = self
 				npc.exists_if = obj.get("exists_if", [])

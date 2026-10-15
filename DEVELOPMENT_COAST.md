@@ -68,9 +68,9 @@ loopt op de bestaande opgeslagen wereldklok en pauzeert met menu's.
 De afzonderlijke proefhaven heeft sturen, remmen, boeien en botsingen; geen
 wereldvaart of vervanging van de veer. Eerst feedback voordat vrij varen groeit.
 Eigen kaart/props/icoon; bestaande eigen kustmuziek en lijn-/watergeluiden.
-Controle en grenzen: TIDAL_ROUTES.md. De volgende go start alleen fase 3.
+Controle en grenzen: TIDAL_ROUTES.md. Fase 3 is hieronder uitgevoerd.
 
-## 3. De regio ruimte geven — volgende fase
+## 3. De regio ruimte geven — uitgevoerd in 0.22
 
 Uitbreiden naar in totaal zes tot acht samenhangende kaarten, na beoordeling
 van de eerste expeditie. Ontwerprichting: riviermonding, kustpad, kleine haven,
@@ -83,7 +83,23 @@ geen eis om lege kaarten of extra omwegen toe te voegen.
 **Klaar wanneer:** plekken herkenbaar verschillen, reisroutes leesbaar zijn
 en elke drukke plek een rustige aanloop/terugweg heeft.
 
-## 4. Eigen avonturen, monsters en challenges
+Opgeleverd: de kustregio telt nu zes kaarten. Zilvermonding (76×46),
+Rietwenk Haven (74×46) en Lichtkaap (76×46) voegen 6.525 terreinvloertegels toe;
+de optionele noordelijke aansluiting aan de kust nog vier. Dat is ongeveer
+38,6% meer statische vloer ten opzichte van 0.21, vóór gebouwen/overige bezetting.
+De twee werkplekken en vuurtoren hebben echte voetafdrukken. De oude meerroute,
+Bosrand, eilanden en getijdenproef worden niet voller gemaakt.
+
+De haven heeft alleen Ise (werkende veerkeuze) en Raf (regiokaart), beide met eigen
+art en werkbeweging. Geen extra opdrachten, vijanden, kisten of verzamelplaatsen.
+De rivierbrug en het pad naar de kaap zijn zonder eisen heen en terug te lopen.
+Een oversteek naar de haven voorkomt verplichte lange herhaalwandelingen.
+De regiokaart toont wandelverbindingen, de gekozen veerroute en gebiedsinformatie.
+Eigen exterieurs/landschap, lichtbundel en rustige animaties; camera geeft hoge
+gebouwen meer ruimte en reset bij vertrek. Bestaande slots en saves behouden.
+Controle: COASTAL_REGION.md. De volgende go start alleen fase 4.
+
+## 4. Eigen avonturen, monsters en challenges — volgende fase
 
 Vier tot zes verschillende verhaallijnen met onderzoek, navigatie, een
 herstelhandeling, een keuze met zichtbare gevolgen en een bijzondere ontmoeting.

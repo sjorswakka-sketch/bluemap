@@ -282,6 +282,81 @@ msgstr "The door is shut. There's no way back!"
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
 
+#. Naam van gebied river_mouth
+#: scripts/maps/river_mouth.gd:4
+msgid "Zilvermonding"
+msgstr "Silver Estuary"
+
+#. Kaart river_mouth, sign [12, 42]: tekst op een bord
+#: scripts/maps/river_mouth.gd:91
+msgid "Zuidelijke oever: Blauwe Kust"
+msgstr "Southern bank: Blue Coast"
+
+#. Kaart river_mouth, sign [12, 42]: tekst op een bord
+#: scripts/maps/river_mouth.gd:92
+msgid "Over de brug naar het oosten ligt Rietwenk Haven. Beide oevers blijven rustig."
+msgstr "Rietwenk Harbour lies across the bridge to the east. Both banks remain peaceful."
+
+#. Kaart river_mouth, sign [72, 16]: tekst op een bord
+#: scripts/maps/river_mouth.gd:115
+msgid "Oostelijk pad: Rietwenk Haven"
+msgstr "Eastern path: Rietwenk Harbour"
+
+#. Kaart river_mouth, sign [72, 16]: tekst op een bord
+#: scripts/maps/river_mouth.gd:116
+msgid "Een korte kade, twee werkplekken en de veer. De noordelijke route voert verder naar de kaap."
+msgstr "A short quay, two workplaces and the ferry. The northern route continues to the cape."
+
+#. Naam van gebied harbor
+#: scripts/maps/harbor.gd:4
+msgid "Rietwenk Haven"
+msgstr "Rietwenk Harbour"
+
+#. Kaart harbor, sign [3, 16]: tekst op een bord
+#: scripts/maps/harbor.gd:95
+msgid "Westelijke oever: Zilvermonding"
+msgstr "Western bank: Silver Estuary"
+
+#. Kaart harbor, sign [3, 16]: tekst op een bord
+#: scripts/maps/harbor.gd:96
+msgid "De brug bij de rivier voert naar de Blauwe Kust. Het westelijke grasveld is vrij van werkplekken."
+msgstr "The river bridge leads to the Blue Coast. The western meadow is clear of workplaces."
+
+#. Kaart harbor, sign [70, 12]: tekst op een bord
+#: scripts/maps/harbor.gd:119
+msgid "Oostelijk kustpad: Lichtkaap"
+msgstr "Eastern coast path: Light Cape"
+
+#. Kaart harbor, sign [70, 12]: tekst op een bord
+#: scripts/maps/harbor.gd:120
+msgid "Volg het hoge pad naar de vuurtoren. Je hebt geen uitrusting nodig en kunt altijd terug."
+msgstr "Follow the high path to the lighthouse. No equipment is needed, and you can always return."
+
+#. Naam van gebied headland
+#: scripts/maps/headland.gd:4
+msgid "Lichtkaap"
+msgstr "Light Cape"
+
+#. Kaart headland, sign [3, 26]: tekst op een bord
+#: scripts/maps/headland.gd:87
+msgid "Westelijk kustpad: Rietwenk Haven"
+msgstr "Western coast path: Rietwenk Harbour"
+
+#. Kaart headland, sign [3, 26]: tekst op een bord
+#: scripts/maps/headland.gd:88
+msgid "Het brede hoge pad brengt je terug naar de veer. Het zuidelijke uitzicht is een rustige zijroute."
+msgstr "The broad high path leads back to the ferry. The southern viewpoint is a quiet side route."
+
+#. Kaart headland, region_view [49, 33]: tekst op een bord
+#: scripts/maps/headland.gd:117
+msgid "Vanaf deze lage rand zie je het verschil tussen de rustige riviermonding en de open zee."
+msgstr "From this low ledge, you can see the difference between the peaceful estuary and the open sea."
+
+#. Kaart headland, region_view [49, 33]: tekst op een bord
+#: scripts/maps/headland.gd:118
+msgid "Beneden trekken schuimstrepen langs de rotsen. Achter je voert het hoge pad terug naar de haven."
+msgstr "Below, streaks of foam drift past the rocks. Behind you, the high path leads back to the harbour."
+
 #. Naam van gebied tide_cove
 #: scripts/maps/tide_cove.gd:4
 msgid "Getijdenbaai"
@@ -311,6 +386,16 @@ msgstr "Western path: Silver Lake"
 #: scripts/maps/coast.gd:92
 msgid "West: Zilvermeer. Oost: strand en veer naar Meeuweneiland."
 msgstr "West: Silver Lake. East: beach and ferry to Gull Island."
+
+#. Kaart coast, sign [12, 3]: tekst op een bord
+#: scripts/data/coastal_region_maps.gd:10
+msgid "Noordelijk oeverpad: Zilvermonding"
+msgstr "Northern bank path: Silver Estuary"
+
+#. Kaart coast, sign [12, 3]: tekst op een bord
+#: scripts/data/coastal_region_maps.gd:10
+msgid "Volg de hoge rivierbrug naar Rietwenk Haven. Naar het westen blijft het Zilvermeer bereikbaar."
+msgstr "Follow the high river bridge to Rietwenk Harbour. Silver Lake remains accessible to the west."
 
 #. Naam van gebied gull_island
 #: scripts/maps/gull_island.gd:4
@@ -1662,6 +1747,58 @@ msgstr "The map is MINE! I'll squish you into goo!"
 #: scripts/data/dialogue.gd:411
 msgid "Zie je die ring op de vloer? Daar land ik. Blijf vooral staan, als je durft!"
 msgstr "See that ring on the floor? That's where I land. Stay right there, if you dare!"
+
+#. Naam van wie er praat (Gesprek rg_ise)
+#. Naam van personage rg_ise (boven zijn hoofd)
+#: scripts/data/ext/coastal_region.gd:8 scripts/data/ext/coastal_region.gd:12
+msgid "Ise de veervrouw"
+msgstr "Ise the ferry keeper"
+
+#. Gesprek rg_ise, Ise de veervrouw zegt
+#: scripts/data/ext/coastal_region.gd:12
+msgid "Ik houd de overtochten kort. De veer vaart naar de Blauwe Kust, Meeuweneiland en de Getijdenbaai, ook bij hoogwater."
+msgstr "I keep the crossings short. The ferry sails to the Blue Coast, Gull Island and Tidal Cove, even at high tide."
+
+#. Gesprek rg_ise, Ise de veervrouw zegt
+#: scripts/data/ext/coastal_region.gd:12
+msgid "Liever wandelen? Achter de kade loopt een vrij hoog pad naar Lichtkaap. Over de westelijke rivierbrug kom je terug aan de Blauwe Kust."
+msgstr "Prefer to walk? An open high path behind the quay leads to Light Cape. The western river bridge takes you back to the Blue Coast."
+
+#. Gesprek rg_ise: keuze van de speler
+#: scripts/data/ext/coastal_region.gd:12
+msgid "Bekijk de veerbestemmingen."
+msgstr "Show the ferry destinations."
+
+#. Gesprek rg_ise: keuze van de speler
+#: scripts/data/ext/coastal_region.gd:12
+msgid "Ik loop zelf verder."
+msgstr "I'll keep walking."
+
+#. Naam van wie er praat (Gesprek rg_raf)
+#. Naam van personage rg_raf (boven zijn hoofd)
+#: scripts/data/ext/coastal_region.gd:9 scripts/data/ext/coastal_region.gd:13
+msgid "Raf de nettenmaker"
+msgstr "Raf the net maker"
+
+#. Gesprek rg_raf, Raf de nettenmaker zegt
+#: scripts/data/ext/coastal_region.gd:13
+msgid "Ik knoop mijn netten hier, uit de loop. De weidse riviermonding ligt achter de westelijke brug; de vuurtoren staat op de oostelijke kaap."
+msgstr "I knot my nets here, out of the way. The wide estuary lies beyond the western bridge; the lighthouse stands on the eastern cape."
+
+#. Gesprek rg_raf, Raf de nettenmaker zegt
+#: scripts/data/ext/coastal_region.gd:13
+msgid "Ik teken de paden en veerroutes op dezelfde kaart. De hoge loopbruggen blijven bij hoogwater vrij, zodat iedereen weer naar huis kan."
+msgstr "I draw the paths and ferry routes on the same map. The high boardwalks stay clear at high tide, so everyone can get home."
+
+#. Gesprek rg_raf: keuze van de speler
+#: scripts/data/ext/coastal_region.gd:13
+msgid "Laat de regiokaart zien."
+msgstr "Show the regional map."
+
+#. Gesprek rg_raf: keuze van de speler
+#: scripts/data/ext/coastal_region.gd:13
+msgid "Ik kijk rustig rond."
+msgstr "I'll look around for a while."
 
 #. Naam van wie er praat (Gesprek ce_sail_island)
 #. Naam van wie er praat (Gesprek ce_sail_coast)
@@ -6834,6 +6971,16 @@ msgstr "The way begins in the Crystal Temple. Only when the Blue Map is whole ag
 msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
 msgstr "The Star Map isn't easy to read. The Guardian will test you first. Take it slow. Get a good night's sleep first. And eat something."
 
+#. Legenda op het kaartje (menu): region_landmark
+#: scripts/data/ext/coastal_region.gd:4
+msgid "Kustwerkplek of vuurtoren"
+msgstr "Coastal workplace or lighthouse"
+
+#. Legenda op het kaartje (menu): region_chart
+#: scripts/data/ext/coastal_region.gd:4
+msgid "Regiokaart"
+msgstr "Regional map"
+
 #. Legenda op het kaartje (menu): tide_station
 #: scripts/data/ext/tides.gd:4
 msgid "Kustroutes en hulpmiddelen"
@@ -8353,9 +8500,33 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:247
+#: scripts/world.gd:255
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
+
+#: scripts/core/coastal_region.gd:13
+msgid "Strand en duinen. West: Zilvermeer. Noord: Zilvermonding. De veer verbindt de eilanden en de haven."
+msgstr "Beach and dunes. West: Silver Lake. North: Silver Estuary. The ferry connects the islands and harbour."
+
+#: scripts/core/coastal_region.gd:14
+msgid "Brede oevers en één hoge rivierbrug. Zuid: Blauwe Kust. Oost: Rietwenk Haven. Geen gereedschap nodig."
+msgstr "Wide banks and one high river bridge. South: Blue Coast. East: Rietwenk Harbour. No tools needed."
+
+#: scripts/core/coastal_region.gd:15
+msgid "Een kleine werkkade met Ise en Raf. West: riviermonding. Oost: Lichtkaap. Gratis veer naar kust en eilanden."
+msgstr "A small working quay with Ise and Raf. West: estuary. East: Light Cape. Free ferry to the coast and islands."
+
+#: scripts/core/coastal_region.gd:16
+msgid "Hoge graslanden, een vuurtoren en een rustig zeezicht. Het brede westelijke pad brengt je terug naar de haven."
+msgstr "High grasslands, a lighthouse and a peaceful sea view. The broad western path takes you back to the harbour."
+
+#: scripts/core/coastal_region.gd:17
+msgid "Grasrug, strand en uitzichtpunt. De oostelijke loopbrug voert naar de Getijdenbaai; de veer brengt je terug."
+msgstr "A grassy ridge, beach and viewpoint. The eastern boardwalk leads to Tidal Cove; the ferry takes you back."
+
+#: scripts/core/coastal_region.gd:18
+msgid "Getijdenbaai: zandbank bij laagwater, hoge loopbrug altijd open. Gratis leenlijn en veer bij de westelijke steiger."
+msgstr "Tidal Cove: sandbank at low tide, high boardwalk always open. Free loan line and ferry by the western jetty."
 
 #: scripts/core/craft_journal.gd:28
 msgid "Werktekening geleerd: %s. Kies een materiaaldoel via Beroepen."
@@ -9319,12 +9490,8 @@ msgstr[0] "Found: %d coin"
 msgstr[1] "Found: %d coins"
 
 #: scripts/entities/coast_dock.gd:11
-msgid "Veer naar Meeuweneiland"
-msgstr "Ferry to Gull Island"
-
-#: scripts/entities/coast_dock.gd:11
-msgid "Veer naar de Blauwe Kust"
-msgstr "Ferry to the Blue Coast"
+msgid "Veer naar %s"
+msgstr "Ferry to %s"
 
 #: scripts/entities/coast_note.gd:9
 msgid "Strandsteen bij het uitzicht"
@@ -9618,6 +9785,30 @@ msgstr "You already have all your hearts."
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
 
+#: scripts/entities/region_chart.gd:9 scripts/ui/coast_routes.gd:67
+msgid "Bekijk de kustregio"
+msgstr "View the coastal region"
+
+#: scripts/entities/region_landmark.gd:21 scripts/entities/region_landmark.gd:25
+msgid "Vuurtoren van Lichtkaap"
+msgstr "Light Cape Lighthouse"
+
+#: scripts/entities/region_landmark.gd:25
+msgid "De lens draait langzaam boven het water. De warme bundel volgt de boeien verderop op zee."
+msgstr "The lens turns slowly above the water. Its warm beam follows the buoys farther out to sea."
+
+#: scripts/entities/region_landmark.gd:25
+msgid "Een verweerde plaat wijst naar het westelijke pad: Rietwenk Haven. Aan de zuidrand staat een bankje uit de wind."
+msgstr "A weathered plaque points to the western path: Rietwenk Harbour. A bench on the southern edge offers shelter from the wind."
+
+#: scripts/entities/region_view.gd:11
+msgid "Uitzicht over de zee"
+msgstr "View of the sea"
+
+#: scripts/entities/region_view.gd:13
+msgid "Aan de kaap"
+msgstr "At the cape"
+
 #: scripts/entities/regional_adventures.gd:50
 msgid "Waterzak gevuld: 3 slokken. Schaduw houdt je koel; de blauwe luifels hebben water."
 msgstr "Waterskin filled: 3 sips. Shade keeps you cool; blue shelters have water."
@@ -9867,11 +10058,11 @@ msgstr "The catch is safe! Bring the meal hamper to Mila’s stove inside the in
 msgid "Het water komt op. Neem de hoge loopbrug of de lijnpalen; je kunt altijd terug."
 msgstr "The tide is rising. Take the high boardwalk or the line posts; you can always return."
 
-#: scripts/entities/tide_cove.gd:42
+#: scripts/entities/tide_cove.gd:43
 msgid "Zandbank sluit zodra je veilig op de oever bent."
 msgstr "Sandbank closes once you are safely on shore."
 
-#: scripts/entities/tide_cove.gd:42
+#: scripts/entities/tide_cove.gd:43
 msgid "Hoge loopbrug: altijd open · veer: altijd beschikbaar"
 msgstr "High boardwalk: always open · ferry: always available"
 
@@ -9887,7 +10078,7 @@ msgstr "Use landing line"
 msgid "Getijde en veilige routes"
 msgstr "Tide and safe routes"
 
-#: scripts/entities/tide_station.gd:14 scripts/ui/coast_routes.gd:61
+#: scripts/entities/tide_station.gd:14 scripts/ui/coast_routes.gd:62
 msgid "Bestemmingen en reisroutes"
 msgstr "Destinations and travel routes"
 
@@ -9983,71 +10174,95 @@ msgstr "Nothing worn"
 msgid "Verf:"
 msgstr "Dye:"
 
-#: scripts/ui/coast_routes.gd:58
-msgid "Proefhaven · vrij varen"
-msgstr "Practice harbour · free sailing"
+#: scripts/ui/coast_atlas.gd:61
+msgid "Kustregio · kaart en verbindingen"
+msgstr "Coastal region · map and connections"
 
-#: scripts/ui/coast_routes.gd:62
-msgid "Alle veren zijn gratis en varen bij ieder getij. Meeuweneiland heeft een loopbrug naar de Getijdenbaai. De hoge route in de baai blijft open."
-msgstr "All ferries are free and run at every tide. Gull Island has a boardwalk to Tidal Cove. The cove's high route stays open."
+#: scripts/ui/coast_atlas.gd:62
+msgid "Goud: wandelpad · blauw: gekozen veerroute · witte ring: hier"
+msgstr "Gold: footpath · blue: selected ferry route · white ring: here"
 
-#: scripts/ui/coast_routes.gd:65
-msgid "Veer naar %s · gratis"
-msgstr "Ferry to %s · free"
-
-#: scripts/ui/coast_routes.gd:67
-msgid "Leenkist aan de baai"
-msgstr "Cove loan chest"
-
-#: scripts/ui/coast_routes.gd:68
-msgid "Leen een landingslijn voor beide lijnpalen. Zo steek je de baai over zonder de noordelijke omweg. Gratis, herbruikbaar en zonder verbruik. Je kunt ook gewoon over het hoge pad lopen."
-msgstr "Borrow a landing line for either line post. Cross the cove without the northern detour. Free, reusable and never consumed. You can also walk along the high path."
-
-#: scripts/ui/coast_routes.gd:69
-msgid "Landingslijn is al in je tas"
-msgstr "Landing line already in your bag"
-
-#: scripts/ui/coast_routes.gd:69
-msgid "Leen de landingslijn · gratis"
-msgstr "Borrow the landing line · free"
-
-#: scripts/ui/coast_routes.gd:70
-msgid "Probeer vrij varen in de proefhaven"
-msgstr "Try free sailing in the practice harbour"
-
-#: scripts/ui/coast_routes.gd:72
-msgid "Lijnpaal · korte oversteek"
-msgstr "Line post · short crossing"
-
-#: scripts/ui/coast_routes.gd:73
-msgid "Nodig: landingslijn uit de gratis leenkist bij de westelijke steiger. De lijn blijft in je tas. Zonder lijn: volg het hoge pad naar het noorden."
-msgstr "Required: landing line from the free loan chest by the western jetty. The line stays in your bag. Without a line, follow the high path to the north."
-
-#: scripts/ui/coast_routes.gd:74
-msgid "Steek over met je landingslijn"
-msgstr "Cross with your landing line"
-
-#: scripts/ui/coast_routes.gd:74
-msgid "Ontbreekt: landingslijn · leen bij de steiger"
-msgstr "Missing: landing line · borrow at the jetty"
-
-#: scripts/ui/coast_routes.gd:76
-msgid "Getijdenbaai · drie routes"
-msgstr "Tidal Cove · three routes"
-
-#: scripts/ui/coast_routes.gd:77
-msgid "Zandbank: kort bij laagwater. Noordelijke loopbrug: altijd open. Lijnpalen: kort met een geleende landingslijn. De boot en westelijke loopbrug brengen je altijd terug."
-msgstr "Sandbank: short route at low tide. Northern boardwalk: always open. Line posts: short route with a borrowed landing line. The boat and western boardwalk always take you back."
-
-#: scripts/ui/coast_routes.gd:78 scripts/ui/coast_voyage.gd:59
-msgid "Terug naar de steiger"
-msgstr "Return to the dock"
-
-#: scripts/ui/coast_routes.gd:78 scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:403 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
+#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:403 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
 msgid "Sluiten"
 msgstr "Close"
 
-#: scripts/ui/coast_routes.gd:86
+#: scripts/ui/coast_atlas.gd:69
+msgid "Je bent hier: %s."
+msgstr "You are here: %s."
+
+#: scripts/ui/coast_atlas.gd:75
+msgid "Met de veer: %s"
+msgstr "By ferry: %s"
+
+#: scripts/ui/coast_atlas.gd:79
+msgid "Te voet: %s"
+msgstr "On foot: %s"
+
+#: scripts/ui/coast_atlas.gd:83
+msgid "Korter met de veer: %s"
+msgstr "Shorter by ferry: %s"
+
+#: scripts/ui/coast_routes.gd:59
+msgid "Proefhaven · vrij varen"
+msgstr "Practice harbour · free sailing"
+
+#: scripts/ui/coast_routes.gd:63
+msgid "Alle veren zijn gratis en varen bij ieder getij. Meeuweneiland heeft een loopbrug naar de Getijdenbaai. De hoge route in de baai blijft open."
+msgstr "All ferries are free and run at every tide. Gull Island has a boardwalk to Tidal Cove. The cove's high route stays open."
+
+#: scripts/ui/coast_routes.gd:66
+msgid "Veer naar %s · gratis"
+msgstr "Ferry to %s · free"
+
+#: scripts/ui/coast_routes.gd:69
+msgid "Leenkist aan de baai"
+msgstr "Cove loan chest"
+
+#: scripts/ui/coast_routes.gd:70
+msgid "Leen een landingslijn voor beide lijnpalen. Zo steek je de baai over zonder de noordelijke omweg. Gratis, herbruikbaar en zonder verbruik. Je kunt ook gewoon over het hoge pad lopen."
+msgstr "Borrow a landing line for either line post. Cross the cove without the northern detour. Free, reusable and never consumed. You can also walk along the high path."
+
+#: scripts/ui/coast_routes.gd:71
+msgid "Landingslijn is al in je tas"
+msgstr "Landing line already in your bag"
+
+#: scripts/ui/coast_routes.gd:71
+msgid "Leen de landingslijn · gratis"
+msgstr "Borrow the landing line · free"
+
+#: scripts/ui/coast_routes.gd:72
+msgid "Probeer vrij varen in de proefhaven"
+msgstr "Try free sailing in the practice harbour"
+
+#: scripts/ui/coast_routes.gd:74
+msgid "Lijnpaal · korte oversteek"
+msgstr "Line post · short crossing"
+
+#: scripts/ui/coast_routes.gd:75
+msgid "Nodig: landingslijn uit de gratis leenkist bij de westelijke steiger. De lijn blijft in je tas. Zonder lijn: volg het hoge pad naar het noorden."
+msgstr "Required: landing line from the free loan chest by the western jetty. The line stays in your bag. Without a line, follow the high path to the north."
+
+#: scripts/ui/coast_routes.gd:76
+msgid "Steek over met je landingslijn"
+msgstr "Cross with your landing line"
+
+#: scripts/ui/coast_routes.gd:76
+msgid "Ontbreekt: landingslijn · leen bij de steiger"
+msgstr "Missing: landing line · borrow at the jetty"
+
+#: scripts/ui/coast_routes.gd:78
+msgid "Getijdenbaai · drie routes"
+msgstr "Tidal Cove · three routes"
+
+#: scripts/ui/coast_routes.gd:79
+msgid "Zandbank: kort bij laagwater. Noordelijke loopbrug: altijd open. Lijnpalen: kort met een geleende landingslijn. De boot en westelijke loopbrug brengen je altijd terug."
+msgstr "Sandbank: short route at low tide. Northern boardwalk: always open. Line posts: short route with a borrowed landing line. The boat and western boardwalk always take you back."
+
+#: scripts/ui/coast_routes.gd:80 scripts/ui/coast_voyage.gd:59
+msgid "Terug naar de steiger"
+msgstr "Return to the dock"
+
+#: scripts/ui/coast_routes.gd:88
 msgid "Stuur met %s / %s / %s / %s. Laat los om af te remmen. Vaar door de drie boeien; er is geen timer, schade of beloning. De gewone veer blijft je reisroute."
 msgstr "Steer with %s / %s / %s / %s. Release to slow down. Sail through the three buoys; there is no timer, damage or reward. The regular ferry remains your travel route."
 

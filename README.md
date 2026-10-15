@@ -1,6 +1,14 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.21.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.22.0-preview.**
+
+Nieuw in 0.22: **De kustregio krijgt ruimte**. Zilvermonding, Rietwenk Haven
+en Lichtkaap brengen de regio op zes verschillende gebieden. Brede rivieroevers,
+een kleine werkkade en een vuurtoren met zeezicht zijn verbonden door vrije
+wandelpaden en de bestaande gratis veer. Ise helpt met overtochten, Raf met een
+regiokaart waarop loop- en veerroutes uit elkaar blijven. Eigen gebouwen, bewoners,
+landschapsdetails en lichtanimatie; geen nieuwe verzamelplicht of vijanddruk.
+Details: [COASTAL_REGION.md](COASTAL_REGION.md).
 
 Nieuw in 0.21: **Getijdenbaai en duidelijke kustreizen**. Kies je bestemming op
 de reisborden bij de steigers. De aparte baai heeft een zandbank bij laagwater,
