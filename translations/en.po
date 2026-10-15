@@ -12426,3 +12426,19 @@ msgstr "Start one portion"
 #: scripts/ui/home_ui.gd:89
 msgid "Start %d porties"
 msgstr "Start %d portions"
+
+#: scripts/core/access_points.gd:39
+msgid "Naar %s"
+msgstr "To %s"
+
+#: scripts/core/access_points.gd:40
+msgid "De doorgang is nog gesloten."
+msgstr "This passage is still locked."
+
+#: scripts/core/access_points.gd:40
+msgid "Loop door de doorgang."
+msgstr "Walk through the doorway."
+
+#: scripts/core/access_points.gd:45
+msgid "Deze woning is gesloten."
+msgstr "This home is closed."

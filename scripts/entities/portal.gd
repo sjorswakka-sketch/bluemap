@@ -16,6 +16,30 @@ var world: Node
 var player: Node2D
 var armed := false # pas actief als je er een keer niet in stond (anders stuiter je heen en weer)
 var message_cooldown := 0.0
+var previous_position:=Vector2.ZERO
+var has_previous:=false
+
+func _ready() -> void:
+	add_to_group("access_portals")
+
+func available() -> bool:
+	return conditions.is_empty() or GameState.check_all(conditions)
+
+## Clip the movement segment against the interior; touching a corner is not entering.
+func crossed(from: Vector2,to: Vector2) -> bool:
+	var inner:=rect.grow(-0.01)
+	var motion:=to-from
+	var first:=0.0
+	var last:=1.0
+	for axis in 2:
+		if is_zero_approx(motion[axis]):
+			if from[axis]<=inner.position[axis] or from[axis]>=inner.end[axis]:return false
+		else:
+			var a: float=(inner.position[axis]-from[axis])/motion[axis]
+			var b: float=(inner.end[axis]-from[axis])/motion[axis]
+			first=maxf(first,minf(a,b));last=minf(last,maxf(a,b))
+			if first>=last:return false
+	return last-first>0.00001
 
 
 func _process(delta: float) -> void:
@@ -23,15 +47,23 @@ func _process(delta: float) -> void:
 	message_cooldown = maxf(message_cooldown - delta, 0.0)
 	if player == null:
 		player = Util.player(self)
+		if player!=null:previous_position=player.global_position;has_previous=true
 		return
+	var at:=player.global_position
+	var before:=previous_position
+	var had_previous:=has_previous
+	previous_position=at;has_previous=true
 	if GameState.transitioning or GameState.input_locked():
+		armed=false
 		return
-	if not rect.has_point(player.global_position):
+	var natural_distance: float=(maxf(player.velocity.length(),235.0)+100.0)*maxf(delta,0.0)+8.0
+	var entered: bool=rect.has_point(at) or (armed and had_previous and before.distance_to(at)<=natural_distance and crossed(before,at))
+	if not entered:
 		armed = true
 		return
 	if not armed:
 		return
-	if conditions.is_empty() or GameState.check_all(conditions):
+	if available():
 		armed = false
 		world.travel(target_map, target_spawn)
 	elif message_cooldown <= 0.0:
@@ -45,11 +77,12 @@ func _draw() -> void:
 	# De node staat op de hoek van het vlak (zie world.gd), dus hier tekenen we plaatselijk.
 	if rect.size == Vector2.ZERO:
 		return
+	var glow:=GLOW if available() else Color("d6ad68")
 	var t := fmod(Time.get_ticks_msec() / 1000.0, 1000.0)
 	var pulse := 0.5 + 0.5 * sin(t * 2.2)
 	# Een zachte waas over het vlak en een glinsterende rand.
-	draw_rect(Rect2(Vector2.ZERO, rect.size), Color(GLOW, 0.07 + 0.06 * pulse))
-	draw_rect(Rect2(Vector2.ZERO, rect.size), Color(GLOW, 0.3 + 0.25 * pulse), false, 2.0)
+	draw_rect(Rect2(Vector2.ZERO, rect.size), Color(glow, 0.07 + 0.06 * pulse))
+	draw_rect(Rect2(Vector2.ZERO, rect.size), Color(glow, 0.3 + 0.25 * pulse), false, 2.0)
 	# Drie vonkjes die langzaam omhoog drijven en onderweg oplichten en doven.
 	var span := maxf(rect.size.y, 16.0)
 	for i in 3:

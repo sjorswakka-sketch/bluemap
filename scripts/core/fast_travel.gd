@@ -141,6 +141,7 @@ static func travel(world: Node, altar: Dictionary) -> bool:
 		Sound.play("error", -3.0)
 		return false
 	GameState.transitioning = true
+	world.player.stop_for_transition()
 	Sound.play("wereld_reis")
 	await world.fader.fade_out(FADE)
 	if GameState.ended:
@@ -164,6 +165,7 @@ static func travel(world: Node, altar: Dictionary) -> bool:
 ## Zet de speler neer op een andere plek van dezelfde kaart (zoals load_map dat doet, maar zonder de kaart te herladen).
 static func _move_player(world: Node, pos: Vector2) -> void:
 	var player: Node2D = world.player
+	player.stop_for_transition()
 	player.global_position = pos
 	player.velocity = Vector2.ZERO
 	player.knockback = Vector2.ZERO

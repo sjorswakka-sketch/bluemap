@@ -1,6 +1,13 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.26.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.26.1-preview.**
+
+Nieuw in 0.26.1: **Betrouwbare deuren en gebiedsovergangen**. Smalle doorgangen
+blijven werken tijdens rollen en lange frames. Aankomst stopt lopende rol- en
+aanvalsbewegingen. Een rustige hint noemt de bestemming en oorspronkelijke
+ontgrendelvoorwaarde; ongebruikte woningen zijn herkenbaar gesloten. Alle 67
+doorgangen zijn met echte beweging gecontroleerd, naast de bestaande speltests.
+Kaartindeling en voortgangsvoorwaarden blijven behouden. Details: [ACCESS_POINTS.md](ACCESS_POINTS.md).
 
 Nieuw in 0.26: **Je eigen huis en een werkende tuin**. Het bestaande huis linksonder
 in Dageraadsdorp heeft een eigen interieur, rustbed en gratis tuinvoorraad.

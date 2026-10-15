@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.26.0-preview)
+BLUEMAP QUEST  (v0.26.1-preview)
 =======================
 
 Starten
@@ -33,6 +33,12 @@ Taal / Language
 Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
+
+Nieuw in 0.26.1: deuren en overgangen
+  Bij een ingang verschijnt rustig waar je naartoe loopt. Een gesloten doorgang
+  toont de bestaande voorwaarde; ongebruikte woningen geven aan dat ze gesloten zijn.
+  Rollen en korte haperingen slaan een smalle ingang niet meer over. Bij aankomst
+  stopt een lopende rol- of aanvalbeweging. Alle 67 gewone doorgangen zijn nagelopen.
 
 Nieuw in 0.26: eigen huis, landbouw en irrigatie
   Ga naar het huis linksonder in het dorp. Het bord en de voorraad binnen geven gratis

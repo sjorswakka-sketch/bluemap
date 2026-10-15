@@ -98,6 +98,21 @@ func _refresh_controls() -> void:
 			trigger_axis = event.axis
 			trigger_sign = signf(event.axis_value)
 
+## Keep input bindings held for walking, but never carry a roll or committed strike across a doorway.
+func stop_for_transition() -> void:
+	cancel_work_animation()
+	combat.cancel()
+	velocity=Vector2.ZERO
+	knockback=Vector2.ZERO
+	roll_timer=0.0
+	attack_timer=0.0
+	bow_anim=0.0
+	combo_step=0
+	combo_window=0.0
+	sprinting=false
+	moving=false
+	target=null
+
 func _device_changed(_controller: bool) -> void:
 	combat.cancel()
 	trigger_down = false

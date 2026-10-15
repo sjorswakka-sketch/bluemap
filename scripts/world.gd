@@ -156,6 +156,7 @@ func restart_from_save(full_heal := false) -> void:
 # --- Kaarten ----------------------------------------------------------------------
 
 func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> void:
+	player.stop_for_transition()
 	Living.migrate()
 	preload("res://scripts/core/regional_adventures.gd").migrate()
 	preload("res://scripts/core/first_route.gd").migrate()
@@ -163,6 +164,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	GameState.spawn_name = spawn
 	map_data = Maps.get_map(map_id).duplicate(true)
 	preload("res://scripts/entities/first_route.gd").prepare(map_data,map_id)
+	preload("res://scripts/core/access_points.gd").prepare(map_data)
 	# Achteraan toevoegen: bestaande kisten en unieke voorwerpen houden hun opslag-ID.
 	map_data["objects"].append_array(Beroepen.resource_objects(map_id))
 	_clear_map()
@@ -275,6 +277,7 @@ func travel(map_id: String, spawn: String, cue: String="door") -> void:
 	if GameState.transitioning:
 		return
 	GameState.transitioning = true
+	player.stop_for_transition()
 	if cue!="":Sound.play(cue, -4.0)
 	await fader.fade_out(0.25)
 	load_map(map_id, spawn)

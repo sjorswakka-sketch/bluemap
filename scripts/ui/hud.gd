@@ -36,6 +36,8 @@ var had_bow := false # om te zien wanneer je de boog voor het eerst krijgt
 var opening_hint: Label
 var opening_quiet := false
 var combat_hint: Label
+var access_panel: PanelContainer
+var access_text: Label
 
 
 func _ready() -> void:
@@ -144,6 +146,14 @@ func _build_ui() -> void:
 	opening_hint.add_theme_constant_override("outline_size",6)
 	add_child(opening_hint)
 
+	access_panel=PanelContainer.new()
+	access_panel.add_theme_stylebox_override("panel",UiStyle.flat(Color(0.04,0.07,0.13,0.9),Color("92bcc4"),1))
+	add_child(access_panel)
+	access_text=UiStyle.make_label("",18,Color("e9e4cf"))
+	access_text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	access_text.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+	access_panel.add_child(access_text)
+	access_panel.hide()
 	toast_panel = PanelContainer.new()
 	toast_panel.anchor_left = 0.5
 	toast_panel.anchor_right = 0.5
@@ -337,6 +347,7 @@ func refresh_opening() -> void:
 
 func _process(delta: float) -> void:
 	if get_tree().paused:
+		access_panel.hide()
 		toast_panel.modulate.a=0
 		return # modal input already pauses the world; keep HUD timers/queues intact
 	refresh_opening()
@@ -360,6 +371,7 @@ func _process(delta: float) -> void:
 	else:
 		banner.modulate.a = 0.0
 
+	_refresh_access()
 	_update_clock()
 	_update_boss()
 
@@ -478,3 +490,24 @@ func _draw_xp() -> void:
 	xp_bar.draw_rect(Rect2(0, 22, 222, 10), Color(0.02, 0.04, 0.09, 0.85))
 	xp_bar.draw_rect(Rect2(2, 24, 218.0 * ratio, 6), Color(0.6, 0.67, 1.0))
 	xp_bar.draw_rect(Rect2(0, 22, 222, 10), Color(0.7, 0.77, 1.0), false, 1.0)
+
+func _refresh_access() -> void:
+	access_panel.hide()
+	if GameState.input_locked() or toast_time>0 or not toast_queue.is_empty() or banner_time>0:return
+	var world: Node=get_tree().get_first_node_in_group("world")
+	if world==null:return
+	var hint: Dictionary=preload("res://scripts/core/access_points.gd").nearby(world)
+	if hint.is_empty():return
+	access_text.text=hint.title+("\n"+hint.detail if hint.detail!="" else "")
+	access_text.modulate=Color("f2d299") if hint.locked else Color("e9e4cf")
+	var view:=get_viewport().get_visible_rect().size
+	access_text.custom_minimum_size=Vector2(minf(600,view.x-80),0)
+	access_panel.size=access_panel.get_combined_minimum_size()
+	access_panel.position=Vector2((view.x-access_panel.size.x)*.5,view.y-106-access_panel.size.y)
+	# Edge-clamped cameras can put the character low in the viewport. Keep the hint clear.
+	var actor_screen: Vector2=world.player.get_global_transform_with_canvas().origin
+	var actor_bounds:=Rect2(actor_screen-Vector2(40,40),Vector2(80,80))
+	if access_panel.get_global_rect().intersects(actor_bounds):
+		access_panel.position.y=maxf(24,actor_bounds.position.y-access_panel.size.y-16)
+	access_panel.show()
+	opening_hint.hide()
