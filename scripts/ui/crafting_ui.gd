@@ -1,6 +1,7 @@
 extends CanvasLayer
 ## C opens a keyboard/controller-accessible profession journal and crafting menu.
 
+const Identity:=preload("res://scripts/core/craft_identity.gd")
 const Data := preload("res://scripts/data/ext/beroepen.gd")
 const Professions := preload("res://scripts/core/professions.gd")
 const Items := preload("res://scripts/data/items.gd")
@@ -28,6 +29,7 @@ var supplies := false
 var selected_skill := ""
 var selected_entry := ""
 var _population_version := 0
+var profession_banner: Control
 
 
 func _ready() -> void:
@@ -68,6 +70,11 @@ func _build_ui() -> void:
 	var right := VBoxContainer.new()
 	right.custom_minimum_size = Vector2(740, 0)
 	content.add_child(right)
+	profession_banner=Control.new()
+	profession_banner.custom_minimum_size=Vector2(740,64)
+	profession_banner.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	profession_banner.draw.connect(_draw_identity)
+	right.add_child(profession_banner)
 	var nav := HBoxContainer.new()
 	right.add_child(nav)
 	recipes_button = _button(tr(Data.TEXT["recipes"]))
@@ -91,7 +98,7 @@ func _build_ui() -> void:
 	close_button.pressed.connect(close)
 	nav.add_child(close_button)
 	scroll = ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(740, 300)
+	scroll.custom_minimum_size = Vector2(740, 240)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	# Scroll in local coordinates: native follow_focus overshoots inside a scaled panel.
 	scroll.follow_focus = false
@@ -129,6 +136,7 @@ func _build_ui() -> void:
 func _button(text: String) -> Button:
 	var button := Button.new()
 	UiStyle.style_button(button, 18)
+	Identity.style_button(button,selected_skill)
 	button.text = text
 	button.custom_minimum_size = Vector2(160, 38)
 	return button
@@ -155,7 +163,7 @@ func _process(_delta: float) -> void:
 		return
 	garden_button.text=tr("Tuinstanden")+" ["+Controls.action_label("potion")+"]"
 	hint.text = tr("↑ ↓ ← → kiezen  ·  %s bevestigen  ·  %s / %s recepten/voorraad  ·  %s sluiten") % [Controls.action_label("ui_accept"), Controls.action_label("ui_prev_tab"), Controls.action_label("ui_next_tab"), Controls.action_label("ui_cancel")]
-	intro_label.text = tr("Verzamel met %s. Vindplaatsen staan bij het recept; stel een materiaaldoel in. Gereedschap slijt niet.") % Controls.action_label("interact")
+	intro_label.text = Identity.intro(selected_skill) if selected_skill!="" and not supplies else tr("Verzamel met %s. Vindplaatsen staan bij het recept; stel een materiaaldoel in. Gereedschap slijt niet.") % Controls.action_label("interact")
 	# Font metrics, translations and window sizes can differ. Fit the complete
 	# panel before centering so the footer and every control stay on-screen.
 	panel.size = panel.get_combined_minimum_size()
@@ -196,6 +204,12 @@ func _clear(container: Node) -> void:
 
 func _populate() -> void:
 	_population_version += 1
+	filter.select(Data.SKILLS.keys().find(selected_skill)+1)
+	Identity.style_panel(panel,"cooking" if supplies else selected_skill)
+	title_label.text=tr("Proviand · eten en drinken") if supplies else Identity.title(selected_skill)
+	title_label.modulate=Identity.accent("cooking" if supplies else selected_skill).lightened(.15)
+	recipes_button.text=Identity.tab(selected_skill)
+	profession_banner.queue_redraw()
 	scroll.scroll_vertical = 0
 	_clear(skill_list)
 	_clear(rows)
@@ -204,6 +218,7 @@ func _populate() -> void:
 		var lv := Professions.level(skill)
 		var button := _button(tr(Data.TEXT["skill_line"]) % [tr(Data.SKILLS[skill]["name"]), lv])
 		_compact(button)
+		Identity.style_button(button,skill)
 		button.custom_minimum_size.y = 34
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.pressed.connect(func() -> void:
@@ -217,6 +232,7 @@ func _populate() -> void:
 		var progress := ProgressBar.new()
 		progress.custom_minimum_size = Vector2(0, 7)
 		progress.show_percentage = false
+		progress.add_theme_stylebox_override("fill",UiStyle.flat(Identity.accent(skill),Identity.accent(skill),0))
 		progress.max_value = 1.0 if lv == Professions.MAX_LEVEL else float(Professions.threshold(lv + 1) - Professions.threshold(lv))
 		progress.value = 1.0 if lv == Professions.MAX_LEVEL else float(Professions.xp(skill) - Professions.threshold(lv))
 		progress.tooltip_text = tr(Data.TEXT["master"]) if lv == Professions.MAX_LEVEL else tr(Data.TEXT["xp"]) % [int(progress.value), int(progress.max_value)]
@@ -247,6 +263,16 @@ func _populate() -> void:
 			rows.add_child(_wrapped(tr(Data.SKILLS[selected_skill]["desc"]), 18))
 			var lv := Professions.level(selected_skill)
 			rows.add_child(_wrapped(tr(Data.TEXT["master"]) if lv == Professions.MAX_LEVEL else tr(Data.TEXT["xp"]) % [Professions.xp(selected_skill) - Professions.threshold(lv), Professions.threshold(lv + 1) - Professions.threshold(lv)], 17))
+		if selected_skill=="fishing":
+			for item: String in ["meer_baars","meer_snoek","meer_gouden_karper"]:
+				var card:=_button(tr("%s · bij je: %d") % [Professions.item_name(item),GameState.count(item)])
+				card.icon=Items.icon_tex(item);card.alignment=HORIZONTAL_ALIGNMENT_LEFT;card.custom_minimum_size.y=64
+				card.focus_entered.connect(func() -> void:
+					selected_entry=item;detail.text=tr(Items.info(item).desc);_refresh_goal_button())
+				card.pressed.connect(func() -> void:detail.grab_focus())
+				card.focus_entered.connect(_scroll_to_entry.bind(card))
+				rows.add_child(card)
+				if focus==null or selected_entry==item:focus=card
 		for recipe_id: String in Data.RECIPES:
 			var recipe: Dictionary = Data.RECIPES[recipe_id]
 			if selected_skill != "" and recipe["skill"] != selected_skill:
@@ -302,6 +328,7 @@ func _recipe_button(recipe_id: String) -> Button:
 	button.pressed.connect(_craft.bind(recipe_id))
 	button.focus_entered.connect(func() -> void:
 		selected_entry = recipe_id
+		profession_banner.queue_redraw()
 		detail.text = Journal.recipe_text(recipe_id)
 		detail.get_v_scroll_bar().value = 0
 		_refresh_goal_button())
@@ -434,3 +461,42 @@ func _open_garden() -> void:
 	close()
 	var ui: CanvasLayer=load("res://scripts/ui/home_ui.gd").new()
 	ui.world=get_parent();get_parent().add_child(ui);ui.open(null)
+
+func _draw_identity():
+	var id: String="cooking" if supplies else selected_skill
+	var color:=Identity.accent(id)
+	profession_banner.draw_style_box(UiStyle.flat(Color(color,.07),Color(color,.38),1),Rect2(Vector2.ZERO,profession_banner.size))
+	if id=="":
+		for i in Data.SKILLS.size():Identity.emblem(profession_banner,Data.SKILLS.keys()[i],Vector2(58+i*100,32),.7)
+	else:
+		Identity.emblem(profession_banner,id,Vector2(40,34),.75)
+		var has_recipe: bool=Data.RECIPES.has(selected_entry) and not supplies and Data.RECIPES[selected_entry].skill==id
+		var text_width: float=350 if has_recipe else 630
+		var text: String=Identity.title(id)
+		var font:=ThemeDB.fallback_font
+		profession_banner.draw_string(font,Vector2(83,26),text,HORIZONTAL_ALIGNMENT_LEFT,text_width,18,color.lightened(.2))
+		var description: String=""
+		if id in ["foraging","woodcutting","mining"]:
+			var names: Array[String]=[]
+			for key: String in Data.RESOURCES:
+				if Data.RESOURCES[key].skill==id and names.size()<3:names.append(tr(Data.RESOURCES[key].name))
+			description=" · ".join(names)
+		elif id=="fishing":
+			description=tr("Hengel: aanwezig") if GameState.count("fishing_rod")>0 else tr("Haal je hengel bij Joris aan het Zilvermeer.")
+		elif id=="smithing":description=tr("Erts + brandstof → metaal en gereedschap")
+		elif id=="alchemy":description=tr("Kruiden + ingrediënten → elixers en hulpmiddelen")
+		else:description=tr("Ingrediënten → hartjes en uithoudingsvermogen")
+		profession_banner.draw_string(font,Vector2(83,50),description,HORIZONTAL_ALIGNMENT_LEFT,text_width,16,Color("dce4d7"))
+		if has_recipe:
+			var recipe: Dictionary=Data.RECIPES[selected_entry]
+			var i:=0
+			for item: String in recipe.inputs:
+				if i>=3:break
+				var at:=Vector2(470+i*38,10)
+				profession_banner.draw_texture_rect(Items.icon_tex(item),Rect2(at,Vector2(28,28)),false)
+				profession_banner.draw_string(font,at+Vector2(0,44),str(GameState.count(item))+"/"+str(recipe.inputs[item]),HORIZONTAL_ALIGNMENT_LEFT,36,12,Color("dce4d7"))
+				i+=1
+			profession_banner.draw_line(Vector2(598,28),Vector2(624,28),color,2)
+			profession_banner.draw_line(Vector2(624,28),Vector2(618,22),color,2)
+			profession_banner.draw_line(Vector2(624,28),Vector2(618,34),color,2)
+			profession_banner.draw_texture_rect(Items.icon_tex(recipe.output),Rect2(Vector2(654,10),Vector2(36,36)),false)

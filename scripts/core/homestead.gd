@@ -9,12 +9,14 @@ static var mode:=""
 static var busy:=false
 static var wet: Dictionary={}
 static var dirty:=true
+static var show_water:=false
+static var flow: Dictionary={}
 static func gs() -> Node:return (Engine.get_main_loop() as SceneTree).root.get_node("GameState")
 static func key(cell: Vector2i) -> String:return str(cell.x)+","+str(cell.y)
 static func cell(value: String) -> Vector2i:
  var parts:=value.split(",");return Vector2i(int(parts[0]),int(parts[1])) if parts.size()==2 else Vector2i(-1,-1)
 static func garden(at: Vector2i) -> bool:return Rect2i(4,29,31,12).has_point(at) and at.x not in [20,21]
-static func reset():mode="";dirty=true;wet.clear();busy=false
+static func reset():mode="";dirty=true;wet.clear();flow.clear();show_water=false;busy=false
 static func normalize(raw: Variant) -> Dictionary:
  var result: Dictionary={"cells":{},"jobs":{},"animal_due":{},"drops":{},"wild_due":0.0,"honey":0,"honey_time":0.0}
  if not raw is Dictionary:return result
@@ -50,18 +52,19 @@ static func state() -> Dictionary:
  return gs().homestead
 static func irrigate():
  if not dirty:return
- dirty=false;wet.clear()
+ dirty=false;wet.clear();flow.clear()
  var channels: Dictionary={};var source:=sources;var queue: Array[Vector2i]=[]
  for id: String in state().cells:
   if state().cells[id].kind=="channel":channels[cell(id)]=true
  for at: Vector2i in channels:
   for step in [Vector2i.LEFT,Vector2i.RIGHT,Vector2i.UP,Vector2i.DOWN]:
-   if source.has(at+step):wet[at]=true;queue.append(at);break
- while not queue.is_empty():
-  var at: Vector2i=queue.pop_front()
+   if source.has(at+step):wet[at]=true;flow[at]=at+step;queue.append(at);break
+ var head:=0
+ while head<queue.size():
+  var at: Vector2i=queue[head];head+=1
   for step in [Vector2i.LEFT,Vector2i.RIGHT,Vector2i.UP,Vector2i.DOWN]:
    var next: Vector2i=at+step
-   if channels.has(next) and not wet.has(next):wet[next]=true;queue.append(next)
+   if channels.has(next) and not wet.has(next):wet[next]=true;flow[next]=at;queue.append(next)
 static func watered(at: Vector2i) -> bool:
  irrigate()
  for step in [Vector2i.ZERO,Vector2i.LEFT,Vector2i.RIGHT,Vector2i.UP,Vector2i.DOWN]:
@@ -103,9 +106,7 @@ static func starter() -> bool:
  for item: String in pack:gs().give(item,pack[item],true)
  busy=false;changed();return true
 static func act(at: Vector2i,action: String,world: Node) -> bool:
- if busy or gs().map_id!="village" or not garden(at) or gs().count("hs_hoe")==0 or gs().input_locked():return false
- if world.player.position.distance_to(Vector2(at)*32+Vector2(16,16))>68 or not world.spawn_fits(Vector2(at)*32+Vector2(16,16)):return false
- if world.map_data.rows[at.y][at.x]!=".":return false
+ if busy or gs().input_locked() or not work_status(at,action,world).ok:return false
  var data:=state();var id:=key(at);var e: Dictionary=data.cells.get(id,{})
  busy=true;var ok:=false
  if action=="soil" and e.is_empty():data.cells[id]={"kind":"soil"};ok=true
@@ -122,13 +123,14 @@ static func act(at: Vector2i,action: String,world: Node) -> bool:
    if seed!="":gs().give(seed,1,true)
    ok=true
  busy=false
- if ok:changed()
+ if ok:
+  changed()
  return ok
 static func harvest_cell(e: Dictionary) -> bool:
  if e.get("crop","")!="grape" or float(e.growth)<CROPS.grape.seconds:return false
  var count:=5 if e.get("fertilized",false) else 3
  if gs().room("hs_grape")<count:return false
- e.growth=0.0;e.fertilized=false;gs().give("hs_grape",count,true)
+ e.growth=0.0;e.fertilized=false;gs().give("hs_grape",count,true);gs().set_flag("hs_intro_harvest")
  load("res://scripts/core/professions.gd").add_xp("foraging",4);return true
 static func harvest_all() -> int:
  if busy or gs().map_id not in ["village","player_home"] or not near("guide"):return 0
@@ -167,3 +169,6 @@ static func animal_drop(animal: Node):
 static func wild_grapes() -> bool:
  if busy or gs().map_id!="forest" or not near("wild_grape") or gs().play_time<float(state().wild_due) or gs().room("hs_grape")<3:return false
  busy=true;state().wild_due=gs().play_time+120;gs().give("hs_grape",3,true);load("res://scripts/core/professions.gd").add_xp("foraging",4);busy=false;changed();return true
+
+static func work_status(at: Vector2i,action: String,world: Node) -> Dictionary:
+ return load("res://scripts/core/garden_feedback.gd").status(at,action,world)

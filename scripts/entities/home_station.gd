@@ -59,4 +59,16 @@ func _draw():
     for at in [Vector2(-12,-8),Vector2(4,-15),Vector2(12,-3)]:draw_circle(at,4,Color("a37abe"))
   _:
    draw_rect(Rect2(-15,-24,30,36),Color("a77e4f"));draw_rect(Rect2(-12,-21,24,26),Color("e0ce9e"));draw_line(Vector2(-8,-11),Vector2(8,-11),Color("607365"),3);draw_line(Vector2(-8,-3),Vector2(5,-3),Color("607365"),2)
+ # Small physical status marks replace floating notifications at working stations.
+ if obj.role in ["compost","wine","hive"]:
+  var id: String="compost" if obj.role=="compost" else "hive" if obj.role=="hive" else obj.unit
+  var progress:=-1.0
+  if id=="hive":
+   if Farm.state().honey>0:progress=1.0
+   elif Farm.flowers()>=3:progress=float(Farm.state().honey_time)/120
+  elif Farm.state().jobs.has(id):progress=float(Farm.state().jobs[id].time)/Farm.JOBS[id].seconds
+  if progress>=0:
+   var y:=17.0 if id!="compost" else 24.0
+   draw_rect(Rect2(-13,y,26,4),Color("354944"));draw_rect(Rect2(-12,y+1,24*minf(progress,1),2),Color("b5cf9a") if progress>=1 else Color("d3b579"))
+   if progress>=1:draw_line(Vector2(7,y-7),Vector2(10,y-4),Color("dbe9b3"),2);draw_line(Vector2(10,y-4),Vector2(15,y-10),Color("dbe9b3"),2)
  if world.player.target==self:DrawUtil.prompt(self,Vector2(0,-49 if obj.role=="compost" else -40),time)

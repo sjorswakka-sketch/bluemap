@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.26.1-preview)
+BLUEMAP QUEST  (v0.27.0-preview)
 =======================
 
 Starten
@@ -141,3 +141,15 @@ Windows geeft een waarschuwing?
   spellen die met Godot zijn gemaakt; dat is een bekende valse melding.
 
 Problemen of ideeen? Laat het weten aan degene die je dit spel gaf.
+
+Landbouw en irrigatie — 0.27
+  U, of Beroepen → Tuinstanden, opent de compacte gereedschapskeuze.
+  Kies een handeling en houd E/A vast terwijl je langs een rij loopt.
+  Grond herstellen werkt bewust één tegel per druk en geeft plantzaad terug.
+  De tegelmarkering en veldtekst verklaren groei, opbrengst en blokkades.
+  Een wateroverzicht en vrijwillige tuinhulp zijn via de tuinstanden beschikbaar.
+  De tuinhulp is ook bereikbaar bij het bestaande tuinbord of de binnenvoorraad.
+  Kanalen zijn vrij oversteekbaar; droge planten wachten zonder te verdorren.
+
+  Beroepen hebben eigen werkboeken, emblemen en receptdiagrammen.
+  Wijn, compost, bijen en rusten hebben ieder een eigen werkplekscherm.

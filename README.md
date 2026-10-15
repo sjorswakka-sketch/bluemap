@@ -1,6 +1,16 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.26.1-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.27.0-preview.**
+
+Nieuw in 0.27: **Landbouw en irrigatie — ontwikkelronde 1**. Een compact gereedschapsmenu,
+duidelijke werkmarkering en concrete meldingen over gewassen, water en benodigdheden.
+Vasthouden vult korte gaten langs rijen; herstellen werkt bewust per druk.
+Druiven en bloemen hebben eigen groeistadia, aangesloten kanalen tonen hun stroming
+en werkplekken hebben kleine voortgangstekens. De vrijwillige tuinhulp volgt je echte
+tuin. Alle kaarten en looproutes blijven behouden.
+Op extra verzoek krijgen ook alle zeven beroepen en de afzonderlijke werkplekken
+een eigen interface met zelfgetekende beelden, passende uitleg en specifieke acties.
+Details: [GARDEN_PHASE1.md](GARDEN_PHASE1.md); volgende rondes: [DEVELOPMENT_LIVING_GAME.md](DEVELOPMENT_LIVING_GAME.md).
 
 Nieuw in 0.26.1: **Betrouwbare deuren en gebiedsovergangen**. Smalle doorgangen
 blijven werken tijdens rollen en lange frames. Aankomst stopt lopende rol- en

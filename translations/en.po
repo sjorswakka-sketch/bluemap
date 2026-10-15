@@ -10,7 +10,7 @@ msgstr ""
 
 #. Naam van gebied village
 #. Kaart village, sign [21, 8]: tekst op een bord
-#: scripts/ui/ending.gd:218 scripts/maps/village.gd:6 scripts/maps/village.gd:66
+#: scripts/ui/ending.gd:222 scripts/maps/village.gd:6 scripts/maps/village.gd:66
 msgid "Dageraadsdorp"
 msgstr "Daybreak Village"
 
@@ -69,6 +69,11 @@ msgstr "South road: Silver Lake."
 msgid "Rustig water, grote vissen en een bibliotheek."
 msgstr "Calm water, big fish, and a library."
 
+#. Kaart village, savepoint [9, 23]: name
+#: scripts/data/homestead_maps.gd:30
+msgid "Bij je eigen huis"
+msgstr "Outside your home"
+
 #. Naam van gebied smithy
 #: scripts/maps/smithy.gd:6
 msgid "Smederij"
@@ -85,7 +90,7 @@ msgid "Herberg De Blauwe Slijm"
 msgstr "The Blue Slime Inn"
 
 #. Naam van gebied forest
-#: scripts/ui/ending.gd:218 scripts/maps/forest.gd:6 scripts/maps/forest.gd:54
+#: scripts/ui/ending.gd:222 scripts/maps/forest.gd:6 scripts/maps/forest.gd:54
 msgid "Fluisterbos"
 msgstr "Whispering Woods"
 
@@ -234,7 +239,7 @@ msgid "de Echo-grot"
 msgstr "the Echo Cave"
 
 #. Kaart cave, sign [7, 30]: tekst op een bord
-#: scripts/ui/ending.gd:218 scripts/maps/cave.gd:52
+#: scripts/ui/ending.gd:222 scripts/maps/cave.gd:52
 msgid "Echo-grot"
 msgstr "Echo Cave"
 
@@ -281,6 +286,11 @@ msgstr "The door is shut. There's no way back!"
 #: scripts/maps/temple.gd:51
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
+
+#. Naam van gebied player_home
+#: scripts/maps/player_home.gd:2
+msgid "Je eigen huis"
+msgstr "Your home"
 
 #. Naam van gebied coast_workshop
 #. Beroepen: tekst of sjabloon coast_workshop
@@ -4992,6 +5002,86 @@ msgstr "Crystal Sword"
 msgid "Gloeit zachtblauw. Het sterkste zwaard van Azura."
 msgstr "Glows a soft blue. The strongest sword in Azura."
 
+#. Naam van voorwerp hs_hoe
+#: scripts/data/ext/homestead.gd:7
+msgid "Tuinhak"
+msgstr "Garden hoe"
+
+#. Beschrijving van voorwerp hs_hoe
+#: scripts/data/ext/homestead.gd:7
+msgid "Eén gereedschap voor grond en smalle kanalen. Open de tuinstanden met U of via Beroepen → Tuinstanden; de ingestelde binding staat in Bediening."
+msgstr "One tool for soil and narrow channels. Open garden modes with U or through Professions → Garden modes; your current binding is shown in Controls."
+
+#. Naam van voorwerp hs_manure
+#: scripts/data/ext/homestead.gd:8
+msgid "Dierenpoep"
+msgstr "Animal droppings"
+
+#. Beschrijving van voorwerp hs_manure
+#: scripts/data/ext/homestead.gd:8
+msgid "Wilde dieren laten dit ook levend achter. Verwerk het op de mesthoop achter je huis tot meststof."
+msgstr "Wild animals leave this behind while alive. Turn it into fertilizer at the compost heap behind your home."
+
+#. Naam van voorwerp hs_fertilizer
+#: scripts/data/ext/homestead.gd:9
+msgid "Meststof"
+msgstr "Fertilizer"
+
+#. Beschrijving van voorwerp hs_fertilizer
+#: scripts/data/ext/homestead.gd:9
+msgid "Eén per druivenplant: de volgende oogst geeft vijf in plaats van drie druiven. Geen verplichte onderhoudsronde."
+msgstr "One per grapevine: the next harvest yields five grapes instead of three. No mandatory upkeep."
+
+#. Naam van voorwerp hs_seed
+#: scripts/data/ext/homestead.gd:10
+msgid "Druivenpitten"
+msgstr "Grape seeds"
+
+#. Beschrijving van voorwerp hs_seed
+#: scripts/data/ext/homestead.gd:10
+msgid "Plant op bewerkte, bewaterde grond. Een druivenstok blijft na de oogst staan. Maak meer pitten van bosdruiven via Beroepen."
+msgstr "Plant in tilled, irrigated soil. A grapevine stays after harvesting. Make more seeds from wild grapes through Professions."
+
+#. Naam van voorwerp hs_flower_seed
+#: scripts/data/ext/homestead.gd:11
+msgid "Bloemenzaad"
+msgstr "Flower seeds"
+
+#. Beschrijving van voorwerp hs_flower_seed
+#: scripts/data/ext/homestead.gd:11
+msgid "Plant in je tuin. Drie bloeiende planten binnen vijf tegels houden de bijenkast aan het werk."
+msgstr "Plant in your garden. Three flowering plants within five tiles keep the beehive working."
+
+#. Naam van voorwerp hs_grape
+#: scripts/data/ext/homestead.gd:12
+msgid "Druiven"
+msgstr "Grapes"
+
+#. Beschrijving van voorwerp hs_grape
+#: scripts/data/ext/homestead.gd:12
+msgid "Bosdruiven of je eigen oogst. Herstellen één hartje; ook bruikbaar voor wijn of nieuwe pitten."
+msgstr "Wild grapes or your own harvest. Restore one heart; also useful for wine or new seeds."
+
+#. Naam van voorwerp hs_wine
+#: scripts/data/ext/homestead.gd:13
+msgid "Druivenwijn"
+msgstr "Grape wine"
+
+#. Beschrijving van voorwerp hs_wine
+#: scripts/data/ext/homestead.gd:13
+msgid "Drie druiven rijpen in een wijnvat tot één fles. Gebruik via Eten & drinken voor 40 stamina."
+msgstr "Three grapes mature in a wine barrel into one bottle. Use through Food & drink for 40 stamina."
+
+#. Naam van voorwerp hs_honey
+#: scripts/data/ext/homestead.gd:14
+msgid "Bloemenhoning"
+msgstr "Flower honey"
+
+#. Beschrijving van voorwerp hs_honey
+#: scripts/data/ext/homestead.gd:14
+msgid "Bijen maken honing zolang er minstens drie bloemen in de buurt bloeien. Herstelt één hartje en 25 stamina."
+msgstr "Bees make honey while at least three flowers bloom nearby. Restores one heart and 25 stamina."
+
 #. Naam van voorwerp cw_driftwood
 #: scripts/data/ext/coastal_craft.gd:7
 msgid "Zoutdrijfhout"
@@ -5124,7 +5214,7 @@ msgstr "Light fish broth: restores 1 heart and 60 stamina. Use through Professio
 
 #. Naam van voorwerp bow
 #. Instelbare bediening: bow
-#: scripts/core/input_manager.gd:14 scripts/data/ext/boog.gd:15
+#: scripts/core/input_manager.gd:15 scripts/data/ext/boog.gd:15
 msgid "Boog"
 msgstr "Bow"
 
@@ -5341,7 +5431,7 @@ msgstr "A sharp loose stone. You can pick it up without tools."
 
 #. Naam van voorwerp prof_herb
 #. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:175
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:177
 msgid "Zilverkruid"
 msgstr "Silverleaf"
 
@@ -5572,7 +5662,7 @@ msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks
 
 #. Naam van voorwerp prof_zandkruid
 #. Oogstbare grondstof sandwort
-#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:186
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:188
 msgid "Zandkruid"
 msgstr "Sandwort"
 
@@ -5643,7 +5733,7 @@ msgstr "A red, tart berry that grows low above the moor water. For porridge and 
 
 #. Naam van voorwerp prof_watermunt
 #. Oogstbare grondstof watermunt
-#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:190
+#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:192
 msgid "Watermunt"
 msgstr "Water mint"
 
@@ -7222,6 +7312,11 @@ msgstr "The way begins in the Crystal Temple. Only when the Blue Map is whole ag
 msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
 msgstr "The Star Map isn't easy to read. The Guardian will test you first. Take it slow. Get a good night's sleep first. And eat something."
 
+#. Legenda op het kaartje (menu): home_station
+#: scripts/data/ext/homestead.gd:4
+msgid "Woning en productie"
+msgstr "Home and production"
+
 #. Legenda op het kaartje (menu): cw_station
 #: scripts/data/ext/coastal_craft.gd:4
 msgid "Kustwerkplaats of lijnpaal"
@@ -7354,7 +7449,7 @@ msgid "Ringen trekken voorwerpen van verder weg naar je toe."
 msgstr "Rings attract items from farther away."
 
 #. Beroepen: tekst of sjabloon title
-#: scripts/data/ext/beroepen.gd:17
+#: scripts/core/craft_identity.gd:15 scripts/data/ext/beroepen.gd:17
 msgid "Beroepen & ambachten"
 msgstr "Professions & crafts"
 
@@ -7364,7 +7459,7 @@ msgid "Beroepen"
 msgstr "Professions"
 
 #. Beroepen: tekst of sjabloon recipes
-#: scripts/data/ext/beroepen.gd:17
+#: scripts/core/craft_identity.gd:35 scripts/data/ext/beroepen.gd:17
 msgid "Maken"
 msgstr "Craft"
 
@@ -7690,107 +7785,107 @@ msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme g
 msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
 
 #. Oogstbare grondstof branches
-#: scripts/data/ext/beroepen.gd:173
+#: scripts/data/ext/beroepen.gd:175
 msgid "Losse takken"
 msgstr "Loose Branches"
 
 #. Oogstbare grondstof stones
-#: scripts/data/ext/beroepen.gd:174
+#: scripts/data/ext/beroepen.gd:176
 msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof berries
-#: scripts/data/ext/beroepen.gd:176
+#: scripts/data/ext/beroepen.gd:178
 msgid "Bosbessenstruik"
 msgstr "Blueberry Bush"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:177
+#: scripts/data/ext/beroepen.gd:179
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
 #. Oogstbare grondstof stump
-#: scripts/data/ext/beroepen.gd:178
+#: scripts/data/ext/beroepen.gd:180
 msgid "Berkenstronk"
 msgstr "Birch Stump"
 
 #. Oogstbare grondstof copper
-#: scripts/data/ext/beroepen.gd:179
+#: scripts/data/ext/beroepen.gd:181
 msgid "Koperader"
 msgstr "Copper Vein"
 
 #. Oogstbare grondstof iron
-#: scripts/data/ext/beroepen.gd:180
+#: scripts/data/ext/beroepen.gd:182
 msgid "IJzerader"
 msgstr "Iron Vein"
 
 #. Oogstbare grondstof winterherbs
-#: scripts/data/ext/beroepen.gd:181
+#: scripts/data/ext/beroepen.gd:183
 msgid "IJsbloemen"
 msgstr "Ice flowers"
 
 #. Oogstbare grondstof frostberries
-#: scripts/data/ext/beroepen.gd:182
+#: scripts/data/ext/beroepen.gd:184
 msgid "Winterbessenstruik"
 msgstr "Winter berry bush"
 
 #. Oogstbare grondstof pine_stump
-#: scripts/data/ext/beroepen.gd:183
+#: scripts/data/ext/beroepen.gd:185
 msgid "Dennenstronk"
 msgstr "Pine stump"
 
 #. Oogstbare grondstof ice_vein
-#: scripts/data/ext/beroepen.gd:184
+#: scripts/data/ext/beroepen.gd:186
 msgid "IJskristalader"
 msgstr "Ice crystal vein"
 
 #. Oogstbare grondstof cactusfigs
-#: scripts/data/ext/beroepen.gd:185
+#: scripts/data/ext/beroepen.gd:187
 msgid "Cactusvijgen"
 msgstr "Cactus figs"
 
 #. Oogstbare grondstof sandstone_rock
-#: scripts/data/ext/beroepen.gd:187
+#: scripts/data/ext/beroepen.gd:189
 msgid "Zandsteenklip"
 msgstr "Sandstone crag"
 
 #. Oogstbare grondstof dauwklauw
-#: scripts/data/ext/beroepen.gd:188
+#: scripts/data/ext/beroepen.gd:190
 msgid "Dauwklauwen"
 msgstr "Dewclaws"
 
 #. Oogstbare grondstof veenbessen
-#: scripts/data/ext/beroepen.gd:189
+#: scripts/data/ext/beroepen.gd:191
 msgid "Veenbessenstruik"
 msgstr "Cranberry bush"
 
 #. Oogstbare grondstof wilgstronk
-#: scripts/data/ext/beroepen.gd:191
+#: scripts/data/ext/beroepen.gd:193
 msgid "Geknotte wilg"
 msgstr "Pollard willow"
 
 #. Oogstbare grondstof ijzeroer_ader
-#: scripts/data/ext/beroepen.gd:192
+#: scripts/data/ext/beroepen.gd:194
 msgid "IJzeroerklomp"
 msgstr "Bog iron lump"
 
 #. Oogstbare grondstof cw_driftwood
-#: scripts/data/ext/beroepen.gd:193
+#: scripts/data/ext/beroepen.gd:195
 msgid "Droog zoutdrijfhout"
 msgstr "Dry saltwood"
 
 #. Oogstbare grondstof cw_reed
-#: scripts/data/ext/beroepen.gd:194
+#: scripts/data/ext/beroepen.gd:196
 msgid "Oevervezels"
 msgstr "Bank fibers"
 
 #. Oogstbare grondstof cw_seaglass
-#: scripts/data/ext/beroepen.gd:195
+#: scripts/data/ext/beroepen.gd:197
 msgid "Zeeagaatader"
 msgstr "Sea-agate vein"
 
 #. Oogstbare grondstof cw_saltleaf
-#: scripts/data/ext/beroepen.gd:196
+#: scripts/data/ext/beroepen.gd:198
 msgid "Zoutbladpol"
 msgstr "Saltleaf patch"
 
@@ -8533,183 +8628,188 @@ msgstr "Salmon"
 msgid "Crème"
 msgstr "Cream"
 
+#. Instelbare bediening: homestead
+#: scripts/ui/crafting_ui.gd:127 scripts/ui/crafting_ui.gd:164 scripts/core/input_manager.gd:11
+msgid "Tuinstanden"
+msgstr "Garden modes"
+
 #. Instelbare bediening: move_up
-#: scripts/core/input_manager.gd:11
+#: scripts/core/input_manager.gd:12
 msgid "Omhoog lopen"
 msgstr "Move up"
 
 #. Instelbare bediening: move_down
-#: scripts/core/input_manager.gd:11
+#: scripts/core/input_manager.gd:12
 msgid "Omlaag lopen"
 msgstr "Move down"
 
 #. Instelbare bediening: move_left
-#: scripts/core/input_manager.gd:12
+#: scripts/core/input_manager.gd:13
 msgid "Naar links lopen"
 msgstr "Move left"
 
 #. Instelbare bediening: move_right
-#: scripts/core/input_manager.gd:12
+#: scripts/core/input_manager.gd:13
 msgid "Naar rechts lopen"
 msgstr "Move right"
 
 #. Instelbare bediening: technique
-#: scripts/core/input_manager.gd:13
+#: scripts/core/input_manager.gd:14
 msgid "Techniek (vasthouden + zwaard / boog)"
 msgstr "Technique (hold + sword / bow)"
 
 #. Instelbare bediening: attack
-#: scripts/ui/ending.gd:254 scripts/ui/equipment_page.gd:220 scripts/ui/progression_page.gd:126 scripts/core/input_manager.gd:14
+#: scripts/ui/ending.gd:258 scripts/ui/equipment_page.gd:220 scripts/ui/progression_page.gd:126 scripts/core/input_manager.gd:15
 msgid "Zwaard"
 msgstr "Sword"
 
 #. Instelbare bediening: interact
-#: scripts/core/input_manager.gd:14
+#: scripts/core/input_manager.gd:15
 msgid "Praten / gebruiken"
 msgstr "Talk / interact"
 
 #. Instelbare bediening: dodge
-#: scripts/core/input_manager.gd:15
+#: scripts/core/input_manager.gd:16
 msgid "Rollen"
 msgstr "Dodge roll"
 
 #. Instelbare bediening: sprint
-#: scripts/core/input_manager.gd:15
+#: scripts/core/input_manager.gd:16
 msgid "Rennen (vasthouden)"
 msgstr "Sprint (hold)"
 
 #. Instelbare bediening: potion
-#: scripts/core/input_manager.gd:15
+#: scripts/core/input_manager.gd:16
 msgid "Drankje"
 msgstr "Potion"
 
 #. Instelbare bediening: menu
-#: scripts/core/input_manager.gd:16
+#: scripts/core/input_manager.gd:17
 msgid "Inventaris"
 msgstr "Inventory"
 
 #. Instelbare bediening: crafting
-#: scripts/core/input_manager.gd:16
+#: scripts/core/input_manager.gd:17
 msgid "Beroepen / maken"
 msgstr "Professions / crafting"
 
 #. Instelbare bediening: quests
-#: scripts/ui/menu_ui.gd:429 scripts/ui/menu_ui.gd:681 scripts/core/input_manager.gd:16
+#: scripts/ui/menu_ui.gd:429 scripts/ui/menu_ui.gd:681 scripts/core/input_manager.gd:17
 msgid "Opdrachten"
 msgstr "Quests"
 
 #. Instelbare bediening: map
-#: scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:18
 msgid "Kaart"
 msgstr "Map"
 
 #. Instelbare bediening: wereld_prestaties
-#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:18
 msgid "Prestaties"
 msgstr "Achievements"
 
 #. Instelbare bediening: wereld_beestenboek
-#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:18
 msgid "Beestenboek"
 msgstr "Bestiary"
 
 #. Instelbare bediening: pause
-#: scripts/ui/pause_menu.gd:72 scripts/core/input_manager.gd:18
+#: scripts/ui/pause_menu.gd:70 scripts/core/input_manager.gd:19
 msgid "Pauze"
 msgstr "Paused"
 
 #. Instelbare bediening: restart
-#: scripts/core/input_manager.gd:18
+#: scripts/core/input_manager.gd:19
 msgid "Opnieuw na verlies"
 msgstr "Restart after defeat"
 
 #. Instelbare bediening: mute
-#: scripts/core/input_manager.gd:18
+#: scripts/core/input_manager.gd:19
 msgid "Geluid aan / uit"
 msgstr "Sound on / off"
 
 #. Instelbare bediening: fullscreen
-#: scripts/core/input_manager.gd:18
+#: scripts/core/input_manager.gd:19
 msgid "Volledig scherm"
 msgstr "Fullscreen"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "A / kruis"
 msgstr "A / cross"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "B / cirkel"
 msgstr "B / circle"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "X / vierkant"
 msgstr "X / square"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "Y / driehoek"
 msgstr "Y / triangle"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "Select / View"
 msgstr "Select / View"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "Home"
 msgstr "Home"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "Start / Menu"
 msgstr "Start / Menu"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "L3"
 msgstr "L3"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "R3"
 msgstr "R3"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "LB / L1"
 msgstr "LB / L1"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "RB / R1"
 msgstr "RB / R1"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "D-pad omhoog"
 msgstr "D-pad up"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "D-pad omlaag"
 msgstr "D-pad down"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "D-pad links"
 msgstr "D-pad left"
 
 #. Naam van een controllerknop; Xbox / PlayStation waar van toepassing
-#: scripts/core/input_manager.gd:20
+#: scripts/core/input_manager.gd:21
 msgid "D-pad rechts"
 msgstr "D-pad right"
 
 #. Aftiteling (title)
-#: scripts/ui/title.gd:111 scripts/data/credits.gd:5
+#: scripts/ui/title.gd:119 scripts/data/credits.gd:5
 msgid "Bluemap Quest"
 msgstr "Bluemap Quest"
 
@@ -8808,9 +8908,25 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:259
+#: scripts/world.gd:264
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
+
+#: scripts/core/access_points.gd:43
+msgid "Naar %s"
+msgstr "To %s"
+
+#: scripts/core/access_points.gd:44
+msgid "De doorgang is nog gesloten."
+msgstr "This passage is still locked."
+
+#: scripts/core/access_points.gd:44
+msgid "Loop door de doorgang."
+msgstr "Walk through the doorway."
+
+#: scripts/core/access_points.gd:49
+msgid "Deze woning is gesloten."
+msgstr "This home is closed."
 
 #: scripts/core/coastal_region.gd:13
 msgid "Strand en duinen. West: Zilvermeer. Noord: Zilvermonding. De veer verbindt de eilanden en de haven."
@@ -8835,6 +8951,90 @@ msgstr "A grassy ridge, beach and viewpoint. The eastern boardwalk leads to Tida
 #: scripts/core/coastal_region.gd:18
 msgid "Getijdenbaai: zandbank bij laagwater, hoge loopbrug altijd open. Gratis leenlijn en veer bij de westelijke steiger."
 msgstr "Tidal Cove: sandbank at low tide, high boardwalk always open. Free loan line and ferry by the western jetty."
+
+#: scripts/core/craft_identity.gd:8
+msgid "Veldboek · kruiden en zaden"
+msgstr "Field journal · herbs and seeds"
+
+#: scripts/core/craft_identity.gd:9
+msgid "Houtwerkbank · gereedschap en vlechtwerk"
+msgstr "Woodwork bench · tools and weaving"
+
+#: scripts/core/craft_identity.gd:10
+msgid "Ertskaart · steen en metalen"
+msgstr "Ore guide · stone and metals"
+
+#: scripts/core/craft_identity.gd:11
+msgid "Visboek · hengel en vangst"
+msgstr "Fishing journal · rod and catch"
+
+#: scripts/core/craft_identity.gd:12
+msgid "Smidswerkbank · smelten en smeden"
+msgstr "Smith's bench · smelting and forging"
+
+#: scripts/core/craft_identity.gd:13
+msgid "Mengtafel · kruiden en elixers"
+msgstr "Mixing table · herbs and elixirs"
+
+#: scripts/core/craft_identity.gd:14
+msgid "Keukenboek · gerechten en proviand"
+msgstr "Kitchen journal · meals and provisions"
+
+#: scripts/core/craft_identity.gd:18
+msgid "Van bosvondst naar tuinzaad; lees bij elk recept welke planten je nodig hebt."
+msgstr "Turn forest finds into garden seeds; each recipe explains which plants you need."
+
+#: scripts/core/craft_identity.gd:19
+msgid "Werk met hout en vezels; werktekeningen verbinden gereedschap, uitrusting en inrichting."
+msgstr "Work with wood and fibers; plans connect tools, equipment and furnishings."
+
+#: scripts/core/craft_identity.gd:20
+msgid "Begin met losse vuurstenen; een stenen pikhouweel opent koper, koper en niveau 2 openen ijzer."
+msgstr "Start with loose flint; a stone pickaxe unlocks copper, and copper plus level 2 unlock iron."
+
+#: scripts/core/craft_identity.gd:21
+msgid "Vis bij de kringen in het Zilvermeer; iedere echte vangst telt voor dit beroep."
+msgstr "Fish at the ripples in Silver Lake; every real catch counts towards this profession."
+
+#: scripts/core/craft_identity.gd:22
+msgid "Controleer erts, brandstof en niveau; Greta's smederij is je werkplek voor metaal."
+msgstr "Check ore, fuel and level; Greta's smithy is your workplace for metal."
+
+#: scripts/core/craft_identity.gd:23
+msgid "Kies een mengsel en bekijk de ingrediënten; bijzondere bereidingen vragen Lena's alchemietafel."
+msgstr "Choose a mixture and check the ingredients; special preparations require Lena's alchemy table."
+
+#: scripts/core/craft_identity.gd:24
+msgid "Vergelijk herstel en ingrediënten; snacks maak je onderweg, warme gerechten in de herberg."
+msgstr "Compare restoration and ingredients; make snacks on the road and warm meals at the inn."
+
+#: scripts/core/craft_identity.gd:28
+msgid "Zaden & bereidingen"
+msgstr "Seeds & preparations"
+
+#: scripts/core/craft_identity.gd:29
+msgid "Werktekeningen"
+msgstr "Plans"
+
+#: scripts/core/craft_identity.gd:30
+msgid "Gereedschap"
+msgstr "Tools"
+
+#: scripts/core/craft_identity.gd:31
+msgid "Vangst & hengel"
+msgstr "Catch & rod"
+
+#: scripts/core/craft_identity.gd:32
+msgid "Smelten & smeden"
+msgstr "Smelting & forging"
+
+#: scripts/core/craft_identity.gd:33
+msgid "Mengrecepten"
+msgstr "Mixtures"
+
+#: scripts/core/craft_identity.gd:34
+msgid "Gerechten"
+msgstr "Meals"
 
 #: scripts/core/craft_journal.gd:29
 msgid "Werktekening geleerd: %s. Kies een materiaaldoel via Beroepen."
@@ -8997,135 +9197,279 @@ msgid "De oude route licht weer op. En Wilfred heeft eindelijk een naam op zijn 
 msgstr "The old route shines again. And Wilfred finally has a name on his stone. The Blue Map is about the people between the crystals as much as the crystals themselves."
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
-#: scripts/core/game_state.gd:273
+#: scripts/core/game_state.gd:277
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
 msgstr "Hero level %d! +%d coins for your equipment."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:405
+#: scripts/core/game_state.gd:409
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:408
+#: scripts/core/game_state.gd:412
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:410
+#: scripts/core/game_state.gd:414
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:413
+#: scripts/core/game_state.gd:417
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:420
+#: scripts/core/game_state.gd:424
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:486
+#: scripts/core/game_state.gd:490
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:501
+#: scripts/core/game_state.gd:505
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:546
+#: scripts/core/game_state.gd:550
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:550
+#: scripts/core/game_state.gd:554
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:626
+#: scripts/core/game_state.gd:630
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:643
+#: scripts/core/game_state.gd:647
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
-#: scripts/core/input_manager.gd:233
+#: scripts/core/garden_feedback.gd:5
+msgid "Druivenstok"
+msgstr "Grapevine"
+
+#: scripts/core/garden_feedback.gd:5
+msgid "Bloemen"
+msgstr "Flowers"
+
+#: scripts/core/garden_feedback.gd:10
+msgid "Werk binnen je eigen tuin."
+msgstr "Work inside your own garden."
+
+#: scripts/core/garden_feedback.gd:12
+msgid "Haal eerst je gratis tuinhak bij het tuinbord."
+msgstr "Collect your free hoe at the garden sign first."
+
+#: scripts/core/garden_feedback.gd:14
+msgid "Kom iets dichterbij."
+msgstr "Move a little closer."
+
+#: scripts/core/garden_feedback.gd:16
+msgid "Houd deze plek vrij voor water, paden en voorwerpen."
+msgstr "Keep this spot clear for water, paths and objects."
+
+#: scripts/core/garden_feedback.gd:18
+msgid "Deze tegel is al bewerkt."
+msgstr "This tile has already been worked."
+
+#: scripts/core/garden_feedback.gd:20
+msgid "Bewerk eerst de grond."
+msgstr "Till the soil first."
+
+#: scripts/core/garden_feedback.gd:21
+msgid "Hier groeit al iets."
+msgstr "Something is already growing here."
+
+#: scripts/core/garden_feedback.gd:22
+msgid "Je hebt geen passend zaad bij je."
+msgstr "You have no suitable seeds with you."
+
+#: scripts/core/garden_feedback.gd:24
+msgid "Meststof is bedoeld voor een druivenstok."
+msgstr "Fertilizer is for grapevines."
+
+#: scripts/core/garden_feedback.gd:25
+msgid "Deze stok is al bemest."
+msgstr "This vine is already fertilized."
+
+#: scripts/core/garden_feedback.gd:26
+msgid "Maak eerst meststof op de mesthoop."
+msgstr "Make fertilizer at the compost heap first."
+
+#: scripts/core/garden_feedback.gd:28
+msgid "Richt op een druivenstok."
+msgstr "Face a grapevine."
+
+#: scripts/core/garden_feedback.gd:29
+msgid "Deze druiven zijn nog niet rijp."
+msgstr "These grapes are not ripe yet."
+
+#: scripts/core/garden_feedback.gd:30
+msgid "Maak ruimte in je tas voor de volledige oogst."
+msgstr "Make room in your bag for the full harvest."
+
+#: scripts/core/garden_feedback.gd:32
+msgid "Deze grond is al hersteld."
+msgstr "This ground is already restored."
+
+#: scripts/core/garden_feedback.gd:33
+msgid "Maak ruimte in je tas voor het zaad."
+msgstr "Make room in your bag for the seed."
+
+#: scripts/core/garden_feedback.gd:34
+msgid "Kies een tuinhandeling."
+msgstr "Choose a garden action."
+
+#: scripts/core/garden_feedback.gd:39
+msgid "Kanaal aangesloten · water stroomt door."
+msgstr "Channel connected · water is flowing."
+
+#: scripts/core/garden_feedback.gd:39
+msgid "Droog kanaal · verbind met de beek of een gevuld kanaal."
+msgstr "Dry channel · connect it to the brook or a filled channel."
+
+#: scripts/core/garden_feedback.gd:43
+msgid "Rijp om te oogsten"
+msgstr "Ready to harvest"
+
+#: scripts/core/garden_feedback.gd:43
+msgid "In bloei"
+msgstr "In bloom"
+
+#: scripts/core/garden_feedback.gd:43
+msgid "Groeit · nog %.0f s actieve speeltijd"
+msgstr "Growing · %.0f s of active play remaining"
+
+#: scripts/core/garden_feedback.gd:43
+msgid "Wacht op water · verdort niet"
+msgstr "Waiting for water · will not wither"
+
+#: scripts/core/garden_feedback.gd:44
+msgid "Opbrengst: %d druiven"
+msgstr "Yield: %d grapes"
+
+#: scripts/core/garden_feedback.gd:44
+msgid "Voedt bijen binnen vijf tegels"
+msgstr "Feeds bees within five tiles"
+
+#: scripts/core/garden_feedback.gd:47
+msgid "Landbouwgrond · water aangesloten"
+msgstr "Farmland · water connected"
+
+#: scripts/core/garden_feedback.gd:47
+msgid "Landbouwgrond · leid water naar een aangrenzende tegel"
+msgstr "Farmland · lead water to an adjacent tile"
+
+#: scripts/core/garden_feedback.gd:48
+msgid "Vrije tuingrond"
+msgstr "Free garden ground"
+
+#: scripts/core/garden_feedback.gd:64
+msgid "Tuinhulp · Haal eerst je gratis hak en zaden bij het tuinbord."
+msgstr "Garden guide · collect your free hoe and seeds at the garden sign first."
+
+#: scripts/core/garden_feedback.gd:66
+msgid "Tuinhulp 1/4 · Bewerk één vak grond bij de beek."
+msgstr "Garden guide 1/4 · Till one tile near the brook."
+
+#: scripts/core/garden_feedback.gd:67
+msgid "Tuinhulp 2/4 · Graaf vanaf de beek een kanaal tot naast je grond."
+msgstr "Garden guide 2/4 · Dig from the brook to a tile beside your soil."
+
+#: scripts/core/garden_feedback.gd:68
+msgid "Tuinhulp 3/4 · Plant druiven op je bewaterde grond."
+msgstr "Garden guide 3/4 · Plant grapes in your watered soil."
+
+#: scripts/core/garden_feedback.gd:69
+msgid "Tuinhulp 4/4 · Ga gerust op pad en oogst zodra je druiven rijp zijn."
+msgstr "Garden guide 4/4 · Explore freely and harvest when your grapes are ripe."
+
+#: scripts/core/garden_feedback.gd:70
+msgid "Eerste oogst gelukt · je kunt je tuin op eigen tempo uitbreiden."
+msgstr "First harvest complete · expand your garden at your own pace."
+
+#: scripts/core/input_manager.gd:235
 msgid "Niet ingesteld"
 msgstr "Unassigned"
 
-#: scripts/core/input_manager.gd:245
+#: scripts/core/input_manager.gd:247
 msgid "Linkermuis"
 msgstr "Left mouse"
 
-#: scripts/core/input_manager.gd:246
+#: scripts/core/input_manager.gd:248
 msgid "Rechtermuis"
 msgstr "Right mouse"
 
-#: scripts/core/input_manager.gd:247
+#: scripts/core/input_manager.gd:249
 msgid "Middelmuisknop"
 msgstr "Middle mouse"
 
-#: scripts/core/input_manager.gd:248
+#: scripts/core/input_manager.gd:250
 msgid "Wiel omhoog"
 msgstr "Wheel up"
 
-#: scripts/core/input_manager.gd:249
+#: scripts/core/input_manager.gd:251
 msgid "Wiel omlaag"
 msgstr "Wheel down"
 
-#: scripts/core/input_manager.gd:250
+#: scripts/core/input_manager.gd:252
 msgid "Muisknop %d"
 msgstr "Mouse button %d"
 
-#: scripts/core/input_manager.gd:252
+#: scripts/core/input_manager.gd:254
 msgid "Knop %d"
 msgstr "Button %d"
 
-#: scripts/core/input_manager.gd:260
+#: scripts/core/input_manager.gd:262
 msgid "Linkerstick links"
 msgstr "Left stick left"
 
-#: scripts/core/input_manager.gd:260
+#: scripts/core/input_manager.gd:262
 msgid "Linkerstick rechts"
 msgstr "Left stick right"
 
-#: scripts/core/input_manager.gd:261
+#: scripts/core/input_manager.gd:263
 msgid "Linkerstick omhoog"
 msgstr "Left stick up"
 
-#: scripts/core/input_manager.gd:261
+#: scripts/core/input_manager.gd:263
 msgid "Linkerstick omlaag"
 msgstr "Left stick down"
 
-#: scripts/core/input_manager.gd:267
+#: scripts/core/input_manager.gd:269
 msgid "Kies een geldige toets of controllerknop."
 msgstr "Choose a valid key or controller button."
 
-#: scripts/core/input_manager.gd:270
+#: scripts/core/input_manager.gd:272
 msgid "De rechterstick blijft beschikbaar om te richten."
 msgstr "The right stick is reserved for aiming."
 
-#: scripts/core/input_manager.gd:272
+#: scripts/core/input_manager.gd:274
 msgid "Beweeg de stick of trigger verder."
 msgstr "Move the stick or trigger further."
 
-#: scripts/core/input_manager.gd:274
+#: scripts/core/input_manager.gd:276
 msgid "Kies een toets, muisknop, stickrichting of trigger."
 msgstr "Choose a key, mouse button, stick direction or trigger."
 
-#: scripts/core/input_manager.gd:276
+#: scripts/core/input_manager.gd:278
 msgid "Esc blijft beschikbaar om menu's te sluiten."
 msgstr "Esc is reserved for closing menus."
 
-#: scripts/core/input_manager.gd:304
+#: scripts/core/input_manager.gd:306
 msgid "Deze invoer hoort bij meerdere acties; kies een andere."
 msgstr "This input is assigned to several actions; choose another."
 
-#: scripts/core/input_manager.gd:308
+#: scripts/core/input_manager.gd:310
 msgid "Die invoer is al gekoppeld aan %s. Kies een vrije knop."
 msgstr "That input is already assigned to %s. Choose an unused button."
 
-#: scripts/core/input_manager.gd:347
+#: scripts/core/input_manager.gd:349
 msgid "Bediening kon niet worden opgeslagen."
 msgstr "Controls could not be saved."
 
@@ -9869,7 +10213,7 @@ msgstr "Sluice table · Shellkeeper"
 msgid "Vrije proef: geen schade, buit of XP. Pijlen zijn hier geleend; stamina blijft echt. Gebruik het rustaltaar als je wilt bijvullen."
 msgstr "Free practice: no damage, loot or XP. Arrows are borrowed here; stamina is real. Use the resting altar if you want to refill it."
 
-#: scripts/entities/coastal_styles.gd:9 scripts/entities/combat_actions.gd:28
+#: scripts/entities/coastal_styles.gd:9 scripts/entities/combat_actions.gd:29
 msgid "Ankerwacht"
 msgstr "Anchor guard"
 
@@ -9905,23 +10249,23 @@ msgstr "River line · short crossing"
 msgid "Proefopstelling · kuststijlen"
 msgstr "Practice setup · coastal styles"
 
-#: scripts/entities/combat_actions.gd:30 scripts/entities/combat_actions.gd:7
+#: scripts/entities/combat_actions.gd:31 scripts/entities/combat_actions.gd:7
 msgid "Breekslag"
 msgstr "Breaking Slash"
 
-#: scripts/entities/combat_actions.gd:31 scripts/entities/combat_actions.gd:8
+#: scripts/entities/combat_actions.gd:32 scripts/entities/combat_actions.gd:8
 msgid "Kristalsteek"
 msgstr "Crystal Thrust"
 
-#: scripts/entities/combat_actions.gd:32 scripts/entities/combat_actions.gd:6
+#: scripts/entities/combat_actions.gd:33 scripts/entities/combat_actions.gd:6
 msgid "Snelle steek"
 msgstr "Quick Thrust"
 
-#: scripts/entities/combat_actions.gd:48
+#: scripts/entities/combat_actions.gd:50
 msgid "Een waaierschot vraagt drie pijlen. Je verliest niets als ze ontbreken."
 msgstr "A fan shot needs three arrows. You lose nothing if you do not have them."
 
-#: scripts/entities/combat_actions.gd:51
+#: scripts/entities/combat_actions.gd:53
 msgid "Deze techniek vraagt %d stamina. Gewone aanvallen blijven beschikbaar."
 msgstr "This technique needs %d stamina. Ordinary attacks remain available."
 
@@ -9989,7 +10333,7 @@ msgstr "Resonance Trial: wave %d / 3"
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:426
+#: scripts/entities/enemy.gd:427
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -10004,6 +10348,34 @@ msgstr "The gate is locked."
 #: scripts/entities/guardian.gd:462
 msgid "Beschermd!"
 msgstr "Shielded!"
+
+#: scripts/entities/homestead.gd:81
+msgid "%s · %s gebruiken · %s standen"
+msgstr "%s · %s to work · %s for tools"
+
+#: scripts/entities/homestead.gd:82
+msgid "Tuinhulp · %s opent de tuinstanden"
+msgstr "Garden guide · %s opens garden tools"
+
+#: scripts/entities/homestead.gd:87
+msgid "Eén tegel per druk · een plant wordt vervangen door zijn zaad."
+msgstr "One tile per press · a plant is replaced by its seed."
+
+#: scripts/entities/homestead.gd:92
+msgid "Dit kanaal krijgt meteen water · houd vast en loop verder."
+msgstr "This channel fills immediately · hold and keep walking."
+
+#: scripts/entities/homestead.gd:92
+msgid "Dit kanaal blijft droog tot het met water is verbonden."
+msgstr "This channel stays dry until connected to water."
+
+#: scripts/entities/homestead.gd:93
+msgid "Houd vast en loop langs een rij."
+msgstr "Hold and walk along a row."
+
+#: scripts/entities/homestead.gd:124
+msgid "Thuis"
+msgstr "Home"
 
 #: scripts/entities/living_object.gd:42
 msgid "Prismaspiegel"
@@ -10173,19 +10545,19 @@ msgstr "Water flows to the fountain and the flower beds."
 msgid "Het rooster is vrij. Draai nu het sluisrad aan de zuidkant open."
 msgstr "The grate is clear. Now open the sluice wheel to the south."
 
-#: scripts/entities/player.gd:297
+#: scripts/entities/player.gd:312
 msgid "Je hebt een boog nodig. Tobias verkoopt er een."
 msgstr "You need a bow. Tobias sells one."
 
-#: scripts/entities/player.gd:308
+#: scripts/entities/player.gd:323
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:337 scripts/ui/menu_ui.gd:520
+#: scripts/entities/player.gd:352 scripts/ui/menu_ui.gd:520
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
-#: scripts/entities/player.gd:339
+#: scripts/entities/player.gd:354
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
 
@@ -10383,7 +10755,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/data/coast_maps.gd:20 scripts/data/tiles.gd:47 scripts/entities/living_scenery.gd:79
+#: scripts/entities/shooting_range.gd:169 scripts/core/homestead.gd:15 scripts/core/homestead.gd:17 scripts/data/coast_maps.gd:20
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -10586,7 +10958,7 @@ msgstr "Coastal region · map and connections"
 msgid "Goud: wandelpad · blauw: gekozen veerroute · witte ring: hier"
 msgstr "Gold: footpath · blue: selected ferry route · white ring: here"
 
-#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:88 scripts/ui/crafting_ui.gd:405 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
+#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:96 scripts/ui/crafting_ui.gd:438 scripts/ui/home_ui.gd:116 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
 msgid "Sluiten"
 msgstr "Close"
 
@@ -10966,67 +11338,67 @@ msgstr "Move %d"
 msgid "De landingsplek is bezet. De hoge brug blijft open."
 msgstr "The landing is occupied. The high bridge stays open."
 
-#: scripts/ui/controls_menu.gd:102
+#: scripts/ui/controls_menu.gd:100
 msgid "Standaardbediening hersteld voor dit apparaat."
 msgstr "Default controls restored for this device."
 
-#: scripts/ui/controls_menu.gd:123 scripts/ui/pause_menu.gd:79 scripts/ui/title.gd:117
+#: scripts/ui/controls_menu.gd:121 scripts/ui/pause_menu.gd:77 scripts/ui/title.gd:125
 msgid "Bediening"
 msgstr "Controls"
 
-#: scripts/ui/controls_menu.gd:124
+#: scripts/ui/controls_menu.gd:122
 msgid "Klik een koppeling en druk de nieuwe invoer. Bestaande koppelingen wisselen om."
 msgstr "Select a binding and press the new input. Existing bindings will be swapped."
 
-#: scripts/ui/controls_menu.gd:125
+#: scripts/ui/controls_menu.gd:123
 msgid "Standaard herstellen"
 msgstr "Restore defaults"
 
-#: scripts/ui/controls_menu.gd:126
+#: scripts/ui/controls_menu.gd:124
 msgid "Terug"
 msgstr "Back"
 
-#: scripts/ui/controls_menu.gd:127
+#: scripts/ui/controls_menu.gd:125
 msgid "Toetsenbord + muis"
 msgstr "Keyboard + mouse"
 
-#: scripts/ui/controls_menu.gd:128
+#: scripts/ui/controls_menu.gd:126
 msgid "Controller"
 msgstr "Controller"
 
-#: scripts/ui/controls_menu.gd:133
+#: scripts/ui/controls_menu.gd:131
 msgid "Menu: WASD / pijlen / linkerstick / D-pad · Enter / A kiezen · Esc / B terug\nRichten: muis / rechterstick · Actief apparaat wisselt automatisch."
 msgstr "Menus: WASD / arrows / left stick / D-pad · Enter / A to select · Esc / B to go back\nAim: mouse / right stick · Active device switches automatically."
 
-#: scripts/ui/controls_menu.gd:153
+#: scripts/ui/controls_menu.gd:151
 msgid "Nieuwe invoer voor %s (%s). Esc of 8 seconden wachten annuleert."
 msgstr "New input for %s (%s). Press Esc or wait 8 seconds to cancel."
 
-#: scripts/ui/controls_menu.gd:153 scripts/core/input_manager.gd:36 scripts/core/input_manager.gd:100 scripts/core/input_manager.gd:193
+#: scripts/ui/controls_menu.gd:151 scripts/core/input_manager.gd:37 scripts/core/input_manager.gd:102 scripts/core/input_manager.gd:195
 msgid "controller"
 msgstr "controller"
 
-#: scripts/ui/controls_menu.gd:153
+#: scripts/ui/controls_menu.gd:151
 msgid "toetsenbord / muis"
 msgstr "keyboard / mouse"
 
-#: scripts/ui/controls_menu.gd:154
+#: scripts/ui/controls_menu.gd:152
 msgid "Druk de gewenste invoer…"
 msgstr "Press the desired input…"
 
-#: scripts/ui/controls_menu.gd:161
+#: scripts/ui/controls_menu.gd:159
 msgid "Wijzigen geannuleerd."
 msgstr "Change cancelled."
 
-#: scripts/ui/controls_menu.gd:172
+#: scripts/ui/controls_menu.gd:170
 msgid "Bediening opgeslagen. Een bezette koppeling is automatisch omgewisseld."
 msgstr "Controls saved. Any existing binding was swapped automatically."
 
-#: scripts/ui/controls_menu.gd:174
+#: scripts/ui/controls_menu.gd:172
 msgid "Esc of wachten annuleert."
 msgstr "Press Esc or wait to cancel."
 
-#: scripts/ui/controls_menu.gd:193
+#: scripts/ui/controls_menu.gd:192
 msgid "Geen nieuwe invoer ontvangen; je koppeling is behouden."
 msgstr "No new input received; your binding has been kept."
 
@@ -11038,29 +11410,53 @@ msgstr "Material goal: %s"
 msgid "Alles bij je: maak via %s."
 msgstr "Everything ready: craft with %s."
 
-#: scripts/ui/crafting_ui.gd:147
+#: scripts/ui/crafting_ui.gd:165
 msgid "↑ ↓ ← → kiezen  ·  %s bevestigen  ·  %s / %s recepten/voorraad  ·  %s sluiten"
 msgstr "↑ ↓ ← → select  ·  %s confirm  ·  %s / %s recipes/supplies  ·  %s close"
 
-#: scripts/ui/crafting_ui.gd:148
+#: scripts/ui/crafting_ui.gd:166
 msgid "Verzamel met %s. Vindplaatsen staan bij het recept; stel een materiaaldoel in. Gereedschap slijt niet."
 msgstr "Gather with %s. Sources are listed with each recipe; set a material goal. Tools never wear out."
 
-#: scripts/ui/crafting_ui.gd:286
+#: scripts/ui/crafting_ui.gd:208
+msgid "Proviand · eten en drinken"
+msgstr "Provisions · food and drink"
+
+#: scripts/ui/crafting_ui.gd:311
 msgid "Materialen compleet: %d/%d"
 msgstr "Materials ready: %d/%d"
 
-#: scripts/ui/crafting_ui.gd:387
+#: scripts/ui/crafting_ui.gd:420
 msgid "Materiaaldoel verwijderen"
 msgstr "Remove material goal"
 
-#: scripts/ui/crafting_ui.gd:387
+#: scripts/ui/crafting_ui.gd:420
 msgid "Dit recept als materiaaldoel volgen"
 msgstr "Track this recipe as a material goal"
 
-#: scripts/ui/crafting_ui.gd:388
+#: scripts/ui/crafting_ui.gd:421
 msgid "Vindplaatsen staan in de uitleg. Rechts gaat naar de uitleg; omhoog/omlaag scrolt, rechts gaat naar Materiaaldoel."
 msgstr "Sources are in the explanation. Right opens it; up/down scrolls, right goes to Material Goal."
+
+#: scripts/ui/crafting_ui.gd:471
+msgid "Hengel: aanwezig"
+msgstr "Fishing rod: ready"
+
+#: scripts/ui/crafting_ui.gd:471
+msgid "Haal je hengel bij Joris aan het Zilvermeer."
+msgstr "Collect your fishing rod from Joris at Silver Lake."
+
+#: scripts/ui/crafting_ui.gd:472
+msgid "Erts + brandstof → metaal en gereedschap"
+msgstr "Ore + fuel → metal and tools"
+
+#: scripts/ui/crafting_ui.gd:473
+msgid "Kruiden + ingrediënten → elixers en hulpmiddelen"
+msgstr "Herbs + ingredients → elixirs and aids"
+
+#: scripts/ui/crafting_ui.gd:474
+msgid "Ingrediënten → hartjes en uithoudingsvermogen"
+msgstr "Ingredients → hearts and stamina"
 
 #: scripts/ui/dialogue_box.gd:133
 msgid "↑ ↓ kiezen  ·  %s bevestigen  ·  %s sluiten"
@@ -11106,57 +11502,57 @@ msgstr "The inn is packed. Everyone wants to see the hero of Daybreak Village."
 msgid "Muis en ik gaan ook slijmen verslaan. Als ze groter worden dan Muis, rennen we weg."
 msgstr "Mouse and I are going to beat slimes too. If they get bigger than Mouse, we'll run away."
 
-#: scripts/ui/ending.gd:218
+#: scripts/ui/ending.gd:222
 msgid "Kristaltempel"
 msgstr "Crystal Temple"
 
-#: scripts/ui/ending.gd:218
+#: scripts/ui/ending.gd:222
 msgid "Vergeten Ruïne"
 msgstr "Forgotten Ruins"
 
-#: scripts/ui/ending.gd:239
+#: scripts/ui/ending.gd:243
 msgid "De Blauwe Kaart is weer heel."
 msgstr "The Blue Map is whole again."
 
-#: scripts/ui/ending.gd:244
+#: scripts/ui/ending.gd:248
 msgid "Jouw avontuur"
 msgstr "Your adventure"
 
-#: scripts/ui/ending.gd:251
+#: scripts/ui/ending.gd:255
 msgid "Speeltijd"
 msgstr "Play time"
 
-#: scripts/ui/ending.gd:252
+#: scripts/ui/ending.gd:256
 msgid "Verslagen vijanden"
 msgstr "Enemies defeated"
 
-#: scripts/ui/ending.gd:253
+#: scripts/ui/ending.gd:257
 msgid "Munten"
 msgstr "Coins"
 
-#: scripts/ui/ending.gd:255 scripts/ui/progression_page.gd:126
+#: scripts/ui/ending.gd:259 scripts/ui/progression_page.gd:126
 msgid "Hartjes"
 msgstr "Hearts"
 
 #. aantal voltooide opdrachten: "5 van 9"
-#: scripts/ui/ending.gd:257
+#: scripts/ui/ending.gd:261
 msgid "Opdrachten voltooid"
 msgstr "Quests completed"
 
 #. aantal voltooide opdrachten: "5 van 9"
-#: scripts/ui/ending.gd:257
+#: scripts/ui/ending.gd:261
 msgid "%d van %d"
 msgstr "%d of %d"
 
-#: scripts/ui/ending.gd:288
+#: scripts/ui/ending.gd:292
 msgid "Bedankt voor het spelen!"
 msgstr "Thanks for playing!"
 
-#: scripts/ui/ending.gd:289
+#: scripts/ui/ending.gd:293
 msgid "Je voortgang is bewaard: je kunt verder in het dorp."
 msgstr "Your progress is saved: you can keep playing in the village."
 
-#: scripts/ui/ending.gd:290
+#: scripts/ui/ending.gd:294
 msgid "Druk op %s om naar het titelscherm te gaan"
 msgstr "Press %s to return to the title screen"
 
@@ -11236,7 +11632,7 @@ msgstr "After swapping: %s"
 msgid "Tobias · dorpswinkel · %d munten (je hebt %d)"
 msgstr "Tobias · village shop · %d coins (you have %d)"
 
-#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:93 scripts/ui/crafting_ui.gd:280
+#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:93 scripts/ui/crafting_ui.gd:305
 msgid "%s %d/%d"
 msgstr "%s %d/%d"
 
@@ -11344,86 +11740,290 @@ msgid_plural "Waarde: %d munten"
 msgstr[0] "Worth: %d coin"
 msgstr[1] "Worth: %d coins"
 
-#: scripts/ui/hud.gd:56
+#: scripts/ui/home_ui.gd:25
+msgid "Grond bewerken"
+msgstr "Till soil"
+
+#: scripts/ui/home_ui.gd:26
+msgid "Kanaal graven"
+msgstr "Dig channel"
+
+#: scripts/ui/home_ui.gd:27
+msgid "Druiven planten"
+msgstr "Plant grapes"
+
+#: scripts/ui/home_ui.gd:28
+msgid "Bloemen zaaien"
+msgstr "Sow flowers"
+
+#: scripts/ui/home_ui.gd:29
+msgid "Bemesten"
+msgstr "Fertilize"
+
+#: scripts/ui/home_ui.gd:30
+msgid "Druiven oogsten"
+msgstr "Harvest grapes"
+
+#: scripts/ui/home_ui.gd:31
+msgid "Grond herstellen"
+msgstr "Restore ground"
+
+#: scripts/ui/home_ui.gd:32
+msgid "Gereedschap opbergen"
+msgstr "Put tool away"
+
+#: scripts/ui/home_ui.gd:35
+msgid "Mesthoop"
+msgstr "Compost heap"
+
+#: scripts/ui/home_ui.gd:36
+msgid "Wijnvat"
+msgstr "Wine barrel"
+
+#: scripts/ui/home_ui.gd:37
+msgid "Bijenkast"
+msgstr "Beehive"
+
+#: scripts/ui/home_ui.gd:38
+msgid "Je eigen bed"
+msgstr "Your bed"
+
+#: scripts/ui/home_ui.gd:39
+msgid "Wilde bosdruiven"
+msgstr "Wild grapes"
+
+#: scripts/ui/home_ui.gd:40
+msgid "Tuinvoorraad"
+msgstr "Garden supplies"
+
+#: scripts/ui/home_ui.gd:41
+msgid "Woning en tuin"
+msgstr "Home and garden"
+
+#: scripts/ui/home_ui.gd:70
+msgid "Tuinhak · kies je werk"
+msgstr "Garden hoe · choose a mode"
+
+#: scripts/ui/home_ui.gd:75
+msgid "Kies je werk en houd %s vast terwijl je langs een rij loopt; herstellen werkt per druk."
+msgstr "Choose an action and hold %s while walking along a row; restore works once per press."
+
+#: scripts/ui/home_ui.gd:79
+msgid "%s · bij je: %d"
+msgstr "%s · carrying: %d"
+
+#: scripts/ui/home_ui.gd:83
+msgid "Wateroverzicht: aan"
+msgstr "Water overlay: on"
+
+#: scripts/ui/home_ui.gd:83
+msgid "Wateroverzicht: uit"
+msgstr "Water overlay: off"
+
+#: scripts/ui/home_ui.gd:84 scripts/ui/home_ui.gd:92
+msgid "Tuinhulp stoppen"
+msgstr "Stop garden guide"
+
+#: scripts/ui/home_ui.gd:84 scripts/ui/home_ui.gd:92
+msgid "Tuinhulp starten · vrijwillig"
+msgstr "Start garden guide · optional"
+
+#: scripts/ui/home_ui.gd:87
+msgid "Dit huis en de tuin zijn van jou. Buiten: twee wijnvaten, mesthoop achter het dak en een bijenkast. Haal je gratis hak en zaden. Leid met kanaaltjes water uit de dorpsbeek naar de grond; droge gewassen wachten zonder te verdorren. Druiven groeien in 90 s, bloemen in 60 s actieve speeltijd. Menu's pauzeren de tijd."
+msgstr "This home and garden are yours. Outside: two wine barrels, a compost heap behind the roof and a beehive. Collect your free hoe and seeds. Lead water from the village brook through channels to your soil; dry crops wait without wilting. Grapes grow in 90 s, flowers in 60 s of active play. Menus pause time."
+
+#: scripts/ui/home_ui.gd:88
+msgid "Neem hak en zaden · eenmalig gratis"
+msgstr "Collect hoe and seeds · free once"
+
+#: scripts/ui/home_ui.gd:89
+msgid "Tuinstanden openen"
+msgstr "Open garden modes"
+
+#: scripts/ui/home_ui.gd:90
+msgid "Oogst alle rijpe druiven in je tuin"
+msgstr "Harvest all ripe grapes in your garden"
+
+#: scripts/ui/home_ui.gd:94
+msgid "Een rustige eigen woning. Rusten vult hartjes en stamina aan en slaat hier op. Het blauwe punt voor je huis ontdekt een snelreisbestemming op de kaart."
+msgstr "A peaceful home of your own. Resting restores hearts and stamina and saves here. The blue point outside discovers a fast-travel destination on your map."
+
+#: scripts/ui/home_ui.gd:95
+msgid "Rusten en opslaan"
+msgstr "Rest and save"
+
+#: scripts/ui/home_ui.gd:97
+msgid "Verzamel drie bosdruiven. Eet ze voor één hartje, maak pitten via Beroepen of vul je wijnvat. De struik herstelt na 120 s actieve speeltijd."
+msgstr "Gather three wild grapes. Eat them for one heart, make seeds through Professions or fill your wine barrel. The bush recovers after 120 s of active play."
+
+#: scripts/ui/home_ui.gd:98
+msgid "Pluk drie druiven"
+msgstr "Pick three grapes"
+
+#: scripts/ui/home_ui.gd:100
+msgid "Bloemen in bereik: %d / 3 nodig. Bloeiende planten binnen vijf tegels geven bijen voedsel. Zonder bloemen pauzeert de productie. Iedere 120 s actieve speeltijd één honing; de kast bewaart maximaal acht."
+msgstr "Flowers in range: %d / 3 needed. Flowering plants within five tiles feed the bees. Production pauses without flowers. One honey every 120 s of active play; the hive stores up to eight."
+
+#: scripts/ui/home_ui.gd:101
+msgid "Honing klaar: %d · voortgang %.0f / 120 s"
+msgstr "Honey ready: %d · progress %.0f / 120 s"
+
+#: scripts/ui/home_ui.gd:102
+msgid "Honing uit de kast halen"
+msgstr "Collect honey from the hive"
+
+#: scripts/ui/home_ui.gd:106
+msgid "Composteren · twee dierenpoep worden drie meststof in 30 s."
+msgstr "Composting · two droppings become three fertilizer in 30 s."
+
+#: scripts/ui/home_ui.gd:106
+msgid "Wijn maken · drie druiven worden één fles in 90 s."
+msgstr "Winemaking · three grapes become one bottle in 90 s."
+
+#: scripts/ui/home_ui.gd:107
+msgid "Bij je: %d · nodig per portie: %d · maximaal twintig porties tegelijk"
+msgstr "Carrying: %d · needed per portion: %d · up to twenty portions at once"
+
+#: scripts/ui/home_ui.gd:110
+msgid "Nog %.0f s actieve speeltijd · resultaat: %d"
+msgstr "%.0f s of active play remaining · output: %d"
+
+#: scripts/ui/home_ui.gd:111
+msgid "Meststof uitscheppen"
+msgstr "Scoop out fertilizer"
+
+#: scripts/ui/home_ui.gd:111
+msgid "Wijn bottelen"
+msgstr "Bottle the wine"
+
+#: scripts/ui/home_ui.gd:114
+msgid "Meng één portie compost"
+msgstr "Mix one portion of compost"
+
+#: scripts/ui/home_ui.gd:114
+msgid "Vul vat voor één fles"
+msgstr "Fill barrel for one bottle"
+
+#: scripts/ui/home_ui.gd:115
+msgid "Meng %d porties compost"
+msgstr "Mix %d portions of compost"
+
+#: scripts/ui/home_ui.gd:115
+msgid "Vul vat voor %d flessen"
+msgstr "Fill barrel for %d bottles"
+
+#: scripts/ui/home_ui.gd:175
+msgid "Grond voor druiven en bloemen; paden en vrije doorgangen blijven beschermd."
+msgstr "Soil for grapes and flowers; paths and clear passages stay protected."
+
+#: scripts/ui/home_ui.gd:176
+msgid "Begin naast de beek; aangesloten kanalen vullen zich vanzelf en blijven beloopbaar."
+msgstr "Start beside the brook; connected channels fill automatically and stay walkable."
+
+#: scripts/ui/home_ui.gd:177
+msgid "Een blijvende druivenstok; water laat hem groeien, meststof verhoogt één oogst."
+msgstr "A perennial grapevine; water supports growth, fertilizer improves one harvest."
+
+#: scripts/ui/home_ui.gd:178
+msgid "Bloemen blijven bloeien en voeden bijen binnen vijf tegels van de kast."
+msgstr "Flowers keep blooming and feed bees within five tiles of the hive."
+
+#: scripts/ui/home_ui.gd:179
+msgid "Eén meststof per stok geeft vijf in plaats van drie druiven bij de volgende oogst."
+msgstr "One fertilizer per vine gives five instead of three grapes at the next harvest."
+
+#: scripts/ui/home_ui.gd:180
+msgid "Houd vast en loop langs rijpe druiven; de stokken blijven staan."
+msgstr "Hold and walk past ripe grapes; the vines remain planted."
+
+#: scripts/ui/home_ui.gd:181
+msgid "Herstel één tegel per druk; je krijgt het zaad terug, maar de plant verdwijnt."
+msgstr "Restore one tile per press; its seed is returned, but the plant is removed."
+
+#: scripts/ui/home_ui.gd:182
+msgid "Berg je hak op; je tuin groeit verder terwijl je op avontuur bent."
+msgstr "Put your hoe away; your garden keeps growing while you explore."
+
+#: scripts/ui/hud.gd:58
 msgid "%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing"
 msgstr "%s sword  ·  %s talk  ·  %s menu  ·  %s pause and controls"
 
-#: scripts/ui/hud.gd:195 scripts/ui/hud.gd:308 scripts/ui/hud.gd:417
+#: scripts/ui/hud.gd:205 scripts/ui/hud.gd:318 scripts/ui/hud.gd:429
 msgid "Game over"
 msgstr "Game over"
 
-#: scripts/ui/hud.gd:207
+#: scripts/ui/hud.gd:217
 msgid "Even op adem komen..."
 msgstr "Catching your breath..."
 
-#: scripts/ui/hud.gd:207
+#: scripts/ui/hud.gd:217
 msgid "Uithouding  ·  %s"
 msgstr "Stamina  ·  %s"
 
-#: scripts/ui/hud.gd:267
+#: scripts/ui/hud.gd:277
 msgid "Boog gekregen! Druk op %s om te schieten."
 msgstr "Bow acquired! Press %s to shoot."
 
-#: scripts/ui/hud.gd:282
+#: scripts/ui/hud.gd:292
 msgid "Volg het gesputter naar de fontein. Nelle kan je hulp gebruiken."
 msgstr "Follow the spluttering to the fountain. Nelle could use your help."
 
-#: scripts/ui/hud.gd:330
+#: scripts/ui/hud.gd:340
 msgid "Rennen: %s vasthouden   ·   Je spullen bekijken: %s"
 msgstr "Sprint: hold %s   ·   View your items: %s"
 
-#: scripts/ui/hud.gd:332
+#: scripts/ui/hud.gd:342
 msgid "%s: gereedschap gebruiken bij het rooster. Blijf even staan tijdens het harken."
 msgstr "%s: use your tool at the grate. Stand still while raking."
 
-#: scripts/ui/hud.gd:334
+#: scripts/ui/hud.gd:344
 msgid "Lopen: %s / %s / %s / %s   ·   Praten: %s"
 msgstr "Move: %s / %s / %s / %s   ·   Talk: %s"
 
-#: scripts/ui/hud.gd:380
+#: scripts/ui/hud.gd:392
 msgid "%s + %s: %s (%d stamina)\n%s + %s: %s (%d)"
 msgstr "%s + %s: %s (%d stamina)\n%s + %s: %s (%d)"
 
-#: scripts/ui/hud.gd:381
+#: scripts/ui/hud.gd:393
 msgid "Nu: %s voor de tegenstoot"
 msgstr "Now: %s to counterthrust"
 
-#: scripts/ui/hud.gd:382
+#: scripts/ui/hud.gd:394
 msgid "3 pijlen"
 msgstr "3 arrows"
 
-#: scripts/ui/hud.gd:419
+#: scripts/ui/hud.gd:431
 msgid "Verslagen door: %s"
 msgstr "Defeated by: %s"
 
-#: scripts/ui/hud.gd:422
+#: scripts/ui/hud.gd:434
 msgid "%s voor het menu"
 msgstr "%s for the menu"
 
-#: scripts/ui/hud.gd:423
+#: scripts/ui/hud.gd:435
 msgid "Druk op %s om verder te gaan vanaf je laatste opslag"
 msgstr "Press %s to continue from your last save"
 
-#: scripts/ui/hud.gd:423
+#: scripts/ui/hud.gd:435
 msgid "Druk op %s om opnieuw te beginnen"
 msgstr "Press %s to start again"
 
 #. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
 #. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
-#: scripts/ui/hud.gd:435 scripts/ui/menu_pages.gd:220
+#: scripts/ui/hud.gd:447 scripts/ui/menu_pages.gd:220
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
 #. het dagdeel bij de klok als het regent: "Avond  ·  regen"
-#: scripts/ui/hud.gd:454
+#: scripts/ui/hud.gd:466
 msgid "%s  ·  regen"
 msgstr "%s  ·  rain"
 
-#: scripts/ui/hud.gd:469
+#: scripts/ui/hud.gd:481
 msgid "Held %d · maximaal niveau"
 msgstr "Hero %d · maximum level"
 
-#: scripts/ui/hud.gd:469
+#: scripts/ui/hud.gd:481
 msgid "Held %d · %d/%d XP"
 msgstr "Hero %d · %d/%d XP"
 
@@ -11451,7 +12051,7 @@ msgstr "You arrive in Daybreak Village, the little village below the temple wher
 msgid "Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur..."
 msgstr "You arrive in Daybreak Village, the little village below the temple where the map hangs. That's where your adventure begins..."
 
-#: scripts/ui/intro.gd:117
+#: scripts/ui/intro.gd:121
 msgid "%s = overslaan"
 msgstr "%s = skip"
 
@@ -11665,7 +12265,7 @@ msgid "Speeltijd:  %s"
 msgstr "Play time:  %s"
 
 #. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-#: scripts/ui/menu_ui.gd:657 scripts/ui/pause_menu.gd:111
+#: scripts/ui/menu_ui.gd:657 scripts/ui/pause_menu.gd:109
 msgid "Nieuw spel+  ·  ronde %d"
 msgstr "New Game+  ·  round %d"
 
@@ -11705,31 +12305,31 @@ msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
 msgid "Gouden ring: volgende doorgang voor je gevolgde opdracht."
 msgstr "Gold ring: next passage for your tracked quest."
 
-#: scripts/ui/pause_menu.gd:73
+#: scripts/ui/pause_menu.gd:71
 msgid "Verder spelen"
 msgstr "Resume"
 
-#: scripts/ui/pause_menu.gd:74
+#: scripts/ui/pause_menu.gd:72
 msgid "Laatste opslag laden"
 msgstr "Load last save"
 
-#: scripts/ui/pause_menu.gd:76
+#: scripts/ui/pause_menu.gd:74
 msgid "Muziek"
 msgstr "Music"
 
-#: scripts/ui/pause_menu.gd:77
+#: scripts/ui/pause_menu.gd:75
 msgid "Effecten"
 msgstr "Effects"
 
-#: scripts/ui/pause_menu.gd:78
+#: scripts/ui/pause_menu.gd:76
 msgid "Naar titelscherm"
 msgstr "Back to title"
 
-#: scripts/ui/pause_menu.gd:145 scripts/ui/title.gd:153
+#: scripts/ui/pause_menu.gd:143 scripts/ui/title.gd:161
 msgid "Geluid: uit"
 msgstr "Sound: off"
 
-#: scripts/ui/pause_menu.gd:145 scripts/ui/title.gd:153
+#: scripts/ui/pause_menu.gd:143 scripts/ui/title.gd:161
 msgid "Geluid: aan"
 msgstr "Sound: on"
 
@@ -11995,31 +12595,31 @@ msgstr "Stew restores more hearts; broth restores more stamina. The first hamper
 msgid "Klaar! Deel één portie aan de dorpstafel of neem je gerecht mee. Je ingrediënten zijn verwerkt."
 msgstr "Done! Share a portion at the village table or take your dish with you. Your ingredients have been used."
 
-#: scripts/ui/title.gd:112
+#: scripts/ui/title.gd:120
 msgid "Een kleine fantasy-quest"
 msgstr "A little fantasy quest"
 
-#: scripts/ui/title.gd:113
+#: scripts/ui/title.gd:121
 msgid "Doorgaan"
 msgstr "Continue"
 
-#: scripts/ui/title.gd:114
+#: scripts/ui/title.gd:122
 msgid "Nieuw spel"
 msgstr "New Game"
 
-#: scripts/ui/title.gd:115
+#: scripts/ui/title.gd:123
 msgid "Nieuw spel+"
 msgstr "New Game+"
 
-#: scripts/ui/title.gd:116
+#: scripts/ui/title.gd:124
 msgid "Afsluiten"
 msgstr "Quit"
 
-#: scripts/ui/title.gd:159
+#: scripts/ui/title.gd:167
 msgid "Linkerstick / D-pad kiezen  ·  A bevestigen  ·  Bediening: knoppen aanpassen"
 msgstr "Left stick / D-pad to select  ·  A to confirm  ·  Controls: remap buttons"
 
-#: scripts/ui/title.gd:159
+#: scripts/ui/title.gd:167
 msgid "WASD / pijlen kiezen  ·  Enter bevestigen  ·  Bediening: toetsen en muis aanpassen"
 msgstr "WASD / arrows to select  ·  Enter to confirm  ·  Controls: remap keyboard and mouse"
 
@@ -12170,275 +12770,3 @@ msgstr "Finish sample preparation"
 #: scripts/ui/work_together.gd:153
 msgid "Bottel één drankje"
 msgstr "Bottle one potion"
-
-#. Kaart village, savepoint [10, 23]: name
-#: scripts/data/homestead_maps.gd:28
-msgid "Bij je eigen huis"
-msgstr "Outside your home"
-
-#. Naam van gebied player_home
-#: scripts/maps/player_home.gd:2
-msgid "Je eigen huis"
-msgstr "Your home"
-
-#. Naam van voorwerp hs_hoe
-#: scripts/data/ext/homestead.gd:7
-msgid "Tuinhak"
-msgstr "Garden hoe"
-
-#. Beschrijving van voorwerp hs_hoe
-#: scripts/data/ext/homestead.gd:7
-msgid "Eén gereedschap voor grond en smalle kanalen. Open de tuinstanden met U of via Beroepen → Tuinstanden; de ingestelde binding staat in Bediening."
-msgstr "One tool for soil and narrow channels. Open garden modes with U or through Professions → Garden modes; your current binding is shown in Controls."
-
-#. Naam van voorwerp hs_manure
-#: scripts/data/ext/homestead.gd:8
-msgid "Dierenpoep"
-msgstr "Animal droppings"
-
-#. Beschrijving van voorwerp hs_manure
-#: scripts/data/ext/homestead.gd:8
-msgid "Wilde dieren laten dit ook levend achter. Verwerk het op de mesthoop achter je huis tot meststof."
-msgstr "Wild animals leave this behind while alive. Turn it into fertilizer at the compost heap behind your home."
-
-#. Naam van voorwerp hs_fertilizer
-#: scripts/data/ext/homestead.gd:9
-msgid "Meststof"
-msgstr "Fertilizer"
-
-#. Beschrijving van voorwerp hs_fertilizer
-#: scripts/data/ext/homestead.gd:9
-msgid "Eén per druivenplant: de volgende oogst geeft vijf in plaats van drie druiven. Geen verplichte onderhoudsronde."
-msgstr "One per grapevine: the next harvest yields five grapes instead of three. No mandatory upkeep."
-
-#. Naam van voorwerp hs_seed
-#: scripts/data/ext/homestead.gd:10
-msgid "Druivenpitten"
-msgstr "Grape seeds"
-
-#. Beschrijving van voorwerp hs_seed
-#: scripts/data/ext/homestead.gd:10
-msgid "Plant op bewerkte, bewaterde grond. Een druivenstok blijft na de oogst staan. Maak meer pitten van bosdruiven via Beroepen."
-msgstr "Plant in tilled, irrigated soil. A grapevine stays after harvesting. Make more seeds from wild grapes through Professions."
-
-#. Naam van voorwerp hs_flower_seed
-#: scripts/data/ext/homestead.gd:11
-msgid "Bloemenzaad"
-msgstr "Flower seeds"
-
-#. Beschrijving van voorwerp hs_flower_seed
-#: scripts/data/ext/homestead.gd:11
-msgid "Plant in je tuin. Drie bloeiende planten binnen vijf tegels houden de bijenkast aan het werk."
-msgstr "Plant in your garden. Three flowering plants within five tiles keep the beehive working."
-
-#. Naam van voorwerp hs_grape
-#: scripts/data/ext/homestead.gd:12
-msgid "Druiven"
-msgstr "Grapes"
-
-#. Beschrijving van voorwerp hs_grape
-#: scripts/data/ext/homestead.gd:12
-msgid "Bosdruiven of je eigen oogst. Herstellen één hartje; ook bruikbaar voor wijn of nieuwe pitten."
-msgstr "Wild grapes or your own harvest. Restore one heart; also useful for wine or new seeds."
-
-#. Naam van voorwerp hs_wine
-#: scripts/data/ext/homestead.gd:13
-msgid "Druivenwijn"
-msgstr "Grape wine"
-
-#. Beschrijving van voorwerp hs_wine
-#: scripts/data/ext/homestead.gd:13
-msgid "Drie druiven rijpen in een wijnvat tot één fles. Gebruik via Eten & drinken voor 40 stamina."
-msgstr "Three grapes mature in a wine barrel into one bottle. Use through Food & drink for 40 stamina."
-
-#. Naam van voorwerp hs_honey
-#: scripts/data/ext/homestead.gd:14
-msgid "Bloemenhoning"
-msgstr "Flower honey"
-
-#. Beschrijving van voorwerp hs_honey
-#: scripts/data/ext/homestead.gd:14
-msgid "Bijen maken honing zolang er minstens drie bloemen in de buurt bloeien. Herstelt één hartje en 25 stamina."
-msgstr "Bees make honey while at least three flowers bloom nearby. Restores one heart and 25 stamina."
-
-#. Legenda op het kaartje (menu): home_station
-#: scripts/data/ext/homestead.gd:4
-msgid "Woning en productie"
-msgstr "Home and production"
-
-#. Instelbare bediening: homestead
-#: scripts/core/input_manager.gd:11
-msgid "Tuinstanden"
-msgstr "Garden modes"
-
-#: scripts/entities/homestead.gd:40
-msgid "Tuin: %s · %s vasthouden + lopen · %s standen"
-msgstr "Garden: %s · hold %s and walk · %s modes"
-
-#: scripts/entities/homestead.gd:43
-msgid "%s · groei %.0f / %.0f s"
-msgstr "%s · growth %.0f / %.0f s"
-
-#: scripts/entities/homestead.gd:43
-msgid "Water aangesloten"
-msgstr "Water connected"
-
-#: scripts/entities/homestead.gd:43
-msgid "Droog: sluit een kanaal aan"
-msgstr "Dry: connect a water channel"
-
-#: scripts/entities/homestead.gd:79
-msgid "Thuis"
-msgstr "Home"
-
-#: scripts/ui/home_ui.gd:15
-msgid "Grond bewerken"
-msgstr "Till soil"
-
-#: scripts/ui/home_ui.gd:16
-msgid "Kanaal graven"
-msgstr "Dig channel"
-
-#: scripts/ui/home_ui.gd:17
-msgid "Druiven planten"
-msgstr "Plant grapes"
-
-#: scripts/ui/home_ui.gd:18
-msgid "Bloemen zaaien"
-msgstr "Sow flowers"
-
-#: scripts/ui/home_ui.gd:19
-msgid "Bemesten"
-msgstr "Fertilize"
-
-#: scripts/ui/home_ui.gd:20
-msgid "Druiven oogsten"
-msgstr "Harvest grapes"
-
-#: scripts/ui/home_ui.gd:21
-msgid "Grond herstellen"
-msgstr "Restore ground"
-
-#: scripts/ui/home_ui.gd:22
-msgid "Gereedschap opbergen"
-msgstr "Put tool away"
-
-#: scripts/ui/home_ui.gd:25
-msgid "Mesthoop"
-msgstr "Compost heap"
-
-#: scripts/ui/home_ui.gd:26
-msgid "Wijnvat"
-msgstr "Wine barrel"
-
-#: scripts/ui/home_ui.gd:27
-msgid "Bijenkast"
-msgstr "Beehive"
-
-#: scripts/ui/home_ui.gd:28
-msgid "Je eigen bed"
-msgstr "Your bed"
-
-#: scripts/ui/home_ui.gd:29
-msgid "Wilde bosdruiven"
-msgstr "Wild grapes"
-
-#: scripts/ui/home_ui.gd:30
-msgid "Tuinvoorraad"
-msgstr "Garden supplies"
-
-#: scripts/ui/home_ui.gd:31
-msgid "Woning en tuin"
-msgstr "Home and garden"
-
-#: scripts/ui/home_ui.gd:57
-msgid "Tuinhak · kies je werk"
-msgstr "Garden hoe · choose a mode"
-
-#: scripts/ui/home_ui.gd:59
-msgid "Bewerk gewone grond in je eigen tuin onder het dorp. Houd %s vast en loop langs een rij. Kanalen liggen midden in de tegel en zijn beloopbaar. %s opent deze standen. Rennen: %s vasthouden."
-msgstr "Work ordinary soil in your garden below the village. Hold %s and walk along a row. Channels run through tile centres and can be walked over. %s opens these modes. Sprint: hold %s."
-
-#: scripts/ui/home_ui.gd:62
-msgid "%s · bij je: %d"
-msgstr "%s · carrying: %d"
-
-#: scripts/ui/home_ui.gd:64
-msgid "Dit huis en de tuin zijn van jou. Buiten: twee wijnvaten, mesthoop achter het dak en een bijenkast. Haal je gratis hak en zaden. Leid met kanaaltjes water uit de dorpsbeek naar de grond; droge gewassen wachten zonder te verdorren. Druiven groeien in 90 s, bloemen in 60 s actieve speeltijd. Menu's pauzeren de tijd."
-msgstr "This home and garden are yours. Outside: two wine barrels, a compost heap behind the roof and a beehive. Collect your free hoe and seeds. Lead water from the village brook through channels to your soil; dry crops wait without wilting. Grapes grow in 90 s, flowers in 60 s of active play. Menus pause time."
-
-#: scripts/ui/home_ui.gd:65
-msgid "Neem hak en zaden · eenmalig gratis"
-msgstr "Collect hoe and seeds · free once"
-
-#: scripts/ui/home_ui.gd:66
-msgid "Tuinstanden openen"
-msgstr "Open garden modes"
-
-#: scripts/ui/home_ui.gd:67
-msgid "Oogst alle rijpe druiven in je tuin"
-msgstr "Harvest all ripe grapes in your garden"
-
-#: scripts/ui/home_ui.gd:69
-msgid "Een rustige eigen woning. Rusten vult hartjes en stamina aan en slaat hier op. Het blauwe punt voor je huis ontdekt een snelreisbestemming op de kaart."
-msgstr "A peaceful home of your own. Resting restores hearts and stamina and saves here. The blue point outside discovers a fast-travel destination on your map."
-
-#: scripts/ui/home_ui.gd:70
-msgid "Rusten en opslaan"
-msgstr "Rest and save"
-
-#: scripts/ui/home_ui.gd:72
-msgid "Verzamel drie bosdruiven. Eet ze voor één hartje, maak pitten via Beroepen of vul je wijnvat. De struik herstelt na 120 s actieve speeltijd."
-msgstr "Gather three wild grapes. Eat them for one heart, make seeds through Professions or fill your wine barrel. The bush recovers after 120 s of active play."
-
-#: scripts/ui/home_ui.gd:73
-msgid "Pluk drie druiven"
-msgstr "Pick three grapes"
-
-#: scripts/ui/home_ui.gd:75
-msgid "Bloemen in bereik: %d / 3 nodig. Bloeiende planten binnen vijf tegels geven bijen voedsel. Zonder bloemen pauzeert de productie. Iedere 120 s actieve speeltijd één honing; de kast bewaart maximaal acht."
-msgstr "Flowers in range: %d / 3 needed. Flowering plants within five tiles feed the bees. Production pauses without flowers. One honey every 120 s of active play; the hive stores up to eight."
-
-#: scripts/ui/home_ui.gd:76
-msgid "Honing klaar: %d · voortgang %.0f / 120 s"
-msgstr "Honey ready: %d · progress %.0f / 120 s"
-
-#: scripts/ui/home_ui.gd:77
-msgid "Verzamel honing"
-msgstr "Collect honey"
-
-#: scripts/ui/home_ui.gd:81
-msgid "Mest: 2 dierenpoep → 3 meststof in 30 s. Wijn: 3 druiven → 1 fles in 90 s. Een batch van maximaal twintig porties loopt terwijl je op avontuur bent. Haal het resultaat op zodra er ruimte in je tas is."
-msgstr "Compost: 2 droppings → 3 fertilizer in 30 s. Wine: 3 grapes → 1 bottle in 90 s. A batch of up to twenty portions progresses while you adventure. Collect the result when your bag has room."
-
-#: scripts/ui/home_ui.gd:84
-msgid "In productie: %d porties · %.0f / %.0f s"
-msgstr "In production: %d portions · %.0f / %.0f s"
-
-#: scripts/ui/home_ui.gd:85
-msgid "Haal het resultaat op"
-msgstr "Collect the result"
-
-#: scripts/ui/home_ui.gd:88
-msgid "Start één portie"
-msgstr "Start one portion"
-
-#: scripts/ui/home_ui.gd:89
-msgid "Start %d porties"
-msgstr "Start %d portions"
-
-#: scripts/core/access_points.gd:39
-msgid "Naar %s"
-msgstr "To %s"
-
-#: scripts/core/access_points.gd:40
-msgid "De doorgang is nog gesloten."
-msgstr "This passage is still locked."
-
-#: scripts/core/access_points.gd:40
-msgid "Loop door de doorgang."
-msgstr "Walk through the doorway."
-
-#: scripts/core/access_points.gd:45
-msgid "Deze woning is gesloten."
-msgstr "This home is closed."
