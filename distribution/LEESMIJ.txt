@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.24.0-preview)
+BLUEMAP QUEST  (v0.25.0-preview)
 =======================
 
 Starten
@@ -33,6 +33,13 @@ Taal / Language
 Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
+
+Nieuw in 0.25: samenhang en afwerking
+  Muziek speelt nu het hele stuk af voordat het herhaalt, ook bij gecomprimeerde audio.
+  Titel-, pauze- en bedieningsmenu passen zich aan kleine vensters aan, ook in Nieuw spel+.
+  Een lijn-oversteek controleert opnieuw je gereedschap en of de landing vrij is.
+  Oude en uitgespeelde saves behouden hun voorwerpen en gekozen wereldgevolgen.
+  Geen extra vijanden, buitenobjecten of verplichte klussen; de rustige routes blijven gelijk.
 
 Nieuw in 0.24: kustambachten en terugkeerplek
   Spreek Raf op de havenkade. De deurmat onder zijn nettenloods opent een gratis werkplaats.

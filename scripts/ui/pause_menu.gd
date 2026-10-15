@@ -5,6 +5,7 @@ extends CanvasLayer
 const UiStyle := preload("res://scripts/core/ui_style.gd")
 
 var root: Control
+var panel: PanelContainer
 var title_label: Label
 var resume_button: Button
 var load_button: Button
@@ -42,12 +43,9 @@ func _build_ui() -> void:
 	dim.color = Color(0, 0, 0, 0.6)
 	root.add_child(dim)
 
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	root.add_child(center)
-	var panel := PanelContainer.new()
+	panel = PanelContainer.new()
 	UiStyle.style_panel(panel)
-	center.add_child(panel)
+	root.add_child(panel)
 
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 10)
@@ -187,6 +185,7 @@ func toggle() -> void:
 		_refresh_ng_row()
 		load_button.disabled = not GameState.has_save()
 		_refresh_sound_label()
+		_layout()
 		resume_button.grab_focus()
 
 
@@ -201,3 +200,17 @@ func _to_title() -> void:
 	GameState.set_ui("pause", false)
 	GameState.in_game = false
 	get_tree().change_scene_to_file("res://scenes/title.tscn")
+
+
+func _process(_delta: float) -> void:
+	if open:
+		_layout()
+
+
+func _layout() -> void:
+	var wanted := panel.get_combined_minimum_size()
+	var viewport := get_viewport().get_visible_rect().size
+	var factor := minf(1.0, minf((viewport.x - 32) / wanted.x, (viewport.y - 32) / wanted.y))
+	panel.size = wanted
+	panel.scale = Vector2.ONE * factor
+	panel.position = (viewport - wanted * factor) * 0.5

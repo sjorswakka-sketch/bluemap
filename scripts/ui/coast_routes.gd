@@ -130,10 +130,16 @@ func _process(delta: float):
 	if not valid_source(not crossing):close();return
 	elapsed+=delta
 	if crossing:
+		if GameState.count("td_line")<1:
+			close();return
 		world.player.position=start.lerp(landing,clampf(elapsed/1.1,0,1))+Vector2(0,sin(clampf(elapsed/1.1,0,1)*PI)*2)
 		world.player.queue_redraw()
 		if elapsed>=1.1:
-			world.player.position=landing;world.player.velocity=Vector2.ZERO;crossing=false;close();GameState.save_requested.emit()
+			# A moving resident or restored prop can occupy the landing meanwhile.
+			if not world.spawn_fits(landing):close();return
+			world.player.position=landing;world.player.velocity=Vector2.ZERO;world.player.knockback=Vector2.ZERO
+			world.player.camera.reset_smoothing();world.player.invuln=maxf(world.player.invuln,1.25)
+			crossing=false;close();GameState.save_requested.emit()
 		return
 	if sailing:steer(delta)
 	layout();preview.queue_redraw()

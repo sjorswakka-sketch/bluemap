@@ -36,7 +36,10 @@ jobs:
           unzip -q -j templates.tpz "templates/version.txt" "templates/windows_*_x86_64*.exe" -d "$dest"
 
       - name: Alle tests draaien
-        run: python3 tools/run_tests.py ./godot
+        run: |
+          python3 tools/check_release.py
+          python3 tools/i18n.py check
+          python3 tools/run_tests.py ./godot
 
       - name: Windows-versie exporteren
         run: |
@@ -51,6 +54,7 @@ jobs:
           cp build/windows/BluemapQuest.exe dist/BluemapQuest/
           cp distribution/LEESMIJ.txt dist/BluemapQuest/
           (cd dist && zip -qr "BluemapQuest-v${version}-windows.zip" BluemapQuest)
+          python3 tools/check_release.py --package "dist/BluemapQuest-v${version}-windows.zip"
           echo "ZIP=dist/BluemapQuest-v${version}-windows.zip" >> "$GITHUB_ENV"
 
       - name: Als download bij de run bewaren

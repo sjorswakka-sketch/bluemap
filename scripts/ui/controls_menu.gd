@@ -15,6 +15,7 @@ var controller_button: Button
 var close_button: Button
 var binding_buttons: Dictionary = {}
 var controls_root: Control
+var panel: PanelContainer
 var title_label: Label
 var help_label: Label
 var reset_button: Button
@@ -46,13 +47,10 @@ func _build() -> void:
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	dim.color = Color(0, 0, 0, 0.86)
 	controls_root.add_child(dim)
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	controls_root.add_child(center)
-	var panel := PanelContainer.new()
+	panel = PanelContainer.new()
 	panel.custom_minimum_size = Vector2(920, 600)
 	UiStyle.style_panel(panel)
-	center.add_child(panel)
+	controls_root.add_child(panel)
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 8)
 	panel.add_child(box)
@@ -186,6 +184,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	_layout()
 	if capture_action.is_empty():
 		return
 	capture_time -= delta
@@ -207,3 +206,12 @@ func _close() -> void:
 	GameState.set_ui("controls", false)
 	closed.emit()
 	queue_free()
+
+
+func _layout() -> void:
+	var wanted := panel.get_combined_minimum_size()
+	var viewport := get_viewport().get_visible_rect().size
+	var factor := minf(1.0, minf((viewport.x - 32) / wanted.x, (viewport.y - 32) / wanted.y))
+	panel.size = wanted
+	panel.scale = Vector2.ONE * factor
+	panel.position = (viewport - wanted * factor) * 0.5

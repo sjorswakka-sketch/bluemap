@@ -140,7 +140,7 @@ eerst los beproefd en daarna met echte invoer, schade en projectielen getest.
 De vrije proef geeft geen spullen of XP; leenpijlen bestaan alleen ter plaatse.
 Geen dagelijkse klusdruk, extra buitenvijanden of gewijzigde oude kaartvloeren.
 
-## 6. Het grotere avontuur als geheel — volgende fase
+## 6. Het grotere avontuur als geheel — uitgevoerd in 0.25
 
 Nieuwe-spelroute, hervatten van oude en voltooide saves, terugkeer naar oude
 bewoners, optionele routes en wereldgevolgen controleren. Meet framekosten,
@@ -151,6 +151,16 @@ Los werkelijk gevonden problemen op; voeg geen content toe om de fase te vullen.
 **Klaar wanneer:** een coherent getest avontuur, passende rust en variatie,
 succesvolle Windows-CI en duidelijke grenzen aan wat werkelijk gecontroleerd is.
 Na fase 6 volgt eerst een beoordeling en een nieuw plan.
+
+Uitgevoerd: oude en uitgespeelde versie-1-savefixtures volgen de echte gratis
+kustrondreis met herladen na elke overtocht; een gecombineerde kustsave bewaart
+wereldgevolgen, opslag, meubels en uitrusting. Alle twaalf volledige muzieklussen
+hersteld, late lijnannuleringen veilig en titel/pauze/bediening/intro/epiloog passend
+geschaald. Eigen profielgereedschap meet startup, alle kaartwissels, negen actieve
+scenario's en vier terugkeercycli. Bestaande kaarten en assets ongewijzigd.
+Versie-, taal- en echte Windows-pakketcontrole toegevoegd aan de bestaande CI.
+Details, reproduceerbare controles en grenzen: ADVENTURE_RELEASE.md.
+De kustronde is afgerond; de volgende stap is beoordeling en een nieuw plan.
 
 ## Vast kwaliteitsniveau
 

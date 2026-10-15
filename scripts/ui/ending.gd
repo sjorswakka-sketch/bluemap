@@ -162,6 +162,10 @@ func _process(delta: float) -> void:
 # --- Tekenen ------------------------------------------------------------------------------------
 
 func _draw() -> void:
+	# Keep the original composition together at small and large window sizes.
+	draw_rect(Rect2(Vector2.ZERO, size), Color(0.03, 0.05, 0.14))
+	var factor := minf(size.x / W, size.y / H)
+	draw_set_transform((size - Vector2(W, H) * factor) * 0.5, 0.0, Vector2.ONE * factor)
 	draw_polygon(PackedVector2Array([Vector2(0, 0), Vector2(W, 0), Vector2(W, H), Vector2(0, H)]),
 		PackedColorArray([Color(0.03, 0.05, 0.14), Color(0.03, 0.05, 0.14), Color(0.1, 0.18, 0.38), Color(0.1, 0.18, 0.38)]))
 	var rng := RandomNumberGenerator.new()

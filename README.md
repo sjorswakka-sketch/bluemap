@@ -1,6 +1,15 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.24.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.25.0-preview.**
+
+Nieuw in 0.25: **Het kustavontuur als geheel gecontroleerd**. Oude en uitgespeelde
+opslagen kunnen dezelfde gratis rondreis blijven maken, met behoud van wereldgevolgen,
+uitrusting en werkplaats. Alle twaalf muziekstukken gebruiken hun volledige lus;
+geleende-lijnoversteken controleren ook vlak voor aankomst of de landing vrij is.
+Titel, pauze en bediening schalen binnen kleine vensters, ook met Nieuw spel+.
+Geen nieuwe buitenobjecten, vijanden of opdrachten. Eigen meetgereedschap legt
+opstarten, kaartwissels, frame-intervallen en Godot-geheugen vast.
+Details en grenzen: [ADVENTURE_RELEASE.md](ADVENTURE_RELEASE.md).
 
 Nieuw in 0.24: **Ambachten met een eigen terugkeerplek**. Vier rustige
 streekvindplaatsen leveren hout, oevervezel, zeeagaat en zoutblad voor zes gerichte

@@ -56,8 +56,9 @@ func _ready() -> void:
 			var wav: AudioStreamWAV = music
 			wav.loop_mode = AudioStreamWAV.LOOP_FORWARD
 			wav.loop_begin = 0
-			@warning_ignore("integer_division")
-			wav.loop_end = wav.data.size() / 2 # 16-bit mono: 2 bytes per sample
+			# QOA/ADPCM data is encoded: byte count is not a sample count.
+			# get_length() also accounts for stereo and imported sample rates.
+			wav.loop_end = roundi(wav.get_length() * wav.mix_rate)
 			tracks[track] = wav
 
 	var config := ConfigFile.new()
@@ -114,6 +115,8 @@ func play_music(track := "forest") -> void:
 
 
 func stop_music() -> void:
+	if _fade and _fade.is_valid():
+		_fade.kill()
 	current_track = ""
 	_music.stop()
 
