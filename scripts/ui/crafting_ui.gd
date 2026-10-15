@@ -13,6 +13,7 @@ var scroll: ScrollContainer
 var skill_list: VBoxContainer
 var rows: VBoxContainer
 var detail: RichTextLabel
+var garden_button: Button
 var goal_button: Button
 var filter: OptionButton
 var recipes_button: Button
@@ -112,7 +113,15 @@ func _build_ui() -> void:
 	goal_button.pressed.connect(func() -> void:
 		Journal.toggle_goal(selected_entry)
 		_refresh_goal_button())
-	box.add_child(goal_button)
+	var footer:=HBoxContainer.new()
+	box.add_child(footer)
+	goal_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+	footer.add_child(goal_button)
+	garden_button=_button(tr("Tuinstanden"))
+	_compact(garden_button)
+	garden_button.custom_minimum_size=Vector2(230,32)
+	garden_button.pressed.connect(_open_garden)
+	footer.add_child(garden_button)
 	hint = UiStyle.make_label("", 16, Color(0.72, 0.77, 0.85))
 	box.add_child(hint)
 
@@ -144,6 +153,7 @@ func _compact(button: Button) -> void:
 func _process(_delta: float) -> void:
 	if not active:
 		return
+	garden_button.text=tr("Tuinstanden")+" ["+Controls.action_label("potion")+"]"
 	hint.text = tr("↑ ↓ ← → kiezen  ·  %s bevestigen  ·  %s / %s recepten/voorraad  ·  %s sluiten") % [Controls.action_label("ui_accept"), Controls.action_label("ui_prev_tab"), Controls.action_label("ui_next_tab"), Controls.action_label("ui_cancel")]
 	intro_label.text = tr("Verzamel met %s. Vindplaatsen staan bij het recept; stel een materiaaldoel in. Gereedschap slijt niet.") % Controls.action_label("interact")
 	# Font metrics, translations and window sizes can differ. Fit the complete
@@ -324,6 +334,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if UiStyle.shortcut(event, "pause") or event.is_action_pressed("ui_cancel") or UiStyle.shortcut(event, "crafting"):
 		get_viewport().set_input_as_handled()
 		close()
+	elif UiStyle.shortcut(event,"potion"):
+		get_viewport().set_input_as_handled()
+		_open_garden()
 	elif event.is_action_pressed("ui_prev_tab") or event.is_action_pressed("ui_next_tab"):
 		get_viewport().set_input_as_handled()
 		supplies = not supplies
@@ -378,6 +391,11 @@ func _link_focus() -> void:
 	var cycle: Array[Control] = header + skills + entries
 	cycle.append(detail)
 	cycle.append(goal_button)
+	cycle.append(garden_button)
+	goal_button.focus_neighbor_right=goal_button.get_path_to(garden_button)
+	garden_button.focus_neighbor_left=garden_button.get_path_to(goal_button)
+	garden_button.focus_neighbor_top=garden_button.get_path_to(detail)
+	garden_button.focus_neighbor_bottom=garden_button.get_path_to(close_button)
 	for i in cycle.size():
 		cycle[i].focus_next = cycle[i].get_path_to(cycle[(i + 1) % cycle.size()])
 		cycle[i].focus_previous = cycle[i].get_path_to(cycle[posmod(i - 1, cycle.size())])
@@ -410,3 +428,9 @@ func _refresh_language(_locale: String) -> void:
 	filter.select(Data.SKILLS.keys().find(selected_skill) + 1)
 	if active:
 		_populate()
+
+func _open_garden() -> void:
+	if not active:return
+	close()
+	var ui: CanvasLayer=load("res://scripts/ui/home_ui.gd").new()
+	ui.world=get_parent();get_parent().add_child(ui);ui.open(null)

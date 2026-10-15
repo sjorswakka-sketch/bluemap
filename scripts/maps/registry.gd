@@ -32,5 +32,6 @@ static func get_map(map_id: String) -> Dictionary:
 	preload("res://scripts/data/coastal_region_maps.gd").enrich(map_id,data)
 	preload("res://scripts/data/adventure_maps.gd").enrich(map_id,data)
 	preload("res://scripts/data/coastal_craft_maps.gd").enrich(map_id,data)
+	preload("res://scripts/data/homestead_maps.gd").enrich(map_id,data)
 	if map_id == "inn": data["objects"].append({"type":"memory_book","pos":[10,7]})
 	return data

@@ -64,7 +64,7 @@ func run():
 				check(actual[index]==original[index],"saved object slot unchanged: "+id+str(index))
 	await portal("forest_edge")
 	check(get_nodes_in_group("enemies").is_empty() and get_nodes_in_group("pickups").is_empty(),"quiet area has no enemies or loot")
-	check(world.map_data.objects.size()==4,"only two exits and two directional signs, no new activities")
+	check(world.map_data.objects.size()==5,"two exits, two signs and a scenic waterfall; no new activity or enemy")
 	var hp: int=gs.hp
 	var steps:=await edge_path()
 	print("EDGE WALK SECONDS=",steps/60.0)

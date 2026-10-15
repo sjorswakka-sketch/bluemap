@@ -470,7 +470,7 @@ func test_day_night_in_world() -> void:
 	# Lantaarns, ramen, altaar en je eigen lamp.
 	var lanterns := entities_with("lantern.gd")
 	var altars := entities_with("savepoint.gd")
-	check(lanterns.size() == 12 and altars.size() == 1, "lantaarns en altaar staan er (%d lantaarns)" % lanterns.size())
+	check(lanterns.size() == 12 and altars.size() == 2, "lantaarns en altaar staan er (%d lantaarns)" % lanterns.size())
 	var south_lit := false
 	for lantern in lanterns:
 		if lantern.global_position.y > tile_pos(0, 20).y:
@@ -838,15 +838,17 @@ func test_map_reachability() -> void:
 	check(FastTravel.arrival_tile(walled, walled["objects"][0]) == Vector2i(1, 1), "helemaal ingesloten: terugvallen op het startpunt, nooit een fout")
 
 
+# The new home destination has its own integration test. These existing travel
+# scenarios keep the original altar fixtures instead of treating home as the forest.
 func test_fast_travel() -> void:
 	print("Snel reizen")
 	fresh_game()
 	await load_map("village", "start")
-	var all: Array = FastTravel.all_altars()
+	var all: Array = FastTravel.all_altars().filter(func(a): return a.spawn != "home_altar")
 	var ids: Array[String] = []
 	for altar in all:
 		ids.append(altar["map"])
-	check(ids.slice(0, 5) == ["village", "forest", "ruins", "cave", "temple"], "alle altaren in de volgorde van de kaarten %s" % [ids])
+	check(ids.slice(0, 5) == ["village", "forest", "ruins", "cave", "temple"], "oorspronkelijke altaren in de volgorde van de kaarten %s" % [ids])
 	check(FastTravel.discovered_altars().is_empty() and FastTravel.blocked_reason(world) == "Je hebt nog geen altaar ontdekt.", "in het begin is er niets ontdekt")
 	var toasts: Array[String] = []
 	var catcher := func(text: String) -> void: toasts.append(text)
@@ -986,7 +988,7 @@ func test_fast_travel_menu() -> void:
 	print("Snel reizen via het menu")
 	fresh_game()
 	await load_map("village", "start")
-	var all: Array = FastTravel.all_altars()
+	var all: Array = FastTravel.all_altars().filter(func(a): return a.spawn != "home_altar")
 	var menu: Node = world.menu_ui
 	press("map")
 	await frames(3)
@@ -1105,7 +1107,7 @@ func test_fast_travel_menu() -> void:
 func test_fast_travel_dying_king() -> void:
 	print("Snel reizen terwijl de Slijmkoning verdwijnt")
 	fresh_game()
-	var all: Array = FastTravel.all_altars()
+	var all: Array = FastTravel.all_altars().filter(func(a): return a.spawn != "home_altar")
 	gs.set_flag(all[0]["key"])
 	gs.set_flag(all[4]["key"])
 	gs.set_flag("gate_temple")

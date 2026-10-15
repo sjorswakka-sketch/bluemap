@@ -69,7 +69,7 @@ func run():
 		await enter(id)
 		check(workshop==null,"no new activity/actor on the outdoor route: "+id)
 		if id=="forest":check(get_nodes_in_group("enemies").size()==18,"phase-one enemy reduction preserved")
-		if id=="forest_edge":check(world.map_data.objects.size()==4,"quiet meadow still only has exits and wayfinding")
+		if id=="forest_edge":check(world.map_data.objects.size()==5 and world.map_data.objects.filter(func(o):return o.type=="enemy").is_empty(),"quiet meadow only adds a scenic waterfall beside exits and wayfinding")
 	check(load("res://scripts/data/quests.gd").QUESTS.size()==load("res://scripts/core/journey.gd").TARGETS.size(),"quest list still matches the unchanged journey targets")
 	await enter("smithy")
 	var objects: int=world.map_data.objects.size();var bodies: int=world.entities.get_child_count()

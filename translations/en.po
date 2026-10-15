@@ -12170,3 +12170,259 @@ msgstr "Finish sample preparation"
 #: scripts/ui/work_together.gd:153
 msgid "Bottel één drankje"
 msgstr "Bottle one potion"
+
+#. Kaart village, savepoint [10, 23]: name
+#: scripts/data/homestead_maps.gd:28
+msgid "Bij je eigen huis"
+msgstr "Outside your home"
+
+#. Naam van gebied player_home
+#: scripts/maps/player_home.gd:2
+msgid "Je eigen huis"
+msgstr "Your home"
+
+#. Naam van voorwerp hs_hoe
+#: scripts/data/ext/homestead.gd:7
+msgid "Tuinhak"
+msgstr "Garden hoe"
+
+#. Beschrijving van voorwerp hs_hoe
+#: scripts/data/ext/homestead.gd:7
+msgid "Eén gereedschap voor grond en smalle kanalen. Open de tuinstanden met U of via Beroepen → Tuinstanden; de ingestelde binding staat in Bediening."
+msgstr "One tool for soil and narrow channels. Open garden modes with U or through Professions → Garden modes; your current binding is shown in Controls."
+
+#. Naam van voorwerp hs_manure
+#: scripts/data/ext/homestead.gd:8
+msgid "Dierenpoep"
+msgstr "Animal droppings"
+
+#. Beschrijving van voorwerp hs_manure
+#: scripts/data/ext/homestead.gd:8
+msgid "Wilde dieren laten dit ook levend achter. Verwerk het op de mesthoop achter je huis tot meststof."
+msgstr "Wild animals leave this behind while alive. Turn it into fertilizer at the compost heap behind your home."
+
+#. Naam van voorwerp hs_fertilizer
+#: scripts/data/ext/homestead.gd:9
+msgid "Meststof"
+msgstr "Fertilizer"
+
+#. Beschrijving van voorwerp hs_fertilizer
+#: scripts/data/ext/homestead.gd:9
+msgid "Eén per druivenplant: de volgende oogst geeft vijf in plaats van drie druiven. Geen verplichte onderhoudsronde."
+msgstr "One per grapevine: the next harvest yields five grapes instead of three. No mandatory upkeep."
+
+#. Naam van voorwerp hs_seed
+#: scripts/data/ext/homestead.gd:10
+msgid "Druivenpitten"
+msgstr "Grape seeds"
+
+#. Beschrijving van voorwerp hs_seed
+#: scripts/data/ext/homestead.gd:10
+msgid "Plant op bewerkte, bewaterde grond. Een druivenstok blijft na de oogst staan. Maak meer pitten van bosdruiven via Beroepen."
+msgstr "Plant in tilled, irrigated soil. A grapevine stays after harvesting. Make more seeds from wild grapes through Professions."
+
+#. Naam van voorwerp hs_flower_seed
+#: scripts/data/ext/homestead.gd:11
+msgid "Bloemenzaad"
+msgstr "Flower seeds"
+
+#. Beschrijving van voorwerp hs_flower_seed
+#: scripts/data/ext/homestead.gd:11
+msgid "Plant in je tuin. Drie bloeiende planten binnen vijf tegels houden de bijenkast aan het werk."
+msgstr "Plant in your garden. Three flowering plants within five tiles keep the beehive working."
+
+#. Naam van voorwerp hs_grape
+#: scripts/data/ext/homestead.gd:12
+msgid "Druiven"
+msgstr "Grapes"
+
+#. Beschrijving van voorwerp hs_grape
+#: scripts/data/ext/homestead.gd:12
+msgid "Bosdruiven of je eigen oogst. Herstellen één hartje; ook bruikbaar voor wijn of nieuwe pitten."
+msgstr "Wild grapes or your own harvest. Restore one heart; also useful for wine or new seeds."
+
+#. Naam van voorwerp hs_wine
+#: scripts/data/ext/homestead.gd:13
+msgid "Druivenwijn"
+msgstr "Grape wine"
+
+#. Beschrijving van voorwerp hs_wine
+#: scripts/data/ext/homestead.gd:13
+msgid "Drie druiven rijpen in een wijnvat tot één fles. Gebruik via Eten & drinken voor 40 stamina."
+msgstr "Three grapes mature in a wine barrel into one bottle. Use through Food & drink for 40 stamina."
+
+#. Naam van voorwerp hs_honey
+#: scripts/data/ext/homestead.gd:14
+msgid "Bloemenhoning"
+msgstr "Flower honey"
+
+#. Beschrijving van voorwerp hs_honey
+#: scripts/data/ext/homestead.gd:14
+msgid "Bijen maken honing zolang er minstens drie bloemen in de buurt bloeien. Herstelt één hartje en 25 stamina."
+msgstr "Bees make honey while at least three flowers bloom nearby. Restores one heart and 25 stamina."
+
+#. Legenda op het kaartje (menu): home_station
+#: scripts/data/ext/homestead.gd:4
+msgid "Woning en productie"
+msgstr "Home and production"
+
+#. Instelbare bediening: homestead
+#: scripts/core/input_manager.gd:11
+msgid "Tuinstanden"
+msgstr "Garden modes"
+
+#: scripts/entities/homestead.gd:40
+msgid "Tuin: %s · %s vasthouden + lopen · %s standen"
+msgstr "Garden: %s · hold %s and walk · %s modes"
+
+#: scripts/entities/homestead.gd:43
+msgid "%s · groei %.0f / %.0f s"
+msgstr "%s · growth %.0f / %.0f s"
+
+#: scripts/entities/homestead.gd:43
+msgid "Water aangesloten"
+msgstr "Water connected"
+
+#: scripts/entities/homestead.gd:43
+msgid "Droog: sluit een kanaal aan"
+msgstr "Dry: connect a water channel"
+
+#: scripts/entities/homestead.gd:79
+msgid "Thuis"
+msgstr "Home"
+
+#: scripts/ui/home_ui.gd:15
+msgid "Grond bewerken"
+msgstr "Till soil"
+
+#: scripts/ui/home_ui.gd:16
+msgid "Kanaal graven"
+msgstr "Dig channel"
+
+#: scripts/ui/home_ui.gd:17
+msgid "Druiven planten"
+msgstr "Plant grapes"
+
+#: scripts/ui/home_ui.gd:18
+msgid "Bloemen zaaien"
+msgstr "Sow flowers"
+
+#: scripts/ui/home_ui.gd:19
+msgid "Bemesten"
+msgstr "Fertilize"
+
+#: scripts/ui/home_ui.gd:20
+msgid "Druiven oogsten"
+msgstr "Harvest grapes"
+
+#: scripts/ui/home_ui.gd:21
+msgid "Grond herstellen"
+msgstr "Restore ground"
+
+#: scripts/ui/home_ui.gd:22
+msgid "Gereedschap opbergen"
+msgstr "Put tool away"
+
+#: scripts/ui/home_ui.gd:25
+msgid "Mesthoop"
+msgstr "Compost heap"
+
+#: scripts/ui/home_ui.gd:26
+msgid "Wijnvat"
+msgstr "Wine barrel"
+
+#: scripts/ui/home_ui.gd:27
+msgid "Bijenkast"
+msgstr "Beehive"
+
+#: scripts/ui/home_ui.gd:28
+msgid "Je eigen bed"
+msgstr "Your bed"
+
+#: scripts/ui/home_ui.gd:29
+msgid "Wilde bosdruiven"
+msgstr "Wild grapes"
+
+#: scripts/ui/home_ui.gd:30
+msgid "Tuinvoorraad"
+msgstr "Garden supplies"
+
+#: scripts/ui/home_ui.gd:31
+msgid "Woning en tuin"
+msgstr "Home and garden"
+
+#: scripts/ui/home_ui.gd:57
+msgid "Tuinhak · kies je werk"
+msgstr "Garden hoe · choose a mode"
+
+#: scripts/ui/home_ui.gd:59
+msgid "Bewerk gewone grond in je eigen tuin onder het dorp. Houd %s vast en loop langs een rij. Kanalen liggen midden in de tegel en zijn beloopbaar. %s opent deze standen. Rennen: %s vasthouden."
+msgstr "Work ordinary soil in your garden below the village. Hold %s and walk along a row. Channels run through tile centres and can be walked over. %s opens these modes. Sprint: hold %s."
+
+#: scripts/ui/home_ui.gd:62
+msgid "%s · bij je: %d"
+msgstr "%s · carrying: %d"
+
+#: scripts/ui/home_ui.gd:64
+msgid "Dit huis en de tuin zijn van jou. Buiten: twee wijnvaten, mesthoop achter het dak en een bijenkast. Haal je gratis hak en zaden. Leid met kanaaltjes water uit de dorpsbeek naar de grond; droge gewassen wachten zonder te verdorren. Druiven groeien in 90 s, bloemen in 60 s actieve speeltijd. Menu's pauzeren de tijd."
+msgstr "This home and garden are yours. Outside: two wine barrels, a compost heap behind the roof and a beehive. Collect your free hoe and seeds. Lead water from the village brook through channels to your soil; dry crops wait without wilting. Grapes grow in 90 s, flowers in 60 s of active play. Menus pause time."
+
+#: scripts/ui/home_ui.gd:65
+msgid "Neem hak en zaden · eenmalig gratis"
+msgstr "Collect hoe and seeds · free once"
+
+#: scripts/ui/home_ui.gd:66
+msgid "Tuinstanden openen"
+msgstr "Open garden modes"
+
+#: scripts/ui/home_ui.gd:67
+msgid "Oogst alle rijpe druiven in je tuin"
+msgstr "Harvest all ripe grapes in your garden"
+
+#: scripts/ui/home_ui.gd:69
+msgid "Een rustige eigen woning. Rusten vult hartjes en stamina aan en slaat hier op. Het blauwe punt voor je huis ontdekt een snelreisbestemming op de kaart."
+msgstr "A peaceful home of your own. Resting restores hearts and stamina and saves here. The blue point outside discovers a fast-travel destination on your map."
+
+#: scripts/ui/home_ui.gd:70
+msgid "Rusten en opslaan"
+msgstr "Rest and save"
+
+#: scripts/ui/home_ui.gd:72
+msgid "Verzamel drie bosdruiven. Eet ze voor één hartje, maak pitten via Beroepen of vul je wijnvat. De struik herstelt na 120 s actieve speeltijd."
+msgstr "Gather three wild grapes. Eat them for one heart, make seeds through Professions or fill your wine barrel. The bush recovers after 120 s of active play."
+
+#: scripts/ui/home_ui.gd:73
+msgid "Pluk drie druiven"
+msgstr "Pick three grapes"
+
+#: scripts/ui/home_ui.gd:75
+msgid "Bloemen in bereik: %d / 3 nodig. Bloeiende planten binnen vijf tegels geven bijen voedsel. Zonder bloemen pauzeert de productie. Iedere 120 s actieve speeltijd één honing; de kast bewaart maximaal acht."
+msgstr "Flowers in range: %d / 3 needed. Flowering plants within five tiles feed the bees. Production pauses without flowers. One honey every 120 s of active play; the hive stores up to eight."
+
+#: scripts/ui/home_ui.gd:76
+msgid "Honing klaar: %d · voortgang %.0f / 120 s"
+msgstr "Honey ready: %d · progress %.0f / 120 s"
+
+#: scripts/ui/home_ui.gd:77
+msgid "Verzamel honing"
+msgstr "Collect honey"
+
+#: scripts/ui/home_ui.gd:81
+msgid "Mest: 2 dierenpoep → 3 meststof in 30 s. Wijn: 3 druiven → 1 fles in 90 s. Een batch van maximaal twintig porties loopt terwijl je op avontuur bent. Haal het resultaat op zodra er ruimte in je tas is."
+msgstr "Compost: 2 droppings → 3 fertilizer in 30 s. Wine: 3 grapes → 1 bottle in 90 s. A batch of up to twenty portions progresses while you adventure. Collect the result when your bag has room."
+
+#: scripts/ui/home_ui.gd:84
+msgid "In productie: %d porties · %.0f / %.0f s"
+msgstr "In production: %d portions · %.0f / %.0f s"
+
+#: scripts/ui/home_ui.gd:85
+msgid "Haal het resultaat op"
+msgstr "Collect the result"
+
+#: scripts/ui/home_ui.gd:88
+msgid "Start één portie"
+msgstr "Start one portion"
+
+#: scripts/ui/home_ui.gd:89
+msgid "Start %d porties"
+msgstr "Start %d portions"

@@ -168,6 +168,8 @@ const RECIPES := {
 	"cw_lamp":{"skill":"alchemy","level":1,"xp":8,"station":"library","unlock":"pg_focus_notes","unlock_hint":"Lees Lena’s lensonderzoek in de bibliotheek.","inputs":{"cw_seaglass":2,"gel":1},"output":"cw_lamp"},
 	"cw_broth":{"skill":"cooking","level":1,"xp":10,"station":"inn","inputs":{"meer_baars":1,"cw_saltleaf":1},"output":"cw_broth"},
 
+	"hs_seeds":{"skill":"foraging","level":1,"inputs":{"hs_grape":1},"output":"hs_seed","amount":2,"xp":1},
+	"hs_flowers":{"skill":"foraging","level":1,"inputs":{"prof_herb":1},"output":"hs_flower_seed","amount":2,"xp":1},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},

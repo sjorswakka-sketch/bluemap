@@ -8,6 +8,7 @@ const SAVE_PATH := "user://controls.cfg"
 const SWITCH_DEADZONE := 0.5
 const AIM_DEADZONE := 0.24
 const ACTION_NAMES := {
+	"homestead": "Tuinstanden",
 	"move_up": "Omhoog lopen", "move_down": "Omlaag lopen",
 	"move_left": "Naar links lopen", "move_right": "Naar rechts lopen",
 	"technique": "Techniek (vasthouden + zwaard / boog)",
@@ -78,6 +79,7 @@ func _define(action: String, events: Array, deadzone := 0.3) -> void:
 
 
 func _install_defaults() -> void:
+	_define("homestead", [_key(KEY_U)])
 	_define("technique", [_key(KEY_V), _axis(JOY_AXIS_TRIGGER_LEFT, 1.0)], 0.5)
 	InputMap.action_add_event("attack", _mouse(MOUSE_BUTTON_LEFT))
 	InputMap.action_add_event("bow", _mouse(MOUSE_BUTTON_RIGHT))
@@ -378,3 +380,17 @@ func _load_bindings() -> void:
 			if not used:
 				_bindings.technique[device] = [candidate]
 				break
+
+	# A new garden shortcut must not steal an existing saved binding.
+	for device: String in ["keyboard","controller"]:
+		if config.has_section_key(device,"homestead"):continue
+		var choices: Array=[_key(KEY_U),_key(KEY_O),_key(KEY_Z)] if device=="keyboard" else []
+		_bindings.homestead[device]=[]
+		for candidate: InputEvent in choices:
+			var used:=false
+			for action: String in ACTION_NAMES:
+				if action=="homestead":continue
+				for binding: InputEvent in _bindings[action][device]:
+					if _same_binding(candidate,binding):used=true
+			if not used:
+				_bindings.homestead[device]=[candidate];break

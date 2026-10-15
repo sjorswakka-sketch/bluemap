@@ -247,6 +247,9 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 		var region: Node2D=load("res://scripts/entities/regional_adventures.gd").new()
 		region.world=self
 		ground.add_child(region)
+	var home: Node2D=load("res://scripts/entities/homestead.gd").new()
+	home.world=self
+	ground.add_child(home)
 	player.global_position = safe_spawn_position(player.global_position)
 	player.camera.reset_smoothing()
 

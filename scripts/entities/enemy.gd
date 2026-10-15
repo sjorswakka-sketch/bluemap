@@ -237,6 +237,7 @@ func _ai_chase(delta: float) -> void:
 ## Vreedzaam wild: het draalt wat rond, maar schrikt en rent weg als je te dichtbij komt of het raakt.
 ## Een klap (ook een pijl uit de verte) zet `panic`: dan vlucht het nog even nadat je stopt met achtervolgen.
 func _ai_animal(delta: float) -> void:
+	preload("res://scripts/core/homestead.gd").animal_drop(self)
 	panic = maxf(panic - delta, 0.0)
 	var to_player := _to_player()
 	fleeing = panic > 0.0 or to_player.length() < float(data.get("panic_range", 90.0))

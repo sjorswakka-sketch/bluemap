@@ -281,7 +281,7 @@ func test_data() -> void:
 		links_ok = links_ok and found
 	check(links_ok, "dorp, meer, huisje en bibliotheek hebben doorgangen naar elkaar")
 	var village_portal: Dictionary = objects("village", "portal").filter(func(o: Dictionary) -> bool: return o["to"] == "lake")[0]
-	check(int(village_portal["pos"][1]) >= Maps.get_map("village")["rows"].size() - 2 and village_portal.get("requires", []).is_empty(), "de doorgang naar het meer ligt aan de zuidrand en staat vanaf het begin open")
+	check(village_portal["pos"] == [19,26] and village_portal.get("requires", []).is_empty(), "de doorgang naar het meer houdt zijn oude plek en staat vanaf het begin open")
 
 	# De inhoud van het meer
 	var lake_objects: Array = Maps.get_map("lake")["objects"]

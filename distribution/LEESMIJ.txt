@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.25.0-preview)
+BLUEMAP QUEST  (v0.26.0-preview)
 =======================
 
 Starten
@@ -33,6 +33,23 @@ Taal / Language
 Doel
   De Blauwe Kaart van Azura is gebarsten. Praat met Oudste Bram in het dorp, zoek de drie
   kaartkristallen in het Fluisterbos, de Vergeten Ruine en de Echo-grot, en stop de Slijmkoning.
+
+Nieuw in 0.26: eigen huis, landbouw en irrigatie
+  Ga naar het huis linksonder in het dorp. Het bord en de voorraad binnen geven gratis
+  een hak, acht druivenpitten en vier bloemenzaden. Je bed herstelt en slaat op.
+  Gebruik het blauwe punt voor je huis om thuis snelreizen te ontdekken op de kaart.
+  Onder het dorp ligt je tuin. U kiest de hakstand; op de controller R3, dan Y.
+  Je vindt Tuinstanden ook als knop in Beroepen. E / A vasthouden en lopen bewerkt een rij. Gebruik kanalen om water uit de beek naast je grond te leiden.
+  Kanalen zijn een halve tegel breed en je loopt er gewoon overheen.
+  Druiven groeien in 90 actieve seconden, bloemen in 60; droogte pauzeert zonder schade.
+  Dieren in Dorstvallei en Kruipmoeras laten ook levend poep achter. De mesthoop achter
+  je huis verwerkt twee poep tot drie meststof in 30 actieve seconden. Een bemeste
+  druivenstok geeft bij de volgende oogst vijf druiven in plaats van drie.
+  Wilde druiven groeien in het bos. Eten herstelt één hartje; via C maak je nieuwe pitten.
+  Twee wijnvaten verwerken drie druiven tot wijn in 90 s. De bijenkast vraagt drie
+  bloeiende planten binnen vijf tegels en maakt iedere 120 s één honing, tot acht.
+  Haal producten bij de werkplek op. Menu's pauzeren de tijd; offline gebeurt niets.
+  Ctrl / L3 sprinten is vanaf het begin beschikbaar. Bindings blijven instelbaar.
 
 Nieuw in 0.25: samenhang en afwerking
   Muziek speelt nu het hele stuk af voordat het herhaalt, ook bij gecomprimeerde audio.

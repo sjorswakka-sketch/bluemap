@@ -33,7 +33,7 @@ static func all_altars() -> Array[Dictionary]:
 			var arrival := arrival_tile(def, obj)
 			var spawn_name: String = obj.get("spawn", "altar")
 			altars.append({
-				"map": map_id, "name": def["name"], "key": altar_key(map_id, tile), "tile": tile,
+				"map": map_id, "name": obj.get("name",def["name"]), "key": altar_key(map_id, tile), "tile": tile,
 				"spawn": spawn_name if def["spawns"].has(spawn_name) else "start",
 				"pos": Vector2(arrival.x * TILE + TILE / 2.0, arrival.y * TILE + TILE / 2.0),
 			})

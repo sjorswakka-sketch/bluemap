@@ -1,6 +1,15 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.25.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.26.0-preview.**
+
+Nieuw in 0.26: **Je eigen huis en een werkende tuin**. Het bestaande huis linksonder
+in Dageraadsdorp heeft een eigen interieur, rustbed en gratis tuinvoorraad.
+Een ruime zuidelijke tuinuitbreiding verbindt druiven, bloemen, dierenmest,
+compost, wijnvaten en bijen met een stromende dorpsbeek. Graaf halfbrede,
+beloopbare kanalen met je hak; aangesloten water voedt je planten automatisch.
+U of Beroepen → Tuinstanden kiest de tuinstand, E/A vasthouden en lopen werkt langs rijen.
+Gewassen verdorren niet, productie loopt op opgeslagen actieve speeltijd.
+Details: [HOMESTEAD.md](HOMESTEAD.md).
 
 Nieuw in 0.25: **Het kustavontuur als geheel gecontroleerd**. Oude en uitgespeelde
 opslagen kunnen dezelfde gratis rondreis blijven maken, met behoud van wereldgevolgen,
@@ -273,6 +282,7 @@ dubbelklik op `BluemapQuest.exe`. Installeren is niet nodig.
 | `N` | rechter schouderknop | Menu: kaart (en snel reizen) |
 | `T` | | Menu: prestaties |
 | `B` | | Menu: beestenboek |
+| `U` of Beroepen → Tuinstanden | R3, daarna Y | Tuinstand kiezen; E/A vasthouden en lopen bewerkt rijen |
 | `PageUp` / `PageDown` | LB / RB | In het menu: ander tabblad |
 | WASD / pijltjes | linkerstick / d-pad | Inventarisraster en menukeuzes; vasthouden herhaalt |
 | Muis | rechterstick | Richten met een permanent richtkruis |

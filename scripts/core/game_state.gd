@@ -52,6 +52,7 @@ var kills: int = 0
 var hero_xp: int = 0 # totale held-ervaring; levels worden hieruit berekend
 var meer: Dictionary = {} # eigen opslag van het Zilvermeer (zie scripts/data/ext/meer.gd): verkochte en gevangen vis
 var professions: Dictionary = {} # beroepenervaring en verzamelde grondstoffen (eigen stabiele sleutels)
+var homestead: Dictionary = {}
 var coastal_storage: Dictionary = {}
 var equipment: Dictionary = {} # vak -> gekozen voorwerp; alleen geldig zolang je het bezit
 var appearance: Dictionary = {} # geslacht, haar, ogen (zie scripts/core/appearance.gd); leeg = standaard
@@ -99,6 +100,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if in_game and not ended and not get_tree().paused:
 		play_time += delta
+		preload("res://scripts/core/homestead.gd").advance(delta)
 		day_time += delta / Daynight.DAY_LENGTH
 		if day_time >= 1.0:
 			day_time = Daynight.wrap_time(day_time)
@@ -135,6 +137,8 @@ func new_game() -> void:
 	hero_xp = 0
 	meer = {}
 	professions = {}
+	homestead = {}
+	preload("res://scripts/core/homestead.gd").reset()
 	coastal_storage = {}
 	equipment = {}
 	appearance = Appearance.normalize_appearance({})
@@ -681,6 +685,7 @@ func save_game(pos: Vector2) -> bool:
 		"day_time": day_time, "day_count": day_count, "kills_by": kills_by, "rolls": rolls,
 		"potions_drunk": potions_drunk, "deaths": deaths, "boss_deaths": boss_deaths,
 		"talked": talked.keys(), "achievements": achievements.keys(), "arena_records": arena_records,
+		"homestead": preload("res://scripts/core/homestead.gd").normalize(homestead),
 		"coastal_storage": CoastalHome.normalize(coastal_storage),
 		"professions": professions, "hero_xp": Progression.normalize(hero_xp),
 		"equipment": Equipment.normalize(equipment, inventory),
@@ -716,6 +721,7 @@ func load_game() -> bool:
 	ng_plus = int(data.get("ng_plus", 0)) # de ronde van Nieuw spel+ (oude opslagen: 0)
 	play_time = float(data.get("play_time", 0.0))
 	professions = Professions.normalize(data.get("professions", {}), play_time)
+	homestead = preload("res://scripts/core/homestead.gd").normalize(data.get("homestead", {}))
 	coastal_storage = CoastalHome.normalize(data.get("coastal_storage", {}))
 	hero_xp = Progression.normalize(data.get("hero_xp", 0))
 	kills = int(data.get("kills", 0))

@@ -84,7 +84,7 @@ func run():
 	for y in actual.rows.size():
 		for x in actual.rows[y].length():
 			if actual.rows[y][x]!=base.rows[y][x]:check(y in [8,9] and x>=(39 if y==8 else 40),"only east-edge connection terrain changes")
-	check(Maps.get_map("forest_edge").objects.size()==4,"quiet Bosrand remains untouched")
+	check(Maps.get_map("forest_edge").objects.size()==5,"quiet Bosrand only adds a scenic waterfall")
 	check(Journey.path("village","gull_island")==["village","lake","coast","gull_island"],"quest graph recognises ferry links as well as portals")
 	check(Journey.path("gull_island","village")==["gull_island","coast","lake","village"],"route home is available without unlocks")
 	check(Tiles.NAMES.slice(71,78)==["ce_sea","ce_sand","ce_dune","ce_grass","ce_cliff","ce_shore","ce_boardwalk"] and load("res://assets/tiles.png").get_width()==Tiles.NAMES.size()*16,"atlas has all legacy and seven new tiles")

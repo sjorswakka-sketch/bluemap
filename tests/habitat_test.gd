@@ -51,7 +51,7 @@ func run():
     var old: Dictionary=before.objects[i].duplicate();old.kind=after.objects[i].kind
     check(old==after.objects[i] and after.objects[i].get("enabled",true),"only enemy kind changed at original slot "+id+str(i));changes+=1
   if id=="forest":check(after.objects.filter(func(o):return o.type=="enemy" and o.get("enabled",true)).size()==18,"forest stays at eighteen occupied enemy places")
-  if id=="forest_edge":check(after.objects.size()==4,"Bosrand stays empty of new encounters")
+  if id=="forest_edge":check(after.objects.size()==5 and after.objects.filter(func(o):return o.type=="enemy").is_empty(),"Bosrand scenic waterfall adds no encounters")
  check(changes==4,"exactly four replacements")
  for name in ["hb_root","hb_moth"]:
   var texture: Texture2D=load("res://assets/"+name+".png")

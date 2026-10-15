@@ -587,8 +587,9 @@ func test_arrow_hits() -> void:
 	await shoot_from(vertical_lane, 14, Vector2.DOWN)
 	check(hp_of(above) == 1 and hp_of(below) == 1, "naar boven en naar beneden")
 	await clear_enemies()
-	var diagonal := spawn("slime", 8, 17)
-	await shoot_from(5, 14, Vector2(1, 1))
+	## The home compost now occupies the former southwest shooting lane.
+	var diagonal := spawn("slime", 29, 36)
+	await shoot_from(26, 33, Vector2(1, 1))
 	check(hp_of(diagonal) == 1, "schuin raakt hij ook")
 	await clear_enemies()
 
