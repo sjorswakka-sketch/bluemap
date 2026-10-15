@@ -1,13 +1,21 @@
-extends Node2D
+extends StaticBody2D
 const Art:=preload("res://scripts/core/art.gd")
 const DrawUtil:=preload("res://scripts/core/draw_util.gd")
 var world: Node2D
 var obj: Dictionary={}
 var key: String=""
 var time:=0.0
+var body: CollisionShape2D
 func _ready():
  add_to_group("coast_adventures")
+ collision_layer=1;collision_mask=0
+ if obj.role in ["wheel","harbor_wheel","record","pilot","entrance","rock","sluice","shelter"]:
+  body=CollisionShape2D.new();var shape:=RectangleShape2D.new()
+  shape.size=Vector2(58,8) if obj.role=="shelter" else Vector2(34,10) if obj.role in ["wheel","harbor_wheel","sluice","record"] else Vector2(22,8)
+  body.shape=shape;body.position=Vector2(0,5 if obj.role=="shelter" else 10 if obj.role in ["record","rock"] else 17);body.disabled=body_hidden();add_child(body)
  if obj.role not in ["buoy","harbor_wheel"]:add_to_group("interactable")
+func body_hidden() -> bool:
+ return (obj.role=="harbor_wheel" and not GameState.flag("ad_workwater")) or (obj.role=="shelter" and not GameState.flag("ad_pilot_done"))
 func label() -> String:
  match obj.role:
   "message":return tr("Aangespoeld logboek")
@@ -28,6 +36,7 @@ func interact():
  ui.world=world;world.add_child(ui);ui.open(self)
 func _process(delta: float):
  time+=delta;queue_redraw()
+ if body!=null and body.disabled!=body_hidden():body.set_deferred("disabled",body_hidden())
  if obj.role=="keeper_rest":
   var hidden: bool=GameState.flag("ad_duel") or GameState.flag("ad_workwater")
   if hidden and is_in_group("interactable"):remove_from_group("interactable")

@@ -55,6 +55,7 @@ func run():
  await open("rock");await select();await close_ui()
  await route_to(Vector2i(45,18));await open("grass");await select();await close_ui()
  await route_to(Vector2i(47,35));await open("shelter");await select();await close_ui()
+ check(not prop("shelter").body.disabled,"restored windbreak has a real footprint")
  check(gs.flag("ad_pilot_done"),"landmark route restores visible resting shelter")
  # The grotto is a side exit with a real route both ways, not on the ordinary coast loop.
  await enter("river_mouth","from_coast");await route_to(Vector2i(16,12))
@@ -66,13 +67,17 @@ func run():
  p.invuln=0
  for n in get_nodes_in_group("enemies"):n.set_physics_process(true)
  await route_to(Vector2i(40,30));check(gs.hp==hp,"permanent southern crossing works before repair")
+ var wheel:=prop("wheel");p.position=wheel.position+Vector2(0,42);await frames(3);Input.action_press("move_up");await frames(35);release()
+ check(p.position.y>wheel.position.y+14,"actual movement stops at tide-wheel foot")
  await open("wheel");await select();await frames(20);await tap(JOY_BUTTON_B,true)
  check(not gs.flag("ad_wheel_done") and not p.work_active and not gs.input_locked(),"B cancels repair without partial commit")
  await open("wheel");await select();Input.action_press("move_right");await frames(3);release()
  check(not gs.flag("ad_wheel_done") and not gs.input_locked(),"movement cancels repair safely")
  await open("wheel");await select();world.load_map("harbor","start");await frames(8);p=world.player
  check(not gs.flag("ad_wheel_done") and not gs.input_locked() and not p.work_active,"forced map unload cancels repair and releases UI")
- await enter("tidal_hollow");await open("wheel");await select();await frames(125)
+ await enter("tidal_hollow","start",Vector2(12.5,27.5)*32)
+ check(world.spawn_fits(p.position) and p.position.distance_to(prop("wheel").position)>5,"old saved position inside new wheel moves to free floor")
+ await open("wheel");await select();await frames(125)
  p=world.player;check(gs.flag("ad_wheel_done") and not gs.input_locked() and not world.is_solid(Vector2(29.5,14.5)*32),"completed repair persists and opens only short bridge")
  await open("sluice");await select(0,true);await frames(4)
  check(gs.flag("ad_pool") and gs.flag("ad_keeper_done") and gs.quest_state("ad_keeper")=="done","peaceful choice completes encounter without combat")

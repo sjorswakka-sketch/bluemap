@@ -60,3 +60,7 @@ eenmalige afronding en Nieuw spel+. De bestaande volledige testsuite blijft geld
 Visuele controle gebruikt aparte saves, NL/EN en 960×540, 1152×648 en 1600×900.
 Geen echte spelerssave of fysieke controller gebruikt. Fase 5 (streekmaterialen,
 recepten en terugkeerplek) wacht op de volgende go.
+
+Hoge werkprops en het voltooide windscherm hebben een kleine, echte voetafdruk.
+Verborgen props en losse aanwijzingen blokkeren niets. Laden binnen een nieuwe
+voetafdruk zoekt veilig vrij terrein; de brede routes blijven open.
