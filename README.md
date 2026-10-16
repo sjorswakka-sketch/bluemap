@@ -1,6 +1,15 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.30.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.31.0-preview.**
+
+Nieuw in 0.31: **Een uitbreidbaar erf — ontwikkelronde 4**. Verplaats of berg je bestaande
+wijnvaten, mesthoop en bijenkast op met behoud van productie; leg drie eigen soorten
+tuinpad, laag hekwerk en automatisch openende poortjes aan. Ontsluit optioneel twee
+bestaande weiden als bouwruimte; bestaande landbouw blijft vrij beschikbaar.
+De ontwerpmodus bewaakt gewassen, kanalen, opslag, vrije routes en open stukken erf.
+Open **U → Erf inrichten** buiten of gebruik je tuingids. Bouw eerst een ontwerp en
+kies toepassen; annuleren behoudt je huidige erf. Eigen pixel art en een zacht poortgeluid.
+Details: [EXPANDABLE_YARD_PHASE4.md](EXPANDABLE_YARD_PHASE4.md).
 
 Nieuw in 0.30: **Een persoonlijk huis — ontwikkelronde 3**. Schuif met je bestaande
 bed, tafel en boekenkast; plaats stoelen, planten, lampen, een bankje, servieskast

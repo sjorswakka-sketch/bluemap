@@ -28,6 +28,7 @@ const Content := preload("res://scripts/data/content.gd")
 const Boeken := preload("res://scripts/data/ext/meer_boeken.gd")
 const Beroepen := preload("res://scripts/data/ext/beroepen.gd")
 const EquipmentData := preload("res://scripts/data/ext/uitrusting.gd")
+const YardCatalog:=preload("res://scripts/data/yard_catalog.gd")
 const HouseCatalog:=preload("res://scripts/data/house_catalog.gd")
 const CraftNotes := preload("res://scripts/data/ext/craft_progression.gd")
 
@@ -129,6 +130,10 @@ class Collector:
 
 ## 1. Alle tekst uit de data (Nederlands), met uitleg voor de vertalers.
 static func collect_data(c: Collector) -> void:
+	for table in [YardCatalog.UNITS,YardCatalog.PIECES,YardCatalog.EXTENSIONS]:
+		for id: String in table:
+			for field in ["name","desc"]:c.add(table[id].get(field,""),"Uitbreidbaar erf "+id+": "+field)
+	for text: String in YardCatalog.VIEW_NAMES:c.add(text,"Erf: plankaart")
 	for id: String in HouseCatalog.PIECES:
 		for field in ["name","desc","hint"]:c.add(HouseCatalog.PIECES[id].get(field,""),"Persoonlijk huis "+id+": "+field)
 	for values in [HouseCatalog.FLOORS,HouseCatalog.WALLS,HouseCatalog.COLORS,HouseCatalog.LIGHTS]:
@@ -497,6 +502,7 @@ static func find_unclaimed(c: Collector) -> Array:
 	var found: Array = []
 	var sources: Array = [Dialogue, Items, Quests, Npcs, Enemies, Achievements, Shops, Credits, Boeken]
 	sources.append(HouseCatalog)
+	sources.append(YardCatalog)
 	sources.append_array(Content.MODULES)
 	sources.append(load("res://scripts/data/arena.gd"))
 	sources.append(load("res://scripts/core/input_manager.gd"))

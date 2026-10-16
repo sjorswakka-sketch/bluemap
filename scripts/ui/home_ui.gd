@@ -54,7 +54,7 @@ func valid() -> bool:
  if not active or GameState.map_id!=map_id or GameState.ended or GameState.transitioning:return false
  if source==null:return true
  var node: Node2D=source.get_ref()
- return is_instance_valid(node) and not node.is_queued_for_deletion() and world.player.position.distance_to(node.position)<=68
+ return is_instance_valid(node) and node.is_visible_in_tree() and not node.is_queued_for_deletion() and world.player.position.distance_to(node.position)<=68
 func button(text: String,action: Callable,disabled:=false,parent: Node=null):
  var b:=Button.new();Style.style_button(b,18);Identity.style_button(b,theme_id);b.text=text;b.custom_minimum_size=Vector2(304,44) if parent!=null else Vector2(620,36);b.disabled=disabled
  (parent if parent!=null else box).add_child(b);b.pressed.connect(action);buttons.append(b)
@@ -115,7 +115,11 @@ func rebuild():
    button(tr("Meng één portie compost") if role=="compost" else tr("Vul vat voor één fles"),start.bind(id,1),count<1)
    if count>1:button((tr("Meng %d porties compost") if role=="compost" else tr("Vul vat voor %d flessen")) % count,start.bind(id,count))
  if GameState.map_id=="player_home" and role in ["bed","guide","supplies"]:button(tr("Je huis inrichten"),decorate)
- button(tr("Sluiten"),close)
+ var ending: Node=null
+ if GameState.map_id=="village" and role=="tools":
+  ending=GridContainer.new();ending.columns=2;ending.add_theme_constant_override("h_separation",8);box.add_child(ending)
+ if GameState.map_id=="village" and role in ["tools","guide","supplies"]:button(tr("Erf inrichten"),yard,false,ending)
+ button(tr("Sluiten"),close,false,ending)
  var focus: Array[Control]=[]
  for b in buttons:
   if not b.disabled:focus.append(b)
@@ -206,3 +210,8 @@ func decorate():
  if not valid() or GameState.map_id!="player_home":return
  close()
  var ui: CanvasLayer=load("res://scripts/ui/house_ui.gd").new();ui.world=world;world.add_child(ui);ui.open()
+
+func yard():
+ if not valid() or GameState.map_id!="village":return
+ close()
+ var ui: CanvasLayer=load("res://scripts/ui/yard_ui.gd").new();ui.world=world;world.add_child(ui);ui.open()

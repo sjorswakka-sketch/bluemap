@@ -71,13 +71,8 @@ static func watered(at: Vector2i) -> bool:
   if wet.has(at+step) or sources.has(at+step):return true
  return false
 static func flowers() -> int:
- var n:=0;var data:=state()
- for at: Vector2i in FLOWERS:
-  if not data.cells.has(key(at)):n+=1
- for id: String in data.cells:
-  var e: Dictionary=data.cells[id]
-  if e.get("crop","")=="flower" and e.growth>=CROPS.flower.seconds and cell(id).distance_to(Vector2i(15,32))<=5:n+=1
- return n
+ var yard: Script=load("res://scripts/core/yard.gd")
+ return yard.flower_count_at(yard.anchor("hive"),state().cells)
 static func advance(delta: float):
  if delta<=0:return
  var data:=state();irrigate()
@@ -95,7 +90,7 @@ static func advance(delta: float):
 static func changed():dirty=true;gs().save_requested.emit()
 static func near(role: String,unit: String="") -> bool:
  for node in (Engine.get_main_loop() as SceneTree).get_nodes_in_group("home_stations"):
-  if not node.is_queued_for_deletion() and node.obj.role==role and (unit=="" or node.obj.get("unit","")==unit) and node.world.player.position.distance_to(node.position)<=68:return true
+  if not node.is_queued_for_deletion() and node.is_visible_in_tree() and node.world==(Engine.get_main_loop() as SceneTree).current_scene and node.obj.role==role and (unit=="" or node.obj.get("unit","")==unit) and node.world.player.position.distance_to(node.position)<=68:return true
  return false
 static func starter() -> bool:
  if busy or gs().flag("hs_supplies") or not (near("supplies") or near("guide")):return false

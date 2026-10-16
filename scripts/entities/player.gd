@@ -180,6 +180,9 @@ func _physics_process(delta: float) -> void:
 func ground_tile() -> String:
 	if not is_instance_valid(world):
 		return ""
+	if GameState.map_id=="village":
+		var path: String=load("res://scripts/core/yard.gd").surface(Vector2i(((global_position+FOOT_OFFSET)/32).floor()))
+		if path!="":return path
 	return Tiles.name_at(world.map_data.get("rows", []), global_position + FOOT_OFFSET)
 
 func _update_footsteps(distance: float, walking: bool, tile_name: String) -> void:

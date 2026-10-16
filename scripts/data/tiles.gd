@@ -118,7 +118,7 @@ static func name_at(rows: Array, foot_position: Vector2, tile_size := 32.0) -> S
 ## Het gewone gras houdt zijn oorspronkelijke snelheid; een pad loont, zand en diepe sneeuw zijn wat zwaarder.
 static func movement_multiplier(tile_name: String) -> float:
 	if tile_name in ["ce_sand","ce_dune"]:return 0.92
-	if tile_name == "path":
+	if tile_name in ["path","yard_boards"]:
 		return 1.2
 	if tile_name == "mud":
 		return 0.88 # wegzakken in de blubber
@@ -130,6 +130,7 @@ static func movement_multiplier(tile_name: String) -> float:
 
 
 static func footstep_surface(tile_name: String) -> String:
+	if tile_name=="yard_boards":return "wood"
 	if tile_name in ["ce_sand","ce_dune"]:return "sand"
 	if tile_name=="ce_grass":return "grass"
 	if tile_name=="ce_boardwalk":return "wood"

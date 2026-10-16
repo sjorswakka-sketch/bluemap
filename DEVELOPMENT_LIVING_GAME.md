@@ -21,8 +21,8 @@ landschappelijke ruimte. Geen verplichte dagelijkse onderhoudsronde.
 1. **Landbouw en irrigatie — uitgevoerd in 0.27:** verbeter tegelgerichte bediening, rijbewerking, plantinformatie, groeianimaties, wateraanvoer, kanaalverbindingen, oogsten en een korte optionele introductie.
 2. **Voorraad en praktisch speelgemak — uitgevoerd in 0.29:** voeg thuisopslag, sorteren, zoeken, favorieten, stapels aanvullen, duidelijke materiaalcategorieën en maken vanuit nabijgelegen opslag toe.
 3. **Een persoonlijk huis — uitgevoerd in 0.30:** bouw verplaatsbare meubels, eigen vloeren en wandafwerkingen, verlichting, planten, trofeeën en een plaatsingsmodus die deuren en looproutes vrijhoudt.
-4. **Een uitbreidbaar erf — eerstvolgende:** voeg geschikte bouwplaatsen, verplaatsbare productieplekken, tuinpaden, hekwerk, poortjes en erfuitbreidingen toe waar het landschap voldoende ruimte biedt.
-5. **Gewassen en boomgaard:** introduceer onderscheidende groenten, kruiden, fruitbomen en struiken met passende groeivormen, oogstanimaties, toepassingen en overzichtelijke zaadvoorziening.
+4. **Een uitbreidbaar erf — uitgevoerd in 0.31:** voeg geschikte bouwplaatsen, verplaatsbare productieplekken, tuinpaden, hekwerk, poortjes en erfuitbreidingen toe waar het landschap voldoende ruimte biedt.
+5. **Gewassen en boomgaard — eerstvolgende:** introduceer onderscheidende groenten, kruiden, fruitbomen en struiken met passende groeivormen, oogstanimaties, toepassingen en overzichtelijke zaadvoorziening.
 6. **Productie en verwerking:** breid wijnmaken, honing en compost uit met koken, drogen, inmaken, meel verwerken en overzichtelijke productiewachtrijen met zichtbare voortgang.
 7. **Dieren en bijen:** voeg kippen en schapen, eenvoudige onderkomens, herkenbaar diergedrag, eieren, wol en uitgebreidere bloemeninteracties toe zonder verplichte dagelijkse verzorgingsrondes.
 8. **Handel en dorpsvoorzieningen:** verbind eigen producten met bestaande winkels, passende verkoopprijzen, gezamenlijke bestellingen, nuttige aankopen en zichtbare winkelverbeteringen.
@@ -45,4 +45,4 @@ landschappelijke ruimte. Geen verplichte dagelijkse onderhoudsronde.
 
 Ronde 1: zie GARDEN_PHASE1.md; kaartindelingen en bestaande bronassets behouden,
 dezelfde landbouw- en productieregels met betere bediening en veldinformatie.
-Ronde 2: zie STORAGE_PHASE2.md; twee kleine kisten, gedeelde huisvoorraad, zoeken, sorteren, favorieten, bulkacties en lokale receptmaterialen. Ronde 3: zie PERSONAL_HOME_PHASE3.md; eigen meubels, vloeren, wanden, lampen en aandenkens met veilige ontwerpmodus. Een volgend gewoon go begint ronde 4: een uitbreidbaar erf.
+Ronde 2: zie STORAGE_PHASE2.md; twee kleine kisten, gedeelde huisvoorraad, zoeken, sorteren, favorieten, bulkacties en lokale receptmaterialen. Ronde 3: zie PERSONAL_HOME_PHASE3.md; eigen meubels, vloeren, wanden, lampen en aandenkens met veilige ontwerpmodus. Ronde 4: zie EXPANDABLE_YARD_PHASE4.md; verplaatsbare productie, drie aansluitende tuinpaden, laag hekwerk, automatische poortjes en twee optionele bouwweiden met beschermde landbouw en verbindingen. Een volgend gewoon go begint ronde 5: gewassen en boomgaard.

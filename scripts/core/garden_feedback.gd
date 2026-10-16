@@ -12,6 +12,8 @@ static func status(at: Vector2i,action: String,world: Node) -> Dictionary:
   reason=TranslationServer.translate("Haal eerst je gratis tuinhak bij het tuinbord.")
  elif world.player.position.distance_to(Vector2(at)*32+Vector2(16,16))>68:
   reason=TranslationServer.translate("Kom iets dichterbij.")
+ elif load("res://scripts/core/yard.gd").blocks_work(at):
+  reason=TranslationServer.translate("Hier ligt je erfinrichting; berg die eerst op via Erf inrichten.")
  elif world.map_data.rows[at.y][at.x]!="." or not world.spawn_fits(Vector2(at)*32+Vector2(16,16)):
   reason=TranslationServer.translate("Houd deze plek vrij voor water, paden en voorwerpen.")
  elif action in ["soil","channel"]:

@@ -257,6 +257,8 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 		var region: Node2D=load("res://scripts/entities/regional_adventures.gd").new()
 		region.world=self
 		ground.add_child(region)
+	if map_id=="village":
+		var yard: Node2D=load("res://scripts/entities/yard_scenery.gd").new();yard.world=self;ground.add_child(yard)
 	var home: Node2D=load("res://scripts/entities/homestead.gd").new()
 	home.world=self
 	ground.add_child(home)

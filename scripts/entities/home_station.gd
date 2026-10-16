@@ -12,9 +12,10 @@ func _ready():
  if obj.role not in ["fall","shelf","table"]:add_to_group("interactable")
  var shape:=CollisionShape2D.new();var rectangle:=RectangleShape2D.new();rectangle.size=Vector2(60,36) if obj.role=="compost" else Vector2(34,48) if obj.role=="bed" else Vector2(60,22) if obj.role in ["shelf","table"] else Vector2(25,14);shape.shape=rectangle;shape.position.y=-6 if obj.role=="bed" else 5;add_child(shape)
  if GameState.map_id=="player_home" and obj.role in ["bed","table","shelf"]:refresh_home()
+ if GameState.map_id=="village" and load("res://scripts/core/yard.gd").unit_of(obj)!="":refresh_yard()
 func label() -> String:return load("res://scripts/ui/home_ui.gd").station_name(obj.role)
 func interact():
- if GameState.input_locked() or world.player.position.distance_to(position)>55:return
+ if not is_visible_in_tree() or GameState.input_locked() or world.player.position.distance_to(position)>55:return
  var ui: CanvasLayer=load("res://scripts/ui/home_ui.gd").new();ui.world=world;world.add_child(ui);ui.open(self)
 func _process(delta: float):time+=delta;queue_redraw()
 func refresh_home():
@@ -90,3 +91,15 @@ func _bees():
   draw_rect(Rect2(at+Vector2(-1,-3),Vector2(3,2)),Color("dce4d1"))
   draw_rect(Rect2(at+Vector2(-3,0),Vector2(6,2)),Color("d6b66a"))
   draw_rect(Rect2(at,Vector2(1,2)),Color("384236"))
+
+func refresh_yard():
+ var yard: Script=load("res://scripts/core/yard.gd");var id: String=yard.unit_of(obj);var at: Vector2i=yard.anchor(id)
+ visible=at.x>=0;collision_layer=1 if visible else 0
+ for child in get_children():
+  if child is CollisionShape2D:child.disabled=not visible
+ if visible:
+  position=Vector2(at)*32+Vector2(16,16)
+  if id=="compost":position.x-=12
+  if not is_in_group("interactable"):add_to_group("interactable")
+ elif is_in_group("interactable"):remove_from_group("interactable")
+ queue_redraw()

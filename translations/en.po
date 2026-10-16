@@ -8,6 +8,146 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Source-Language: nl\n"
 
+#. Uitbreidbaar erf wine_a: name
+#: scripts/data/yard_catalog.gd:3
+msgid "Westelijk wijnvat"
+msgstr "Western wine barrel"
+
+#. Uitbreidbaar erf wine_a: desc
+#: scripts/data/yard_catalog.gd:3
+msgid "Verplaats het bestaande vat; flessen en rijptijd blijven behouden."
+msgstr "Move the existing barrel while keeping its bottles and aging progress."
+
+#. Uitbreidbaar erf wine_b: name
+#: scripts/data/yard_catalog.gd:4
+msgid "Oostelijk wijnvat"
+msgstr "Eastern wine barrel"
+
+#. Uitbreidbaar erf wine_b: desc
+#: scripts/data/yard_catalog.gd:4
+msgid "Een tweede vaste productie-eenheid, vrij te verplaatsen zonder extra batches te maken."
+msgstr "A second existing production unit. Moving it preserves its batches."
+
+#. Uitbreidbaar erf compost: name
+#: scripts/ui/home_ui.gd:35 scripts/data/yard_catalog.gd:5
+msgid "Mesthoop"
+msgstr "Compost heap"
+
+#. Uitbreidbaar erf compost: desc
+#: scripts/data/yard_catalog.gd:5
+msgid "Geef compost een bereikbare plek op je erf. De actieve porties verhuizen mee."
+msgstr "Give your compost an accessible place in the yard. Active batches move with it."
+
+#. Uitbreidbaar erf hive: name
+#: scripts/ui/home_ui.gd:37 scripts/data/yard_catalog.gd:6
+msgid "Bijenkast"
+msgstr "Beehive"
+
+#. Uitbreidbaar erf hive: desc
+#: scripts/data/yard_catalog.gd:6
+msgid "Bijen hebben drie bloeiende planten binnen vijf tegels nodig. Opbergen pauzeert honing, zonder verlies."
+msgstr "Bees need three flowering plants within five tiles. Packing pauses honey without losing progress."
+
+#. Uitbreidbaar erf gravel: name
+#: scripts/data/yard_catalog.gd:9
+msgid "Grindpad"
+msgstr "Gravel path"
+
+#. Uitbreidbaar erf gravel: desc
+#: scripts/data/yard_catalog.gd:9
+msgid "Een smal, aansluitend pad met passende voetstappen en de bestaande padsnelheid."
+msgstr "A narrow connecting path with matching footsteps and the usual path speed."
+
+#. Uitbreidbaar erf stone: name
+#: scripts/data/yard_catalog.gd:10
+msgid "Stapstenenpad"
+msgstr "Stepping stone path"
+
+#. Uitbreidbaar erf stone: desc
+#: scripts/data/yard_catalog.gd:10
+msgid "Rustige, aansluitende stenen. Houd kanalen en gewassen vrij."
+msgstr "Subtle connecting stones. Keep channels and crops clear."
+
+#. Uitbreidbaar erf boards: name
+#: scripts/data/yard_catalog.gd:11
+msgid "Houten tuinpad"
+msgstr "Wooden garden path"
+
+#. Uitbreidbaar erf boards: desc
+#: scripts/data/yard_catalog.gd:11
+msgid "Een laag houten pad met houten voetstappen; geen brug over water."
+msgstr "A low wooden path with wooden footsteps. Place it on dry land."
+
+#. Uitbreidbaar erf fence_h: name
+#: scripts/data/yard_catalog.gd:12
+msgid "Hek · liggend"
+msgstr "Fence · horizontal"
+
+#. Uitbreidbaar erf fence_h: desc
+#: scripts/data/yard_catalog.gd:12
+msgid "Een lage houten erfgrens. Laat een poortje of ruime opening over."
+msgstr "A low wooden boundary. Leave a gate or a wide opening."
+
+#. Uitbreidbaar erf fence_v: name
+#: scripts/data/yard_catalog.gd:13
+msgid "Hek · staand"
+msgstr "Fence · vertical"
+
+#. Uitbreidbaar erf fence_v: desc
+#: scripts/data/yard_catalog.gd:13
+msgid "Een hek langs de zijkant van je tuin; bestaande routes blijven vrij."
+msgstr "A fence along the side of your garden. Existing routes stay clear."
+
+#. Uitbreidbaar erf gate_h: name
+#: scripts/data/yard_catalog.gd:14
+msgid "Poortje · liggend"
+msgstr "Gate · horizontal"
+
+#. Uitbreidbaar erf gate_h: desc
+#: scripts/data/yard_catalog.gd:14
+msgid "Opent vanzelf van beide kanten en sluit pas als je er voorbij bent."
+msgstr "Opens automatically from either side and closes once you have passed."
+
+#. Uitbreidbaar erf gate_v: name
+#: scripts/data/yard_catalog.gd:15
+msgid "Poortje · staand"
+msgstr "Gate · vertical"
+
+#. Uitbreidbaar erf gate_v: desc
+#: scripts/data/yard_catalog.gd:15
+msgid "Een automatisch poortje voor een grens die van noord naar zuid loopt."
+msgstr "An automatic gate for a boundary running north to south."
+
+#. Uitbreidbaar erf west: name
+#: scripts/data/yard_catalog.gd:27
+msgid "Westweide"
+msgstr "West meadow"
+
+#. Uitbreidbaar erf west: desc
+#: scripts/data/yard_catalog.gd:27
+msgid "Extra bouwruimte in de open weide. Bestaande landbouw blijft ook zonder uitbreiding beschikbaar."
+msgstr "Extra building space in the open meadow. All existing farming remains available without an expansion."
+
+#. Uitbreidbaar erf east: name
+#: scripts/data/yard_catalog.gd:28
+msgid "Oeverweide"
+msgstr "Riverside meadow"
+
+#. Uitbreidbaar erf east: desc
+#: scripts/data/yard_catalog.gd:28
+msgid "Verspreid je erf over de rustige overkant; beide beekbruggen blijven open."
+msgstr "Spread your yard to the peaceful far bank. Both stream bridges stay open."
+
+#. Erf: plankaart
+#: scripts/data/yard_catalog.gd:32
+msgid "Voorerf en tuin"
+msgstr "Front yard and garden"
+
+#. Erf: plankaart
+#: scripts/data/yard_catalog.gd:32
+msgid "Achter het huis"
+msgstr "Behind the house"
+
 #. Persoonlijk huis bed: name
 #: scripts/data/house_catalog.gd:4
 msgid "Eigen bed"
@@ -9128,7 +9268,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:278
+#: scripts/world.gd:280
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -9417,55 +9557,55 @@ msgid "De oude route licht weer op. En Wilfred heeft eindelijk een naam op zijn 
 msgstr "The old route shines again. And Wilfred finally has a name on his stone. The Blue Map is about the people between the crystals as much as the crystals themselves."
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
-#: scripts/core/game_state.gd:281
+#: scripts/core/game_state.gd:283
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
 msgstr "Hero level %d! +%d coins for your equipment."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:413
+#: scripts/core/game_state.gd:415
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:416
+#: scripts/core/game_state.gd:418
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:418 scripts/ui/item_receipts.gd:14
+#: scripts/core/game_state.gd:420 scripts/ui/item_receipts.gd:14
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:421
+#: scripts/core/game_state.gd:423
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:428
+#: scripts/core/game_state.gd:430
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:494
+#: scripts/core/game_state.gd:496
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:509
+#: scripts/core/game_state.gd:511
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:554
+#: scripts/core/game_state.gd:556
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:558
+#: scripts/core/game_state.gd:560
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:634
+#: scripts/core/game_state.gd:636
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:651
+#: scripts/core/game_state.gd:653
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -9490,126 +9630,130 @@ msgid "Kom iets dichterbij."
 msgstr "Move a little closer."
 
 #: scripts/core/garden_feedback.gd:16
+msgid "Hier ligt je erfinrichting; berg die eerst op via Erf inrichten."
+msgstr "Your yard layout occupies this spot. Pack it away in Arrange yard first."
+
+#: scripts/core/garden_feedback.gd:18
 msgid "Houd deze plek vrij voor water, paden en voorwerpen."
 msgstr "Keep this spot clear for water, paths and objects."
 
-#: scripts/core/garden_feedback.gd:18
+#: scripts/core/garden_feedback.gd:20
 msgid "Deze tegel is al bewerkt."
 msgstr "This tile has already been worked."
 
-#: scripts/core/garden_feedback.gd:20
+#: scripts/core/garden_feedback.gd:22
 msgid "Bewerk eerst de grond."
 msgstr "Till the soil first."
 
-#: scripts/core/garden_feedback.gd:21
+#: scripts/core/garden_feedback.gd:23
 msgid "Hier groeit al iets."
 msgstr "Something is already growing here."
 
-#: scripts/core/garden_feedback.gd:22
+#: scripts/core/garden_feedback.gd:24
 msgid "Je hebt geen passend zaad bij je."
 msgstr "You have no suitable seeds with you."
 
-#: scripts/core/garden_feedback.gd:24
+#: scripts/core/garden_feedback.gd:26
 msgid "Meststof is bedoeld voor een druivenstok."
 msgstr "Fertilizer is for grapevines."
 
-#: scripts/core/garden_feedback.gd:25
+#: scripts/core/garden_feedback.gd:27
 msgid "Deze stok is al bemest."
 msgstr "This vine is already fertilized."
 
-#: scripts/core/garden_feedback.gd:26
+#: scripts/core/garden_feedback.gd:28
 msgid "Maak eerst meststof op de mesthoop."
 msgstr "Make fertilizer at the compost heap first."
 
-#: scripts/core/garden_feedback.gd:28
+#: scripts/core/garden_feedback.gd:30
 msgid "Richt op een druivenstok."
 msgstr "Face a grapevine."
 
-#: scripts/core/garden_feedback.gd:29
+#: scripts/core/garden_feedback.gd:31
 msgid "Deze druiven zijn nog niet rijp."
 msgstr "These grapes are not ripe yet."
 
-#: scripts/core/garden_feedback.gd:30
+#: scripts/core/garden_feedback.gd:32
 msgid "Maak ruimte in je tas voor de volledige oogst."
 msgstr "Make room in your bag for the full harvest."
 
-#: scripts/core/garden_feedback.gd:32
+#: scripts/core/garden_feedback.gd:34
 msgid "Deze grond is al hersteld."
 msgstr "This ground is already restored."
 
-#: scripts/core/garden_feedback.gd:33
+#: scripts/core/garden_feedback.gd:35
 msgid "Maak ruimte in je tas voor het zaad."
 msgstr "Make room in your bag for the seed."
 
-#: scripts/core/garden_feedback.gd:34
+#: scripts/core/garden_feedback.gd:36
 msgid "Kies een tuinhandeling."
 msgstr "Choose a garden action."
 
-#: scripts/core/garden_feedback.gd:39
+#: scripts/core/garden_feedback.gd:41
 msgid "Kanaal aangesloten · water stroomt door."
 msgstr "Channel connected · water is flowing."
 
-#: scripts/core/garden_feedback.gd:39
+#: scripts/core/garden_feedback.gd:41
 msgid "Droog kanaal · verbind met de beek of een gevuld kanaal."
 msgstr "Dry channel · connect it to the brook or a filled channel."
 
-#: scripts/core/garden_feedback.gd:43
+#: scripts/core/garden_feedback.gd:45
 msgid "Rijp om te oogsten"
 msgstr "Ready to harvest"
 
-#: scripts/core/garden_feedback.gd:43
+#: scripts/core/garden_feedback.gd:45
 msgid "In bloei"
 msgstr "In bloom"
 
-#: scripts/core/garden_feedback.gd:43
+#: scripts/core/garden_feedback.gd:45
 msgid "Groeit · nog %.0f s actieve speeltijd"
 msgstr "Growing · %.0f s of active play remaining"
 
-#: scripts/core/garden_feedback.gd:43
+#: scripts/core/garden_feedback.gd:45
 msgid "Wacht op water · verdort niet"
 msgstr "Waiting for water · will not wither"
 
-#: scripts/core/garden_feedback.gd:44
+#: scripts/core/garden_feedback.gd:46
 msgid "Opbrengst: %d druiven"
 msgstr "Yield: %d grapes"
 
-#: scripts/core/garden_feedback.gd:44
+#: scripts/core/garden_feedback.gd:46
 msgid "Voedt bijen binnen vijf tegels"
 msgstr "Feeds bees within five tiles"
 
-#: scripts/core/garden_feedback.gd:47
+#: scripts/core/garden_feedback.gd:49
 msgid "Landbouwgrond · water aangesloten"
 msgstr "Farmland · water connected"
 
-#: scripts/core/garden_feedback.gd:47
+#: scripts/core/garden_feedback.gd:49
 msgid "Landbouwgrond · leid water naar een aangrenzende tegel"
 msgstr "Farmland · lead water to an adjacent tile"
 
-#: scripts/core/garden_feedback.gd:48
+#: scripts/core/garden_feedback.gd:50
 msgid "Vrije tuingrond"
 msgstr "Free garden ground"
 
-#: scripts/core/garden_feedback.gd:64
+#: scripts/core/garden_feedback.gd:66
 msgid "Tuinhulp · Haal eerst je gratis hak en zaden bij het tuinbord."
 msgstr "Garden guide · collect your free hoe and seeds at the garden sign first."
 
-#: scripts/core/garden_feedback.gd:66
+#: scripts/core/garden_feedback.gd:68
 msgid "Tuinhulp 1/4 · Bewerk één vak grond bij de beek."
 msgstr "Garden guide 1/4 · Till one tile near the brook."
 
-#: scripts/core/garden_feedback.gd:67
+#: scripts/core/garden_feedback.gd:69
 msgid "Tuinhulp 2/4 · Graaf vanaf de beek een kanaal tot naast je grond."
 msgstr "Garden guide 2/4 · Dig from the brook to a tile beside your soil."
 
-#: scripts/core/garden_feedback.gd:68
+#: scripts/core/garden_feedback.gd:70
 msgid "Tuinhulp 3/4 · Plant druiven op je bewaterde grond."
 msgstr "Garden guide 3/4 · Plant grapes in your watered soil."
 
-#: scripts/core/garden_feedback.gd:69
+#: scripts/core/garden_feedback.gd:71
 msgid "Tuinhulp 4/4 · Ga gerust op pad en oogst zodra je druiven rijp zijn."
 msgstr "Garden guide 4/4 · Explore freely and harvest when your grapes are ripe."
 
-#: scripts/core/garden_feedback.gd:70
+#: scripts/core/garden_feedback.gd:72
 msgid "Eerste oogst gelukt · je kunt je tuin op eigen tempo uitbreiden."
 msgstr "First harvest complete · expand your garden at your own pace."
 
@@ -10196,6 +10340,62 @@ msgstr "A new encounter after your restoration."
 #: scripts/core/world_memory.gd:96
 msgid "De eerste berichten komen wanneer je de lichtkern, de tuin, een huis, een bron, een brug, het archief of de klimlijn herstelt."
 msgstr "The first reports arrive when you restore the light core, garden, a house, spring, bridge, archive or climbing line."
+
+#: scripts/core/yard.gd:70
+msgid "Kies je bestaande erf of ontsluit eerst deze bouwruimte."
+msgstr "Choose your existing yard or unlock this building space first."
+
+#: scripts/core/yard.gd:71
+msgid "Houd water, gebouwen, bruggen en bestaande doorgangen vrij."
+msgstr "Keep water, buildings, bridges and existing passages clear."
+
+#: scripts/core/yard.gd:72
+msgid "Hier ligt landbouwgrond of een kanaal; je tuin wordt niet overschreven."
+msgstr "Farmland or a channel already occupies this spot. Your garden is protected."
+
+#: scripts/core/yard.gd:103
+msgid "Laat ruimte over: maximaal tachtig padtegels en veertig hek- of poortdelen."
+msgstr "Keep room to breathe: up to eighty path tiles and forty fence or gate pieces."
+
+#: scripts/core/yard.gd:105
+msgid "Maak eerst meer delen voor deze hele rij."
+msgstr "Make enough parts for the entire row first."
+
+#: scripts/core/yard.gd:119
+msgid "De oude werkplek is inmiddels bewerkt; kies vrije grond."
+msgstr "The old station site has been cultivated. Choose clear ground."
+
+#: scripts/core/yard.gd:122
+msgid "Laat een tegel vrije ruimte tussen de werkplekken."
+msgstr "Leave one clear tile between production stations."
+
+#: scripts/core/yard.gd:129
+msgid "Laat de zichtbare ruimte rond de werkplek vrij."
+msgstr "Keep the visible space around the production station clear."
+
+#: scripts/core/yard.gd:130
+msgid "Leg een poortje op het pad, geen gesloten hek."
+msgstr "Place a gate on the path to keep it accessible."
+
+#: scripts/core/yard.gd:134
+msgid "Dit sluit een stuk erf af; laat een poortje of doorgang open."
+msgstr "This closes off part of the yard. Leave a gate or an open passage."
+
+#: scripts/core/yard.gd:136
+msgid "De woning, opslag, beekbruggen en meerroute moeten bereikbaar blijven."
+msgstr "The house, storage, stream bridges and lake route must remain accessible."
+
+#: scripts/core/yard.gd:194
+msgid "Richt je erf buiten bij je woning in."
+msgstr "Arrange your yard outside by your house."
+
+#: scripts/core/yard.gd:196
+msgid "Je mist materialen; tas en bereikbare huisvoorraad tellen mee."
+msgstr "You need more materials. Your bag and nearby home storage both count."
+
+#: scripts/core/yard.gd:217 scripts/core/yard.gd:224
+msgid "Je staat te dichtbij; loop eerst naar het vrije erfpad."
+msgstr "You are standing too close. Move to the clear yard path first."
 
 #: scripts/data/arena.gd:101
 msgid "Je staat al ingeschreven. Loop maar naar de arenadeur!"
@@ -10861,19 +11061,19 @@ msgstr "Water flows to the fountain and the flower beds."
 msgid "Het rooster is vrij. Draai nu het sluisrad aan de zuidkant open."
 msgstr "The grate is clear. Now open the sluice wheel to the south."
 
-#: scripts/entities/player.gd:312
+#: scripts/entities/player.gd:315
 msgid "Je hebt een boog nodig. Tobias verkoopt er een."
 msgstr "You need a bow. Tobias sells one."
 
-#: scripts/entities/player.gd:323
+#: scripts/entities/player.gd:326
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:352 scripts/ui/menu_ui.gd:537
+#: scripts/entities/player.gd:355 scripts/ui/menu_ui.gd:537
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
-#: scripts/entities/player.gd:354
+#: scripts/entities/player.gd:357
 msgid "Je hebt geen helddrank."
 msgstr "You don't have a Hero Potion."
 
@@ -11071,7 +11271,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/core/homestead.gd:15 scripts/core/homestead.gd:17 scripts/data/coast_maps.gd:20
+#: scripts/entities/shooting_range.gd:169 scripts/core/homestead.gd:15 scripts/core/homestead.gd:17 scripts/core/yard.gd:13
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -11274,7 +11474,7 @@ msgstr "Coastal region · map and connections"
 msgid "Goud: wandelpad · blauw: gekozen veerroute · witte ring: hier"
 msgstr "Gold: footpath · blue: selected ferry route · white ring: here"
 
-#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:97 scripts/ui/crafting_ui.gd:451 scripts/ui/home_ui.gd:118 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207 scripts/ui/stock_ui.gd:46
+#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:97 scripts/ui/crafting_ui.gd:451 scripts/ui/home_ui.gd:119 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207 scripts/ui/stock_ui.gd:46
 msgid "Sluiten"
 msgstr "Close"
 
@@ -11490,7 +11690,7 @@ msgstr "Leave the pool in peace · peaceful outcome"
 msgid "Voed het havenrad · vrijwillige krachtproef"
 msgstr "Feed the harbor wheel · voluntary trial"
 
-#: scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/house_ui.gd:61
+#: scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/house_ui.gd:61 scripts/ui/yard_ui.gd:61
 msgid "Annuleren"
 msgstr "Cancel"
 
@@ -12084,17 +12284,9 @@ msgstr "Restore ground"
 msgid "Gereedschap opbergen"
 msgstr "Put tool away"
 
-#: scripts/ui/home_ui.gd:35
-msgid "Mesthoop"
-msgstr "Compost heap"
-
 #: scripts/ui/home_ui.gd:36
 msgid "Wijnvat"
 msgstr "Wine barrel"
-
-#: scripts/ui/home_ui.gd:37
-msgid "Bijenkast"
-msgstr "Beehive"
 
 #: scripts/ui/home_ui.gd:38
 msgid "Je eigen bed"
@@ -12228,35 +12420,39 @@ msgstr "Fill barrel for %d bottles"
 msgid "Je huis inrichten"
 msgstr "Decorate your home"
 
-#: scripts/ui/home_ui.gd:177
+#: scripts/ui/home_ui.gd:118
+msgid "Erf inrichten"
+msgstr "Arrange yard"
+
+#: scripts/ui/home_ui.gd:178
 msgid "Grond voor druiven en bloemen; paden en vrije doorgangen blijven beschermd."
 msgstr "Soil for grapes and flowers; paths and clear passages stay protected."
 
-#: scripts/ui/home_ui.gd:178
+#: scripts/ui/home_ui.gd:179
 msgid "Begin naast de beek; aangesloten kanalen vullen zich vanzelf en blijven beloopbaar."
 msgstr "Start beside the brook; connected channels fill automatically and stay walkable."
 
-#: scripts/ui/home_ui.gd:179
+#: scripts/ui/home_ui.gd:180
 msgid "Een blijvende druivenstok; water laat hem groeien, meststof verhoogt één oogst."
 msgstr "A perennial grapevine; water supports growth, fertilizer improves one harvest."
 
-#: scripts/ui/home_ui.gd:180
+#: scripts/ui/home_ui.gd:181
 msgid "Bloemen blijven bloeien en voeden bijen binnen vijf tegels van de kast."
 msgstr "Flowers keep blooming and feed bees within five tiles of the hive."
 
-#: scripts/ui/home_ui.gd:181
+#: scripts/ui/home_ui.gd:182
 msgid "Eén meststof per stok geeft vijf in plaats van drie druiven bij de volgende oogst."
 msgstr "One fertilizer per vine gives five instead of three grapes at the next harvest."
 
-#: scripts/ui/home_ui.gd:182
+#: scripts/ui/home_ui.gd:183
 msgid "Houd vast en loop langs rijpe druiven; de stokken blijven staan."
 msgstr "Hold and walk past ripe grapes; the vines remain planted."
 
-#: scripts/ui/home_ui.gd:183
+#: scripts/ui/home_ui.gd:184
 msgid "Herstel één tegel per druk; je krijgt het zaad terug, maar de plant verdwijnt."
 msgstr "Restore one tile per press; its seed is returned, but the plant is removed."
 
-#: scripts/ui/home_ui.gd:184
+#: scripts/ui/home_ui.gd:185
 msgid "Berg je hak op; je tuin groeit verder terwijl je op avontuur bent."
 msgstr "Put your hoe away; your garden keeps growing while you explore."
 
@@ -12284,7 +12480,7 @@ msgstr "Confirm position"
 msgid "Berg meubel op"
 msgstr "Put furniture away"
 
-#: scripts/ui/house_ui.gd:60
+#: scripts/ui/house_ui.gd:60 scripts/ui/yard_ui.gd:61
 msgid "Toepassen en opslaan"
 msgstr "Apply and save"
 
@@ -13322,3 +13518,79 @@ msgstr "Finish sample preparation"
 #: scripts/ui/work_together.gd:153
 msgid "Bottel één drankje"
 msgstr "Bottle one potion"
+
+#: scripts/ui/yard_ui.gd:37
+msgid "Je erf · ruimte om te groeien"
+msgstr "Your yard · room to grow"
+
+#: scripts/ui/yard_ui.gd:44
+msgid "Rechte rij vanaf vorige plek"
+msgstr "Straight row from last spot"
+
+#: scripts/ui/yard_ui.gd:45 scripts/ui/yard_ui.gd:121
+msgid "Maak bouwdelen"
+msgstr "Make building parts"
+
+#: scripts/ui/yard_ui.gd:50
+msgid "Ontsluit bouwruimte"
+msgstr "Unlock building space"
+
+#: scripts/ui/yard_ui.gd:57
+msgid "Bevestig plek of rij"
+msgstr "Place spot or row"
+
+#: scripts/ui/yard_ui.gd:57
+msgid "Opbergen op deze plek"
+msgstr "Pack away at this spot"
+
+#: scripts/ui/yard_ui.gd:61
+msgid "Beginerf bekijken"
+msgstr "Preview original yard"
+
+#: scripts/ui/yard_ui.gd:62
+msgid "Toepassen bewaart het ontwerp. Gemaakte delen en ontsloten bouwruimte blijven na annuleren beschikbaar."
+msgstr "Apply saves your layout. Crafted parts and unlocked building space remain available after canceling."
+
+#: scripts/ui/yard_ui.gd:82
+msgid "%s lijst · %s plattegrond · richting en bevestigen · klik/dubbelklik: kiezen/plaatsen · rechtsklik: selecteren"
+msgstr "%s list · %s plan · move and confirm · click/double click: choose/place · right click: select"
+
+#: scripts/ui/yard_ui.gd:114
+msgid "Een rij loopt recht; kies dezelfde rij of kolom."
+msgstr "Rows run straight. Choose the same row or column."
+
+#: scripts/ui/yard_ui.gd:119
+msgid "Bloemen op deze plek: %d / 3"
+msgstr "Flowers at this spot: %d / 3"
+
+#: scripts/ui/yard_ui.gd:120
+msgid "Opgeborgen; productie blijft bewaard."
+msgstr "Packed away; production is preserved."
+
+#: scripts/ui/yard_ui.gd:120
+msgid "Bestaande werkplek · geen nieuwe machine"
+msgstr "Existing production station"
+
+#: scripts/ui/yard_ui.gd:125
+msgid "Delen vrij: %d · totaal: %d"
+msgstr "Parts available: %d · total: %d"
+
+#: scripts/ui/yard_ui.gd:127
+msgid "Maak %d bouwdelen"
+msgstr "Make %d building parts"
+
+#: scripts/ui/yard_ui.gd:134
+msgid "Bouwruimte al beschikbaar"
+msgstr "Building space available"
+
+#: scripts/ui/yard_ui.gd:134
+msgid "Ontsluit %s"
+msgstr "Unlock %s"
+
+#: scripts/ui/yard_ui.gd:135
+msgid "Plek past. Ontwerp eerst; pas toe als je tevreden bent."
+msgstr "This spot fits. Plan first and apply when you are happy."
+
+#: scripts/ui/yard_ui.gd:136
+msgid "Paden %d/80 · hek/poort %d/40 · uitbreiding: %s"
+msgstr "Paths %d/80 · fence/gate %d/40 · expansion: %s"

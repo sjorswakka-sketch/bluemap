@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.30.0-preview)
+BLUEMAP QUEST  (v0.31.0-preview)
 =======================
 
 Starten
@@ -16,6 +16,13 @@ Besturing
   In je eigen huis: U opent de inrichting; ook via bed of woningbord (controller A).
   Kies een meubel en een plek in de plattegrond; Toepassen bewaart, Annuleren verwerpt.
   LB/RB wisselt tussen meubellijst en plattegrond; richting + A plaatst/verplaatst.
+  Buiten: U → Erf inrichten opent je erfplan; ook bereikbaar via de tuingids.
+  Verplaats wijnvaten, mesthoop en bijenkast; hun productie blijft behouden.
+  Plaats grind, stapstenen, houtpaden en hekwerk met vanzelf openende poortjes.
+  Kies Rechte rij om veel delen tegelijk te plaatsen. Toepassen bewaart je ontwerp.
+  Westweide en Oeverweide geven optioneel meer bouwruimte; landbouw blijft vrij.
+  Gewassen, kanalen, opslag en bestaande routes worden beschermd.
+  Zelf gemaakte bouwdelen en gekochte bouwruimte blijven na annuleren beschikbaar.
   In je tas: Voorraad / C / R3 opent zoeken, sorteren, favorieten en opslag.
   Kisten bij je huis delen een voorraad; recepten gebruiken alleen kisten binnen bereik.
   I / Tab           menu: voorwerpen        Q: opdrachten        N: kaart
