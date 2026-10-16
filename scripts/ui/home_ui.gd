@@ -21,13 +21,14 @@ static func shortcut() -> String:
  if controls.controller_active and controls.binding_events("homestead","controller").is_empty():return controls.action_label("crafting")+" → "+controls.action_label("potion")
  return controls.action_label("homestead")
 static func mode_name(mode: String) -> String:
+ if Farm.Crops.NAMES.has(mode):return TranslationServer.translate(Farm.Crops.NAMES[mode])
  match mode:
   "soil":return TranslationServer.translate("Grond bewerken")
   "channel":return TranslationServer.translate("Kanaal graven")
   "grape":return TranslationServer.translate("Druiven planten")
   "flower":return TranslationServer.translate("Bloemen zaaien")
   "fertilize":return TranslationServer.translate("Bemesten")
-  "harvest":return TranslationServer.translate("Druiven oogsten")
+  "harvest":return TranslationServer.translate("Gewassen oogsten")
   "fill":return TranslationServer.translate("Grond herstellen")
  return TranslationServer.translate("Gereedschap opbergen")
 static func station_name(role: String) -> String:
@@ -80,14 +81,13 @@ func rebuild():
    var b: Button=button(("✓ " if Farm.mode==mode else "")+text,choose.bind(mode),mode!="" and GameState.count("hs_hoe")==0,tool_grid)
    b.focus_entered.connect(show_tool_info.bind(mode))
   tool_info=Style.make_label("",17,Color("c9dfcb"));tool_info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;tool_info.custom_minimum_size=Vector2(620,44);box.add_child(tool_info)
-  button(tr("Wateroverzicht: aan") if Farm.show_water else tr("Wateroverzicht: uit"),toggle_water)
-  button(tr("Tuinhulp stoppen") if GameState.flag("hs_garden_help") else tr("Tuinhulp starten · vrijwillig"),toggle_help)
+
 
  elif role in ["guide","supplies"]:
   message(tr("Dit huis en de tuin zijn van jou. Buiten: twee wijnvaten, mesthoop achter het dak en een bijenkast. Haal je gratis hak en zaden. Leid met kanaaltjes water uit de dorpsbeek naar de grond; droge gewassen wachten zonder te verdorren. Druiven groeien in 90 s, bloemen in 60 s actieve speeltijd. Menu's pauzeren de tijd."))
   button(tr("Neem hak en zaden · eenmalig gratis"),supply,GameState.flag("hs_supplies"))
   button(tr("Tuinstanden openen"),tools)
-  button(tr("Oogst alle rijpe druiven in je tuin"),harvest)
+  button(tr("Oogst alle rijpe gewassen in je tuin"),harvest)
   message(Feedback.guide_text())
   button(tr("Tuinhulp stoppen") if GameState.flag("hs_garden_help") else tr("Tuinhulp starten · vrijwillig"),toggle_help)
  elif role=="bed":
@@ -116,8 +116,12 @@ func rebuild():
    if count>1:button((tr("Meng %d porties compost") if role=="compost" else tr("Vul vat voor %d flessen")) % count,start.bind(id,count))
  if GameState.map_id=="player_home" and role in ["bed","guide","supplies"]:button(tr("Je huis inrichten"),decorate)
  var ending: Node=null
- if GameState.map_id=="village" and role=="tools":
-  ending=GridContainer.new();ending.columns=2;ending.add_theme_constant_override("h_separation",8);box.add_child(ending)
+ if role in ["tools","guide","supplies"]:
+  ending=GridContainer.new();ending.columns=2;ending.add_theme_constant_override("h_separation",8);ending.add_theme_constant_override("v_separation",6);box.add_child(ending)
+ if role=="tools":
+  button(tr("Wateroverzicht: aan") if Farm.show_water else tr("Wateroverzicht: uit"),toggle_water,false,ending)
+  button(tr("Tuinhulp stoppen") if GameState.flag("hs_garden_help") else tr("Tuinhulp starten · vrijwillig"),toggle_help,false,ending)
+ if role in ["tools","guide","supplies"]:button(tr("Zaden en boomgaard"),seeds,false,ending)
  if GameState.map_id=="village" and role in ["tools","guide","supplies"]:button(tr("Erf inrichten"),yard,false,ending)
  button(tr("Sluiten"),close,false,ending)
  var focus: Array[Control]=[]
@@ -182,8 +186,8 @@ func show_tool_info(value: String):
   "channel":tool_info.text=tr("Begin naast de beek; aangesloten kanalen vullen zich vanzelf en blijven beloopbaar.")
   "grape":tool_info.text=tr("Een blijvende druivenstok; water laat hem groeien, meststof verhoogt één oogst.")
   "flower":tool_info.text=tr("Bloemen blijven bloeien en voeden bijen binnen vijf tegels van de kast.")
-  "fertilize":tool_info.text=tr("Eén meststof per stok geeft vijf in plaats van drie druiven bij de volgende oogst.")
-  "harvest":tool_info.text=tr("Houd vast en loop langs rijpe druiven; de stokken blijven staan.")
+  "fertilize":tool_info.text=tr("Eén meststof per plant verbetert de volgende oogst; de veldtekst toont de opbrengst.")
+  "harvest":tool_info.text=tr("Houd vast en loop langs rijpe gewassen. Blijvende planten blijven staan; groenten geven zaad terug.")
   "fill":tool_info.text=tr("Herstel één tegel per druk; je krijgt het zaad terug, maar de plant verdwijnt.")
   _:tool_info.text=tr("Berg je hak op; je tuin groeit verder terwijl je op avontuur bent.")
 func toggle_water():
@@ -215,3 +219,8 @@ func yard():
  if not valid() or GameState.map_id!="village":return
  close()
  var ui: CanvasLayer=load("res://scripts/ui/yard_ui.gd").new();ui.world=world;world.add_child(ui);ui.open()
+
+func seeds():
+ if not valid():return
+ close()
+ var ui: CanvasLayer=load("res://scripts/ui/orchard_ui.gd").new();ui.world=world;world.add_child(ui);ui.open()

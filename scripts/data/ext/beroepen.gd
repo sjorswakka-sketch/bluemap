@@ -170,6 +170,9 @@ const RECIPES := {
 
 	"hs_seeds":{"skill":"foraging","level":1,"inputs":{"hs_grape":1},"output":"hs_seed","amount":2,"xp":1},
 	"hs_flowers":{"skill":"foraging","level":1,"inputs":{"prof_herb":1},"output":"hs_flower_seed","amount":2,"xp":1},
+ "or_stew":{"skill":"cooking","level":1,"station":"inn","inputs":{"or_carrot":2,"or_pumpkin":1,"prof_herb":1},"output":"or_stew","xp":8},
+ "or_tea":{"skill":"cooking","level":1,"station":"inn","inputs":{"or_mint":2,"hs_honey":1},"output":"or_tea","xp":6},
+ "or_balm":{"skill":"alchemy","level":1,"station":"library","inputs":{"or_rosemary":2,"prof_herb":1,"hs_honey":1},"output":"or_balm","xp":8},
 }
 const RESOURCES := {
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},

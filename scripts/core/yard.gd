@@ -3,6 +3,7 @@ extends RefCounted
 const Data:=preload("res://scripts/data/yard_catalog.gd")
 const Stock:=preload("res://scripts/core/stockroom.gd")
 const Tiles:=preload("res://scripts/data/tiles.gd")
+const Crops:=preload("res://scripts/data/orchard_catalog.gd")
 const MAX_PATHS:=80
 const MAX_FENCES:=40
 static var busy:=false
@@ -69,7 +70,7 @@ static func cells_in(r: Rect2i) -> Array[Vector2i]:
 static func place_reason(at: Vector2i,data: Dictionary,farm: Dictionary,solid: bool) -> String:
  if not owned_cell(at,data.extensions):return TranslationServer.translate("Kies je bestaande erf of ontsluit eerst deze bouwruimte.")
  if terrain(at)!="." or fixed().has(at) or (solid and reserved(at)):return TranslationServer.translate("Houd water, gebouwen, bruggen en bestaande doorgangen vrij.")
- if farm.has(key(at)):return TranslationServer.translate("Hier ligt landbouwgrond of een kanaal; je tuin wordt niet overschreven.")
+ if farm.has(key(at)) or Crops.tree_cover(at,farm).x>=0:return TranslationServer.translate("Hier ligt landbouwgrond of een kanaal; je tuin wordt niet overschreven.")
  return ""
 static func used(data: Dictionary,group: String) -> int:
  var n:=0
@@ -185,7 +186,7 @@ static func flower_count_at(at: Vector2i,farm: Dictionary) -> int:
   if c.distance_to(at)<=5 and not farm.has(key(c)):n+=1
  for id: String in farm:
   var e: Dictionary=farm[id]
-  if e.get("crop","")=="flower" and float(e.get("growth",0))>=60 and cell(id).distance_to(at)<=5:n+=1
+  if Crops.CROPS.get(e.get("crop",""),{}).get("bees",false) and float(e.get("growth",0))>=Crops.duration(e) and cell(id).distance_to(at)<=5:n+=1
  return n
 static func surface(at: Vector2i) -> String:
  var kind: String=state().paths.get(key(at),"")

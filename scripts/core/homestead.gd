@@ -1,7 +1,8 @@
 extends RefCounted
 ## Saved active-time simulation. No offline catch-up, decay or mandatory upkeep.
 const Layout:=preload("res://scripts/data/homestead_maps.gd")
-const CROPS:={"grape":{"seed":"hs_seed","seconds":90.0,"output":"hs_grape","yield":3},"flower":{"seed":"hs_flower_seed","seconds":60.0,"output":"hs_flower_seed","yield":1}}
+const Crops:=preload("res://scripts/data/orchard_catalog.gd")
+const CROPS:=Crops.CROPS
 const JOBS:={"compost":{"input":"hs_manure","cost":2,"output":"hs_fertilizer","yield":3,"seconds":30.0},"wine_a":{"input":"hs_grape","cost":3,"output":"hs_wine","yield":1,"seconds":90.0},"wine_b":{"input":"hs_grape","cost":3,"output":"hs_wine","yield":1,"seconds":90.0}}
 const FLOWERS:=[Vector2i(14,34),Vector2i(16,34),Vector2i(14,35)]
 static var sources: Dictionary=Layout.water()
@@ -27,7 +28,9 @@ static func normalize(raw: Variant) -> Dictionary:
    if not entry is Dictionary or entry.get("kind") not in ["soil","channel"]:continue
    var clean: Dictionary={"kind":entry.kind}
    if entry.kind=="soil" and entry.get("crop","") in CROPS:
-    var crop: String=entry.crop;clean["crop"]=crop;clean["growth"]=number(entry.get("growth"),0,CROPS[crop].seconds);clean["fertilized"]=entry.get("fertilized",false)==true
+    var crop: String=entry.crop;clean["crop"]=crop;
+    if entry.get("established",false)==true and CROPS[crop].has("regrow"):clean["established"]=true
+    clean["growth"]=number(entry.get("growth"),0,Crops.duration(clean));clean["fertilized"]=entry.get("fertilized",false)==true
    result.cells[id]=clean
  if raw.get("jobs") is Dictionary:
   for id: String in JOBS:
@@ -78,7 +81,7 @@ static func advance(delta: float):
  var data:=state();irrigate()
  for id: String in data.cells:
   var e: Dictionary=data.cells[id]
-  if CROPS.has(e.get("crop","")) and watered(cell(id)):e.growth=minf(CROPS[e.crop].seconds,float(e.growth)+delta)
+  if CROPS.has(e.get("crop","")) and crop_watered(cell(id),e):e.growth=minf(Crops.duration(e),float(e.growth)+delta)
  for id: String in data.jobs:data.jobs[id].time=minf(JOBS[id].seconds,float(data.jobs[id].time)+delta)
  if flowers()>=3 and data.honey<8:
   data.honey_time+=delta
@@ -103,12 +106,13 @@ static func starter() -> bool:
 static func act(at: Vector2i,action: String,world: Node) -> bool:
  if busy or gs().input_locked() or not work_status(at,action,world).ok:return false
  var data:=state();var id:=key(at);var e: Dictionary=data.cells.get(id,{})
+ var tree_changed: bool=action=="apple" or (action=="fill" and e.get("crop","")=="apple")
  busy=true;var ok:=false
  if action=="soil" and e.is_empty():data.cells[id]={"kind":"soil"};ok=true
  elif action=="channel" and e.is_empty():data.cells[id]={"kind":"channel"};ok=true
  elif action in CROPS and e.get("kind","")=="soil" and not e.has("crop") and gs().count(CROPS[action].seed)>0:
   e["crop"]=action;e["growth"]=0.0;e["fertilized"]=false;gs().take(CROPS[action].seed);ok=true
- elif action=="fertilize" and e.get("crop","")=="grape" and not e.get("fertilized",false) and gs().count("hs_fertilizer")>0:
+ elif action=="fertilize" and CROPS.get(e.get("crop",""),{}).has("bonus") and not e.get("fertilized",false) and gs().count("hs_fertilizer")>0:
   e.fertilized=true;gs().take("hs_fertilizer");ok=true
  elif action=="harvest":ok=harvest_cell(e)
  elif action=="fill" and not e.is_empty():
@@ -120,13 +124,35 @@ static func act(at: Vector2i,action: String,world: Node) -> bool:
  busy=false
  if ok:
   changed()
+  if tree_changed:load("res://scripts/core/orchard.gd").sync(world)
  return ok
+static func crop_watered(at: Vector2i,e: Dictionary) -> bool:
+ if e.get("crop","")!="apple":return watered(at)
+ irrigate()
+ for y in range(-2,3):
+  for x in range(-2,3):
+   if absi(x)+absi(y)<=2 and (wet.has(at+Vector2i(x,y)) or sources.has(at+Vector2i(x,y))):return true
+ return false
+static func harvest_reason(e: Dictionary) -> String:
+ if not CROPS.has(e.get("crop","")) or e.get("crop","")=="flower":return TranslationServer.translate("Richt op een oogstbaar gewas.")
+ if float(e.growth)<Crops.duration(e):return TranslationServer.translate("Dit gewas is nog niet rijp.")
+ var info: Dictionary=CROPS[e.crop]
+ if gs().room(info.output)<Crops.amount(e):return TranslationServer.translate("Maak ruimte in je tas voor de volledige oogst.")
+ if info.get("annual",false) and gs().room(info.seed)<1:return TranslationServer.translate("Maak ook ruimte voor het zaad dat je terugkrijgt.")
+ return ""
 static func harvest_cell(e: Dictionary) -> bool:
- if e.get("crop","")!="grape" or float(e.growth)<CROPS.grape.seconds:return false
- var count:=5 if e.get("fertilized",false) else 3
- if gs().room("hs_grape")<count:return false
- e.growth=0.0;e.fertilized=false;gs().give("hs_grape",count,true);gs().set_flag("hs_intro_harvest")
- load("res://scripts/core/professions.gd").add_xp("foraging",4);return true
+ if harvest_reason(e)!="":return false
+ var crop: String=e.crop;var info: Dictionary=CROPS[crop];var count:=Crops.amount(e)
+ if info.get("annual",false):
+  e.erase("crop");e.erase("growth");e.erase("fertilized");e.erase("established")
+ else:
+  e.growth=0.0;e.fertilized=false
+  if info.has("regrow"):e.established=true
+ # Commit plant state before item listeners run; never duplicate a full harvest.
+ gs().give(info.output,count,true)
+ if info.get("annual",false):gs().give(info.seed,1,true)
+ if crop=="grape":gs().set_flag("hs_intro_harvest")
+ load("res://scripts/core/professions.gd").add_xp("foraging",4 if crop=="grape" else 3);return true
 static func harvest_all() -> int:
  if busy or gs().map_id not in ["village","player_home"] or not near("guide"):return 0
  busy=true;var n:=0

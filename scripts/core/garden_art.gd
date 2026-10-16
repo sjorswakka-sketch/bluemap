@@ -20,14 +20,16 @@ static func field(canvas: Node2D,farm: Script,time: float):
    var watered: bool=farm.watered(at)
    canvas.draw_rect(Rect2(pos+Vector2(2,2),Vector2(28,28)),Color("574636") if watered else Color("8d6d48"))
    for y in [8,16,24]:canvas.draw_line(pos+Vector2(5,y),pos+Vector2(27,y),Color("3c392e"),2)
-   if e.has("crop"):crop(canvas,pos,e,float(farm.CROPS[e.crop].seconds),time)
+   if e.has("crop") and e.crop!="apple":
+    if farm.Crops.NAMES.has(e.crop):load("res://scripts/core/orchard_art.gd").crop(canvas,pos,e,time)
+    else:crop(canvas,pos,e,float(farm.CROPS[e.crop].seconds),time)
    if farm.show_water and farm.mode!="":
     canvas.draw_rect(Rect2(pos+Vector2(2,2),Vector2(28,28)),Color("78b8cb") if watered else Color("d6ac73"),false,1)
  for at: Vector2i in farm.FLOWERS:
   if not cells.has(farm.key(at)):
    var pos:=Vector2(at)*32
    for offset in [Vector2(9,12),Vector2(20,23)]:canvas.draw_line(pos+offset,pos+offset+Vector2(0,6),Color("669455"),2);canvas.draw_circle(pos+offset,4,Color("e4b5c5"));canvas.draw_circle(pos+offset,1.5,Color("f3dc85"))
-static func crop(canvas: Node2D,pos: Vector2,e: Dictionary,seconds: float,time: float):
+static func crop(canvas: CanvasItem,pos: Vector2,e: Dictionary,seconds: float,time: float):
  var ratio: float=clampf(float(e.growth)/seconds,0,1);var grown:=ratio>=.35;var ripe:=ratio>=1
  var sway:=roundf(sin(time*1.4+pos.x*.07)*(.7 if grown else .3))
  if e.crop=="grape":
@@ -70,5 +72,6 @@ static func preview(canvas: Node2D,farm: Script,at: Vector2i,world: Node):
 static func work_effect(canvas: Node2D,e: Dictionary):
  var progress: float=1-float(e.left)/.24
  var center:=Vector2(e.cell)*32+Vector2(16,18)
- var color:=Color("d9b9e2",1-progress) if e.harvest else Color("c3a57a",1-progress)
+ var tint: Color=load("res://scripts/core/orchard_art.gd").effect_color(e.get("crop",""))
+ var color:=Color(tint,1-progress) if e.harvest else Color("c3a57a",1-progress)
  for i in 3:canvas.draw_rect(Rect2(center+Vector2((i-1)*progress*12,-sin(progress*PI)*8+i%2*4),Vector2(2,2)),color)

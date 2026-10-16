@@ -35,6 +35,12 @@ static func recipes_for(item: String) -> Array[String]:
 		if Data.RECIPES[id].output == item: result.append(id)
 	return result
 static func source(item: String) -> String:
+	if item.begins_with("or_"):
+		if item.ends_with("_seed"):return TranslationServer.translate("Tuinhulp of huisvoorraad: U → Zaden en boomgaard.")
+		var crops: Script=load("res://scripts/data/orchard_catalog.gd")
+		for id: String in crops.NAMES:
+			if crops.CROPS[id].output==item:return TranslationServer.translate("Eigen tuin: %s. Kies zaden via U → Zaden en boomgaard.") % TranslationServer.translate(crops.NAMES[id])
+	if item=="hs_honey":return TranslationServer.translate("Eigen bijenkast met drie bloeiende planten binnen vijf tegels.")
 	var places: Array[String] = []
 	var resource: Dictionary = {}
 	var maps: Script = load("res://scripts/maps/registry.gd")

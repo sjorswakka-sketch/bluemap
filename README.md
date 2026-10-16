@@ -1,6 +1,15 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.31.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.32.0-preview.**
+
+Nieuw in 0.32: **Gewassen en boomgaard — ontwikkelronde 5**. Wortels, pompoenen,
+munt, rozemarijn, appelbomen en bosbessenstruiken krijgen eigen pixel art en groei.
+Groenten geven zaad terug; kruiden en fruit groeien opnieuw aan. Het zaadboek biedt
+een gratis beginpakket en overzichtelijke inkoop bij je bestaande tuingids of huisvoorraad.
+Munt en rozemarijn voeden bijen en passen in thee en balsem; groenten gaan in
+tuinstoofpot bij de bestaande herbergkeuken. Appelbomen houden hun kroonruimte vrij
+en gebruiken aangesloten water binnen twee tegels. De kaarten blijven even groot en leeg.
+Details: [CROPS_ORCHARD_PHASE5.md](CROPS_ORCHARD_PHASE5.md).
 
 Nieuw in 0.31: **Een uitbreidbaar erf — ontwikkelronde 4**. Verplaats of berg je bestaande
 wijnvaten, mesthoop en bijenkast op met behoud van productie; leg drie eigen soorten

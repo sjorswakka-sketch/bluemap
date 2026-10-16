@@ -33,7 +33,10 @@ func _draw():
    if farm.has(Yard.key(cell)):
     var e: Dictionary=farm[Yard.key(cell)]
     draw_rect(Rect2(at+Vector2(2,2),Vector2.ONE*(STEP-4)),Color("9b7852") if e.kind=="soil" else Color("7cb5bd"))
-    if e.has("crop"):draw_circle(at+Vector2.ONE*STEP*.5,3,Color("c9a3c2") if e.crop=="grape" else Color("e5c9a1"))
+    if e.has("crop"):
+     if e.crop=="apple":load("res://scripts/core/orchard_art.gd").tree(self,at+Vector2.ONE*STEP*.5,e,0,1,STEP/32)
+     elif Yard.Crops.NAMES.has(e.crop):load("res://scripts/core/orchard_art.gd").crop(self,at,e,0,STEP/32)
+     else:draw_circle(at+Vector2.ONE*STEP*.5,3,Color("c9a3c2") if e.crop=="grape" else Color("e5c9a1"))
  for e: Dictionary in Yard.map_data().objects:
   var cell:=Vector2i(e.pos[0],e.pos[1])
   if not region().has_point(cell) or Yard.unit_of(e)!="":continue

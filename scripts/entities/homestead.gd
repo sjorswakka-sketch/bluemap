@@ -19,6 +19,7 @@ func _ready():
  add_to_group("homesteads")
  Controls.device_changed.connect(device_changed)
  if GameState.map_id=="village":
+  load("res://scripts/core/orchard.gd").sync(world)
   hint=CanvasLayer.new();hint.layer=11;add_child(hint)
   panel=PanelContainer.new();panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_theme_stylebox_override("panel",Style.flat(Color(.035,.075,.085,.92),Color("82a8a3"),1));hint.add_child(panel)
   label=Style.make_label("",16,Color("e2e7d4"));label.mouse_filter=Control.MOUSE_FILTER_IGNORE;label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;panel.add_child(label);panel.hide()
@@ -67,12 +68,13 @@ func work():
  var done:=0;var picked:=false;var filled_water:=false
  for cell: Vector2i in candidates:
   if stroke.has(cell):continue
+  var crop_id: String=Farm.state().cells.get(Farm.key(cell),{}).get("crop","")
   if Farm.act(cell,Farm.mode,world):
    stroke[cell]=true;done+=1;Farm.irrigate();picked=picked or Farm.mode=="harvest";filled_water=filled_water or (Farm.mode=="channel" and Farm.wet.has(cell))
-   effects.append({"cell":cell,"left":.24,"harvest":Farm.mode=="harvest"})
+   effects.append({"cell":cell,"left":.24,"harvest":Farm.mode=="harvest","crop":crop_id})
  if done>0:
   world.player.start_work_animation("foraging",.12,Vector2(at)*32+Vector2(16,16))
-  Sound.play("garden_pick" if picked else "garden_water" if filled_water else "hs_soil",-18)
+  Sound.play("orchard_pick" if picked and not effects.is_empty() and Farm.Crops.NAMES.has(effects.back().get("crop","")) else "garden_pick" if picked else "garden_water" if filled_water else "hs_soil",-18)
 func update_hint():
  if panel==null:return
  var at:=aim_cell()

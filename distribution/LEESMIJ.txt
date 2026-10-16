@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.31.0-preview)
+BLUEMAP QUEST  (v0.32.0-preview)
 =======================
 
 Starten
@@ -16,6 +16,12 @@ Besturing
   In je eigen huis: U opent de inrichting; ook via bed of woningbord (controller A).
   Kies een meubel en een plek in de plattegrond; Toepassen bewaart, Annuleren verwerpt.
   LB/RB wisselt tussen meubellijst en plattegrond; richting + A plaatst/verplaatst.
+  U → Zaden en boomgaard: zes nieuwe teelten, groeibeelden en plantstanden.
+  Het gratis beginpakket en inkoop zitten bij de tuingids of voorraad in je huis.
+  Groenten geven zaad terug; kruiden en fruit groeien na oogsten opnieuw aan.
+  Houd rond een appelboom drie bij drie tegels vrij; water bereikt de wortels op twee tegels.
+  Volgroeide munt en rozemarijn voeden bijen. Tuinstoofpot en muntthee maak je
+  in de herberg, rozemarijnbalsem bij de bestaande alchemietafel.
   Buiten: U → Erf inrichten opent je erfplan; ook bereikbaar via de tuingids.
   Verplaats wijnvaten, mesthoop en bijenkast; hun productie blijft behouden.
   Plaats grind, stapstenen, houtpaden en hekwerk met vanzelf openende poortjes.

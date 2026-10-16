@@ -34,6 +34,7 @@ static func toggle_favorite(item: String):
  else:state().favorites[item]=true
  gs().save_requested.emit()
 static func category(item: String) -> int:
+ if item.begins_with("or_") and Items.info(item).get("type","")=="material":return 2
  if item.begins_with("hs_") and item not in ["hs_grape","hs_wine","hs_honey","hs_hoe"]:return 2
  match Items.info(item).get("type",""):
   "material":return 1

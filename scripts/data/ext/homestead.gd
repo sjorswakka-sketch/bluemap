@@ -6,7 +6,7 @@ const SOUNDS:=["hs_soil","garden_pick","garden_water","yard_gate"]
 const ITEMS:={
  "hs_hoe":{"name":"Tuinhak","type":"gear","max":1,"sheet":"items_home","icon":0,"desc":"Eén gereedschap voor grond en smalle kanalen. Open de tuinstanden met U of via Beroepen → Tuinstanden; de ingestelde binding staat in Bediening."},
  "hs_manure":{"name":"Dierenpoep","type":"material","sheet":"items_home","icon":1,"desc":"Wilde dieren laten dit ook levend achter. Verwerk het op de mesthoop achter je huis tot meststof."},
- "hs_fertilizer":{"name":"Meststof","type":"material","sheet":"items_home","icon":2,"desc":"Eén per druivenplant: de volgende oogst geeft vijf in plaats van drie druiven. Geen verplichte onderhoudsronde."},
+ "hs_fertilizer":{"name":"Meststof","type":"material","sheet":"items_home","icon":2,"desc":"Eén per oogstbaar gewas geeft bij de volgende oogst extra opbrengst. Druiven geven vijf in plaats van drie. Geen verplichte onderhoudsronde."},
  "hs_seed":{"name":"Druivenpitten","type":"material","sheet":"items_home","icon":3,"desc":"Plant op bewerkte, bewaterde grond. Een druivenstok blijft na de oogst staan. Maak meer pitten van bosdruiven via Beroepen."},
  "hs_flower_seed":{"name":"Bloemenzaad","type":"material","sheet":"items_home","icon":4,"desc":"Plant in je tuin. Drie bloeiende planten binnen vijf tegels houden de bijenkast aan het werk."},
  "hs_grape":{"name":"Druiven","type":"use","heal":1,"sheet":"items_home","icon":5,"desc":"Bosdruiven of je eigen oogst. Herstellen één hartje; ook bruikbaar voor wijn of nieuwe pitten."},
