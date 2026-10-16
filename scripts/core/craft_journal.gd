@@ -1,7 +1,7 @@
 extends RefCounted
 ## Source information derives from the actual recipe/resource tables, not a second cost list.
 const Data := preload("res://scripts/data/ext/beroepen.gd")
-const Home:=preload("res://scripts/core/coastal_home.gd")
+const Stock:=preload("res://scripts/core/stockroom.gd")
 const Notes := preload("res://scripts/data/ext/craft_progression.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
 static func state() -> Node: return (Engine.get_main_loop() as SceneTree).root.get_node("GameState")
@@ -73,9 +73,9 @@ static func recipe_text(id: String) -> String:
 	var lines: Array[String] = [TranslationServer.translate(info.desc),TranslationServer.translate("%s niveau %d · %s") % [TranslationServer.translate(Data.SKILLS[recipe.skill].name),int(recipe.level),TranslationServer.translate(Data.TEXT[recipe.get("station","anywhere")])]]
 	if recipe.has("unlock") and not state().flag(recipe.unlock): lines.append(TranslationServer.translate(recipe.get("unlock_hint","Nog vergrendeld: herstel de prismabank of Mees’ oversteek.")))
 	for item: String in recipe.inputs:
-		lines.append(TranslationServer.translate("%s: %d/%d · %s") % [name_of(item),state().count(item),int(recipe.inputs[item]),source(item)])
+		lines.append(TranslationServer.translate("%s: %d/%d · %s") % [name_of(item),Stock.available(item),int(recipe.inputs[item]),source(item)])
 	for item: String in recipe.inputs:
-		if Home.count(item)>0:lines.append(TranslationServer.translate("In de havenkist: %s ×%d. Haal dit eerst terug naar je tas.") % [name_of(item),Home.count(item)])
+		if Stock.available(item)>state().count(item):lines.append(TranslationServer.translate("Binnen bereik: %s · tas %d + kist %d.") % [name_of(item),state().count(item),Stock.available(item)-state().count(item)])
 	var effect := Equipment.stats_text(recipe.output)
 	if effect != "": lines.append(effect)
 	if recipe.has("upgrade_from"): lines.append(TranslationServer.translate("Verbeteren verbruikt het oude voorwerp. Een gedragen exemplaar wordt meteen vervangen; stamina wordt niet bijgevuld."))
@@ -90,5 +90,5 @@ static func uses_text(item: String) -> String:
 static func ingredient_status(id: String) -> String:
 	var pieces: Array[String] = []
 	for item: String in Data.RECIPES[id].inputs:
-		pieces.append("%s %d/%d" % [name_of(item),state().count(item),int(Data.RECIPES[id].inputs[item])])
+		pieces.append("%s %d/%d" % [name_of(item),Stock.available(item),int(Data.RECIPES[id].inputs[item])])
 	return " · ".join(pieces)

@@ -144,8 +144,10 @@ static func start_job(id: String,batches: int) -> bool:
  if busy or not JOBS.has(id) or batches<1 or batches>20 or state().jobs.has(id):return false
  if gs().map_id!="village" or not near("compost" if id=="compost" else "wine","" if id=="compost" else id):return false
  var job: Dictionary=JOBS[id]
- if gs().count(job.input)<job.cost*batches:return false
- busy=true;state().jobs[id]={"batches":batches,"time":0.0};gs().take(job.input,job.cost*batches);busy=false;changed();return true
+ if load("res://scripts/core/stockroom.gd").available(job.input)<job.cost*batches:return false
+ busy=true
+ if not load("res://scripts/core/stockroom.gd").consume({job.input:job.cost*batches}):busy=false;return false
+ state().jobs[id]={"batches":batches,"time":0.0};busy=false;changed();return true
 static func collect(id: String) -> bool:
  if busy or gs().map_id!="village":return false
  if not near("hive" if id=="hive" else "compost" if id=="compost" else "wine","" if id in ["hive","compost"] else id):return false

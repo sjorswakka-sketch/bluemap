@@ -1,6 +1,14 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.28.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.29.0-preview.**
+
+Nieuw in 0.29: **Voorraad en opslag — ontwikkelronde 2**. Twee compacte, zelfgetekende
+kisten bij je woning delen één voorraad; zoek en filter, sorteer, markeer favorieten
+en verplaats stapels in één handeling. Recepten en wijnvaten gebruiken bereikbare
+opslag met behoud van gereedschap, werkplaatsvereisten en bestaande saves.
+Open **Voorraad** in je tas (C / R3); zoeken werkt ook met een controlleralfabet.
+De wereld krijgt alleen twee kleine kisten naast bestaande looproutes.
+Details: [STORAGE_PHASE2.md](STORAGE_PHASE2.md).
 
 Nieuw in 0.28: **Eigen pixelart-upgrade**. Native 32px terrein met materiaalvarianten,
 aansluitende oevers, rafelige padranden en contactschaduwen; grotere bomen onthullen

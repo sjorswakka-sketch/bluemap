@@ -4,7 +4,7 @@ Afgesproken met sjors op 15 oktober 2026, op basis van 0.26.1-preview.
 Dit plan vervangt het eerdere voorstel van 40 afzonderlijke punten en de oudere
 afgeronde kustrondes als volgorde voor een volgend go.
 
-Extra uitgevoerd na fase 1: grafische ronde 0.28, plus meldingen, moerassluizen/brug en de zuidelijke meeruitgang; dit verbruikt geen fase, dus het volgende gewone go blijft fase 2.
+Extra uitgevoerd na fase 1: grafische ronde 0.28, plus meldingen, moerassluizen/brug en de zuidelijke meeruitgang; dit verbruikt geen fase, fase 2 is vervolgens uitgevoerd in 0.29.
 
 Eén go start één volledige volgende ronde, met ontwerp, eigen art/audio, NL/EN,
 implementatie, visuele controle, volledige speltests en een Windows-build op
@@ -19,8 +19,8 @@ begrensde vijandgebieden en optionele werkzaamheden. Nieuwe content krijgt
 landschappelijke ruimte. Geen verplichte dagelijkse onderhoudsronde.
 
 1. **Landbouw en irrigatie — uitgevoerd in 0.27:** verbeter tegelgerichte bediening, rijbewerking, plantinformatie, groeianimaties, wateraanvoer, kanaalverbindingen, oogsten en een korte optionele introductie.
-2. **Voorraad en praktisch speelgemak — eerstvolgende:** voeg thuisopslag, sorteren, zoeken, favorieten, stapels aanvullen, duidelijke materiaalcategorieën en maken vanuit nabijgelegen opslag toe.
-3. **Een persoonlijk huis:** bouw verplaatsbare meubels, eigen vloeren en wandafwerkingen, verlichting, planten, trofeeën en een plaatsingsmodus die deuren en looproutes vrijhoudt.
+2. **Voorraad en praktisch speelgemak — uitgevoerd in 0.29:** voeg thuisopslag, sorteren, zoeken, favorieten, stapels aanvullen, duidelijke materiaalcategorieën en maken vanuit nabijgelegen opslag toe.
+3. **Een persoonlijk huis — eerstvolgende:** bouw verplaatsbare meubels, eigen vloeren en wandafwerkingen, verlichting, planten, trofeeën en een plaatsingsmodus die deuren en looproutes vrijhoudt.
 4. **Een uitbreidbaar erf:** voeg geschikte bouwplaatsen, verplaatsbare productieplekken, tuinpaden, hekwerk, poortjes en erfuitbreidingen toe waar het landschap voldoende ruimte biedt.
 5. **Gewassen en boomgaard:** introduceer onderscheidende groenten, kruiden, fruitbomen en struiken met passende groeivormen, oogstanimaties, toepassingen en overzichtelijke zaadvoorziening.
 6. **Productie en verwerking:** breid wijnmaken, honing en compost uit met koken, drogen, inmaken, meel verwerken en overzichtelijke productiewachtrijen met zichtbare voortgang.
@@ -45,4 +45,4 @@ landschappelijke ruimte. Geen verplichte dagelijkse onderhoudsronde.
 
 Ronde 1: zie GARDEN_PHASE1.md; kaartindelingen en bestaande bronassets behouden,
 dezelfde landbouw- en productieregels met betere bediening en veldinformatie.
-Een volgend go begint ronde 2, niet opnieuw de tuin of een oude kustfase.
+Ronde 2: zie STORAGE_PHASE2.md; twee kleine kisten, gedeelde huisvoorraad, zoeken, sorteren, favorieten, bulkacties en lokale receptmaterialen. Een volgend gewoon go begint ronde 3: een persoonlijk huis.

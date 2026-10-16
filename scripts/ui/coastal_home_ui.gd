@@ -99,7 +99,7 @@ func rebuild(focus_id:=""):
  if focus!=null:focus.grab_focus()
 func build_storage():
  title.text=tr("Materiaalkist · %d/%d soorten") % [GameState.coastal_storage.size(),Home.SLOTS]
- detail.text=tr("Alleen materialen, maximaal 99 per soort. Maken gebruikt je tas; haal opgeslagen ingrediënten eerst terug. Je ziet steeds het exacte aantal dat verplaatst wordt.")
+ detail.text=tr("Alleen materialen, maximaal 99 per soort. Binnen bereik gebruiken recepten eerst je tas en daarna deze kist. Zoek en sorteer via Voorraad in je tasmenu.")
  var h:=row()
  var into:=button(tr("Tas → kist"),direction.bind(true),"deposit",false,h,322);into.modulate=Color("eed19a") if deposit else Color("9fb9bc")
  var out:=button(tr("Kist → tas"),direction.bind(false),"withdraw",false,h,322);out.modulate=Color("9fb9bc") if deposit else Color("eed19a")

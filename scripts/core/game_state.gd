@@ -53,6 +53,7 @@ var hero_xp: int = 0 # totale held-ervaring; levels worden hieruit berekend
 var meer: Dictionary = {} # eigen opslag van het Zilvermeer (zie scripts/data/ext/meer.gd): verkochte en gevangen vis
 var professions: Dictionary = {} # beroepenervaring en verzamelde grondstoffen (eigen stabiele sleutels)
 var homestead: Dictionary = {}
+var stockroom: Dictionary = {}
 var coastal_storage: Dictionary = {}
 var equipment: Dictionary = {} # vak -> gekozen voorwerp; alleen geldig zolang je het bezit
 var appearance: Dictionary = {} # geslacht, haar, ogen (zie scripts/core/appearance.gd); leeg = standaard
@@ -139,6 +140,7 @@ func new_game() -> void:
 	professions = {}
 	homestead = {}
 	preload("res://scripts/core/homestead.gd").reset()
+	stockroom = {}
 	coastal_storage = {}
 	equipment = {}
 	appearance = Appearance.normalize_appearance({})
@@ -687,6 +689,7 @@ func save_game(pos: Vector2) -> bool:
 		"talked": talked.keys(), "achievements": achievements.keys(), "arena_records": arena_records,
 		"homestead": preload("res://scripts/core/homestead.gd").normalize(homestead),
 		"coastal_storage": CoastalHome.normalize(coastal_storage),
+		"stockroom": preload("res://scripts/core/stockroom.gd").normalize(stockroom),
 		"professions": professions, "hero_xp": Progression.normalize(hero_xp),
 		"equipment": Equipment.normalize(equipment, inventory),
 		"appearance": Appearance.normalize_appearance(appearance),
@@ -722,6 +725,7 @@ func load_game() -> bool:
 	play_time = float(data.get("play_time", 0.0))
 	professions = Professions.normalize(data.get("professions", {}), play_time)
 	homestead = preload("res://scripts/core/homestead.gd").normalize(data.get("homestead", {}))
+	stockroom = preload("res://scripts/core/stockroom.gd").normalize(data.get("stockroom", {}))
 	coastal_storage = CoastalHome.normalize(data.get("coastal_storage", {}))
 	hero_xp = Progression.normalize(data.get("hero_xp", 0))
 	kills = int(data.get("kills", 0))

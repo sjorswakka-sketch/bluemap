@@ -1,7 +1,7 @@
 extends RefCounted
 const MAPS:={"player_home":preload("res://scripts/maps/player_home.gd")}
-const OBJECTS:={"home_station":"res://scripts/entities/home_station.gd"}
-const MAP_MARKERS:={"home_station":{"color":Color("d9bc86"),"label":"Woning en productie"}}
+const OBJECTS:={"stock_chest":"res://scripts/entities/stock_chest.gd","home_station":"res://scripts/entities/home_station.gd"}
+const MAP_MARKERS:={"stock_chest":{"color":Color("a9cfb1"),"label":"Huisvoorraad"},"home_station":{"color":Color("d9bc86"),"label":"Woning en productie"}}
 const SOUNDS:=["hs_soil","garden_pick","garden_water"]
 const ITEMS:={
  "hs_hoe":{"name":"Tuinhak","type":"gear","max":1,"sheet":"items_home","icon":0,"desc":"Eén gereedschap voor grond en smalle kanalen. Open de tuinstanden met U of via Beroepen → Tuinstanden; de ingestelde binding staat in Bediening."},

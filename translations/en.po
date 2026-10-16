@@ -7312,6 +7312,11 @@ msgstr "The way begins in the Crystal Temple. Only when the Blue Map is whole ag
 msgid "De Sterrenkaart laat zich niet zomaar lezen. De Wachter zet je eerst op de proef. Doe het rustig aan. Slaap goed vooraf. En eet iets."
 msgstr "The Star Map isn't easy to read. The Guardian will test you first. Take it slow. Get a good night's sleep first. And eat something."
 
+#. Legenda op het kaartje (menu): stock_chest
+#: scripts/entities/stock_chest.gd:13 scripts/data/ext/homestead.gd:4
+msgid "Huisvoorraad"
+msgstr "Home stock"
+
 #. Legenda op het kaartje (menu): home_station
 #: scripts/data/ext/homestead.gd:4
 msgid "Woning en productie"
@@ -7464,7 +7469,7 @@ msgid "Maken"
 msgstr "Craft"
 
 #. Beroepen: tekst of sjabloon supplies
-#: scripts/data/ext/beroepen.gd:17
+#: scripts/ui/stock_ui.gd:53 scripts/data/ext/beroepen.gd:17
 msgid "Eten & drinken"
 msgstr "Food & drink"
 
@@ -8629,7 +8634,7 @@ msgid "Crème"
 msgstr "Cream"
 
 #. Instelbare bediening: homestead
-#: scripts/ui/crafting_ui.gd:127 scripts/ui/crafting_ui.gd:164 scripts/core/input_manager.gd:11
+#: scripts/ui/crafting_ui.gd:128 scripts/ui/crafting_ui.gd:165 scripts/core/input_manager.gd:11
 msgid "Tuinstanden"
 msgstr "Garden modes"
 
@@ -8694,22 +8699,22 @@ msgid "Beroepen / maken"
 msgstr "Professions / crafting"
 
 #. Instelbare bediening: quests
-#: scripts/ui/menu_ui.gd:429 scripts/ui/menu_ui.gd:681 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_ui.gd:442 scripts/ui/menu_ui.gd:694 scripts/core/input_manager.gd:17
 msgid "Opdrachten"
 msgstr "Quests"
 
 #. Instelbare bediening: map
-#: scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:18
+#: scripts/ui/menu_ui.gd:442 scripts/core/input_manager.gd:18
 msgid "Kaart"
 msgstr "Map"
 
 #. Instelbare bediening: wereld_prestaties
-#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:18
+#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:442 scripts/core/input_manager.gd:18
 msgid "Prestaties"
 msgstr "Achievements"
 
 #. Instelbare bediening: wereld_beestenboek
-#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:429 scripts/core/input_manager.gd:18
+#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:442 scripts/core/input_manager.gd:18
 msgid "Beestenboek"
 msgstr "Bestiary"
 
@@ -9081,8 +9086,8 @@ msgid "%s: %d/%d · %s"
 msgstr "%s: %d/%d · %s"
 
 #: scripts/core/craft_journal.gd:78
-msgid "In de havenkist: %s ×%d. Haal dit eerst terug naar je tas."
-msgstr "In harbor storage: %s ×%d. Take it back into your bag first."
+msgid "Binnen bereik: %s · tas %d + kist %d."
+msgstr "Within reach: %s · bag %d + chest %d."
 
 #: scripts/core/craft_journal.gd:81
 msgid "Verbeteren verbruikt het oude voorwerp. Een gedragen exemplaar wordt meteen vervangen; stamina wordt niet bijgevuld."
@@ -9172,7 +9177,7 @@ msgstr "You can't travel during a boss fight!"
 msgid "Je kunt niet reizen tijdens een arenagevecht!"
 msgstr "You can't travel during an arena fight!"
 
-#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:462
+#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:475
 msgid "Je hebt nog geen altaar ontdekt."
 msgstr "You haven't found an altar yet."
 
@@ -9197,55 +9202,55 @@ msgid "De oude route licht weer op. En Wilfred heeft eindelijk een naam op zijn 
 msgstr "The old route shines again. And Wilfred finally has a name on his stone. The Blue Map is about the people between the crystals as much as the crystals themselves."
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
-#: scripts/core/game_state.gd:277
+#: scripts/core/game_state.gd:279
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
 msgstr "Hero level %d! +%d coins for your equipment."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:409
+#: scripts/core/game_state.gd:411
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:412
+#: scripts/core/game_state.gd:414
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:414 scripts/ui/item_receipts.gd:14
+#: scripts/core/game_state.gd:416 scripts/ui/item_receipts.gd:14
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:417
+#: scripts/core/game_state.gd:419
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:424
+#: scripts/core/game_state.gd:426
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:490
+#: scripts/core/game_state.gd:492
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:505
+#: scripts/core/game_state.gd:507
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:550
+#: scripts/core/game_state.gd:552
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:554
+#: scripts/core/game_state.gd:556
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:630
+#: scripts/core/game_state.gd:632
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:647
+#: scripts/core/game_state.gd:649
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -9653,7 +9658,7 @@ msgstr "I know that symbol! The old waterworks use the same prism as my workbenc
 msgid "Kijk gerust bij de prismabank links van me. Voor de mijn heb je later een ijzeren zwaard nodig. Oudste Bram bij de tempel kan je eerst op weg helpen."
 msgstr "Take a look at the prism bench on my left. You will need an iron sword for the mine later. Elder Bram by the temple can help you get started."
 
-#: scripts/core/professions.gd:102 scripts/core/craft_journal.gd:74 scripts/ui/equipment_page.gd:294
+#: scripts/core/professions.gd:103 scripts/core/craft_journal.gd:74 scripts/ui/equipment_page.gd:294
 msgid "Nog vergrendeld: herstel de prismabank of Mees’ oversteek."
 msgstr "Still locked: restore the prism bench or Mees’s crossing."
 
@@ -10577,7 +10582,7 @@ msgstr "You need a bow. Tobias sells one."
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:352 scripts/ui/menu_ui.gd:520
+#: scripts/entities/player.gd:352 scripts/ui/menu_ui.gd:533
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
@@ -10982,7 +10987,7 @@ msgstr "Coastal region · map and connections"
 msgid "Goud: wandelpad · blauw: gekozen veerroute · witte ring: hier"
 msgstr "Gold: footpath · blue: selected ferry route · white ring: here"
 
-#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:96 scripts/ui/crafting_ui.gd:450 scripts/ui/home_ui.gd:116 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207
+#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:97 scripts/ui/crafting_ui.gd:451 scripts/ui/home_ui.gd:117 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207 scripts/ui/stock_ui.gd:46
 msgid "Sluiten"
 msgstr "Close"
 
@@ -11319,8 +11324,8 @@ msgid "Materiaalkist · %d/%d soorten"
 msgstr "Material chest · %d/%d types"
 
 #: scripts/ui/coastal_home_ui.gd:102
-msgid "Alleen materialen, maximaal 99 per soort. Maken gebruikt je tas; haal opgeslagen ingrediënten eerst terug. Je ziet steeds het exacte aantal dat verplaatst wordt."
-msgstr "Materials only, up to 99 of each type. Crafting uses your bag; withdraw stored ingredients first. You always see the exact transfer amount."
+msgid "Alleen materialen, maximaal 99 per soort. Binnen bereik gebruiken recepten eerst je tas en daarna deze kist. Zoek en sorteer via Voorraad in je tasmenu."
+msgstr "Materials only, up to 99 of each kind. Nearby recipes use your bag first, then this chest. Search and sort through Stock in your bag menu."
 
 #: scripts/ui/coastal_home_ui.gd:104
 msgid "Tas → kist"
@@ -11346,7 +11351,7 @@ msgstr "Previous"
 msgid "Volgende"
 msgstr "Next"
 
-#: scripts/ui/coastal_home_ui.gd:120
+#: scripts/ui/coastal_home_ui.gd:120 scripts/ui/stock_ui.gd:79
 msgid "Verplaats 1"
 msgstr "Move 1"
 
@@ -11434,55 +11439,55 @@ msgstr "Material goal: %s"
 msgid "Alles bij je: maak via %s."
 msgstr "Everything ready: craft with %s."
 
-#: scripts/ui/crafting_ui.gd:165
+#: scripts/ui/crafting_ui.gd:166
 msgid "↑ ↓ ← → kiezen  ·  %s bevestigen  ·  %s / %s recepten/voorraad  ·  %s sluiten"
 msgstr "↑ ↓ ← → select  ·  %s confirm  ·  %s / %s recipes/supplies  ·  %s close"
 
-#: scripts/ui/crafting_ui.gd:166
+#: scripts/ui/crafting_ui.gd:167
 msgid "Verzamel met %s. Vindplaatsen staan bij het recept; stel een materiaaldoel in. Gereedschap slijt niet."
 msgstr "Gather with %s. Sources are listed with each recipe; set a material goal. Tools never wear out."
 
-#: scripts/ui/crafting_ui.gd:209
+#: scripts/ui/crafting_ui.gd:210
 msgid "Proviand · eten en drinken"
 msgstr "Provisions · food and drink"
 
-#: scripts/ui/crafting_ui.gd:268 scripts/ui/home_ui.gd:79
+#: scripts/ui/crafting_ui.gd:269 scripts/ui/home_ui.gd:79
 msgid "%s · bij je: %d"
 msgstr "%s · carrying: %d"
 
-#: scripts/ui/crafting_ui.gd:322
+#: scripts/ui/crafting_ui.gd:323
 msgid "Materialen compleet: %d/%d"
 msgstr "Materials ready: %d/%d"
 
-#: scripts/ui/crafting_ui.gd:432
+#: scripts/ui/crafting_ui.gd:433
 msgid "Materiaaldoel verwijderen"
 msgstr "Remove material goal"
 
-#: scripts/ui/crafting_ui.gd:432
+#: scripts/ui/crafting_ui.gd:433
 msgid "Dit recept als materiaaldoel volgen"
 msgstr "Track this recipe as a material goal"
 
-#: scripts/ui/crafting_ui.gd:433
+#: scripts/ui/crafting_ui.gd:434
 msgid "Vindplaatsen staan in de uitleg. Rechts gaat naar de uitleg; omhoog/omlaag scrolt, rechts gaat naar Materiaaldoel."
 msgstr "Sources are in the explanation. Right opens it; up/down scrolls, right goes to Material Goal."
 
-#: scripts/ui/crafting_ui.gd:485
+#: scripts/ui/crafting_ui.gd:486
 msgid "Hengel: aanwezig"
 msgstr "Fishing rod: ready"
 
-#: scripts/ui/crafting_ui.gd:485
+#: scripts/ui/crafting_ui.gd:486
 msgid "Haal je hengel bij Joris aan het Zilvermeer."
 msgstr "Collect your fishing rod from Joris at Silver Lake."
 
-#: scripts/ui/crafting_ui.gd:486
+#: scripts/ui/crafting_ui.gd:487
 msgid "Erts + brandstof → metaal en gereedschap"
 msgstr "Ore + fuel → metal and tools"
 
-#: scripts/ui/crafting_ui.gd:487
+#: scripts/ui/crafting_ui.gd:488
 msgid "Kruiden + ingrediënten → elixers en hulpmiddelen"
 msgstr "Herbs + ingredients → elixirs and aids"
 
-#: scripts/ui/crafting_ui.gd:488
+#: scripts/ui/crafting_ui.gd:489
 msgid "Ingrediënten → hartjes en uithoudingsvermogen"
 msgstr "Ingredients → hearts and stamina"
 
@@ -11604,7 +11609,7 @@ msgstr "Automatically active"
 msgid "Deze plek volgt je bestaande upgrades."
 msgstr "This slot follows your existing upgrades."
 
-#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:640
+#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:653
 msgid "Uitgerust"
 msgstr "Equipped"
 
@@ -11616,7 +11621,7 @@ msgstr "Owned"
 msgid "Niet in bezit"
 msgstr "Not owned"
 
-#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:640
+#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:653
 msgid "%s  Uitrusten"
 msgstr "%s  Equip"
 
@@ -11660,7 +11665,7 @@ msgstr "After swapping: %s"
 msgid "Tobias · dorpswinkel · %d munten (je hebt %d)"
 msgstr "Tobias · village shop · %d coins (you have %d)"
 
-#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:93 scripts/ui/crafting_ui.gd:316
+#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:93 scripts/ui/crafting_ui.gd:317
 msgid "%s %d/%d"
 msgstr "%s %d/%d"
 
@@ -11905,66 +11910,70 @@ msgid "Wijn maken · drie druiven worden één fles in 90 s."
 msgstr "Winemaking · three grapes become one bottle in 90 s."
 
 #: scripts/ui/home_ui.gd:107
-msgid "Bij je: %d · nodig per portie: %d · maximaal twintig porties tegelijk"
-msgstr "Carrying: %d · needed per portion: %d · up to twenty portions at once"
+msgid "Beschikbaar: %d · nodig per portie: %d · maximaal twintig porties tegelijk"
+msgstr "Available: %d · needed per batch: %d · up to twenty batches at once"
 
-#: scripts/ui/home_ui.gd:110
+#: scripts/ui/home_ui.gd:108
+msgid "Ingrediënten uit de bereikbare huisvoorraad tellen mee."
+msgstr "Ingredients in reachable home stock count too."
+
+#: scripts/ui/home_ui.gd:111
 msgid "Nog %.0f s actieve speeltijd · resultaat: %d"
 msgstr "%.0f s of active play remaining · output: %d"
 
-#: scripts/ui/home_ui.gd:111
+#: scripts/ui/home_ui.gd:112
 msgid "Meststof uitscheppen"
 msgstr "Scoop out fertilizer"
 
-#: scripts/ui/home_ui.gd:111
+#: scripts/ui/home_ui.gd:112
 msgid "Wijn bottelen"
 msgstr "Bottle the wine"
 
-#: scripts/ui/home_ui.gd:114
+#: scripts/ui/home_ui.gd:115
 msgid "Meng één portie compost"
 msgstr "Mix one portion of compost"
 
-#: scripts/ui/home_ui.gd:114
+#: scripts/ui/home_ui.gd:115
 msgid "Vul vat voor één fles"
 msgstr "Fill barrel for one bottle"
 
-#: scripts/ui/home_ui.gd:115
+#: scripts/ui/home_ui.gd:116
 msgid "Meng %d porties compost"
 msgstr "Mix %d portions of compost"
 
-#: scripts/ui/home_ui.gd:115
+#: scripts/ui/home_ui.gd:116
 msgid "Vul vat voor %d flessen"
 msgstr "Fill barrel for %d bottles"
 
-#: scripts/ui/home_ui.gd:175
+#: scripts/ui/home_ui.gd:176
 msgid "Grond voor druiven en bloemen; paden en vrije doorgangen blijven beschermd."
 msgstr "Soil for grapes and flowers; paths and clear passages stay protected."
 
-#: scripts/ui/home_ui.gd:176
+#: scripts/ui/home_ui.gd:177
 msgid "Begin naast de beek; aangesloten kanalen vullen zich vanzelf en blijven beloopbaar."
 msgstr "Start beside the brook; connected channels fill automatically and stay walkable."
 
-#: scripts/ui/home_ui.gd:177
+#: scripts/ui/home_ui.gd:178
 msgid "Een blijvende druivenstok; water laat hem groeien, meststof verhoogt één oogst."
 msgstr "A perennial grapevine; water supports growth, fertilizer improves one harvest."
 
-#: scripts/ui/home_ui.gd:178
+#: scripts/ui/home_ui.gd:179
 msgid "Bloemen blijven bloeien en voeden bijen binnen vijf tegels van de kast."
 msgstr "Flowers keep blooming and feed bees within five tiles of the hive."
 
-#: scripts/ui/home_ui.gd:179
+#: scripts/ui/home_ui.gd:180
 msgid "Eén meststof per stok geeft vijf in plaats van drie druiven bij de volgende oogst."
 msgstr "One fertilizer per vine gives five instead of three grapes at the next harvest."
 
-#: scripts/ui/home_ui.gd:180
+#: scripts/ui/home_ui.gd:181
 msgid "Houd vast en loop langs rijpe druiven; de stokken blijven staan."
 msgstr "Hold and walk past ripe grapes; the vines remain planted."
 
-#: scripts/ui/home_ui.gd:181
+#: scripts/ui/home_ui.gd:182
 msgid "Herstel één tegel per druk; je krijgt het zaad terug, maar de plant verdwijnt."
 msgstr "Restore one tile per press; its seed is returned, but the plant is removed."
 
-#: scripts/ui/home_ui.gd:182
+#: scripts/ui/home_ui.gd:183
 msgid "Berg je hak op; je tuin groeit verder terwijl je op avontuur bent."
 msgstr "Put your hoe away; your garden keeps growing while you explore."
 
@@ -12111,7 +12120,7 @@ msgstr "Health:  %d"
 msgid "Schade:  %s"
 msgstr "Damage:  %s"
 
-#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:651
+#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:664
 msgid "Verslagen:  %d"
 msgstr "Defeated:  %d"
 
@@ -12184,148 +12193,152 @@ msgstr "%s  Travel"
 msgid "%s  Terug"
 msgstr "%s  Back"
 
-#: scripts/ui/menu_ui.gd:429
+#: scripts/ui/menu_ui.gd:183
+msgid "Voorraad"
+msgstr "Stock"
+
+#: scripts/ui/menu_ui.gd:442
 msgid "Voorwerpen"
 msgstr "Items"
 
-#: scripts/ui/menu_ui.gd:429
+#: scripts/ui/menu_ui.gd:442
 msgid "Voortgang"
 msgstr "Progress"
 
-#: scripts/ui/menu_ui.gd:429
+#: scripts/ui/menu_ui.gd:442
 msgid "Uitrusting"
 msgstr "Equipment"
 
-#: scripts/ui/menu_ui.gd:429
+#: scripts/ui/menu_ui.gd:442
 msgid "Uiterlijk"
 msgstr "Appearance"
 
-#: scripts/ui/menu_ui.gd:570
+#: scripts/ui/menu_ui.gd:583
 msgid "%s / %s tabblad  ·  "
 msgstr "%s / %s tab  ·  "
 
-#: scripts/ui/menu_ui.gd:571
+#: scripts/ui/menu_ui.gd:584
 msgid "%s sluiten"
 msgstr "%s close"
 
-#: scripts/ui/menu_ui.gd:573
+#: scripts/ui/menu_ui.gd:586
 msgid "↑ ↓ ← → kiezen  ·  %s gebruiken  ·  "
 msgstr "↑ ↓ ← → select  ·  %s use  ·  "
 
-#: scripts/ui/menu_ui.gd:575
+#: scripts/ui/menu_ui.gd:588
 msgid "↑ ↓ kiezen  ·  ← → vakken  ·  %s bevestigen  ·  "
 msgstr "↑ ↓ select  ·  ← → panels  ·  %s confirm  ·  "
 
-#: scripts/ui/menu_ui.gd:577
+#: scripts/ui/menu_ui.gd:590
 msgid "↑ ↓ rij  ·  ← → aanpassen  ·  %s verf  ·  "
 msgstr "↑ ↓ row  ·  ← → adjust  ·  %s dye  ·  "
 
-#: scripts/ui/menu_ui.gd:579
+#: scripts/ui/menu_ui.gd:592
 msgid "↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  "
 msgstr "↑ ↓ select  ·  ← → scroll details  ·  "
 
-#: scripts/ui/menu_ui.gd:581
+#: scripts/ui/menu_ui.gd:594
 msgid "↑ ↓ altaar  ·  %s reizen  ·  "
 msgstr "↑ ↓ altar  ·  %s travel  ·  "
 
-#: scripts/ui/menu_ui.gd:583
+#: scripts/ui/menu_ui.gd:596
 msgid "↑ ↓ opdracht  ·  → uitleg  ·  ← lijst  ·  %s volgen  ·  "
 msgstr "↑ ↓ quest  ·  → details  ·  ← list  ·  %s track  ·  "
 
-#: scripts/ui/menu_ui.gd:584
+#: scripts/ui/menu_ui.gd:597
 msgid "↑ ↓ bladeren  ·  "
 msgstr "↑ ↓ browse  ·  "
 
-#: scripts/ui/menu_ui.gd:598
+#: scripts/ui/menu_ui.gd:611
 msgid "Je spullen"
 msgstr "Your stuff"
 
-#: scripts/ui/menu_ui.gd:600
+#: scripts/ui/menu_ui.gd:613
 msgid "Je hebt nog niets bij je."
 msgstr "You're not carrying anything yet."
 
-#: scripts/ui/menu_ui.gd:633
+#: scripts/ui/menu_ui.gd:646
 msgid "Vindplaats: %s"
 msgstr "Source: %s"
 
-#: scripts/ui/menu_ui.gd:638
+#: scripts/ui/menu_ui.gd:651
 msgid "Uitgerust · %s"
 msgstr "Equipped · %s"
 
-#: scripts/ui/menu_ui.gd:638
+#: scripts/ui/menu_ui.gd:651
 msgid "Bonus: %s"
 msgstr "Bonus: %s"
 
-#: scripts/ui/menu_ui.gd:643
+#: scripts/ui/menu_ui.gd:656
 msgid "%s  Gebruiken"
 msgstr "%s  Use"
 
-#: scripts/ui/menu_ui.gd:646
+#: scripts/ui/menu_ui.gd:659
 msgid "Zwaard:  %s (schade %d)"
 msgstr "Sword:  %s (damage %d)"
 
-#: scripts/ui/menu_ui.gd:647
+#: scripts/ui/menu_ui.gd:660
 msgid "Levens:  %d / %d"
 msgstr "Health:  %d / %d"
 
-#: scripts/ui/menu_ui.gd:648
+#: scripts/ui/menu_ui.gd:661
 msgid "Snelheid:  snel (laarzen)"
 msgstr "Speed:  fast (boots)"
 
-#: scripts/ui/menu_ui.gd:648
+#: scripts/ui/menu_ui.gd:661
 msgid "Snelheid:  normaal"
 msgstr "Speed:  normal"
 
-#: scripts/ui/menu_ui.gd:649
+#: scripts/ui/menu_ui.gd:662
 msgid "Munten:  %d"
 msgstr "Coins:  %d"
 
-#: scripts/ui/menu_ui.gd:650
+#: scripts/ui/menu_ui.gd:663
 msgid "Kristallen:  %d / 3"
 msgstr "Crystals:  %d / 3"
 
-#: scripts/ui/menu_ui.gd:652
+#: scripts/ui/menu_ui.gd:665
 msgid "Speeltijd:  %s"
 msgstr "Play time:  %s"
 
 #. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-#: scripts/ui/menu_ui.gd:657 scripts/ui/pause_menu.gd:109
+#: scripts/ui/menu_ui.gd:670 scripts/ui/pause_menu.gd:109
 msgid "Nieuw spel+  ·  ronde %d"
 msgstr "New Game+  ·  round %d"
 
-#: scripts/ui/menu_ui.gd:683
+#: scripts/ui/menu_ui.gd:696
 msgid "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"
 msgstr "You don't have any quests yet. Talk to the people in the village!"
 
-#: scripts/ui/menu_ui.gd:698
+#: scripts/ui/menu_ui.gd:711
 msgid "Afgerond"
 msgstr "Complete"
 
-#: scripts/ui/menu_ui.gd:698
+#: scripts/ui/menu_ui.gd:711
 msgid "Stap %d / %d"
 msgstr "Step %d / %d"
 
-#: scripts/ui/menu_ui.gd:699
+#: scripts/ui/menu_ui.gd:712
 msgid "Hoofdverhaal"
 msgstr "Main story"
 
-#: scripts/ui/menu_ui.gd:710
+#: scripts/ui/menu_ui.gd:723
 msgid "Stop met volgen"
 msgstr "Stop tracking"
 
-#: scripts/ui/menu_ui.gd:710
+#: scripts/ui/menu_ui.gd:723
 msgid "Volg deze opdracht"
 msgstr "Track this quest"
 
-#: scripts/ui/menu_ui.gd:710
+#: scripts/ui/menu_ui.gd:723
 msgid "Deze opdracht is afgerond"
 msgstr "This quest is complete"
 
-#: scripts/ui/menu_ui.gd:773
+#: scripts/ui/menu_ui.gd:786
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
 
-#: scripts/ui/menu_ui.gd:778
+#: scripts/ui/menu_ui.gd:791
 msgid "Gouden ring: volgende doorgang voor je gevolgde opdracht."
 msgstr "Gold ring: next passage for your tracked quest."
 
@@ -12582,6 +12595,154 @@ msgstr "%s (%d of %d)"
 #: scripts/ui/shop_ui.gd:198
 msgid "↑ ↓ kiezen  ·  %s kopen  ·  %s sluiten"
 msgstr "↑ ↓ select  ·  %s buy  ·  %s close"
+
+#: scripts/ui/stock_ui.gd:45
+msgid "Voorraad & opslag"
+msgstr "Stock & storage"
+
+#: scripts/ui/stock_ui.gd:49
+msgid "Zoek een voorwerp…"
+msgstr "Search for an item…"
+
+#: scripts/ui/stock_ui.gd:51
+msgid "Letters"
+msgstr "Letters"
+
+#: scripts/ui/stock_ui.gd:53
+msgid "Alles"
+msgstr "All"
+
+#: scripts/ui/stock_ui.gd:53
+msgid "Grondstoffen"
+msgstr "Materials"
+
+#: scripts/ui/stock_ui.gd:53
+msgid "Landbouw"
+msgstr "Farming"
+
+#: scripts/ui/stock_ui.gd:53
+msgid "Gereedschap & uitrusting"
+msgstr "Tools & equipment"
+
+#: scripts/ui/stock_ui.gd:53
+msgid "Verhaal & sleutels"
+msgstr "Story & keys"
+
+#: scripts/ui/stock_ui.gd:56
+msgid "Volgorde: gevonden"
+msgstr "Order: found"
+
+#: scripts/ui/stock_ui.gd:56
+msgid "Volgorde: categorie"
+msgstr "Order: category"
+
+#: scripts/ui/stock_ui.gd:56
+msgid "Volgorde: naam"
+msgstr "Order: name"
+
+#: scripts/ui/stock_ui.gd:56
+msgid "Volgorde: aantal"
+msgstr "Order: quantity"
+
+#: scripts/ui/stock_ui.gd:59
+msgid "Favorieten"
+msgstr "Favorites"
+
+#: scripts/ui/stock_ui.gd:65
+msgid "Spatie"
+msgstr "Space"
+
+#: scripts/ui/stock_ui.gd:66
+msgid "Wis letter"
+msgstr "Backspace"
+
+#: scripts/ui/stock_ui.gd:67
+msgid "Wis zoekveld"
+msgstr "Clear search"
+
+#: scripts/ui/stock_ui.gd:68
+msgid "Klaar"
+msgstr "Done"
+
+#: scripts/ui/stock_ui.gd:79
+msgid "Verplaats 10"
+msgstr "Move 10"
+
+#: scripts/ui/stock_ui.gd:79
+msgid "Verplaats hele stapel"
+msgstr "Move whole stack"
+
+#: scripts/ui/stock_ui.gd:80
+msgid "Favoriet"
+msgstr "Favorite"
+
+#: scripts/ui/stock_ui.gd:82
+msgid "Bestaande stapels aanvullen"
+msgstr "Top up existing stacks"
+
+#: scripts/ui/stock_ui.gd:83
+msgid "Grondstoffen opbergen"
+msgstr "Store materials"
+
+#: scripts/ui/stock_ui.gd:85
+msgid "Favorieten blijven bij bulkacties bij je; een gekozen recept mag ze wel gebruiken."
+msgstr "Bulk actions leave favorites in your bag; a recipe you choose may still use them."
+
+#: scripts/ui/stock_ui.gd:115
+msgid "Bij je · %d soorten"
+msgstr "In your bag · %d kinds"
+
+#: scripts/ui/stock_ui.gd:116
+msgid "Huisvoorraad · %d/48 soorten · 999 per stapel"
+msgstr "Home stock · %d/48 kinds · 999 per stack"
+
+#: scripts/ui/stock_ui.gd:116
+msgid "Havenkist · %d/12 soorten · 99 per stapel"
+msgstr "Harbor chest · %d/12 kinds · 99 per stack"
+
+#: scripts/ui/stock_ui.gd:117
+msgid "Binnen bereik: recepten en wijnvaten gebruiken eerst je tas, daarna deze kist."
+msgstr "Within reach: recipes and wine barrels use your bag first, then this chest."
+
+#: scripts/ui/stock_ui.gd:117
+msgid "Je bekijkt de voorraad op afstand. Verplaatsen en maken uit deze kist kan alleen ter plaatse."
+msgstr "You are viewing stock remotely. Visit this chest to transfer items or craft from it."
+
+#: scripts/ui/stock_ui.gd:134
+msgid "Favoriet verwijderen"
+msgstr "Remove favorite"
+
+#: scripts/ui/stock_ui.gd:134
+msgid "Favoriet bewaren"
+msgstr "Mark as favorite"
+
+#: scripts/ui/stock_ui.gd:136
+msgid "Kies links wat je wilt opbergen, of rechts wat je wilt meenemen. Zoek en filter beide lijsten tegelijk."
+msgstr "Choose items to store on the left, or to take on the right. Search and filter both lists together."
+
+#: scripts/ui/stock_ui.gd:137
+msgid "Selectie bevestigen: 1 verplaatsen · Tab of richtingstoetsen: navigeren · terug: sluiten"
+msgstr "Confirm selection: move 1 · Tab or direction keys: navigate · back: close"
+
+#: scripts/ui/stock_ui.gd:140
+msgid "Opbergen → kist · bij je %d · opgeslagen %d · nu verplaatsbaar %d"
+msgstr "Store → chest · bag %d · stored %d · transferable now %d"
+
+#: scripts/ui/stock_ui.gd:140
+msgid "Meenemen → tas · bij je %d · opgeslagen %d · nu verplaatsbaar %d"
+msgstr "Take → bag · bag %d · stored %d · transferable now %d"
+
+#: scripts/ui/stock_ui.gd:141
+msgid "Dit voorwerp blijft bij je: uitrusting, gereedschap en verhaalvoorwerpen worden niet opgeslagen."
+msgstr "This item stays with you: equipment, tools and story items are not stored."
+
+#: scripts/ui/stock_ui.gd:147
+msgid "%d verplaatst."
+msgstr "%d transferred."
+
+#: scripts/ui/stock_ui.gd:152
+msgid "%d verplaatst. Favorieten zijn overgeslagen."
+msgstr "%d transferred. Favorites were skipped."
 
 #: scripts/ui/supper_kitchen.gd:44
 msgid "Koken met Mila"

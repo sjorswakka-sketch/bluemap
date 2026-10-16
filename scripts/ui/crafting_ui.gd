@@ -2,6 +2,7 @@ extends CanvasLayer
 ## C opens a keyboard/controller-accessible profession journal and crafting menu.
 
 const Identity:=preload("res://scripts/core/craft_identity.gd")
+const Stock:=preload("res://scripts/core/stockroom.gd")
 const Data := preload("res://scripts/data/ext/beroepen.gd")
 const Professions := preload("res://scripts/core/professions.gd")
 const Items := preload("res://scripts/data/items.gd")
@@ -313,12 +314,12 @@ func _recipe_button(recipe_id: String) -> Button:
 	var recipe: Dictionary = Data.RECIPES[recipe_id]
 	var ingredients: Array[String] = []
 	for item: String in recipe["inputs"]:
-		ingredients.append("%s %d/%d" % [Professions.item_name(item), GameState.count(item), int(recipe["inputs"][item])])
+		ingredients.append("%s %d/%d" % [Professions.item_name(item), Stock.available(item), int(recipe["inputs"][item])])
 	var reason := Professions.craft_reason(recipe_id)
 	var title: String = tr(Data.TEXT["recipe_line"]) % [Professions.item_name(recipe["output"]), int(recipe.get("amount", 1)), tr(Data.SKILLS[recipe["skill"]]["name"]), recipe["level"]]
 	var ready := 0
 	for item: String in recipe.inputs:
-		if GameState.count(item) >= int(recipe.inputs[item]): ready += 1
+		if Stock.available(item) >= int(recipe.inputs[item]): ready += 1
 	var button := _button(title + "\n" + tr("Materialen compleet: %d/%d") % [ready,recipe.inputs.size()] + "\n" + (tr(Data.TEXT["ready"]) if reason == "" else reason))
 	button.custom_minimum_size.y = 90
 	button.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -494,7 +495,7 @@ func _draw_identity():
 				if i>=3:break
 				var at:=Vector2(470+i*38,10)
 				profession_banner.draw_texture_rect(Items.icon_tex(item),Rect2(at,Vector2(28,28)),false)
-				profession_banner.draw_string(font,at+Vector2(0,44),str(GameState.count(item))+"/"+str(recipe.inputs[item]),HORIZONTAL_ALIGNMENT_LEFT,36,12,Color("dce4d7"))
+				profession_banner.draw_string(font,at+Vector2(0,44),str(Stock.available(item))+"/"+str(recipe.inputs[item]),HORIZONTAL_ALIGNMENT_LEFT,36,12,Color("dce4d7"))
 				i+=1
 			profession_banner.draw_line(Vector2(598,28),Vector2(624,28),color,2)
 			profession_banner.draw_line(Vector2(624,28),Vector2(618,22),color,2)

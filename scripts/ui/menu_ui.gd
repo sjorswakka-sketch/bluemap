@@ -54,6 +54,7 @@ const MESSAGE_TIME := 3.0 # seconden dat een melding in het kaarttabblad blijft 
 const TAB_ANIM_TIME := 0.16 # seconden die een tabwissel duurt (markering glijdt, pagina faden)
 const PAGE_SLIDE := 10.0 # hoeveel pixels de pagina bij een tabwissel meebeweegt
 
+var stock_button: Button
 var root: Control
 var content: Control
 var page: Control # de bladzijde onder de tabbladen; schuift en faden zacht bij een tabwissel
@@ -105,6 +106,12 @@ func _ready() -> void:
 	content.draw.connect(_draw_content)
 	content.gui_input.connect(_pointer_input)
 	root.add_child(content)
+	stock_button=Button.new()
+	stock_button.position=Vector2(322,65)
+	stock_button.size=Vector2(198,34)
+	stock_button.add_theme_font_size_override("font_size",16)
+	stock_button.pressed.connect(_open_stock)
+	content.add_child(stock_button)
 	page = Control.new()
 	page.position = Vector2.ZERO
 	page.size = SIZE
@@ -172,6 +179,8 @@ func close() -> void:
 
 
 func _process(delta: float) -> void:
+	stock_button.visible=active and tab==0
+	stock_button.text=tr("Voorraad")+" ["+Controls.action_label("crafting")+"]"
 	time += delta
 	travel_message_time = maxf(travel_message_time - delta, 0.0)
 	if travel_message_time <= 0.0:
@@ -221,6 +230,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			open(target)
 		return
 	if Engine.get_process_frames() == opened_frame or event.is_echo():
+		return
+	if tab==0 and event.is_action_pressed("crafting"):
+		get_viewport().set_input_as_handled()
+		_open_stock()
 		return
 	if travel_confirm and _answer_travel_question(event):
 		return
@@ -496,6 +509,10 @@ func _owned() -> Array[String]:
 	for item_id: String in Items.ITEMS:
 		if item_id != "coin" and GameState.count(item_id) > 0 and Items.ITEMS[item_id].get("type", "") != "weapon":
 			owned.append(item_id)
+	if load("res://scripts/core/stockroom.gd").state().sort>0:
+		var data: Dictionary={}
+		for id: String in owned:data[id]=GameState.count(id)
+		return load("res://scripts/core/stockroom.gd").ids(data)
 	return owned
 
 
@@ -611,6 +628,8 @@ func _draw_items(font: Font) -> void:
 		var icon_size := 56.0 * (1.0 + 0.05 * sin(time * 5.0)) if chosen else 56.0
 		var icon_pos := pos + (Vector2(SLOT, SLOT) - Vector2(icon_size, icon_size)) / 2.0 + Vector2(0, -4)
 		page.draw_texture_rect_region(Art.tex(Items.sheet_of(owned[i])), Rect2(icon_pos, Vector2(icon_size, icon_size)), Rect2(Vector2(icon * 16, 0), Vector2(16, 16)))
+		if load("res://scripts/core/stockroom.gd").favorite(owned[i]):
+			page.draw_string(font,pos+Vector2(5,18),"★",HORIZONTAL_ALIGNMENT_LEFT,20,17,Color("e7d4a2"))
 		var count := GameState.count(owned[i])
 		if count > 1:
 			page.draw_string_outline(font, pos + Vector2(SLOT - 26, SLOT - 6), "x%d" % count, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, 4, Color(0, 0, 0))
@@ -846,3 +865,15 @@ func _refresh_progression_page() -> void:
 	progression_page.visible = tab == TAB_PROGRESSION
 	if progression_page.visible:
 		progression_page.refresh()
+
+func _open_stock():
+	if not active or tab!=0:return
+	var world: Node2D=get_tree().current_scene
+	var old_map:=GameState.map_id
+	close()
+	var ui: CanvasLayer=load("res://scripts/ui/stock_ui.gd").new()
+	ui.world=world;world.add_child(ui)
+	ui.closed.connect(func():
+		if is_instance_valid(world) and GameState.map_id==old_map and not GameState.transitioning and not GameState.ended:open(0))
+	var kind: String=load("res://scripts/core/stockroom.gd").nearby_kind()
+	ui.open("coast" if kind=="coast" else "home")

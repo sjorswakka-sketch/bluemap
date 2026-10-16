@@ -43,6 +43,8 @@ static func enrich(id: String,data: Dictionary):
    {"type":"home_station","pos":[12,25],"role":"wine","unit":"wine_b"},
    {"type":"home_station","pos":[15,32],"role":"hive","unit":"hive"},
    {"type":"home_station","pos":[36,21],"role":"fall"}])
+ if id=="player_home":data.objects.append({"type":"stock_chest","pos":[10,5]})
+ if id=="village":data.objects.append({"type":"stock_chest","pos":[9,26]})
  if id=="forest":
   data.objects.append({"type":"home_station","pos":[7,6],"role":"wild_grape"})
  # A small spring bowl in the quiet Bosrand, away from the main path and its exits.

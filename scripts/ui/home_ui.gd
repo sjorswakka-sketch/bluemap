@@ -104,13 +104,14 @@ func rebuild():
   var id: String="compost" if role=="compost" else node.obj.unit
   var recipe: Dictionary=Farm.JOBS[id]
   message(tr("Composteren · twee dierenpoep worden drie meststof in 30 s.") if role=="compost" else tr("Wijn maken · drie druiven worden één fles in 90 s."))
-  message(tr("Bij je: %d · nodig per portie: %d · maximaal twintig porties tegelijk") % [GameState.count(recipe.input),recipe.cost])
+  message(tr("Beschikbaar: %d · nodig per portie: %d · maximaal twintig porties tegelijk") % [load("res://scripts/core/stockroom.gd").available(recipe.input),recipe.cost])
+  if load("res://scripts/core/stockroom.gd").nearby_kind()!="":message(tr("Ingrediënten uit de bereikbare huisvoorraad tellen mee."))
   if Farm.state().jobs.has(id):
    var job: Dictionary=Farm.state().jobs[id]
    message(tr("Nog %.0f s actieve speeltijd · resultaat: %d") % [maxf(0,recipe.seconds-job.time),job.batches*recipe.yield])
    button(tr("Meststof uitscheppen") if role=="compost" else tr("Wijn bottelen"),collect.bind(id),job.time<recipe.seconds or GameState.room(recipe.output)<job.batches*recipe.yield)
   else:
-   var count: int=mini(20,GameState.count(recipe.input)/recipe.cost)
+   var count: int=mini(20,load("res://scripts/core/stockroom.gd").available(recipe.input)/recipe.cost)
    button(tr("Meng één portie compost") if role=="compost" else tr("Vul vat voor één fles"),start.bind(id,1),count<1)
    if count>1:button((tr("Meng %d porties compost") if role=="compost" else tr("Vul vat voor %d flessen")) % count,start.bind(id,count))
  button(tr("Sluiten"),close)

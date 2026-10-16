@@ -3,6 +3,7 @@ extends RefCounted
 ## Resource cooldowns use saved active play time; map changes, sleep and reloads do
 ## not respawn a node. Saves from before this module normalize to empty progress.
 
+const Stock:=preload("res://scripts/core/stockroom.gd")
 const Data := preload("res://scripts/data/ext/beroepen.gd")
 const Journal := preload("res://scripts/core/craft_journal.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
@@ -110,7 +111,7 @@ static func craft_reason(recipe_id: String) -> String:
 	if gs.room(output) < int(recipe.get("amount", 1)):
 		return TranslationServer.translate(Data.TEXT["full"]) % item_name(output)
 	for item: String in recipe["inputs"]:
-		if gs.count(item) < int(recipe["inputs"][item]):
+		if Stock.available(item) < int(recipe["inputs"][item]):
 			return TranslationServer.translate(Data.TEXT["missing"]) % item_name(item)
 	return ""
 
@@ -129,8 +130,9 @@ static func craft(recipe_id: String) -> bool:
 	var worn: bool = old_gear != "" and Equipment.equipped(Equipment.slot_of(old_gear)) == old_gear
 	# Validate the complete recipe first; all input removal precedes the output.
 	# The guard also prevents synchronous item signals from crafting recursively.
-	for item: String in recipe["inputs"]:
-		gs.take(item, int(recipe["inputs"][item]))
+	if not Stock.consume(recipe["inputs"]):
+		_busy=false
+		return false
 	gs.give(recipe["output"], int(recipe.get("amount", 1)), true)
 	if worn: Equipment.equip(recipe["output"])
 	Journal.crafted(recipe_id)
