@@ -1,6 +1,13 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.29.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.30.0-preview.**
+
+Nieuw in 0.30: **Een persoonlijk huis — ontwikkelronde 3**. Schuif met je bestaande
+bed, tafel en boekenkast; plaats stoelen, planten, lampen, een bankje, servieskast
+en verdiende aandenkens. Vier eigen vloeren en wanden en drie kleur- en lichtkeuzes
+geven de kamer een eigen sfeer. De plattegrond bewaakt vrije doorgangen, bereikbare
+opslag en open vloer; pas je ontwerp bewust toe of annuleer. Geen buitenkaart groeit.
+Details: [PERSONAL_HOME_PHASE3.md](PERSONAL_HOME_PHASE3.md).
 
 Nieuw in 0.29: **Voorraad en opslag — ontwikkelronde 2**. Twee compacte, zelfgetekende
 kisten bij je woning delen één voorraad; zoek en filter, sorteer, markeer favorieten

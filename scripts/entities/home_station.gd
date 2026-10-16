@@ -11,12 +11,28 @@ func _ready():
  if obj.role=="compost":position.x-=12
  if obj.role not in ["fall","shelf","table"]:add_to_group("interactable")
  var shape:=CollisionShape2D.new();var rectangle:=RectangleShape2D.new();rectangle.size=Vector2(60,36) if obj.role=="compost" else Vector2(34,48) if obj.role=="bed" else Vector2(60,22) if obj.role in ["shelf","table"] else Vector2(25,14);shape.shape=rectangle;shape.position.y=-6 if obj.role=="bed" else 5;add_child(shape)
+ if GameState.map_id=="player_home" and obj.role in ["bed","table","shelf"]:refresh_home()
 func label() -> String:return load("res://scripts/ui/home_ui.gd").station_name(obj.role)
 func interact():
  if GameState.input_locked() or world.player.position.distance_to(position)>55:return
  var ui: CanvasLayer=load("res://scripts/ui/home_ui.gd").new();ui.world=world;world.add_child(ui);ui.open(self)
 func _process(delta: float):time+=delta;queue_redraw()
+func refresh_home():
+ var house: Script=load("res://scripts/core/personal_home.gd")
+ var entry: Dictionary=house.state().layout[obj.role]
+ position=house.world_position(entry)
+ for child in get_children():
+  if child is CollisionShape2D:
+   child.shape.size=Vector2(house.Catalog.PIECES[entry.kind].size)*32-Vector2(4,4)
+   child.position=Vector2(0,16-Vector2(house.Catalog.PIECES[entry.kind].size).y*16)
+ queue_redraw()
 func _draw():
+ if GameState.map_id=="player_home" and obj.role in ["bed","table","shelf"]:
+  var entry: Dictionary=load("res://scripts/core/personal_home.gd").state().layout[obj.role]
+  var dims: Vector2=Vector2(load("res://scripts/data/house_catalog.gd").PIECES[entry.kind].size)*32
+  load("res://scripts/core/house_art.gd").draw_piece(self,entry,Vector2(-dims.x/2,16-dims.y))
+  if world.player.target==self:DrawUtil.prompt(self,Vector2(0,-dims.y-2),time)
+  return
  match obj.role:
   "compost":
    draw_rect(Rect2(-31,-23,62,48),Color("5b513d"));draw_circle(Vector2(-10,-4),19,Color("695136"));draw_circle(Vector2(12,-5),20,Color("806341"))

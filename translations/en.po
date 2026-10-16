@@ -8,6 +8,221 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Source-Language: nl\n"
 
+#. Persoonlijk huis bed: name
+#: scripts/data/house_catalog.gd:4
+msgid "Eigen bed"
+msgstr "Your bed"
+
+#. Persoonlijk huis bed: desc
+#: scripts/data/house_catalog.gd:4
+msgid "Verplaats je bed; rusten en opslaan blijven beschikbaar."
+msgstr "Move your bed; resting and saving remain available."
+
+#. Persoonlijk huis table: name
+#: scripts/data/house_catalog.gd:5
+msgid "Eiken tafel"
+msgstr "Oak table"
+
+#. Persoonlijk huis table: desc
+#: scripts/data/house_catalog.gd:5
+msgid "Een rustige plek voor een boek en een kop thee."
+msgstr "A quiet spot for a book and a cup of tea."
+
+#. Persoonlijk huis shelf: name
+#: scripts/data/house_catalog.gd:6
+msgid "Boekenkast"
+msgstr "Bookcase"
+
+#. Persoonlijk huis shelf: desc
+#: scripts/data/house_catalog.gd:6
+msgid "Boeken, aardewerk en ruimte voor je verhalen."
+msgstr "Books, pottery and room for your stories."
+
+#. Persoonlijk huis chair: name
+#: scripts/data/house_catalog.gd:7
+msgid "Houten stoel"
+msgstr "Wooden chair"
+
+#. Persoonlijk huis chair: desc
+#: scripts/data/house_catalog.gd:7
+msgid "Een eenvoudige stoel voor bij je tafel."
+msgstr "A simple chair to set beside your table."
+
+#. Persoonlijk huis plant_leaf: name
+#: scripts/data/house_catalog.gd:8
+msgid "Bladplant"
+msgstr "Leafy plant"
+
+#. Persoonlijk huis plant_leaf: desc
+#: scripts/data/house_catalog.gd:8
+msgid "Een groene kamerplant zonder onderhoud."
+msgstr "A green houseplant that needs no care."
+
+#. Persoonlijk huis plant_bloom: name
+#: scripts/data/house_catalog.gd:9
+msgid "Bloemenpot"
+msgstr "Flower pot"
+
+#. Persoonlijk huis plant_bloom: desc
+#: scripts/data/house_catalog.gd:9
+msgid "Een kleine pot met blijvende bloemen; geen waterbeurt nodig."
+msgstr "A small pot of lasting flowers; no watering needed."
+
+#. Persoonlijk huis lamp: name
+#: scripts/data/house_catalog.gd:10
+msgid "Staande lamp"
+msgstr "Standing lamp"
+
+#. Persoonlijk huis lamp: desc
+#: scripts/data/house_catalog.gd:10
+msgid "Een zachte lichtplek; kies warm, zeelicht of uit."
+msgstr "A soft pool of light; choose warm, sea light or off."
+
+#. Persoonlijk huis bench: name
+#: scripts/data/house_catalog.gd:11
+msgid "Linnen bankje"
+msgstr "Linen bench"
+
+#. Persoonlijk huis bench: desc
+#: scripts/data/house_catalog.gd:11
+msgid "Een laag bankje met een kussen in je gekozen kleur."
+msgstr "A low bench with a cushion in your chosen color."
+
+#. Persoonlijk huis cabinet: name
+#: scripts/data/house_catalog.gd:12
+msgid "Servieskast"
+msgstr "Pottery cabinet"
+
+#. Persoonlijk huis cabinet: desc
+#: scripts/data/house_catalog.gd:12
+msgid "Een kast met eigen aardewerk; decoratie, je huisvoorraad blijft in de kist."
+msgstr "A cabinet of handmade pottery; decoration only. Your home stock stays in the chest."
+
+#. Persoonlijk huis rug: name
+#: scripts/data/house_catalog.gd:13
+msgid "Geweven kleed"
+msgstr "Woven rug"
+
+#. Persoonlijk huis rug: desc
+#: scripts/data/house_catalog.gd:13
+msgid "Een zacht vloerkleed waar je overheen loopt; meubels mogen erop staan."
+msgstr "A soft rug you can walk over; furniture may stand on it."
+
+#. Persoonlijk huis trophy_forest: name
+#: scripts/data/house_catalog.gd:14
+msgid "Aandenken aan het bos"
+msgstr "Forest keepsake"
+
+#. Persoonlijk huis trophy_forest: desc
+#: scripts/data/house_catalog.gd:14
+msgid "Een houten blad met een blauwe glaskern; een herinnering aan je bosavontuur."
+msgstr "A wooden leaf with a blue glass center; a memory of your forest adventure."
+
+#. Persoonlijk huis trophy_forest: hint
+#: scripts/data/house_catalog.gd:14
+msgid "Vind het kaartkristal van het Fluisterbos."
+msgstr "Find the map crystal in Whispering Woods."
+
+#. Persoonlijk huis trophy_swamp: name
+#: scripts/data/house_catalog.gd:15
+msgid "Aandenken aan de sluizen"
+msgstr "Sluice keepsake"
+
+#. Persoonlijk huis trophy_swamp: desc
+#: scripts/data/house_catalog.gd:15
+msgid "Een klein sluisrad op een sokkel, voor de weer verbonden oevers."
+msgstr "A small sluice wheel on a stand, celebrating the reconnected banks."
+
+#. Persoonlijk huis trophy_swamp: hint
+#: scripts/data/house_catalog.gd:15
+msgid "Herstel de brug bij het Rietarchief."
+msgstr "Repair the bridge by the Reed Archive."
+
+#. Persoonlijk huis trophy_coast: name
+#: scripts/data/house_catalog.gd:16
+msgid "Aandenken aan de kust"
+msgstr "Coastal keepsake"
+
+#. Persoonlijk huis trophy_coast: desc
+#: scripts/data/house_catalog.gd:16
+msgid "Een zelfgemaakte schelp met een gevlochten rand, als herinnering aan Raf."
+msgstr "A handmade shell with a woven rim, as a memory of Raf."
+
+#. Persoonlijk huis trophy_coast: hint
+#: scripts/data/house_catalog.gd:16
+msgid "Leer Rafs kustpatronen in de haven."
+msgstr "Learn Raf's coastal patterns at the harbor."
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:18
+msgid "Eiken planken"
+msgstr "Oak planks"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:18
+msgid "Lichte visgraat"
+msgstr "Light herringbone"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:18
+msgid "Koele leisteen"
+msgstr "Cool slate"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:18
+msgid "Zachte terracotta"
+msgstr "Soft terracotta"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:19
+msgid "Hout en linnen"
+msgstr "Wood and linen"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:19
+msgid "Saliegroene wand"
+msgstr "Sage green wall"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:19
+msgid "Warme kalkwand"
+msgstr "Warm plaster wall"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:19
+msgid "Blauwe steen"
+msgstr "Blue stone"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:20
+msgid "Salie en linnen"
+msgstr "Sage and linen"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:20
+msgid "Oker en crème"
+msgstr "Ochre and cream"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:20
+msgid "Blauw en heide"
+msgstr "Blue and heather"
+
+#. Persoonlijk huis: afwerking
+#: scripts/ui/coastal_home_ui.gd:78 scripts/data/house_catalog.gd:21
+msgid "Warm licht"
+msgstr "Warm light"
+
+#. Persoonlijk huis: afwerking
+#: scripts/ui/coastal_home_ui.gd:79 scripts/data/house_catalog.gd:21
+msgid "Zeelicht"
+msgstr "Sea light"
+
+#. Persoonlijk huis: afwerking
+#: scripts/data/house_catalog.gd:21
+msgid "Licht uit"
+msgstr "Lights off"
+
 #. Naam van gebied village
 #. Kaart village, sign [21, 8]: tekst op een bord
 #: scripts/ui/ending.gd:222 scripts/maps/village.gd:6 scripts/maps/village.gd:66
@@ -8699,7 +8914,7 @@ msgid "Beroepen / maken"
 msgstr "Professions / crafting"
 
 #. Instelbare bediening: quests
-#: scripts/ui/menu_ui.gd:442 scripts/ui/menu_ui.gd:694 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_ui.gd:442 scripts/ui/menu_ui.gd:700 scripts/core/input_manager.gd:17
 msgid "Opdrachten"
 msgstr "Quests"
 
@@ -8913,7 +9128,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:272
+#: scripts/world.gd:278
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -9202,55 +9417,55 @@ msgid "De oude route licht weer op. En Wilfred heeft eindelijk een naam op zijn 
 msgstr "The old route shines again. And Wilfred finally has a name on his stone. The Blue Map is about the people between the crystals as much as the crystals themselves."
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
-#: scripts/core/game_state.gd:279
+#: scripts/core/game_state.gd:281
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
 msgstr "Hero level %d! +%d coins for your equipment."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:411
+#: scripts/core/game_state.gd:413
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:414
+#: scripts/core/game_state.gd:416
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:416 scripts/ui/item_receipts.gd:14
+#: scripts/core/game_state.gd:418 scripts/ui/item_receipts.gd:14
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:419
+#: scripts/core/game_state.gd:421
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:426
+#: scripts/core/game_state.gd:428
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:492
+#: scripts/core/game_state.gd:494
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:507
+#: scripts/core/game_state.gd:509
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:552
+#: scripts/core/game_state.gd:554
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:556
+#: scripts/core/game_state.gd:558
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:632
+#: scripts/core/game_state.gd:634
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:649
+#: scripts/core/game_state.gd:651
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -9657,6 +9872,78 @@ msgstr "I know that symbol! The old waterworks use the same prism as my workbenc
 #: scripts/core/opening.gd:20
 msgid "Kijk gerust bij de prismabank links van me. Voor de mijn heb je later een ijzeren zwaard nodig. Oudste Bram bij de tempel kan je eerst op weg helpen."
 msgstr "Take a look at the prism bench on my left. You will need an iron sword for the mine later. Elder Bram by the temple can help you get started."
+
+#: scripts/core/personal_home.gd:51
+msgid "Er passen maximaal twaalf meubels; berg eerst iets op."
+msgstr "There is room for twelve pieces; put something away first."
+
+#: scripts/core/personal_home.gd:54 scripts/core/personal_home.gd:60
+msgid "Ongeldige meubelgegevens."
+msgstr "Invalid furniture data."
+
+#: scripts/core/personal_home.gd:56 scripts/core/personal_home.gd:111
+msgid "Onbekend meubel."
+msgstr "Unknown furniture."
+
+#: scripts/core/personal_home.gd:62
+msgid "Ongeldige meubelpositie."
+msgstr "Invalid furniture position."
+
+#: scripts/core/personal_home.gd:64 scripts/core/personal_home.gd:71
+msgid "Plaats binnen de kamer."
+msgstr "Place it inside the room."
+
+#: scripts/core/personal_home.gd:66
+msgid "Ongeldige meubelkleur."
+msgstr "Invalid furniture color."
+
+#: scripts/core/personal_home.gd:67
+msgid "Een basismeubel kan maar één keer worden geplaatst."
+msgstr "Each basic piece can only be placed once."
+
+#: scripts/core/personal_home.gd:69
+msgid "Dit meubel is nog niet in je meubelvoorraad."
+msgstr "You do not own this furniture yet."
+
+#: scripts/core/personal_home.gd:76
+msgid "Houd de deur en de gemarkeerde looproute vrij."
+msgstr "Keep the door and the marked walkway clear."
+
+#: scripts/core/personal_home.gd:77
+msgid "Hier staat al iets; laat meubels naast elkaar passen."
+msgstr "Something is already here; leave room beside it."
+
+#: scripts/core/personal_home.gd:79
+msgid "Laat meer open vloer over; berg eerst een groot meubel op."
+msgstr "Leave more open floor; put a large piece away first."
+
+#: scripts/core/personal_home.gd:81
+msgid "Bed, tafel en boekenkast blijven aanwezig; je kunt ze wel verplaatsen."
+msgstr "Your bed, table and bookcase must stay in the room; you can move them."
+
+#: scripts/core/personal_home.gd:89
+msgid "Er raakt een hoek afgesloten; houd de kamer verbonden met de deur."
+msgstr "A corner would be cut off; keep the room connected to the door."
+
+#: scripts/core/personal_home.gd:93
+msgid "Laat een bereikbare plek naast of voor het bed vrij."
+msgstr "Leave a reachable space beside or in front of the bed."
+
+#: scripts/core/personal_home.gd:110
+msgid "Richt je woning binnen in je eigen huis in."
+msgstr "Decorate from inside your own home."
+
+#: scripts/core/personal_home.gd:113
+msgid "Je hebt al genoeg van dit meubel."
+msgstr "You already have enough of this furniture."
+
+#: scripts/core/personal_home.gd:116
+msgid "Je mist materialen; je tas en bereikbare kist tellen mee."
+msgstr "You need more materials; your bag and a reachable chest count."
+
+#: scripts/core/personal_home.gd:129
+msgid "Je staat te dichtbij; loop eerst naar het vrije middenpad."
+msgstr "You are too close; step onto the clear middle walkway first."
 
 #: scripts/core/professions.gd:103 scripts/core/craft_journal.gd:74 scripts/ui/equipment_page.gd:294
 msgid "Nog vergrendeld: herstel de prismabank of Mees’ oversteek."
@@ -10354,27 +10641,27 @@ msgstr "The gate is locked."
 msgid "Beschermd!"
 msgstr "Shielded!"
 
-#: scripts/entities/homestead.gd:81
+#: scripts/entities/homestead.gd:84
 msgid "%s · %s gebruiken · %s standen"
 msgstr "%s · %s to work · %s for tools"
 
-#: scripts/entities/homestead.gd:82
+#: scripts/entities/homestead.gd:85
 msgid "Tuinhulp · %s opent de tuinstanden"
 msgstr "Garden guide · %s opens garden tools"
 
-#: scripts/entities/homestead.gd:87
+#: scripts/entities/homestead.gd:90
 msgid "Eén tegel per druk · een plant wordt vervangen door zijn zaad."
 msgstr "One tile per press · a plant is replaced by its seed."
 
-#: scripts/entities/homestead.gd:92
+#: scripts/entities/homestead.gd:95
 msgid "Dit kanaal krijgt meteen water · houd vast en loop verder."
 msgstr "This channel fills immediately · hold and keep walking."
 
-#: scripts/entities/homestead.gd:92
+#: scripts/entities/homestead.gd:95
 msgid "Dit kanaal blijft droog tot het met water is verbonden."
 msgstr "This channel stays dry until connected to water."
 
-#: scripts/entities/homestead.gd:93
+#: scripts/entities/homestead.gd:96
 msgid "Houd vast en loop langs een rij."
 msgstr "Hold and walk along a row."
 
@@ -10582,7 +10869,7 @@ msgstr "You need a bow. Tobias sells one."
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:352 scripts/ui/menu_ui.gd:533
+#: scripts/entities/player.gd:352 scripts/ui/menu_ui.gd:537
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
@@ -10987,7 +11274,7 @@ msgstr "Coastal region · map and connections"
 msgid "Goud: wandelpad · blauw: gekozen veerroute · witte ring: hier"
 msgstr "Gold: footpath · blue: selected ferry route · white ring: here"
 
-#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:97 scripts/ui/crafting_ui.gd:451 scripts/ui/home_ui.gd:117 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207 scripts/ui/stock_ui.gd:46
+#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:97 scripts/ui/crafting_ui.gd:451 scripts/ui/home_ui.gd:118 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207 scripts/ui/stock_ui.gd:46
 msgid "Sluiten"
 msgstr "Close"
 
@@ -11203,7 +11490,7 @@ msgstr "Leave the pool in peace · peaceful outcome"
 msgid "Voed het havenrad · vrijwillige krachtproef"
 msgstr "Feed the harbor wheel · voluntary trial"
 
-#: scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90
+#: scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/house_ui.gd:61
 msgid "Annuleren"
 msgstr "Cancel"
 
@@ -11282,14 +11569,6 @@ msgstr "Place the wall rack"
 #: scripts/ui/coastal_home_ui.gd:77
 msgid "Lamp uit"
 msgstr "Lamp off"
-
-#: scripts/ui/coastal_home_ui.gd:78
-msgid "Warm licht"
-msgstr "Warm light"
-
-#: scripts/ui/coastal_home_ui.gd:79
-msgid "Zeelicht"
-msgstr "Sea light"
 
 #: scripts/ui/coastal_home_ui.gd:80
 msgid "Wandrekrecept · werkbank"
@@ -11609,7 +11888,7 @@ msgstr "Automatically active"
 msgid "Deze plek volgt je bestaande upgrades."
 msgstr "This slot follows your existing upgrades."
 
-#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:653
+#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:659
 msgid "Uitgerust"
 msgstr "Equipped"
 
@@ -11621,7 +11900,7 @@ msgstr "Owned"
 msgid "Niet in bezit"
 msgstr "Not owned"
 
-#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:653
+#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:659
 msgid "%s  Uitrusten"
 msgstr "%s  Equip"
 
@@ -11945,37 +12224,125 @@ msgstr "Mix %d portions of compost"
 msgid "Vul vat voor %d flessen"
 msgstr "Fill barrel for %d bottles"
 
-#: scripts/ui/home_ui.gd:176
+#: scripts/ui/home_ui.gd:117
+msgid "Je huis inrichten"
+msgstr "Decorate your home"
+
+#: scripts/ui/home_ui.gd:177
 msgid "Grond voor druiven en bloemen; paden en vrije doorgangen blijven beschermd."
 msgstr "Soil for grapes and flowers; paths and clear passages stay protected."
 
-#: scripts/ui/home_ui.gd:177
+#: scripts/ui/home_ui.gd:178
 msgid "Begin naast de beek; aangesloten kanalen vullen zich vanzelf en blijven beloopbaar."
 msgstr "Start beside the brook; connected channels fill automatically and stay walkable."
 
-#: scripts/ui/home_ui.gd:178
+#: scripts/ui/home_ui.gd:179
 msgid "Een blijvende druivenstok; water laat hem groeien, meststof verhoogt één oogst."
 msgstr "A perennial grapevine; water supports growth, fertilizer improves one harvest."
 
-#: scripts/ui/home_ui.gd:179
+#: scripts/ui/home_ui.gd:180
 msgid "Bloemen blijven bloeien en voeden bijen binnen vijf tegels van de kast."
 msgstr "Flowers keep blooming and feed bees within five tiles of the hive."
 
-#: scripts/ui/home_ui.gd:180
+#: scripts/ui/home_ui.gd:181
 msgid "Eén meststof per stok geeft vijf in plaats van drie druiven bij de volgende oogst."
 msgstr "One fertilizer per vine gives five instead of three grapes at the next harvest."
 
-#: scripts/ui/home_ui.gd:181
+#: scripts/ui/home_ui.gd:182
 msgid "Houd vast en loop langs rijpe druiven; de stokken blijven staan."
 msgstr "Hold and walk past ripe grapes; the vines remain planted."
 
-#: scripts/ui/home_ui.gd:182
+#: scripts/ui/home_ui.gd:183
 msgid "Herstel één tegel per druk; je krijgt het zaad terug, maar de plant verdwijnt."
 msgstr "Restore one tile per press; its seed is returned, but the plant is removed."
 
-#: scripts/ui/home_ui.gd:183
+#: scripts/ui/home_ui.gd:184
 msgid "Berg je hak op; je tuin groeit verder terwijl je op avontuur bent."
 msgstr "Put your hoe away; your garden keeps growing while you explore."
+
+#: scripts/ui/house_ui.gd:37
+msgid "Je huis · rustig inrichten"
+msgstr "Your home · room to breathe"
+
+#: scripts/ui/house_ui.gd:40
+msgid "Meubelvoorraad · kiezen of verplaatsen"
+msgstr "Furniture stock · choose or move"
+
+#: scripts/ui/house_ui.gd:45 scripts/ui/house_ui.gd:151
+msgid "Maak extra meubel"
+msgstr "Make another piece"
+
+#: scripts/ui/house_ui.gd:47
+msgid "Vloer, wand en verlichting · vrije keuze"
+msgstr "Floor, wall and light · free choice"
+
+#: scripts/ui/house_ui.gd:55
+msgid "Bevestig plek"
+msgstr "Confirm position"
+
+#: scripts/ui/house_ui.gd:56
+msgid "Berg meubel op"
+msgstr "Put furniture away"
+
+#: scripts/ui/house_ui.gd:60
+msgid "Toepassen en opslaan"
+msgstr "Apply and save"
+
+#: scripts/ui/house_ui.gd:62
+msgid "Beginindeling bekijken"
+msgstr "Preview starter layout"
+
+#: scripts/ui/house_ui.gd:63
+msgid "Toepassen bewaart · Annuleren verwerpt · gemaakte meubels blijven in voorraad."
+msgstr "Apply saves · Cancel discards · made furniture stays in stock."
+
+#: scripts/ui/house_ui.gd:90
+msgid "%s lijst · %s plattegrond · klik/dubbelklik: kiezen/plaatsen · rechtsklik: meubel"
+msgstr "%s list · %s plan · click/double-click: choose/place · right-click: furniture"
+
+#: scripts/ui/house_ui.gd:104
+msgid "Kies een geplaatst meubel om te verplaatsen…"
+msgstr "Choose a placed piece to move…"
+
+#: scripts/ui/house_ui.gd:130
+msgid "Kies eerst een meubel."
+msgstr "Choose a piece of furniture first."
+
+#: scripts/ui/house_ui.gd:137
+msgid "%d × %d tegels"
+msgstr "%d × %d tiles"
+
+#: scripts/ui/house_ui.gd:141
+msgid "In je meubelvoorraad: %d · geplaatst: %d"
+msgstr "In furniture stock: %d · placed: %d"
+
+#: scripts/ui/house_ui.gd:146
+msgid "Maken: %s"
+msgstr "Make: %s"
+
+#: scripts/ui/house_ui.gd:147
+msgid "Tas en bereikbare huisvoorraad."
+msgstr "Your bag and reachable home stock."
+
+#: scripts/ui/house_ui.gd:147
+msgid "Alleen je tas; loop dichter naar de huiskist voor opgeslagen materiaal."
+msgstr "Bag only; move closer to your home chest to use stored materials."
+
+#: scripts/ui/house_ui.gd:151
+msgid "Ontvang aandenken"
+msgstr "Claim keepsake"
+
+#: scripts/ui/house_ui.gd:156
+msgid "Plek past. Pijltjes of stick verplaatsen de markering; bevestig om dit ontwerp aan te passen."
+msgstr "It fits. Move the marker with arrows or stick; confirm to change this design."
+
+#: scripts/ui/house_ui.gd:160
+msgid "Meubels %d/12 · vrije vloer %d/100"
+msgstr "Furniture %d/12 · open floor %d/100"
+
+#: scripts/ui/house_ui.gd:179
+msgid "Beginindeling als ontwerp. Pas toe om deze te bewaren."
+msgstr "Starter layout preview. Apply to keep it."
 
 #: scripts/ui/hud.gd:59
 msgid "%s zwaard  ·  %s praten  ·  %s menu  ·  %s pauze en besturing"
@@ -12120,7 +12487,7 @@ msgstr "Health:  %d"
 msgid "Schade:  %s"
 msgstr "Damage:  %s"
 
-#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:664
+#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:670
 msgid "Verslagen:  %d"
 msgstr "Defeated:  %d"
 
@@ -12213,132 +12580,132 @@ msgstr "Equipment"
 msgid "Uiterlijk"
 msgstr "Appearance"
 
-#: scripts/ui/menu_ui.gd:583
+#: scripts/ui/menu_ui.gd:587
 msgid "%s / %s tabblad  ·  "
 msgstr "%s / %s tab  ·  "
 
-#: scripts/ui/menu_ui.gd:584
+#: scripts/ui/menu_ui.gd:588
 msgid "%s sluiten"
 msgstr "%s close"
 
-#: scripts/ui/menu_ui.gd:586
+#: scripts/ui/menu_ui.gd:590
 msgid "↑ ↓ ← → kiezen  ·  %s gebruiken  ·  "
 msgstr "↑ ↓ ← → select  ·  %s use  ·  "
 
-#: scripts/ui/menu_ui.gd:588
+#: scripts/ui/menu_ui.gd:592
 msgid "↑ ↓ kiezen  ·  ← → vakken  ·  %s bevestigen  ·  "
 msgstr "↑ ↓ select  ·  ← → panels  ·  %s confirm  ·  "
 
-#: scripts/ui/menu_ui.gd:590
+#: scripts/ui/menu_ui.gd:594
 msgid "↑ ↓ rij  ·  ← → aanpassen  ·  %s verf  ·  "
 msgstr "↑ ↓ row  ·  ← → adjust  ·  %s dye  ·  "
 
-#: scripts/ui/menu_ui.gd:592
+#: scripts/ui/menu_ui.gd:596
 msgid "↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  "
 msgstr "↑ ↓ select  ·  ← → scroll details  ·  "
 
-#: scripts/ui/menu_ui.gd:594
+#: scripts/ui/menu_ui.gd:598
 msgid "↑ ↓ altaar  ·  %s reizen  ·  "
 msgstr "↑ ↓ altar  ·  %s travel  ·  "
 
-#: scripts/ui/menu_ui.gd:596
+#: scripts/ui/menu_ui.gd:600
 msgid "↑ ↓ opdracht  ·  → uitleg  ·  ← lijst  ·  %s volgen  ·  "
 msgstr "↑ ↓ quest  ·  → details  ·  ← list  ·  %s track  ·  "
 
-#: scripts/ui/menu_ui.gd:597
+#: scripts/ui/menu_ui.gd:601
 msgid "↑ ↓ bladeren  ·  "
 msgstr "↑ ↓ browse  ·  "
 
-#: scripts/ui/menu_ui.gd:611
+#: scripts/ui/menu_ui.gd:615
 msgid "Je spullen"
 msgstr "Your stuff"
 
-#: scripts/ui/menu_ui.gd:613
+#: scripts/ui/menu_ui.gd:617
 msgid "Je hebt nog niets bij je."
 msgstr "You're not carrying anything yet."
 
-#: scripts/ui/menu_ui.gd:646
+#: scripts/ui/menu_ui.gd:652
 msgid "Vindplaats: %s"
 msgstr "Source: %s"
 
-#: scripts/ui/menu_ui.gd:651
+#: scripts/ui/menu_ui.gd:657
 msgid "Uitgerust · %s"
 msgstr "Equipped · %s"
 
-#: scripts/ui/menu_ui.gd:651
+#: scripts/ui/menu_ui.gd:657
 msgid "Bonus: %s"
 msgstr "Bonus: %s"
 
-#: scripts/ui/menu_ui.gd:656
+#: scripts/ui/menu_ui.gd:662
 msgid "%s  Gebruiken"
 msgstr "%s  Use"
 
-#: scripts/ui/menu_ui.gd:659
+#: scripts/ui/menu_ui.gd:665
 msgid "Zwaard:  %s (schade %d)"
 msgstr "Sword:  %s (damage %d)"
 
-#: scripts/ui/menu_ui.gd:660
+#: scripts/ui/menu_ui.gd:666
 msgid "Levens:  %d / %d"
 msgstr "Health:  %d / %d"
 
-#: scripts/ui/menu_ui.gd:661
+#: scripts/ui/menu_ui.gd:667
 msgid "Snelheid:  snel (laarzen)"
 msgstr "Speed:  fast (boots)"
 
-#: scripts/ui/menu_ui.gd:661
+#: scripts/ui/menu_ui.gd:667
 msgid "Snelheid:  normaal"
 msgstr "Speed:  normal"
 
-#: scripts/ui/menu_ui.gd:662
+#: scripts/ui/menu_ui.gd:668
 msgid "Munten:  %d"
 msgstr "Coins:  %d"
 
-#: scripts/ui/menu_ui.gd:663
+#: scripts/ui/menu_ui.gd:669
 msgid "Kristallen:  %d / 3"
 msgstr "Crystals:  %d / 3"
 
-#: scripts/ui/menu_ui.gd:665
+#: scripts/ui/menu_ui.gd:671
 msgid "Speeltijd:  %s"
 msgstr "Play time:  %s"
 
 #. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-#: scripts/ui/menu_ui.gd:670 scripts/ui/pause_menu.gd:109
+#: scripts/ui/menu_ui.gd:676 scripts/ui/pause_menu.gd:109
 msgid "Nieuw spel+  ·  ronde %d"
 msgstr "New Game+  ·  round %d"
 
-#: scripts/ui/menu_ui.gd:696
+#: scripts/ui/menu_ui.gd:702
 msgid "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"
 msgstr "You don't have any quests yet. Talk to the people in the village!"
 
-#: scripts/ui/menu_ui.gd:711
+#: scripts/ui/menu_ui.gd:717
 msgid "Afgerond"
 msgstr "Complete"
 
-#: scripts/ui/menu_ui.gd:711
+#: scripts/ui/menu_ui.gd:717
 msgid "Stap %d / %d"
 msgstr "Step %d / %d"
 
-#: scripts/ui/menu_ui.gd:712
+#: scripts/ui/menu_ui.gd:718
 msgid "Hoofdverhaal"
 msgstr "Main story"
 
-#: scripts/ui/menu_ui.gd:723
+#: scripts/ui/menu_ui.gd:729
 msgid "Stop met volgen"
 msgstr "Stop tracking"
 
-#: scripts/ui/menu_ui.gd:723
+#: scripts/ui/menu_ui.gd:729
 msgid "Volg deze opdracht"
 msgstr "Track this quest"
 
-#: scripts/ui/menu_ui.gd:723
+#: scripts/ui/menu_ui.gd:729
 msgid "Deze opdracht is afgerond"
 msgstr "This quest is complete"
 
-#: scripts/ui/menu_ui.gd:786
+#: scripts/ui/menu_ui.gd:792
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
 
-#: scripts/ui/menu_ui.gd:791
+#: scripts/ui/menu_ui.gd:797
 msgid "Gouden ring: volgende doorgang voor je gevolgde opdracht."
 msgstr "Gold ring: next passage for your tracked quest."
 

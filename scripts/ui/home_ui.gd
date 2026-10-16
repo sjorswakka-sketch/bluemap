@@ -114,6 +114,7 @@ func rebuild():
    var count: int=mini(20,load("res://scripts/core/stockroom.gd").available(recipe.input)/recipe.cost)
    button(tr("Meng één portie compost") if role=="compost" else tr("Vul vat voor één fles"),start.bind(id,1),count<1)
    if count>1:button((tr("Meng %d porties compost") if role=="compost" else tr("Vul vat voor %d flessen")) % count,start.bind(id,count))
+ if GameState.map_id=="player_home" and role in ["bed","guide","supplies"]:button(tr("Je huis inrichten"),decorate)
  button(tr("Sluiten"),close)
  var focus: Array[Control]=[]
  for b in buttons:
@@ -200,3 +201,8 @@ func link_tools(focus: Array[Control]):
    var other: Control=grid_buttons[index] if index>=0 and index<grid_buttons.size() else focus[focus.size()-1] if direction<0 else buttons[8]
    if direction<0:b.focus_neighbor_top=b.get_path_to(other)
    else:b.focus_neighbor_bottom=b.get_path_to(other)
+
+func decorate():
+ if not valid() or GameState.map_id!="player_home":return
+ close()
+ var ui: CanvasLayer=load("res://scripts/ui/house_ui.gd").new();ui.world=world;world.add_child(ui);ui.open()

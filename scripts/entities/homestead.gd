@@ -44,7 +44,10 @@ func _input(event: InputEvent):
   if event.is_action_pressed("interact"):waiting_release=true;clear_stroke()
   return
  if event.is_action_pressed("homestead"):
-  var ui: CanvasLayer=load("res://scripts/ui/home_ui.gd").new();ui.world=world;world.add_child(ui);ui.open(null);get_viewport().set_input_as_handled()
+  var ui: CanvasLayer=load("res://scripts/ui/house_ui.gd" if GameState.map_id=="player_home" else "res://scripts/ui/home_ui.gd").new();ui.world=world;world.add_child(ui)
+  if GameState.map_id=="player_home":ui.open()
+  else:ui.open(null)
+  get_viewport().set_input_as_handled()
  elif event.is_action_pressed("interact") and GameState.map_id=="village" and Farm.mode!="" and Farm.garden(aim_cell()) and world.player.target==null:
   clear_stroke();waiting_release=false;work();get_viewport().set_input_as_handled()
 func work():
@@ -112,10 +115,7 @@ func _process(delta: float):
  elif not waiting_release:work()
  Farm.irrigate();update_hint();queue_redraw()
 func _draw():
- if GameState.map_id=="player_home":
-  draw_rect(Rect2(4*32,6*32,160,64),Color("567a7a"));draw_rect(Rect2(4*32+5,6*32+5,150,54),Color("789591"),false,3)
-  for x in range(4*32+5,9*32,9):draw_line(Vector2(x,6*32-3),Vector2(x,6*32),Color("c5b88e"),2);draw_line(Vector2(x,8*32),Vector2(x,8*32+3),Color("c5b88e"),2)
-  return
+ if GameState.map_id=="player_home":return
  if GameState.map_id!="village":return
  # A lightly worn grass trail points south without consuming editable garden cells.
  for y in range(29,41):

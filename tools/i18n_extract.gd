@@ -28,6 +28,7 @@ const Content := preload("res://scripts/data/content.gd")
 const Boeken := preload("res://scripts/data/ext/meer_boeken.gd")
 const Beroepen := preload("res://scripts/data/ext/beroepen.gd")
 const EquipmentData := preload("res://scripts/data/ext/uitrusting.gd")
+const HouseCatalog:=preload("res://scripts/data/house_catalog.gd")
 const CraftNotes := preload("res://scripts/data/ext/craft_progression.gd")
 
 const CODE_ROOT := "res://scripts"
@@ -128,6 +129,10 @@ class Collector:
 
 ## 1. Alle tekst uit de data (Nederlands), met uitleg voor de vertalers.
 static func collect_data(c: Collector) -> void:
+	for id: String in HouseCatalog.PIECES:
+		for field in ["name","desc","hint"]:c.add(HouseCatalog.PIECES[id].get(field,""),"Persoonlijk huis "+id+": "+field)
+	for values in [HouseCatalog.FLOORS,HouseCatalog.WALLS,HouseCatalog.COLORS,HouseCatalog.LIGHTS]:
+		for text: String in values:c.add(text,"Persoonlijk huis: afwerking")
 	var menu_pages: GDScript = load("res://scripts/ui/menu_pages.gd") # gebruikt GameState: pas nu laden
 	# Kaarten: naam (en de vorm midden in een zin, zie menu_pages.in_sentence), borden, gesloten deuren...
 	for map_id: String in Maps.MAPS:
@@ -491,6 +496,7 @@ static func _read_args(source: String, at: int) -> Dictionary:
 static func find_unclaimed(c: Collector) -> Array:
 	var found: Array = []
 	var sources: Array = [Dialogue, Items, Quests, Npcs, Enemies, Achievements, Shops, Credits, Boeken]
+	sources.append(HouseCatalog)
 	sources.append_array(Content.MODULES)
 	sources.append(load("res://scripts/data/arena.gd"))
 	sources.append(load("res://scripts/core/input_manager.gd"))

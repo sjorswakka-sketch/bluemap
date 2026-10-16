@@ -260,6 +260,12 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	var home: Node2D=load("res://scripts/entities/homestead.gd").new()
 	home.world=self
 	ground.add_child(home)
+	if map_id=="player_home":
+		var room: Node2D=load("res://scripts/entities/personal_house.gd").new()
+		room.world=self;ground.add_child(room)
+	if map_id=="player_home":
+		var decor: Script=load("res://scripts/core/personal_home.gd")
+		if decor.player_reason(decor.state().layout,player.position)!="":player.position=Vector2(6.5,10.5)*TILE
 	player.global_position = safe_spawn_position(player.global_position)
 	player.camera.reset_smoothing()
 

@@ -1,4 +1,4 @@
-BLUEMAP QUEST  (v0.29.0-preview)
+BLUEMAP QUEST  (v0.30.0-preview)
 =======================
 
 Starten
@@ -13,6 +13,9 @@ Besturing
   C                 beroepen, recepten en eten/drinken; R3 op een controller
   E / Enter         praten, kisten en altaren openen, lezen, vissen bij een visplek, doorklikken
   H                 helddrank drinken
+  In je eigen huis: U opent de inrichting; ook via bed of woningbord (controller A).
+  Kies een meubel en een plek in de plattegrond; Toepassen bewaart, Annuleren verwerpt.
+  LB/RB wisselt tussen meubellijst en plattegrond; richting + A plaatst/verplaatst.
   In je tas: Voorraad / C / R3 opent zoeken, sorteren, favorieten en opslag.
   Kisten bij je huis delen een voorraad; recepten gebruiken alleen kisten binnen bereik.
   I / Tab           menu: voorwerpen        Q: opdrachten        N: kaart
