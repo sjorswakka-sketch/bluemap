@@ -30,7 +30,7 @@ func run():
   for file in ["living_maps","regional_maps","combat_maps","craft_maps","space_maps","habitat_maps","coast_maps","coastal_region_maps"]:load("res://scripts/data/"+file+".gd").enrich(id,old)
   var data: Dictionary=Maps.get_map(id)
   for i in old.objects.size():check(data.objects[i]==old.objects[i],"legacy slot retained "+id+str(i))
-  check(data.objects.filter(func(o: Dictionary) -> bool:return o.type=="enemy").is_empty(),"no added outdoor enemies "+id)
+  check(data.objects.filter(func(o: Dictionary) -> bool:return o.type=="enemy" and not o.get("trail_wildlife",false)).is_empty(),"no added outdoor enemies "+id)
  # Observe before accepting; wrong conclusions cost nothing and can be corrected.
  await enter("gull_island");await open("splinter");await select();await close_ui()
  await enter("river_mouth","from_coast");await open("silt");await select();await close_ui()

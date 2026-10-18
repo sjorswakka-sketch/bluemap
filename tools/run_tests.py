@@ -26,6 +26,7 @@ def main():
     parser.add_argument("godot", nargs="?", default="godot")
     parser.add_argument("--tests", nargs="+", help="Test filenames without .gd; default: all *_test.gd")
     parser.add_argument("--keep", action="store_true", help="Keep the temporary project and logs for diagnosis")
+    parser.add_argument("--keep-going", action="store_true", help="Report all failing suites before returning failure")
     args = parser.parse_args()
     source = Path(__file__).resolve().parent.parent
     engine = shutil.which(args.godot)
@@ -95,14 +96,21 @@ def main():
             return 1
         user_dir = Path(match[1].strip())
         print("Verified separate save directory:", user_dir, flush=True)
+        failed_suites = []
         for name in order:
             log = run(name, ["--fixed-fps", "60", "-s", "tests/" + name + ".gd"])
             if log is None or not SUCCESS.search(log):
                 if log is not None:
                     print("FAILED (no completion marker):", name, flush=True)
                     print(log[-12000:], flush=True)
-                return 1
+                if not args.keep_going:
+                    return 1
+                failed_suites.append(name)
+                continue
             print("PASS", name, flush=True)
+        if failed_suites:
+            print("FAILED SUITES: " + ", ".join(failed_suites), flush=True)
+            return 1
         print("ALLE TESTS GESLAAGD (%d)" % len(order), flush=True)
         failed = False
         return 0

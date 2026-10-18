@@ -181,7 +181,7 @@ static func collect(id: String) -> bool:
  if float(active.time)<recipe.seconds or gs().room(recipe.output)<count:return false
  busy=true;state().jobs.erase(id);gs().give(recipe.output,count,true);load("res://scripts/core/professions.gd").add_xp("cooking",active.batches*3);busy=false;changed();return true
 static func animal_drop(animal: Node):
- if animal.dead or animal.is_queued_for_deletion() or animal.has_meta("practice"):return
+ if animal.dead or animal.is_queued_for_deletion() or animal.has_meta("practice") or animal.kind in ["trail_moth","trail_gull"]:return
  var id: String=gs().map_id+":"+animal.kind+":"+key(Vector2i(animal.home_position/32))
  var data:=state()
  if data.drops.size()>=64 or gs().play_time<float(data.animal_due.get(id,0)):return

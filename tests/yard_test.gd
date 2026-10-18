@@ -83,8 +83,10 @@ func run():
  # Atomic material use reads the same nearby shared home store.
  p.position=Vector2(9.5,27.5)*32;gs.yard=base.duplicate(true);Yard.sync(world)
  Stock.state().home={"prof_stone":2};gs.inventory.erase("prof_stone")
- watching=true;gs.save_requested.connect(saved);check(Yard.make("gravel"),"path pieces use nearby home storage");watching=false;gs.save_requested.disconnect(saved)
- check(not premature and Yard.state().owned.gravel==32 and Stock.count("prof_stone")==0,"save occurs after both cost and owned parts are complete")
+ check(not Yard.make("gravel") and Stock.count("prof_stone")==2,"outdoor construction cannot consume indoor stock remotely")
+ gs.give("prof_stone",2,true)
+ watching=true;gs.save_requested.connect(saved);check(Yard.make("gravel"),"path pieces use carried materials outside");watching=false;gs.save_requested.disconnect(saved)
+ check(not premature and Yard.state().owned.gravel==32 and Stock.count("prof_stone")==2 and gs.count("prof_stone")==0,"save occurs after both cost and owned parts are complete")
  var old: Dictionary=gs.yard.duplicate(true)
  check(not Yard.expand("east") and gs.yard==old,"missing expansion materials cause no partial mutation")
  gs.give("prof_log",20,true);gs.give("prof_stone",20,true)

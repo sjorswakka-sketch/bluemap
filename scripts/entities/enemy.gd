@@ -242,7 +242,10 @@ func _ai_animal(delta: float) -> void:
 	var to_player := _to_player()
 	fleeing = panic > 0.0 or to_player.length() < float(data.get("panic_range", 90.0))
 	if fleeing:
-		desired = -to_player.normalized() * float(data["chase_speed"])
+		var away: Vector2=-to_player.normalized()
+		if kind.begins_with("trail_") and position.distance_to(home_position)>patrol_radius:
+			away=(home_position-position).normalized()
+		desired = away * float(data["chase_speed"])
 	else:
 		_wander(delta)
 

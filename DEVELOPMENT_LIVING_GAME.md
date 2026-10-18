@@ -46,3 +46,5 @@ landschappelijke ruimte. Geen verplichte dagelijkse onderhoudsronde.
 Ronde 1: zie GARDEN_PHASE1.md; kaartindelingen en bestaande bronassets behouden,
 dezelfde landbouw- en productieregels met betere bediening en veldinformatie.
 Ronde 2: zie STORAGE_PHASE2.md; twee kleine kisten, gedeelde huisvoorraad, zoeken, sorteren, favorieten, bulkacties en lokale receptmaterialen. Ronde 3: zie PERSONAL_HOME_PHASE3.md; eigen meubels, vloeren, wanden, lampen en aandenkens met veilige ontwerpmodus. Ronde 4: zie EXPANDABLE_YARD_PHASE4.md; verplaatsbare productie, drie aansluitende tuinpaden, laag hekwerk, automatische poortjes en twee optionele bouwweiden met beschermde landbouw en verbindingen. Ronde 5: zie CROPS_ORCHARD_PHASE5.md; zes teelten, eigen groeistadia, boomkroonruimte, hergroei, zaadvoorziening en toepassingen via bestaande werkplekken. Een volgend gewoon go begint ronde 6: productie en verwerking.
+
+Extra na ronde 5: 0.32.1 repareert opslag/controllerlijsten en de zuidelijke route, maakt bewoners beweeglijk en voegt rustige plukbermen, wild en tien natuurlijke watertypes toe; zie BUGFIX_STORAGE_ROUTES_WILDLIFE_WATER.md. Het volgende gewone go blijft ronde 6.

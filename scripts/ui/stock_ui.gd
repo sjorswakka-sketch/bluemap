@@ -33,6 +33,7 @@ var bulk_buttons: Array[Button]=[]
 var star: Button
 var last_near:=""
 var born:=0
+var stick_wait:=0.0
 func _ready():
  layer=17;process_mode=Node.PROCESS_MODE_ALWAYS;add_to_group("stock_ui")
  var shade:=ColorRect.new();shade.color=Color(0.025,0.045,0.05,.86);shade.set_anchors_preset(Control.PRESET_FULL_RECT);add_child(shade)
@@ -71,7 +72,9 @@ func _ready():
   var col:=VBoxContainer.new();col.size_flags_horizontal=Control.SIZE_EXPAND_FILL;panes.add_child(col)
   var title_label:=label(col,"",18,Color("e7d4a2"))
   var list:=ItemList.new();list.custom_minimum_size=Vector2(460,205);list.size_flags_horizontal=Control.SIZE_EXPAND_FILL;list.fixed_icon_size=Vector2i(24,24);list.add_theme_font_size_override("font_size",18);col.add_child(list)
-  list.item_selected.connect(select_item.bind(side==0));list.item_activated.connect(func(_i):move(1))
+  list.item_selected.connect(select_item.bind(side==0));list.item_activated.connect(activate_item.bind(side==0))
+  list.focus_entered.connect(func():
+   if Controls.controller_active:controller_pane(side==0))
   if side==0:bag=list;bag_title=title_label
   else:chest=list;chest_title=title_label
  detail=label(box,"",17,Color("eff0d6"));detail.custom_minimum_size=Vector2(940,82)
@@ -83,6 +86,7 @@ func _ready():
  bulk_buttons.append(button(bulk,tr("Grondstoffen opbergen"),bulk_move.bind(false)))
  status=label(box,"",15,Color("b9d4c5"))
  message=label(box,tr("Favorieten blijven bij bulkacties bij je; een gekozen recept mag ze wel gebruiken."),15,Color("d2c5a6"))
+ Controls.device_changed.connect(func(_controller):refresh())
  refresh()
 func label(parent: Node,text: String,font: int,color: Color) -> Label:
  var value:=Style.make_label(text,font,color);value.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;parent.add_child(value);return value
@@ -98,6 +102,14 @@ func close():
 func _process(_delta: float):
  if not active:return
  if not is_instance_valid(world) or GameState.map_id!=map_id or GameState.transitioning or GameState.ended:close();return
+ stick_wait=maxf(0,stick_wait-_delta)
+ if Controls.controller_active and not keyboard.visible:
+  var axis:=Controls.aim_vector()
+  if axis.length()>.45 and stick_wait<=0:
+   if absf(axis.x)>absf(axis.y):
+    controller_pane(axis.x<0)
+   else:controller_step(1 if axis.y>0 else -1)
+   stick_wait=.13
  var near:=Stock.nearby_kind()
  if near!=last_near:refresh()
  panel.reset_size()
@@ -114,7 +126,8 @@ func refresh():
  for id in chest_ids:chest.add_item(("%s%s  ×%d" % ["★ " if Stock.favorite(id) else "",tr(Items.info(id).name),Stock.count(id,kind)]),Items.icon_tex(id))
  bag_title.text=tr("Bij je · %d soorten") % bag_ids.size()
  chest_title.text=(tr("Huisvoorraad · %d/48 soorten · 999 per stapel") if kind=="home" else tr("Havenkist · %d/12 soorten · 99 per stapel")) % Stock.stock(kind).size()
- hint.text=tr("Binnen bereik: recepten en wijnvaten gebruiken eerst je tas, daarna deze kist.") if last_near==kind else tr("Je bekijkt de voorraad op afstand. Verplaatsen en maken uit deze kist kan alleen ter plaatse.")
+ hint.text=tr("Binnen bereik: recepten gebruiken eerst je tas, daarna deze kist. Neem materialen voor buiten mee.") if last_near==kind else tr("Je bekijkt de voorraad op afstand. Verplaatsen en maken uit deze kist kan alleen ter plaatse.")
+ if Controls.controller_active:hint.text+="\n"+tr("Rechterstick: lijst doorlopen · links/rechts: tas of kist · A: één verplaatsen · B: terug")
  for b in bulk_buttons:b.disabled=last_near!=kind
  var ids: Array[String]=bag_ids if deposit else chest_ids
  if not ids.has(selected):selected=""
@@ -126,7 +139,31 @@ func select_item(index: int,from_bag: bool):
  deposit=from_bag
  var ids: Array[String]=bag_ids if deposit else chest_ids
  if index<0 or index>=ids.size():return
- selected=ids[index];(bag if deposit else chest).select(index);(chest if deposit else bag).deselect_all();update_detail()
+ selected=ids[index]
+ var list: ItemList=bag if deposit else chest
+ list.select(index)
+ if Controls.controller_active:list.ensure_current_is_visible()
+ (chest if deposit else bag).deselect_all();update_detail()
+func activate_item(index: int,from_bag: bool):
+ select_item(index,from_bag);move(1)
+func controller_pane(from_bag: bool):
+ deposit=from_bag
+ var list: ItemList=bag if deposit else chest
+ if not list.has_focus():list.grab_focus()
+ if list.item_count>0:
+  var current:=list.get_selected_items()
+  select_item(int(current[0]) if not current.is_empty() else 0,deposit)
+ else:selected="";update_detail()
+func controller_step(direction: int):
+ var focus:=get_viewport().gui_get_focus_owner()
+ if focus==bag:deposit=true
+ elif focus==chest:deposit=false
+ var list: ItemList=bag if deposit else chest
+ list.grab_focus()
+ if list.item_count==0:return
+ var current:=list.get_selected_items()
+ var index:=clampi((int(current[0]) if not current.is_empty() else (-1 if direction>0 else list.item_count))+direction,0,list.item_count-1)
+ select_item(index,deposit)
 func update_detail():
  var n:=Stock.movable(selected,deposit,kind) if selected!="" else 0
  for i in range(transfer_buttons.size()):transfer_buttons[i].disabled=n<([1,10,1][i])

@@ -175,6 +175,7 @@ const RECIPES := {
  "or_balm":{"skill":"alchemy","level":1,"station":"library","inputs":{"or_rosemary":2,"prof_herb":1,"hs_honey":1},"output":"or_balm","xp":8},
 }
 const RESOURCES := {
+
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},
 	"stones": {"name": "Losse vuurstenen", "skill": "mining", "item": "prof_stone", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("a9b5c9")},
 	"herbs": {"name": "Zilverkruid", "skill": "foraging", "item": "prof_herb", "amount": 2, "xp": 6, "cooldown": 120.0, "color": Color("85dfb5")},
@@ -199,6 +200,13 @@ const RESOURCES := {
  "cw_reed":{"name":"Oevervezels","skill":"foraging","item":"cw_reed","amount":6,"xp":6,"cooldown":300.0,"duration":0.8,"color":Color("b9c88e"),"sheet":"cw_resources","frame":1},
  "cw_seaglass":{"name":"Zeeagaatader","skill":"mining","item":"cw_seaglass","amount":6,"xp":10,"cooldown":300.0,"tools":["prof_copper_pickaxe","prof_pickaxe"],"duration":1.35,"animation":"mining","color":Color("83d2d1"),"sheet":"cw_resources","frame":2},
  "cw_saltleaf":{"name":"Zoutbladpol","skill":"foraging","item":"cw_saltleaf","amount":4,"xp":6,"cooldown":300.0,"duration":0.65,"color":Color("aabfa1"),"sheet":"cw_resources","frame":3},
+ "trail_herbs":{"name":"Wilde bermkruiden","skill":"foraging","item":"prof_herb","amount":2,"xp":4,"cooldown":180.0,"color":Color("9ebc85"),"sheet":"trail_plants","frame":0},
+ "trail_flowers":{"name":"Wilde bloemen","skill":"foraging","item":"trail_flower","amount":2,"xp":4,"cooldown":180.0,"color":Color("dfb8da"),"sheet":"trail_plants","frame":1},
+ "trail_nuts":{"name":"Noten in de berm","skill":"foraging","item":"trail_nut","amount":2,"xp":4,"cooldown":210.0,"color":Color("be9969"),"sheet":"trail_plants","frame":2},
+ "trail_seeds":{"name":"Wilde zaadpluimen","skill":"foraging","item":"hs_seed","amount":1,"xp":4,"cooldown":240.0,"color":Color("dfcc94"),"sheet":"trail_plants","frame":3},
+ "trail_roots":{"name":"Wilde wortels","skill":"foraging","item":"or_carrot","amount":2,"xp":4,"cooldown":210.0,"color":Color("deaa69"),"sheet":"trail_plants","frame":4},
+ "trail_fruit":{"name":"Wilde fruitstruik","skill":"foraging","item":"prof_berry","amount":2,"xp":4,"cooldown":180.0,"color":Color("a4add9"),"sheet":"trail_plants","frame":5},
+ "trail_fungi":{"name":"Wilde grotzwammen","skill":"foraging","item":"prof_mushroom","amount":2,"xp":4,"cooldown":210.0,"color":Color("cfad8f"),"sheet":"trail_plants","frame":6},
 }
 # Explicit IDs keep cooldowns stable when maps or the original object lists change.
 # Nodes are small, non-blocking props on walkable tiles away from doors and quest items.

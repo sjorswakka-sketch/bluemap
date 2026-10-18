@@ -285,7 +285,7 @@ func test_data() -> void:
 
 	# De inhoud van het meer
 	var lake_objects: Array = Maps.get_map("lake")["objects"]
-	var slimes := lake_objects.filter(func(o: Dictionary) -> bool: return o["type"] == "enemy")
+	var slimes := lake_objects.filter(func(o: Dictionary) -> bool: return o["type"] == "enemy" and not o.get("trail_wildlife",false))
 	check(slimes.size() <= 4 and slimes.all(func(o: Dictionary) -> bool: return o["kind"] == "slime"), "hooguit vier gewone slijmen aan de verre oever")
 	var chests := lake_objects.filter(func(o: Dictionary) -> bool: return o["type"] == "chest")
 	var chest_items: Array = []
@@ -367,7 +367,7 @@ func test_pickups_and_chests() -> void:
 	await fresh_game("lake")
 	var slimes := 0
 	for enemy in get_nodes_in_group("enemies"):
-		slimes += 1
+		if enemy.kind=="slime":slimes += 1
 	check(slimes == 4, "vier slijmen aan de verre oever")
 	var chests: Array = []
 	for node in get_nodes_in_group("interactable"):
@@ -1028,6 +1028,7 @@ func test_menu_and_save() -> void:
 		for mark: Dictionary in world.menu_ui.extension_marks(world.map_data):
 			labels[mark["label"]] = int(labels.get(mark["label"], 0)) + 1
 		var want: Dictionary = {"lake": {"visplek": 5, "diepe visplek": 1, "grondstof": 4, "Dorpsmaaltijd": 3, "Werktekening":1}, "fisher_hut": {}, "library": {"lessenaar": 6,"Werktekening":1}}[map_id]
+		if map_id=="lake":want["grondstof"]+=Maps.get_map("lake").objects.filter(func(o):return o.type=="profession_resource" and o.get("id","").begins_with("trail:")).size()
 		check(labels == want, "de bijzondere plekken op het kaartje: %s" % [labels])
 		press("pause")
 		await frames(3)

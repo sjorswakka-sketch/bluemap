@@ -63,15 +63,15 @@ func run():
 			if original[index].type in ["chest","pickup"]:
 				check(actual[index]==original[index],"saved object slot unchanged: "+id+str(index))
 	await portal("forest_edge")
-	check(get_nodes_in_group("enemies").is_empty() and get_nodes_in_group("pickups").is_empty(),"quiet area has no enemies or loot")
-	check(world.map_data.objects.size()==5,"two exits, two signs and a scenic waterfall; no new activity or enemy")
+	check(get_nodes_in_group("enemies").filter(func(n):return n.data.behavior!="animal").is_empty() and get_nodes_in_group("pickups").is_empty(),"quiet area has no hostile enemies or loose loot")
+	check(world.map_data.objects.filter(func(o):return not o.get("trail_wildlife",false) and not o.get("id","").begins_with("trail:")).size()==5,"two exits, two signs and a scenic waterfall; no new activity or enemy")
 	var hp: int=gs.hp
 	var steps:=await edge_path()
 	print("EDGE WALK SECONDS=",steps/60.0)
 	check(steps/60.0>=8 and steps/60.0<16,"transition is a short pause, not a long compulsory detour")
 	check(gs.hp==hp and world.player.knockback==Vector2.ZERO,"quiet crossing needs no combat")
 	await portal("forest")
-	check(get_nodes_in_group("enemies").size()==18,"forest has eighteen enemies instead of twenty-six")
+	check(get_nodes_in_group("enemies").filter(func(n):return n.data.behavior!="animal").size()==18,"forest has eighteen enemies instead of twenty-six")
 	for foe in get_nodes_in_group("enemies"):
 		check(not world.is_solid(foe.position+Vector2(0,8)),"retained enemy stands on floor: "+foe.kind)
 	world.player.invuln=0
@@ -106,7 +106,7 @@ func run():
 		if "unique_key" in n and n.unique_key=="chest:forest:4":check(n.opened,"old opened chest remains opened")
 	for n in get_nodes_in_group("pickups"):check(n.unique_key!="pickup:forest:47","old collected potion stays absent")
 	await enter("lake")
-	check(get_nodes_in_group("enemies").size()==4 and world.map_data.objects.size()==Maps.get_map("lake").objects.size()+4,"lake layout/activity count preserved")
+	check(get_nodes_in_group("enemies").filter(func(n):return n.data.behavior!="animal").size()==4 and world.map_data.objects.size()==Maps.get_map("lake").objects.size()+4,"lake layout/activity count preserved")
 	world.queue_free();await frames()
 	print("WORLD SPACE OK" if failures==0 else "WORLD SPACE FAILED: %d"%failures)
 	quit(0 if failures==0 else 1)

@@ -19,7 +19,7 @@ static func status(at: Vector2i,action: String,world: Node) -> Dictionary:
   reason=TranslationServer.translate("Laat de kroonruimte rond de appelboom vrij; water kan buiten de kroon aansluiten.")
  elif e.get("crop","")=="apple" and action in ["harvest","fertilize","fill"]:
   reason=Farm.harvest_reason(e) if action=="harvest" else TranslationServer.translate("Deze boom is al bemest.") if action=="fertilize" and e.get("fertilized",false) else TranslationServer.translate("Maak eerst meststof op de mesthoop.") if action=="fertilize" and Farm.gs().count("hs_fertilizer")<1 else TranslationServer.translate("Maak ruimte in je tas voor het boompje.") if action=="fill" and Farm.gs().room("or_apple_seed")<1 else ""
- elif world.map_data.rows[at.y][at.x]!="." or not world.spawn_fits(Vector2(at)*32+Vector2(16,16)):
+ elif (world.map_data.rows[at.y][at.x]!="." and not (world.map_data.rows[at.y][at.x]=="," and (action=="channel" or not e.is_empty()))) or not world.spawn_fits(Vector2(at)*32+Vector2(16,16)):
   reason=TranslationServer.translate("Houd deze plek vrij voor water, paden en voorwerpen.")
  elif action in ["soil","channel"]:
   if not e.is_empty():reason=TranslationServer.translate("Deze tegel is al bewerkt.")

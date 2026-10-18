@@ -241,7 +241,7 @@ func run() -> void:
 	check(post.foes.size() == 1 and post.foes[0].kind == "cv_slinger","second lesson isolates ranged enemy")
 	post.interact()
 	await frames()
-	check(not post.running and get_nodes_in_group("enemies").is_empty(),"stop removes exercise enemies")
+	check(not post.running and get_nodes_in_group("enemies").filter(func(n):return n.data.behavior!="animal").is_empty(),"stop removes hostile exercise enemies while peaceful wildlife remains")
 	post.lesson = 2
 	post.interact()
 	post._process(3)

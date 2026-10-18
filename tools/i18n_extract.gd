@@ -131,6 +131,10 @@ class Collector:
 
 ## 1. Alle tekst uit de data (Nederlands), met uitleg voor de vertalers.
 static func collect_data(c: Collector) -> void:
+	var water: Script=load("res://scripts/core/water_features.gd")
+	for id: String in water.TYPES:
+		for field in ["name","detail"]:c.add(water.TYPES[id][field],"Watertype "+id+": "+field)
+	c.add(water.ESTUARY_DETAIL,"Brak riviermondingswater")
 	for table in [OrchardCatalog.NAMES,OrchardCatalog.NOTES]:
 		for id: String in table:c.add(table[id],"Gewassen en boomgaard: "+id)
 	for text: String in OrchardCatalog.GROUPS:c.add(text,"Gewassen: categorie")

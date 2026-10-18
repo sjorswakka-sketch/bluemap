@@ -83,7 +83,9 @@ func refresh() -> void:
 			if GameState.flag("lw_heat_east"):
 				for y in range(3,13): tile(40,y,",")
 				for x in range(40,44): tile(x,3,",")
-	if terrain_changed and is_instance_valid(world.landscape):world.landscape.refresh()
+	if terrain_changed:
+		preload("res://scripts/core/water_features.gd").describe(GameState.map_id,world.map_data)
+		if is_instance_valid(world.landscape):world.landscape.refresh()
 
 func _draw() -> void:
 	match GameState.map_id:

@@ -171,11 +171,13 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	_clear_map()
 	if map_id=="tide_cove":preload("res://scripts/core/tides.gd").prepare(map_data,GameState.day_time)
 	if map_id=="tidal_hollow":preload("res://scripts/core/coastal_adventures.gd").prepare(map_data)
+	preload("res://scripts/core/water_features.gd").describe(map_id,map_data)
 	_build_tiles(map_data["rows"])
 	landscape = preload("res://scripts/entities/pixel_landscape.gd").new()
 	landscape.world = self
 	ground.add_child(landscape)
 	_build_fountains()
+	var waters:=preload("res://scripts/entities/water_scenery.gd").new();waters.world=self;ground.add_child(waters)
 
 	darkness = map_data.get("dark", 0.0)
 	canvas_mod.color = Color.WHITE.lerp(DARK_COLOR, darkness)

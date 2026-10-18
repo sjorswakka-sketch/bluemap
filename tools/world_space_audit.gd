@@ -28,7 +28,7 @@ func run():
 				var exposed:=0
 				for x in range(stretch[0],stretch[1]+1):
 					for obj: Dictionary in data.objects:
-						if obj.type=="enemy" and obj.get("enabled",true) and Vector2(obj.pos[0]-x,obj.pos[1]-17).length()*32<=140:
+						if obj.type=="enemy" and not obj.get("trail_wildlife",false) and obj.get("enabled",true) and Vector2(obj.pos[0]-x,obj.pos[1]-17).length()*32<=140:
 							exposed+=1;break
 				entry.road_pressure[str(stretch)]={"samples":stretch[1]-stretch[0]+1,"near_hostile":exposed}
 		report[id]=entry

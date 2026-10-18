@@ -26,4 +26,6 @@ static func changes(rows: Array,drained: bool,repaired: bool) -> Dictionary:
 	if repaired:
 		for y in range(BRIDGE.position.y,BRIDGE.end.y):
 			for x in range(BRIDGE.position.x,BRIDGE.end.x):result[Vector2i(x,y)]="="
+	var state:=int(drained)+int(repaired)*2
+	for entry: Array in preload("res://scripts/data/water_layouts.gd").STATE_CHANGES.get(str(state),[]):result[Vector2i(entry[0],entry[1])]=entry[2]
 	return result

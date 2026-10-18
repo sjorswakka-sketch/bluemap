@@ -126,8 +126,9 @@ func _world_ui() -> void:
 	var world: Node = load("res://scenes/main.tscn").instantiate()
 	root.add_child(world)
 	await frames(5)
-	check(get_nodes_in_group("profession_resources").size() == 6, "Village creates six usable resource nodes")
-	var node: Node = get_nodes_in_group("profession_resources")[0]
+	var original_nodes:=get_nodes_in_group("profession_resources").filter(func(n):return not n.resource_id.begins_with("trail:"))
+	check(original_nodes.size() == 6, "Village retains its six original usable resource nodes beside the new verges")
+	var node: Node = original_nodes[0]
 	var resource_id: String = node.resource_id
 	world.player.global_position = node.global_position + Vector2(0, 24)
 	node.interact()

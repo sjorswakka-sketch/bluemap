@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CharacterBody2D
 ## Een personage waar je mee kunt praten. Welk gesprek je krijgt staat in scripts/data/npcs.gd.
 
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
@@ -12,6 +12,9 @@ var world: Node
 var exists_if: Array = [] # voorwaarden om er te blijven (de kat verdwijnt als je haar gevonden hebt)
 var t := randf() * TAU
 var player: Node2D
+var roam_anchor:=Vector2.ZERO
+var roam_goal:=Vector2.ZERO
+var roam_wait:=3.0
 var route_wait := false
 var route_calm := 0.0
 var route_panic := 0.0
@@ -26,6 +29,8 @@ func _ready() -> void:
 	add_to_group("interactable")
 	add_to_group("npc")
 	collision_layer = 1
+	collision_mask = 3
+	roam_anchor=position;roam_goal=position;roam_wait=randf_range(2,6)
 
 	var shape := CollisionShape2D.new()
 	var rect := RectangleShape2D.new()
@@ -39,7 +44,7 @@ func _process(delta: float) -> void:
 	var previous_beat := floori(t*2.4/PI)
 	t += delta
 	preload("res://scripts/entities/route_npc.gd").update(self,delta)
-	if npc_id=="greta" and not GameState.input_locked() and floori(t*2.4/PI)!=previous_beat and GameState.day_time>0.12 and GameState.day_time<0.78 and is_instance_valid(world.player):
+	if npc_id=="greta" and velocity.length()<1 and not GameState.input_locked() and floori(t*2.4/PI)!=previous_beat and GameState.day_time>0.12 and GameState.day_time<0.78 and is_instance_valid(world.player):
 		var distance: float = position.distance_to(world.player.position)
 		if distance<160: Sound.play("op_hammer",-14-distance/12)
 	if player == null:
@@ -49,6 +54,9 @@ func _process(delta: float) -> void:
 		return
 	queue_redraw()
 
+
+func _physics_process(delta: float) -> void:
+	preload("res://scripts/core/npc_roam.gd").update(self,delta)
 
 func interact() -> void:
 	if GameState.input_locked(): return
@@ -73,8 +81,8 @@ func _draw() -> void:
 	var float_y := sin(t * 2.0) * 3.0 - 4.0 if ghost else 0.0
 	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(5.0 * scale, 2.0 * scale), Color(0, 0, 0, 0.12 if ghost else 0.3))
 	var tint := Color(1, 1, 1, 0.78 + sin(t * 3.0) * 0.1) if ghost else Color.WHITE
-	DrawUtil.sprite(self, Art.tex(data["sheet"]), int(t * 1.6) % 2, 0, Vector2(0, drop + float_y), Vector2i(16, 16), scale, tint)
-	if npc_id == "greta" and not GameState.dialogue_open and not GameState.ui_owners.has("work_together") and GameState.day_time>0.12 and GameState.day_time<0.78:
+	DrawUtil.sprite(self, Art.tex(data["sheet"]), int(t * (4.8 if velocity.length()>1 else 1.6)) % 2, 0, Vector2(0, drop + float_y), Vector2i(16, 16), scale, tint)
+	if npc_id == "greta" and velocity.length()<1 and not GameState.dialogue_open and not GameState.ui_owners.has("work_together") and GameState.day_time>0.12 and GameState.day_time<0.78:
 		var lift := -absf(sin(t*2.4))*12
 		draw_line(Vector2(10,4),Vector2(20,lift),Color("bc955e"),3)
 		draw_rect(Rect2(16,lift-3,10,6),Color("8eabb8"))

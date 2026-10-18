@@ -796,7 +796,7 @@ func _draw_map(font: Font) -> void:
 		legend[tr(mark["label"])] = mark["color"]
 	if route.size()>1:_text(font,Vector2(MARGIN,438),tr("Gouden ring: volgende doorgang voor je gevolgde opdracht."),14,Color(1,0.86,0.4),MAP_WIDTH)
 	for entry: Dictionary in map_legend_layout(legend,font):
-		page.draw_string(font,entry.at,entry.text,HORIZONTAL_ALIGNMENT_LEFT,-1,14,entry.color)
+		page.draw_string(font,entry.at,entry.text,HORIZONTAL_ALIGNMENT_LEFT,-1,int(entry.get("font_size",14)),entry.color)
 	MenuPages.draw_travel_panel(self, font, altars)
 
 func map_legend_layout(legend: Dictionary,font: Font) -> Array[Dictionary]:
@@ -810,6 +810,22 @@ func map_legend_layout(legend: Dictionary,font: Font) -> Array[Dictionary]:
 		if row>1:break
 		result.append({"text":text,"at":Vector2(x,478+row*22),"color":legend[label],"width":width})
 		x+=width+16
+	if result.size()==legend.size():return result
+	# Balance long category names across both rows instead of dropping the last entry.
+	var labels: Array=legend.keys()
+	labels.sort_custom(func(a,b):return font.get_string_size(str(a),HORIZONTAL_ALIGNMENT_LEFT,-1,14).x>font.get_string_size(str(b),HORIZONTAL_ALIGNMENT_LEFT,-1,14).x)
+	for font_size in [14,13,12]:
+		result.clear()
+		var used: Array[float]=[0.0,0.0]
+		for label: String in labels:
+			var text: String="◆ "+label
+			var width:=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size).x
+			var target:=0 if used[0]<=used[1] else 1
+			if used[target]+width>MAP_WIDTH:target=1-target
+			if used[target]+width>MAP_WIDTH:break
+			result.append({"text":text,"at":Vector2(MARGIN+used[target],478+target*22),"color":legend[label],"width":width,"font_size":font_size})
+			used[target]+=width+12
+		if result.size()==legend.size():return result
 	return result
 
 

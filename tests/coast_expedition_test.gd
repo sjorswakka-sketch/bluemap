@@ -79,12 +79,12 @@ func run():
 	var base: Dictionary=Maps.MAPS.lake.DATA.duplicate(true)
 	for file in ["living_maps","regional_maps","combat_maps","craft_maps","space_maps","habitat_maps"]:load("res://scripts/data/"+file+".gd").enrich("lake",base)
 	var actual:=Maps.get_map("lake")
-	check(actual.objects.size()==base.objects.size()+2,"lake only gets one optional exit and one direction sign")
+	check(actual.objects.filter(func(o):return not o.get("trail_wildlife",false) and not o.get("id","").begins_with("trail:")).size()==base.objects.size()+2,"lake only gets one optional exit and one direction sign")
 	for i in base.objects.size():check(actual.objects[i]==base.objects[i],"original lake object and save slot preserved "+str(i))
 	for y in actual.rows.size():
 		for x in actual.rows[y].length():
 			if actual.rows[y][x]!=base.rows[y][x]:check(y in [8,9] and x>=(39 if y==8 else 40),"only east-edge connection terrain changes")
-	check(Maps.get_map("forest_edge").objects.size()==5,"quiet Bosrand only adds a scenic waterfall")
+	check(Maps.get_map("forest_edge").objects.filter(func(o):return not o.get("trail_wildlife",false) and not o.get("id","").begins_with("trail:")).size()==5,"quiet Bosrand only adds a scenic waterfall")
 	check(Journey.path("village","gull_island")==["village","lake","coast","gull_island"],"quest graph recognises ferry links as well as portals")
 	check(Journey.path("gull_island","village")==["gull_island","coast","lake","village"],"route home is available without unlocks")
 	check(Tiles.NAMES.slice(71,78)==["ce_sea","ce_sand","ce_dune","ce_grass","ce_cliff","ce_shore","ce_boardwalk"] and load("res://assets/tiles.png").get_width()==Tiles.NAMES.size()*16,"atlas has all legacy and seven new tiles")
@@ -110,7 +110,7 @@ func run():
 	var steps:=await route_to(Vector2i(42,22))
 	print("COAST WALK SECONDS=",steps/60.0," actual runtime ms=",(Time.get_ticks_usec()-start_time)/1000.0)
 	check(steps/60.0>8 and steps/60.0<20,"coast crossing offers a short spacious walk")
-	check(get_nodes_in_group("enemies").is_empty() and get_nodes_in_group("pickups").is_empty() and gs.hp==hp,"new coastal walk is quiet without invulnerability")
+	check(get_nodes_in_group("enemies").filter(func(n):return n.data.behavior!="animal").is_empty() and get_nodes_in_group("pickups").is_empty() and gs.hp==hp,"new coastal walk is quiet without invulnerability")
 	await offer(false)
 	await offer()
 	var ui:=voyage();var old_elapsed: float=ui.elapsed
@@ -152,7 +152,7 @@ func run():
 	release();await frames(30)
 	check(gs.map_id=="lake" and world.spawn_fits(p.position),"actual west exit returns to unchanged lake route")
 	await walk_to(Vector2(21.5,8.5)*32)
-	check(gs.hp==hp and get_nodes_in_group("enemies").size()==4,"north lake return really remains safe with existing enemies active")
+	check(gs.hp==hp and get_nodes_in_group("enemies").filter(func(n):return n.data.behavior!="animal").size()==4,"north lake return really remains safe with existing enemies active")
 	# Forced unload of an uncommitted passage cannot strand a UI owner.
 	await enter("coast","from_island");p.position=Vector2(42.5,22.5)*32;await offer();ui=voyage()
 	world.load_map("lake","from_coast");await frames(8)

@@ -40,7 +40,7 @@ func run():
 	check(gs.map_id=="tide_cove" and world.spawn_fits(p.position),"native movement crosses raised island connection")
 	var hp: int=gs.hp
 	var coins: int=gs.coins
-	check(get_nodes_in_group("enemies").is_empty() and get_nodes_in_group("pickups").is_empty(),"new route has no enemies or collecting pressure")
+	check(get_nodes_in_group("enemies").filter(func(n):return n.data.behavior!="animal").is_empty() and get_nodes_in_group("pickups").is_empty(),"new route has no hostile enemies or compulsory loot")
 	clock(20);p.position=Vector2(19.5,25.5)*32
 	await walk_to(Vector2(32.5,25.5)*32)
 	check(not tide().flooded and world.spawn_fits(p.position),"low-water sandbank is physically walkable")

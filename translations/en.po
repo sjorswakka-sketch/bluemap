@@ -8,6 +8,111 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Source-Language: nl\n"
 
+#. Watertype river: name
+#: scripts/core/water_features.gd:5
+msgid "Rivier"
+msgstr "River"
+
+#. Watertype river: detail
+#: scripts/core/water_features.gd:5
+msgid "Stromend zoet water dat naar de kust afwatert."
+msgstr "Flowing fresh water draining towards the coast."
+
+#. Watertype puddle: name
+#: scripts/core/water_features.gd:6
+msgid "Plas"
+msgstr "Puddle"
+
+#. Watertype puddle: detail
+#: scripts/core/water_features.gd:6
+msgid "Een ondiepe regenkom met stilstaand zoet water."
+msgstr "A shallow rain basin with still fresh water."
+
+#. Watertype stream: name
+#: scripts/core/water_features.gd:7
+msgid "Beek"
+msgstr "Stream"
+
+#. Watertype stream: detail
+#: scripts/core/water_features.gd:7
+msgid "Een smalle zoetwaterloop vanuit hoger bosgebied."
+msgstr "A narrow freshwater stream from the higher woodland."
+
+#. Watertype lake: name
+#: scripts/core/water_features.gd:8
+msgid "Meer"
+msgstr "Lake"
+
+#. Watertype lake: detail
+#: scripts/core/water_features.gd:8
+msgid "Diep, rustig zoet water. Visplekken blijven aan de bestaande oevers."
+msgstr "Deep, calm fresh water. Fishing spots remain on the existing banks."
+
+#. Watertype sea: name
+#: scripts/core/water_features.gd:9
+msgid "Zee"
+msgstr "Sea"
+
+#. Watertype sea: detail
+#: scripts/core/water_features.gd:9
+msgid "Zout getijdenwater; niet geschikt voor landbouwirrigatie."
+msgstr "Salty tidal water; unsuitable for irrigating crops."
+
+#. Watertype marsh: name
+#: scripts/core/water_features.gd:10
+msgid "Moeras"
+msgstr "Marsh"
+
+#. Watertype marsh: detail
+#: scripts/core/water_features.gd:10
+msgid "Ondiep veenwater tussen riet en modder. Gebruik de droge paden en bruggen."
+msgstr "Shallow peat water among reeds and mud. Use the dry paths and bridges."
+
+#. Watertype canal: name
+#: scripts/core/water_features.gd:11
+msgid "Kanaal"
+msgstr "Canal"
+
+#. Watertype canal: detail
+#: scripts/core/water_features.gd:11
+msgid "Aangevoerd zoet water. Sluit je smalle irrigatiegreppels langs de oever aan."
+msgstr "Fresh water supply. Connect your narrow irrigation channels along the bank."
+
+#. Watertype geyser: name
+#: scripts/core/water_features.gd:12
+msgid "Geiser"
+msgstr "Geyser"
+
+#. Watertype geyser: detail
+#: scripts/core/water_features.gd:12
+msgid "Een warme mineraalbron in de aardbreuk. De waterstraal barst regelmatig uit; geen irrigatiewater."
+msgstr "A hot mineral spring in the fault. Its jet erupts regularly; unsuitable for irrigation."
+
+#. Watertype hot_spring: name
+#: scripts/core/water_features.gd:13
+msgid "Warmwaterbron"
+msgstr "Hot spring"
+
+#. Watertype hot_spring: detail
+#: scripts/core/water_features.gd:13
+msgid "Warme kwel langs de besneeuwde breuklijn. Stilstaan aan de oever herstelt langzaam hartjes."
+msgstr "Warm groundwater along the snowy fault. Resting quietly on the bank slowly restores hearts."
+
+#. Watertype pool: name
+#: scripts/core/water_features.gd:14
+msgid "Poel"
+msgstr "Pool"
+
+#. Watertype pool: detail
+#: scripts/core/water_features.gd:14
+msgid "Een beschutte zoetwaterkom, gevoed door regen of kwel."
+msgstr "A sheltered freshwater basin fed by rain or groundwater."
+
+#. Brak riviermondingswater
+#: scripts/core/water_features.gd:16
+msgid "Brak mondingswater: rivier en zee komen hier samen. Niet geschikt voor landbouwirrigatie."
+msgstr "Brackish estuary water: river and sea meet here. Unsuitable for irrigating crops."
+
 #. Gewassen en boomgaard: carrot
 #: scripts/data/orchard_catalog.gd:13
 msgid "Wortels"
@@ -35,7 +140,7 @@ msgstr "Apple tree"
 
 #. Gewassen en boomgaard: berry
 #. Oogstbare grondstof berries
-#: scripts/data/orchard_catalog.gd:13 scripts/data/ext/beroepen.gd:181
+#: scripts/data/orchard_catalog.gd:13 scripts/data/ext/beroepen.gd:182
 msgid "Bosbessenstruik"
 msgstr "Blueberry Bush"
 
@@ -501,7 +606,7 @@ msgid "Rustig water, grote vissen en een bibliotheek."
 msgstr "Calm water, big fish, and a library."
 
 #. Kaart village, savepoint [9, 23]: name
-#: scripts/data/homestead_maps.gd:39
+#: scripts/data/homestead_maps.gd:50
 msgid "Bij je eigen huis"
 msgstr "Outside your home"
 
@@ -5433,6 +5538,26 @@ msgstr "Crystal Sword"
 msgid "Gloeit zachtblauw. Het sterkste zwaard van Azura."
 msgstr "Glows a soft blue. The strongest sword in Azura."
 
+#. Naam van voorwerp trail_flower
+#: scripts/data/ext/trail_life.gd:2
+msgid "Bermbloemen"
+msgstr "Wayside flowers"
+
+#. Beschrijving van voorwerp trail_flower
+#: scripts/data/ext/trail_life.gd:2
+msgid "Een klein bosje geplukte wilde bloemen uit een natuurlijke berm."
+msgstr "A small bunch of wild flowers picked from a natural verge."
+
+#. Naam van voorwerp trail_nut
+#: scripts/data/ext/trail_life.gd:2
+msgid "Bosnoten"
+msgstr "Woodland nuts"
+
+#. Beschrijving van voorwerp trail_nut
+#: scripts/data/ext/trail_life.gd:2
+msgid "Eetbare noten van de padberm. Herstellen één hartje."
+msgstr "Edible nuts from the wayside. Restore one heart."
+
 #. Naam van voorwerp or_carrot_seed
 #: scripts/data/ext/orchard.gd:4
 msgid "Wortelzaad"
@@ -6002,7 +6127,7 @@ msgstr "A sharp loose stone. You can pick it up without tools."
 
 #. Naam van voorwerp prof_herb
 #. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:180
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:181
 msgid "Zilverkruid"
 msgstr "Silverleaf"
 
@@ -6233,7 +6358,7 @@ msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks
 
 #. Naam van voorwerp prof_zandkruid
 #. Oogstbare grondstof sandwort
-#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:191
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:192
 msgid "Zandkruid"
 msgstr "Sandwort"
 
@@ -6304,7 +6429,7 @@ msgstr "A red, tart berry that grows low above the moor water. For porridge and 
 
 #. Naam van voorwerp prof_watermunt
 #. Oogstbare grondstof watermunt
-#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:195
+#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:196
 msgid "Watermunt"
 msgstr "Water mint"
 
@@ -7047,6 +7172,46 @@ msgstr "A giant made of crystal and stone. It's slow, but you'll feel its punch 
 #: scripts/data/enemies.gd:67
 msgid "De baas van alle slijmen. Hij springt, spuugt slijm en vindt zichzelf erg belangrijk."
 msgstr "The boss of all slimes. He jumps, spits slime, and thinks he's very important."
+
+#. Naam van vijand trail_hare
+#: scripts/data/ext/trail_life.gd:4
+msgid "Veldhaas"
+msgstr "Brown hare"
+
+#. Vijand trail_hare: grappige beschrijving in het beestenboek
+#: scripts/data/ext/trail_life.gd:4
+msgid "Een rustige veldhaas die in de berm scharrelt en voor reizigers opzij springt."
+msgstr "A peaceful hare foraging in the verge and hopping aside for travellers."
+
+#. Naam van vijand trail_fox
+#: scripts/data/ext/trail_life.gd:5
+msgid "Bosvos"
+msgstr "Woodland fox"
+
+#. Vijand trail_fox: grappige beschrijving in het beestenboek
+#: scripts/data/ext/trail_life.gd:5
+msgid "Een kleine bosvos die dicht bij zijn eigen schuilplek blijft."
+msgstr "A small woodland fox staying close to its shelter."
+
+#. Naam van vijand trail_moth
+#: scripts/data/ext/trail_life.gd:6
+msgid "Nachtvlinder"
+msgstr "Moth"
+
+#. Vijand trail_moth: grappige beschrijving in het beestenboek
+#: scripts/data/ext/trail_life.gd:6
+msgid "Een stille vlinder bij ruïnes, grotingangen en wilde kruiden."
+msgstr "A quiet moth near ruins, cave entrances and wild herbs."
+
+#. Naam van vijand trail_gull
+#: scripts/data/ext/trail_life.gd:7
+msgid "Strandloper"
+msgstr "Sandpiper"
+
+#. Vijand trail_gull: grappige beschrijving in het beestenboek
+#: scripts/data/ext/trail_life.gd:7
+msgid "Een kleine kustvogel die voedsel zoekt op droge oevers."
+msgstr "A small coastal bird seeking food on dry banks."
 
 #. Naam van vijand ad_crab
 #: scripts/data/ext/coastal_adventures.gd:13
@@ -8040,7 +8205,7 @@ msgid "Maken"
 msgstr "Craft"
 
 #. Beroepen: tekst of sjabloon supplies
-#: scripts/ui/stock_ui.gd:53 scripts/data/ext/beroepen.gd:17
+#: scripts/ui/stock_ui.gd:54 scripts/data/ext/beroepen.gd:17
 msgid "Eten & drinken"
 msgstr "Food & drink"
 
@@ -8361,104 +8526,139 @@ msgid "Maak onderweg bessensnacks. Gebruik de keuken van de herberg voor warme g
 msgstr "Make berry snacks on the go. Use the inn's kitchen for hot meals."
 
 #. Oogstbare grondstof branches
-#: scripts/data/ext/beroepen.gd:178
+#: scripts/data/ext/beroepen.gd:179
 msgid "Losse takken"
 msgstr "Loose Branches"
 
 #. Oogstbare grondstof stones
-#: scripts/data/ext/beroepen.gd:179
+#: scripts/data/ext/beroepen.gd:180
 msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:182
+#: scripts/data/ext/beroepen.gd:183
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
 #. Oogstbare grondstof stump
-#: scripts/data/ext/beroepen.gd:183
+#: scripts/data/ext/beroepen.gd:184
 msgid "Berkenstronk"
 msgstr "Birch Stump"
 
 #. Oogstbare grondstof copper
-#: scripts/data/ext/beroepen.gd:184
+#: scripts/data/ext/beroepen.gd:185
 msgid "Koperader"
 msgstr "Copper Vein"
 
 #. Oogstbare grondstof iron
-#: scripts/data/ext/beroepen.gd:185
+#: scripts/data/ext/beroepen.gd:186
 msgid "IJzerader"
 msgstr "Iron Vein"
 
 #. Oogstbare grondstof winterherbs
-#: scripts/data/ext/beroepen.gd:186
+#: scripts/data/ext/beroepen.gd:187
 msgid "IJsbloemen"
 msgstr "Ice flowers"
 
 #. Oogstbare grondstof frostberries
-#: scripts/data/ext/beroepen.gd:187
+#: scripts/data/ext/beroepen.gd:188
 msgid "Winterbessenstruik"
 msgstr "Winter berry bush"
 
 #. Oogstbare grondstof pine_stump
-#: scripts/data/ext/beroepen.gd:188
+#: scripts/data/ext/beroepen.gd:189
 msgid "Dennenstronk"
 msgstr "Pine stump"
 
 #. Oogstbare grondstof ice_vein
-#: scripts/data/ext/beroepen.gd:189
+#: scripts/data/ext/beroepen.gd:190
 msgid "IJskristalader"
 msgstr "Ice crystal vein"
 
 #. Oogstbare grondstof cactusfigs
-#: scripts/data/ext/beroepen.gd:190
+#: scripts/data/ext/beroepen.gd:191
 msgid "Cactusvijgen"
 msgstr "Cactus figs"
 
 #. Oogstbare grondstof sandstone_rock
-#: scripts/data/ext/beroepen.gd:192
+#: scripts/data/ext/beroepen.gd:193
 msgid "Zandsteenklip"
 msgstr "Sandstone crag"
 
 #. Oogstbare grondstof dauwklauw
-#: scripts/data/ext/beroepen.gd:193
+#: scripts/data/ext/beroepen.gd:194
 msgid "Dauwklauwen"
 msgstr "Dewclaws"
 
 #. Oogstbare grondstof veenbessen
-#: scripts/data/ext/beroepen.gd:194
+#: scripts/data/ext/beroepen.gd:195
 msgid "Veenbessenstruik"
 msgstr "Cranberry bush"
 
 #. Oogstbare grondstof wilgstronk
-#: scripts/data/ext/beroepen.gd:196
+#: scripts/data/ext/beroepen.gd:197
 msgid "Geknotte wilg"
 msgstr "Pollard willow"
 
 #. Oogstbare grondstof ijzeroer_ader
-#: scripts/data/ext/beroepen.gd:197
+#: scripts/data/ext/beroepen.gd:198
 msgid "IJzeroerklomp"
 msgstr "Bog iron lump"
 
 #. Oogstbare grondstof cw_driftwood
-#: scripts/data/ext/beroepen.gd:198
+#: scripts/data/ext/beroepen.gd:199
 msgid "Droog zoutdrijfhout"
 msgstr "Dry saltwood"
 
 #. Oogstbare grondstof cw_reed
-#: scripts/data/ext/beroepen.gd:199
+#: scripts/data/ext/beroepen.gd:200
 msgid "Oevervezels"
 msgstr "Bank fibers"
 
 #. Oogstbare grondstof cw_seaglass
-#: scripts/data/ext/beroepen.gd:200
+#: scripts/data/ext/beroepen.gd:201
 msgid "Zeeagaatader"
 msgstr "Sea-agate vein"
 
 #. Oogstbare grondstof cw_saltleaf
-#: scripts/data/ext/beroepen.gd:201
+#: scripts/data/ext/beroepen.gd:202
 msgid "Zoutbladpol"
 msgstr "Saltleaf patch"
+
+#. Oogstbare grondstof trail_herbs
+#: scripts/data/ext/beroepen.gd:203
+msgid "Wilde bermkruiden"
+msgstr "Wayside herbs"
+
+#. Oogstbare grondstof trail_flowers
+#: scripts/data/ext/beroepen.gd:204
+msgid "Wilde bloemen"
+msgstr "Wild flowers"
+
+#. Oogstbare grondstof trail_nuts
+#: scripts/data/ext/beroepen.gd:205
+msgid "Noten in de berm"
+msgstr "Wayside nuts"
+
+#. Oogstbare grondstof trail_seeds
+#: scripts/data/ext/beroepen.gd:206
+msgid "Wilde zaadpluimen"
+msgstr "Wild seed heads"
+
+#. Oogstbare grondstof trail_roots
+#: scripts/data/ext/beroepen.gd:207
+msgid "Wilde wortels"
+msgstr "Wild carrots"
+
+#. Oogstbare grondstof trail_fruit
+#: scripts/data/ext/beroepen.gd:208
+msgid "Wilde fruitstruik"
+msgstr "Wild fruit bush"
+
+#. Oogstbare grondstof trail_fungi
+#: scripts/data/ext/beroepen.gd:209
+msgid "Wilde grotzwammen"
+msgstr "Wild cave mushrooms"
 
 #. Recept ls_chowder: unlock_hint
 #. Recept ls_broth: unlock_hint
@@ -9479,7 +9679,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:280
+#: scripts/world.gd:282
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -11116,7 +11316,7 @@ msgstr "Resonance Trial: wave %d / 3"
 msgid "Proef voltooid! Kristallen amulet + 120 munten. Trek het aan via Uitrusting."
 msgstr "Trial complete! Crystal amulet + 120 coins. Put it on in Equipment."
 
-#: scripts/entities/enemy.gd:427
+#: scripts/entities/enemy.gd:430
 msgid "Mislukt!"
 msgstr "Fizzled!"
 
@@ -11765,7 +11965,7 @@ msgstr "Coastal region · map and connections"
 msgid "Goud: wandelpad · blauw: gekozen veerroute · witte ring: hier"
 msgstr "Gold: footpath · blue: selected ferry route · white ring: here"
 
-#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:97 scripts/ui/crafting_ui.gd:451 scripts/ui/home_ui.gd:126 scripts/ui/orchard_ui.gd:52 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207 scripts/ui/stock_ui.gd:46
+#: scripts/ui/coast_atlas.gd:63 scripts/ui/coast_routes.gd:80 scripts/ui/coastal_adventure_ui.gd:98 scripts/ui/coastal_home_ui.gd:90 scripts/ui/crafting_ui.gd:97 scripts/ui/crafting_ui.gd:451 scripts/ui/home_ui.gd:126 scripts/ui/orchard_ui.gd:52 scripts/ui/shop_ui.gd:76 scripts/ui/shop_ui.gd:207 scripts/ui/stock_ui.gd:47
 msgid "Sluiten"
 msgstr "Close"
 
@@ -12121,7 +12321,7 @@ msgstr "Previous"
 msgid "Volgende"
 msgstr "Next"
 
-#: scripts/ui/coastal_home_ui.gd:120 scripts/ui/stock_ui.gd:79
+#: scripts/ui/coastal_home_ui.gd:120 scripts/ui/stock_ui.gd:82
 msgid "Verplaats 1"
 msgstr "Move 1"
 
@@ -13526,151 +13726,155 @@ msgstr "%s (%d of %d)"
 msgid "↑ ↓ kiezen  ·  %s kopen  ·  %s sluiten"
 msgstr "↑ ↓ select  ·  %s buy  ·  %s close"
 
-#: scripts/ui/stock_ui.gd:45
+#: scripts/ui/stock_ui.gd:46
 msgid "Voorraad & opslag"
 msgstr "Stock & storage"
 
-#: scripts/ui/stock_ui.gd:49
+#: scripts/ui/stock_ui.gd:50
 msgid "Zoek een voorwerp…"
 msgstr "Search for an item…"
 
-#: scripts/ui/stock_ui.gd:51
+#: scripts/ui/stock_ui.gd:52
 msgid "Letters"
 msgstr "Letters"
 
-#: scripts/ui/stock_ui.gd:53
+#: scripts/ui/stock_ui.gd:54
 msgid "Alles"
 msgstr "All"
 
-#: scripts/ui/stock_ui.gd:53
+#: scripts/ui/stock_ui.gd:54
 msgid "Grondstoffen"
 msgstr "Materials"
 
-#: scripts/ui/stock_ui.gd:53
+#: scripts/ui/stock_ui.gd:54
 msgid "Landbouw"
 msgstr "Farming"
 
-#: scripts/ui/stock_ui.gd:53
+#: scripts/ui/stock_ui.gd:54
 msgid "Gereedschap & uitrusting"
 msgstr "Tools & equipment"
 
-#: scripts/ui/stock_ui.gd:53
+#: scripts/ui/stock_ui.gd:54
 msgid "Verhaal & sleutels"
 msgstr "Story & keys"
 
-#: scripts/ui/stock_ui.gd:56
+#: scripts/ui/stock_ui.gd:57
 msgid "Volgorde: gevonden"
 msgstr "Order: found"
 
-#: scripts/ui/stock_ui.gd:56
+#: scripts/ui/stock_ui.gd:57
 msgid "Volgorde: categorie"
 msgstr "Order: category"
 
-#: scripts/ui/stock_ui.gd:56
+#: scripts/ui/stock_ui.gd:57
 msgid "Volgorde: naam"
 msgstr "Order: name"
 
-#: scripts/ui/stock_ui.gd:56
+#: scripts/ui/stock_ui.gd:57
 msgid "Volgorde: aantal"
 msgstr "Order: quantity"
 
-#: scripts/ui/stock_ui.gd:59
+#: scripts/ui/stock_ui.gd:60
 msgid "Favorieten"
 msgstr "Favorites"
 
-#: scripts/ui/stock_ui.gd:65
+#: scripts/ui/stock_ui.gd:66
 msgid "Spatie"
 msgstr "Space"
 
-#: scripts/ui/stock_ui.gd:66
+#: scripts/ui/stock_ui.gd:67
 msgid "Wis letter"
 msgstr "Backspace"
 
-#: scripts/ui/stock_ui.gd:67
+#: scripts/ui/stock_ui.gd:68
 msgid "Wis zoekveld"
 msgstr "Clear search"
 
-#: scripts/ui/stock_ui.gd:68
+#: scripts/ui/stock_ui.gd:69
 msgid "Klaar"
 msgstr "Done"
 
-#: scripts/ui/stock_ui.gd:79
+#: scripts/ui/stock_ui.gd:82
 msgid "Verplaats 10"
 msgstr "Move 10"
 
-#: scripts/ui/stock_ui.gd:79
+#: scripts/ui/stock_ui.gd:82
 msgid "Verplaats hele stapel"
 msgstr "Move whole stack"
 
-#: scripts/ui/stock_ui.gd:80
+#: scripts/ui/stock_ui.gd:83
 msgid "Favoriet"
 msgstr "Favorite"
 
-#: scripts/ui/stock_ui.gd:82
+#: scripts/ui/stock_ui.gd:85
 msgid "Bestaande stapels aanvullen"
 msgstr "Top up existing stacks"
 
-#: scripts/ui/stock_ui.gd:83
+#: scripts/ui/stock_ui.gd:86
 msgid "Grondstoffen opbergen"
 msgstr "Store materials"
 
-#: scripts/ui/stock_ui.gd:85
+#: scripts/ui/stock_ui.gd:88
 msgid "Favorieten blijven bij bulkacties bij je; een gekozen recept mag ze wel gebruiken."
 msgstr "Bulk actions leave favorites in your bag; a recipe you choose may still use them."
 
-#: scripts/ui/stock_ui.gd:115
+#: scripts/ui/stock_ui.gd:127
 msgid "Bij je · %d soorten"
 msgstr "In your bag · %d kinds"
 
-#: scripts/ui/stock_ui.gd:116
+#: scripts/ui/stock_ui.gd:128
 msgid "Huisvoorraad · %d/48 soorten · 999 per stapel"
 msgstr "Home stock · %d/48 kinds · 999 per stack"
 
-#: scripts/ui/stock_ui.gd:116
+#: scripts/ui/stock_ui.gd:128
 msgid "Havenkist · %d/12 soorten · 99 per stapel"
 msgstr "Harbor chest · %d/12 kinds · 99 per stack"
 
-#: scripts/ui/stock_ui.gd:117
-msgid "Binnen bereik: recepten en wijnvaten gebruiken eerst je tas, daarna deze kist."
-msgstr "Within reach: recipes and wine barrels use your bag first, then this chest."
+#: scripts/ui/stock_ui.gd:129
+msgid "Binnen bereik: recepten gebruiken eerst je tas, daarna deze kist. Neem materialen voor buiten mee."
+msgstr "Within reach: recipes use your bag first, then this chest. Carry materials for work outside."
 
-#: scripts/ui/stock_ui.gd:117
+#: scripts/ui/stock_ui.gd:129
 msgid "Je bekijkt de voorraad op afstand. Verplaatsen en maken uit deze kist kan alleen ter plaatse."
 msgstr "You are viewing stock remotely. Visit this chest to transfer items or craft from it."
 
-#: scripts/ui/stock_ui.gd:134
+#: scripts/ui/stock_ui.gd:130
+msgid "Rechterstick: lijst doorlopen · links/rechts: tas of kist · A: één verplaatsen · B: terug"
+msgstr "Right stick: scroll list · left/right: bag or chest · A: move one · B: back"
+
+#: scripts/ui/stock_ui.gd:171
 msgid "Favoriet verwijderen"
 msgstr "Remove favorite"
 
-#: scripts/ui/stock_ui.gd:134
+#: scripts/ui/stock_ui.gd:171
 msgid "Favoriet bewaren"
 msgstr "Mark as favorite"
 
-#: scripts/ui/stock_ui.gd:136
+#: scripts/ui/stock_ui.gd:173
 msgid "Kies links wat je wilt opbergen, of rechts wat je wilt meenemen. Zoek en filter beide lijsten tegelijk."
 msgstr "Choose items to store on the left, or to take on the right. Search and filter both lists together."
 
-#: scripts/ui/stock_ui.gd:137
+#: scripts/ui/stock_ui.gd:174
 msgid "Selectie bevestigen: 1 verplaatsen · Tab of richtingstoetsen: navigeren · terug: sluiten"
 msgstr "Confirm selection: move 1 · Tab or direction keys: navigate · back: close"
 
-#: scripts/ui/stock_ui.gd:140
+#: scripts/ui/stock_ui.gd:177
 msgid "Opbergen → kist · bij je %d · opgeslagen %d · nu verplaatsbaar %d"
 msgstr "Store → chest · bag %d · stored %d · transferable now %d"
 
-#: scripts/ui/stock_ui.gd:140
+#: scripts/ui/stock_ui.gd:177
 msgid "Meenemen → tas · bij je %d · opgeslagen %d · nu verplaatsbaar %d"
 msgstr "Take → bag · bag %d · stored %d · transferable now %d"
 
-#: scripts/ui/stock_ui.gd:141
+#: scripts/ui/stock_ui.gd:178
 msgid "Dit voorwerp blijft bij je: uitrusting, gereedschap en verhaalvoorwerpen worden niet opgeslagen."
 msgstr "This item stays with you: equipment, tools and story items are not stored."
 
-#: scripts/ui/stock_ui.gd:147
+#: scripts/ui/stock_ui.gd:184
 msgid "%d verplaatst."
 msgstr "%d transferred."
 
-#: scripts/ui/stock_ui.gd:152
+#: scripts/ui/stock_ui.gd:189
 msgid "%d verplaatst. Favorieten zijn overgeslagen."
 msgstr "%d transferred. Favorites were skipped."
 

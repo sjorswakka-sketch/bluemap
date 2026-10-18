@@ -1,6 +1,8 @@
 # Bluemap Quest
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.32.0-preview.**
+0.32.1: binnenopslag en controller-scroll, een doorlopende meerweg, zichtbare en bewegende bewoners, rustige plukbermen/wild en tien watertypes met natuurlijke bronwatervallen; zie [wijzigingen](BUGFIX_STORAGE_ROUTES_WILDLIFE_WATER.md).
+
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.32.1-preview.**
 
 Nieuw in 0.32: **Gewassen en boomgaard — ontwikkelronde 5**. Wortels, pompoenen,
 munt, rozemarijn, appelbomen en bosbessenstruiken krijgen eigen pixel art en groei.

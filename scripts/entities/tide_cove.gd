@@ -31,6 +31,7 @@ func sync():
 				world.tile_layer.set_cell(cell,0,preload("res://scripts/core/pixel_landscape.gd").atlas("ce_shore" if flooded else "ce_sand",cell.x,cell.y))
 				if flooded:world.solid_cells[cell]=true
 				else:world.solid_cells.erase(cell)
+		preload("res://scripts/core/water_features.gd").describe("tide_cove",world.map_data)
 		world.tile_layer.update_internals()
 		if is_instance_valid(world.landscape):world.landscape.refresh()
 	if state=="rising" and last_state!="rising":

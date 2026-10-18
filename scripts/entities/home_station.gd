@@ -55,15 +55,7 @@ func _draw():
    draw_rect(Rect2(-26,8,6,12),Color("654936"));draw_rect(Rect2(20,8,6,12),Color("654936"));draw_rect(Rect2(-32,-17,64,30),Color("a57b50"));draw_rect(Rect2(-29,-14,58,24),Color("bb9565"))
    draw_rect(Rect2(-19,-10,8,13),Color("729988"));draw_circle(Vector2(13,-4),6,Color("e6d9b4"));draw_circle(Vector2(13,-4),3,Color("8f7150"))
   "fall":
-   draw_colored_polygon(PackedVector2Array([Vector2(-30,9),Vector2(-27,-23),Vector2(-20,-42),Vector2(-9,-38),Vector2(-12,17)]),Color("60736a"))
-   draw_colored_polygon(PackedVector2Array([Vector2(10,-38),Vector2(21,-43),Vector2(28,-25),Vector2(30,15),Vector2(12,19)]),Color("78897a"))
-   draw_line(Vector2(-23,-27),Vector2(-18,-34),Color("92a189"),4);draw_line(Vector2(21,-29),Vector2(23,-15),Color("9cac95"),4)
-   draw_rect(Rect2(-12,-36,24,60),Color("4b96ad"));draw_rect(Rect2(-8,-36,16,58),Color("79c3cd"))
-   for i in 6:
-    var y: float=-34+fmod(time*45+i*10,56);draw_line(Vector2(-7,y),Vector2(-5,y+6),Color("c8e7df"),2);draw_line(Vector2(4,y-3),Vector2(6,y+2),Color("b0dee0"),2)
-   for i in 5:
-    var x: float=-14+i*7;draw_circle(Vector2(x,21+sin(time*3+i)*2),3,Color("d5e6d9"))
-   draw_arc(Vector2(0,21),17+sin(time*2),0,PI,12,Color("9fd5d8"),2)
+   preload("res://scripts/core/water_art.gd").fall(self,time)
   "wild_grape":
    for x in [-15,0,15]:draw_circle(Vector2(x,-9),14,Color("527856"))
    if GameState.play_time>=Farm.state().wild_due:

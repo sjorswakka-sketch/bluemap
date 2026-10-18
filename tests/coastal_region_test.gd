@@ -50,7 +50,7 @@ func run():
 			else:check(a==b,"existing coastal object/save slot retained "+id+str(i))
 		for y in before.rows.size():
 			for x in before.rows[y].length():
-				if before.rows[y][x]!=after.rows[y][x]:check(id=="coast" and x in [14,15] and y<18,"only optional northern coast connection terrain changes")
+				if before.rows[y][x]!=after.rows[y][x]:check((id=="coast" and x in [14,15] and y<18) or preload("res://scripts/data/water_layouts.gd").CHANGES.get(id,[]).has([x,y,after.rows[y][x]]),"only northern route or explicitly authored water contour changes")
 	check(Region.walk_path("coast","headland")==["coast","river_mouth","harbor","headland"],"permanent high land route connects river, haven and cape")
 	check(Region.walk_path("gull_island","tide_cove")==["gull_island","tide_cove"] and Region.walk_path("gull_island","headland").is_empty(),"atlas distinguishes island walking from required ferry")
 	check(Journey.path("coast","harbor")==["coast","harbor"] and Journey.path("headland","village")==["headland","harbor","coast","lake","village"],"ferry shortcut and full home route are real graph links")
@@ -60,7 +60,7 @@ func run():
 			for x in row.length():
 				if not Tiles.is_solid_name(Tiles.name_for(row[x],x,0)):floor+=1
 		print("REGION FLOOR ",id,"=",floor)
-		check(floor>1400 and data.objects.filter(func(o: Dictionary)->bool:return o.type in ["enemy","pickup","chest"]).is_empty(),"new landscape has breathing space without reward or enemy density: "+id)
+		check(floor>1400 and data.objects.filter(func(o: Dictionary)->bool:return o.type in ["enemy","pickup","chest"] and not o.get("trail_wildlife",false)).is_empty(),"new landscape has breathing space without reward or enemy density: "+id)
 	check(Maps.get_map("harbor").objects.filter(func(o: Dictionary)->bool:return o.type=="npc").size()==2,"working quay has exactly two residents")
 	world=load("res://scenes/main.tscn").instantiate();root.add_child(world);current_scene=world;await frames(12);p=world.player
 	var hp: int=gs.hp;var inventory: Dictionary=gs.inventory.duplicate(true);var coins: int=gs.coins;var xp: int=gs.hero_xp

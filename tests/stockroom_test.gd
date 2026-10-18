@@ -58,18 +58,20 @@ func run():
  gs.inventory.erase("hs_grape")
  check(Stock.available("hs_grape")==0 and not Prof.craft("hs_seeds") and Stock.state().home==before,"distant home stock visible but cannot feed recipe")
  await enter("village","from_home");p.set_physics_process(false)
- home=chest_node();check(Vector2i(home.position/32)==Vector2i(9,26),"yard chest sits beside path outside garden")
+ home=chest_node();check(home==null,"shared chest exists only inside the player home")
+ gs.give("hs_grape",6,true)
  check(world.map_data.rows[26][9]=="." and world.map_data.rows[26][7]=="," and world.map_size==Vector2i(40,44),"no extra terrain or path footprint")
  for unit in ["wine_a","wine_b"]:
   var vat: Node2D
   for n in get_nodes_in_group("home_stations"):
    if not n.is_queued_for_deletion() and n.obj.get("unit","")==unit:vat=n
   p.position=vat.position+Vector2(0,24);await frames()
-  check(Stock.nearby_kind()=="home" and Farm.start_job(unit,1),"both real wine vats accept nearby stock "+unit)
- check(Stock.count("hs_grape")==10 and gs.count("hs_grape")==0,"six stored grapes committed exactly into two jobs")
+  check(Stock.nearby_kind()=="" and Farm.start_job(unit,1),"outdoor vats use carried grapes without remote chest access "+unit)
+ check(Stock.count("hs_grape")==16 and gs.count("hs_grape")==0,"six carried grapes committed into two jobs; indoor stock retained")
  p.position=Vector2(7.5,16.4)*32;gs.inventory.erase("hs_manure");Stock.state().home.hs_manure=4
  check(not Farm.start_job("compost",1),"distant compost pile cannot consume yard storage")
  # Capacity never destroys excess; a full store still accepts a partial existing stack.
+ await enter("player_home");p.set_physics_process(false);home=chest_node()
  p.position=home.position+Vector2(0,34);Stock.state().home={}
  for id: String in Items.ITEMS:
   if Stock.allowed(id) and id!="hs_grape" and Stock.state().home.size()<48:Stock.state().home[id]=1

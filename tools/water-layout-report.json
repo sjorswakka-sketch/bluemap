@@ -1,0 +1,229 @@
+{
+  "arena": {
+    "changes": 0,
+    "bodies": []
+  },
+  "arena_hall": {
+    "changes": 0,
+    "bodies": []
+  },
+  "cave": {
+    "changes": 0,
+    "bodies": []
+  },
+  "coast": {
+    "changes": 1,
+    "bodies": [
+      895
+    ]
+  },
+  "coast_workshop": {
+    "changes": 0,
+    "bodies": []
+  },
+  "dauwbos": {
+    "changes": 1,
+    "bodies": [
+      19
+    ]
+  },
+  "depths1": {
+    "changes": 0,
+    "bodies": []
+  },
+  "depths2": {
+    "changes": 0,
+    "bodies": []
+  },
+  "dorstvallei": {
+    "changes": 6,
+    "bodies": [
+      39,
+      7
+    ]
+  },
+  "fisher_hut": {
+    "changes": 0,
+    "bodies": []
+  },
+  "forest": {
+    "changes": 1,
+    "bodies": [
+      73,
+      15
+    ]
+  },
+  "forest_edge": {
+    "changes": 13,
+    "bodies": [
+      7,
+      47
+    ]
+  },
+  "gull_island": {
+    "changes": 0,
+    "bodies": [
+      1115
+    ]
+  },
+  "harbor": {
+    "changes": 0,
+    "bodies": [
+      1249
+    ]
+  },
+  "headland": {
+    "changes": 1,
+    "bodies": [
+      1197
+    ]
+  },
+  "ijsdal": {
+    "changes": 7,
+    "bodies": [
+      7
+    ]
+  },
+  "inn": {
+    "changes": 0,
+    "bodies": []
+  },
+  "kruipmoeras": {
+    "changes": 1,
+    "bodies": [
+      7,
+      111,
+      7,
+      19,
+      13,
+      7
+    ]
+  },
+  "lake": {
+    "changes": 0,
+    "bodies": [
+      249
+    ]
+  },
+  "library": {
+    "changes": 0,
+    "bodies": []
+  },
+  "mistgarden": {
+    "changes": 1,
+    "bodies": [
+      51
+    ]
+  },
+  "player_home": {
+    "changes": 0,
+    "bodies": []
+  },
+  "prismamine": {
+    "changes": 1,
+    "bodies": [
+      11
+    ]
+  },
+  "reedvault": {
+    "changes": 0,
+    "bodies": [
+      17
+    ]
+  },
+  "resonance": {
+    "changes": 0,
+    "bodies": []
+  },
+  "ridgepass": {
+    "changes": 7,
+    "bodies": [
+      7
+    ]
+  },
+  "river_mouth": {
+    "changes": 1,
+    "bodies": [
+      1177
+    ]
+  },
+  "ruins": {
+    "changes": 0,
+    "bodies": []
+  },
+  "shop": {
+    "changes": 0,
+    "bodies": []
+  },
+  "smithy": {
+    "changes": 0,
+    "bodies": []
+  },
+  "sunwell": {
+    "changes": 7,
+    "bodies": [
+      7
+    ]
+  },
+  "temple": {
+    "changes": 0,
+    "bodies": []
+  },
+  "tidal_hollow": {
+    "changes": 2,
+    "bodies": [
+      109,
+      41,
+      9
+    ]
+  },
+  "tide_cove": {
+    "changes": 1,
+    "bodies": [
+      1181
+    ]
+  },
+  "village": {
+    "changes": 10,
+    "bodies": [
+      63
+    ]
+  },
+  "watchyard": {
+    "changes": 0,
+    "bodies": []
+  },
+  "marsh_state_1": {
+    "changes": 2,
+    "bodies": [
+      7,
+      81,
+      7,
+      19,
+      13,
+      7
+    ]
+  },
+  "marsh_state_2": {
+    "changes": 0,
+    "bodies": [
+      7,
+      99,
+      7,
+      19,
+      13,
+      7
+    ]
+  },
+  "marsh_state_3": {
+    "changes": 2,
+    "bodies": [
+      7,
+      69,
+      7,
+      19,
+      13,
+      7
+    ]
+  }
+}
