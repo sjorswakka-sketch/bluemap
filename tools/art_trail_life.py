@@ -45,7 +45,11 @@ for f in range(7):
  if f==2:
   d.ellipse((3,10,7,13),fill='#96704e');d.ellipse((8,10,12,13),fill='#bf9560');d.line((5,10,5,12),fill='#ddbc82')
  if f==3:
-  for x,y in [(4,4),(7,2),(10,5)]:d.rectangle((x,y,x+1,y+4),fill='#d6c08c')
+  im=Image.new('RGBA',(16,16));d=ImageDraw.Draw(im)
+  d.ellipse((2,10,14,14),fill='#536442')
+  for x,y in [(4,11),(7,9),(11,11),(8,12)]:
+   d.polygon([(x,y-1),(x+2,y),(x+1,y+2),(x-1,y+1)],fill='#8e7656')
+   d.point((x,y),fill='#c5aa79')
  if f==4:
   d.polygon([(6,8),(10,8),(8,14)],fill='#d78c4f');d.line((6,9,9,9),fill='#e7b474')
  if f==5:

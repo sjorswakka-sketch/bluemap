@@ -34,6 +34,12 @@ static func text(canvas: Control, font: Font, pos: Vector2, label: String, size:
 	return font.get_multiline_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, width, size).y
 
 
+## Top-aligned paragraphs make measured inventory bounds match the actual glyphs.
+## Older pages keep their existing baseline through text().
+static func text_top(canvas: Control,font: Font,pos: Vector2,label: String,size: int,color:=Color.WHITE,width:=-1.0) -> float:
+	return text(canvas,font,pos+Vector2(0,font.get_ascent(size)-size),label,size,color,width)
+
+
 ## Houdt het gekozen rijtje van een lange lijst in beeld: geeft de nieuwe bovenste rij terug.
 static func follow(selected: int, scroll: int, visible: int, total: int) -> int:
 	scroll = clampi(scroll, maxi(selected - visible + 1, 0), selected)

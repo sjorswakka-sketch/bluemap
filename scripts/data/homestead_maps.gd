@@ -10,6 +10,9 @@ static func water() -> Dictionary:
   if y not in [31,37]:result[Vector2i(20,y)]=true;result[Vector2i(21,y)]=true
  result.erase(Vector2i(28,28))
  result.erase(Vector2i(20,41));result.erase(Vector2i(20,42))
+ result.erase(Vector2i(21,41));result.erase(Vector2i(21,42))
+ for y in [32,38]:
+  for x in [20,21]:result.erase(Vector2i(x,y))
  for entry: Array in preload("res://scripts/data/water_layouts.gd").CHANGES.get("village",[]):
   var at:=Vector2i(entry[0],entry[1])
   if entry[2]=="~":result[at]=true

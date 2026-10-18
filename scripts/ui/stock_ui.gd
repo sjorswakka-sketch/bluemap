@@ -125,7 +125,7 @@ func refresh():
  for id in bag_ids:bag.add_item(("%s%s  ×%d" % ["★ " if Stock.favorite(id) else "",tr(Items.info(id).name),GameState.count(id)]),Items.icon_tex(id))
  for id in chest_ids:chest.add_item(("%s%s  ×%d" % ["★ " if Stock.favorite(id) else "",tr(Items.info(id).name),Stock.count(id,kind)]),Items.icon_tex(id))
  bag_title.text=tr("Bij je · %d soorten") % bag_ids.size()
- chest_title.text=(tr("Huisvoorraad · %d/48 soorten · 999 per stapel") if kind=="home" else tr("Havenkist · %d/12 soorten · 99 per stapel")) % Stock.stock(kind).size()
+ chest_title.text=tr("Huisvoorraad · %d/%d soorten · 999 per stapel") % [Stock.stock(kind).size(),Stock.SLOTS] if kind=="home" else tr("Havenkist · %d/12 soorten · 99 per stapel") % Stock.stock(kind).size()
  hint.text=tr("Binnen bereik: recepten gebruiken eerst je tas, daarna deze kist. Neem materialen voor buiten mee.") if last_near==kind else tr("Je bekijkt de voorraad op afstand. Verplaatsen en maken uit deze kist kan alleen ter plaatse.")
  if Controls.controller_active:hint.text+="\n"+tr("Rechterstick: lijst doorlopen · links/rechts: tas of kist · A: één verplaatsen · B: terug")
  for b in bulk_buttons:b.disabled=last_near!=kind

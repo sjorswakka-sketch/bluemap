@@ -1,7 +1,7 @@
 extends RefCounted
 ## Shared home stock; only nearby physical stores supply materials. No permanent gear leaves the bag.
 const Items:=preload("res://scripts/data/items.gd")
-const SLOTS:=48
+const SLOTS:=144
 const CAP:=999
 const REACH:=176.0
 static var busy:=false

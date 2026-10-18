@@ -168,6 +168,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	preload("res://scripts/core/access_points.gd").prepare(map_data)
 	# Achteraan toevoegen: bestaande kisten en unieke voorwerpen houden hun opslag-ID.
 	map_data["objects"].append_array(Beroepen.resource_objects(map_id))
+	for obj: Dictionary in map_data.objects:preload("res://scripts/data/forest_food_species.gd").decorate(map_id,obj)
 	_clear_map()
 	if map_id=="tide_cove":preload("res://scripts/core/tides.gd").prepare(map_data,GameState.day_time)
 	if map_id=="tidal_hollow":preload("res://scripts/core/coastal_adventures.gd").prepare(map_data)

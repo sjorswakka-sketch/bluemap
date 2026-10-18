@@ -28,6 +28,7 @@ func run():
  for id in ["coast","gull_island","tide_cove","river_mouth","harbor","headland"]:
   var old: Dictionary=Maps.MAPS[id].DATA.duplicate(true)
   for file in ["living_maps","regional_maps","combat_maps","craft_maps","space_maps","habitat_maps","coast_maps","coastal_region_maps"]:load("res://scripts/data/"+file+".gd").enrich(id,old)
+  preload("res://scripts/data/route_repairs.gd").enrich(id,old)
   var data: Dictionary=Maps.get_map(id)
   for i in old.objects.size():check(data.objects[i]==old.objects[i],"legacy slot retained "+id+str(i))
   check(data.objects.filter(func(o: Dictionary) -> bool:return o.type=="enemy" and not o.get("trail_wildlife",false)).is_empty(),"no added outdoor enemies "+id)

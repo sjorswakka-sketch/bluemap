@@ -35,6 +35,11 @@ static func get_map(map_id: String) -> Dictionary:
 	preload("res://scripts/data/homestead_maps.gd").enrich(map_id,data)
 	if map_id == "kruipmoeras":preload("res://scripts/core/marsh_waterworks.gd").prepare(data)
 	if map_id == "inn": data["objects"].append({"type":"memory_book","pos":[10,7]})
+	preload("res://scripts/data/route_repairs.gd").enrich(map_id,data)
+	preload("res://scripts/data/mountain_maps.gd").enrich(map_id,data)
 	preload("res://scripts/core/water_features.gd").enrich(map_id,data)
+	preload("res://scripts/data/winter_greens.gd").enrich(map_id,data)
 	preload("res://scripts/data/trail_life.gd").enrich(map_id,data)
+	preload("res://scripts/data/flower_species.gd").enrich(map_id,data)
+	preload("res://scripts/data/forest_food_species.gd").enrich(map_id,data)
 	return data

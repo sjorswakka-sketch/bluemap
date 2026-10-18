@@ -43,6 +43,7 @@ func run():
 	check(Region.IDS.size()==6,"coast region now has six connected places")
 	for id in ["coast","gull_island","tide_cove"]:
 		var before: Dictionary=Maps.MAPS[id].DATA.duplicate(true);load("res://scripts/data/coast_maps.gd").enrich(id,before)
+		preload("res://scripts/data/route_repairs.gd").enrich(id,before)
 		var after:=Maps.get_map(id)
 		for i in before.objects.size():
 			var a: Dictionary=before.objects[i];var b: Dictionary=after.objects[i]
@@ -50,7 +51,7 @@ func run():
 			else:check(a==b,"existing coastal object/save slot retained "+id+str(i))
 		for y in before.rows.size():
 			for x in before.rows[y].length():
-				if before.rows[y][x]!=after.rows[y][x]:check((id=="coast" and x in [14,15] and y<18) or preload("res://scripts/data/water_layouts.gd").CHANGES.get(id,[]).has([x,y,after.rows[y][x]]),"only northern route or explicitly authored water contour changes")
+				if before.rows[y][x]!=after.rows[y][x]:check((id=="coast" and x in [14,15] and y<18) or preload("res://scripts/data/water_layouts.gd").CHANGES.get(id,[]).has([x,y,after.rows[y][x]]),"only northern route or explicitly authored contour remains after road repairs")
 	check(Region.walk_path("coast","headland")==["coast","river_mouth","harbor","headland"],"permanent high land route connects river, haven and cape")
 	check(Region.walk_path("gull_island","tide_cove")==["gull_island","tide_cove"] and Region.walk_path("gull_island","headland").is_empty(),"atlas distinguishes island walking from required ferry")
 	check(Journey.path("coast","harbor")==["coast","harbor"] and Journey.path("headland","village")==["headland","harbor","coast","lake","village"],"ferry shortcut and full home route are real graph links")

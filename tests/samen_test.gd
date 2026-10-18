@@ -17,7 +17,7 @@ const BASE_CONDITIONS := ["flag", "no_flag", "quest", "step", "has", "lacks", "c
 ## kisten in oude opslagen weer dicht). Nieuwe objecten horen daarom achteraan de lijst.
 const OLD_KEYS := [
 	["inn", 4, "chest", [12, 7]],
-	["forest", 4, "chest", [10, 4]],
+	["forest", 4, "chest", [8, 4]],
 	["forest", 6, "chest", [31, 30]],
 	["forest", 7, "pickup", [41, 4]],
 	["forest", 47, "pickup", [20, 28]],

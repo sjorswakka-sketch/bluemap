@@ -35,7 +35,7 @@ const CraftNotes := preload("res://scripts/data/ext/craft_progression.gd")
 
 const CODE_ROOT := "res://scripts"
 ## Sleutels in de data waarvan de waarde nooit tekst voor de speler is (de guard in find_unclaimed slaat ze over).
-const NOT_TEXT_KEYS := ["rows", "sheet", "type", "music", "weather", "item", "id", "to", "spawn", "talk", "trophy", "behavior"]
+const NOT_TEXT_KEYS := ["rows", "sheet", "biome", "wild_category", "species", "type", "music", "weather", "item", "id", "to", "spawn", "talk", "trophy", "behavior"]
 ## Context voor de aanvallen achter de naam van een vijand ("Kristalgolem (klap)"), zie Enemies.ATTACKS en hud.gd.
 const ATTACK_CONTEXT := "aanval"
 
@@ -155,6 +155,7 @@ static func collect_data(c: Collector) -> void:
 		var in_sentence: String = menu_pages.in_sentence(map_name)
 		if in_sentence != map_name:
 			c.add(in_sentence, "Naam van gebied %s midden in een zin (\"Reizen naar %%s?\"); de vorm met hoofdletter is \"%s\"" % [map_id, map_name])
+		for terrace: Dictionary in data.get("mountain_terraces",[]):c.add(terrace.name,"Bergterras van "+map_id)
 		var objects: Array = data.get("objects", [])
 		for i in objects.size():
 			var obj: Dictionary = objects[i]
@@ -191,6 +192,13 @@ static func collect_data(c: Collector) -> void:
 		var steps: Array = quest.get("steps", [])
 		for i in steps.size():
 			c.add(steps[i].get("text", ""), "Opdracht %s, stap %d" % [quest_id, i + 1])
+	# Preserve source labels for existing save items and explicit species overrides.
+	for module: Script in Content.MODULES:
+		var constants:=module.get_script_constant_map()
+		for field in ["ITEMS","ITEM_OVERRIDES"]:
+			for id: String in constants.get(field,{}):
+				var definition: Dictionary=constants[field][id]
+				for key in ["name","desc"]:c.add(definition.get(key,""),"Voorwerpdefinitie "+id)
 	for item_id: String in Items.ITEMS:
 		var item: Dictionary = Items.ITEMS[item_id]
 		c.add(item.get("name", ""), "Naam van voorwerp %s" % item_id)
@@ -246,8 +254,9 @@ static func collect_data(c: Collector) -> void:
 	for skill_id: String in Beroepen.SKILLS:
 		for field: String in ["name", "desc"]:
 			c.add(Beroepen.SKILLS[skill_id].get(field, ""), "Beroep %s: %s" % [skill_id, field])
-	for resource_id: String in Beroepen.RESOURCES:
-		c.add(Beroepen.RESOURCES[resource_id].get("name", ""), "Oogstbare grondstof %s" % resource_id)
+	for table: Dictionary in [Beroepen.BASE_RESOURCES,Beroepen.RESOURCES]:
+		for resource_id: String in table:
+			c.add(table[resource_id].get("name", ""), "Oogstbare grondstof %s" % resource_id)
 	# Receptnamen komen nu van hun uitvoervoorwerp. Neem eventuele eigen
 	# beschrijvingen ook mee als een uitbreiding ze later toevoegt.
 	for recipe_id: String in Beroepen.RECIPES:

@@ -17,11 +17,20 @@ var clock := 0.0
 var redraw_elapsed := 0.0
 var forge_light: PointLight2D
 var _door := Rect2()
+var private_doors: Array[Rect2]=[]
 
 
 func setup(map_id: String, owning_world: Node = null) -> void:
 	world = owning_world
-	buildings = Buildings.for_map(map_id)
+	buildings = Buildings.for_map(map_id,world.map_data if is_instance_valid(world) else {})
+	private_doors.clear()
+	var home: Dictionary=Buildings.Routes.PORTALS.get(map_id+":player_home",{})
+	if is_instance_valid(world):
+		for obj: Dictionary in world.map_data.objects:
+			if obj.type=="portal" and obj.get("to","")=="player_home" and obj.get("enabled",true):
+				home={"pos":obj.pos,"size":obj.get("size",[1,1])};break
+	if not home.is_empty():
+		private_doors.append(Rect2(Vector2(home.pos[0],home.pos[1])*32,Vector2(home.size[0],home.size[1])*32))
 
 
 func _ready() -> void:
@@ -62,7 +71,34 @@ func _draw() -> void:
 			"library": _library(rect.size.x)
 			"arena_hall": _arena(rect.size.x)
 			"temple": _temple(rect.size.x)
+		if building.id!="temple" and _door.size.x>=64:_double_door(str(building.id))
 	draw_set_transform(Vector2.ZERO)
+	for opening in private_doors:
+		_door=opening;_double_door("player_home")
+
+
+## One shared lintel and two leaves replace the repeated single-door terrain art.
+## It deliberately paints the aperture itself; other facade pieces use _r().
+func _double_door(kind: String) -> void:
+	var frame:=METAL.darkened(.2) if kind in ["smithy","arena_hall"] else Color("aa9168")
+	var panel:=Color("635f59") if kind=="smithy" else Color("645263") if kind=="library" else WOOD
+	draw_rect(_door,INK)
+	var half:=_door.size.x*.5
+	for leaf in range(2):
+		var at:=_door.position+Vector2(4+leaf*half,4)
+		var size:=Vector2(half-7,_door.size.y-6)
+		draw_rect(Rect2(at,size),panel.darkened(.12 if leaf==0 else .25))
+		draw_rect(Rect2(at+Vector2(2,2),Vector2(size.x-4,2)),panel.lightened(.35))
+		draw_rect(Rect2(at+Vector2(2,6),Vector2(2,maxf(2,size.y-9))),panel.lightened(.15))
+		draw_rect(Rect2(at+Vector2(3,10),Vector2(size.x-6,2)),panel.darkened(.4))
+	var center:=_door.position.x+half
+	draw_rect(Rect2(_door.position.x,_door.position.y,_door.size.x,4),frame)
+	draw_rect(Rect2(_door.position,Vector2(3,_door.size.y)),frame.darkened(.18))
+	draw_rect(Rect2(_door.end.x-3,_door.position.y,3,_door.size.y),frame.darkened(.35))
+	draw_rect(Rect2(center-1,_door.position.y+4,2,_door.size.y-4),INK)
+	draw_rect(Rect2(center-6,_door.position.y+15,3,3),GOLD)
+	draw_rect(Rect2(center+3,_door.position.y+15,3,3),GOLD)
+	draw_rect(Rect2(_door.position.x,_door.end.y-2,_door.size.x,2),frame.darkened(.4))
 
 
 ## Alle decorstukken respecteren de echte deur; deze bewaking geldt ook voor latere toevoegingen.
@@ -210,7 +246,7 @@ func _inn(width: float) -> void:
 	_r(120, 32, 4, 24, WOOD)
 	_r(108, 42, 28, 4, WOOD)
 	_r(0, 0, width, 4, GOLD.darkened(0.15))
-	_plaque(Vector2(132, 78), "mug", Color("763e49"))
+	_plaque(Vector2(180, 78), "mug", Color("763e49"))
 	# Stevige bier-/watervaten onder de linker ramen.
 	for x in [10, 42]:
 		_r(x + 2, 100, 26, 28, WOOD)
@@ -231,12 +267,14 @@ func _fisher(width: float) -> void:
 	_fish(Vector2(width - 76, 14), METAL)
 	_plaque(Vector2(56, 60), "fish", Color("315e69"))
 	# Gedroogd net en touwen op de muur rechts; de deur en de stoep blijven vrij.
-	_r(120, 78, 62, 44, WOOD)
-	_r(124, 80, 54, 38, Color("3c5b60"))
-	for x in range(124, 180, 8):
+	var net_x:=maxf(120,_door.end.x+4)
+	var net_width:=width-net_x-8
+	_r(net_x, 78, net_width, 44, WOOD)
+	_r(net_x+4, 80, net_width-8, 38, Color("3c5b60"))
+	for x in range(int(net_x+4),int(net_x+net_width-4),8):
 		_r(x, 80, 2, 38, Color("b9b899"))
 	for y in range(80, 120, 8):
-		_r(124, y, 54, 2, Color("b9b899"))
+		_r(net_x+4, y, net_width-8, 2, Color("b9b899"))
 	for x in [14, 22, 30]:
 		_r(x, 106 - (x % 3) * 2, 6, 18, GOLD.darkened(0.2))
 	_r(12, 124, 28, 4, WOOD)
@@ -254,7 +292,7 @@ func _library(width: float) -> void:
 		_r(x + 2, 70, 4, 54, PAPER)
 		_r(x - 2, 64, 20, 6, GOLD)
 		_r(x - 2, 122, 20, 6, GOLD)
-	_plaque(Vector2(180, 84), "book", Color("554469"))
+	_plaque(Vector2(202, 76), "book", Color("554469"))
 	# Gekleurde boekruggen in een gevelkast.
 	_r(26, 98, 54, 30, WOOD)
 	for i in 6:

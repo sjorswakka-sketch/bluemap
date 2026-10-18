@@ -75,14 +75,20 @@ func refresh() -> void:
 				addons.append(spot)
 		"dauwbos":
 			if GameState.flag("lw_forest"):
-				resource("dauwklauw","lw_revealed_flower",Vector2i(40,31))
-				for x in range(39,44): tile(x,30,",")
+				resource("dauwklauw","lw_revealed_flower",Vector2i(39,32))
+				for y in [30,31]:
+					for x in range(39,45):tile(x,y,",")
 		"ijsdal":
 			if GameState.flag("lw_heat_west"):
-				for x in range(10,15): tile(x,12,",")
+				for y in [12,13]:
+					for x in range(10,16):tile(x,y,",")
 			if GameState.flag("lw_heat_east"):
-				for y in range(3,13): tile(40,y,",")
-				for x in range(40,44): tile(x,3,",")
+				for y in range(3,16):
+					for x in [40,41]:tile(x,y,",")
+				for y in [3,4]:
+					for x in range(40,45):tile(x,y,",")
+				for y in [14,15]:
+					for x in range(34,42):tile(x,y,",")
 	if terrain_changed:
 		preload("res://scripts/core/water_features.gd").describe(GameState.map_id,world.map_data)
 		if is_instance_valid(world.landscape):world.landscape.refresh()

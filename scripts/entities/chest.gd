@@ -37,25 +37,51 @@ func interact() -> void:
 	if opened:
 		GameState.toast.emit(tr("De kist is leeg."))
 		return
-	# Past iets niet meer (een volle pijlenkoker)? Dan blijft de kist dicht, zodat er niets verloren gaat.
+	# A unique reward already owned (including worn gear) is fulfilled ownership,
+	# not a full bag. Other rewards remain claimable. Aggregate repeated stacks
+	# before checking capacity so opening can never silently truncate later loot.
+	var totals: Dictionary={}
 	for entry: Array in contents:
-		if entry[0] != "coins" and GameState.room(entry[0]) < int(entry[1]):
+		var item: String=entry[0]
+		totals[item]=int(totals.get(item,0))+int(entry[1])
+	var already_owned: Array[String]=[]
+	var grants: Dictionary={}
+	for item: String in totals:
+		if item=="coins":continue
+		var info:=Items.info(item)
+		if int(info.get("max",0))==1 and GameState.count(item)>0:
+			already_owned.append(item)
+			continue
+		var space:=GameState.room(item)
+		if space<int(totals[item]):
 			Sound.play("error", -3.0)
-			var info := Items.info(entry[0])
-			GameState.toast.emit(tr(info["chest_full_text"]) if info.has("chest_full_text") else tr("Je tas is te vol voor wat er in deze kist zit."))
+			if info.has("chest_full_text"):GameState.toast.emit(tr(info["chest_full_text"]))
+			elif space==0:GameState.toast.emit(GameState.full_text(item))
+			else:GameState.toast.emit(tr("Niet genoeg ruimte voor %s: %d nodig, %d vrij.") % [tr(info["name"]),int(totals[item]),space])
 			return
+		grants[item]=int(totals[item])
+	# Commit all inventory, money and the original saved flag before emitting
+	# synchronous quest/UI/save notifications. Reentrant interaction sees opened.
 	opened = true
 	if unique_key != "":
-		GameState.set_flag(unique_key)
+		GameState.flags[unique_key]=true
+	for item: String in grants:GameState.inventory[item]=GameState.count(item)+int(grants[item])
+	var coins:=int(totals.get("coins",0))
+	GameState.coins=maxi(0,GameState.coins+coins)
+	if grants.has("heart_container"):
+		GameState.hp=mini(GameState.hp+int(grants.heart_container),GameState.max_hp())
+	GameState._mark_achievements()
+	if grants.has("heart_container"):GameState.hp_changed.emit()
+	GameState.items_changed.emit()
+	GameState._refresh_quests()
 	Sound.play("chest")
 	world.burst(global_position + Vector2(0, -6), Color(1, 0.9, 0.5), 12)
-	for entry: Array in contents:
-		if entry[0] == "coins":
-			GameState.add_coins(int(entry[1]))
-			var coins := int(entry[1])
-			GameState.toast.emit(tr_n("Gevonden: %d munt", "Gevonden: %d munten", coins) % coins)
-		else:
-			GameState.give(entry[0], int(entry[1]))
+	for item: String in already_owned:GameState.toast.emit(GameState.full_text(item))
+	if coins!=0:GameState.toast.emit(tr_n("Gevonden: %d munt", "Gevonden: %d munten", coins) % coins)
+	for item: String in grants:
+		var label:=tr(Items.info(item)["name"]);var amount:=int(grants[item])
+		GameState.toast.emit(tr("Gekregen: %s") % label if amount==1 else tr("Gekregen: %s x%d") % [label,amount])
+	GameState.save_requested.emit()
 
 
 func _draw() -> void:

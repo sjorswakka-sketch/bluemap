@@ -24,7 +24,7 @@ const SOUND_NAMES := ["mage_teleport", "mage_charge", "mage_orb", "mage_orb_pop"
 ## Kisten en unieke voorwerpen met hun nummer in `objects` van vóór deze uitbreiding. Een opgeslagen spel onthoudt ze met
 ## dat nummer (zie world.gd), dus nieuwe dingen moeten achteraan de lijst staan.
 const SAVED_OBJECTS := {
-	"forest": [[4, "chest", [10, 4]], [6, "chest", [31, 30]], [7, "pickup", [41, 4]], [47, "pickup", [20, 28]]],
+	"forest": [[4, "chest", [8, 4]], [6, "chest", [31, 30]], [7, "pickup", [41, 4]], [47, "pickup", [20, 28]]],
 	"ruins": [[18, "chest", [10, 4]], [19, "chest", [29, 29]], [20, "pickup", [36, 5]]],
 	"cave": [[19, "chest", [5, 5]], [20, "chest", [43, 3]], [21, "pickup", [41, 30]], [47, "pickup", [24, 10]]],
 }

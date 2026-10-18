@@ -230,7 +230,7 @@ func test_data() -> void:
 		tiles_ok = tiles_ok and tile_name in Tiles.NAMES and Tiles.NAMES.find(tile_name) >= 65
 		tiles_ok = tiles_ok and Tiles.map_color(tile_name) != Color(0.5, 0.5, 0.55)
 	check(tiles_ok, "zes nieuwe tegels aan het eind van de lijst, met een eigen kleur op het kaartje")
-	check(Tiles.is_solid_name("bog_water") and Tiles.is_solid_name("reed") and Tiles.is_solid_name("willow"), "drijfmest, riet en knotwilg zijn vast")
+	check(Tiles.is_solid_name("bog_water") and not Tiles.is_solid_name("reed") and Tiles.is_solid_name("willow"), "water en knotwilg blokkeren; droog riet is doorloopbaar")
 	check(not Tiles.is_solid_name("marsh_grass") and not Tiles.is_solid_name("marsh_tufts") and not Tiles.is_solid_name("mud"), "moerasgras en modder zijn begaanbaar")
 	check(Tiles.name_for("U", 1, 1) == "marsh_grass" and Tiles.name_for("F", 0, 0) == "bog_water" and Tiles.name_for("Y", 0, 0) == "willow", "de tekens in de kaart kloppen")
 	check(Tiles.name_for("U", 0, 1) == "marsh_tufts", "polgras groeit als variatie op het moerasgras")

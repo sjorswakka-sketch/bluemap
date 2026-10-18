@@ -75,7 +75,7 @@ func _run() -> void:
 	gs.hp = gs.max_hp()
 	check(not Professions.use_item("prof_berry_meal") and gs.count("prof_berry_meal") == 5, "Food is not wasted at full health")
 	gs.hp -= 2
-	check(Professions.use_item("prof_berry_meal") and gs.hp == gs.max_hp() - 1 and gs.count("prof_berry_meal") == 4, "Food heals and consumes exactly one")
+	check(Professions.use_item("prof_berry_meal") and gs.hp == gs.max_hp() and gs.count("prof_berry_meal") == 4, "Food heals and consumes exactly one")
 	gs.give("prof_tonic", 2, true)
 	gs.movement.stamina = 100.0
 	check(not Professions.use_item("prof_tonic") and gs.count("prof_tonic") == 2, "Tonic is not wasted at full stamina")
@@ -126,7 +126,7 @@ func _world_ui() -> void:
 	var world: Node = load("res://scenes/main.tscn").instantiate()
 	root.add_child(world)
 	await frames(5)
-	var original_nodes:=get_nodes_in_group("profession_resources").filter(func(n):return not n.resource_id.begins_with("trail:"))
+	var original_nodes:=get_nodes_in_group("profession_resources").filter(func(n):return not n.resource_id.begins_with("trail:") and not n.resource_id.begins_with("forestfood:"))
 	check(original_nodes.size() == 6, "Village retains its six original usable resource nodes beside the new verges")
 	var node: Node = original_nodes[0]
 	var resource_id: String = node.resource_id

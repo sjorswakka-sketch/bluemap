@@ -606,7 +606,7 @@ msgid "Rustig water, grote vissen en een bibliotheek."
 msgstr "Calm water, big fish, and a library."
 
 #. Kaart village, savepoint [9, 23]: name
-#: scripts/data/homestead_maps.gd:50
+#: scripts/data/homestead_maps.gd:53
 msgid "Bij je eigen huis"
 msgstr "Outside your home"
 
@@ -690,13 +690,13 @@ msgstr "A slime spitter spits three slimeballs at once. Roll away with Shift!"
 msgid "Kom je te dichtbij, dan hupt hij weg."
 msgstr "Get too close, and it hops away."
 
-#. Kaart forest, sign [5, 12]: tekst op een bord
-#: scripts/maps/forest.gd:116
+#. Kaart forest, sign [13, 3]: tekst op een bord
+#: scripts/data/route_repairs.gd:7 scripts/maps/forest.gd:116
 msgid "Noordelijk pad: Dauwbos"
 msgstr "Northern path: Dew Woods"
 
-#. Kaart forest, sign [5, 12]: tekst op een bord
-#: scripts/maps/forest.gd:116
+#. Kaart forest, sign [13, 3]: tekst op een bord
+#: scripts/data/route_repairs.gd:7 scripts/maps/forest.gd:116
 msgid "Mistig en stil. Mira bewaakt de dauw."
 msgstr "Misty and silent. Mira guards the dew."
 
@@ -822,6 +822,71 @@ msgstr "The door is shut. There's no way back!"
 #: scripts/maps/temple.gd:51
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
+
+#. Naam van gebied steampeak
+#: scripts/maps/steampeak.gd:4
+msgid "Dampkroon"
+msgstr "Steamcrown"
+
+#. Bergterras van steampeak
+#: scripts/maps/steampeak.gd:110
+msgid "Bergvoet"
+msgstr "Mountain Foothills"
+
+#. Bergterras van steampeak
+#: scripts/maps/steampeak.gd:120
+msgid "Stoomterrassen"
+msgstr "Steam Terraces"
+
+#. Bergterras van steampeak
+#: scripts/maps/steampeak.gd:130
+msgid "Apenbronnen"
+msgstr "Macaque Springs"
+
+#. Bergterras van steampeak
+#: scripts/maps/steampeak.gd:140
+msgid "Stille top"
+msgstr "Quiet Summit"
+
+#. Kaart steampeak, sign [32, 58]: tekst op een bord
+#: scripts/maps/steampeak.gd:285
+msgid "Dampkroon · Bergvoet"
+msgstr "Steamcrown · Mountain Foothills"
+
+#. Kaart steampeak, sign [32, 58]: tekst op een bord
+#: scripts/maps/steampeak.gd:286
+msgid "Drie brede bergtrappen voeren je over vier terrassen naar de top. De warme bronnen liggen in de beschutte kommen naast het pad."
+msgstr "Three broad mountain stairways lead across four terraces to the summit. Warm springs lie in sheltered basins beside the path."
+
+#. Kaart steampeak, sign [55, 38]: tekst op een bord
+#: scripts/maps/steampeak.gd:296
+msgid "Dampkroon · Stoomterrassen"
+msgstr "Steamcrown · Steam Terraces"
+
+#. Kaart steampeak, sign [55, 38]: tekst op een bord
+#: scripts/maps/steampeak.gd:297
+msgid "De geisers zijn decoratief. Rust vijftien seconden aan de warmwaterbron om één hartje te herstellen. Blijven lopen onderbreekt de rust."
+msgstr "The geysers are decorative. Rest by a hot spring for fifteen seconds to recover one heart. Moving interrupts your rest."
+
+#. Kaart steampeak, sign [33, 5]: tekst op een bord
+#: scripts/maps/steampeak.gd:307
+msgid "Dampkroon · Stille top"
+msgstr "Steamcrown · Quiet Summit"
+
+#. Kaart steampeak, sign [33, 5]: tekst op een bord
+#: scripts/maps/steampeak.gd:308
+msgid "Beneden bewegen de roodkopapen tussen warme rotsen en sneeuw. Er is geen haast: hetzelfde brede pad brengt je terug naar IJsdal."
+msgstr "Below, red-faced macaques wander between warm rocks and snow. Take your time: the same broad path leads back to IJsdal."
+
+#. Kaart steampeak, sign [33, 60]: tekst op een bord
+#: scripts/maps/steampeak.gd:376
+msgid "Zuidelijk bergpad: IJsdal"
+msgstr "Southern mountain path: IJsdal"
+
+#. Kaart steampeak, sign [33, 60]: tekst op een bord
+#: scripts/maps/steampeak.gd:377
+msgid "De brede weg daalt terug naar het dorpsplein van IJsdal."
+msgstr "The broad path descends back to IJsdal’s village square."
 
 #. Naam van gebied player_home
 #: scripts/maps/player_home.gd:2
@@ -1299,13 +1364,13 @@ msgstr "Northern path: IJsdal"
 msgid "Hoge toppen, diepe sneeuw. Warm aan de lantaarns blijven."
 msgstr "High peaks, deep snow. Stay warm near the lanterns."
 
-#. Kaart dauwbos, sign [4, 19]: tekst op een bord
-#: scripts/maps/dauwbos.gd:60
-msgid "Westelijk pad: Fluisterbos"
-msgstr "Western path: Whispering Woods"
+#. Kaart dauwbos, sign [22, 33]: tekst op een bord
+#: scripts/data/route_repairs.gd:7
+msgid "Zuidelijk pad: Fluisterbos"
+msgstr "Southern path: Whispering Woods"
 
-#. Kaart dauwbos, sign [4, 19]: tekst op een bord
-#: scripts/maps/dauwbos.gd:60
+#. Kaart dauwbos, sign [22, 33]: tekst op een bord
+#: scripts/data/route_repairs.gd:7 scripts/maps/dauwbos.gd:60
 msgid "Waar de mist dunner wordt, beginnen de vertrouwde bomen."
 msgstr "Where the mist grows thinner, the familiar trees begin."
 
@@ -1316,7 +1381,7 @@ msgstr "Where the mist grows thinner, the familiar trees begin."
 msgid "Deze route opent zodra je het gebied hebt hersteld. Kijk bij de gemarkeerde wereldopdracht."
 msgstr "This route opens when you restore the area. Look for the marked world quest."
 
-#. Kaart dauwbos, sign [42, 31]: tekst op een bord
+#. Kaart dauwbos, sign [46, 31]: tekst op een bord
 #: scripts/data/living_maps.gd:245
 msgid "Oostelijk lichtpad: De Dauwtuin."
 msgstr "Eastern light path: The Dew Garden."
@@ -1353,10 +1418,20 @@ msgstr "Southern path: Dew Woods"
 msgid "De sneeuw wordt mist en de wind wordt zacht."
 msgstr "The snow turns to mist and the wind turns soft."
 
-#. Kaart ijsdal, sign [41, 4]: tekst op een bord
+#. Kaart ijsdal, sign [39, 4]: tekst op een bord
 #: scripts/data/living_maps.gd:247
 msgid "Noordelijke route: De Bergpas."
 msgstr "Northern route: The Mountain Pass."
+
+#. Kaart ijsdal, sign [22, 3]: tekst op een bord
+#: scripts/data/mountain_maps.gd:9
+msgid "Noordelijk bergpad: Dampkroon"
+msgstr "Northern mountain path: Steamcrown"
+
+#. Kaart ijsdal, sign [22, 3]: tekst op een bord
+#: scripts/data/mountain_maps.gd:9
+msgid "Volg de brede trappen naar de warme bergbronnen. Aan de oevers kun je rustig hartjes herstellen; geisers zijn alleen om naar te kijken."
+msgstr "Follow the broad stairs to the warm mountain springs. Rest at the banks to recover hearts; geysers are only for watching."
 
 #. Naam van gebied dorstvallei
 #. Kaart dorstvallei, sign [27, 14]: tekst op een bord
@@ -5389,6 +5464,2537 @@ msgstr "Follow the blue marks to the bowl in the middle chamber. Walking is quie
 msgid "Volg de westelijke echo naar de laatste schaal. Luister rustig: de oude schuilplaats ligt achter de bocht."
 msgstr "Follow the western echo to the final bowl. Listen quietly: the old refuge is around the bend."
 
+#. Voorwerpdefinitie ff_raspberry
+#. Naam van voorwerp ff_raspberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Framboos"
+msgstr "Raspberry"
+
+#. Voorwerpdefinitie ff_raspberry
+#. Voorwerpdefinitie ff_blackberry
+#. Voorwerpdefinitie ff_blackcurrant
+#. Voorwerpdefinitie ff_gooseberry
+#. Voorwerpdefinitie ff_wild_strawberry
+#. Voorwerpdefinitie ff_wild_apple
+#: scripts/data/ext/forest_food_species.gd:4 scripts/data/ext/forest_food_species.gd:5
+msgid "Zoek in lichte bosranden en beschutte open plekken. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "Look along light woodland edges and sheltered clearings. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie ff_blackberry
+#. Naam van voorwerp ff_blackberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Braam"
+msgstr "Blackberry"
+
+#. Voorwerpdefinitie ff_redcurrant
+#. Naam van voorwerp ff_redcurrant
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Rode bes"
+msgstr "Redcurrant"
+
+#. Voorwerpdefinitie ff_redcurrant
+#. Voorwerpdefinitie ff_wild_pear
+#. Voorwerpdefinitie ff_wild_plum
+#. Beschrijving van voorwerp ff_redcurrant
+#. Beschrijving van voorwerp ff_wild_pear
+#. Beschrijving van voorwerp ff_wild_plum
+#: scripts/data/ext/forest_food_species.gd:4
+msgid "Zoek op droge, voedselrijke rivier- en meeroevers. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "Look on dry, fertile river and lake banks. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie ff_blackcurrant
+#. Naam van voorwerp ff_blackcurrant
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Zwarte bes"
+msgstr "Blackcurrant"
+
+#. Voorwerpdefinitie ff_gooseberry
+#. Naam van voorwerp ff_gooseberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Kruisbes"
+msgstr "Gooseberry"
+
+#. Voorwerpdefinitie ff_wild_strawberry
+#. Naam van voorwerp ff_wild_strawberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Bosaardbei"
+msgstr "Wild strawberry"
+
+#. Voorwerpdefinitie ff_rosehip
+#. Naam van voorwerp ff_rosehip
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Rozenbottel"
+msgstr "Rosehip"
+
+#. Voorwerpdefinitie ff_rosehip
+#. Voorwerpdefinitie ff_sea_buckthorn
+#. Beschrijving van voorwerp ff_rosehip
+#. Beschrijving van voorwerp ff_sea_buckthorn
+#: scripts/data/ext/forest_food_species.gd:4
+msgid "Zoek op zonnige duinranden en droge kustoevers. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "Look on sunny dune edges and dry coastal shores. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie ff_sea_buckthorn
+#. Naam van voorwerp ff_sea_buckthorn
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Duindoornbes"
+msgstr "Sea buckthorn berry"
+
+#. Voorwerpdefinitie ff_wild_apple
+#. Naam van voorwerp ff_wild_apple
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Wilde appel"
+msgstr "Crab apple"
+
+#. Voorwerpdefinitie ff_wild_pear
+#. Naam van voorwerp ff_wild_pear
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Wilde peer"
+msgstr "Wild pear"
+
+#. Voorwerpdefinitie ff_wild_plum
+#. Naam van voorwerp ff_wild_plum
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Wilde pruim"
+msgstr "Wild plum"
+
+#. Voorwerpdefinitie ff_walnut
+#. Naam van voorwerp ff_walnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Walnoot"
+msgstr "Walnut"
+
+#. Voorwerpdefinitie ff_walnut
+#. Voorwerpdefinitie ff_chestnut
+#. Voorwerpdefinitie ff_beechnut
+#. Voorwerpdefinitie ff_black_walnut
+#. Voorwerpdefinitie ff_butternut
+#. Voorwerpdefinitie trail_nut
+#: scripts/data/ext/forest_food_species.gd:4 scripts/data/ext/forest_food_species.gd:5
+msgid "Zoek in lichte bosranden en beschutte open plekken. Herstelt 1 hartje en 12 uithoudingsvermogen."
+msgstr "Look along light woodland edges and sheltered clearings. Restores 1 heart and 12 stamina."
+
+#. Voorwerpdefinitie ff_chestnut
+#. Naam van voorwerp ff_chestnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Tamme kastanje"
+msgstr "Sweet chestnut"
+
+#. Voorwerpdefinitie ff_beechnut
+#. Naam van voorwerp ff_beechnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Beukennootje"
+msgstr "Beechnut"
+
+#. Voorwerpdefinitie ff_pine_nut
+#. Naam van voorwerp ff_pine_nut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Pijnboompit"
+msgstr "Pine nut"
+
+#. Voorwerpdefinitie ff_pine_nut
+#. Voorwerpdefinitie ff_coconut
+#. Beschrijving van voorwerp ff_pine_nut
+#. Beschrijving van voorwerp ff_coconut
+#: scripts/data/ext/forest_food_species.gd:4
+msgid "Zoek op zonnige duinranden en droge kustoevers. Herstelt 1 hartje en 12 uithoudingsvermogen."
+msgstr "Look on sunny dune edges and dry coastal shores. Restores 1 heart and 12 stamina."
+
+#. Voorwerpdefinitie ff_almond
+#. Naam van voorwerp ff_almond
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Amandel"
+msgstr "Almond"
+
+#. Voorwerpdefinitie ff_almond
+#. Voorwerpdefinitie ff_pistachio
+#. Beschrijving van voorwerp ff_almond
+#. Beschrijving van voorwerp ff_pistachio
+#: scripts/data/ext/forest_food_species.gd:4
+msgid "Zoek in beschutte oasekommen en langs zonnige zandhellingen. Herstelt 1 hartje en 12 uithoudingsvermogen."
+msgstr "Look in sheltered oasis bowls and on sunny sandy slopes. Restores 1 heart and 12 stamina."
+
+#. Voorwerpdefinitie ff_pistachio
+#. Naam van voorwerp ff_pistachio
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Pistache"
+msgstr "Pistachio"
+
+#. Voorwerpdefinitie ff_pecan
+#. Naam van voorwerp ff_pecan
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Pecannoot"
+msgstr "Pecan"
+
+#. Voorwerpdefinitie ff_pecan
+#. Voorwerpdefinitie ff_hickory
+#. Beschrijving van voorwerp ff_pecan
+#. Beschrijving van voorwerp ff_hickory
+#: scripts/data/ext/forest_food_species.gd:4
+msgid "Zoek op droge, voedselrijke rivier- en meeroevers. Herstelt 1 hartje en 12 uithoudingsvermogen."
+msgstr "Look on dry, fertile river and lake banks. Restores 1 heart and 12 stamina."
+
+#. Voorwerpdefinitie ff_black_walnut
+#. Naam van voorwerp ff_black_walnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Zwarte walnoot"
+msgstr "Black walnut"
+
+#. Voorwerpdefinitie ff_hickory
+#. Naam van voorwerp ff_hickory
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Hickorynoot"
+msgstr "Hickory nut"
+
+#. Voorwerpdefinitie ff_butternut
+#. Naam van voorwerp ff_butternut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Boternoot"
+msgstr "Butternut"
+
+#. Voorwerpdefinitie ff_macadamia
+#. Naam van voorwerp ff_macadamia
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Macadamianoot"
+msgstr "Macadamia nut"
+
+#. Voorwerpdefinitie ff_macadamia
+#. Voorwerpdefinitie ff_cashew
+#. Beschrijving van voorwerp ff_macadamia
+#. Beschrijving van voorwerp ff_cashew
+#: scripts/data/ext/forest_food_species.gd:4
+msgid "Zoek in warme, beschutte kustkommen uit de zeewind. Herstelt 1 hartje en 12 uithoudingsvermogen."
+msgstr "Look in warm, sheltered coastal bowls out of the sea wind. Restores 1 heart and 12 stamina."
+
+#. Voorwerpdefinitie ff_cashew
+#. Naam van voorwerp ff_cashew
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Cashewnoot"
+msgstr "Cashew nut"
+
+#. Voorwerpdefinitie ff_japanese_walnut
+#. Naam van voorwerp ff_japanese_walnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Japanse walnoot"
+msgstr "Japanese walnut"
+
+#. Voorwerpdefinitie ff_japanese_walnut
+#. Beschrijving van voorwerp ff_japanese_walnut
+#: scripts/data/ext/forest_food_species.gd:4
+msgid "Zoek op beschutte berghellingen bij warme bronnen. Herstelt 1 hartje en 12 uithoudingsvermogen."
+msgstr "Look on sheltered mountain slopes near warm springs. Restores 1 heart and 12 stamina."
+
+#. Voorwerpdefinitie ff_coconut
+#. Naam van voorwerp ff_coconut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Kokosnoot"
+msgstr "Coconut"
+
+#. Voorwerpdefinitie ff_cedar_nut
+#. Naam van voorwerp ff_cedar_nut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:4
+msgid "Siberische cedernoot"
+msgstr "Siberian pine nut"
+
+#. Voorwerpdefinitie ff_cedar_nut
+#. Beschrijving van voorwerp ff_cedar_nut
+#: scripts/data/ext/forest_food_species.gd:4
+msgid "Zoek tussen lage naaldbomen en beschutte sneeuwranden. Herstelt 1 hartje en 12 uithoudingsvermogen."
+msgstr "Look among low conifers and sheltered snowy verges. Restores 1 heart and 12 stamina."
+
+#. Voorwerpdefinitie prof_berry
+#. Naam van voorwerp prof_berry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:5
+msgid "Blauwe bosbes"
+msgstr "Blueberry"
+
+#. Voorwerpdefinitie prof_winterbes
+#. Naam van voorwerp prof_winterbes
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:5
+msgid "Vossenbes"
+msgstr "Lingonberry"
+
+#. Voorwerpdefinitie prof_winterbes
+#. Beschrijving van voorwerp prof_winterbes
+#: scripts/data/ext/forest_food_species.gd:5
+msgid "Zoek tussen lage naaldbomen en beschutte sneeuwranden. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "Look among low conifers and sheltered snowy verges. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie prof_veenbes
+#. Naam van voorwerp prof_veenbes
+#: scripts/data/ext/beroepen.gd:63 scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:5
+msgid "Veenbes"
+msgstr "Cranberry"
+
+#. Voorwerpdefinitie prof_veenbes
+#. Beschrijving van voorwerp prof_veenbes
+#: scripts/data/ext/forest_food_species.gd:5
+msgid "Zoek op droge veenranden naast het moeraswater. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "Look on dry peat edges beside marsh water. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie hs_grape
+#. Naam van voorwerp hs_grape
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:5
+msgid "Bosdruif"
+msgstr "Wild grape"
+
+#. Voorwerpdefinitie prof_cactusvijg
+#. Naam van voorwerp prof_cactusvijg
+#: scripts/data/ext/beroepen.gd:56 scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:5
+msgid "Cactusvijg"
+msgstr "Cactus fig"
+
+#. Voorwerpdefinitie prof_cactusvijg
+#. Beschrijving van voorwerp prof_cactusvijg
+#: scripts/data/ext/forest_food_species.gd:5
+msgid "Zoek in beschutte oasekommen en langs zonnige zandhellingen. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "Look in sheltered oasis bowls and on sunny sandy slopes. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie trail_nut
+#. Naam van voorwerp trail_nut
+#. Oogkleur (tabblad Uiterlijk)
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:5 scripts/data/ext/uiterlijk.gd:166
+msgid "Hazelnoot"
+msgstr "Hazel"
+
+#. Voorwerpdefinitie flower_daisy
+#. Naam van voorwerp flower_daisy
+#. Oogstbare grondstof flower_daisy
+#: scripts/data/ext/flower_species.gd:5 scripts/data/ext/flower_species.gd:166
+msgid "Madeliefje"
+msgstr "Daisy"
+
+#. Voorwerpdefinitie flower_daisy
+#. Beschrijving van voorwerp flower_daisy
+#: scripts/data/ext/flower_species.gd:12
+msgid "Een lage witte weidebloem met een goudgeel hart uit de rustige dorpsberm."
+msgstr "A low white meadow flower with a golden centre from the quiet village verge."
+
+#. Voorwerpdefinitie flower_bluebell
+#. Naam van voorwerp flower_bluebell
+#. Oogstbare grondstof flower_bluebell
+#: scripts/data/ext/flower_species.gd:15 scripts/data/ext/flower_species.gd:167
+msgid "Boshyacint"
+msgstr "Bluebell"
+
+#. Voorwerpdefinitie flower_bluebell
+#. Beschrijving van voorwerp flower_bluebell
+#: scripts/data/ext/flower_species.gd:22
+msgid "Blauwe klokjes die in kleine groepen onder de bomen van het Fluisterbos groeien."
+msgstr "Blue bells that grow in small patches beneath the trees of Whispering Woods."
+
+#. Voorwerpdefinitie flower_foxglove
+#. Naam van voorwerp flower_foxglove
+#. Oogstbare grondstof flower_foxglove
+#: scripts/data/ext/flower_species.gd:25 scripts/data/ext/flower_species.gd:168
+msgid "Vingerhoedskruid"
+msgstr "Foxglove"
+
+#. Voorwerpdefinitie flower_foxglove
+#. Beschrijving van voorwerp flower_foxglove
+#: scripts/data/ext/flower_species.gd:32
+msgid "Een hoge roze bloemenaar die beschutte bosranden opzoekt."
+msgstr "A tall pink flower spike found along sheltered woodland edges."
+
+#. Voorwerpdefinitie flower_edelweiss
+#. Naam van voorwerp flower_edelweiss
+#. Oogstbare grondstof flower_edelweiss
+#: scripts/data/ext/flower_species.gd:35 scripts/data/ext/flower_species.gd:169
+msgid "Edelweiss"
+msgstr "Edelweiss"
+
+#. Voorwerpdefinitie flower_edelweiss
+#. Beschrijving van voorwerp flower_edelweiss
+#: scripts/data/ext/flower_species.gd:42
+msgid "Een wollige sterbloem van de schrale, besneeuwde rotsbermen op Dampkroon."
+msgstr "A woolly star flower from the sparse snowy rock verges of Steamcrown."
+
+#. Voorwerpdefinitie flower_sea_aster
+#. Naam van voorwerp flower_sea_aster
+#. Oogstbare grondstof flower_sea_aster
+#: scripts/data/ext/flower_species.gd:45 scripts/data/ext/flower_species.gd:170
+msgid "Zeeaster"
+msgstr "Sea aster"
+
+#. Voorwerpdefinitie flower_sea_aster
+#. Beschrijving van voorwerp flower_sea_aster
+#: scripts/data/ext/flower_species.gd:52
+msgid "Een lila bloem met een geel hart uit de brakke randen van de riviermonding."
+msgstr "A lilac flower with a yellow centre from the brackish river-mouth banks."
+
+#. Voorwerpdefinitie flower_hollyhock
+#. Naam van voorwerp flower_hollyhock
+#. Oogstbare grondstof flower_hollyhock
+#: scripts/data/ext/flower_species.gd:55 scripts/data/ext/flower_species.gd:171
+msgid "Stokroos"
+msgstr "Hollyhock"
+
+#. Voorwerpdefinitie flower_hollyhock
+#. Beschrijving van voorwerp flower_hollyhock
+#: scripts/data/ext/flower_species.gd:62
+msgid "Een stevige rode bloemenstengel die warmte vindt bij de stenen muren van de haven."
+msgstr "A sturdy red flowering stem warmed by the harbour stonework."
+
+#. Voorwerpdefinitie flower_thrift
+#. Naam van voorwerp flower_thrift
+#. Oogstbare grondstof flower_thrift
+#: scripts/data/ext/flower_species.gd:65 scripts/data/ext/flower_species.gd:172
+msgid "Engelsgras"
+msgstr "Sea thrift"
+
+#. Voorwerpdefinitie flower_thrift
+#. Beschrijving van voorwerp flower_thrift
+#: scripts/data/ext/flower_species.gd:72
+msgid "Roze bloemkussens op korte stelen; gewend aan zoute wind op de kaap."
+msgstr "Pink cushions on short stems, adapted to the salt wind on the headland."
+
+#. Voorwerpdefinitie flower_sea_lavender
+#. Naam van voorwerp flower_sea_lavender
+#. Oogstbare grondstof flower_sea_lavender
+#: scripts/data/ext/flower_species.gd:75 scripts/data/ext/flower_species.gd:173
+msgid "Lamsoor"
+msgstr "Sea lavender"
+
+#. Voorwerpdefinitie flower_sea_lavender
+#. Beschrijving van voorwerp flower_sea_lavender
+#: scripts/data/ext/flower_species.gd:82
+msgid "Een luchtige paarse bloempluim uit de zilte, hoge oever van de getijdenkom."
+msgstr "An airy purple flower spray from the salty upper bank of the tidal cove."
+
+#. Voorwerpdefinitie flower_horned_poppy
+#. Naam van voorwerp flower_horned_poppy
+#. Oogstbare grondstof flower_horned_poppy
+#: scripts/data/ext/flower_species.gd:85 scripts/data/ext/flower_species.gd:174
+msgid "Gele hoornpapaver"
+msgstr "Yellow horned poppy"
+
+#. Voorwerpdefinitie flower_horned_poppy
+#. Beschrijving van voorwerp flower_horned_poppy
+#: scripts/data/ext/flower_species.gd:92
+msgid "Een gele duinbloem met een lange zaaddoos tussen droog strandzand en schelpen."
+msgstr "A yellow dune flower with a long seed pod among dry beach sand and shells."
+
+#. Voorwerpdefinitie flower_sea_campion
+#. Naam van voorwerp flower_sea_campion
+#. Oogstbare grondstof flower_sea_campion
+#: scripts/data/ext/flower_species.gd:95 scripts/data/ext/flower_species.gd:175
+msgid "Zeesilene"
+msgstr "Sea campion"
+
+#. Voorwerpdefinitie flower_sea_campion
+#. Beschrijving van voorwerp flower_sea_campion
+#: scripts/data/ext/flower_species.gd:102
+msgid "Een witte kelkbloem met grijsgroen blad van de open eilandkust."
+msgstr "A white cup-shaped flower with grey-green leaves from the open island coast."
+
+#. Voorwerpdefinitie flower_yellow_iris
+#. Naam van voorwerp flower_yellow_iris
+#. Oogstbare grondstof flower_yellow_iris
+#: scripts/data/ext/flower_species.gd:105 scripts/data/ext/flower_species.gd:176
+msgid "Gele lis"
+msgstr "Yellow iris"
+
+#. Voorwerpdefinitie flower_yellow_iris
+#. Beschrijving van voorwerp flower_yellow_iris
+#: scripts/data/ext/flower_species.gd:112
+msgid "Grote gele bloemen boven zwaardvormig blad aan de vochtige meeroever."
+msgstr "Large yellow flowers above sword-shaped leaves on the damp lakeshore."
+
+#. Voorwerpdefinitie flower_forget_me_not
+#. Naam van voorwerp flower_forget_me_not
+#. Oogstbare grondstof flower_forget_me_not
+#: scripts/data/ext/flower_species.gd:115 scripts/data/ext/flower_species.gd:177
+msgid "Vergeet-mij-nietje"
+msgstr "Forget-me-not"
+
+#. Voorwerpdefinitie flower_forget_me_not
+#. Beschrijving van voorwerp flower_forget_me_not
+#: scripts/data/ext/flower_species.gd:122
+msgid "Kleine blauwe sterren uit de vochtige, mistige bermen van het Dauwbos."
+msgstr "Tiny blue stars from the damp misty verges of Dew Woods."
+
+#. Voorwerpdefinitie flower_snowdrop
+#. Naam van voorwerp flower_snowdrop
+#. Oogstbare grondstof flower_snowdrop
+#: scripts/data/ext/flower_species.gd:125 scripts/data/ext/flower_species.gd:178
+msgid "Sneeuwklokje"
+msgstr "Snowdrop"
+
+#. Voorwerpdefinitie flower_snowdrop
+#. Beschrijving van voorwerp flower_snowdrop
+#: scripts/data/ext/flower_species.gd:132
+msgid "Een hangend wit klokje dat uit beschutte smeltsneeuw in IJsdal tevoorschijn komt."
+msgstr "A drooping white bell emerging from sheltered melting snow in Frostvale."
+
+#. Voorwerpdefinitie flower_desert_marigold
+#. Naam van voorwerp flower_desert_marigold
+#. Oogstbare grondstof flower_desert_marigold
+#: scripts/data/ext/flower_species.gd:135 scripts/data/ext/flower_species.gd:179
+msgid "Woestijngoudsbloem"
+msgstr "Desert marigold"
+
+#. Voorwerpdefinitie flower_desert_marigold
+#. Beschrijving van voorwerp flower_desert_marigold
+#: scripts/data/ext/flower_species.gd:142
+msgid "Een goudgele bloem op zilvergrijs blad, aangepast aan de droge Dorstvallei."
+msgstr "A golden flower above silver-grey leaves, adapted to dry Dorstvallei."
+
+#. Voorwerpdefinitie flower_loosestrife
+#. Naam van voorwerp flower_loosestrife
+#. Oogstbare grondstof flower_loosestrife
+#: scripts/data/ext/flower_species.gd:145 scripts/data/ext/flower_species.gd:180
+msgid "Grote kattenstaart"
+msgstr "Purple loosestrife"
+
+#. Voorwerpdefinitie flower_loosestrife
+#. Beschrijving van voorwerp flower_loosestrife
+#: scripts/data/ext/flower_species.gd:152
+msgid "Een lange paarse bloempluim op de vaste, vochtige rietbermen van het Kruipmoeras."
+msgstr "A long purple flower spike on the firm damp reed verges of Creeping Swamp."
+
+#. Voorwerpdefinitie flower_alpine_aster
+#. Naam van voorwerp flower_alpine_aster
+#. Oogstbare grondstof flower_alpine_aster
+#: scripts/data/ext/flower_species.gd:155 scripts/data/ext/flower_species.gd:181
+msgid "Alpenaster"
+msgstr "Alpine aster"
+
+#. Voorwerpdefinitie flower_alpine_aster
+#. Beschrijving van voorwerp flower_alpine_aster
+#: scripts/data/ext/flower_species.gd:162
+msgid "Een lage paarse sterbloem tussen de koude steenranden van de Bergpas."
+msgstr "A low purple star flower among the cold rocky verges of the Mountain Pass."
+
+#. Voorwerpdefinitie winter_kale
+#. Naam van voorwerp winter_kale
+#: scripts/data/ext/winter_greens.gd:5
+msgid "Boerenkool"
+msgstr "Kale"
+
+#. Voorwerpdefinitie winter_kale
+#. Beschrijving van voorwerp winter_kale
+#: scripts/data/ext/winter_greens.gd:12
+msgid "Stevige, gekrulde bladeren die na een nacht vorst zachter smaken. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "Sturdy, curled leaves that taste milder after a frosty night. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie winter_broccoli
+#. Naam van voorwerp winter_broccoli
+#: scripts/data/ext/winter_greens.gd:15
+msgid "Broccoli"
+msgstr "Broccoli"
+
+#. Voorwerpdefinitie winter_broccoli
+#. Beschrijving van voorwerp winter_broccoli
+#: scripts/data/ext/winter_greens.gd:22
+msgid "Een groene winterroos uit een beschutte sneeuwberm. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "A green winter head from a sheltered snowy verge. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie winter_cauliflower
+#. Naam van voorwerp winter_cauliflower
+#: scripts/data/ext/winter_greens.gd:25
+msgid "Bloemkool"
+msgstr "Cauliflower"
+
+#. Voorwerpdefinitie winter_cauliflower
+#. Beschrijving van voorwerp winter_cauliflower
+#: scripts/data/ext/winter_greens.gd:32
+msgid "Een roomwitte koolroos; de buitenste bladeren beschermen haar tegen lichte vorst. Herstelt 1 hartje en 7 uithoudingsvermogen."
+msgstr "A creamy white head protected from light frost by its outer leaves. Restores 1 heart and 7 stamina."
+
+#. Voorwerpdefinitie winter_sprouts
+#. Naam van voorwerp winter_sprouts
+#: scripts/data/ext/winter_greens.gd:35
+msgid "Spruiten"
+msgstr "Brussels sprouts"
+
+#. Voorwerpdefinitie winter_sprouts
+#. Beschrijving van voorwerp winter_sprouts
+#: scripts/data/ext/winter_greens.gd:42
+msgid "Kleine kooltjes langs een stevige stengel. Vorst maakt ze milder. Herstelt 1 hartje en 7 uithoudingsvermogen."
+msgstr "Small sprouts along a sturdy stalk. Frost softens their flavour. Restores 1 heart and 7 stamina."
+
+#. Voorwerpdefinitie winter_beet
+#. Naam van voorwerp winter_beet
+#: scripts/data/ext/winter_greens.gd:45
+msgid "Rode biet"
+msgstr "Beetroot"
+
+#. Voorwerpdefinitie winter_beet
+#. Beschrijving van voorwerp winter_beet
+#: scripts/data/ext/winter_greens.gd:52
+msgid "Een donkerrode, zoete wortel die onder de beschutte grond rijpt. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "A sweet, deep-red root ripening beneath sheltered soil. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie winter_carrot
+#. Naam van voorwerp winter_carrot
+#: scripts/data/ext/winter_greens.gd:55
+msgid "Winterpeen"
+msgstr "Winter carrot"
+
+#. Voorwerpdefinitie winter_carrot
+#. Beschrijving van voorwerp winter_carrot
+#: scripts/data/ext/winter_greens.gd:62
+msgid "Een stevige oranje wortel, bewaard onder een deken van sneeuw. Herstelt 1 hartje en 9 uithoudingsvermogen."
+msgstr "A sturdy orange root kept beneath a blanket of snow. Restores 1 heart and 9 stamina."
+
+#. Voorwerpdefinitie winter_parsnip
+#. Naam van voorwerp winter_parsnip
+#: scripts/data/ext/winter_greens.gd:65
+msgid "Pastinaak"
+msgstr "Parsnip"
+
+#. Voorwerpdefinitie winter_parsnip
+#. Beschrijving van voorwerp winter_parsnip
+#: scripts/data/ext/winter_greens.gd:72
+msgid "Een roomkleurige wortel die juist zoeter wordt na koude nachten. Herstelt 1 hartje en 10 uithoudingsvermogen."
+msgstr "A cream-coloured root that grows sweeter after cold nights. Restores 1 heart and 10 stamina."
+
+#. Voorwerpdefinitie winter_leek
+#. Naam van voorwerp winter_leek
+#. Oogstbare grondstof winter_leek
+#: scripts/data/ext/beroepen.gd:217 scripts/data/ext/winter_greens.gd:75
+msgid "Winterprei"
+msgstr "Winter leek"
+
+#. Voorwerpdefinitie winter_leek
+#. Beschrijving van voorwerp winter_leek
+#: scripts/data/ext/winter_greens.gd:82
+msgid "Dikke blauwgroene bladeren beschermen het bleke hart tegen de kou. Herstelt 1 hartje en 7 uithoudingsvermogen."
+msgstr "Thick blue-green leaves protect the pale heart from the cold. Restores 1 heart and 7 stamina."
+
+#. Voorwerpdefinitie winter_savoy
+#. Naam van voorwerp winter_savoy
+#. Oogstbare grondstof winter_savoy
+#: scripts/data/ext/beroepen.gd:218 scripts/data/ext/winter_greens.gd:85
+msgid "Savooiekool"
+msgstr "Savoy cabbage"
+
+#. Voorwerpdefinitie winter_savoy
+#. Beschrijving van voorwerp winter_savoy
+#: scripts/data/ext/winter_greens.gd:92
+msgid "Een compacte kool met dikke, bobbelige bladeren tegen de vorst. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "A compact cabbage with thick, crinkled leaves to resist frost. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie winter_red_cabbage
+#. Naam van voorwerp winter_red_cabbage
+#: scripts/data/ext/winter_greens.gd:95
+msgid "Rode kool"
+msgstr "Red cabbage"
+
+#. Voorwerpdefinitie winter_red_cabbage
+#. Beschrijving van voorwerp winter_red_cabbage
+#: scripts/data/ext/winter_greens.gd:102
+msgid "Dieprode bladeren vormen een stevige kool onder de rijp. Herstelt 1 hartje en 8 uithoudingsvermogen."
+msgstr "Deep-red leaves form a firm cabbage beneath the frost. Restores 1 heart and 8 stamina."
+
+#. Voorwerpdefinitie winter_spinach
+#. Naam van voorwerp winter_spinach
+#. Oogstbare grondstof winter_spinach
+#: scripts/data/ext/beroepen.gd:220 scripts/data/ext/winter_greens.gd:105
+msgid "Winterspinazie"
+msgstr "Winter spinach"
+
+#. Voorwerpdefinitie winter_spinach
+#. Beschrijving van voorwerp winter_spinach
+#: scripts/data/ext/winter_greens.gd:112
+msgid "Lage, groene rozetten die in zachte sneeuw beschutting vinden. Herstelt 1 hartje en 6 uithoudingsvermogen."
+msgstr "Low green rosettes sheltering in soft snow. Restores 1 heart and 6 stamina."
+
+#. Voorwerpdefinitie winter_lambs_lettuce
+#. Naam van voorwerp winter_lambs_lettuce
+#: scripts/data/ext/winter_greens.gd:115
+msgid "Veldsla"
+msgstr "Lamb’s lettuce"
+
+#. Voorwerpdefinitie winter_lambs_lettuce
+#. Beschrijving van voorwerp winter_lambs_lettuce
+#: scripts/data/ext/winter_greens.gd:122
+msgid "Kleine, ronde blaadjes die bij lage temperaturen langzaam doorgroeien. Herstelt 1 hartje en 6 uithoudingsvermogen."
+msgstr "Small round leaves that keep growing slowly in cold weather. Restores 1 heart and 6 stamina."
+
+#. Voorwerpdefinitie winter_purslane
+#. Naam van voorwerp winter_purslane
+#. Oogstbare grondstof winter_purslane
+#: scripts/data/ext/beroepen.gd:222 scripts/data/ext/winter_greens.gd:125
+msgid "Winterpostelein"
+msgstr "Winter purslane"
+
+#. Voorwerpdefinitie winter_purslane
+#. Beschrijving van voorwerp winter_purslane
+#: scripts/data/ext/winter_greens.gd:132
+msgid "Sappige, hartvormige winterblaadjes uit een beschutte rotsrand. Herstelt 1 hartje en 7 uithoudingsvermogen."
+msgstr "Juicy, heart-shaped winter leaves from a sheltered rocky edge. Restores 1 heart and 7 stamina."
+
+#. Voorwerpdefinitie winter_swede
+#. Naam van voorwerp winter_swede
+#: scripts/data/ext/winter_greens.gd:135
+msgid "Koolraap"
+msgstr "Swede"
+
+#. Voorwerpdefinitie winter_swede
+#. Beschrijving van voorwerp winter_swede
+#: scripts/data/ext/winter_greens.gd:142
+msgid "Een zware geelviolette knol die onder de vorstgrens groeit. Herstelt 1 hartje en 10 uithoudingsvermogen."
+msgstr "A heavy yellow-purple root growing below the frost line. Restores 1 heart and 10 stamina."
+
+#. Voorwerpdefinitie winter_celeriac
+#. Naam van voorwerp winter_celeriac
+#. Oogstbare grondstof winter_celeriac
+#: scripts/data/ext/beroepen.gd:224 scripts/data/ext/winter_greens.gd:145
+msgid "Knolselderij"
+msgstr "Celeriac"
+
+#. Voorwerpdefinitie winter_celeriac
+#. Beschrijving van voorwerp winter_celeriac
+#: scripts/data/ext/winter_greens.gd:152
+msgid "Een ruwe, geurige knol met stevige bleekgroene bladstelen. Herstelt 1 hartje en 9 uithoudingsvermogen."
+msgstr "A rough, fragrant root with sturdy pale-green stalks. Restores 1 heart and 9 stamina."
+
+#. Voorwerpdefinitie winter_salsify
+#. Naam van voorwerp winter_salsify
+#: scripts/data/ext/winter_greens.gd:155
+msgid "Schorseneer"
+msgstr "Salsify"
+
+#. Voorwerpdefinitie winter_salsify
+#. Beschrijving van voorwerp winter_salsify
+#: scripts/data/ext/winter_greens.gd:162
+msgid "Lange, donkere wortels die na vorst mild en zoet smaken. Herstelt 1 hartje en 10 uithoudingsvermogen."
+msgstr "Long dark roots that taste mild and sweet after frost. Restores 1 heart and 10 stamina."
+
+#. Voorwerpdefinitie trail_flower
+#. Naam van voorwerp trail_flower
+#: scripts/data/ext/trail_life.gd:2
+msgid "Bermbloemen"
+msgstr "Wayside flowers"
+
+#. Voorwerpdefinitie trail_flower
+#. Beschrijving van voorwerp trail_flower
+#: scripts/data/ext/trail_life.gd:2
+msgid "Een klein bosje geplukte wilde bloemen uit een natuurlijke berm."
+msgstr "A small bunch of wild flowers picked from a natural verge."
+
+#. Voorwerpdefinitie trail_nut
+#: scripts/data/ext/trail_life.gd:2
+msgid "Bosnoten"
+msgstr "Woodland nuts"
+
+#. Voorwerpdefinitie trail_nut
+#: scripts/data/ext/trail_life.gd:2
+msgid "Eetbare noten van de padberm. Herstellen één hartje."
+msgstr "Edible nuts from the wayside. Restore one heart."
+
+#. Voorwerpdefinitie or_carrot_seed
+#. Naam van voorwerp or_carrot_seed
+#: scripts/data/ext/orchard.gd:4
+msgid "Wortelzaad"
+msgstr "Carrot seeds"
+
+#. Voorwerpdefinitie or_carrot_seed
+#. Beschrijving van voorwerp or_carrot_seed
+#: scripts/data/ext/orchard.gd:4
+msgid "Voor snelle wortelrijen. De volledige oogst geeft één zakje zaad terug voor opnieuw planten."
+msgstr "For quick carrot rows. A complete harvest returns one packet of seeds for replanting."
+
+#. Voorwerpdefinitie or_pumpkin_seed
+#. Naam van voorwerp or_pumpkin_seed
+#: scripts/data/ext/orchard.gd:5
+msgid "Pompoenzaad"
+msgstr "Pumpkin seeds"
+
+#. Voorwerpdefinitie or_pumpkin_seed
+#. Beschrijving van voorwerp or_pumpkin_seed
+#: scripts/data/ext/orchard.gd:5
+msgid "Voor een lage pompoenplant op één tegel. Oogsten geeft één zakje zaad terug."
+msgstr "For a low pumpkin plant using one tile. Harvesting returns one packet of seeds."
+
+#. Voorwerpdefinitie or_mint_seed
+#. Naam van voorwerp or_mint_seed
+#: scripts/data/ext/orchard.gd:6
+msgid "Muntstek"
+msgstr "Mint cutting"
+
+#. Voorwerpdefinitie or_mint_seed
+#. Beschrijving van voorwerp or_mint_seed
+#: scripts/data/ext/orchard.gd:6
+msgid "Plant een blijvend kruid. Bloeiende munt voedt bijen; geplukte munt is voor thee."
+msgstr "Plant a perennial herb. Flowering mint feeds bees; picked leaves are used in tea."
+
+#. Voorwerpdefinitie or_rosemary_seed
+#. Naam van voorwerp or_rosemary_seed
+#: scripts/data/ext/orchard.gd:7
+msgid "Rozemarijnstek"
+msgstr "Rosemary cutting"
+
+#. Voorwerpdefinitie or_rosemary_seed
+#. Beschrijving van voorwerp or_rosemary_seed
+#: scripts/data/ext/orchard.gd:7
+msgid "Plant een blijvend kruid. De bloei voedt bijen; blaadjes zijn voor rozemarijnbalsem."
+msgstr "Plant a perennial herb. Its flowers feed bees; its leaves are used in rosemary balm."
+
+#. Voorwerpdefinitie or_apple_seed
+#. Naam van voorwerp or_apple_seed
+#: scripts/data/ext/orchard.gd:8
+msgid "Appelboompje"
+msgstr "Apple sapling"
+
+#. Voorwerpdefinitie or_apple_seed
+#. Beschrijving van voorwerp or_apple_seed
+#: scripts/data/ext/orchard.gd:8
+msgid "Plant op bewerkte grond met drie bij drie tegels vrije kroonruimte. Aangesloten water binnen twee tegels voedt de wortels."
+msgstr "Plant on tilled soil with three by three tiles of clear canopy space. Connected water within two tiles feeds its roots."
+
+#. Voorwerpdefinitie or_berry_seed
+#. Naam van voorwerp or_berry_seed
+#: scripts/data/ext/orchard.gd:9
+msgid "Bosbessenstek"
+msgstr "Blueberry cutting"
+
+#. Voorwerpdefinitie or_berry_seed
+#. Beschrijving van voorwerp or_berry_seed
+#: scripts/data/ext/orchard.gd:9
+msgid "Een lage, blijvende struik op één tegel. Levert dezelfde bosbessen als de bestaande wilde planten."
+msgstr "A low perennial bush using one tile. Produces the same blueberries as existing wild plants."
+
+#. Voorwerpdefinitie or_carrot
+#. Naam van voorwerp or_carrot
+#: scripts/data/ext/orchard.gd:10
+msgid "Tuinwortel"
+msgstr "Garden carrot"
+
+#. Voorwerpdefinitie or_carrot
+#. Beschrijving van voorwerp or_carrot
+#: scripts/data/ext/orchard.gd:10
+msgid "Een verse wortel herstelt één hartje. Met pompoen en zilverkruid bruikbaar voor tuinstoofpot."
+msgstr "A fresh carrot restores one heart. Combine with pumpkin and silverleaf to make garden stew."
+
+#. Voorwerpdefinitie or_pumpkin
+#. Naam van voorwerp or_pumpkin
+#: scripts/data/ext/orchard.gd:11
+msgid "Tuinpompoen"
+msgstr "Garden pumpkin"
+
+#. Voorwerpdefinitie or_pumpkin
+#. Beschrijving van voorwerp or_pumpkin
+#: scripts/data/ext/orchard.gd:11
+msgid "Een stevige groente uit je eigen tuin. Maak tuinstoofpot in de bestaande herbergkeuken."
+msgstr "A hearty vegetable from your garden. Make garden stew in the existing inn kitchen."
+
+#. Voorwerpdefinitie or_mint
+#. Naam van voorwerp or_mint
+#: scripts/data/ext/orchard.gd:12
+msgid "Tuinmuntblaadjes"
+msgstr "Garden mint leaves"
+
+#. Voorwerpdefinitie or_mint
+#. Beschrijving van voorwerp or_mint
+#: scripts/data/ext/orchard.gd:12
+msgid "Eigen munt voor honing-muntthee in de herberg. De wilde watermunt uit het moeras behoudt zijn eigen recepten."
+msgstr "Homegrown mint for honey mint tea at the inn. Wild water mint from the swamp keeps its existing recipes."
+
+#. Voorwerpdefinitie or_rosemary
+#. Naam van voorwerp or_rosemary
+#: scripts/data/ext/orchard.gd:13
+msgid "Rozemarijnblaadjes"
+msgstr "Rosemary leaves"
+
+#. Voorwerpdefinitie or_rosemary
+#. Beschrijving van voorwerp or_rosemary
+#: scripts/data/ext/orchard.gd:13
+msgid "Eigen kruid voor rozemarijnbalsem bij Lena's alchemietafel."
+msgstr "Homegrown herbs for rosemary balm at Lena's alchemy table."
+
+#. Voorwerpdefinitie or_apple
+#. Naam van voorwerp or_apple
+#: scripts/data/ext/orchard.gd:14
+msgid "Tuinappel"
+msgstr "Garden apple"
+
+#. Voorwerpdefinitie or_apple
+#. Beschrijving van voorwerp or_apple
+#: scripts/data/ext/orchard.gd:14
+msgid "Vers fruit van je eigen boom. Herstelt één hartje en tien stamina; de boom draagt opnieuw vrucht."
+msgstr "Fresh fruit from your tree. Restores one heart and ten stamina; the tree grows another crop."
+
+#. Voorwerpdefinitie or_stew
+#. Naam van voorwerp or_stew
+#: scripts/data/ext/orchard.gd:15
+msgid "Tuinstoofpot"
+msgstr "Garden stew"
+
+#. Voorwerpdefinitie or_stew
+#. Beschrijving van voorwerp or_stew
+#: scripts/data/ext/orchard.gd:15
+msgid "Pompoen, wortels en zilverkruid uit de herbergkeuken. Herstelt drie hartjes en twintig stamina."
+msgstr "Pumpkin, carrots and silverleaf from the inn kitchen. Restores three hearts and twenty stamina."
+
+#. Voorwerpdefinitie or_tea
+#. Naam van voorwerp or_tea
+#: scripts/data/ext/orchard.gd:16
+msgid "Honing-muntthee"
+msgstr "Honey mint tea"
+
+#. Voorwerpdefinitie or_tea
+#. Beschrijving van voorwerp or_tea
+#: scripts/data/ext/orchard.gd:16
+msgid "Tuinmunt met bloemenhoning, gezet in de herberg. Herstelt één hartje en 45 stamina."
+msgstr "Garden mint and flower honey brewed at the inn. Restores one heart and 45 stamina."
+
+#. Voorwerpdefinitie or_balm
+#. Naam van voorwerp or_balm
+#: scripts/data/ext/orchard.gd:17
+msgid "Rozemarijnbalsem"
+msgstr "Rosemary balm"
+
+#. Voorwerpdefinitie or_balm
+#. Beschrijving van voorwerp or_balm
+#: scripts/data/ext/orchard.gd:17
+msgid "Rozemarijn, zilverkruid en honing van de alchemietafel. Herstelt drie hartjes."
+msgstr "Rosemary, silverleaf and honey mixed at the alchemy table. Restores three hearts."
+
+#. Voorwerpdefinitie hs_hoe
+#. Naam van voorwerp hs_hoe
+#: scripts/data/ext/homestead.gd:7
+msgid "Tuinhak"
+msgstr "Garden hoe"
+
+#. Voorwerpdefinitie hs_hoe
+#. Beschrijving van voorwerp hs_hoe
+#: scripts/data/ext/homestead.gd:7
+msgid "Eén gereedschap voor grond en smalle kanalen. Open de tuinstanden met U of via Beroepen → Tuinstanden; de ingestelde binding staat in Bediening."
+msgstr "One tool for soil and narrow channels. Open garden modes with U or through Professions → Garden modes; your current binding is shown in Controls."
+
+#. Voorwerpdefinitie hs_manure
+#. Naam van voorwerp hs_manure
+#: scripts/data/ext/homestead.gd:8
+msgid "Dierenpoep"
+msgstr "Animal droppings"
+
+#. Voorwerpdefinitie hs_manure
+#. Beschrijving van voorwerp hs_manure
+#: scripts/data/ext/homestead.gd:8
+msgid "Wilde dieren laten dit ook levend achter. Verwerk het op de mesthoop achter je huis tot meststof."
+msgstr "Wild animals leave this behind while alive. Turn it into fertilizer at the compost heap behind your home."
+
+#. Voorwerpdefinitie hs_fertilizer
+#. Naam van voorwerp hs_fertilizer
+#: scripts/data/ext/homestead.gd:9
+msgid "Meststof"
+msgstr "Fertilizer"
+
+#. Voorwerpdefinitie hs_fertilizer
+#. Beschrijving van voorwerp hs_fertilizer
+#: scripts/data/ext/homestead.gd:9
+msgid "Eén per oogstbaar gewas geeft bij de volgende oogst extra opbrengst. Druiven geven vijf in plaats van drie. Geen verplichte onderhoudsronde."
+msgstr "One per harvestable plant improves its next yield. Grapes give five instead of three. No mandatory daily upkeep."
+
+#. Voorwerpdefinitie hs_seed
+#. Naam van voorwerp hs_seed
+#. Oogstbare grondstof trail_seeds
+#: scripts/data/ext/beroepen.gd:206 scripts/data/ext/homestead.gd:10
+msgid "Druivenpitten"
+msgstr "Grape seeds"
+
+#. Voorwerpdefinitie hs_seed
+#. Beschrijving van voorwerp hs_seed
+#: scripts/data/ext/homestead.gd:10
+msgid "Plant op bewerkte, bewaterde grond. Een druivenstok blijft na de oogst staan. Maak meer pitten van bosdruiven via Beroepen."
+msgstr "Plant in tilled, irrigated soil. A grapevine stays after harvesting. Make more seeds from wild grapes through Professions."
+
+#. Voorwerpdefinitie hs_flower_seed
+#. Naam van voorwerp hs_flower_seed
+#: scripts/data/ext/homestead.gd:11
+msgid "Bloemenzaad"
+msgstr "Flower seeds"
+
+#. Voorwerpdefinitie hs_flower_seed
+#. Beschrijving van voorwerp hs_flower_seed
+#: scripts/data/ext/homestead.gd:11
+msgid "Plant in je tuin. Drie bloeiende planten binnen vijf tegels houden de bijenkast aan het werk."
+msgstr "Plant in your garden. Three flowering plants within five tiles keep the beehive working."
+
+#. Voorwerpdefinitie hs_grape
+#: scripts/data/ext/homestead.gd:12
+msgid "Druiven"
+msgstr "Grapes"
+
+#. Voorwerpdefinitie hs_grape
+#: scripts/data/ext/homestead.gd:12
+msgid "Bosdruiven of je eigen oogst. Herstellen één hartje; ook bruikbaar voor wijn of nieuwe pitten."
+msgstr "Wild grapes or your own harvest. Restore one heart; also useful for wine or new seeds."
+
+#. Voorwerpdefinitie hs_wine
+#. Naam van voorwerp hs_wine
+#: scripts/data/ext/homestead.gd:13
+msgid "Druivenwijn"
+msgstr "Grape wine"
+
+#. Voorwerpdefinitie hs_wine
+#. Beschrijving van voorwerp hs_wine
+#: scripts/data/ext/homestead.gd:13
+msgid "Drie druiven rijpen in een wijnvat tot één fles. Gebruik via Eten & drinken voor 40 stamina."
+msgstr "Three grapes mature in a wine barrel into one bottle. Use through Food & drink for 40 stamina."
+
+#. Voorwerpdefinitie hs_honey
+#. Naam van voorwerp hs_honey
+#: scripts/data/ext/homestead.gd:14
+msgid "Bloemenhoning"
+msgstr "Flower honey"
+
+#. Voorwerpdefinitie hs_honey
+#. Beschrijving van voorwerp hs_honey
+#: scripts/data/ext/homestead.gd:14
+msgid "Bijen maken honing zolang er minstens drie bloemen in de buurt bloeien. Herstelt één hartje en 25 stamina."
+msgstr "Bees make honey while at least three flowers bloom nearby. Restores one heart and 25 stamina."
+
+#. Voorwerpdefinitie cw_driftwood
+#. Naam van voorwerp cw_driftwood
+#: scripts/data/ext/coastal_craft.gd:7
+msgid "Zoutdrijfhout"
+msgstr "Saltwood"
+
+#. Voorwerpdefinitie cw_driftwood
+#. Beschrijving van voorwerp cw_driftwood
+#: scripts/data/ext/coastal_craft.gd:7
+msgid "Droog hout van een rustige zijplek aan de Blauwe Kust. Voor Rafs herbruikbare oeverlijn en meubels."
+msgstr "Dry timber from a quiet side spot on the Blue Coast. For Raf's reusable river line and furniture."
+
+#. Voorwerpdefinitie cw_reed
+#. Naam van voorwerp cw_reed
+#: scripts/data/ext/coastal_craft.gd:8
+msgid "Oevervezel"
+msgstr "Bank fiber"
+
+#. Voorwerpdefinitie cw_reed
+#. Beschrijving van voorwerp cw_reed
+#: scripts/data/ext/coastal_craft.gd:8
+msgid "Soepele vezels uit één rietplek bij Zilvermonding. Voor een herbruikbare lijn en waaierbanden."
+msgstr "Flexible fibers from one reed patch at Silver Estuary. For a reusable line and fan bands."
+
+#. Voorwerpdefinitie cw_seaglass
+#. Naam van voorwerp cw_seaglass
+#: scripts/data/ext/coastal_craft.gd:9
+msgid "Zeeagaat"
+msgstr "Sea agate"
+
+#. Voorwerpdefinitie cw_seaglass
+#. Beschrijving van voorwerp cw_seaglass
+#: scripts/data/ext/coastal_craft.gd:9
+msgid "Win in de veilige zuidelijke gang van de Tijholte met een stenen of koperen pikhouweel. Voor kustuitrusting en een werkplaatslamp."
+msgstr "Mine it in the safe southern passage of Tidal Hollow with a stone or copper pickaxe. For coastal equipment and a workshop lamp."
+
+#. Voorwerpdefinitie cw_saltleaf
+#. Naam van voorwerp cw_saltleaf
+#: scripts/data/ext/coastal_craft.gd:10
+msgid "Zoutblad"
+msgstr "Saltleaf"
+
+#. Voorwerpdefinitie cw_saltleaf
+#. Beschrijving van voorwerp cw_saltleaf
+#: scripts/data/ext/coastal_craft.gd:10
+msgid "Een kruid van de open graslanden van Lichtkaap. Met een baars van Joris maak je er kustbouillon van."
+msgstr "An herb from the open meadows of Beacon Headland. Combine it with Joris's perch to make coastal broth."
+
+#. Voorwerpdefinitie cw_hook
+#. Naam van voorwerp cw_hook
+#: scripts/ui/coastal_home_ui.gd:83 scripts/data/ext/coastal_craft.gd:11
+msgid "Herbruikbare oeverlijn"
+msgstr "Reusable river line"
+
+#. Voorwerpdefinitie cw_hook
+#. Beschrijving van voorwerp cw_hook
+#: scripts/data/ext/coastal_craft.gd:11
+msgid "Rafs haak en lijn. Verbindt de twee lijnpalen aan Zilvermonding. Niet verbruikt; de hoge rivierbrug blijft altijd open."
+msgstr "Raf's hook and line. Connects the two line posts at Silver Estuary. Never consumed; the high river bridge always stays open."
+
+#. Voorwerpdefinitie cw_shelf
+#. Naam van voorwerp cw_shelf
+#: scripts/data/ext/coastal_craft.gd:12
+msgid "Drijfhouten wandrek"
+msgstr "Saltwood wall rack"
+
+#. Voorwerpdefinitie cw_shelf
+#. Beschrijving van voorwerp cw_shelf
+#: scripts/data/ext/coastal_craft.gd:12
+msgid "Plaats of berg het gratis op via de inrichttafel in de havenwerkplaats. Heeft een vaste plek tegen de wand; geen onderhoud."
+msgstr "Place or store it for free at the workshop furnishing table. It has a fixed spot by the wall and needs no upkeep."
+
+#. Voorwerpdefinitie cw_lamp
+#. Naam van voorwerp cw_lamp
+#: scripts/data/ext/coastal_craft.gd:13
+msgid "Zeeagaatlamp"
+msgstr "Sea-agate lamp"
+
+#. Voorwerpdefinitie cw_lamp
+#. Beschrijving van voorwerp cw_lamp
+#: scripts/data/ext/coastal_craft.gd:13
+msgid "Lena's lamp voor de vaste sokkel in de havenwerkplaats. Kies warm licht, zeelicht of uit. Plaatsen verbruikt hem niet."
+msgstr "Lena's lamp for the fixed plinth in the harbor workshop. Choose warm light, sea light or off. Placing it does not consume it."
+
+#. Voorwerpdefinitie cw_broth
+#. Naam van voorwerp cw_broth
+#: scripts/data/ext/coastal_craft.gd:14
+msgid "Kustbouillon"
+msgstr "Coastal broth"
+
+#. Voorwerpdefinitie cw_broth
+#. Beschrijving van voorwerp cw_broth
+#: scripts/data/ext/coastal_craft.gd:14
+msgid "Baars van het Zilvermeer met zoutblad van Lichtkaap. Herstelt 2 hartjes en 20 stamina. Gebruik via Beroepen → Eten & drinken."
+msgstr "Silverlake perch with saltleaf from Beacon Headland. Restores 2 hearts and 20 stamina. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie td_line
+#. Naam van voorwerp td_line
+#: scripts/data/ext/tides.gd:5
+msgid "Landingslijn"
+msgstr "Landing line"
+
+#. Voorwerpdefinitie td_line
+#. Beschrijving van voorwerp td_line
+#: scripts/data/ext/tides.gd:5
+msgid "Gratis geleend bij de kist in de Getijdenbaai. Herbruikbaar bij beide lijnpalen; wordt nooit verbruikt."
+msgstr "Borrowed free from the chest in Tidal Cove. Reusable at either line post; never consumed."
+
+#. Voorwerpdefinitie ra_waterskin
+#. Naam van voorwerp ra_waterskin
+#: scripts/data/ext/regional.gd:159
+msgid "Nours waterzak"
+msgstr "Nour's waterskin"
+
+#. Voorwerpdefinitie ra_waterskin
+#. Beschrijving van voorwerp ra_waterskin
+#: scripts/data/ext/regional.gd:164
+msgid "Een hervulbare waterzak voor de Zonnekloof. Je drinkt automatisch; vul gratis bij onder de blauwe luifels."
+msgstr "A refillable waterskin for the Sun Gorge. You drink automatically; refill for free under the blue shelters."
+
+#. Voorwerpdefinitie ls_crate
+#. Naam van voorwerp ls_crate
+#: scripts/data/ext/lake_supper.gd:10
+msgid "Joris' maaltijdmand"
+msgstr "Joris’ meal hamper"
+
+#. Voorwerpdefinitie ls_crate
+#. Beschrijving van voorwerp ls_crate
+#: scripts/data/ext/lake_supper.gd:10
+msgid "Verse vangst en groente voor Mila. Bereid twee porties bij het fornuis in de herberg."
+msgstr "Fresh fish and vegetables for Mila. Prepare two portions at the inn’s stove."
+
+#. Voorwerpdefinitie ls_chowder
+#. Naam van voorwerp ls_chowder
+#: scripts/data/ext/lake_supper.gd:11
+msgid "Zilvermeerstoof"
+msgstr "Silverlake stew"
+
+#. Voorwerpdefinitie ls_chowder
+#. Beschrijving van voorwerp ls_chowder
+#: scripts/data/ext/lake_supper.gd:11
+msgid "Stevige visstoof: herstelt 3 hartjes en 20 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Hearty fish stew: restores 3 hearts and 20 stamina. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie ls_broth
+#. Naam van voorwerp ls_broth
+#: scripts/data/ext/lake_supper.gd:12
+msgid "Oeverbouillon"
+msgstr "Lakeside broth"
+
+#. Voorwerpdefinitie ls_broth
+#. Beschrijving van voorwerp ls_broth
+#: scripts/data/ext/lake_supper.gd:12
+msgid "Lichte visbouillon: herstelt 1 hartje en 60 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Light fish broth: restores 1 heart and 60 stamina. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie bow
+#. Naam van voorwerp bow
+#. Instelbare bediening: bow
+#: scripts/core/input_manager.gd:15 scripts/data/ext/boog.gd:15
+msgid "Boog"
+msgstr "Bow"
+
+#. Voorwerpdefinitie bow
+#. Beschrijving van voorwerp bow
+#: scripts/data/ext/boog.gd:16
+msgid "Druk op F om een pijl te schieten. Een pijl doet 2 schade (bij bazen 1) en vliegt over water. Je krijgt er 5 pijlen bij, meer pijlen koop je apart."
+msgstr "Press F to shoot an arrow. An arrow does 2 damage (1 to bosses) and flies over water. Comes with 5 arrows. You can buy more arrows separately."
+
+#. Voorwerpdefinitie arrow
+#. Naam van voorwerp arrow
+#: scripts/data/ext/boog.gd:19
+msgid "Pijl"
+msgstr "Arrow"
+
+#. Voorwerpdefinitie arrow
+#. Beschrijving van voorwerp arrow
+#: scripts/data/ext/boog.gd:23
+msgid "Pijlen voor je boog. Er passen er 40 in je pijlenkoker. Skeletten laten er soms een paar vallen."
+msgstr "Arrows for your bow. Your quiver holds 40 of them. Skeletons sometimes drop a few."
+
+#. Voorwerpdefinitie fishing_rod
+#. Naam van voorwerp fishing_rod
+#: scripts/data/ext/meer.gd:62
+msgid "Hengel"
+msgstr "Fishing Rod"
+
+#. Voorwerpdefinitie fishing_rod
+#. Beschrijving van voorwerp fishing_rod
+#: scripts/data/ext/meer.gd:63
+msgid "De reservehengel van Visser Joris. Ga bij een visplek in het Zilvermeer staan en druk op E."
+msgstr "Joris the Fisher's spare rod. Stand at a fishing spot at Silver Lake and press E."
+
+#. Voorwerpdefinitie meer_baars
+#. Naam van voorwerp meer_baars
+#: scripts/data/ext/meer.gd:66
+msgid "Baars"
+msgstr "Perch"
+
+#. Voorwerpdefinitie meer_baars
+#. Beschrijving van voorwerp meer_baars
+#: scripts/data/ext/meer.gd:67
+msgid "Een gestreepte baars met rode vinnen. Joris en Mila kopen hem graag."
+msgstr "A striped perch with red fins. Joris and Mila are happy to buy it."
+
+#. Voorwerpdefinitie meer_snoek
+#. Naam van voorwerp meer_snoek
+#: scripts/data/ext/meer.gd:70
+msgid "Snoek"
+msgstr "Pike"
+
+#. Voorwerpdefinitie meer_snoek
+#. Beschrijving van voorwerp meer_snoek
+#: scripts/data/ext/meer.gd:71
+msgid "Een lange snoek met een grote bek. Joris en Mila betalen er goed voor."
+msgstr "A long pike with a big mouth. Joris and Mila pay well for it."
+
+#. Voorwerpdefinitie meer_gouden_karper
+#. Naam van voorwerp meer_gouden_karper
+#: scripts/data/ext/meer.gd:74
+msgid "Gouden Karper"
+msgstr "Golden Carp"
+
+#. Voorwerpdefinitie meer_gouden_karper
+#. Beschrijving van voorwerp meer_gouden_karper
+#: scripts/data/ext/meer.gd:75
+msgid "De beroemde vis van het Zilvermeer. Hij glinstert alsof hij van goud is. Visser Joris droomt van hem."
+msgstr "The famous fish of Silver Lake. It sparkles like it's made of gold. Joris the Fisher dreams about it."
+
+#. Voorwerpdefinitie meer_laars
+#. Naam van voorwerp meer_laars
+#: scripts/data/ext/meer.gd:78
+msgid "Oude laars"
+msgstr "Old Boot"
+
+#. Voorwerpdefinitie meer_laars
+#. Beschrijving van voorwerp meer_laars
+#: scripts/data/ext/meer.gd:79
+msgid "Een natte, stinkende laars. Joris verzamelt ze. Waarom, dat weet niemand."
+msgstr "A wet, smelly boot. Joris collects them. Why? Nobody knows."
+
+#. Voorwerpdefinitie fishers_cap
+#. Naam van voorwerp fishers_cap
+#: scripts/data/ext/meer.gd:82
+msgid "Visserspet"
+msgstr "Fisher's Cap"
+
+#. Voorwerpdefinitie fishers_cap
+#. Beschrijving van voorwerp fishers_cap
+#: scripts/data/ext/meer.gd:83
+msgid "De pet van Visser Joris. Met deze pet betalen Joris en Mila je 10% extra voor je vis."
+msgstr "Joris the Fisher's cap. With this cap on, Joris and Mila pay you 10% extra for your fish."
+
+#. Voorwerpdefinitie meer_boek_eiland
+#. Naam van voorwerp meer_boek_eiland
+#: scripts/data/ext/meer.gd:86
+msgid "Sagen van het Zilvermeer"
+msgstr "Legends of Silver Lake"
+
+#. Voorwerpdefinitie meer_boek_eiland
+#. Beschrijving van voorwerp meer_boek_eiland
+#: scripts/data/ext/meer.gd:87
+msgid "Een van de drie boeken die Lena mist. Je vond het op het eiland."
+msgstr "One of the three books Lena is missing. You found it on the island."
+
+#. Voorwerpdefinitie meer_boek_hut
+#. Naam van voorwerp meer_boek_hut
+#: scripts/data/ext/meer.gd:90
+msgid "Het Grote Vissenboek"
+msgstr "The Big Book of Fish"
+
+#. Voorwerpdefinitie meer_boek_hut
+#. Beschrijving van voorwerp meer_boek_hut
+#: scripts/data/ext/meer.gd:91
+msgid "Een van de drie boeken die Lena mist. Het lag in het huisje van Joris, met een koffiekring erop."
+msgstr "One of the three books Lena is missing. It was in Joris' Cabin, with a coffee ring on it."
+
+#. Voorwerpdefinitie meer_boek_sanne
+#. Naam van voorwerp meer_boek_sanne
+#: scripts/data/ext/meer.gd:94
+msgid "Sterren boven Azura"
+msgstr "Stars over Azura"
+
+#. Voorwerpdefinitie meer_boek_sanne
+#. Beschrijving van voorwerp meer_boek_sanne
+#: scripts/data/ext/meer.gd:95
+msgid "Een van de drie boeken die Lena mist. Sanne gaf het je."
+msgstr "One of the three books Lena is missing. Sanne gave it to you."
+
+#. Voorwerpdefinitie meer_schelp
+#. Naam van voorwerp meer_schelp
+#: scripts/data/ext/meer.gd:98
+msgid "Zilverschelp"
+msgstr "Silver Shell"
+
+#. Voorwerpdefinitie meer_schelp
+#. Beschrijving van voorwerp meer_schelp
+#: scripts/data/ext/meer.gd:99
+msgid "Een roze schelp uit het Zilvermeer. Als je goed luistert, hoor je een rustig liedje. Een verzamelstuk."
+msgstr "A pink shell from Silver Lake. If you listen closely, you can hear a calm little song. A collectible."
+
+#. Voorwerpdefinitie sword_star
+#. Naam van voorwerp sword_star
+#. Naam van zwaard star
+#: scripts/data/ext/diepte.gd:97 scripts/data/ext/diepte.gd:109
+msgid "Sterrenzwaard"
+msgstr "Starsword"
+
+#. Voorwerpdefinitie sword_star
+#. Beschrijving van voorwerp sword_star
+#: scripts/data/ext/diepte.gd:98
+msgid "Het legendarische zwaard van de Sterrenkaart. Het schijnt als een ster en raakt harder dan alle andere zwaarden."
+msgstr "The legendary sword of the Star Map. It shines like a star and hits harder than any other sword."
+
+#. Voorwerpdefinitie diepte_key
+#. Naam van voorwerp diepte_key
+#: scripts/data/ext/diepte.gd:101
+msgid "Kristalsleutel"
+msgstr "Crystal Key"
+
+#. Voorwerpdefinitie diepte_key
+#. Beschrijving van voorwerp diepte_key
+#: scripts/data/ext/diepte.gd:102
+msgid "Een sleutel van gloeiend kristal. Hij past op de kristalpoort in de Diepte."
+msgstr "A key made of glowing crystal. It fits the crystal gate in the Depths."
+
+#. Voorwerpdefinitie arena_trophy_bronze
+#. Naam van voorwerp arena_trophy_bronze
+#: scripts/data/ext/arena.gd:31
+msgid "Bronzen trofee"
+msgstr "Bronze Trophy"
+
+#. Voorwerpdefinitie arena_trophy_bronze
+#. Beschrijving van voorwerp arena_trophy_bronze
+#: scripts/data/ext/arena.gd:32
+msgid "Voor het winnen van de Brons-rang in de arena. Staat mooi op de trofeeënplank."
+msgstr "For winning the Bronze rank in the arena. Looks great on the trophy shelf."
+
+#. Voorwerpdefinitie arena_trophy_silver
+#. Naam van voorwerp arena_trophy_silver
+#: scripts/data/ext/arena.gd:35
+msgid "Zilveren trofee"
+msgstr "Silver Trophy"
+
+#. Voorwerpdefinitie arena_trophy_silver
+#. Beschrijving van voorwerp arena_trophy_silver
+#: scripts/data/ext/arena.gd:36
+msgid "Voor het winnen van de Zilver-rang in de arena. Hij glimt als een spiegel."
+msgstr "For winning the Silver rank in the arena. It shines like a mirror."
+
+#. Voorwerpdefinitie arena_trophy_gold
+#. Naam van voorwerp arena_trophy_gold
+#: scripts/data/ext/arena.gd:39
+msgid "Gouden trofee"
+msgstr "Gold Trophy"
+
+#. Voorwerpdefinitie arena_trophy_gold
+#. Beschrijving van voorwerp arena_trophy_gold
+#: scripts/data/ext/arena.gd:40
+msgid "Voor het winnen van de Goud-rang in de arena. De hoogste eer van Dageraadsdorp!"
+msgstr "For winning the Gold rank in the arena. The highest honor in Daybreak Village!"
+
+#. Voorwerpdefinitie arena_helm
+#. Naam van voorwerp arena_helm
+#: scripts/data/ext/arena.gd:43
+msgid "Arenahelm"
+msgstr "Arena Helmet"
+
+#. Voorwerpdefinitie arena_helm
+#. Beschrijving van voorwerp arena_helm
+#: scripts/data/ext/arena.gd:44
+msgid "Een stalen helm met een rode pluim. Alleen een echte Arenakampioen mag hem dragen. Een verzamelstuk."
+msgstr "A steel helmet with a red plume. Only a true Arena Champion may wear it. A collectible."
+
+#. Voorwerpdefinitie prof_branch
+#. Naam van voorwerp prof_branch
+#: scripts/data/ext/beroepen.gd:32
+msgid "Droge tak"
+msgstr "Dry Branch"
+
+#. Voorwerpdefinitie prof_branch
+#. Beschrijving van voorwerp prof_branch
+#: scripts/data/ext/beroepen.gd:32
+msgid "Los hout uit dorp en bos. Voor je eerste bijl en pikhouweel."
+msgstr "Loose wood from the village and woods. For your first axe and pickaxe."
+
+#. Voorwerpdefinitie prof_stone
+#. Naam van voorwerp prof_stone
+#: scripts/data/ext/beroepen.gd:33
+msgid "Vuursteen"
+msgstr "Flint"
+
+#. Voorwerpdefinitie prof_stone
+#. Beschrijving van voorwerp prof_stone
+#: scripts/data/ext/beroepen.gd:33
+msgid "Een scherpe losse steen. Je kunt hem zonder gereedschap oprapen."
+msgstr "A sharp loose stone. You can pick it up without tools."
+
+#. Voorwerpdefinitie prof_herb
+#. Naam van voorwerp prof_herb
+#. Oogstbare grondstof herbs
+#. Oogstbare grondstof trail_herbs
+#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:181 scripts/data/ext/beroepen.gd:203
+msgid "Zilverkruid"
+msgstr "Silverleaf"
+
+#. Voorwerpdefinitie prof_herb
+#. Beschrijving van voorwerp prof_herb
+#: scripts/data/ext/beroepen.gd:34
+msgid "Geurig kruid voor alchemie en stevige soep."
+msgstr "A fragrant herb for alchemy and hearty soup."
+
+#. Voorwerpdefinitie prof_berry
+#: scripts/data/ext/beroepen.gd:35
+msgid "Bosbes"
+msgstr "Blueberry"
+
+#. Voorwerpdefinitie prof_berry
+#: scripts/data/ext/beroepen.gd:35
+msgid "Maak er een bessensnack of een energie-elixer van."
+msgstr "Use it to make a berry snack or an energy tonic."
+
+#. Voorwerpdefinitie prof_log
+#. Naam van voorwerp prof_log
+#: scripts/data/ext/beroepen.gd:36
+msgid "Berkenhout"
+msgstr "Birch Wood"
+
+#. Voorwerpdefinitie prof_log
+#. Beschrijving van voorwerp prof_log
+#: scripts/data/ext/beroepen.gd:36
+msgid "Hout van een oogstbare stronk. Voor smeltvuur, gereedschap en pijlen."
+msgstr "Wood from a harvestable stump. For smelting, tools and arrows."
+
+#. Voorwerpdefinitie prof_copper_ore
+#. Naam van voorwerp prof_copper_ore
+#: scripts/data/ext/beroepen.gd:37
+msgid "Kopererts"
+msgstr "Copper Ore"
+
+#. Voorwerpdefinitie prof_copper_ore
+#. Beschrijving van voorwerp prof_copper_ore
+#: scripts/data/ext/beroepen.gd:37
+msgid "Win met een stenen pikhouweel. Smelt het bij Greta tot koper."
+msgstr "Mine it with a stone pickaxe. Smelt it into copper at Greta's."
+
+#. Voorwerpdefinitie prof_iron_ore
+#. Naam van voorwerp prof_iron_ore
+#: scripts/data/ext/beroepen.gd:38
+msgid "IJzererts"
+msgstr "Iron Ore"
+
+#. Voorwerpdefinitie prof_iron_ore
+#. Beschrijving van voorwerp prof_iron_ore
+#: scripts/data/ext/beroepen.gd:38
+msgid "Win in de Echo-grot met mijnbouw 2 en een koperen pikhouweel."
+msgstr "Mine it in Echo Cave with Mining 2 and a copper pickaxe."
+
+#. Voorwerpdefinitie prof_copper_bar
+#. Naam van voorwerp prof_copper_bar
+#: scripts/data/ext/beroepen.gd:39
+msgid "Koperstaaf"
+msgstr "Copper Bar"
+
+#. Voorwerpdefinitie prof_copper_bar
+#. Beschrijving van voorwerp prof_copper_bar
+#: scripts/data/ext/beroepen.gd:39
+msgid "Gesmolten koper voor een beter pikhouweel."
+msgstr "Smelted copper for a better pickaxe."
+
+#. Voorwerpdefinitie prof_iron_bar
+#. Naam van voorwerp prof_iron_bar
+#: scripts/data/ext/beroepen.gd:40
+msgid "IJzerstaaf"
+msgstr "Iron Bar"
+
+#. Voorwerpdefinitie prof_iron_bar
+#. Beschrijving van voorwerp prof_iron_bar
+#: scripts/data/ext/beroepen.gd:40
+msgid "Gesmolten ijzer voor een efficiëntere bijl."
+msgstr "Smelted iron for a more efficient axe."
+
+#. Voorwerpdefinitie prof_axe
+#. Naam van voorwerp prof_axe
+#: scripts/data/ext/beroepen.gd:41
+msgid "Stenen bijl"
+msgstr "Stone Axe"
+
+#. Voorwerpdefinitie prof_axe
+#. Beschrijving van voorwerp prof_axe
+#: scripts/data/ext/beroepen.gd:41
+msgid "Hak oogstbare stronken. Wordt automatisch gebruikt; slijt niet."
+msgstr "Chop harvestable stumps. Used automatically; never wears out."
+
+#. Voorwerpdefinitie prof_pickaxe
+#. Naam van voorwerp prof_pickaxe
+#: scripts/data/ext/beroepen.gd:42
+msgid "Stenen pikhouweel"
+msgstr "Stone Pickaxe"
+
+#. Voorwerpdefinitie prof_pickaxe
+#. Beschrijving van voorwerp prof_pickaxe
+#: scripts/data/ext/beroepen.gd:42
+msgid "Win koperaders. Wordt automatisch gebruikt; slijt niet."
+msgstr "Mine copper veins. Used automatically; never wears out."
+
+#. Voorwerpdefinitie prof_copper_pickaxe
+#. Naam van voorwerp prof_copper_pickaxe
+#: scripts/data/ext/beroepen.gd:43
+msgid "Koperen pikhouweel"
+msgstr "Copper Pickaxe"
+
+#. Voorwerpdefinitie prof_copper_pickaxe
+#. Beschrijving van voorwerp prof_copper_pickaxe
+#: scripts/data/ext/beroepen.gd:43
+msgid "Ontsluit ijzererts vanaf mijnbouw 2. Vervangt je stenen pikhouweel automatisch."
+msgstr "Unlocks iron ore at Mining 2. Automatically replaces your stone pickaxe."
+
+#. Voorwerpdefinitie prof_iron_axe
+#. Naam van voorwerp prof_iron_axe
+#: scripts/data/ext/beroepen.gd:44
+msgid "IJzeren bijl"
+msgstr "Iron Axe"
+
+#. Voorwerpdefinitie prof_iron_axe
+#. Beschrijving van voorwerp prof_iron_axe
+#: scripts/data/ext/beroepen.gd:44
+msgid "Oogst 3 berkenhout per stronk in plaats van 2. Slijt niet."
+msgstr "Harvests 3 birch wood per stump instead of 2. Never wears out."
+
+#. Voorwerpdefinitie prof_tonic
+#. Naam van voorwerp prof_tonic
+#: scripts/data/ext/beroepen.gd:45
+msgid "Energie-elixer"
+msgstr "Energy Tonic"
+
+#. Voorwerpdefinitie prof_tonic
+#. Beschrijving van voorwerp prof_tonic
+#: scripts/data/ext/beroepen.gd:45
+msgid "Herstelt 60 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Restores 60 stamina. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_berry_meal
+#. Naam van voorwerp prof_berry_meal
+#: scripts/data/ext/beroepen.gd:46
+msgid "Bessensnack"
+msgstr "Berry Snack"
+
+#. Voorwerpdefinitie prof_berry_meal
+#. Beschrijving van voorwerp prof_berry_meal
+#: scripts/data/ext/beroepen.gd:46
+msgid "Een bereide portie van drie blauwe bosbessen. Herstelt 3 hartjes en 30 uithoudingsvermogen in één keer."
+msgstr "A prepared portion of three blueberries. Restores 3 hearts and 30 stamina at once."
+
+#. Voorwerpdefinitie prof_fish_meal
+#. Naam van voorwerp prof_fish_meal
+#: scripts/data/ext/beroepen.gd:47
+msgid "Gebakken baars"
+msgstr "Grilled Perch"
+
+#. Voorwerpdefinitie prof_fish_meal
+#. Beschrijving van voorwerp prof_fish_meal
+#: scripts/data/ext/beroepen.gd:47
+msgid "Herstelt 3 hartjes. Gemaakt in de herberg. Gebruik via Beroepen → Eten & drinken."
+msgstr "Restores 3 hearts. Cooked at the inn. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_mushroom
+#. Naam van voorwerp prof_mushroom
+#: scripts/data/ext/beroepen.gd:48
+msgid "Honingzwam"
+msgstr "Honey Mushroom"
+
+#. Voorwerpdefinitie prof_mushroom
+#. Beschrijving van voorwerp prof_mushroom
+#: scripts/data/ext/beroepen.gd:48
+msgid "Een eetbare zwam uit het Fluisterbos. Voor stevige paddenstoelensoep."
+msgstr "An edible mushroom from the Whispering Woods. For hearty mushroom soup."
+
+#. Voorwerpdefinitie prof_stew
+#. Naam van voorwerp prof_stew
+#: scripts/data/ext/beroepen.gd:49
+msgid "Paddenstoelensoep"
+msgstr "Mushroom Soup"
+
+#. Voorwerpdefinitie prof_stew
+#. Beschrijving van voorwerp prof_stew
+#: scripts/data/ext/beroepen.gd:49
+msgid "Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."
+msgstr "Restores 2 hearts. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_ijsbloem
+#. Naam van voorwerp prof_ijsbloem
+#: scripts/data/ext/beroepen.gd:50
+msgid "IJsbloem"
+msgstr "Ice flower"
+
+#. Voorwerpdefinitie prof_ijsbloem
+#. Beschrijving van voorwerp prof_ijsbloem
+#: scripts/data/ext/beroepen.gd:50
+msgid "Een bloem die alleen in het IJsdal bloeit. Koud en helder; basis voor vorstelixers."
+msgstr "A flower that blooms only in IJsdal. Cold and clear; the base for frost tonics."
+
+#. Voorwerpdefinitie prof_winterbes
+#: scripts/data/ext/beroepen.gd:51
+msgid "Winterbes"
+msgstr "Winter berry"
+
+#. Voorwerpdefinitie prof_winterbes
+#: scripts/data/ext/beroepen.gd:51
+msgid "Zoete bes die juist in de sneeuw rijpt. Lekker en verwarmend."
+msgstr "A sweet berry that ripens right in the snow. Tasty and warming."
+
+#. Voorwerpdefinitie prof_dennenhout
+#. Naam van voorwerp prof_dennenhout
+#: scripts/data/ext/beroepen.gd:52
+msgid "Dennenhout"
+msgstr "Pine wood"
+
+#. Voorwerpdefinitie prof_dennenhout
+#. Beschrijving van voorwerp prof_dennenhout
+#: scripts/data/ext/beroepen.gd:52
+msgid "Harsachtig hout uit het IJsdal. Brandt lang en warm."
+msgstr "Resinous wood from IJsdal. Burns long and warm."
+
+#. Voorwerpdefinitie prof_ijskristal
+#. Naam van voorwerp prof_ijskristal
+#: scripts/data/ext/beroepen.gd:53
+msgid "IJskristal"
+msgstr "Ice crystal"
+
+#. Voorwerpdefinitie prof_ijskristal
+#. Beschrijving van voorwerp prof_ijskristal
+#: scripts/data/ext/beroepen.gd:53
+msgid "Een zuivere kristalspalk uit een bevroren ader. Gezocht door alchemisten."
+msgstr "A pure crystal shard from a frozen vein. Sought after by alchemists."
+
+#. Voorwerpdefinitie prof_frost_tonic
+#. Naam van voorwerp prof_frost_tonic
+#: scripts/data/ext/beroepen.gd:54
+msgid "Vorstelixer"
+msgstr "Frost tonic"
+
+#. Voorwerpdefinitie prof_frost_tonic
+#. Beschrijving van voorwerp prof_frost_tonic
+#: scripts/data/ext/beroepen.gd:54
+msgid "Herstelt 40 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Restores 40 stamina. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_winter_gloed
+#. Naam van voorwerp prof_winter_gloed
+#: scripts/data/ext/beroepen.gd:55
+msgid "Wintergloed"
+msgstr "Winter glow"
+
+#. Voorwerpdefinitie prof_winter_gloed
+#. Beschrijving van voorwerp prof_winter_gloed
+#: scripts/data/ext/beroepen.gd:55
+msgid "Een warme winterbespap. Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."
+msgstr "A warm winter berry porridge. Restores 2 hearts. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_cactusvijg
+#: scripts/data/ext/beroepen.gd:56
+msgid "Zoete vrucht van de zuilcactus. Verkoelend; Sana maakt er drankjes van."
+msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks."
+
+#. Voorwerpdefinitie prof_zandkruid
+#. Naam van voorwerp prof_zandkruid
+#. Oogstbare grondstof sandwort
+#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:192
+msgid "Zandkruid"
+msgstr "Sandwort"
+
+#. Voorwerpdefinitie prof_zandkruid
+#. Beschrijving van voorwerp prof_zandkruid
+#: scripts/data/ext/beroepen.gd:57
+msgid "Een taai, geurig kruid dat tussen het duinzand groeit. Voor balsems en braadstukken."
+msgstr "A tough, fragrant herb that grows among the dune sand. For balms and roasts."
+
+#. Voorwerpdefinitie prof_zandsteen
+#. Naam van voorwerp prof_zandsteen
+#: scripts/data/ext/beroepen.gd:58
+msgid "Zandsteen"
+msgstr "Sandstone"
+
+#. Voorwerpdefinitie prof_zandsteen
+#. Beschrijving van voorwerp prof_zandsteen
+#: scripts/data/ext/beroepen.gd:58
+msgid "Warme, gelaagde steen uit de klippen van de Dorstvallei. Licht en goed te bewerken."
+msgstr "Warm, layered stone from the cliffs of Dorstvallei. Light and easy to work."
+
+#. Voorwerpdefinitie prof_zandbalsem
+#. Naam van voorwerp prof_zandbalsem
+#: scripts/data/ext/beroepen.gd:59
+msgid "Zandbalsem"
+msgstr "Sand balm"
+
+#. Voorwerpdefinitie prof_zandbalsem
+#. Beschrijving van voorwerp prof_zandbalsem
+#: scripts/data/ext/beroepen.gd:59
+msgid "Verkoelende balsem van zandkruid en cactusvijg. Herstelt 30 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Cooling balm of sandwort and cactus fig. Restores 30 stamina. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_dauwklauw
+#. Naam van voorwerp prof_dauwklauw
+#: scripts/data/ext/beroepen.gd:60
+msgid "Dauwklauw"
+msgstr "Dewclaw"
+
+#. Voorwerpdefinitie prof_dauwklauw
+#. Beschrijving van voorwerp prof_dauwklauw
+#: scripts/data/ext/beroepen.gd:60
+msgid "Een bleke bloem die alleen in de mist van het Dauwbos bloeit. Basis voor het mistedrank."
+msgstr "A pale flower that only blooms in the mist of the Dew Forest. The base for mist tonic."
+
+#. Voorwerpdefinitie prof_mistdrank
+#. Naam van voorwerp prof_mistdrank
+#: scripts/data/ext/beroepen.gd:61
+msgid "Mistedrank"
+msgstr "Mist tonic"
+
+#. Voorwerpdefinitie prof_mistdrank
+#. Beschrijving van voorwerp prof_mistdrank
+#: scripts/data/ext/beroepen.gd:61
+msgid "Een koel, kolkend elixer van dauwklauwen en honingzwam. Herstelt 35 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "A cool, swirling elixir of dewclaws and honey fungus. Restores 35 stamina. Use via Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_dauwsoep
+#. Naam van voorwerp prof_dauwsoep
+#: scripts/data/ext/beroepen.gd:62
+msgid "Dauwsoep"
+msgstr "Dew soup"
+
+#. Voorwerpdefinitie prof_dauwsoep
+#. Beschrijving van voorwerp prof_dauwsoep
+#: scripts/data/ext/beroepen.gd:62
+msgid "Lichte soep van honingzwammen met dauwklauw. Herstelt 2 hartjes en 10 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Light soup of honey fungi with dewclaw. Restores 2 hearts and 10 stamina. Use via Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_veenbes
+#: scripts/data/ext/beroepen.gd:63
+msgid "Een rode, zure bes die laag boven het veenwater groeit. Voor pap en elixers."
+msgstr "A red, tart berry that grows low above the moor water. For porridge and elixirs."
+
+#. Voorwerpdefinitie prof_watermunt
+#. Naam van voorwerp prof_watermunt
+#. Oogstbare grondstof watermunt
+#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:196
+msgid "Watermunt"
+msgstr "Water mint"
+
+#. Voorwerpdefinitie prof_watermunt
+#. Beschrijving van voorwerp prof_watermunt
+#: scripts/data/ext/beroepen.gd:64
+msgid "Fris kruid uit de plasranden van het Kruipmoeras. Prikt lekker in thee en brouwsels."
+msgstr "Fresh herb from the pool edges of the Creeping Swamp. Lovely kick in tea and brews."
+
+#. Voorwerpdefinitie prof_wilgentwijg
+#. Naam van voorwerp prof_wilgentwijg
+#: scripts/data/ext/beroepen.gd:65
+msgid "Wilgentwijg"
+msgstr "Willow twig"
+
+#. Voorwerpdefinitie prof_wilgentwijg
+#. Beschrijving van voorwerp prof_wilgentwijg
+#: scripts/data/ext/beroepen.gd:65
+msgid "Buigzame twijg van een geknotte wilg. Rietvlechters zweren erbij."
+msgstr "Supple twig from a pollard willow. Reed weavers swear by it."
+
+#. Voorwerpdefinitie prof_ijzeroer
+#. Naam van voorwerp prof_ijzeroer
+#: scripts/data/ext/beroepen.gd:66
+msgid "IJzeroer"
+msgstr "Bog iron"
+
+#. Voorwerpdefinitie prof_ijzeroer
+#. Beschrijving van voorwerp prof_ijzeroer
+#: scripts/data/ext/beroepen.gd:66
+msgid "Bruin erts uit de turfvelden, het bloed van het veen. Alchemisten smeden er rare dingen mee."
+msgstr "Brown ore from the peat fields, the blood of the moor. Alchemists forge strange things with it."
+
+#. Voorwerpdefinitie prof_moeraselixer
+#. Naam van voorwerp prof_moeraselixer
+#: scripts/data/ext/beroepen.gd:67
+msgid "Moeraselixer"
+msgstr "Swamp elixir"
+
+#. Voorwerpdefinitie prof_moeraselixer
+#. Beschrijving van voorwerp prof_moeraselixer
+#: scripts/data/ext/beroepen.gd:67
+msgid "Kolkend groen brouwsel van watermunt en veenbes. Herstelt 45 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Bubbling green brew of water mint and cranberry. Restores 45 stamina. Use via Professions → Food & drink."
+
+#. Voorwerpdefinitie prof_veenbespap
+#. Naam van voorwerp prof_veenbespap
+#: scripts/data/ext/beroepen.gd:68
+msgid "Veenbespap"
+msgstr "Cranberry porridge"
+
+#. Voorwerpdefinitie prof_veenbespap
+#. Beschrijving van voorwerp prof_veenbespap
+#: scripts/data/ext/beroepen.gd:68
+msgid "Warme pap met veenbessen, zoals Stien hem maakt. Herstelt 2 hartjes en 5 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
+msgstr "Warm porridge with cranberries, the way Stien makes it. Restores 2 hearts and 5 stamina. Use via Professions → Food & drink."
+
+#. Voorwerpdefinitie gear_cw_anchor
+#. Naam van voorwerp gear_cw_anchor
+#: scripts/data/ext/uitrusting.gd:14
+msgid "Ankerbanden"
+msgstr "Anchor bands"
+
+#. Voorwerpdefinitie gear_cw_anchor
+#. Beschrijving van voorwerp gear_cw_anchor
+#: scripts/data/ext/uitrusting.gd:14
+msgid "Draag in je handvak: 1 pantser en 10 stamina. Techniek + zwaard wordt een korte frontale ankerwacht. Na een tijdige blokkade geeft een gewone zwaarddruk een gerichte tegenstoot; zij- en rugtreffers blijven gevaarlijk."
+msgstr "Wear in your hand slot: 1 armor and 10 stamina. Technique + sword becomes a brief frontal anchor guard. After a timely block, a normal sword press delivers a directed counterthrust; side and rear hits remain dangerous."
+
+#. Voorwerpdefinitie gear_cw_fan
+#. Naam van voorwerp gear_cw_fan
+#: scripts/data/ext/uitrusting.gd:15
+msgid "Waaierbanden"
+msgstr "Fan bands"
+
+#. Voorwerpdefinitie gear_cw_fan
+#. Beschrijving van voorwerp gear_cw_fan
+#: scripts/data/ext/uitrusting.gd:15
+msgid "Draag in hetzelfde handvak: 15% korter verzamelen en 8 oppakbereik, zonder pantser. Techniek + boog wordt een brede waaier van drie lichte pijlen. Kost drie pijlen; gewone en andere zwaardtechnieken blijven beschikbaar."
+msgstr "Wear in the same hand slot: 15% faster gathering and 8 pickup range, without armor. Technique + bow becomes a wide fan of three light arrows. Costs three arrows; normal attacks and other sword techniques remain available."
+
+#. Voorwerpdefinitie gear_ra_grip
+#. Naam van voorwerp gear_ra_grip
+#: scripts/data/ext/uitrusting.gd:17
+msgid "Klimhandschoenen"
+msgstr "Climbing gloves"
+
+#. Voorwerpdefinitie gear_ra_grip
+#. Beschrijving van voorwerp gear_ra_grip
+#: scripts/data/ext/uitrusting.gd:17
+msgid "Grip en een lichte tred: 4% sneller lopen en 15 extra stamina. Gebruikt hetzelfde handvak als aanvalshandschoenen."
+msgstr "Grip and a light step: 4% faster movement and 15 extra stamina. Uses the same hand slot as attack gloves."
+
+#. Voorwerpdefinitie gear_ra_compass
+#. Naam van voorwerp gear_ra_compass
+#: scripts/data/ext/uitrusting.gd:18
+msgid "Archiefkompas"
+msgstr "Archive compass"
+
+#. Voorwerpdefinitie gear_ra_compass
+#. Beschrijving van voorwerp gear_ra_compass
+#: scripts/data/ext/uitrusting.gd:18
+msgid "Een kompas uit het Rietarchief: 16 extra oppakbereik en 10% sneller staminaherstel. Draag het in je halsvak."
+msgstr "A compass from the Reed Archive: 16 extra pickup range and 10% faster stamina regeneration. Wear it in your neck slot."
+
+#. Voorwerpdefinitie gear_rf_keepsake
+#. Naam van voorwerp gear_rf_keepsake
+#: scripts/data/ext/uitrusting.gd:19
+msgid "Wilfreds herinnering"
+msgstr "Wilfred's Keepsake"
+
+#. Voorwerpdefinitie gear_rf_keepsake
+#. Beschrijving van voorwerp gear_rf_keepsake
+#: scripts/data/ext/uitrusting.gd:19
+msgid "Een ring uit de herdenkingsplek: 15% sneller staminaherstel en 6 extra oppakbereik. Minder bereik dan een koperen ring."
+msgstr "A memorial ring: 15% faster stamina recovery and 6 extra pickup range. Less range than a copper ring."
+
+#. Voorwerpdefinitie gear_rf_cord
+#. Naam van voorwerp gear_rf_cord
+#: scripts/data/ext/uitrusting.gd:20
+msgid "Stiltekoord"
+msgstr "Cord of Stillness"
+
+#. Voorwerpdefinitie gear_rf_cord
+#. Beschrijving van voorwerp gear_rf_cord
+#: scripts/data/ext/uitrusting.gd:20
+msgid "Een oud koord uit de schuilroute. Geeft gedragen 20 extra stamina; amuletten voor sneller herstel gebruiken hetzelfde halsvak."
+msgstr "An old cord from the refuge route. Grants 20 extra stamina when worn; recovery amulets use the same neck slot."
+
+#. Voorwerpdefinitie gear_scout_coat
+#. Naam van voorwerp gear_scout_coat
+#: scripts/data/ext/uitrusting.gd:22
+msgid "Verkennersjas"
+msgstr "Scout coat"
+
+#. Voorwerpdefinitie gear_scout_coat
+#. Beschrijving van voorwerp gear_scout_coat
+#: scripts/data/ext/uitrusting.gd:32
+msgid "8% sneller en 10 extra stamina, maar geen pantser. Voor verkennen en ontwijken."
+msgstr "8% faster and 10 extra stamina, but no armor. For exploration and dodging."
+
+#. Voorwerpdefinitie gear_bastion_coat
+#. Naam van voorwerp gear_bastion_coat
+#: scripts/data/ext/uitrusting.gd:35
+msgid "Wachtharnas"
+msgstr "Warden coat"
+
+#. Voorwerpdefinitie gear_bastion_coat
+#. Beschrijving van voorwerp gear_bastion_coat
+#: scripts/data/ext/uitrusting.gd:45
+msgid "2 pantser, maar 8% langzamer. Elke treffer doet minimaal 1 schade. Voor standhouden bij een vuurkorf."
+msgstr "2 armor, but 8% slower. Every hit deals at least 1 damage. For holding your ground by a brazier."
+
+#. Voorwerpdefinitie gear_cloth_hood
+#. Naam van voorwerp gear_cloth_hood
+#: scripts/data/ext/uitrusting.gd:48
+msgid "Linnen kap"
+msgstr "Linen hood"
+
+#. Voorwerpdefinitie gear_cloth_hood
+#. Beschrijving van voorwerp gear_cloth_hood
+#: scripts/data/ext/uitrusting.gd:48
+msgid "Een lichte reiskap. Draag hem op je hoofd voor 15 extra uithoudingsvermogen."
+msgstr "A light traveling hood. Wear it on your head for 15 extra stamina."
+
+#. Voorwerpdefinitie gear_bronze_helm
+#. Naam van voorwerp gear_bronze_helm
+#: scripts/data/ext/uitrusting.gd:49
+msgid "Bronzen helm"
+msgstr "Bronze helmet"
+
+#. Voorwerpdefinitie gear_bronze_helm
+#. Beschrijving van voorwerp gear_bronze_helm
+#: scripts/data/ext/uitrusting.gd:49
+msgid "Een stevige helm voor lange tochten. Draag hem op je hoofd voor 30 extra uithoudingsvermogen."
+msgstr "A sturdy helmet for long journeys. Wear it on your head for 30 extra stamina."
+
+#. Voorwerpdefinitie gear_leather_armor
+#. Naam van voorwerp gear_leather_armor
+#: scripts/data/ext/uitrusting.gd:50
+msgid "Leren harnas"
+msgstr "Leather armor"
+
+#. Voorwerpdefinitie gear_leather_armor
+#. Beschrijving van voorwerp gear_leather_armor
+#: scripts/data/ext/uitrusting.gd:50
+msgid "Vangt zware klappen op. Vermindert schade met 1, tot minimaal 1 schade per treffer."
+msgstr "Absorbs heavy blows. Reduces damage by 1, to a minimum of 1 damage per hit."
+
+#. Voorwerpdefinitie gear_iron_armor
+#. Naam van voorwerp gear_iron_armor
+#: scripts/data/ext/uitrusting.gd:51
+msgid "IJzeren harnas"
+msgstr "Iron armor"
+
+#. Voorwerpdefinitie gear_iron_armor
+#. Beschrijving van voorwerp gear_iron_armor
+#: scripts/data/ext/uitrusting.gd:51
+msgid "Gesmede bescherming. Vermindert schade met 2, tot minimaal 1 schade per treffer."
+msgstr "Forged protection. Reduces damage by 2, to a minimum of 1 damage per hit."
+
+#. Voorwerpdefinitie gear_novice_gloves
+#. Naam van voorwerp gear_novice_gloves
+#: scripts/data/ext/uitrusting.gd:52
+msgid "Leerlinghandschoenen"
+msgstr "Apprentice gloves"
+
+#. Voorwerpdefinitie gear_novice_gloves
+#. Beschrijving van voorwerp gear_novice_gloves
+#: scripts/data/ext/uitrusting.gd:52
+msgid "Een goede grip op je zwaard. Draag ze voor 8% kortere wachttijd tussen zwaardaanvallen."
+msgstr "A firm grip on your sword. Wear them for an 8% shorter cooldown between sword attacks."
+
+#. Voorwerpdefinitie gear_smith_gloves
+#. Naam van voorwerp gear_smith_gloves
+#: scripts/data/ext/uitrusting.gd:53
+msgid "Smeedhandschoenen"
+msgstr "Smith's gloves"
+
+#. Voorwerpdefinitie gear_smith_gloves
+#. Beschrijving van voorwerp gear_smith_gloves
+#: scripts/data/ext/uitrusting.gd:53
+msgid "Perfect passende handschoenen. Draag ze voor 16% kortere wachttijd tussen zwaardaanvallen."
+msgstr "Perfectly fitted gloves. Wear them for a 16% shorter cooldown between sword attacks."
+
+#. Voorwerpdefinitie gear_copper_amulet
+#. Naam van voorwerp gear_copper_amulet
+#: scripts/data/ext/uitrusting.gd:54
+msgid "Koperen amulet"
+msgstr "Copper amulet"
+
+#. Voorwerpdefinitie gear_copper_amulet
+#. Beschrijving van voorwerp gear_copper_amulet
+#: scripts/data/ext/uitrusting.gd:54
+msgid "Een warm koperen sieraad. Draag het om je hals voor 15% sneller herstel van uithoudingsvermogen."
+msgstr "A warm copper charm. Wear it around your neck for 15% faster stamina recovery."
+
+#. Voorwerpdefinitie gear_crystal_amulet
+#. Naam van voorwerp gear_crystal_amulet
+#: scripts/data/ext/uitrusting.gd:55
+msgid "Kristallen amulet"
+msgstr "Crystal amulet"
+
+#. Voorwerpdefinitie gear_crystal_amulet
+#. Beschrijving van voorwerp gear_crystal_amulet
+#: scripts/data/ext/uitrusting.gd:55
+msgid "Alchemie laat gel kristalliseren rond koper. Draag het voor 30% sneller herstel van uithoudingsvermogen."
+msgstr "Alchemy crystallizes gel around copper. Wear it for 30% faster stamina recovery."
+
+#. Voorwerpdefinitie gear_copper_ring
+#. Naam van voorwerp gear_copper_ring
+#: scripts/data/ext/uitrusting.gd:56
+msgid "Koperen ring"
+msgstr "Copper ring"
+
+#. Voorwerpdefinitie gear_copper_ring
+#. Beschrijving van voorwerp gear_copper_ring
+#: scripts/data/ext/uitrusting.gd:56
+msgid "Een ring die verloren spullen aantrekt. Vergroot je magnetische oppakbereik met 12 pixels."
+msgstr "A ring that attracts lost belongings. Increases your magnetic pickup range by 12 pixels."
+
+#. Voorwerpdefinitie gear_crystal_ring
+#. Naam van voorwerp gear_crystal_ring
+#: scripts/data/ext/uitrusting.gd:57
+msgid "Kristallen ring"
+msgstr "Crystal ring"
+
+#. Voorwerpdefinitie gear_crystal_ring
+#. Beschrijving van voorwerp gear_crystal_ring
+#: scripts/data/ext/uitrusting.gd:57
+msgid "Een ring van koper en alchemistisch kristal. Vergroot je magnetische oppakbereik met 24 pixels."
+msgstr "A ring of copper and alchemical crystal. Increases your magnetic pickup range by 24 pixels."
+
+#. Voorwerpdefinitie gear_pg_grip
+#. Naam van voorwerp gear_pg_grip
+#: scripts/data/ext/uitrusting.gd:58
+msgid "Slagbanden"
+msgstr "Strike Wraps"
+
+#. Voorwerpdefinitie gear_pg_grip
+#. Beschrijving van voorwerp gear_pg_grip
+#: scripts/data/ext/uitrusting.gd:58
+msgid "10% minder stamina voor voorbereide zwaardtechnieken en precisieschoten. Gewone slagen en sprinten veranderen niet."
+msgstr "10% less stamina for prepared sword techniques and precise shots. Ordinary swings and sprinting are unchanged."
+
+#. Voorwerpdefinitie gear_pg_grip_plus
+#. Naam van voorwerp gear_pg_grip_plus
+#: scripts/data/ext/uitrusting.gd:59
+msgid "Geharde slagbanden"
+msgstr "Hardened Strike Wraps"
+
+#. Voorwerpdefinitie gear_pg_grip_plus
+#. Beschrijving van voorwerp gear_pg_grip_plus
+#: scripts/data/ext/uitrusting.gd:59
+msgid "20% minder techniekstamina en 6% kortere wachttijd tussen gewone zwaardaanvallen. Verbeterde slagbanden met zandsteen uit Dorstvallei."
+msgstr "20% less technique stamina and 6% shorter cooldown between ordinary sword attacks. Strike wraps hardened with Dorstvallei sandstone."
+
+#. Voorwerpdefinitie gear_pg_focus
+#. Naam van voorwerp gear_pg_focus
+#: scripts/data/ext/uitrusting.gd:60
+msgid "Richtlens"
+msgstr "Aiming Lens"
+
+#. Voorwerpdefinitie gear_pg_focus
+#. Beschrijving van voorwerp gear_pg_focus
+#: scripts/data/ext/uitrusting.gd:60
+msgid "15% kortere voorbereiding van je precisieschot. Draag de lens in het halsvak; pijlschade en staminakosten blijven gelijk."
+msgstr "15% shorter preparation for your precise shot. Wear the lens in your neck slot; arrow damage and stamina cost stay the same."
+
+#. Voorwerpdefinitie gear_pg_focus_plus
+#. Naam van voorwerp gear_pg_focus_plus
+#: scripts/data/ext/uitrusting.gd:61
+msgid "Heldere richtlens"
+msgstr "Clear Aiming Lens"
+
+#. Voorwerpdefinitie gear_pg_focus_plus
+#. Beschrijving van voorwerp gear_pg_focus_plus
+#: scripts/data/ext/uitrusting.gd:61
+msgid "25% kortere voorbereiding van precisieschoten en 10% sneller staminaherstel. Gebruikt ijskristal en watermunt na je onderzoek in het Rietarchief."
+msgstr "25% shorter precise shot preparation and 10% faster stamina recovery. Uses ice crystal and water mint after your Reed Archive research."
+
+#. Voorwerpdefinitie gear_pg_pack
+#. Naam van voorwerp gear_pg_pack
+#: scripts/data/ext/uitrusting.gd:62
+msgid "Werkpak"
+msgstr "Work Harness"
+
+#. Voorwerpdefinitie gear_pg_pack
+#. Beschrijving van voorwerp gear_pg_pack
+#: scripts/data/ext/uitrusting.gd:62
+msgid "15% korter verzamelen met kruiden, bijl en pikhouweel. Een gevlochten werkpak voor ambachten; geeft geen pantser."
+msgstr "15% less time gathering herbs, chopping and mining. A woven harness for crafting; provides no armor."
+
+#. Voorwerpdefinitie gear_pg_pack_plus
+#. Naam van voorwerp gear_pg_pack_plus
+#: scripts/data/ext/uitrusting.gd:63
+msgid "Bergwerkpak"
+msgstr "Mountain Work Harness"
+
+#. Voorwerpdefinitie gear_pg_pack_plus
+#. Beschrijving van voorwerp gear_pg_pack_plus
+#: scripts/data/ext/uitrusting.gd:63
+msgid "25% korter verzamelen en 10 extra oppakbereik. Versterkt met dennenhout en wilgentwijgen na het vastzetten van de klimlijn; geeft geen pantser."
+msgstr "25% less gathering time and 10 extra pickup range. Reinforced with pine wood and willow twigs after securing the climbing line; provides no armor."
+
+#. Voorwerpdefinitie special_lantern
+#. Naam van voorwerp special_lantern
+#: scripts/data/ext/polijst.gd:58
+msgid "Nachtlantaarn"
+msgstr "Night Lantern"
+
+#. Voorwerpdefinitie special_lantern
+#. Beschrijving van voorwerp special_lantern
+#: scripts/data/ext/polijst.gd:59
+msgid "Een lantaarn die 's nachts verder en warmer schijnt dan een gewone fakkel."
+msgstr "A lantern that shines farther and warmer at night than a normal torch."
+
+#. Voorwerpdefinitie dauwsteen
+#. Naam van voorwerp dauwsteen
+#: scripts/data/ext/polijst.gd:62
+msgid "Dauwsteen"
+msgstr "Dew Stone"
+
+#. Voorwerpdefinitie dauwsteen
+#. Beschrijving van voorwerp dauwsteen
+#: scripts/data/ext/polijst.gd:63
+msgid "Een steen die altijd bedekt is met fijne dauw. Hij voelt koel en levend."
+msgstr "A stone always covered in fine dew. It feels cool and alive."
+
+#. Voorwerpdefinitie herb
+#. Naam van voorwerp herb
+#: scripts/data/ext/polijst.gd:66
+msgid "Verse kruiden"
+msgstr "Fresh Herbs"
+
+#. Voorwerpdefinitie herb
+#. Beschrijving van voorwerp herb
+#: scripts/data/ext/polijst.gd:67
+msgid "Verse kruiden uit het bos. Elke de kruidenier heeft ze nodig."
+msgstr "Fresh herbs from the forest. Elke the herbalist needs them."
+
+#. Voorwerpdefinitie jacht_vlees
+#. Naam van voorwerp jacht_vlees
+#: scripts/data/ext/dorst.gd:31
+msgid "Rauw vlees"
+msgstr "Raw meat"
+
+#. Voorwerpdefinitie jacht_vlees
+#. Beschrijving van voorwerp jacht_vlees
+#: scripts/data/ext/dorst.gd:31
+msgid "Vers vlees van wild uit de Dorstvallei. Braad het in de keuken van de herberg."
+msgstr "Fresh game meat from Dorstvallei. Roast it in the inn's kitchen."
+
+#. Voorwerpdefinitie jacht_vacht
+#. Naam van voorwerp jacht_vacht
+#: scripts/data/ext/dorst.gd:32
+msgid "Dierenvacht"
+msgstr "Animal hide"
+
+#. Voorwerpdefinitie jacht_vacht
+#. Beschrijving van voorwerp jacht_vacht
+#: scripts/data/ext/dorst.gd:32
+msgid "Een zachte vossenvacht. Handelaars en kleermakers betalen er goed voor."
+msgstr "A soft fox hide. Traders and tailors pay well for it."
+
+#. Voorwerpdefinitie jacht_braadstuk
+#. Naam van voorwerp jacht_braadstuk
+#: scripts/data/ext/dorst.gd:33
+msgid "Braadstuk"
+msgstr "Roast"
+
+#. Voorwerpdefinitie jacht_braadstuk
+#. Beschrijving van voorwerp jacht_braadstuk
+#: scripts/data/ext/dorst.gd:33
+msgid "Sappig gebraden vlees met zandkruid. Herstelt 3 hartjes. Gebruik via Beroepen → Eten & drinken."
+msgstr "Juicy roasted meat with sandwort. Restores 3 hearts. Use through Professions → Food & drink."
+
+#. Voorwerpdefinitie cloth_straw_hat
+#. Naam van voorwerp cloth_straw_hat
+#: scripts/data/ext/uiterlijk.gd:211
+msgid "Strohoed"
+msgstr "Straw hat"
+
+#. Voorwerpdefinitie cloth_straw_hat
+#. Beschrijving van voorwerp cloth_straw_hat
+#: scripts/data/ext/uiterlijk.gd:211
+msgid "Een zonnehoed van gevlochten stro. Puur voor de look; draag hem over je uitrusting."
+msgstr "A sun hat of woven straw. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_beret
+#. Naam van voorwerp cloth_beret
+#: scripts/data/ext/uiterlijk.gd:212
+msgid "Baret"
+msgstr "Beret"
+
+#. Voorwerpdefinitie cloth_beret
+#. Beschrijving van voorwerp cloth_beret
+#: scripts/data/ext/uiterlijk.gd:212
+msgid "Een kunstzinnige baret, schuin op je hoofd. Puur voor de look; draag hem over je uitrusting."
+msgstr "An artistic beret, tilted on your head. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_beanie
+#. Naam van voorwerp cloth_beanie
+#: scripts/data/ext/uiterlijk.gd:213
+msgid "Muts"
+msgstr "Beanie"
+
+#. Voorwerpdefinitie cloth_beanie
+#. Beschrijving van voorwerp cloth_beanie
+#: scripts/data/ext/uiterlijk.gd:213
+msgid "Een warme gebreide muts met pompon. Puur voor de look; draag hem over je uitrusting."
+msgstr "A warm knitted beanie with a pompom. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_cape
+#. Naam van voorwerp cloth_cape
+#: scripts/data/ext/uiterlijk.gd:214
+msgid "Cape"
+msgstr "Cape"
+
+#. Voorwerpdefinitie cloth_cape
+#. Beschrijving van voorwerp cloth_cape
+#: scripts/data/ext/uiterlijk.gd:214
+msgid "Een wapperende cape voor over je schouders. Puur voor de look; draag hem over je uitrusting."
+msgstr "A fluttering cape for over your shoulders. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_scarf
+#. Naam van voorwerp cloth_scarf
+#: scripts/data/ext/uiterlijk.gd:215
+msgid "Sjaal"
+msgstr "Scarf"
+
+#. Voorwerpdefinitie cloth_scarf
+#. Beschrijving van voorwerp cloth_scarf
+#: scripts/data/ext/uiterlijk.gd:215
+msgid "Een zachte sjaal met een losse punt. Puur voor de look; draag hem over je uitrusting."
+msgstr "A soft scarf with a loose end. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_tunic
+#. Naam van voorwerp cloth_tunic
+#: scripts/data/ext/uiterlijk.gd:216
+msgid "Tuniek"
+msgstr "Tunic"
+
+#. Voorwerpdefinitie cloth_tunic
+#. Beschrijving van voorwerp cloth_tunic
+#: scripts/data/ext/uiterlijk.gd:216
+msgid "Een ruimvallende tuniek met ceintuur. Puur voor de look; draag hem over je uitrusting."
+msgstr "A loose tunic with a belt. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_blouse
+#. Naam van voorwerp cloth_blouse
+#: scripts/data/ext/uiterlijk.gd:217
+msgid "Blouse"
+msgstr "Blouse"
+
+#. Voorwerpdefinitie cloth_blouse
+#. Beschrijving van voorwerp cloth_blouse
+#: scripts/data/ext/uiterlijk.gd:217
+msgid "Een fijne blouse met knoopjes. Puur voor de look; draag hem over je uitrusting."
+msgstr "A fine blouse with buttons. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_shirt
+#. Naam van voorwerp cloth_shirt
+#: scripts/data/ext/uiterlijk.gd:218
+msgid "Hemd"
+msgstr "Shirt"
+
+#. Voorwerpdefinitie cloth_shirt
+#. Beschrijving van voorwerp cloth_shirt
+#: scripts/data/ext/uiterlijk.gd:218
+msgid "Een stevig hemd met kraag. Puur voor de look; draag hem over je uitrusting."
+msgstr "A sturdy shirt with a collar. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_trousers
+#. Naam van voorwerp cloth_trousers
+#: scripts/data/ext/uiterlijk.gd:219
+msgid "Broek"
+msgstr "Trousers"
+
+#. Voorwerpdefinitie cloth_trousers
+#. Beschrijving van voorwerp cloth_trousers
+#: scripts/data/ext/uiterlijk.gd:219
+msgid "Een nette broek met stevige pijpen. Puur voor de look; draag hem over je uitrusting."
+msgstr "Neat trousers with sturdy legs. Purely for looks; wear them over your equipment."
+
+#. Voorwerpdefinitie cloth_skirt
+#. Naam van voorwerp cloth_skirt
+#: scripts/data/ext/uiterlijk.gd:220
+msgid "Rok"
+msgstr "Skirt"
+
+#. Voorwerpdefinitie cloth_skirt
+#. Beschrijving van voorwerp cloth_skirt
+#: scripts/data/ext/uiterlijk.gd:220
+msgid "Een zwierige rok tot over de knieën. Puur voor de look; draag hem over je uitrusting."
+msgstr "A flowing skirt down to the knees. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_shoes
+#. Naam van voorwerp cloth_shoes
+#: scripts/data/ext/uiterlijk.gd:221
+msgid "Schoenen"
+msgstr "Shoes"
+
+#. Voorwerpdefinitie cloth_shoes
+#. Beschrijving van voorwerp cloth_shoes
+#: scripts/data/ext/uiterlijk.gd:221
+msgid "Stevige leren schoenen. Puur voor de look; draag ze over je uitrusting."
+msgstr "Sturdy leather shoes. Purely for looks; wear them over your equipment."
+
+#. Voorwerpdefinitie cloth_slippers
+#. Naam van voorwerp cloth_slippers
+#: scripts/data/ext/uiterlijk.gd:222
+msgid "Sloffen"
+msgstr "Slippers"
+
+#. Voorwerpdefinitie cloth_slippers
+#. Beschrijving van voorwerp cloth_slippers
+#: scripts/data/ext/uiterlijk.gd:222
+msgid "Zachte sloffen met een bontje. Puur voor de look; draag ze over je uitrusting."
+msgstr "Soft slippers with a fluffy trim. Purely for looks; wear them over your equipment."
+
+#. Voorwerpdefinitie cloth_headband
+#. Naam van voorwerp cloth_headband
+#: scripts/data/ext/uiterlijk.gd:223
+msgid "Hoofdband"
+msgstr "Headband"
+
+#. Voorwerpdefinitie cloth_headband
+#. Beschrijving van voorwerp cloth_headband
+#: scripts/data/ext/uiterlijk.gd:223
+msgid "Een stoere band die je haar uit je gezicht houdt. Puur voor de look; draag hem over je uitrusting."
+msgstr "A sturdy band that keeps your hair out of your face. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_felt_hat
+#. Naam van voorwerp cloth_felt_hat
+#: scripts/data/ext/uiterlijk.gd:224
+msgid "Vilthoed"
+msgstr "Felt hat"
+
+#. Voorwerpdefinitie cloth_felt_hat
+#. Beschrijving van voorwerp cloth_felt_hat
+#: scripts/data/ext/uiterlijk.gd:224
+msgid "Een elegante hoed van zacht vilt, met een lint om de bol. Puur voor de look; draag hem over je uitrusting."
+msgstr "An elegant hat of soft felt, with a ribbon around the crown. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_nightcap
+#. Naam van voorwerp cloth_nightcap
+#: scripts/data/ext/uiterlijk.gd:225
+msgid "Nachtmuts"
+msgstr "Nightcap"
+
+#. Voorwerpdefinitie cloth_nightcap
+#. Beschrijving van voorwerp cloth_nightcap
+#: scripts/data/ext/uiterlijk.gd:225
+msgid "Een slap hangende muts met een pompon. Zo knus dat je erin zou willen slapen. Puur voor de look; draag hem over je uitrusting."
+msgstr "A floppy cap with a pompom. So cosy you could sleep in it. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_backpack
+#. Naam van voorwerp cloth_backpack
+#: scripts/data/ext/uiterlijk.gd:226
+msgid "Rugzak"
+msgstr "Backpack"
+
+#. Voorwerpdefinitie cloth_backpack
+#. Beschrijving van voorwerp cloth_backpack
+#: scripts/data/ext/uiterlijk.gd:226
+msgid "Een stevige rugzak voor de echte avonturier. Puur voor de look; draag hem over je uitrusting."
+msgstr "A sturdy backpack for the true adventurer. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_cloak
+#. Naam van voorwerp cloth_cloak
+#: scripts/data/ext/uiterlijk.gd:227
+msgid "Mantel"
+msgstr "Cloak"
+
+#. Voorwerpdefinitie cloth_cloak
+#. Beschrijving van voorwerp cloth_cloak
+#: scripts/data/ext/uiterlijk.gd:227
+msgid "Een warme mantel met capuchon, voor reizen door koude streken. Puur voor de look; draag hem over je uitrusting."
+msgstr "A warm cloak with a hood, for journeys through cold lands. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_sweater
+#. Naam van voorwerp cloth_sweater
+#: scripts/data/ext/uiterlijk.gd:228
+msgid "Trui"
+msgstr "Sweater"
+
+#. Voorwerpdefinitie cloth_sweater
+#. Beschrijving van voorwerp cloth_sweater
+#: scripts/data/ext/uiterlijk.gd:228
+msgid "Een zachte gebreide trui met een opstaande kraag. Puur voor de look; draag hem over je uitrusting."
+msgstr "A soft knitted sweater with a stand-up collar. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_vest
+#. Naam van voorwerp cloth_vest
+#: scripts/data/ext/uiterlijk.gd:229
+msgid "Gilet"
+msgstr "Vest"
+
+#. Voorwerpdefinitie cloth_vest
+#. Beschrijving van voorwerp cloth_vest
+#: scripts/data/ext/uiterlijk.gd:229
+msgid "Een net gilet dat open over je hemd valt. Puur voor de look; draag hem over je uitrusting."
+msgstr "A neat vest worn open over your shirt. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_dress
+#. Naam van voorwerp cloth_dress
+#: scripts/data/ext/uiterlijk.gd:230
+msgid "Jurk"
+msgstr "Dress"
+
+#. Voorwerpdefinitie cloth_dress
+#. Beschrijving van voorwerp cloth_dress
+#: scripts/data/ext/uiterlijk.gd:230
+msgid "Een zwierige jurk met een wijde rok. Puur voor de look; draag hem over je uitrusting."
+msgstr "A flowing dress with a wide skirt. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_shorts
+#. Naam van voorwerp cloth_shorts
+#: scripts/data/ext/uiterlijk.gd:231
+msgid "Korte broek"
+msgstr "Shorts"
+
+#. Voorwerpdefinitie cloth_shorts
+#. Beschrijving van voorwerp cloth_shorts
+#: scripts/data/ext/uiterlijk.gd:231
+msgid "Een luchtige korte broek voor warme dagen. Puur voor de look; draag hem over je uitrusting."
+msgstr "An airy pair of shorts for warm days. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_overalls
+#. Naam van voorwerp cloth_overalls
+#: scripts/data/ext/uiterlijk.gd:232
+msgid "Werkbroek"
+msgstr "Work trousers"
+
+#. Voorwerpdefinitie cloth_overalls
+#. Beschrijving van voorwerp cloth_overalls
+#: scripts/data/ext/uiterlijk.gd:232
+msgid "Een stevige werkbroek met verstevigde knieën. Puur voor de look; draag hem over je uitrusting."
+msgstr "Sturdy work trousers with reinforced knees. Purely for looks; wear it over your equipment."
+
+#. Voorwerpdefinitie cloth_boots
+#. Naam van voorwerp cloth_boots
+#: scripts/ui/equipment_page.gd:220 scripts/ui/progression_page.gd:126 scripts/data/ext/uiterlijk.gd:233
+msgid "Laarzen"
+msgstr "Boots"
+
+#. Voorwerpdefinitie cloth_boots
+#. Beschrijving van voorwerp cloth_boots
+#: scripts/data/ext/uiterlijk.gd:233
+msgid "Hoge laarzen die modder en sneeuw trotseren. Puur voor de look; draag ze over je uitrusting."
+msgstr "Tall boots that defy mud and snow. Purely for looks; wear them over your equipment."
+
+#. Voorwerpdefinitie cloth_sandals
+#. Naam van voorwerp cloth_sandals
+#: scripts/data/ext/uiterlijk.gd:234
+msgid "Sandalen"
+msgstr "Sandals"
+
+#. Voorwerpdefinitie cloth_sandals
+#. Beschrijving van voorwerp cloth_sandals
+#: scripts/data/ext/uiterlijk.gd:234
+msgid "Lichte sandalen voor zwoele zomerdagen. Puur voor de look; draag ze over je uitrusting."
+msgstr "Light sandals for sultry summer days. Purely for looks; wear them over your equipment."
+
+#. Voorwerpdefinitie moeras_huid
+#. Naam van voorwerp moeras_huid
+#: scripts/data/ext/moeras.gd:31
+msgid "Moerashuid"
+msgstr "Marsh hide"
+
+#. Voorwerpdefinitie moeras_huid
+#. Beschrijving van voorwerp moeras_huid
+#: scripts/data/ext/moeras.gd:31
+msgid "Een taaie, waterdichte huid van moeraswild. Kleermakers werken er graag mee."
+msgstr "A tough, waterproof hide from swamp game. Tailors love working with it."
+
+#. Voorwerpdefinitie zonneschijf_amulet
+#. Naam van voorwerp zonneschijf_amulet
+#: scripts/data/ext/moeras.gd:32
+msgid "Zonneschijfamulet"
+msgstr "Sun disk amulet"
+
+#. Voorwerpdefinitie zonneschijf_amulet
+#. Beschrijving van voorwerp zonneschijf_amulet
+#: scripts/data/ext/moeras.gd:32
+msgid "Een gouden schijfje aan een verweerd koord. Het voelt warm, alsof de zon er nog in zit."
+msgstr "A golden disk on a weathered cord. It feels warm, as if the sun still sits inside."
+
+#. Voorwerpdefinitie lw_lens
+#. Naam van voorwerp lw_lens
+#: scripts/data/ext/living.gd:99
+msgid "Prismalens"
+msgstr "Prism lens"
+
+#. Voorwerpdefinitie lw_lens
+#. Beschrijving van voorwerp lw_lens
+#: scripts/data/ext/living.gd:104
+msgid "De gestabiliseerde kern uit de Prismamijn. Greta kan er een lantaarn van maken."
+msgstr "The stabilized core from the Prism Mine. Greta can turn it into a lantern."
+
+#. Voorwerpdefinitie lw_lantern
+#. Naam van voorwerp lw_lantern
+#: scripts/data/ext/living.gd:107
+msgid "Prismalantaarn"
+msgstr "Prism lantern"
+
+#. Voorwerpdefinitie lw_lantern
+#. Beschrijving van voorwerp lw_lantern
+#: scripts/data/ext/living.gd:112
+msgid "Onthult de verborgen bosrunen. Mistjagers wijken terug binnen de lichtkring. Werkt automatisch zolang je hem draagt."
+msgstr "Reveals hidden forest runes. Mist stalkers retreat inside its light. Works automatically while carried."
+
+#. Voorwerpdefinitie lw_powder
+#. Naam van voorwerp lw_powder
+#: scripts/data/ext/living.gd:115
+msgid "Aardingspoeder"
+msgstr "Grounding powder"
+
+#. Voorwerpdefinitie lw_powder
+#. Beschrijving van voorwerp lw_powder
+#: scripts/data/ext/living.gd:119
+msgid "Stabiliseert de mijnkern zonder gevecht. Meng steen met slijmgel aan de alchemietafel."
+msgstr "Stabilizes the mine core without combat. Mix stone and slime gel at the alchemy table."
+
+#. Voorwerpdefinitie lw_bridge_kit
+#. Naam van voorwerp lw_bridge_kit
+#: scripts/data/ext/living.gd:122
+msgid "Brugonderdelen"
+msgstr "Bridge components"
+
+#. Voorwerpdefinitie lw_bridge_kit
+#. Beschrijving van voorwerp lw_bridge_kit
+#: scripts/data/ext/living.gd:126
+msgid "Een houten constructie voor Mees’ oversteek. Te maken zonder werkbank."
+msgstr "A wooden structure for Mees’s crossing. Can be crafted without a workbench."
+
+#. Voorwerpdefinitie lw_resin
+#. Naam van voorwerp lw_resin
+#: scripts/data/ext/living.gd:129
+msgid "Levende hars"
+msgstr "Living resin"
+
+#. Voorwerpdefinitie lw_resin
+#. Beschrijving van voorwerp lw_resin
+#: scripts/data/ext/living.gd:133
+msgid "Watermunt en slijmgel verbinden het gebroken hout van de oversteek."
+msgstr "Watermint and slime gel bind the crossing’s broken timbers."
+
+#. Voorwerpdefinitie op_rake
+#. Naam van voorwerp op_rake
+#: scripts/data/ext/opening.gd:11
+msgid "Nelles tuinhark"
+msgstr "Nelle’s Garden Rake"
+
+#. Voorwerpdefinitie op_rake
+#. Beschrijving van voorwerp op_rake
+#: scripts/data/ext/opening.gd:12
+msgid "Geleend van Nelle. Gebruik bij het verstopte rooster naast de dorpsfontein; daarna krijgt ze hem terug."
+msgstr "Borrowed from Nelle. Use it at the blocked grate beside the village fountain, then return it to her."
+
 #. Naam van voorwerp coin
 #. Haarkleur (tabblad Uiterlijk)
 #: scripts/data/items.gd:9 scripts/data/ext/uiterlijk.gd:137
@@ -5538,397 +8144,6 @@ msgstr "Crystal Sword"
 msgid "Gloeit zachtblauw. Het sterkste zwaard van Azura."
 msgstr "Glows a soft blue. The strongest sword in Azura."
 
-#. Naam van voorwerp trail_flower
-#: scripts/data/ext/trail_life.gd:2
-msgid "Bermbloemen"
-msgstr "Wayside flowers"
-
-#. Beschrijving van voorwerp trail_flower
-#: scripts/data/ext/trail_life.gd:2
-msgid "Een klein bosje geplukte wilde bloemen uit een natuurlijke berm."
-msgstr "A small bunch of wild flowers picked from a natural verge."
-
-#. Naam van voorwerp trail_nut
-#: scripts/data/ext/trail_life.gd:2
-msgid "Bosnoten"
-msgstr "Woodland nuts"
-
-#. Beschrijving van voorwerp trail_nut
-#: scripts/data/ext/trail_life.gd:2
-msgid "Eetbare noten van de padberm. Herstellen één hartje."
-msgstr "Edible nuts from the wayside. Restore one heart."
-
-#. Naam van voorwerp or_carrot_seed
-#: scripts/data/ext/orchard.gd:4
-msgid "Wortelzaad"
-msgstr "Carrot seeds"
-
-#. Beschrijving van voorwerp or_carrot_seed
-#: scripts/data/ext/orchard.gd:4
-msgid "Voor snelle wortelrijen. De volledige oogst geeft één zakje zaad terug voor opnieuw planten."
-msgstr "For quick carrot rows. A complete harvest returns one packet of seeds for replanting."
-
-#. Naam van voorwerp or_pumpkin_seed
-#: scripts/data/ext/orchard.gd:5
-msgid "Pompoenzaad"
-msgstr "Pumpkin seeds"
-
-#. Beschrijving van voorwerp or_pumpkin_seed
-#: scripts/data/ext/orchard.gd:5
-msgid "Voor een lage pompoenplant op één tegel. Oogsten geeft één zakje zaad terug."
-msgstr "For a low pumpkin plant using one tile. Harvesting returns one packet of seeds."
-
-#. Naam van voorwerp or_mint_seed
-#: scripts/data/ext/orchard.gd:6
-msgid "Muntstek"
-msgstr "Mint cutting"
-
-#. Beschrijving van voorwerp or_mint_seed
-#: scripts/data/ext/orchard.gd:6
-msgid "Plant een blijvend kruid. Bloeiende munt voedt bijen; geplukte munt is voor thee."
-msgstr "Plant a perennial herb. Flowering mint feeds bees; picked leaves are used in tea."
-
-#. Naam van voorwerp or_rosemary_seed
-#: scripts/data/ext/orchard.gd:7
-msgid "Rozemarijnstek"
-msgstr "Rosemary cutting"
-
-#. Beschrijving van voorwerp or_rosemary_seed
-#: scripts/data/ext/orchard.gd:7
-msgid "Plant een blijvend kruid. De bloei voedt bijen; blaadjes zijn voor rozemarijnbalsem."
-msgstr "Plant a perennial herb. Its flowers feed bees; its leaves are used in rosemary balm."
-
-#. Naam van voorwerp or_apple_seed
-#: scripts/data/ext/orchard.gd:8
-msgid "Appelboompje"
-msgstr "Apple sapling"
-
-#. Beschrijving van voorwerp or_apple_seed
-#: scripts/data/ext/orchard.gd:8
-msgid "Plant op bewerkte grond met drie bij drie tegels vrije kroonruimte. Aangesloten water binnen twee tegels voedt de wortels."
-msgstr "Plant on tilled soil with three by three tiles of clear canopy space. Connected water within two tiles feeds its roots."
-
-#. Naam van voorwerp or_berry_seed
-#: scripts/data/ext/orchard.gd:9
-msgid "Bosbessenstek"
-msgstr "Blueberry cutting"
-
-#. Beschrijving van voorwerp or_berry_seed
-#: scripts/data/ext/orchard.gd:9
-msgid "Een lage, blijvende struik op één tegel. Levert dezelfde bosbessen als de bestaande wilde planten."
-msgstr "A low perennial bush using one tile. Produces the same blueberries as existing wild plants."
-
-#. Naam van voorwerp or_carrot
-#: scripts/data/ext/orchard.gd:10
-msgid "Tuinwortel"
-msgstr "Garden carrot"
-
-#. Beschrijving van voorwerp or_carrot
-#: scripts/data/ext/orchard.gd:10
-msgid "Een verse wortel herstelt één hartje. Met pompoen en zilverkruid bruikbaar voor tuinstoofpot."
-msgstr "A fresh carrot restores one heart. Combine with pumpkin and silverleaf to make garden stew."
-
-#. Naam van voorwerp or_pumpkin
-#: scripts/data/ext/orchard.gd:11
-msgid "Tuinpompoen"
-msgstr "Garden pumpkin"
-
-#. Beschrijving van voorwerp or_pumpkin
-#: scripts/data/ext/orchard.gd:11
-msgid "Een stevige groente uit je eigen tuin. Maak tuinstoofpot in de bestaande herbergkeuken."
-msgstr "A hearty vegetable from your garden. Make garden stew in the existing inn kitchen."
-
-#. Naam van voorwerp or_mint
-#: scripts/data/ext/orchard.gd:12
-msgid "Tuinmuntblaadjes"
-msgstr "Garden mint leaves"
-
-#. Beschrijving van voorwerp or_mint
-#: scripts/data/ext/orchard.gd:12
-msgid "Eigen munt voor honing-muntthee in de herberg. De wilde watermunt uit het moeras behoudt zijn eigen recepten."
-msgstr "Homegrown mint for honey mint tea at the inn. Wild water mint from the swamp keeps its existing recipes."
-
-#. Naam van voorwerp or_rosemary
-#: scripts/data/ext/orchard.gd:13
-msgid "Rozemarijnblaadjes"
-msgstr "Rosemary leaves"
-
-#. Beschrijving van voorwerp or_rosemary
-#: scripts/data/ext/orchard.gd:13
-msgid "Eigen kruid voor rozemarijnbalsem bij Lena's alchemietafel."
-msgstr "Homegrown herbs for rosemary balm at Lena's alchemy table."
-
-#. Naam van voorwerp or_apple
-#: scripts/data/ext/orchard.gd:14
-msgid "Tuinappel"
-msgstr "Garden apple"
-
-#. Beschrijving van voorwerp or_apple
-#: scripts/data/ext/orchard.gd:14
-msgid "Vers fruit van je eigen boom. Herstelt één hartje en tien stamina; de boom draagt opnieuw vrucht."
-msgstr "Fresh fruit from your tree. Restores one heart and ten stamina; the tree grows another crop."
-
-#. Naam van voorwerp or_stew
-#: scripts/data/ext/orchard.gd:15
-msgid "Tuinstoofpot"
-msgstr "Garden stew"
-
-#. Beschrijving van voorwerp or_stew
-#: scripts/data/ext/orchard.gd:15
-msgid "Pompoen, wortels en zilverkruid uit de herbergkeuken. Herstelt drie hartjes en twintig stamina."
-msgstr "Pumpkin, carrots and silverleaf from the inn kitchen. Restores three hearts and twenty stamina."
-
-#. Naam van voorwerp or_tea
-#: scripts/data/ext/orchard.gd:16
-msgid "Honing-muntthee"
-msgstr "Honey mint tea"
-
-#. Beschrijving van voorwerp or_tea
-#: scripts/data/ext/orchard.gd:16
-msgid "Tuinmunt met bloemenhoning, gezet in de herberg. Herstelt één hartje en 45 stamina."
-msgstr "Garden mint and flower honey brewed at the inn. Restores one heart and 45 stamina."
-
-#. Naam van voorwerp or_balm
-#: scripts/data/ext/orchard.gd:17
-msgid "Rozemarijnbalsem"
-msgstr "Rosemary balm"
-
-#. Beschrijving van voorwerp or_balm
-#: scripts/data/ext/orchard.gd:17
-msgid "Rozemarijn, zilverkruid en honing van de alchemietafel. Herstelt drie hartjes."
-msgstr "Rosemary, silverleaf and honey mixed at the alchemy table. Restores three hearts."
-
-#. Naam van voorwerp hs_hoe
-#: scripts/data/ext/homestead.gd:7
-msgid "Tuinhak"
-msgstr "Garden hoe"
-
-#. Beschrijving van voorwerp hs_hoe
-#: scripts/data/ext/homestead.gd:7
-msgid "Eén gereedschap voor grond en smalle kanalen. Open de tuinstanden met U of via Beroepen → Tuinstanden; de ingestelde binding staat in Bediening."
-msgstr "One tool for soil and narrow channels. Open garden modes with U or through Professions → Garden modes; your current binding is shown in Controls."
-
-#. Naam van voorwerp hs_manure
-#: scripts/data/ext/homestead.gd:8
-msgid "Dierenpoep"
-msgstr "Animal droppings"
-
-#. Beschrijving van voorwerp hs_manure
-#: scripts/data/ext/homestead.gd:8
-msgid "Wilde dieren laten dit ook levend achter. Verwerk het op de mesthoop achter je huis tot meststof."
-msgstr "Wild animals leave this behind while alive. Turn it into fertilizer at the compost heap behind your home."
-
-#. Naam van voorwerp hs_fertilizer
-#: scripts/data/ext/homestead.gd:9
-msgid "Meststof"
-msgstr "Fertilizer"
-
-#. Beschrijving van voorwerp hs_fertilizer
-#: scripts/data/ext/homestead.gd:9
-msgid "Eén per oogstbaar gewas geeft bij de volgende oogst extra opbrengst. Druiven geven vijf in plaats van drie. Geen verplichte onderhoudsronde."
-msgstr "One per harvestable plant improves its next yield. Grapes give five instead of three. No mandatory daily upkeep."
-
-#. Naam van voorwerp hs_seed
-#: scripts/data/ext/homestead.gd:10
-msgid "Druivenpitten"
-msgstr "Grape seeds"
-
-#. Beschrijving van voorwerp hs_seed
-#: scripts/data/ext/homestead.gd:10
-msgid "Plant op bewerkte, bewaterde grond. Een druivenstok blijft na de oogst staan. Maak meer pitten van bosdruiven via Beroepen."
-msgstr "Plant in tilled, irrigated soil. A grapevine stays after harvesting. Make more seeds from wild grapes through Professions."
-
-#. Naam van voorwerp hs_flower_seed
-#: scripts/data/ext/homestead.gd:11
-msgid "Bloemenzaad"
-msgstr "Flower seeds"
-
-#. Beschrijving van voorwerp hs_flower_seed
-#: scripts/data/ext/homestead.gd:11
-msgid "Plant in je tuin. Drie bloeiende planten binnen vijf tegels houden de bijenkast aan het werk."
-msgstr "Plant in your garden. Three flowering plants within five tiles keep the beehive working."
-
-#. Naam van voorwerp hs_grape
-#: scripts/data/ext/homestead.gd:12
-msgid "Druiven"
-msgstr "Grapes"
-
-#. Beschrijving van voorwerp hs_grape
-#: scripts/data/ext/homestead.gd:12
-msgid "Bosdruiven of je eigen oogst. Herstellen één hartje; ook bruikbaar voor wijn of nieuwe pitten."
-msgstr "Wild grapes or your own harvest. Restore one heart; also useful for wine or new seeds."
-
-#. Naam van voorwerp hs_wine
-#: scripts/data/ext/homestead.gd:13
-msgid "Druivenwijn"
-msgstr "Grape wine"
-
-#. Beschrijving van voorwerp hs_wine
-#: scripts/data/ext/homestead.gd:13
-msgid "Drie druiven rijpen in een wijnvat tot één fles. Gebruik via Eten & drinken voor 40 stamina."
-msgstr "Three grapes mature in a wine barrel into one bottle. Use through Food & drink for 40 stamina."
-
-#. Naam van voorwerp hs_honey
-#: scripts/data/ext/homestead.gd:14
-msgid "Bloemenhoning"
-msgstr "Flower honey"
-
-#. Beschrijving van voorwerp hs_honey
-#: scripts/data/ext/homestead.gd:14
-msgid "Bijen maken honing zolang er minstens drie bloemen in de buurt bloeien. Herstelt één hartje en 25 stamina."
-msgstr "Bees make honey while at least three flowers bloom nearby. Restores one heart and 25 stamina."
-
-#. Naam van voorwerp cw_driftwood
-#: scripts/data/ext/coastal_craft.gd:7
-msgid "Zoutdrijfhout"
-msgstr "Saltwood"
-
-#. Beschrijving van voorwerp cw_driftwood
-#: scripts/data/ext/coastal_craft.gd:7
-msgid "Droog hout van een rustige zijplek aan de Blauwe Kust. Voor Rafs herbruikbare oeverlijn en meubels."
-msgstr "Dry timber from a quiet side spot on the Blue Coast. For Raf's reusable river line and furniture."
-
-#. Naam van voorwerp cw_reed
-#: scripts/data/ext/coastal_craft.gd:8
-msgid "Oevervezel"
-msgstr "Bank fiber"
-
-#. Beschrijving van voorwerp cw_reed
-#: scripts/data/ext/coastal_craft.gd:8
-msgid "Soepele vezels uit één rietplek bij Zilvermonding. Voor een herbruikbare lijn en waaierbanden."
-msgstr "Flexible fibers from one reed patch at Silver Estuary. For a reusable line and fan bands."
-
-#. Naam van voorwerp cw_seaglass
-#: scripts/data/ext/coastal_craft.gd:9
-msgid "Zeeagaat"
-msgstr "Sea agate"
-
-#. Beschrijving van voorwerp cw_seaglass
-#: scripts/data/ext/coastal_craft.gd:9
-msgid "Win in de veilige zuidelijke gang van de Tijholte met een stenen of koperen pikhouweel. Voor kustuitrusting en een werkplaatslamp."
-msgstr "Mine it in the safe southern passage of Tidal Hollow with a stone or copper pickaxe. For coastal equipment and a workshop lamp."
-
-#. Naam van voorwerp cw_saltleaf
-#: scripts/data/ext/coastal_craft.gd:10
-msgid "Zoutblad"
-msgstr "Saltleaf"
-
-#. Beschrijving van voorwerp cw_saltleaf
-#: scripts/data/ext/coastal_craft.gd:10
-msgid "Een kruid van de open graslanden van Lichtkaap. Met een baars van Joris maak je er kustbouillon van."
-msgstr "An herb from the open meadows of Beacon Headland. Combine it with Joris's perch to make coastal broth."
-
-#. Naam van voorwerp cw_hook
-#: scripts/ui/coastal_home_ui.gd:83 scripts/data/ext/coastal_craft.gd:11
-msgid "Herbruikbare oeverlijn"
-msgstr "Reusable river line"
-
-#. Beschrijving van voorwerp cw_hook
-#: scripts/data/ext/coastal_craft.gd:11
-msgid "Rafs haak en lijn. Verbindt de twee lijnpalen aan Zilvermonding. Niet verbruikt; de hoge rivierbrug blijft altijd open."
-msgstr "Raf's hook and line. Connects the two line posts at Silver Estuary. Never consumed; the high river bridge always stays open."
-
-#. Naam van voorwerp cw_shelf
-#: scripts/data/ext/coastal_craft.gd:12
-msgid "Drijfhouten wandrek"
-msgstr "Saltwood wall rack"
-
-#. Beschrijving van voorwerp cw_shelf
-#: scripts/data/ext/coastal_craft.gd:12
-msgid "Plaats of berg het gratis op via de inrichttafel in de havenwerkplaats. Heeft een vaste plek tegen de wand; geen onderhoud."
-msgstr "Place or store it for free at the workshop furnishing table. It has a fixed spot by the wall and needs no upkeep."
-
-#. Naam van voorwerp cw_lamp
-#: scripts/data/ext/coastal_craft.gd:13
-msgid "Zeeagaatlamp"
-msgstr "Sea-agate lamp"
-
-#. Beschrijving van voorwerp cw_lamp
-#: scripts/data/ext/coastal_craft.gd:13
-msgid "Lena's lamp voor de vaste sokkel in de havenwerkplaats. Kies warm licht, zeelicht of uit. Plaatsen verbruikt hem niet."
-msgstr "Lena's lamp for the fixed plinth in the harbor workshop. Choose warm light, sea light or off. Placing it does not consume it."
-
-#. Naam van voorwerp cw_broth
-#: scripts/data/ext/coastal_craft.gd:14
-msgid "Kustbouillon"
-msgstr "Coastal broth"
-
-#. Beschrijving van voorwerp cw_broth
-#: scripts/data/ext/coastal_craft.gd:14
-msgid "Baars van het Zilvermeer met zoutblad van Lichtkaap. Herstelt 2 hartjes en 20 stamina. Gebruik via Beroepen → Eten & drinken."
-msgstr "Silverlake perch with saltleaf from Beacon Headland. Restores 2 hearts and 20 stamina. Use through Professions → Food & drink."
-
-#. Naam van voorwerp td_line
-#: scripts/data/ext/tides.gd:5
-msgid "Landingslijn"
-msgstr "Landing line"
-
-#. Beschrijving van voorwerp td_line
-#: scripts/data/ext/tides.gd:5
-msgid "Gratis geleend bij de kist in de Getijdenbaai. Herbruikbaar bij beide lijnpalen; wordt nooit verbruikt."
-msgstr "Borrowed free from the chest in Tidal Cove. Reusable at either line post; never consumed."
-
-#. Naam van voorwerp ra_waterskin
-#: scripts/data/ext/regional.gd:159
-msgid "Nours waterzak"
-msgstr "Nour's waterskin"
-
-#. Beschrijving van voorwerp ra_waterskin
-#: scripts/data/ext/regional.gd:164
-msgid "Een hervulbare waterzak voor de Zonnekloof. Je drinkt automatisch; vul gratis bij onder de blauwe luifels."
-msgstr "A refillable waterskin for the Sun Gorge. You drink automatically; refill for free under the blue shelters."
-
-#. Naam van voorwerp ls_crate
-#: scripts/data/ext/lake_supper.gd:10
-msgid "Joris' maaltijdmand"
-msgstr "Joris’ meal hamper"
-
-#. Beschrijving van voorwerp ls_crate
-#: scripts/data/ext/lake_supper.gd:10
-msgid "Verse vangst en groente voor Mila. Bereid twee porties bij het fornuis in de herberg."
-msgstr "Fresh fish and vegetables for Mila. Prepare two portions at the inn’s stove."
-
-#. Naam van voorwerp ls_chowder
-#: scripts/data/ext/lake_supper.gd:11
-msgid "Zilvermeerstoof"
-msgstr "Silverlake stew"
-
-#. Beschrijving van voorwerp ls_chowder
-#: scripts/data/ext/lake_supper.gd:11
-msgid "Stevige visstoof: herstelt 3 hartjes en 20 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "Hearty fish stew: restores 3 hearts and 20 stamina. Use through Professions → Food & drink."
-
-#. Naam van voorwerp ls_broth
-#: scripts/data/ext/lake_supper.gd:12
-msgid "Oeverbouillon"
-msgstr "Lakeside broth"
-
-#. Beschrijving van voorwerp ls_broth
-#: scripts/data/ext/lake_supper.gd:12
-msgid "Lichte visbouillon: herstelt 1 hartje en 60 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "Light fish broth: restores 1 heart and 60 stamina. Use through Professions → Food & drink."
-
-#. Naam van voorwerp bow
-#. Instelbare bediening: bow
-#: scripts/core/input_manager.gd:15 scripts/data/ext/boog.gd:15
-msgid "Boog"
-msgstr "Bow"
-
-#. Beschrijving van voorwerp bow
-#: scripts/data/ext/boog.gd:16
-msgid "Druk op F om een pijl te schieten. Een pijl doet 2 schade (bij bazen 1) en vliegt over water. Je krijgt er 5 pijlen bij, meer pijlen koop je apart."
-msgstr "Press F to shoot an arrow. An arrow does 2 damage (1 to bosses) and flies over water. Comes with 5 arrows. You can buy more arrows separately."
-
-#. Naam van voorwerp arrow
-#: scripts/data/ext/boog.gd:19
-msgid "Pijl"
-msgstr "Arrow"
-
-#. Beschrijving van voorwerp arrow
-#: scripts/data/ext/boog.gd:23
-msgid "Pijlen voor je boog. Er passen er 40 in je pijlenkoker. Skeletten laten er soms een paar vallen."
-msgstr "Arrows for your bow. Your quiver holds 40 of them. Skeletons sometimes drop a few."
-
 #. Voorwerp arrow: melding (full_text)
 #: scripts/data/ext/boog.gd:20
 msgid "Je pijlenkoker is vol"
@@ -5943,1160 +8158,6 @@ msgstr "Your quiver is almost full"
 #: scripts/data/ext/boog.gd:22
 msgid "Er zitten pijlen in deze kist, maar ze passen niet meer in je pijlenkoker. Schiet er eerst een paar af!"
 msgstr "There are arrows in this chest, but your quiver has no room for them. Shoot a few first!"
-
-#. Naam van voorwerp fishing_rod
-#: scripts/data/ext/meer.gd:62
-msgid "Hengel"
-msgstr "Fishing Rod"
-
-#. Beschrijving van voorwerp fishing_rod
-#: scripts/data/ext/meer.gd:63
-msgid "De reservehengel van Visser Joris. Ga bij een visplek in het Zilvermeer staan en druk op E."
-msgstr "Joris the Fisher's spare rod. Stand at a fishing spot at Silver Lake and press E."
-
-#. Naam van voorwerp meer_baars
-#: scripts/data/ext/meer.gd:66
-msgid "Baars"
-msgstr "Perch"
-
-#. Beschrijving van voorwerp meer_baars
-#: scripts/data/ext/meer.gd:67
-msgid "Een gestreepte baars met rode vinnen. Joris en Mila kopen hem graag."
-msgstr "A striped perch with red fins. Joris and Mila are happy to buy it."
-
-#. Naam van voorwerp meer_snoek
-#: scripts/data/ext/meer.gd:70
-msgid "Snoek"
-msgstr "Pike"
-
-#. Beschrijving van voorwerp meer_snoek
-#: scripts/data/ext/meer.gd:71
-msgid "Een lange snoek met een grote bek. Joris en Mila betalen er goed voor."
-msgstr "A long pike with a big mouth. Joris and Mila pay well for it."
-
-#. Naam van voorwerp meer_gouden_karper
-#: scripts/data/ext/meer.gd:74
-msgid "Gouden Karper"
-msgstr "Golden Carp"
-
-#. Beschrijving van voorwerp meer_gouden_karper
-#: scripts/data/ext/meer.gd:75
-msgid "De beroemde vis van het Zilvermeer. Hij glinstert alsof hij van goud is. Visser Joris droomt van hem."
-msgstr "The famous fish of Silver Lake. It sparkles like it's made of gold. Joris the Fisher dreams about it."
-
-#. Naam van voorwerp meer_laars
-#: scripts/data/ext/meer.gd:78
-msgid "Oude laars"
-msgstr "Old Boot"
-
-#. Beschrijving van voorwerp meer_laars
-#: scripts/data/ext/meer.gd:79
-msgid "Een natte, stinkende laars. Joris verzamelt ze. Waarom, dat weet niemand."
-msgstr "A wet, smelly boot. Joris collects them. Why? Nobody knows."
-
-#. Naam van voorwerp fishers_cap
-#: scripts/data/ext/meer.gd:82
-msgid "Visserspet"
-msgstr "Fisher's Cap"
-
-#. Beschrijving van voorwerp fishers_cap
-#: scripts/data/ext/meer.gd:83
-msgid "De pet van Visser Joris. Met deze pet betalen Joris en Mila je 10% extra voor je vis."
-msgstr "Joris the Fisher's cap. With this cap on, Joris and Mila pay you 10% extra for your fish."
-
-#. Naam van voorwerp meer_boek_eiland
-#: scripts/data/ext/meer.gd:86
-msgid "Sagen van het Zilvermeer"
-msgstr "Legends of Silver Lake"
-
-#. Beschrijving van voorwerp meer_boek_eiland
-#: scripts/data/ext/meer.gd:87
-msgid "Een van de drie boeken die Lena mist. Je vond het op het eiland."
-msgstr "One of the three books Lena is missing. You found it on the island."
-
-#. Naam van voorwerp meer_boek_hut
-#: scripts/data/ext/meer.gd:90
-msgid "Het Grote Vissenboek"
-msgstr "The Big Book of Fish"
-
-#. Beschrijving van voorwerp meer_boek_hut
-#: scripts/data/ext/meer.gd:91
-msgid "Een van de drie boeken die Lena mist. Het lag in het huisje van Joris, met een koffiekring erop."
-msgstr "One of the three books Lena is missing. It was in Joris' Cabin, with a coffee ring on it."
-
-#. Naam van voorwerp meer_boek_sanne
-#: scripts/data/ext/meer.gd:94
-msgid "Sterren boven Azura"
-msgstr "Stars over Azura"
-
-#. Beschrijving van voorwerp meer_boek_sanne
-#: scripts/data/ext/meer.gd:95
-msgid "Een van de drie boeken die Lena mist. Sanne gaf het je."
-msgstr "One of the three books Lena is missing. Sanne gave it to you."
-
-#. Naam van voorwerp meer_schelp
-#: scripts/data/ext/meer.gd:98
-msgid "Zilverschelp"
-msgstr "Silver Shell"
-
-#. Beschrijving van voorwerp meer_schelp
-#: scripts/data/ext/meer.gd:99
-msgid "Een roze schelp uit het Zilvermeer. Als je goed luistert, hoor je een rustig liedje. Een verzamelstuk."
-msgstr "A pink shell from Silver Lake. If you listen closely, you can hear a calm little song. A collectible."
-
-#. Naam van voorwerp sword_star
-#. Naam van zwaard star
-#: scripts/data/ext/diepte.gd:97 scripts/data/ext/diepte.gd:109
-msgid "Sterrenzwaard"
-msgstr "Starsword"
-
-#. Beschrijving van voorwerp sword_star
-#: scripts/data/ext/diepte.gd:98
-msgid "Het legendarische zwaard van de Sterrenkaart. Het schijnt als een ster en raakt harder dan alle andere zwaarden."
-msgstr "The legendary sword of the Star Map. It shines like a star and hits harder than any other sword."
-
-#. Naam van voorwerp diepte_key
-#: scripts/data/ext/diepte.gd:101
-msgid "Kristalsleutel"
-msgstr "Crystal Key"
-
-#. Beschrijving van voorwerp diepte_key
-#: scripts/data/ext/diepte.gd:102
-msgid "Een sleutel van gloeiend kristal. Hij past op de kristalpoort in de Diepte."
-msgstr "A key made of glowing crystal. It fits the crystal gate in the Depths."
-
-#. Naam van voorwerp arena_trophy_bronze
-#: scripts/data/ext/arena.gd:31
-msgid "Bronzen trofee"
-msgstr "Bronze Trophy"
-
-#. Beschrijving van voorwerp arena_trophy_bronze
-#: scripts/data/ext/arena.gd:32
-msgid "Voor het winnen van de Brons-rang in de arena. Staat mooi op de trofeeënplank."
-msgstr "For winning the Bronze rank in the arena. Looks great on the trophy shelf."
-
-#. Naam van voorwerp arena_trophy_silver
-#: scripts/data/ext/arena.gd:35
-msgid "Zilveren trofee"
-msgstr "Silver Trophy"
-
-#. Beschrijving van voorwerp arena_trophy_silver
-#: scripts/data/ext/arena.gd:36
-msgid "Voor het winnen van de Zilver-rang in de arena. Hij glimt als een spiegel."
-msgstr "For winning the Silver rank in the arena. It shines like a mirror."
-
-#. Naam van voorwerp arena_trophy_gold
-#: scripts/data/ext/arena.gd:39
-msgid "Gouden trofee"
-msgstr "Gold Trophy"
-
-#. Beschrijving van voorwerp arena_trophy_gold
-#: scripts/data/ext/arena.gd:40
-msgid "Voor het winnen van de Goud-rang in de arena. De hoogste eer van Dageraadsdorp!"
-msgstr "For winning the Gold rank in the arena. The highest honor in Daybreak Village!"
-
-#. Naam van voorwerp arena_helm
-#: scripts/data/ext/arena.gd:43
-msgid "Arenahelm"
-msgstr "Arena Helmet"
-
-#. Beschrijving van voorwerp arena_helm
-#: scripts/data/ext/arena.gd:44
-msgid "Een stalen helm met een rode pluim. Alleen een echte Arenakampioen mag hem dragen. Een verzamelstuk."
-msgstr "A steel helmet with a red plume. Only a true Arena Champion may wear it. A collectible."
-
-#. Naam van voorwerp prof_branch
-#: scripts/data/ext/beroepen.gd:32
-msgid "Droge tak"
-msgstr "Dry Branch"
-
-#. Beschrijving van voorwerp prof_branch
-#: scripts/data/ext/beroepen.gd:32
-msgid "Los hout uit dorp en bos. Voor je eerste bijl en pikhouweel."
-msgstr "Loose wood from the village and woods. For your first axe and pickaxe."
-
-#. Naam van voorwerp prof_stone
-#: scripts/data/ext/beroepen.gd:33
-msgid "Vuursteen"
-msgstr "Flint"
-
-#. Beschrijving van voorwerp prof_stone
-#: scripts/data/ext/beroepen.gd:33
-msgid "Een scherpe losse steen. Je kunt hem zonder gereedschap oprapen."
-msgstr "A sharp loose stone. You can pick it up without tools."
-
-#. Naam van voorwerp prof_herb
-#. Oogstbare grondstof herbs
-#: scripts/data/ext/beroepen.gd:34 scripts/data/ext/beroepen.gd:181
-msgid "Zilverkruid"
-msgstr "Silverleaf"
-
-#. Beschrijving van voorwerp prof_herb
-#: scripts/data/ext/beroepen.gd:34
-msgid "Geurig kruid voor alchemie en stevige soep."
-msgstr "A fragrant herb for alchemy and hearty soup."
-
-#. Naam van voorwerp prof_berry
-#: scripts/data/ext/beroepen.gd:35
-msgid "Bosbes"
-msgstr "Blueberry"
-
-#. Beschrijving van voorwerp prof_berry
-#: scripts/data/ext/beroepen.gd:35
-msgid "Maak er een bessensnack of een energie-elixer van."
-msgstr "Use it to make a berry snack or an energy tonic."
-
-#. Naam van voorwerp prof_log
-#: scripts/data/ext/beroepen.gd:36
-msgid "Berkenhout"
-msgstr "Birch Wood"
-
-#. Beschrijving van voorwerp prof_log
-#: scripts/data/ext/beroepen.gd:36
-msgid "Hout van een oogstbare stronk. Voor smeltvuur, gereedschap en pijlen."
-msgstr "Wood from a harvestable stump. For smelting, tools and arrows."
-
-#. Naam van voorwerp prof_copper_ore
-#: scripts/data/ext/beroepen.gd:37
-msgid "Kopererts"
-msgstr "Copper Ore"
-
-#. Beschrijving van voorwerp prof_copper_ore
-#: scripts/data/ext/beroepen.gd:37
-msgid "Win met een stenen pikhouweel. Smelt het bij Greta tot koper."
-msgstr "Mine it with a stone pickaxe. Smelt it into copper at Greta's."
-
-#. Naam van voorwerp prof_iron_ore
-#: scripts/data/ext/beroepen.gd:38
-msgid "IJzererts"
-msgstr "Iron Ore"
-
-#. Beschrijving van voorwerp prof_iron_ore
-#: scripts/data/ext/beroepen.gd:38
-msgid "Win in de Echo-grot met mijnbouw 2 en een koperen pikhouweel."
-msgstr "Mine it in Echo Cave with Mining 2 and a copper pickaxe."
-
-#. Naam van voorwerp prof_copper_bar
-#: scripts/data/ext/beroepen.gd:39
-msgid "Koperstaaf"
-msgstr "Copper Bar"
-
-#. Beschrijving van voorwerp prof_copper_bar
-#: scripts/data/ext/beroepen.gd:39
-msgid "Gesmolten koper voor een beter pikhouweel."
-msgstr "Smelted copper for a better pickaxe."
-
-#. Naam van voorwerp prof_iron_bar
-#: scripts/data/ext/beroepen.gd:40
-msgid "IJzerstaaf"
-msgstr "Iron Bar"
-
-#. Beschrijving van voorwerp prof_iron_bar
-#: scripts/data/ext/beroepen.gd:40
-msgid "Gesmolten ijzer voor een efficiëntere bijl."
-msgstr "Smelted iron for a more efficient axe."
-
-#. Naam van voorwerp prof_axe
-#: scripts/data/ext/beroepen.gd:41
-msgid "Stenen bijl"
-msgstr "Stone Axe"
-
-#. Beschrijving van voorwerp prof_axe
-#: scripts/data/ext/beroepen.gd:41
-msgid "Hak oogstbare stronken. Wordt automatisch gebruikt; slijt niet."
-msgstr "Chop harvestable stumps. Used automatically; never wears out."
-
-#. Naam van voorwerp prof_pickaxe
-#: scripts/data/ext/beroepen.gd:42
-msgid "Stenen pikhouweel"
-msgstr "Stone Pickaxe"
-
-#. Beschrijving van voorwerp prof_pickaxe
-#: scripts/data/ext/beroepen.gd:42
-msgid "Win koperaders. Wordt automatisch gebruikt; slijt niet."
-msgstr "Mine copper veins. Used automatically; never wears out."
-
-#. Naam van voorwerp prof_copper_pickaxe
-#: scripts/data/ext/beroepen.gd:43
-msgid "Koperen pikhouweel"
-msgstr "Copper Pickaxe"
-
-#. Beschrijving van voorwerp prof_copper_pickaxe
-#: scripts/data/ext/beroepen.gd:43
-msgid "Ontsluit ijzererts vanaf mijnbouw 2. Vervangt je stenen pikhouweel automatisch."
-msgstr "Unlocks iron ore at Mining 2. Automatically replaces your stone pickaxe."
-
-#. Naam van voorwerp prof_iron_axe
-#: scripts/data/ext/beroepen.gd:44
-msgid "IJzeren bijl"
-msgstr "Iron Axe"
-
-#. Beschrijving van voorwerp prof_iron_axe
-#: scripts/data/ext/beroepen.gd:44
-msgid "Oogst 3 berkenhout per stronk in plaats van 2. Slijt niet."
-msgstr "Harvests 3 birch wood per stump instead of 2. Never wears out."
-
-#. Naam van voorwerp prof_tonic
-#: scripts/data/ext/beroepen.gd:45
-msgid "Energie-elixer"
-msgstr "Energy Tonic"
-
-#. Beschrijving van voorwerp prof_tonic
-#: scripts/data/ext/beroepen.gd:45
-msgid "Herstelt 60 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "Restores 60 stamina. Use through Professions → Food & drink."
-
-#. Naam van voorwerp prof_berry_meal
-#: scripts/data/ext/beroepen.gd:46
-msgid "Bessensnack"
-msgstr "Berry Snack"
-
-#. Beschrijving van voorwerp prof_berry_meal
-#: scripts/data/ext/beroepen.gd:46
-msgid "Herstelt 1 hartje. Gebruik via Beroepen → Eten & drinken."
-msgstr "Restores 1 heart. Use through Professions → Food & drink."
-
-#. Naam van voorwerp prof_fish_meal
-#: scripts/data/ext/beroepen.gd:47
-msgid "Gebakken baars"
-msgstr "Grilled Perch"
-
-#. Beschrijving van voorwerp prof_fish_meal
-#: scripts/data/ext/beroepen.gd:47
-msgid "Herstelt 3 hartjes. Gemaakt in de herberg. Gebruik via Beroepen → Eten & drinken."
-msgstr "Restores 3 hearts. Cooked at the inn. Use through Professions → Food & drink."
-
-#. Naam van voorwerp prof_mushroom
-#: scripts/data/ext/beroepen.gd:48
-msgid "Honingzwam"
-msgstr "Honey Mushroom"
-
-#. Beschrijving van voorwerp prof_mushroom
-#: scripts/data/ext/beroepen.gd:48
-msgid "Een eetbare zwam uit het Fluisterbos. Voor stevige paddenstoelensoep."
-msgstr "An edible mushroom from the Whispering Woods. For hearty mushroom soup."
-
-#. Naam van voorwerp prof_stew
-#: scripts/data/ext/beroepen.gd:49
-msgid "Paddenstoelensoep"
-msgstr "Mushroom Soup"
-
-#. Beschrijving van voorwerp prof_stew
-#: scripts/data/ext/beroepen.gd:49
-msgid "Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."
-msgstr "Restores 2 hearts. Use through Professions → Food & drink."
-
-#. Naam van voorwerp prof_ijsbloem
-#: scripts/data/ext/beroepen.gd:50
-msgid "IJsbloem"
-msgstr "Ice flower"
-
-#. Beschrijving van voorwerp prof_ijsbloem
-#: scripts/data/ext/beroepen.gd:50
-msgid "Een bloem die alleen in het IJsdal bloeit. Koud en helder; basis voor vorstelixers."
-msgstr "A flower that blooms only in IJsdal. Cold and clear; the base for frost tonics."
-
-#. Naam van voorwerp prof_winterbes
-#: scripts/data/ext/beroepen.gd:51
-msgid "Winterbes"
-msgstr "Winter berry"
-
-#. Beschrijving van voorwerp prof_winterbes
-#: scripts/data/ext/beroepen.gd:51
-msgid "Zoete bes die juist in de sneeuw rijpt. Lekker en verwarmend."
-msgstr "A sweet berry that ripens right in the snow. Tasty and warming."
-
-#. Naam van voorwerp prof_dennenhout
-#: scripts/data/ext/beroepen.gd:52
-msgid "Dennenhout"
-msgstr "Pine wood"
-
-#. Beschrijving van voorwerp prof_dennenhout
-#: scripts/data/ext/beroepen.gd:52
-msgid "Harsachtig hout uit het IJsdal. Brandt lang en warm."
-msgstr "Resinous wood from IJsdal. Burns long and warm."
-
-#. Naam van voorwerp prof_ijskristal
-#: scripts/data/ext/beroepen.gd:53
-msgid "IJskristal"
-msgstr "Ice crystal"
-
-#. Beschrijving van voorwerp prof_ijskristal
-#: scripts/data/ext/beroepen.gd:53
-msgid "Een zuivere kristalspalk uit een bevroren ader. Gezocht door alchemisten."
-msgstr "A pure crystal shard from a frozen vein. Sought after by alchemists."
-
-#. Naam van voorwerp prof_frost_tonic
-#: scripts/data/ext/beroepen.gd:54
-msgid "Vorstelixer"
-msgstr "Frost tonic"
-
-#. Beschrijving van voorwerp prof_frost_tonic
-#: scripts/data/ext/beroepen.gd:54
-msgid "Herstelt 40 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "Restores 40 stamina. Use through Professions → Food & drink."
-
-#. Naam van voorwerp prof_winter_gloed
-#: scripts/data/ext/beroepen.gd:55
-msgid "Wintergloed"
-msgstr "Winter glow"
-
-#. Beschrijving van voorwerp prof_winter_gloed
-#: scripts/data/ext/beroepen.gd:55
-msgid "Een warme winterbespap. Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."
-msgstr "A warm winter berry porridge. Restores 2 hearts. Use through Professions → Food & drink."
-
-#. Naam van voorwerp prof_cactusvijg
-#: scripts/data/ext/beroepen.gd:56
-msgid "Cactusvijg"
-msgstr "Cactus fig"
-
-#. Beschrijving van voorwerp prof_cactusvijg
-#: scripts/data/ext/beroepen.gd:56
-msgid "Zoete vrucht van de zuilcactus. Verkoelend; Sana maakt er drankjes van."
-msgstr "Sweet fruit of the columnar cactus. Cooling; Sana turns them into drinks."
-
-#. Naam van voorwerp prof_zandkruid
-#. Oogstbare grondstof sandwort
-#: scripts/data/ext/beroepen.gd:57 scripts/data/ext/beroepen.gd:192
-msgid "Zandkruid"
-msgstr "Sandwort"
-
-#. Beschrijving van voorwerp prof_zandkruid
-#: scripts/data/ext/beroepen.gd:57
-msgid "Een taai, geurig kruid dat tussen het duinzand groeit. Voor balsems en braadstukken."
-msgstr "A tough, fragrant herb that grows among the dune sand. For balms and roasts."
-
-#. Naam van voorwerp prof_zandsteen
-#: scripts/data/ext/beroepen.gd:58
-msgid "Zandsteen"
-msgstr "Sandstone"
-
-#. Beschrijving van voorwerp prof_zandsteen
-#: scripts/data/ext/beroepen.gd:58
-msgid "Warme, gelaagde steen uit de klippen van de Dorstvallei. Licht en goed te bewerken."
-msgstr "Warm, layered stone from the cliffs of Dorstvallei. Light and easy to work."
-
-#. Naam van voorwerp prof_zandbalsem
-#: scripts/data/ext/beroepen.gd:59
-msgid "Zandbalsem"
-msgstr "Sand balm"
-
-#. Beschrijving van voorwerp prof_zandbalsem
-#: scripts/data/ext/beroepen.gd:59
-msgid "Verkoelende balsem van zandkruid en cactusvijg. Herstelt 30 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "Cooling balm of sandwort and cactus fig. Restores 30 stamina. Use through Professions → Food & drink."
-
-#. Naam van voorwerp prof_dauwklauw
-#: scripts/data/ext/beroepen.gd:60
-msgid "Dauwklauw"
-msgstr "Dewclaw"
-
-#. Beschrijving van voorwerp prof_dauwklauw
-#: scripts/data/ext/beroepen.gd:60
-msgid "Een bleke bloem die alleen in de mist van het Dauwbos bloeit. Basis voor het mistedrank."
-msgstr "A pale flower that only blooms in the mist of the Dew Forest. The base for mist tonic."
-
-#. Naam van voorwerp prof_mistdrank
-#: scripts/data/ext/beroepen.gd:61
-msgid "Mistedrank"
-msgstr "Mist tonic"
-
-#. Beschrijving van voorwerp prof_mistdrank
-#: scripts/data/ext/beroepen.gd:61
-msgid "Een koel, kolkend elixer van dauwklauwen en honingzwam. Herstelt 35 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "A cool, swirling elixir of dewclaws and honey fungus. Restores 35 stamina. Use via Professions → Food & drink."
-
-#. Naam van voorwerp prof_dauwsoep
-#: scripts/data/ext/beroepen.gd:62
-msgid "Dauwsoep"
-msgstr "Dew soup"
-
-#. Beschrijving van voorwerp prof_dauwsoep
-#: scripts/data/ext/beroepen.gd:62
-msgid "Lichte soep van honingzwammen met dauwklauw. Herstelt 2 hartjes en 10 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "Light soup of honey fungi with dewclaw. Restores 2 hearts and 10 stamina. Use via Professions → Food & drink."
-
-#. Naam van voorwerp prof_veenbes
-#: scripts/data/ext/beroepen.gd:63
-msgid "Veenbes"
-msgstr "Cranberry"
-
-#. Beschrijving van voorwerp prof_veenbes
-#: scripts/data/ext/beroepen.gd:63
-msgid "Een rode, zure bes die laag boven het veenwater groeit. Voor pap en elixers."
-msgstr "A red, tart berry that grows low above the moor water. For porridge and elixirs."
-
-#. Naam van voorwerp prof_watermunt
-#. Oogstbare grondstof watermunt
-#: scripts/data/ext/beroepen.gd:64 scripts/data/ext/beroepen.gd:196
-msgid "Watermunt"
-msgstr "Water mint"
-
-#. Beschrijving van voorwerp prof_watermunt
-#: scripts/data/ext/beroepen.gd:64
-msgid "Fris kruid uit de plasranden van het Kruipmoeras. Prikt lekker in thee en brouwsels."
-msgstr "Fresh herb from the pool edges of the Creeping Swamp. Lovely kick in tea and brews."
-
-#. Naam van voorwerp prof_wilgentwijg
-#: scripts/data/ext/beroepen.gd:65
-msgid "Wilgentwijg"
-msgstr "Willow twig"
-
-#. Beschrijving van voorwerp prof_wilgentwijg
-#: scripts/data/ext/beroepen.gd:65
-msgid "Buigzame twijg van een geknotte wilg. Rietvlechters zweren erbij."
-msgstr "Supple twig from a pollard willow. Reed weavers swear by it."
-
-#. Naam van voorwerp prof_ijzeroer
-#: scripts/data/ext/beroepen.gd:66
-msgid "IJzeroer"
-msgstr "Bog iron"
-
-#. Beschrijving van voorwerp prof_ijzeroer
-#: scripts/data/ext/beroepen.gd:66
-msgid "Bruin erts uit de turfvelden, het bloed van het veen. Alchemisten smeden er rare dingen mee."
-msgstr "Brown ore from the peat fields, the blood of the moor. Alchemists forge strange things with it."
-
-#. Naam van voorwerp prof_moeraselixer
-#: scripts/data/ext/beroepen.gd:67
-msgid "Moeraselixer"
-msgstr "Swamp elixir"
-
-#. Beschrijving van voorwerp prof_moeraselixer
-#: scripts/data/ext/beroepen.gd:67
-msgid "Kolkend groen brouwsel van watermunt en veenbes. Herstelt 45 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "Bubbling green brew of water mint and cranberry. Restores 45 stamina. Use via Professions → Food & drink."
-
-#. Naam van voorwerp prof_veenbespap
-#: scripts/data/ext/beroepen.gd:68
-msgid "Veenbespap"
-msgstr "Cranberry porridge"
-
-#. Beschrijving van voorwerp prof_veenbespap
-#: scripts/data/ext/beroepen.gd:68
-msgid "Warme pap met veenbessen, zoals Stien hem maakt. Herstelt 2 hartjes en 5 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."
-msgstr "Warm porridge with cranberries, the way Stien makes it. Restores 2 hearts and 5 stamina. Use via Professions → Food & drink."
-
-#. Naam van voorwerp gear_cw_anchor
-#: scripts/data/ext/uitrusting.gd:14
-msgid "Ankerbanden"
-msgstr "Anchor bands"
-
-#. Beschrijving van voorwerp gear_cw_anchor
-#: scripts/data/ext/uitrusting.gd:14
-msgid "Draag in je handvak: 1 pantser en 10 stamina. Techniek + zwaard wordt een korte frontale ankerwacht. Na een tijdige blokkade geeft een gewone zwaarddruk een gerichte tegenstoot; zij- en rugtreffers blijven gevaarlijk."
-msgstr "Wear in your hand slot: 1 armor and 10 stamina. Technique + sword becomes a brief frontal anchor guard. After a timely block, a normal sword press delivers a directed counterthrust; side and rear hits remain dangerous."
-
-#. Naam van voorwerp gear_cw_fan
-#: scripts/data/ext/uitrusting.gd:15
-msgid "Waaierbanden"
-msgstr "Fan bands"
-
-#. Beschrijving van voorwerp gear_cw_fan
-#: scripts/data/ext/uitrusting.gd:15
-msgid "Draag in hetzelfde handvak: 15% korter verzamelen en 8 oppakbereik, zonder pantser. Techniek + boog wordt een brede waaier van drie lichte pijlen. Kost drie pijlen; gewone en andere zwaardtechnieken blijven beschikbaar."
-msgstr "Wear in the same hand slot: 15% faster gathering and 8 pickup range, without armor. Technique + bow becomes a wide fan of three light arrows. Costs three arrows; normal attacks and other sword techniques remain available."
-
-#. Naam van voorwerp gear_ra_grip
-#: scripts/data/ext/uitrusting.gd:17
-msgid "Klimhandschoenen"
-msgstr "Climbing gloves"
-
-#. Beschrijving van voorwerp gear_ra_grip
-#: scripts/data/ext/uitrusting.gd:17
-msgid "Grip en een lichte tred: 4% sneller lopen en 15 extra stamina. Gebruikt hetzelfde handvak als aanvalshandschoenen."
-msgstr "Grip and a light step: 4% faster movement and 15 extra stamina. Uses the same hand slot as attack gloves."
-
-#. Naam van voorwerp gear_ra_compass
-#: scripts/data/ext/uitrusting.gd:18
-msgid "Archiefkompas"
-msgstr "Archive compass"
-
-#. Beschrijving van voorwerp gear_ra_compass
-#: scripts/data/ext/uitrusting.gd:18
-msgid "Een kompas uit het Rietarchief: 16 extra oppakbereik en 10% sneller staminaherstel. Draag het in je halsvak."
-msgstr "A compass from the Reed Archive: 16 extra pickup range and 10% faster stamina regeneration. Wear it in your neck slot."
-
-#. Naam van voorwerp gear_rf_keepsake
-#: scripts/data/ext/uitrusting.gd:19
-msgid "Wilfreds herinnering"
-msgstr "Wilfred's Keepsake"
-
-#. Beschrijving van voorwerp gear_rf_keepsake
-#: scripts/data/ext/uitrusting.gd:19
-msgid "Een ring uit de herdenkingsplek: 15% sneller staminaherstel en 6 extra oppakbereik. Minder bereik dan een koperen ring."
-msgstr "A memorial ring: 15% faster stamina recovery and 6 extra pickup range. Less range than a copper ring."
-
-#. Naam van voorwerp gear_rf_cord
-#: scripts/data/ext/uitrusting.gd:20
-msgid "Stiltekoord"
-msgstr "Cord of Stillness"
-
-#. Beschrijving van voorwerp gear_rf_cord
-#: scripts/data/ext/uitrusting.gd:20
-msgid "Een oud koord uit de schuilroute. Geeft gedragen 20 extra stamina; amuletten voor sneller herstel gebruiken hetzelfde halsvak."
-msgstr "An old cord from the refuge route. Grants 20 extra stamina when worn; recovery amulets use the same neck slot."
-
-#. Naam van voorwerp gear_scout_coat
-#: scripts/data/ext/uitrusting.gd:22
-msgid "Verkennersjas"
-msgstr "Scout coat"
-
-#. Beschrijving van voorwerp gear_scout_coat
-#: scripts/data/ext/uitrusting.gd:32
-msgid "8% sneller en 10 extra stamina, maar geen pantser. Voor verkennen en ontwijken."
-msgstr "8% faster and 10 extra stamina, but no armor. For exploration and dodging."
-
-#. Naam van voorwerp gear_bastion_coat
-#: scripts/data/ext/uitrusting.gd:35
-msgid "Wachtharnas"
-msgstr "Warden coat"
-
-#. Beschrijving van voorwerp gear_bastion_coat
-#: scripts/data/ext/uitrusting.gd:45
-msgid "2 pantser, maar 8% langzamer. Elke treffer doet minimaal 1 schade. Voor standhouden bij een vuurkorf."
-msgstr "2 armor, but 8% slower. Every hit deals at least 1 damage. For holding your ground by a brazier."
-
-#. Naam van voorwerp gear_cloth_hood
-#: scripts/data/ext/uitrusting.gd:48
-msgid "Linnen kap"
-msgstr "Linen hood"
-
-#. Beschrijving van voorwerp gear_cloth_hood
-#: scripts/data/ext/uitrusting.gd:48
-msgid "Een lichte reiskap. Draag hem op je hoofd voor 15 extra uithoudingsvermogen."
-msgstr "A light traveling hood. Wear it on your head for 15 extra stamina."
-
-#. Naam van voorwerp gear_bronze_helm
-#: scripts/data/ext/uitrusting.gd:49
-msgid "Bronzen helm"
-msgstr "Bronze helmet"
-
-#. Beschrijving van voorwerp gear_bronze_helm
-#: scripts/data/ext/uitrusting.gd:49
-msgid "Een stevige helm voor lange tochten. Draag hem op je hoofd voor 30 extra uithoudingsvermogen."
-msgstr "A sturdy helmet for long journeys. Wear it on your head for 30 extra stamina."
-
-#. Naam van voorwerp gear_leather_armor
-#: scripts/data/ext/uitrusting.gd:50
-msgid "Leren harnas"
-msgstr "Leather armor"
-
-#. Beschrijving van voorwerp gear_leather_armor
-#: scripts/data/ext/uitrusting.gd:50
-msgid "Vangt zware klappen op. Vermindert schade met 1, tot minimaal 1 schade per treffer."
-msgstr "Absorbs heavy blows. Reduces damage by 1, to a minimum of 1 damage per hit."
-
-#. Naam van voorwerp gear_iron_armor
-#: scripts/data/ext/uitrusting.gd:51
-msgid "IJzeren harnas"
-msgstr "Iron armor"
-
-#. Beschrijving van voorwerp gear_iron_armor
-#: scripts/data/ext/uitrusting.gd:51
-msgid "Gesmede bescherming. Vermindert schade met 2, tot minimaal 1 schade per treffer."
-msgstr "Forged protection. Reduces damage by 2, to a minimum of 1 damage per hit."
-
-#. Naam van voorwerp gear_novice_gloves
-#: scripts/data/ext/uitrusting.gd:52
-msgid "Leerlinghandschoenen"
-msgstr "Apprentice gloves"
-
-#. Beschrijving van voorwerp gear_novice_gloves
-#: scripts/data/ext/uitrusting.gd:52
-msgid "Een goede grip op je zwaard. Draag ze voor 8% kortere wachttijd tussen zwaardaanvallen."
-msgstr "A firm grip on your sword. Wear them for an 8% shorter cooldown between sword attacks."
-
-#. Naam van voorwerp gear_smith_gloves
-#: scripts/data/ext/uitrusting.gd:53
-msgid "Smeedhandschoenen"
-msgstr "Smith's gloves"
-
-#. Beschrijving van voorwerp gear_smith_gloves
-#: scripts/data/ext/uitrusting.gd:53
-msgid "Perfect passende handschoenen. Draag ze voor 16% kortere wachttijd tussen zwaardaanvallen."
-msgstr "Perfectly fitted gloves. Wear them for a 16% shorter cooldown between sword attacks."
-
-#. Naam van voorwerp gear_copper_amulet
-#: scripts/data/ext/uitrusting.gd:54
-msgid "Koperen amulet"
-msgstr "Copper amulet"
-
-#. Beschrijving van voorwerp gear_copper_amulet
-#: scripts/data/ext/uitrusting.gd:54
-msgid "Een warm koperen sieraad. Draag het om je hals voor 15% sneller herstel van uithoudingsvermogen."
-msgstr "A warm copper charm. Wear it around your neck for 15% faster stamina recovery."
-
-#. Naam van voorwerp gear_crystal_amulet
-#: scripts/data/ext/uitrusting.gd:55
-msgid "Kristallen amulet"
-msgstr "Crystal amulet"
-
-#. Beschrijving van voorwerp gear_crystal_amulet
-#: scripts/data/ext/uitrusting.gd:55
-msgid "Alchemie laat gel kristalliseren rond koper. Draag het voor 30% sneller herstel van uithoudingsvermogen."
-msgstr "Alchemy crystallizes gel around copper. Wear it for 30% faster stamina recovery."
-
-#. Naam van voorwerp gear_copper_ring
-#: scripts/data/ext/uitrusting.gd:56
-msgid "Koperen ring"
-msgstr "Copper ring"
-
-#. Beschrijving van voorwerp gear_copper_ring
-#: scripts/data/ext/uitrusting.gd:56
-msgid "Een ring die verloren spullen aantrekt. Vergroot je magnetische oppakbereik met 12 pixels."
-msgstr "A ring that attracts lost belongings. Increases your magnetic pickup range by 12 pixels."
-
-#. Naam van voorwerp gear_crystal_ring
-#: scripts/data/ext/uitrusting.gd:57
-msgid "Kristallen ring"
-msgstr "Crystal ring"
-
-#. Beschrijving van voorwerp gear_crystal_ring
-#: scripts/data/ext/uitrusting.gd:57
-msgid "Een ring van koper en alchemistisch kristal. Vergroot je magnetische oppakbereik met 24 pixels."
-msgstr "A ring of copper and alchemical crystal. Increases your magnetic pickup range by 24 pixels."
-
-#. Naam van voorwerp gear_pg_grip
-#: scripts/data/ext/uitrusting.gd:58
-msgid "Slagbanden"
-msgstr "Strike Wraps"
-
-#. Beschrijving van voorwerp gear_pg_grip
-#: scripts/data/ext/uitrusting.gd:58
-msgid "10% minder stamina voor voorbereide zwaardtechnieken en precisieschoten. Gewone slagen en sprinten veranderen niet."
-msgstr "10% less stamina for prepared sword techniques and precise shots. Ordinary swings and sprinting are unchanged."
-
-#. Naam van voorwerp gear_pg_grip_plus
-#: scripts/data/ext/uitrusting.gd:59
-msgid "Geharde slagbanden"
-msgstr "Hardened Strike Wraps"
-
-#. Beschrijving van voorwerp gear_pg_grip_plus
-#: scripts/data/ext/uitrusting.gd:59
-msgid "20% minder techniekstamina en 6% kortere wachttijd tussen gewone zwaardaanvallen. Verbeterde slagbanden met zandsteen uit Dorstvallei."
-msgstr "20% less technique stamina and 6% shorter cooldown between ordinary sword attacks. Strike wraps hardened with Dorstvallei sandstone."
-
-#. Naam van voorwerp gear_pg_focus
-#: scripts/data/ext/uitrusting.gd:60
-msgid "Richtlens"
-msgstr "Aiming Lens"
-
-#. Beschrijving van voorwerp gear_pg_focus
-#: scripts/data/ext/uitrusting.gd:60
-msgid "15% kortere voorbereiding van je precisieschot. Draag de lens in het halsvak; pijlschade en staminakosten blijven gelijk."
-msgstr "15% shorter preparation for your precise shot. Wear the lens in your neck slot; arrow damage and stamina cost stay the same."
-
-#. Naam van voorwerp gear_pg_focus_plus
-#: scripts/data/ext/uitrusting.gd:61
-msgid "Heldere richtlens"
-msgstr "Clear Aiming Lens"
-
-#. Beschrijving van voorwerp gear_pg_focus_plus
-#: scripts/data/ext/uitrusting.gd:61
-msgid "25% kortere voorbereiding van precisieschoten en 10% sneller staminaherstel. Gebruikt ijskristal en watermunt na je onderzoek in het Rietarchief."
-msgstr "25% shorter precise shot preparation and 10% faster stamina recovery. Uses ice crystal and water mint after your Reed Archive research."
-
-#. Naam van voorwerp gear_pg_pack
-#: scripts/data/ext/uitrusting.gd:62
-msgid "Werkpak"
-msgstr "Work Harness"
-
-#. Beschrijving van voorwerp gear_pg_pack
-#: scripts/data/ext/uitrusting.gd:62
-msgid "15% korter verzamelen met kruiden, bijl en pikhouweel. Een gevlochten werkpak voor ambachten; geeft geen pantser."
-msgstr "15% less time gathering herbs, chopping and mining. A woven harness for crafting; provides no armor."
-
-#. Naam van voorwerp gear_pg_pack_plus
-#: scripts/data/ext/uitrusting.gd:63
-msgid "Bergwerkpak"
-msgstr "Mountain Work Harness"
-
-#. Beschrijving van voorwerp gear_pg_pack_plus
-#: scripts/data/ext/uitrusting.gd:63
-msgid "25% korter verzamelen en 10 extra oppakbereik. Versterkt met dennenhout en wilgentwijgen na het vastzetten van de klimlijn; geeft geen pantser."
-msgstr "25% less gathering time and 10 extra pickup range. Reinforced with pine wood and willow twigs after securing the climbing line; provides no armor."
-
-#. Naam van voorwerp special_lantern
-#: scripts/data/ext/polijst.gd:58
-msgid "Nachtlantaarn"
-msgstr "Night Lantern"
-
-#. Beschrijving van voorwerp special_lantern
-#: scripts/data/ext/polijst.gd:59
-msgid "Een lantaarn die 's nachts verder en warmer schijnt dan een gewone fakkel."
-msgstr "A lantern that shines farther and warmer at night than a normal torch."
-
-#. Naam van voorwerp dauwsteen
-#: scripts/data/ext/polijst.gd:62
-msgid "Dauwsteen"
-msgstr "Dew Stone"
-
-#. Beschrijving van voorwerp dauwsteen
-#: scripts/data/ext/polijst.gd:63
-msgid "Een steen die altijd bedekt is met fijne dauw. Hij voelt koel en levend."
-msgstr "A stone always covered in fine dew. It feels cool and alive."
-
-#. Naam van voorwerp herb
-#: scripts/data/ext/polijst.gd:66
-msgid "Verse kruiden"
-msgstr "Fresh Herbs"
-
-#. Beschrijving van voorwerp herb
-#: scripts/data/ext/polijst.gd:67
-msgid "Verse kruiden uit het bos. Elke de kruidenier heeft ze nodig."
-msgstr "Fresh herbs from the forest. Elke the herbalist needs them."
-
-#. Naam van voorwerp jacht_vlees
-#: scripts/data/ext/dorst.gd:31
-msgid "Rauw vlees"
-msgstr "Raw meat"
-
-#. Beschrijving van voorwerp jacht_vlees
-#: scripts/data/ext/dorst.gd:31
-msgid "Vers vlees van wild uit de Dorstvallei. Braad het in de keuken van de herberg."
-msgstr "Fresh game meat from Dorstvallei. Roast it in the inn's kitchen."
-
-#. Naam van voorwerp jacht_vacht
-#: scripts/data/ext/dorst.gd:32
-msgid "Dierenvacht"
-msgstr "Animal hide"
-
-#. Beschrijving van voorwerp jacht_vacht
-#: scripts/data/ext/dorst.gd:32
-msgid "Een zachte vossenvacht. Handelaars en kleermakers betalen er goed voor."
-msgstr "A soft fox hide. Traders and tailors pay well for it."
-
-#. Naam van voorwerp jacht_braadstuk
-#: scripts/data/ext/dorst.gd:33
-msgid "Braadstuk"
-msgstr "Roast"
-
-#. Beschrijving van voorwerp jacht_braadstuk
-#: scripts/data/ext/dorst.gd:33
-msgid "Sappig gebraden vlees met zandkruid. Herstelt 3 hartjes. Gebruik via Beroepen → Eten & drinken."
-msgstr "Juicy roasted meat with sandwort. Restores 3 hearts. Use through Professions → Food & drink."
-
-#. Naam van voorwerp cloth_straw_hat
-#: scripts/data/ext/uiterlijk.gd:211
-msgid "Strohoed"
-msgstr "Straw hat"
-
-#. Beschrijving van voorwerp cloth_straw_hat
-#: scripts/data/ext/uiterlijk.gd:211
-msgid "Een zonnehoed van gevlochten stro. Puur voor de look; draag hem over je uitrusting."
-msgstr "A sun hat of woven straw. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_beret
-#: scripts/data/ext/uiterlijk.gd:212
-msgid "Baret"
-msgstr "Beret"
-
-#. Beschrijving van voorwerp cloth_beret
-#: scripts/data/ext/uiterlijk.gd:212
-msgid "Een kunstzinnige baret, schuin op je hoofd. Puur voor de look; draag hem over je uitrusting."
-msgstr "An artistic beret, tilted on your head. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_beanie
-#: scripts/data/ext/uiterlijk.gd:213
-msgid "Muts"
-msgstr "Beanie"
-
-#. Beschrijving van voorwerp cloth_beanie
-#: scripts/data/ext/uiterlijk.gd:213
-msgid "Een warme gebreide muts met pompon. Puur voor de look; draag hem over je uitrusting."
-msgstr "A warm knitted beanie with a pompom. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_cape
-#: scripts/data/ext/uiterlijk.gd:214
-msgid "Cape"
-msgstr "Cape"
-
-#. Beschrijving van voorwerp cloth_cape
-#: scripts/data/ext/uiterlijk.gd:214
-msgid "Een wapperende cape voor over je schouders. Puur voor de look; draag hem over je uitrusting."
-msgstr "A fluttering cape for over your shoulders. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_scarf
-#: scripts/data/ext/uiterlijk.gd:215
-msgid "Sjaal"
-msgstr "Scarf"
-
-#. Beschrijving van voorwerp cloth_scarf
-#: scripts/data/ext/uiterlijk.gd:215
-msgid "Een zachte sjaal met een losse punt. Puur voor de look; draag hem over je uitrusting."
-msgstr "A soft scarf with a loose end. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_tunic
-#: scripts/data/ext/uiterlijk.gd:216
-msgid "Tuniek"
-msgstr "Tunic"
-
-#. Beschrijving van voorwerp cloth_tunic
-#: scripts/data/ext/uiterlijk.gd:216
-msgid "Een ruimvallende tuniek met ceintuur. Puur voor de look; draag hem over je uitrusting."
-msgstr "A loose tunic with a belt. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_blouse
-#: scripts/data/ext/uiterlijk.gd:217
-msgid "Blouse"
-msgstr "Blouse"
-
-#. Beschrijving van voorwerp cloth_blouse
-#: scripts/data/ext/uiterlijk.gd:217
-msgid "Een fijne blouse met knoopjes. Puur voor de look; draag hem over je uitrusting."
-msgstr "A fine blouse with buttons. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_shirt
-#: scripts/data/ext/uiterlijk.gd:218
-msgid "Hemd"
-msgstr "Shirt"
-
-#. Beschrijving van voorwerp cloth_shirt
-#: scripts/data/ext/uiterlijk.gd:218
-msgid "Een stevig hemd met kraag. Puur voor de look; draag hem over je uitrusting."
-msgstr "A sturdy shirt with a collar. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_trousers
-#: scripts/data/ext/uiterlijk.gd:219
-msgid "Broek"
-msgstr "Trousers"
-
-#. Beschrijving van voorwerp cloth_trousers
-#: scripts/data/ext/uiterlijk.gd:219
-msgid "Een nette broek met stevige pijpen. Puur voor de look; draag hem over je uitrusting."
-msgstr "Neat trousers with sturdy legs. Purely for looks; wear them over your equipment."
-
-#. Naam van voorwerp cloth_skirt
-#: scripts/data/ext/uiterlijk.gd:220
-msgid "Rok"
-msgstr "Skirt"
-
-#. Beschrijving van voorwerp cloth_skirt
-#: scripts/data/ext/uiterlijk.gd:220
-msgid "Een zwierige rok tot over de knieën. Puur voor de look; draag hem over je uitrusting."
-msgstr "A flowing skirt down to the knees. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_shoes
-#: scripts/data/ext/uiterlijk.gd:221
-msgid "Schoenen"
-msgstr "Shoes"
-
-#. Beschrijving van voorwerp cloth_shoes
-#: scripts/data/ext/uiterlijk.gd:221
-msgid "Stevige leren schoenen. Puur voor de look; draag ze over je uitrusting."
-msgstr "Sturdy leather shoes. Purely for looks; wear them over your equipment."
-
-#. Naam van voorwerp cloth_slippers
-#: scripts/data/ext/uiterlijk.gd:222
-msgid "Sloffen"
-msgstr "Slippers"
-
-#. Beschrijving van voorwerp cloth_slippers
-#: scripts/data/ext/uiterlijk.gd:222
-msgid "Zachte sloffen met een bontje. Puur voor de look; draag ze over je uitrusting."
-msgstr "Soft slippers with a fluffy trim. Purely for looks; wear them over your equipment."
-
-#. Naam van voorwerp cloth_headband
-#: scripts/data/ext/uiterlijk.gd:223
-msgid "Hoofdband"
-msgstr "Headband"
-
-#. Beschrijving van voorwerp cloth_headband
-#: scripts/data/ext/uiterlijk.gd:223
-msgid "Een stoere band die je haar uit je gezicht houdt. Puur voor de look; draag hem over je uitrusting."
-msgstr "A sturdy band that keeps your hair out of your face. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_felt_hat
-#: scripts/data/ext/uiterlijk.gd:224
-msgid "Vilthoed"
-msgstr "Felt hat"
-
-#. Beschrijving van voorwerp cloth_felt_hat
-#: scripts/data/ext/uiterlijk.gd:224
-msgid "Een elegante hoed van zacht vilt, met een lint om de bol. Puur voor de look; draag hem over je uitrusting."
-msgstr "An elegant hat of soft felt, with a ribbon around the crown. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_nightcap
-#: scripts/data/ext/uiterlijk.gd:225
-msgid "Nachtmuts"
-msgstr "Nightcap"
-
-#. Beschrijving van voorwerp cloth_nightcap
-#: scripts/data/ext/uiterlijk.gd:225
-msgid "Een slap hangende muts met een pompon. Zo knus dat je erin zou willen slapen. Puur voor de look; draag hem over je uitrusting."
-msgstr "A floppy cap with a pompom. So cosy you could sleep in it. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_backpack
-#: scripts/data/ext/uiterlijk.gd:226
-msgid "Rugzak"
-msgstr "Backpack"
-
-#. Beschrijving van voorwerp cloth_backpack
-#: scripts/data/ext/uiterlijk.gd:226
-msgid "Een stevige rugzak voor de echte avonturier. Puur voor de look; draag hem over je uitrusting."
-msgstr "A sturdy backpack for the true adventurer. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_cloak
-#: scripts/data/ext/uiterlijk.gd:227
-msgid "Mantel"
-msgstr "Cloak"
-
-#. Beschrijving van voorwerp cloth_cloak
-#: scripts/data/ext/uiterlijk.gd:227
-msgid "Een warme mantel met capuchon, voor reizen door koude streken. Puur voor de look; draag hem over je uitrusting."
-msgstr "A warm cloak with a hood, for journeys through cold lands. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_sweater
-#: scripts/data/ext/uiterlijk.gd:228
-msgid "Trui"
-msgstr "Sweater"
-
-#. Beschrijving van voorwerp cloth_sweater
-#: scripts/data/ext/uiterlijk.gd:228
-msgid "Een zachte gebreide trui met een opstaande kraag. Puur voor de look; draag hem over je uitrusting."
-msgstr "A soft knitted sweater with a stand-up collar. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_vest
-#: scripts/data/ext/uiterlijk.gd:229
-msgid "Gilet"
-msgstr "Vest"
-
-#. Beschrijving van voorwerp cloth_vest
-#: scripts/data/ext/uiterlijk.gd:229
-msgid "Een net gilet dat open over je hemd valt. Puur voor de look; draag hem over je uitrusting."
-msgstr "A neat vest worn open over your shirt. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_dress
-#: scripts/data/ext/uiterlijk.gd:230
-msgid "Jurk"
-msgstr "Dress"
-
-#. Beschrijving van voorwerp cloth_dress
-#: scripts/data/ext/uiterlijk.gd:230
-msgid "Een zwierige jurk met een wijde rok. Puur voor de look; draag hem over je uitrusting."
-msgstr "A flowing dress with a wide skirt. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_shorts
-#: scripts/data/ext/uiterlijk.gd:231
-msgid "Korte broek"
-msgstr "Shorts"
-
-#. Beschrijving van voorwerp cloth_shorts
-#: scripts/data/ext/uiterlijk.gd:231
-msgid "Een luchtige korte broek voor warme dagen. Puur voor de look; draag hem over je uitrusting."
-msgstr "An airy pair of shorts for warm days. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_overalls
-#: scripts/data/ext/uiterlijk.gd:232
-msgid "Werkbroek"
-msgstr "Work trousers"
-
-#. Beschrijving van voorwerp cloth_overalls
-#: scripts/data/ext/uiterlijk.gd:232
-msgid "Een stevige werkbroek met verstevigde knieën. Puur voor de look; draag hem over je uitrusting."
-msgstr "Sturdy work trousers with reinforced knees. Purely for looks; wear it over your equipment."
-
-#. Naam van voorwerp cloth_boots
-#: scripts/ui/equipment_page.gd:220 scripts/ui/progression_page.gd:126 scripts/data/ext/uiterlijk.gd:233
-msgid "Laarzen"
-msgstr "Boots"
-
-#. Beschrijving van voorwerp cloth_boots
-#: scripts/data/ext/uiterlijk.gd:233
-msgid "Hoge laarzen die modder en sneeuw trotseren. Puur voor de look; draag ze over je uitrusting."
-msgstr "Tall boots that defy mud and snow. Purely for looks; wear them over your equipment."
-
-#. Naam van voorwerp cloth_sandals
-#: scripts/data/ext/uiterlijk.gd:234
-msgid "Sandalen"
-msgstr "Sandals"
-
-#. Beschrijving van voorwerp cloth_sandals
-#: scripts/data/ext/uiterlijk.gd:234
-msgid "Lichte sandalen voor zwoele zomerdagen. Puur voor de look; draag ze over je uitrusting."
-msgstr "Light sandals for sultry summer days. Purely for looks; wear them over your equipment."
-
-#. Naam van voorwerp moeras_huid
-#: scripts/data/ext/moeras.gd:31
-msgid "Moerashuid"
-msgstr "Marsh hide"
-
-#. Beschrijving van voorwerp moeras_huid
-#: scripts/data/ext/moeras.gd:31
-msgid "Een taaie, waterdichte huid van moeraswild. Kleermakers werken er graag mee."
-msgstr "A tough, waterproof hide from swamp game. Tailors love working with it."
-
-#. Naam van voorwerp zonneschijf_amulet
-#: scripts/data/ext/moeras.gd:32
-msgid "Zonneschijfamulet"
-msgstr "Sun disk amulet"
-
-#. Beschrijving van voorwerp zonneschijf_amulet
-#: scripts/data/ext/moeras.gd:32
-msgid "Een gouden schijfje aan een verweerd koord. Het voelt warm, alsof de zon er nog in zit."
-msgstr "A golden disk on a weathered cord. It feels warm, as if the sun still sits inside."
-
-#. Naam van voorwerp lw_lens
-#: scripts/data/ext/living.gd:99
-msgid "Prismalens"
-msgstr "Prism lens"
-
-#. Beschrijving van voorwerp lw_lens
-#: scripts/data/ext/living.gd:104
-msgid "De gestabiliseerde kern uit de Prismamijn. Greta kan er een lantaarn van maken."
-msgstr "The stabilized core from the Prism Mine. Greta can turn it into a lantern."
-
-#. Naam van voorwerp lw_lantern
-#: scripts/data/ext/living.gd:107
-msgid "Prismalantaarn"
-msgstr "Prism lantern"
-
-#. Beschrijving van voorwerp lw_lantern
-#: scripts/data/ext/living.gd:112
-msgid "Onthult de verborgen bosrunen. Mistjagers wijken terug binnen de lichtkring. Werkt automatisch zolang je hem draagt."
-msgstr "Reveals hidden forest runes. Mist stalkers retreat inside its light. Works automatically while carried."
-
-#. Naam van voorwerp lw_powder
-#: scripts/data/ext/living.gd:115
-msgid "Aardingspoeder"
-msgstr "Grounding powder"
-
-#. Beschrijving van voorwerp lw_powder
-#: scripts/data/ext/living.gd:119
-msgid "Stabiliseert de mijnkern zonder gevecht. Meng steen met slijmgel aan de alchemietafel."
-msgstr "Stabilizes the mine core without combat. Mix stone and slime gel at the alchemy table."
-
-#. Naam van voorwerp lw_bridge_kit
-#: scripts/data/ext/living.gd:122
-msgid "Brugonderdelen"
-msgstr "Bridge components"
-
-#. Beschrijving van voorwerp lw_bridge_kit
-#: scripts/data/ext/living.gd:126
-msgid "Een houten constructie voor Mees’ oversteek. Te maken zonder werkbank."
-msgstr "A wooden structure for Mees’s crossing. Can be crafted without a workbench."
-
-#. Naam van voorwerp lw_resin
-#: scripts/data/ext/living.gd:129
-msgid "Levende hars"
-msgstr "Living resin"
-
-#. Beschrijving van voorwerp lw_resin
-#: scripts/data/ext/living.gd:133
-msgid "Watermunt en slijmgel verbinden het gebroken hout van de oversteek."
-msgstr "Watermint and slime gel bind the crossing’s broken timbers."
-
-#. Naam van voorwerp op_rake
-#: scripts/data/ext/opening.gd:11
-msgid "Nelles tuinhark"
-msgstr "Nelle’s Garden Rake"
-
-#. Beschrijving van voorwerp op_rake
-#: scripts/data/ext/opening.gd:12
-msgid "Geleend van Nelle. Gebruik bij het verstopte rooster naast de dorpsfontein; daarna krijgt ze hem terug."
-msgstr "Borrowed from Nelle. Use it at the blocked grate beside the village fountain, then return it to her."
 
 #. Naam van vijand slime
 #: scripts/data/enemies.gd:13
@@ -7172,6 +8233,16 @@ msgstr "A giant made of crystal and stone. It's slow, but you'll feel its punch 
 #: scripts/data/enemies.gd:67
 msgid "De baas van alle slijmen. Hij springt, spuugt slijm en vindt zichzelf erg belangrijk."
 msgstr "The boss of all slimes. He jumps, spits slime, and thinks he's very important."
+
+#. Naam van vijand trail_macaque
+#: scripts/data/ext/mountain.gd:4
+msgid "Roodkopaap"
+msgstr "Red-faced macaque"
+
+#. Vijand trail_macaque: grappige beschrijving in het beestenboek
+#: scripts/data/ext/mountain.gd:4
+msgid "Een vreedzame roodkopaap met dikke wintervacht. De familie scharrelt rond de warme bronnen van Dampkroon."
+msgstr "A peaceful red-faced macaque with thick winter fur. The family forages around Steamcrown’s warm springs."
 
 #. Naam van vijand trail_hare
 #: scripts/data/ext/trail_life.gd:4
@@ -8536,7 +9607,8 @@ msgid "Losse vuurstenen"
 msgstr "Loose Flint"
 
 #. Oogstbare grondstof mushrooms
-#: scripts/data/ext/beroepen.gd:183
+#. Oogstbare grondstof trail_fungi
+#: scripts/data/ext/beroepen.gd:183 scripts/data/ext/beroepen.gd:209
 msgid "Honingzwammen"
 msgstr "Honey Mushrooms"
 
@@ -8576,7 +9648,8 @@ msgid "IJskristalader"
 msgstr "Ice crystal vein"
 
 #. Oogstbare grondstof cactusfigs
-#: scripts/data/ext/beroepen.gd:191
+#. Oogstbare grondstof ff_cactusfig
+#: scripts/data/ext/beroepen.gd:191 scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6 scripts/data/ext/forest_food_species.gd:7
 msgid "Cactusvijgen"
 msgstr "Cactus figs"
 
@@ -8591,7 +9664,8 @@ msgid "Dauwklauwen"
 msgstr "Dewclaws"
 
 #. Oogstbare grondstof veenbessen
-#: scripts/data/ext/beroepen.gd:195
+#. Oogstbare grondstof ff_cranberry
+#: scripts/data/ext/beroepen.gd:195 scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6 scripts/data/ext/forest_food_species.gd:7
 msgid "Veenbessenstruik"
 msgstr "Cranberry bush"
 
@@ -8625,11 +9699,6 @@ msgstr "Sea-agate vein"
 msgid "Zoutbladpol"
 msgstr "Saltleaf patch"
 
-#. Oogstbare grondstof trail_herbs
-#: scripts/data/ext/beroepen.gd:203
-msgid "Wilde bermkruiden"
-msgstr "Wayside herbs"
-
 #. Oogstbare grondstof trail_flowers
 #: scripts/data/ext/beroepen.gd:204
 msgid "Wilde bloemen"
@@ -8640,25 +9709,222 @@ msgstr "Wild flowers"
 msgid "Noten in de berm"
 msgstr "Wayside nuts"
 
-#. Oogstbare grondstof trail_seeds
-#: scripts/data/ext/beroepen.gd:206
-msgid "Wilde zaadpluimen"
-msgstr "Wild seed heads"
-
 #. Oogstbare grondstof trail_roots
 #: scripts/data/ext/beroepen.gd:207
-msgid "Wilde wortels"
-msgstr "Wild carrots"
+msgid "Wilde peen"
+msgstr "Wild carrot"
 
 #. Oogstbare grondstof trail_fruit
 #: scripts/data/ext/beroepen.gd:208
 msgid "Wilde fruitstruik"
 msgstr "Wild fruit bush"
 
-#. Oogstbare grondstof trail_fungi
-#: scripts/data/ext/beroepen.gd:209
-msgid "Wilde grotzwammen"
-msgstr "Wild cave mushrooms"
+#. Oogstbare grondstof winter_kale
+#: scripts/data/ext/beroepen.gd:210
+msgid "Kroezige boerenkool"
+msgstr "Curly kale"
+
+#. Oogstbare grondstof winter_broccoli
+#: scripts/data/ext/beroepen.gd:211
+msgid "Winterbroccoli"
+msgstr "Winter broccoli"
+
+#. Oogstbare grondstof winter_cauliflower
+#: scripts/data/ext/beroepen.gd:212
+msgid "Winterbloemkool"
+msgstr "Winter cauliflower"
+
+#. Oogstbare grondstof winter_sprouts
+#: scripts/data/ext/beroepen.gd:213
+msgid "Spruitenstengel"
+msgstr "Sprout stalk"
+
+#. Oogstbare grondstof winter_beet
+#: scripts/data/ext/beroepen.gd:214
+msgid "Winterbieten"
+msgstr "Winter beets"
+
+#. Oogstbare grondstof winter_carrot
+#: scripts/data/ext/beroepen.gd:215
+msgid "Winterpenen"
+msgstr "Winter carrots"
+
+#. Oogstbare grondstof winter_parsnip
+#: scripts/data/ext/beroepen.gd:216
+msgid "Pastinaakwortels"
+msgstr "Parsnip roots"
+
+#. Oogstbare grondstof winter_red_cabbage
+#: scripts/data/ext/beroepen.gd:219
+msgid "Rode winterkool"
+msgstr "Winter red cabbage"
+
+#. Oogstbare grondstof winter_lambs_lettuce
+#: scripts/data/ext/beroepen.gd:221
+msgid "Veldslarozetten"
+msgstr "Lamb’s lettuce rosettes"
+
+#. Oogstbare grondstof winter_swede
+#: scripts/data/ext/beroepen.gd:223
+msgid "Winterkoolrapen"
+msgstr "Winter swedes"
+
+#. Oogstbare grondstof winter_salsify
+#: scripts/data/ext/beroepen.gd:225
+msgid "Schorseneren"
+msgstr "Salsify roots"
+
+#. Oogstbare grondstof berries
+#. Oogstbare grondstof ff_blueberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6 scripts/data/ext/forest_food_species.gd:7
+msgid "Blauwe bosbessenstruik"
+msgstr "Blueberry bush"
+
+#. Oogstbare grondstof frostberries
+#. Oogstbare grondstof ff_lingonberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6 scripts/data/ext/forest_food_species.gd:7
+msgid "Vossenbessenstruik"
+msgstr "Lingonberry bush"
+
+#. Oogstbare grondstof ff_raspberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Frambozenstruik"
+msgstr "Raspberry canes"
+
+#. Oogstbare grondstof ff_blackberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Braamstruweel"
+msgstr "Blackberry bramble"
+
+#. Oogstbare grondstof ff_redcurrant
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Rodebessenstruik"
+msgstr "Redcurrant bush"
+
+#. Oogstbare grondstof ff_blackcurrant
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Zwartebessenstruik"
+msgstr "Blackcurrant bush"
+
+#. Oogstbare grondstof ff_gooseberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Kruisbessenstruik"
+msgstr "Gooseberry bush"
+
+#. Oogstbare grondstof ff_wild_strawberry
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Bosaardbeien"
+msgstr "Wild strawberries"
+
+#. Oogstbare grondstof ff_rosehip
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Wilde rozenbottels"
+msgstr "Wild rosehips"
+
+#. Oogstbare grondstof ff_sea_buckthorn
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Duindoornstruik"
+msgstr "Sea buckthorn"
+
+#. Oogstbare grondstof ff_wild_apple
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Wilde appelboom"
+msgstr "Crab apple tree"
+
+#. Oogstbare grondstof ff_wild_pear
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Wilde perenboom"
+msgstr "Wild pear tree"
+
+#. Oogstbare grondstof ff_wild_plum
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Wilde pruimenboom"
+msgstr "Wild plum tree"
+
+#. Oogstbare grondstof ff_grape
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Wilde druivenrank"
+msgstr "Wild grapevine"
+
+#. Oogstbare grondstof ff_hazelnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Hazelaar"
+msgstr "Hazel shrub"
+
+#. Oogstbare grondstof ff_walnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Walnotenboom"
+msgstr "Walnut tree"
+
+#. Oogstbare grondstof ff_chestnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Tamme kastanjeboom"
+msgstr "Sweet chestnut tree"
+
+#. Oogstbare grondstof ff_beechnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Beukennootjes"
+msgstr "Beech mast"
+
+#. Oogstbare grondstof ff_pine_nut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Dennenappels van de parasolden"
+msgstr "Stone pine cones"
+
+#. Oogstbare grondstof ff_almond
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Amandelboom"
+msgstr "Almond tree"
+
+#. Oogstbare grondstof ff_pistachio
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Pistacheboom"
+msgstr "Pistachio tree"
+
+#. Oogstbare grondstof ff_pecan
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Pecannotenboom"
+msgstr "Pecan tree"
+
+#. Oogstbare grondstof ff_black_walnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Zwarte walnotenboom"
+msgstr "Black walnut tree"
+
+#. Oogstbare grondstof ff_hickory
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Hickoryboom"
+msgstr "Hickory tree"
+
+#. Oogstbare grondstof ff_butternut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Boternotenboom"
+msgstr "Butternut tree"
+
+#. Oogstbare grondstof ff_macadamia
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Macadamiaboom"
+msgstr "Macadamia tree"
+
+#. Oogstbare grondstof ff_cashew
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Cashewboom"
+msgstr "Cashew tree"
+
+#. Oogstbare grondstof ff_japanese_walnut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Japanse walnotenboom"
+msgstr "Japanese walnut tree"
+
+#. Oogstbare grondstof ff_coconut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Aangespoelde kokosnoten"
+msgstr "Washed-up coconuts"
+
+#. Oogstbare grondstof ff_cedar_nut
+#: scripts/data/ext/forest_food_species.gd:3 scripts/data/ext/forest_food_species.gd:6
+msgid "Cederdennenappels"
+msgstr "Siberian pine cones"
 
 #. Recept ls_chowder: unlock_hint
 #. Recept ls_broth: unlock_hint
@@ -9277,11 +10543,6 @@ msgid "Groen"
 msgstr "Green"
 
 #. Oogkleur (tabblad Uiterlijk)
-#: scripts/data/ext/uiterlijk.gd:166
-msgid "Hazelnoot"
-msgstr "Hazel"
-
-#. Oogkleur (tabblad Uiterlijk)
 #: scripts/data/ext/uiterlijk.gd:167
 msgid "Amber"
 msgstr "Amber"
@@ -9679,7 +10940,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:282
+#: scripts/world.gd:283
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -9823,55 +11084,55 @@ msgstr "Your garden: %s. Choose seeds in U → Seeds and orchard."
 msgid "Eigen bijenkast met drie bloeiende planten binnen vijf tegels."
 msgstr "Your beehive with three flowering plants within five tiles."
 
-#: scripts/core/craft_journal.gd:62
+#: scripts/core/craft_journal.gd:64
 msgid "%s niveau %d"
 msgstr "%s level %d"
 
-#: scripts/core/craft_journal.gd:67
+#: scripts/core/craft_journal.gd:69
 msgid "Maken: %s · %s niveau %d"
 msgstr "Craft: %s · %s level %d"
 
-#: scripts/core/craft_journal.gd:69
+#: scripts/core/craft_journal.gd:71
 msgid "Slijmen in het Fluisterbos en de Ruïne."
 msgstr "Slimes in Whispering Woods and the Ruins."
 
-#: scripts/core/craft_journal.gd:70
+#: scripts/core/craft_journal.gd:72
 msgid "Hengel van Joris; visplekken bij het Zilvermeer."
 msgstr "Fishing rod from Joris; fishing spots at Silver Lake."
 
-#: scripts/core/craft_journal.gd:71
+#: scripts/core/craft_journal.gd:73
 msgid "Jachtwild in de Dorstvallei."
 msgstr "Huntable wildlife in Dorstvallei."
 
-#: scripts/core/craft_journal.gd:72
+#: scripts/core/craft_journal.gd:74
 msgid "Moeraswild in het Kruipmoeras."
 msgstr "Marsh wildlife in Creeping Marsh."
 
-#: scripts/core/craft_journal.gd:73
+#: scripts/core/craft_journal.gd:75
 msgid "Golembewakers in de Ruïne en de Echo-grot."
 msgstr "Golem guardians in the Ruins and Echo Cave."
 
-#: scripts/core/craft_journal.gd:74
+#: scripts/core/craft_journal.gd:76
 msgid "Ontdek dit voorwerp tijdens je avonturen."
 msgstr "Discover this item during your adventures."
 
-#: scripts/core/craft_journal.gd:79 scripts/ui/progression_page.gd:235
+#: scripts/core/craft_journal.gd:81 scripts/ui/progression_page.gd:235
 msgid "%s niveau %d · %s"
 msgstr "%s level %d · %s"
 
-#: scripts/core/craft_journal.gd:82
+#: scripts/core/craft_journal.gd:84
 msgid "%s: %d/%d · %s"
 msgstr "%s: %d/%d · %s"
 
-#: scripts/core/craft_journal.gd:84
+#: scripts/core/craft_journal.gd:86
 msgid "Binnen bereik: %s · tas %d + kist %d."
 msgstr "Within reach: %s · bag %d + chest %d."
 
-#: scripts/core/craft_journal.gd:87
+#: scripts/core/craft_journal.gd:89
 msgid "Verbeteren verbruikt het oude voorwerp. Een gedragen exemplaar wordt meteen vervangen; stamina wordt niet bijgevuld."
 msgstr "Upgrading consumes the old item. A worn item is replaced immediately; stamina is not refilled."
 
-#: scripts/core/craft_journal.gd:95
+#: scripts/core/craft_journal.gd:97
 msgid "Voor: %s"
 msgstr "Used for: %s"
 
@@ -9979,6 +11240,10 @@ msgstr "You gently offer your hand. Stand beside Muis until she trusts you."
 msgid "De oude route licht weer op. En Wilfred heeft eindelijk een naam op zijn steen. De Blauwe Kaart gaat over de mensen tussen de kristallen, net zo goed als over de kristallen zelf."
 msgstr "The old route shines again. And Wilfred finally has a name on his stone. The Blue Map is about the people between the crystals as much as the crystals themselves."
 
+#: scripts/core/forage_catalog.gd:33
+msgid "%s (%d, %d)"
+msgstr "%s (%d, %d)"
+
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
 #: scripts/core/game_state.gd:283
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
@@ -9994,41 +11259,45 @@ msgstr "Got: %s. %s!"
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:420 scripts/ui/item_receipts.gd:14
+#: scripts/core/game_state.gd:420 scripts/entities/chest.gd:83 scripts/ui/item_receipts.gd:14
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:423
+#: scripts/core/game_state.gd:423 scripts/entities/chest.gd:83
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:430
+#: scripts/core/game_state.gd:431
+msgid "Je bezit %s al."
+msgstr "You already own %s."
+
+#: scripts/core/game_state.gd:432
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:496
+#: scripts/core/game_state.gd:498
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:511
+#: scripts/core/game_state.gd:513
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:556
+#: scripts/core/game_state.gd:558
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:560
+#: scripts/core/game_state.gd:562
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:636
+#: scripts/core/game_state.gd:638
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:653
+#: scripts/core/game_state.gd:655
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -10361,50 +11630,54 @@ msgid "Het kamp geeft klimtouw. Wacht op slappe wimpels vóór de oversteek; de 
 msgstr "The camp provides climbing rope. Wait for slack pennants before crossing; the secured line makes later visits safe."
 
 #: scripts/core/journey.gd:125
+msgid "De brede stenen trappen verbinden vier hoogten. Rust aan de warmwaterbronnen om hartjes te herstellen. De roodkopapen zijn vreedzaam; geisers en stoom zijn decoratief."
+msgstr "Broad stone stairs connect four elevations. Rest by the hot springs to recover hearts. The red-faced macaques are peaceful; geysers and steam are decorative."
+
+#: scripts/core/journey.gd:126
 msgid "Vul eerst de waterzak bij Sana. De blauwe luifels in de kloof vullen water bij en geven schaduw. Een lege zak brengt je veilig terug naar je laatste waterpunt."
 msgstr "Fill the waterskin by Sana first. The blue shelters in the canyon refill water and provide shade. An empty skin returns you safely to your last water point."
 
-#: scripts/core/journey.gd:126
+#: scripts/core/journey.gd:127
 msgid "De westelijke sluis open en de oostelijke dicht verlagen het water. Herstel daarna de brug; het archief draait om onderzoeken, geen verzamelquotum."
 msgstr "Open the western sluice and close the eastern one to lower the water. Then restore the bridge; the archive is about investigation, not a gathering quota."
 
-#: scripts/core/journey.gd:127
+#: scripts/core/journey.gd:128
 msgid "Hier is ruimte voor een rustiger bezoek: vissen, koken, lezen of kruiden zoeken. Deze route wacht gewoon op je als je eerst ergens anders heen wilt."
 msgstr "There's room for a calmer visit here: fishing, cooking, reading or finding herbs. This route will wait if you want to go elsewhere first."
 
-#: scripts/core/journey.gd:128
+#: scripts/core/journey.gd:129
 msgid "De arena is optioneel. Bruno toont iedere rang en inzet vóór je begint; een gewone avonturenroute vraagt geen arenarang."
 msgstr "The arena is optional. Bruno shows each rank and entry cost before you start; ordinary adventures don't require an arena rank."
 
-#: scripts/core/journey.gd:129
+#: scripts/core/journey.gd:130
 msgid "De lichtkring vraagt een prismalantaarn. Na de mijn kun je die bij Greta maken met een lens en twee takken, of laten monteren voor 40 munten."
 msgstr "The light circle needs a prism lantern. After the mine, craft it at Greta's with a lens and two twigs, or pay 40 coins to have it assembled."
 
-#: scripts/core/journey.gd:131
+#: scripts/core/journey.gd:132
 msgid "Bij je: %d helddrankjes · %d/%d hartjes · %.0f/%.0f stamina."
 msgstr "Carrying: %d hero potions · %d/%d hearts · %.0f/%.0f stamina."
 
-#: scripts/core/journey.gd:132
+#: scripts/core/journey.gd:133
 msgid "Gedragen pantser: %.0f. Bonussen komen alleen van je gedragen set."
 msgstr "Worn armour: %.0f. Bonuses come only from your worn set."
 
-#: scripts/core/journey.gd:137
+#: scripts/core/journey.gd:138
 msgid "Deze opdracht is afgerond. Kies een lopende opdracht om op het scherm te volgen."
 msgstr "This quest is complete. Choose an active quest to track on screen."
 
-#: scripts/core/journey.gd:138
+#: scripts/core/journey.gd:139
 msgid "Huidige stap"
 msgstr "Current step"
 
-#: scripts/core/journey.gd:140
+#: scripts/core/journey.gd:141
 msgid "Voor je verdergaat"
 msgstr "Before you continue"
 
-#: scripts/core/journey.gd:141
+#: scripts/core/journey.gd:142
 msgid "Snel terug? Ontdekte altaren staan op de kaart. Reizen vult niets bij; rusten bij het altaar wel."
 msgstr "Quick return? Discovered altars are on the map. Travel refills nothing; resting at the altar does."
 
-#: scripts/core/journey.gd:146
+#: scripts/core/journey.gd:147
 msgid "Volg: %s"
 msgstr "Track: %s"
 
@@ -10580,7 +11853,7 @@ msgstr "You need more materials; your bag and a reachable chest count."
 msgid "Je staat te dichtbij; loop eerst naar het vrije middenpad."
 msgstr "You are too close; step onto the clear middle walkway first."
 
-#: scripts/core/professions.gd:103 scripts/core/craft_journal.gd:80 scripts/ui/equipment_page.gd:294
+#: scripts/core/professions.gd:138 scripts/core/craft_journal.gd:82 scripts/ui/equipment_page.gd:294
 msgid "Nog vergrendeld: herstel de prismabank of Mees’ oversteek."
 msgstr "Still locked: restore the prism bench or Mees’s crossing."
 
@@ -11122,11 +12395,11 @@ msgstr "Slept like a log! All your hearts are back."
 msgid "De kist is leeg."
 msgstr "The chest is empty."
 
-#: scripts/entities/chest.gd:45
-msgid "Je tas is te vol voor wat er in deze kist zit."
-msgstr "Your bag is too full for what's in this chest."
+#: scripts/entities/chest.gd:60
+msgid "Niet genoeg ruimte voor %s: %d nodig, %d vrij."
+msgstr "Not enough room for %s: %d needed, %d free."
 
-#: scripts/entities/chest.gd:56 scripts/entities/guardian.gd:528
+#: scripts/entities/chest.gd:80 scripts/entities/guardian.gd:528
 msgid "Gevonden: %d munt"
 msgid_plural "Gevonden: %d munten"
 msgstr[0] "Found: %d coin"
@@ -11762,7 +13035,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/core/homestead.gd:16 scripts/core/homestead.gd:18 scripts/core/yard.gd:14
+#: scripts/entities/shooting_range.gd:169 scripts/core/garden_feedback.gd:22 scripts/core/homestead.gd:16 scripts/core/homestead.gd:18
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -11837,15 +13110,15 @@ msgstr "There is a place for everyone. Talk to the guests; both recipes are now 
 msgid "De vangst is gered! Breng de maaltijdmand naar Mila's fornuis in de herberg."
 msgstr "The catch is safe! Bring the meal hamper to Mila’s stove inside the inn."
 
-#: scripts/entities/tide_cove.gd:37
+#: scripts/entities/tide_cove.gd:38
 msgid "Het water komt op. Neem de hoge loopbrug of de lijnpalen; je kunt altijd terug."
 msgstr "The tide is rising. Take the high boardwalk or the line posts; you can always return."
 
-#: scripts/entities/tide_cove.gd:44
+#: scripts/entities/tide_cove.gd:45
 msgid "Zandbank sluit zodra je veilig op de oever bent."
 msgstr "Sandbank closes once you are safely on shore."
 
-#: scripts/entities/tide_cove.gd:44
+#: scripts/entities/tide_cove.gd:45
 msgid "Hoge loopbrug: altijd open · veer: altijd beschikbaar"
 msgstr "High boardwalk: always open · ferry: always available"
 
@@ -12635,7 +13908,7 @@ msgstr "After swapping: %s"
 msgid "Tobias · dorpswinkel · %d munten (je hebt %d)"
 msgstr "Tobias · village shop · %d coins (you have %d)"
 
-#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:99 scripts/ui/crafting_ui.gd:317
+#: scripts/ui/equipment_page.gd:292 scripts/ui/progression_page.gd:233 scripts/core/craft_journal.gd:101 scripts/ui/crafting_ui.gd:317
 msgid "%s %d/%d"
 msgstr "%s %d/%d"
 
@@ -13823,8 +15096,8 @@ msgid "Bij je · %d soorten"
 msgstr "In your bag · %d kinds"
 
 #: scripts/ui/stock_ui.gd:128
-msgid "Huisvoorraad · %d/48 soorten · 999 per stapel"
-msgstr "Home stock · %d/48 kinds · 999 per stack"
+msgid "Huisvoorraad · %d/%d soorten · 999 per stapel"
+msgstr "Home stock · %d/%d types · 999 per stack"
 
 #: scripts/ui/stock_ui.gd:128
 msgid "Havenkist · %d/12 soorten · 99 per stapel"

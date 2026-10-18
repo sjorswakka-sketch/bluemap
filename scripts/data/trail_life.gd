@@ -68,7 +68,7 @@ static func enrich(id: String,data: Dictionary):
  # Outdoor regions with local settlements protect every home and resident.
  var count:=0
  for obj: Dictionary in data.objects:
-  if obj.type=="enemy" and obj.get("kind","") in ["zandhaas","woestijnvos","moerasvors","waterslang"]:count+=1
+  if obj.type=="enemy" and obj.get("kind","") in ["zandhaas","woestijnvos","moerasvors","waterslang","trail_macaque"]:count+=1
  if count>=3:return
  var species: String="trail_moth" if underground or id in ["forest_edge"] else "trail_gull" if id in ["coast","gull_island","tide_cove","river_mouth","headland"] else "trail_fox" if id in ["forest","dauwbos"] else "trail_hare"
  for y in range(3,data.rows.size()-3,3):

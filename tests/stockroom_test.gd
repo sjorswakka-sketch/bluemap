@@ -73,9 +73,13 @@ func run():
  # Capacity never destroys excess; a full store still accepts a partial existing stack.
  await enter("player_home");p.set_physics_process(false);home=chest_node()
  p.position=home.position+Vector2(0,34);Stock.state().home={}
+ var allowed:=0
  for id: String in Items.ITEMS:
-  if Stock.allowed(id) and id!="hs_grape" and Stock.state().home.size()<48:Stock.state().home[id]=1
- check(Stock.state().home.size()==48 and Stock.room("hs_grape","home")==0,"48-type limit bounds home storage")
+  if Stock.allowed(id):
+   allowed+=1;Stock.state().home[id]=1
+ check(allowed>48 and allowed<=Stock.SLOTS and Stock.SLOTS==144,"expanded home stock fits every current collectible with reserve space")
+ gs.save_game(p.position);check(gs.load_game() and Stock.state().home.size()==allowed,"real save preserves every known stored species beyond old 48 slots")
+ for id: String in Stock.state().home:check(Stock.room(id,"home")==998,"all known species retain per-stack room "+id)
  Stock.state().home={"hs_grape":998};Stock.toggle_favorite("hs_grape");gs.give("hs_grape",5,true)
  check(Stock.bulk(true,"home")==1 and Stock.count("hs_grape")==999 and gs.count("hs_grape")==4,"quick stack leaves overflow safely in bag")
  # Ammunition is useful stock, but withdrawing still respects its actual bag cap.

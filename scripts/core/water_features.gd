@@ -47,13 +47,17 @@ static func describe(id: String,data: Dictionary):
  data["water_features"]=[];data["water_cells"]={}
  for cells: Array in components(data.rows):
   var kind: String="canal" if id=="village" else "river" if id=="river_mouth" else "sea" if id in ["coast","gull_island","tide_cove","harbor","headland","tidal_hollow"] else "lake" if id=="lake" else "marsh" if id=="kruipmoeras" else "stream" if id=="forest" else "puddle" if id=="forest_edge" and cells.size()<12 else "pool"
-  for special: Dictionary in Layout.FEATURES.get(id,[]):
-   if cells.has(Vector2i(special.at[0],special.at[1])):kind=special.kind
+  # New regions may author their own springs, without editing old contour data.
+  var hints: Array=Layout.FEATURES.get(id,[]).duplicate()
+  hints.append_array(data.get("water_hints",[]))
+  var bank_rocks: Array=[]
+  for special: Dictionary in hints:
+   if cells.has(Vector2i(special.at[0],special.at[1])):kind=special.kind;bank_rocks=special.get("bank_rocks",[])
   var north: Vector2i=cells[0]
   for at: Vector2i in cells:
    if at.y<north.y or (at.y==north.y and at.x<north.x):north=at
    data.water_cells[at]=kind
-  data.water_features.append({"properties":properties(kind,id),"kind":kind,"cells":cells,"north":north,"count":cells.size()})
+  data.water_features.append({"properties":properties(kind,id),"kind":kind,"cells":cells,"north":north,"count":cells.size(),"bank_rocks":bank_rocks})
 static func nearest(world: Node,range_px:=56.0) -> Dictionary:
  var best: Dictionary={};var distance:=range_px
  var origin:=Vector2i(world.player.position/32)

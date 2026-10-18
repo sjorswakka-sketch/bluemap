@@ -27,17 +27,17 @@ const NAMES: Array[String] = [
 	"ad_wetstone", "ad_seawall",
 ]
 
-## Tegels waar je niet doorheen kunt lopen.
+## Alleen vaste obstakels en water blokkeren. Decoratieve struiken en riet op vaste grond zijn doorloopbaar.
 const SOLID: Array[String] = [
-	"tree", "water", "stone", "fence", "roof", "house_wall", "house_window", "rock", "bush", "dead_tree",
+	"tree", "water", "stone", "fence", "roof", "house_wall", "house_window", "rock", "dead_tree",
 	"well", "crate", "cave_wall", "cave_crystal", "stalagmite", "ruin_wall", "ruin_pillar", "temple_wall",
 	"wood_wall", "counter", "shelf", "bed",
 	"meer_reeds", "meer_lelie", "meer_paal",
 	"void_wall", "void_crystal",
 	"arena_wall", "arena_tribune", "arena_gate",
-	"snow_bush", "pine",
+	"pine",
 	"cactus", "sandstone",
-	"bog_water", "reed", "willow",
+	"bog_water", "willow",
 	"ce_sea", "ce_shore", "ce_cliff", "ad_seawall",
 ]
 
@@ -136,7 +136,7 @@ static func footstep_surface(tile_name: String) -> String:
 	if tile_name=="ce_boardwalk":return "wood"
 	if tile_name == "" or is_solid_name(tile_name):
 		return ""
-	if tile_name.begins_with("grass"):
+	if tile_name.begins_with("grass") or tile_name in ["bush", "reed"]:
 		return "grass"
 	if tile_name == "path":
 		return "path"
@@ -146,7 +146,7 @@ static func footstep_surface(tile_name: String) -> String:
 		return "wood"
 	if tile_name in ["carpet", "mat", "meer_tapijt"]:
 		return "cloth"
-	if tile_name in ["snow", "snow_tufts"]:
+	if tile_name in ["snow", "snow_tufts", "snow_bush"]:
 		return "snow"
 	if tile_name in ["marsh_grass", "marsh_tufts"]:
 		return "grass"

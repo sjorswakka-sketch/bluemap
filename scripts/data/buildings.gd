@@ -4,6 +4,7 @@ extends RefCounted
 ## Geen zichtbare tekst: de pictogrammen werken ook met een ander taalpakket.
 
 const TILE := 32
+const Routes:=preload("res://scripts/data/route_repairs.gd")
 const BUILDINGS := {
 	"village": [
 		{"id": "smithy", "rect": Rect2i(4, 8, 6, 4), "door": Rect2i(6, 11, 1, 1)},
@@ -19,8 +20,18 @@ const BUILDINGS := {
 }
 
 
-static func for_map(map_id: String) -> Array:
-	return BUILDINGS.get(map_id, []).duplicate(true)
+static func for_map(map_id: String,map_data: Dictionary={}) -> Array:
+	var buildings: Array=BUILDINGS.get(map_id, []).duplicate(true)
+	for building: Dictionary in buildings:
+		# The facade and its decoration mask share the real travel aperture.
+		# Authored route metadata is a cycle-free fallback for catalogue callers.
+		var route: Dictionary=Routes.PORTALS.get(map_id+":"+str(building.id),{})
+		for obj: Dictionary in map_data.get("objects",[]):
+			if obj.type=="portal" and obj.get("to","")==building.id and obj.get("enabled",true):
+				route={"pos":obj.pos,"size":obj.get("size",[1,1])};break
+		if not route.is_empty():
+			building.door=Rect2i(route.pos[0],route.pos[1],route.size[0],route.size[1])
+	return buildings
 
 
 static func world_rect(building: Dictionary) -> Rect2:

@@ -1,0 +1,290 @@
+{
+  "blueberry": {
+    "category": "fruit",
+    "item": "prof_berry",
+    "kind": "ff_blueberry",
+    "name": "Blauwe bosbes",
+    "plant": "Blauwe bosbessenstruik",
+    "biome": "bos",
+    "frame": 0
+  },
+  "raspberry": {
+    "category": "fruit",
+    "item": "ff_raspberry",
+    "kind": "ff_raspberry",
+    "name": "Framboos",
+    "plant": "Frambozenstruik",
+    "biome": "bos",
+    "frame": 1
+  },
+  "blackberry": {
+    "category": "fruit",
+    "item": "ff_blackberry",
+    "kind": "ff_blackberry",
+    "name": "Braam",
+    "plant": "Braamstruweel",
+    "biome": "bos",
+    "frame": 2
+  },
+  "redcurrant": {
+    "category": "fruit",
+    "item": "ff_redcurrant",
+    "kind": "ff_redcurrant",
+    "name": "Rode bes",
+    "plant": "Rodebessenstruik",
+    "biome": "oever",
+    "frame": 3
+  },
+  "blackcurrant": {
+    "category": "fruit",
+    "item": "ff_blackcurrant",
+    "kind": "ff_blackcurrant",
+    "name": "Zwarte bes",
+    "plant": "Zwartebessenstruik",
+    "biome": "bos",
+    "frame": 4
+  },
+  "gooseberry": {
+    "category": "fruit",
+    "item": "ff_gooseberry",
+    "kind": "ff_gooseberry",
+    "name": "Kruisbes",
+    "plant": "Kruisbessenstruik",
+    "biome": "bos",
+    "frame": 5
+  },
+  "wild_strawberry": {
+    "category": "fruit",
+    "item": "ff_wild_strawberry",
+    "kind": "ff_wild_strawberry",
+    "name": "Bosaardbei",
+    "plant": "Bosaardbeien",
+    "biome": "bos",
+    "frame": 6
+  },
+  "rosehip": {
+    "category": "fruit",
+    "item": "ff_rosehip",
+    "kind": "ff_rosehip",
+    "name": "Rozenbottel",
+    "plant": "Wilde rozenbottels",
+    "biome": "kust",
+    "frame": 7
+  },
+  "lingonberry": {
+    "category": "fruit",
+    "item": "prof_winterbes",
+    "kind": "ff_lingonberry",
+    "name": "Vossenbes",
+    "plant": "Vossenbessenstruik",
+    "biome": "sneeuw",
+    "frame": 8
+  },
+  "cranberry": {
+    "category": "fruit",
+    "item": "prof_veenbes",
+    "kind": "ff_cranberry",
+    "name": "Veenbes",
+    "plant": "Veenbessenstruik",
+    "biome": "moeras",
+    "frame": 9
+  },
+  "sea_buckthorn": {
+    "category": "fruit",
+    "item": "ff_sea_buckthorn",
+    "kind": "ff_sea_buckthorn",
+    "name": "Duindoornbes",
+    "plant": "Duindoornstruik",
+    "biome": "kust",
+    "frame": 10
+  },
+  "wild_apple": {
+    "category": "fruit",
+    "item": "ff_wild_apple",
+    "kind": "ff_wild_apple",
+    "name": "Wilde appel",
+    "plant": "Wilde appelboom",
+    "biome": "bos",
+    "frame": 11
+  },
+  "wild_pear": {
+    "category": "fruit",
+    "item": "ff_wild_pear",
+    "kind": "ff_wild_pear",
+    "name": "Wilde peer",
+    "plant": "Wilde perenboom",
+    "biome": "oever",
+    "frame": 12
+  },
+  "wild_plum": {
+    "category": "fruit",
+    "item": "ff_wild_plum",
+    "kind": "ff_wild_plum",
+    "name": "Wilde pruim",
+    "plant": "Wilde pruimenboom",
+    "biome": "oever",
+    "frame": 13
+  },
+  "grape": {
+    "category": "fruit",
+    "item": "hs_grape",
+    "kind": "ff_grape",
+    "name": "Bosdruif",
+    "plant": "Wilde druivenrank",
+    "biome": "bos",
+    "frame": 14
+  },
+  "cactusfig": {
+    "category": "fruit",
+    "item": "prof_cactusvijg",
+    "kind": "ff_cactusfig",
+    "name": "Cactusvijg",
+    "plant": "Cactusvijgen",
+    "biome": "woestijn",
+    "frame": 15
+  },
+  "hazelnut": {
+    "category": "nut",
+    "item": "trail_nut",
+    "kind": "ff_hazelnut",
+    "name": "Hazelnoot",
+    "plant": "Hazelaar",
+    "biome": "bos",
+    "frame": 16
+  },
+  "walnut": {
+    "category": "nut",
+    "item": "ff_walnut",
+    "kind": "ff_walnut",
+    "name": "Walnoot",
+    "plant": "Walnotenboom",
+    "biome": "bos",
+    "frame": 17
+  },
+  "chestnut": {
+    "category": "nut",
+    "item": "ff_chestnut",
+    "kind": "ff_chestnut",
+    "name": "Tamme kastanje",
+    "plant": "Tamme kastanjeboom",
+    "biome": "bos",
+    "frame": 18
+  },
+  "beechnut": {
+    "category": "nut",
+    "item": "ff_beechnut",
+    "kind": "ff_beechnut",
+    "name": "Beukennootje",
+    "plant": "Beukennootjes",
+    "biome": "bos",
+    "frame": 19
+  },
+  "pine_nut": {
+    "category": "nut",
+    "item": "ff_pine_nut",
+    "kind": "ff_pine_nut",
+    "name": "Pijnboompit",
+    "plant": "Dennenappels van de parasolden",
+    "biome": "kust",
+    "frame": 20
+  },
+  "almond": {
+    "category": "nut",
+    "item": "ff_almond",
+    "kind": "ff_almond",
+    "name": "Amandel",
+    "plant": "Amandelboom",
+    "biome": "woestijn",
+    "frame": 21
+  },
+  "pistachio": {
+    "category": "nut",
+    "item": "ff_pistachio",
+    "kind": "ff_pistachio",
+    "name": "Pistache",
+    "plant": "Pistacheboom",
+    "biome": "woestijn",
+    "frame": 22
+  },
+  "pecan": {
+    "category": "nut",
+    "item": "ff_pecan",
+    "kind": "ff_pecan",
+    "name": "Pecannoot",
+    "plant": "Pecannotenboom",
+    "biome": "oever",
+    "frame": 23
+  },
+  "black_walnut": {
+    "category": "nut",
+    "item": "ff_black_walnut",
+    "kind": "ff_black_walnut",
+    "name": "Zwarte walnoot",
+    "plant": "Zwarte walnotenboom",
+    "biome": "bos",
+    "frame": 24
+  },
+  "hickory": {
+    "category": "nut",
+    "item": "ff_hickory",
+    "kind": "ff_hickory",
+    "name": "Hickorynoot",
+    "plant": "Hickoryboom",
+    "biome": "oever",
+    "frame": 25
+  },
+  "butternut": {
+    "category": "nut",
+    "item": "ff_butternut",
+    "kind": "ff_butternut",
+    "name": "Boternoot",
+    "plant": "Boternotenboom",
+    "biome": "bos",
+    "frame": 26
+  },
+  "macadamia": {
+    "category": "nut",
+    "item": "ff_macadamia",
+    "kind": "ff_macadamia",
+    "name": "Macadamianoot",
+    "plant": "Macadamiaboom",
+    "biome": "warme kust",
+    "frame": 27
+  },
+  "cashew": {
+    "category": "nut",
+    "item": "ff_cashew",
+    "kind": "ff_cashew",
+    "name": "Cashewnoot",
+    "plant": "Cashewboom",
+    "biome": "warme kust",
+    "frame": 28
+  },
+  "japanese_walnut": {
+    "category": "nut",
+    "item": "ff_japanese_walnut",
+    "kind": "ff_japanese_walnut",
+    "name": "Japanse walnoot",
+    "plant": "Japanse walnotenboom",
+    "biome": "warme berghelling",
+    "frame": 29
+  },
+  "coconut": {
+    "category": "nut",
+    "item": "ff_coconut",
+    "kind": "ff_coconut",
+    "name": "Kokosnoot",
+    "plant": "Aangespoelde kokosnoten",
+    "biome": "kust",
+    "frame": 30
+  },
+  "cedar_nut": {
+    "category": "nut",
+    "item": "ff_cedar_nut",
+    "kind": "ff_cedar_nut",
+    "name": "Siberische cedernoot",
+    "plant": "Cederdennenappels",
+    "biome": "sneeuw",
+    "frame": 31
+  }
+}

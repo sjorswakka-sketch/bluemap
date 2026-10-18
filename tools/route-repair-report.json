@@ -1,0 +1,21 @@
+{
+  "changed_tiles": 538,
+  "maps": {
+    "cave": 1,
+    "coast": 12,
+    "dauwbos": 125,
+    "dorstvallei": 66,
+    "forest": 35,
+    "gull_island": 22,
+    "harbor": 64,
+    "headland": 23,
+    "ijsdal": 75,
+    "kruipmoeras": 11,
+    "lake": 39,
+    "river_mouth": 34,
+    "village": 31
+  },
+  "tight_decorative_spurs": {},
+  "tight_corners": {},
+  "anchor_bottlenecks": {}
+}

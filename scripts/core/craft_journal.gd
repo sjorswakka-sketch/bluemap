@@ -41,6 +41,8 @@ static func source(item: String) -> String:
 		for id: String in crops.NAMES:
 			if crops.CROPS[id].output==item:return TranslationServer.translate("Eigen tuin: %s. Kies zaden via U → Zaden en boomgaard.") % TranslationServer.translate(crops.NAMES[id])
 	if item=="hs_honey":return TranslationServer.translate("Eigen bijenkast met drie bloeiende planten binnen vijf tegels.")
+	var forage_source: String=preload("res://scripts/core/forage_catalog.gd").source(item,state().map_id)
+	if forage_source!="":return forage_source
 	var places: Array[String] = []
 	var resource: Dictionary = {}
 	var maps: Script = load("res://scripts/maps/registry.gd")

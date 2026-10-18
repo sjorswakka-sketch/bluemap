@@ -67,7 +67,14 @@ const CRYSTALS := ["crystal_bos", "crystal_ruine", "crystal_grot"]
 
 
 ## Basis en uitbreidingen samen (zie content.gd).
-static var ITEMS: Dictionary = Content.merged("ITEMS", BASE_ITEMS)
+static var ITEMS: Dictionary = _all_items()
+static func _all_items() -> Dictionary:
+	var result: Dictionary=Content.merged("ITEMS",BASE_ITEMS)
+	var overrides: Dictionary=preload("res://scripts/data/ext/forest_food_species.gd").ITEM_OVERRIDES
+	for id: String in overrides:
+		result[id]=result[id].duplicate(true)
+		result[id].merge(overrides[id],true)
+	return result
 static var WEAPONS: Dictionary = Content.merged("WEAPONS", BASE_WEAPONS)
 
 

@@ -47,7 +47,9 @@ const TRAVEL_VISIBLE := 5
 const CLOSE_RECT := Rect2(956, 17, 28, 36)
 const PREVIOUS_PAGE := Rect2(24, 456, 38, 32)
 const NEXT_PAGE := Rect2(486, 456, 38, 32)
-const USE_RECT := Rect2(620, 268, 340, 40)
+const USE_RECT := Rect2(620, 292, 356, 40)
+const INVENTORY_DETAIL_RECT := Rect2(620, 72, 356, 212)
+const INVENTORY_STATS_RECT := Rect2(620, 346, 356, 176)
 const MAP_WIDTH := 600.0 # zoveel ruimte krijgt het kaartje; rechts ervan staat het lijstje voor snel reizen
 const MAP_HEADER_Y := 60.0 # clear of tab buttons above and coordinate labels below
 const MESSAGE_TIME := 3.0 # seconden dat een melding in het kaarttabblad blijft staan
@@ -641,45 +643,83 @@ func _draw_items(font: Font) -> void:
 		page.draw_string(font, PREVIOUS_PAGE.position + Vector2(0, 24), "‹", HORIZONTAL_ALIGNMENT_CENTER, 38, 24)
 		page.draw_string(font, NEXT_PAGE.position + Vector2(0, 24), "›", HORIZONTAL_ALIGNMENT_CENTER, 38, 24)
 
-	# Rechts: omschrijving en gegevens
-	var x := 620.0
+	# The item card, action and summary each have their own vertical space.
 	if not owned.is_empty():
-		var info: Dictionary = Items.ITEMS[owned[selected]]
-		var h := _text(font, Vector2(x, HEADER_Y), tr(info["name"]), 24, Color(1.0, 0.9, 0.5), 340)
-		h += _text(font, Vector2(x, HEADER_Y + h + 6), tr(info["desc"]), 18, Color(0.9, 0.93, 1.0), 340) + 6
-		if info.get("type","") == "material":
-			var journal: Script = preload("res://scripts/core/craft_journal.gd")
-			h += _text(font,Vector2(x,HEADER_Y+h+6),tr("Vindplaats: %s") % journal.source(owned[selected]),16,Color(0.65,0.85,1),340)+6
-			_text(font,Vector2(x,HEADER_Y+h+6),journal.uses_text(owned[selected]),16,Color(0.75,0.92,0.72),340)
-		var equipment_slot := Equipment.slot_of(owned[selected])
-		if equipment_slot != "":
-			var equipped := Equipment.equipped(equipment_slot) == owned[selected]
-			_text(font, Vector2(x, 216), tr("Uitgerust · %s") % Equipment.stats_text(owned[selected]) if equipped else tr("Bonus: %s") % Equipment.stats_text(owned[selected]), 17, Color(0.6, 0.95, 0.8), 340)
-			page.draw_rect(USE_RECT, Color(0.12, 0.2, 0.3) if equipped else Color(0.15, 0.32, 0.3))
-			page.draw_string(font, USE_RECT.position + Vector2(0, 27), tr("Uitgerust") if equipped else tr("%s  Uitrusten") % Controls.action_label("ui_accept"), HORIZONTAL_ALIGNMENT_CENTER, USE_RECT.size.x, 20, Color(0.6, 1.0, 0.7))
-		elif owned[selected] in Professions.CONSUMABLES:
-			page.draw_rect(USE_RECT, Color(0.15, 0.32, 0.3))
-			page.draw_string(font, USE_RECT.position + Vector2(0, 27), tr("%s  Gebruiken") % Controls.action_label("ui_accept"), HORIZONTAL_ALIGNMENT_CENTER, USE_RECT.size.x, 20, Color(0.6, 1.0, 0.7))
-	var weapon: Dictionary = Items.WEAPONS[GameState.weapon]
-	var lines := [
-		tr("Zwaard:  %s (schade %d)") % [tr(weapon["name"]), weapon["damage"]],
-		tr("Levens:  %d / %d") % [GameState.hp, GameState.max_hp()],
-		tr("Snelheid:  snel (laarzen)") if GameState.count("boots") > 0 else tr("Snelheid:  normaal"),
+		var item_id: String=owned[selected]
+		var layout:=inventory_detail_layout(font,item_id)
+		for block: Dictionary in layout.blocks:
+			MenuPages.text_top(page,font,block.rect.position,block.text,block.size,block.color,block.rect.size.x)
+		var equipment_slot:=Equipment.slot_of(item_id)
+		if equipment_slot!="":
+			var equipped:=Equipment.equipped(equipment_slot)==item_id
+			page.draw_rect(USE_RECT,Color(0.12,0.2,0.3) if equipped else Color(0.15,0.32,0.3))
+			page.draw_string(font,USE_RECT.position+Vector2(0,27),tr("Uitgerust") if equipped else tr("%s  Uitrusten") % Controls.action_label("ui_accept"),HORIZONTAL_ALIGNMENT_CENTER,USE_RECT.size.x,20,Color(0.6,1.0,0.7))
+		elif item_id in Professions.CONSUMABLES:
+			page.draw_rect(USE_RECT,Color(0.15,0.32,0.3))
+			page.draw_string(font,USE_RECT.position+Vector2(0,27),tr("%s  Gebruiken") % Controls.action_label("ui_accept"),HORIZONTAL_ALIGNMENT_CENTER,USE_RECT.size.x,20,Color(0.6,1.0,0.7))
+	if GameState.ng_plus>0:
+		UiStyle.draw_star(page,Vector2(36,SIZE.y-42),11.0,Color(1.0,0.85,0.3))
+		_text(font,Vector2(56,SIZE.y-56),tr("Nieuw spel+  ·  ronde %d") % GameState.ng_plus,20,Color(1.0,0.9,0.5))
+	page.draw_line(Vector2(INVENTORY_STATS_RECT.position.x,338),Vector2(INVENTORY_STATS_RECT.end.x,338),Color(0.3,0.45,0.7),2.0)
+	for block: Dictionary in inventory_stat_layout(font):
+		MenuPages.text_top(page,font,block.rect.position,block.text,block.size,Color(0.85,0.92,1.0),block.rect.size.x)
+
+
+## Measure the same paragraphs the card draws; keep source coordinates readable.
+func inventory_detail_layout(font: Font,item_id: String) -> Dictionary:
+	var plan: Dictionary={}
+	for body_size in [18,17,16]:
+		plan=_inventory_detail_blocks(font,item_id,body_size,16)
+		if plan.fits:return plan
+	# Long legacy crafting lists may need smaller secondary text. Sources stay 16.
+	for uses_size in [15,14]:
+		plan=_inventory_detail_blocks(font,item_id,16,uses_size)
+		if plan.fits:return plan
+	for body_size in [15,14]:
+		plan=_inventory_detail_blocks(font,item_id,body_size,14)
+		if plan.fits:return plan
+	return plan
+
+
+func _inventory_detail_blocks(font: Font,item_id: String,body_size: int,uses_size: int) -> Dictionary:
+	var info: Dictionary=Items.ITEMS[item_id]
+	var blocks: Array[Dictionary]=[
+		{"tag":"title","text":tr(info["name"]),"size":24,"color":Color(1.0,0.9,0.5)},
+		{"tag":"description","text":tr(info["desc"]),"size":body_size,"color":Color(0.9,0.93,1.0)},
+	]
+	if info.get("type","")=="material" or preload("res://scripts/core/forage_catalog.gd").known(item_id):
+		var journal: Script=preload("res://scripts/core/craft_journal.gd")
+		blocks.append({"tag":"source","text":tr("Vindplaats: %s") % journal.source(item_id),"size":16,"color":Color(0.65,0.85,1.0)})
+		var uses: String=journal.uses_text(item_id)
+		if uses!="":blocks.append({"tag":"uses","text":uses,"size":uses_size,"color":Color(0.75,0.92,0.72)})
+	if Equipment.slot_of(item_id)!="":
+		var equipped:=Equipment.equipped(Equipment.slot_of(item_id))==item_id
+		blocks.append({"tag":"bonus","text":tr("Uitgerust · %s") % Equipment.stats_text(item_id) if equipped else tr("Bonus: %s") % Equipment.stats_text(item_id),"size":17,"color":Color(0.6,0.95,0.8)})
+	var y:=INVENTORY_DETAIL_RECT.position.y
+	for block: Dictionary in blocks:
+		var height:=font.get_multiline_string_size(block.text,HORIZONTAL_ALIGNMENT_LEFT,INVENTORY_DETAIL_RECT.size.x,block.size).y
+		block["rect"]=Rect2(INVENTORY_DETAIL_RECT.position.x,y,INVENTORY_DETAIL_RECT.size.x,height)
+		y+=height+4.0
+	return {"blocks":blocks,"fits":y-4.0<=INVENTORY_DETAIL_RECT.end.y,"bottom":y-4.0}
+
+
+func inventory_stat_layout(font: Font) -> Array[Dictionary]:
+	var weapon: Dictionary=Items.WEAPONS[GameState.weapon]
+	var labels: Array[String]=[
+		tr("Zwaard:  %s (schade %d)") % [tr(weapon["name"]),weapon["damage"]],
+		tr("Levens:  %d / %d") % [GameState.hp,GameState.max_hp()],
+		tr("Snelheid:  snel (laarzen)") if GameState.count("boots")>0 else tr("Snelheid:  normaal"),
 		tr("Munten:  %d") % GameState.coins,
 		tr("Kristallen:  %d / 3") % (3 if GameState.flag("gate_temple") else GameState.crystal_count()),
 		tr("Verslagen:  %d") % GameState.kills,
 		tr("Speeltijd:  %s") % format_time(GameState.play_time),
 	]
-	if GameState.ng_plus > 0:
-		UiStyle.draw_star(page, Vector2(36, SIZE.y - 42), 11.0, Color(1.0, 0.85, 0.3))
-		# Vertalers: Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-		_text(font, Vector2(56, SIZE.y - 56), tr("Nieuw spel+  ·  ronde %d") % GameState.ng_plus, 20, Color(1.0, 0.9, 0.5))
-	page.draw_line(Vector2(x, 330), Vector2(x + 340, 330), Color(0.3, 0.45, 0.7), 2.0)
-	var y := 342.0
-	for line: String in lines:
-		_text(font, Vector2(x, y), line, 20, Color(0.85, 0.92, 1.0))
-		y += 28.0
-
+	var blocks: Array[Dictionary]=[]
+	for i in labels.size():
+		var size:=17
+		while size>14 and font.get_string_size(labels[i],HORIZONTAL_ALIGNMENT_LEFT,-1,size).x>INVENTORY_STATS_RECT.size.x:size-=1
+		blocks.append({"text":labels[i],"size":size,"rect":Rect2(INVENTORY_STATS_RECT.position+Vector2(0,i*25),Vector2(INVENTORY_STATS_RECT.size.x,font.get_height(size)))})
+	return blocks
 
 static func format_time(seconds: float) -> String:
 	var total := int(seconds)

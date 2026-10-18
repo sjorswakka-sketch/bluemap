@@ -1,8 +1,8 @@
 # Bluemap Quest
 
-0.32.1: binnenopslag en controller-scroll, een doorlopende meerweg, zichtbare en bewegende bewoners, rustige plukbermen/wild en tien watertypes met natuurlijke bronwatervallen; zie [wijzigingen](BUGFIX_STORAGE_ROUTES_WILDLIFE_WATER.md).
+0.33.0: volledige bruggen, brede gecentreerde routes, doorloopbare landbegroeiing, Dampkroon boven IJsdal, zestien plukbare wintergroenten, 48 specifieke bloemen/fruit/noten en betrouwbare lootkisten; zie [wijzigingen](MOUNTAIN_ROUTES_WINTER.md).
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.32.1-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.33.0-preview.**
 
 Nieuw in 0.32: **Gewassen en boomgaard — ontwikkelronde 5**. Wortels, pompoenen,
 munt, rozemarijn, appelbomen en bosbessenstruiken krijgen eigen pixel art en groei.

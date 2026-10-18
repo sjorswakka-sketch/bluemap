@@ -50,10 +50,13 @@ func _draw():
    for cell: Vector2i in feature.cells:center+=(Vector2(cell)+Vector2(.5,.5))*32
    center/=feature.cells.size()
    if not visible.has_point(center):continue
-   for side in [-1,1]:
-    Art.rock(self,center+Vector2(side*39-10,-35),Vector2(23,21),true)
-    Art.rock(self,center+Vector2(side*41-8,7),Vector2(20,18),true)
-   Art.rock(self,center+Vector2(-25,-51),Vector2(48,18),true)
+   if not feature.get("bank_rocks",[]).is_empty():
+    for bank: Array in feature.bank_rocks:Art.rock(self,Vector2(bank[0]*32+2,bank[1]*32+6),Vector2(29,25),true)
+   else:
+    for side in [-1,1]:
+     Art.rock(self,center+Vector2(side*39-10,-35),Vector2(23,21),true)
+     Art.rock(self,center+Vector2(side*41-8,7),Vector2(20,18),true)
+    Art.rock(self,center+Vector2(-25,-51),Vector2(48,18),true)
    for i in 6:
     var rise:=fmod(time*10+i*9,48)
     var at:=center+Vector2(sin(time+i)*12,-rise)

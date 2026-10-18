@@ -17,7 +17,7 @@ import tempfile
 import uuid
 
 
-ERROR = re.compile(r"SCRIPT ERROR|Parse Error|\bFAIL ")
+ERROR = re.compile(r"SCRIPT ERROR|Parse Error|\bFAIL |^ERROR: (?!\d+ resources still in use at exit \(run with --verbose for details\)\.)", re.MULTILINE)
 SUCCESS = re.compile(r"^[A-Z][A-Z0-9 _-]* OK\s*$", re.MULTILINE)
 
 

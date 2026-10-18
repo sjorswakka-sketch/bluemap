@@ -73,7 +73,7 @@ func _run() -> void:
 	gs.hp = 1
 	menu.selected = owned.find("prof_berry_meal")
 	press("interact")
-	check(gs.hp == 2 and gs.count("prof_berry_meal") == 0, "nieuwe voeding is ook uit de gewone inventaris te gebruiken")
+	check(gs.hp == 4 and gs.count("prof_berry_meal") == 0, "nieuwe voeding is ook uit de gewone inventaris te gebruiken")
 	gs.movement.stamina = 10.0
 	menu.selected = menu._owned().find("prof_tonic")
 	press("interact")

@@ -57,14 +57,15 @@ func run():
 	gs.start_quest("main");Journey.toggle("main")
 	check(Journey.route_text("main").contains("Bosrand"),"quest route names the next real area")
 	for id in ["village","forest","lake"]:
-		var original: Array=Maps.MAPS[id].DATA.objects
+		var original: Array=Maps.MAPS[id].DATA.objects.duplicate(true)
+		if id=="forest":original[4].pos=[8,4] # Same key chest/save slot, beside the straight north road.
 		var actual: Array=Maps.get_map(id).objects
 		for index in original.size():
 			if original[index].type in ["chest","pickup"]:
 				check(actual[index]==original[index],"saved object slot unchanged: "+id+str(index))
 	await portal("forest_edge")
 	check(get_nodes_in_group("enemies").filter(func(n):return n.data.behavior!="animal").is_empty() and get_nodes_in_group("pickups").is_empty(),"quiet area has no hostile enemies or loose loot")
-	check(world.map_data.objects.filter(func(o):return not o.get("trail_wildlife",false) and not o.get("id","").begins_with("trail:")).size()==5,"two exits, two signs and a scenic waterfall; no new activity or enemy")
+	check(world.map_data.objects.filter(func(o):return not o.get("trail_wildlife",false) and not o.get("id","").begins_with("trail:") and not o.get("id","").begins_with("forestfood:")).size()==5,"two exits, two signs and a scenic waterfall; no new activity or enemy")
 	var hp: int=gs.hp
 	var steps:=await edge_path()
 	print("EDGE WALK SECONDS=",steps/60.0)

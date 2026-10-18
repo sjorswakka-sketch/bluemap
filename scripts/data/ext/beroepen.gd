@@ -43,7 +43,7 @@ const ITEMS := {
 	"prof_copper_pickaxe": {"name": "Koperen pikhouweel", "sheet": "items_beroepen", "icon": 11, "type": "gear", "max": 1, "desc": "Ontsluit ijzererts vanaf mijnbouw 2. Vervangt je stenen pikhouweel automatisch."},
 	"prof_iron_axe": {"name": "IJzeren bijl", "sheet": "items_beroepen", "icon": 12, "type": "gear", "max": 1, "desc": "Oogst 3 berkenhout per stronk in plaats van 2. Slijt niet."},
 	"prof_tonic": {"name": "Energie-elixer", "sheet": "items_beroepen", "icon": 13, "type": "use", "stamina": 60, "desc": "Herstelt 60 uithoudingsvermogen. Gebruik via Beroepen → Eten & drinken."},
-	"prof_berry_meal": {"name": "Bessensnack", "sheet": "items_beroepen", "icon": 14, "type": "use", "heal": 1, "desc": "Herstelt 1 hartje. Gebruik via Beroepen → Eten & drinken."},
+	"prof_berry_meal": {"name": "Bessensnack", "sheet": "items_beroepen", "icon": 14, "type": "use", "heal": 3, "stamina":30, "desc": "Een bereide portie van drie blauwe bosbessen. Herstelt 3 hartjes en 30 uithoudingsvermogen in één keer."},
 	"prof_fish_meal": {"name": "Gebakken baars", "sheet": "items_beroepen", "icon": 15, "type": "use", "heal": 3, "desc": "Herstelt 3 hartjes. Gemaakt in de herberg. Gebruik via Beroepen → Eten & drinken."},
 	"prof_mushroom": {"name": "Honingzwam", "sheet": "items_beroepen", "icon": 16, "type": "material", "desc": "Een eetbare zwam uit het Fluisterbos. Voor stevige paddenstoelensoep."},
 	"prof_stew": {"name": "Paddenstoelensoep", "sheet": "items_beroepen", "icon": 17, "type": "use", "heal": 2, "desc": "Herstelt 2 hartjes. Gebruik via Beroepen → Eten & drinken."},
@@ -174,7 +174,7 @@ const RECIPES := {
  "or_tea":{"skill":"cooking","level":1,"station":"inn","inputs":{"or_mint":2,"hs_honey":1},"output":"or_tea","xp":6},
  "or_balm":{"skill":"alchemy","level":1,"station":"library","inputs":{"or_rosemary":2,"prof_herb":1,"hs_honey":1},"output":"or_balm","xp":8},
 }
-const RESOURCES := {
+const BASE_RESOURCES := {
 
 	"branches": {"name": "Losse takken", "skill": "woodcutting", "item": "prof_branch", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("bd8955")},
 	"stones": {"name": "Losse vuurstenen", "skill": "mining", "item": "prof_stone", "amount": 2, "xp": 5, "cooldown": 90.0, "color": Color("a9b5c9")},
@@ -200,16 +200,42 @@ const RESOURCES := {
  "cw_reed":{"name":"Oevervezels","skill":"foraging","item":"cw_reed","amount":6,"xp":6,"cooldown":300.0,"duration":0.8,"color":Color("b9c88e"),"sheet":"cw_resources","frame":1},
  "cw_seaglass":{"name":"Zeeagaatader","skill":"mining","item":"cw_seaglass","amount":6,"xp":10,"cooldown":300.0,"tools":["prof_copper_pickaxe","prof_pickaxe"],"duration":1.35,"animation":"mining","color":Color("83d2d1"),"sheet":"cw_resources","frame":2},
  "cw_saltleaf":{"name":"Zoutbladpol","skill":"foraging","item":"cw_saltleaf","amount":4,"xp":6,"cooldown":300.0,"duration":0.65,"color":Color("aabfa1"),"sheet":"cw_resources","frame":3},
- "trail_herbs":{"name":"Wilde bermkruiden","skill":"foraging","item":"prof_herb","amount":2,"xp":4,"cooldown":180.0,"color":Color("9ebc85"),"sheet":"trail_plants","frame":0},
+ "trail_herbs":{"name":"Zilverkruid","skill":"foraging","item":"prof_herb","amount":2,"xp":4,"cooldown":180.0,"color":Color("9ebc85"),"sheet":"trail_plants","frame":0},
  "trail_flowers":{"name":"Wilde bloemen","skill":"foraging","item":"trail_flower","amount":2,"xp":4,"cooldown":180.0,"color":Color("dfb8da"),"sheet":"trail_plants","frame":1},
  "trail_nuts":{"name":"Noten in de berm","skill":"foraging","item":"trail_nut","amount":2,"xp":4,"cooldown":210.0,"color":Color("be9969"),"sheet":"trail_plants","frame":2},
- "trail_seeds":{"name":"Wilde zaadpluimen","skill":"foraging","item":"hs_seed","amount":1,"xp":4,"cooldown":240.0,"color":Color("dfcc94"),"sheet":"trail_plants","frame":3},
- "trail_roots":{"name":"Wilde wortels","skill":"foraging","item":"or_carrot","amount":2,"xp":4,"cooldown":210.0,"color":Color("deaa69"),"sheet":"trail_plants","frame":4},
+ "trail_seeds":{"name":"Druivenpitten","skill":"foraging","item":"hs_seed","amount":1,"xp":4,"cooldown":240.0,"color":Color("dfcc94"),"sheet":"trail_plants","frame":3},
+ "trail_roots":{"name":"Wilde peen","skill":"foraging","item":"or_carrot","amount":2,"xp":4,"cooldown":210.0,"color":Color("deaa69"),"sheet":"trail_plants","frame":4},
  "trail_fruit":{"name":"Wilde fruitstruik","skill":"foraging","item":"prof_berry","amount":2,"xp":4,"cooldown":180.0,"color":Color("a4add9"),"sheet":"trail_plants","frame":5},
- "trail_fungi":{"name":"Wilde grotzwammen","skill":"foraging","item":"prof_mushroom","amount":2,"xp":4,"cooldown":210.0,"color":Color("cfad8f"),"sheet":"trail_plants","frame":6},
+ "trail_fungi":{"name":"Honingzwammen","skill":"foraging","item":"prof_mushroom","amount":2,"xp":4,"cooldown":210.0,"color":Color("cfad8f"),"sheet":"trail_plants","frame":6},
+ "winter_kale":{"name":"Kroezige boerenkool","skill":"foraging","item":"winter_kale","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("789863"),"sheet":"winter_plants","frame":0,"cell":32},
+ "winter_broccoli":{"name":"Winterbroccoli","skill":"foraging","item":"winter_broccoli","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("68a171"),"sheet":"winter_plants","frame":1,"cell":32},
+ "winter_cauliflower":{"name":"Winterbloemkool","skill":"foraging","item":"winter_cauliflower","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("d7d5ac"),"sheet":"winter_plants","frame":2,"cell":32},
+ "winter_sprouts":{"name":"Spruitenstengel","skill":"foraging","item":"winter_sprouts","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("98b674"),"sheet":"winter_plants","frame":3,"cell":32},
+ "winter_beet":{"name":"Winterbieten","skill":"foraging","item":"winter_beet","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("ad667a"),"sheet":"winter_plants","frame":4,"cell":32},
+ "winter_carrot":{"name":"Winterpenen","skill":"foraging","item":"winter_carrot","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("d69856"),"sheet":"winter_plants","frame":5,"cell":32},
+ "winter_parsnip":{"name":"Pastinaakwortels","skill":"foraging","item":"winter_parsnip","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("dccb99"),"sheet":"winter_plants","frame":6,"cell":32},
+ "winter_leek":{"name":"Winterprei","skill":"foraging","item":"winter_leek","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("85a694"),"sheet":"winter_plants","frame":7,"cell":32},
+ "winter_savoy":{"name":"Savooiekool","skill":"foraging","item":"winter_savoy","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("87a16c"),"sheet":"winter_plants","frame":8,"cell":32},
+ "winter_red_cabbage":{"name":"Rode winterkool","skill":"foraging","item":"winter_red_cabbage","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("a47f9f"),"sheet":"winter_plants","frame":9,"cell":32},
+ "winter_spinach":{"name":"Winterspinazie","skill":"foraging","item":"winter_spinach","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("629b78"),"sheet":"winter_plants","frame":10,"cell":32},
+ "winter_lambs_lettuce":{"name":"Veldslarozetten","skill":"foraging","item":"winter_lambs_lettuce","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("a4bc82"),"sheet":"winter_plants","frame":11,"cell":32},
+ "winter_purslane":{"name":"Winterpostelein","skill":"foraging","item":"winter_purslane","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("87bc9d"),"sheet":"winter_plants","frame":12,"cell":32},
+ "winter_swede":{"name":"Winterkoolrapen","skill":"foraging","item":"winter_swede","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("c2aa80"),"sheet":"winter_plants","frame":13,"cell":32},
+ "winter_celeriac":{"name":"Knolselderij","skill":"foraging","item":"winter_celeriac","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("bfb397"),"sheet":"winter_plants","frame":14,"cell":32},
+ "winter_salsify":{"name":"Schorseneren","skill":"foraging","item":"winter_salsify","amount":2,"xp":5,"cooldown":240.0,"duration":0.65,"color":Color("99816b"),"sheet":"winter_plants","frame":15,"cell":32},
 }
 # Explicit IDs keep cooldowns stable when maps or the original object lists change.
 # Nodes are small, non-blocking props on walkable tiles away from doors and quest items.
+# Append specialised plants after every legacy frame; old resource indices stay fixed.
+static var RESOURCES: Dictionary = _all_resources()
+static func _all_resources() -> Dictionary:
+	var result: Dictionary=BASE_RESOURCES.duplicate(true)
+	result.merge(preload("res://scripts/data/ext/flower_species.gd").RESOURCES)
+	result.merge(preload("res://scripts/data/ext/forest_food_species.gd").RESOURCES)
+	for id: String in preload("res://scripts/data/ext/forest_food_species.gd").RESOURCE_OVERRIDES:
+		result[id].merge(preload("res://scripts/data/ext/forest_food_species.gd").RESOURCE_OVERRIDES[id],true)
+	return result
+
 const RESOURCE_PLACEMENTS := {
 	"coast":[["cw_driftwood","cw_driftwood",23,29]],
 	"river_mouth":[["cw_reed","cw_reed",5,22]],

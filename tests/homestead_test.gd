@@ -30,7 +30,7 @@ func run():
  check(gs.movement.can_sprint(),"sprint available in a new game")
  await enter("village","from_home");p.set_physics_process(false)
  check(world.map_size==Vector2i(40,44),"garden adds space beyond existing town")
- check(Maps.get_map("village").objects.filter(func(o):return o.type=="portal" and o.to=="lake")[0].pos==[19,42],"lake exit is at the enlarged village southern edge")
+ check(Maps.get_map("village").objects.filter(func(o):return o.type=="portal" and o.to=="lake")[0].pos==[18,42],"lake exit is at the enlarged village southern edge")
  await open("guide");ui().supply();check(gs.count("hs_hoe")==1 and gs.count("hs_seed")==8,"free one-time starter tools and seeds")
  var inventory: Dictionary=gs.inventory.duplicate(true);ui().supply();check(gs.inventory==inventory,"starter cannot duplicate")
  await close_ui()

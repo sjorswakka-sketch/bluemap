@@ -17,7 +17,7 @@ func run():
  for id: String in Maps.MAPS:
   var data: Dictionary=Maps.get_map(id);check_water(id,data)
   for feature: Dictionary in data.water_features:types[feature.kind]=true
-  for object: Dictionary in inventory[id].objects:
+  for object: Dictionary in inventory.get(id,{"objects":[]}).objects:
    if object.type!="profession_resource" or object.get("id","").begins_with("trail:"):continue
    var x: int=object.pos[0];var y: int=object.pos[1]
    var tiles: Script=load("res://scripts/data/tiles.gd")

@@ -427,6 +427,8 @@ func give(item_id: String, amount: int = 1, quiet: bool = false) -> void:
 ## Waarom een voorwerp niet meer in je tas past (vertaald): de eigen `full_text` van het voorwerp, of "Je tas is vol".
 func full_text(item_id: String) -> String:
 	var info := Items.info(item_id)
+	if int(info.get("max",0))==1 and count(item_id)>0:
+		return tr("Je bezit %s al.") % tr(info["name"])
 	return tr(info["full_text"]) if info.has("full_text") else tr("Je tas is vol")
 
 

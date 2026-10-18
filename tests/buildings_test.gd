@@ -57,6 +57,8 @@ func _run() -> void:
 			check(world_door == Rect2(Vector2(doorway.position) * 32, Vector2(doorway.size) * 32), "%s deuruitsparing gebruikt de echte wereldmaat" % id)
 		var node := Landmarks.new()
 		node.setup(map_id)
+		if map_id=="village":check(node.private_doors==[Rect2(7*32,21*32,64,32)],"eigen woning heeft één gezamenlijk breed deurkozijn op zijn echte doorgang")
+		else:check(node.private_doors.is_empty(),"privédeur lekt niet naar andere kaarten")
 		root.add_child(node)
 		await process_frame
 		check(_only_decoration(node), "%s gevels hebben geen botsingen of interactie" % map_id)

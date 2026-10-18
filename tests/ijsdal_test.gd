@@ -231,7 +231,7 @@ func test_data() -> void:
 		tiles_ok = tiles_ok and tile_name in Tiles.NAMES and Tiles.NAMES.find(tile_name) >= 55
 		tiles_ok = tiles_ok and Tiles.map_color(tile_name) != Color(0.5, 0.5, 0.55)
 	check(tiles_ok, "vijf nieuwe tegels aan het eind van de lijst, met een eigen kleur op het kaartje")
-	check(Tiles.is_solid_name("snow_bush") and Tiles.is_solid_name("pine"), "sneeuwstruik en den zijn vast")
+	check(not Tiles.is_solid_name("snow_bush") and Tiles.is_solid_name("pine"), "lage sneeuwstruik is doorloopbaar, den blijft vast")
 	check(not Tiles.is_solid_name("snow") and not Tiles.is_solid_name("snow_tufts") and not Tiles.is_solid_name("ice"), "sneeuw en ijs zijn begaanbaar")
 	check(Tiles.name_for("z", 1, 1) == "snow" and Tiles.name_for("i", 0, 0) == "ice" and Tiles.name_for("P", 0, 0) == "pine", "de tekens in de kaart kloppen")
 	check(Tiles.movement_multiplier("snow") < 1.0, "sneeuw loopt iets trager dan gras")

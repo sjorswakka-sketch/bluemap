@@ -9,8 +9,19 @@ const Journal := preload("res://scripts/core/craft_journal.gd")
 const Equipment := preload("res://scripts/core/equipment.gd")
 const MAX_LEVEL := 10
 const MAX_XP := 1350 # 30 * (10 - 1) * 10 / 2
-const CONSUMABLES := ["trail_nut","or_carrot","or_apple","or_stew","or_tea","or_balm","hs_grape","hs_wine","hs_honey","cw_broth","potion", "prof_berry_meal", "prof_stew", "prof_fish_meal", "prof_tonic", "ls_chowder", "ls_broth", "prof_frost_tonic", "prof_winter_gloed", "prof_zandbalsem", "jacht_braadstuk", "prof_mistdrank", "prof_dauwsoep", "prof_moeraselixer", "prof_veenbespap"]
+const BASE_CONSUMABLES := ["winter_kale","winter_broccoli","winter_cauliflower","winter_sprouts","winter_beet","winter_carrot","winter_parsnip","winter_leek","winter_savoy","winter_red_cabbage","winter_spinach","winter_lambs_lettuce","winter_purslane","winter_swede","winter_celeriac","winter_salsify","trail_nut","or_carrot","or_apple","or_stew","or_tea","or_balm","hs_grape","hs_wine","hs_honey","cw_broth","potion", "prof_berry_meal", "prof_stew", "prof_fish_meal", "prof_tonic", "ls_chowder", "ls_broth", "prof_frost_tonic", "prof_winter_gloed", "prof_zandbalsem", "jacht_braadstuk", "prof_mistdrank", "prof_dauwsoep", "prof_moeraselixer", "prof_veenbespap"]
+static var CONSUMABLES: Array = _consumables()
+static func _consumables() -> Array:
+	var result: Array=BASE_CONSUMABLES.duplicate()
+	var foods: Script=preload("res://scripts/data/ext/forest_food_species.gd")
+	for table: Dictionary in [foods.ITEMS,foods.ITEM_OVERRIDES]:
+		for id: String in table:
+			if table[id].get("type","")=="use" and id not in result:result.append(id)
+	return result
+
 static var _busy := false
+# Loaded lazily: the map registry itself imports profession data.
+static var _dynamic_resource_limits: Dictionary = {}
 
 
 static func state() -> Node:
@@ -37,7 +48,31 @@ static func normalize(raw: Variant, clock: float = 0.0) -> Dictionary:
 				if (value is int or value is float) and is_finite(float(value)) and float(value) > clock:
 					# No node can legitimately remain exhausted beyond its own cooldown.
 					result["cooldowns"][obj["id"]] = minf(float(value), clock + float(Data.RESOURCES[obj["kind"]]["cooldown"]))
+		# Runtime verge/winter nodes have explicit IDs rather than legacy placements.
+		# Resolve the exact authored ID from the finished map, not a permissive prefix.
+		for resource_id: Variant in cooldowns:
+			if not resource_id is String or not (resource_id.begins_with("trail:") or resource_id.begins_with("winter:") or resource_id.begins_with("forestfood:")):continue
+			var value: Variant=cooldowns[resource_id]
+			if not (value is int or value is float) or not is_finite(float(value)) or float(value)<=clock:continue
+			var limit:=dynamic_cooldown_limit(resource_id)
+			if limit>0.0:result["cooldowns"][resource_id]=minf(float(value),clock+limit)
 	return result
+
+
+static func dynamic_cooldown_limit(resource_id: String) -> float:
+	var parts:=resource_id.split(":")
+	if parts.size()<3:return 0.0
+	var map_id: String=parts[1]
+	if not _dynamic_resource_limits.has(map_id):
+		var maps=load("res://scripts/maps/registry.gd")
+		if not maps.MAPS.has(map_id):return 0.0
+		var limits: Dictionary={}
+		for obj: Dictionary in maps.get_map(map_id).objects:
+			if obj.type!="profession_resource" or not Data.RESOURCES.has(obj.get("kind","")):continue
+			var id: String=str(obj.get("id",""))
+			if id.begins_with("trail:") or id.begins_with("winter:") or id.begins_with("forestfood:"):limits[id]=float(Data.RESOURCES[obj.kind]["cooldown"])
+		_dynamic_resource_limits[map_id]=limits
+	return float(_dynamic_resource_limits[map_id].get(resource_id,0.0))
 
 
 static func _ensure() -> Node:
