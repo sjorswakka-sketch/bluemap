@@ -8,6 +8,7 @@ var rest_time:=0.0
 var info: PanelContainer
 var caption: Label
 func _ready():
+ add_to_group("water_scenery")
  var layer:=CanvasLayer.new();layer.layer=5;add_child(layer)
  info=PanelContainer.new();info.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(info)
  var style:=StyleBoxFlat.new();style.bg_color=Color(.06,.13,.16,.87);style.border_color=Color(.48,.65,.63,.7);style.set_border_width_all(1);style.content_margin_left=12;style.content_margin_right=12;style.content_margin_top=8;style.content_margin_bottom=8;info.add_theme_stylebox_override("panel",style)
@@ -20,7 +21,14 @@ func _process(delta: float):
   var view:=get_viewport_rect().size
   caption.custom_minimum_size.x=minf(420,view.x-64)
   caption.text=context.title+" · "+context.detail
-  info.reset_size();info.position=Vector2(view.x-info.size.x-20,view.y-info.size.y-20)
+  info.reset_size();info.position=Vector2(view.x-info.size.x-20,view.y-info.size.y-60)
+  var blockers: Array[Control]=[world.hud.access_panel,world.hud.opening_hint]
+  for node in get_tree().get_nodes_in_group("homesteads"):
+   if not node.is_queued_for_deletion() and node.panel!=null:blockers.append(node.panel)
+  for node in get_tree().get_nodes_in_group("tide_cove"):
+   if not node.is_queued_for_deletion():blockers.append(node.badge)
+  for blocker: Control in blockers:
+   if blocker.is_visible_in_tree() and info.get_global_rect().intersects(blocker.get_global_rect()):info.hide();break
  if draw_wait>=.07:draw_wait=0;queue_redraw()
  if GameState.input_locked():return
  var near:=Water.nearest(world,76)

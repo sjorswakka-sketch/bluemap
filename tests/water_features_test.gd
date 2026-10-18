@@ -44,6 +44,13 @@ func run():
  check(world.map_data.water_cells.size()==Layout.water().size(),"irrigation sources remain exactly the visible village water")
  for at: Vector2i in Layout.water():check(world.map_data.water_cells.get(at,"")=="canal","visible source is actual fresh canal")
  gs.give("hs_hoe",1,true);p.position=Vector2(19.5,35.5)*32
+ await frames(8)
+ var water_hint: Node=get_nodes_in_group("water_scenery").filter(func(n):return not n.is_queued_for_deletion())[0]
+ if water_hint.info.visible:check(not water_hint.info.get_global_rect().intersects(world.hud.opening_hint.get_global_rect()),"water caption leaves controller and keyboard footer clear")
+ Farm.mode="channel";await frames(8)
+ for garden in get_nodes_in_group("homesteads"):
+  if not garden.is_queued_for_deletion() and garden.panel!=null and garden.panel.visible:check(not water_hint.info.visible or not water_hint.info.get_global_rect().intersects(garden.panel.get_global_rect()),"garden instructions take priority over water caption")
+ Farm.mode=""
  check(not Farm.act(Vector2i(19,34),"soil",world),"public south road stays free of new crop fields")
  check(Farm.act(Vector2i(19,34),"channel",world) and world.spawn_fits(Vector2(19.5,34.5)*32),"irrigation can cross the south road without obstructing walking")
  gs.homestead.cells={"19,34":{"kind":"channel"},"18,34":{"kind":"channel"},"17,34":{"kind":"soil","crop":"carrot","growth":0.0,"fertilized":false}}
