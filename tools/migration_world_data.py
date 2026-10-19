@@ -14,6 +14,7 @@ import json
 import math
 from pathlib import Path
 import re
+import struct
 import sys
 
 
@@ -87,6 +88,44 @@ def _floating(value: object) -> float:
     require(number != 0 or not any(char in "123456789" for char in text.split("e")[0].split("E")[0]),
             "Wire float underflow would lose nonzero source data")
     return number
+
+
+def canonicalize_wire_floats(value: object) -> object:
+    """Copy JSON, giving only exact wire float nodes a bit-exact spelling.
+
+    Godot's full-precision decimal output differs between platform C libraries.
+    Python's shortest round-trip representation gives the same IEEE binary64
+    value one portable spelling, including the sign of zero. No approximate
+    numeric comparison, integer conversion, or dictionary reordering is used.
+    """
+    active: set[int] = set()
+    count = 0
+
+    def visit(node: object, depth: int) -> object:
+        nonlocal count
+        count += 1
+        require(depth <= MAX_DEPTH and count <= MAX_WIRE_NODES,
+                "World JSON canonicalization depth/node budget exceeded")
+        if type(node) not in {dict, list}:
+            return node
+        identity = id(node)
+        require(identity not in active, "World JSON canonicalization cannot contain cycles")
+        active.add(identity)
+        try:
+            if type(node) is list:
+                return [visit(child, depth + 1) for child in node]
+            if (set(node) == {"kind", "value"} and node["kind"] == "float"
+                    and type(node["value"]) is str):
+                number = _floating(node["value"])
+                text = repr(number)
+                require(struct.pack(">d", number) == struct.pack(">d", _floating(text)),
+                        "Canonical wire float changed its IEEE binary64 value")
+                return {key: text if key == "value" else child for key, child in node.items()}
+            return {key: visit(child, depth + 1) for key, child in node.items()}
+        finally:
+            active.remove(identity)
+
+    return visit(value, 0)
 
 
 def _address(value: object) -> tuple:

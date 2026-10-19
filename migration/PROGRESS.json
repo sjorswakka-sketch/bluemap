@@ -35,5 +35,7 @@
   "world_runtime_profiles": 59,
   "world_runtime_snapshots": 162,
   "world_gameplay_executed_in_unity": false,
-  "world_runtime_identity_manifest": "phase-05/runtime-identities.json"
+  "world_runtime_identity_manifest": "phase-05/runtime-identities.json",
+  "world_float_encoding": "binary64-shortest-roundtrip-lossless",
+  "world_float_tolerance": 0
 }

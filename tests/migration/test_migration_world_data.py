@@ -7,6 +7,7 @@ import json
 import math
 import os
 from pathlib import Path
+import struct
 import sys
 import tempfile
 import unittest
@@ -122,6 +123,92 @@ def minimal_snapshot():
                                                        "natural_water_sources": {}, "pollen_flowers": 0}),
             "arrivals": [{"name": "start", "nominal": vector(80.0, 80.0),
                           "resolved": vector(80.0, 80.0), "fits": True}], "projectionCalls": []}
+
+
+class CanonicalWireFloatTests(unittest.TestCase):
+    def test_windows_linux_decimal_spellings_have_one_bit_exact_form(self):
+        for windows, linux in (("0.29999999999999999", "0.299999999999999989"),
+                               ("0.73000001907348633", "0.730000019073486328")):
+            with self.subTest(windows=windows, linux=linux):
+                first = world.canonicalize_wire_floats({"kind": "float", "value": windows})
+                second = world.canonicalize_wire_floats({"kind": "float", "value": linux})
+                self.assertEqual(first, second)
+                self.assertEqual(struct.pack(">d", float(first["value"])),
+                                 struct.pack(">d", float(windows)))
+                self.assertEqual(world.canonicalize_wire_floats(first), first)
+
+    def test_adjacent_binary64_values_remain_distinct(self):
+        first = world.canonicalize_wire_floats({"kind": "float", "value": "1.0"})
+        second = world.canonicalize_wire_floats({"kind": "float", "value": "1.0000000000000002"})
+        self.assertNotEqual(first, second)
+        self.assertEqual(float(second["value"]), math.nextafter(1.0, math.inf))
+
+    def test_negative_zero_keeps_its_sign(self):
+        positive = world.canonicalize_wire_floats({"kind": "float", "value": "0.00000000000000000"})
+        negative = world.canonicalize_wire_floats({"kind": "float", "value": "-0.00000000000000000"})
+        self.assertEqual(positive["value"], "0.0")
+        self.assertEqual(negative["value"], "-0.0")
+        self.assertNotEqual(struct.pack(">d", float(positive["value"])),
+                            struct.pack(">d", float(negative["value"])))
+
+    def test_smallest_subnormal_and_maximum_finite_value_roundtrip(self):
+        for text in ("4.94065645841246544e-324", "-4.94065645841246544e-324",
+                     "1.7976931348623157081e+308", "-1.7976931348623157081e+308"):
+            with self.subTest(number=text):
+                result = world.canonicalize_wire_floats({"kind": "float", "value": text})
+                self.assertEqual(struct.pack(">d", float(result["value"])), struct.pack(">d", float(text)))
+                self.assertTrue(math.isfinite(float(result["value"])))
+                self.assertNotEqual(float(result["value"]), 0)
+
+    def test_other_types_strings_and_float_lookalikes_are_unchanged(self):
+        original = {
+            "integer": {"kind": "int", "value": "9223372036854775807"},
+            "string": {"kind": "string", "value": "0.299999999999999989"},
+            "stringName": {"kind": "string_name", "value": "0.299999999999999989"},
+            "extra": {"kind": "float", "value": "0.299999999999999989", "note": "lookalike"},
+            "native": {"kind": "float", "value": 0.3},
+            "ordinary": [None, True, 9223372036854775807, 0.3, "0.299999999999999989"],
+        }
+        result = world.canonicalize_wire_floats(original)
+        self.assertEqual(result, original)
+        self.assertIsNot(result, original)
+        self.assertIsNot(result["ordinary"], original["ordinary"])
+        self.assertIs(type(result["ordinary"][2]), int)
+        self.assertIs(type(result["ordinary"][3]), float)
+
+    def test_nested_wire_keys_array_and_dictionary_order_and_input_survive(self):
+        original = {"second": {"kind": "dictionary", "entries": [
+            [{"kind": "float", "value": "0.299999999999999989"}, wire("first")],
+            [wire("second"), {"kind": "array", "type": "PackedFloat64Array", "values": [
+                {"value": "0.730000019073486328", "kind": "float"}, wire(2.0)]}]
+        ]}, "first": 2}
+        before = copy.deepcopy(original)
+        result = world.canonicalize_wire_floats(original)
+        self.assertEqual(original, before)
+        self.assertEqual(list(result), ["second", "first"])
+        entries = result["second"]["entries"]
+        self.assertEqual(entries[0], [{"kind": "float", "value": "0.3"}, wire("first")])
+        self.assertEqual(entries[1][0], wire("second"))
+        self.assertEqual(list(entries[1][1]["values"][0]), ["value", "kind"])
+        self.assertEqual(entries[1][1]["values"][0]["value"], "0.7300000190734863")
+        self.assertEqual(entries[1][1]["values"][1], wire(2.0))
+
+    def test_nonfinite_overflow_underflow_and_nondecimal_text_are_rejected(self):
+        for text in ("NaN", "nan", "Infinity", "-Infinity", "1e999", "-1e999", "1e-999",
+                     "0x1p0", "+0.3", "01.5"):
+            with self.subTest(number=text), self.assertRaises(world.WorldDataError):
+                world.canonicalize_wire_floats({"kind": "float", "value": text})
+
+    def test_cycles_and_excessive_nesting_are_rejected(self):
+        cycle = []
+        cycle.append(cycle)
+        with self.assertRaises(world.WorldDataError):
+            world.canonicalize_wire_floats(cycle)
+        nested = None
+        for _ in range(world.MAX_DEPTH + 1):
+            nested = [nested]
+        with self.assertRaises(world.WorldDataError):
+            world.canonicalize_wire_floats(nested)
 
 
 class WorldWireTests(unittest.TestCase):

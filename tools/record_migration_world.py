@@ -37,14 +37,15 @@ def fingerprint(root):
 
 
 def normalize_export(directory):
-    """Canonical JSON bytes, retaining typed entry arrays and source order."""
+    """Canonical JSON and lossless Float64 spelling, retaining all typed order."""
+    from migration_world_data import canonicalize_wire_floats
     index = json_read(directory / 'index.json')
     for row in [*index['shared'], *index['snapshots']]:
         name = row['path']
         if not re.fullmatch(r'tile-set\.json|snapshots/[a-z0-9_]+/[a-z0-9_]+\.json', name):
             raise ValueError('Unsafe engine output document path')
         path = directory / name
-        data = canonical_bytes(json_read(path))
+        data = canonical_bytes(canonicalize_wire_floats(json_read(path)))
         path.write_bytes(data)
         row.update(sha256=hashlib.sha256(data).hexdigest(), bytes=len(data))
     (directory / 'index.json').write_bytes(canonical_bytes(index))
@@ -54,7 +55,8 @@ def normalize_export(directory):
 
 def first_differences(expected, actual, path='$', limit=8):
     """Bounded structural diagnostics, never an alternative equality policy."""
-    if type(expected) is type(actual) and expected == actual:
+    if (not isinstance(expected, (dict, list)) and type(expected) is type(actual)
+            and repr(expected) == repr(actual)):
         return []
     result = []
     if type(expected) is dict and type(actual) is dict and expected.keys() == actual.keys():
@@ -159,11 +161,13 @@ def main():
             raise RuntimeError('Repeated real engine exports differ: ' + ', '.join(changed[:12]))
         if fingerprint(ROOT) != before:
             raise RuntimeError('Original game source changed during world export')
+        receipt.update(repeatableEngineRuns=2, documents=runs[0])
         if not args.scenario:
             from migration_world_data import validate_world_export
             from check_world_witnesses import check_world_witnesses
             from migration_runtime_ids import build_runtime_identities
             summary = validate_world_export(evidence / 'export-1', ROOT)
+            receipt['summary'] = summary
             witnesses = check_world_witnesses(evidence / 'export-1')
             identities = build_runtime_identities(evidence / 'export-1', ROOT)
             (evidence / 'world-witnesses.json').write_bytes(canonical_bytes(witnesses))

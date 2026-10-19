@@ -6,7 +6,7 @@
     "tiles": 49758
   },
   "baselineScenario": "fresh_baseline",
-  "bytes": 309795650,
+  "bytes": 309743567,
   "collisionBodies": 2992,
   "coverageContract": {
     "file": "migration/world-coverage.json",
