@@ -122,6 +122,7 @@ namespace BlueMapMigration.Probe
             Add("physics2d_query", Physics2D.OverlapPoint(testBody.transform.position) == obstacle); Destroy(testBody);
             if (!automated) yield break;
             while (frames < 60 || !SplashScreen.isFinished || Time.realtimeSinceStartup < 2.5f) yield return null;
+            gallery.CheckNativeAnimationBoundaries();
             gallery.Audio.PlayMusic();
             foreach (var clip in gallery.Catalog.audio) if (clip.definition.role == "effect") { gallery.Audio.PlayEffect(clip.definition.id, -15); break; }
             if (gallery.Catalog.ambience.Length > 0) gallery.Audio.PlayAmbience(gallery.Catalog.ambience[0].cue);
@@ -162,6 +163,7 @@ namespace BlueMapMigration.Probe
             var presentation = gallery.Report(proofs, captures.ToArray());
             Add("native_source_pixels_exact", presentation.allNativeTexturesReadable);
             Add("native_animation_clips_available", presentation.allNativeAnimationsReferenced);
+            Add("native_animation_boundaries_exact", presentation.nativeBoundaryFramesExact);
             Add("native_audio_available", presentation.audioCount == 138 && presentation.effectsPoolSize == 8);
             Add("original_localization_exact", presentation.localizationExact);
             Add("original_font_available", presentation.originalFontAvailable);

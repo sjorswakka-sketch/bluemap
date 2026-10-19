@@ -19,6 +19,8 @@ namespace BlueMapMigration.Phase6
         public string scope = "Original presentation assets in Unity; gameplay, world execution and saves are not ported";
         public int textureCount, spriteCount, animationCount, audioCount, localizationCount, hairStyles, clothingPieces;
         public bool success, allNativeTexturesReadable, allNativeAnimationsReferenced, localizationExact, originalFontAvailable, supplementaryGlyphsRendered, audioPlaybackStarted;
+        public bool nativeBoundaryFramesExact;
+        public int nativeBoundarySamples, nativeBoundaryFailures;
         public int[] supplementaryGlyphPixels;
         public int effectsPoolSize, effectsStarted, nativeGpuComparedPixels, nativeGpuMismatches;
         public string fontName, graphicsSha256, audioSha256, localizationSha256;
@@ -53,6 +55,7 @@ namespace BlueMapMigration.Phase6
         private float animationTime;
         private int[] glyphPixels;
         private bool nativeAnimationSamplingExact = true;
+        private int nativeBoundarySamples, nativeBoundaryFailures;
         public bool Frozen { get; set; }
         public static readonly string[] Pages = { "overview", "hair", "clothing", "equipment", "languages", "pixels" };
 
@@ -138,11 +141,7 @@ namespace BlueMapMigration.Phase6
             {
                 int x = 56 + i % 7 * 145, y = 206 + i / 7 * 124;
                 SpriteRenderer renderer = Put(actors[i].frames[0], x, y, 2);
-                Animator animator = renderer.gameObject.AddComponent<Animator>(); animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
-                PlayableGraph graph = PlayableGraph.Create(actors[i].definition.id); graph.SetTimeUpdateMode(DirectorUpdateMode.Manual);
-                AnimationClipPlayable playable = AnimationClipPlayable.Create(graph, actors[i].nativeClip);
-                AnimationPlayableOutput output = AnimationPlayableOutput.Create(graph, "Original sprite frames", animator); output.SetSourcePlayable(playable); graph.Play();
-                animated.Add(new NativePlayback { renderer = renderer, animation = actors[i], graph = graph, playable = playable });
+                animated.Add(CreateNativePlayer(renderer, actors[i]));
                 Label(actors[i].definition.id.Split(':')[1], x, y + 68, 11, Muted);
             }
             Label("Wereld & voorwerpen", 49, 476, 17, Muted);
@@ -221,18 +220,66 @@ namespace BlueMapMigration.Phase6
 
         public void SampleAnimations(float seconds)
         {
+            if (seconds < 0 || float.IsNaN(seconds) || float.IsInfinity(seconds)) throw new ArgumentOutOfRangeException(nameof(seconds));
             foreach (var pair in animated)
             {
-                CatalogAnimation animation = pair.animation;
-                int frame = Mathf.FloorToInt(seconds * animation.definition.fps);
-                frame = animation.definition.loop ? frame % animation.frames.Length : Mathf.Min(frame, animation.frames.Length - 1);
-                float duration = animation.frames.Length / animation.definition.fps;
-                float sampleTime = animation.definition.loop ? seconds % duration : Mathf.Min(seconds, (animation.frames.Length - 1) / animation.definition.fps);
-                // Native object-reference curves require a playable Animator
-                // binding; AnimationClip.SampleAnimation leaves SpriteRenderer
-                // PPtr curves untouched in the pinned Unity editor/player.
-                pair.playable.SetTime(sampleTime); pair.graph.Evaluate(0);
-                nativeAnimationSamplingExact &= pair.renderer.sprite == animation.frames[frame];
+                int frame = SourceFrame(pair.animation, seconds);
+                SampleNativeFrame(pair, frame);
+                nativeAnimationSamplingExact &= pair.renderer.sprite == pair.animation.frames[frame];
+            }
+        }
+        private static int SourceFrame(CatalogAnimation animation, float seconds)
+        {
+            int frame = Mathf.FloorToInt(seconds * animation.definition.fps);
+            return animation.definition.loop ? frame % animation.frames.Length : Mathf.Min(frame, animation.frames.Length - 1);
+        }
+        private static NativePlayback CreateNativePlayer(SpriteRenderer renderer, CatalogAnimation animation)
+        {
+            Animator animator = renderer.gameObject.AddComponent<Animator>(); animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            PlayableGraph graph = PlayableGraph.Create(animation.definition.id); graph.SetTimeUpdateMode(DirectorUpdateMode.Manual);
+            AnimationClipPlayable playable = AnimationClipPlayable.Create(graph, animation.nativeClip);
+            AnimationPlayableOutput output = AnimationPlayableOutput.Create(graph, "Original sprite frames", animator); output.SetSourcePlayable(playable); graph.Play();
+            return new NativePlayback { renderer = renderer, animation = animation, graph = graph, playable = playable };
+        }
+        private static void SampleNativeFrame(NativePlayback player, int sourceFrame)
+        {
+            // Source clock chooses the discrete sprite. Sample the native curve
+            // inside that exact interval; modulo of rounded clip durations can
+            // otherwise land just before a boundary (e.g. 1s at 5fps, 2 frames).
+            float nativeTime = (sourceFrame + .5f) / player.animation.definition.fps;
+            player.playable.SetTime(nativeTime); player.graph.Evaluate(0);
+        }
+        public void CheckNativeAnimationBoundaries()
+        {
+            nativeBoundarySamples = nativeBoundaryFailures = 0;
+            foreach (CatalogAnimation animation in Catalog.animations)
+            {
+                var obj = new GameObject("Isolated native curve boundary witness"); obj.transform.position = new Vector3(-200, -200, 0);
+                NativePlayback player = CreateNativePlayer(obj.AddComponent<SpriteRenderer>(), animation);
+                try
+                {
+                    // Eight source cycles, on each boundary and its immediately
+                    // preceding/following representable float32 clock. This is
+                    // exact Sprite-reference validation, with no tolerance.
+                    var clocks = new List<float> { 1f, BitConverter.Int32BitsToSingle(BitConverter.SingleToInt32Bits(1f) - 1), BitConverter.Int32BitsToSingle(BitConverter.SingleToInt32Bits(1f) + 1) };
+                    for (int boundary = 0; boundary <= animation.frames.Length * 8; boundary++)
+                    {
+                        int bits = BitConverter.SingleToInt32Bits(boundary / animation.definition.fps);
+                        if (boundary > 0) clocks.Add(BitConverter.Int32BitsToSingle(bits - 1));
+                        clocks.Add(BitConverter.Int32BitsToSingle(bits)); clocks.Add(BitConverter.Int32BitsToSingle(bits + 1));
+                    }
+                    foreach (float clock in clocks)
+                    {
+                        int expected = SourceFrame(animation, clock);
+                        SampleNativeFrame(player, expected); nativeBoundarySamples++;
+                        if (player.renderer.sprite != animation.frames[expected])
+                        {
+                            nativeBoundaryFailures++;
+                            if (nativeBoundaryFailures <= 5) Debug.LogError("Native source-frame boundary mismatch: " + animation.definition.id + " clock bits 0x" + BitConverter.SingleToInt32Bits(clock).ToString("x8") + " expected source frame " + expected);
+                        }
+                    }
+                }
+                finally { if (player.graph.IsValid()) player.graph.Destroy(); Destroy(obj); }
             }
         }
         private void Update()
@@ -247,12 +294,13 @@ namespace BlueMapMigration.Phase6
         {
             int mismatches = proofs.Sum(value => value.mismatches), pixels = proofs.Sum(value => value.opaquePixels);
             return new PresentationResult {
-                success = mismatches == 0 && pixels > 1000 && LocalizationExact && FontAvailable && glyphPixels != null && glyphPixels.All(value => value > 5) && Audio.EffectsStarted > 0 && Audio.MusicIsPlaying,
+                success = mismatches == 0 && pixels > 1000 && nativeBoundarySamples > 0 && nativeBoundaryFailures == 0 && LocalizationExact && FontAvailable && glyphPixels != null && glyphPixels.All(value => value > 5) && Audio.EffectsStarted > 0 && Audio.MusicIsPlaying,
                 textureCount = Catalog.textures.Length, spriteCount = Catalog.sprites.Length, animationCount = Catalog.animations.Length, audioCount = Catalog.audio.Length, localizationCount = Catalog.localization.Length,
                 hairStyles = UniqueHair().Length, clothingPieces = UniqueClothing().Length,
                 allNativeTexturesReadable = Catalog.textures.All(value => value.texture.isReadable && value.texture.filterMode == FilterMode.Point && value.texture.mipmapCount == 1 && value.sourceRgbaSha256 == value.importedRgbaSha256),
                 allNativeAnimationsReferenced = nativeAnimationSamplingExact && Catalog.animations.All(value => value.nativeClip != null && value.frames.Length > 0), localizationExact = LocalizationExact, originalFontAvailable = FontAvailable,
                 supplementaryGlyphsRendered = glyphPixels != null && glyphPixels.All(value => value > 5), supplementaryGlyphPixels = glyphPixels,
+                nativeBoundarySamples = nativeBoundarySamples, nativeBoundaryFailures = nativeBoundaryFailures, nativeBoundaryFramesExact = nativeBoundarySamples > 0 && nativeBoundaryFailures == 0,
                 fontName = Catalog.originalFont.name, audioPlaybackStarted = Audio.EffectsStarted > 0 && Audio.MusicWasStarted && Audio.MusicIsPlaying, effectsPoolSize = Audio.PoolSize, effectsStarted = Audio.EffectsStarted,
                 nativeGpuComparedPixels = pixels, nativeGpuMismatches = mismatches, gpuSprites = proofs, captures = captures,
                 graphicsSha256 = Catalog.graphicsSha256, audioSha256 = Catalog.audioSha256, localizationSha256 = Catalog.localizationSha256

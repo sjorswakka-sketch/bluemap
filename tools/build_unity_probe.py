@@ -394,7 +394,9 @@ def main() -> None:
     presentation = read_json(runtime / "presentation-result.json")
     require(imported.get("success") is True and imported.get("allNativePixelsExact") is True and
             imported.get("allNativeAudioExact") is True and imported.get("allNativeAnimationCurvesExact") is True and
-            presentation.get("success") is True and presentation.get("supplementaryGlyphsRendered") is True,
+            presentation.get("success") is True and presentation.get("supplementaryGlyphsRendered") is True and
+            presentation.get("nativeBoundaryFramesExact") is True and presentation.get("nativeBoundaryFailures") == 0 and
+            presentation.get("nativeBoundarySamples", 0) >= 18861,
             "Original presentation import/runtime proof failed")
     captures = {}
     for name in ("screenshot-hair.png", "screenshot-clothing.png", "screenshot-equipment.png",

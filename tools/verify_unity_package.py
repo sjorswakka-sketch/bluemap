@@ -50,6 +50,7 @@ PRESENTATION_CHECKS = {
     "ninety_original_hair_styles", "twenty_four_original_clothing",
     "original_audio_playback_started", "gpu_original_pixels_exact", "animated_source_frames_change",
     "supplementary_source_glyphs_rendered",
+    "native_animation_boundaries_exact",
 }
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
