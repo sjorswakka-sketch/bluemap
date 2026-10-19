@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "phase": 6,
+  "previewVersion": "0.2.0-phase6",
+  "sourceCommit": "5352b446902c1c188c3abadbed0ae0d42e3d5ba3",
+  "inputFingerprint": "80e229a771c77c5cd0143e913f59e8ff2d5a2b19839dc05df395e740f24fd2d2",
+  "editorVersion": "6000.3.26f1",
+  "editorRevision": "de8167e7440c",
+  "target": "StandaloneWindows64"
+}

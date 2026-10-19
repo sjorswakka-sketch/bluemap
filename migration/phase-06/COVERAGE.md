@@ -35,6 +35,10 @@ De oorspronkelijke bron maakt een 160×16-equipmenticoonatlas en een 128×128-ra
 
 Daarnaast tekenen de bestaande functies gewassen, irrigatie, mest, werkfeedback, meubels, hekken, rotsen, watervallen, geisers, stoom, fonteinen, projectielen, wapens, effecten en UI-elementen. Een gerenderd voorbeeld bewijst die gekozen toestand; het bewijst niet iedere toekomstige combinatie, tijdstap of gevechtsovergang. De volledige dynamische integratie hoort bij de geplande gameplay-, wereld-, sfeer- en UI-fases 7–24. Behouden broncode wordt niet als uitgevoerde Unity-code aangemerkt.
 
+De [gegenereerde referentie](../presentation/graphics-generated/index.json) bevat twaalf daadwerkelijk door Godot gemaakte textures: 2898 samples en 57 benoemde, bemonsterde animaties, plus de runtime-equipmenticonen, lichtgradient en gerasterde game-icoon. De samples bestaan uit 1656 haar-/kleding-/gearweergaven, 768 oogweergaven, 448 effecten/gereedschapsposebeelden, tien water-/rotsbeelden en zestien gewasbeelden. Twee afzonderlijke GPU-processen produceerden dezelfde dertien volledige bestanden. De index bevat de exacte Godot-versie en LF-bronhashes van beide exporthandlers; gewijzigde exportcode maakt de opname ongeldig.
+
+Bij visuele en alphacontrole bevatten alle appearance-, effect-, omgevings- en gewassamples beeld en raakt geen sample de rand van zijn vak. De 192 lege oogweergaven zijn de bedoelde achteraanzichten: de oorspronkelijke oogfunctie tekent daar niets. Bemonsterde zwaard-, boog-, werk- en rolbeelden behouden hun bronparameters; zij vervangen niet de latere state-machine. Ook de watervalbeelden zijn afzonderlijke tijdsamples, geen bewijs van een naadloze lus van één seconde.
+
 ## Audio en teksten
 
 Alle 138 originele WAV's zijn mono PCM16 op 22.050 Hz: 126 sound-ID's en twaalf muziektracks, samen circa 618,61 seconden. Import moet frames, duur en ID's behouden. De bron gebruikt acht SFX-spelers, gescheiden Music/SFX-bussen en een Master-mute; muziek en omgevingslussen lopen van sample nul tot het werkelijke aantal frames. Muziek-, regen- en sfeerfades, volume en pitch zijn gedrag dat naast het alleen importeren van clips moet worden bewezen.

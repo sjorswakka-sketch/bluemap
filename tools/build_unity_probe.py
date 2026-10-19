@@ -9,11 +9,13 @@ from __future__ import annotations
 
 import argparse
 import ctypes
+from contextlib import contextmanager
 import hashlib
 import json
 import os
 from pathlib import Path
 import re
+import shutil
 import struct
 import subprocess
 import sys
@@ -221,7 +223,33 @@ def validate_png(path: Path) -> dict:
     return {"width": width, "height": height, "nonFlat": True, "sha256": sha256(path)}
 
 
-def collect_build_inputs(root: Path = ROOT, commit: str | None = None) -> tuple[str, list[dict], str]:
+def read_git_blobs(root: Path, object_ids: list[str]) -> dict[str, bytes]:
+    """One bounded Git batch, retaining exact blob bytes and object identities."""
+    require(all(re.fullmatch(r"[0-9a-f]{40}", value) for value in object_ids), "Invalid Git blob identity")
+    if not object_ids:
+        return {}
+    raw = subprocess.check_output(["git", "cat-file", "--batch"], cwd=root,
+                                  input=("\n".join(object_ids) + "\n").encode("ascii"))
+    result, offset = {}, 0
+    for wanted in object_ids:
+        end = raw.find(b"\n", offset)
+        require(end >= offset, "Truncated Git batch header")
+        header = raw[offset:end].split()
+        require(len(header) == 3 and header[0] == wanted.encode() and header[1] == b"blob" and
+                header[2].isdigit(), "Git batch returned a different object")
+        size = int(header[2])
+        require(size <= 512 * 1024 * 1024 and end + size + 2 <= len(raw), "Invalid Git blob size")
+        data = raw[end + 1:end + 1 + size]
+        require(raw[end + 1 + size:end + 2 + size] == b"\n", "Git blob boundary is invalid")
+        require(hashlib.sha1(b"blob " + str(size).encode() + b"\0" + data).hexdigest() == wanted,
+                "Git blob identity does not match its bytes")
+        result[wanted] = data
+        offset = end + 2 + size
+    require(offset == len(raw), "Unexpected data after Git batch")
+    return result
+
+
+def _collect_build_input_data(root: Path = ROOT, commit: str | None = None) -> tuple[str, list[dict], str, dict[str, bytes]]:
     """Read exact committed build inputs, independent of checkout line endings."""
     def git(*arguments: str) -> bytes:
         return subprocess.check_output(["git", *arguments], cwd=root)
@@ -243,8 +271,9 @@ def collect_build_inputs(root: Path = ROOT, commit: str | None = None) -> tuple[
         entries.append((path, blob))
     require(helpers <= {path for path, _ in entries}, "Required committed build helpers are missing")
     inputs, canonical_files = [], {}
+    blobs = read_git_blobs(root, [blob for _, blob in sorted(entries)])
     for path, blob in sorted(entries):
-        data = git("cat-file", "blob", blob)
+        data = blobs[blob]
         inputs.append({"path": path, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
         canonical_files[path] = data
     if commit is None:
@@ -255,7 +284,32 @@ def collect_build_inputs(root: Path = ROOT, commit: str | None = None) -> tuple[
         require(not untracked, "Untracked build inputs must be committed before the preview")
     payload = json.dumps(inputs, sort_keys=True, separators=(",", ":")).encode("utf-8")
     fingerprint = hashlib.sha256(payload).hexdigest()
+    return source_commit, inputs, fingerprint, canonical_files
+
+
+def collect_build_inputs(root: Path = ROOT, commit: str | None = None) -> tuple[str, list[dict], str]:
+    source_commit, inputs, fingerprint, _ = _collect_build_input_data(root, commit)
     return source_commit, inputs, fingerprint
+
+
+@contextmanager
+def disposable_build_directory():
+    """Keep a failed isolated import for diagnosis; clean only our new cache."""
+    parent = Path(tempfile.gettempdir()).resolve()
+    path = Path(tempfile.mkdtemp(prefix="bluemap-unity-build-")).resolve()
+    require(path.parent == parent and path.name.startswith("bluemap-unity-build-") and not path.is_symlink(),
+            "Invalid disposable project location")
+    try:
+        yield str(path)
+    except BaseException:
+        print("Failed disposable project retained for diagnosis:", path, file=sys.stderr, flush=True)
+        raise
+    else:
+        # Unity children may retain a cache lock briefly. Never weaken checks or
+        # delete a different directory merely because cache cleanup is delayed.
+        require(path.parent == parent and path.name.startswith("bluemap-unity-build-") and not path.is_symlink(),
+                "Disposable project moved during the build")
+        shutil.rmtree(path, ignore_errors=True)
 
 
 def main() -> None:
@@ -270,7 +324,7 @@ def main() -> None:
     require(not output.exists() or (output.is_dir() and not any(output.iterdir())),
             "--output must be new or empty; previous results are never deleted")
     product_version = check_editor(editor)
-    source_commit, inputs, fingerprint = collect_build_inputs()
+    source_commit, inputs, fingerprint, canonical_files = _collect_build_input_data()
     identity = {"schemaVersion": 1, "phase": PHASE, "previewVersion": PREVIEW_VERSION,
                 "sourceCommit": source_commit, "inputFingerprint": fingerprint,
                 "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION, "target": TARGET}
@@ -288,13 +342,13 @@ def main() -> None:
     # Unity's child processes can briefly retain the Windows working directory
     # after a successful export. Cache cleanup is best effort; it must not hide
     # build/player validation or turn an ordinary file lock into a failed build.
-    with tempfile.TemporaryDirectory(prefix="bluemap-unity-build-", ignore_cleanup_errors=True) as temporary:
+    with disposable_build_directory() as temporary:
         project = Path(temporary) / "project"
         for entry in inputs:
             if entry["path"].startswith("unity/"):
                 path = project / entry["path"][len("unity/"):]
                 path.parent.mkdir(parents=True, exist_ok=True)
-                data = subprocess.check_output(["git", "show", source_commit + ":" + entry["path"]], cwd=ROOT)
+                data = canonical_files[entry["path"]]
                 require(hashlib.sha256(data).hexdigest() == entry["sha256"], "Build input changed")
                 path.write_bytes(data)
         run_hidden([str(editor), "-batchmode", "-nographics", "-quit", "-projectPath", str(project),
