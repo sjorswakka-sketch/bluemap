@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build, run, and package the isolated Unity phase 2 Windows probe.
+"""Build, run, and package the identified Unity migration technical preview.
 
 Requires the already licensed, pinned Windows Editor; it never installs or
 activates Unity. Raw Editor/player logs remain in the external output folder.
@@ -17,7 +17,7 @@ import re
 import struct
 import subprocess
 import sys
-import zipfile
+import tempfile
 import zlib
 
 
@@ -27,7 +27,10 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PACKAGE_NAME = "BlueMapUnityProbe-Windows-x64.zip"
+PREVIEW_VERSION = "0.1.0-phase3"
+PHASE = 3
+
+from verify_unity_package import PackageError, package_player, validate_identity, verify_package
 
 
 class ProbeError(RuntimeError):
@@ -218,41 +221,41 @@ def validate_png(path: Path) -> dict:
     return {"width": width, "height": height, "nonFlat": True, "sha256": sha256(path)}
 
 
-def package_player(player: Path, output: Path) -> tuple[Path, int]:
-    instructions = (
-        "BLUEMAP QUEST - UNITY CONTROLEBUILD\n\n"
-        "Dit is de technische controlebuild voor migratiefase 2.\n"
-        "De bestaande Godot-game is apart behouden; dit is nog geen overgezette game.\n\n"
-        "Pak de volledige map uit en start BlueMapUnityProbe.exe.\n"
-        "Laat de bijbehorende bestanden en de BlueMapUnityProbe_Data-map staan.\n"
-        "Deze controlebuild gebruikt geen opslagbestanden van de bestaande game.\n"
-        "Sluit het venster om te stoppen.\n\n"
-        f"Unity {EXPECTED_VERSION} ({EXPECTED_REVISION}), Windows x64 / Mono.\n"
-    ).encode("utf-8")
-    payload: dict[str, bytes] = {"LEESMIJ.txt": instructions}
-    for path in sorted(player.rglob("*")):
-        require(not path.is_symlink(), "Player output must not contain symbolic links")
-        if path.is_file():
-            require(path.suffix.lower() not in {".log", ".dmp"},
-                    "Unexpected private log/crash dump inside the player folder")
-            relative = path.relative_to(player).as_posix()
-            require(relative not in payload, "Player output conflicts with package instructions")
-            payload[relative] = path.read_bytes()
-    sums = "".join(f"{hashlib.sha256(data).hexdigest()}  {name}\n"
-                   for name, data in sorted(payload.items()))
-    payload["SHA256SUMS.txt"] = sums.encode("utf-8")
-    package = output / PACKAGE_NAME
-    with zipfile.ZipFile(package, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-        for name, data in sorted(payload.items()):
-            info = zipfile.ZipInfo("BlueMapUnityProbe/" + name, date_time=(1980, 1, 1, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
-            info.external_attr = 0o100644 << 16
-            archive.writestr(info, data, compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
-    with zipfile.ZipFile(package) as archive:
-        require(archive.testzip() is None, "Packaged player ZIP checksum validation failed")
-        require(set(archive.namelist()) == {"BlueMapUnityProbe/" + name for name in payload},
-                "Packaged player file list differs from verified output")
-    return package, len(payload)
+def collect_build_inputs(root: Path = ROOT, commit: str | None = None) -> tuple[str, list[dict], str]:
+    """Read exact committed build inputs, independent of checkout line endings."""
+    def git(*arguments: str) -> bytes:
+        return subprocess.check_output(["git", *arguments], cwd=root)
+    source_commit = git("rev-parse", commit or "HEAD").decode().strip()
+    require(re.fullmatch(r"[0-9a-f]{40}", source_commit) is not None, "Invalid source commit")
+    prefixes = ("unity/Assets/", "unity/Packages/", "unity/ProjectSettings/")
+    helpers = {"tools/build_unity_probe.py", "tools/verify_unity_package.py", "unity/.gdignore"}
+    entries = []
+    for row in git("ls-tree", "-rz", "--full-tree", source_commit).split(b"\0"):
+        if not row:
+            continue
+        meta, raw_path = row.split(b"\t", 1)
+        path = raw_path.decode("utf-8")
+        if not (path.startswith(prefixes) or path in helpers):
+            continue
+        mode, kind, blob = meta.decode().split()
+        require(kind == "blob" and mode == "100644", "Only ordinary source files are build inputs")
+        require("/Resources/BuildIdentity.json" not in path, "Generated build identity must not be committed")
+        entries.append((path, blob))
+    require(helpers <= {path for path, _ in entries}, "Required committed build helpers are missing")
+    inputs, canonical_files = [], {}
+    for path, blob in sorted(entries):
+        data = git("cat-file", "blob", blob)
+        inputs.append({"path": path, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
+        canonical_files[path] = data
+    if commit is None:
+        selected = [*prefixes, *sorted(helpers)]
+        status = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", *selected], cwd=root)
+        require(status.returncode == 0, "Commit all build inputs before building a traceable preview")
+        untracked = git("ls-files", "--others", "--exclude-standard", "-z", "--", *selected)
+        require(not untracked, "Untracked build inputs must be committed before the preview")
+    payload = json.dumps(inputs, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    fingerprint = hashlib.sha256(payload).hexdigest()
+    return source_commit, inputs, fingerprint
 
 
 def main() -> None:
@@ -260,92 +263,102 @@ def main() -> None:
     parser.add_argument("--editor", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
-    editor = args.editor.resolve()
-    output = args.output.resolve()
+    editor, output = args.editor.resolve(), args.output.resolve()
     require(not output.is_relative_to(ROOT) and not ROOT.is_relative_to(output),
             "--output must be external to the repository and may not contain it")
     require(output != Path(output.anchor), "--output may not be a filesystem root")
     require(not output.exists() or (output.is_dir() and not any(output.iterdir())),
-            "--output must be a new or empty directory; existing results are never deleted")
+            "--output must be new or empty; previous results are never deleted")
     product_version = check_editor(editor)
+    source_commit, inputs, fingerprint = collect_build_inputs()
+    identity = {"schemaVersion": 1, "phase": PHASE, "previewVersion": PREVIEW_VERSION,
+                "sourceCommit": source_commit, "inputFingerprint": fingerprint,
+                "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION, "target": TARGET}
+    validate_identity(identity)
     output.mkdir(parents=True, exist_ok=True)
-    logs = output / "private-logs"
+    logs, player, runtime = output / "private-logs", output / "player", output / "runtime"
     logs.mkdir()
-    player = output / "player"
-    runtime = output / "runtime"
     runtime.mkdir()
-    print(f"Verified Unity {EXPECTED_VERSION} ({EXPECTED_REVISION}); building isolated Windows probe.", flush=True)
-    run_hidden([str(editor), "-batchmode", "-nographics", "-quit", "-projectPath", str(PROJECT),
-                "-buildTarget", TARGET, "-executeMethod", "BlueMapMigration.Editor.Phase2Build.BuildWindows",
-                "-logFile", str(logs / "editor.log"), "--probe-build-output", str(player)],
-               1800, "Unity probe build")
+    identity_path = output / "identity.json"
+    identity_path.write_text(json.dumps(identity, indent=2) + "\n", encoding="utf-8")
+    (output / "build-inputs.json").write_text(json.dumps(inputs, indent=2) + "\n", encoding="utf-8")
+    print(f"Verified Unity {EXPECTED_VERSION}; building committed preview {source_commit[:8]}.", flush=True)
+    # Import/build only a disposable project assembled from canonical Git bytes.
+    # Generated Resources identity and Unity caches never touch the source checkout.
+    with tempfile.TemporaryDirectory(prefix="bluemap-unity-build-") as temporary:
+        project = Path(temporary) / "project"
+        for entry in inputs:
+            if entry["path"].startswith("unity/"):
+                path = project / entry["path"][len("unity/"):]
+                path.parent.mkdir(parents=True, exist_ok=True)
+                data = subprocess.check_output(["git", "show", source_commit + ":" + entry["path"]], cwd=ROOT)
+                require(hashlib.sha256(data).hexdigest() == entry["sha256"], "Build input changed")
+                path.write_bytes(data)
+        run_hidden([str(editor), "-batchmode", "-nographics", "-quit", "-projectPath", str(project),
+                    "-buildTarget", TARGET, "-executeMethod", "BlueMapMigration.Editor.Phase2Build.BuildWindows",
+                    "-logFile", str(logs / "editor.log"), "--probe-build-output", str(player),
+                    "--probe-build-identity", str(identity_path)], 1800, "Unity preview build")
     report = read_json(output / "build-report.json")
-    require(report.get("target") == TARGET, "Build report has the wrong target")
-    require(report.get("editorVersion") == EXPECTED_VERSION, "Build report has the wrong Editor version")
-    require(report.get("editorRevision") == EXPECTED_REVISION, "Build report has the wrong Editor revision")
-    require(report.get("buildResult") == "Succeeded", "Unity did not report a successful build")
-    require(type(report.get("totalErrors")) is int and report["totalErrors"] == 0,
-            "Build report contains errors or lacks its error count")
+    require(report.get("target") == TARGET and report.get("editorVersion") == EXPECTED_VERSION and
+            report.get("editorRevision") == EXPECTED_REVISION, "Build report version/target mismatch")
+    require(report.get("identity") == identity, "Build identity differs from committed inputs")
+    require(report.get("buildResult") == "Succeeded" and type(report.get("totalErrors")) is int and
+            report["totalErrors"] == 0, "Unity did not report an error-free build")
     require(type(report.get("totalWarnings")) is int and report["totalWarnings"] >= 0,
-            "Build report lacks a valid warning count")
+            "Invalid build warning count")
     executable = player / EXE_NAME
     validate_pe(executable)
-    require((player / "UnityPlayer.dll").is_file(), "Player output is missing UnityPlayer.dll")
-    require((player / "BlueMapUnityProbe_Data").is_dir(), "Player output is missing its Data folder")
-    print("Windows x64 build verified; running rendered player checks.", flush=True)
-    # Player -batchmode is headless; this check must exercise the rendered player.
-    # https://docs.unity3d.com/6000.3/Documentation/Manual/PlayerCommandLineArguments.html
+    require((player / "UnityPlayer.dll").is_file() and (player / "BlueMapUnityProbe_Data").is_dir(),
+            "Required Unity runtime files are missing")
+    print("Windows x64 build verified; running the rendered player.", flush=True)
     run_hidden([str(executable), "-screen-width", "1152", "-screen-height", "648",
                 "-logFile", str(logs / "player.log"), "--probe-automated",
-                "--probe-output-directory", str(runtime)], 180, "Unity probe player")
+                "--probe-output-directory", str(runtime)], 180, "Unity preview player")
     result = read_json(runtime / "result.json")
-    require(result.get("success") is True, "Runtime did not report success")
-    require(result.get("editorVersion") == EXPECTED_VERSION, "Runtime has the wrong Unity version")
-    require(result.get("companyName") == "BlueMapMigrationTests" and
+    require(result.get("success") is True and result.get("identity") == identity,
+            "Runtime checks or embedded identity failed")
+    require(result.get("editorVersion") == EXPECTED_VERSION and
+            result.get("companyName") == "BlueMapMigrationTests" and
             result.get("productName") == "BlueMapUnityProbe" and result.get("gameSaveAccessed") is False,
-            "Runtime test identity differs from the isolated probe")
-    require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
-            "Runtime capture method is not the verified GPU camera path")
+            "Runtime identity is not the isolated technical preview")
     graphics = result.get("graphicsDeviceType")
     require(isinstance(graphics, str) and bool(graphics.strip()) and graphics.lower() not in {"null", "none"},
             "Runtime did not use a real graphics device")
     checks = result.get("checks")
-    require(isinstance(checks, list) and bool(checks), "Runtime reported no checks")
-    require(all(isinstance(check, dict) and isinstance(check.get("name"), str) and
-                bool(check["name"].strip()) and check.get("passed") is True for check in checks),
-            "One or more runtime checks failed")
-    require(len({check["name"] for check in checks}) == len(checks), "Runtime check names are duplicated")
-    frames = result.get("frames")
-    require(type(frames) is int and frames > 0, "Runtime reported no rendered frames")
+    require(isinstance(checks, list) and bool(checks) and all(isinstance(c, dict) and
+            isinstance(c.get("name"), str) and c["name"] and c.get("passed") is True for c in checks),
+            "Runtime reported a failed or missing check")
+    require(len({c["name"] for c in checks}) == len(checks), "Runtime check names are duplicated")
+    require(type(result.get("frames")) is int and result["frames"] >= 60, "Runtime loop did not advance")
+    require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
+            "Unexpected runtime capture method")
     screenshot = validate_png(runtime / "screenshot.png")
-    package, file_count = package_player(player, output)
-    receipt = {
-        "schemaVersion": 1, "phase": 2, "success": True,
-        "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
-        "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
-        "buildResult": report["buildResult"], "totalErrors": report["totalErrors"],
-        "totalWarnings": report["totalWarnings"], "playerArchitecture": "x64",
-        "graphicsDeviceType": graphics, "frames": frames,
-        "captureMode": result["captureMode"],
-        "checks": [{"name": check["name"], "passed": True} for check in checks],
-        "screenshot": screenshot,
-        "package": {"file": package.name, "sha256": sha256(package),
-                    "bytes": package.stat().st_size, "files": file_count},
-        "rawLogsPublished": False, "godotSavesUsed": False,
-    }
-    receipt_path = output / "receipt.json"
-    receipt_path.write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    output_sums = "".join(f"{sha256(path)}  {path.relative_to(output).as_posix()}\n"
-                          for path in (package, receipt_path, runtime / "screenshot.png"))
-    (output / "SHA256SUMS.txt").write_text(output_sums, encoding="utf-8")
-    print(f"UNITY PROBE OK: {len(checks)} runtime checks; {frames} frames; {graphics}; 1152x648 image.", flush=True)
+    require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
+    package, file_count = package_player(player, output, identity, result)
+    receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
+               "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
+               "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
+               "buildResult": report["buildResult"], "totalErrors": report["totalErrors"],
+               "totalWarnings": report["totalWarnings"], "playerArchitecture": "x64",
+               "graphicsDeviceType": graphics, "frames": result["frames"], "captureMode": result["captureMode"],
+               "checks": checks, "screenshot": screenshot,
+               "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
+                           "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,
+               "buildSourceUnchanged": True, "buildProjectWasDisposable": True}
+    verified = verify_package(package, receipt, source_commit)
+    (output / "receipt.json").write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    (output / "package-verification.json").write_text(json.dumps(verified, indent=2) + "\n", encoding="utf-8")
+    sums = "".join(f"{sha256(path)}  {path.relative_to(output).as_posix()}\n"
+                   for path in (package, output / "receipt.json", runtime / "screenshot.png"))
+    (output / "SHA256SUMS.txt").write_text(sums, encoding="utf-8")
+    print(f"UNITY PREVIEW OK: {len(checks)} checks, {result['frames']} frames; source {source_commit[:8]}.", flush=True)
     print(f"Package: {package.name} ({package.stat().st_size} bytes), SHA256 {sha256(package)}", flush=True)
-    print("Public receipt: receipt.json; raw logs stay external in private-logs/.", flush=True)
+    print("Raw logs stay external; only verified package and public reports may be published.", flush=True)
 
 
 if __name__ == "__main__":
     try:
         main()
-    except (ProbeError, OSError) as error:
-        print(f"UNITY PROBE FAILED: {error}", file=sys.stderr)
+    except (ProbeError, PackageError, OSError, subprocess.SubprocessError) as error:
+        print(f"UNITY PREVIEW FAILED: {error}", file=sys.stderr)
         raise SystemExit(1)

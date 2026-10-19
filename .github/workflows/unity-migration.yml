@@ -1,0 +1,105 @@
+name: Unity-migratie controleren
+
+on:
+  push:
+    branches: ["codex/unity-migration"]
+  pull_request:
+    branches: ["codex/unity-migration"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unity-migration-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sources:
+    name: Bronbehoud en migratietests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Eigen migratie- en pakkettests
+        run: python -m unittest discover -s tests/migration -p 'test_*.py' -v
+      - name: Huidige Godot-bron en Unity-project controleren
+        run: python tools/check_migration.py --check --output "$RUNNER_TEMP/migration-source.json"
+      - name: Referentie, releasegegevens en teksten controleren
+        run: |
+          python tools/freeze_godot_reference.py --check
+          python tools/check_release.py
+          python tools/i18n.py check
+      - name: Broncontrole bewaren
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: Unity-migratie-broncontrole-${{ github.sha }}
+          path: ${{ runner.temp }}/migration-source.json
+          if-no-files-found: error
+          retention-days: 30
+
+  coexistence:
+    name: Godot blijft werken naast Unity
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Bestaande Godot-versie ophalen
+        run: |
+          curl --fail --silent --show-error --location -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot-builds/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP/godot"
+          chmod +x "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64"
+      - name: Godot-start en atlas testen met afzonderlijke opslag
+        run: python3 tools/run_tests.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --tests smoke_test world_atlas_test
+
+  download:
+    name: Unity-Windows-pakket controleren — lokaal gebouwd
+    needs: sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Beschikbare proefreferentie vaststellen
+        id: preview
+        run: |
+          if test -f migration/preview.json; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "Nog geen proefdownload aan deze bron gekoppeld; alleen broncontroles uitgevoerd."
+          fi
+      - name: Gepubliceerde ZIP en herkomst controleren
+        if: steps.preview.outputs.available == 'true'
+        run: python tools/fetch_unity_preview.py --output "$RUNNER_TEMP/unity-preview"
+      - name: Gecontroleerde Windows-proefdownload
+        if: steps.preview.outputs.available == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          path: ${{ runner.temp }}/unity-preview/*.zip
+          archive: false
+          if-no-files-found: error
+          retention-days: 30
+      - name: Pakketcontrole bewaren
+        if: steps.preview.outputs.available == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: Unity-migratie-pakketcontrole-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/unity-preview/receipt.json
+            ${{ runner.temp }}/unity-preview/download-verification.json
+          if-no-files-found: error
+          retention-days: 30

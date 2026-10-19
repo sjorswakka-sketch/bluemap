@@ -1,0 +1,342 @@
+"""Archive attacks and provenance failures must fail before player extraction."""
+
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+from pathlib import Path
+import struct
+import subprocess
+import sys
+import tempfile
+import unittest
+import zipfile
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
+import verify_unity_package as package
+
+
+def identity() -> dict:
+    return {
+        "schemaVersion": 1, "phase": 3, "previewVersion": "0.1.0-phase3",
+        "sourceCommit": "a" * 40, "inputFingerprint": "b" * 64,
+        "editorVersion": "6000.3.26f1", "editorRevision": "de8167e7440c",
+        "target": "StandaloneWindows64",
+    }
+
+
+def runtime(build_identity: dict) -> dict:
+    return {
+        "identity": copy.deepcopy(build_identity), "success": True,
+        "editorVersion": "6000.3.26f1", "graphicsDeviceType": "Direct3D11",
+        "frames": 120, "width": 1152, "height": 648,
+        "companyName": "BlueMapMigrationTests", "productName": "BlueMapUnityProbe",
+        "captureMode": "Camera.Render to GPU RenderTexture; window overlay excluded",
+        "gameSaveAccessed": False,
+        "checks": [{"name": name, "passed": True} for name in sorted(package.BASE_CHECKS)],
+    }
+
+
+def pe_stub() -> bytes:
+    """Small deliberate fixture, never a runnable executable."""
+    raw = bytearray(256)
+    raw[:2] = b"MZ"
+    struct.pack_into("<I", raw, 0x3C, 64)
+    raw[64:68] = b"PE\0\0"
+    struct.pack_into("<H", raw, 68, 0x8664)
+    struct.pack_into("<H", raw, 88, 0x20B)
+    return bytes(raw)
+
+
+class UnityPackageTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory(prefix="BlueMap-Package-Tests-")
+        self.addCleanup(self.temp.cleanup)
+        self.base = Path(self.temp.name)
+        self.player = self.base / "player"
+        self.output = self.base / "output"
+        self.player.mkdir()
+        self.output.mkdir()
+        self.identity = identity()
+        self.runtime = runtime(self.identity)
+        for name in package.REQUIRED_FILES - package.METADATA_FILES:
+            path = self.player / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            if name in package.PE_FILES:
+                raw = pe_stub()
+            elif name.endswith("app.info"):
+                raw = b"BlueMapMigrationTests\nBlueMapUnityProbe\n"
+            else:
+                raw = b"Deliberate non-runnable test fixture\n"
+            path.write_bytes(raw)
+        self.archive, count = package.package_player(self.player, self.output,
+                                                     self.identity, self.runtime)
+        self.receipt = {
+            "identity": self.identity, "success": True,
+            "rawLogsPublished": False, "godotSavesUsed": False,
+            "checks": self.runtime["checks"],
+            "package": {"file": self.archive.name, "sha256": package.sha256(self.archive),
+                        "bytes": self.archive.stat().st_size, "files": count},
+        }
+
+    def refresh_receipt(self) -> None:
+        self.receipt["package"].update(sha256=package.sha256(self.archive),
+                                       bytes=self.archive.stat().st_size)
+        with zipfile.ZipFile(self.archive) as archive:
+            self.receipt["package"]["files"] = len(archive.infolist())
+
+    def rewrite(self, edit, refresh_manifest: bool = False) -> None:
+        with zipfile.ZipFile(self.archive) as archive:
+            files = [(info, archive.read(info)) for info in archive.infolist()]
+        files = edit(files)
+        if refresh_manifest:
+            root = package.archive_root(self.identity) + "/"
+            manifest = {info.filename[len(root):]: {
+                "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)
+            } for info, raw in files if info.filename != root + "FILES.json"}
+            files = [(info, json.dumps(manifest).encode() if info.filename == root + "FILES.json"
+                      else raw) for info, raw in files]
+        with zipfile.ZipFile(self.archive, "w", compression=zipfile.ZIP_STORED) as archive:
+            for info, raw in files:
+                archive.writestr(info, raw)
+        self.refresh_receipt()
+
+    def change_payload(self, name: str, raw: bytes, refresh_manifest: bool = True) -> None:
+        self.rewrite(lambda files: [(info, raw if info.filename.endswith("/" + name) else data)
+                                   for info, data in files], refresh_manifest)
+
+    def rejected(self) -> None:
+        with self.assertRaises(package.PackageError):
+            package.verify_package(self.archive, self.receipt, "a" * 40)
+
+    def test_complete_preview_verifies_without_extracting(self) -> None:
+        before = sorted(str(p.relative_to(self.base)) for p in self.base.rglob("*"))
+        report = package.verify_package(self.archive, self.receipt, "a" * 40)
+        self.assertTrue(report["success"])
+        self.assertFalse(report["extracted"])
+        self.assertEqual(report["runtimeChecks"], 16)
+        self.assertEqual(before, sorted(str(p.relative_to(self.base)) for p in self.base.rglob("*")))
+
+    def test_packaging_is_deterministic(self) -> None:
+        second = self.base / "second"
+        second.mkdir()
+        rebuilt, _ = package.package_player(self.player, second, self.identity, self.runtime)
+        self.assertEqual(self.archive.read_bytes(), rebuilt.read_bytes())
+
+    def test_package_never_overwrites_previous_results(self) -> None:
+        before = self.archive.read_bytes()
+        with self.assertRaises(package.PackageError):
+            package.package_player(self.player, self.output, self.identity, self.runtime)
+        self.assertEqual(before, self.archive.read_bytes())
+
+    def test_outer_checksum_detects_byte_tampering(self) -> None:
+        raw = bytearray(self.archive.read_bytes())
+        raw[len(raw) // 2] ^= 1
+        self.archive.write_bytes(raw)
+        self.rejected()
+
+    def test_source_must_match_trusted_git_commit(self) -> None:
+        with self.assertRaises(package.PackageError):
+            package.verify_package(self.archive, self.receipt, "c" * 40)
+
+    def test_renamed_version_is_rejected(self) -> None:
+        renamed = self.archive.with_name("Godot-game.zip")
+        self.archive.rename(renamed)
+        with self.assertRaises(package.PackageError):
+            package.verify_package(renamed, self.receipt)
+
+    def test_phase2_identity_is_not_silently_accepted(self) -> None:
+        self.receipt["identity"] = {**self.identity, "phase": 2}
+        self.rejected()
+
+    def test_identity_boolean_is_not_a_schema_number(self) -> None:
+        self.receipt["identity"] = {**self.identity, "schemaVersion": True}
+        self.rejected()
+
+    def test_zero_commit_or_fingerprint_cannot_identify_a_build(self) -> None:
+        for name, zero in (("sourceCommit", "0" * 40), ("inputFingerprint", "0" * 64)):
+            with self.subTest(field=name):
+                changed = {**self.identity, name: zero}
+                with self.assertRaises(package.PackageError):
+                    package.validate_identity(changed)
+
+    def test_manifest_detects_changed_file_even_when_outer_receipt_is_replaced(self) -> None:
+        self.change_payload("BlueMapUnityProbe.exe", pe_stub() + b"changed", False)
+        self.rejected()
+
+    def test_missing_engine_file_rejected_even_with_rehashed_manifest(self) -> None:
+        self.rewrite(lambda files: [(info, raw) for info, raw in files
+                                   if not info.filename.endswith("/UnityPlayer.dll")], True)
+        self.rejected()
+
+    def test_unlisted_extra_file_rejected(self) -> None:
+        name = package.archive_root(self.identity) + "/BlueMapUnityProbe_Data/extra.bin"
+        self.rewrite(lambda files: files + [(zipfile.ZipInfo(name), b"extra")])
+        self.rejected()
+
+    def test_path_attacks_rejected_before_extraction(self) -> None:
+        for suffix in ("../escape.txt", "/absolute.txt", "C:/escape.txt", "\\server\\share",
+                       "BlueMapUnityProbe_Data/../escape.txt", "BlueMapUnityProbe_Data/CON.txt",
+                       "BlueMapUnityProbe_Data/trailing. "):
+            with self.subTest(path=suffix):
+                # Restore from a new valid deterministic build for each attack.
+                self.archive.unlink()
+                self.archive, _ = package.package_player(self.player, self.output,
+                                                         self.identity, self.runtime)
+                name = package.archive_root(self.identity) + "/" + suffix
+                self.rewrite(lambda files: files + [(zipfile.ZipInfo(name), b"attack")])
+                self.rejected()
+
+    def test_duplicate_windows_case_path_rejected(self) -> None:
+        name = package.archive_root(self.identity) + "/BlueMapUnityProbe.EXE"
+        self.rewrite(lambda files: files + [(zipfile.ZipInfo(name), pe_stub())])
+        self.rejected()
+
+    def test_zip_symlink_rejected(self) -> None:
+        def symlink(files):
+            files[0][0].create_system = 3
+            files[0][0].external_attr = 0o120777 << 16
+            return files
+        self.rewrite(symlink)
+        self.rejected()
+
+    def test_encrypted_flag_rejected(self) -> None:
+        raw = bytearray(self.archive.read_bytes())
+        local = raw.index(b"PK\x03\x04")
+        central = raw.index(b"PK\x01\x02")
+        struct.pack_into("<H", raw, local + 6, struct.unpack_from("<H", raw, local + 6)[0] | 1)
+        struct.pack_into("<H", raw, central + 8, struct.unpack_from("<H", raw, central + 8)[0] | 1)
+        self.archive.write_bytes(raw)
+        self.refresh_receipt()
+        self.rejected()
+
+    def test_raw_logs_and_activation_files_rejected(self) -> None:
+        for name in ("BlueMapUnityProbe_Data/player.log", "BlueMapUnityProbe_Data/Unity_lic.ulf",
+                     "BlueMapUnityProbe_Data/private-logs/editor.txt",
+                     "BlueMapUnityProbe_Data/personal.lic", "BlueMapUnityProbe_Data/savegame.cfg"):
+            with self.subTest(path=name):
+                self.archive.unlink()
+                self.archive, _ = package.package_player(self.player, self.output,
+                                                         self.identity, self.runtime)
+                full = package.archive_root(self.identity) + "/" + name
+                self.rewrite(lambda files: files + [(zipfile.ZipInfo(full), b"must not publish")], True)
+                self.rejected()
+
+    def test_packager_rejects_private_file(self) -> None:
+        (self.player / "BlueMapUnityProbe_Data" / "player.log").write_text("private")
+        second = self.base / "second"
+        second.mkdir()
+        with self.assertRaises(package.PackageError):
+            package.package_player(self.player, second, self.identity, self.runtime)
+
+    def test_non_x64_player_rejected_even_with_rehashed_manifest(self) -> None:
+        raw = bytearray(pe_stub())
+        struct.pack_into("<H", raw, 68, 0x14C)
+        self.change_payload("BlueMapUnityProbe.exe", bytes(raw))
+        self.rejected()
+
+    def test_runtime_identity_does_not_match_receipt(self) -> None:
+        changed = copy.deepcopy(self.runtime)
+        changed["identity"]["inputFingerprint"] = "c" * 64
+        self.change_payload("RUNTIME-CHECKS.json", json.dumps(changed).encode())
+        self.rejected()
+
+    def test_receipt_rendering_facts_must_match_runtime(self) -> None:
+        self.receipt["frames"] = self.runtime["frames"] + 1
+        self.rejected()
+
+    def test_failed_or_missing_rendered_checks_rejected(self) -> None:
+        changed = copy.deepcopy(self.runtime)
+        changed["checks"][0]["passed"] = False
+        self.change_payload("RUNTIME-CHECKS.json", json.dumps(changed).encode())
+        self.rejected()
+
+    def test_embedded_identity_and_preview_version_checks_are_required(self) -> None:
+        for required in ("embedded_identity_consistent", "preview_version"):
+            with self.subTest(check=required):
+                changed = copy.deepcopy(self.runtime)
+                changed["checks"] = [check for check in changed["checks"] if check["name"] != required]
+                # An unrelated successful check cannot replace identity coverage.
+                changed["checks"].append({"name": "unrelated_probe_check", "passed": True})
+                with self.assertRaises(package.PackageError):
+                    package.package_player(self.player, self.output, self.identity, changed)
+
+    def test_receipt_checks_must_match_runtime_checks(self) -> None:
+        self.receipt["checks"] = self.runtime["checks"][:-1]
+        self.rejected()
+
+    def test_duplicate_json_keys_rejected(self) -> None:
+        self.change_payload("RUNTIME-CHECKS.json", b'{"success":true,"success":true}')
+        self.rejected()
+
+    def test_existing_game_save_access_is_rejected(self) -> None:
+        changed = copy.deepcopy(self.runtime)
+        changed["gameSaveAccessed"] = True
+        self.change_payload("RUNTIME-CHECKS.json", json.dumps(changed).encode())
+        self.rejected()
+
+    def test_archive_crc_failure_is_rejected(self) -> None:
+        # Re-encode as stored bytes, then break a payload without updating ZIP CRC.
+        def stored(files):
+            for info, _ in files:
+                info.compress_type = zipfile.ZIP_STORED
+            return files
+        self.rewrite(stored)
+        with zipfile.ZipFile(self.archive) as archive:
+            target = next(info for info in archive.infolist()
+                          if info.filename.endswith("/BlueMapUnityProbe.exe"))
+        raw = bytearray(self.archive.read_bytes())
+        offset = target.header_offset
+        name_length, extra_length = struct.unpack_from("<HH", raw, offset + 26)
+        raw[offset + 30 + name_length + extra_length + 100] ^= 1
+        self.archive.write_bytes(raw)
+        self.refresh_receipt()
+        self.rejected()
+
+    def test_wrong_player_company_rejected(self) -> None:
+        self.change_payload("BlueMapUnityProbe_Data/app.info", b"RealGame\nBlueMapQuest\n")
+        self.rejected()
+
+    def test_unexpected_runtime_fields_cannot_leak_paths(self) -> None:
+        changed = {**self.runtime, "privateLogPath": "C:/Users/player/private.log"}
+        self.change_payload("RUNTIME-CHECKS.json", json.dumps(changed).encode())
+        self.rejected()
+
+    def test_archive_comment_is_not_published(self) -> None:
+        with zipfile.ZipFile(self.archive, "a") as archive:
+            archive.comment = b"unreviewed hidden metadata"
+        self.refresh_receipt()
+        self.rejected()
+
+    def test_zip_declared_size_limit_rejected_before_decompression(self) -> None:
+        raw = bytearray(self.archive.read_bytes())
+        central = raw.index(b"PK\x01\x02")
+        struct.pack_into("<I", raw, central + 24, package.MAX_FILE_BYTES + 1)
+        self.archive.write_bytes(raw)
+        self.refresh_receipt()
+        self.rejected()
+
+    def test_member_directory_is_not_a_runtime_file(self) -> None:
+        full = package.archive_root(self.identity) + "/BlueMapUnityProbe_Data/new-directory/"
+        info = zipfile.ZipInfo(full)
+        info.external_attr = 0o40755 << 16
+        self.rewrite(lambda files: files + [(info, b"")])
+        self.rejected()
+
+    def test_cli_verifies_and_writes_a_separate_report(self) -> None:
+        receipt_path = self.base / "receipt.json"
+        receipt_path.write_text(json.dumps(self.receipt), encoding="utf-8")
+        report_path = self.base / "verified.json"
+        result = subprocess.run([
+            sys.executable, str(Path(package.__file__)), "--package", str(self.archive),
+            "--receipt", str(receipt_path), "--expected-source-commit", "a" * 40,
+            "--output", str(report_path),
+        ], check=False, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("UNITY PACKAGE OK", result.stdout)
+        self.assertTrue(json.loads(report_path.read_text(encoding="utf-8"))["success"])
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -7,6 +7,56 @@ using UnityEngine.Rendering;
 
 namespace BlueMapMigration.Probe
 {
+    // This record is supplied by the build wrapper and embedded in the player.
+    // There is deliberately no default identity: a build must identify its inputs.
+    [Serializable]
+    public sealed class BuildIdentity
+    {
+        public int schemaVersion;
+        public int phase;
+        public string previewVersion;
+        public string sourceCommit;
+        public string inputFingerprint;
+        public string editorVersion;
+        public string editorRevision;
+        public string target;
+
+        public bool IsValid(out string error)
+        {
+            if (schemaVersion != 1) error = "schemaVersion must be 1.";
+            else if (phase != 3) error = "phase must be 3.";
+            else if (previewVersion != "0.1.0-phase3") error = "previewVersion must be 0.1.0-phase3.";
+            else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
+            else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
+            else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
+            else if (editorRevision != "de8167e7440c") error = "editorRevision must be de8167e7440c.";
+            else if (target != "StandaloneWindows64") error = "target must be StandaloneWindows64.";
+            else { error = null; return true; }
+            return false;
+        }
+
+        public static BuildIdentity Parse(string json)
+        {
+            if (string.IsNullOrWhiteSpace(json)) throw new FormatException("Build identity JSON is empty.");
+            BuildIdentity value = JsonUtility.FromJson<BuildIdentity>(json);
+            if (value == null) throw new FormatException("Build identity JSON contains no record.");
+            if (!value.IsValid(out string error)) throw new FormatException("Invalid build identity: " + error);
+            return value;
+        }
+
+        private static bool IsHash(string value, int length)
+        {
+            if (value == null || value.Length != length) return false;
+            bool nonzero = false;
+            foreach (char c in value)
+            {
+                if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f'))) return false;
+                nonzero |= c != '0';
+            }
+            return nonzero;
+        }
+    }
+
     // Own, deliberately small test scene; it does not load any BlueMap game or save data.
     public sealed class Phase2Probe : MonoBehaviour
     {
@@ -21,6 +71,7 @@ namespace BlueMapMigration.Probe
             public int height;
             public string companyName;
             public string productName;
+            public BuildIdentity identity;
             public string captureMode = "Camera.Render to GPU RenderTexture; window overlay excluded";
             public bool gameSaveAccessed = false;
             public Check[] checks;
@@ -37,6 +88,7 @@ namespace BlueMapMigration.Probe
         private float walk;
         private string output;
         private bool runtimeError;
+        private BuildIdentity identity;
         private const int TilePixels = 32;
         private static readonly Color Sky = Hex(0x131e2d);
 
@@ -47,9 +99,21 @@ namespace BlueMapMigration.Probe
             Application.logMessageReceived += LogReceived;
             automated = Array.IndexOf(Environment.GetCommandLineArgs(), "--probe-automated") >= 0;
             output = Argument("--probe-output-directory");
+            try
+            {
+                TextAsset embedded = Resources.Load<TextAsset>("BuildIdentity");
+                if (embedded == null) throw new FormatException("Embedded BuildIdentity.json is missing.");
+                identity = BuildIdentity.Parse(embedded.text);
+            }
+            catch (Exception exception)
+            {
+                Debug.LogError("Cannot identify this technical preview: " + exception.Message);
+            }
             BuildView();
             Add("pinned_editor_version", Application.unityVersion == "6000.3.26f1");
             Add("separate_test_identity", Application.companyName == "BlueMapMigrationTests" && Application.productName == "BlueMapUnityProbe");
+            Add("embedded_identity_consistent", identity != null && identity.editorVersion == Application.unityVersion && Application.platform == RuntimePlatform.WindowsPlayer);
+            Add("preview_version", identity != null && Application.version == identity.previewVersion);
             Add("release_player", !Debug.isDebugBuild);
             Add("graphics_device_active", SystemInfo.graphicsDeviceType != GraphicsDeviceType.Null);
             Add("orthographic_camera", worldCamera.orthographic);
@@ -106,6 +170,7 @@ namespace BlueMapMigration.Probe
                 height = Screen.height,
                 companyName = Application.companyName,
                 productName = Application.productName,
+                identity = identity,
                 checks = checks.ToArray()
             };
             File.WriteAllText(Path.Combine(output, "result.json"), JsonUtility.ToJson(result, true));
@@ -257,8 +322,9 @@ namespace BlueMapMigration.Probe
             var copy = new GUIStyle(GUI.skin.label) { fontSize = 17 };
             var badge = new GUIStyle(copy) { alignment = TextAnchor.MiddleRight };
             GUI.Label(new Rect(72, 47, 720, 40), "BLUEMAP QUEST  /  UNITY-PROEF", title);
-            GUI.Label(new Rect(74, 91, 850, 28), "Een kleine bouwproef; de bestaande game blijft veilig in Godot.", copy);
-            GUI.Label(new Rect(854, 52, 220, 35), "FASE 2  ·  6.3 LTS", badge);
+            GUI.Label(new Rect(74, 91, 850, 28), "Technische preview; de bestaande game blijft veilig in Godot.", copy);
+            string buildBadge = identity == null ? "IDENTITEIT ONTBREEKT" : "FASE 3  ·  " + identity.sourceCommit.Substring(0, 8);
+            GUI.Label(new Rect(854, 52, 220, 35), buildBadge, badge);
             GUI.color = Hex(0x1c2c40);
             GUI.DrawTexture(new Rect(48, 524, 1056, 94), panel);
             GUI.color = Hex(0xb7e2bf);

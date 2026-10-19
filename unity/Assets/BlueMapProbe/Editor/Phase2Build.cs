@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using BlueMapMigration.Probe;
 using UnityEditor;
 using UnityEditor.Build;
@@ -10,12 +12,13 @@ using UnityEngine.Rendering;
 
 namespace BlueMapMigration.Editor
 {
-    // Phase 2 proves the build route only. No Godot content or saves are imported.
+    // The technical preview proves the build route only; it imports no game or saves.
     public static class Phase2Build
     {
         public const string EditorVersion = "6000.3.26f1";
         public const string EditorRevision = "de8167e7440c";
         private const string ScenePath = "Assets/BlueMapProbe/Scenes/Phase2Probe.unity";
+        private const string IdentityAssetPath = "Assets/BlueMapProbe/Resources/BuildIdentity.json";
 
         [Serializable]
         private sealed class Report
@@ -31,6 +34,7 @@ namespace BlueMapMigration.Editor
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
             public string scope = "Isolated technical probe, not the ported game";
+            public BuildIdentity identity;
         }
 
         public static void BuildWindows()
@@ -45,6 +49,12 @@ namespace BlueMapMigration.Editor
             {
                 if (Application.unityVersion != EditorVersion)
                     throw new BuildFailedException("Use pinned Unity " + EditorVersion + ".");
+                string identityPath = Argument("--probe-build-identity");
+                if (string.IsNullOrWhiteSpace(identityPath) || !Path.IsPathFullyQualified(identityPath))
+                    throw new BuildFailedException("An absolute --probe-build-identity JSON path is required.");
+                if (!File.Exists(identityPath))
+                    throw new BuildFailedException("The --probe-build-identity JSON file does not exist.");
+                report.identity = BuildIdentity.Parse(File.ReadAllText(identityPath));
                 if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneWindows64)
                     throw new BuildFailedException("Start Editor with -buildTarget StandaloneWindows64.");
                 if (!BuildPipeline.IsBuildTargetSupported(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64))
@@ -58,7 +68,7 @@ namespace BlueMapMigration.Editor
                 EditorSettings.defaultBehaviorMode = EditorBehaviorMode.Mode2D;
                 PlayerSettings.companyName = "BlueMapMigrationTests";
                 PlayerSettings.productName = "BlueMapUnityProbe";
-                PlayerSettings.bundleVersion = "0.1.0-phase2";
+                PlayerSettings.bundleVersion = report.identity.previewVersion;
                 PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Standalone, "nl.bluemap.migration.probe");
                 PlayerSettings.SetScriptingBackend(NamedBuildTarget.Standalone, ScriptingImplementation.Mono2x);
                 PlayerSettings.SetApiCompatibilityLevel(NamedBuildTarget.Standalone, ApiCompatibilityLevel.NET_Standard);
@@ -83,11 +93,13 @@ namespace BlueMapMigration.Editor
                 QualitySettings.vSyncCount = 0;
                 QualitySettings.shadows = ShadowQuality.Disable;
 
+                EmbedIdentity(report.identity);
+
                 // Keep committed scene IDs stable across repeated builds.
                 if (AssetDatabase.LoadAssetAtPath<SceneAsset>(ScenePath) == null)
                 {
                     var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-                    new GameObject("Phase 2 — technical build probe").AddComponent<Phase2Probe>();
+                    new GameObject("Technical build preview").AddComponent<Phase2Probe>();
                     Directory.CreateDirectory(Path.GetDirectoryName(ScenePath));
                     if (!EditorSceneManager.SaveScene(scene, ScenePath))
                         throw new BuildFailedException("Could not save probe scene.");
@@ -118,6 +130,35 @@ namespace BlueMapMigration.Editor
                 File.WriteAllText(reportPath, JsonUtility.ToJson(report, true));
                 throw;
             }
+        }
+
+        private static void EmbedIdentity(BuildIdentity identity)
+        {
+            // The wrapper calls this only inside a disposable copy of the project.
+            // Stable metadata avoids introducing random asset GUIDs into each build.
+            string resourcesPath = Path.Combine(Application.dataPath, "BlueMapProbe", "Resources");
+            Directory.CreateDirectory(resourcesPath);
+            WriteMeta(resourcesPath + ".meta", "Assets/BlueMapProbe/Resources", true);
+            string assetPath = Path.Combine(resourcesPath, "BuildIdentity.json");
+            File.WriteAllText(assetPath, JsonUtility.ToJson(identity, true), new UTF8Encoding(false));
+            WriteMeta(assetPath + ".meta", IdentityAssetPath, false);
+            AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+            AssetDatabase.ImportAsset(IdentityAssetPath, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+            TextAsset imported = AssetDatabase.LoadAssetAtPath<TextAsset>(IdentityAssetPath);
+            if (imported == null || JsonUtility.ToJson(BuildIdentity.Parse(imported.text)) != JsonUtility.ToJson(identity))
+                throw new BuildFailedException("The embedded build identity could not be verified after import.");
+        }
+
+        private static void WriteMeta(string destination, string assetPath, bool folder)
+        {
+            string guid;
+            using (SHA256 hash = SHA256.Create())
+                guid = BitConverter.ToString(hash.ComputeHash(Encoding.UTF8.GetBytes("BlueMapMigration/" + assetPath)))
+                    .Replace("-", "").ToLowerInvariant().Substring(0, 32);
+            string importer = folder ? "DefaultImporter" : "TextScriptImporter";
+            string metadata = "fileFormatVersion: 2\nguid: " + guid + "\n" + (folder ? "folderAsset: yes\n" : "")
+                + importer + ":\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n";
+            File.WriteAllText(destination, metadata, new UTF8Encoding(false));
         }
 
         private static string Argument(string key)
