@@ -3,7 +3,7 @@
 | Wat wil je openen? | Download | Inhoud |
 |---|---|---|
 | De volledige bestaande game | [Godot 0.34.0-preview](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) | Bestaande game, oorspronkelijke wereld en systemen; bron en herstelgeschiedenis inbegrepen |
-| De actuele technische Unity-preview | [Fase 6 — 67e23412](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase6-preview-67e23412) | Oorspronkelijke art, kapsels, kleding, gear, animaties, audio en NL/EN-teksten; nog geen volledige gameport |
+| De actuele technische Unity-preview | [Fase 6 — c73127ce](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase6-preview-c73127ce) | Oorspronkelijke art, kapsels, kleding, gear, animaties, audio en NL/EN-teksten; nog geen volledige gameport |
 | Het eerdere bron- en downloadbewijs | [Unity-fase 3](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase3-preview-95811f4b) | Historische proef van de bouw-, herkomst- en downloadroute |
 | Het eerdere bouwbewijs | [Unity-fase 2](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase2-probe) | Historisch eerste geslaagde Windows-bouwproef |
 

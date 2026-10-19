@@ -2,7 +2,7 @@
 
 Het volgende **go** start fase 7: de technische spelbasis; de volledige game is nog niet overgezet.
 
-[Fase 6: oorspronkelijke presentatie in Unity](phase-06/README.md) — alle originele PNGs en WAVs, native sprites en animatieclips, 90 kapsels, 24 kledingstukken, fonts en alle 3.187 NL/EN-teksten; 29 echte Windows-runtimecontroles en 18.861 animatiegrenssamples.
+[Fase 6: oorspronkelijke presentatie in Unity](phase-06/README.md) — alle originele PNGs en WAVs, native sprites en animatieclips, 90 kapsels, 24 kledingstukken, fonts en alle 3.187 NL/EN-teksten; 30 echte Windows-runtimecontroles, 18.861 animatiegrenssamples en brongetrouwe transparantie.
 
 [Fase 5: de daadwerkelijk geladen wereld](phase-05/README.md) — alle 37 kaarten, 59 synthetische profielen en 162 kaartopnamen met oorspronkelijke slots, runtime-objecten, echte colliders, aankomsten en veranderde toestanden; zie [de wereldindex](world/index.json).
 

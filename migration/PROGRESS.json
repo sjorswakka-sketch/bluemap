@@ -23,7 +23,7 @@
   "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": false,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase6-preview-67e23412",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase6-preview-c73127ce",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",

@@ -18,6 +18,87 @@
   "nativeBoundaryFramesExact": true,
   "nativeBoundarySamples": 18861,
   "nativeBoundaryFailures": 0,
+  "premultipliedPixelsExact": true,
+  "premultipliedTextureCount": 9,
+  "premultipliedComparedPixels": 82596,
+  "premultipliedAlphaOnePixels": 0,
+  "premultipliedMismatches": 0,
+  "premultipliedTintComparedPixels": 32,
+  "premultipliedTintMismatches": 0,
+  "premultipliedTextures": [
+    {
+      "id": "generated:swords-0",
+      "comparedPixels": 22260,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 0,
+      "tintMismatches": 0
+    },
+    {
+      "id": "generated:swords-1",
+      "comparedPixels": 28551,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 32,
+      "tintMismatches": 0
+    },
+    {
+      "id": "generated:swords-2",
+      "comparedPixels": 20190,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 0,
+      "tintMismatches": 0
+    },
+    {
+      "id": "generated:appearances-0",
+      "comparedPixels": 0,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 0,
+      "tintMismatches": 0
+    },
+    {
+      "id": "generated:appearances-1",
+      "comparedPixels": 0,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 0,
+      "tintMismatches": 0
+    },
+    {
+      "id": "generated:crops-0",
+      "comparedPixels": 0,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 0,
+      "tintMismatches": 0
+    },
+    {
+      "id": "generated:eyes-0",
+      "comparedPixels": 0,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 0,
+      "tintMismatches": 0
+    },
+    {
+      "id": "generated:tools-0",
+      "comparedPixels": 11595,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 0,
+      "tintMismatches": 0
+    },
+    {
+      "id": "generated:water-0",
+      "comparedPixels": 0,
+      "alphaOnePixels": 0,
+      "mismatches": 0,
+      "tintComparedPixels": 0,
+      "tintMismatches": 0
+    }
+  ],
   "supplementaryGlyphPixels": [
     44,
     54,
@@ -31,7 +112,7 @@
   "nativeGpuComparedPixels": 32040,
   "nativeGpuMismatches": 0,
   "fontName": "DefaultFont",
-  "graphicsSha256": "e52e54051f9eeb7e24ca77f94adc6ce88cff3e87f58f146bb31bb6457f067e04",
+  "graphicsSha256": "49aa99712bab22187e4f972044233728df2fea4a519e7174e96ca6a71fd19b94",
   "audioSha256": "b2935fee56942fb872cc47881beaa13c2348f52e9dbdb91eed8d135a68b4a1a1",
   "localizationSha256": "6f78b91e30db0b43fc33b597cde12c1f625244d87e1a04117898e37e37f84e34",
   "captures": [
@@ -41,7 +122,8 @@
     "screenshot-equipment.png",
     "screenshot-languages.png",
     "screenshot-pixels.png",
-    "screenshot-animation.png"
+    "screenshot-animation.png",
+    "screenshot-premultiplied.png"
   ],
   "gpuSprites": [
     {

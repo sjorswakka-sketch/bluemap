@@ -7,8 +7,8 @@
     "schemaVersion": 1,
     "phase": 6,
     "previewVersion": "0.2.0-phase6",
-    "sourceCommit": "67e23412c6936fe8a7923d9d6335ee284a87dcdb",
-    "inputFingerprint": "f73c5af6c14332a2a6feb1d578b232c50b4725472814759286a56981a55d8320",
+    "sourceCommit": "c73127cec71e9bf22726ee8cb9843b343c493651",
+    "inputFingerprint": "1c894349808d26b257d85566c64818f624d0e49b0c07c3978ab2dbb14a3865c0",
     "editorVersion": "6000.3.26f1",
     "editorRevision": "de8167e7440c",
     "target": "StandaloneWindows64"
@@ -41,13 +41,13 @@
     101
   ],
   "pythonTests": {
-    "total": 325,
-    "passed": 323,
+    "total": 328,
+    "passed": 326,
     "skippedWindowsSymlinkFixtures": 2
   },
   "originalGodotSuitesPassed": 7,
-  "windowsRuntimeChecks": 29,
-  "runtimeFrames": 133,
+  "windowsRuntimeChecks": 30,
+  "runtimeFrames": 173,
   "graphicsDevice": "Direct3D11",
   "buildErrors": 0,
   "buildWarnings": 0,
@@ -57,13 +57,19 @@
   "personalSavesAccessed": false,
   "rawLogsPublished": false,
   "package": {
-    "file": "BlueMapUnityPreview-phase-06-67e23412-Windows-x64.zip",
-    "sha256": "008352e7d697ae9e37d5fa1ecd1efc078980f3ffaeaf48c26ba04f7f7a8385d9",
-    "bytes": 63239319,
+    "file": "BlueMapUnityPreview-phase-06-c73127ce-Windows-x64.zip",
+    "sha256": "8e96153ad545a1056326aa55af3ad88f2a6a863f95d3cea4d5d48ac16a3d8e9d",
+    "bytes": 63244027,
     "files": 146
   },
-  "release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase6-preview-67e23412",
-  "receiptSha256": "2ee3d46528a738369a3ad68a4970a0daf6bd6838fedba0c6ebb2194e02e34b04",
+  "release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase6-preview-c73127ce",
+  "receiptSha256": "82d07d11a5081efa3501011afde7908e5f61756e6ae9b65a5de63d0131c65207",
   "githubChecks": "https://github.com/sjorswakka-sketch/bluemap/actions/workflows/unity-migration.yml",
-  "githubCompilesOrRunsUnity": false
+  "githubCompilesOrRunsUnity": false,
+  "premultipliedTextureCount": 9,
+  "premultipliedComparedPixels": 82596,
+  "premultipliedMismatches": 0,
+  "premultipliedTintComparedPixels": 32,
+  "premultipliedTintMismatches": 0,
+  "originalAndGeneratedPngBytesUnchanged": true
 }
