@@ -12,6 +12,8 @@ var birds_home: Array[Vector2]=[]
 var bird_panic := 0.0
 var map_id := ""
 var refuge_light: PointLight2D
+# Follow the U-shaped southern forest road; stay clear of its training gate and harvest verges.
+const FOREST_TRACKS := [Vector2i(11,22),Vector2i(8,25),Vector2i(10,28)]
 const ECHO_PATH := [Vector2(8.5,27.5),Vector2(8.5,23.5),Vector2(10.5,23.5),Vector2(15.5,23.5),Vector2(17.5,22.5),Vector2(17.5,18.5),Vector2(17.5,16.5),Vector2(17.5,13.5),Vector2(17.5,9.5),Vector2(13.5,9.5),Vector2(10.5,9.5),Vector2(8.5,8.5)]
 static func prepare(data: Dictionary, map: String) -> void:
 	# Alleen eigenschappen wijzigen: indexen van bestaande kisten/pickups blijven gelijk.
@@ -43,7 +45,7 @@ func _ready() -> void:
 	map_id=GameState.map_id
 	match map_id:
 		"forest":
-			for at in [Vector2(11,20),Vector2(12,25),Vector2(10,28)]: add_object("track","rf_tracks",at)
+			for at: Vector2i in FOREST_TRACKS: add_object("track","rf_tracks",Vector2(at))
 			birds_home=[Vector2(6.5,21.5)*32,Vector2(17.5,27.5)*32]
 			birds=birds_home.duplicate()
 		"ruins":

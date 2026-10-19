@@ -58,6 +58,28 @@ func audit(map: String) -> void:
 		for spec: Dictionary in world.map_data.objects:
 			if spec.type in ["chest","npc","sign","savepoint","resource","torch"]:
 				check(Vector2(spec.pos[0],spec.pos[1])*32+Vector2(16,16)!=node.position,map+": geen object-overlap "+node.id)
+		if map=="forest" and node.kind=="track":
+			check(node.id=="rf_tracks","dynamic footprint retains the existing quest/save ID")
+			var footprint:=Rect2(node.position+Vector2(-12,-12),Vector2(24,20)).grow(4)
+			check(preload("res://scripts/core/forage_placement.gd").canopy_clear(world.map_data,cell),"dynamic footprint stays visible outside tree canopies "+str(cell))
+			for plant in get_nodes_in_group("profession_resources"):
+				var plant_art:=Rect2(plant.position+Vector2(-16,-24),Vector2(32,32)).grow(4)
+				check(not footprint.intersects(plant_art),"dynamic footprint has rendered space beside actual harvest node "+str(cell)+" "+plant.resource_id)
+			for portal in get_nodes_in_group("access_portals"):
+				if portal.is_queued_for_deletion():continue
+				check(not footprint.intersects(portal.rect.grow(8)),"dynamic footprint stays clear of the actual portal trigger "+str(cell)+" → "+portal.target_map)
+			var old_pos: Vector2=world.player.position
+			var old_aim: Vector2=world.player.aim_direction
+			var old_stick: Vector2=world.player.stick_aim
+			var controls: Node=root.get_node("Controls")
+			var old_mouse: bool=controls.mouse_aim_active
+			var approach: Vector2=node.position+Vector2(0,25)
+			check(world.spawn_fits(approach),"all three footprints have a real free interaction stance outside gates "+str(cell))
+			world.player.position=approach;world.player.aim_direction=Vector2.UP;world.player.stick_aim=Vector2.ZERO;controls.mouse_aim_active=false
+			world.player._update_target()
+			check(world.player.target==node,"every dynamic footprint is independently selected through the normal player target system "+str(cell))
+			world.player.position=old_pos;world.player.aim_direction=old_aim;world.player.stick_aim=old_stick;controls.mouse_aim_active=old_mouse
+			world.player._update_target()
 	for enemy in get_nodes_in_group("enemies"):
 		if enemy.kind.begins_with("rf_"): check(not world.is_solid(enemy.position),"nieuwe vijand staat vrij")
 	if map=="cave":
@@ -90,6 +112,7 @@ func run() -> void:
 	await frames(8)
 	await enter("forest")
 	audit("forest")
+	check(get_nodes_in_group("route_objects").filter(func(node):return node.kind=="track").size()==3,"all three authored cat footprints exist in the live forest")
 	await use(object("rf_tracks"))
 	check(gs.quest_state("kat")=="active","sporen starten zoektocht zonder vooraf verplicht gesprek")
 	await close()
