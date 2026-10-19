@@ -1,0 +1,1457 @@
+{
+  "ambientLoops": 17,
+  "audioBytes": 27286806,
+  "audioCallSites": 211,
+  "audioClips": 138,
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "contextEntries": 9,
+  "effects": 126,
+  "engineExecuted": false,
+  "files": [
+    {
+      "bytes": 263563,
+      "path": "migration/presentation/audio.json",
+      "sha256": "b2935fee56942fb872cc47881beaa13c2348f52e9dbdb91eed8d135a68b4a1a1"
+    },
+    {
+      "bytes": 1902678,
+      "path": "migration/presentation/localization.json",
+      "sha256": "6f78b91e30db0b43fc33b597cde12c1f625244d87e1a04117898e37e37f84e34"
+    },
+    {
+      "bytes": 172,
+      "path": "unity/Assets/BlueMapContent.meta",
+      "sha256": "b4af368432548a687251eec6243534ef268a3b7f251fc264d25b79f5a6c9a546"
+    },
+    {
+      "bytes": 172,
+      "path": "unity/Assets/BlueMapContent/Resources.meta",
+      "sha256": "a57c85ea5d2d32cad0ba3137833521a9bb48982d715c25ed3b08deca89bea2c1"
+    },
+    {
+      "bytes": 172,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets.meta",
+      "sha256": "fbe20e69071c93db2eb66482e49794f011fcbc8e15358e95171cef9b60563b7c"
+    },
+    {
+      "bytes": 172,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio.meta",
+      "sha256": "4164608dcf8b023d581329644ff3e7caad0accaf1f84efb1a95fe991a564a72b"
+    },
+    {
+      "bytes": 30914,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_pulse.wav",
+      "sha256": "6d4eb38eada7720a28f94ca9ff24f00c515611a3fe81513d5bf3634d5cf1221f"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_pulse.wav.meta",
+      "sha256": "1d081cf355ed3c34d747adbd829d2552a941fd3f6eca082f25a3e0638f18c7ef"
+    },
+    {
+      "bytes": 10628,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_swipe.wav",
+      "sha256": "d0318530d79f94801c75d000d5fb7404c115bf25ebae677c8d74ad97ea8e4185"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_swipe.wav.meta",
+      "sha256": "e306fb3926d2abd29df8a2a76da905ba5fed9126b246939288982a778b1d3640"
+    },
+    {
+      "bytes": 17684,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_warn.wav",
+      "sha256": "d31161d1ce3ea449ae65d5b93eb1bf66d209da20eeaeee46f025531332f9513e"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_warn.wav.meta",
+      "sha256": "6a5063eabb591889c749fa60a7d58ed199ac469f10b437a4bbf1051248356921"
+    },
+    {
+      "bytes": 35324,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_water.wav",
+      "sha256": "260b2467e29b86cdb5282b8f46f27b67578ff2fbb2bd967dcc6c709e5f51fe0f"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_water.wav.meta",
+      "sha256": "d5b809aedeed6daaa08e3b14fc1e780522a3f3d8dc4438136da7b8c003e3885b"
+    },
+    {
+      "bytes": 19888,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_work.wav",
+      "sha256": "7f23e2d1d9105aa2bdd1cbba05132eb19e63a20e1756541bd7cee33e5cdb88cf"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ad_work.wav.meta",
+      "sha256": "4409d89f8da8bf8f94f5bf97796bf53e7a699334afa8e9e64a7ae5126d629b56"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_bos_avond.wav",
+      "sha256": "5af8d1f4c8b59f52142d8d165dd496db0e1d53e5e4a7c8829e8f2cb6cb8ab30c"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_bos_avond.wav.meta",
+      "sha256": "4b6ecbf26883391e65c20eb8be7e84a13d06e76af68cb4887b55bf2de262715e"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_bos_dag.wav",
+      "sha256": "8aa33f71f964130a7c00a7de35800233309380b40cc3dead353d63623ee675cf"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_bos_dag.wav.meta",
+      "sha256": "83aedd2c89e33ac3ac799ec8f461cf1f64f909c143614794a0cfa7ab9dfd81ed"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_bos_nacht.wav",
+      "sha256": "0150699e555236348fb19c6d21fe07de7b9937a94d8373d5f48ae04c779a0715"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_bos_nacht.wav.meta",
+      "sha256": "911ab52e04f9a6ec987e31c102c03ec82766f7f501fb97c5f4fb012e4b0b7ed0"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_bos_ochtend.wav",
+      "sha256": "9819c97aaeeeba0a632119e4da9e5b170888ef61eff7e27f0e4cda4209b780a5"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_bos_ochtend.wav.meta",
+      "sha256": "5faafae22a1ce430fb8d59e2a8f4a6e44f8b0a6d975631bd6a95f91a4e7645f3"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_dorst_avond.wav",
+      "sha256": "948f75a02ae70e5b2c7d0f84b9b1bd640bd0d09d5831deb226a61f711d388631"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_dorst_avond.wav.meta",
+      "sha256": "cf9edec948e3916a4692a13d2bfa559d9590d8eb203526e6e1c23b598cd900fd"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_dorst_dag.wav",
+      "sha256": "9441c9397a7f79af77b9a94eae7799ad75411eaa156b83f47b974ad937673da9"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_dorst_dag.wav.meta",
+      "sha256": "c506f291f84160ee28377c88fefc4a747481ded0fecffce6da511535e5f256a3"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_dorst_nacht.wav",
+      "sha256": "34eef9d04e32808777b15642b7e4e0955affa9652fd9f82a79634609f2534a06"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_dorst_nacht.wav.meta",
+      "sha256": "91184601637a6ab77c3ef975e30d0e2977bb4800404a10e36c3085920f0bc8f5"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_dorst_ochtend.wav",
+      "sha256": "87f7458a752381df8b758047c35107774bd098088f924f653902a3e0eb0b0561"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_dorst_ochtend.wav.meta",
+      "sha256": "e5968cfa5e356c73c45e94e439d75fb0d1b45f52b7f15dfeffff8ea579afe847"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_moeras_avond.wav",
+      "sha256": "b24b741407100bd01b9932634d7be87901a540ee8483c3745b7a977e4225d465"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_moeras_avond.wav.meta",
+      "sha256": "c08228b7a325b04e8a291095a90973b6ac088d11a5d3d0a639780a763f4948a4"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_moeras_dag.wav",
+      "sha256": "1a1226c28350b7efd47f33474998283e0c8ba4dfb27e3740a7b32750d2832755"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_moeras_dag.wav.meta",
+      "sha256": "a5f22d3c7a730a82463b8d08fd63d7700596c37b0e83c44bcf5962956fbfc71e"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_moeras_nacht.wav",
+      "sha256": "a47f4365fd526ceff5c56e13c729a54cd763ff35d225b2108f8e6a2f3d696295"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_moeras_nacht.wav.meta",
+      "sha256": "a7d948f862d2af10161aa0286e6446d59d6ec24657923e4814c3f093e715ecfe"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_moeras_ochtend.wav",
+      "sha256": "12db3aa2389c4d819500a27f6a0e5e3cf9b36f782e9c6026240d0226dd0990a5"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_moeras_ochtend.wav.meta",
+      "sha256": "a30de1fd7047b6b4e4868e2e7b0a2c1891c37124f8990794e7203ea780fdd2a5"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_sneeuw_avond.wav",
+      "sha256": "51effe44bfb621cd4336f873915fbe52e25552fca63eb38b5c7c3e50506c645a"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_sneeuw_avond.wav.meta",
+      "sha256": "bb101220216444e166b7cc7ae91e515632522e403a1846d41f80588a10e4f62f"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_sneeuw_dag.wav",
+      "sha256": "b7867b6684f3820268c9300e67a18b7dd656aaba9e2f413e71c86ac25e327105"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_sneeuw_dag.wav.meta",
+      "sha256": "98c2b7827336ac3aabff75a7c1958a13a1db7191b7d01c11959b92dab987cc35"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_sneeuw_nacht.wav",
+      "sha256": "21fb79607499e51e91ef3eefb9f88145ca6a955210028cc610bd3b08e73f60ae"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_sneeuw_nacht.wav.meta",
+      "sha256": "649afebfceefd651c81a9726b6e9e8b954c8d0bf95fa8b7d3d82eed2e0429790"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_sneeuw_ochtend.wav",
+      "sha256": "2b77e232626510b467998d4d7f0ad876f9eec3f0ad6a2a1fed6944d6a2439083"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/amb_sneeuw_ochtend.wav.meta",
+      "sha256": "1b91bdf5b4d8c0e3d4c3595ea5d159a8bf1f8f19e993da9d469d21208258636b"
+    },
+    {
+      "bytes": 33118,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_cheer.wav",
+      "sha256": "27a1294dc38522f802aa07bbb707a4a676b00754826ee5b384c7f6d5bab11ab1"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_cheer.wav.meta",
+      "sha256": "bb0d4be3575985dcfd933b13bf689af0baeb5e64aada9eef5930b94ac84e2254"
+    },
+    {
+      "bytes": 114704,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_crowd.wav",
+      "sha256": "ec3fd6bc03e4154ac364a8190fddaac5f6fbfdc56fe804bb0ade0b1ccd6e2489"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_crowd.wav.meta",
+      "sha256": "4cd6c51fd4069218fdf56a591b820df53c2d31586c8195243d3f850ab369f7d9"
+    },
+    {
+      "bytes": 123522,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_defeat.wav",
+      "sha256": "7b86955d08afa162c709140d587c426df267a4005fd1eeea3e7a2177a0704ea7"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_defeat.wav.meta",
+      "sha256": "1b08c0c5cb6909019e5bf16f4c18dadc7a339b5d5b1b91853c39528390890763"
+    },
+    {
+      "bytes": 141164,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_fanfare.wav",
+      "sha256": "72a03c6e945041bcd35eda80332fea2a425f893e7be9e645cb30520c6c201236"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_fanfare.wav.meta",
+      "sha256": "155d492b82a31a0b4a52f9e1573ab5d559ec7b7663448064f196a231641e1f9b"
+    },
+    {
+      "bytes": 55168,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_gate.wav",
+      "sha256": "cf8e418335bfdb4601dc83c8ce1ad2600176c68cbb8219b4ead5523c99bd6267"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_gate.wav.meta",
+      "sha256": "ce8c73956376eb647a311fbd44459f042b1bf5230d53098583da988c78a77bcf"
+    },
+    {
+      "bytes": 149984,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_gong.wav",
+      "sha256": "eadd311ce4a9ad4b3b6e740eec5a5e8ba27ad49f5e0ae4ae76ff8d8899eef36f"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arena_gong.wav.meta",
+      "sha256": "472ba61d32e8fe5a68a1f49ffabdfd08131017f449b83119f639f5611226d9e3"
+    },
+    {
+      "bytes": 6218,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arrow.wav",
+      "sha256": "07c9ae22600f440d45464e0f7879f8a1f819da8b8e95c47ff28877c8e8db8dcc"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/arrow.wav.meta",
+      "sha256": "dd80bc4f4c1b14e13fd0e006c200fc5a1e588282adeff70712dcd90eeed0a6cb"
+    },
+    {
+      "bytes": 19888,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/boog_kets.wav",
+      "sha256": "e59ac8d5b86372507ca6698186a8bbe398b7f8d531f30cd4dd79d0e7c662959d"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/boog_kets.wav.meta",
+      "sha256": "0406afcb5afbcb82819ef6b180fd0c30fc78fa22c6a9c9934a115a0eb6fa7509"
+    },
+    {
+      "bytes": 35324,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/boog_target.wav",
+      "sha256": "c38c59d205a33840404a7954fc6d4a1e0564af9c43936d45430d22fe66e9d306"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/boog_target.wav.meta",
+      "sha256": "861b903fe070c03e5daa3a8bbb377173489035bd0e0987fdae03b3eb2b69e753"
+    },
+    {
+      "bytes": 15038,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/boog_twang.wav",
+      "sha256": "5e20ca9ec24669a372befff2db1bea4fbcb1cb5cda2aba093958a2986733c8fd"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/boog_twang.wav.meta",
+      "sha256": "286163f94b48523ceba891e534b437ca3cb41c4e183b2b1630d491d24a56482c"
+    },
+    {
+      "bytes": 66194,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/boss.wav",
+      "sha256": "d89a535686a9a6c7b1600dde2914c23a94e5c315241887011b14485aacccae64"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/boss.wav.meta",
+      "sha256": "f869a16d06e3ac7d53a33970ba3d4785fbcb88eacd14984ec3216b91272da2c1"
+    },
+    {
+      "bytes": 26504,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/buy.wav",
+      "sha256": "2d2b62fd348cee64fd9a09e27a0752a5b5d563456799e3852c28fbf825ea8698"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/buy.wav.meta",
+      "sha256": "2f1b8e9f844cba38b1bdc0ba97743a2892867fd3ab9b07c9ea5b75d16baede68"
+    },
+    {
+      "bytes": 15478,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ce_rope.wav",
+      "sha256": "06435f78662e7fa7d34ec98721d24bdbf7604408eed30b7de140b50b293d3950"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ce_rope.wav.meta",
+      "sha256": "321a93cf13f6885f2a1ea6a0593617d2d788ecdf6ad51e4f58a19c01038a9105"
+    },
+    {
+      "bytes": 28708,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ce_water.wav",
+      "sha256": "0c73fdd7197a65b31eb6ddb72338b501ff125391632003bdaa05f34402bab355"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ce_water.wav.meta",
+      "sha256": "d9ad434a4e9747652e4c1182fe45de9a1a4d3af0c3a18473abd0e2c7d5011129"
+    },
+    {
+      "bytes": 28268,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/chest.wav",
+      "sha256": "6ccca5cb9ac28cc49428ae9ac447cd6ac5223a227315c2bb678d544406f52fa0"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/chest.wav.meta",
+      "sha256": "92705f4e01c7d7ef918f6186cb0f7e3b87b5b0e8dc1c8d227943b4a75f146101"
+    },
+    {
+      "bytes": 12392,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/coin.wav",
+      "sha256": "5510b8c09f733a23d6b0b80eb3fafe88a85c277f65d81b4d2339511dd0dd8840"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/coin.wav.meta",
+      "sha256": "91619e8b8252737b58b98aaf79d87a58f55ba659acbaf0ce6d0db666a41b0adf"
+    },
+    {
+      "bytes": 44144,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/crystal.wav",
+      "sha256": "5d44d06e09ba96b4426647f27cbf630c9e50bd2d32d4a8e70d708453db15ef36"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/crystal.wav.meta",
+      "sha256": "1a11372acd9136e7c5a5fa113dee9e8060b0440f0c3a59fd97ab3e95baaec72c"
+    },
+    {
+      "bytes": 13274,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cv_ready.wav",
+      "sha256": "25cff8702ad34bc11e1c1ebd3c5ab7d57c2af98b5b520d81e7e2a5ab152e4be3"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cv_ready.wav.meta",
+      "sha256": "06bfa0b4802082a1418b00b6998307054f463e1a5440aed12240777591510b63"
+    },
+    {
+      "bytes": 10188,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cv_strike.wav",
+      "sha256": "db8e596f560c67086c0f41c8ddef5f25c7fa8199976df92605fa2e11b6ecc4cf"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cv_strike.wav.meta",
+      "sha256": "b032611176ffaa814605a7cdf76cbff982fa4ace7f3bfabc0ff03c3477271fef"
+    },
+    {
+      "bytes": 7982,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cv_thorn.wav",
+      "sha256": "87c1ac05e4d7247c153ef3cfd34b2780d21ca3e44f973cf3ca3dd7def8f3886d"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cv_thorn.wav.meta",
+      "sha256": "0c26666c7140fb5706a4c0902981f01beb3aa974bc31d2bfe94cbcd37f7dfe20"
+    },
+    {
+      "bytes": 12392,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cw_fan.wav",
+      "sha256": "f2bb5073db95f986954752467b985580512f395949b99d57bc7113d5aef5d1dc"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cw_fan.wav.meta",
+      "sha256": "cfda2562822809da516d1af6d1b912f6a6351e3d75d5c8316022f93cf25b5704"
+    },
+    {
+      "bytes": 13274,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cw_guard.wav",
+      "sha256": "efa16d3094853aec89d8927d2dc7c79cc5f25942b118124a47693cb281fbc8f9"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cw_guard.wav.meta",
+      "sha256": "e3031b1a151265eb89270548223ace304977b378b86fe0eb05ab83196cd00bf8"
+    },
+    {
+      "bytes": 9746,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cw_stow.wav",
+      "sha256": "2b07154774dbca4ae3cd8441725353d4a719714e175334996958f2599f1a2ba0"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cw_stow.wav.meta",
+      "sha256": "af27a5210c328e009495478dd2ad00ba1b1dbbd5e60b969f95100a1c92440f9f"
+    },
+    {
+      "bytes": 26504,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cw_thread.wav",
+      "sha256": "fa9d584e2d7bfc5fcb01367c93698fc60c2865f1e0ea510a60c08e4e608d666e"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/cw_thread.wav.meta",
+      "sha256": "00b2671533c0f264782632c69962f7232224248925ab40617d0be23d3b8698d4"
+    },
+    {
+      "bytes": 15478,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/die.wav",
+      "sha256": "a586a8700a91135834f56b57e1a50143fe5dd6059f5e4ac8427f085b206ea3fa"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/die.wav.meta",
+      "sha256": "25095bdcc32b71e63e4cdc7f1b30af220b6c0d3d801f8d8f5e3274f8de0bbab3"
+    },
+    {
+      "bytes": 7100,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/dodge.wav",
+      "sha256": "a60907e655a2df71f60f2c65c6f19d81177f0fd70d6f6f422f1224edf2408bb0"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/dodge.wav.meta",
+      "sha256": "8344b6e8988609f4b8e63647514d89eb4c708a89b54efd144a90217b85e51f75"
+    },
+    {
+      "bytes": 13274,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/door.wav",
+      "sha256": "c3648de836bdb39fcf979f8eac930cb34ddd10213ecc103ca82fe67b7b16bc32"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/door.wav.meta",
+      "sha256": "644306191375ced801bff693e92abf7ce77d4b1dc7417ab95f2c237b855d96c9"
+    },
+    {
+      "bytes": 22094,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/drink.wav",
+      "sha256": "0f131403348917ea3bd9cdf9e5849a51182f4bb50785f3d0a793ab64d0e9b706"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/drink.wav.meta",
+      "sha256": "c229e1b3c5da4a485c60c40b9cd40e9376113c0464e0d9264630e2660edaf00b"
+    },
+    {
+      "bytes": 12392,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/error.wav",
+      "sha256": "95b58ea74ef73e473e92c4eb1303016af8218e57e7a438fa40eabf3567e920d8"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/error.wav.meta",
+      "sha256": "42018d2fb11951597cbbac6a416ecd895a63ab6949497f5d094a40b2be4d9ad9"
+    },
+    {
+      "bytes": 97064,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/gameover.wav",
+      "sha256": "fc3aee9bd464e012f5aa2fb187e29e581148a8a8425ea1d9bcc268dbf404549f"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/gameover.wav.meta",
+      "sha256": "d1bb0a0a1aa0de88a5e749ef76d606e43850c8a95ffb3e9a02b4197a70f34201"
+    },
+    {
+      "bytes": 4894,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/garden_pick.wav",
+      "sha256": "6ddb60a5613ee8fcd27a38b6e7d07baf6f54ef5e0bcbafd0267cde9b727de118"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/garden_pick.wav.meta",
+      "sha256": "f039ac26f4c1a2c36a1f7f5a77caa07e160698bd20c15c1d615a60928446f198"
+    },
+    {
+      "bytes": 7100,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/garden_water.wav",
+      "sha256": "bf108b40c48c1e80d8777d18bbd2e7cc37d6393bbbeae6dd0d20f6903424a2ba"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/garden_water.wav.meta",
+      "sha256": "1ef42e9b667de27a6ab128ccb8348243d487ffad40a6a8e56fe00a21807ab5b3"
+    },
+    {
+      "bytes": 37528,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/guardian_charge.wav",
+      "sha256": "d2dfea20ad8d417ba438cc84657916a23b034fec01001714b0b390b4e1a5e026"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/guardian_charge.wav.meta",
+      "sha256": "fbc590d9b6fcea75a0f7beeb5f0e9a5e8f494d48eb1ee2ae64970c555ce5604f"
+    },
+    {
+      "bytes": 105884,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/guardian_die.wav",
+      "sha256": "5aa1a8351fa844d313d8b1493baa3550872c369d77d337b6da66c168b9e62a59"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/guardian_die.wav.meta",
+      "sha256": "280aedfeb9f6c353d66c4ffbc7a23ebe0943fe180e507492ff045d0a2811b5f8"
+    },
+    {
+      "bytes": 75014,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/guardian_roar.wav",
+      "sha256": "29c3d4398fb6a571153cc3edea9243e258628eacc08afe40f3d3fa5be1d12e67"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/guardian_roar.wav.meta",
+      "sha256": "8070c515fc3c1792f9a91c604b0fd811a5ed689db85215d1067c448493887148"
+    },
+    {
+      "bytes": 24300,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hb_moth_ready.wav",
+      "sha256": "a50713d5f16ebe197d102df4adfe316aec65fa5c1b13a5bec06dc44c9f926ca2"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hb_moth_ready.wav.meta",
+      "sha256": "5384012500345625f8b16424b1277621a3feaace9f9c7d3d8b367b94073f0d83"
+    },
+    {
+      "bytes": 28708,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hb_root_ready.wav",
+      "sha256": "0792fc80ed7c9c50ec623ddfbfe8d4d968683f56b643e74232c8bad5f0437bda"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hb_root_ready.wav.meta",
+      "sha256": "ca64835ec27e15dbb58dfb73db9b3265bf07f30f5e5c97da9beece5d7288f6fb"
+    },
+    {
+      "bytes": 13274,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hb_root_strike.wav",
+      "sha256": "5b91cd93a5f80118c44e04b8b5591bd2ed257dfdf972b2095bbe338d20f6beb6"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hb_root_strike.wav.meta",
+      "sha256": "85d36ff9a0df1ddc23c298426be3a3755e0e5bf16574e11b983f0e156942783c"
+    },
+    {
+      "bytes": 20330,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/heart.wav",
+      "sha256": "1d41cc7e087bdfe2a673b7b9e505ead6c6a38a20b85358f9c2f6b393b1a232d8"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/heart.wav.meta",
+      "sha256": "4b9417c34d5d2396df09b9b756b259daad48789d94deda53ea4c833e02c938a7"
+    },
+    {
+      "bytes": 5336,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hit.wav",
+      "sha256": "c914f952cd111a74a25426e5e079a31f6bbaee8b476aad7b18bc214a8ff8cf52"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hit.wav.meta",
+      "sha256": "2ec9fa5eebb01d0f91ef25d00008006cddde3774655f04037472e66d73a36a7f"
+    },
+    {
+      "bytes": 5336,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hs_soil.wav",
+      "sha256": "3383d05ceea1008f53ef25b59fcc8420061459a1d0464b9a2ab9c179f97ba343"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hs_soil.wav.meta",
+      "sha256": "b5ba87957267d7754b25e4eb0e5af630d75c97c8e5392b3b9939d0650e86351b"
+    },
+    {
+      "bytes": 13274,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hurt.wav",
+      "sha256": "8406a14d04d8621adc0f562b8cf7cc9a3070ebfeeffbc3fac284f517154e5805"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/hurt.wav.meta",
+      "sha256": "3db5e6ee10ec36b628c4459ce6fe6f8bf1da5bfd5a7b4796f68cd481a2bf93a2"
+    },
+    {
+      "bytes": 26504,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ls_chop.wav",
+      "sha256": "75de995af1d78e266ac9af54212a7c4e527fa61fceae35a7bd1bcf07a85375c1"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ls_chop.wav.meta",
+      "sha256": "9d42b6ddeaa72388fb17ac842fd7c3224d305e714f864ec17be61e0fa0666e35"
+    },
+    {
+      "bytes": 44144,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ls_reel.wav",
+      "sha256": "cac1765eb220c770987b6cac8d327187fd4389bcdabd9b0f7f5aef0ee689b1b7"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ls_reel.wav.meta",
+      "sha256": "96b8ecb014711fba3bb53b334c210f279e9aa89785dcb1ccc5002aad89988ad7"
+    },
+    {
+      "bytes": 35324,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ls_serve.wav",
+      "sha256": "bc5ab54e80012b319d6f7112d6640c688fc68dd2088025b6fccf630229d71d49"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ls_serve.wav.meta",
+      "sha256": "05a030102971a1c74ccec5c345fa916693d555ed18f706648a5fb10a7d62c838"
+    },
+    {
+      "bytes": 44144,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ls_simmer.wav",
+      "sha256": "4bc133dd61623b57dd845709e2a96bfdeea6787b0c9576a5a361a0b3c11d6a62"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ls_simmer.wav.meta",
+      "sha256": "f64207e251a65f51d359ec54b9c7d61c5193806c28fa9fd5bcb694e1f29cfa77"
+    },
+    {
+      "bytes": 22094,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/mage_charge.wav",
+      "sha256": "755b5335b14d765abd6b57c79793aabc4eaed7bc292e0a5e887028b642f8d779"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/mage_charge.wav.meta",
+      "sha256": "914c8a6eb060886e8ff04dc83a7b1fba8083e055ba1794c8f35155ed73b98a65"
+    },
+    {
+      "bytes": 14156,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/mage_orb.wav",
+      "sha256": "69300ffb3f922912b87ad97d0a294473f2a344018db17e4855e9e5724f5b6eb3"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/mage_orb.wav.meta",
+      "sha256": "b149abbb36a2a51876ba4eb2237c96b104c9f4383813b961cad3633c0a732e5f"
+    },
+    {
+      "bytes": 9746,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/mage_orb_pop.wav",
+      "sha256": "36bfe2f8daf13eac6486a995479ff1c64288020cb0f5105a4cec2885318c64cc"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/mage_orb_pop.wav.meta",
+      "sha256": "ff9ded32e0f6c2ed17744f35c1ccb4ade15c918e414a53c38cc1b8f903cd5d22"
+    },
+    {
+      "bytes": 24298,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/mage_teleport.wav",
+      "sha256": "7cd8aafe12ec520d275e35d81553ab5afd91678e92829bd4d1a85bbab8516d8c"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/mage_teleport.wav.meta",
+      "sha256": "526084e2abf78df6bd5dda25dfb1bf72294ff9d55e3ab433b93621d86ba61356"
+    },
+    {
+      "bytes": 26504,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_beet.wav",
+      "sha256": "62f6e5b12abab0e573ae7015f418a4db7626ccd3e86680f671bbc2a5bf0d8a20"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_beet.wav.meta",
+      "sha256": "fb576a53888383f519dcafe7afdb4ba4ae08b6d565649b6dc34795a194ca4ebd"
+    },
+    {
+      "bytes": 13274,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_blad.wav",
+      "sha256": "83e687874dab88342ac8f015932ec6ad853f12faac753602ccab8b8c358a3bd5"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_blad.wav.meta",
+      "sha256": "0990a19ccb36a45347d3687c90b1ca1e07249fd2b7f83a6e736ab4e399f743b2"
+    },
+    {
+      "bytes": 15920,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_haspel.wav",
+      "sha256": "fe16519cd0af5c0b637b887b148502d35920556c4d5396b41faa76bbea112c56"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_haspel.wav.meta",
+      "sha256": "ae18771a232934d7d75750504ce3843379df41aacdb3f063648c84762fc5df96"
+    },
+    {
+      "bytes": 83834,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_kast.wav",
+      "sha256": "c14ca70b75f541ce47a0b190bf023e61594d8dcff3763ab31b162e5e65c49dc9"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_kast.wav.meta",
+      "sha256": "bc0a8aee53556bb07c544963ce255c7397a540b475c8fb34a537e4d59a589365"
+    },
+    {
+      "bytes": 22094,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_ontsnapt.wav",
+      "sha256": "65db570969d6dc6f84142990ce6c6635c465e7b1c8c1b9b954a2234bd130c564"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_ontsnapt.wav.meta",
+      "sha256": "8c9081b445c310af030edccfbee118f9c15f4cd34b24e161d34785640489e05a"
+    },
+    {
+      "bytes": 24298,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_plons.wav",
+      "sha256": "68932585fb46c02b6f6608ba17f06278ca6a68ff578c09efbc22417a503e471c"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_plons.wav.meta",
+      "sha256": "873b40db9b7243327bee63c07a794b7128a9ca54e70e482fb06cb9298aa77662"
+    },
+    {
+      "bytes": 57374,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_vangst.wav",
+      "sha256": "890cbae374dd716438635fb473c9820007345bbdf4d6e0b92c7eb485d932a1fe"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/meer_vangst.wav.meta",
+      "sha256": "84c31fcf62cf937ae4414de09077b9755c67d4746844fd71391c816b6038996d"
+    },
+    {
+      "bytes": 1323044,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_arena.wav",
+      "sha256": "545f3438682e2ed807ceebb67dd219031d78e659afc35425aa7a6ca035a33e16"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_arena.wav.meta",
+      "sha256": "3a204b23e0c271af4bf7e5f603f3cba317b3531050a7ed34447989c8c7346ae0"
+    },
+    {
+      "bytes": 1129004,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_boss.wav",
+      "sha256": "33f1ae3dc052f18b91fae2444caa03c035bd546738f7238418ecc4a7e148c7f7"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_boss.wav.meta",
+      "sha256": "63fa3ac14ef96a6ea6c3f4ae93e11efde4f53fd13c54a157ec4843053aceab89"
+    },
+    {
+      "bytes": 1411244,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_cave.wav",
+      "sha256": "58d2b1da8d36025e709e31393a7310c693acca131eb2f41bb731458f2cdabd69"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_cave.wav.meta",
+      "sha256": "907ceec580e8f98de6d59ca5a2d7042c9896a7ee03a1efe2a8cf254c7592eab3"
+    },
+    {
+      "bytes": 1411244,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_coast.wav",
+      "sha256": "5ed426a5a0aea936701d6677dcada0adf2f936a97a0d4c9c7eb9ff06b5bab90d"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_coast.wav.meta",
+      "sha256": "75e4ab6e1fea1cbe785ca8111da5de8d78e8bddd51c0cca64d2d46c07a0ba7d0"
+    },
+    {
+      "bytes": 1459906,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_depths.wav",
+      "sha256": "73990237e185724cbca421005587afea5a7de3c1a5ab93ca2f33f3fdc9cd5d32"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_depths.wav.meta",
+      "sha256": "84dafffa914bd02949bddc76b19747db06d1e8f1391e355bad1ee6e4dd423fb9"
+    },
+    {
+      "bytes": 2016044,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_ending.wav",
+      "sha256": "f310c60b1b1b78bccf70da3042bb029db74c0909a6060f4e70ce1b7241849ab9"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_ending.wav.meta",
+      "sha256": "f4bc80945914cc60ecef06ebb1ddaee9a99beaa88c01d6d9d84e1b6a32421a7c"
+    },
+    {
+      "bytes": 1764044,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_forest.wav",
+      "sha256": "2ba10c8c81bead2d61f6a595053082111df1e3cbdc34db20175ebc7ab8a220b0"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_forest.wav.meta",
+      "sha256": "4925f0777f02b1e1a83edfb409a8866f76005a0b57582c18d9d832014c34a165"
+    },
+    {
+      "bytes": 1365722,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_guardian.wav",
+      "sha256": "8cbe82d857643cbd03284243a403453dc0d1d514d9b931a7a923e89f47717e2a"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_guardian.wav.meta",
+      "sha256": "a417f685b46f3eadc4ed0f99a2aaf602fa862ea3af8af3300a68d950e89142c1"
+    },
+    {
+      "bytes": 1814444,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_lake.wav",
+      "sha256": "16865d32deb34f916cb7263314f32cb9e8e0734888ec2fd47fa693959ef2b6db"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_lake.wav.meta",
+      "sha256": "92013431a1ca09b074ca5498004a75824c153b93276f9d1e288240bfa1f76335"
+    },
+    {
+      "bytes": 1764044,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_ruins.wav",
+      "sha256": "3ca6a57d614552cf553036a71e4f2eafd32507965e1103f100f6caefd61be214"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_ruins.wav.meta",
+      "sha256": "9596f3fe6167890bba0f7d4e6cd76927bf90078399d25eb916964f7042ae8de6"
+    },
+    {
+      "bytes": 1587644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_temple.wav",
+      "sha256": "0c6a2ee1ab8c7dd3304b79ac5a696206c0e1e9b3b7d02b3f72e06ec2a210781d"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_temple.wav.meta",
+      "sha256": "ac8ce4f5f34dd75b70f5431a064b6a4609c18b35f735abe5bedf940894f1b6b3"
+    },
+    {
+      "bytes": 1628352,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_village.wav",
+      "sha256": "703a429f74642e717de0cf84c393933987eb4a1da7f8877c1ddc0b56f8bd2238"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/music_village.wav.meta",
+      "sha256": "235054ba776080e4cc4c93ff0d7faf5f12d99caacc302f93aa14f66996c1f2d4"
+    },
+    {
+      "bytes": 30914,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/op_drip.wav",
+      "sha256": "25c72820c9ac2c33157170674b932443d2f1747462de93f1206fff9ebe3b1e19"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/op_drip.wav.meta",
+      "sha256": "30cadcd3e3274080bf336e90d53d977625b7f311f6d7064af6c9d56e92898712"
+    },
+    {
+      "bytes": 19888,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/op_hammer.wav",
+      "sha256": "0d33733f863c36c98b2a9d13d8d22e9604de91e0c7b91d34c97bb54ee3cc47f6"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/op_hammer.wav.meta",
+      "sha256": "e3e1f916b521244566c6568de5e0a66b6deb11d1be542ac564e383423ce4d573"
+    },
+    {
+      "bytes": 70604,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/op_rake.wav",
+      "sha256": "0cc68c64cfe332c36e0e97fe1ac278dfa99c10a2f01ba3f3909b86ee0c884a93"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/op_rake.wav.meta",
+      "sha256": "837d9ceda610f6ccfafa103662e94a8a27a034e0653471426e501f1b114debc3"
+    },
+    {
+      "bytes": 132344,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/op_water.wav",
+      "sha256": "87f6072c54f7fd592a53d8218c92fca666312ea9bd48411896b3babd0f3228aa"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/op_water.wav.meta",
+      "sha256": "de232b2f0813a22561575b32a0058d95dd7944f5a602f9d68f4aa415bdf6ec34"
+    },
+    {
+      "bytes": 4894,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/orchard_pick.wav",
+      "sha256": "cfc348e4f0f6bfa1bf32facf19e944ea5cba9b3d75f39dc67489b756d5a8179b"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/orchard_pick.wav.meta",
+      "sha256": "1f530ef5ed5868c51e500d53d5106ff9a2f752b7ce247271748d4630a02362bb"
+    },
+    {
+      "bytes": 12392,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/pg_forge.wav",
+      "sha256": "71db28b625d963cac2a1b1a05be273b7702f5498bae370ad4c617dfe28b0a307"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/pg_forge.wav.meta",
+      "sha256": "d5057a747e4451938de52dad5674f1f70e1ac3a6a0a65a7e226e03c90ca3672c"
+    },
+    {
+      "bytes": 19888,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/pg_pattern.wav",
+      "sha256": "a8df30e02b0109825bd5700ad61da319bfee03cd72f4ef8f04a30bc3430d79cd"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/pg_pattern.wav.meta",
+      "sha256": "2cea9d1000efc164beab1db57d51227d5c5797a00ced82c33f6ddc42dd64d35b"
+    },
+    {
+      "bytes": 79424,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/phase_shift.wav",
+      "sha256": "09ca19a599943c0b1c1eb766870c21757b7bf3651def0913fb6577b074727c9c"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/phase_shift.wav.meta",
+      "sha256": "4ba9062d7c7590cf09202c9dce3c9f66de3c40e9ed721d2e9b1c2a13fb2432b0"
+    },
+    {
+      "bytes": 41938,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/pillar_charge.wav",
+      "sha256": "b3ff6fa87e3b6ea11601af66b5c1e184a37f09a1faa5045371663fac180c20f3"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/pillar_charge.wav.meta",
+      "sha256": "3d32ec9618a63bf34a297cc262fefb5c9c6298b1bcdc89bc43420b1cf7dc7178"
+    },
+    {
+      "bytes": 52964,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/quest.wav",
+      "sha256": "44da293aad4c4becb7b72ed8eaf40b4b234e187fd5f94b770efd293f006db967"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/quest.wav.meta",
+      "sha256": "a840f015742f733a694e35917e9288e8535b8b86f24eac6416780d097429ac7b"
+    },
+    {
+      "bytes": 30914,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ra_pages.wav",
+      "sha256": "0bca020fc9ba2a4543b5c6ac7a7658237894947b7bd2baa39d9da6591ae9b00f"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ra_pages.wav.meta",
+      "sha256": "88d854ccf7b76f72cef334919a0b8dffdef42ba963d08f5fc5af2a49d8679ff8"
+    },
+    {
+      "bytes": 30914,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ra_rope.wav",
+      "sha256": "8906c1a643da4cdfecb1bbe50ff26cc3927a5eb0873ab586a1b54c6ffeafc877"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ra_rope.wav.meta",
+      "sha256": "48a2e8a57f71f7f11631a8b79fa138471462610e1ffd35be68df069cc8160ded"
+    },
+    {
+      "bytes": 28708,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ra_water.wav",
+      "sha256": "1d7cdfd033e8650b55bfe066a70fad95efe7ce034a0b00495a987ff1c7ef44c7"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/ra_water.wav.meta",
+      "sha256": "e063ce4efb96963b30c69e8811e7bae060bc79e37924614d0ff6e068b996ed69"
+    },
+    {
+      "bytes": 30914,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_bird.wav",
+      "sha256": "b3612aa58a608ae409f5f966efe9f584a948c6bc3fa1f6536a1225620177b5f1"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_bird.wav.meta",
+      "sha256": "6b72a3a699897b5e3423c4fdde0b15c1aca95100266b045f39b0c57f2be40070"
+    },
+    {
+      "bytes": 66194,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_high.wav",
+      "sha256": "f87c2b7bfc523a88dd52a36b72502d17ea63e7fad99be52ebe3d546f43605f7a"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_high.wav.meta",
+      "sha256": "358aa43c0ac1100ea6ae0dd2fabb6d5aa54ec0fb2690d4d4a0870796d000b25c"
+    },
+    {
+      "bytes": 66194,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_low.wav",
+      "sha256": "0000ffa6f83a108d7dd9ed8ff0f6b2522627f6b12dbb4c087971c1f0aed825a8"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_low.wav.meta",
+      "sha256": "076193e9de94a16755ffba01ef1d7798307c4783a86c5e41faf486f2c7058715"
+    },
+    {
+      "bytes": 66194,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_mid.wav",
+      "sha256": "f5dd945c880ef2c3da829db5a762f045ea01584964dcb48bfbae7ada81b27b12"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_mid.wav.meta",
+      "sha256": "bcd120a9fbd402166b9913e4df8c3c69e3ddc156e47c67556f54985a7e7c7dcd"
+    },
+    {
+      "bytes": 39734,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_purr.wav",
+      "sha256": "907e1cecf78a3987320d9ed70fdf81d4f95983199c13621e9db5f48976e7215a"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_purr.wav.meta",
+      "sha256": "fbd25c17d9ecec814344d47185a1fdbf52f33b9e9f44ee7cf7728ebc94e05d86"
+    },
+    {
+      "bytes": 37528,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_rustle.wav",
+      "sha256": "c274d5b1051f220beb4f78a2073ddecf8ff6497bc5fa6295240a81b20504ddce"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rf_rustle.wav.meta",
+      "sha256": "adb4e5b0e0a58495b4ac0b140ece5ed70582cf29824022e0d3b5d2c38fdc7455"
+    },
+    {
+      "bytes": 79424,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rg_bell.wav",
+      "sha256": "83e05e32dfae9400b91bff9de0e313cf3a23078b91c1c8c1d992afae6aa01778"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/rg_bell.wav.meta",
+      "sha256": "2e53d9ece9debff32ff68c05e17f304241d6869a8ef937a6aa7c220fc4e9e41b"
+    },
+    {
+      "bytes": 52964,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/save.wav",
+      "sha256": "bbc8ff296946adaadec94eb81d62c95ef6fd5045041c82a9dbc690029057f480"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/save.wav.meta",
+      "sha256": "6af81141115f5fa8419052a05960124d573590203b22f92239da1599d1c69e0c"
+    },
+    {
+      "bytes": 88244,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/seal_break.wav",
+      "sha256": "3aa20ab8ef4fa20568f5c195739720c8fb40362e0e9bb0c750c7301108ad142a"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/seal_break.wav.meta",
+      "sha256": "9e0ea29784d93738ae4652990e3279ee5ee8128168535e6e2dac6a7faf40686e"
+    },
+    {
+      "bytes": 5556,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/select.wav",
+      "sha256": "6097d17dd42d6d19beadf2f47f18ab494df6ad46c4f903ac14919da73fc2c653"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/select.wav.meta",
+      "sha256": "a0e89901c27aaee6f9b32d52cd7428b07cdc19e8b8365ace7c268c8dedf6ece0"
+    },
+    {
+      "bytes": 26504,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/shard_burst.wav",
+      "sha256": "8f78cbb0c1490a89d51d28b644630fe16dbc2e3968af8d827db199b86d70b9f6"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/shard_burst.wav.meta",
+      "sha256": "e5a381548e911446264d5c665c2ffd9a77d025f115760838da5ba04b81277450"
+    },
+    {
+      "bytes": 17684,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/slam.wav",
+      "sha256": "5a454853e21605e3bc732bfc6a4b8ae00cb99a6026f7424f7e1aa85b93843be2"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/slam.wav.meta",
+      "sha256": "68102199fae12b74a2112f22b4d3cc2da63d98102f8c7fbdea536f02678434ec"
+    },
+    {
+      "bytes": 11510,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/spitter_hop.wav",
+      "sha256": "58e5d8679f40af3bda183daa52ecb7d55346804a0afa4a6658002a961020b5e3"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/spitter_hop.wav.meta",
+      "sha256": "c43297c4649689473326816418b42f8ba5c3800c3b193074d220aa8e674d54b4"
+    },
+    {
+      "bytes": 16802,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/spitter_spit.wav",
+      "sha256": "24dcd71278b2f24ecd325bd1a0b801604c010ebe942fd2da8f1415e1f4cd9b67"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/spitter_spit.wav.meta",
+      "sha256": "c003c5d223cc286da728ad3c4a2bd97c0ca33cd4000bb891ac3bbbb7452e633a"
+    },
+    {
+      "bytes": 185264,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/star_fanfare.wav",
+      "sha256": "299c9c3ad9108c3c3ae41cbd4861b153943c6a30f667eddf07eb794f8c3066ca"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/star_fanfare.wav.meta",
+      "sha256": "6ccd54029d3dc8159e9ec7ea72bdfa936eb3ea80207e4d38eca731fa0b78aba1"
+    },
+    {
+      "bytes": 8422,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_cloth.wav",
+      "sha256": "28e65e5b1362b456f7638257ebb6f6c4a10f13390fec714613dacaa981c812a5"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_cloth.wav.meta",
+      "sha256": "746aa5900cc0fa082c3b864509dc997be4469256ddd06c7468611b7ec558878a"
+    },
+    {
+      "bytes": 8422,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_grass.wav",
+      "sha256": "6a56f0e9f43cd134a6c5a8097c771d01d434fa38de9c10d151dc5b9318b8bc3d"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_grass.wav.meta",
+      "sha256": "e83d52f162dd01b38e4ca51f65fbdb9b11fa017a9b39bfa067607b36123e9c0e"
+    },
+    {
+      "bytes": 8422,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_path.wav",
+      "sha256": "5993ee7ef84c6a0ae3b8ab0c51613d369a35265854db78827f3da383e60e4b80"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_path.wav.meta",
+      "sha256": "d12762b48eae344fef15d139e4f001a98b6a5da4fdf59e999b6dce125cd2e4df"
+    },
+    {
+      "bytes": 8422,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_sand.wav",
+      "sha256": "b6e0fb302629089d5c915231a8032291cd83403ede34fee37f4d18173836ff70"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_sand.wav.meta",
+      "sha256": "8f6a0e2f5c10b9ed5667ba0a517cad9636a48af01fe193d8e6053d22095bbfca"
+    },
+    {
+      "bytes": 8422,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_snow.wav",
+      "sha256": "6c66cee77bd3d64a36db93b0346556065c9050aedd1774a41afee69faad61c6d"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_snow.wav.meta",
+      "sha256": "071ff3b651b65d8ae2c19775d67cca60ca5ab5739c883a55d8a2801f8621a248"
+    },
+    {
+      "bytes": 8422,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_stone.wav",
+      "sha256": "fd7ff2951daeb638fcc02f561c615f18df278b9cda81fc068cae4a4362bc3ee7"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_stone.wav.meta",
+      "sha256": "49bc14cde8fb48e758ba863c17bbdee8382d55db390a78a38a54c527dda8e8ce"
+    },
+    {
+      "bytes": 8422,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_wood.wav",
+      "sha256": "51a1e9924b04bec4bef755dfebe73da355c12aaf4cc89fd4777cefa6ca347e56"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/step_wood.wav.meta",
+      "sha256": "5c2653cf733d642df8a5b86cbf123a6daf5482b5060d7db4ecd8dcf367462f93"
+    },
+    {
+      "bytes": 8864,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/swing.wav",
+      "sha256": "17893a6be9dadf3a3734a3fbb20897a47244bcb5467b062828bca52999851c95"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/swing.wav.meta",
+      "sha256": "e4f7aa145ce5a2d2c9669c6de7e98d250db37bf7ea5461e1571207b1c0e3b309"
+    },
+    {
+      "bytes": 61782,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/upgrade.wav",
+      "sha256": "9e655e71b09be6837db790135650f9b77b73ad220e0123ce8463515bfe8f6d5e"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/upgrade.wav.meta",
+      "sha256": "4c826a77e20fb7649e859ef158707b1cb8706cb4889b466d862cd18804ae5c38"
+    },
+    {
+      "bytes": 105884,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/victory.wav",
+      "sha256": "5a120cdd7f977201bd8e381a1efbb77e25137e9ab12b931b91539d5f7b84cdee"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/victory.wav.meta",
+      "sha256": "b35567358a6e664c8af1698aced003ab6e987638c5a159b32db2b75bea4c5d4e"
+    },
+    {
+      "bytes": 70604,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_altaar.wav",
+      "sha256": "2574147161937b0fcc7a72a25b520c1a3665e32f71502a2c53b21a58a190f102"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_altaar.wav.meta",
+      "sha256": "03ba5057422d6a7cf0b003853fd04f0f0cbd60506b5881e0e8c3c116921b821f"
+    },
+    {
+      "bytes": 79424,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_prestatie.wav",
+      "sha256": "abda163ab29980a31721f9e188a4d7f0a9611f9a4ff50e2b7d560c86759355c0"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_prestatie.wav.meta",
+      "sha256": "73409404fa5425af6ee4845f5e84d1957f0bac5688ef8e3f7027f23eba24ee90"
+    },
+    {
+      "bytes": 264644,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_regen.wav",
+      "sha256": "c133770045e94bd835e04ac2bfb776bae80672a1bedb95dcf25477999f937a42"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_regen.wav.meta",
+      "sha256": "cda3f3acb3407270bb58ad6fdabf6c2ae04a8c9ab6634dcc2617eeac78ebca80"
+    },
+    {
+      "bytes": 61784,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_reis.wav",
+      "sha256": "6956282850c841380eb76ec6927c29bbf85ae97d1ae2f4a801e613e902c0a9b7"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_reis.wav.meta",
+      "sha256": "fafdf99fd389213152a1cb6f88c2556da9a61703f133baf9967ffead7595cd85"
+    },
+    {
+      "bytes": 149984,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_slapen.wav",
+      "sha256": "f81ab04a32ab397f7f924f4bf59cc50f9351f0ada1635f7a74188dcde7c25ea9"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wereld_slapen.wav.meta",
+      "sha256": "1fa5fd206e6e78915c13d1bbeb4d9839989277d787c7d9bdd33314b513363274"
+    },
+    {
+      "bytes": 9746,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wm_page.wav",
+      "sha256": "28fe680804a73f9a624024eafb830232c4f1f963ec978948dc51ab1a0b025613"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wm_page.wav.meta",
+      "sha256": "e90af32a909fc09ae0cfd593fe2c5cdc422373dbf148b14cda25261a8691cd45"
+    },
+    {
+      "bytes": 9746,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wt_clamp.wav",
+      "sha256": "83bef01698027d52caeedb9eb0a0ec679c06db9bd433a52a0d9c6c3b4acbc215"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wt_clamp.wav.meta",
+      "sha256": "41fdd106e23190eda352109c62cea0c73505f9d21bf5ab157ce82cd03be1e76b"
+    },
+    {
+      "bytes": 30914,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wt_grind.wav",
+      "sha256": "69f18274cd008c22874666063cab7395a88cbbc9f78cc89d202d3c6d6be8b63d"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wt_grind.wav.meta",
+      "sha256": "1823ee49f57962a4af917461bc63ef5ad67dff9ec9db56208bc1dbf6c59a4e53"
+    },
+    {
+      "bytes": 19888,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wt_pour.wav",
+      "sha256": "0b57adb8a6c2514c88bc0c1c5dc9990d245573cbf149e615a451d1d50c906275"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/wt_pour.wav.meta",
+      "sha256": "2a47f0f96ec5f89ef09e68ec798e000826aefaebcd4162b4efe37258c2bdb93f"
+    },
+    {
+      "bytes": 3350,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/yard_gate.wav",
+      "sha256": "e826d9aea57209859f30482e6b7ac3b2b99f19b664622fbe36d8e19d3ab097a3"
+    },
+    {
+      "bytes": 485,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Audio/yard_gate.wav.meta",
+      "sha256": "1e8aeb672ae31efd38b072dc770ca89e8f22e664bd36e9b4ebab61a1bdda5c3c"
+    },
+    {
+      "bytes": 172,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Data.meta",
+      "sha256": "e16d6b3d68bbbaa88da1e3d30a97edb95bd532864362af194957a3d3fdfc140e"
+    },
+    {
+      "bytes": 263563,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Data/audio.json",
+      "sha256": "b2935fee56942fb872cc47881beaa13c2348f52e9dbdb91eed8d135a68b4a1a1"
+    },
+    {
+      "bytes": 155,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Data/audio.json.meta",
+      "sha256": "cf40e5adf8016ef8eeb02e2d8291c4c43c27979c4b928d67095fc3b711fd8714"
+    },
+    {
+      "bytes": 1902678,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Data/localization.json",
+      "sha256": "6f78b91e30db0b43fc33b597cde12c1f625244d87e1a04117898e37e37f84e34"
+    },
+    {
+      "bytes": 155,
+      "path": "unity/Assets/BlueMapContent/Resources/BlueMapAssets/Data/localization.json.meta",
+      "sha256": "bf0a9d78131368d64fe44856851c4edff9f39bcc6eb3baa6498a5fffaea3ae90"
+    }
+  ],
+  "multilineEntries": 3,
+  "musicTracks": 12,
+  "personalSavesUsed": false,
+  "phase": 6,
+  "pluralEntries": 12,
+  "schema": "bluemap.presentation.audio-text.v1",
+  "scope": "source_assets_catalogs_and_playback_localization_policies_not_gameplay_port",
+  "translations": 3187,
+  "version": 1
+}

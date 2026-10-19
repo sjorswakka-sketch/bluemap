@@ -27,8 +27,8 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.1.0-phase3"
-PHASE = 3
+PREVIEW_VERSION = "0.2.0-phase6"
+PHASE = 6
 
 from verify_unity_package import PackageError, package_player, validate_identity, verify_package
 
@@ -336,6 +336,16 @@ def main() -> None:
     require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
             "Unexpected runtime capture method")
     screenshot = validate_png(runtime / "screenshot.png")
+    imported = read_json(output / "import-report.json")
+    presentation = read_json(runtime / "presentation-result.json")
+    require(imported.get("success") is True and imported.get("allNativePixelsExact") is True and
+            imported.get("allNativeAudioExact") is True and imported.get("allNativeAnimationCurvesExact") is True and
+            presentation.get("success") is True and presentation.get("supplementaryGlyphsRendered") is True,
+            "Original presentation import/runtime proof failed")
+    captures = {}
+    for name in ("screenshot-hair.png", "screenshot-clothing.png", "screenshot-equipment.png",
+                 "screenshot-languages.png", "screenshot-pixels.png", "screenshot-animation.png"):
+        captures[name] = validate_png(runtime / name)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
     package, file_count = package_player(player, output, identity, result)
     receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
@@ -345,6 +355,7 @@ def main() -> None:
                "totalWarnings": report["totalWarnings"], "playerArchitecture": "x64",
                "graphicsDeviceType": graphics, "frames": result["frames"], "captureMode": result["captureMode"],
                "checks": checks, "screenshot": screenshot,
+               "presentation": presentation, "import": imported, "captures": captures,
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,
                "buildSourceUnchanged": True, "buildProjectWasDisposable": True,

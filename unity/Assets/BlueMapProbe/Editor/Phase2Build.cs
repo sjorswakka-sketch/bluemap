@@ -12,7 +12,7 @@ using UnityEngine.Rendering;
 
 namespace BlueMapMigration.Editor
 {
-    // The technical preview proves the build route only; it imports no game or saves.
+    // Original presentation assets only; never load gameplay or personal saves.
     public static class Phase2Build
     {
         public const string EditorVersion = "6000.3.26f1";
@@ -33,7 +33,7 @@ namespace BlueMapMigration.Editor
             public double durationSeconds;
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
-            public string scope = "Isolated technical probe, not the ported game";
+            public string scope = "Original presentation gallery; gameplay and saves are not ported";
             public BuildIdentity identity;
         }
 
@@ -94,6 +94,7 @@ namespace BlueMapMigration.Editor
                 QualitySettings.shadows = ShadowQuality.Disable;
 
                 EmbedIdentity(report.identity);
+                Phase6Importer.ImportAll(Path.Combine(Directory.GetParent(output).FullName, "import-report.json"));
 
                 // Keep committed scene IDs stable across repeated builds.
                 if (AssetDatabase.LoadAssetAtPath<SceneAsset>(ScenePath) == null)

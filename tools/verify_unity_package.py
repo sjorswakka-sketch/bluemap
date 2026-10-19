@@ -23,7 +23,8 @@ import zlib
 
 EDITOR_VERSION = "6000.3.26f1"
 EDITOR_REVISION = "de8167e7440c"
-PREVIEW_VERSION = "0.1.0-phase3"
+PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
+PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -42,6 +43,13 @@ BASE_CHECKS = {
     "window_1152x648", "rendered_image_available", "rendered_scene_palette",
     "rendered_grass_water_actor", "no_runtime_exceptions",
     "embedded_identity_consistent", "preview_version",
+}
+PRESENTATION_CHECKS = {
+    "original_catalog_available", "native_source_pixels_exact", "native_animation_clips_available",
+    "native_audio_available", "original_localization_exact", "original_font_available",
+    "ninety_original_hair_styles", "twenty_four_original_clothing",
+    "original_audio_playback_started", "gpu_original_pixels_exact", "animated_source_frames_change",
+    "supplementary_source_glyphs_rendered",
 }
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
@@ -114,9 +122,9 @@ def validate_identity(identity: dict) -> None:
             "Build identity has missing or unexpected fields")
     require(type(identity["schemaVersion"]) is int and identity["schemaVersion"] == 1,
             "Unsupported build identity schema")
-    require(type(identity["phase"]) is int and identity["phase"] == 3,
-            "This verifier requires a phase 3 technical preview")
-    require(identity["previewVersion"] == PREVIEW_VERSION, "Wrong technical preview version")
+    require(type(identity["phase"]) is int and identity["phase"] in PREVIEW_VERSIONS,
+            "This verifier requires an explicitly supported technical preview phase")
+    require(identity["previewVersion"] == PREVIEW_VERSIONS[identity["phase"]], "Wrong technical preview version")
     require(isinstance(identity["sourceCommit"], str) and
             re.fullmatch(r"[0-9a-f]{40}", identity["sourceCommit"]) is not None and
             identity["sourceCommit"] != "0" * 40,
@@ -133,7 +141,7 @@ def validate_identity(identity: dict) -> None:
 
 def archive_root(identity: dict) -> str:
     validate_identity(identity)
-    return "BlueMapUnityPreview-phase-03-" + identity["sourceCommit"][:8]
+    return f"BlueMapUnityPreview-phase-{identity['phase']:02d}-" + identity["sourceCommit"][:8]
 
 
 def package_filename(identity: dict) -> str:
@@ -202,6 +210,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     require(result["graphicsDeviceType"] in {"Direct3D11"},
             "Runtime did not use the pinned real graphics device")
     _validate_checks(result["checks"])
+    if identity["phase"] == 6:
+        require(PRESENTATION_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 6 presentation proof is incomplete")
 
 
 def _validate_pe(raw: bytes, name: str) -> None:
@@ -217,12 +228,14 @@ def _validate_pe(raw: bytes, name: str) -> None:
 
 def _instructions(identity: dict) -> bytes:
     return (
-        "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n"
-        "Migratiefase 3: deze kleine controlebuild is nog niet de overgezette game.\n"
+        "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
+        ("Migratiefase 3: deze kleine controlebuild is nog niet de overgezette game.\n" if identity["phase"] == 3 else
+         "Migratiefase 6: originele beelden, animaties, audio en teksten; nog niet de overgezette game.\n") +
         "De bestaande Godot-game en het herstelpunt blijven apart beschikbaar.\n\n"
         "Pak de volledige map uit en start BlueMapUnityProbe.exe.\n"
         "Laat alle bijbehorende bestanden en de BlueMapUnityProbe_Data-map staan.\n"
-        "WASD / pijlen: verplaatsen; Esc: sluiten.\n"
+        + ("WASD / pijlen: verplaatsen; Esc: sluiten.\n" if identity["phase"] == 3 else
+           "1-6: galerijpagina; M: muziek; N: muziek stoppen; Spatie: geluid; Esc: sluiten.\n") +
         "Deze proef gebruikt geen opslagbestanden van de bestaande game.\n\n"
         f"Preview: {identity['previewVersion']}\nBroncommit: {identity['sourceCommit']}\n"
         f"Bronvingerafdruk: {identity['inputFingerprint']}\n"
@@ -382,7 +395,7 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
             "Packaged player app.info has the wrong isolated identity")
     require(payload["LEESMIJ.txt"] == _instructions(identity), "Package instructions differ from identity")
     return {
-        "schemaVersion": 1, "success": True, "phase": 3, "identity": identity,
+        "schemaVersion": 1, "success": True, "phase": identity["phase"], "identity": identity,
         "package": {"file": path.name, "sha256": package["sha256"], "bytes": path.stat().st_size,
                     "files": len(payload), "uncompressedBytes": total},
         "runtimeChecks": len(runtime["checks"]), "architecture": "Windows-x64-PE32+",

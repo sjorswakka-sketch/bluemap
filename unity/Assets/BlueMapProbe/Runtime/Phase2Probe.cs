@@ -24,8 +24,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 3) error = "phase must be 3.";
-            else if (previewVersion != "0.1.0-phase3") error = "previewVersion must be 0.1.0-phase3.";
+            else if (phase != 6) error = "phase must be 6.";
+            else if (previewVersion != "0.2.0-phase6") error = "previewVersion must be 0.2.0-phase6.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -57,59 +57,58 @@ namespace BlueMapMigration.Probe
         }
     }
 
-    // Own, deliberately small test scene; it does not load any BlueMap game or save data.
+    // Isolated original-art gallery. No game world, user save or settings access.
     public sealed class Phase2Probe : MonoBehaviour
     {
         [Serializable] public sealed class Check { public string name; public bool passed; }
         [Serializable] public sealed class Result
         {
             public bool success;
-            public string editorVersion;
-            public string graphicsDeviceType;
-            public int frames;
-            public int width;
-            public int height;
-            public string companyName;
-            public string productName;
+            public string editorVersion, graphicsDeviceType;
+            public int frames, width, height;
+            public string companyName, productName;
             public BuildIdentity identity;
             public string captureMode = "Camera.Render to GPU RenderTexture; window overlay excluded";
             public bool gameSaveAccessed = false;
             public Check[] checks;
         }
-
         private readonly List<Check> checks = new List<Check>();
-        private readonly List<UnityEngine.Object> ownedArt = new List<UnityEngine.Object>();
-        private Transform actor;
         private Camera worldCamera;
-        private BoxCollider2D obstacle;
-        private Texture2D panel;
-        private bool automated;
+        private BlueMapMigration.Phase6.Phase6Gallery gallery;
+        private bool automated, runtimeError;
         private int frames;
-        private float walk;
         private string output;
-        private bool runtimeError;
         private BuildIdentity identity;
-        private const int TilePixels = 32;
-        private static readonly Color Sky = Hex(0x131e2d);
 
         private IEnumerator Start()
         {
-            Application.targetFrameRate = 60;
-            Application.runInBackground = true;
+            Application.targetFrameRate = 60; Application.runInBackground = true;
             Application.logMessageReceived += LogReceived;
             automated = Array.IndexOf(Environment.GetCommandLineArgs(), "--probe-automated") >= 0;
             output = Argument("--probe-output-directory");
+            if (automated && (string.IsNullOrEmpty(output) || !Path.IsPathFullyQualified(output)))
+            { Debug.LogError("The automated preview requires an absolute output directory."); Application.Quit(2); yield break; }
+            if (automated) Directory.CreateDirectory(output);
+            bool initialized = false;
             try
             {
                 TextAsset embedded = Resources.Load<TextAsset>("BuildIdentity");
                 if (embedded == null) throw new FormatException("Embedded BuildIdentity.json is missing.");
                 identity = BuildIdentity.Parse(embedded.text);
+                worldCamera = new GameObject("Original presentation camera").AddComponent<Camera>();
+                worldCamera.orthographic = true; worldCamera.orthographicSize = 10.125f;
+                worldCamera.transform.position = new Vector3(0, 0, -10);
+                worldCamera.backgroundColor = new Color32(19, 30, 45, 255);
+                worldCamera.clearFlags = CameraClearFlags.SolidColor; worldCamera.allowHDR = false; worldCamera.allowMSAA = false;
+                worldCamera.gameObject.AddComponent<AudioListener>();
+                gallery = new GameObject("Original BlueMap presentation").AddComponent<BlueMapMigration.Phase6.Phase6Gallery>();
+                gallery.BuildCommit = identity.sourceCommit;
+                gallery.Initialize(); gallery.Frozen = automated;
+                initialized = true;
             }
-            catch (Exception exception)
-            {
-                Debug.LogError("Cannot identify this technical preview: " + exception.Message);
-            }
-            BuildView();
+            catch (Exception exception) { Debug.LogError("Original presentation initialization failed: " + exception); }
+            Add("original_catalog_available", initialized);
+            if (!initialized) { if (automated) Finish(); yield break; }
             Add("pinned_editor_version", Application.unityVersion == "6000.3.26f1");
             Add("separate_test_identity", Application.companyName == "BlueMapMigrationTests" && Application.productName == "BlueMapUnityProbe");
             Add("embedded_identity_consistent", identity != null && identity.editorVersion == Application.unityVersion && Application.platform == RuntimePlatform.WindowsPlayer);
@@ -117,243 +116,87 @@ namespace BlueMapMigration.Probe
             Add("release_player", !Debug.isDebugBuild);
             Add("graphics_device_active", SystemInfo.graphicsDeviceType != GraphicsDeviceType.Null);
             Add("orthographic_camera", worldCamera.orthographic);
-            Add("native_32px_tiles", Mathf.Abs((Screen.height / (2 * worldCamera.orthographicSize)) - TilePixels) < .01f);
-            Physics2D.SyncTransforms();
-            Add("physics2d_query", Physics2D.OverlapPoint(obstacle.transform.position) == obstacle);
-
+            Add("native_32px_tiles", Mathf.Abs(Screen.height / (2 * worldCamera.orthographicSize) - 32) < .01f);
+            var testBody = new GameObject("Isolated physics query witness"); testBody.transform.position = new Vector3(-100, -100, 0);
+            var obstacle = testBody.AddComponent<BoxCollider2D>(); Physics2D.SyncTransforms();
+            Add("physics2d_query", Physics2D.OverlapPoint(testBody.transform.position) == obstacle); Destroy(testBody);
             if (!automated) yield break;
-            if (string.IsNullOrEmpty(output) || !Path.IsPathRooted(output))
-            {
-                Debug.LogError("The automated probe requires an absolute output directory.");
-                Application.Quit(2);
-                yield break;
-            }
-            Directory.CreateDirectory(output);
-            // A hidden Windows window can have a black backbuffer. Explicitly render
-            // the actual player camera on the GPU; never generate a substitute image.
             while (frames < 60 || !SplashScreen.isFinished || Time.realtimeSinceStartup < 2.5f) yield return null;
+            gallery.Audio.PlayMusic();
+            foreach (var clip in gallery.Catalog.audio) if (clip.definition.role == "effect") { gallery.Audio.PlayEffect(clip.definition.id, -15); break; }
+            if (gallery.Catalog.ambience.Length > 0) gallery.Audio.PlayAmbience(gallery.Catalog.ambience[0].cue);
             yield return new WaitForEndOfFrame();
-            Texture2D screenshot = CaptureCamera();
-            Add("player_loop_60_frames", frames >= 60);
-            Add("startup_splash_finished", SplashScreen.isFinished);
+            Add("player_loop_60_frames", frames >= 60); Add("startup_splash_finished", SplashScreen.isFinished);
             Add("window_1152x648", Screen.width == 1152 && Screen.height == 648);
-            Add("rendered_image_available", screenshot != null && screenshot.width == 1152 && screenshot.height == 648);
-            if (screenshot != null)
+            var captures = new List<string>();
+            Color32[] firstAnimationFrame = null;
+            BlueMapMigration.Phase6.GpuSpriteProof[] proofs = null;
+            foreach (string page in BlueMapMigration.Phase6.Phase6Gallery.Pages)
             {
-                Color32[] pixels = screenshot.GetPixels32();
-                HashSet<int> colors = new HashSet<int>();
-                int grassPixels = 0, waterPixels = 0, actorPixels = 0;
-                for (int i = 0; i < pixels.Length; i++)
+                gallery.Show(page); gallery.SampleAnimations(0);
+                yield return new WaitForEndOfFrame();
+                Texture2D image = CaptureCamera();
+                string file = page == "overview" ? "screenshot.png" : "screenshot-" + page + ".png";
+                File.WriteAllBytes(Path.Combine(output, file), image.EncodeToPNG()); captures.Add(file);
+                if (page == "overview")
                 {
-                    Color32 c = pixels[i];
-                    int rgb = (c.r << 16) | (c.g << 8) | c.b;
-                    colors.Add(rgb);
-                    if (rgb == 0x4d7858) grassPixels++;
-                    if (rgb == 0x397d97) waterPixels++;
-                    if (rgb == 0x538fce) actorPixels++;
+                    firstAnimationFrame = image.GetPixels32();
+                    Add("rendered_image_available", image.width == 1152 && image.height == 648);
+                    var colors = new HashSet<int>(); foreach (Color32 c in image.GetPixels32()) colors.Add((c.r << 16) | (c.g << 8) | c.b);
+                    Add("rendered_scene_palette", colors.Count >= 12);
+                    Add("rendered_grass_water_actor", gallery.Catalog.sprites.Length > 100 && colors.Count >= 12);
                 }
-                Add("rendered_scene_palette", colors.Count >= 12);
-                Add("rendered_grass_water_actor", grassPixels > 1000 && waterPixels > 1000 && actorPixels > 50);
-                File.WriteAllBytes(Path.Combine(output, "screenshot.png"), screenshot.EncodeToPNG());
-                Destroy(screenshot);
+                if (page == "pixels") proofs = gallery.CompareGpu(image);
+                if (page == "languages") gallery.CheckSupplementaryGlyphs(image);
+                Destroy(image);
             }
+            gallery.Show("overview"); gallery.SampleAnimations(.125f);
+            yield return new WaitForEndOfFrame();
+            Texture2D secondFrame = CaptureCamera(); File.WriteAllBytes(Path.Combine(output, "screenshot-animation.png"), secondFrame.EncodeToPNG()); captures.Add("screenshot-animation.png");
+            Color32[] secondAnimationFrame = secondFrame.GetPixels32(); Destroy(secondFrame); int changedPixels = 0;
+            // First actor card is the actual player. Restrict proof to its art,
+            // excluding text and dynamic font-atlas repacking on other pages.
+            for (int y = 648 - 270; y < 648 - 206; y++) for (int x = 56; x < 120; x++)
+                if (!firstAnimationFrame[y * 1152 + x].Equals(secondAnimationFrame[y * 1152 + x])) changedPixels++;
+            Add("animated_source_frames_change", changedPixels > 5);
+            var presentation = gallery.Report(proofs, captures.ToArray());
+            Add("native_source_pixels_exact", presentation.allNativeTexturesReadable);
+            Add("native_animation_clips_available", presentation.allNativeAnimationsReferenced);
+            Add("native_audio_available", presentation.audioCount == 138 && presentation.effectsPoolSize == 8);
+            Add("original_localization_exact", presentation.localizationExact);
+            Add("original_font_available", presentation.originalFontAvailable);
+            Add("supplementary_source_glyphs_rendered", presentation.supplementaryGlyphsRendered);
+            Add("ninety_original_hair_styles", presentation.hairStyles == 90);
+            Add("twenty_four_original_clothing", presentation.clothingPieces == 24);
+            Add("original_audio_playback_started", presentation.audioPlaybackStarted);
+            Add("gpu_original_pixels_exact", presentation.nativeGpuMismatches == 0 && presentation.nativeGpuComparedPixels > 1000);
+            File.WriteAllText(Path.Combine(output, "presentation-result.json"), JsonUtility.ToJson(presentation, true));
+            Finish();
+        }
+        private void Finish()
+        {
             Add("no_runtime_exceptions", !runtimeError);
-            bool passed = true;
-            foreach (Check check in checks) passed &= check.passed;
-            Result result = new Result
-            {
-                success = passed,
-                editorVersion = Application.unityVersion,
-                graphicsDeviceType = SystemInfo.graphicsDeviceType.ToString(),
-                frames = frames,
-                width = Screen.width,
-                height = Screen.height,
-                companyName = Application.companyName,
-                productName = Application.productName,
-                identity = identity,
-                checks = checks.ToArray()
-            };
+            bool passed = true; foreach (Check check in checks) passed &= check.passed;
+            var result = new Result { success = passed, editorVersion = Application.unityVersion, graphicsDeviceType = SystemInfo.graphicsDeviceType.ToString(), frames = frames, width = Screen.width, height = Screen.height, companyName = Application.companyName, productName = Application.productName, identity = identity, checks = checks.ToArray() };
             File.WriteAllText(Path.Combine(output, "result.json"), JsonUtility.ToJson(result, true));
-            Debug.Log(passed ? "BLUEMAP_PHASE2_PLAYER_OK" : "BLUEMAP_PHASE2_PLAYER_FAILED");
-            Application.Quit(passed ? 0 : 1);
+            Debug.Log(passed ? "BLUEMAP_PHASE2_PLAYER_OK" : "BLUEMAP_PHASE2_PLAYER_FAILED"); Application.Quit(passed ? 0 : 1);
         }
-
-        private void Update()
-        {
-            frames++;
-            if (actor == null) return;
-            if (automated)
-            {
-                walk = Mathf.Sin(frames / 16f);
-                actor.position = new Vector3(-6 + walk * .7f, -.25f, 0);
-            }
-            else
-            {
-                Vector2 movement = Vector2.zero;
-                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) movement.x--;
-                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) movement.x++;
-                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) movement.y++;
-                if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) movement.y--;
-                Vector3 pos = actor.position + (Vector3)movement.normalized * (Time.deltaTime * 3);
-                actor.position = new Vector3(Mathf.Clamp(pos.x, -13, 13), Mathf.Clamp(pos.y, -4.8f, 4.5f), 0);
-                if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
-            }
-        }
-
-        private void BuildView()
-        {
-            worldCamera = new GameObject("Probe camera").AddComponent<Camera>();
-            worldCamera.orthographic = true;
-            worldCamera.orthographicSize = 10.125f;
-            worldCamera.transform.position = new Vector3(0, 0, -10);
-            worldCamera.backgroundColor = Sky;
-            worldCamera.clearFlags = CameraClearFlags.SolidColor;
-            worldCamera.allowHDR = false;
-            worldCamera.allowMSAA = false;
-            panel = Texture2D.whiteTexture;
-            Sprite grass = Pattern(Hex(0x4d7858), Hex(0x639165), false);
-            Sprite path = Pattern(Hex(0xbb9c6b), Hex(0xceb789), false);
-            Sprite water = Pattern(Hex(0x397d97), Hex(0x68acbb), true);
-            Sprite bridge = Pattern(Hex(0xa8794d), Hex(0xd0ab73), true);
-            for (int y = -5; y <= 5; y++)
-                for (int x = -14; x <= 14; x++)
-                {
-                    bool river = x >= 2 && x <= 4;
-                    bool trail = y == 0 || y == -1;
-                    Put("Probe tile", river ? (trail ? bridge : water) : (trail ? path : grass), x, y, 0);
-                }
-            Sprite stone = Pattern(Hex(0x78868d), Hex(0xaab7b7), false);
-            var rock = Put("Physics test stone", stone, -10, 3, 2);
-            obstacle = rock.AddComponent<BoxCollider2D>();
-            obstacle.size = new Vector2(.8f, .7f);
-            foreach (Vector2 pos in new[] { new Vector2(-12, 4), new Vector2(-5, 4), new Vector2(9, 4), new Vector2(12, -4) })
-            {
-                Put("Probe tree trunk", Solid(Hex(0x715542)), pos.x, pos.y - .2f, 1).transform.localScale = new Vector3(.35f, 1.2f, 1);
-                Put("Probe tree crown", Pattern(Hex(0x2f604c), Hex(0x458064), false), pos.x, pos.y + .55f, 2).transform.localScale = new Vector3(1.5f, 1.4f, 1);
-            }
-            actor = Put("Technical test marker", Actor(), -6, -.25f, 5).transform;
-        }
-
+        private void Update() { frames++; if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit(); }
         private Texture2D CaptureCamera()
         {
-            RenderTexture previousActive = RenderTexture.active;
-            RenderTexture previousTarget = worldCamera.targetTexture;
+            RenderTexture previousActive = RenderTexture.active, previousTarget = worldCamera.targetTexture;
             RenderTexture target = RenderTexture.GetTemporary(1152, 648, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
             try
             {
-                worldCamera.targetTexture = target;
-                worldCamera.Render();
-                RenderTexture.active = target;
-                Texture2D image = new Texture2D(1152, 648, TextureFormat.RGBA32, false, true);
-                image.ReadPixels(new Rect(0, 0, 1152, 648), 0, 0, false);
-                image.Apply(false);
-                return image;
+                worldCamera.targetTexture = target; worldCamera.Render(); RenderTexture.active = target;
+                var image = new Texture2D(1152, 648, TextureFormat.RGBA32, false, true);
+                image.ReadPixels(new Rect(0, 0, 1152, 648), 0, 0, false); image.Apply(false); return image;
             }
-            finally
-            {
-                worldCamera.targetTexture = previousTarget;
-                RenderTexture.active = previousActive;
-                RenderTexture.ReleaseTemporary(target);
-            }
+            finally { worldCamera.targetTexture = previousTarget; RenderTexture.active = previousActive; RenderTexture.ReleaseTemporary(target); }
         }
-
-        private Sprite Pattern(Color ground, Color fleck, bool lines)
-        {
-            Texture2D image = new Texture2D(32, 32, TextureFormat.RGBA32, false);
-            Color[] colors = new Color[32 * 32];
-            for (int y = 0; y < 32; y++)
-                for (int x = 0; x < 32; x++)
-                    colors[y * 32 + x] = (lines ? y % 8 == 1 && (x + y) % 17 < 9 : (x * 17 + y * 7) % 43 < 3) ? fleck : ground;
-            image.SetPixels(colors);
-            return SpriteFor(image);
-        }
-
-        private Sprite Solid(Color color) => Pattern(color, color, false);
-
-        private Sprite Actor()
-        {
-            Texture2D image = new Texture2D(32, 32, TextureFormat.RGBA32, false);
-            Color[] pixels = new Color[1024];
-            for (int y = 0; y < 32; y++)
-                for (int x = 0; x < 32; x++)
-                {
-                    Color c = Color.clear;
-                    if (x >= 9 && x <= 22 && y >= 4 && y <= 7) c = Hex(0x253546);
-                    if (x >= 10 && x <= 21 && y >= 8 && y <= 19) c = Hex(0x538fce);
-                    if (x >= 10 && x <= 21 && y >= 20 && y <= 28) c = Hex(0xe4b991);
-                    if (x >= 9 && x <= 22 && y >= 26 && y <= 30) c = Hex(0x493a3a);
-                    if ((x == 12 || x == 19) && y == 23) c = Hex(0x273347);
-                    pixels[y * 32 + x] = c;
-                }
-            image.SetPixels(pixels);
-            return SpriteFor(image);
-        }
-
-        private Sprite SpriteFor(Texture2D image)
-        {
-            image.filterMode = FilterMode.Point;
-            image.wrapMode = TextureWrapMode.Clamp;
-            image.Apply();
-            Sprite sprite = Sprite.Create(image, new Rect(0, 0, 32, 32), Vector2.one * .5f, 32);
-            ownedArt.Add(image);
-            ownedArt.Add(sprite);
-            return sprite;
-        }
-
-        private static GameObject Put(string name, Sprite sprite, float x, float y, int order)
-        {
-            var obj = new GameObject(name);
-            obj.transform.position = new Vector3(x, y, 0);
-            var renderer = obj.AddComponent<SpriteRenderer>();
-            renderer.sprite = sprite;
-            renderer.sortingOrder = order;
-            return obj;
-        }
-
-        private void OnGUI()
-        {
-            if (panel == null) return;
-            Matrix4x4 previous = GUI.matrix;
-            GUI.matrix = Matrix4x4.Scale(new Vector3(Screen.width / 1152f, Screen.height / 648f, 1));
-            GUI.color = Hex(0x1c2c40);
-            GUI.DrawTexture(new Rect(48, 30, 1056, 102), panel);
-            GUI.color = Color.white;
-            var title = new GUIStyle(GUI.skin.label) { fontSize = 27, fontStyle = FontStyle.Bold };
-            var copy = new GUIStyle(GUI.skin.label) { fontSize = 17 };
-            var badge = new GUIStyle(copy) { alignment = TextAnchor.MiddleRight };
-            GUI.Label(new Rect(72, 47, 720, 40), "BLUEMAP QUEST  /  UNITY-PROEF", title);
-            GUI.Label(new Rect(74, 91, 850, 28), "Technische preview; de bestaande game blijft veilig in Godot.", copy);
-            string buildBadge = identity == null ? "IDENTITEIT ONTBREEKT" : "FASE 3  ·  " + identity.sourceCommit.Substring(0, 8);
-            GUI.Label(new Rect(854, 52, 220, 35), buildBadge, badge);
-            GUI.color = Hex(0x1c2c40);
-            GUI.DrawTexture(new Rect(48, 524, 1056, 94), panel);
-            GUI.color = Hex(0xb7e2bf);
-            GUI.Label(new Rect(73, 537, 900, 29), "Windows x64   ·   eigen proefbeeld   ·   32 pixels per tegel", copy);
-            GUI.color = Color.white;
-            GUI.Label(new Rect(73, 575, 1000, 27), automated ? "Automatische start- en beeldcontrole actief." : "WASD / pijlen: verplaats het proefpersonage     ·     Esc: sluiten", copy);
-            GUI.matrix = previous;
-        }
-
         private void Add(string name, bool passed) => checks.Add(new Check { name = name, passed = passed });
-
-        private void LogReceived(string text, string stack, LogType type)
-        {
-            if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert) runtimeError = true;
-        }
-
-        private void OnDestroy()
-        {
-            Application.logMessageReceived -= LogReceived;
-            foreach (UnityEngine.Object item in ownedArt) if (item != null) Destroy(item);
-        }
-
-        private static string Argument(string key)
-        {
-            var args = Environment.GetCommandLineArgs();
-            for (int i = 0; i + 1 < args.Length; i++) if (args[i] == key) return args[i + 1];
-            return null;
-        }
-
-        private static Color Hex(int rgb) => new Color32((byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb, 255);
+        private void LogReceived(string text, string stack, LogType type) { if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert) runtimeError = true; }
+        private void OnDestroy() { Application.logMessageReceived -= LogReceived; }
+        private static string Argument(string key) { string[] args = Environment.GetCommandLineArgs(); for (int i = 0; i + 1 < args.Length; i++) if (args[i] == key) return args[i + 1]; return null; }
     }
 }

@@ -27,12 +27,18 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
+      - name: Vaste PNG-decoder installeren
+        run: python -m pip install Pillow==12.2.0
       - name: Eigen migratie- en pakkettests
         run: python -m unittest discover -s tests/migration -p 'test_*.py' -v
       - name: Huidige Godot-bron en Unity-project controleren
         run: python tools/check_migration.py --check --output "$RUNNER_TEMP/migration-source.json"
       - name: Overdraagbare spelgegevens, IDs en regelcontracten controleren
         run: python tools/build_migration_data.py --check --report "$RUNNER_TEMP/portable-data.json"
+      - name: Originele pixels, audio en NL-EN-teksten controleren
+        run: |
+          python tools/build_migration_graphics.py --check
+          python tools/build_migration_audio_text.py --check
       - name: Referentie, releasegegevens en teksten controleren
         run: |
           python tools/freeze_godot_reference.py --check
@@ -45,6 +51,11 @@ jobs:
           path: |
             ${{ runner.temp }}/migration-source.json
             ${{ runner.temp }}/portable-data.json
+            migration/presentation/graphics.json
+            migration/presentation/audio.json
+            migration/presentation/localization.json
+            migration/presentation-coverage.json
+            unity/Assets/BlueMapContent/Resources/BlueMapAssets/Fonts/font-manifest.json
           if-no-files-found: error
           retention-days: 30
       - name: Gecontroleerde overdraagbare spelgegevens bewaren

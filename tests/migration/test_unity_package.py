@@ -118,6 +118,67 @@ class UnityPackageTests(unittest.TestCase):
         self.assertEqual(report["runtimeChecks"], 16)
         self.assertEqual(before, sorted(str(p.relative_to(self.base)) for p in self.base.rglob("*")))
 
+    def phase6_fixture(self):
+        build_identity = {**identity(), "phase": 6, "previewVersion": "0.2.0-phase6"}
+        proof = runtime(build_identity)
+        proof["checks"] += [{"name": name, "passed": True} for name in sorted(package.PRESENTATION_CHECKS)]
+        output = self.base / "phase6-output"
+        output.mkdir()
+        archive, count = package.package_player(self.player, output, build_identity, proof)
+        receipt = {"phase": 6, "identity": build_identity, "success": True,
+                   "rawLogsPublished": False, "godotSavesUsed": False, "checks": proof["checks"],
+                   "package": {"file": archive.name, "sha256": package.sha256(archive),
+                               "bytes": archive.stat().st_size, "files": count}}
+        return archive, receipt, proof
+
+    def test_phase6_full_presentation_package_and_historical_phase3_both_verify(self) -> None:
+        archive, receipt, _ = self.phase6_fixture()
+        phase6 = package.verify_package(archive, receipt, "a" * 40)
+        historical = package.verify_package(self.archive, self.receipt, "a" * 40)
+        self.assertEqual((phase6["phase"], historical["phase"]), (6, 3))
+        self.assertEqual(phase6["runtimeChecks"], len(package.BASE_CHECKS | package.PRESENTATION_CHECKS))
+        self.assertEqual(historical["runtimeChecks"], 16)
+        self.assertTrue(archive.name.startswith("BlueMapUnityPreview-phase-06-aaaaaaaa-"))
+        with zipfile.ZipFile(archive) as packed:
+            name = package.archive_root(receipt["identity"]) + "/LEESMIJ.txt"
+            self.assertIn("Migratiefase 6", packed.read(name).decode("utf-8"))
+
+    def test_each_phase6_presentation_check_is_required_before_packaging(self) -> None:
+        build_identity = {**identity(), "phase": 6, "previewVersion": "0.2.0-phase6"}
+        for missing in sorted(package.PRESENTATION_CHECKS):
+            proof = runtime(build_identity)
+            proof["checks"] += [{"name": name, "passed": True}
+                                for name in sorted(package.PRESENTATION_CHECKS - {missing})]
+            # The count remains high; unrelated green checks cannot replace a
+            # missing source-pixel/font/audio/localization witness.
+            proof["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "presentation proof"):
+                package.package_player(self.player, self.output, build_identity, proof)
+
+    def test_phase6_missing_check_cannot_be_bypassed_by_rehashing_archive_and_receipt(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase6_fixture()
+        self.identity = self.receipt["identity"]
+        changed = copy.deepcopy(self.runtime)
+        changed["checks"] = [check for check in changed["checks"] if check["name"] != "gpu_original_pixels_exact"]
+        self.receipt["checks"] = changed["checks"]
+        self.change_payload("RUNTIME-CHECKS.json", json.dumps(changed).encode())
+        with self.assertRaisesRegex(package.PackageError, "presentation proof"):
+            package.verify_package(self.archive, self.receipt, "a" * 40)
+
+    def test_phase6_failed_presentation_check_is_rejected(self) -> None:
+        build_identity = {**identity(), "phase": 6, "previewVersion": "0.2.0-phase6"}
+        proof = runtime(build_identity)
+        proof["checks"] += [{"name": name, "passed": name != "original_audio_playback_started"}
+                            for name in sorted(package.PRESENTATION_CHECKS)]
+        with self.assertRaisesRegex(package.PackageError, "failed check"):
+            package.package_player(self.player, self.output, build_identity, proof)
+
+    def test_unsupported_phase_and_cross_phase_preview_version_are_rejected(self) -> None:
+        for phase, preview in ((4, "0.2.0-phase6"), (True, "0.2.0-phase6"),
+                               (6, "0.1.0-phase3"), (3, "0.2.0-phase6")):
+            with self.subTest(phase=phase, preview=preview), self.assertRaises(package.PackageError):
+                package.validate_identity({**identity(), "phase": phase, "previewVersion": preview})
+
     def test_packaging_is_deterministic(self) -> None:
         second = self.base / "second"
         second.mkdir()

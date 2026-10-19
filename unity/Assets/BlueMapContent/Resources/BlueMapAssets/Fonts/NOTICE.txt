@@ -1,0 +1,7 @@
+Open Sans SemiBold 1.10 — extracted unchanged from Godot 4.4.1 game fallback.
+Digitized data copyright © 2011, Google Corporation.
+License: Apache-2.0; see Apache-2.0.txt.
+Container conversion only: embedded WOFF2 unwrapped to TTF for Unity; original tables preserved.
+Supplementary DroidSansFallback: Digitized data copyright Google Corporation © 2006
+Copyright (C) 2008 The Android Open Source Project. Apache-2.0.
+Explicit supplementary font for six symbols previously resolved by OS fallback; no claim of the same OS font face.

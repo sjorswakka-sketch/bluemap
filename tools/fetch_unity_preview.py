@@ -10,7 +10,7 @@ import urllib.parse
 import urllib.request
 
 from build_unity_probe import collect_build_inputs
-from verify_unity_package import PackageError, verify_package
+from verify_unity_package import PackageError, verify_package, PREVIEW_VERSIONS
 
 ROOT = Path(__file__).resolve().parent.parent
 REPOSITORY = "sjorswakka-sketch/bluemap"
@@ -65,7 +65,10 @@ def main():
             "Download output must be outside the checkout")
     output.mkdir(parents=True, exist_ok=True)
     name = manifest.get("packageName", "")
-    require(name == f"BlueMapUnityPreview-phase-03-{commit[:8]}-Windows-x64.zip", "Unexpected preview filename")
+    phase = manifest.get("phase")
+    require(type(phase) is int and phase in PREVIEW_VERSIONS and
+            manifest.get("previewVersion") == PREVIEW_VERSIONS[phase], "Unsupported preview phase/version")
+    require(name == f"BlueMapUnityPreview-phase-{phase:02d}-{commit[:8]}-Windows-x64.zip", "Unexpected preview filename")
     receipt_path, package = output / "receipt.json", output / name
     fetch(manifest["receiptUrl"], receipt_path, manifest["receiptSha256"], 1024 * 1024)
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
