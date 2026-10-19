@@ -285,7 +285,10 @@ def main() -> None:
     print(f"Verified Unity {EXPECTED_VERSION}; building committed preview {source_commit[:8]}.", flush=True)
     # Import/build only a disposable project assembled from canonical Git bytes.
     # Generated Resources identity and Unity caches never touch the source checkout.
-    with tempfile.TemporaryDirectory(prefix="bluemap-unity-build-") as temporary:
+    # Unity's child processes can briefly retain the Windows working directory
+    # after a successful export. Cache cleanup is best effort; it must not hide
+    # build/player validation or turn an ordinary file lock into a failed build.
+    with tempfile.TemporaryDirectory(prefix="bluemap-unity-build-", ignore_cleanup_errors=True) as temporary:
         project = Path(temporary) / "project"
         for entry in inputs:
             if entry["path"].startswith("unity/"):
@@ -344,7 +347,8 @@ def main() -> None:
                "checks": checks, "screenshot": screenshot,
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,
-               "buildSourceUnchanged": True, "buildProjectWasDisposable": True}
+               "buildSourceUnchanged": True, "buildProjectWasDisposable": True,
+               "temporaryCacheRemoved": not Path(temporary).exists()}
     verified = verify_package(package, receipt, source_commit)
     (output / "receipt.json").write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     (output / "package-verification.json").write_text(json.dumps(verified, indent=2) + "\n", encoding="utf-8")
