@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -160,6 +161,45 @@ namespace BlueMapMigration.Probe
             for (int y = 648 - 270; y < 648 - 206; y++) for (int x = 56; x < 120; x++)
                 if (!firstAnimationFrame[y * 1152 + x].Equals(secondAnimationFrame[y * 1152 + x])) changedPixels++;
             Add("animated_source_frames_change", changedPixels > 5);
+            // The source viewport PNG stores premultiplied RGB. Render every
+            // partial-alpha pixel over opaque black: its exact output RGB must
+            // equal the retained source RGB, without another texture-alpha step.
+            Color previousBackground = worldCamera.backgroundColor;
+            bool premultipliedCaptureSaved = false, tintChecked = false;
+            worldCamera.backgroundColor = Color.black;
+            try
+            {
+                foreach (var texture in gallery.Catalog.textures.Where(value => value.definition.alphaMode == "premultiplied").OrderBy(value => value.definition.id.StartsWith("generated:swords", StringComparison.Ordinal) ? 0 : 1).ThenBy(value => value.definition.id, StringComparer.Ordinal))
+                {
+                    Color32[] source = texture.texture.GetPixels32();
+                    var textureProof = new BlueMapMigration.Phase6.PremultipliedTextureProof { id = texture.definition.id };
+                    for (int top = 0; top < texture.texture.height; top += 648) for (int left = 0; left < texture.texture.width; left += 1152)
+                    {
+                        gallery.ShowPremultipliedTexture(texture, left, top);
+                        yield return new WaitForEndOfFrame();
+                        Texture2D image = CaptureCamera();
+                        var chunk = gallery.ComparePremultipliedChunk(texture, left, top, source, image);
+                        textureProof.comparedPixels += chunk.comparedPixels; textureProof.alphaOnePixels += chunk.alphaOnePixels; textureProof.mismatches += chunk.mismatches;
+                        if (!premultipliedCaptureSaved && chunk.comparedPixels > 0)
+                        {
+                            File.WriteAllBytes(Path.Combine(output, "screenshot-premultiplied.png"), image.EncodeToPNG()); captures.Add("screenshot-premultiplied.png"); premultipliedCaptureSaved = true;
+                        }
+                        Destroy(image);
+                        if (!tintChecked && gallery.HasExactTintSamples(texture, left, top, source))
+                        {
+                            gallery.ShowPremultipliedTexture(texture, left, top, true);
+                            yield return new WaitForEndOfFrame();
+                            Texture2D tinted = CaptureCamera();
+                            var tint = gallery.ComparePremultipliedChunk(texture, left, top, source, tinted, true);
+                            textureProof.tintComparedPixels += tint.tintComparedPixels; textureProof.tintMismatches += tint.tintMismatches;
+                            Destroy(tinted); tintChecked = true;
+                        }
+                    }
+                    gallery.RecordPremultipliedProof(textureProof);
+                }
+            }
+            finally { worldCamera.backgroundColor = previousBackground; }
+            gallery.Show("overview"); gallery.SampleAnimations(.125f);
             var presentation = gallery.Report(proofs, captures.ToArray());
             Add("native_source_pixels_exact", presentation.allNativeTexturesReadable);
             Add("native_animation_clips_available", presentation.allNativeAnimationsReferenced);
@@ -172,6 +212,7 @@ namespace BlueMapMigration.Probe
             Add("twenty_four_original_clothing", presentation.clothingPieces == 24);
             Add("original_audio_playback_started", presentation.audioPlaybackStarted);
             Add("gpu_original_pixels_exact", presentation.nativeGpuMismatches == 0 && presentation.nativeGpuComparedPixels > 1000);
+            Add("gpu_premultiplied_pixels_exact", presentation.premultipliedPixelsExact);
             File.WriteAllText(Path.Combine(output, "presentation-result.json"), JsonUtility.ToJson(presentation, true));
             Finish();
         }

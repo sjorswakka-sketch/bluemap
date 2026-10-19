@@ -30,6 +30,8 @@ DIRECTIONS = ("down", "up", "right", "left")
 POSES = ("idle", "step1", "step2")
 ENGINE_VERSION = "4.4.1.stable.official.49a5bc7b6"
 EXPORTERS = ("res://tools/migration_graphics_export.gd", "res://tools/migration_presentation_canvas.gd")
+ALPHA_MODES = {"straight", "premultiplied"}
+STRAIGHT_GENERATED = {"generated:equipment-icons", "generated:light-gradient", "generated:icon"}
 
 
 def png_metadata(data: bytes) -> dict:
@@ -110,6 +112,12 @@ def validate_catalog(catalog: dict) -> None:
     textures = {}
     for texture in catalog["textures"]:
         require(texture["id"] not in textures, "Duplicate texture identity")
+        require(type(texture.get("alphaMode")) is str and texture["alphaMode"] in ALPHA_MODES,
+                "Texture alpha mode must be explicit and supported")
+        if texture["id"].startswith("png:"):
+            require(texture["alphaMode"] == "straight", "Original PNG alpha semantics changed")
+        elif texture["id"].startswith("generated:"):
+            validate_generated_alpha(texture)
         require(type(texture["width"]) is int and type(texture["height"]) is int and
                 0 < texture["width"] * texture["height"] <= MAX_PIXELS, "Invalid texture dimensions")
         require(re.fullmatch(r"[0-9a-f]{64}", texture["sha256"]) is not None and
@@ -191,6 +199,14 @@ def validate_generated_provenance(index: dict, root: Path) -> None:
         no_symlink(path)
         require(path.is_file() and handlers[source] == sha(path.read_bytes().replace(b"\r\n", b"\n")),
                 "Stale generated graphics exporter source: " + source)
+
+
+def validate_generated_alpha(texture: dict) -> None:
+    require(type(texture.get("alphaMode")) is str and texture["alphaMode"] in ALPHA_MODES,
+            "Generated texture alpha mode must be explicit and supported")
+    expected = "straight" if texture["id"] in STRAIGHT_GENERATED else "premultiplied"
+    require(texture["alphaMode"] == expected,
+            "Generated texture alpha mode differs from its source image/render capture")
 
 
 def known_regions(textures: list[dict], sources: dict[str, str]) -> tuple[list[dict], list[dict], list[dict]]:
@@ -291,7 +307,8 @@ def build_documents(root: Path = ROOT, *, require_generated: bool = True) -> dic
         documents[target] = raw
         documents[target + ".meta"] = texture_meta(target[len("unity/"):])
         textures.append({"id": "png:" + path, "sourcePath": path,
-                         "resourcePath": "BlueMapAssets/Graphics/Original/" + path[:-4], **png_metadata(raw)})
+                         "resourcePath": "BlueMapAssets/Graphics/Original/" + path[:-4],
+                         "alphaMode": "straight", **png_metadata(raw)})
     require(len(textures) == 244, "Not all 244 original PNGs were retained")
     sources = {}
     source_paths = ("scripts/data/character_art.gd", "scripts/data/tiles.gd", "scripts/core/art.gd",
@@ -323,6 +340,7 @@ def build_documents(root: Path = ROOT, *, require_generated: bool = True) -> dic
                                 "indexSha256": sha(canonical_bytes(generated))}
         indexed = {"index.json"}
         for entry in generated["textures"]:
+            validate_generated_alpha(entry)
             name = entry["file"]
             require(type(name) is str and re.fullmatch(r"[A-Za-z0-9_-]+\.png", name) is not None,
                     "Unsafe generated PNG name")
@@ -370,6 +388,7 @@ def build_documents(root: Path = ROOT, *, require_generated: bool = True) -> dic
                "generatedProvenance": generated_provenance,
                "coordinateConvention": "top_left_source_pixels_unity_y_equals_textureHeight_minus_y_minus_height",
                "pivotConvention": "native_world_anchor_where_defined_else_center_of_image",
+               "alphaConvention": "original_PNG_straight_GPU_render_atlas_premultiplied_no_pixel_conversion",
                "scope": "all_original_PNG_bytes_proven_regions_and_source_generated_images_not_gameplay_render_equivalence",
                "originalSvg": {"sourcePath": "icon.svg", "sha256": sha(svg), "bytes": len(svg),
                                "resourcePath": "BlueMapAssets/Graphics/Original/icon.svg"}}

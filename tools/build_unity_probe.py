@@ -396,11 +396,15 @@ def main() -> None:
             imported.get("allNativeAudioExact") is True and imported.get("allNativeAnimationCurvesExact") is True and
             presentation.get("success") is True and presentation.get("supplementaryGlyphsRendered") is True and
             presentation.get("nativeBoundaryFramesExact") is True and presentation.get("nativeBoundaryFailures") == 0 and
-            presentation.get("nativeBoundarySamples", 0) >= 18861,
+            presentation.get("nativeBoundarySamples", 0) >= 18861 and
+            presentation.get("premultipliedPixelsExact") is True and presentation.get("premultipliedTextureCount") == 9 and
+            presentation.get("premultipliedComparedPixels", 0) > 0 and presentation.get("premultipliedMismatches") == 0 and
+            presentation.get("premultipliedTintComparedPixels", 0) > 0 and presentation.get("premultipliedTintMismatches") == 0,
             "Original presentation import/runtime proof failed")
     captures = {}
     for name in ("screenshot-hair.png", "screenshot-clothing.png", "screenshot-equipment.png",
-                 "screenshot-languages.png", "screenshot-pixels.png", "screenshot-animation.png"):
+                 "screenshot-languages.png", "screenshot-pixels.png", "screenshot-animation.png",
+                 "screenshot-premultiplied.png"):
         captures[name] = validate_png(runtime / name)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
     package, file_count = package_player(player, output, identity, result)

@@ -457,6 +457,7 @@
       "originalTextureId": "png:assets/zandhaas.png"
     }
   ],
+  "alphaConvention": "original_PNG_straight_GPU_render_atlas_premultiplied_no_pixel_conversion",
   "animations": [
     {
       "fps": 9,
@@ -2730,10 +2731,10 @@
   "generatedProvenance": {
     "engineVersion": "4.4.1.stable.official.49a5bc7b6",
     "exporterSources": {
-      "res://tools/migration_graphics_export.gd": "c99d3d7de767ebed0e133d9bb6f49bbf43a317b0972d46d405136031a6d92f24",
+      "res://tools/migration_graphics_export.gd": "343c9e09cf64dd53cbc7a49fa8404f4f91a5548903229d9ad18807da9525e8f4",
       "res://tools/migration_presentation_canvas.gd": "be327df93c21fd0bd3ae9b5055317f6c9e0d3aac946a6626ec132e70d19aa40e"
     },
-    "indexSha256": "2cc8c9fb2f4a899197912786b656f32ae415b52fe5528299acb2f8a25723fe33"
+    "indexSha256": "e6f664e47f39045e207cd304b784e2db9b0e2807f95cb8992d9bdd45ec582bd2"
   },
   "originalSvg": {
     "bytes": 318,
@@ -105208,6 +105209,7 @@
   ],
   "textures": [
     {
+      "alphaMode": "straight",
       "bytes": 690,
       "height": 24,
       "id": "png:assets/ad_crab.png",
@@ -105218,6 +105220,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 730,
       "height": 24,
       "id": "png:assets/ad_keeper.png",
@@ -105228,6 +105231,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 1911,
       "height": 32,
       "id": "png:assets/ad_props.png",
@@ -105238,6 +105242,7 @@
       "width": 384
     },
     {
+      "alphaMode": "straight",
       "bytes": 746,
       "height": 24,
       "id": "png:assets/ad_wisp.png",
@@ -105248,6 +105253,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 354,
       "height": 16,
       "id": "png:assets/altar.png",
@@ -105258,6 +105264,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 367,
       "height": 16,
       "id": "png:assets/arcane_orb.png",
@@ -105268,6 +105275,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 1072,
       "height": 16,
       "id": "png:assets/arena_crowd.png",
@@ -105278,6 +105286,7 @@
       "width": 256
     },
     {
+      "alphaMode": "straight",
       "bytes": 715,
       "height": 16,
       "id": "png:assets/arena_props.png",
@@ -105288,6 +105297,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 422,
       "height": 16,
       "id": "png:assets/bat.png",
@@ -105298,6 +105308,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 644,
       "height": 32,
       "id": "png:assets/ce_boat.png",
@@ -105308,6 +105319,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 420,
       "height": 24,
       "id": "png:assets/ce_props.png",
@@ -105318,6 +105330,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 9245,
       "height": 128,
       "id": "png:assets/character_clothes.png",
@@ -105328,6 +105341,7 @@
       "width": 2688
     },
     {
+      "alphaMode": "straight",
       "bytes": 14943,
       "height": 128,
       "id": "png:assets/character_hair.png",
@@ -105338,6 +105352,7 @@
       "width": 2880
     },
     {
+      "alphaMode": "straight",
       "bytes": 353,
       "height": 16,
       "id": "png:assets/chest.png",
@@ -105348,6 +105363,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 235,
       "height": 16,
       "id": "png:assets/coin.png",
@@ -105358,6 +105374,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 282,
       "height": 16,
       "id": "png:assets/crystal.png",
@@ -105368,6 +105385,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 569,
       "height": 16,
       "id": "png:assets/crystal_beetle.png",
@@ -105378,6 +105396,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 385,
       "height": 32,
       "id": "png:assets/cv_posts.png",
@@ -105388,6 +105407,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 391,
       "height": 24,
       "id": "png:assets/cv_rack.png",
@@ -105398,6 +105418,7 @@
       "width": 40
     },
     {
+      "alphaMode": "straight",
       "bytes": 621,
       "height": 24,
       "id": "png:assets/cv_ram.png",
@@ -105408,6 +105429,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 644,
       "height": 24,
       "id": "png:assets/cv_slinger.png",
@@ -105418,6 +105440,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 365,
       "height": 32,
       "id": "png:assets/cw_entry.png",
@@ -105428,6 +105451,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 1207,
       "height": 16,
       "id": "png:assets/cw_items.png",
@@ -105438,6 +105462,7 @@
       "width": 160
     },
     {
+      "alphaMode": "straight",
       "bytes": 2610,
       "height": 48,
       "id": "png:assets/cw_props.png",
@@ -105448,6 +105473,7 @@
       "width": 832
     },
     {
+      "alphaMode": "straight",
       "bytes": 617,
       "height": 16,
       "id": "png:assets/cw_resources.png",
@@ -105458,6 +105484,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 746,
       "height": 16,
       "id": "png:assets/depths_objects.png",
@@ -105468,6 +105495,7 @@
       "width": 80
     },
     {
+      "alphaMode": "straight",
       "bytes": 633,
       "height": 32,
       "id": "png:assets/depths_pillar.png",
@@ -105478,6 +105506,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 1299,
       "height": 32,
       "id": "png:assets/depths_seal.png",
@@ -105488,6 +105517,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 820,
       "height": 32,
       "id": "png:assets/depths_seal_narrow.png",
@@ -105498,6 +105528,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 2368,
       "height": 16,
       "id": "png:assets/flower_items.png",
@@ -105508,6 +105539,7 @@
       "width": 256
     },
     {
+      "alphaMode": "straight",
       "bytes": 5462,
       "height": 32,
       "id": "png:assets/flower_plants.png",
@@ -105518,6 +105550,7 @@
       "width": 512
     },
     {
+      "alphaMode": "straight",
       "bytes": 2991,
       "height": 16,
       "id": "png:assets/forest_food_items.png",
@@ -105528,6 +105561,7 @@
       "width": 512
     },
     {
+      "alphaMode": "straight",
       "bytes": 9118,
       "height": 32,
       "id": "png:assets/forest_food_plants.png",
@@ -105538,6 +105572,7 @@
       "width": 1024
     },
     {
+      "alphaMode": "straight",
       "bytes": 149,
       "height": 16,
       "id": "png:assets/gate.png",
@@ -105548,6 +105583,7 @@
       "width": 16
     },
     {
+      "alphaMode": "straight",
       "bytes": 1074,
       "height": 32,
       "id": "png:assets/golem.png",
@@ -105558,6 +105594,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 1057,
       "height": 32,
       "id": "png:assets/golem_void.png",
@@ -105568,6 +105605,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 3868,
       "height": 48,
       "id": "png:assets/guardian.png",
@@ -105578,6 +105616,7 @@
       "width": 384
     },
     {
+      "alphaMode": "straight",
       "bytes": 818,
       "height": 24,
       "id": "png:assets/hb_moth.png",
@@ -105588,6 +105627,7 @@
       "width": 144
     },
     {
+      "alphaMode": "straight",
       "bytes": 756,
       "height": 24,
       "id": "png:assets/hb_root.png",
@@ -105598,6 +105638,7 @@
       "width": 120
     },
     {
+      "alphaMode": "straight",
       "bytes": 205,
       "height": 16,
       "id": "png:assets/heart.png",
@@ -105608,6 +105649,7 @@
       "width": 16
     },
     {
+      "alphaMode": "straight",
       "bytes": 10705,
       "height": 192,
       "id": "png:assets/house_furniture.png",
@@ -105618,6 +105660,7 @@
       "width": 832
     },
     {
+      "alphaMode": "straight",
       "bytes": 1070,
       "height": 64,
       "id": "png:assets/house_rugs.png",
@@ -105628,6 +105671,7 @@
       "width": 384
     },
     {
+      "alphaMode": "straight",
       "bytes": 757,
       "height": 32,
       "id": "png:assets/house_surfaces.png",
@@ -105638,6 +105682,7 @@
       "width": 256
     },
     {
+      "alphaMode": "straight",
       "bytes": 2100,
       "height": 16,
       "id": "png:assets/items.png",
@@ -105648,6 +105693,7 @@
       "width": 224
     },
     {
+      "alphaMode": "straight",
       "bytes": 948,
       "height": 16,
       "id": "png:assets/items_arena.png",
@@ -105658,6 +105704,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 6546,
       "height": 16,
       "id": "png:assets/items_beroepen.png",
@@ -105668,6 +105715,7 @@
       "width": 1040
     },
     {
+      "alphaMode": "straight",
       "bytes": 575,
       "height": 16,
       "id": "png:assets/items_boog.png",
@@ -105678,6 +105726,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 503,
       "height": 16,
       "id": "png:assets/items_diepte.png",
@@ -105688,6 +105737,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 648,
       "height": 16,
       "id": "png:assets/items_home.png",
@@ -105698,6 +105748,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 1815,
       "height": 16,
       "id": "png:assets/items_meer.png",
@@ -105708,6 +105759,7 @@
       "width": 160
     },
     {
+      "alphaMode": "straight",
       "bytes": 1423,
       "height": 16,
       "id": "png:assets/items_orchard.png",
@@ -105718,6 +105770,7 @@
       "width": 224
     },
     {
+      "alphaMode": "straight",
       "bytes": 201,
       "height": 16,
       "id": "png:assets/items_tides.png",
@@ -105728,6 +105781,7 @@
       "width": 16
     },
     {
+      "alphaMode": "straight",
       "bytes": 1756,
       "height": 48,
       "id": "png:assets/king.png",
@@ -105738,6 +105792,7 @@
       "width": 192
     },
     {
+      "alphaMode": "straight",
       "bytes": 603,
       "height": 16,
       "id": "png:assets/ls_items.png",
@@ -105748,6 +105803,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 433,
       "height": 24,
       "id": "png:assets/ls_net.png",
@@ -105758,6 +105814,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 207,
       "height": 16,
       "id": "png:assets/ls_notice.png",
@@ -105768,6 +105825,7 @@
       "width": 16
     },
     {
+      "alphaMode": "straight",
       "bytes": 441,
       "height": 24,
       "id": "png:assets/ls_stove.png",
@@ -105778,6 +105836,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 770,
       "height": 32,
       "id": "png:assets/ls_table.png",
@@ -105788,6 +105847,7 @@
       "width": 144
     },
     {
+      "alphaMode": "straight",
       "bytes": 417,
       "height": 16,
       "id": "png:assets/lw_singer.png",
@@ -105798,6 +105858,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 333,
       "height": 16,
       "id": "png:assets/lw_stalker.png",
@@ -105808,6 +105869,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 363,
       "height": 16,
       "id": "png:assets/lw_warden.png",
@@ -105818,6 +105880,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 910,
       "height": 16,
       "id": "png:assets/mage.png",
@@ -105828,6 +105891,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 394,
       "height": 16,
       "id": "png:assets/meer_objects.png",
@@ -105838,6 +105902,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 388,
       "height": 16,
       "id": "png:assets/meer_ui.png",
@@ -105848,6 +105913,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 399,
       "height": 16,
       "id": "png:assets/moerasvors.png",
@@ -105858,6 +105924,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 936,
       "height": 32,
       "id": "png:assets/mountain_cliffs.png",
@@ -105868,6 +105935,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 285,
       "height": 16,
       "id": "png:assets/npc_anja.png",
@@ -105878,6 +105946,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 488,
       "height": 16,
       "id": "png:assets/npc_bram.png",
@@ -105888,6 +105957,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 458,
       "height": 16,
       "id": "png:assets/npc_bruno.png",
@@ -105898,6 +105968,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 331,
       "height": 16,
       "id": "png:assets/npc_elke.png",
@@ -105908,6 +105979,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 349,
       "height": 16,
       "id": "png:assets/npc_fenna.png",
@@ -105918,6 +105990,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 411,
       "height": 16,
       "id": "png:assets/npc_greta.png",
@@ -105928,6 +106001,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 406,
       "height": 16,
       "id": "png:assets/npc_hein.png",
@@ -105938,6 +106012,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 356,
       "height": 16,
       "id": "png:assets/npc_jelle.png",
@@ -105948,6 +106023,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 372,
       "height": 16,
       "id": "png:assets/npc_joost.png",
@@ -105958,6 +106034,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 390,
       "height": 16,
       "id": "png:assets/npc_kasper.png",
@@ -105968,6 +106045,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 332,
       "height": 16,
       "id": "png:assets/npc_lotte.png",
@@ -105978,6 +106056,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 476,
       "height": 16,
       "id": "png:assets/npc_meer_joris.png",
@@ -105988,6 +106067,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 431,
       "height": 16,
       "id": "png:assets/npc_meer_lena.png",
@@ -105998,6 +106078,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 527,
       "height": 16,
       "id": "png:assets/npc_meer_sanne.png",
@@ -106008,6 +106089,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 423,
       "height": 16,
       "id": "png:assets/npc_mees.png",
@@ -106018,6 +106100,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 315,
       "height": 16,
       "id": "png:assets/npc_mila.png",
@@ -106028,6 +106111,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 265,
       "height": 16,
       "id": "png:assets/npc_mira.png",
@@ -106038,6 +106122,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 296,
       "height": 16,
       "id": "png:assets/npc_muis.png",
@@ -106048,6 +106133,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 333,
       "height": 16,
       "id": "png:assets/npc_noor.png",
@@ -106058,6 +106144,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 301,
       "height": 16,
       "id": "png:assets/npc_nour.png",
@@ -106068,6 +106155,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 282,
       "height": 16,
       "id": "png:assets/npc_olav.png",
@@ -106078,6 +106166,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 298,
       "height": 16,
       "id": "png:assets/npc_pim.png",
@@ -106088,6 +106177,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 285,
       "height": 16,
       "id": "png:assets/npc_rg_ise.png",
@@ -106098,6 +106188,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 299,
       "height": 16,
       "id": "png:assets/npc_rg_raf.png",
@@ -106108,6 +106199,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 349,
       "height": 16,
       "id": "png:assets/npc_roos.png",
@@ -106118,6 +106210,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 339,
       "height": 16,
       "id": "png:assets/npc_sana.png",
@@ -106128,6 +106221,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 351,
       "height": 16,
       "id": "png:assets/npc_stien.png",
@@ -106138,6 +106232,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 476,
       "height": 16,
       "id": "png:assets/npc_tessa.png",
@@ -106148,6 +106243,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 449,
       "height": 16,
       "id": "png:assets/npc_tobias.png",
@@ -106158,6 +106254,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 263,
       "height": 16,
       "id": "png:assets/npc_tomas.png",
@@ -106168,6 +106265,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 317,
       "height": 16,
       "id": "png:assets/npc_vera.png",
@@ -106178,6 +106276,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 335,
       "height": 16,
       "id": "png:assets/npc_wilfred.png",
@@ -106188,6 +106287,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 266,
       "height": 16,
       "id": "png:assets/npc_willem.png",
@@ -106198,6 +106298,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 343,
       "height": 16,
       "id": "png:assets/npc_wouda.png",
@@ -106208,6 +106309,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 304,
       "height": 16,
       "id": "png:assets/op_courier.png",
@@ -106218,6 +106320,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 364,
       "height": 16,
       "id": "png:assets/op_gardener.png",
@@ -106228,6 +106331,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 232,
       "height": 16,
       "id": "png:assets/op_rake.png",
@@ -106238,6 +106342,7 @@
       "width": 16
     },
     {
+      "alphaMode": "straight",
       "bytes": 2992,
       "height": 64,
       "id": "png:assets/orchard_canopies.png",
@@ -106248,6 +106353,7 @@
       "width": 320
     },
     {
+      "alphaMode": "straight",
       "bytes": 2809,
       "height": 160,
       "id": "png:assets/orchard_crops.png",
@@ -106258,6 +106364,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 652,
       "height": 64,
       "id": "png:assets/orchard_trunks.png",
@@ -106268,6 +106375,7 @@
       "width": 256
     },
     {
+      "alphaMode": "straight",
       "bytes": 844,
       "height": 16,
       "id": "png:assets/pg_gear.png",
@@ -106278,6 +106386,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 548,
       "height": 24,
       "id": "png:assets/pg_notes.png",
@@ -106288,6 +106397,7 @@
       "width": 144
     },
     {
+      "alphaMode": "straight",
       "bytes": 1058,
       "height": 48,
       "id": "png:assets/pixel_ad_crab.png",
@@ -106298,6 +106408,7 @@
       "width": 192
     },
     {
+      "alphaMode": "straight",
       "bytes": 1117,
       "height": 48,
       "id": "png:assets/pixel_ad_keeper.png",
@@ -106308,6 +106419,7 @@
       "width": 192
     },
     {
+      "alphaMode": "straight",
       "bytes": 1148,
       "height": 48,
       "id": "png:assets/pixel_ad_wisp.png",
@@ -106318,6 +106430,7 @@
       "width": 192
     },
     {
+      "alphaMode": "straight",
       "bytes": 3348,
       "height": 32,
       "id": "png:assets/pixel_arena_crowd.png",
@@ -106328,6 +106441,7 @@
       "width": 512
     },
     {
+      "alphaMode": "straight",
       "bytes": 605,
       "height": 32,
       "id": "png:assets/pixel_bat.png",
@@ -106338,6 +106452,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 6883,
       "height": 192,
       "id": "png:assets/pixel_canopies.png",
@@ -106348,6 +106463,7 @@
       "width": 384
     },
     {
+      "alphaMode": "straight",
       "bytes": 929,
       "height": 32,
       "id": "png:assets/pixel_crystal_beetle.png",
@@ -106358,6 +106474,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 1093,
       "height": 48,
       "id": "png:assets/pixel_cv_ram.png",
@@ -106368,6 +106485,7 @@
       "width": 192
     },
     {
+      "alphaMode": "straight",
       "bytes": 1137,
       "height": 48,
       "id": "png:assets/pixel_cv_slinger.png",
@@ -106378,6 +106496,7 @@
       "width": 192
     },
     {
+      "alphaMode": "straight",
       "bytes": 1617,
       "height": 64,
       "id": "png:assets/pixel_golem.png",
@@ -106388,6 +106507,7 @@
       "width": 256
     },
     {
+      "alphaMode": "straight",
       "bytes": 1614,
       "height": 64,
       "id": "png:assets/pixel_golem_void.png",
@@ -106398,6 +106518,7 @@
       "width": 256
     },
     {
+      "alphaMode": "straight",
       "bytes": 6021,
       "height": 96,
       "id": "png:assets/pixel_guardian.png",
@@ -106408,6 +106529,7 @@
       "width": 768
     },
     {
+      "alphaMode": "straight",
       "bytes": 1256,
       "height": 48,
       "id": "png:assets/pixel_hb_moth.png",
@@ -106418,6 +106540,7 @@
       "width": 288
     },
     {
+      "alphaMode": "straight",
       "bytes": 1177,
       "height": 48,
       "id": "png:assets/pixel_hb_root.png",
@@ -106428,6 +106551,7 @@
       "width": 240
     },
     {
+      "alphaMode": "straight",
       "bytes": 2420,
       "height": 32,
       "id": "png:assets/pixel_items_orchard.png",
@@ -106438,6 +106562,7 @@
       "width": 448
     },
     {
+      "alphaMode": "straight",
       "bytes": 2938,
       "height": 96,
       "id": "png:assets/pixel_king.png",
@@ -106448,6 +106573,7 @@
       "width": 384
     },
     {
+      "alphaMode": "straight",
       "bytes": 150339,
       "height": 256,
       "id": "png:assets/pixel_landscape.png",
@@ -106458,6 +106584,7 @@
       "width": 2560
     },
     {
+      "alphaMode": "straight",
       "bytes": 696,
       "height": 32,
       "id": "png:assets/pixel_lw_singer.png",
@@ -106468,6 +106595,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 576,
       "height": 32,
       "id": "png:assets/pixel_lw_stalker.png",
@@ -106478,6 +106606,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 576,
       "height": 32,
       "id": "png:assets/pixel_lw_warden.png",
@@ -106488,6 +106617,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 1293,
       "height": 32,
       "id": "png:assets/pixel_mage.png",
@@ -106498,6 +106628,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 619,
       "height": 32,
       "id": "png:assets/pixel_moerasvors.png",
@@ -106508,6 +106639,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 2137,
       "height": 128,
       "id": "png:assets/pixel_npc_anja.png",
@@ -106518,6 +106650,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2332,
       "height": 128,
       "id": "png:assets/pixel_npc_bram.png",
@@ -106528,6 +106661,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2256,
       "height": 128,
       "id": "png:assets/pixel_npc_bruno.png",
@@ -106538,6 +106672,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2279,
       "height": 128,
       "id": "png:assets/pixel_npc_elke.png",
@@ -106548,6 +106683,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2475,
       "height": 128,
       "id": "png:assets/pixel_npc_fenna.png",
@@ -106558,6 +106694,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2211,
       "height": 128,
       "id": "png:assets/pixel_npc_greta.png",
@@ -106568,6 +106705,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2561,
       "height": 128,
       "id": "png:assets/pixel_npc_hein.png",
@@ -106578,6 +106716,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2368,
       "height": 128,
       "id": "png:assets/pixel_npc_jelle.png",
@@ -106588,6 +106727,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2460,
       "height": 128,
       "id": "png:assets/pixel_npc_joost.png",
@@ -106598,6 +106738,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2523,
       "height": 128,
       "id": "png:assets/pixel_npc_kasper.png",
@@ -106608,6 +106749,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2166,
       "height": 128,
       "id": "png:assets/pixel_npc_lotte.png",
@@ -106618,6 +106760,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2209,
       "height": 128,
       "id": "png:assets/pixel_npc_meer_joris.png",
@@ -106628,6 +106771,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2557,
       "height": 128,
       "id": "png:assets/pixel_npc_meer_lena.png",
@@ -106638,6 +106782,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2125,
       "height": 128,
       "id": "png:assets/pixel_npc_meer_sanne.png",
@@ -106648,6 +106793,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2436,
       "height": 128,
       "id": "png:assets/pixel_npc_mees.png",
@@ -106658,6 +106804,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2271,
       "height": 128,
       "id": "png:assets/pixel_npc_mila.png",
@@ -106668,6 +106815,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 1996,
       "height": 128,
       "id": "png:assets/pixel_npc_mira.png",
@@ -106678,6 +106826,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 369,
       "height": 32,
       "id": "png:assets/pixel_npc_muis.png",
@@ -106688,6 +106837,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 2415,
       "height": 128,
       "id": "png:assets/pixel_npc_noor.png",
@@ -106698,6 +106848,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2653,
       "height": 128,
       "id": "png:assets/pixel_npc_nour.png",
@@ -106708,6 +106859,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2496,
       "height": 128,
       "id": "png:assets/pixel_npc_olav.png",
@@ -106718,6 +106870,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2234,
       "height": 128,
       "id": "png:assets/pixel_npc_pim.png",
@@ -106728,6 +106881,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2243,
       "height": 128,
       "id": "png:assets/pixel_npc_rg_ise.png",
@@ -106738,6 +106892,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2327,
       "height": 128,
       "id": "png:assets/pixel_npc_rg_raf.png",
@@ -106748,6 +106903,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2349,
       "height": 128,
       "id": "png:assets/pixel_npc_roos.png",
@@ -106758,6 +106914,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2044,
       "height": 128,
       "id": "png:assets/pixel_npc_sana.png",
@@ -106768,6 +106925,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2176,
       "height": 128,
       "id": "png:assets/pixel_npc_stien.png",
@@ -106778,6 +106936,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2923,
       "height": 128,
       "id": "png:assets/pixel_npc_tessa.png",
@@ -106788,6 +106947,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2486,
       "height": 128,
       "id": "png:assets/pixel_npc_tobias.png",
@@ -106798,6 +106958,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2615,
       "height": 128,
       "id": "png:assets/pixel_npc_tomas.png",
@@ -106808,6 +106969,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2095,
       "height": 128,
       "id": "png:assets/pixel_npc_vera.png",
@@ -106818,6 +106980,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2253,
       "height": 128,
       "id": "png:assets/pixel_npc_wilfred.png",
@@ -106828,6 +106991,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2140,
       "height": 128,
       "id": "png:assets/pixel_npc_willem.png",
@@ -106838,6 +107002,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2368,
       "height": 128,
       "id": "png:assets/pixel_npc_wouda.png",
@@ -106848,6 +107013,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2362,
       "height": 128,
       "id": "png:assets/pixel_op_courier.png",
@@ -106858,6 +107024,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 2150,
       "height": 128,
       "id": "png:assets/pixel_op_gardener.png",
@@ -106868,6 +107035,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 1968,
       "height": 128,
       "id": "png:assets/pixel_player.png",
@@ -106878,6 +107046,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 949,
       "height": 32,
       "id": "png:assets/pixel_prism_moth.png",
@@ -106888,6 +107057,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 482,
       "height": 32,
       "id": "png:assets/pixel_rf_bird.png",
@@ -106898,6 +107068,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 626,
       "height": 32,
       "id": "png:assets/pixel_rf_bramble.png",
@@ -106908,6 +107079,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 555,
       "height": 32,
       "id": "png:assets/pixel_rf_listener.png",
@@ -106918,6 +107090,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 1715,
       "height": 128,
       "id": "png:assets/pixel_skeleton.png",
@@ -106928,6 +107101,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 669,
       "height": 32,
       "id": "png:assets/pixel_slime.png",
@@ -106938,6 +107112,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 669,
       "height": 32,
       "id": "png:assets/pixel_slime_blue.png",
@@ -106948,6 +107123,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 669,
       "height": 32,
       "id": "png:assets/pixel_slime_red.png",
@@ -106958,6 +107134,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 1196,
       "height": 32,
       "id": "png:assets/pixel_slime_spitter.png",
@@ -106968,6 +107145,7 @@
       "width": 160
     },
     {
+      "alphaMode": "straight",
       "bytes": 878,
       "height": 32,
       "id": "png:assets/pixel_snow_macaque.png",
@@ -106978,6 +107156,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 805,
       "height": 80,
       "id": "png:assets/pixel_station_hive.png",
@@ -106988,6 +107167,7 @@
       "width": 80
     },
     {
+      "alphaMode": "straight",
       "bytes": 907,
       "height": 80,
       "id": "png:assets/pixel_station_wine.png",
@@ -106998,6 +107178,7 @@
       "width": 80
     },
     {
+      "alphaMode": "straight",
       "bytes": 629,
       "height": 32,
       "id": "png:assets/pixel_trail_fox.png",
@@ -107008,6 +107189,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 635,
       "height": 32,
       "id": "png:assets/pixel_trail_gull.png",
@@ -107018,6 +107200,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 654,
       "height": 32,
       "id": "png:assets/pixel_trail_hare.png",
@@ -107028,6 +107211,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 653,
       "height": 32,
       "id": "png:assets/pixel_trail_moth.png",
@@ -107038,6 +107222,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 350,
       "height": 128,
       "id": "png:assets/pixel_water.png",
@@ -107048,6 +107233,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 525,
       "height": 32,
       "id": "png:assets/pixel_waterslang.png",
@@ -107058,6 +107244,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 16705,
       "height": 128,
       "id": "png:assets/pixel_wm_people.png",
@@ -107068,6 +107255,7 @@
       "width": 512
     },
     {
+      "alphaMode": "straight",
       "bytes": 1292,
       "height": 32,
       "id": "png:assets/pixel_wm_tools.png",
@@ -107078,6 +107266,7 @@
       "width": 288
     },
     {
+      "alphaMode": "straight",
       "bytes": 671,
       "height": 32,
       "id": "png:assets/pixel_woestijnvos.png",
@@ -107088,6 +107277,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 605,
       "height": 32,
       "id": "png:assets/pixel_zandhaas.png",
@@ -107098,6 +107288,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 692,
       "height": 64,
       "id": "png:assets/player.png",
@@ -107108,6 +107299,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 566,
       "height": 16,
       "id": "png:assets/prism_moth.png",
@@ -107118,6 +107310,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 408,
       "height": 16,
       "id": "png:assets/projectiles.png",
@@ -107128,6 +107321,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 250,
       "height": 16,
       "id": "png:assets/ra_cliff.png",
@@ -107138,6 +107332,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 1378,
       "height": 40,
       "id": "png:assets/ra_entrances.png",
@@ -107148,6 +107343,7 @@
       "width": 144
     },
     {
+      "alphaMode": "straight",
       "bytes": 171,
       "height": 16,
       "id": "png:assets/ra_hatch.png",
@@ -107158,6 +107354,7 @@
       "width": 16
     },
     {
+      "alphaMode": "straight",
       "bytes": 479,
       "height": 16,
       "id": "png:assets/ra_items.png",
@@ -107168,6 +107365,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 885,
       "height": 24,
       "id": "png:assets/ra_objects.png",
@@ -107178,6 +107376,7 @@
       "width": 168
     },
     {
+      "alphaMode": "straight",
       "bytes": 356,
       "height": 14,
       "id": "png:assets/ra_reliefs.png",
@@ -107188,6 +107387,7 @@
       "width": 60
     },
     {
+      "alphaMode": "straight",
       "bytes": 326,
       "height": 32,
       "id": "png:assets/ra_shelf.png",
@@ -107198,6 +107398,7 @@
       "width": 28
     },
     {
+      "alphaMode": "straight",
       "bytes": 317,
       "height": 24,
       "id": "png:assets/ra_shelter.png",
@@ -107208,6 +107409,7 @@
       "width": 40
     },
     {
+      "alphaMode": "straight",
       "bytes": 2683,
       "height": 16,
       "id": "png:assets/resources_beroepen.png",
@@ -107218,6 +107420,7 @@
       "width": 320
     },
     {
+      "alphaMode": "straight",
       "bytes": 244,
       "height": 16,
       "id": "png:assets/rf_bird.png",
@@ -107228,6 +107431,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 373,
       "height": 16,
       "id": "png:assets/rf_bramble.png",
@@ -107238,6 +107442,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 318,
       "height": 16,
       "id": "png:assets/rf_gear.png",
@@ -107248,6 +107453,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 338,
       "height": 16,
       "id": "png:assets/rf_listener.png",
@@ -107258,6 +107464,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 760,
       "height": 16,
       "id": "png:assets/rf_objects.png",
@@ -107268,6 +107475,7 @@
       "width": 80
     },
     {
+      "alphaMode": "straight",
       "bytes": 2538,
       "height": 128,
       "id": "png:assets/rg_landmarks.png",
@@ -107278,6 +107486,7 @@
       "width": 384
     },
     {
+      "alphaMode": "straight",
       "bytes": 1012,
       "height": 24,
       "id": "png:assets/rg_props.png",
@@ -107288,6 +107497,7 @@
       "width": 192
     },
     {
+      "alphaMode": "straight",
       "bytes": 202,
       "height": 16,
       "id": "png:assets/sign.png",
@@ -107298,6 +107508,7 @@
       "width": 16
     },
     {
+      "alphaMode": "straight",
       "bytes": 1048,
       "height": 64,
       "id": "png:assets/skeleton.png",
@@ -107308,6 +107519,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 369,
       "height": 16,
       "id": "png:assets/slime.png",
@@ -107318,6 +107530,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 360,
       "height": 16,
       "id": "png:assets/slime_blue.png",
@@ -107328,6 +107541,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 357,
       "height": 16,
       "id": "png:assets/slime_red.png",
@@ -107338,6 +107552,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 685,
       "height": 16,
       "id": "png:assets/slime_spitter.png",
@@ -107348,6 +107563,7 @@
       "width": 80
     },
     {
+      "alphaMode": "straight",
       "bytes": 525,
       "height": 16,
       "id": "png:assets/snow_macaque.png",
@@ -107358,6 +107574,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 490,
       "height": 32,
       "id": "png:assets/stock_chest.png",
@@ -107368,6 +107585,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 516,
       "height": 16,
       "id": "png:assets/target.png",
@@ -107378,6 +107596,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 963,
       "height": 24,
       "id": "png:assets/td_props.png",
@@ -107388,6 +107607,7 @@
       "width": 120
     },
     {
+      "alphaMode": "straight",
       "bytes": 10281,
       "height": 16,
       "id": "png:assets/tiles.png",
@@ -107398,6 +107618,7 @@
       "width": 1280
     },
     {
+      "alphaMode": "straight",
       "bytes": 249,
       "height": 16,
       "id": "png:assets/torch.png",
@@ -107408,6 +107629,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 358,
       "height": 16,
       "id": "png:assets/trail_fox.png",
@@ -107418,6 +107640,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 318,
       "height": 16,
       "id": "png:assets/trail_gull.png",
@@ -107428,6 +107651,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 348,
       "height": 16,
       "id": "png:assets/trail_hare.png",
@@ -107438,6 +107662,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 292,
       "height": 16,
       "id": "png:assets/trail_items.png",
@@ -107448,6 +107673,7 @@
       "width": 32
     },
     {
+      "alphaMode": "straight",
       "bytes": 329,
       "height": 16,
       "id": "png:assets/trail_moth.png",
@@ -107458,6 +107684,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 826,
       "height": 16,
       "id": "png:assets/trail_plants.png",
@@ -107468,6 +107695,7 @@
       "width": 112
     },
     {
+      "alphaMode": "straight",
       "bytes": 316,
       "height": 12,
       "id": "png:assets/ui_heart.png",
@@ -107478,6 +107706,7 @@
       "width": 26
     },
     {
+      "alphaMode": "straight",
       "bytes": 383,
       "height": 16,
       "id": "png:assets/waterslang.png",
@@ -107488,6 +107717,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 429,
       "height": 32,
       "id": "png:assets/wereld_lantaarn.png",
@@ -107498,6 +107728,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 1222,
       "height": 16,
       "id": "png:assets/wereld_ui.png",
@@ -107508,6 +107739,7 @@
       "width": 112
     },
     {
+      "alphaMode": "straight",
       "bytes": 2395,
       "height": 16,
       "id": "png:assets/winter_items.png",
@@ -107518,6 +107750,7 @@
       "width": 256
     },
     {
+      "alphaMode": "straight",
       "bytes": 4844,
       "height": 32,
       "id": "png:assets/winter_plants.png",
@@ -107528,6 +107761,7 @@
       "width": 512
     },
     {
+      "alphaMode": "straight",
       "bytes": 351,
       "height": 24,
       "id": "png:assets/wm_book.png",
@@ -107538,6 +107772,7 @@
       "width": 48
     },
     {
+      "alphaMode": "straight",
       "bytes": 1698,
       "height": 16,
       "id": "png:assets/wm_people.png",
@@ -107548,6 +107783,7 @@
       "width": 256
     },
     {
+      "alphaMode": "straight",
       "bytes": 1087,
       "height": 16,
       "id": "png:assets/wm_tools.png",
@@ -107558,6 +107794,7 @@
       "width": 144
     },
     {
+      "alphaMode": "straight",
       "bytes": 423,
       "height": 16,
       "id": "png:assets/woestijnvos.png",
@@ -107568,6 +107805,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 746,
       "height": 24,
       "id": "png:assets/wt_leaves.png",
@@ -107578,6 +107816,7 @@
       "width": 96
     },
     {
+      "alphaMode": "straight",
       "bytes": 1060,
       "height": 24,
       "id": "png:assets/wt_stations.png",
@@ -107588,6 +107827,7 @@
       "width": 144
     },
     {
+      "alphaMode": "straight",
       "bytes": 727,
       "height": 64,
       "id": "png:assets/yard_fences.png",
@@ -107598,6 +107838,7 @@
       "width": 384
     },
     {
+      "alphaMode": "straight",
       "bytes": 8493,
       "height": 96,
       "id": "png:assets/yard_paths.png",
@@ -107608,6 +107849,7 @@
       "width": 512
     },
     {
+      "alphaMode": "straight",
       "bytes": 434,
       "height": 16,
       "id": "png:assets/zandhaas.png",
@@ -107618,6 +107860,7 @@
       "width": 64
     },
     {
+      "alphaMode": "straight",
       "bytes": 11768,
       "height": 144,
       "id": "png:tools/flower_art_review.png",
@@ -107628,6 +107871,7 @@
       "width": 512
     },
     {
+      "alphaMode": "straight",
       "bytes": 40438,
       "height": 1280,
       "id": "png:tools/forest_food_art_review.png",
@@ -107638,6 +107882,7 @@
       "width": 960
     },
     {
+      "alphaMode": "straight",
       "bytes": 10537,
       "height": 144,
       "id": "png:tools/winter_art_review.png",
@@ -107648,6 +107893,7 @@
       "width": 512
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 160232,
       "file": "appearances-0.png",
       "height": 2048,
@@ -107659,6 +107905,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 95550,
       "file": "appearances-1.png",
       "height": 1280,
@@ -107670,6 +107917,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 9240,
       "file": "eyes-0.png",
       "height": 768,
@@ -107681,6 +107929,7 @@
       "width": 1024
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 40924,
       "file": "swords-0.png",
       "height": 1920,
@@ -107692,6 +107941,7 @@
       "width": 1920
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 46552,
       "file": "swords-1.png",
       "height": 1920,
@@ -107703,6 +107953,7 @@
       "width": 1920
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 36878,
       "file": "swords-2.png",
       "height": 1152,
@@ -107714,6 +107965,7 @@
       "width": 1920
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 41901,
       "file": "tools-0.png",
       "height": 1536,
@@ -107725,6 +107977,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 6340,
       "file": "water-0.png",
       "height": 128,
@@ -107736,6 +107989,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 1987,
       "file": "crops-0.png",
       "height": 64,
@@ -107747,6 +108001,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "straight",
       "bytes": 782,
       "file": "equipment-icons.png",
       "height": 16,
@@ -107758,6 +108013,7 @@
       "width": 160
     },
     {
+      "alphaMode": "straight",
       "bytes": 3908,
       "file": "light-gradient.png",
       "height": 128,
@@ -107769,6 +108025,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 2844,
       "file": "icon.png",
       "height": 128,

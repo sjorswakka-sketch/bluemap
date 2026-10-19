@@ -973,7 +973,7 @@
   "continuousDrawingRulesRetained": true,
   "engineVersion": "4.4.1.stable.official.49a5bc7b6",
   "exporterSources": {
-    "res://tools/migration_graphics_export.gd": "c99d3d7de767ebed0e133d9bb6f49bbf43a317b0972d46d405136031a6d92f24",
+    "res://tools/migration_graphics_export.gd": "343c9e09cf64dd53cbc7a49fa8404f4f91a5548903229d9ad18807da9525e8f4",
     "res://tools/migration_presentation_canvas.gd": "be327df93c21fd0bd3ae9b5055317f6c9e0d3aac946a6626ec132e70d19aa40e"
   },
   "referenceOnly": true,
@@ -59386,6 +59386,7 @@
   ],
   "textures": [
     {
+      "alphaMode": "premultiplied",
       "bytes": 160232,
       "file": "appearances-0.png",
       "height": 2048,
@@ -59395,6 +59396,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 95550,
       "file": "appearances-1.png",
       "height": 1280,
@@ -59404,6 +59406,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 9240,
       "file": "eyes-0.png",
       "height": 768,
@@ -59413,6 +59416,7 @@
       "width": 1024
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 40924,
       "file": "swords-0.png",
       "height": 1920,
@@ -59422,6 +59426,7 @@
       "width": 1920
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 46552,
       "file": "swords-1.png",
       "height": 1920,
@@ -59431,6 +59436,7 @@
       "width": 1920
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 36878,
       "file": "swords-2.png",
       "height": 1152,
@@ -59440,6 +59446,7 @@
       "width": 1920
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 41901,
       "file": "tools-0.png",
       "height": 1536,
@@ -59449,6 +59456,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 6340,
       "file": "water-0.png",
       "height": 128,
@@ -59458,6 +59466,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "premultiplied",
       "bytes": 1987,
       "file": "crops-0.png",
       "height": 64,
@@ -59467,6 +59476,7 @@
       "width": 2048
     },
     {
+      "alphaMode": "straight",
       "bytes": 782,
       "file": "equipment-icons.png",
       "height": 16,
@@ -59476,6 +59486,7 @@
       "width": 160
     },
     {
+      "alphaMode": "straight",
       "bytes": 3908,
       "file": "light-gradient.png",
       "height": 128,
@@ -59485,6 +59496,7 @@
       "width": 128
     },
     {
+      "alphaMode": "straight",
       "bytes": 2844,
       "file": "icon.png",
       "height": 128,

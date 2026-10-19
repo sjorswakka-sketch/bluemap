@@ -95,10 +95,10 @@ func _run() -> void:
 	print("MIGRATION GRAPHICS EXPORT OK ",document.sprites.size()," sprites; ",document.textures.size()," textures")
 	quit(1 if failure else 0)
 
-func save_image(id: String,image: Image,source: String) -> void:
+func save_image(id: String,image: Image,source: String,alpha_mode: String="straight") -> void:
 	if image==null or image.is_empty():fail("Empty GPU reference: "+id); return
 	if image.save_png(output_dir.path_join(id+".png"))!=OK:fail("Cannot save "+id); return
-	document.textures.append({"id":"generated:"+id,"file":id+".png","width":image.get_width(),"height":image.get_height(),"sourcePath":source})
+	document.textures.append({"id":"generated:"+id,"file":id+".png","width":image.get_width(),"height":image.get_height(),"sourcePath":source,"alphaMode":alpha_mode})
 
 func atlas(name: String,entries: Array,size: int,source: String) -> void:
 	var columns:=mini(32,2048/size)
@@ -123,7 +123,7 @@ func atlas(name: String,entries: Array,size: int,source: String) -> void:
 		# would deadlock on that skipped frame.
 		RenderingServer.force_draw(false)
 		var image:=viewport.get_texture().get_image()
-		save_image(id,image,source)
+		save_image(id,image,source,"premultiplied")
 		for index in page.size():
 			var e: Dictionary=page[index]
 			document.sprites.append({"id":e.id,"textureId":"generated:"+id,"category":e.category,"x":(index%columns)*size,"y":(index/columns)*size,"width":size,"height":size,"pivotX":0.5,"pivotY":0.5,"pixelsPerUnit":32,"parameters":e})

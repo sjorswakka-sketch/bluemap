@@ -28,7 +28,7 @@ def image_bytes(mode="RGBA"):
 
 def small_catalog():
     texture = {"id": "png:test", "resourcePath": "BlueMapAssets/Graphics/Original/test",
-               "sourcePath": "test.png", **graphics.png_metadata(image_bytes())}
+               "sourcePath": "test.png", "alphaMode": "straight", **graphics.png_metadata(image_bytes())}
     return {"schemaVersion": 1, "tilePixels": 32, "textures": [texture], "sprites": [
         {"id": "frame", "textureId": "png:test", "category": "test", "x": 0, "y": 0,
          "width": 1, "height": 2, "pivotX": .5, "pivotY": .5, "pixelsPerUnit": 32}],
@@ -75,6 +75,28 @@ class GraphicsContractTests(unittest.TestCase):
             mutate(catalog)
             with self.assertRaises(PresentationError):
                 graphics.validate_catalog(catalog)
+
+    def test_every_texture_needs_explicit_alpha_semantics_and_originals_stay_straight(self):
+        for alpha in (None, "opaque", "Premultiplied", "premultiplied", [], 1):
+            catalog = small_catalog()
+            if alpha is None:
+                del catalog["textures"][0]["alphaMode"]
+            else:
+                catalog["textures"][0]["alphaMode"] = alpha
+            with self.subTest(alpha=alpha), self.assertRaises(PresentationError):
+                graphics.validate_catalog(catalog)
+
+    def test_gpu_atlas_alpha_is_premultiplied_and_direct_images_are_straight(self):
+        for identifier in ("generated:appearances-0", "generated:eyes-0", "generated:swords-1",
+                           "generated:tools-0", "generated:water-0", "generated:crops-0"):
+            graphics.validate_generated_alpha({"id": identifier, "alphaMode": "premultiplied"})
+            for wrong in ({"id": identifier}, {"id": identifier, "alphaMode": "straight"}):
+                with self.subTest(wrong=wrong), self.assertRaises(PresentationError):
+                    graphics.validate_generated_alpha(wrong)
+        for identifier in graphics.STRAIGHT_GENERATED:
+            graphics.validate_generated_alpha({"id": identifier, "alphaMode": "straight"})
+            with self.assertRaises(PresentationError):
+                graphics.validate_generated_alpha({"id": identifier, "alphaMode": "premultiplied"})
 
     def test_outside_rectangle_negative_size_and_boolean_coordinates_reject(self):
         for field, value in (("x", 2), ("y", -1), ("height", 3), ("width", 0), ("x", True)):
@@ -155,6 +177,15 @@ class FrozenGraphicsTests(unittest.TestCase):
             self.assertEqual(raw, self.documents[graphics.GRAPHICS_ROOT + "/Original/" + entry["sourcePath"]])
             self.assertEqual(graphics.png_metadata(raw)["rgbaSha256"], entry["rgbaSha256"])
             self.assertIn("image:" + entry["sourcePath"], self.sprites)
+            self.assertEqual(entry["alphaMode"], "straight")
+
+    def test_generated_alpha_tag_changes_no_png_or_rgba_bytes(self):
+        generated = [entry for entry in self.catalog["textures"] if entry["id"].startswith("generated:")]
+        for entry in generated:
+            graphics.validate_generated_alpha(entry)
+            raw = self.documents[graphics.GRAPHICS_ROOT + "/Generated/" + entry["file"]]
+            self.assertEqual(raw, (ROOT / graphics.GENERATED_ROOT / entry["file"]).read_bytes())
+            self.assertEqual(graphics.png_metadata(raw)["rgbaSha256"], entry["rgbaSha256"])
 
     def test_native_player_and_npc_cells_and_walk_timing(self):
         self.assertEqual([self.sprites["player:down:" + pose]["x"] for pose in graphics.POSES], [0, 32, 64])

@@ -21,11 +21,19 @@ namespace BlueMapMigration.Phase6
         public bool success, allNativeTexturesReadable, allNativeAnimationsReferenced, localizationExact, originalFontAvailable, supplementaryGlyphsRendered, audioPlaybackStarted;
         public bool nativeBoundaryFramesExact;
         public int nativeBoundarySamples, nativeBoundaryFailures;
+        public bool premultipliedPixelsExact;
+        public int premultipliedTextureCount, premultipliedComparedPixels, premultipliedAlphaOnePixels, premultipliedMismatches, premultipliedTintComparedPixels, premultipliedTintMismatches;
+        public PremultipliedTextureProof[] premultipliedTextures;
         public int[] supplementaryGlyphPixels;
         public int effectsPoolSize, effectsStarted, nativeGpuComparedPixels, nativeGpuMismatches;
         public string fontName, graphicsSha256, audioSha256, localizationSha256;
         public string[] captures;
         public GpuSpriteProof[] gpuSprites;
+    }
+    [Serializable] public sealed class PremultipliedTextureProof
+    {
+        public string id;
+        public int comparedPixels, alphaOnePixels, mismatches, tintComparedPixels, tintMismatches;
     }
 
     // A presentation gallery, not a second game implementation. Every displayed
@@ -56,6 +64,7 @@ namespace BlueMapMigration.Phase6
         private int[] glyphPixels;
         private bool nativeAnimationSamplingExact = true;
         private int nativeBoundarySamples, nativeBoundaryFailures;
+        private readonly List<PremultipliedTextureProof> premultipliedProofs = new List<PremultipliedTextureProof>();
         public bool Frozen { get; set; }
         public static readonly string[] Pages = { "overview", "hair", "clothing", "equipment", "languages", "pixels" };
 
@@ -217,6 +226,53 @@ namespace BlueMapMigration.Phase6
             }
             return proofs.ToArray();
         }
+        public void ShowPremultipliedTexture(CatalogTexture texture, int left, int top, bool halfTint = false)
+        {
+            if (texture.definition.alphaMode != "premultiplied") throw new ArgumentException("Native alpha proof requires an explicitly premultiplied source texture.");
+            ReleaseNativePlayers(); if (content != null) { content.SetActive(false); Destroy(content); }
+            content = new GameObject("Original premultiplied source pixels"); content.transform.SetParent(transform, false); Page = "premultiplied";
+            Sprite original = Catalog.GetSprite("image:" + texture.definition.id);
+            if (original == null) throw new InvalidOperationException("Full-image native sprite is missing for alpha proof: " + texture.definition.id);
+            SpriteRenderer renderer = Put(original, -left, -top, 1);
+            renderer.color = new Color(1, 1, 1, halfTint ? .5f : 1);
+        }
+        public PremultipliedTextureProof ComparePremultipliedChunk(CatalogTexture texture, int left, int top, Color32[] source, Texture2D capture, bool halfTint = false)
+        {
+            Color32[] actual = capture.GetPixels32(); int width = texture.texture.width, height = texture.texture.height;
+            var proof = new PremultipliedTextureProof { id = texture.definition.id };
+            for (int y = 0; y < Math.Min(648, height - top); y++) for (int x = 0; x < Math.Min(1152, width - left); x++)
+            {
+                Color32 expected = source[(height - 1 - top - y) * width + left + x];
+                if (expected.a == 0 || expected.a == 255) continue;
+                Color32 observed = actual[(647 - y) * 1152 + x];
+                if (halfTint)
+                {
+                    // Even source RGB values halve to exact 8-bit integers.
+                    // These samples prove tint alpha is applied, without a
+                    // rounding allowance or multiplying by texture alpha twice.
+                    if ((expected.r | expected.g | expected.b) == 0 || (expected.r & 1) != 0 || (expected.g & 1) != 0 || (expected.b & 1) != 0) continue;
+                    proof.tintComparedPixels++;
+                    if (observed.r != expected.r / 2 || observed.g != expected.g / 2 || observed.b != expected.b / 2) proof.tintMismatches++;
+                }
+                else
+                {
+                    proof.comparedPixels++; if (expected.a == 1) proof.alphaOnePixels++;
+                    if (observed.r != expected.r || observed.g != expected.g || observed.b != expected.b) proof.mismatches++;
+                }
+            }
+            return proof;
+        }
+        public void RecordPremultipliedProof(PremultipliedTextureProof proof) { premultipliedProofs.Add(proof); }
+        public bool HasExactTintSamples(CatalogTexture texture, int left, int top, Color32[] source)
+        {
+            int width = texture.texture.width, height = texture.texture.height;
+            for (int y = 0; y < Math.Min(648, height - top); y++) for (int x = 0; x < Math.Min(1152, width - left); x++)
+            {
+                Color32 c = source[(height - 1 - top - y) * width + left + x];
+                if (c.a > 0 && c.a < 255 && (c.r | c.g | c.b) != 0 && (c.r & 1) == 0 && (c.g & 1) == 0 && (c.b & 1) == 0) return true;
+            }
+            return false;
+        }
 
         public void SampleAnimations(float seconds)
         {
@@ -241,13 +297,14 @@ namespace BlueMapMigration.Phase6
             AnimationPlayableOutput output = AnimationPlayableOutput.Create(graph, "Original sprite frames", animator); output.SetSourcePlayable(playable); graph.Play();
             return new NativePlayback { renderer = renderer, animation = animation, graph = graph, playable = playable };
         }
-        private static void SampleNativeFrame(NativePlayback player, int sourceFrame)
+        private void SampleNativeFrame(NativePlayback player, int sourceFrame)
         {
             // Source clock chooses the discrete sprite. Sample the native curve
             // inside that exact interval; modulo of rounded clip durations can
             // otherwise land just before a boundary (e.g. 1s at 5fps, 2 frames).
             float nativeTime = (sourceFrame + .5f) / player.animation.definition.fps;
             player.playable.SetTime(nativeTime); player.graph.Evaluate(0);
+            Catalog.Apply(player.renderer, player.renderer.sprite);
         }
         public void CheckNativeAnimationBoundaries()
         {
@@ -293,14 +350,18 @@ namespace BlueMapMigration.Phase6
         public PresentationResult Report(GpuSpriteProof[] proofs, string[] captures)
         {
             int mismatches = proofs.Sum(value => value.mismatches), pixels = proofs.Sum(value => value.opaquePixels);
+            int premultipliedPixels = premultipliedProofs.Sum(value => value.comparedPixels), premultipliedFailures = premultipliedProofs.Sum(value => value.mismatches);
+            int premultipliedTintPixels = premultipliedProofs.Sum(value => value.tintComparedPixels), premultipliedTintFailures = premultipliedProofs.Sum(value => value.tintMismatches);
+            bool premultipliedExact = premultipliedProofs.Count == Catalog.textures.Count(value => value.definition.alphaMode == "premultiplied") && premultipliedPixels > 0 && premultipliedFailures == 0 && premultipliedTintPixels > 0 && premultipliedTintFailures == 0;
             return new PresentationResult {
-                success = mismatches == 0 && pixels > 1000 && nativeBoundarySamples > 0 && nativeBoundaryFailures == 0 && LocalizationExact && FontAvailable && glyphPixels != null && glyphPixels.All(value => value > 5) && Audio.EffectsStarted > 0 && Audio.MusicIsPlaying,
+                success = mismatches == 0 && pixels > 1000 && premultipliedExact && nativeBoundarySamples > 0 && nativeBoundaryFailures == 0 && LocalizationExact && FontAvailable && glyphPixels != null && glyphPixels.All(value => value > 5) && Audio.EffectsStarted > 0 && Audio.MusicIsPlaying,
                 textureCount = Catalog.textures.Length, spriteCount = Catalog.sprites.Length, animationCount = Catalog.animations.Length, audioCount = Catalog.audio.Length, localizationCount = Catalog.localization.Length,
                 hairStyles = UniqueHair().Length, clothingPieces = UniqueClothing().Length,
                 allNativeTexturesReadable = Catalog.textures.All(value => value.texture.isReadable && value.texture.filterMode == FilterMode.Point && value.texture.mipmapCount == 1 && value.sourceRgbaSha256 == value.importedRgbaSha256),
                 allNativeAnimationsReferenced = nativeAnimationSamplingExact && Catalog.animations.All(value => value.nativeClip != null && value.frames.Length > 0), localizationExact = LocalizationExact, originalFontAvailable = FontAvailable,
                 supplementaryGlyphsRendered = glyphPixels != null && glyphPixels.All(value => value > 5), supplementaryGlyphPixels = glyphPixels,
                 nativeBoundarySamples = nativeBoundarySamples, nativeBoundaryFailures = nativeBoundaryFailures, nativeBoundaryFramesExact = nativeBoundarySamples > 0 && nativeBoundaryFailures == 0,
+                premultipliedPixelsExact = premultipliedExact, premultipliedTextureCount = premultipliedProofs.Count, premultipliedComparedPixels = premultipliedPixels, premultipliedAlphaOnePixels = premultipliedProofs.Sum(value => value.alphaOnePixels), premultipliedMismatches = premultipliedFailures, premultipliedTintComparedPixels = premultipliedTintPixels, premultipliedTintMismatches = premultipliedTintFailures, premultipliedTextures = premultipliedProofs.ToArray(),
                 fontName = Catalog.originalFont.name, audioPlaybackStarted = Audio.EffectsStarted > 0 && Audio.MusicWasStarted && Audio.MusicIsPlaying, effectsPoolSize = Audio.PoolSize, effectsStarted = Audio.EffectsStarted,
                 nativeGpuComparedPixels = pixels, nativeGpuMismatches = mismatches, gpuSprites = proofs, captures = captures,
                 graphicsSha256 = Catalog.graphicsSha256, audioSha256 = Catalog.audioSha256, localizationSha256 = Catalog.localizationSha256
@@ -311,7 +372,7 @@ namespace BlueMapMigration.Phase6
             var obj = new GameObject(sprite.name); obj.transform.SetParent(content.transform, false);
             obj.transform.position = Position(left + sprite.pivot.x * scale, top + (sprite.rect.height - sprite.pivot.y) * scale);
             obj.transform.localScale = Vector3.one * (sprite.pixelsPerUnit / 32f * scale);
-            SpriteRenderer renderer = obj.AddComponent<SpriteRenderer>(); renderer.sprite = sprite; renderer.sortingOrder = 2; return renderer;
+            SpriteRenderer renderer = obj.AddComponent<SpriteRenderer>(); Catalog.Apply(renderer, sprite); renderer.sortingOrder = 2; return renderer;
         }
         private void Label(string text, int x, int y, int size, Color color)
         {

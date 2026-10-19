@@ -51,6 +51,7 @@ PRESENTATION_CHECKS = {
     "original_audio_playback_started", "gpu_original_pixels_exact", "animated_source_frames_change",
     "supplementary_source_glyphs_rendered",
     "native_animation_boundaries_exact",
+    "gpu_premultiplied_pixels_exact",
 }
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",

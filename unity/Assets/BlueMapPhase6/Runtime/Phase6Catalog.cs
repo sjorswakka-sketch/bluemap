@@ -6,7 +6,7 @@ namespace BlueMapMigration.Phase6
 {
     [Serializable] public sealed class GraphicsTextureDefinition
     {
-        public string id, resourcePath, sourcePath, sha256, rgbaSha256;
+        public string id, resourcePath, sourcePath, sha256, rgbaSha256, alphaMode;
         public int width, height;
     }
     [Serializable] public sealed class GraphicsSpriteDefinition
@@ -77,6 +77,7 @@ namespace BlueMapMigration.Phase6
     {
         public GraphicsTextureDefinition definition;
         public Texture2D texture;
+        public Material material;
         public string sourceRgbaSha256, importedRgbaSha256;
     }
     [Serializable] public sealed class CatalogSprite
@@ -117,10 +118,12 @@ namespace BlueMapMigration.Phase6
         public LocalizationDefinition[] localization;
         public Font originalFont;
         public Font fallbackFont;
+        public Material straightMaterial, premultipliedMaterial;
 
         private Dictionary<string, CatalogSprite> spriteLookup;
         private Dictionary<string, CatalogAnimation> animationLookup;
         private Dictionary<string, CatalogAudio> audioLookup;
+        private Dictionary<int, Material> textureMaterials;
 
         public static Phase6Catalog LoadRequired()
         {
@@ -133,11 +136,20 @@ namespace BlueMapMigration.Phase6
         private void Initialize()
         {
             if (spriteLookup != null) return;
-            if (schemaVersion != 1 || sprites == null || textures == null || animations == null || audio == null || localization == null || originalFont == null || fallbackFont == null)
+            if (schemaVersion != 1 || sprites == null || textures == null || animations == null || audio == null || localization == null || originalFont == null || fallbackFont == null || straightMaterial == null || premultipliedMaterial == null)
                 throw new InvalidOperationException("Original presentation catalog is incomplete.");
             spriteLookup = new Dictionary<string, CatalogSprite>(StringComparer.Ordinal);
             animationLookup = new Dictionary<string, CatalogAnimation>(StringComparer.Ordinal);
             audioLookup = new Dictionary<string, CatalogAudio>(StringComparer.Ordinal);
+            textureMaterials = new Dictionary<int, Material>();
+            foreach (CatalogTexture item in textures)
+            {
+                if (item.texture == null || item.material == null || (item.definition.alphaMode != "straight" && item.definition.alphaMode != "premultiplied"))
+                    throw new InvalidOperationException("Catalog texture alpha representation/material is missing.");
+                Material expected = item.definition.alphaMode == "premultiplied" ? premultipliedMaterial : straightMaterial;
+                if (item.material != expected) throw new InvalidOperationException("Catalog texture alpha material does not match its retained source representation.");
+                textureMaterials.Add(item.texture.GetInstanceID(), item.material);
+            }
             foreach (CatalogSprite item in sprites)
             {
                 if (item == null || item.definition == null || item.sprite == null || string.IsNullOrEmpty(item.definition.id) || spriteLookup.ContainsKey(item.definition.id))
@@ -177,6 +189,19 @@ namespace BlueMapMigration.Phase6
         {
             Initialize();
             return id != null && spriteLookup.TryGetValue(id, out CatalogSprite value) ? value : null;
+        }
+        public Material MaterialForSprite(Sprite sprite)
+        {
+            Initialize();
+            if (sprite == null) return straightMaterial;
+            if (!textureMaterials.TryGetValue(sprite.texture.GetInstanceID(), out Material material))
+                throw new InvalidOperationException("Sprite texture has no retained source alpha representation.");
+            return material;
+        }
+        public void Apply(SpriteRenderer renderer, Sprite sprite)
+        {
+            renderer.sprite = sprite;
+            renderer.sharedMaterial = MaterialForSprite(sprite);
         }
     }
 }

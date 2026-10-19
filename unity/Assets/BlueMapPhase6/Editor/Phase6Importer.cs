@@ -17,7 +17,7 @@ namespace BlueMapMigration.Editor
         private const string CatalogPath = "Assets/BlueMapContent/Resources/BlueMapAssets/Catalog.asset";
         [Serializable] public sealed class TextureProof
         {
-            public string id, sourceSha256, sourceRgbaSha256, importedRgbaSha256;
+            public string id, sourceSha256, sourceRgbaSha256, importedRgbaSha256, alphaMode;
             public int width, height, comparedPixels;
             public bool exactPixels, point, uncompressed, noMipmaps;
         }
@@ -66,6 +66,7 @@ namespace BlueMapMigration.Editor
             foreach (GraphicsTextureDefinition definition in graphics.textures.OrderBy(value => value.id, StringComparer.Ordinal))
             {
                 Require(!string.IsNullOrEmpty(definition.id) && !textureLookup.ContainsKey(definition.id), "Duplicate texture identity.");
+                Require(definition.alphaMode == "straight" || definition.alphaMode == "premultiplied", "Texture has no explicit supported source alpha representation: " + definition.id);
                 Texture2D original = Required<Texture2D>(definition.resourcePath);
                 string path = AssetDatabase.GetAssetPath(original);
                 byte[] sourceBytes = File.ReadAllBytes(AssetFile(path));
@@ -94,10 +95,16 @@ namespace BlueMapMigration.Editor
                 Require(exact && expectedHash == definition.rgbaSha256, "Native texture pixel mismatch: " + definition.id);
                 UnityEngine.Object.DestroyImmediate(decoded);
                 textureLookup.Add(definition.id, new CatalogTexture { definition = definition, texture = imported, sourceRgbaSha256 = expectedHash, importedRgbaSha256 = actualHash });
-                proofs.Add(new TextureProof { id = definition.id, sourceSha256 = definition.sha256, sourceRgbaSha256 = expectedHash, importedRgbaSha256 = actualHash, width = imported.width, height = imported.height, comparedPixels = actual.Length, exactPixels = exact, point = imported.filterMode == FilterMode.Point, uncompressed = imported.format == TextureFormat.RGBA32, noMipmaps = imported.mipmapCount == 1 });
+                proofs.Add(new TextureProof { id = definition.id, alphaMode = definition.alphaMode, sourceSha256 = definition.sha256, sourceRgbaSha256 = expectedHash, importedRgbaSha256 = actualHash, width = imported.width, height = imported.height, comparedPixels = actual.Length, exactPixels = exact, point = imported.filterMode == FilterMode.Point, uncompressed = imported.format == TextureFormat.RGBA32, noMipmaps = imported.mipmapCount == 1 });
             }
             catalog.textures = textureLookup.Values.OrderBy(value => value.definition.id, StringComparer.Ordinal).ToArray();
             AssetDatabase.CreateAsset(catalog, CatalogPath);
+            Shader straightShader = Shader.Find("Sprites/Default"), premultipliedShader = Shader.Find("BlueMap/Source Premultiplied Sprite");
+            Require(straightShader != null && premultipliedShader != null, "Source sprite alpha shaders are unavailable.");
+            catalog.straightMaterial = new Material(straightShader) { name = "Original straight alpha sprites" };
+            catalog.premultipliedMaterial = new Material(premultipliedShader) { name = "Original premultiplied viewport sprites" };
+            AssetDatabase.AddObjectToAsset(catalog.straightMaterial, catalog); AssetDatabase.AddObjectToAsset(catalog.premultipliedMaterial, catalog);
+            foreach (CatalogTexture texture in catalog.textures) texture.material = texture.definition.alphaMode == "premultiplied" ? catalog.premultipliedMaterial : catalog.straightMaterial;
             var spriteLookup = new Dictionary<string, CatalogSprite>(StringComparer.Ordinal);
             foreach (GraphicsSpriteDefinition definition in graphics.sprites.OrderBy(value => value.id, StringComparer.Ordinal))
             {

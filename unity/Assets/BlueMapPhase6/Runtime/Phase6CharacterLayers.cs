@@ -8,6 +8,7 @@ namespace BlueMapMigration.Phase6
     public sealed class Phase6CharacterLayers : MonoBehaviour
     {
         private SpriteRenderer behind, body, front;
+        private Phase6Catalog catalog;
         private void EnsureLayers()
         {
             if (body != null) return;
@@ -22,7 +23,8 @@ namespace BlueMapMigration.Phase6
         {
             if (bodySprite == null) throw new ArgumentException("Original body frame is required.");
             EnsureLayers();
-            behind.sprite = behindSprite; body.sprite = bodySprite; front.sprite = frontSprite;
+            if (catalog == null) catalog = Phase6Catalog.LoadRequired();
+            catalog.Apply(behind, behindSprite); catalog.Apply(body, bodySprite); catalog.Apply(front, frontSprite);
             behind.sortingOrder = baseOrder - 1; body.sortingOrder = baseOrder; front.sortingOrder = baseOrder + 1;
         }
         public void SetColors(Color behindColor, Color bodyColor, Color frontColor)
