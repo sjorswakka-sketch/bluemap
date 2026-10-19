@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "phase": 1,
+  "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "source_manifest_verified": true,
+  "recovery_zip_source_bytes_verified": 1734,
+  "offline_git_bundle_clone_and_fsck": "passed",
+  "windows_package_crc_pe_x64": "passed",
+  "published_recovery_assets_sha256_match": 7,
+  "existing_godot_ci_suites": 86,
+  "english_translations": {
+    "total": 3187,
+    "translated": 3187,
+    "errors": 0
+  },
+  "inventory": {
+    "success": true,
+    "check_only": true,
+    "exports_per_run": 2,
+    "source_unchanged": true,
+    "isolated_test_directory_verified": true,
+    "source_fingerprint": "b23292ec8991c376ce176e0544ddccddb33bb65a8a4824f5b251044656259f45",
+    "outputs": {
+      "content-inventory.json": {
+        "bytes": 1989802,
+        "sha256": "23318c3696211a67d96436c20914c69dfb93a16004422b6cf6da9e68b91a2cf2"
+      },
+      "maps-inventory.json": {
+        "bytes": 3764939,
+        "sha256": "3b6e3818d720f501dbcce09252919f7c76f2814a651a5fba796a322767cfb207"
+      }
+    },
+    "summary": {
+      "catalog_counts": {
+        "achievements": 40,
+        "actions": 36,
+        "clothes": 24,
+        "clothing_slots": 5,
+        "conditions": 33,
+        "consumables": 71,
+        "dye_colors": 20,
+        "enemies": 35,
+        "eye_colors": 12,
+        "eye_styles": 16,
+        "formats": 11,
+        "gear": 24,
+        "gear_slots": 5,
+        "genders": 2,
+        "hair_colors": 16,
+        "hair_m": 45,
+        "hair_v": 45,
+        "items": 226,
+        "map_markers": 19,
+        "maps": 37,
+        "music_tracks": 12,
+        "npcs": 35,
+        "object_types": 49,
+        "professions": 7,
+        "quests": 33,
+        "recipes": 52,
+        "resources": 95,
+        "shops": 2,
+        "solid_tile_types": 38,
+        "sounds": 126,
+        "special_pickups": 2,
+        "talks": 244,
+        "tile_types": 80,
+        "weapons": 4
+      },
+      "catalogs": 34,
+      "declared_tables": 377,
+      "explicit_resource_ids": 213,
+      "legacy_resources": 75,
+      "maps": 37,
+      "production_scripts": 306,
+      "registry_slots": 905,
+      "tiles": 49758
+    }
+  },
+  "save_contract": {
+    "fields": 34,
+    "files": 5,
+    "configurable_actions": 22,
+    "source_review": "passed",
+    "actual_player_saves_accessed": false
+  },
+  "independent_review": "passed",
+  "unity_port_implemented": false,
+  "remaining": "Phase 2 validates Unity editor, license and build route; phase 5 exports loaded and changed runtime world states; phases 9/25 implement save conversion."
+}

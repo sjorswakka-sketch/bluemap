@@ -1,0 +1,60 @@
+{
+  "release_id": 417216076,
+  "url": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
+  "draft": false,
+  "prerelease": true,
+  "tag": "refs/tags/godot-baseline-0.34.0",
+  "tag_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "all_uploads_match_local_sha256": true,
+  "assets": [
+    {
+      "id": 656092349,
+      "name": "BluemapQuest-godot-0.34.0-evidence.zip",
+      "bytes": 2572661,
+      "sha256": "e2154e537b8c97355760bb995e6d0b56b2465ee0a24226d2f6b564aadab0a734",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/godot-baseline-0.34.0/BluemapQuest-godot-0.34.0-evidence.zip"
+    },
+    {
+      "id": 656092076,
+      "name": "BluemapQuest-godot-0.34.0-history.bundle",
+      "bytes": 30950226,
+      "sha256": "2b3c9abe0bc98b4cf85cd5e259f46cc5b9496bc75a34872fa80316ed88bea8aa",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/godot-baseline-0.34.0/BluemapQuest-godot-0.34.0-history.bundle"
+    },
+    {
+      "id": 656091857,
+      "name": "BluemapQuest-godot-0.34.0-source.zip",
+      "bytes": 27603377,
+      "sha256": "5623d23b111a69a06f2b657b75ab7bc558e356ad13d7cd7c9130915f7a8f6000",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/godot-baseline-0.34.0/BluemapQuest-godot-0.34.0-source.zip"
+    },
+    {
+      "id": 656091556,
+      "name": "BluemapQuest-v0.34.0-preview-windows.zip",
+      "bytes": 40240094,
+      "sha256": "aa70c2655800d6049fe85d9b2b7671afe2f188f0e5d2d722e0869ebf6cbb8958",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/godot-baseline-0.34.0/BluemapQuest-v0.34.0-preview-windows.zip"
+    },
+    {
+      "id": 656092373,
+      "name": "LEESMIJ-HERSTEL.md",
+      "bytes": 3603,
+      "sha256": "8328d59edd5c2405cb02e17be67398ce0a42c2c422e16314fc2a240e90f8e4e4",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/godot-baseline-0.34.0/LEESMIJ-HERSTEL.md"
+    },
+    {
+      "id": 656092381,
+      "name": "recovery-manifest.json",
+      "bytes": 1301,
+      "sha256": "24307b1ca93d4abaf93435c047d226de19e88def316512f67503507525e66fb4",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/godot-baseline-0.34.0/recovery-manifest.json"
+    },
+    {
+      "id": 656092391,
+      "name": "SHA256SUMS.txt",
+      "bytes": 602,
+      "sha256": "9b321ab67efab2b7ce5d2d8522845561bbc391e6db34e44875e65ebb706cd29f",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/godot-baseline-0.34.0/SHA256SUMS.txt"
+    }
+  ]
+}

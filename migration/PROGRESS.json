@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "plan": "PLAN.md",
+  "status": "phase_1_complete",
+  "completed_phases": [
+    1
+  ],
+  "active_phase": null,
+  "next_phase": 2,
+  "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "migration_branch": "codex/unity-migration",
+  "godot_branch": "claude/affectionate-mendel-vc1idx",
+  "unity_implementation_started": false,
+  "completed_on": "2026-10-19",
+  "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
+  "checks": "reference/phase1-checks.json",
+  "requires_next_go": true
+}

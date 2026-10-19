@@ -1,0 +1,1287 @@
+{
+  "contract_version": 1,
+  "status": "reference_only_no_converter_or_port_implemented",
+  "language": "en",
+  "baseline": {
+    "game_version": "0.34.0-preview",
+    "commit": "a8a988be27835dec979d2523a3a85a34385eac54",
+    "application_name": "Bluemap Quest",
+    "godot_save_version": 1,
+    "map_count": 37,
+    "source_of_truth": "scripts/core/game_state.gd",
+    "audit_scope": "Source and synthetic scenario definitions only; no player save files read, modified or converted."
+  },
+  "storage": {
+    "root": "Godot user://; project.godot application name is Bluemap Quest, no custom user directory configured",
+    "windows_expected_root": "%APPDATA%/Godot/app_userdata/Bluemap Quest/",
+    "root_was_inspected": false,
+    "files": [
+      "savegame.json",
+      "meta.cfg",
+      "ng_plus.cfg",
+      "controls.cfg",
+      "settings.cfg"
+    ],
+    "preservation_policy": "Keep exact original bytes and hashes for every supplied file, including unknown members. A future normalized export is additional evidence, never a replacement for the original."
+  },
+  "savegame": {
+    "path": "user://savegame.json",
+    "encoding": "Godot JSON.stringify dictionary",
+    "field_count": 34,
+    "write_source": "scripts/core/game_state.gd:688-717",
+    "load_source": "scripts/core/game_state.gd:719-796",
+    "load_order": [
+      "Reject absent file or a JSON root that is not a Dictionary",
+      "new_game resets adventure state and initializes achievements from persistent metadata; clear new-adventure flags",
+      "Load basic map/position/currency/weapon/round/time fields",
+      "Normalize professions, homestead, stockroom, yard, home, coastal storage and XP in that order; profession deadlines depend on loaded play_time, yard depends on normalized homestead.cells",
+      "Load counters, conversation set and merge save achievements into persistent metadata",
+      "Load arena records and inventory, then normalize equipment and appearance/clothing against loaded ownership",
+      "Reset movement before flags and quest entries are copied",
+      "Run _fill_in_old_save and derive visited_maps from the raw save",
+      "Set save_is_ours; clamp HP using loaded heart_container ownership; emit refresh signals",
+      "On subsequent world.load_map, run living/regional/first-route migrations before assembling geometry, then record the actual map visit"
+    ],
+    "fields": {
+      "version": {
+        "type": "integer",
+        "written": 1,
+        "missing_load_default": null,
+        "load_rule": "Current loader does not read or dispatch on this field; do not interpret it as a versioned migration framework."
+      },
+      "map": {
+        "type": "map_id_string",
+        "missing_load_default": "village",
+        "load_rule": "Copied to map_id; no map whitelist validation in load_game. All 37 catalog IDs are stable identities."
+      },
+      "pos": {
+        "type": "number[2]",
+        "missing_load_default": [
+          0,
+          0
+        ],
+        "load_rule": "Copied to load_pos; use_load_pos=true. World coordinates in Godot pixels, 32 pixels per tile; positive y points down. Safe arrival repair occurs when world loads."
+      },
+      "hp": {
+        "type": "integer",
+        "missing_load_default": 5,
+        "load_rule": "int then clamp to 1..(5 + inventory.heart_container); a save does not restore a dead player with 0 HP."
+      },
+      "coins": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "load_rule": "int cast, no explicit nonnegative load clamp; ordinary add_coins clamps runtime totals at zero."
+      },
+      "inventory": {
+        "type": "dictionary<item_id,integer>",
+        "missing_load_default": {},
+        "load_rule": "Known equipment counts become exactly 1 only if finite numeric >=1. All other item keys are int-cast directly, with no general item whitelist, stack cap or nonnegative clamp in this loader. See equipment normalizer."
+      },
+      "flags": {
+        "type": "dictionary<flag_id,variant>",
+        "missing_load_default": {},
+        "load_rule": "LEGACY BUG: every present key is loaded as true, regardless of raw value. Normal set_flag(false) removes the key. Raw flags must also remain available for strict atlas proof inference."
+      },
+      "quests": {
+        "type": "dictionary<quest_id,{state:string,step:integer}>",
+        "missing_load_default": {},
+        "load_rule": "Copy state and int(step); loader does not whitelist quest IDs or clamp step. Absent quest means state none and step -1. Active/done, step order and dictionary insertion order affect tracking. No load-time reward replay."
+      },
+      "weapon": {
+        "type": "weapon_id_string",
+        "missing_load_default": "wood",
+        "load_rule": "Copied directly; unlike NG metadata, load_game has no invalid-weapon fallback."
+      },
+      "visited_maps": {
+        "type": "dictionary<map_id,bool>",
+        "missing_load_default": {},
+        "load_rule": "Strict bool true and registered map IDs only; add valid raw saved current map. Missing field invokes conservative raw-evidence migration; present empty/malformed field does not invoke that inference. See visited_maps normalizer."
+      },
+      "play_time": {
+        "type": "number_seconds",
+        "missing_load_default": 0.0,
+        "load_rule": "float cast; no finite/nonnegative clamp here. Clock for resource cooldowns and animal/manure deadlines, not wall clock."
+      },
+      "kills": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "load_rule": "int cast; total kills independently preserved alongside kills_by."
+      },
+      "meer": {
+        "type": "dictionary<stat_id,integer>",
+        "missing_load_default": {},
+        "load_rule": "Every saved stat is int-cast. Known fish-game counters include verkocht, gevangen, pech; do not discard unknown entries."
+      },
+      "day_time": {
+        "type": "number_fraction_of_day",
+        "missing_load_default": 0.15,
+        "load_rule": "float then fposmod(value,1); 480 active seconds per day. Not an absolute timestamp."
+      },
+      "day_count": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "load_rule": "int cast; determines deterministic weather independently of play_time."
+      },
+      "kills_by": {
+        "type": "dictionary<enemy_kind,integer>",
+        "missing_load_default": {},
+        "load_rule": "Each entry int-cast; if whole field is absent, legacy golem/king flags synthesize counts. Present empty differs from missing."
+      },
+      "rolls": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "load_rule": "int cast; achievement counter."
+      },
+      "potions_drunk": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "load_rule": "int cast; achievement counter."
+      },
+      "deaths": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "load_rule": "int cast; may be patched into the existing save immediately on death without rewriting current progress."
+      },
+      "boss_deaths": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "load_rule": "int cast; incremented if boss_started and not boss_defeated at death; same in-place death patch behavior."
+      },
+      "talked": {
+        "type": "array<npc_id_string>",
+        "missing_load_default": [],
+        "load_rule": "Written from dictionary keys; read into set of true values. Absent field plus cat_found adds muis_bos; atlas proof reads the raw array before any such synthesized conversation."
+      },
+      "achievements": {
+        "type": "array<achievement_id_string>",
+        "missing_load_default": [],
+        "load_rule": "Written from keys; union with meta-achievements retained by new_game. New IDs from the save are written to meta.cfg. No catalog whitelist on import."
+      },
+      "arena_records": {
+        "type": "dictionary<arena_rank,number_seconds>",
+        "missing_load_default": {},
+        "load_rule": "Only Dictionary accepted; each value float-cast, no explicit positive/finite guard. Best times are persistent, active combat session is not."
+      },
+      "homestead": {
+        "type": "homestead_state",
+        "missing_load_default": {
+          "cells": {},
+          "jobs": {},
+          "animal_due": {},
+          "drops": {},
+          "wild_due": 0.0,
+          "honey": 0,
+          "honey_time": 0.0
+        },
+        "normalizer": "homestead"
+      },
+      "coastal_storage": {
+        "type": "dictionary<material_item_id,integer>",
+        "missing_load_default": {},
+        "normalizer": "coastal_storage"
+      },
+      "stockroom": {
+        "type": "stockroom_state",
+        "missing_load_default": {
+          "home": {},
+          "favorites": {},
+          "sort": 0
+        },
+        "normalizer": "stockroom"
+      },
+      "personal_home": {
+        "type": "personal_home_state",
+        "missing_load_default": "personal_home.defaults()",
+        "normalizer": "personal_home"
+      },
+      "yard": {
+        "type": "yard_state",
+        "missing_load_default": "yard.defaults()",
+        "normalizer": "yard"
+      },
+      "professions": {
+        "type": "professions_state",
+        "missing_load_default": {
+          "xp": {},
+          "cooldowns": {}
+        },
+        "normalizer": "professions",
+        "load_rule": "An empty Dictionary materializes zero XP entries for all known skills; a non-Dictionary returns the two empty dictionaries immediately."
+      },
+      "hero_xp": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "normalizer": "hero_xp",
+        "load_rule": "Set directly on loading; level rewards must not replay."
+      },
+      "equipment": {
+        "type": "dictionary<equipment_slot,item_id>",
+        "missing_load_default": {},
+        "normalizer": "equipment"
+      },
+      "appearance": {
+        "type": "appearance_state",
+        "missing_load_default": {
+          "gender": "m",
+          "hair": "m_kort",
+          "hair_color": 2,
+          "eyes": "rond",
+          "eye_color": 0
+        },
+        "normalizer": "appearance"
+      },
+      "clothing": {
+        "type": "dictionary<clothing_slot,{item:string,dye:integer}>",
+        "missing_load_default": {},
+        "normalizer": "clothing"
+      },
+      "ng_plus": {
+        "type": "integer",
+        "missing_load_default": 0,
+        "load_rule": "int cast; active adventure round, separate from the maximum/completion metadata in ng_plus.cfg."
+      }
+    }
+  },
+  "normalizers": {
+    "hero_xp": {
+      "source": "scripts/core/progression.gd:23-27",
+      "rule": "Only finite int/float, truncate after clamp 0..2250; other values ->0. Levels derive from 25*(level-1)*level, maximum level 10; levels are not saved separately."
+    },
+    "equipment": {
+      "source": "scripts/core/equipment.gd:14-41",
+      "slots": [
+        "head",
+        "chest",
+        "hands",
+        "neck",
+        "ring"
+      ],
+      "rule": "Known slot, string item belonging to exactly that slot, finite numeric owned count>=1. Otherwise omit entry. normalize_owned retains only registered gear IDs at quantity 1. Empty selection is intentional and must remain empty; ownership alone provides no gear bonus."
+    },
+    "appearance": {
+      "source": "scripts/core/appearance.gd:10-39",
+      "fields": [
+        "gender",
+        "hair",
+        "hair_color",
+        "eyes",
+        "eye_color"
+      ],
+      "rule": "Defaults gender m/hair m_kort/hair_color 2/eyes rond/eye_color 0. Gender v only on exact v, otherwise m. Hair must belong to gender's catalog, else third style by catalog order; eyes must be known, else rond. Color indexes int-cast and clamped to catalog bounds. Catalog order is part of index semantics."
+    },
+    "clothing": {
+      "source": "scripts/core/appearance.gd:42-72",
+      "slots": [
+        "hat",
+        "back",
+        "top",
+        "bottom",
+        "feet"
+      ],
+      "rule": "Known slot, Dictionary entry, correct known item for slot and finite numeric owned quantity>=1. Keep {item,dye}; dye int-cast and clamped to palette bounds. Cosmetic clothing remains distinct from equipment/bonuses."
+    },
+    "professions": {
+      "source": "scripts/core/professions.gd:31-75",
+      "fields": {
+        "xp": "skill -> finite numeric integer 0..1350 for registered skills",
+        "cooldowns": "exact resource_id -> absolute active play_time deadline",
+        "goal": "optional nonempty registered recipe_id string; invalid or empty values omitted by normalization"
+      },
+      "rule": "Discard expired deadlines <= loaded play_time; clamp each valid deadline to play_time+that resource's own cooldown. Legacy placements use exact map:resource IDs. trail:/winter:/forestfood: IDs are checked against actual enriched map objects, not merely accepted by prefix. Preserve raw data that normalization drops.",
+      "skill_ids": [
+        "foraging",
+        "woodcutting",
+        "mining",
+        "fishing",
+        "smithing",
+        "alchemy",
+        "cooking"
+      ]
+    },
+    "homestead": {
+      "source": "scripts/core/homestead.gd:16-50",
+      "fields": {
+        "cells": "x,y string -> {kind:soil|channel, optional crop,growth,fertilized,established}",
+        "jobs": "compost|wine_a|wine_b -> {batches:integer,time:seconds}",
+        "animal_due": "animal_identity -> absolute active play_time deadline",
+        "drops": "drop_identity -> {map:string,pos:[world_pixel_x,world_pixel_y]}",
+        "wild_due": "absolute active play_time deadline for wild grapes",
+        "honey": "integer stored honey count",
+        "honey_time": "elapsed active production seconds"
+      },
+      "rules": [
+        "Valid farm cells are Rect2i(4,29,31,12), excluding columns 20 and 21; only soil/channel entries remain.",
+        "Known soil crops retain growth 0..duration and exact-true fertilized. established exact true is retained only if that crop has a regrow duration.",
+        "Registered crop IDs: grape,flower,carrot,pumpkin,mint,rosemary,apple,berry; crop duration/yield are defined by orchard_catalog.gd.",
+        "Jobs: compost cost 2 manure, yield 3 fertilizer, 30s; wine_a and wine_b cost 3 grapes, yield 1 wine, 90s. Each job batches finite numeric clamp/truncate 1..20 and elapsed time 0..job duration.",
+        "animal_due and drops: at most 128 entries each; IDs must be strings <=140 characters. animal_due clamp 0..loaded play_time+90. Runtime creates at most 64 drops.",
+        "Drop map must be string and pos a two-number array; coordinates finite-normalized to 0..10000. Normalizer does not whitelist the map string.",
+        "wild_due clamp 0..loaded play_time+120; honey integer 0..8; honey_time 0..120. Invalid/nonfinite numeric input falls to the lower bound."
+      ]
+    },
+    "coastal_storage": {
+      "source": "scripts/core/coastal_home.gd:3-18",
+      "rule": "Dictionary with known material-type items only; max 12 distinct slots in source iteration order; each finite numeric count>=1 truncates/clamps to 1..99."
+    },
+    "stockroom": {
+      "source": "scripts/core/stockroom.gd:4-26",
+      "fields": {
+        "home": "allowed item -> integer count",
+        "favorites": "known item -> true",
+        "sort": "integer 0..3"
+      },
+      "rule": "home accepts known material/use/ammo items, max 144 distinct slots in source iteration order, finite numeric count>=1 clamps/truncates to 1..999. No equipment is stored here. favorites retains known IDs with value==true. sort finite numeric truncates/clamps 0..3; else 0."
+    },
+    "personal_home": {
+      "source": "scripts/core/personal_home.gd:6-91; scripts/data/house_catalog.gd",
+      "fields": {
+        "owned": "furniture_kind -> count",
+        "layout": "stable furniture_id -> {kind,cell:[tile_x,tile_y],tint}",
+        "floor": "integer 0..3",
+        "wall": "integer 0..3",
+        "light": "integer 0..2"
+      },
+      "defaults": {
+        "owned": {
+          "bed": 1,
+          "table": 1,
+          "shelf": 1,
+          "chair": 1,
+          "plant_leaf": 1,
+          "lamp": 1,
+          "rug": 1
+        },
+        "layout": {
+          "bed": {
+            "kind": "bed",
+            "cell": [
+              3,
+              3
+            ],
+            "tint": 0
+          },
+          "table": {
+            "kind": "table",
+            "cell": [
+              4,
+              8
+            ],
+            "tint": 0
+          },
+          "shelf": {
+            "kind": "shelf",
+            "cell": [
+              8,
+              2
+            ],
+            "tint": 0
+          },
+          "rug:1": {
+            "kind": "rug",
+            "cell": [
+              4,
+              6
+            ],
+            "tint": 0
+          }
+        },
+        "floor": 0,
+        "wall": 0,
+        "light": 0
+      },
+      "rule": "Defaults also contain zero-owned entries for all other catalog kinds. Known owned counts cannot fall below starter ownership and clamp at kind cap. Accept layout only if whole layout_reason succeeds; otherwise retain default layout while preserving normalized ownership/style. Max12 pieces, max26 solid cells; bed/table/shelf mandatory; grid room [2,12)x[2,12), fixed fixtures/reserved paths/no overlaps and full connected walkable floor. Non-base furniture ID kind:1..cap; base ID exactly kind. Integer tint 0..2."
+    },
+    "yard": {
+      "source": "scripts/core/yard.gd:17-21,139-172; scripts/data/yard_catalog.gd",
+      "fields": {
+        "stations": "wine_a|wine_b|compost|hive -> [tile_x,tile_y] or [] for stored",
+        "paths": "canonical x,y -> piece kind",
+        "fences": "canonical x,y -> piece kind",
+        "owned": "supply group -> crafted count",
+        "extensions": "array of unique known extension IDs"
+      },
+      "defaults": {
+        "stations": {
+          "wine_a": [
+            4,
+            25
+          ],
+          "wine_b": [
+            12,
+            25
+          ],
+          "compost": [
+            7,
+            15
+          ],
+          "hive": [
+            15,
+            32
+          ]
+        },
+        "paths": {},
+        "fences": {},
+        "owned": {
+          "gravel": 24,
+          "stone": 0,
+          "boards": 0,
+          "fence": 12,
+          "gate": 2
+        },
+        "extensions": []
+      },
+      "rule": "Known extensions west/east; known supply counts finite, clamped by per-group cap and starter minimum. Stations [] preserved; two finite coordinates in [0,40)x[0,44) truncate to integers. If initial station layout invalid, changed stations are stored rather than destroying crops/jobs. Add optional pieces individually with exact canonical cell keys and correct path/fence kind; max80 paths/max40 fences. Validate land ownership, terrain, reserved/fixed cells, existing farm/tree cover, station spacing, material ownership and connectivity. If final whole layout invalid, clear paths/fences only. Farm is normalized first and is not overwritten."
+    },
+    "visited_maps": {
+      "source": "scripts/core/world_atlas.gd:38-107; scripts/world.gd:278",
+      "rules": [
+        "Retain valid registered map IDs with raw value of type bool and value true; numeric 1 is not accepted.",
+        "Always add a valid raw saved current map. If visited_maps key exists at all, stop evidence inference, even for empty or malformed field.",
+        "Only when field is absent: exact positive raw chest/pickup/savepoint proof keys from actual enriched map inventory prove that exact map.",
+        "Raw talked IDs prove a map only when their static NPC ID occurs in exactly one map; exclude meer_joris because he also appears dynamically at the inn.",
+        "Explicit positive raw wm_met_<role> proves world_memory.PLACES[role].map. Explicit boss/location flags use the fixed legacy map below.",
+        "No gear, quests, achievement metadata, route unlock or inferred intermediate/parent location grants visitation.",
+        "Actual completed world map loads call record_map_visit; inspecting atlas/routes never does. New game and NG+ reset adventure visit history."
+      ],
+      "boss_proofs": {
+        "golem_ruins": "ruins",
+        "golem_cave": "cave",
+        "boss_defeated": "temple",
+        "golem_depths": "depths1",
+        "guardian_started": "depths2",
+        "guardian_epilogue": "depths2",
+        "ad_crab_defeated": "tidal_hollow",
+        "ad_wisp_defeated": "tidal_hollow"
+      }
+    }
+  },
+  "legacy_migrations": [
+    {
+      "id": "missing_kills_by",
+      "source": "scripts/core/game_state.gd:324-335",
+      "when": "kills_by key absent",
+      "effects": "For golem_ruins and golem_cave effective flags add one golem each; boss_defeated gives king=1. Does not change total kills."
+    },
+    {
+      "id": "missing_talked",
+      "source": "scripts/core/game_state.gd:324-335",
+      "when": "talked key absent and effective cat_found true",
+      "effects": "Add talked.muis_bos=true; this synthesized entry is not raw atlas evidence."
+    },
+    {
+      "id": "living_world",
+      "source": "scripts/core/living_world.gd:8-29",
+      "when": "Every load_map first reconciles completed swamp valves; remaining migration once if lw_revision_1 absent",
+      "effects": "If lw_drained or wilgentwijgen done: west=true,east=false,both seen=true. Once: warmth done grants west/east/aggregate heat; active warmth step resets0. wilgentwijgen done grants drained,bridge,tailoring; active step resets0. Set lw_revision_1=true. Direct false east flag remains runtime legacy behavior."
+    },
+    {
+      "id": "regional_adventures",
+      "source": "scripts/core/regional_adventures.gd:7-14",
+      "when": "load_map and ra_revision_1 absent",
+      "effects": "cactusvijgen done grants ra_spring+ra_water_wild; active step resets0. Set ra_revision_1=true."
+    },
+    {
+      "id": "first_route",
+      "source": "scripts/core/first_route.gd:5-10",
+      "when": "load_map and rf_revision_1 absent",
+      "effects": "medaillon done grants rf_relief,rf_journal,rf_memorial,rf_guard, without reward replay. Set rf_revision_1=true."
+    },
+    {
+      "id": "safe_position",
+      "source": "scripts/world.gd:196-204; scripts/core/regional_adventures.gd:35-39; scripts/world.gd spawn safety helpers",
+      "when": "Map load after raw position is restored",
+      "effects": "Relocate obsolete blocked ridgepass bypass positions to safe shore; fountain/solid-footprint safety repair and newly unsafe tide bank arrival use existing world spawn checks. Preserve raw old position as evidence."
+    }
+  ],
+  "identity_rules": [
+    {
+      "kind": "generic_map_object",
+      "source": "scripts/world.gd:466-559",
+      "format": "<type>:<map_id>:<zero_based_full_object_array_index>",
+      "rules": "Index counts every entry before enabled/if filtering; disabled entries retain slots. Used directly for chest and unique pickup flags, and passed as key to extension entities. Preserve type/map/index separately plus exact legacy key. Never renumber after filtering, sorting or scene import."
+    },
+    {
+      "kind": "final_object_array",
+      "source": "scripts/maps/registry.gd:23-46; scripts/world.gd:158-174",
+      "format": "base DATA.objects -> ordered registry enrich hooks -> first_route/access_points preparation -> append Beroepen.resource_objects",
+      "rules": "Final authored order, including disabled slots and appended content, is identity-sensitive. Map registry has 19 enrich calls plus conditional swamp preparation and inn memory-book append; preserve exact executable order, not alphabetic file order. Runtime-only living scenery objects may use explicit IDs instead of array slots."
+    },
+    {
+      "kind": "altar",
+      "source": "scripts/core/fast_travel.gd:18-20; scripts/entities/savepoint.gd:53-63",
+      "format": "altaar_<map_id>_<tile_x>_<tile_y>",
+      "rules": "Tile coordinate inferred from altar position divided by32. Discovery proves actual use, not merely visiting map. Preserve spawn target, safe arrival, discovery flag and label; relocating altar needs an explicit identity alias."
+    },
+    {
+      "kind": "legacy_resource",
+      "source": "scripts/data/ext/beroepen.gd:239-259",
+      "format": "<map_id>:<placement_name>",
+      "rules": "Explicit obj.id indexes professions.cooldowns; distinct from its generic object key."
+    },
+    {
+      "kind": "trail_resource",
+      "source": "scripts/data/trail_life.gd:65",
+      "format": "trail:<map_id>:<tile_x>:<tile_y>",
+      "rules": "Coordinates are identity-sensitive; exact enriched-map membership checked when loading cooldowns."
+    },
+    {
+      "kind": "winter_resource",
+      "source": "scripts/data/winter_greens.gd:73",
+      "format": "winter:<map_id>:<planned_species_id>",
+      "rules": "Species/planned ID rather than resulting position indexes cooldown; exact enriched object membership required."
+    },
+    {
+      "kind": "forest_food_resource",
+      "source": "scripts/data/forest_food_species.gd:164",
+      "format": "forestfood:<map_id>:<species_id>",
+      "rules": "Preserve species identity and resource kind; decorating/repositioning must not create another logical resource."
+    },
+    {
+      "kind": "runtime_living_resource",
+      "source": "scripts/entities/living_scenery.gd:35-43,59-87",
+      "format": "explicit IDs such as lw_mine_iron,lw_mine_copper,lw_shore_mint,lw_revealed_flower",
+      "rules": "Not generic map-array keys. Current profession normalizer does not enumerate this dynamic-ID family; preserve raw data and document this asymmetry rather than silently changing it."
+    },
+    {
+      "kind": "animal_manure",
+      "source": "scripts/core/homestead.gd:183-196; scripts/entities/homestead.gd:107-113",
+      "format": "animal identity=<map_id>:<animal_kind>:<home_tile_x>,<home_tile_y>; drop identity=<animal identity>:<int(play_time*1000)>; collected flag=hs_drop:<drop identity>",
+      "rules": "Saved animal_due and drop records prevent duplicate manure; retain home-position identity even if current roaming position differs. Drop position is world pixels, home key uses tile coordinates."
+    },
+    {
+      "kind": "farm_or_yard_cell",
+      "source": "scripts/core/homestead.gd:16-19; scripts/core/yard.gd:14-16",
+      "format": "<tile_x>,<tile_y>",
+      "rules": "Farm parser allows int conversion; yard requires canonical valid integers and exact round-trip key. These are local village tile coordinates, not world pixels."
+    },
+    {
+      "kind": "home_furniture",
+      "source": "scripts/core/personal_home.gd:49-91,98-105",
+      "format": "base kind IDs bed/table/shelf; optional kind:<positive_instance_number>",
+      "rules": "Keep ID, kind, cell, tint and ownership separately. IDs cannot be recreated arbitrarily from scene instance IDs or list order."
+    },
+    {
+      "kind": "quest_focus",
+      "source": "scripts/core/journey.gd:29-41",
+      "format": "jr_focus_<quest_id>",
+      "rules": "Stored in flags, not another save field; focus valid only for currently active quest. Explicit current recipe goal is professions.goal, separate from this quest focus."
+    },
+    {
+      "kind": "other_content",
+      "source": "scripts/data/content.gd; scripts/core/game_state.gd:471-675",
+      "format": "stable string IDs and ordered condition/action arrays",
+      "rules": "Quest/NPC/dialogue/item/recipe/enemy/gate/trigger-once IDs and arbitrary custom flag namespaces must stay byte-identical or have explicit lossless alias mappings; translated display names are never identities."
+    }
+  ],
+  "time_semantics": {
+    "source": "scripts/core/game_state.gd:103-115,299-303; scripts/core/daynight.gd; scripts/core/homestead.gd:79-92; scripts/core/professions.gd:183-185,245",
+    "active_predicate": "in_game && !ended && !SceneTree.paused",
+    "pause": "Nonempty ui_owners pauses the tree; menus/dialogue/pause therefore stop both active clocks. transitioning alone does not pause clocks.",
+    "play_time": "Seconds increased by frame delta under active predicate; saved as numeric, not a wall-clock timestamp.",
+    "world_day": "day_time += delta/480; crossing1 wraps with fposmod and increments day_count. Both components are saved.",
+    "sleep": "skip_to_morning sets day_time=.08 and increments day_count only if previous day_time>.08. Does not advance play_time or production/resource deadlines.",
+    "cooldowns": "Resource, wild-grape and animal timers are absolute deadlines on play_time. Harvest/production growth is stored elapsed active seconds; no real-time/offline catch-up.",
+    "homestead": "Advances while active on every map. Crops grow only when irrigation/water checks pass; batches mature to recipe duration, collected later; honey needs >=3 flowers, 120s/unit up to8, then timer resets. A stored hive pauses production without losing honey.",
+    "tide": "fposmod(day_time*480,96): low[0,48), rising[48,60), high[60,84), falling[84,96). No independent tide save. High/falling bank becomes water; transition waits if the player occupies bank. On load safe arrival is reconstructed.",
+    "weather": "Deterministic from map climate plus day_count/day_time slot; six80-second random-weather slots/day. No independent RNG/weather state field. Preserve integer hash behavior when ported."
+  },
+  "dynamic_world": {
+    "source": "scripts/world.gd:158-280; scripts/entities/living_scenery.gd:16-24,54-95; scripts/core/marsh_waterworks.gd; scripts/core/coastal_adventures.gd:3-6; scripts/entities/tide_cove.gd",
+    "principle": "Full rows/colliders/NPC positions are not serialized. Assemble catalog maps in exact enrichment order, then rebuild runtime geometry/entities from persistent flags, clocks and home state.",
+    "profiles_required": [
+      "All37 maps with default state and every source/target spawn; ordinary interiors,9 dungeons and outdoor training area retained",
+      "Kruipmoeras: all4 drained/bridge combinations plus each independent sluice and live before/after water animation; dry shore, bridges, fishing and water feature descriptions agree with collision",
+      "Tide Cove: low/rising/high/falling; clear and occupied sandbank; safe arrival after save/load; elevated route and ferry always remain usable",
+      "Living restoration: mine, forest, west heat, east heat and their combinations; live collider/terrain/resource/minimap refresh",
+      "Tidal Hollow: before/after ad_wheel_done bridge, keeper peaceful/duel/completed outcomes and boss/pickup once flags",
+      "Gate/quest conditions: both locked and open, defeated and undefeated bosses, one-shot triggers and disabled object slots",
+      "Home/yard/farm: default/custom/stored stations, owned extensions, furniture layout, fence gates, connected/disconnected water, crops/regrowth/fertilizer, in-progress/ready/collected jobs and honey",
+      "Day phase/weather-driven NPC schedules, supper guest/resident appearances, quest NPC roaming; anchor identities survive actor movement",
+      "New, sparse, legacy-unconfirmed and all-visited atlas histories including current indoor location; inspection cannot grant discovery or bypass locks"
+    ]
+  },
+  "not_persisted": {
+    "source": "scripts/core/game_state.gd:78-90,128-185; scripts/core/movement.gd; scripts/entities/player.gd; scripts/ui/menu_ui.gd",
+    "adventure_transients": [
+      "in_game",
+      "ended",
+      "transitioning",
+      "dialogue_open",
+      "ui_owners",
+      "last_damage_source",
+      "damage_log",
+      "save_is_ours",
+      "achievement_queue",
+      "achievement dirty/timer state",
+      "defeat_handler",
+      "spawn_name",
+      "use_load_pos",
+      "load_pos as separate field"
+    ],
+    "reconstructed_or_transient": [
+      "enemy HP/positions and ordinary dropped loot",
+      "NPC current roam positions and animation phases",
+      "player velocity/facing/crosshair/attack or roll timers",
+      "camera and particles",
+      "active dialogue page",
+      "menu selection/scroll/tab/atlas selected region and focus",
+      "active input device/controller instance and cursor mode",
+      "irrigation wet/flow caches",
+      "active arena combat session",
+      "music playback position"
+    ],
+    "stamina": "movement object survives map transitions, but stamina/regen_delay/exhausted are not written. Load, new game and full_rest reset; do not add a serialized field or refill on every map change in a parity port.",
+    "derived_stats": [
+      "hero level and current XP-to-next threshold",
+      "max HP from heart_container ownership",
+      "equipment bonuses from worn owned IDs",
+      "weather/tide/day phase",
+      "which atlas labels are known",
+      "quest route graph/path"
+    ]
+  },
+  "sidecar_files": {
+    "meta.cfg": {
+      "format": "Godot ConfigFile",
+      "version_field": null,
+      "source": "scripts/core/game_state.gd:361-372",
+      "sections": {
+        "achievements": {
+          "key": "achievement_id",
+          "value": "writer emits true; loader treats every present key as unlocked irrespective of stored value, with no catalog whitelist"
+        }
+      },
+      "missing_default": {},
+      "rule": "Union with save achievements. Survives new game/NG+. Legacy writer creates a new ConfigFile, dropping unknown sections; preservation archive must retain original bytes anyway."
+    },
+    "ng_plus.cfg": {
+      "format": "Godot ConfigFile",
+      "version_field": null,
+      "source": "scripts/core/game_state.gd:827-905",
+      "sections": {
+        "ng": {
+          "completed": {
+            "default": false,
+            "load": "bool cast"
+          },
+          "rounds": {
+            "default": 0,
+            "load": "int, no clamp"
+          },
+          "weapon": {
+            "default": "wood",
+            "load": "str; invalid Items.WEAPONS ID ->wood"
+          },
+          "hearts": {
+            "default": 0,
+            "load": "int, no clamp"
+          },
+          "boots": {
+            "default": false,
+            "load": "bool cast"
+          },
+          "hero_xp": {
+            "default": 0,
+            "normalizer": "hero_xp"
+          },
+          "gear_items": {
+            "default": {},
+            "normalizer": "equipment.normalize_owned"
+          },
+          "equipment": {
+            "default": {},
+            "normalizer": "equipment with gear_items ownership"
+          }
+        }
+      },
+      "rule": "Completion stores completed=true, max(rounds,current_round+1), strongest weapon by damage, max hearts/XP, OR boots and union gear. Last conscious worn selection including empty slots wins. NG+ resets ordinary adventure, gives stored ownership, sets round, starts with100coins and full health/stamina. Preserve cumulative metadata separately from current adventure."
+    },
+    "controls.cfg": {
+      "format": "Godot ConfigFile with serialized native InputEvent objects, not JSON or ordinary INI scalar values",
+      "version_field": null,
+      "source": "scripts/core/input_manager.gd:10-20,81-102,267-317,343-396; project.godot input section",
+      "sections": [
+        "keyboard",
+        "controller"
+      ],
+      "action_ids": [
+        "homestead",
+        "move_up",
+        "move_down",
+        "move_left",
+        "move_right",
+        "technique",
+        "attack",
+        "bow",
+        "interact",
+        "dodge",
+        "sprint",
+        "potion",
+        "menu",
+        "crafting",
+        "quests",
+        "map",
+        "wereld_prestaties",
+        "wereld_beestenboek",
+        "pause",
+        "restart",
+        "mute",
+        "fullscreen"
+      ],
+      "value": "ordered Array of InputEvent variants, maximum8; [] is an explicit unbound action",
+      "event_kinds": {
+        "InputEventKey": "physical_keycode preferred over fallback keycode; preserve source fields/modifiers",
+        "InputEventMouseButton": "button_index, grouped with keyboard profile",
+        "InputEventJoypadButton": "button_index",
+        "InputEventJoypadMotion": "axis and signed axis_value"
+      },
+      "load": "Start from project defaults plus _install_defaults. For each known action/profile, override only if present Array size<=8 and every member is InputEvent of that category. Invalid present entry retains default. Missing versus invalid-present versus explicit empty are distinct. UI/aim actions are fixed and not imported from file.",
+      "legacy_migrations": [
+        "If technique key absent in a profile: first free keyboard V/G/Z, controller LT/RT/R3; else empty if all taken",
+        "If homestead key absent: first free keyboard U/O/Z; controller remains empty"
+      ],
+      "portable_export_requirement": "Use action IDs plus engine-neutral physical key/mouse/button/axis data. Preserve ordered alternatives, unbound state and raw original bytes. Godot codes are not Unity codes. Do not execute Object(...) text; a future converter must decode only an explicitly supported safe Variant subset or use a controlled Godot export.",
+      "effective_default_bindings": {
+        "homestead": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 85
+            }
+          ],
+          "controller": []
+        },
+        "move_up": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 87,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194320,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadMotion",
+              "axis": 1,
+              "axis_value": -1.0
+            },
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 11
+            }
+          ]
+        },
+        "move_down": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 83,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194322,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadMotion",
+              "axis": 1,
+              "axis_value": 1.0
+            },
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 12
+            }
+          ]
+        },
+        "move_left": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 65,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194319,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadMotion",
+              "axis": 0,
+              "axis_value": -1.0
+            },
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 13
+            }
+          ]
+        },
+        "move_right": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 68,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194321,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadMotion",
+              "axis": 0,
+              "axis_value": 1.0
+            },
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 14
+            }
+          ]
+        },
+        "technique": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 86
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadMotion",
+              "axis": 4,
+              "axis_value": 1.0
+            }
+          ]
+        },
+        "attack": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 32,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 74,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventMouseButton",
+              "button_index": 1
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 2
+            }
+          ]
+        },
+        "bow": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 70,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 76,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventMouseButton",
+              "button_index": 2
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadMotion",
+              "axis": 5,
+              "axis_value": 1.0
+            }
+          ]
+        },
+        "interact": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 69,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194309,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 0
+            }
+          ]
+        },
+        "dodge": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194325,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 75,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 1
+            }
+          ]
+        },
+        "sprint": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194326
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 7
+            }
+          ]
+        },
+        "potion": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 72,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 3
+            }
+          ]
+        },
+        "menu": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 73,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194306,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 4
+            }
+          ]
+        },
+        "crafting": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 67
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 8
+            }
+          ]
+        },
+        "quests": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 81,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 9
+            }
+          ]
+        },
+        "map": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 78,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 10
+            }
+          ]
+        },
+        "wereld_prestaties": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 84,
+              "keycode": 0
+            }
+          ],
+          "controller": []
+        },
+        "wereld_beestenboek": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 66,
+              "keycode": 0
+            }
+          ],
+          "controller": []
+        },
+        "pause": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194305,
+              "keycode": 0
+            },
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 80,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 6
+            }
+          ]
+        },
+        "restart": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 82,
+              "keycode": 0
+            }
+          ],
+          "controller": [
+            {
+              "type": "InputEventJoypadButton",
+              "button_index": 6
+            }
+          ]
+        },
+        "mute": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 77,
+              "keycode": 0
+            }
+          ],
+          "controller": []
+        },
+        "fullscreen": {
+          "keyboard": [
+            {
+              "type": "InputEventKey",
+              "physical_keycode": 4194342,
+              "keycode": 0
+            }
+          ],
+          "controller": []
+        }
+      },
+      "default_binding_note": "Godot source keycodes/indices, not Unity codes; ordered core event fields only. Default neutral modifiers/device/transient state follow Godot defaults. Actual supplied controls.cfg must retain all original event fields and bytes.",
+      "fixed_navigation_defaults": {
+        "ui_left": [
+          "Left",
+          "A",
+          "left_stick_x_negative",
+          "dpad_left"
+        ],
+        "ui_right": [
+          "Right",
+          "D",
+          "left_stick_x_positive",
+          "dpad_right"
+        ],
+        "ui_up": [
+          "Up",
+          "W",
+          "left_stick_y_negative",
+          "dpad_up"
+        ],
+        "ui_down": [
+          "Down",
+          "S",
+          "left_stick_y_positive",
+          "dpad_down"
+        ],
+        "ui_accept": [
+          "Enter",
+          "Space",
+          "A_button"
+        ],
+        "ui_cancel": [
+          "Escape",
+          "B_button"
+        ],
+        "ui_prev_tab": [
+          "PageUp",
+          "LB"
+        ],
+        "ui_next_tab": [
+          "PageDown",
+          "RB"
+        ],
+        "aim_left": [
+          "right_stick_x_negative"
+        ],
+        "aim_right": [
+          "right_stick_x_positive"
+        ],
+        "aim_up": [
+          "right_stick_y_negative"
+        ],
+        "aim_down": [
+          "right_stick_y_positive"
+        ]
+      }
+    },
+    "settings.cfg": {
+      "format": "Godot ConfigFile",
+      "version_field": null,
+      "source": "scripts/core/lang.gd:22-63,93-105; scripts/core/sound.gd:64-70,131-149,161-167",
+      "sections": {
+        "taal": {
+          "locale": {
+            "default": "absent",
+            "supported": [
+              "nl",
+              "en"
+            ],
+            "load": "trim/lowercase/- to _, take first language subtag; valid saved choice > valid BLUEMAP_LANG > nl if Dutch OS else en"
+          }
+        },
+        "audio": {
+          "muted": {
+            "default": false,
+            "load": "direct typed assignment"
+          },
+          "music": {
+            "default": 1.0,
+            "load": "direct assignment without explicit load clamp; runtime UI setter clamps0..1"
+          },
+          "sfx": {
+            "default": 1.0,
+            "load": "direct assignment without explicit load clamp; runtime UI setter clamps0..1"
+          }
+        }
+      },
+      "rule": "Both writers load the existing ConfigFile first and preserve other sections. Missing locale choice is different from explicitly nl. forget_choice removes taal section only. Fullscreen/window state is not persisted here. Volumes are linear, bus application uses linear_to_db(max(value,.0001))."
+    }
+  },
+  "acceptance_scenarios": [
+    {
+      "id": "SC01",
+      "scenario": "Modern fully populated synthetic save",
+      "assert": "All34fields and nested values retained according to current normalizers; load/import must award no coins/items/XP/quest rewards."
+    },
+    {
+      "id": "SC02",
+      "scenario": "Old save with optional fields absent versus explicitly empty",
+      "assert": "Legacy golem/king/talked/visited migrations run only under their exact absence rules; no fabricated full visit history."
+    },
+    {
+      "id": "SC03",
+      "scenario": "False-valued raw flag and false-valued meta achievement",
+      "assert": "Record documented presence-based legacy loader behavior separately from strict atlas raw-evidence behavior; do not silently fix either in phase1."
+    },
+    {
+      "id": "SC04",
+      "scenario": "Opened chest/collected unique pickup after object filtering or disabled slots",
+      "assert": "Original legacy IDs still name the same object, loot is claimed at most once; true-full chest is not consumed, already-owned unique gear still permits remaining coins."
+    },
+    {
+      "id": "SC05",
+      "scenario": "Owned and equipped gear plus deliberately empty worn slots",
+      "assert": "Ownership, worn selection, cosmetic dye and NG cumulative gear stay distinct; no automatic equip, loss, duplication or level-up payout."
+    },
+    {
+      "id": "SC06",
+      "scenario": "Part-grown regrowing crop, fertilizer, wet/dry channels, honey and batched wine/compost",
+      "assert": "State/deadlines continue from saved active time; pause/sleep/offline and station movement do not duplicate, accelerate or reset work."
+    },
+    {
+      "id": "SC07",
+      "scenario": "Resource deadlines at expired, now+epsilon and beyond maximum; all ID families",
+      "assert": "Match current exact membership and clamp behavior, preserve discarded raw values as evidence; report runtime-living-ID asymmetry."
+    },
+    {
+      "id": "SC08",
+      "scenario": "All37 maps and required dynamic profiles",
+      "assert": "Semantic terrain, collider, safe arrival, portal locks, once flags and source/target identities remain coherent after load and during live changes."
+    },
+    {
+      "id": "SC09",
+      "scenario": "Meta-only and save-only achievements, completed legacy campaign and later NG+",
+      "assert": "Correct union, completed status, rounds and best ownership; new adventure clears only adventure state, not account-like metadata."
+    },
+    {
+      "id": "SC10",
+      "scenario": "Custom controller/keyboard bindings, explicit unbound, invalid override and absent new action",
+      "assert": "Preserve action/profile semantics, ordered alternatives and both exact migration paths; no guessed keycode equivalence."
+    },
+    {
+      "id": "SC11",
+      "scenario": "Interrupted save/import, duplicate import and reverse export",
+      "assert": "Atomic new writes, original files remain byte-identical, second import is idempotent, Godot reverse-export semantically matches tested source state."
+    },
+    {
+      "id": "SC12",
+      "scenario": "Malformed/unknown future members and corrupt JSON",
+      "assert": "Fail safely without altering originals, retain unknown raw content, produce explicit diagnostics instead of silent loss. Current source accepts only dictionary JSON root but does not validate every nested member."
+    }
+  ],
+  "phase1_validation": {
+    "kind": "Static documentation/schema coverage only",
+    "implemented_importer": false,
+    "implemented_reverse_exporter": false,
+    "player_data_used": false,
+    "engine_runtime_executed_for_this_contract": false,
+    "requirement": "Later phases must execute the acceptance scenarios in isolated project/save roots; documenting a rule is not proof of Unity compatibility."
+  }
+}
