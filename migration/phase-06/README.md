@@ -48,3 +48,9 @@ De preview bevat afzonderlijke pagina's voor oorspronkelijke beelden, kapsels, k
 De complete wereld uit fase 5, bestaande regels en persoonlijke opslagsleutels blijven apart behouden. Deze fase voegt geen gebouwen, monsters, grond of dichtheid aan de wereld toe. Samengestelde dynamische wereldweergave, contextafhankelijke cosmetica/gear, combat, weersfeer en alle menu's worden bij hun eigen geplande systemen geïntegreerd en opnieuw gecontroleerd.
 
 Een bestaande atlasgrens is expliciet bewaard voor de boomgaardport: de oorspronkelijke stamafbeelding heeft vier 64px-vakken (indices 0–3), terwijl de tekenbron ook index 4 kan vragen. De volledige originele afbeelding en functie blijven behouden; de Unity-catalogus maakt geen uitsnede buiten de afbeelding en verzint geen vijfde stam. De daadwerkelijke boomgaardintegratie moet die brongrens gericht afhandelen.
+
+## Vastgelegde uitslag
+
+[De controle-uitkomst](verification.json), [native import](native-import.json) en [GPU-/animatiebewijs](native-presentation.json) leggen 25.237.696 exacte RGBA-pixels, 13.640.367 exacte PCM-samples, 32.040 exacte oorspronkelijke GPU-pixels en 18.861 correcte animatiegrenssamples over alle 201 clips vast. De Windows-preview doorstaat 29 runtimecontroles; zeven bestaande Godot-suites blijven slagen. De lokale Pythonset telt 325 tests, waarvan twee symlinkfixtures op deze Windows-werkplek extra rechten vragen; de Linux-workflow voert de complete set uit.
+
+De native animatiecontrole vergelijkt opgeslagen float32-bits zonder tolerantie; C# kan tussenberekeningen met [extra precisie uitvoeren](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#837-floating-point-types). De galerij bepaalt eerst de oorspronkelijke frame-index en samplet het echte native clip via een PlayableGraph binnen dat frame-interval, zodat modulo-afronding rond een loopgrens geen ander beeld kiest. De bron-fps en originele data blijven behouden.

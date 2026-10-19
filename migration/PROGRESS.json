@@ -1,16 +1,17 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_6_in_progress",
+  "status": "phase_6_complete",
   "completed_phases": [
     1,
     2,
     3,
     4,
-    5
+    5,
+    6
   ],
-  "active_phase": 6,
-  "next_phase": 6,
+  "active_phase": null,
+  "next_phase": 7,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
@@ -18,11 +19,11 @@
   "unity_implementation_started": true,
   "completed_on": "2026-10-19",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-05/README.md",
-  "requires_next_go": false,
+  "checks": "phase-06/README.md",
+  "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": false,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase3-preview-95811f4b",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase6-preview-67e23412",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -37,5 +38,13 @@
   "world_gameplay_executed_in_unity": false,
   "world_runtime_identity_manifest": "phase-05/runtime-identities.json",
   "world_float_encoding": "binary64-shortest-roundtrip-lossless",
-  "world_float_tolerance": 0
+  "world_float_tolerance": 0,
+  "presentation_assets_imported": true,
+  "presentation_runtime_verified": true,
+  "presentation_manifest": "presentation/graphics.json",
+  "presentation_native_textures": 256,
+  "presentation_native_sprites": 5086,
+  "presentation_native_clips": 201,
+  "presentation_audio_clips": 138,
+  "presentation_translations": 3187
 }

@@ -1,0 +1,738 @@
+{
+  "schemaVersion": 1,
+  "scope": "Original presentation assets in Unity; gameplay, world execution and saves are not ported",
+  "textureCount": 256,
+  "spriteCount": 5086,
+  "animationCount": 201,
+  "audioCount": 138,
+  "localizationCount": 3187,
+  "hairStyles": 90,
+  "clothingPieces": 24,
+  "success": true,
+  "allNativeTexturesReadable": true,
+  "allNativeAnimationsReferenced": true,
+  "localizationExact": true,
+  "originalFontAvailable": true,
+  "supplementaryGlyphsRendered": true,
+  "audioPlaybackStarted": true,
+  "nativeBoundaryFramesExact": true,
+  "nativeBoundarySamples": 18861,
+  "nativeBoundaryFailures": 0,
+  "supplementaryGlyphPixels": [
+    44,
+    54,
+    44,
+    58,
+    130,
+    101
+  ],
+  "effectsPoolSize": 8,
+  "effectsStarted": 1,
+  "nativeGpuComparedPixels": 32040,
+  "nativeGpuMismatches": 0,
+  "fontName": "DefaultFont",
+  "graphicsSha256": "e52e54051f9eeb7e24ca77f94adc6ce88cff3e87f58f146bb31bb6457f067e04",
+  "audioSha256": "b2935fee56942fb872cc47881beaa13c2348f52e9dbdb91eed8d135a68b4a1a1",
+  "localizationSha256": "6f78b91e30db0b43fc33b597cde12c1f625244d87e1a04117898e37e37f84e34",
+  "captures": [
+    "screenshot.png",
+    "screenshot-hair.png",
+    "screenshot-clothing.png",
+    "screenshot-equipment.png",
+    "screenshot-languages.png",
+    "screenshot-pixels.png",
+    "screenshot-animation.png"
+  ],
+  "gpuSprites": [
+    {
+      "id": "hair:m_bos:down",
+      "opaquePixels": 139,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_buzz:down",
+      "opaquePixels": 13,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_dreads:down",
+      "opaquePixels": 207,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_emopony:down",
+      "opaquePixels": 150,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_golvend:down",
+      "opaquePixels": 124,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_gordijn:down",
+      "opaquePixels": 145,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_halflang:down",
+      "opaquePixels": 115,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_halflang_vol:down",
+      "opaquePixels": 135,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_kaal:down",
+      "opaquePixels": 0,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_knot:down",
+      "opaquePixels": 119,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_knot_kort:down",
+      "opaquePixels": 93,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_kort:down",
+      "opaquePixels": 89,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_kort_kuif:down",
+      "opaquePixels": 97,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_krul_kuif:down",
+      "opaquePixels": 103,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_krulbob:down",
+      "opaquePixels": 147,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_krullen:down",
+      "opaquePixels": 98,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_krullen_lang:down",
+      "opaquePixels": 160,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_krulstaart:down",
+      "opaquePixels": 196,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_kuif:down",
+      "opaquePixels": 122,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_lang:down",
+      "opaquePixels": 151,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_lang_vol:down",
+      "opaquePixels": 171,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_mohawk:down",
+      "opaquePixels": 97,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_mohawk_lang:down",
+      "opaquePixels": 123,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_opgestoken:down",
+      "opaquePixels": 109,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_pagenkop:down",
+      "opaquePixels": 138,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_pony:down",
+      "opaquePixels": 112,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_pony_lang:down",
+      "opaquePixels": 174,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_samurai:down",
+      "opaquePixels": 123,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_scheiding:down",
+      "opaquePixels": 89,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_scheiding_lang:down",
+      "opaquePixels": 115,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_staart:down",
+      "opaquePixels": 160,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_staart_lang:down",
+      "opaquePixels": 187,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_stekelmohawk:down",
+      "opaquePixels": 112,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_stekels:down",
+      "opaquePixels": 104,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_stekels_lang:down",
+      "opaquePixels": 130,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_surfer:down",
+      "opaquePixels": 139,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_vlecht:down",
+      "opaquePixels": 191,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_vlecht_kort:down",
+      "opaquePixels": 165,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_vlechtkroon:down",
+      "opaquePixels": 169,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_warrig:down",
+      "opaquePixels": 146,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_waterval:down",
+      "opaquePixels": 185,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_wetenschapper:down",
+      "opaquePixels": 125,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_zijpony:down",
+      "opaquePixels": 130,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_zijstaart:down",
+      "opaquePixels": 140,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:m_zijstaart_lang:down",
+      "opaquePixels": 176,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_afro:down",
+      "opaquePixels": 118,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_bob:down",
+      "opaquePixels": 138,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_bob_krul:down",
+      "opaquePixels": 147,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_bob_lang:down",
+      "opaquePixels": 158,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_dubbelstaart:down",
+      "opaquePixels": 207,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_emopony:down",
+      "opaquePixels": 150,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_golvend:down",
+      "opaquePixels": 160,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_gordijn:down",
+      "opaquePixels": 145,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_gordijn_lang:down",
+      "opaquePixels": 181,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_halflang:down",
+      "opaquePixels": 115,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_halflang_vol:down",
+      "opaquePixels": 135,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_halfop:down",
+      "opaquePixels": 184,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_hoge_staart:down",
+      "opaquePixels": 195,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_kaal:down",
+      "opaquePixels": 0,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_knot:down",
+      "opaquePixels": 119,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_knot_lang:down",
+      "opaquePixels": 155,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_knotjes:down",
+      "opaquePixels": 139,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_kort:down",
+      "opaquePixels": 89,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_kort_golvend:down",
+      "opaquePixels": 98,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_kort_pony:down",
+      "opaquePixels": 112,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_kroonvlecht:down",
+      "opaquePixels": 165,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_krulbob:down",
+      "opaquePixels": 162,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_krullen:down",
+      "opaquePixels": 124,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_krullen_lang:down",
+      "opaquePixels": 160,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_krulstaart:down",
+      "opaquePixels": 196,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_laagjes:down",
+      "opaquePixels": 194,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_lang:down",
+      "opaquePixels": 151,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_lang_pony:down",
+      "opaquePixels": 174,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_mohawk:down",
+      "opaquePixels": 97,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_opgestoken:down",
+      "opaquePixels": 123,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_pagenkop:down",
+      "opaquePixels": 124,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_pixie:down",
+      "opaquePixels": 114,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_pixie_kuif:down",
+      "opaquePixels": 97,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_staart:down",
+      "opaquePixels": 187,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_staart_vol:down",
+      "opaquePixels": 180,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_stekelpixie:down",
+      "opaquePixels": 125,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_stekels:down",
+      "opaquePixels": 104,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_vlecht:down",
+      "opaquePixels": 191,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_vlechtband:down",
+      "opaquePixels": 188,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_vlechtjes:down",
+      "opaquePixels": 185,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_waterval:down",
+      "opaquePixels": 185,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_wilde_krullen:down",
+      "opaquePixels": 175,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_zijpony:down",
+      "opaquePixels": 166,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_zijstaart:down",
+      "opaquePixels": 176,
+      "mismatches": 0
+    },
+    {
+      "id": "hair:v_zijvlecht:down",
+      "opaquePixels": 140,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_backpack:down:idle",
+      "opaquePixels": 14,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_beanie:down:idle",
+      "opaquePixels": 118,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_beret:down:idle",
+      "opaquePixels": 92,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_blouse:down:idle",
+      "opaquePixels": 122,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_boots:down:idle",
+      "opaquePixels": 60,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_cape:down:idle",
+      "opaquePixels": 73,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_cloak:down:idle",
+      "opaquePixels": 194,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_dress:down:idle",
+      "opaquePixels": 221,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_felt_hat:down:idle",
+      "opaquePixels": 129,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_headband:down:idle",
+      "opaquePixels": 33,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_nightcap:down:idle",
+      "opaquePixels": 106,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_overalls:down:idle",
+      "opaquePixels": 92,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_sandals:down:idle",
+      "opaquePixels": 28,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_scarf:down:idle",
+      "opaquePixels": 40,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_shirt:down:idle",
+      "opaquePixels": 122,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_shoes:down:idle",
+      "opaquePixels": 36,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_shorts:down:idle",
+      "opaquePixels": 20,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_skirt:down:idle",
+      "opaquePixels": 90,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_slippers:down:idle",
+      "opaquePixels": 36,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_straw_hat:down:idle",
+      "opaquePixels": 129,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_sweater:down:idle",
+      "opaquePixels": 122,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_trousers:down:idle",
+      "opaquePixels": 40,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_tunic:down:idle",
+      "opaquePixels": 122,
+      "mismatches": 0
+    },
+    {
+      "id": "clothes:cloth_vest:down:idle",
+      "opaquePixels": 122,
+      "mismatches": 0
+    },
+    {
+      "id": "player:down:idle",
+      "opaquePixels": 458,
+      "mismatches": 0
+    },
+    {
+      "id": "player:down:step1",
+      "opaquePixels": 453,
+      "mismatches": 0
+    },
+    {
+      "id": "player:down:step2",
+      "opaquePixels": 453,
+      "mismatches": 0
+    },
+    {
+      "id": "player:left:idle",
+      "opaquePixels": 393,
+      "mismatches": 0
+    },
+    {
+      "id": "player:left:step1",
+      "opaquePixels": 397,
+      "mismatches": 0
+    },
+    {
+      "id": "player:left:step2",
+      "opaquePixels": 371,
+      "mismatches": 0
+    },
+    {
+      "id": "player:right:idle",
+      "opaquePixels": 393,
+      "mismatches": 0
+    },
+    {
+      "id": "player:right:step1",
+      "opaquePixels": 397,
+      "mismatches": 0
+    },
+    {
+      "id": "player:right:step2",
+      "opaquePixels": 371,
+      "mismatches": 0
+    },
+    {
+      "id": "player:up:idle",
+      "opaquePixels": 458,
+      "mismatches": 0
+    },
+    {
+      "id": "player:up:step1",
+      "opaquePixels": 453,
+      "mismatches": 0
+    },
+    {
+      "id": "player:up:step2",
+      "opaquePixels": 453,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_seawall:0",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_seawall:1",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_seawall:2",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_seawall:3",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_seawall:4",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_seawall:5",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_seawall:6",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_seawall:7",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_wetstone:0",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_wetstone:1",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_wetstone:2",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    },
+    {
+      "id": "tile:ad_wetstone:3",
+      "opaquePixels": 1024,
+      "mismatches": 0
+    }
+  ]
+}
