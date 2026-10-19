@@ -43,6 +43,7 @@ namespace BlueMapMigration.Phase6
         private static readonly Color32 Muted = new Color32(160, 181, 177, 255);
         private float animationTime;
         private int[] glyphPixels;
+        private bool nativeAnimationSamplingExact = true;
         public bool Frozen { get; set; }
         public static readonly string[] Pages = { "overview", "hair", "clothing", "equipment", "languages", "pixels" };
 
@@ -211,7 +212,10 @@ namespace BlueMapMigration.Phase6
                 CatalogAnimation animation = pair.Item2;
                 int frame = Mathf.FloorToInt(seconds * animation.definition.fps);
                 frame = animation.definition.loop ? frame % animation.frames.Length : Mathf.Min(frame, animation.frames.Length - 1);
-                pair.Item1.sprite = animation.frames[frame];
+                float duration = animation.frames.Length / animation.definition.fps;
+                float sampleTime = animation.definition.loop ? seconds % duration : Mathf.Min(seconds, (animation.frames.Length - 1) / animation.definition.fps);
+                animation.nativeClip.SampleAnimation(pair.Item1.gameObject, sampleTime);
+                nativeAnimationSamplingExact &= pair.Item1.sprite == animation.frames[frame];
             }
         }
         private void Update()
@@ -230,7 +234,7 @@ namespace BlueMapMigration.Phase6
                 textureCount = Catalog.textures.Length, spriteCount = Catalog.sprites.Length, animationCount = Catalog.animations.Length, audioCount = Catalog.audio.Length, localizationCount = Catalog.localization.Length,
                 hairStyles = UniqueHair().Length, clothingPieces = UniqueClothing().Length,
                 allNativeTexturesReadable = Catalog.textures.All(value => value.texture.isReadable && value.texture.filterMode == FilterMode.Point && value.texture.mipmapCount == 1 && value.sourceRgbaSha256 == value.importedRgbaSha256),
-                allNativeAnimationsReferenced = Catalog.animations.All(value => value.nativeClip != null && value.frames.Length > 0), localizationExact = LocalizationExact, originalFontAvailable = FontAvailable,
+                allNativeAnimationsReferenced = nativeAnimationSamplingExact && Catalog.animations.All(value => value.nativeClip != null && value.frames.Length > 0), localizationExact = LocalizationExact, originalFontAvailable = FontAvailable,
                 supplementaryGlyphsRendered = glyphPixels != null && glyphPixels.All(value => value > 5), supplementaryGlyphPixels = glyphPixels,
                 fontName = Catalog.originalFont.name, audioPlaybackStarted = Audio.EffectsStarted > 0 && Audio.MusicWasStarted && Audio.MusicIsPlaying, effectsPoolSize = Audio.PoolSize, effectsStarted = Audio.EffectsStarted,
                 nativeGpuComparedPixels = pixels, nativeGpuMismatches = mismatches, gpuSprites = proofs, captures = captures,
@@ -266,7 +270,7 @@ namespace BlueMapMigration.Phase6
         private void LabelRun(string text, float x, int y, int size, Color color, Font font)
         {
             var obj = new GameObject("Original font label"); obj.transform.SetParent(content.transform, false); obj.transform.position = Position(x, y);
-            var mesh = obj.AddComponent<TextMesh>(); mesh.font = font; mesh.fontSize = size; mesh.characterSize = 10f / 32f; mesh.anchor = TextAnchor.UpperLeft; mesh.text = text; mesh.color = color;
+            var mesh = obj.AddComponent<TextMesh>(); mesh.font = font; mesh.fontSize = size; mesh.characterSize = 10f / 32f; mesh.anchor = TextAnchor.UpperLeft; mesh.richText = false; mesh.text = text; mesh.color = color;
             obj.GetComponent<MeshRenderer>().sharedMaterial = font.material;
             obj.GetComponent<MeshRenderer>().sortingOrder = 10;
         }
