@@ -206,6 +206,35 @@ def seal_sheet():
     return strip([seal(0), seal(1), seal(2)])
 
 
+def narrow_seal(frame):
+    """One tile wide, two tiles tall; the rune keeps its original proportions."""
+    img = blank(16, 32)
+    rect(img, 1, 1, 14, 30, STONE)
+    hline(img, 1, 14, 1, STONE_L)
+    vline(img, 1, 1, 29, STONE_L)
+    vline(img, 14, 2, 30, STONE_D)
+    hline(img, 1, 14, 30, STONE_X)
+    rect(img, 3, 5, 12, 26, STONE_D)
+    rect(img, 4, 6, 11, 25, c("#3a3470"))
+    for x in (3, 12):
+        for y in (3, 28):
+            put(img, x, y, CR_L if frame == 1 else STONE_L)
+    ring = c("#9a8cf0") if frame == 1 else c("#6a58d8")
+    ellipse(img, (3, 11, 12, 20), None, ring)
+    glow = [c("#8c7cf0"), c("#cfc4ff"), c("#ffffff")][frame]
+    polygon(img, [(8, 10), (9, 14), (13, 16), (9, 17), (8, 22), (7, 17), (3, 16), (7, 14)], glow)
+    polygon(img, [(8, 13), (9, 15), (10, 16), (9, 17), (8, 19), (7, 17), (6, 16), (7, 15)], GLOW_L if frame else CR_L)
+    if frame == 2:
+        for a, b in [((8, 1), (6, 7)), ((6, 7), (9, 13)), ((9, 13), (5, 19)), ((5, 19), (8, 25)), ((8, 25), (7, 30)), ((6, 7), (2, 10)), ((5, 19), (13, 24))]:
+            line(img, a, b, STONE_X)
+        put(img, 8, 16, GLOW_L)
+    return outline(img, DEEP)
+
+
+def narrow_seal_sheet():
+    return strip([narrow_seal(i) for i in range(3)])
+
+
 # --- De Vergeten Wachter (48x48) -------------------------------------------------------------------------
 
 def _limb(img, p0, p1, width, fill_col, edge=None):
@@ -342,6 +371,7 @@ def sheets():
         "depths_objects": objects_sheet(),
         "depths_pillar": pillar_sheet(),
         "depths_seal": seal_sheet(),
+        "depths_seal_narrow": narrow_seal_sheet(),
         "guardian": guardian_sheet(),
         "golem_void": golem_void_sheet(),
     }

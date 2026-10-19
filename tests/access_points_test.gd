@@ -127,6 +127,23 @@ func edge_cases():
  p.roll_timer=.3;p.roll_dir=Vector2.DOWN;p.velocity=Vector2(0,235);p.knockback=Vector2(100,0);p.attack_timer=.2;p.bow_anim=.2
  world.load_map("player_home","start");await frames(2);p=world.player;p.set_physics_process(false)
  check(p.roll_timer==0 and p.knockback==Vector2.ZERO and p.attack_timer==0 and p.bow_anim==0,"arrival cancels carried roll and combat movement")
+func retired_map_portal():
+ await enter("forest");freeze_geometry();await frames(2)
+ var retired: Node
+ for candidate in portals():
+  if candidate.target_map=="watchyard":retired=candidate;break
+ check(retired!=null,"old forest practice-yard portal exists for the map-replacement regression")
+ if retired==null:return
+ retired.armed=true;retired.set_process(true)
+ world.load_map("tide_cove","start");p=world.player;p.set_physics_process(false)
+ var landscape_id: int=world.landscape.get_instance_id()
+ check(retired.is_queued_for_deletion() and retired.rect.has_point(p.position),"new tide arrival deliberately overlaps the queued old forest portal")
+ # Reproduce its final idle callback before queue_free is flushed, not a fictitious dry spawn.
+ retired._process(.016)
+ check(gs.map_id=="tide_cove" and not gs.transitioning,"queued doorway cannot start a trip using the next map's arrival")
+ await frames(45)
+ check(gs.map_id=="tide_cove" and not gs.transitioning and world.landscape.get_instance_id()==landscape_id,"retired doorway cannot finish a delayed trip or replace the tide cache")
+
 func run():
  if not OS.get_user_data_dir().get_file().begins_with("Bluemap-Codex-Tests-"):quit(1);return
  portal_script=load("res://scripts/entities/portal.gd");foot.radius=7
@@ -148,5 +165,6 @@ func run():
  await walk_every_entrance()
  await feedback_cases()
  await edge_cases()
+ await retired_map_portal()
  var out:=FileAccess.open("res://access_audit.json",FileAccess.WRITE);out.store_string(JSON.stringify(report,"  "));out.close()
  world.queue_free();await frames(4);print("ACCESS POINTS OK" if failures==0 else "ACCESS POINTS FAILED "+str(failures));quit(0 if failures==0 else 1)

@@ -75,6 +75,12 @@ func run():
  await frames(4);await tap(KEY_E)
  check(gs.flag("cw_raf_notes") and world.dialogue.active,"Raf personally shares workshop patterns while keeping existing service")
  world.dialogue._close();await frames()
+ var door:=station("door")
+ check(door.obj.get("size",[])==[2,1] and door.position==Vector2(56,22.5)*32,"workshop double door targets the centre of both road tiles")
+ for lane in [55,56]:
+  p.position=Vector2(lane+.5,23.5)*32;await frames(4);await tap(KEY_E)
+  check(home_ui()!=null,"workshop door can be used from approach lane "+str(lane))
+  await close_home()
  await open_station("door");await select(0,true);await frames(70);p=world.player
  check(gs.map_id=="coast_workshop" and world.spawn_fits(p.position),"interactive door arrives safely in existing harbor building")
  check(Prof.craft("cw_hook") and Prof.craft("cw_shelf"),"Raf workbench makes reusable route tool and fixed furniture")

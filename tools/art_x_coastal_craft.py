@@ -88,6 +88,25 @@ def prop(i):
   d.rectangle((18,19,46,34),fill=wood,outline=dark,width=2);d.rectangle((17,32,47,36),fill=light)
   d.line((24,29,36,15),fill='#9ebbb9',width=3);d.arc((30,12,44,30),-80,80,fill='#d7c496',width=2)
  return outline(im)
+def entry_door():
+ """A shared two-leaf harbor frame, exactly two tiles wide at native scale."""
+ im=Image.new('RGBA',(32,32));d=ImageDraw.Draw(im)
+ d.polygon([(0,4),(4,0),(27,0),(31,4),(31,7),(0,7)],fill='#604d3d')
+ d.line((3,3,28,3),fill='#d5b982');d.line((1,6,30,6),fill='#ab8b61')
+ d.rectangle((1,7,30,31),fill='#604d3d');d.rectangle((3,8,28,30),fill='#d5b982')
+ d.rectangle((4,9,27,29),fill='#273f48')
+ for left,right in [(4,15),(16,27)]:
+  d.rectangle((left,10,right,29),fill='#ab8b61')
+  d.line((left+1,11,left+1,28),fill='#d5b982')
+  d.line((right-1,11,right-1,28),fill='#795f44')
+  d.rectangle((left+2,12,right-2,18),fill='#648e91')
+  d.line((left+3,13,right-3,13),fill='#a1cfca')
+  d.line((left+2,25,right-2,25),fill='#604d3d')
+ d.line((15,9,15,29),fill='#604d3d');d.line((16,9,16,29),fill='#d5b982')
+ d.rectangle((13,22,14,24),fill='#d3c395');d.rectangle((17,22,18,24),fill='#d3c395')
+ d.line((2,31,29,31),fill='#a0aaa0')
+ return im
+
 def workshop():
  w,h=30,22;c=[['N']*w for _ in range(h)]
  for y in range(2,20):
@@ -107,6 +126,7 @@ def main():
  strip([item(i) for i in range(10)]).save(ROOT/'assets/cw_items.png')
  strip([resource(i) for i in range(4)]).save(ROOT/'assets/cw_resources.png')
  strip([prop(i) for i in range(13)]).save(ROOT/'assets/cw_props.png')
+ entry_door().save(ROOT/'assets/cw_entry.png')
  sound.ROOT=ROOT
  sound.audio('cw_thread',.6,lambda t,r:math.exp(-t*5)*(.16*(r.random()*2-1)+.2*math.sin(2*math.pi*(430*t+55*t*t))))
  sound.audio('cw_stow',.22,lambda t,r:math.exp(-t*18)*(.4*math.sin(1300*t)+.15*(r.random()*2-1)))

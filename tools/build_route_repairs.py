@@ -16,6 +16,39 @@ PORTALS = {}
 SPAWNS = {}
 SIGNS = {}
 EXTRAS = {}
+# This is an authored policy, not a rule inferred from a room's tiles. Public
+# buildings/open country retain broad approaches; dungeon mouths stay narrow.
+ENTRY_PAIRS = {
+    "dungeon": [
+        ("forest","ruins"),("forest","cave"),("cave","prismamine"),
+        ("prismamine","resonance"),("kruipmoeras","reedvault"),
+        ("river_mouth","tidal_hollow"),("village","temple"),
+        ("temple","depths1"),("depths1","depths2"),
+    ],
+    "building": [
+        ("village","smithy"),("village","shop"),("village","inn"),
+        ("village","player_home"),("village","arena_hall"),
+        ("arena_hall","arena"),("lake","fisher_hut"),("lake","library"),
+        ("harbor","coast_workshop"),
+    ],
+    "open_area": [
+        ("forest","forest_edge"),("forest","watchyard"),("forest","dauwbos"),
+        ("dauwbos","ijsdal"),("dauwbos","dorstvallei"),("dauwbos","mistgarden"),
+        ("dorstvallei","sunwell"),("ijsdal","ridgepass"),("ijsdal","steampeak"),
+        ("forest_edge","village"),("village","lake"),("lake","coast"),
+        ("lake","kruipmoeras"),("coast","river_mouth"),("river_mouth","harbor"),
+        ("harbor","headland"),("gull_island","tide_cove"),
+    ],
+}
+ENTRY_CLASSES = {}
+for kind, pairs in ENTRY_PAIRS.items():
+    for a,b in pairs:
+        for key in [a+":"+b,b+":"+a]:
+            if key in ENTRY_CLASSES:raise RuntimeError("Duplicate entrance classification: "+key)
+            ENTRY_CLASSES[key]=kind
+ENTRY_WIDTHS={key:1 if kind=="dungeon" else 2 for key,kind in ENTRY_CLASSES.items()}
+MOUTHS = {}
+SEALS = {"temple":[{"pos":[11,0],"size":[1,2]}]}
 data = json.loads(SOURCE.read_text(encoding="utf-8"))
 rows = {id: [list(r) for r in d["rows"]] for id, d in data.items()}
 water_source=(ROOT / "scripts/data/water_layouts.gd").read_text(encoding="utf-8")
@@ -70,6 +103,10 @@ PORTALS["lake:village"] = {"pos":[20,0],"size":[2,2]}
 PORTALS["village:lake"] = {"pos":[18,42],"size":[2,2]}
 
 PORTALS["river_mouth:coast"]={"pos":[14,44],"size":[2,2]}
+# These two trails run east/west on two terrain rows. Their triggers must cover
+# both rows as well: two x-columns alone would leave the south lane inactive.
+PORTALS["dauwbos:mistgarden"]={"pos":[43,30],"size":[2,2]}
+PORTALS["ijsdal:ridgepass"]={"pos":[43,3],"size":[2,2]}
 
 # Explicit door expansions retain each original object's index and lock.
 # Buildings receive two matching door tiles; no side opening around a gate.
@@ -81,16 +118,20 @@ DOORS = {
  "village:player_home":([7,21],[2,1], "D"),
  "lake:fisher_hut":([8,6],[2,1], "D"),
  "lake:library":([32,6],[2,1], "D"),
- "forest:ruins":([49,11],[2,1], "A"),
- "forest:cave":([48,31],[2,1], "E"),
- "cave:forest":([4,33],[2,1], "E"),
 }
 for key,(pos,size,char) in DOORS.items():
     id = key.split(":")[0]
     PORTALS[key] = {"pos":pos,"size":size}
     rect(id,*pos,*size,char)
 # The torch belongs beside the enlarged arena gate.
-EXTRAS["village"] = [{"type":"torch","old":[34,4],"pos":[35,4]}]
+EXTRAS["village"] = [
+    {"type":"torch","old":[34,4],"pos":[35,4]},
+    # Keep both lanes of each public doorway clear of the lamp's real foot body.
+    # Move the existing object, never append another lamp or renumber save keys.
+    {"type":"wereld_lantaarn","old":[7,12],"pos":[8,12]},
+    {"type":"wereld_lantaarn","old":[14,12],"pos":[15,12]},
+    {"type":"wereld_lantaarn","old":[31,11],"pos":[32,11]},
+]
 # Short two-wide front steps connect actual doors to the established streets.
 for id,x,y,w,h in [
  ("village",6,12,2,2),("village",13,12,2,2),
@@ -163,15 +204,16 @@ for id,d in data.items():
         else:missing.append([x,y])
     if missing:uncovered[id]=missing
 
-# Portals need a two-wide walkable aperture, including old one-tile cave steps.
-# Existing special 3-wide temple seals remain spacious and retain their lock.
+# Apply the explicit pair classification. No portal may silently fall back to a
+# broad dungeon mouth or a narrow ordinary doorway.
 PASSABLE=set(".zfaeLUj2s6,c_rdwQJ%m:*>=9DAETnif")
 for id,d in data.items():
     for o in d["objects"]:
         if o["type"]!="portal" or not o.get("enabled",True):continue
         key=id+":"+o["to"]
         p=PORTALS.setdefault(key,{"pos":o["pos"][:],"size":o.get("size",[1,1])[:]})
-        p["size"][0]=max(2,p["size"][0])
+        if key not in ENTRY_WIDTHS:raise RuntimeError("Unclassified entrance: "+key)
+        p["size"][0]=ENTRY_WIDTHS[key]
         w=len(rows[id][0]);h=len(rows[id])
         p["pos"][0]=min(p["pos"][0],w-p["size"][0])
         p["pos"][1]=min(p["pos"][1],h-p["size"][1])
@@ -268,29 +310,93 @@ for id,rr in rows.items():
             break
         if not changed:break
 
+# Shape the actual mouths after road widening. The main approach remains two
+# wide; only its final arch/stair opening narrows. Each jamb is real solid
+# terrain, so an adjacent former doorway pixel cannot bypass a progression lock.
+def mouth(key,pos,size,face,char,wall,jambs,back,approach):
+    id=key.split(":")[0]
+    PORTALS[key]={"pos":pos,"size":size}
+    for x,y in jambs+back:put(id,x,y,wall)
+    rect(id,*pos,*size,char)
+    MOUTHS[key]={"pos":pos,"size":size,"face":face,"jambs":jambs,
+                 "back":back,"approach":approach,"floor":char}
+
+mouth("forest:ruins",[49,11],[1,1],"south","A","W",
+      [[48,11],[50,11]],[[48,10],[49,10],[50,10]],[49,12])
+mouth("forest:cave",[48,31],[1,1],"south","E","o",
+      [[47,31],[49,31]],[[47,30],[48,30],[49,30]],[48,32])
+mouth("cave:forest",[4,33],[1,1],"north","E","X",
+      [[3,33],[5,33]],[[3,34],[4,34],[5,34]],[4,32])
+mouth("cave:prismamine",[4,7],[1,1],"south","E","X",
+      [[3,7],[5,7]],[[3,6],[4,6],[5,6]],[4,8])
+mouth("prismamine:cave",[3,25],[1,1],"north","E","X",
+      [[2,25],[4,25]],[[2,26],[3,26],[4,26]],[3,24])
+mouth("prismamine:resonance",[36,5],[1,1],"west","E","X",
+      [[36,4],[36,6]],[[37,4],[37,5],[37,6]],[35,5])
+mouth("resonance:prismamine",[15,21],[1,1],"north","E","X",
+      [[13,21],[14,21],[16,21],[17,21],[18,21]],[[15,22]],[15,20])
+mouth("ruins:forest",[3,30],[1,1],"north","A","M",
+      [[2,30],[4,30]],[[2,31],[3,31],[4,31]],[3,29])
+# The archive island already owns a recessed one-tile stair drawing. Retain its
+# open landing and unique sun-disk pickup rather than build a wall across it.
+PORTALS["kruipmoeras:reedvault"]={"pos":[24,17],"size":[1,1]}
+MOUTHS["kruipmoeras:reedvault"]={"pos":[24,17],"size":[1,1],"face":"south",
+    "jambs":[],"back":[],"approach":[24,18],"floor":"U","recessed":True}
+mouth("reedvault:kruipmoeras",[2,14],[1,1],"east","A","M",
+      [[2,13],[2,15]],[[1,13],[1,14],[1,15]],[3,14])
+mouth("river_mouth:tidal_hollow",[16,9],[1,1],"south","E","7",
+      [[15,9],[17,9]],[[15,8],[16,8],[17,8]],[16,10])
+# A short sea-wall tunnel opens onto the existing dry wetstone landing. Remove
+# the decorative boardwalk over stone instead of leaving a broken half-deck;
+# the real central boardwalk crossing over sea water is entirely unchanged.
+rect("tidal_hollow",0,29,3,2,"0")
+mouth("tidal_hollow:river_mouth",[0,29],[1,1],"east","0","1",
+      [[0,28],[0,30]],[[1,30]],[2,29])
+mouth("village:temple",[19,6],[1,1],"south","T","Z",
+      [[18,6],[20,6]],[[19,5]],[19,7])
+mouth("temple:village",[11,21],[1,1],"north","T","Z",
+      [[10,21],[12,21]],[],[11,20])
+mouth("temple:depths1",[11,0],[1,2],"south",">","Z",
+      [[10,0],[10,1],[12,0],[12,1]],[],[11,2])
+mouth("depths1:temple",[6,28],[1,1],"north",">","V",
+      [[5,28],[7,28]],[],[6,27])
+mouth("depths1:depths2",[22,1],[1,2],"south",">","V",
+      [[21,1],[21,2],[23,1],[23,2]],[[22,0]],[22,3])
+mouth("depths2:depths1",[13,22],[1,1],"north",">","V",
+      [[12,22],[14,22]],[],[13,21])
+
+# Steampeak is authored after the frozen survey; the other exceptional entrance
+# is the harbour workshop's interaction door. Both are ordinary broad entries.
+PORTALS["ijsdal:steampeak"]={"pos":[24,0],"size":[2,2]}
+PORTALS["steampeak:ijsdal"]={"pos":[35,62],"size":[2,2]}
+PORTALS["harbor:coast_workshop"]={"pos":[55,22],"size":[2,1]}
+
 patches={}
 for id,rr in rows.items():
     changes=[[x,y,c] for y,r in enumerate(rr) for x,c in enumerate(r) if c!=original[id][y][x]]
     if changes:patches[id]=changes
-report={"changed_tiles":sum(map(len,patches.values())),"maps":{id:len(p) for id,p in patches.items()},"tight_decorative_spurs":uncovered,"tight_corners":blocked_corners,"anchor_bottlenecks":anchor_bottlenecks}
+report={"changed_tiles":sum(map(len,patches.values())),"maps":{id:len(p) for id,p in patches.items()},"entry_pairs":ENTRY_PAIRS,"narrow_mouths":len(MOUTHS),"tight_decorative_spurs":uncovered,"tight_corners":blocked_corners,"anchor_bottlenecks":anchor_bottlenecks}
 (ROOT/"tools/route-repair-report.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
 src='''extends RefCounted
 ## Authored calm route repairs. Object array order and collectible keys never change.
 ## Regenerate with tools/build_route_repairs.py; inspect tools/route-repair-report.json.
 '''
-for name,value in [("CELLS",patches),("PORTALS",PORTALS),("SPAWNS",SPAWNS),("SIGNS",SIGNS),("PROPS",EXTRAS)]:
+for name,value in [("CELLS",patches),("PORTALS",PORTALS),("ENTRY_CLASSES",ENTRY_CLASSES),("ENTRY_WIDTHS",ENTRY_WIDTHS),("MOUTHS",MOUTHS),("SEALS",SEALS),("SPAWNS",SPAWNS),("SIGNS",SIGNS),("PROPS",EXTRAS)]:
     src+="const "+name+":="+json.dumps(value,ensure_ascii=False,separators=(",",":"))+"\n"
 src+='''
 static func enrich(id: String,data: Dictionary) -> void:
  for entry: Array in CELLS.get(id,[]):
   var row: String=data.rows[entry[1]];row[entry[0]]=entry[2];data.rows[entry[1]]=row
  for obj: Dictionary in data.objects:
-  if obj.type=="portal":
+  if obj.type=="portal" or obj.get("travel_link",false):
    var route: Dictionary=PORTALS.get(id+":"+str(obj.to),{})
    if not route.is_empty():obj.pos=route.pos.duplicate();obj["size"]=route.size.duplicate()
   elif obj.type=="sign":
    for sign: Dictionary in SIGNS.get(id,[]):
     if obj.pos==sign.old:obj.pos=sign.pos.duplicate();obj.lines=sign.lines.duplicate()
+  elif obj.type=="diepte_seal":
+   for seal: Dictionary in SEALS.get(id,[]):
+    if obj.pos==seal.pos:obj["size"]=seal.size.duplicate()
   for prop: Dictionary in PROPS.get(id,[]):
    if obj.type==prop.type and obj.pos==prop.old:obj.pos=prop.pos.duplicate()
  for spawn: String in SPAWNS.get(id,{}):data.spawns[spawn]=SPAWNS[id][spawn].duplicate()

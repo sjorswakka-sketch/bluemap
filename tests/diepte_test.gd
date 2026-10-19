@@ -390,7 +390,7 @@ func test_reachability() -> void:
 
 	# De tempel is na de baas te belopen, tot aan de trap.
 	var temple_seen := flood("temple", Vector2i(11, 19), false)
-	check(temple_seen.has(Vector2i(11, 3)) and temple_seen.has(Vector2i(11, 1)) and temple_seen.has(Vector2i(12, 0)), "de tempel is doorloopbaar tot de trap achter de arena")
+	check(temple_seen.has(Vector2i(11, 3)) and temple_seen.has(Vector2i(11, 1)) and temple_seen.has(Vector2i(11, 0)), "de tempel is doorloopbaar tot de trap achter de arena")
 	var temple_def: Dictionary = Maps.get_map("temple")
 	var from_depths: Array = temple_def["spawns"]["from_depths"]
 	check(temple_seen.has(Vector2i(from_depths[0], from_depths[1])), "je komt uit de Diepte op een begaanbare plek in de tempel")
@@ -418,6 +418,9 @@ func test_access() -> void:
 	var seals := children_with_script("diepte_seal.gd")
 	check(seals.size() == 1, "het zegel zit voor de trap")
 	var seal: Node = seals[0]
+	check(seal.shape.shape.size == Vector2(32, 64), "het echte zegel sluit precies de ene tegelbrede trap af")
+	check(seal.shape.position == Vector2(0, 16), "de zegelcollider blijft gecentreerd op de smalle trap")
+	check(preload("res://scripts/core/art.gd").tex("depths_seal_narrow").get_size() == Vector2(48, 32), "eigen smalle zegelanimatie heeft drie ongerekte vakjes")
 	await walk_through(stairs)
 	check(gs.map_id == "temple", "zonder game_completed brengt de trap je nergens heen")
 	await put_player(seal.global_position + Vector2(16, 90))

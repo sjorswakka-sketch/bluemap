@@ -29,9 +29,21 @@ func director() -> Node:
 		if not n.is_queued_for_deletion(): return n
 	return null
 func use(n: Node2D,pad:=false) -> void:
-	world.player.position=n.position+Vector2(0,30)
+	# Ada works at the water's edge: approaching every resident from the south
+	# can place the player's feet inside water and let collision recovery push
+	# them outside interaction range. Choose real free footing beside the actor.
+	var approach:=Vector2.INF
+	for offset in [Vector2(0,30),Vector2(-30,-8),Vector2(30,-8),Vector2(0,-30)]:
+		var candidate: Vector2=n.position+offset
+		if world.spawn_fits(candidate):
+			approach=candidate
+			break
+	check(approach!=Vector2.INF,"free physical approach to resident or book")
+	if approach==Vector2.INF: return
+	world.player.position=approach
 	if n is CharacterBody2D: n.wait=20
 	await frames()
+	check(world.spawn_fits(world.player.position),"resident interaction stays on free ground")
 	world.player._update_target()
 	check(world.player.target==n,"real target: "+str(n.role if n is CharacterBody2D else "book"))
 	for down in [true,false]:

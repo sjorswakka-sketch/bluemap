@@ -74,7 +74,9 @@ func run():
      check(deck_broad(data.rows,x,y),"main bridge has a two-tile deck "+id+" "+str(Vector2i(x,y)))
   for o: Dictionary in data.objects:
    if o.type!="portal" or not o.get("enabled",true):continue
-   check(o.get("size",[1,1])[0]>=2,"all real transitions have two-wide apertures "+id+" → "+o.to)
+   var key:=id+":"+str(o.to)
+   check(Repairs.ENTRY_WIDTHS.has(key),"all real transitions have an explicit entrance class "+key)
+   check(o.get("size",[1,1])[0]==Repairs.ENTRY_WIDTHS.get(key,0),"entrance width matches its building or dungeon class "+key)
    for y in range(o.pos[1],o.pos[1]+o.size[1]):
     for x in range(o.pos[0],o.pos[0]+o.size[0]):
      check(not Tiles.is_solid_char(data.rows[y][x]),"full entrance aperture is clear "+id+" "+str(Vector2i(x,y)))

@@ -2,8 +2,8 @@ extends StaticBody2D
 ## Het zegel voor de trap achter in de Kristaltempel. Zolang het einde niet is gehaald zit het muurvast.
 ## Is de Blauwe Kaart hersteld (vlag game_completed) en kom je dichtbij, dan breekt het en gaat de Diepte open.
 ##
-## Kaartvorm: {"type": "diepte_seal", "pos": [11, 0], "size": [2, 2], "if": [["no_flag", "diepte_opened"]]}
-## `pos` is de linkerbovenste tegel van de plaat. Hij is altijd 2 bij 2 tegels groot (het plaatje is 32x32).
+## Kaartvorm: {"type": "diepte_seal", "pos": [11, 0], "size": [1, 2], "if": [["no_flag", "diepte_opened"]]}
+## `pos` is de linkerbovenste tegel; `size` bepaalt dezelfde voetafdruk voor botsing en pixelart.
 
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Art := preload("res://scripts/core/art.gd")
@@ -14,7 +14,6 @@ const BREAK_TIME := 1.8 # hoe lang het scheurt voor het uiteenspat
 const GLOW := Color(0.6, 0.5, 1.0)
 const CRACKED_FRAME := 2
 const TILE := 32.0
-const SIZE_TILES := 2 # de plaat is 2 bij 2 tegels
 
 var world: Node
 var obj: Dictionary = {}
@@ -32,7 +31,7 @@ func _ready() -> void:
 	collision_layer = 1
 	shape = CollisionShape2D.new()
 	var rect := RectangleShape2D.new()
-	rect.size = Vector2(SIZE_TILES * TILE, SIZE_TILES * TILE)
+	rect.size = _plate_size()
 	shape.shape = rect
 	shape.position = _center_offset()
 	add_child(shape)
@@ -46,9 +45,15 @@ func _ready() -> void:
 		add_child(light)
 
 
-## Het midden van de plaat, vanaf het midden van de linkerbovenste tegel (waar dit object staat).
+## Afmeting van de zichtbare plaat en zijn echte botsingsvorm.
+func _plate_size() -> Vector2:
+	var tiles: Array = obj.get("size", [2, 2])
+	return Vector2(maxi(1, int(tiles[0])), maxi(1, int(tiles[1]))) * TILE
+
+
+## Het midden van de plaat vanaf het midden van de linkerbovenste tegel.
 func _center_offset() -> Vector2:
-	return Vector2(1, 1) * (SIZE_TILES - 1) * TILE / 2.0
+	return (_plate_size() - Vector2.ONE * TILE) / 2.0
 
 
 func _process(delta: float) -> void:
@@ -89,7 +94,7 @@ func _break_step(delta: float) -> void:
 	# Het zegel trilt en er springen steeds kleine splinters af.
 	if int(before / 0.3) != int(break_time / 0.3):
 		world.shake(2.5)
-		world.burst(global_position + _center_offset() + Vector2(randf_range(-28, 28), randf_range(-28, 28)), GLOW, 6)
+		world.burst(global_position + _center_offset() + Vector2(randf_range(-0.44, 0.44), randf_range(-0.44, 0.44)) * _plate_size(), GLOW, 6)
 	if light:
 		light.energy = 0.7 + break_time * 1.4
 	if break_time >= BREAK_TIME:
@@ -115,6 +120,11 @@ func _draw() -> void:
 	var frame := CRACKED_FRAME if breaking and break_time > BREAK_TIME * 0.4 else int(t * 1.2) % 2
 	var offset := Vector2(randf_range(-1.5, 1.5), randf_range(-1.0, 1.0)) if breaking else Vector2.ZERO
 	var tint := Color(1.6, 1.6, 2.0) if breaking and int(break_time * 14.0) % 2 == 0 else Color.WHITE
-	DrawUtil.sprite(self, Art.tex("depths_seal"), frame, 0, center + offset, Vector2i(32, 32), 2.0, tint)
+	var narrow := _plate_size().x < TILE * 1.5
+	var cell := Vector2(16, 32) if narrow else Vector2(32, 32)
+	var base := Art.tex("depths_seal_narrow" if narrow else "depths_seal")
+	var texture := Art.detailed(base)
+	var density := 2.0 if texture != base else 1.0
+	draw_texture_rect_region(texture, Rect2(center + offset - _plate_size() / 2.0, _plate_size()), Rect2(Vector2(frame * cell.x, 0) * density, cell * density), tint)
 	if player and player.target == self and not breaking:
 		DrawUtil.prompt(self, center + Vector2(0, -44.0), t)

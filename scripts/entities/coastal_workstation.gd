@@ -7,6 +7,9 @@ var key: String=""
 var time:=0.0
 var lamp: PointLight2D
 func _ready():
+ if obj.role=="door":
+  var tiles: Array=obj.get("size",[1,1])
+  position+=Vector2(tiles[0]-1,tiles[1]-1)*16
  add_to_group("coastal_workstations");collision_layer=1;collision_mask=0
  if obj.role!="window":add_to_group("interactable")
  if obj.role in ["bench","storage","layout","lamp","shelf","line"]:
@@ -38,9 +41,9 @@ func _draw():
  if obj.role=="lamp":
   if GameState.count("cw_lamp")==0:frame=10
   elif not GameState.flag("cw_lamp_on"):frame=11
- if obj.role=="door":DrawUtil.sprite(self,Art.tex("cw_props"),12,0,Vector2(0,-60),Vector2i(64,48),1.25)
- DrawUtil.sprite(self,Art.tex("cw_props"),frame,0,Vector2(0,-10 if obj.role!="door" else 0),Vector2i(64,48),1.25 if obj.role!="door" else .8)
+ if obj.role=="door":DrawUtil.sprite(self,Art.tex("cw_entry"),0,0,Vector2(0,-16),Vector2i(32,32),2.0)
+ else:DrawUtil.sprite(self,Art.tex("cw_props"),frame,0,Vector2(0,-10),Vector2i(64,48),1.25)
  if obj.role=="bench":
   draw_line(Vector2(5,-14),Vector2(20+sin(time*1.1)*3,-10),Color("cbb88c"),1.5)
  if obj.role=="line":draw_line(Vector2(0,-14),Vector2(15*sin(time*.7),-16),Color("c5baa1"),1)
- if obj.role!="window" and world.player.target==self:DrawUtil.prompt(self,Vector2(0,-45),time)
+ if obj.role!="window" and world.player.target==self:DrawUtil.prompt(self,Vector2(0,-65 if obj.role=="door" else -45),time)

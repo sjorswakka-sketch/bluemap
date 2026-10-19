@@ -1,4 +1,7 @@
 extends SceneTree
+const Maps := preload("res://scripts/maps/registry.gd")
+const YardLayout := preload("res://scripts/data/training_yard_layout.gd")
+const Tiles := preload("res://scripts/data/tiles.gd")
 var ai: Script
 var failures := 0
 var gs: Node
@@ -31,8 +34,95 @@ func event_key(code: int, down := true) -> InputEventKey:
 	event.physical_keycode = code
 	event.pressed = down
 	return event
+func yard_layout() -> void:
+	var forest: Dictionary = Maps.get_map("forest")
+	var yard: Dictionary = Maps.get_map("watchyard")
+	check(forest.objects[63].type == "portal" and forest.objects[63].to == "watchyard" and forest.objects[63].pos == [12,25] and forest.objects[63].size == [2,2],"same saved portal slot now opens south on the next forest road")
+	check(forest.objects[64].type == "combat_post" and forest.objects[64].pos == [15,26] and forest.objects[65].type == "sign" and forest.objects[65].pos == [10,25],"entrance banner and sign keep their slots beside the approach")
+	check(forest.objects[64].entry_pos == [12,25] and forest.objects[64].entry_size == [2,2] and forest.objects[64].entry_direction == [0,-1],"banner guidance targets the actual portal and points north from its open southern side")
+	check(forest.spawns.from_watchyard == [12,28],"forest arrival stands clear on the south approach")
+	check(yard.objects[0].pos == [13,20] and yard.objects[0].size == [2,2] and yard.spawns.start == [13,18],"practice yard keeps a matching two-wide southern exit and clear arrival")
+	for area: Rect2i in YardLayout.ROAD_AREAS:
+		for yy in range(area.position.y,area.end.y):
+			for xx in range(area.position.x,area.end.x):check(forest.rows[yy][xx] == ",","entire compact U approach stays two tiles wide " + str(Vector2i(xx,yy)))
+	for yy in [20,21]:
+		for xx in [13,14]:check(yard.rows[yy][xx] == ",","yard exit has a full clear two-by-two threshold")
+	for xx in range(11,15):check(Tiles.is_solid_char(forest.rows[24][xx]),"forest gate is framed at its north side")
+	for yy in [25,26]:
+		for xx in [11,14]:check(Tiles.is_solid_char(forest.rows[yy][xx]),"forest gate sides leave only its southern approach open")
+	for yy in range(20,29):
+		for xx in range(2,7):check(forest.rows[yy][xx] == preload("res://scripts/maps/forest.gd").DATA.rows[yy][xx],"obsolete west spur returns to its original forest ground")
+	var reachable: Dictionary = preload("res://scripts/data/trail_life.gd").connected(forest,Vector2i(12,19),4000)
+	check(reachable.has(Vector2i(12,28)) and reachable.has(Vector2i(13,28)) and reachable.has(Vector2i(9,30)),"both gate lanes and quest cat stay reachable without an enclosure")
+	check(forest.objects[5].id == "muis_bos" and forest.objects[5].pos == [9,30] and forest.objects[5].exists_if == [["no_flag","cat_found"]],"quest cat keeps its saved slot, location and quest condition")
+	var old_resources := [
+		[67,"trail:forest:2:9","trail_roots",[2,9]], [68,"trail:forest:7:12","ff_blackberry",[8,15]],
+		[69,"trail:forest:50:19","trail_herbs",[50,19]], [70,"trail:forest:45:16","flower_bluebell",[42,16]],
+		[71,"trail:forest:49:35","ff_walnut",[49,35]], [72,"trail:forest:42:32","trail_seeds",[42,32]],
+		[73,"trail:forest:5:2","trail_roots",[5,2]], [74,"trail:forest:16:3","ff_wild_apple",[21,5]],
+		[75,"trail:forest:2:30","trail_herbs",[2,30]], [76,"trail:forest:4:34","flower_bluebell",[10,32]],
+		[80,"forestfood:forest:chestnut","ff_chestnut",[15,21]]]
+	for expected: Array in old_resources:
+		var actual: Dictionary = forest.objects[expected[0]]
+		check(actual.get("id","") == expected[1] and actual.get("kind","") == expected[2] and actual.pos == expected[3],"forage slot, saved ID, species and intended fixed place survive entry relocation " + expected[1])
+	check(forest.objects.filter(func(o):return o.type == "profession_resource").size() == old_resources.size(),"entry relocation adds no extra forage crowding")
+	var legacy_nodes: Array = preload("res://scripts/data/ext/beroepen.gd").resource_objects("forest")
+	for expected: Array in [["forest:berries_west","berries",[11,20]],["forest:mushrooms_west","mushrooms",[10,27]]]:
+		var matches: Array = legacy_nodes.filter(func(node):return node.id == expected[0])
+		check(matches.size() == 1,"legacy berm patch retains one exact regrowth ID " + expected[0])
+		if matches.is_empty():continue
+		var patch: Dictionary = matches[0]
+		var at := Vector2i(patch.pos[0],patch.pos[1])
+		check(patch.kind == expected[1] and patch.pos == expected[2],"legacy patch retains its species at the intended adjacent verge " + expected[0])
+		check(forest.rows[at.y][at.x] == "." and preload("res://scripts/core/forage_placement.gd").canopy_clear(forest,at),"legacy patch stands on open grass outside the road and tree canopies " + expected[0])
+		var open := true
+		for step in [Vector2i.LEFT,Vector2i.RIGHT,Vector2i.UP,Vector2i.DOWN]:
+			var neighbor: Vector2i = at+step
+			if Tiles.is_solid_char(forest.rows[neighbor.y][neighbor.x]):open=false
+		for obstacle: Dictionary in forest.objects:
+			if obstacle.get("enabled",true) and obstacle.type in ["npc","sign","combat_post","chest","gate","savepoint","wereld_lantaarn"] and Vector2i(obstacle.pos[0],obstacle.pos[1]).distance_to(at)<1.5:open=false
+		check(open,"legacy patch has free harvesting sides away from static props " + expected[0])
+	var copy: Dictionary = forest.duplicate(true)
+	YardLayout.enrich("forest",copy)
+	check(copy == forest,"authored access repair is deterministic and idempotent")
+
+func yard_roundtrips() -> void:
+	for lane in [12,13]:
+		world.load_map("forest","from_watchyard")
+		await frames(8)
+		p = world.player
+		p.set_physics_process(false)
+		p.invuln = 999
+		p.position = Vector2(lane+0.5,28.5)*32
+		var entrance_posts: Array = get_nodes_in_group("combat_posts").filter(func(node):return node.obj.get("kind","") == "entrance")
+		check(entrance_posts.size() == 1,"one existing entrance banner remains in forest")
+		if not entrance_posts.is_empty():
+			var entrance: Node2D = entrance_posts[0]
+			check(entrance.global_position + entrance.entrance_marker_center() == Vector2(13,26)*32 and entrance.entrance_marker_direction() == Vector2.UP,"native banner marker stays centered on portal and points through its south opening")
+		for enemy in get_nodes_in_group("enemies"):enemy.set_physics_process(false)
+		await frames(80)
+		check(gs.map_id == "forest","forest south arrival does not bounce in lane " + str(lane))
+		p.set_physics_process(true)
+		Input.action_press("move_up")
+		await frames(34)
+		Input.action_release("move_up")
+		await frames(80)
+		check(gs.map_id == "watchyard" and world.spawn_fits(p.position),"walking north through south gate enters yard clearly in lane " + str(lane))
+		p.set_physics_process(false)
+		p.position = Vector2(lane-12+13.5,18.5)*32
+		for enemy in get_nodes_in_group("enemies"):enemy.set_physics_process(false)
+		await frames(80)
+		check(gs.map_id == "watchyard","yard south arrival does not bounce in lane " + str(lane))
+		p.set_physics_process(true)
+		Input.action_press("move_down")
+		await frames(34)
+		Input.action_release("move_down")
+		await frames(80)
+		check(gs.map_id == "forest" and world.spawn_fits(p.position),"walking south through either yard exit lane returns to safe forest approach " + str(lane))
+
 func run() -> void:
 	if not OS.get_user_data_dir().get_file().begins_with("Bluemap-Codex-Tests-") and OS.get_environment("XDG_DATA_HOME") == "": quit(1); return
+	yard_layout()
 	await frames()
 	ai = load("res://scripts/entities/combat_enemy.gd")
 	gs = root.get_node("GameState")
@@ -273,13 +363,7 @@ func run() -> void:
 	check(controls.rebind("technique","keyboard",event_key(KEY_Z),false) == "","technique can be rebound through normal control system")
 	controls.reset_bindings("keyboard",false)
 	controls.reset_bindings("controller",false)
-	p.set_physics_process(true)
-	p.position = Vector2(13.5,20.5)*32
-	await frames(80)
-	check(gs.map_id == "forest" and not world.is_solid(world.player.position),"yard exit returns to clear forest tile")
-	world.player.position = Vector2(3.5,27.5)*32
-	await frames(80)
-	check(gs.map_id == "watchyard","forest entrance leads into practice yard")
+	await yard_roundtrips()
 	world.queue_free()
 	await frames()
 	print("COMBAT VARIETY OK" if failures == 0 else "COMBAT VARIETY FAILED: %d" % failures)

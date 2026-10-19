@@ -82,15 +82,30 @@ func _process(delta: float) -> void:
 		GameState.toast.emit(tr("Goed geoefend. Bij het vaandel kun je de volgende oefening starten."))
 		Sound.play("quest",-9.0)
 
+func entrance_marker_center() -> Vector2:
+	var at: Array = obj.get("entry_pos", [])
+	if at.is_empty(): return Vector2(-64, 0)
+	var size: Array = obj.get("entry_size", [1, 1])
+	return Vector2(at[0], at[1]) * 32 + Vector2(size[0], size[1]) * 16 - global_position
+
+
+func entrance_marker_direction() -> Vector2:
+	var direction: Array = obj.get("entry_direction", [-1, 0])
+	return Vector2(direction[0], direction[1]).normalized()
+
+
 func _draw() -> void:
 	if obj.get("kind","") == "rack":
 		DrawUtil.ellipse(self,Vector2(0,14),Vector2(36,5),Color(0,0,0,0.25))
 		DrawUtil.sprite(self,Art.tex("cv_rack"),0,0,Vector2(0,-8),Vector2i(40,24),2)
 		return
 	if obj.get("kind","") == "entrance":
-		draw_arc(Vector2(-64,0),15,0,TAU,32,Color(0.55,0.85,1,0.6+sin(t*2)*0.2),2)
-		draw_line(Vector2(-45,5),Vector2(-55,0),Color(0.85,0.93,1),2)
-		draw_line(Vector2(-45,-5),Vector2(-55,0),Color(0.85,0.93,1),2)
+		var center := entrance_marker_center()
+		var direction := entrance_marker_direction()
+		var side := Vector2(-direction.y, direction.x)
+		draw_arc(center,15,0,TAU,32,Color(0.55,0.85,1,0.6+sin(t*2)*0.2),2)
+		draw_line(center-direction*4+side*5,center+direction*7,Color(0.85,0.93,1),2)
+		draw_line(center-direction*4-side*5,center+direction*7,Color(0.85,0.93,1),2)
 	DrawUtil.ellipse(self,Vector2(0,12),Vector2(12,4),Color(0,0,0,0.25))
 	DrawUtil.sprite(self,Art.tex("cv_posts"),int(t*3)%2,0,Vector2(0,-6),Vector2i(24,32),2)
 	if world.player.target == self: DrawUtil.prompt(self,Vector2(0,-47),t)

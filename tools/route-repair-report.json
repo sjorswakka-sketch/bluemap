@@ -1,20 +1,177 @@
 {
-  "changed_tiles": 538,
+  "changed_tiles": 605,
   "maps": {
-    "cave": 1,
+    "cave": 8,
     "coast": 12,
     "dauwbos": 125,
+    "depths1": 5,
+    "depths2": 2,
     "dorstvallei": 66,
-    "forest": 35,
+    "forest": 43,
     "gull_island": 22,
     "harbor": 64,
     "headland": 23,
     "ijsdal": 75,
     "kruipmoeras": 11,
     "lake": 39,
-    "river_mouth": 34,
-    "village": 31
+    "prismamine": 12,
+    "reedvault": 6,
+    "resonance": 6,
+    "river_mouth": 40,
+    "ruins": 5,
+    "temple": 3,
+    "tidal_hollow": 6,
+    "village": 32
   },
+  "entry_pairs": {
+    "dungeon": [
+      [
+        "forest",
+        "ruins"
+      ],
+      [
+        "forest",
+        "cave"
+      ],
+      [
+        "cave",
+        "prismamine"
+      ],
+      [
+        "prismamine",
+        "resonance"
+      ],
+      [
+        "kruipmoeras",
+        "reedvault"
+      ],
+      [
+        "river_mouth",
+        "tidal_hollow"
+      ],
+      [
+        "village",
+        "temple"
+      ],
+      [
+        "temple",
+        "depths1"
+      ],
+      [
+        "depths1",
+        "depths2"
+      ]
+    ],
+    "building": [
+      [
+        "village",
+        "smithy"
+      ],
+      [
+        "village",
+        "shop"
+      ],
+      [
+        "village",
+        "inn"
+      ],
+      [
+        "village",
+        "player_home"
+      ],
+      [
+        "village",
+        "arena_hall"
+      ],
+      [
+        "arena_hall",
+        "arena"
+      ],
+      [
+        "lake",
+        "fisher_hut"
+      ],
+      [
+        "lake",
+        "library"
+      ],
+      [
+        "harbor",
+        "coast_workshop"
+      ]
+    ],
+    "open_area": [
+      [
+        "forest",
+        "forest_edge"
+      ],
+      [
+        "forest",
+        "watchyard"
+      ],
+      [
+        "forest",
+        "dauwbos"
+      ],
+      [
+        "dauwbos",
+        "ijsdal"
+      ],
+      [
+        "dauwbos",
+        "dorstvallei"
+      ],
+      [
+        "dauwbos",
+        "mistgarden"
+      ],
+      [
+        "dorstvallei",
+        "sunwell"
+      ],
+      [
+        "ijsdal",
+        "ridgepass"
+      ],
+      [
+        "ijsdal",
+        "steampeak"
+      ],
+      [
+        "forest_edge",
+        "village"
+      ],
+      [
+        "village",
+        "lake"
+      ],
+      [
+        "lake",
+        "coast"
+      ],
+      [
+        "lake",
+        "kruipmoeras"
+      ],
+      [
+        "coast",
+        "river_mouth"
+      ],
+      [
+        "river_mouth",
+        "harbor"
+      ],
+      [
+        "harbor",
+        "headland"
+      ],
+      [
+        "gull_island",
+        "tide_cove"
+      ]
+    ]
+  },
+  "narrow_mouths": 18,
   "tight_decorative_spurs": {},
   "tight_corners": {},
   "anchor_bottlenecks": {}

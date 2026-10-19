@@ -43,6 +43,8 @@ func crossed(from: Vector2,to: Vector2) -> bool:
 
 
 func _process(delta: float) -> void:
+	if is_queued_for_deletion():
+		return
 	queue_redraw() # de gloed pulseert en de vonkjes drijven
 	message_cooldown = maxf(message_cooldown - delta, 0.0)
 	if player == null:

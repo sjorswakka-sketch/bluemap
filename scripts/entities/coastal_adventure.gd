@@ -11,8 +11,8 @@ func _ready():
  collision_layer=1;collision_mask=0
  if obj.role in ["wheel","harbor_wheel","record","pilot","entrance","rock","sluice","shelter"]:
   body=CollisionShape2D.new();var shape:=RectangleShape2D.new()
-  shape.size=Vector2(58,8) if obj.role=="shelter" else Vector2(34,10) if obj.role in ["wheel","harbor_wheel","sluice","record"] else Vector2(22,8)
-  body.shape=shape;body.position=Vector2(0,5 if obj.role=="shelter" else 10 if obj.role in ["record","rock"] else 17);body.disabled=body_hidden();add_child(body)
+  shape.size=Vector2(14,8) if obj.role=="entrance" else Vector2(58,8) if obj.role=="shelter" else Vector2(34,10) if obj.role in ["wheel","harbor_wheel","sluice","record"] else Vector2(22,8)
+  body.shape=shape;body.position=Vector2(0,8 if obj.role=="entrance" else 5 if obj.role=="shelter" else 10 if obj.role in ["record","rock"] else 17);body.disabled=body_hidden();add_child(body)
  if obj.role not in ["buoy","harbor_wheel"]:add_to_group("interactable")
 func body_hidden() -> bool:
  return (obj.role=="harbor_wheel" and not GameState.flag("ad_workwater")) or (obj.role=="shelter" and not GameState.flag("ad_pilot_done"))
@@ -43,6 +43,11 @@ func _process(delta: float):
   elif not hidden and not is_in_group("interactable"):add_to_group("interactable")
 func _draw():
  var role: String=obj.role
+ if role=="entrance":
+  DrawUtil.ellipse(self,Vector2(0,14),Vector2(9,3),Color(0,0,0,.25))
+  DrawUtil.sprite(self,Art.tex("sign"),0,0)
+  if world.player.target==self:DrawUtil.prompt(self,Vector2(0,-24),time)
+  return
  if role=="keeper_rest":
   if not GameState.flag("ad_duel") and not GameState.flag("ad_workwater"):
    DrawUtil.sprite(self,Art.tex("ad_keeper"),int(time*0.8)%2,0,Vector2(0,sin(time)*1.5),Vector2i(24,24),2.8)

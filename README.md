@@ -1,8 +1,8 @@
 # Bluemap Quest
 
-0.33.0: volledige bruggen, brede gecentreerde routes, doorloopbare landbegroeiing, Dampkroon boven IJsdal, zestien plukbare wintergroenten, 48 specifieke bloemen/fruit/noten en betrouwbare lootkisten; zie [wijzigingen](MOUNTAIN_ROUTES_WINTER.md).
+0.33.1: zuidelijke Oefenerf-toegang aan het volgende bospad, dubbele ingangen voor brede paden en herkenbare smalle dungeonmonden; zie [wijzigingen](ENTRANCES_0331.md).
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.33.0-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.33.1-preview.**
 
 Nieuw in 0.32: **Gewassen en boomgaard — ontwikkelronde 5**. Wortels, pompoenen,
 munt, rozemarijn, appelbomen en bosbessenstruiken krijgen eigen pixel art en groei.
