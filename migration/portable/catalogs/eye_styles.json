@@ -1,0 +1,1498 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "16"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "boos"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Boos"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "dicht"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Dicht"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "dromerig"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Dromerig"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "groot"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Groot"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "knipoog"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Knipoog"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "ovaal"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Ovaal"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "rond"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Rond"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "slaperig"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Slaperig"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "smal"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Smal"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "sterretjes"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Sterretjes"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "stip"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Stip"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "straler"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Straler"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "vonkel"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vonkel"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "vriendelijk"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vriendelijk"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "wijs"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wijs"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "wimpers"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "EYES"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "142"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wimpers"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

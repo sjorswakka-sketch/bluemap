@@ -31,6 +31,8 @@ jobs:
         run: python -m unittest discover -s tests/migration -p 'test_*.py' -v
       - name: Huidige Godot-bron en Unity-project controleren
         run: python tools/check_migration.py --check --output "$RUNNER_TEMP/migration-source.json"
+      - name: Overdraagbare spelgegevens, IDs en regelcontracten controleren
+        run: python tools/build_migration_data.py --check --report "$RUNNER_TEMP/portable-data.json"
       - name: Referentie, releasegegevens en teksten controleren
         run: |
           python tools/freeze_godot_reference.py --check
@@ -40,7 +42,20 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: Unity-migratie-broncontrole-${{ github.sha }}
-          path: ${{ runner.temp }}/migration-source.json
+          path: |
+            ${{ runner.temp }}/migration-source.json
+            ${{ runner.temp }}/portable-data.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Gecontroleerde overdraagbare spelgegevens bewaren
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: Unity-spelgegevens-phase-04-${{ github.sha }}
+          path: |
+            migration/portable/
+            migration/contracts/
+            migration/DATA_FORMAT.md
+            migration/phase-04/
           if-no-files-found: error
           retention-days: 30
 

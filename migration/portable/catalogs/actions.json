@@ -1,0 +1,2182 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "36"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "arena_cancel"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "56"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/arena.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "arena_enter"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "56"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/arena.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "arena_forfeit"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "56"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/arena.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "boog_progress"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "35"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/boog.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "boog_range_start"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "35"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/boog.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "boss_start"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "ce_sail"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "6"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/coast.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "clear_flag"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "coins"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "ending"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "finish_quest"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "give"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "heal"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "living"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "390"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/living.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "lock_arena"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "ls_share"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "32"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/lake_supper.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "ls_weave"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "32"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/lake_supper.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "meer_verkoop"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "41"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/meer.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "music"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "quest_step"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "regional"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "172"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/regional.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "rf_choose"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "19"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/first_route.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "rg_atlas"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "6"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/coastal_region.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "rg_routes"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "6"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/coastal_region.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "save"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "sell_all"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "set_flag"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "shop"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "sound"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "start_quest"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "take"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "talk"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "toast"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "weapon"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "function"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "run"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/core/game_state.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "wereld_sleep"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "72"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/wereld.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "wt_open"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACTIONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "3"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/work_together.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

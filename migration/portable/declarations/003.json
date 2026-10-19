@@ -1,0 +1,5295 @@
+{
+  "kind": "array",
+  "values": [
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "coast_dock"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "MAP_MARKERS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "4"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coast.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "coast_dock"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.61176472902298"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.87058824300766"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.878431379795074"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Veersteiger"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "coast_dock"
+              },
+              {
+                "kind": "string",
+                "value": "coast_note"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "OBJECTS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "3"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coast.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "coast_dock"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/entities/coast_dock.gd"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "coast_note"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/entities/coast_note.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "0"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "ce_rope"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "1"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "ce_water"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "ordered_array"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "SOUNDS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "7"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coast.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "ce_rope"
+              },
+              {
+                "kind": "string",
+                "value": "ce_water"
+              }
+            ]
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "ce_sail_island"
+              },
+              {
+                "kind": "string",
+                "value": "ce_sail_coast"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "TALKS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "9"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coast.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "ce_sail_coast"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "choices"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "do"
+                                },
+                                {
+                                  "kind": "array",
+                                  "values": [
+                                    {
+                                      "kind": "array",
+                                      "values": [
+                                        {
+                                          "kind": "string",
+                                          "value": "ce_sail"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Vaar terug naar de kust."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Blijf op het eiland."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "lines"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "string",
+                            "value": "De veerboot brengt je terug naar de Blauwe Kust. Vanaf daar volg je het westelijke pad naar het Zilvermeer."
+                          },
+                          {
+                            "kind": "string",
+                            "value": "De overtocht is gratis; je spullen en gezondheid blijven zoals ze zijn."
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speaker"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Veerboot"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "ce_sail_island"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "choices"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "do"
+                                },
+                                {
+                                  "kind": "array",
+                                  "values": [
+                                    {
+                                      "kind": "array",
+                                      "values": [
+                                        {
+                                          "kind": "string",
+                                          "value": "ce_sail"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Vaar naar Meeuweneiland."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Blijf op de kust."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "lines"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "string",
+                            "value": "De riviermonding komt hier uit op de Blauwe Kust. De kleine veerboot ligt klaar voor Meeuweneiland."
+                          },
+                          {
+                            "kind": "string",
+                            "value": "De overtocht is gratis. Op het eiland ligt dezelfde boot klaar voor de terugvaart."
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speaker"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Veerboot"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "0"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "coast"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "ordered_array"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "TRACKS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "8"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coast.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "coast"
+              }
+            ]
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "ad_crab"
+              },
+              {
+                "kind": "string",
+                "value": "ad_wisp"
+              },
+              {
+                "kind": "string",
+                "value": "ad_keeper"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "ENEMIES"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "12"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_adventures.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "ad_crab"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "behavior"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ad_crab"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "cell"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "24"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bewoont de noordelijke zijpoel. De amberkleurige waaier staat stil vóór de schaar sluit. Stap opzij en val tijdens het lange herstel aan. Het zuidelijke pad blijft buiten zijn territorium."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "drops"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "coin"
+                              },
+                              {
+                                "kind": "float",
+                                "value": "1.0"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "hp"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "6"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "knockback"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "90.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Rotskrab"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "radius"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "9.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "scale"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "2.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "shadow"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "14.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ad_crab"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sight"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "210.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speed"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "30.0"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "ad_keeper"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "behavior"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ad_keeper"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "boss"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "cell"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "24"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een vrijwillige krachtproef na de werksluiskeuze. Twee afzonderlijk aangekondigde schaarbogen, daarna een lang herstel. De zuidelijke gang blijft open; terugtrekken stopt de aanval."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "drops"
+                      },
+                      {
+                        "kind": "array",
+                        "values": []
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "hp"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "16"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "knockback"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "30.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Schelpenhoeder"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "radius"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "13.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "scale"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "2.8"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "shadow"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "19.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ad_keeper"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sight"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "250.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speed"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "24.0"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "ad_wisp"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "behavior"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ad_wisp"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "cell"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "24"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kondigt een uitdijende lichtkring aan. De open sector blijft veilig; hij draait niet achter je aan. Verlaat de poel of loop door de opening. Geen contactschade."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "drops"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "coin"
+                              },
+                              {
+                                "kind": "float",
+                                "value": "1.0"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "hp"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "4"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "knockback"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "60.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Getijdenlicht"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "radius"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "7.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "scale"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "2.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "shadow"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "10.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ad_wisp"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sight"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "220.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speed"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "22.0"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "tidal_hollow"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "MAPS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "2"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_adventures.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "tidal_hollow"
+                },
+                {
+                  "fields": [
+                    [
+                      "$type",
+                      {
+                        "kind": "string",
+                        "value": "GDScript"
+                      }
+                    ],
+                    [
+                      "path",
+                      {
+                        "kind": "string",
+                        "value": "res://scripts/maps/tidal_hollow.gd"
+                      }
+                    ]
+                  ],
+                  "kind": "variant",
+                  "tag": "GDScript"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "coast_adventure"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "MAP_MARKERS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "4"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_adventures.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "coast_adventure"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.929411768913269"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.823529422283173"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.560784339904785"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kustverhaal of waarneming"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "coast_adventure"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "OBJECTS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "3"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_adventures.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "coast_adventure"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/entities/coastal_adventure.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "ad_message"
+              },
+              {
+                "kind": "string",
+                "value": "ad_pilot"
+              },
+              {
+                "kind": "string",
+                "value": "ad_wheel"
+              },
+              {
+                "kind": "string",
+                "value": "ad_keeper"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "QUESTS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "6"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_adventures.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "ad_keeper"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "effect"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Je keuze verandert de poel of het havenrad. Beide uitkomsten sluiten het verhaal af."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "steps"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Kies bij de sluistafel in de Tijholte: geef de poel rust, of open de werksluis en benader de hoeder voor een vrijwillige krachtproef."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "title"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "De Schelpenhoeder"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "ad_message"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "effect"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "De haven markeert de gevaarlijke buitenbank met een waarschuwingsboei."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "steps"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Lees het aangespoelde logboek op Meeuweneiland. Bekijk de breuksporen aan het eilandstrand en de afzetting bij Zilvermonding."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Leg bij het werkboek op de havenkade uit waar het wrakhout vandaan kwam."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "title"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een bericht zonder afzender"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "ad_pilot"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "effect"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bij de bank staat weer een laag windscherm. De kaap blijft vrij en rustig."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "steps"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Zoek vanaf de loodsenpaal op Lichtkaap de lage, gespleten rots in het noordwestelijke grasland."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Volg de beschrijving bij de rots naar de bleke zoutgraspol, oostelijk op de kaap."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Lees bij het zoutgras waar de loodsen hun beschutte rustplek maakten."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "title"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "De oude loodsenroute"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "ad_wheel"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "effect"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Het tijrad draait en de korte brug is droog. De lange zuidelijke route blijft altijd open."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "steps"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Onderzoek het vastgelopen tijrad in de Tijholte, aan het einde van de westelijke zijroute van Zilvermonding."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Maak het rad vrij met het gereedschap ter plaatse. Annuleren kost niets."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "title"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Water dat weer loopt"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "0"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "ad_work"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "1"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "ad_warn"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "2"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "ad_swipe"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "3"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "ad_pulse"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "4"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "ad_water"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "ordered_array"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "SOUNDS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "5"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_adventures.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "ad_work"
+              },
+              {
+                "kind": "string",
+                "value": "ad_warn"
+              },
+              {
+                "kind": "string",
+                "value": "ad_swipe"
+              },
+              {
+                "kind": "string",
+                "value": "ad_pulse"
+              },
+              {
+                "kind": "string",
+                "value": "ad_water"
+              }
+            ]
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "cw_driftwood"
+              },
+              {
+                "kind": "string",
+                "value": "cw_reed"
+              },
+              {
+                "kind": "string",
+                "value": "cw_seaglass"
+              },
+              {
+                "kind": "string",
+                "value": "cw_saltleaf"
+              },
+              {
+                "kind": "string",
+                "value": "cw_hook"
+              },
+              {
+                "kind": "string",
+                "value": "cw_shelf"
+              },
+              {
+                "kind": "string",
+                "value": "cw_lamp"
+              },
+              {
+                "kind": "string",
+                "value": "cw_broth"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "ITEMS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "6"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_craft.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_broth"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Baars van het Zilvermeer met zoutblad van Lichtkaap. Herstelt 2 hartjes en 20 stamina. Gebruik via Beroepen → Eten & drinken."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "heal"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "9"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kustbouillon"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "stamina"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "20"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "use"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_driftwood"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Droog hout van een rustige zijplek aan de Blauwe Kust. Voor Rafs herbruikbare oeverlijn en meubels."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zoutdrijfhout"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "material"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_hook"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Rafs haak en lijn. Verbindt de twee lijnpalen aan Zilvermonding. Niet verbruikt; de hoge rivierbrug blijft altijd open."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "4"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Herbruikbare oeverlijn"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_lamp"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Lena's lamp voor de vaste sokkel in de havenwerkplaats. Kies warm licht, zeelicht of uit. Plaatsen verbruikt hem niet."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "8"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zeeagaatlamp"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "key"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_reed"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Soepele vezels uit één rietplek bij Zilvermonding. Voor een herbruikbare lijn en waaierbanden."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Oevervezel"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "material"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_saltleaf"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een kruid van de open graslanden van Lichtkaap. Met een baars van Joris maak je er kustbouillon van."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zoutblad"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "material"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_seaglass"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Win in de veilige zuidelijke gang van de Tijholte met een stenen of koperen pikhouweel. Voor kustuitrusting en een werkplaatslamp."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zeeagaat"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "material"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_shelf"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Plaats of berg het gratis op via de inrichttafel in de havenwerkplaats. Heeft een vaste plek tegen de wand; geen onderhoud."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "7"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Drijfhouten wandrek"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "key"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "coast_workshop"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "MAPS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "2"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_craft.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "coast_workshop"
+                },
+                {
+                  "fields": [
+                    [
+                      "$type",
+                      {
+                        "kind": "string",
+                        "value": "GDScript"
+                      }
+                    ],
+                    [
+                      "path",
+                      {
+                        "kind": "string",
+                        "value": "res://scripts/maps/coast_workshop.gd"
+                      }
+                    ]
+                  ],
+                  "kind": "variant",
+                  "tag": "GDScript"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "cw_station"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "MAP_MARKERS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "4"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_craft.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_station"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.847058832645416"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.74117648601532"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.537254929542542"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kustwerkplaats of lijnpaal"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "cw_station"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "OBJECTS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "3"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_craft.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "cw_station"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/entities/coastal_workstation.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "0"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "cw_thread"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "1"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "cw_stow"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "2"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "cw_guard"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "3"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "cw_fan"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "ordered_array"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "SOUNDS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "5"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_craft.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "cw_thread"
+              },
+              {
+                "kind": "string",
+                "value": "cw_stow"
+              },
+              {
+                "kind": "string",
+                "value": "cw_guard"
+              },
+              {
+                "kind": "string",
+                "value": "cw_fan"
+              }
+            ]
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "0"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "rg_routes"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "1"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "rg_atlas"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "ordered_array"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "ACTIONS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "6"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_region.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "rg_routes"
+              },
+              {
+                "kind": "string",
+                "value": "rg_atlas"
+              }
+            ]
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "river_mouth"
+              },
+              {
+                "kind": "string",
+                "value": "harbor"
+              },
+              {
+                "kind": "string",
+                "value": "headland"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "MAPS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "2"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_region.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "harbor"
+                },
+                {
+                  "fields": [
+                    [
+                      "$type",
+                      {
+                        "kind": "string",
+                        "value": "GDScript"
+                      }
+                    ],
+                    [
+                      "path",
+                      {
+                        "kind": "string",
+                        "value": "res://scripts/maps/harbor.gd"
+                      }
+                    ]
+                  ],
+                  "kind": "variant",
+                  "tag": "GDScript"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "headland"
+                },
+                {
+                  "fields": [
+                    [
+                      "$type",
+                      {
+                        "kind": "string",
+                        "value": "GDScript"
+                      }
+                    ],
+                    [
+                      "path",
+                      {
+                        "kind": "string",
+                        "value": "res://scripts/maps/headland.gd"
+                      }
+                    ]
+                  ],
+                  "kind": "variant",
+                  "tag": "GDScript"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "river_mouth"
+                },
+                {
+                  "fields": [
+                    [
+                      "$type",
+                      {
+                        "kind": "string",
+                        "value": "GDScript"
+                      }
+                    ],
+                    [
+                      "path",
+                      {
+                        "kind": "string",
+                        "value": "res://scripts/maps/river_mouth.gd"
+                      }
+                    ]
+                  ],
+                  "kind": "variant",
+                  "tag": "GDScript"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "region_landmark"
+              },
+              {
+                "kind": "string",
+                "value": "region_chart"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "MAP_MARKERS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "4"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_region.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "region_chart"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.615686297416687"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.878431379795074"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.815686285495758"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Regiokaart"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "region_landmark"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.941176474094391"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.843137264251709"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.615686297416687"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kustwerkplek of vuurtoren"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "rg_ise"
+              },
+              {
+                "kind": "string",
+                "value": "rg_raf"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "NPCS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "7"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_region.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "rg_ise"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Ise de veervrouw"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "rules"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "talk"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "rg_ise"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "npc_rg_ise"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "rg_raf"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Raf de nettenmaker"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "rules"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "talk"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "rg_raf"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "npc_rg_raf"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "region_landmark"
+              },
+              {
+                "kind": "string",
+                "value": "region_chart"
+              },
+              {
+                "kind": "string",
+                "value": "region_view"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "OBJECTS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "3"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_region.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "region_chart"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/entities/region_chart.gd"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "region_landmark"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/entities/region_landmark.gd"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "region_view"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/entities/region_view.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "0"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "rg_bell"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "ordered_array"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "SOUNDS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "5"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_region.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "rg_bell"
+              }
+            ]
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "rg_ise"
+              },
+              {
+                "kind": "string",
+                "value": "rg_raf"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "TALKS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "11"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/coastal_region.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "rg_ise"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "choices"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "do"
+                                },
+                                {
+                                  "kind": "array",
+                                  "values": [
+                                    {
+                                      "kind": "array",
+                                      "values": [
+                                        {
+                                          "kind": "string",
+                                          "value": "rg_routes"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Bekijk de veerbestemmingen."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Ik loop zelf verder."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "lines"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "string",
+                            "value": "Ik houd de overtochten kort. De veer vaart naar de Blauwe Kust, Meeuweneiland en de Getijdenbaai, ook bij hoogwater."
+                          },
+                          {
+                            "kind": "string",
+                            "value": "Liever wandelen? Achter de kade loopt een vrij hoog pad naar Lichtkaap. Over de westelijke rivierbrug kom je terug aan de Blauwe Kust."
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speaker"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Ise de veervrouw"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "rg_raf"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "choices"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "do"
+                                },
+                                {
+                                  "kind": "array",
+                                  "values": [
+                                    {
+                                      "kind": "array",
+                                      "values": [
+                                        {
+                                          "kind": "string",
+                                          "value": "rg_atlas"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Laat de regiokaart zien."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "text"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Ik kijk rustig rond."
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "lines"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "string",
+                            "value": "Ik knoop mijn netten hier, uit de loop. De weidse riviermonding ligt achter de westelijke brug; de vuurtoren staat op de oostelijke kaap."
+                          },
+                          {
+                            "kind": "string",
+                            "value": "De deurmat onder mijn nettenloods leidt naar een gratis werkplaats met materiaalkist. Ik deel mijn oeverlijnpatroon; de hoge brug blijft voor iedereen open. Ik teken de paden en veerroutes op dezelfde kaart. De hoge loopbruggen blijven bij hoogwater vrij, zodat iedereen weer naar huis kan."
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speaker"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Raf de nettenmaker"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "cv_ram"
+              },
+              {
+                "kind": "string",
+                "value": "cv_slinger"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "ENEMIES"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "5"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/combat.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "cv_ram"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "behavior"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cv_ram"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "cell"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "24"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een oranje baan verraadt zijn stormloop. De richting ligt vast: stap opzij of lok hem tegen een rots. Na de botsing is hij kwetsbaar. Hard geluid trekt eerder zijn aandacht."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "drops"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "coin"
+                              },
+                              {
+                                "kind": "float",
+                                "value": "1.0"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "3"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "prof_stone"
+                              },
+                              {
+                                "kind": "float",
+                                "value": "0.4"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "1"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "hp"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "6"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Keiram"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "radius"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "10.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "scale"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "2.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "shadow"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "12.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cv_ram"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sight"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "230.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speed"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "42.0"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "cv_slinger"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "behavior"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cv_slinger"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "cell"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "24"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Houdt afstand en richt langs een oranje baan. Dekking stopt zijn doorn; je zwaard kan die ook stukslaan. Een treffer onderbreekt de voorbereiding."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "drops"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "coin"
+                              },
+                              {
+                                "kind": "float",
+                                "value": "1.0"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "2"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "gel"
+                              },
+                              {
+                                "kind": "float",
+                                "value": "0.25"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "1"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "hp"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "4"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Doornschutter"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "radius"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "8.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "scale"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "2.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "shadow"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "11.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cv_slinger"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sight"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "230.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "speed"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "34.0"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "watchyard"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "MAPS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "3"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/data/ext/combat.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "watchyard"
+                },
+                {
+                  "fields": [
+                    [
+                      "$type",
+                      {
+                        "kind": "string",
+                        "value": "GDScript"
+                      }
+                    ],
+                    [
+                      "path",
+                      {
+                        "kind": "string",
+                        "value": "res://scripts/maps/watchyard.gd"
+                      }
+                    ]
+                  ],
+                  "kind": "variant",
+                  "tag": "GDScript"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    }
+  ]
+}

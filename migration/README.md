@@ -1,6 +1,8 @@
-# Unity-migratie — fase 3 voltooid
+# Unity-migratie — fase 4 voltooid
 
-Het volgende **go** start fase 4: overdraagbare spelgegevens en vaste IDs ontwerpen; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 5: alle samengestelde kaarten en relevante runtime-toestanden exporteren; de volledige game is nog niet overgezet.
+
+[Fase 4: overdraagbare spelgegevens en vaste IDs](phase-04/README.md) — 34 catalogi, 377 tabellen, 905 objectslots, 33 voorwaarden, 36 acties en 139 migratietests; zie [het gegevensformaat](DATA_FORMAT.md).
 
 [Fase 3: afzonderlijke controles en herkenbare downloads](phase-03/README.md) — 62 eigen tests, bronbehoud, Godot-coexistentie, ingebedde buildherkomst en 16 Windows-runtimecontroles; zie [actuele downloads](DOWNLOADS.md).
 

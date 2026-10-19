@@ -1,0 +1,5423 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "40"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "bestiary_all"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla elke soort vijand uit het verhaal minstens één keer, ook de Slijmkoning."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "kinds_killed"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "slime"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "slime_blue"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "slime_red"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "slime_mini"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "bat"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "skeleton"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "golem"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "king"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Beestenkenner"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "boog_rivier"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "38"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/boog.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Open het verborgen poortje in het Fluisterbos met je boog."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "boog_bos_a"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "boog_bos_b"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Over de rivier"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "boog_schietbaan"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "38"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/boog.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Haal Tessa's schietbaan: drie doelwitten binnen de tijd."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "boog_schietbaan"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Scherpschutter"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "boots"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Koop de snelle laarzen bij Tobias."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "has"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "boots"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Snelle voeten"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "chests_all"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Open een kist in de herberg, het bos, de ruïne en de grot."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "chests_in"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "inn"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "forest"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "ruins"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "cave"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Schatzoeker"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "completed"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Speel het verhaal uit en herstel de Blauwe Kaart."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "game_completed"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Held van Azura"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "crystal_bos"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vind het kaartkristal in het Fluisterbos."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "any"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "has"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "crystal_bos"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "flag"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "gate_temple"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Licht in het bos"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "crystal_grot"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vind het kaartkristal in de Echo-grot."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "any"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "has"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "crystal_grot"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "flag"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "gate_temple"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Echo van licht"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "crystal_ruine"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vind het kaartkristal in de Vergeten Ruïne."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "any"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "has"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "crystal_ruine"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "flag"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "gate_temple"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Licht uit het verleden"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "dauw_hersteld"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "299"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/polijst.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Herstel het evenwicht in het Dauwbos."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "dauw"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bewaarder van de dauw"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "diepte_hartjes"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "146"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/diepte.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Heb het maximum van acht hartjes."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "has"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "heart_container"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "3"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Acht hartjes"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "diepte_open"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "146"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/diepte.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Breek het zegel en daal af in De Diepte."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "diepte_opened"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Onder de tempel"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "secret"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "diepte_wachter"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "146"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/diepte.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla De Vergeten Wachter."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "guardian_defeated"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Hoeder van de Sterrenkaart"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "secret"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "dorstvallei_ontdekt"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "275"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/dorst.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Ontdek de Dorstvallei en praat met Jelle, Sana en Nour."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "talked_to_all"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "jelle"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "sana"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "nour"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zandvoeten"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "echo_master"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "39"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/echo.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Doorsta alle drie golven van de Resonantieproef."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "echo_trial_won"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Meester van de resonantie"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "fast_travel"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Reis snel naar een ontdekt blauw altaar via de kaart."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "wereld_snel_gereisd"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wereldreiziger"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "first_blood"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla je eerste vijand."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "kills"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "1"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Eerste klap"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "flawless_boss"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla de Slijmkoning zonder dat je in dat gevecht doodgaat."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "boss_defeated"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "max_boss_deaths"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "0"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "In één keer"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "golems"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla beide kristalgolems."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "golem_ruins"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "golem_cave"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Golemvechter"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "hearts_all"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vind de twee hartcontainers uit het verhaal."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "has"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "heart_container"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Hart van goud"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "ijsdal_ontdekt"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "157"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/sneeuw.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Ontdek IJsdal en praat met Fenna, Roos en Olav."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "talked_to_all"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "fenna"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "roos"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "olav"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Sneeuwvoeten"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "king"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla de Slijmkoning in de Kristaltempel."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "boss_defeated"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Einde van de Slijmkoning"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "kruiden_gehaald"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "299"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/polijst.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Breng verse kruiden naar Elke."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "kruiden"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Groene vingers"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "kruipmoeras_ontdekt"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "209"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/moeras.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Ontdek het Kruipmoeras en praat met Stien, Mees en Wouda."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "talked_to_all"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "stien"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "mees"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "wouda"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Veenvoeten"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "lantaarn_gevonden"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "299"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/polijst.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vind en terugbreng de nachtlantaarn van Lotte."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "lantaarn"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Licht in de duisternis"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "meer_boekenwurm"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "45"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/meer.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Breng Lena haar drie verloren boeken terug."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "meer_boeken"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Boekenwurm"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "meer_karper"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "45"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/meer.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vang de Gouden Karper en breng hem naar Visser Joris."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "meer_karper"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Legende van het meer"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "meer_lezer"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "45"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/meer.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Lees alle oude boeken in de bibliotheek van het Zilvermeer."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "meer_gelezen"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "6"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kenner van Azura"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "mist_gebrouwen"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "299"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/polijst.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Pluk dauwklauwen voor Mira en proef het mistedrank."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "mistbloemen"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Mistvanger"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "potions_10"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Drink 10 helddrankjes."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "potions_drunk"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Proost!"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "rich"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Heb 150 munten tegelijk in je zak."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "coins"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "150"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Goudkoorts"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "secret"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "rolls_50"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Rol 50 keer."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "rolls"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "50"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Rolmeester"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "sidequests"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Voltooi alle zij-opdrachten."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "kat"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "medaillon"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "quest"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "drank"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "done"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vriend van het dorp"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "slayer_200"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla 200 vijanden."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "kills"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "200"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Schrik van Azura"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "slayer_50"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla 50 vijanden."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "kills"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "50"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Slijmenjager"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "slept"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Slaap een nachtje in de herberg."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "flag"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "wereld_geslapen"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Welterusten"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "secret"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "speedrun"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Speel het spel uit in minder dan 60 minuten."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "finished_within"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "3600"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bliksemheld"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "talked_all"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "15"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/achievements.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Praat met alle personages."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "talked_to_all"
+                              },
+                              {
+                                "kind": "array",
+                                "values": [
+                                  {
+                                    "kind": "string",
+                                    "value": "bram"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "greta"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "tobias"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "mila"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "pim"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "hein"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "anja"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "joost"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "wilfred"
+                                  },
+                                  {
+                                    "kind": "string",
+                                    "value": "muis_bos"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Gezellig babbelen"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "vijanden_magier"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "46"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/vijanden.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla een magiër."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "kills_of"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "mage"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "1"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Spreuk gebroken"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "vijanden_spuwer"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ACHIEVEMENTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "46"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/vijanden.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Versla vijf slijmspuwers."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "if"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "kind": "array",
+                            "values": [
+                              {
+                                "kind": "string",
+                                "value": "kills_of"
+                              },
+                              {
+                                "kind": "string",
+                                "value": "slime_spitter"
+                              },
+                              {
+                                "kind": "int",
+                                "value": "5"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Spuuglokker"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

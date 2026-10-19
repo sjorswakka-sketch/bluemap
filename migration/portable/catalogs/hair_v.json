@@ -1,0 +1,5246 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "45"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_afro"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Afro"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_bob"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bob"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_bob_krul"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Krullende bob"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_bob_lang"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Lange bob"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_dubbelstaart"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Dubbele staart"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_emopony"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Emopony"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_golvend"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Golvend"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "top"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_gordijn"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Gordijntjes"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_gordijn_lang"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Lange gordijntjes"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_halflang"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Halflang"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_halflang_vol"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vol halflang"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_halfop"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Half opgestoken"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sidetail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "top"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_hoge_staart"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Hoge staart"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "top"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_kaal"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bald"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kaal"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_knot"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bun"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Knot"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_knot_lang"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bun"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Knot met lengte"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_knotjes"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bun"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Dubbele knotjes"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_kort"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kort"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_kort_golvend"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kort golvend"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "top"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_kort_pony"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kort met pony"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_kroonvlecht"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kroonvlecht"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "top"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_krulbob"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Krulbob"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_krullen"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Krullen"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_krullen_lang"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Lange krullen"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_krulstaart"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Krulstaart"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_laagjes"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Laagjes"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_lang"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Lang"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_lang_pony"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Lang met pony"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_mohawk"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Mohawk"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "top"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_opgestoken"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bun"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Opgestoken knot"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "top"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_pagenkop"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Pagenkop"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_pixie"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Pixie"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_pixie_kuif"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Pixie met kuif"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "top"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_staart"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Staart"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_staart_vol"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Volle staart"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_stekelpixie"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Stekelpixie"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "spiky"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_stekels"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Stekels"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "spiky"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_vlecht"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vlecht"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_vlechtband"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vlechtenband"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_vlechtjes"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Dubbele vlecht"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "tail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_waterval"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Watervalvlecht"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sidetail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_wilde_krullen"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "curl"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wilde krullen"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "vol"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_zijpony"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bangs"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zijpony"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_zijstaart"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zijstaart"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sidetail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "v_zijvlecht"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "HAIR_V"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "74"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "len"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zijvlecht"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sidetail"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

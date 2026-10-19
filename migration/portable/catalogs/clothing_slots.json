@@ -1,0 +1,536 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "5"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "back"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "CLOTHING_SLOTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "176"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Capes en sjals over je schouders."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Rug"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "bottom"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "CLOTHING_SLOTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "176"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Broeken en rokken."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Onderlijf"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "feet"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "CLOTHING_SLOTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "176"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Schoenen en sloffen."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Voeten"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "hat"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "CLOTHING_SLOTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "176"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Hoeden en mutsen boven je haar."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Hoofd"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "top"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "CLOTHING_SLOTS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "176"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Tunieken, blouses en hemden over je harnas."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bovenlijf"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

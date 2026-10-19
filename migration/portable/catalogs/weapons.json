@@ -1,0 +1,696 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "4"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "crystal"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_WEAPONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "60"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/items.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.5"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.850000023841858"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "item"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "sword_crystal"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kristalzwaard"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "reach"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "44.0"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "iron"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_WEAPONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "60"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/items.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.850000023841858"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.899999976158142"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "item"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "sword_iron"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "IJzeren zwaard"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "reach"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "38.0"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "star"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "WEAPONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "107"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/diepte.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.819999992847443"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.920000016689301"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "4"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "item"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "sword_star"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Sterrenzwaard"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "reach"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "48.0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sparkle"
+                      },
+                      {
+                        "kind": "bool",
+                        "value": true
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "wood"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_WEAPONS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "60"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/items.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.850000023841858"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.699999988079071"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.449999988079071"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "damage"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "item"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "sword_wood"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Houten zwaard"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "reach"
+                      },
+                      {
+                        "kind": "float",
+                        "value": "34.0"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

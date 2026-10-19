@@ -1,0 +1,436 @@
+{
+  "kind": "array",
+  "values": [
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "0"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "array",
+                      "values": [
+                        {
+                          "kind": "float",
+                          "value": "0.95"
+                        },
+                        {
+                          "kind": "string",
+                          "value": "altijd"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "1"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "array",
+                      "values": [
+                        {
+                          "kind": "float",
+                          "value": "0.4"
+                        },
+                        {
+                          "kind": "string",
+                          "value": "vaak"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "2"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "array",
+                      "values": [
+                        {
+                          "kind": "float",
+                          "value": "0.15"
+                        },
+                        {
+                          "kind": "string",
+                          "value": "soms"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "3"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "array",
+                      "values": [
+                        {
+                          "kind": "float",
+                          "value": "0.0"
+                        },
+                        {
+                          "kind": "string",
+                          "value": "zelden"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "ordered_array"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "CHANCE_WORDS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "28"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/ui/menu_pages.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "array",
+                "values": [
+                  {
+                    "kind": "float",
+                    "value": "0.95"
+                  },
+                  {
+                    "kind": "string",
+                    "value": "altijd"
+                  }
+                ]
+              },
+              {
+                "kind": "array",
+                "values": [
+                  {
+                    "kind": "float",
+                    "value": "0.4"
+                  },
+                  {
+                    "kind": "string",
+                    "value": "vaak"
+                  }
+                ]
+              },
+              {
+                "kind": "array",
+                "values": [
+                  {
+                    "kind": "float",
+                    "value": "0.15"
+                  },
+                  {
+                    "kind": "string",
+                    "value": "soms"
+                  }
+                ]
+              },
+              {
+                "kind": "array",
+                "values": [
+                  {
+                    "kind": "float",
+                    "value": "0.0"
+                  },
+                  {
+                    "kind": "string",
+                    "value": "zelden"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    },
+    {
+      "entries": [
+        [
+          {
+            "kind": "string",
+            "value": "ids"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "0"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "kills"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "1"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "rolls"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              },
+              {
+                "entries": [
+                  [
+                    {
+                      "kind": "string",
+                      "value": "index"
+                    },
+                    {
+                      "kind": "int",
+                      "value": "2"
+                    }
+                  ],
+                  [
+                    {
+                      "kind": "string",
+                      "value": "value"
+                    },
+                    {
+                      "kind": "string",
+                      "value": "potions_drunk"
+                    }
+                  ]
+                ],
+                "kind": "dictionary"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "kind"
+          },
+          {
+            "kind": "string",
+            "value": "ordered_array"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "source"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "constant"
+                },
+                {
+                  "kind": "string",
+                  "value": "COUNTERS"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "line"
+                },
+                {
+                  "kind": "int",
+                  "value": "25"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "path"
+                },
+                {
+                  "kind": "string",
+                  "value": "res://scripts/ui/menu_pages.gd"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ],
+        [
+          {
+            "kind": "string",
+            "value": "value"
+          },
+          {
+            "kind": "array",
+            "values": [
+              {
+                "kind": "string",
+                "value": "kills"
+              },
+              {
+                "kind": "string",
+                "value": "rolls"
+              },
+              {
+                "kind": "string",
+                "value": "potions_drunk"
+              }
+            ]
+          }
+        ]
+      ],
+      "kind": "dictionary"
+    }
+  ]
+}

@@ -1,0 +1,4278 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "24"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_bastion_coat"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "armor"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "2.0"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "move_speed"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "-0.08"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "2 pantser, maar 8% langzamer. Elke treffer doet minimaal 1 schade. Voor standhouden bij een vuurkorf."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wachtharnas"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "chest"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_bronze_helm"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_max"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "30.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een stevige helm voor lange tochten. Draag hem op je hoofd voor 30 extra uithoudingsvermogen."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bronzen helm"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "head"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_cloth_hood"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_max"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "15.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een lichte reiskap. Draag hem op je hoofd voor 15 extra uithoudingsvermogen."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Linnen kap"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "head"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_copper_amulet"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_regen"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.15"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een warm koperen sieraad. Draag het om je hals voor 15% sneller herstel van uithoudingsvermogen."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "6"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Koperen amulet"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "neck"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_copper_ring"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "magnet_range"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "12.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een ring die verloren spullen aantrekt. Vergroot je magnetische oppakbereik met 12 pixels."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "8"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Koperen ring"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ring"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_crystal_amulet"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_regen"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.3"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Alchemie laat gel kristalliseren rond koper. Draag het voor 30% sneller herstel van uithoudingsvermogen."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "7"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kristallen amulet"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "neck"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_crystal_ring"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "magnet_range"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "24.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een ring van koper en alchemistisch kristal. Vergroot je magnetische oppakbereik met 24 pixels."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "9"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kristallen ring"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ring"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_cw_anchor"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "armor"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "1.0"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_max"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "10.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Draag in je handvak: 1 pantser en 10 stamina. Techniek + zwaard wordt een korte frontale ankerwacht. Na een tijdige blokkade geeft een gewone zwaarddruk een gerichte tegenstoot; zij- en rugtreffers blijven gevaarlijk."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "5"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Ankerbanden"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "hands"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_cw_fan"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "harvest_time_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.15"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "magnet_range"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "8.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Draag in hetzelfde handvak: 15% korter verzamelen en 8 oppakbereik, zonder pantser. Techniek + boog wordt een brede waaier van drie lichte pijlen. Kost drie pijlen; gewone en andere zwaardtechnieken blijven beschikbaar."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "6"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Waaierbanden"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "cw_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "hands"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_iron_armor"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "armor"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "2.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Gesmede bescherming. Vermindert schade met 2, tot minimaal 1 schade per treffer."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "IJzeren harnas"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "chest"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_leather_armor"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "armor"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "1.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vangt zware klappen op. Vermindert schade met 1, tot minimaal 1 schade per treffer."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Leren harnas"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "chest"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_novice_gloves"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "attack_cooldown_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.08"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een goede grip op je zwaard. Draag ze voor 8% kortere wachttijd tussen zwaardaanvallen."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "4"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Leerlinghandschoenen"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "hands"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_pg_focus"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "bow_preparation_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.15"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "15% kortere voorbereiding van je precisieschot. Draag de lens in het halsvak; pijlschade en staminakosten blijven gelijk."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Richtlens"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "pg_gear"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "neck"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_pg_focus_plus"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "bow_preparation_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.25"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_regen"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.1"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "25% kortere voorbereiding van precisieschoten en 10% sneller staminaherstel. Gebruikt ijskristal en watermunt na je onderzoek in het Rietarchief."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Heldere richtlens"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "pg_gear"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "neck"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_pg_grip"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "technique_cost_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.1"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "10% minder stamina voor voorbereide zwaardtechnieken en precisieschoten. Gewone slagen en sprinten veranderen niet."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Slagbanden"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "pg_gear"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "hands"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_pg_grip_plus"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "attack_cooldown_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.06"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "technique_cost_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.2"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "20% minder techniekstamina en 6% kortere wachttijd tussen gewone zwaardaanvallen. Verbeterde slagbanden met zandsteen uit Dorstvallei."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Geharde slagbanden"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "pg_gear"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "hands"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_pg_pack"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "harvest_time_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.15"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "15% korter verzamelen met kruiden, bijl en pikhouweel. Een gevlochten werkpak voor ambachten; geeft geen pantser."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "4"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Werkpak"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "pg_gear"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "chest"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_pg_pack_plus"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "harvest_time_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.25"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "magnet_range"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "10.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "25% korter verzamelen en 10 extra oppakbereik. Versterkt met dennenhout en wilgentwijgen na het vastzetten van de klimlijn; geeft geen pantser."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "5"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bergwerkpak"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "pg_gear"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "chest"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_ra_compass"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "magnet_range"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "16.0"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_regen"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.1"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een kompas uit het Rietarchief: 16 extra oppakbereik en 10% sneller staminaherstel. Draag het in je halsvak."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Archiefkompas"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ra_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "neck"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_ra_grip"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "move_speed"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.04"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_max"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "15.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Grip en een lichte tred: 4% sneller lopen en 15 extra stamina. Gebruikt hetzelfde handvak als aanvalshandschoenen."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Klimhandschoenen"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ra_items"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "hands"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_rf_cord"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_max"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "20.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een oud koord uit de schuilroute. Geeft gedragen 20 extra stamina; amuletten voor sneller herstel gebruiken hetzelfde halsvak."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Stiltekoord"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "rf_gear"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "neck"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_rf_keepsake"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "magnet_range"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "6.0"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_regen"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.15"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Een ring uit de herdenkingsplek: 15% sneller staminaherstel en 6 extra oppakbereik. Minder bereik dan een koperen ring."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "0"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wilfreds herinnering"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "rf_gear"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "ring"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_scout_coat"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "move_speed"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.08"
+                            }
+                          ],
+                          [
+                            {
+                              "kind": "string",
+                              "value": "stamina_max"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "10.0"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "8% sneller en 10 extra stamina, maar geen pantser. Voor verkennen en ontwijken."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Verkennersjas"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "chest"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "gear_smith_gloves"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "ITEMS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "13"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uitrusting.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "bonuses"
+                      },
+                      {
+                        "entries": [
+                          [
+                            {
+                              "kind": "string",
+                              "value": "attack_cooldown_reduction"
+                            },
+                            {
+                              "kind": "float",
+                              "value": "0.16"
+                            }
+                          ]
+                        ],
+                        "kind": "dictionary"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "desc"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Perfect passende handschoenen. Draag ze voor 16% kortere wachttijd tussen zwaardaanvallen."
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "icon"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "5"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "max"
+                      },
+                      {
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Smeedhandschoenen"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "sheet"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "items_equipment"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "slot"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "hands"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "type"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "gear"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

@@ -1,0 +1,2736 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "20"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "0"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "0"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.752941191196442"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.250980406999588"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.250980406999588"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Rood"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "1"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "1"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.815686285495758"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.470588237047195"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.18823529779911"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Oranje"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "2"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "2"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.847058832645416"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.721568644046783"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.227450981736183"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Geel"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "3"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "3"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.290196090936661"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.541176497936249"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.290196090936661"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Groen"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "4"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "4"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.415686279535294"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.47843137383461"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.227450981736183"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Mosgroen"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "5"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "5"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.227450981736183"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.415686279535294"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.7843137383461"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Blauw"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "6"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "6"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.180392161011696"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.227450981736183"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.39215686917305"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Marine"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "7"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "7"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.47843137383461"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.290196090936661"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.541176497936249"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Paars"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "8"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "8"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.847058832645416"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.47843137383461"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.603921592235565"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Roze"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "9"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "9"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.541176497936249"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.384313732385635"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.219607844948769"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Bruin"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "10"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "10"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.909803926944733"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.894117653369904"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.854901969432831"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wit"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "11"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "11"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.164705887436867"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.164705887436867"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.196078434586525"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zwart"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "12"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "12"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.227450981736183"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.674509823322296"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.627451002597809"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Turkoois"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "13"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "13"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.541176497936249"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.721568644046783"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.227450981736183"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Limoen"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "14"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "14"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.847058832645416"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.596078455448151"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.164705887436867"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Goud"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "15"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "15"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.47843137383461"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.164705887436867"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.227450981736183"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wijnrood"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "16"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "16"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.47843137383461"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.721568644046783"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.909803926944733"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Hemelblauw"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "17"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "17"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.909803926944733"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.564705908298492"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.47843137383461"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Zalm"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "18"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "18"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.909803926944733"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.862745106220245"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.752941191196442"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Crème"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "19"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "source_index"
+                },
+                {
+                  "kind": "int",
+                  "value": "19"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "DYE_COLORS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "185"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.415686279535294"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.290196090936661"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.164705887436867"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kastanje"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "identity"
+      },
+      {
+        "kind": "string",
+        "value": "ordered_palette_index"
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

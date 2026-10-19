@@ -1,0 +1,2591 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "19"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "coast_adventure"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/coastal_adventures.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.929411768913269"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.823529422283173"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.560784339904785"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kustverhaal of waarneming"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "coast_dock"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/coast.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.61176472902298"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.87058824300766"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.878431379795074"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Veersteiger"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "craft_notes"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/craft_progression.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.899999976158142"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.75"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.400000005960464"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Werktekening"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "cw_station"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/coastal_craft.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.847058832645416"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.74117648601532"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.537254929542542"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kustwerkplaats of lijnpaal"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "echo_trial"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "18"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/echo.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.5"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.949999988079071"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Resonantieproef"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "home_station"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/homestead.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.850980401039124"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.737254917621613"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.52549022436142"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Woning en productie"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "living_object"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "389"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/living.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.949999988079071"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.699999988079071"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.300000011920929"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Wereldopdracht"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "meer_diepe_visplek"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "34"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/meer.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.550000011920929"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.200000002980232"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "diepe visplek"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "meer_lessenaar"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "34"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/meer.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.75"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.899999976158142"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "lessenaar"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "meer_visplek"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "34"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/meer.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.699999988079071"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.949999988079071"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "visplek"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "memory_book"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/world_memory.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.699999988079071"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.899999976158142"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.649999976158142"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Reizigersboek"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "profession_resource"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "6"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/beroepen.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.550000011920929"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.879999995231628"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.519999980926514"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "grondstof"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "region_chart"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/coastal_region.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.615686297416687"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.878431379795074"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.815686285495758"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Regiokaart"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "region_landmark"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/coastal_region.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.941176474094391"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.843137264251709"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.615686297416687"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kustwerkplek of vuurtoren"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "regional_object"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "171"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/regional.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.874509811401367"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.74117648601532"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.482352942228317"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Streekavontuur"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "route_object"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "21"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/first_route.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.649999976158142"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.850000023841858"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.800000011920929"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Herinnering"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "stock_chest"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/homestead.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.662745118141174"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.811764717102051"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.694117665290833"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Huisvoorraad"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "supper_object"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "31"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/lake_supper.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.898039221763611"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.725490212440491"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.411764711141586"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Dorpsmaaltijd"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "tide_station"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "MAP_MARKERS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "4"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/tides.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "color"
+                      },
+                      {
+                        "fields": [
+                          [
+                            "$type",
+                            {
+                              "kind": "string",
+                              "value": "Color"
+                            }
+                          ],
+                          [
+                            "rgba",
+                            {
+                              "kind": "array",
+                              "values": [
+                                {
+                                  "kind": "float",
+                                  "value": "0.901960790157318"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.803921580314636"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "0.556862771511078"
+                                },
+                                {
+                                  "kind": "float",
+                                  "value": "1.0"
+                                }
+                              ]
+                            }
+                          ]
+                        ],
+                        "kind": "variant",
+                        "tag": "Color"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "label"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Kustroutes en hulpmiddelen"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

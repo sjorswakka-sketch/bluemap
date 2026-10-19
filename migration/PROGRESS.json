@@ -1,14 +1,15 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_3_complete",
+  "status": "phase_4_complete",
   "completed_phases": [
     1,
     2,
-    3
+    3,
+    4
   ],
   "active_phase": null,
-  "next_phase": 4,
+  "next_phase": 5,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
@@ -16,7 +17,7 @@
   "unity_implementation_started": true,
   "completed_on": "2026-10-19",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-03/README.md",
+  "checks": "phase-04/README.md",
   "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": false,
@@ -24,5 +25,9 @@
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
-  "migration_ci_configured": true
+  "migration_ci_configured": true,
+  "portable_data_format_created": true,
+  "portable_data_manifest": "portable/manifest.json",
+  "portable_game_rules_executed": false,
+  "world_runtime_exported": false
 }

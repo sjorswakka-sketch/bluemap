@@ -1,0 +1,384 @@
+{
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "codec": "bluemap.portable.variant.v1",
+  "contentRootOrder": [
+    "baseline_state",
+    "catalogs",
+    "declarations",
+    "failures",
+    "modules",
+    "schema",
+    "scope",
+    "source_file_hash_mode",
+    "source_files",
+    "source_fingerprint",
+    "source_fingerprint_scope",
+    "source_version"
+  ],
+  "counts": {
+    "catalogEntries": 1501,
+    "catalogs": 34,
+    "declaredTables": 377,
+    "maps": 37,
+    "postRegistryResources": 75,
+    "referenceLinks": 2561,
+    "registrySlots": 905,
+    "saveFields": 34
+  },
+  "dictionaryOrder": "order_present_in_reference_inventory_not_recovered_Godot_insertion_order",
+  "documents": [
+    {
+      "bytes": 173040,
+      "encoding": "typed_variant",
+      "path": "catalogs/achievements.json",
+      "sha256": "15a99d69539b46020652bf995f224a04be4138d1f2cc6648a81d9c728314e52a"
+    },
+    {
+      "bytes": 64943,
+      "encoding": "typed_variant",
+      "path": "catalogs/actions.json",
+      "sha256": "71ac7250b1076176b99b91081316b152b3b9b16fa6158c5a4e63ac4845f0303e"
+    },
+    {
+      "bytes": 112941,
+      "encoding": "typed_variant",
+      "path": "catalogs/clothes.json",
+      "sha256": "36d98c1ab6ad5e60b7ac7b1ffc6088438bb9791fe1d2dca053cf0c8228be86db"
+    },
+    {
+      "bytes": 15847,
+      "encoding": "typed_variant",
+      "path": "catalogs/clothing_slots.json",
+      "sha256": "fce34ef869b65e5a953c01fe34932ad1d4d70370d9114897ddf5836cde7c37de"
+    },
+    {
+      "bytes": 64818,
+      "encoding": "typed_variant",
+      "path": "catalogs/conditions.json",
+      "sha256": "a485a155180146c0179a289db6dead3d501b6e5702eeb7872f845b724a3a0d4c"
+    },
+    {
+      "bytes": 270306,
+      "encoding": "typed_variant",
+      "path": "catalogs/consumables.json",
+      "sha256": "5281fdb4478cd8687052aabfef502c3cede59186cb295c420678b01e3c6df8f1"
+    },
+    {
+      "bytes": 85612,
+      "encoding": "typed_variant",
+      "path": "catalogs/dye_colors.json",
+      "sha256": "81d0bccc2337ef890bccaafcda539b041844f6eef719e85ca175c6e6c3631c4d"
+    },
+    {
+      "bytes": 301392,
+      "encoding": "typed_variant",
+      "path": "catalogs/enemies.json",
+      "sha256": "d1eac6de203e2d31a61794c94ef9fd0830bc8a149b63be074881261efe00b76e"
+    },
+    {
+      "bytes": 51561,
+      "encoding": "typed_variant",
+      "path": "catalogs/eye_colors.json",
+      "sha256": "764a3bfdff58b25e8291ee5e55faa43716b351a55fdac3f4ca156f6ad3ad6703"
+    },
+    {
+      "bytes": 44539,
+      "encoding": "typed_variant",
+      "path": "catalogs/eye_styles.json",
+      "sha256": "f63807cc070258322fe2bdb67a4d941a1c5b541683416c009d139c412cfee3c5"
+    },
+    {
+      "bytes": 21582,
+      "encoding": "typed_variant",
+      "path": "catalogs/formats.json",
+      "sha256": "3c26a4ff92f702e8a6f39c732e31dd2af68d5b16b07570b440ab445b15f6c82b"
+    },
+    {
+      "bytes": 134466,
+      "encoding": "typed_variant",
+      "path": "catalogs/gear.json",
+      "sha256": "5b00c9c025cbd497438375081efcf2f117a86ff923801a10946345314a228024"
+    },
+    {
+      "bytes": 15973,
+      "encoding": "typed_variant",
+      "path": "catalogs/gear_slots.json",
+      "sha256": "7986cf80abe23dd85d6287c5fa9be18696dd3f833b5f6fef2bafa9b1bdec38a2"
+    },
+    {
+      "bytes": 5854,
+      "encoding": "typed_variant",
+      "path": "catalogs/genders.json",
+      "sha256": "04a44859abb70a37aafb63edcae26c5dff06d8fec6557a51e6102cb25e4ace0f"
+    },
+    {
+      "bytes": 68615,
+      "encoding": "typed_variant",
+      "path": "catalogs/hair_colors.json",
+      "sha256": "e626da2473576b02883f631d4e35227593b2916a95a8d28d8a805f4c81e33061"
+    },
+    {
+      "bytes": 155604,
+      "encoding": "typed_variant",
+      "path": "catalogs/hair_m.json",
+      "sha256": "b700dbd5903e18ddf1e60d681bf5d209f38a830233fca7fcb53fb303b97bb1ca"
+    },
+    {
+      "bytes": 157421,
+      "encoding": "typed_variant",
+      "path": "catalogs/hair_v.json",
+      "sha256": "bf27d98c73e8ef9bc668c5deb3921a10ad1baea1fe9f00f495f6dc44bfaff9c3"
+    },
+    {
+      "bytes": 1084634,
+      "encoding": "typed_variant",
+      "path": "catalogs/items.json",
+      "sha256": "971a67f863baac64dcec1c9661d6a72cab1e71d35872e53640ae5d780841d3a4"
+    },
+    {
+      "bytes": 83719,
+      "encoding": "typed_variant",
+      "path": "catalogs/map_markers.json",
+      "sha256": "9335653d6500c8046a19717324bf4334a3e74fd6a2be009556ebf8c14f40f77a"
+    },
+    {
+      "bytes": 108645,
+      "encoding": "typed_variant",
+      "path": "catalogs/maps.json",
+      "sha256": "dfae5bf8160f52e63fb127d618ce6b0b9fb275076ab71b5402be0c18a47b0556"
+    },
+    {
+      "bytes": 33454,
+      "encoding": "typed_variant",
+      "path": "catalogs/music_tracks.json",
+      "sha256": "b181ca72a215f9f90c934e82d8a855b462f32439a727b8074a410d00500a5125"
+    },
+    {
+      "bytes": 307678,
+      "encoding": "typed_variant",
+      "path": "catalogs/npcs.json",
+      "sha256": "765552e8b17eec148e0654e0b628968259a466c72ca09f3b1ad2b632b6c88f63"
+    },
+    {
+      "bytes": 114542,
+      "encoding": "typed_variant",
+      "path": "catalogs/object_types.json",
+      "sha256": "d1ec717d79a12f08d53ea23bd5f9204c429b50170040bb5d460ebfded80aa07d"
+    },
+    {
+      "bytes": 22339,
+      "encoding": "typed_variant",
+      "path": "catalogs/professions.json",
+      "sha256": "d4b4ce2bb48e09ca563f70c058f419015258d3a717905f20cd5ffc8f0f5f9b3c"
+    },
+    {
+      "bytes": 206219,
+      "encoding": "typed_variant",
+      "path": "catalogs/quests.json",
+      "sha256": "c7fe50d6560f6867482a95119f2e694bea5ead26e5dbf70cbf63ca5bdd387e0a"
+    },
+    {
+      "bytes": 274514,
+      "encoding": "typed_variant",
+      "path": "catalogs/recipes.json",
+      "sha256": "306d5da9b4e503edc6108aaaad969c20a6ddde6486611b7954a29f4b6bfb10cf"
+    },
+    {
+      "bytes": 706143,
+      "encoding": "typed_variant",
+      "path": "catalogs/resources.json",
+      "sha256": "9875baff9218607aa786222ba334e3db32672b0964cb36ac697ba20190e7daa0"
+    },
+    {
+      "bytes": 55112,
+      "encoding": "typed_variant",
+      "path": "catalogs/shops.json",
+      "sha256": "1ef55e3d6707626ca0b9f8b863107d6481dc6b637c4ca715afe20c72d0b28643"
+    },
+    {
+      "bytes": 105095,
+      "encoding": "typed_variant",
+      "path": "catalogs/solid_tile_types.json",
+      "sha256": "29503b245acae96e49323e0b855ac10be36a87e4cb11cac92917654fd6e28970"
+    },
+    {
+      "bytes": 348856,
+      "encoding": "typed_variant",
+      "path": "catalogs/sounds.json",
+      "sha256": "3ded6fd29f9ddd31a572857d8deab53728a7cf8318c457dcd5bd730fb79bb2c5"
+    },
+    {
+      "bytes": 3299,
+      "encoding": "typed_variant",
+      "path": "catalogs/special_pickups.json",
+      "sha256": "a648c5378a7a739463441a7fe39af8fae873d1e91b340f27e5e1e1f8b19a5e5b"
+    },
+    {
+      "bytes": 1305855,
+      "encoding": "typed_variant",
+      "path": "catalogs/talks.json",
+      "sha256": "af12b263d6af09090cb56b593968a5f9c400ea774cd03975c0aa46cb2d906e77"
+    },
+    {
+      "bytes": 220838,
+      "encoding": "typed_variant",
+      "path": "catalogs/tile_types.json",
+      "sha256": "4f0f02ec12ca39e8e50c36e8c7f29be22aa2c9490777a6fa95f45eba24b7c142"
+    },
+    {
+      "bytes": 21777,
+      "encoding": "typed_variant",
+      "path": "catalogs/weapons.json",
+      "sha256": "50c0dde1047172c764aac7016ba0c2c53e9c77bcd78d00c31b86c956da3b442b"
+    },
+    {
+      "bytes": 293319,
+      "encoding": "typed_variant",
+      "path": "declarations/000.json",
+      "sha256": "2b7c88c2a2fbe5ceb2bd6b6c95c73dd2babf35137b89326230d6c28745d01a87"
+    },
+    {
+      "bytes": 745512,
+      "encoding": "typed_variant",
+      "path": "declarations/001.json",
+      "sha256": "bf8bf3433e94c0552db115c66a102bd386e93c675e8768a30b8878ac4921f5cd"
+    },
+    {
+      "bytes": 756365,
+      "encoding": "typed_variant",
+      "path": "declarations/002.json",
+      "sha256": "0c3960eb63d63e6ba3730a9fa3cdf8480905a8953f82f4b5839c3d87029d9bb2"
+    },
+    {
+      "bytes": 148253,
+      "encoding": "typed_variant",
+      "path": "declarations/003.json",
+      "sha256": "d1d090ec43f9123ef1ad79629e315165ee117ef776ba2c9c580608a93d0ce0fd"
+    },
+    {
+      "bytes": 230543,
+      "encoding": "typed_variant",
+      "path": "declarations/004.json",
+      "sha256": "e8a6b7fcf8d8dea1c6279d8d6bb65e83dcde17d8fce93dacf52acd241f0ef672"
+    },
+    {
+      "bytes": 721456,
+      "encoding": "typed_variant",
+      "path": "declarations/005.json",
+      "sha256": "a3f4fe9fce4f614dfc43538bd38cef2fbe21af4a246d18225b2ba5d476de55e7"
+    },
+    {
+      "bytes": 222652,
+      "encoding": "typed_variant",
+      "path": "declarations/006.json",
+      "sha256": "fbf7a5728e75281f593b7736618133cfe67e999d6b422ba91ea57772f1116d21"
+    },
+    {
+      "bytes": 400198,
+      "encoding": "typed_variant",
+      "path": "declarations/007.json",
+      "sha256": "30b6744f64d1c55c268090778f6b0102695fe46817ee83d8fd34a99cd72b14cb"
+    },
+    {
+      "bytes": 357792,
+      "encoding": "typed_variant",
+      "path": "declarations/008.json",
+      "sha256": "2acda34cdfe43dd16b0cabe7b9defd4ce5dc8cba20909623310c95b67c29fa27"
+    },
+    {
+      "bytes": 720114,
+      "encoding": "typed_variant",
+      "path": "declarations/009.json",
+      "sha256": "7f96edda06c9a6685b564e0b0180c386249d140bc033f0df8901da5ffef62b4e"
+    },
+    {
+      "bytes": 374804,
+      "encoding": "typed_variant",
+      "path": "declarations/010.json",
+      "sha256": "ede167729b4ed6aaf1cac0b7775f9d487e34bcb1734a703ecb4a309f51e57816"
+    },
+    {
+      "bytes": 933438,
+      "encoding": "typed_variant",
+      "path": "declarations/011.json",
+      "sha256": "9d1b42d112846f88c1bd7889120918bb79f57527b666a3c24573bf7ac25ad75b"
+    },
+    {
+      "bytes": 234439,
+      "encoding": "typed_variant",
+      "path": "declarations/012.json",
+      "sha256": "c837176d36ace5d6083e615171d17080f60ff30a94f577eb5561a98fcbe045d2"
+    },
+    {
+      "bytes": 885243,
+      "encoding": "typed_variant",
+      "path": "declarations/013.json",
+      "sha256": "bd51cd33178e2aa24958afc86bc9ed13448256550bb1783912bf74af3deba7c5"
+    },
+    {
+      "bytes": 811836,
+      "encoding": "typed_variant",
+      "path": "declarations/014.json",
+      "sha256": "16f7f5c002368d27f030ef16da1a3eb4adbcfcec67bc8b1cb541fcd474fc7084"
+    },
+    {
+      "bytes": 10940,
+      "encoding": "typed_variant",
+      "path": "declarations/015.json",
+      "sha256": "fb10c9d53134e09fff3df097e8c4cebfcb47ef545c91713cfa2d3b68e56725d0"
+    },
+    {
+      "bytes": 233112,
+      "encoding": "typed_variant",
+      "path": "header.json",
+      "sha256": "62f77da5a396100c114a9551629553ca0362e7072c49cef4430553ecd30c7a81"
+    },
+    {
+      "bytes": 2808685,
+      "encoding": "contract_json",
+      "path": "identity.json",
+      "sha256": "6bd8c7433d1a700a14ebee0f8a6dda14c84dc7fdc88b57e5012df9ea13c9215f"
+    },
+    {
+      "bytes": 907780,
+      "encoding": "contract_json",
+      "path": "references.json",
+      "sha256": "e2f86b1059e557b1779e73b9cb89d342069434131efb55321a8ae132b399623d"
+    },
+    {
+      "bytes": 341426,
+      "encoding": "contract_json",
+      "path": "rules.json",
+      "sha256": "77de59f5d15a5917a269fdc044d65bc1d7465e38826daa20c2a5ae63e9b89f19"
+    },
+    {
+      "bytes": 322666,
+      "encoding": "typed_variant",
+      "path": "save-contract.json",
+      "sha256": "44a81966deab4b8ac4dae74e7bc4ba5cfa936c382d70613480932633d9e8a808"
+    }
+  ],
+  "inputs": {
+    "content-inventory": "23318c3696211a67d96436c20914c69dfb93a16004422b6cf6da9e68b91a2cf2",
+    "maps-inventory": "3b6e3818d720f501dbcce09252919f7c76f2814a651a5fba796a322767cfb207",
+    "save-contract": "96a2862d2dbcf168d76bb38674f2d7899b030eb385573d4c7d0d589f8f01423e"
+  },
+  "notRuntimeWorldExport": true,
+  "notSaveConverter": true,
+  "originalTypeLimits": [
+    "Godot StringName and String were merged by the phase-1 inventory",
+    "plain JSON dictionary keys were sorted in the phase-1 inventory",
+    "phase-1 numbers retain JSON number type, not omitted GDScript static annotations"
+  ],
+  "phase": 4,
+  "schema": "bluemap.portable.bundle.v1",
+  "scope": "effective_catalogs_declared_tables_and_identity_contracts",
+  "toolSources": {
+    "build_migration_data.py": "fb9a3d5448f768de0ef9922fd7dd2e20bf7a36a7e1407be117b58f1b80a660d7",
+    "migration_data_codec.py": "1eb5bf2a219e7c1d43a354fa7ae0248bad338b101263ea1a3b76f0c5f3e4eb4a",
+    "migration_identity.py": "24a1fa433edb98a9a5cd57ff7a17c5a51d5babaf1c6f87a556de6bfa4182d00f",
+    "migration_references.py": "8b1d236bd8f7e694f7169ca9c3c4fcfb53ad016e28ec9e459746329e4701bab6",
+    "migration_rule_contracts.py": "7b37577bfea5f4ac67be8a93ebb3c325074aca97f08e86aa89d230b858ade229"
+  }
+}

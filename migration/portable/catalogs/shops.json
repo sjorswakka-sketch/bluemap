@@ -1,0 +1,1445 @@
+{
+  "entries": [
+    [
+      {
+        "kind": "string",
+        "value": "count"
+      },
+      {
+        "kind": "int",
+        "value": "2"
+      }
+    ],
+    [
+      {
+        "kind": "string",
+        "value": "entries"
+      },
+      {
+        "kind": "array",
+        "values": [
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "tobias"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "BASE_SHOPS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "8"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/shops.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "items"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "potion"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "15"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "boots"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "60"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "bow"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "label"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "Boog + 5 pijlen"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "80"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "with"
+                                },
+                                {
+                                  "kind": "array",
+                                  "values": [
+                                    {
+                                      "kind": "array",
+                                      "values": [
+                                        {
+                                          "kind": "string",
+                                          "value": "arrow"
+                                        },
+                                        {
+                                          "kind": "int",
+                                          "value": "5"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "amount"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "5"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "if"
+                                },
+                                {
+                                  "kind": "array",
+                                  "values": [
+                                    {
+                                      "kind": "array",
+                                      "values": [
+                                        {
+                                          "kind": "string",
+                                          "value": "has"
+                                        },
+                                        {
+                                          "kind": "string",
+                                          "value": "bow"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "arrow"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "label"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "5 pijlen"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "10"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "gear_cloth_hood"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "25"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "gear_leather_armor"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "50"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "gear_novice_gloves"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "35"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "gear_copper_amulet"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "40"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "gear_copper_ring"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "35"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Tobias' Winkel"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          },
+          {
+            "entries": [
+              [
+                {
+                  "kind": "string",
+                  "value": "id"
+                },
+                {
+                  "kind": "string",
+                  "value": "vera"
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "sources"
+                },
+                {
+                  "kind": "array",
+                  "values": [
+                    {
+                      "entries": [
+                        [
+                          {
+                            "kind": "string",
+                            "value": "constant"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "SHOPS"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "line"
+                          },
+                          {
+                            "kind": "int",
+                            "value": "278"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "path"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "res://scripts/data/ext/uiterlijk.gd"
+                          }
+                        ],
+                        [
+                          {
+                            "kind": "string",
+                            "value": "role"
+                          },
+                          {
+                            "kind": "string",
+                            "value": "definition_or_reference"
+                          }
+                        ]
+                      ],
+                      "kind": "dictionary"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "kind": "string",
+                  "value": "value"
+                },
+                {
+                  "entries": [
+                    [
+                      {
+                        "kind": "string",
+                        "value": "items"
+                      },
+                      {
+                        "kind": "array",
+                        "values": [
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_straw_hat"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "20"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_beret"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "30"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_beanie"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "30"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_cape"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "60"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_scarf"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "35"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_tunic"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "40"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_blouse"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "45"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_shirt"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "45"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_trousers"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "40"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_skirt"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "40"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_shoes"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "30"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_slippers"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "25"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_headband"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "25"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_felt_hat"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "35"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_nightcap"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "20"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_backpack"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "55"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_cloak"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "65"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_sweater"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "40"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_vest"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "35"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_dress"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "50"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_shorts"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "30"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_overalls"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "45"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_boots"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "40"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          },
+                          {
+                            "entries": [
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "item"
+                                },
+                                {
+                                  "kind": "string",
+                                  "value": "cloth_sandals"
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "once"
+                                },
+                                {
+                                  "kind": "bool",
+                                  "value": true
+                                }
+                              ],
+                              [
+                                {
+                                  "kind": "string",
+                                  "value": "price"
+                                },
+                                {
+                                  "kind": "int",
+                                  "value": "20"
+                                }
+                              ]
+                            ],
+                            "kind": "dictionary"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "string",
+                        "value": "name"
+                      },
+                      {
+                        "kind": "string",
+                        "value": "Vera's Kleerkast"
+                      }
+                    ]
+                  ],
+                  "kind": "dictionary"
+                }
+              ]
+            ],
+            "kind": "dictionary"
+          }
+        ]
+      }
+    ]
+  ],
+  "kind": "dictionary"
+}

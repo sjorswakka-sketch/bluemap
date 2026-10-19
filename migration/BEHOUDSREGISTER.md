@@ -1,4 +1,4 @@
-# Behoudsregister — Unity-migratie, fase 1
+# Behoudsregister — Unity-migratie
 
 Referentie: **0.34.0-preview**, commit `a8a988be27835dec979d2523a3a85a34385eac54`, boom `73ba02ea4db0a1c920360b6570f5209ccb970143`, Godot **4.4.1 stable**; 32 pixels per wereldtegel, basisvenster 1152×648.
 
@@ -8,7 +8,9 @@ Het register omvat de complete bewaarde bron, ook code die niet door een catalog
 
 ## Overdrachtsafspraken per systeem
 
-Alle onderstaande systemen zijn nu **als Godot-referentie bewaard**, nog niet in Unity gebouwd; de 86 oorspronkelijke suites blijven behouden en nieuwe Unity-tests moeten dezelfde bedoelde gedragsafspraken controleren.
+Fase 4 heeft de overdraagbare catalogi, identiteiten en regelcontracten bewezen tegen de vaste referentie; zie [DATA_FORMAT.md](DATA_FORMAT.md) en [fase 4](phase-04/README.md). De daadwerkelijke regels en geladen wereldtoestanden zijn daarmee nog niet in Unity uitgevoerd.
+
+Alle onderstaande systemen zijn **als Godot-referentie bewaard**, nog niet als volledige gameplay in Unity gebouwd; de 86 oorspronkelijke suites blijven behouden en nieuwe Unity-tests moeten dezelfde bedoelde gedragsafspraken controleren.
 
 | Onderdeel | Oorspronkelijke bron | Bestaande controles / latere fase |
 |---|---|---|
