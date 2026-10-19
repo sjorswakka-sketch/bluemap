@@ -4,6 +4,7 @@ extends Node2D
 ## de andere kant op (je ziet zijn rug).
 
 const Art := preload("res://scripts/core/art.gd")
+const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const Arena := preload("res://scripts/data/arena.gd")
 const Tiles := preload("res://scripts/data/tiles.gd")
 
@@ -104,4 +105,4 @@ func _draw() -> void:
 		else:
 			lift = 1.0 if int(t * 1.6 + float(i % 7)) % 4 == 0 else 0.0 # af en toe een klein wiebeltje
 		var center: Vector2 = seat["pos"] - Vector2(0, round(lift))
-		draw_texture_rect_region(texture, Rect2(center - Vector2(16, 16), Vector2(32, 32)), Rect2(Vector2(column * 16, 0), Vector2(16, 16)))
+		DrawUtil.sprite(self,texture,column,0,center)

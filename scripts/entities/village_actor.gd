@@ -3,6 +3,8 @@ extends CharacterBody2D
 const Opening := preload("res://scripts/core/opening.gd")
 const Art := preload("res://scripts/core/art.gd")
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
+const CharacterDraw := preload("res://scripts/core/character_draw.gd")
+var visual_direction := 0
 var world: Node2D
 var director: Node2D
 var role := "gardener"
@@ -88,9 +90,9 @@ func _physics_process(delta: float) -> void:
 	queue_redraw()
 
 func _draw() -> void:
+	visual_direction = CharacterDraw.direction(velocity,visual_direction)
 	DrawUtil.ellipse(self,Vector2(0,14),Vector2(10,4),Color(0,0,0,0.22))
-	var frame := int(time*5)%2 if velocity.length()>1 else 2+int(time*1.5)%2
-	DrawUtil.sprite(self,Art.tex("op_gardener" if role=="gardener" else "op_courier"),frame,0)
+	CharacterDraw.actor(self,"op_gardener" if role=="gardener" else "op_courier",time,velocity,visual_direction if velocity.length()>1 else 0)
 	if role=="gardener" and Opening.flowing() and wait_time>0 and global_position.x<17*32 and GameState.day_time<0.78:
 		for i in 3: draw_circle(Vector2(9+i*3,10+fmod(time*18+i*3,12)),1,Color("82d8f1"))
 	if world.player.target == self:

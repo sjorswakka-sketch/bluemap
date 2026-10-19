@@ -16,6 +16,7 @@ const FastTravel := preload("res://scripts/core/fast_travel.gd")
 const Professions := preload("res://scripts/core/professions.gd")
 const ProfessionData := preload("res://scripts/data/ext/beroepen.gd")
 const Journey := preload("res://scripts/core/journey.gd")
+const WorldAtlasPage := preload("res://scripts/ui/world_atlas_page.gd")
 
 const ProgressionPage := preload("res://scripts/ui/progression_page.gd")
 
@@ -52,6 +53,7 @@ const INVENTORY_DETAIL_RECT := Rect2(620, 72, 356, 212)
 const INVENTORY_STATS_RECT := Rect2(620, 346, 356, 176)
 const MAP_WIDTH := 600.0 # zoveel ruimte krijgt het kaartje; rechts ervan staat het lijstje voor snel reizen
 const MAP_HEADER_Y := 60.0 # clear of tab buttons above and coordinate labels below
+const ATLAS_TOGGLE := Rect2(422,65,202,32)
 const MESSAGE_TIME := 3.0 # seconden dat een melding in het kaarttabblad blijft staan
 const TAB_ANIM_TIME := 0.16 # seconden die een tabwissel duurt (markering glijdt, pagina faden)
 const PAGE_SLIDE := 10.0 # hoeveel pixels de pagina bij een tabwissel meebeweegt
@@ -63,6 +65,8 @@ var page: Control # de bladzijde onder de tabbladen; schuift en faden zacht bij 
 var progression_page: Control
 var equipment_page: Control
 var appearance_page: Control
+var atlas_page: Control
+var atlas_mode := false
 var tab := 0
 var tab_visual := 0.0 # waar de glijdende tabmarkering nu staat (in tabbladen)
 var tab_from := 0.0 # waar de markering vandaan kwam bij de laatste wissel
@@ -148,6 +152,11 @@ func _ready() -> void:
 	appearance_page.visible = false
 	appearance_page.close_requested.connect(close)
 	page.add_child(appearance_page)
+	atlas_page=WorldAtlasPage.new()
+	atlas_page.position=Vector2(24,106)
+	atlas_page.size=Vector2(952,414)
+	atlas_page.visible=false
+	page.add_child(atlas_page)
 
 
 func open(start_tab: int) -> void:
@@ -159,6 +168,7 @@ func open(start_tab: int) -> void:
 	selected = 0
 	travel_confirm = false
 	travel_message = ""
+	atlas_mode = false
 	hover_tab = -1
 	hover_close = false
 	active = true
@@ -239,6 +249,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if travel_confirm and _answer_travel_question(event):
 		return
+	if tab==TAB_MAP and UiStyle.shortcut(event,"potion"):
+		_toggle_atlas()
+		get_viewport().set_input_as_handled()
+		return
+	if tab==TAB_MAP and atlas_mode and event.is_action_pressed("ui_cancel"):
+		if not atlas_page.back():_toggle_atlas()
+		get_viewport().set_input_as_handled()
+		return
 	if UiStyle.shortcut(event, "pause") or event.is_action_pressed("ui_cancel") or UiStyle.shortcut(event, "menu"):
 		close()
 	elif event.is_action_pressed("ui_prev_tab"):
@@ -277,7 +295,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif tab == TAB_APPEARANCE and UiStyle.confirm(event):
 			appearance_page.confirm()
 		elif tab == TAB_MAP:
-			_map_input(event)
+			if atlas_mode:
+				if UiStyle.confirm(event):atlas_page.confirm()
+			else:_map_input(event)
 		elif tab == TAB_QUESTS and UiStyle.confirm(event):
 			_follow_quest()
 	# Custom drawn menus own input while open; gameplay cannot receive the close/confirm press.
@@ -316,8 +336,10 @@ func _navigate(action: String) -> void:
 			else:
 				quest_selected = clampi(quest_selected + step, 0, maxi(_quest_order().size() - 1, 0))
 		TAB_MAP:
-			travel_selected = clampi(travel_selected + step, 0, maxi(FastTravel.discovered_altars().size() - 1, 0))
-			refresh_travel_scroll()
+			if atlas_mode:atlas_page.navigate(action)
+			else:
+				travel_selected = clampi(travel_selected + step, 0, maxi(FastTravel.discovered_altars().size() - 1, 0))
+				refresh_travel_scroll()
 		TAB_ACHIEVEMENTS:
 			achievement_selected = clampi(achievement_selected + step, 0, Achievements.ACHIEVEMENTS.size() - 1)
 		TAB_EQUIPMENT:
@@ -341,6 +363,8 @@ func _pointer_input(event: InputEvent) -> void:
 	if click.button_index == MOUSE_BUTTON_RIGHT:
 		if travel_confirm:
 			travel_confirm = false
+		elif tab==TAB_MAP and atlas_mode:
+			if not atlas_page.back():_toggle_atlas()
 		else:
 			close()
 		return
@@ -388,6 +412,12 @@ func _pointer_input(event: InputEvent) -> void:
 			if Rect2(24, MenuPages.LIST_TOP, 300, MenuPages.LIST_BOTTOM - MenuPages.LIST_TOP).has_point(at):
 				bestiary_selected = mini(bestiary_scroll + int((at.y - MenuPages.LIST_TOP) / MenuPages.BEAST_ROW), Enemies.ENEMIES.size() - 1)
 		TAB_MAP:
+			if ATLAS_TOGGLE.has_point(at):
+				_toggle_atlas()
+				return
+			if atlas_mode:
+				atlas_page.pointer(at-atlas_page.position)
+				return
 			var altars := FastTravel.discovered_altars()
 			refresh_travel_scroll(altars.size())
 			for i in range(travel_scroll,mini(travel_scroll+TRAVEL_VISIBLE,altars.size())):
@@ -597,6 +627,9 @@ func _footer_hint() -> String:
 	if tab == TAB_PROGRESSION:
 		return tr("↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  ") + browse + close_hint
 	if tab == TAB_MAP:
+		if atlas_mode:
+			if atlas_page.focus_locales:return tr("↑ ↓ plek  ·  ← kaart  ·  %s terug  ·  ") % Controls.action_label("ui_cancel") + browse
+			return tr("↑ ↓ ← → streek  ·  %s plekken  ·  %s terug  ·  ") % [Controls.action_label("ui_accept"),Controls.action_label("ui_cancel")] + browse
 		return tr("↑ ↓ altaar  ·  %s reizen  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
 	if tab == TAB_QUESTS:
 		return tr("↑ ↓ opdracht  ·  → uitleg  ·  ← lijst  ·  %s volgen  ·  ") % Controls.action_label("ui_accept") + browse + close_hint
@@ -783,6 +816,12 @@ func travel_box_y(total: int) -> float:
 	return 104+mini(total,TRAVEL_VISIBLE)*48+12+(16 if total>TRAVEL_VISIBLE else 0)
 
 func _draw_map(font: Font) -> void:
+	page.draw_rect(ATLAS_TOGGLE,Color("28444d"))
+	page.draw_rect(ATLAS_TOGGLE,Color("91b7ad"),false,1)
+	page.draw_string(font,ATLAS_TOGGLE.position+Vector2(9,22),(tr("Lokale kaart") if atlas_mode else tr("Wereldkaart"))+" ["+Controls.action_label("potion")+"]",HORIZONTAL_ALIGNMENT_LEFT,184,16,Color("e4e8ce"))
+	if atlas_mode:
+		_text(font,Vector2(MARGIN,MAP_HEADER_Y),tr("Wereldkaart"),24,Color(0.6,0.88,1))
+		return
 	var world := Util.world(self)
 	if world == null or world.map_data.is_empty():
 		return
@@ -792,7 +831,10 @@ func _draw_map(font: Font) -> void:
 	var cell := mini(int(MAP_WIDTH / w), int(320.0 / h))
 	cell = maxi(cell, 4)
 	var origin := Vector2(MARGIN + (MAP_WIDTH - w * cell) / 2.0, LIST_TOP)
-	_text(font, Vector2(MARGIN, MAP_HEADER_Y), tr(world.map_data["name"]), 24, Color(0.6, 0.88, 1.0))
+	# Keep even long area names on one header line, clear of coordinates and the view button.
+	var map_title: String=tr(world.map_data["name"])
+	var title_size:=24 if font.get_string_size(map_title,HORIZONTAL_ALIGNMENT_LEFT,-1,24).x<=380 else 18
+	page.draw_string(font,Vector2(MARGIN,MAP_HEADER_Y+24),map_title,HORIZONTAL_ALIGNMENT_LEFT,380,title_size,Color(0.6,0.88,1.0))
 	for y in h:
 		var row: String = rows[y]
 		for x in w:
@@ -911,6 +953,7 @@ func tab_rect(index: int) -> Rect2:
 
 
 func _refresh_progression_page() -> void:
+	atlas_page.visible=tab==TAB_MAP and atlas_mode
 	quest_detail.visible = tab == TAB_QUESTS
 	equipment_page.visible = tab == TAB_EQUIPMENT
 	if equipment_page.visible:
@@ -921,6 +964,15 @@ func _refresh_progression_page() -> void:
 	progression_page.visible = tab == TAB_PROGRESSION
 	if progression_page.visible:
 		progression_page.refresh()
+
+func _toggle_atlas() -> void:
+	atlas_mode=not atlas_mode
+	travel_confirm=false
+	repeat_action=""
+	if atlas_mode:atlas_page.open_current()
+	_refresh_progression_page()
+	Sound.play("select",-8)
+	page.queue_redraw()
 
 func _open_stock():
 	if not active or tab!=0:return

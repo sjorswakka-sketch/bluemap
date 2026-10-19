@@ -1,8 +1,8 @@
 # Bluemap Quest
 
-0.33.1: zuidelijke Oefenerf-toegang aan het volgende bospad, dubbele ingangen voor brede paden en herkenbare smalle dungeonmonden; zie [wijzigingen](ENTRANCES_0331.md).
+0.34: een wereldatlas met opgeslagen gebiedsbezoeken en nieuwe gedetailleerde pixelart voor de speler en NPC’s; zie [wijzigingen](WORLD_ATLAS_CHARACTERS_034.md).
 
-**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.33.1-preview.**
+**Actuele hoofdversie: `claude/affectionate-mendel-vc1idx` — 0.34.0-preview.**
 
 Nieuw in 0.32: **Gewassen en boomgaard — ontwikkelronde 5**. Wortels, pompoenen,
 munt, rozemarijn, appelbomen en bosbessenstruiken krijgen eigen pixel art en groei.

@@ -8,6 +8,121 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Source-Language: nl\n"
 
+#. Korte streeknaam in de wereldatlas: steampeak
+#. Naam van gebied steampeak
+#: scripts/core/world_atlas.gd:6 scripts/maps/steampeak.gd:4
+msgid "Dampkroon"
+msgstr "Steamcrown"
+
+#. Korte streeknaam in de wereldatlas: ijsdal
+#. Naam van gebied ijsdal
+#. Kaart ijsdal, sign [22, 13]: tekst op een bord
+#: scripts/core/world_atlas.gd:7 scripts/maps/ijsdal.gd:8 scripts/maps/ijsdal.gd:54
+msgid "IJsdal"
+msgstr "IJsdal"
+
+#. Korte streeknaam in de wereldatlas: ridgepass
+#: scripts/core/world_atlas.gd:8
+msgid "Bergpas"
+msgstr "Mountain Pass"
+
+#. Korte streeknaam in de wereldatlas: sunwell
+#: scripts/core/world_atlas.gd:9
+msgid "Zonnekloof"
+msgstr "Sun Gorge"
+
+#. Korte streeknaam in de wereldatlas: dauwbos
+#. Naam van gebied dauwbos
+#. Kaart dauwbos, sign [6, 22]: tekst op een bord
+#: scripts/core/world_atlas.gd:10 scripts/maps/dauwbos.gd:8 scripts/maps/dauwbos.gd:58
+msgid "Dauwbos"
+msgstr "Dew Woods"
+
+#. Korte streeknaam in de wereldatlas: dorstvallei
+#. Naam van gebied dorstvallei
+#. Kaart dorstvallei, sign [27, 14]: tekst op een bord
+#: scripts/core/world_atlas.gd:11 scripts/maps/dorstvallei.gd:9 scripts/maps/dorstvallei.gd:53
+msgid "Dorstvallei"
+msgstr "Dorstvallei"
+
+#. Korte streeknaam in de wereldatlas: mistgarden
+#: scripts/core/world_atlas.gd:12
+msgid "Dauwtuin"
+msgstr "Dew Garden"
+
+#. Korte streeknaam in de wereldatlas: village
+#. Naam van gebied village
+#. Kaart village, sign [21, 8]: tekst op een bord
+#: scripts/ui/ending.gd:222 scripts/core/world_atlas.gd:13 scripts/maps/village.gd:6 scripts/maps/village.gd:66
+msgid "Dageraadsdorp"
+msgstr "Daybreak Village"
+
+#. Korte streeknaam in de wereldatlas: forest_edge
+#. Naam van gebied forest_edge
+#: scripts/core/world_atlas.gd:14 scripts/maps/forest_edge.gd:5
+msgid "Bosrand"
+msgstr "Forest Edge"
+
+#. Korte streeknaam in de wereldatlas: forest
+#. Naam van gebied forest
+#: scripts/ui/ending.gd:222 scripts/core/world_atlas.gd:15 scripts/maps/forest.gd:6 scripts/maps/forest.gd:54
+msgid "Fluisterbos"
+msgstr "Whispering Woods"
+
+#. Korte streeknaam in de wereldatlas: watchyard
+#. Naam van gebied watchyard
+#: scripts/entities/combat_post.gd:32 scripts/entities/combat_post.gd:41 scripts/core/world_atlas.gd:16 scripts/maps/watchyard.gd:4
+msgid "Oefenerf"
+msgstr "Practice Yard"
+
+#. Korte streeknaam in de wereldatlas: lake
+#. Naam van gebied lake
+#: scripts/core/world_atlas.gd:17 scripts/maps/lake.gd:6
+msgid "Zilvermeer"
+msgstr "Silver Lake"
+
+#. Korte streeknaam in de wereldatlas: kruipmoeras
+#. Naam van gebied kruipmoeras
+#. Kaart kruipmoeras, sign [26, 4]: tekst op een bord
+#: scripts/core/world_atlas.gd:18 scripts/maps/kruipmoeras.gd:9 scripts/maps/kruipmoeras.gd:54
+msgid "Kruipmoeras"
+msgstr "Creeping Swamp"
+
+#. Korte streeknaam in de wereldatlas: river_mouth
+#. Naam van gebied river_mouth
+#: scripts/core/world_atlas.gd:19 scripts/maps/river_mouth.gd:4
+msgid "Zilvermonding"
+msgstr "Silver Estuary"
+
+#. Korte streeknaam in de wereldatlas: coast
+#. Naam van gebied coast
+#: scripts/core/world_atlas.gd:20 scripts/maps/coast.gd:4
+msgid "Blauwe Kust"
+msgstr "Blue Coast"
+
+#. Korte streeknaam in de wereldatlas: harbor
+#: scripts/core/world_atlas.gd:21
+msgid "Rietwenk"
+msgstr "Rietwenk"
+
+#. Korte streeknaam in de wereldatlas: headland
+#. Naam van gebied headland
+#: scripts/core/world_atlas.gd:22 scripts/maps/headland.gd:4
+msgid "Lichtkaap"
+msgstr "Light Cape"
+
+#. Korte streeknaam in de wereldatlas: gull_island
+#. Naam van gebied gull_island
+#: scripts/core/world_atlas.gd:23 scripts/maps/gull_island.gd:4
+msgid "Meeuweneiland"
+msgstr "Gull Island"
+
+#. Korte streeknaam in de wereldatlas: tide_cove
+#. Naam van gebied tide_cove
+#: scripts/core/world_atlas.gd:24 scripts/maps/tide_cove.gd:4
+msgid "Getijdenbaai"
+msgstr "Tidal Cove"
+
 #. Watertype river: name
 #: scripts/core/water_features.gd:5
 msgid "Rivier"
@@ -544,12 +659,6 @@ msgstr "Sea light"
 msgid "Licht uit"
 msgstr "Lights off"
 
-#. Naam van gebied village
-#. Kaart village, sign [21, 8]: tekst op een bord
-#: scripts/ui/ending.gd:222 scripts/maps/village.gd:6 scripts/maps/village.gd:66
-msgid "Dageraadsdorp"
-msgstr "Daybreak Village"
-
 #. Kaart village, sign [21, 8]: tekst op een bord
 #: scripts/maps/village.gd:66
 msgid "Tempel van de Blauwe Kaart. Bewaker: Oudste Bram."
@@ -625,11 +734,6 @@ msgstr "Tobias' Shop"
 msgid "Herberg De Blauwe Slijm"
 msgstr "The Blue Slime Inn"
 
-#. Naam van gebied forest
-#: scripts/ui/ending.gd:222 scripts/maps/forest.gd:6 scripts/maps/forest.gd:54
-msgid "Fluisterbos"
-msgstr "Whispering Woods"
-
 #. Kaart forest, sign [5, 19]: tekst op een bord
 #: scripts/data/space_maps.gd:16
 msgid "Westelijk pad: Bosrand en Dageraadsdorp."
@@ -691,12 +795,12 @@ msgid "Kom je te dichtbij, dan hupt hij weg."
 msgstr "Get too close, and it hops away."
 
 #. Kaart forest, sign [13, 3]: tekst op een bord
-#: scripts/data/route_repairs.gd:7 scripts/maps/forest.gd:116
+#: scripts/data/route_repairs.gd:11 scripts/maps/forest.gd:116
 msgid "Noordelijk pad: Dauwbos"
 msgstr "Northern path: Dew Woods"
 
 #. Kaart forest, sign [13, 3]: tekst op een bord
-#: scripts/data/route_repairs.gd:7 scripts/maps/forest.gd:116
+#: scripts/data/route_repairs.gd:11 scripts/maps/forest.gd:116
 msgid "Mistig en stil. Mira bewaakt de dauw."
 msgstr "Misty and silent. Mira guards the dew."
 
@@ -710,15 +814,10 @@ msgstr "Western path: Daybreak Village"
 msgid "Terug naar het dorp, waar de geur van vers brood je tegemoet komt."
 msgstr "Back to the village, where the smell of fresh bread comes to meet you."
 
-#. Kaart forest, sign [2, 26]: tekst op een bord
+#. Kaart forest, sign [10, 25]: tekst op een bord
 #: scripts/data/combat_maps.gd:11
 msgid "Oefenerf: stap in de gloed bij het vaandel."
 msgstr "Practice Yard: step into the glow beside the banner."
-
-#. Naam van gebied forest_edge
-#: scripts/maps/forest_edge.gd:5
-msgid "Bosrand"
-msgstr "Forest Edge"
 
 #. Kaart forest_edge, sign [3, 11]: tekst op een bord
 #: scripts/maps/forest_edge.gd:36
@@ -823,11 +922,6 @@ msgstr "The door is shut. There's no way back!"
 msgid "Een zegel versperrt de trap."
 msgstr "A seal blocks the stairs."
 
-#. Naam van gebied steampeak
-#: scripts/maps/steampeak.gd:4
-msgid "Dampkroon"
-msgstr "Steamcrown"
-
 #. Bergterras van steampeak
 #: scripts/maps/steampeak.gd:110
 msgid "Bergvoet"
@@ -895,7 +989,7 @@ msgstr "Your home"
 
 #. Naam van gebied coast_workshop
 #. Beroepen: tekst of sjabloon coast_workshop
-#: scripts/entities/coastal_workstation.gd:20 scripts/ui/coastal_home_ui.gd:54 scripts/data/ext/beroepen.gd:23 scripts/maps/coast_workshop.gd:4
+#: scripts/entities/coastal_workstation.gd:23 scripts/ui/coastal_home_ui.gd:54 scripts/data/ext/beroepen.gd:23 scripts/maps/coast_workshop.gd:4
 msgid "Rafs havenwerkplaats"
 msgstr "Raf's Harbor Workshop"
 
@@ -933,11 +1027,6 @@ msgstr "Southern detour: always open"
 #: scripts/maps/tidal_hollow.gd:131
 msgid "Na herstel van het tijrad kun je ook over de korte brug in het midden. De poelen boven de gang horen bij de dieren; je hoeft daar niet langs."
 msgstr "Once the tide wheel is repaired, you can also cross the short central bridge. The pools above the passage belong to the creatures; you do not need to enter them."
-
-#. Naam van gebied river_mouth
-#: scripts/maps/river_mouth.gd:4
-msgid "Zilvermonding"
-msgstr "Silver Estuary"
 
 #. Kaart river_mouth, sign [12, 42]: tekst op een bord
 #: scripts/maps/river_mouth.gd:91
@@ -984,11 +1073,6 @@ msgstr "Eastern coast path: Light Cape"
 msgid "Volg het hoge pad naar de vuurtoren. Je hebt geen uitrusting nodig en kunt altijd terug."
 msgstr "Follow the high path to the lighthouse. No equipment is needed, and you can always return."
 
-#. Naam van gebied headland
-#: scripts/maps/headland.gd:4
-msgid "Lichtkaap"
-msgstr "Light Cape"
-
 #. Kaart headland, sign [3, 26]: tekst op een bord
 #: scripts/maps/headland.gd:87
 msgid "Westelijk kustpad: Rietwenk Haven"
@@ -1009,11 +1093,6 @@ msgstr "From this low ledge, you can see the difference between the peaceful est
 msgid "Beneden trekken schuimstrepen langs de rotsen. Achter je voert het hoge pad terug naar de haven."
 msgstr "Below, streaks of foam drift past the rocks. Behind you, the high path leads back to the harbour."
 
-#. Naam van gebied tide_cove
-#: scripts/maps/tide_cove.gd:4
-msgid "Getijdenbaai"
-msgstr "Tidal Cove"
-
 #. Kaart tide_cove, sign [3, 24]: tekst op een bord
 #: scripts/maps/tide_cove.gd:81
 msgid "Westelijke loopbrug: Meeuweneiland"
@@ -1023,11 +1102,6 @@ msgstr "Western boardwalk: Gull Island"
 #: scripts/maps/tide_cove.gd:82
 msgid "Het hoge pad langs de noordkant blijft bij ieder getij open."
 msgstr "The high path along the north side stays open at every tide."
-
-#. Naam van gebied coast
-#: scripts/maps/coast.gd:4
-msgid "Blauwe Kust"
-msgstr "Blue Coast"
 
 #. Kaart coast, sign [4, 15]: tekst op een bord
 #: scripts/maps/coast.gd:91
@@ -1049,11 +1123,6 @@ msgstr "Northern bank path: Silver Estuary"
 msgid "Volg de hoge rivierbrug naar Rietwenk Haven. Naar het westen blijft het Zilvermeer bereikbaar."
 msgstr "Follow the high river bridge to Rietwenk Harbour. Silver Lake remains accessible to the west."
 
-#. Naam van gebied gull_island
-#: scripts/maps/gull_island.gd:4
-msgid "Meeuweneiland"
-msgstr "Gull Island"
-
 #. Kaart gull_island, sign [43, 21]: tekst op een bord
 #: scripts/data/coast_maps.gd:14
 msgid "Oostelijke loopbrug: Getijdenbaai"
@@ -1063,11 +1132,6 @@ msgstr "Eastern boardwalk: Tidal Cove"
 #: scripts/data/coast_maps.gd:14
 msgid "Een hoge loopbrug, een zandbank bij laagwater en een gratis te lenen landingslijn. De veer blijft beschikbaar."
 msgstr "A high boardwalk, a sandbank at low tide and a free landing line to borrow. The ferry remains available."
-
-#. Naam van gebied watchyard
-#: scripts/entities/combat_post.gd:32 scripts/entities/combat_post.gd:41 scripts/maps/watchyard.gd:4
-msgid "Oefenerf"
-msgstr "Practice Yard"
 
 #. Kaart watchyard, sign [16, 18]: tekst op een bord
 #: scripts/maps/watchyard.gd:73
@@ -1115,11 +1179,6 @@ msgstr "The old spring"
 msgid "Terug naar Dorstvallei: de zuidelijke opening bij de eerste waterluifel."
 msgstr "Back to Dorstvallei: the southern opening beside the first water shelter."
 
-#. Naam van gebied lake
-#: scripts/maps/lake.gd:6
-msgid "Zilvermeer"
-msgstr "Silver Lake"
-
 #. Kaart lake, sign [20, 4]: tekst op een bord
 #: scripts/maps/lake.gd:53
 msgid "Het Zilvermeer"
@@ -1156,7 +1215,7 @@ msgstr "The water is deep here. Big fish love deep water."
 #. Naam van wie er praat (Gesprek meer_joris_hengel)
 #. Naam van wie er praat (Gesprek meer_joris_menu)
 #. Naam van wie er praat (Gesprek meer_joris_na)
-#: scripts/entities/supper_actor.gd:38 scripts/data/ext/lake_supper.gd:24 scripts/data/ext/meer.gd:128 scripts/data/ext/meer.gd:159
+#: scripts/entities/supper_actor.gd:40 scripts/data/ext/lake_supper.gd:24 scripts/data/ext/meer.gd:128 scripts/data/ext/meer.gd:159
 msgid "Visser Joris"
 msgstr "Joris the Fisher"
 
@@ -1333,12 +1392,6 @@ msgstr "the Arena"
 msgid "De poorten blijven dicht tot je alle rondes hebt gewonnen. Opgeven kan bij de gong."
 msgstr "The gates stay shut until you win every round. Want to give up? Use the gong."
 
-#. Naam van gebied dauwbos
-#. Kaart dauwbos, sign [6, 22]: tekst op een bord
-#: scripts/maps/dauwbos.gd:8 scripts/maps/dauwbos.gd:58
-msgid "Dauwbos"
-msgstr "Dew Woods"
-
 #. Kaart dauwbos, sign [46, 18]: tekst op een bord
 #: scripts/maps/dauwbos.gd:56
 msgid "Oostelijk pad: Dorstvallei"
@@ -1365,12 +1418,12 @@ msgid "Hoge toppen, diepe sneeuw. Warm aan de lantaarns blijven."
 msgstr "High peaks, deep snow. Stay warm near the lanterns."
 
 #. Kaart dauwbos, sign [22, 33]: tekst op een bord
-#: scripts/data/route_repairs.gd:7
+#: scripts/data/route_repairs.gd:11
 msgid "Zuidelijk pad: Fluisterbos"
 msgstr "Southern path: Whispering Woods"
 
 #. Kaart dauwbos, sign [22, 33]: tekst op een bord
-#: scripts/data/route_repairs.gd:7 scripts/maps/dauwbos.gd:60
+#: scripts/data/route_repairs.gd:11 scripts/maps/dauwbos.gd:60
 msgid "Waar de mist dunner wordt, beginnen de vertrouwde bomen."
 msgstr "Where the mist grows thinner, the familiar trees begin."
 
@@ -1385,12 +1438,6 @@ msgstr "This route opens when you restore the area. Look for the marked world qu
 #: scripts/data/living_maps.gd:245
 msgid "Oostelijk lichtpad: De Dauwtuin."
 msgstr "Eastern light path: The Dew Garden."
-
-#. Naam van gebied ijsdal
-#. Kaart ijsdal, sign [22, 13]: tekst op een bord
-#: scripts/maps/ijsdal.gd:8 scripts/maps/ijsdal.gd:54
-msgid "IJsdal"
-msgstr "IJsdal"
 
 #. Kaart ijsdal, sign [22, 13]: tekst op een bord
 #: scripts/maps/ijsdal.gd:54
@@ -1433,12 +1480,6 @@ msgstr "Northern mountain path: Steamcrown"
 msgid "Volg de brede trappen naar de warme bergbronnen. Aan de oevers kun je rustig hartjes herstellen; geisers zijn alleen om naar te kijken."
 msgstr "Follow the broad stairs to the warm mountain springs. Rest at the banks to recover hearts; geysers are only for watching."
 
-#. Naam van gebied dorstvallei
-#. Kaart dorstvallei, sign [27, 14]: tekst op een bord
-#: scripts/maps/dorstvallei.gd:9 scripts/maps/dorstvallei.gd:53
-msgid "Dorstvallei"
-msgstr "Dorstvallei"
-
 #. Kaart dorstvallei, sign [27, 14]: tekst op een bord
 #: scripts/maps/dorstvallei.gd:53
 msgid "De zon brandt, het zand waait. De oase geeft leven."
@@ -1474,12 +1515,6 @@ msgstr "First fill Nour's waterskin at the blue shelter beside Sana."
 #: scripts/data/regional_maps.gd:39 scripts/data/regional_maps.gd:149
 msgid "Neem water mee van Sana. Blauwe luifels geven schaduw en vers water."
 msgstr "Bring water from Sana. Blue shelters offer shade and fresh water."
-
-#. Naam van gebied kruipmoeras
-#. Kaart kruipmoeras, sign [26, 4]: tekst op een bord
-#: scripts/maps/kruipmoeras.gd:9 scripts/maps/kruipmoeras.gd:54
-msgid "Kruipmoeras"
-msgstr "Creeping Swamp"
 
 #. Kaart kruipmoeras, sign [22, 3]: tekst op een bord
 #: scripts/maps/kruipmoeras.gd:53
@@ -2484,7 +2519,7 @@ msgstr "I'll look around for a while."
 
 #. Naam van wie er praat (Gesprek ce_sail_island)
 #. Naam van wie er praat (Gesprek ce_sail_coast)
-#: scripts/ui/coast_voyage.gd:57 scripts/data/ext/coast.gd:10 scripts/data/ext/coast.gd:11
+#: scripts/ui/coast_voyage.gd:57 scripts/ui/world_atlas_page.gd:323 scripts/data/ext/coast.gd:10 scripts/data/ext/coast.gd:11
 msgid "Veerboot"
 msgstr "Ferry"
 
@@ -10726,22 +10761,22 @@ msgid "Beroepen / maken"
 msgstr "Professions / crafting"
 
 #. Instelbare bediening: quests
-#: scripts/ui/menu_ui.gd:442 scripts/ui/menu_ui.gd:700 scripts/core/input_manager.gd:17
+#: scripts/ui/menu_ui.gd:474 scripts/ui/menu_ui.gd:773 scripts/core/input_manager.gd:17
 msgid "Opdrachten"
 msgstr "Quests"
 
 #. Instelbare bediening: map
-#: scripts/ui/menu_ui.gd:442 scripts/core/input_manager.gd:18
+#: scripts/ui/menu_ui.gd:474 scripts/core/input_manager.gd:18
 msgid "Kaart"
 msgstr "Map"
 
 #. Instelbare bediening: wereld_prestaties
-#: scripts/ui/menu_pages.gd:72 scripts/ui/menu_ui.gd:442 scripts/core/input_manager.gd:18
+#: scripts/ui/menu_pages.gd:78 scripts/ui/menu_ui.gd:474 scripts/core/input_manager.gd:18
 msgid "Prestaties"
 msgstr "Achievements"
 
 #. Instelbare bediening: wereld_beestenboek
-#: scripts/ui/menu_pages.gd:134 scripts/ui/menu_ui.gd:442 scripts/core/input_manager.gd:18
+#: scripts/ui/menu_pages.gd:140 scripts/ui/menu_ui.gd:474 scripts/core/input_manager.gd:18
 msgid "Beestenboek"
 msgstr "Bestiary"
 
@@ -10940,7 +10975,7 @@ msgstr "Special thanks"
 msgid "Aan jou, voor het spelen!"
 msgstr "To you, for playing!"
 
-#: scripts/world.gd:283
+#: scripts/world.gd:284
 msgid "Buiten het dorp: %s om aan te vallen, %s om te rollen. Je kunt altijd terug naar het plein."
 msgstr "Outside the village: %s to attack, %s to roll. You can always return to the square."
 
@@ -11216,7 +11251,7 @@ msgstr "You can't travel during a boss fight!"
 msgid "Je kunt niet reizen tijdens een arenagevecht!"
 msgstr "You can't travel during an arena fight!"
 
-#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:475
+#: scripts/core/fast_travel.gd:111 scripts/ui/menu_ui.gd:507
 msgid "Je hebt nog geen altaar ontdekt."
 msgstr "You haven't found an altar yet."
 
@@ -11245,59 +11280,59 @@ msgid "%s (%d, %d)"
 msgstr "%s (%d, %d)"
 
 #. het bereikte heldenlevel en de totale muntbeloning (soms meerdere levels).
-#: scripts/core/game_state.gd:283
+#: scripts/core/game_state.gd:285
 msgid "Heldenlevel %d! +%d munten voor je uitrusting."
 msgstr "Hero level %d! +%d coins for your equipment."
 
 #. een voorwerp, en waarom er niet meer bij past: "Gekregen: Pijl. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:415
+#: scripts/core/game_state.gd:417
 msgid "Gekregen: %s. %s!"
 msgstr "Got: %s. %s!"
 
 #. voorwerp, aantal en waarom er niet meer bij past: "Gekregen: Pijl x3. Je pijlenkoker is vol!"
-#: scripts/core/game_state.gd:418
+#: scripts/core/game_state.gd:420
 msgid "Gekregen: %s x%d. %s!"
 msgstr "Got: %s x%d. %s!"
 
-#: scripts/core/game_state.gd:420 scripts/entities/chest.gd:83 scripts/ui/item_receipts.gd:14
+#: scripts/core/game_state.gd:422 scripts/entities/chest.gd:83 scripts/ui/item_receipts.gd:14
 msgid "Gekregen: %s"
 msgstr "Got: %s"
 
 #. een voorwerp en hoeveel: "Gekregen: Pijl x5"
-#: scripts/core/game_state.gd:423 scripts/entities/chest.gd:83
+#: scripts/core/game_state.gd:425 scripts/entities/chest.gd:83
 msgid "Gekregen: %s x%d"
 msgstr "Got: %s x%d"
 
-#: scripts/core/game_state.gd:431
+#: scripts/core/game_state.gd:433
 msgid "Je bezit %s al."
 msgstr "You already own %s."
 
-#: scripts/core/game_state.gd:432
+#: scripts/core/game_state.gd:434
 msgid "Je tas is vol"
 msgstr "Your bag is full"
 
-#: scripts/core/game_state.gd:498
+#: scripts/core/game_state.gd:500
 msgid "Nieuwe opdracht: %s"
 msgstr "New quest: %s"
 
-#: scripts/core/game_state.gd:513
+#: scripts/core/game_state.gd:515
 msgid "Opdracht voltooid: %s"
 msgstr "Quest complete: %s"
 
-#: scripts/core/game_state.gd:558
+#: scripts/core/game_state.gd:560
 msgid "De Blauwe Kaart is hersteld!"
 msgstr "The Blue Map is restored!"
 
-#: scripts/core/game_state.gd:562
+#: scripts/core/game_state.gd:564
 msgid "Praat met Oudste Bram bij de tempel."
 msgstr "Talk to Elder Bram at the temple."
 
-#: scripts/core/game_state.gd:638
+#: scripts/core/game_state.gd:640
 msgid "Nieuw zwaard: %s"
 msgstr "New sword: %s"
 
 #. aantal en voorwerp: "Verkocht: 4 x Slijmgel"
-#: scripts/core/game_state.gd:655
+#: scripts/core/game_state.gd:657
 msgid "Verkocht: %d x %s"
 msgstr "Sold: %d x %s"
 
@@ -11872,6 +11907,50 @@ msgstr "High tide · take the high path"
 #: scripts/core/tides.gd:17
 msgid "Aflopend water · hoog pad blijft open"
 msgstr "Falling tide · high path stays open"
+
+#: scripts/core/world_atlas.gd:130
+msgid "Onbekende plek"
+msgstr "Unknown place"
+
+#: scripts/core/world_atlas.gd:133
+msgid "Onbekend gebied"
+msgstr "Unknown region"
+
+#: scripts/core/world_atlas.gd:136
+msgid "Streek"
+msgstr "Region"
+
+#: scripts/core/world_atlas.gd:137
+msgid "Dungeon"
+msgstr "Dungeon"
+
+#: scripts/core/world_atlas.gd:138
+msgid "Arena"
+msgstr "Arena"
+
+#: scripts/core/world_atlas.gd:138
+msgid "Gebouw"
+msgstr "Building"
+
+#: scripts/core/world_atlas.gd:169
+msgid "Je bent hier."
+msgstr "You are here."
+
+#: scripts/core/world_atlas.gd:170
+msgid "Nog niet bezocht. Ontdek deze plek tijdens je reis."
+msgstr "Not visited yet. Discover this place on your journey."
+
+#: scripts/core/world_atlas.gd:177
+msgid "Route gesloten. %s"
+msgstr "Route closed. %s"
+
+#: scripts/core/world_atlas.gd:178
+msgid "Volg de bestaande doorgangen naar deze plek."
+msgstr "Follow the existing passages to this place."
+
+#: scripts/core/world_atlas.gd:179
+msgid "Volgende doorgang: %s."
+msgstr "Next passage: %s."
 
 #: scripts/core/world_memory.gd:23
 msgid "Ivo de mijnwerker"
@@ -12485,23 +12564,23 @@ msgstr "Practice dummy · tap for guard practice"
 msgid "Geen blokkade. De oefenpop doet geen schade; probeer de korte frontale wacht nog eens."
 msgstr "No block. The practice dummy does no damage; try the brief frontal guard again."
 
-#: scripts/entities/coastal_workstation.gd:21
+#: scripts/entities/coastal_workstation.gd:24
 msgid "Werkbank en kustpatronen"
 msgstr "Workbench and coastal patterns"
 
-#: scripts/entities/coastal_workstation.gd:22
+#: scripts/entities/coastal_workstation.gd:25
 msgid "Materiaalkist"
 msgstr "Material chest"
 
-#: scripts/entities/coastal_workstation.gd:23 scripts/ui/coastal_home_ui.gd:63
+#: scripts/entities/coastal_workstation.gd:26 scripts/ui/coastal_home_ui.gd:63
 msgid "Werkplaats inrichten"
 msgstr "Furnish the workshop"
 
-#: scripts/entities/coastal_workstation.gd:24
+#: scripts/entities/coastal_workstation.gd:27
 msgid "Oeverlijn · korte rivierroute"
 msgstr "River line · short crossing"
 
-#: scripts/entities/coastal_workstation.gd:25
+#: scripts/entities/coastal_workstation.gd:28
 msgid "Proefopstelling · kuststijlen"
 msgstr "Practice setup · coastal styles"
 
@@ -12557,19 +12636,19 @@ msgstr "Practice %d / 3: watch the orange lanes."
 msgid "Goed geoefend. Bij het vaandel kun je de volgende oefening starten."
 msgstr "Good practice. Start the next exercise at the banner."
 
-#: scripts/entities/diepte_seal.gd:71
+#: scripts/entities/diepte_seal.gd:76
 msgid "Zegel"
 msgstr "Seal"
 
-#: scripts/entities/diepte_seal.gd:72
+#: scripts/entities/diepte_seal.gd:77
 msgid "Een zware steenplaat met een ster erin. De runen gloeien zachtjes."
 msgstr "A heavy stone slab with a star carved into it. The runes glow softly."
 
-#: scripts/entities/diepte_seal.gd:73
+#: scripts/entities/diepte_seal.gd:78
 msgid "Hij zit muurvast. Misschien gaat hij pas open als de Blauwe Kaart weer heel is."
 msgstr "It's stuck tight. Maybe it will only open once the Blue Map is whole again."
 
-#: scripts/entities/diepte_seal.gd:105
+#: scripts/entities/diepte_seal.gd:110
 msgid "Het zegel is gebroken! Er is een trap naar beneden."
 msgstr "The seal is broken! There's a staircase going down."
 
@@ -12661,7 +12740,7 @@ msgstr "Eastern sluice"
 msgid "open"
 msgstr "open"
 
-#: scripts/entities/living_object.gd:47 scripts/entities/marsh_waterworks.gd:68 scripts/core/appearance_draw.gd:306 scripts/core/appearance_draw.gd:353
+#: scripts/entities/living_object.gd:47 scripts/entities/marsh_waterworks.gd:68 scripts/core/character_layers.gd:54 scripts/data/ext/uiterlijk.gd:153
 msgid "dicht"
 msgstr "closed"
 
@@ -12833,7 +12912,7 @@ msgstr "You need a bow. Tobias sells one."
 msgid "Geen pijlen!"
 msgstr "No arrows!"
 
-#: scripts/entities/player.gd:355 scripts/ui/menu_ui.gd:537
+#: scripts/entities/player.gd:355 scripts/ui/menu_ui.gd:569
 msgid "Je hebt al alle hartjes."
 msgstr "You already have all your hearts."
 
@@ -13035,7 +13114,7 @@ msgid "Tijd om! Je raakte %d van de %d. Praat met Tessa voor een nieuwe poging."
 msgstr "Time's up! You hit %d of %d. Talk to Tessa to try again."
 
 #. het decimaalteken in jouw taal (in het Engels een punt: ".")
-#: scripts/entities/shooting_range.gd:169 scripts/core/garden_feedback.gd:22 scripts/core/homestead.gd:16 scripts/core/homestead.gd:18
+#: scripts/entities/shooting_range.gd:169 scripts/core/forage_placement.gd:23 scripts/core/garden_feedback.gd:22 scripts/core/homestead.gd:16
 msgctxt "decimaalteken"
 msgid ","
 msgstr "."
@@ -13058,11 +13137,11 @@ msgstr "Too late!"
 msgid "Bord"
 msgstr "Sign"
 
-#: scripts/entities/supper_actor.gd:38 scripts/entities/village_actor.gd:32
+#: scripts/entities/supper_actor.gd:40 scripts/entities/village_actor.gd:34
 msgid "Bo de broodbezorger"
 msgstr "Bo the Bread Courier"
 
-#: scripts/entities/supper_actor.gd:38 scripts/entities/village_actor.gd:32
+#: scripts/entities/supper_actor.gd:40 scripts/entities/village_actor.gd:34
 msgid "Nelle de hovenier"
 msgstr "Nelle the Gardener"
 
@@ -13138,35 +13217,35 @@ msgstr "Tide and safe routes"
 msgid "Bestemmingen en reisroutes"
 msgstr "Destinations and travel routes"
 
-#: scripts/entities/village_actor.gd:41
+#: scripts/entities/village_actor.gd:43
 msgid "Hoor je dat gesputter? Er zit riet in het rooster. Hier, leen mijn hark. Het rooster ligt vlak ten zuiden van me."
 msgstr "Hear that spluttering? The grate is full of reeds. Here, borrow my rake. The grate is just south of me."
 
-#: scripts/entities/village_actor.gd:41
+#: scripts/entities/village_actor.gd:43
 msgid "Gebruik de hark bij het rooster, blijf even staan en draai daarna het sluisrad open. Dan krijgen het plein en mijn bloemen weer water."
 msgstr "Use the rake at the grate, stand still for a moment, then open the sluice wheel. That will bring water back to the square and my flowers."
 
-#: scripts/entities/village_actor.gd:43
+#: scripts/entities/village_actor.gd:45
 msgid "Eerst het rooster schoonmaken met mijn hark. Daarna het sluisrad open. Je kunt de markering naast de fontein volgen."
 msgstr "Clear the grate with my rake first, then open the sluice wheel. Follow the marker beside the fountain."
 
-#: scripts/entities/village_actor.gd:45
+#: scripts/entities/village_actor.gd:47
 msgid "Daar is het water weer! Bo hoeft zijn kruiken niet meer naar het meer te dragen. Bedankt — ik kan mijn bloemen weer verzorgen."
 msgstr "The water is back! Bo no longer has to carry his jugs to the lake. Thank you — I can tend my flowers again."
 
-#: scripts/entities/village_actor.gd:47
+#: scripts/entities/village_actor.gd:49
 msgid "Een beetje water en geduld. Meer hebben deze bloemen niet nodig."
 msgstr "A little water and patience. That is all these flowers need."
 
-#: scripts/entities/village_actor.gd:49
+#: scripts/entities/village_actor.gd:51
 msgid "Mila houdt de tafel gedekt. Ik neem voortaan wat extra brood mee voor iedereen die aanschuift."
 msgstr "Mila is keeping the table set. I’ll bring extra bread for anyone who joins us."
 
-#: scripts/entities/village_actor.gd:51
+#: scripts/entities/village_actor.gd:53
 msgid "Mijn brood blijft nu droog en de kruiken vul ik hier. Mooi werk aan de fontein!"
 msgstr "My bread stays dry and I can fill my jugs here. Nice work on the fountain!"
 
-#: scripts/entities/village_actor.gd:51
+#: scripts/entities/village_actor.gd:53
 msgid "Brood voor de herberg, lege kruiken mee terug. Hopelijk krijgt Nelle de fontein snel aan de praat."
 msgstr "Bread for the inn, empty jugs on the way back. I hope Nelle gets the fountain working soon."
 
@@ -13190,11 +13269,11 @@ msgstr "Achievement unlocked!"
 msgid "Al je prestaties zie je met T, het beestenboek met B."
 msgstr "See all your achievements with T, and the bestiary with B."
 
-#: scripts/ui/appearance_page.gd:165
+#: scripts/ui/appearance_page.gd:166
 msgid "Uiterlijk en kleding"
 msgstr "Appearance and clothing"
 
-#: scripts/ui/appearance_page.gd:166
+#: scripts/ui/appearance_page.gd:167
 msgid "Kleding draag je over je uitrusting; verf kies je per stuk."
 msgstr "Clothing is worn over your equipment; you pick a dye per piece."
 
@@ -13852,7 +13931,7 @@ msgstr "Automatically active"
 msgid "Deze plek volgt je bestaande upgrades."
 msgstr "This slot follows your existing upgrades."
 
-#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:659
+#: scripts/ui/equipment_page.gd:240 scripts/ui/menu_ui.gd:689
 msgid "Uitgerust"
 msgstr "Equipped"
 
@@ -13864,7 +13943,7 @@ msgstr "Owned"
 msgid "Niet in bezit"
 msgstr "Not owned"
 
-#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:659
+#: scripts/ui/equipment_page.gd:242 scripts/ui/menu_ui.gd:689
 msgid "%s  Uitrusten"
 msgstr "%s  Equip"
 
@@ -14374,7 +14453,7 @@ msgstr "Press %s to start again"
 
 #. naam van een vijand en (tussen haakjes) zijn aanval, bijvoorbeeld "Kristalgolem (klap)"
 #. wat een vijand laat vallen en hoe vaak: "Slijmgel (vaak)"
-#: scripts/ui/hud.gd:455 scripts/ui/menu_pages.gd:220
+#: scripts/ui/hud.gd:455 scripts/ui/menu_pages.gd:226
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
@@ -14419,257 +14498,273 @@ msgstr "You arrive in Daybreak Village, the little village below the temple wher
 msgid "%s = overslaan"
 msgstr "%s = skip"
 
-#: scripts/ui/menu_pages.gd:73
+#: scripts/ui/menu_pages.gd:79
 msgid "%d / %d behaald"
 msgstr "%d / %d unlocked"
 
-#: scripts/ui/menu_pages.gd:75
+#: scripts/ui/menu_pages.gd:81
 msgid "Die houd je, ook als je een nieuw spel begint."
 msgstr "You keep these, even if you start a new game."
 
-#: scripts/ui/menu_pages.gd:90
+#: scripts/ui/menu_pages.gd:96
 msgid "Een geheime prestatie. Blijf het spel ontdekken!"
 msgstr "A secret achievement. Keep exploring!"
 
-#: scripts/ui/menu_pages.gd:134
+#: scripts/ui/menu_pages.gd:140
 msgid "%d / %d ontdekt"
 msgstr "%d / %d discovered"
 
-#: scripts/ui/menu_pages.gd:169
+#: scripts/ui/menu_pages.gd:175
 msgid "Dit beest ken je nog niet.\nVersla hem één keer, dan komt hij in je boek te staan!"
 msgstr "You haven't met this beast yet.\nDefeat it once and it goes into your book!"
 
-#: scripts/ui/menu_pages.gd:174
+#: scripts/ui/menu_pages.gd:180
 msgid "Baas"
 msgstr "Boss"
 
-#: scripts/ui/menu_pages.gd:176
+#: scripts/ui/menu_pages.gd:182
 msgid "Levens:  %d"
 msgstr "Health:  %d"
 
-#: scripts/ui/menu_pages.gd:177
+#: scripts/ui/menu_pages.gd:183
 msgid "Schade:  %s"
 msgstr "Damage:  %s"
 
-#: scripts/ui/menu_pages.gd:178 scripts/ui/menu_ui.gd:670
+#: scripts/ui/menu_pages.gd:184 scripts/ui/menu_ui.gd:747
 msgid "Verslagen:  %d"
 msgstr "Defeated:  %d"
 
-#: scripts/ui/menu_pages.gd:184
+#: scripts/ui/menu_pages.gd:190
 msgid "Laat vallen"
 msgstr "Drops"
 
-#: scripts/ui/menu_pages.gd:187
+#: scripts/ui/menu_pages.gd:193
 msgid "Niets."
 msgstr "Nothing."
 
-#: scripts/ui/menu_pages.gd:204
+#: scripts/ui/menu_pages.gd:210
 msgid "%d hartje"
 msgid_plural "%d hartjes"
 msgstr[0] "%d heart"
 msgstr[1] "%d hearts"
 
 #. schade van een vijand, met die van zijn klap: "1 hartje (klap: 2)"
-#: scripts/ui/menu_pages.gd:207
+#: scripts/ui/menu_pages.gd:213
 msgid "%s (klap: %d)"
 msgstr "%s (slam: %d)"
 
-#: scripts/ui/menu_pages.gd:214
+#: scripts/ui/menu_pages.gd:220
 msgid "Hartje"
 msgstr "Heart"
 
 #. hoe vaak een vijand iets laat vallen (altijd, vaak, soms, zelden)
-#: scripts/ui/menu_pages.gd:229 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:227
+#: scripts/ui/menu_pages.gd:235 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:233
 msgid "altijd"
 msgstr "always"
 
-#: scripts/ui/menu_pages.gd:231 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:230
+#: scripts/ui/menu_pages.gd:237 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:236
 msgid "vaak"
 msgstr "often"
 
-#: scripts/ui/menu_pages.gd:233 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:232
+#: scripts/ui/menu_pages.gd:239 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:238
 msgid "soms"
 msgstr "sometimes"
 
-#: scripts/ui/menu_pages.gd:235 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:234
+#: scripts/ui/menu_pages.gd:241 scripts/ui/menu_pages.gd:28 scripts/ui/menu_pages.gd:240
 msgid "zelden"
 msgstr "rarely"
 
-#: scripts/ui/menu_pages.gd:253
+#: scripts/ui/menu_pages.gd:259
 msgid "Snel reizen"
 msgstr "Fast Travel"
 
-#: scripts/ui/menu_pages.gd:255
+#: scripts/ui/menu_pages.gd:261
 msgid "Je hebt nog geen blauw altaar ontdekt. Gebruik een altaar, dan kun je er later snel naartoe reizen."
 msgstr "You have not discovered a blue altar yet. Use an altar to unlock fast travel to it."
 
 #. in de lijst voor snel reizen achter het altaar in het gebied waar je nu bent
-#: scripts/ui/menu_pages.gd:273
+#: scripts/ui/menu_pages.gd:279
 msgid "hier"
 msgstr "here"
 
-#: scripts/ui/menu_pages.gd:277
+#: scripts/ui/menu_pages.gd:283
 msgid "Altaren %d–%d / %d · ↑ ↓ bladeren"
 msgstr "Altars %d–%d / %d · ↑ ↓ browse"
 
-#: scripts/ui/menu_pages.gd:284
+#: scripts/ui/menu_pages.gd:290
 msgid "Reizen naar %s?"
 msgstr "Travel to %s?"
 
-#: scripts/ui/menu_pages.gd:287
+#: scripts/ui/menu_pages.gd:293
 msgid "%s  Reizen"
 msgstr "%s  Travel"
 
-#: scripts/ui/menu_pages.gd:288
+#: scripts/ui/menu_pages.gd:294
 msgid "%s  Terug"
 msgstr "%s  Back"
 
-#: scripts/ui/menu_ui.gd:183
+#: scripts/ui/menu_ui.gd:195
 msgid "Voorraad"
 msgstr "Stock"
 
-#: scripts/ui/menu_ui.gd:442
+#: scripts/ui/menu_ui.gd:474
 msgid "Voorwerpen"
 msgstr "Items"
 
-#: scripts/ui/menu_ui.gd:442
+#: scripts/ui/menu_ui.gd:474
 msgid "Voortgang"
 msgstr "Progress"
 
-#: scripts/ui/menu_ui.gd:442
+#: scripts/ui/menu_ui.gd:474
 msgid "Uitrusting"
 msgstr "Equipment"
 
-#: scripts/ui/menu_ui.gd:442
+#: scripts/ui/menu_ui.gd:474
 msgid "Uiterlijk"
 msgstr "Appearance"
 
-#: scripts/ui/menu_ui.gd:587
+#: scripts/ui/menu_ui.gd:619
 msgid "%s / %s tabblad  ·  "
 msgstr "%s / %s tab  ·  "
 
-#: scripts/ui/menu_ui.gd:588
+#: scripts/ui/menu_ui.gd:620
 msgid "%s sluiten"
 msgstr "%s close"
 
-#: scripts/ui/menu_ui.gd:590
+#: scripts/ui/menu_ui.gd:622
 msgid "↑ ↓ ← → kiezen  ·  %s gebruiken  ·  "
 msgstr "↑ ↓ ← → select  ·  %s use  ·  "
 
-#: scripts/ui/menu_ui.gd:592
+#: scripts/ui/menu_ui.gd:624
 msgid "↑ ↓ kiezen  ·  ← → vakken  ·  %s bevestigen  ·  "
 msgstr "↑ ↓ select  ·  ← → panels  ·  %s confirm  ·  "
 
-#: scripts/ui/menu_ui.gd:594
+#: scripts/ui/menu_ui.gd:626
 msgid "↑ ↓ rij  ·  ← → aanpassen  ·  %s verf  ·  "
 msgstr "↑ ↓ row  ·  ← → adjust  ·  %s dye  ·  "
 
-#: scripts/ui/menu_ui.gd:596
+#: scripts/ui/menu_ui.gd:628
 msgid "↑ ↓ kiezen  ·  ← → uitleg scrollen  ·  "
 msgstr "↑ ↓ select  ·  ← → scroll details  ·  "
 
-#: scripts/ui/menu_ui.gd:598
+#: scripts/ui/menu_ui.gd:631
+msgid "↑ ↓ plek  ·  ← kaart  ·  %s terug  ·  "
+msgstr "↑ ↓ place  ·  ← map  ·  %s back  ·  "
+
+#: scripts/ui/menu_ui.gd:632
+msgid "↑ ↓ ← → streek  ·  %s plekken  ·  %s terug  ·  "
+msgstr "↑ ↓ ← → region  ·  %s places  ·  %s back  ·  "
+
+#: scripts/ui/menu_ui.gd:633
 msgid "↑ ↓ altaar  ·  %s reizen  ·  "
 msgstr "↑ ↓ altar  ·  %s travel  ·  "
 
-#: scripts/ui/menu_ui.gd:600
+#: scripts/ui/menu_ui.gd:635
 msgid "↑ ↓ opdracht  ·  → uitleg  ·  ← lijst  ·  %s volgen  ·  "
 msgstr "↑ ↓ quest  ·  → details  ·  ← list  ·  %s track  ·  "
 
-#: scripts/ui/menu_ui.gd:601
+#: scripts/ui/menu_ui.gd:636
 msgid "↑ ↓ bladeren  ·  "
 msgstr "↑ ↓ browse  ·  "
 
-#: scripts/ui/menu_ui.gd:615
+#: scripts/ui/menu_ui.gd:650
 msgid "Je spullen"
 msgstr "Your stuff"
 
-#: scripts/ui/menu_ui.gd:617
+#: scripts/ui/menu_ui.gd:652
 msgid "Je hebt nog niets bij je."
 msgstr "You're not carrying anything yet."
 
-#: scripts/ui/menu_ui.gd:652
-msgid "Vindplaats: %s"
-msgstr "Source: %s"
-
-#: scripts/ui/menu_ui.gd:657
-msgid "Uitgerust · %s"
-msgstr "Equipped · %s"
-
-#: scripts/ui/menu_ui.gd:657
-msgid "Bonus: %s"
-msgstr "Bonus: %s"
-
-#: scripts/ui/menu_ui.gd:662
+#: scripts/ui/menu_ui.gd:692
 msgid "%s  Gebruiken"
 msgstr "%s  Use"
 
-#: scripts/ui/menu_ui.gd:665
-msgid "Zwaard:  %s (schade %d)"
-msgstr "Sword:  %s (damage %d)"
-
-#: scripts/ui/menu_ui.gd:666
-msgid "Levens:  %d / %d"
-msgstr "Health:  %d / %d"
-
-#: scripts/ui/menu_ui.gd:667
-msgid "Snelheid:  snel (laarzen)"
-msgstr "Speed:  fast (boots)"
-
-#: scripts/ui/menu_ui.gd:667
-msgid "Snelheid:  normaal"
-msgstr "Speed:  normal"
-
-#: scripts/ui/menu_ui.gd:668
-msgid "Munten:  %d"
-msgstr "Coins:  %d"
-
-#: scripts/ui/menu_ui.gd:669
-msgid "Kristallen:  %d / 3"
-msgstr "Crystals:  %d / 3"
-
-#: scripts/ui/menu_ui.gd:671
-msgid "Speeltijd:  %s"
-msgstr "Play time:  %s"
-
 #. Nieuw spel+ is de naam van de knop op het titelscherm; ronde 2 = de tweede keer opnieuw
-#: scripts/ui/menu_ui.gd:676 scripts/ui/pause_menu.gd:109
+#: scripts/ui/menu_ui.gd:695 scripts/ui/pause_menu.gd:109
 msgid "Nieuw spel+  ·  ronde %d"
 msgstr "New Game+  ·  round %d"
 
-#: scripts/ui/menu_ui.gd:702
+#: scripts/ui/menu_ui.gd:725
+msgid "Vindplaats: %s"
+msgstr "Source: %s"
+
+#: scripts/ui/menu_ui.gd:730
+msgid "Uitgerust · %s"
+msgstr "Equipped · %s"
+
+#: scripts/ui/menu_ui.gd:730
+msgid "Bonus: %s"
+msgstr "Bonus: %s"
+
+#: scripts/ui/menu_ui.gd:742
+msgid "Zwaard:  %s (schade %d)"
+msgstr "Sword:  %s (damage %d)"
+
+#: scripts/ui/menu_ui.gd:743
+msgid "Levens:  %d / %d"
+msgstr "Health:  %d / %d"
+
+#: scripts/ui/menu_ui.gd:744
+msgid "Snelheid:  snel (laarzen)"
+msgstr "Speed:  fast (boots)"
+
+#: scripts/ui/menu_ui.gd:744
+msgid "Snelheid:  normaal"
+msgstr "Speed:  normal"
+
+#: scripts/ui/menu_ui.gd:745
+msgid "Munten:  %d"
+msgstr "Coins:  %d"
+
+#: scripts/ui/menu_ui.gd:746
+msgid "Kristallen:  %d / 3"
+msgstr "Crystals:  %d / 3"
+
+#: scripts/ui/menu_ui.gd:748
+msgid "Speeltijd:  %s"
+msgstr "Play time:  %s"
+
+#: scripts/ui/menu_ui.gd:775
 msgid "Je hebt nog geen opdrachten. Praat met de mensen in het dorp!"
 msgstr "You don't have any quests yet. Talk to the people in the village!"
 
-#: scripts/ui/menu_ui.gd:717
+#: scripts/ui/menu_ui.gd:790
 msgid "Afgerond"
 msgstr "Complete"
 
-#: scripts/ui/menu_ui.gd:717
+#: scripts/ui/menu_ui.gd:790
 msgid "Stap %d / %d"
 msgstr "Step %d / %d"
 
-#: scripts/ui/menu_ui.gd:718
+#: scripts/ui/menu_ui.gd:791
 msgid "Hoofdverhaal"
 msgstr "Main story"
 
-#: scripts/ui/menu_ui.gd:729
+#: scripts/ui/menu_ui.gd:802
 msgid "Stop met volgen"
 msgstr "Stop tracking"
 
-#: scripts/ui/menu_ui.gd:729
+#: scripts/ui/menu_ui.gd:802
 msgid "Volg deze opdracht"
 msgstr "Track this quest"
 
-#: scripts/ui/menu_ui.gd:729
+#: scripts/ui/menu_ui.gd:802
 msgid "Deze opdracht is afgerond"
 msgstr "This quest is complete"
 
-#: scripts/ui/menu_ui.gd:792
+#: scripts/ui/menu_ui.gd:821
+msgid "Lokale kaart"
+msgstr "Local map"
+
+#: scripts/ui/menu_ui.gd:821 scripts/ui/menu_ui.gd:823
+msgid "Wereldkaart"
+msgstr "World map"
+
+#: scripts/ui/menu_ui.gd:874
 msgid "● jij   ● mensen   ■ doorgang   ● altaar (opslaan)   ■ kist"
 msgstr "● you   ● people   ■ exit   ● altar (save)   ■ chest"
 
-#: scripts/ui/menu_ui.gd:797
+#: scripts/ui/menu_ui.gd:879
 msgid "Gouden ring: volgende doorgang voor je gevolgde opdracht."
 msgstr "Gold ring: next passage for your tracked quest."
 
@@ -15362,6 +15457,50 @@ msgstr "Finish sample preparation"
 #: scripts/ui/work_together.gd:153
 msgid "Bottel één drankje"
 msgstr "Bottle one potion"
+
+#: scripts/ui/world_atlas_page.gd:179 scripts/ui/world_atlas_page.gd:286
+msgid "%d / %d plekken bezocht"
+msgstr "%d / %d places visited"
+
+#: scripts/ui/world_atlas_page.gd:183 scripts/data/forest_food_species.gd:127 scripts/data/tiles.gd:54 scripts/data/trail_life.gd:82
+msgid "N"
+msgstr "N"
+
+#: scripts/ui/world_atlas_page.gd:308
+msgid "Hier binnen"
+msgstr "Inside here"
+
+#: scripts/ui/world_atlas_page.gd:308 scripts/ui/world_atlas_page.gd:315
+msgid "Huidige plek"
+msgstr "Current location"
+
+#: scripts/ui/world_atlas_page.gd:308 scripts/ui/world_atlas_page.gd:317
+msgid "Bezocht"
+msgstr "Visited"
+
+#: scripts/ui/world_atlas_page.gd:308
+msgid "Nog onbekend"
+msgstr "Still unknown"
+
+#: scripts/ui/world_atlas_page.gd:311
+msgid "Binnen: %s"
+msgstr "Inside: %s"
+
+#: scripts/ui/world_atlas_page.gd:311
+msgid "Je bent in %s"
+msgstr "You are in %s"
+
+#: scripts/ui/world_atlas_page.gd:319
+msgid "Onbekend"
+msgstr "Unknown"
+
+#: scripts/ui/world_atlas_page.gd:321
+msgid "Pad"
+msgstr "Path"
+
+#: scripts/ui/world_atlas_page.gd:326
+msgid "Gesloten route"
+msgstr "Closed route"
 
 #: scripts/ui/yard_ui.gd:37
 msgid "Je erf · ruimte om te groeien"

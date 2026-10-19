@@ -2,6 +2,7 @@ extends StaticBody2D
 ## Teruggekeerde bewoners delen de botsing en y-sortering van gewone NPC's.
 const Art := preload("res://scripts/core/art.gd")
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
+const CharacterDraw := preload("res://scripts/core/character_draw.gd")
 var sheet := "npc_fenna"
 var time := 0.0
 
@@ -21,4 +22,4 @@ func _process(delta: float) -> void:
 
 func _draw() -> void:
 	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(10, 4), Color(0, 0, 0, 0.25))
-	DrawUtil.sprite(self, Art.tex(sheet), int(time * 1.6) % 2, 0)
+	CharacterDraw.actor(self,sheet,time,Vector2.ZERO)

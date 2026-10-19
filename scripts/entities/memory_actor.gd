@@ -2,6 +2,8 @@ extends CharacterBody2D
 const Memory := preload("res://scripts/core/world_memory.gd")
 const Art := preload("res://scripts/core/art.gd")
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
+const CharacterDraw := preload("res://scripts/core/character_draw.gd")
+var visual_direction := 0
 var world: Node2D
 var director: Node2D
 var role := ""
@@ -65,9 +67,10 @@ func interact() -> void:
 	Memory.meet(role)
 	GameState.say(Memory.name_for(role),speech)
 func _draw() -> void:
+	visual_direction = CharacterDraw.direction(velocity,visual_direction)
 	DrawUtil.ellipse(self,Vector2(0,14),Vector2(10,4),Color(0,0,0,0.25))
-	var frame := int(time*(5 if velocity.length()>1 else 1.5))%2
-	DrawUtil.sprite(self,Art.tex("wm_people"),int(Memory.PLACES[role].frame)*2+frame,0)
+	var frame := int(time*5)%2 if velocity.length()>1 else 0
+	DrawUtil.sprite(self,Art.tex("wm_people"),int(Memory.PLACES[role].frame)*2+frame,visual_direction if velocity.length()>1 else 0)
 	if velocity.length()<1:
 		var n := int(Memory.PLACES[role].frame)
 		draw_set_transform(Vector2(13,5+sin(time*3)*(0.3 if rest else 2)),sin(time*3)*0.25 if not rest and role in ["miner","gardener"] else 0)

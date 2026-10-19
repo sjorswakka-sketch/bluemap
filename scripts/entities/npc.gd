@@ -2,10 +2,12 @@ extends CharacterBody2D
 ## Een personage waar je mee kunt praten. Welk gesprek je krijgt staat in scripts/data/npcs.gd.
 
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
+const CharacterDraw := preload("res://scripts/core/character_draw.gd")
 const Art := preload("res://scripts/core/art.gd")
 const Util := preload("res://scripts/core/util.gd")
 const Npcs := preload("res://scripts/data/npcs.gd")
 
+var visual_direction := 0
 var npc_id := ""
 var data: Dictionary = {}
 var world: Node
@@ -75,13 +77,14 @@ func interact() -> void:
 
 
 func _draw() -> void:
+	visual_direction = CharacterDraw.direction(velocity,visual_direction)
 	var scale: float = data.get("scale", 2.0)
 	var ghost: bool = data.get("ghost", false)
 	var drop := 14.0 - 7.0 * scale # kleine personages staan op dezelfde grond
 	var float_y := sin(t * 2.0) * 3.0 - 4.0 if ghost else 0.0
 	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(5.0 * scale, 2.0 * scale), Color(0, 0, 0, 0.12 if ghost else 0.3))
 	var tint := Color(1, 1, 1, 0.78 + sin(t * 3.0) * 0.1) if ghost else Color.WHITE
-	DrawUtil.sprite(self, Art.tex(data["sheet"]), int(t * (4.8 if velocity.length()>1 else 1.6)) % 2, 0, Vector2(0, drop + float_y), Vector2i(16, 16), scale, tint)
+	CharacterDraw.actor(self,data["sheet"],t,velocity,visual_direction if velocity.length()>1 else 0,Vector2(0,drop+float_y),scale,tint)
 	if npc_id == "greta" and velocity.length()<1 and not GameState.dialogue_open and not GameState.ui_owners.has("work_together") and GameState.day_time>0.12 and GameState.day_time<0.78:
 		var lift := -absf(sin(t*2.4))*12
 		draw_line(Vector2(10,4),Vector2(20,lift),Color("bc955e"),3)

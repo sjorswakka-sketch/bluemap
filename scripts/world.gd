@@ -275,6 +275,7 @@ func load_map(map_id: String, spawn: String, pos_override := Vector2.INF) -> voi
 	player.camera.reset_smoothing()
 
 	Sound.play_music(map_data.get("music", "forest"))
+	GameState.record_map_visit(map_id)
 	var map_name: String = map_data["name"]
 	hud.show_banner(func() -> String: return tr(map_name))
 	hud.refresh_opening()

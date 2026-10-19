@@ -44,6 +44,7 @@ var flags: Dictionary = {}
 var quests: Dictionary = {}
 var weapon: String = "wood"
 var map_id: String = "village"
+var visited_maps: Dictionary = {} # only actual visits or positively evidenced legacy visits
 var spawn_name: String = "start"
 var load_pos: Vector2 = Vector2.ZERO
 var use_load_pos: bool = false
@@ -133,6 +134,7 @@ func new_game() -> void:
 	quests = {}
 	weapon = "wood"
 	map_id = "village"
+	visited_maps = {}
 	spawn_name = "start"
 	use_load_pos = false
 	play_time = 0.0
@@ -689,6 +691,7 @@ func save_game(pos: Vector2) -> bool:
 	var data := {
 		"version": SAVE_VERSION, "map": map_id, "pos": [pos.x, pos.y], "hp": hp, "coins": coins,
 		"inventory": inventory, "flags": flags, "quests": quests, "weapon": weapon,
+		"visited_maps": visited_maps,
 		"play_time": play_time, "kills": kills, "meer": meer,
 		"day_time": day_time, "day_count": day_count, "kills_by": kills_by, "rolls": rolls,
 		"potions_drunk": potions_drunk, "deaths": deaths, "boss_deaths": boss_deaths,
@@ -781,6 +784,7 @@ func load_game() -> bool:
 	for quest_id: String in saved_quests:
 		quests[quest_id] = {"state": saved_quests[quest_id]["state"], "step": int(saved_quests[quest_id]["step"])}
 	_fill_in_old_save(data)
+	visited_maps = load("res://scripts/core/world_atlas.gd").restore_visits(data)
 	save_is_ours = true
 	hp = clampi(int(data.get("hp", BASE_HP)), 1, max_hp())
 	hp_changed.emit()
@@ -790,6 +794,11 @@ func load_game() -> bool:
 	equipment_changed.emit()
 	appearance_changed.emit()
 	return true
+
+## No unlock, reward, altar discovery or autosave occurs merely by recording a visit.
+func record_map_visit(id: String) -> void:
+	if visited_maps.has(id):return
+	if load("res://scripts/core/world_atlas.gd").valid_map(id):visited_maps[id]=true
 
 
 # --- Nieuw spel+ -------------------------------------------------------------------------------------------------

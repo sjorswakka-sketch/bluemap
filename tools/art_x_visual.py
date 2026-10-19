@@ -353,6 +353,8 @@ def sheets():
   path=ROOT/'assets'/(name+'.png')
   if path.exists():out["pixel_"+name]=enhance(Image.open(path).convert('RGBA'))
  for name,hue in [("slime","green"),("slime_blue","blue"),("slime_red","red")]:out["pixel_"+name]=slime_sheet(hue)
+ from art_characters_native import sheets as native_characters
+ out.update(native_characters())
  return out
 if __name__=='__main__':
  for name,im in sheets().items():

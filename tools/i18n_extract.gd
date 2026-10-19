@@ -131,6 +131,8 @@ class Collector:
 
 ## 1. Alle tekst uit de data (Nederlands), met uitleg voor de vertalers.
 static func collect_data(c: Collector) -> void:
+	var atlas: Script=load("res://scripts/core/world_atlas.gd")
+	for id: String in atlas.REGIONS:c.add(str(atlas.REGIONS[id].label),"Korte streeknaam in de wereldatlas: "+id)
 	var water: Script=load("res://scripts/core/water_features.gd")
 	for id: String in water.TYPES:
 		for field in ["name","detail"]:c.add(water.TYPES[id][field],"Watertype "+id+": "+field)

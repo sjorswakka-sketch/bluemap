@@ -1,8 +1,10 @@
 extends CharacterBody2D
 const Art := preload("res://scripts/core/art.gd")
 const DrawUtil := preload("res://scripts/core/draw_util.gd")
+const CharacterDraw := preload("res://scripts/core/character_draw.gd")
 const Npcs := preload("res://scripts/data/npcs.gd")
 const Supper := preload("res://scripts/core/lake_supper.gd")
+var visual_direction := 0
 var world: Node2D
 var director: Node2D
 var npc_id := "meer_joris"
@@ -96,10 +98,10 @@ func interact() -> void:
 			return
 
 func _draw() -> void:
+	visual_direction = CharacterDraw.direction(velocity,visual_direction)
 	DrawUtil.ellipse(self,Vector2(0,14),Vector2(10,4),Color(0,0,0,0.25))
 	var sheet: String="npc_meer_joris" if role=="joris" else ("op_courier" if role=="bo" else "op_gardener")
-	var frame:=int(time*(5 if velocity.length()>1 else 1.5))%2
-	DrawUtil.sprite(self,Art.tex(sheet),frame,0)
+	CharacterDraw.actor(self,sheet,time,velocity,visual_direction if velocity.length()>1 else 0)
 	if GameState.map_id=="lake" and path.is_empty() and not evening:
 		if task_index==0:
 			draw_line(Vector2(9,2),Vector2(24,-22),Color("c6a172"),2)

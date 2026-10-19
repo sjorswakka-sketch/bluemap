@@ -449,30 +449,29 @@ func _direction_row() -> int:
 		return 0 if body_direction.y > 0.0 else 1
 	return 2 if body_direction.x > 0.0 else 3
 
+## The same transform carries skin, hair, clothing and held/stowed gear.
+## This is visual only; collision, aiming and action timing retain their original coordinates.
+func body_visual_transform() -> Transform2D:
+	if roll_timer>0:
+		var progress:=1.0-roll_timer/ROLL_TIME
+		var angle:=progress*TAU*signf(roll_dir.x if roll_dir.x!=0 else 1.0)
+		return Transform2D(angle,Vector2(0,4)+Vector2(0,-4).rotated(angle))
+	var bob:=sin(time*2.4)*.55 if not moving else sin(walk_time*18)*(1.6 if sprinting else .6)
+	var lean:=attack_direction*sin((1.0-attack_timer/ATTACK_TIME)*PI)*3.0 if attack_timer>0 else Vector2.ZERO
+	if work_active:bob=sin(work_elapsed*TAU*3)*1.5
+	return Transform2D(0,Vector2(0,bob)+lean)
+
 func _draw() -> void:
-	if invuln > 0.0 and int(invuln * 12.0) % 2 == 0:
-		return
-	DrawUtil.ellipse(self, Vector2(0, 14), Vector2(9, 3.5), Color(0, 0, 0, 0.3))
-	var column := 1 + int(walk_time * 9.0) % 2 if moving else 0
-	var tint := Color(1, 1, 1, 0.8) if roll_timer > ROLL_TIME - ROLL_SAFE_TIME else Color.WHITE
-	if roll_timer > 0.0:
-		var progress := 1.0 - roll_timer / ROLL_TIME
-		draw_set_transform(Vector2(0, 4), progress * TAU * signf(roll_dir.x if roll_dir.x != 0.0 else 1.0), Vector2.ONE)
-		var roll_origin := Vector2(0, -4) - Vector2(16, 16)
-		AppearanceDraw.behind(self, roll_origin, 2.0, _direction_row(), GameState.clothing)
-		DrawUtil.sprite(self, Art.tex("player"), 1, _direction_row(), Vector2(0, -4), Vector2i(16, 16), 2.0, tint)
-		AppearanceDraw.front(self, roll_origin, 2.0, _direction_row(), 1, GameState.appearance, GameState.clothing)
-		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
-	else:
-		var bob := sin(time * 2.4) * 0.55 if not moving else sin(walk_time * 18.0) * (1.6 if sprinting else 0.6)
-		var lean := attack_direction * sin((1.0 - attack_timer / ATTACK_TIME) * PI) * 3.0 if attack_timer > 0.0 else Vector2.ZERO
-		if work_active:
-			bob = sin(work_elapsed * TAU * 3.0) * 1.5
-		var origin := Vector2(0, bob) + lean - Vector2(16, 16)
-		AppearanceDraw.behind(self, origin, 2.0, _direction_row(), GameState.clothing)
-		DrawUtil.sprite(self, Art.tex("player"), column, _direction_row(), Vector2(0, bob) + lean, Vector2i(16, 16), 2.0, tint)
-		AppearanceDraw.front(self, origin, 2.0, _direction_row(), column, GameState.appearance, GameState.clothing)
+	if invuln>0 and int(invuln*12)%2==0:return
+	DrawUtil.ellipse(self,Vector2(0,14),Vector2(9,3.5),Color(0,0,0,.3))
+	var column:=1 if roll_timer>0 else (1+int(walk_time*9)%2 if moving else 0)
+	var tint:=Color(1,1,1,.8) if roll_timer>ROLL_TIME-ROLL_SAFE_TIME else Color.WHITE
+	draw_set_transform_matrix(body_visual_transform())
+	AppearanceDraw.behind(self,Vector2(-16,-16),2.0,_direction_row(),GameState.clothing)
+	DrawUtil.sprite(self,Art.tex("player"),column,_direction_row(),Vector2.ZERO,Vector2i(16,16),2.0,tint)
+	AppearanceDraw.front(self,Vector2(-16,-16),2.0,_direction_row(),column,GameState.appearance,GameState.clothing)
 	_draw_equipped_gear()
+	draw_set_transform_matrix(Transform2D.IDENTITY)
 	combat.draw(self)
 	if sprinting:
 		for i in 3:

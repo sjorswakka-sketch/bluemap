@@ -8,6 +8,7 @@ const AppearanceDraw := preload("res://scripts/core/appearance_draw.gd")
 const Data := preload("res://scripts/data/ext/uiterlijk.gd")
 const Items := preload("res://scripts/data/items.gd")
 const Art := preload("res://scripts/core/art.gd")
+const DrawUtil := preload("res://scripts/core/draw_util.gd")
 const GOLD := Color(1.0, 0.88, 0.4)
 const BLUE := Color(0.65, 0.85, 1.0)
 const ROWS := 10 # geslacht, haar, haarkleur, ogen, oogkleur + vijf kledingvakken
@@ -183,9 +184,8 @@ func _draw_preview() -> void:
 		var center := panel.position + Vector2(52 + i * 94, 130)
 		var scale := 5.0
 		var origin := center - Vector2(16, 16) * scale / 2.0 + Vector2(0, sin(time * 2.4) * 1.5)
-		var source := Rect2(Vector2(0, row * 16), Vector2(16, 16))
 		AppearanceDraw.behind(self, origin, scale, row, clothing)
-		draw_texture_rect_region(Art.tex("player"), Rect2(origin, Vector2(16, 16) * scale), source)
+		DrawUtil.sprite(self,Art.tex("player"),0,row,origin+Vector2(8,8)*scale,Vector2i(16,16),scale)
 		AppearanceDraw.front(self, origin, scale, row, 0, appearance, clothing)
 	# haarkleur-staafje als kleine legenda
 	var hair_color: Color = Data.HAIR_COLORS[clampi(int(appearance.get("hair_color", 2)), 0, Data.HAIR_COLORS.size() - 1)]["color"]
