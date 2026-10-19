@@ -4,3 +4,21 @@
 build/
 .testdata/
 __pycache__/
+
+# Unity migration: sources/settings only, never caches, local identity or builds.
+unity/[Ll]ibrary/
+unity/[Tt]emp/
+unity/[Oo]bj/
+unity/[Ll]ogs/
+unity/[Uu]ser[Ss]ettings/
+unity/[Bb]uild/
+unity/[Bb]uilds/
+unity/.vs/
+unity/*.csproj
+unity/*.sln
+unity/*.slnx
+unity/*.user
+unity/*.pidb
+unity/*.pdb
+unity/*.opendb
+unity/*.VC.db

@@ -1,0 +1,13 @@
+{
+    "target": "StandaloneWindows64",
+    "editorVersion": "6000.3.26f1",
+    "editorRevision": "de8167e7440c",
+    "buildResult": "Succeeded",
+    "totalErrors": 0,
+    "totalWarnings": 0,
+    "totalBytes": 89421637,
+    "durationSeconds": 11.3928675,
+    "scriptingBackend": "Mono",
+    "renderPipeline": "Built-in",
+    "scope": "Isolated technical probe, not the ported game"
+}

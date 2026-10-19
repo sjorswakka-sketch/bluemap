@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "phase": 2,
+  "editor": {
+    "line": "Unity 6.3 LTS",
+    "version": "6000.3.26f1",
+    "revision": "de8167e7440c",
+    "productVersion": "6000.3.26f1_de8167e7440c",
+    "pinnedProjectFile": "unity/ProjectSettings/ProjectVersion.txt",
+    "officialRelease": "https://unity.com/releases/editor/whats-new/6000.3.26f1"
+  },
+  "target": {
+    "name": "StandaloneWindows64",
+    "scriptingBackend": "Mono",
+    "renderPipeline": "Built-in",
+    "graphicsApi": "Direct3D11",
+    "tilePixels": 32,
+    "window": [
+      1152,
+      648
+    ]
+  },
+  "license": {
+    "method": "Existing activated local Editor; no activation, return, purchase or license transfer performed",
+    "evidence": "Editor createProject and real Windows export succeeded",
+    "licenseContentsRead": false,
+    "credentialsPublished": false
+  },
+  "buildRoute": {
+    "verified": "Local scripted build using tools/build_unity_probe.py on the already activated Windows host",
+    "githubHostedUnityRunnerProven": false,
+    "remoteLicenseConfigured": false,
+    "ciFollowUpPhase": 3
+  },
+  "scope": {
+    "technicalProbeOnly": true,
+    "godotGameChanged": false,
+    "godotSaveAccessed": false,
+    "newGameContentPorted": false,
+    "fullWindowUiVisuallyVerified": false,
+    "gpuCameraRenderingVerified": true
+  },
+  "sourceModules": "Only eight version-pinned built-in modules; no external package dependencies",
+  "limitations": [
+    "Image proof uses real GPU camera RenderTexture output; hidden-window overlay is excluded",
+    "No claim of controller/gameplay/save-import parity yet",
+    "No claim of binary-identical builds or hosted CI license availability"
+  ]
+}

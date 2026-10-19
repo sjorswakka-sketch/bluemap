@@ -1,6 +1,8 @@
-# Unity-migratie — fase 1 voltooid
+# Unity-migratie — fase 2 voltooid
 
-Het volgende **go** start fase 2: Unity, licentie en de bouwroute daadwerkelijk controleren; er is nog geen Unity-game gebouwd.
+Het volgende **go** start fase 3: het verdere migratiespoor, passende controles en herkenbare downloads inrichten; de volledige game is nog niet overgezet.
+
+[Fase 2: bewezen lokale bouwomgeving](phase-02/README.md) — Unity 6.3 LTS 6000.3.26f1, Windows x64 / Mono, 14 geslaagde runtime-/beeldcontroles en een schone herbouw zonder cache of bronwijzigingen. De [kleine Windows-proef](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase2-probe) staat naast het blijvende Godot-herstelpunt.
 
 - [Plan met 28 fases](PLAN.md) en [voortgang](PROGRESS.json).
 - [Permanent Godot-herstelpunt met speelbare Windows-download](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) en [herstel-/herbouwinstructies](RECOVERY.md).

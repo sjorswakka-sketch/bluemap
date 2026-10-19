@@ -1,0 +1,31 @@
+{
+  "tag": "unity-phase2-probe",
+  "url": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase2-probe",
+  "files": [
+    {
+      "name": "BlueMapUnityProbe-Windows-x64.zip",
+      "bytes": 32912070,
+      "sha256": "ff5d5158491c42b42ed25b952384f77673c407759428965fc350c364a3e2160a"
+    },
+    {
+      "name": "build-report.json",
+      "bytes": 382,
+      "sha256": "8f8adcb03b71ef462d56bcb02627d42163aac6a7280ba1d9b7ccf92c167ab0ea"
+    },
+    {
+      "name": "camera-render.png",
+      "bytes": 72029,
+      "sha256": "e6848f8934ae792eb18f8d110e49024a7a65312bed3ff825f0eb08853a878f8a"
+    },
+    {
+      "name": "phase2-checks.json",
+      "bytes": 585,
+      "sha256": "8a21eb313bf20a03befd728df00cbc084576c36b5d012e97f07496bec4b4c740"
+    },
+    {
+      "name": "receipt.json",
+      "bytes": 2012,
+      "sha256": "9d08029114c81d6699359bb107ed0e5c5273d09655698310e401407f0b9a9111"
+    }
+  ]
+}

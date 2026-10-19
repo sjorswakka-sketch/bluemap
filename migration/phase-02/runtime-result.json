@@ -1,0 +1,70 @@
+{
+    "success": true,
+    "editorVersion": "6000.3.26f1",
+    "graphicsDeviceType": "Direct3D11",
+    "frames": 147,
+    "width": 1152,
+    "height": 648,
+    "companyName": "BlueMapMigrationTests",
+    "productName": "BlueMapUnityProbe",
+    "captureMode": "Camera.Render to GPU RenderTexture; window overlay excluded",
+    "gameSaveAccessed": false,
+    "checks": [
+        {
+            "name": "pinned_editor_version",
+            "passed": true
+        },
+        {
+            "name": "separate_test_identity",
+            "passed": true
+        },
+        {
+            "name": "release_player",
+            "passed": true
+        },
+        {
+            "name": "graphics_device_active",
+            "passed": true
+        },
+        {
+            "name": "orthographic_camera",
+            "passed": true
+        },
+        {
+            "name": "native_32px_tiles",
+            "passed": true
+        },
+        {
+            "name": "physics2d_query",
+            "passed": true
+        },
+        {
+            "name": "player_loop_60_frames",
+            "passed": true
+        },
+        {
+            "name": "startup_splash_finished",
+            "passed": true
+        },
+        {
+            "name": "window_1152x648",
+            "passed": true
+        },
+        {
+            "name": "rendered_image_available",
+            "passed": true
+        },
+        {
+            "name": "rendered_scene_palette",
+            "passed": true
+        },
+        {
+            "name": "rendered_grass_water_actor",
+            "passed": true
+        },
+        {
+            "name": "no_runtime_exceptions",
+            "passed": true
+        }
+    ]
+}

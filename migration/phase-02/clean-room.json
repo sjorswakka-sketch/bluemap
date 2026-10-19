@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "phase": 2,
+  "success": true,
+  "fresh_project_without_Library": true,
+  "editorVersion": "6000.3.26f1",
+  "editorRevision": "de8167e7440c",
+  "inputFileCount": 34,
+  "inputCodeScenesMetadataPackagesUnchanged": true,
+  "projectSettingsChanged": false,
+  "runtimeChecks": 14,
+  "renderedFrames": 147,
+  "graphicsDevice": "Direct3D11",
+  "imageCaptureMode": "Camera.Render to GPU RenderTexture; window overlay excluded",
+  "godotSourcesChanged": false,
+  "actualGodotSavesAccessed": false,
+  "licenseCredentialsPublished": false,
+  "githubHostedBuildProven": false
+}
