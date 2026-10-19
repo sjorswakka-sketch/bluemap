@@ -52,6 +52,24 @@ def normalize_export(directory):
             for p in sorted(directory.rglob('*.json'))}
 
 
+def first_differences(expected, actual, path='$', limit=8):
+    """Bounded structural diagnostics, never an alternative equality policy."""
+    if type(expected) is type(actual) and expected == actual:
+        return []
+    result = []
+    if type(expected) is dict and type(actual) is dict and expected.keys() == actual.keys():
+        for key in sorted(expected):
+            result += first_differences(expected[key], actual[key], path + '/' + str(key), limit-len(result))
+            if len(result) >= limit:break
+    elif type(expected) is list and type(actual) is list and len(expected) == len(actual):
+        for index, (left, right) in enumerate(zip(expected, actual)):
+            result += first_differences(left, right, path + '/' + str(index), limit-len(result))
+            if len(result) >= limit:break
+    else:
+        result.append({'path': path, 'expected': repr(expected)[:240], 'actual': repr(actual)[:240]})
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('godot')
@@ -164,6 +182,13 @@ def main():
                 changed = [name for name in sorted(set(existing) | set(runs[0]))
                            if existing.get(name) != runs[0].get(name)]
                 receipt['referenceDifferences'] = changed
+                examples = {}
+                for name in [n for n in changed if n.startswith('snapshots/')][:3]:
+                    if (args.output_dir / name).is_file():
+                        examples[name] = first_differences(json_read(args.output_dir / name),
+                                                          json_read(evidence / 'export-1' / name))
+                receipt['referenceExamples'] = examples
+                print('WORLD REFERENCE DIFFERENCES ' + json.dumps(examples, ensure_ascii=False), flush=True)
                 raise RuntimeError('Actual loaded-world export differs from the committed reference: '
                                    + ', '.join(changed[:12]))
         else:

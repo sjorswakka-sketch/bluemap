@@ -151,6 +151,8 @@ jobs:
             ${{ runner.temp }}/world-evidence/scenario-fixtures.log
             ${{ runner.temp }}/world-evidence/export-1.log
             ${{ runner.temp }}/world-evidence/export-2.log
+            ${{ runner.temp }}/world-evidence/world-witnesses.json
+            ${{ runner.temp }}/world-evidence/world-identities.json
             ${{ runner.temp }}/world-witnesses.json
             ${{ runner.temp }}/world-identities.json
             migration/world/index.json
