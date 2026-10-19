@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.Playables;
 
 namespace BlueMapMigration.Phase6
 {
@@ -36,7 +38,14 @@ namespace BlueMapMigration.Phase6
         public bool LocalizationExact { get; private set; }
         public bool FontAvailable { get; private set; }
         private GameObject content;
-        private readonly List<Tuple<SpriteRenderer, CatalogAnimation>> animated = new List<Tuple<SpriteRenderer, CatalogAnimation>>();
+        private sealed class NativePlayback
+        {
+            public SpriteRenderer renderer;
+            public CatalogAnimation animation;
+            public PlayableGraph graph;
+            public AnimationClipPlayable playable;
+        }
+        private readonly List<NativePlayback> animated = new List<NativePlayback>();
         private readonly List<Tuple<CatalogSprite, int, int>> witnesses = new List<Tuple<CatalogSprite, int, int>>();
         private readonly List<UnityEngine.Object> owned = new List<UnityEngine.Object>();
         private static readonly Color32 Ink = new Color32(232, 237, 223, 255);
@@ -80,6 +89,7 @@ namespace BlueMapMigration.Phase6
         public void Show(string page)
         {
             if (Array.IndexOf(Pages, page) < 0) throw new ArgumentException("Unknown presentation page.");
+            ReleaseNativePlayers();
             if (content != null) { content.SetActive(false); Destroy(content); }
             content = new GameObject("Original assets " + page); content.transform.SetParent(transform, false);
             animated.Clear(); witnesses.Clear(); Page = page; animationTime = 0;
@@ -128,7 +138,11 @@ namespace BlueMapMigration.Phase6
             {
                 int x = 56 + i % 7 * 145, y = 206 + i / 7 * 124;
                 SpriteRenderer renderer = Put(actors[i].frames[0], x, y, 2);
-                animated.Add(Tuple.Create(renderer, actors[i]));
+                Animator animator = renderer.gameObject.AddComponent<Animator>(); animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+                PlayableGraph graph = PlayableGraph.Create(actors[i].definition.id); graph.SetTimeUpdateMode(DirectorUpdateMode.Manual);
+                AnimationClipPlayable playable = AnimationClipPlayable.Create(graph, actors[i].nativeClip);
+                AnimationPlayableOutput output = AnimationPlayableOutput.Create(graph, "Original sprite frames", animator); output.SetSourcePlayable(playable); graph.Play();
+                animated.Add(new NativePlayback { renderer = renderer, animation = actors[i], graph = graph, playable = playable });
                 Label(actors[i].definition.id.Split(':')[1], x, y + 68, 11, Muted);
             }
             Label("Wereld & voorwerpen", 49, 476, 17, Muted);
@@ -209,13 +223,16 @@ namespace BlueMapMigration.Phase6
         {
             foreach (var pair in animated)
             {
-                CatalogAnimation animation = pair.Item2;
+                CatalogAnimation animation = pair.animation;
                 int frame = Mathf.FloorToInt(seconds * animation.definition.fps);
                 frame = animation.definition.loop ? frame % animation.frames.Length : Mathf.Min(frame, animation.frames.Length - 1);
                 float duration = animation.frames.Length / animation.definition.fps;
                 float sampleTime = animation.definition.loop ? seconds % duration : Mathf.Min(seconds, (animation.frames.Length - 1) / animation.definition.fps);
-                animation.nativeClip.SampleAnimation(pair.Item1.gameObject, sampleTime);
-                nativeAnimationSamplingExact &= pair.Item1.sprite == animation.frames[frame];
+                // Native object-reference curves require a playable Animator
+                // binding; AnimationClip.SampleAnimation leaves SpriteRenderer
+                // PPtr curves untouched in the pinned Unity editor/player.
+                pair.playable.SetTime(sampleTime); pair.graph.Evaluate(0);
+                nativeAnimationSamplingExact &= pair.renderer.sprite == animation.frames[frame];
             }
         }
         private void Update()
@@ -276,5 +293,7 @@ namespace BlueMapMigration.Phase6
         }
         private static Vector3 Position(float x, float y) => new Vector3((x - 576) / 32f, (324 - y) / 32f, 0);
         private static string Trim(string value, int length) { value = value.Replace("\n", " / "); return value.Length <= length ? value : value.Substring(0, length - 1) + "…"; }
+        private void ReleaseNativePlayers() { foreach (NativePlayback item in animated) if (item.graph.IsValid()) item.graph.Destroy(); animated.Clear(); }
+        private void OnDestroy() { ReleaseNativePlayers(); }
     }
 }

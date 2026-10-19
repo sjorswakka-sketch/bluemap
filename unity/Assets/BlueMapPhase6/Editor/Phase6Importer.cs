@@ -159,9 +159,13 @@ namespace BlueMapMigration.Editor
                 ObjectReferenceKeyframe[] keys = AnimationUtility.GetObjectReferenceCurve(animation.nativeClip, EditorCurveBinding.PPtrCurve("", typeof(SpriteRenderer), "m_Sprite"));
                 Require(keys != null && keys.Length == animation.frames.Length + 1 && animation.nativeClip.frameRate == animation.definition.fps, "Native animation curve shape changed: " + animation.definition.id);
                 for (int i = 0; i < animation.frames.Length; i++)
-                    Require(keys[i].value == animation.frames[i] && keys[i].time == i / animation.definition.fps, "Native animation frame/timing changed: " + animation.definition.id);
+                {
+                    if (keys[i].value != animation.frames[i]) throw new BuildFailedException("Native animation sprite reference changed: " + animation.definition.id + " key " + i + "; expected " + ReferenceId(animation.frames[i]) + "; actual " + ReferenceId(keys[i].value));
+                    VerifyKeyTime(keys[i].time, i, animation.definition.fps, animation.definition.id);
+                }
                 int end = animation.frames.Length;
-                Require(keys[end].time == end / animation.definition.fps && keys[end].value == (animation.definition.loop ? animation.frames[0] : animation.frames[end - 1]) && AnimationUtility.GetAnimationClipSettings(animation.nativeClip).loopTime == animation.definition.loop, "Native animation loop changed: " + animation.definition.id);
+                VerifyKeyTime(keys[end].time, end, animation.definition.fps, animation.definition.id);
+                Require(keys[end].value == (animation.definition.loop ? animation.frames[0] : animation.frames[end - 1]) && AnimationUtility.GetAnimationClipSettings(animation.nativeClip).loopTime == animation.definition.loop, "Native animation loop changed: " + animation.definition.id);
             }
             var report = new ImportReport { success = true, allNativePixelsExact = true, allNativeAudioExact = true, allNativeAnimationCurvesExact = true, comparedAudioFrames = audioProofs.Sum(value => (long)value.comparedFrames), comparedAudioSamples = audioProofs.Sum(value => (long)value.comparedSamples), fontAvailable = catalog.originalFont != null, textureCount = catalog.textures.Length, spriteCount = catalog.sprites.Length, animationCount = catalog.animations.Length, audioCount = catalog.audio.Length, localizationCount = catalog.localization.Length, graphicsSha256 = catalog.graphicsSha256, audioSha256 = catalog.audioSha256, localizationSha256 = catalog.localizationSha256, textures = proofs.ToArray(), audio = audioProofs.ToArray() };
             if (!string.IsNullOrEmpty(reportPath)) File.WriteAllText(reportPath, JsonUtility.ToJson(report, true), new UTF8Encoding(false));
@@ -176,6 +180,21 @@ namespace BlueMapMigration.Editor
         }
         private static void Require(bool condition, string message) { if (!condition) throw new BuildFailedException(message); }
         private static bool Finite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);
+        private static void VerifyKeyTime(float actual, int frame, float fps, string id)
+        {
+            // Mono may keep the inline division in extra intermediate precision.
+            // Compare exactly the float32 value written to ObjectReferenceKeyframe,
+            // including its bits; do not introduce a timing tolerance.
+            int expectedBits = BitConverter.SingleToInt32Bits(frame / fps);
+            int actualBits = BitConverter.SingleToInt32Bits(actual);
+            if (actualBits != expectedBits) throw new BuildFailedException("Native animation key time changed: " + id + " key " + frame + "; expected float32 0x" + expectedBits.ToString("x8") + "; actual 0x" + actualBits.ToString("x8"));
+        }
+        private static string ReferenceId(UnityEngine.Object value)
+        {
+            if (value == null) return "null";
+            AssetDatabase.TryGetGUIDAndLocalFileIdentifier(value, out string guid, out long localId);
+            return value.name + " [" + guid + ":" + localId + "]";
+        }
         private static string AssetHash(UnityEngine.Object asset) => Hash(File.ReadAllBytes(AssetFile(AssetDatabase.GetAssetPath(asset))));
         private static string AssetFile(string path)
         {
