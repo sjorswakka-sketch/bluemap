@@ -1,0 +1,2750 @@
+{
+  "checkCount": 391,
+  "checks": [
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "arena",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "arena",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "arena_hall",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "arena_hall",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "cave",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "cave",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "coast",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "coast",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "coast_workshop",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "coast_workshop",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "depths1",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "depths1",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "fisher_hut",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "fisher_hut",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "forest",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "forest",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "forest_edge",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "forest_edge",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "gull_island",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "gull_island",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "harbor",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "harbor",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "headland",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "headland",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "inn",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "inn",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "lake",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "lake",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "library",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "library",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "mistgarden",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "mistgarden",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "resonance",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "resonance",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "river_mouth",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "river_mouth",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "shop",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "shop",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "smithy",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "smithy",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "steampeak",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "steampeak",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "sunwell",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "sunwell",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "temple",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "temple",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "watchyard",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "watchyard",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "opening_water_restored"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "opening_water_restored"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "smithy",
+      "passed": true,
+      "scenario": "opening_water_restored"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "smithy",
+      "passed": true,
+      "scenario": "opening_water_restored"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "opening_legacy"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "opening_legacy"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "lake",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "lake",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "inn",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "inn",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "harbor",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "harbor",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "mistgarden",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "mistgarden",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "routines_evening"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_closed"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_closed"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_west"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_west"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_east"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_east"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_both"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_both"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_drained"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_drained"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "marsh_drained"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "marsh_drained"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_bridge"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_bridge"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "marsh_bridge"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "marsh_bridge"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_low"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_low"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_rising"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_rising"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_high"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_high"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_falling"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_falling"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_held"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_held"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_released"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_released"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "desert_wild"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "desert_wild"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "sunwell",
+      "passed": true,
+      "scenario": "desert_wild"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "sunwell",
+      "passed": true,
+      "scenario": "desert_wild"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "desert_caravan"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "desert_caravan"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "sunwell",
+      "passed": true,
+      "scenario": "desert_caravan"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "sunwell",
+      "passed": true,
+      "scenario": "desert_caravan"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "ice_west"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "ice_west"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "ice_restored"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "ice_restored"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "ice_restored"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "ice_restored"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "ridge_rope"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "ridge_rope"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "ridge_rope"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "ridge_rope"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "archive_clues"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "archive_clues"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "archive_routes"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "archive_routes"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "archive_routes"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "archive_routes"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "archive_stories"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "archive_stories"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "archive_stories"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "archive_stories"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "forest",
+      "passed": true,
+      "scenario": "route_cat_home"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "forest",
+      "passed": true,
+      "scenario": "route_cat_home"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "route_cat_home"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "route_cat_home"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "route_clues"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "route_clues"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "cave",
+      "passed": true,
+      "scenario": "route_clues"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "cave",
+      "passed": true,
+      "scenario": "route_clues"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "cave",
+      "passed": true,
+      "scenario": "route_echo_begin"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "cave",
+      "passed": true,
+      "scenario": "route_echo_begin"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "cave",
+      "passed": true,
+      "scenario": "route_echo_mid"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "cave",
+      "passed": true,
+      "scenario": "route_echo_mid"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "cave",
+      "passed": true,
+      "scenario": "route_echo_end"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "cave",
+      "passed": true,
+      "scenario": "route_echo_end"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "route_memorial_guard"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "route_memorial_guard"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "route_memorial_guard"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "route_memorial_guard"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "route_memorial_guide"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "route_memorial_guide"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "route_memorial_guide"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "route_memorial_guide"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "mine_restored"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "mine_restored"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "smithy",
+      "passed": true,
+      "scenario": "mine_restored"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "smithy",
+      "passed": true,
+      "scenario": "mine_restored"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "forest_restored"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "forest_restored"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "mistgarden",
+      "passed": true,
+      "scenario": "forest_restored"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "mistgarden",
+      "passed": true,
+      "scenario": "forest_restored"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_moved"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_moved"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_packed"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_packed"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_gate_far"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_gate_far"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_gate_near"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_gate_near"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_dry"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_dry"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_irrigated"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_irrigated"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_disconnected"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_disconnected"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_ready"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_ready"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "farm_ready"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "farm_ready"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "honey_no_flowers"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "honey_no_flowers"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "honey_grown_flowers"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "honey_grown_flowers"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "coast_workshop",
+      "passed": true,
+      "scenario": "coastal_workshop"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "coast_workshop",
+      "passed": true,
+      "scenario": "coastal_workshop"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "harbor",
+      "passed": true,
+      "scenario": "coastal_workshop"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "harbor",
+      "passed": true,
+      "scenario": "coastal_workshop"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "hollow_wheel"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "hollow_wheel"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "hollow_pool"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "hollow_pool"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "hollow_workwater"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "hollow_workwater"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "hollow_duel"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "hollow_duel"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "headland",
+      "passed": true,
+      "scenario": "headland_shelter"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "headland",
+      "passed": true,
+      "scenario": "headland_shelter"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "library",
+      "passed": true,
+      "scenario": "library_backroom"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "library",
+      "passed": true,
+      "scenario": "library_backroom"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_alive"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_alive"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_defeated"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_defeated"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_reward_opened"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_reward_opened"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_full_hearts"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_full_hearts"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "forest",
+      "passed": true,
+      "scenario": "saved_manure"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "forest",
+      "passed": true,
+      "scenario": "saved_manure"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "temple",
+      "passed": true,
+      "scenario": "boss_gate_closed"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "temple",
+      "passed": true,
+      "scenario": "boss_gate_closed"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "arena",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "arena",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "arena_hall",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "arena_hall",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "cave",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "cave",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "coast",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "coast",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "coast_workshop",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "coast_workshop",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "depths1",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "depths1",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "fisher_hut",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "fisher_hut",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "forest",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "forest",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "forest_edge",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "forest_edge",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "gull_island",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "gull_island",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "harbor",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "harbor",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "headland",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "headland",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "inn",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "inn",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "lake",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "lake",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "library",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "library",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "mistgarden",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "mistgarden",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "reedvault",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "resonance",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "resonance",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ridgepass",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "river_mouth",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "river_mouth",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "shop",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "shop",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "smithy",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "smithy",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "steampeak",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "steampeak",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "sunwell",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "sunwell",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "temple",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "temple",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tidal_hollow",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "village",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "village",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "watchyard",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "watchyard",
+      "passed": true,
+      "scenario": "full_progress"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ijsdal",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "dorstvallei",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "ruins",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Loading/projecting this profile does not advance saved active time or day count.",
+      "id": "all_profiles_frozen_clock",
+      "map": "cave",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Partial/ready saved production jobs are not advanced or collected during projection.",
+      "id": "all_profiles_frozen_production",
+      "map": "cave",
+      "passed": true,
+      "scenario": "legacy_completed"
+    },
+    {
+      "evidence": "Broken western span and flooded eastern bank are solid.",
+      "id": "marsh_before_water",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_closed"
+    },
+    {
+      "evidence": "Drainage opens eastern bank while the unrepaired western gap remains closed.",
+      "id": "marsh_drained_bank",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_drained"
+    },
+    {
+      "evidence": "Both deck rows connect both landings, x15..23 inclusive.",
+      "id": "marsh_complete_bridge",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_bridge"
+    },
+    {
+      "evidence": "All seven authored bridge tiles in both rows are actual bridge terrain.",
+      "id": "marsh_bridge_tiles",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_bridge"
+    },
+    {
+      "evidence": "Unsolved valve combination and its source-defined water gauge remain distinct.",
+      "id": "marsh_valve_projection",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_closed"
+    },
+    {
+      "evidence": "Unsolved valve combination and its source-defined water gauge remain distinct.",
+      "id": "marsh_valve_projection",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_west"
+    },
+    {
+      "evidence": "Unsolved valve combination and its source-defined water gauge remain distinct.",
+      "id": "marsh_valve_projection",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_east"
+    },
+    {
+      "evidence": "Unsolved valve combination and its source-defined water gauge remain distinct.",
+      "id": "marsh_valve_projection",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "sluices_both"
+    },
+    {
+      "evidence": "Actual tide controller records expected stage, flood and occupied-bank hold.",
+      "id": "tide_state_flags",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_low"
+    },
+    {
+      "evidence": "All 24 bank cells agree with the flooded/dry native terrain state.",
+      "id": "tide_bank_collision",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_low"
+    },
+    {
+      "evidence": "Actual tide controller records expected stage, flood and occupied-bank hold.",
+      "id": "tide_state_flags",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_rising"
+    },
+    {
+      "evidence": "All 24 bank cells agree with the flooded/dry native terrain state.",
+      "id": "tide_bank_collision",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_rising"
+    },
+    {
+      "evidence": "Actual tide controller records expected stage, flood and occupied-bank hold.",
+      "id": "tide_state_flags",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_high"
+    },
+    {
+      "evidence": "All 24 bank cells agree with the flooded/dry native terrain state.",
+      "id": "tide_bank_collision",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_high"
+    },
+    {
+      "evidence": "Actual tide controller records expected stage, flood and occupied-bank hold.",
+      "id": "tide_state_flags",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_falling"
+    },
+    {
+      "evidence": "All 24 bank cells agree with the flooded/dry native terrain state.",
+      "id": "tide_bank_collision",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_falling"
+    },
+    {
+      "evidence": "Actual tide controller records expected stage, flood and occupied-bank hold.",
+      "id": "tide_state_flags",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_held"
+    },
+    {
+      "evidence": "All 24 bank cells agree with the flooded/dry native terrain state.",
+      "id": "tide_bank_collision",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_held"
+    },
+    {
+      "evidence": "Actual tide controller records expected stage, flood and occupied-bank hold.",
+      "id": "tide_state_flags",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_released"
+    },
+    {
+      "evidence": "All 24 bank cells agree with the flooded/dry native terrain state.",
+      "id": "tide_bank_collision",
+      "map": "tide_cove",
+      "passed": true,
+      "scenario": "tide_released"
+    },
+    {
+      "evidence": "Only the exact source-authored dynamic resource IDs materialize.",
+      "id": "restored_resource_ids",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "mine_restored"
+    },
+    {
+      "evidence": "Resource lw_mine_iron retains its kind, save key and authored position.",
+      "id": "restored_resource_identity",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "mine_restored"
+    },
+    {
+      "evidence": "Resource lw_mine_copper retains its kind, save key and authored position.",
+      "id": "restored_resource_identity",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "mine_restored"
+    },
+    {
+      "evidence": "Restoration rewards do not exist in a fresh world.",
+      "id": "restored_resource_absent_before",
+      "map": "prismamine",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Only the exact source-authored dynamic resource IDs materialize.",
+      "id": "restored_resource_ids",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "forest_restored"
+    },
+    {
+      "evidence": "Resource lw_revealed_flower retains its kind, save key and authored position.",
+      "id": "restored_resource_identity",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "forest_restored"
+    },
+    {
+      "evidence": "Restoration rewards do not exist in a fresh world.",
+      "id": "restored_resource_absent_before",
+      "map": "dauwbos",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Only the exact source-authored dynamic resource IDs materialize.",
+      "id": "restored_resource_ids",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_drained"
+    },
+    {
+      "evidence": "Resource lw_shore_mint retains its kind, save key and authored position.",
+      "id": "restored_resource_identity",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_drained"
+    },
+    {
+      "evidence": "Restoration rewards do not exist in a fresh world.",
+      "id": "restored_resource_absent_before",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Dynamic fishing spot retains lw_marsh_fishing and the source position.",
+      "id": "restored_fishing_key",
+      "map": "kruipmoeras",
+      "passed": true,
+      "scenario": "marsh_drained"
+    },
+    {
+      "evidence": "All six source-authored deferred pillar nodes are present at their exact positions.",
+      "id": "guardian_deferred_pillars",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_alive"
+    },
+    {
+      "evidence": "Defeated guardian and combat pillars are removed after deferred initialization.",
+      "id": "guardian_absent_after_defeat",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_defeated"
+    },
+    {
+      "evidence": "Deferred reward retains chest:depths2:heart, opened state, source position and capacity-dependent contents.",
+      "id": "guardian_reward_identity",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_defeated"
+    },
+    {
+      "evidence": "Defeated guardian and combat pillars are removed after deferred initialization.",
+      "id": "guardian_absent_after_defeat",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_reward_opened"
+    },
+    {
+      "evidence": "Deferred reward retains chest:depths2:heart, opened state, source position and capacity-dependent contents.",
+      "id": "guardian_reward_identity",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_reward_opened"
+    },
+    {
+      "evidence": "Defeated guardian and combat pillars are removed after deferred initialization.",
+      "id": "guardian_absent_after_defeat",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_full_hearts"
+    },
+    {
+      "evidence": "Deferred reward retains chest:depths2:heart, opened state, source position and capacity-dependent contents.",
+      "id": "guardian_reward_identity",
+      "map": "depths2",
+      "passed": true,
+      "scenario": "guardian_full_hearts"
+    },
+    {
+      "evidence": "Forest cat exists before rescue and is absent after returning home.",
+      "id": "cat_exists_if",
+      "map": "forest",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Forest cat exists before rescue and is absent after returning home.",
+      "id": "cat_exists_if",
+      "map": "forest",
+      "passed": true,
+      "scenario": "route_cat_home"
+    },
+    {
+      "evidence": "Every authored cabinet tile becomes traversable library floor.",
+      "id": "library_backroom_collision",
+      "map": "library",
+      "passed": true,
+      "scenario": "library_backroom"
+    },
+    {
+      "evidence": "Opened cabinet projects changed native floor tiles, not only a flag.",
+      "id": "library_backroom_native_tiles",
+      "map": "library",
+      "passed": true,
+      "scenario": "library_backroom"
+    },
+    {
+      "evidence": "Exactly the three explicitly placed, owned furniture pieces appear.",
+      "id": "house_placed_furniture",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "Placed chair retains its intended position and real active collision.",
+      "id": "house_furniture_collision",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "Placed plant_leaf retains its intended position and real active collision.",
+      "id": "house_furniture_collision",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "Placed lamp retains its intended position and real active collision.",
+      "id": "house_furniture_collision",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "Placed house lamp uses the saved sea-light palette and zero-time source energy.",
+      "id": "house_saved_lamp",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "Original functional bed moves with the redesigned saved layout.",
+      "id": "house_functional_station_moves",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "Original functional table moves with the redesigned saved layout.",
+      "id": "house_functional_station_moves",
+      "map": "player_home",
+      "passed": true,
+      "scenario": "home_furnished"
+    },
+    {
+      "evidence": "The existing wine_a machine occupies its saved new tile with collision.",
+      "id": "yard_moved_station",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_moved"
+    },
+    {
+      "evidence": "Moving production retains its partial 42-second batch.",
+      "id": "yard_batch_time_retained",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_moved"
+    },
+    {
+      "evidence": "Packed wine_a has no visible art, collision or interaction group.",
+      "id": "yard_packed_station",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_packed"
+    },
+    {
+      "evidence": "Packed hive has no visible art, collision or interaction group.",
+      "id": "yard_packed_station",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_packed"
+    },
+    {
+      "evidence": "Gate proximity changes the actual native collider, including deferred disabled state.",
+      "id": "yard_gate_proximity",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_gate_far"
+    },
+    {
+      "evidence": "Gate proximity changes the actual native collider, including deferred disabled state.",
+      "id": "yard_gate_proximity",
+      "map": "village",
+      "passed": true,
+      "scenario": "yard_gate_near"
+    },
+    {
+      "evidence": "Reported wet channels exactly match cardinal connections to natural water, including source disconnection.",
+      "id": "farm_channel_connectivity",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_dry"
+    },
+    {
+      "evidence": "Reported wet channels exactly match cardinal connections to natural water, including source disconnection.",
+      "id": "farm_channel_connectivity",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_irrigated"
+    },
+    {
+      "evidence": "Reported wet channels exactly match cardinal connections to natural water, including source disconnection.",
+      "id": "farm_channel_connectivity",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_disconnected"
+    },
+    {
+      "evidence": "Connected water reaches vine edge and apple root range through the full channel route.",
+      "id": "farm_irrigation_reaches_orchard",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_irrigated"
+    },
+    {
+      "evidence": "Planted apple has a real source-sized trunk collider at its saved plot.",
+      "id": "farm_real_apple_trunk",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_irrigated"
+    },
+    {
+      "evidence": "Ready/partial wine and compost retain exact saved active-play times; export does not grow or collect them.",
+      "id": "farm_ready_jobs_frozen",
+      "map": "village",
+      "passed": true,
+      "scenario": "farm_ready"
+    },
+    {
+      "evidence": "Pollen uses actual nearby mature plants: zero without flowers, three at the moved hive.",
+      "id": "honey_pollen_requirement",
+      "map": "village",
+      "passed": true,
+      "scenario": "honey_no_flowers"
+    },
+    {
+      "evidence": "Pollen uses actual nearby mature plants: zero without flowers, three at the moved hive.",
+      "id": "honey_pollen_requirement",
+      "map": "village",
+      "passed": true,
+      "scenario": "honey_grown_flowers"
+    },
+    {
+      "evidence": "Synthetic journal contains one real animal-home drop identity.",
+      "id": "manure_saved_journal",
+      "map": "forest",
+      "passed": true,
+      "scenario": "saved_manure"
+    },
+    {
+      "evidence": "Saved animal drop becomes exactly the matching uncollected magnetic pickup at its saved position.",
+      "id": "manure_projected_pickup",
+      "map": "forest",
+      "passed": true,
+      "scenario": "saved_manure"
+    },
+    {
+      "evidence": "Native lamp enabled/color/energy agree with ownership and saved warm/sea-light settings.",
+      "id": "coastal_saved_lamp",
+      "map": "coast_workshop",
+      "passed": true,
+      "scenario": "fresh_baseline"
+    },
+    {
+      "evidence": "Native lamp enabled/color/energy agree with ownership and saved warm/sea-light settings.",
+      "id": "coastal_saved_lamp",
+      "map": "coast_workshop",
+      "passed": true,
+      "scenario": "coastal_workshop"
+    }
+  ],
+  "engineStarted": false,
+  "personalSavesUsed": false,
+  "phase": 5,
+  "scenarioCount": 59,
+  "schemaVersion": 1,
+  "scope": "Targeted semantic witnesses in captured Godot projections; requires separate complete world-data/source-pin validation. Not a gameplay replay or Unity equivalence proof.",
+  "snapshotCount": 162,
+  "success": true
+}

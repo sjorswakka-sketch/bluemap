@@ -1,0 +1,2323 @@
+{
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "excludedUiSources": [
+    "res://scripts/ui/coast_atlas.gd",
+    "res://scripts/ui/coast_routes.gd",
+    "res://scripts/ui/coast_voyage.gd",
+    "res://scripts/ui/crosshair.gd",
+    "res://scripts/ui/work_together.gd"
+  ],
+  "exporterSources": {
+    "res://tools/migration_world_export.gd": "35d733795ad2542b94ec895d8d6bf9400bb85cc44803424c96121bf9d715886f",
+    "res://tools/migration_world_scenarios.gd": "45b365f080a9bb2b8440d8a10e6d8d072d6a6d9c231fac3bf2e711f08aac0a97"
+  },
+  "failures": [],
+  "runtimeHandleTypes": [
+    "AStarGrid2D",
+    "Callable",
+    "RandomNumberGenerator",
+    "RefCounted",
+    "WeakRef"
+  ],
+  "scenarios": [
+    {
+      "baseline": true,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "fresh_baseline",
+      "label": "Fresh adventure, all registered maps",
+      "maps": [
+        "arena",
+        "arena_hall",
+        "cave",
+        "coast",
+        "coast_workshop",
+        "dauwbos",
+        "depths1",
+        "depths2",
+        "dorstvallei",
+        "fisher_hut",
+        "forest",
+        "forest_edge",
+        "gull_island",
+        "harbor",
+        "headland",
+        "ijsdal",
+        "inn",
+        "kruipmoeras",
+        "lake",
+        "library",
+        "mistgarden",
+        "player_home",
+        "prismamine",
+        "reedvault",
+        "resonance",
+        "ridgepass",
+        "river_mouth",
+        "ruins",
+        "shop",
+        "smithy",
+        "steampeak",
+        "sunwell",
+        "temple",
+        "tidal_hollow",
+        "tide_cove",
+        "village",
+        "watchyard"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://scripts/core/game_state.gd:new_game",
+        "res://tests/world_atlas_test.gd"
+      ],
+      "stage": "fresh",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "opening_water_restored",
+      "label": "Fountain restored and Greta introduction complete",
+      "maps": [
+        "village",
+        "smithy"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/opening_test.gd"
+      ],
+      "stage": "restored",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "opening_legacy",
+      "label": "Older adventure without the new opening flag",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/opening_test.gd"
+      ],
+      "stage": "legacy",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "routines_evening",
+      "label": "Fixed evening routines and all restored-memory residents",
+      "maps": [
+        "village",
+        "lake",
+        "inn",
+        "harbor",
+        "prismamine",
+        "mistgarden",
+        "ijsdal",
+        "kruipmoeras",
+        "dorstvallei",
+        "reedvault",
+        "ridgepass"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/opening_test.gd",
+        "res://tests/world_memory_test.gd",
+        "res://tests/lake_supper_test.gd"
+      ],
+      "stage": "evening",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "sluices_closed",
+      "label": "Both marsh valves closed, bridge broken",
+      "maps": [
+        "kruipmoeras"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "closed_closed",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "sluices_west",
+      "label": "West open, east closed; before surveyed drainage completion",
+      "maps": [
+        "kruipmoeras"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "open_closed",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "sluices_east",
+      "label": "West closed, east open; unsafe valve setting",
+      "maps": [
+        "kruipmoeras"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "closed_open",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "sluices_both",
+      "label": "Both valves open; unsafe valve setting",
+      "maps": [
+        "kruipmoeras"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "open_open",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "marsh_drained",
+      "label": "Surveyed valves drained the archive bank, bridge unrepaired",
+      "maps": [
+        "kruipmoeras",
+        "reedvault"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "drained",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "marsh_bridge",
+      "label": "Archive bank drained and bridge repaired",
+      "maps": [
+        "kruipmoeras",
+        "reedvault"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "bridge_repaired",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "tide_low",
+      "label": "Low water at synthetic second 20",
+      "maps": [
+        "tide_cove"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/tides_test.gd"
+      ],
+      "stage": "low",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "tide_rising",
+      "label": "Rising water at synthetic second 54",
+      "maps": [
+        "tide_cove"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/tides_test.gd"
+      ],
+      "stage": "rising",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "tide_high",
+      "label": "High water at synthetic second 70",
+      "maps": [
+        "tide_cove"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/tides_test.gd"
+      ],
+      "stage": "high",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "tide_falling",
+      "label": "Falling water at synthetic second 90",
+      "maps": [
+        "tide_cove"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/tides_test.gd"
+      ],
+      "stage": "falling",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "tide_held",
+      "label": "High tide waits while player occupies formerly dry bank",
+      "maps": [
+        "tide_cove"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/tides_test.gd"
+      ],
+      "stage": "occupied_hold",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "tide_released",
+      "label": "High tide closes only after occupied bank is cleared",
+      "maps": [
+        "tide_cove"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/tides_test.gd"
+      ],
+      "stage": "occupied_released",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "desert_wild",
+      "label": "Spring restored, water directed to wildlife",
+      "maps": [
+        "dorstvallei",
+        "sunwell"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/regional_test.gd",
+        "res://scripts/core/regional_adventures.gd"
+      ],
+      "stage": "wildlife",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "desert_caravan",
+      "label": "Spring restored, reversible caravan water choice",
+      "maps": [
+        "dorstvallei",
+        "sunwell"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/regional_test.gd",
+        "res://scripts/core/regional_adventures.gd"
+      ],
+      "stage": "caravan",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "ice_west",
+      "label": "Only western houses heated",
+      "maps": [
+        "ijsdal"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "west_heated",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "ice_restored",
+      "label": "Both housing areas heated and mountain passage available",
+      "maps": [
+        "ijsdal",
+        "ridgepass"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "both_heated",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "ridge_rope",
+      "label": "Rope secured and climbing chart returned",
+      "maps": [
+        "ridgepass",
+        "ijsdal"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/regional_test.gd",
+        "res://scripts/core/regional_adventures.gd"
+      ],
+      "stage": "rope_completed",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "archive_clues",
+      "label": "Three archive folios found, chronology not resolved",
+      "maps": [
+        "reedvault"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/regional_test.gd",
+        "res://scripts/core/regional_adventures.gd"
+      ],
+      "stage": "evidence",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "archive_routes",
+      "label": "Archive reconstructed with routes exhibit",
+      "maps": [
+        "reedvault",
+        "kruipmoeras"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/regional_test.gd",
+        "res://scripts/core/regional_adventures.gd"
+      ],
+      "stage": "routes",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "archive_stories",
+      "label": "Archive reconstructed with stories exhibit",
+      "maps": [
+        "reedvault",
+        "kruipmoeras"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/regional_test.gd",
+        "res://scripts/core/regional_adventures.gd"
+      ],
+      "stage": "stories",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "route_cat_home",
+      "label": "Cat found and returned to the village",
+      "maps": [
+        "forest",
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/first_route_test.gd",
+        "res://scripts/core/first_route.gd"
+      ],
+      "stage": "cat_home",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "route_clues",
+      "label": "Relief and journal found before medallion return",
+      "maps": [
+        "ruins",
+        "cave"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/first_route_test.gd",
+        "res://scripts/core/first_route.gd"
+      ],
+      "stage": "clues",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "route_echo_begin",
+      "label": "First echo bowl completed",
+      "maps": [
+        "cave"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/first_route_test.gd",
+        "res://scripts/core/first_route.gd"
+      ],
+      "stage": "echo_begin",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "route_echo_mid",
+      "label": "First two echo bowls completed",
+      "maps": [
+        "cave"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/first_route_test.gd",
+        "res://scripts/core/first_route.gd"
+      ],
+      "stage": "echo_mid",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "route_echo_end",
+      "label": "All echo bowls completed and refuge revealed",
+      "maps": [
+        "cave"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/first_route_test.gd",
+        "res://scripts/core/first_route.gd"
+      ],
+      "stage": "echo_end",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "route_memorial_guard",
+      "label": "Completed memorial, guard inscription",
+      "maps": [
+        "ruins",
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/first_route_test.gd",
+        "res://scripts/core/first_route.gd"
+      ],
+      "stage": "guard",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "route_memorial_guide",
+      "label": "Completed memorial, guide inscription",
+      "maps": [
+        "ruins",
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/first_route_test.gd",
+        "res://scripts/core/first_route.gd"
+      ],
+      "stage": "guide",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "mine_restored",
+      "label": "Prism mine stabilized and workshop restored",
+      "maps": [
+        "prismamine",
+        "smithy"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "mine_restored",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "forest_restored",
+      "label": "Rune route reveals garden and resource",
+      "maps": [
+        "dauwbos",
+        "mistgarden"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://scripts/core/living_world.gd"
+      ],
+      "stage": "forest_restored",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "home_furnished",
+      "label": "Valid redesigned personal interior",
+      "maps": [
+        "player_home"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/personal_home_test.gd"
+      ],
+      "stage": "furnished",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "yard_moved",
+      "label": "Existing wine vat moved without losing batch",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/yard_test.gd"
+      ],
+      "stage": "moved",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "yard_packed",
+      "label": "Wine vat and beehive packed, saved production retained",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/yard_test.gd"
+      ],
+      "stage": "packed",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "yard_gate_far",
+      "label": "Valid optional gate with distant player",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/yard_test.gd"
+      ],
+      "stage": "gate_closed",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "yard_gate_near",
+      "label": "Same optional gate refreshes open near player",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/yard_test.gd"
+      ],
+      "stage": "gate_open",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "farm_dry",
+      "label": "Planted vine and apple tree without connected water",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/homestead_test.gd",
+        "res://tests/orchard_test.gd"
+      ],
+      "stage": "dry",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "farm_irrigated",
+      "label": "Connected brook channels and partial crop growth",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/homestead_test.gd",
+        "res://tests/orchard_test.gd"
+      ],
+      "stage": "growing",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "farm_disconnected",
+      "label": "Source channel removed; downstream channels remain dry",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/homestead_test.gd",
+        "res://tests/orchard_test.gd"
+      ],
+      "stage": "disconnected",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "farm_ready",
+      "label": "Ripe crops, established orchard, fertilizer and ready production",
+      "maps": [
+        "village",
+        "player_home"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/homestead_test.gd",
+        "res://tests/orchard_test.gd"
+      ],
+      "stage": "ready",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "honey_no_flowers",
+      "label": "Tilled natural flowers, no pollen sources",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/homestead_test.gd",
+        "res://tests/orchard_test.gd"
+      ],
+      "stage": "no_flowers",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "honey_grown_flowers",
+      "label": "Moved hive supported by ripe cultivated flowers and herbs",
+      "maps": [
+        "village"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/yard_test.gd",
+        "res://tests/orchard_test.gd"
+      ],
+      "stage": "grown_flowers",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "coastal_workshop",
+      "label": "Coastal storage and placed shelf/sea lamp",
+      "maps": [
+        "coast_workshop",
+        "harbor"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/coastal_home_test.gd"
+      ],
+      "stage": "furnished",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "hollow_wheel",
+      "label": "Tidal hollow wheel repairs physical crossing",
+      "maps": [
+        "tidal_hollow"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/coastal_adventures_test.gd",
+        "res://scripts/core/coastal_adventures.gd"
+      ],
+      "stage": "wheel",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "hollow_pool",
+      "label": "Keeper resolved peacefully, pool restored",
+      "maps": [
+        "tidal_hollow"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/coastal_adventures_test.gd",
+        "res://scripts/core/coastal_adventures.gd"
+      ],
+      "stage": "pool",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "hollow_workwater",
+      "label": "Keeper resolved through combat, workwater choice",
+      "maps": [
+        "tidal_hollow"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/coastal_adventures_test.gd",
+        "res://scripts/core/coastal_adventures.gd"
+      ],
+      "stage": "workwater",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "hollow_duel",
+      "label": "Unresolved keeper duel projects live keeper",
+      "maps": [
+        "tidal_hollow"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/coastal_adventures_test.gd"
+      ],
+      "stage": "duel",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "headland_shelter",
+      "label": "Completed pilot route restores physical wind shelter",
+      "maps": [
+        "headland"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/coastal_adventures_test.gd"
+      ],
+      "stage": "shelter",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "library_backroom",
+      "label": "Lena returned books unlock physical library floor",
+      "maps": [
+        "library"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/meer_test.gd",
+        "res://scripts/entities/meer_kast.gd"
+      ],
+      "stage": "backroom_open",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "guardian_alive",
+      "label": "Living dormant guardian with deferred pillars",
+      "maps": [
+        "depths2"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/diepte_test.gd"
+      ],
+      "stage": "alive",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "guardian_defeated",
+      "label": "Defeated guardian projects unopened heart-container chest",
+      "maps": [
+        "depths2"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/diepte_test.gd"
+      ],
+      "stage": "defeated",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "guardian_reward_opened",
+      "label": "Stable guardian heart chest key already opened",
+      "maps": [
+        "depths2"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/diepte_test.gd"
+      ],
+      "stage": "reward_opened",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "guardian_full_hearts",
+      "label": "Defeated guardian reward substitutes potions/coins at eight hearts",
+      "maps": [
+        "depths2"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/diepte_test.gd"
+      ],
+      "stage": "full_hearts",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "saved_manure",
+      "label": "Existing animal drop journal projects magnetic manure pickup",
+      "maps": [
+        "forest"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/homestead_test.gd",
+        "res://scripts/core/homestead.gd"
+      ],
+      "stage": "saved_drop",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "boss_gate_closed",
+      "label": "Boss trigger consumed and temple exit sealed; enemy AI state is not fabricated",
+      "maps": [
+        "temple"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://scripts/maps/temple.gd",
+        "res://tests/whole_adventure_test.gd"
+      ],
+      "stage": "boss_started",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "full_progress",
+      "label": "Synthetic completed quests, opened real slot keys, earned world changes",
+      "maps": [
+        "arena",
+        "arena_hall",
+        "cave",
+        "coast",
+        "coast_workshop",
+        "dauwbos",
+        "depths1",
+        "depths2",
+        "dorstvallei",
+        "fisher_hut",
+        "forest",
+        "forest_edge",
+        "gull_island",
+        "harbor",
+        "headland",
+        "ijsdal",
+        "inn",
+        "kruipmoeras",
+        "lake",
+        "library",
+        "mistgarden",
+        "player_home",
+        "prismamine",
+        "reedvault",
+        "resonance",
+        "ridgepass",
+        "river_mouth",
+        "ruins",
+        "shop",
+        "smithy",
+        "steampeak",
+        "sunwell",
+        "temple",
+        "tidal_hollow",
+        "tide_cove",
+        "village",
+        "watchyard"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/whole_adventure_test.gd",
+        "res://tests/living_world_test.gd",
+        "res://tests/first_route_test.gd"
+      ],
+      "stage": "completed_synthetic",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    },
+    {
+      "baseline": false,
+      "captureStage": "after world.load_map and exporter-controlled fixed initialization",
+      "id": "legacy_completed",
+      "label": "Legacy completed quests before three load_map migrations",
+      "maps": [
+        "ijsdal",
+        "kruipmoeras",
+        "dorstvallei",
+        "ruins",
+        "cave"
+      ],
+      "offlineGrowth": false,
+      "personalSavesUsed": false,
+      "seed": 504034,
+      "sourceFixtures": [
+        "res://tests/living_world_test.gd",
+        "res://tests/regional_test.gd",
+        "res://tests/first_route_test.gd"
+      ],
+      "stage": "legacy_completed",
+      "stateMode": "synthetic in-memory fixture, not a completed playthrough"
+    }
+  ],
+  "schema": "bluemap.migration.world-index.v1",
+  "scope": "Actual world.load_map plus explicit frozen-clock projections; not a Unity runtime or every combinatorial gameplay state",
+  "shared": [
+    {
+      "bytes": 4055979,
+      "path": "tile-set.json",
+      "sha256": "7e4241617d3385097a5be54bcdc37917f80bcff2512ca1a0cfeb0eb2edb896d3"
+    }
+  ],
+  "snapshots": [
+    {
+      "bytes": 676921,
+      "mapId": "arena",
+      "path": "snapshots/fresh_baseline/arena.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "8a6b13f9e10b59ebb173315f86de9dd1030373f36b60ceb95055ba16a8d213dc"
+    },
+    {
+      "bytes": 329938,
+      "mapId": "arena_hall",
+      "path": "snapshots/fresh_baseline/arena_hall.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "e719048a919f74b81436773104398714b57776b006734bd1c9c90b2f8064fe6b"
+    },
+    {
+      "bytes": 1516338,
+      "mapId": "cave",
+      "path": "snapshots/fresh_baseline/cave.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "89e65e9fef3d672da249c0518ec48f0d7986b9edbefbc634bb060fb4470e674e"
+    },
+    {
+      "bytes": 2071172,
+      "mapId": "coast",
+      "path": "snapshots/fresh_baseline/coast.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "3d467bb1d438b7985b9929f64eae9d761d2a5c5e615080cf75649442c13f2b5c"
+    },
+    {
+      "bytes": 386432,
+      "mapId": "coast_workshop",
+      "path": "snapshots/fresh_baseline/coast_workshop.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "92f1ff4b34fc5d9086a1da44968bc2379f41df556ee7d6fa8824156e09a38c9c"
+    },
+    {
+      "bytes": 3864124,
+      "mapId": "dauwbos",
+      "path": "snapshots/fresh_baseline/dauwbos.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "9805e7d36d1ec215befbf0940e691e4083a823f1276771798e73c5db7eac0595"
+    },
+    {
+      "bytes": 1368061,
+      "mapId": "depths1",
+      "path": "snapshots/fresh_baseline/depths1.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "fc5638ecceab6ccd106b706e04e67c52720077cfa339ec37c47406770ed15ca0"
+    },
+    {
+      "bytes": 599225,
+      "mapId": "depths2",
+      "path": "snapshots/fresh_baseline/depths2.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "13c75ff6e8b3bf7ecd4e67f87e046c86f84ea54b09da0c7e250fb532ba8182ff"
+    },
+    {
+      "bytes": 1129957,
+      "mapId": "dorstvallei",
+      "path": "snapshots/fresh_baseline/dorstvallei.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "3dbb12b4e2aa021abb91f26fa79e8fc553b0dabcb8d546a4e74f3eba92e94857"
+    },
+    {
+      "bytes": 229983,
+      "mapId": "fisher_hut",
+      "path": "snapshots/fresh_baseline/fisher_hut.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "8019bba37235d9dffbc2ef66f3a3afe689e88c0d7534071dbd14337854043901"
+    },
+    {
+      "bytes": 4399794,
+      "mapId": "forest",
+      "path": "snapshots/fresh_baseline/forest.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "923419e1a38c8cebda8e69ec2d4c5149ee9f665d3838a8f66f3beb38159debd8"
+    },
+    {
+      "bytes": 3191110,
+      "mapId": "forest_edge",
+      "path": "snapshots/fresh_baseline/forest_edge.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "3d660fb45f435b364ac117c09d29c4d445d405a658973cb4fa72e3973fb70038"
+    },
+    {
+      "bytes": 2279561,
+      "mapId": "gull_island",
+      "path": "snapshots/fresh_baseline/gull_island.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "7ffe82eca6a9fed1866d9bcd65ef492c99a99f3e60cf8aba1f7055a97b789311"
+    },
+    {
+      "bytes": 2809319,
+      "mapId": "harbor",
+      "path": "snapshots/fresh_baseline/harbor.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "af4a2657c7c3f484e9c294d93b6c8ad4c462e743479dc0ab88489748e811cb44"
+    },
+    {
+      "bytes": 2740514,
+      "mapId": "headland",
+      "path": "snapshots/fresh_baseline/headland.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "7583ecc8e9b7948f48e5107603d71233cfc26af4ffd5c5dbb8b6f15678153525"
+    },
+    {
+      "bytes": 3322275,
+      "mapId": "ijsdal",
+      "path": "snapshots/fresh_baseline/ijsdal.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "9d7473b4e729674b25d21c79e47782d8f65a8fe6a73273a4f6d7a8b7f7823a29"
+    },
+    {
+      "bytes": 316593,
+      "mapId": "inn",
+      "path": "snapshots/fresh_baseline/inn.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "f5945c23f5d55443cff3d525f196cc31b5889b7076be75727deab9c733ce4cf7"
+    },
+    {
+      "bytes": 3124356,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/fresh_baseline/kruipmoeras.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "870dd880aeebb985b2db75d042dd5a3384e5e7e66bc302bc1c5f3e54a5b55557"
+    },
+    {
+      "bytes": 3342465,
+      "mapId": "lake",
+      "path": "snapshots/fresh_baseline/lake.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "87498b9d4caf77798a18de0bec3b9dfef02f2a653910a38089d17fb6e7925444"
+    },
+    {
+      "bytes": 374380,
+      "mapId": "library",
+      "path": "snapshots/fresh_baseline/library.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "4907d40fedbbd2a2f47e4a6b39975f77f0d0d30b022de0db4a8489b3d1d568a6"
+    },
+    {
+      "bytes": 1042900,
+      "mapId": "mistgarden",
+      "path": "snapshots/fresh_baseline/mistgarden.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "0bc6ad8f027c16262f60df3bbafbba50826059449c37f33dcf9e5301624a5230"
+    },
+    {
+      "bytes": 279864,
+      "mapId": "player_home",
+      "path": "snapshots/fresh_baseline/player_home.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "814f80893abf589a62f554f49134352a24f443da698352a90d3e304938e2d1f2"
+    },
+    {
+      "bytes": 922008,
+      "mapId": "prismamine",
+      "path": "snapshots/fresh_baseline/prismamine.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "034e10e49f458127c0e852b25e963114f6fc3237c5aaa432619723f6eec816c9"
+    },
+    {
+      "bytes": 580626,
+      "mapId": "reedvault",
+      "path": "snapshots/fresh_baseline/reedvault.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "7735cf5c8137a374d83789b73a83979200a242f30523a811bde92b37ead2e9a4"
+    },
+    {
+      "bytes": 384903,
+      "mapId": "resonance",
+      "path": "snapshots/fresh_baseline/resonance.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "ff8e2d0e11c7c8f29c56b2675c5e9dd1232e31d93e6ad83f2f8e19a73b538576"
+    },
+    {
+      "bytes": 1372610,
+      "mapId": "ridgepass",
+      "path": "snapshots/fresh_baseline/ridgepass.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "5b122755224d40fbb865143c65b7c29af74ff180975863b241a9226011a091c4"
+    },
+    {
+      "bytes": 2767201,
+      "mapId": "river_mouth",
+      "path": "snapshots/fresh_baseline/river_mouth.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "4f3666490f22661e598215076c35485d80f64dd27a54a2b7836155587fc803ac"
+    },
+    {
+      "bytes": 1308245,
+      "mapId": "ruins",
+      "path": "snapshots/fresh_baseline/ruins.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "026bbfa9cae2160a7816bca154f1755d43d6a4745f1ebe4399b44dbd46e3c071"
+    },
+    {
+      "bytes": 214818,
+      "mapId": "shop",
+      "path": "snapshots/fresh_baseline/shop.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "c88a7f0424cc59a58bb4d601609054dc5be842969012dd6460d2e466d9c006fb"
+    },
+    {
+      "bytes": 270863,
+      "mapId": "smithy",
+      "path": "snapshots/fresh_baseline/smithy.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "3924dc0fb3ab5e6a810580e7dd6097f96347ccb86b330c26c123962c6cce25b1"
+    },
+    {
+      "bytes": 1378279,
+      "mapId": "steampeak",
+      "path": "snapshots/fresh_baseline/steampeak.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "ba0b8d301db70bafba552aaf44a394fc94b6253c90200862c54df7abce24ddd4"
+    },
+    {
+      "bytes": 546302,
+      "mapId": "sunwell",
+      "path": "snapshots/fresh_baseline/sunwell.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "79de92bba369c11868e8957d5216ee361a51ffe8e0d26d11f00115f3b1a99543"
+    },
+    {
+      "bytes": 510315,
+      "mapId": "temple",
+      "path": "snapshots/fresh_baseline/temple.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "9832c3872f9f34d93ef0f7c3aa52b03895a740184ff93e73b55358353a05409c"
+    },
+    {
+      "bytes": 1023632,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/fresh_baseline/tidal_hollow.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "8659e511747f704d91afa9d916348766b500c3a520a46d0861e0478bf770eb21"
+    },
+    {
+      "bytes": 2487683,
+      "mapId": "tide_cove",
+      "path": "snapshots/fresh_baseline/tide_cove.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "96cba2bbc0e89f9b341dbc279f424a07b6853e507b4a6ce63fb7da4edae59a15"
+    },
+    {
+      "bytes": 3406168,
+      "mapId": "village",
+      "path": "snapshots/fresh_baseline/village.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "6afd59ed1e28352e21f7737a7ba9e110fe5447885ca133e3ee30a85a270faa46"
+    },
+    {
+      "bytes": 1366611,
+      "mapId": "watchyard",
+      "path": "snapshots/fresh_baseline/watchyard.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "15db9608d45884af40200efbcdc9d0132cef82a45dab8eeb29c3f0ecac2a7e4c"
+    },
+    {
+      "bytes": 3409224,
+      "mapId": "village",
+      "path": "snapshots/opening_water_restored/village.json",
+      "scenarioId": "opening_water_restored",
+      "sha256": "c0ef8bfda8acf2c300139ea3e2655ff2b0ec871fe5772564b9edef82faffdc09"
+    },
+    {
+      "bytes": 274581,
+      "mapId": "smithy",
+      "path": "snapshots/opening_water_restored/smithy.json",
+      "scenarioId": "opening_water_restored",
+      "sha256": "749faa859dfe895fae6feb11749ce2ecdbf84853d63299131d5e5c6c32c0b62f"
+    },
+    {
+      "bytes": 3383884,
+      "mapId": "village",
+      "path": "snapshots/opening_legacy/village.json",
+      "scenarioId": "opening_legacy",
+      "sha256": "a644fb7e8fd8d71fccfbcadca0b4ce5c9eee9b8800f314d4c4d062a4d633bc31"
+    },
+    {
+      "bytes": 3429643,
+      "mapId": "village",
+      "path": "snapshots/routines_evening/village.json",
+      "scenarioId": "routines_evening",
+      "sha256": "7b2ba360aaa13de2bfcea46c50cda74e7938fb4ed1ca27294e9032d4fd57e353"
+    },
+    {
+      "bytes": 3366008,
+      "mapId": "lake",
+      "path": "snapshots/routines_evening/lake.json",
+      "scenarioId": "routines_evening",
+      "sha256": "87a2fd085aa9c9614cdf0301008dcfea955559e87e59729bd236a712751ae8ee"
+    },
+    {
+      "bytes": 377606,
+      "mapId": "inn",
+      "path": "snapshots/routines_evening/inn.json",
+      "scenarioId": "routines_evening",
+      "sha256": "2bb57c4e4e334dbd9d11fb6fb92bfa2a9615795ebc0fdec46dce26a3ddd6882c"
+    },
+    {
+      "bytes": 2832903,
+      "mapId": "harbor",
+      "path": "snapshots/routines_evening/harbor.json",
+      "scenarioId": "routines_evening",
+      "sha256": "9ea54ab7b4dc2b5ef9d95288e0000ca50ba6bb152aabed94140f4c6ed71659a7"
+    },
+    {
+      "bytes": 974912,
+      "mapId": "prismamine",
+      "path": "snapshots/routines_evening/prismamine.json",
+      "scenarioId": "routines_evening",
+      "sha256": "a9e5b00e73ff1f4d22f110687fc63ab42ef35952756ba5c5ba870cac302acf08"
+    },
+    {
+      "bytes": 1078639,
+      "mapId": "mistgarden",
+      "path": "snapshots/routines_evening/mistgarden.json",
+      "scenarioId": "routines_evening",
+      "sha256": "85c5f5ae298e97a41d984cd89b1085dfe88a78d840bde21ceecd08e76b8f3a7a"
+    },
+    {
+      "bytes": 3370104,
+      "mapId": "ijsdal",
+      "path": "snapshots/routines_evening/ijsdal.json",
+      "scenarioId": "routines_evening",
+      "sha256": "ae7e964eed47f1e9cae683ccdf07fbbfc9b58aacca491908fa42f2d9b67e91d0"
+    },
+    {
+      "bytes": 3110614,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/routines_evening/kruipmoeras.json",
+      "scenarioId": "routines_evening",
+      "sha256": "77c2dfb3af2406f1599c166dd79f30ced9445e4d21cae067852be923a56cd5f5"
+    },
+    {
+      "bytes": 1165655,
+      "mapId": "dorstvallei",
+      "path": "snapshots/routines_evening/dorstvallei.json",
+      "scenarioId": "routines_evening",
+      "sha256": "84cd43faeeb0b31b32122fa7cbcf6048dc749b89996275fade76c76d884400cb"
+    },
+    {
+      "bytes": 616399,
+      "mapId": "reedvault",
+      "path": "snapshots/routines_evening/reedvault.json",
+      "scenarioId": "routines_evening",
+      "sha256": "3c14ce1441d5c1c82de20334500a3bb03695a448ed2769e1fae4b99fef13f360"
+    },
+    {
+      "bytes": 1408328,
+      "mapId": "ridgepass",
+      "path": "snapshots/routines_evening/ridgepass.json",
+      "scenarioId": "routines_evening",
+      "sha256": "80c23de33b81986d009e5bae41c1665960d390432ee4012121c518e3a2a8213d"
+    },
+    {
+      "bytes": 3124913,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/sluices_closed/kruipmoeras.json",
+      "scenarioId": "sluices_closed",
+      "sha256": "be83d8c9977f0734fd358e71586671264c148f8f4a22042a9f42301284f2dc13"
+    },
+    {
+      "bytes": 3125390,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/sluices_west/kruipmoeras.json",
+      "scenarioId": "sluices_west",
+      "sha256": "f725d53f973562bc6d22538f0e2eaf2814369a4776d00236a2c962eb9ed1afbf"
+    },
+    {
+      "bytes": 3125374,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/sluices_east/kruipmoeras.json",
+      "scenarioId": "sluices_east",
+      "sha256": "10637c4f74445e0c75439e0837ccf69a040ac85223513f67d5edf0a2325a1b17"
+    },
+    {
+      "bytes": 3125861,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/sluices_both/kruipmoeras.json",
+      "scenarioId": "sluices_both",
+      "sha256": "59fc43f21d6818b8fd0487d74bb15fc5b97a938b6c6c3f5a881eb0ef308c1f8e"
+    },
+    {
+      "bytes": 3097585,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/marsh_drained/kruipmoeras.json",
+      "scenarioId": "marsh_drained",
+      "sha256": "b67cabed690b9eb8fd4ef0e9e25b8ac3fcd7f928d96eb8df249dfe4b47b8299a"
+    },
+    {
+      "bytes": 585088,
+      "mapId": "reedvault",
+      "path": "snapshots/marsh_drained/reedvault.json",
+      "scenarioId": "marsh_drained",
+      "sha256": "822a8b4ecbeea6569dd2f00e61c6797e012423557a91d82f9d5ccbe12b98d9ef"
+    },
+    {
+      "bytes": 3092288,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/marsh_bridge/kruipmoeras.json",
+      "scenarioId": "marsh_bridge",
+      "sha256": "a1ae40c97262533b3cfda33b090555bd869d060ab7cb33193a7e181e2c69d92c"
+    },
+    {
+      "bytes": 585996,
+      "mapId": "reedvault",
+      "path": "snapshots/marsh_bridge/reedvault.json",
+      "scenarioId": "marsh_bridge",
+      "sha256": "b4f5544a7cb6f9ff97192c9017d5d10e1e247fad09a8e7c7fe4632d7837407a7"
+    },
+    {
+      "bytes": 2450653,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_low/tide_cove.json",
+      "scenarioId": "tide_low",
+      "sha256": "36be8d90cbd60aa26e8f7b0c998dd8b0e30bc3d3843cb4c9b19db548d0b8789b"
+    },
+    {
+      "bytes": 2450633,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_rising/tide_cove.json",
+      "scenarioId": "tide_rising",
+      "sha256": "f7a35a129a53cd61a9a42e090ebc5ab97d03274ce4f02ef44d0377a97bbfa0d7"
+    },
+    {
+      "bytes": 2488372,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_high/tide_cove.json",
+      "scenarioId": "tide_high",
+      "sha256": "77dcc83eb898c787d5fbc14db5a4fa6d2ce390bb8713a6e421ba1fa3ed98ddb4"
+    },
+    {
+      "bytes": 2488250,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_falling/tide_cove.json",
+      "scenarioId": "tide_falling",
+      "sha256": "62369e25737441a639dfaceb6906a3ad9c570877e8e1f9b70db5fa92d3c1e9b8"
+    },
+    {
+      "bytes": 2450656,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_held/tide_cove.json",
+      "scenarioId": "tide_held",
+      "sha256": "c734de7c1d82d14e087c2eab8aec3dbac738c3e65b4df9a719d769805c5c0725"
+    },
+    {
+      "bytes": 2487540,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_released/tide_cove.json",
+      "scenarioId": "tide_released",
+      "sha256": "093958fa5b12e48703caa09d310a3a7dde35374717fa7d2da7bd570d2b7133c1"
+    },
+    {
+      "bytes": 1146098,
+      "mapId": "dorstvallei",
+      "path": "snapshots/desert_wild/dorstvallei.json",
+      "scenarioId": "desert_wild",
+      "sha256": "421166e6ed433f079dee5274d26c1c8d788ca3110a4cb9852568623a8fde10e0"
+    },
+    {
+      "bytes": 550384,
+      "mapId": "sunwell",
+      "path": "snapshots/desert_wild/sunwell.json",
+      "scenarioId": "desert_wild",
+      "sha256": "19dadb89173af1177905b8ff5ba37c8e0e0b6d10bf51087a000bca1e539a10e1"
+    },
+    {
+      "bytes": 1146105,
+      "mapId": "dorstvallei",
+      "path": "snapshots/desert_caravan/dorstvallei.json",
+      "scenarioId": "desert_caravan",
+      "sha256": "3b142bc137a6d87458538f345232b5f3ce2412f1d2f5fe6017fcf781ebea6b7f"
+    },
+    {
+      "bytes": 550393,
+      "mapId": "sunwell",
+      "path": "snapshots/desert_caravan/sunwell.json",
+      "scenarioId": "desert_caravan",
+      "sha256": "27ec627eac07124bc12754ef9de83227e02889767f9ca0cab35b64aece1b88f6"
+    },
+    {
+      "bytes": 3336963,
+      "mapId": "ijsdal",
+      "path": "snapshots/ice_west/ijsdal.json",
+      "scenarioId": "ice_west",
+      "sha256": "a81d34d4531670bb70cad3252fbb7d40725e2fc7df0f1594c63d2120b4e5955c"
+    },
+    {
+      "bytes": 3350033,
+      "mapId": "ijsdal",
+      "path": "snapshots/ice_restored/ijsdal.json",
+      "scenarioId": "ice_restored",
+      "sha256": "bb2e656366aa9430d414ccddfd58240b1726ce4093e22a457670a9cf36dcf7d1"
+    },
+    {
+      "bytes": 1376217,
+      "mapId": "ridgepass",
+      "path": "snapshots/ice_restored/ridgepass.json",
+      "scenarioId": "ice_restored",
+      "sha256": "f73af3b9cbb17576cdad5f99722b3021f3d1c62aaecd5b0a4c1104e37730b8dc"
+    },
+    {
+      "bytes": 1392299,
+      "mapId": "ridgepass",
+      "path": "snapshots/ridge_rope/ridgepass.json",
+      "scenarioId": "ridge_rope",
+      "sha256": "039bedc7203722635be7b7b1b24d647d568fde9e9e9bbff82b4f4ef9268bc65e"
+    },
+    {
+      "bytes": 3353954,
+      "mapId": "ijsdal",
+      "path": "snapshots/ridge_rope/ijsdal.json",
+      "scenarioId": "ridge_rope",
+      "sha256": "250850509c9691d61ca3b23512543da970d04fd78e24b312245ce9fa37d79c44"
+    },
+    {
+      "bytes": 584369,
+      "mapId": "reedvault",
+      "path": "snapshots/archive_clues/reedvault.json",
+      "scenarioId": "archive_clues",
+      "sha256": "5f66c1b6630187cbc831fa6fc000d108a1179b84e39c1d4e444aa8b2811163a1"
+    },
+    {
+      "bytes": 602589,
+      "mapId": "reedvault",
+      "path": "snapshots/archive_routes/reedvault.json",
+      "scenarioId": "archive_routes",
+      "sha256": "7a5735fdde5fc5a9c8e19f3ab78e3fadea9e081e843d6e724013ca0626139e49"
+    },
+    {
+      "bytes": 3096723,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/archive_routes/kruipmoeras.json",
+      "scenarioId": "archive_routes",
+      "sha256": "91cf6a2409657ea8c5fc53668fbd1035552cd3706ce151d0b453c3caa3d1a42f"
+    },
+    {
+      "bytes": 602120,
+      "mapId": "reedvault",
+      "path": "snapshots/archive_stories/reedvault.json",
+      "scenarioId": "archive_stories",
+      "sha256": "6088cc4019e8f88a3a24c0e6414b46b6121e46e9b1fbc6ddb5e3f62e7bf17052"
+    },
+    {
+      "bytes": 3096253,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/archive_stories/kruipmoeras.json",
+      "scenarioId": "archive_stories",
+      "sha256": "ff197d36532a72911a84fe085995725c81e7e092cd8cb798a23e3298ac4859bf"
+    },
+    {
+      "bytes": 4387823,
+      "mapId": "forest",
+      "path": "snapshots/route_cat_home/forest.json",
+      "scenarioId": "route_cat_home",
+      "sha256": "67a2cb2dbda07921bd69aab1be49373c2830656194c459393a7c6734d156bd5d"
+    },
+    {
+      "bytes": 3423444,
+      "mapId": "village",
+      "path": "snapshots/route_cat_home/village.json",
+      "scenarioId": "route_cat_home",
+      "sha256": "a7426554077ea2f0e355b8554ade2dee9bbd7b84e995a9517d05753816ae4696"
+    },
+    {
+      "bytes": 1313142,
+      "mapId": "ruins",
+      "path": "snapshots/route_clues/ruins.json",
+      "scenarioId": "route_clues",
+      "sha256": "491e5f4a6b63148c32528beaf4014cda6b8b0cf453240dff5f5349b531a2422b"
+    },
+    {
+      "bytes": 1521226,
+      "mapId": "cave",
+      "path": "snapshots/route_clues/cave.json",
+      "scenarioId": "route_clues",
+      "sha256": "b57cb9b1a020ff8d4c50a2a2731d9b7c8588efbfc6b50db20e8c934a2318c8e4"
+    },
+    {
+      "bytes": 1523337,
+      "mapId": "cave",
+      "path": "snapshots/route_echo_begin/cave.json",
+      "scenarioId": "route_echo_begin",
+      "sha256": "32638e6bbe8abe2e49091fa898a8ecd5286bee1c06fe1decb1c3fa979d613448"
+    },
+    {
+      "bytes": 1523791,
+      "mapId": "cave",
+      "path": "snapshots/route_echo_mid/cave.json",
+      "scenarioId": "route_echo_mid",
+      "sha256": "2248b1a7428bb1b049547a30826d39d248e35d739ab011c88427e69655e187a4"
+    },
+    {
+      "bytes": 1524718,
+      "mapId": "cave",
+      "path": "snapshots/route_echo_end/cave.json",
+      "scenarioId": "route_echo_end",
+      "sha256": "b61ec447cfbb4dd92aa6b921b00f7bffc511c7f0924b5b78a1bc33011a82d19b"
+    },
+    {
+      "bytes": 1317999,
+      "mapId": "ruins",
+      "path": "snapshots/route_memorial_guard/ruins.json",
+      "scenarioId": "route_memorial_guard",
+      "sha256": "8887cadabdf9f00f01a1a74def5997407942a743f7ba04f94279c5a4bdde1f35"
+    },
+    {
+      "bytes": 3415279,
+      "mapId": "village",
+      "path": "snapshots/route_memorial_guard/village.json",
+      "scenarioId": "route_memorial_guard",
+      "sha256": "14451cf96da3e226a7ad288f7777b63937f2080274b311f47639a8d6fdea58a4"
+    },
+    {
+      "bytes": 1318003,
+      "mapId": "ruins",
+      "path": "snapshots/route_memorial_guide/ruins.json",
+      "scenarioId": "route_memorial_guide",
+      "sha256": "7e34eb084e751bc28f8b7a1bd1799a71a019b9ebb0f367b1b1f274a2e2a18c80"
+    },
+    {
+      "bytes": 3415274,
+      "mapId": "village",
+      "path": "snapshots/route_memorial_guide/village.json",
+      "scenarioId": "route_memorial_guide",
+      "sha256": "4cbaf4f480095631eeff4ffe83762eca3304bcecffebd64fe9161d1c8f535f6c"
+    },
+    {
+      "bytes": 955508,
+      "mapId": "prismamine",
+      "path": "snapshots/mine_restored/prismamine.json",
+      "scenarioId": "mine_restored",
+      "sha256": "313b13539876b6a8619f1b5b18d48a386d8d0fb9b0539766990aa82e0478954a"
+    },
+    {
+      "bytes": 275088,
+      "mapId": "smithy",
+      "path": "snapshots/mine_restored/smithy.json",
+      "scenarioId": "mine_restored",
+      "sha256": "92c316b31bd30a0515056966a76c39c3d479d0a949d2d2810f2cc71a1cd58548"
+    },
+    {
+      "bytes": 3876339,
+      "mapId": "dauwbos",
+      "path": "snapshots/forest_restored/dauwbos.json",
+      "scenarioId": "forest_restored",
+      "sha256": "842682fd2df4e6110998d176e6d5be65b85301f6655cc8defc6c11b01de3ac1f"
+    },
+    {
+      "bytes": 1058698,
+      "mapId": "mistgarden",
+      "path": "snapshots/forest_restored/mistgarden.json",
+      "scenarioId": "forest_restored",
+      "sha256": "b48f8bb6a0307820275fad9787b7c8fef09063372868e33d4cf79b88458f3bdc"
+    },
+    {
+      "bytes": 349101,
+      "mapId": "player_home",
+      "path": "snapshots/home_furnished/player_home.json",
+      "scenarioId": "home_furnished",
+      "sha256": "447bbbc2ad6e2662ae8979af73ce3825b84cf5a238c736445672f164bd31bcac"
+    },
+    {
+      "bytes": 3414939,
+      "mapId": "village",
+      "path": "snapshots/yard_moved/village.json",
+      "scenarioId": "yard_moved",
+      "sha256": "f3da275633e0169d97f18c543113bfaad4c9de095f94eb98c7ea9518e8616d9c"
+    },
+    {
+      "bytes": 3413736,
+      "mapId": "village",
+      "path": "snapshots/yard_packed/village.json",
+      "scenarioId": "yard_packed",
+      "sha256": "bb95b244ca75daaabcd865b416dfdfda68988444e1af51af0edc27fca675f054"
+    },
+    {
+      "bytes": 3423435,
+      "mapId": "village",
+      "path": "snapshots/yard_gate_far/village.json",
+      "scenarioId": "yard_gate_far",
+      "sha256": "3ef028de0bc3fd89472c57d75e4a9225d31ea5a682651ce3850589c7d143b546"
+    },
+    {
+      "bytes": 3423439,
+      "mapId": "village",
+      "path": "snapshots/yard_gate_near/village.json",
+      "scenarioId": "yard_gate_near",
+      "sha256": "8650b2a40732be046aafaeefe2e6edbb4038c07ff292218dd57b47ba58257199"
+    },
+    {
+      "bytes": 3440146,
+      "mapId": "village",
+      "path": "snapshots/farm_dry/village.json",
+      "scenarioId": "farm_dry",
+      "sha256": "db3b5eb88de226d2e85c5a44d79c1e50c2db1e2bad8b5e66265e37051e83fdd4"
+    },
+    {
+      "bytes": 3473654,
+      "mapId": "village",
+      "path": "snapshots/farm_irrigated/village.json",
+      "scenarioId": "farm_irrigated",
+      "sha256": "7df8ac81eac8efd6d277e2f4fc43925ab9a871f5ba4a590c369f412d5be30c5d"
+    },
+    {
+      "bytes": 3454681,
+      "mapId": "village",
+      "path": "snapshots/farm_disconnected/village.json",
+      "scenarioId": "farm_disconnected",
+      "sha256": "56e1ec9f07ea26bc9116cbda4d3f9cc9953dd7394ff4b2161afcb66c0e8463d1"
+    },
+    {
+      "bytes": 3532964,
+      "mapId": "village",
+      "path": "snapshots/farm_ready/village.json",
+      "scenarioId": "farm_ready",
+      "sha256": "aa528ba93b62de6c98147ac84d684bf6b023cc51e21579f3d1ef84dd1c3c9eac"
+    },
+    {
+      "bytes": 432243,
+      "mapId": "player_home",
+      "path": "snapshots/farm_ready/player_home.json",
+      "scenarioId": "farm_ready",
+      "sha256": "d1b8ba6eabd260c7955ebdb6a9295a3e001cb80027c80dfe932add535a62f891"
+    },
+    {
+      "bytes": 3411804,
+      "mapId": "village",
+      "path": "snapshots/honey_no_flowers/village.json",
+      "scenarioId": "honey_no_flowers",
+      "sha256": "f88ef9d8d66c9b141b7f1c7a41317bea316b3b6dc8802d9bb328a5dafaca3ee5"
+    },
+    {
+      "bytes": 3423421,
+      "mapId": "village",
+      "path": "snapshots/honey_grown_flowers/village.json",
+      "scenarioId": "honey_grown_flowers",
+      "sha256": "fd17ef89696b088fbf4541d91d1ec70c555d907a795825d2abde94d2a963b8f3"
+    },
+    {
+      "bytes": 390809,
+      "mapId": "coast_workshop",
+      "path": "snapshots/coastal_workshop/coast_workshop.json",
+      "scenarioId": "coastal_workshop",
+      "sha256": "93c7611f52d9c16757659744b39ef877df9d34ae80dd8e2d4082303087b39e6f"
+    },
+    {
+      "bytes": 2813592,
+      "mapId": "harbor",
+      "path": "snapshots/coastal_workshop/harbor.json",
+      "scenarioId": "coastal_workshop",
+      "sha256": "4b6892d1833f7a6d3395ea982f944960522474792bd1aabe7864daad4b4b7f9d"
+    },
+    {
+      "bytes": 1012574,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/hollow_wheel/tidal_hollow.json",
+      "scenarioId": "hollow_wheel",
+      "sha256": "56b82f18bf6b045cdc705fce8f124fad0a3e4aee3e9e72160bdd49deab2d32bf"
+    },
+    {
+      "bytes": 1015139,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/hollow_pool/tidal_hollow.json",
+      "scenarioId": "hollow_pool",
+      "sha256": "f6ecd6348a7590a549d40996b6aa202e646601ae2442cdc879909e17abc2226b"
+    },
+    {
+      "bytes": 1015130,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/hollow_workwater/tidal_hollow.json",
+      "scenarioId": "hollow_workwater",
+      "sha256": "88baac8e7068098b8e0f2579a2bc52a01f7698c6da0ec53039d9a62aaf355850"
+    },
+    {
+      "bytes": 1057496,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/hollow_duel/tidal_hollow.json",
+      "scenarioId": "hollow_duel",
+      "sha256": "6b5aef72d645269ac2c8c2585ca42777bf30fe4dded4612eaaf79a29215b0c87"
+    },
+    {
+      "bytes": 2743205,
+      "mapId": "headland",
+      "path": "snapshots/headland_shelter/headland.json",
+      "scenarioId": "headland_shelter",
+      "sha256": "bd7f0b795f703a18904f44995201a338a8de2c9a93d56c7e464d676b0686b986"
+    },
+    {
+      "bytes": 377123,
+      "mapId": "library",
+      "path": "snapshots/library_backroom/library.json",
+      "scenarioId": "library_backroom",
+      "sha256": "bce7f76cd054b972da1256df3da562ab5b29dad891bd999ee28f90bdfbf7a1df"
+    },
+    {
+      "bytes": 602504,
+      "mapId": "depths2",
+      "path": "snapshots/guardian_alive/depths2.json",
+      "scenarioId": "guardian_alive",
+      "sha256": "245f147815fe677b6b939dd2417053ffde2bd823f19531685e76b9a7b1ffd36e"
+    },
+    {
+      "bytes": 515209,
+      "mapId": "depths2",
+      "path": "snapshots/guardian_defeated/depths2.json",
+      "scenarioId": "guardian_defeated",
+      "sha256": "9ee58d65d2aeaffd4dce89600502373b26bad87df3fb5625abb18e7bdd7dc382"
+    },
+    {
+      "bytes": 515687,
+      "mapId": "depths2",
+      "path": "snapshots/guardian_reward_opened/depths2.json",
+      "scenarioId": "guardian_reward_opened",
+      "sha256": "c9cc7c2120293c306eb2d955bc795460688beaebb394f50b89913d2c8ba34218"
+    },
+    {
+      "bytes": 516082,
+      "mapId": "depths2",
+      "path": "snapshots/guardian_full_hearts/depths2.json",
+      "scenarioId": "guardian_full_hearts",
+      "sha256": "54a50bbea424d414951eb236300cb08ac8b0ceb5c115e9986474fbb94d86d821"
+    },
+    {
+      "bytes": 4412315,
+      "mapId": "forest",
+      "path": "snapshots/saved_manure/forest.json",
+      "scenarioId": "saved_manure",
+      "sha256": "380b835b938b66378f819edbaeba76a98ef06c8869ef7961bb83de6ccffc6227"
+    },
+    {
+      "bytes": 513612,
+      "mapId": "temple",
+      "path": "snapshots/boss_gate_closed/temple.json",
+      "scenarioId": "boss_gate_closed",
+      "sha256": "a18f0f33c08360432573ae0bd66b95b77b224c3f02952fa6940a2263b0328f71"
+    },
+    {
+      "bytes": 1017777,
+      "mapId": "arena",
+      "path": "snapshots/full_progress/arena.json",
+      "scenarioId": "full_progress",
+      "sha256": "0f7bff27f2b81baad7ee6677e2bd2f33b6de0fd40564118d6b3caa21b60c8efd"
+    },
+    {
+      "bytes": 670797,
+      "mapId": "arena_hall",
+      "path": "snapshots/full_progress/arena_hall.json",
+      "scenarioId": "full_progress",
+      "sha256": "9896d37939cadaa76b6b9b30e17c881413a92814538d81c535aed40cdc988772"
+    },
+    {
+      "bytes": 1816321,
+      "mapId": "cave",
+      "path": "snapshots/full_progress/cave.json",
+      "scenarioId": "full_progress",
+      "sha256": "843e94cde9674d13a8ef22213b7bd61fa0ecef10fde58f5534980a8b9e036dc5"
+    },
+    {
+      "bytes": 2411944,
+      "mapId": "coast",
+      "path": "snapshots/full_progress/coast.json",
+      "scenarioId": "full_progress",
+      "sha256": "595373ce85f895a2b32f598d2e53e100e4ed4a853bf9f252ec6989be69f9ef13"
+    },
+    {
+      "bytes": 727289,
+      "mapId": "coast_workshop",
+      "path": "snapshots/full_progress/coast_workshop.json",
+      "scenarioId": "full_progress",
+      "sha256": "ac1c1e6e40e53944904bb71fa1fb2f78e2b8c642a5945411639f3f6d2993b07c"
+    },
+    {
+      "bytes": 4201010,
+      "mapId": "dauwbos",
+      "path": "snapshots/full_progress/dauwbos.json",
+      "scenarioId": "full_progress",
+      "sha256": "39e5d2fedcef33dce32da69b8080073709e9d698dfbacf083b8132f161c8d290"
+    },
+    {
+      "bytes": 1680423,
+      "mapId": "depths1",
+      "path": "snapshots/full_progress/depths1.json",
+      "scenarioId": "full_progress",
+      "sha256": "338296fd6ad728a9e808fc92f3d24e5d04bb5d955bc2ec0da1f54b3176544c4b"
+    },
+    {
+      "bytes": 852322,
+      "mapId": "depths2",
+      "path": "snapshots/full_progress/depths2.json",
+      "scenarioId": "full_progress",
+      "sha256": "b7095e2c9dfc0b632f021f96256f5ab64ab418011d5b6964be9ab497551a0086"
+    },
+    {
+      "bytes": 1476538,
+      "mapId": "dorstvallei",
+      "path": "snapshots/full_progress/dorstvallei.json",
+      "scenarioId": "full_progress",
+      "sha256": "c6013d544425efb2f4e1ea221b09c5838674d082e4d1f73a5256fc1fdee0ce81"
+    },
+    {
+      "bytes": 570838,
+      "mapId": "fisher_hut",
+      "path": "snapshots/full_progress/fisher_hut.json",
+      "scenarioId": "full_progress",
+      "sha256": "98ced546d0d7fe2b8d77a7cecbc12258b5d9b84bc7fea1faffe4d6f29852fc53"
+    },
+    {
+      "bytes": 4694277,
+      "mapId": "forest",
+      "path": "snapshots/full_progress/forest.json",
+      "scenarioId": "full_progress",
+      "sha256": "4d22fdcbdeff723e6e88e0f822982492db7407c87b334d619345ae0d4d06522e"
+    },
+    {
+      "bytes": 3531880,
+      "mapId": "forest_edge",
+      "path": "snapshots/full_progress/forest_edge.json",
+      "scenarioId": "full_progress",
+      "sha256": "d1844250de5cddf5d6f9c87b9695e9ccdc4a90e058b8ea9044a6c6e4ba552163"
+    },
+    {
+      "bytes": 2620329,
+      "mapId": "gull_island",
+      "path": "snapshots/full_progress/gull_island.json",
+      "scenarioId": "full_progress",
+      "sha256": "232eece1e0c6fbe6871afec61a07dda3d8460f17d48dd49c60acd4d2e2b2fbbb"
+    },
+    {
+      "bytes": 3150090,
+      "mapId": "harbor",
+      "path": "snapshots/full_progress/harbor.json",
+      "scenarioId": "full_progress",
+      "sha256": "50152ebb824b1747f98045b4edd7f116fcdae446b67d2513e016135e689be03c"
+    },
+    {
+      "bytes": 3081266,
+      "mapId": "headland",
+      "path": "snapshots/full_progress/headland.json",
+      "scenarioId": "full_progress",
+      "sha256": "b19a728311958b7df8da643436e520c331b6916ffbd2533e9e4dcd27b30cd1f9"
+    },
+    {
+      "bytes": 3680968,
+      "mapId": "ijsdal",
+      "path": "snapshots/full_progress/ijsdal.json",
+      "scenarioId": "full_progress",
+      "sha256": "b56a5e97f7f9dcb63ebd8a1bb2a4c6cd678afc4026ca2b325a7cf33bde83fe99"
+    },
+    {
+      "bytes": 694844,
+      "mapId": "inn",
+      "path": "snapshots/full_progress/inn.json",
+      "scenarioId": "full_progress",
+      "sha256": "36a69de3606175c2d51311cb1e26b680e01486857c5774710ce4696f4cc0fc29"
+    },
+    {
+      "bytes": 3409093,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/full_progress/kruipmoeras.json",
+      "scenarioId": "full_progress",
+      "sha256": "c067f124dd4be2f6e08c1eec968dab35be3bf016f547b512471e43587c8a5999"
+    },
+    {
+      "bytes": 3645780,
+      "mapId": "lake",
+      "path": "snapshots/full_progress/lake.json",
+      "scenarioId": "full_progress",
+      "sha256": "a7f66f9ddd5cf8b7ce13d9db5c13e85d1c4d2943ab17682485f40ab4168917ac"
+    },
+    {
+      "bytes": 715158,
+      "mapId": "library",
+      "path": "snapshots/full_progress/library.json",
+      "scenarioId": "full_progress",
+      "sha256": "420e3f004c4b19ca85b6cba65f37e034f456718bb71c342887be51d3331061e0"
+    },
+    {
+      "bytes": 1395826,
+      "mapId": "mistgarden",
+      "path": "snapshots/full_progress/mistgarden.json",
+      "scenarioId": "full_progress",
+      "sha256": "58df67c47ddb544cf54b3aa751fec442a5033149af0f7371979124dc25c57707"
+    },
+    {
+      "bytes": 651061,
+      "mapId": "player_home",
+      "path": "snapshots/full_progress/player_home.json",
+      "scenarioId": "full_progress",
+      "sha256": "b74863b15548a2cc057a5f4e1dce478a3e922a3826f88c96436be88ff9755e17"
+    },
+    {
+      "bytes": 1292158,
+      "mapId": "prismamine",
+      "path": "snapshots/full_progress/prismamine.json",
+      "scenarioId": "full_progress",
+      "sha256": "fda5167f9dee84d3504c5f2aace4d4e76ff917f292693b878947af23bcff752b"
+    },
+    {
+      "bytes": 933632,
+      "mapId": "reedvault",
+      "path": "snapshots/full_progress/reedvault.json",
+      "scenarioId": "full_progress",
+      "sha256": "4ec844cbbe3296be12719282b4e22954f0354f0bd4d911d99789ad1f23f29e8a"
+    },
+    {
+      "bytes": 725760,
+      "mapId": "resonance",
+      "path": "snapshots/full_progress/resonance.json",
+      "scenarioId": "full_progress",
+      "sha256": "03ad2762ce32b4edc6d047fcb34d3200314a7f1a72e0a613c2a31448f2feebda"
+    },
+    {
+      "bytes": 1725532,
+      "mapId": "ridgepass",
+      "path": "snapshots/full_progress/ridgepass.json",
+      "scenarioId": "full_progress",
+      "sha256": "1ae2fc7ccbd2fb08c41f91940d9748cc7d66a071bae5d8d1a7300786d0b2055c"
+    },
+    {
+      "bytes": 3107972,
+      "mapId": "river_mouth",
+      "path": "snapshots/full_progress/river_mouth.json",
+      "scenarioId": "full_progress",
+      "sha256": "dd74becd1a4634cf2135a0806e159e2fc33116e0a9e9e162c3807c6d076d8f6b"
+    },
+    {
+      "bytes": 1595757,
+      "mapId": "ruins",
+      "path": "snapshots/full_progress/ruins.json",
+      "scenarioId": "full_progress",
+      "sha256": "30d310daef31848fb49408fdd2a7e28eaf2c93c4387c22f791f11e3da7e52901"
+    },
+    {
+      "bytes": 555676,
+      "mapId": "shop",
+      "path": "snapshots/full_progress/shop.json",
+      "scenarioId": "full_progress",
+      "sha256": "5477b7de7e4480507fbc5344d65d80e15ed76dc68299fd17975aa03aadaec398"
+    },
+    {
+      "bytes": 611737,
+      "mapId": "smithy",
+      "path": "snapshots/full_progress/smithy.json",
+      "scenarioId": "full_progress",
+      "sha256": "0ffbb66b2e515d1e9e226b7a85bf7f25fe2704deef042f49bd1172689da7f5f1"
+    },
+    {
+      "bytes": 1719067,
+      "mapId": "steampeak",
+      "path": "snapshots/full_progress/steampeak.json",
+      "scenarioId": "full_progress",
+      "sha256": "b1cd569202444425d56ad2a088204df98c97e157f588677d88e5c6a129d29888"
+    },
+    {
+      "bytes": 887052,
+      "mapId": "sunwell",
+      "path": "snapshots/full_progress/sunwell.json",
+      "scenarioId": "full_progress",
+      "sha256": "3c76e6724f14b7b9b61dce824e636ba2866d3d4cabf9f6a0e7765584f86223b4"
+    },
+    {
+      "bytes": 798973,
+      "mapId": "temple",
+      "path": "snapshots/full_progress/temple.json",
+      "scenarioId": "full_progress",
+      "sha256": "d079ae80b1ffbf4806d12e1e16dbbc37c3ee0b79b1d6ad5103c580129e8008f4"
+    },
+    {
+      "bytes": 1290187,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/full_progress/tidal_hollow.json",
+      "scenarioId": "full_progress",
+      "sha256": "60bba09b77d41042337692ad6d5a7d4b2b1486f3ae4857d4f0540b45137acf2c"
+    },
+    {
+      "bytes": 2790735,
+      "mapId": "tide_cove",
+      "path": "snapshots/full_progress/tide_cove.json",
+      "scenarioId": "full_progress",
+      "sha256": "84f29f48674785cd0bb5b3b63b0b32c83d885321c9d1845c10b966e2671efee7"
+    },
+    {
+      "bytes": 3766455,
+      "mapId": "village",
+      "path": "snapshots/full_progress/village.json",
+      "scenarioId": "full_progress",
+      "sha256": "073915cd9509e5c32b7ab9f4e9582bc6ef22c7b37ce97069e02c5d588fe2df67"
+    },
+    {
+      "bytes": 1707380,
+      "mapId": "watchyard",
+      "path": "snapshots/full_progress/watchyard.json",
+      "scenarioId": "full_progress",
+      "sha256": "ba37f7125a161bc072664165d82f05557e55c871b5f0360cc73bbf9e91e1f74c"
+    },
+    {
+      "bytes": 3356547,
+      "mapId": "ijsdal",
+      "path": "snapshots/legacy_completed/ijsdal.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "2c8e6d9705ba9922ad1ae9e09fbea2b54408507b1d7ae11f085ef16b5dc8e0da"
+    },
+    {
+      "bytes": 3097155,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/legacy_completed/kruipmoeras.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "2fc84d5afe5858c9d4d94f8b80ccd46d22e16a4c3e263243b79bdfd67ce97dc3"
+    },
+    {
+      "bytes": 1152129,
+      "mapId": "dorstvallei",
+      "path": "snapshots/legacy_completed/dorstvallei.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "3c34358dfef497adf7e08e5c2042172e18b593f9f90955e5641614bd77eaf683"
+    },
+    {
+      "bytes": 1318486,
+      "mapId": "ruins",
+      "path": "snapshots/legacy_completed/ruins.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "9fdcee84b6d0b1159b3d292c0375f454d6d788b5c02b3fcfefc27fe001c8c54a"
+    },
+    {
+      "bytes": 1526575,
+      "mapId": "cave",
+      "path": "snapshots/legacy_completed/cave.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "bc90d162f191d1010cff13e6c63683a2864c2e371c018a27fee9ac735a9e84b3"
+    }
+  ],
+  "units": {
+    "tilePixels": 32,
+    "yAxis": "down"
+  },
+  "valueEncoding": "bluemap.world.variant.v2"
+}

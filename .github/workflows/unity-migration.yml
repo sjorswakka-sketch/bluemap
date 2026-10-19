@@ -118,3 +118,43 @@ jobs:
             ${{ runner.temp }}/unity-preview/download-verification.json
           if-no-files-found: error
           retention-days: 30
+
+  world:
+    name: Geladen wereld en veranderde toestanden opnieuw exporteren
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Vaste Godot-referentie ophalen
+        run: |
+          curl --fail --silent --show-error --location -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot-builds/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP/godot"
+          chmod +x "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64"
+      - name: Twee echte wereldexports met geverifieerde aparte testopslag
+        run: python tools/record_migration_world.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/world-evidence"
+      - name: Gerichte wereldgevolgen en uiteindelijke IDs controleren
+        run: |
+          python tools/check_world_witnesses.py --directory migration/world --output "$RUNNER_TEMP/world-witnesses.json"
+          python tools/migration_runtime_ids.py --directory migration/world --output "$RUNNER_TEMP/world-identities.json"
+      - name: Wereldexportbewijs bewaren
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: Unity-wereldexport-phase-05-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/world-evidence/receipt.json
+            ${{ runner.temp }}/world-evidence/scenario-fixtures.log
+            ${{ runner.temp }}/world-evidence/export-1.log
+            ${{ runner.temp }}/world-evidence/export-2.log
+            ${{ runner.temp }}/world-witnesses.json
+            ${{ runner.temp }}/world-identities.json
+            migration/world/index.json
+            migration/world-coverage.json
+            migration/phase-05/
+          if-no-files-found: error
+          retention-days: 30

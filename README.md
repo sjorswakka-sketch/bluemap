@@ -1,6 +1,6 @@
 # Bluemap Quest
 
-**Unity-migratie:** fases 1 tot en met 3 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), de [actuele downloads](migration/DOWNLOADS.md) en de [aparte migratiecontroles](migration/phase-03/README.md). Het volgende go start fase 4. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
+**Unity-migratie:** fases 1 tot en met 5 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), de [wereldexport met 37 kaarten](migration/phase-05/README.md) en de [actuele downloads](migration/DOWNLOADS.md). Het volgende go start fase 6: graphics, geluid en teksten. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
 
 0.34: een wereldatlas met opgeslagen gebiedsbezoeken en nieuwe gedetailleerde pixelart voor de speler en NPC’s; zie [wijzigingen](WORLD_ATLAS_CHARACTERS_034.md).
 
@@ -124,7 +124,7 @@ De korte bootpresentatie is over te slaan of af te breken; eigen art, animaties,
 muziek en geluiden. Geen extra vijanden, grind of verzamelopdracht.
 Oude meerobjecten en save-ID's behouden; NL/EN en bediening bijgewerkt.
 Details: [COAST_EXPEDITION.md](COAST_EXPEDITION.md).
-Het actieve grotere faseplan is [DEVELOPMENT_COAST.md](DEVELOPMENT_COAST.md).
+Het bijbehorende kustplan is [DEVELOPMENT_COAST.md](DEVELOPMENT_COAST.md); het huidige ontwikkelplan staat in [migration/PLAN.md](migration/PLAN.md).
 
 Nieuw in 0.19: **Monsters horen bij hun omgeving**. Twee Wortelwakers vervangen
 bestaande slijmen in het bos; twee Schemermotten vervangen vleermuizen op de

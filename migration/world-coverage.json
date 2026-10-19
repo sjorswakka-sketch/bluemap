@@ -1,0 +1,3663 @@
+{
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "excludedClaims": [
+    "No Unity scene, behavior, combat or save-converter implementation",
+    "Synthetic state availability does not prove a completed playthrough or all flag combinations",
+    "No arbitrary timed enemy/projectile/arena-wave simulation; original algorithms remain for later gameplay phases",
+    "No exhaustive animation frame, GPU shading, particle/audio playback or NPC path-time capture; phase6/23 follow",
+    "No type precision or dictionary order discarded by phase1 is reconstructed",
+    "No personal save files, account data or offline growth",
+    "diepte_seal zero-delta _process is not sampled: it can initiate a story break; its frozen _ready state and complete source are retained."
+  ],
+  "loadMapHooks": [
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/access_points.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "3d3584d66449172728204cbf3fe5071ed063eb30d754a6d595495bdd6f0bd58f",
+        "endLine": 18,
+        "function": "prepare",
+        "line": 5,
+        "path": "res://scripts/core/access_points.gd",
+        "sourceSha256LF": "c3258bfab12418887d655d87e2e23bd9f7c67b894cd17cb5bc4718391e08d5f6"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/coastal_adventures.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "ac2390014a0fceb9c567b3d9fd2205b5b50a28ef69cc20d0f2ad5d416dd0f336",
+        "endLine": 6,
+        "function": "prepare",
+        "line": 3,
+        "path": "res://scripts/core/coastal_adventures.gd",
+        "sourceSha256LF": "9315a2b9d108860e5d733c3fd6546dcb86d45c66dff21c1d12f74add23fc73a6"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/first_route.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "46722948870b427208bfbcb932164c969b32b440d92e71caf0449b08e1c29dc4",
+        "endLine": 10,
+        "function": "migrate",
+        "line": 5,
+        "path": "res://scripts/core/first_route.gd",
+        "sourceSha256LF": "72c2c02313a55c34827378a145285f443912b0da689cb755fe56c784854daf1c"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/living_world.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "c8abd391257be96c4c32f111f9c362e71561e872cbedd01aa831e99e8c743ade",
+        "endLine": 29,
+        "function": "migrate",
+        "line": 8,
+        "path": "res://scripts/core/living_world.gd",
+        "sourceSha256LF": "516c65e2026a1b8579af2fcfd317556c412669db59ad75ecdac5c466a8542738"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/opening.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "ce0cd7f19be810b147fa6ffd8e3a59a7e511b2040f5fce16cbbd4f6456046e0b",
+        "endLine": 7,
+        "function": "enabled",
+        "line": 6,
+        "path": "res://scripts/core/opening.gd",
+        "sourceSha256LF": "c6562460f158e3d5f32e46f5b4cc2ef7e0e7d6c52cd257f3f049885defdf9d3e"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/personal_home.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "b66d7e9ce6ea0d8c3a3b3886095de29f4158d5405e8b86e6fad6a21d1b8efbdf",
+        "endLine": 130,
+        "function": "player_reason",
+        "line": 125,
+        "path": "res://scripts/core/personal_home.gd",
+        "sourceSha256LF": "bd036d440fa7c9cef5b36c3716acd42cc121a7bd71c08bd7e9557cee563250d9"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/regional_adventures.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "480729a818688cdb37ab953c25ebffeb3df9e7b21403c72bb8e2e54bb42be22c",
+        "endLine": 14,
+        "function": "migrate",
+        "line": 7,
+        "path": "res://scripts/core/regional_adventures.gd",
+        "sourceSha256LF": "8bb02f0ba0433183c46f12646116a519d274951d6df3aa467a9f904aa3159320"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/tides.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "f05a9608a97ea3d22fdac2ce12ae0a5721f0b215d3ad736cc43151b5c008f4f6",
+        "endLine": 19,
+        "function": "prepare",
+        "line": 18,
+        "path": "res://scripts/core/tides.gd",
+        "sourceSha256LF": "60ada360e1d272848e0fdeae129c803a934cda9abf02feab58b756a040423c6f"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/core/water_features.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "5588941096589c096bbe1a8d765afec93193ec126f00fae8e0000f7e85a2b560",
+        "endLine": 60,
+        "function": "describe",
+        "line": 46,
+        "path": "res://scripts/core/water_features.gd",
+        "sourceSha256LF": "c2281e9faf2847e9fb18c6c2f00db305e820f7398d6bcfb922db72c24e435812"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/data/ext/beroepen.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "6ef26b1652ac6d6667e63f64c234e56baa3cdb44e10994bd827392ca28682975",
+        "endLine": 259,
+        "function": "resource_objects",
+        "line": 255,
+        "path": "res://scripts/data/ext/beroepen.gd",
+        "sourceSha256LF": "712b6e0e6102c348f2d6e207903ad219655b22072bf54941eb4e0a9089ba930a"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/data/forest_food_species.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "6ac59b8abf359ebe707f8f3fba48348d85ecf17db28f95df39b666b48a5d0042",
+        "endLine": 96,
+        "function": "decorate",
+        "line": 89,
+        "path": "res://scripts/data/forest_food_species.gd",
+        "sourceSha256LF": "0ddc1c2020f61cdb797dbd581f770b00a8104947d58df60a10d197fde8bd3fa3"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/building_landmarks.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "d7f03af4864152d6a779d6481260e5ba45def102ca35b073e5f90449e3765a1b",
+        "endLine": 33,
+        "function": "setup",
+        "line": 23,
+        "path": "res://scripts/entities/building_landmarks.gd",
+        "sourceSha256LF": "80dcbccdfcbeed13680cc283107dffc61191b9b9e0c96f32e49b246da5ef514e"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/coast_scenery.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "2d83501552ef462e98fa67062c633f1745e3b7015f3e87c21c1809f8e1883568",
+        "endLine": 18,
+        "function": "_ready",
+        "line": 7,
+        "path": "res://scripts/entities/coast_scenery.gd",
+        "sourceSha256LF": "b702dab04e05790f5fd091f88fc20068c04d2ed87eec09d2f8939c5c2a119ef8"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/coastal_adventure_director.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "52612331a6901a93453f9a4e5b10b4fc3d54d7911dc445c0ba283b7cf10240f4",
+        "endLine": 7,
+        "function": "_ready",
+        "line": 7,
+        "path": "res://scripts/entities/coastal_adventure_director.gd",
+        "sourceSha256LF": "0dbe04494e70b8bc4f963ffe30d30c7f017e079f855aaea55039775ec33c1fd0"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/coastal_region_scenery.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "955500ee66278f1821ec0844aff1ccda44e5547ccc7d953c9f5d700e6bb5f637",
+        "endLine": 18,
+        "function": "_ready",
+        "line": 9,
+        "path": "res://scripts/entities/coastal_region_scenery.gd",
+        "sourceSha256LF": "dcab067eeedd7dfd202ae57193ce4b3141880ae8e1ebde816824a3825f7622fc"
+      }
+    },
+    {
+      "entryMeaning": "Constructor has no custom GDScript _ready; anchor retains a presentation method and full source, without claiming that method runs at construction",
+      "hookKind": "construction_without_custom_ready",
+      "path": "res://scripts/entities/edge_scenery.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "b4548e15ce8a918bac4d35a3693dff399ed9f6b334f83c0e33af31194c40ee5b",
+        "endLine": 6,
+        "function": "_process",
+        "line": 5,
+        "path": "res://scripts/entities/edge_scenery.gd",
+        "sourceSha256LF": "55bef4a1c05ec5e90fa6b7b52e711cf682d5736b0f53f736d8e4fd4c866e8e7a"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/first_route.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "aea5a0274d60dd4755d2b25fc0540318caab3230cbc00daca1f04657e62648c6",
+        "endLine": 35,
+        "function": "prepare",
+        "line": 18,
+        "path": "res://scripts/entities/first_route.gd",
+        "sourceSha256LF": "a9d1ee3b61abe1e7dbbe8100240557b65473b06330707e9dcd37baea7d7fd08b"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/homestead.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "169a626b2fd26ebec8289dae4cb45c1a22e1eb6f673ef8dfb44ad6708ca8000f",
+        "endLine": 25,
+        "function": "_ready",
+        "line": 18,
+        "path": "res://scripts/entities/homestead.gd",
+        "sourceSha256LF": "b01768787234a510be5b4a01fc651dd1c37fa62121bd56c9408f0e0da62d2c67"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/lake_supper.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "96f3a4e7a4ee2c3cfb3c2dc1496a8bf88815512e2e22f8b9f9eead61a156a3c3",
+        "endLine": 26,
+        "function": "_ready",
+        "line": 8,
+        "path": "res://scripts/entities/lake_supper.gd",
+        "sourceSha256LF": "9616a6779827a611c6e775595d76d7b1a27f2ccac6d8e85fec5143e0f8c295fc"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/living_scenery.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "46faee97b26f0d436d01deca7974b585ba3b7b5e6f1f8e6def211cc347d0a647",
+        "endLine": 94,
+        "function": "refresh",
+        "line": 51,
+        "path": "res://scripts/entities/living_scenery.gd",
+        "sourceSha256LF": "1ffa2dd571374eafa5e4ee63e602f7f224afe1871a6a1e3d8231e7c269ce2a3c"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/marsh_waterworks.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "93f9b6e8aa393e5343edcee4288e137e8b46db8f40193dd0e549d4046d29cdf0",
+        "endLine": 16,
+        "function": "_ready",
+        "line": 11,
+        "path": "res://scripts/entities/marsh_waterworks.gd",
+        "sourceSha256LF": "b85c0581409bd7c987df46aa8d52062b1545f9b42e61e4095c5da185d6d3cb51"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/personal_house.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "7f204346d2da1bce91cf885ac9341a8863b60cc62148fa9a1eb873bb37dcca84",
+        "endLine": 7,
+        "function": "_ready",
+        "line": 7,
+        "path": "res://scripts/entities/personal_house.gd",
+        "sourceSha256LF": "6b52a7a24c1c885b66f9af37f5687f06f67060c6063b4f4be8136127be773ebc"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/pixel_landscape.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "685b31c0e6fb212f4157d522aabe74f9a65c975e3638842dc45876a2fe0f3867",
+        "endLine": 19,
+        "function": "_ready",
+        "line": 17,
+        "path": "res://scripts/entities/pixel_landscape.gd",
+        "sourceSha256LF": "451b67f7473db95a804cc63815196b75b2225fdff0d02c3cbd3d91bc4f046d97"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/regional_adventures.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "04f1fa3836ea0f653d0154c3e49775ea1f18ce0f13fea2b4c3eda7519e9a3e28",
+        "endLine": 44,
+        "function": "_ready",
+        "line": 18,
+        "path": "res://scripts/entities/regional_adventures.gd",
+        "sourceSha256LF": "37452eb1e154c4892293114ed316f8b71cd4aaf78c171976eef087dcbf15f633"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/tide_cove.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "25d4a2818b739372d016b9042ae4de9c91fdc0b73a928462b64426b20a66b206",
+        "endLine": 18,
+        "function": "_ready",
+        "line": 13,
+        "path": "res://scripts/entities/tide_cove.gd",
+        "sourceSha256LF": "5a17c9709011b837d1ade0f22e26bd0b31292300b6ea02902741238f13016546"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/village_opening.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "bc2bc3af64ee2084fecec3e78d1fdf713fc5bbfd4df634c1667f12b3bd392f40",
+        "endLine": 70,
+        "function": "_ready",
+        "line": 16,
+        "path": "res://scripts/entities/village_opening.gd",
+        "sourceSha256LF": "7a84fc9920059bcc2b45f57b434a5c00d7b9c0b74777958010ad71076fd90eeb"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/water_scenery.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "4f884ca2ce6e39d81cbce3916b7226fd1d3b0d432bc1a6b74df7a1b3a848b979",
+        "endLine": 15,
+        "function": "_ready",
+        "line": 10,
+        "path": "res://scripts/entities/water_scenery.gd",
+        "sourceSha256LF": "3b23fe04e8d0d3c059845bf00e4fac7847ab6492aad587013ad21bba49a58363"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/workshop.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "1eaad38e47f8d36e245b62ad3202efbfc9a8ea56079848cc496d5d4625446a44",
+        "endLine": 22,
+        "function": "_ready",
+        "line": 15,
+        "path": "res://scripts/entities/workshop.gd",
+        "sourceSha256LF": "f3c06fd1da2ee694aa1d6f2ce86adb1d6ad8f51b667da90973a83b08d15ba599"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/world_memory.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "8d9c323584f08b8d94e8af0574d743e49b2d1e92a4d92b9b014ca20555f47a0c",
+        "endLine": 9,
+        "function": "_ready",
+        "line": 7,
+        "path": "res://scripts/entities/world_memory.gd",
+        "sourceSha256LF": "5f8e86d91868a41dba9275941fe1a31276a1be4552ee40ed22afdf32989d0985"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/entities/yard_scenery.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "5a10ae0f6e74dc3de3ee48c5e21d0315bde246949f88aa5ef97a79435f8a8a5a",
+        "endLine": 5,
+        "function": "_ready",
+        "line": 5,
+        "path": "res://scripts/entities/yard_scenery.gd",
+        "sourceSha256LF": "02221197fd3b59924447927c8a852eaa8a8c6113673cd40b36920f6a7d2383fe"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/maps/registry.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "307655080682f135ce4b9d044b3aa1f5c00e3318455b4cb59682f5afb08d3d76",
+        "endLine": 46,
+        "function": "get_map",
+        "line": 23,
+        "path": "res://scripts/maps/registry.gd",
+        "sourceSha256LF": "7ba7e4b507807e21b58edc1d6cbaa5cc4fa3abd0629debe1748ed0ea9a6d5be8"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/ui/coast_atlas.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "a083f8e68ae1a20868dd347bc044cabf6540bb23c26078955248890771373901",
+        "endLine": 46,
+        "function": "_ready",
+        "line": 23,
+        "path": "res://scripts/ui/coast_atlas.gd",
+        "sourceSha256LF": "3b1eb5377a30c50bd44cbb8e9f00f5814e356e8c3311dab7cd49f8a995e0e6aa"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/ui/coast_routes.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "e8b37e98ab44a8ad7d8081aba52622c37f6f9dfa41aa75126575d796514994c3",
+        "endLine": 42,
+        "function": "_ready",
+        "line": 32,
+        "path": "res://scripts/ui/coast_routes.gd",
+        "sourceSha256LF": "2d2bc4c442402409e3b945d0f3386b34d7717ccc3d573156b8f863b837da2e09"
+      }
+    },
+    {
+      "entryMeaning": "Actual loader-invoked method or construction-time _ready; full original source retains delegated behavior",
+      "hookKind": "called_method_or_ready",
+      "path": "res://scripts/ui/coast_voyage.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "b1e4b3fcd9dfa1c1dd3e9a71cdff44db8625ed031e6eefa17558bd0980592580",
+        "endLine": 36,
+        "function": "_ready",
+        "line": 23,
+        "path": "res://scripts/ui/coast_voyage.gd",
+        "sourceSha256LF": "3df74af5bfef63bfde8816ae7b6eb5bc45bffb93bf221bbddad72aa556c952dd"
+      }
+    }
+  ],
+  "objectHandlers": [
+    {
+      "path": "res://scripts/entities/arena_board.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "3da5d7e1c1924cdf30d6e66c0285c30b26d46edd5941178b231873ae96c41437",
+        "endLine": 29,
+        "function": "_ready",
+        "line": 24,
+        "path": "res://scripts/entities/arena_board.gd",
+        "sourceSha256LF": "be430e04ce3c96d31197e1be0f437fd76a51e7f1ce3c2919a14d2253964a3e96"
+      },
+      "type": "arena_board"
+    },
+    {
+      "path": "res://scripts/entities/arena_crowd.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "f43de7a931003d46b5c37fc2d08538fe98dd4fb61c174f879037275d45fb0a3d",
+        "endLine": 48,
+        "function": "_ready",
+        "line": 28,
+        "path": "res://scripts/entities/arena_crowd.gd",
+        "sourceSha256LF": "b88aa5628474a5529d09dc0fc23fdfb3a37c1a9ada00f82457c69d36054b040a"
+      },
+      "type": "arena_crowd"
+    },
+    {
+      "path": "res://scripts/entities/arena_gong.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "338945d441e10d33f029d011ba4aae9ecf26d576755dd90f1df14f2cd7328fc6",
+        "endLine": 29,
+        "function": "_ready",
+        "line": 20,
+        "path": "res://scripts/entities/arena_gong.gd",
+        "sourceSha256LF": "49aa2a11834bf9c84d96470874f560f607b6e988fa3d506eba5116b7ac05ac3a"
+      },
+      "type": "arena_gong"
+    },
+    {
+      "path": "res://scripts/entities/arena_master.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "86d582b786bac5bca0a7649e621d9266a1b28e653551694a14419f563575e75e",
+        "endLine": 82,
+        "function": "_ready",
+        "line": 70,
+        "path": "res://scripts/entities/arena_master.gd",
+        "sourceSha256LF": "b4648133c6c2d7ccb3aab51b5eede6c053c128da08b3b6bf32cb70a8eeff53ec"
+      },
+      "type": "arena_master"
+    },
+    {
+      "path": "res://scripts/entities/arena_prop.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "2e5834af4e2287b8b800128e7e851494eb66d1c0b0a6e8e73bbc3d776c9a70a3",
+        "endLine": 27,
+        "function": "_ready",
+        "line": 17,
+        "path": "res://scripts/entities/arena_prop.gd",
+        "sourceSha256LF": "ca558c3d92cc3feaeeac2a6cb13524dae66f131e79475b4d07cbca75ad86fe5a"
+      },
+      "type": "arena_prop"
+    },
+    {
+      "path": "res://scripts/entities/shooting_range.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "1a6bf471544631c20c32d1b9b8d0fb8772cc90c7f82e826b3e0b128c834655fc",
+        "endLine": 55,
+        "function": "_ready",
+        "line": 44,
+        "path": "res://scripts/entities/shooting_range.gd",
+        "sourceSha256LF": "a7563c6b61c0e205a9600bdab1cf96847ee16811417832fdb027dbd234a9c83b"
+      },
+      "type": "boog_baan"
+    },
+    {
+      "path": "res://scripts/entities/target.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "c023a88552c10f002d2c874c4091a9938ab0277331db9018b0b022b54d66a1cb",
+        "endLine": 36,
+        "function": "_ready",
+        "line": 31,
+        "path": "res://scripts/entities/target.gd",
+        "sourceSha256LF": "3955b68204b5582e8bbdb9a3635126dd036e4a8feac8b72fafd831dcd96a30ae"
+      },
+      "type": "boog_target"
+    },
+    {
+      "path": "res://scripts/entities/chest.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "b792aa7fbf5cbd56f7538f6da61a61073527b4ccbe8f36ba07255ef52ef8bd5f",
+        "endLine": 26,
+        "function": "_ready",
+        "line": 17,
+        "path": "res://scripts/entities/chest.gd",
+        "sourceSha256LF": "cac8794b4b05bfb1521194238807aea57f58c8b71939d8a4c73c9d6dde044f26"
+      },
+      "type": "chest"
+    },
+    {
+      "path": "res://scripts/entities/coastal_adventure.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "918afa2482c6ab840e7660f13a0a121abebb6c4730d59d9b6853c0d136aaa603",
+        "endLine": 16,
+        "function": "_ready",
+        "line": 9,
+        "path": "res://scripts/entities/coastal_adventure.gd",
+        "sourceSha256LF": "3ef042bb31b1ca3e76ffb5dda648573ebc96ad5a483a1bc113db3824df210f51"
+      },
+      "type": "coast_adventure"
+    },
+    {
+      "path": "res://scripts/entities/coast_dock.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "7fc229cc0e840d116d905ba84f5c72fc82bab02a0488e371b08182cd61f981d8",
+        "endLine": 9,
+        "function": "_ready",
+        "line": 8,
+        "path": "res://scripts/entities/coast_dock.gd",
+        "sourceSha256LF": "9bc0c77b4e265ee689c4aab75ddef17925bdf6ca692b8c480d2c069c76dbec12"
+      },
+      "type": "coast_dock"
+    },
+    {
+      "path": "res://scripts/entities/coast_note.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "7be382a7a2dac163d47edbbddab463e8912d0070aec7b7aa63693fcc9c3a3e3e",
+        "endLine": 8,
+        "function": "_ready",
+        "line": 8,
+        "path": "res://scripts/entities/coast_note.gd",
+        "sourceSha256LF": "70cd2c37e87c29ab75f21991dbe235f2e1ff34ccb182ca1b5e0dee17c8980178"
+      },
+      "type": "coast_note"
+    },
+    {
+      "path": "res://scripts/entities/combat_post.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "fcce2246d8dcdaf8b43ebcaa1126aaea8aa2b1e636c66b029cc1c761ce430b25",
+        "endLine": 27,
+        "function": "_ready",
+        "line": 15,
+        "path": "res://scripts/entities/combat_post.gd",
+        "sourceSha256LF": "08b0639176a0a43eebf845a2b946f3bbca0281f27ce7bca44baaf17f2309ea72"
+      },
+      "type": "combat_post"
+    },
+    {
+      "path": "res://scripts/entities/craft_notes.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "b6d9b89e7b84df754b1a0e388bf8565e11b9b60cbd4d3747862a18012f85a034",
+        "endLine": 18,
+        "function": "_ready",
+        "line": 10,
+        "path": "res://scripts/entities/craft_notes.gd",
+        "sourceSha256LF": "92f4f5d01cb745e7a8f5d0bb6ac3b01b747c16fa6395ddfb902451ea251054e1"
+      },
+      "type": "craft_notes"
+    },
+    {
+      "path": "res://scripts/entities/coastal_workstation.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "4534f9b5d431e296522a7e6a10983a59ad65f8ba74b59993a040217441bd5a28",
+        "endLine": 20,
+        "function": "_ready",
+        "line": 9,
+        "path": "res://scripts/entities/coastal_workstation.gd",
+        "sourceSha256LF": "a988403d2043c39355c130a63a199dc9761fd00fd8ae527707f775bbcade0f2a"
+      },
+      "type": "cw_station"
+    },
+    {
+      "path": "res://scripts/entities/diepte_gate.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "3001b46ec46d404025f07883bc0e97c1e373206c9c633c3b92d8fc2822a7d3e7",
+        "endLine": 21,
+        "function": "_ready",
+        "line": 14,
+        "path": "res://scripts/entities/diepte_gate.gd",
+        "sourceSha256LF": "fd90870ab4a86a20b23ba18a1b9f9437a3f07e088766c51a600b360a29d8961e"
+      },
+      "type": "diepte_gate"
+    },
+    {
+      "path": "res://scripts/entities/diepte_lamp.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "98d347c1e0b4b629264006b7b12e92c3f2c7b0aa3071ac4eccf08d4d8a233092",
+        "endLine": 24,
+        "function": "_ready",
+        "line": 16,
+        "path": "res://scripts/entities/diepte_lamp.gd",
+        "sourceSha256LF": "ad77d1a6baac79490865bfdb84df756088da3c95c491363350ec7add9213de0c"
+      },
+      "type": "diepte_lamp"
+    },
+    {
+      "path": "res://scripts/entities/diepte_seal.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "73947f1f28283fbce6948978e0555bccaaa538b6127dca00b05f6a6da7671fa3",
+        "endLine": 48,
+        "function": "_ready",
+        "line": 29,
+        "path": "res://scripts/entities/diepte_seal.gd",
+        "sourceSha256LF": "bdd68f4da59a6976ebc52fb9d464b3ea4798fcb05515c5ea6ea44b41339fd800"
+      },
+      "type": "diepte_seal"
+    },
+    {
+      "path": "res://scripts/entities/echo_crystal.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "3d09ab7015df02c88f4c1800865cb191698537d6d1f23e6e679ca78149c1b57c",
+        "endLine": 18,
+        "function": "_ready",
+        "line": 11,
+        "path": "res://scripts/entities/echo_crystal.gd",
+        "sourceSha256LF": "524c707982ff8f58af5afe754236a559e3c7358a911409c4d3469791768838ca"
+      },
+      "type": "echo_crystal"
+    },
+    {
+      "path": "res://scripts/entities/echo_trial.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "60e6563cc26ade2b3b4f92b1dddd05e69b171125faea1d616ceadb8dc7bfe87e",
+        "endLine": 17,
+        "function": "_ready",
+        "line": 15,
+        "path": "res://scripts/entities/echo_trial.gd",
+        "sourceSha256LF": "bcda6f7e867f9a3f02b2d46c166d88bc776cbc8a2b4ca9389a55a79e21ae0787"
+      },
+      "type": "echo_trial"
+    },
+    {
+      "path": "res://scripts/entities/enemy.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "e476bfda42ef6824bbbc5868d8f1f6c05937aee39a348eefad9c8543139f83b2",
+        "endLine": 136,
+        "function": "_ready",
+        "line": 99,
+        "path": "res://scripts/entities/enemy.gd",
+        "sourceSha256LF": "747a4c0478d3e77c2b07f574a93c674eb25c6614c1996018f163e84bcd606fe8"
+      },
+      "type": "enemy"
+    },
+    {
+      "path": "res://scripts/entities/gate.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "df2109df4090d63d6b34a63f4acbeb0c2fd8f970402fcba66083d5b4582bfe70",
+        "endLine": 28,
+        "function": "_ready",
+        "line": 20,
+        "path": "res://scripts/entities/gate.gd",
+        "sourceSha256LF": "3e3be30d19002ed1abb1329a5b258213d5cabc4dca1fb234b160669400f212f3"
+      },
+      "type": "gate"
+    },
+    {
+      "path": "res://scripts/entities/guardian.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "f613c559854dcc21284adcc54130714a21d2b1026ad7a6c9fd70789ea3cc3f14",
+        "endLine": 124,
+        "function": "_ready",
+        "line": 101,
+        "path": "res://scripts/entities/guardian.gd",
+        "sourceSha256LF": "2120e9f681bc82d4e001800aadcb766a286a8a91f8896ac8c35dca685843bc37"
+      },
+      "type": "guardian"
+    },
+    {
+      "path": "res://scripts/entities/home_station.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "20bc49b979aadde6d06af0ea45843013abeaa1be850cc46a73e3a33cd47ab7e9",
+        "endLine": 15,
+        "function": "_ready",
+        "line": 8,
+        "path": "res://scripts/entities/home_station.gd",
+        "sourceSha256LF": "78cceb07e9c774e09a162adb08976984499626934ade4af3be7cb3cc06b78c27"
+      },
+      "type": "home_station"
+    },
+    {
+      "path": "res://scripts/entities/living_object.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "ff2d5fb172c4001591d25317d39936fdddddd868dbd4d778633a42eb217694ca",
+        "endLine": 38,
+        "function": "_ready",
+        "line": 19,
+        "path": "res://scripts/entities/living_object.gd",
+        "sourceSha256LF": "b3a5627166410d1a1e0edcfd4a2502f342f08139917b092222f08f1cb2d65acb"
+      },
+      "type": "living_object"
+    },
+    {
+      "path": "res://scripts/entities/meer_visplek.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "7e147c22efde13ed99b2b30678bb3ae9de834915d207fdf76f37e4b25865161e",
+        "endLine": 26,
+        "function": "_ready",
+        "line": 24,
+        "path": "res://scripts/entities/meer_visplek.gd",
+        "sourceSha256LF": "88c50e812f6d19e5baa8ed364bceafe600a97a8ed79eada68957e6b5ab3a4db5"
+      },
+      "type": "meer_diepe_visplek"
+    },
+    {
+      "path": "res://scripts/entities/meer_kast.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "c13f1da7523265e7e20cc8f44dd076943ac531a86fd782d0370290bd1a57b75a",
+        "endLine": 26,
+        "function": "_ready",
+        "line": 18,
+        "path": "res://scripts/entities/meer_kast.gd",
+        "sourceSha256LF": "c0d4a9c54d098eef7a49d95fe415aad57ef2202012ff3ac0b3127e0b5004ca11"
+      },
+      "type": "meer_kast"
+    },
+    {
+      "path": "res://scripts/entities/meer_lessenaar.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "04b0b00cd062c0ce813b5d463d427b35728fb40206899414db024911df49ea3d",
+        "endLine": 28,
+        "function": "_ready",
+        "line": 19,
+        "path": "res://scripts/entities/meer_lessenaar.gd",
+        "sourceSha256LF": "32f917066531d63bf2bf160d92f2074572626f8441c21fe2e1ee2c9a778b177a"
+      },
+      "type": "meer_lessenaar"
+    },
+    {
+      "path": "res://scripts/entities/meer_visplek.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "7e147c22efde13ed99b2b30678bb3ae9de834915d207fdf76f37e4b25865161e",
+        "endLine": 26,
+        "function": "_ready",
+        "line": 24,
+        "path": "res://scripts/entities/meer_visplek.gd",
+        "sourceSha256LF": "88c50e812f6d19e5baa8ed364bceafe600a97a8ed79eada68957e6b5ab3a4db5"
+      },
+      "type": "meer_visplek"
+    },
+    {
+      "path": "res://scripts/entities/meer_water.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "14ff41e0e317c8dc5bc0a667b54ef0c4efa8435b4a196c78797153a50813f9ef",
+        "endLine": 33,
+        "function": "_ready",
+        "line": 26,
+        "path": "res://scripts/entities/meer_water.gd",
+        "sourceSha256LF": "b5d16ecaa0007a4019fa2369648df53bd2760f4750fc27b5d815664b718d8038"
+      },
+      "type": "meer_water"
+    },
+    {
+      "path": "res://scripts/entities/memory_book.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "984c7157ae0063a6361a362898adc415b66813cd79acb7864fe16dbeaeb4af09",
+        "endLine": 16,
+        "function": "_ready",
+        "line": 9,
+        "path": "res://scripts/entities/memory_book.gd",
+        "sourceSha256LF": "351aaf0a93eab4bec85c7ceceea85a065ad76eca537c30d7d530397dee7e0ff7"
+      },
+      "type": "memory_book"
+    },
+    {
+      "path": "res://scripts/entities/mountain_scenery.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "492afd48b0a076626f5a9fde38c5b8283faf76a02662d59b7fc26e0fff751253",
+        "endLine": 9,
+        "function": "_ready",
+        "line": 7,
+        "path": "res://scripts/entities/mountain_scenery.gd",
+        "sourceSha256LF": "f4aaf5bc9f17c41c718bb3224c7a2efe9a68bc9e899c8f2135f193b34da669e4"
+      },
+      "type": "mountain_scenery"
+    },
+    {
+      "path": "res://scripts/entities/npc.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "a642cd6a95d9a3dcc6ee798a2f5d1d68f49f6380cddf6da1ff51c276892be7b3",
+        "endLine": 42,
+        "function": "_ready",
+        "line": 30,
+        "path": "res://scripts/entities/npc.gd",
+        "sourceSha256LF": "9e07d7ee6b62f94f312c78ea87f57d111163044efdbffa96885d09ea3063ce5f"
+      },
+      "type": "npc"
+    },
+    {
+      "path": "res://scripts/entities/pickup.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "d1518f13d92bff64bc0cef1cbaea076f005963e6f40ca056f8f6d664f549104b",
+        "endLine": 27,
+        "function": "_ready",
+        "line": 26,
+        "path": "res://scripts/entities/pickup.gd",
+        "sourceSha256LF": "12612ceb8f94bd6446980d487a1163e299fe89db01ea1de2b409ca02cec3bd5e"
+      },
+      "type": "pickup"
+    },
+    {
+      "path": "res://scripts/entities/portal.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "90e0e64a04d32f1a93ccf59052b35949dec2b22c62baf59238cd54a1618a0366",
+        "endLine": 23,
+        "function": "_ready",
+        "line": 22,
+        "path": "res://scripts/entities/portal.gd",
+        "sourceSha256LF": "86c14d4ede7c7ab3c56e683e62fe99f442f3c5641aa0e2fac72acede1a3c5b5a"
+      },
+      "type": "portal"
+    },
+    {
+      "path": "res://scripts/entities/resource_node.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "40ee33cece3517c9bca0e4ff70870cf4789a853c6a5ebd3ed3c4c7586e17e352",
+        "endLine": 32,
+        "function": "_ready",
+        "line": 28,
+        "path": "res://scripts/entities/resource_node.gd",
+        "sourceSha256LF": "756948e62f998d2c7d630262cc8370b16deb3c19950f7e5413361fbc1a723b99"
+      },
+      "type": "profession_resource"
+    },
+    {
+      "path": "res://scripts/entities/region_chart.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "1d043a30a0d2bb21be9fcf466866e438b894fbcd19f1219973bfe7132384235c",
+        "endLine": 8,
+        "function": "_ready",
+        "line": 8,
+        "path": "res://scripts/entities/region_chart.gd",
+        "sourceSha256LF": "1fc1236138fdd512a377006bc76c4e1419e7771068383c6f3a752075cb2293a8"
+      },
+      "type": "region_chart"
+    },
+    {
+      "path": "res://scripts/entities/region_landmark.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "568a10b6aa34a64f0c951182f45c1e0a1da3d28852cb5f2880cf1aa237cb8610",
+        "endLine": 20,
+        "function": "_ready",
+        "line": 10,
+        "path": "res://scripts/entities/region_landmark.gd",
+        "sourceSha256LF": "73dc642de2a900f7b05c4a1d0392a27ee28bc7977c01d8644ea2b243f79d7c34"
+      },
+      "type": "region_landmark"
+    },
+    {
+      "path": "res://scripts/entities/region_view.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "c1030cd8a1aac50e15d4589b1a4e8ae9684f166a1e1e5124b944a5f395c39585",
+        "endLine": 10,
+        "function": "_ready",
+        "line": 8,
+        "path": "res://scripts/entities/region_view.gd",
+        "sourceSha256LF": "69934bc419c33b238b4e93c168d86792feade8941f8c78369d0fb3f70dbb2666"
+      },
+      "type": "region_view"
+    },
+    {
+      "path": "res://scripts/entities/regional_object.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "ad2b00349d23a40689a1fa65f0041cf919479785b545cf14533515e1b74aa1eb",
+        "endLine": 31,
+        "function": "_ready",
+        "line": 11,
+        "path": "res://scripts/entities/regional_object.gd",
+        "sourceSha256LF": "253292f29d36aed6d3f955e6acdc8544abd26ee36b89e5226a94b5fb5f581c3b"
+      },
+      "type": "regional_object"
+    },
+    {
+      "path": "res://scripts/entities/route_object.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "40983ab9ef74fdfdfa73537d5fd1da2ec438e91e7ffde2d3daa05501ca4a3b74",
+        "endLine": 44,
+        "function": "_ready",
+        "line": 16,
+        "path": "res://scripts/entities/route_object.gd",
+        "sourceSha256LF": "bdf0ad4a4122f8605784016420e01a37124f8958eda56a521211872de9b020da"
+      },
+      "type": "route_object"
+    },
+    {
+      "path": "res://scripts/entities/savepoint.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "f8aeb185b53609808f9c00010b44ef9e30f8c3bf63594ee2ed04338bf9ee86b7",
+        "endLine": 34,
+        "function": "_ready",
+        "line": 19,
+        "path": "res://scripts/entities/savepoint.gd",
+        "sourceSha256LF": "0a12efa035a08c8c2071177847cb8495bde1c94803b9bc7167423df212c2f397"
+      },
+      "type": "savepoint"
+    },
+    {
+      "path": "res://scripts/entities/sign.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "a51471fe26d5292382c8e1f00b0d95bd260faef22af972d9c297ad660b03b3aa",
+        "endLine": 23,
+        "function": "_ready",
+        "line": 15,
+        "path": "res://scripts/entities/sign.gd",
+        "sourceSha256LF": "ba6bbdd7c03fbc3672d92fc36fb1b2e67505fba219e66b426d0a5affde233e1f"
+      },
+      "type": "sign"
+    },
+    {
+      "path": "res://scripts/entities/stock_chest.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "7b1c8dcdbadceb442fa08ed81de6fc9d57091fd2dacc1375c8ed0d3e71d983ce",
+        "endLine": 12,
+        "function": "_ready",
+        "line": 8,
+        "path": "res://scripts/entities/stock_chest.gd",
+        "sourceSha256LF": "479eaf89087b02a73f399e9a98c01e70c3d47a4b7040615e8e42afb739edec46"
+      },
+      "type": "stock_chest"
+    },
+    {
+      "path": "res://scripts/entities/supper_object.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "a14dc88fd0302bedfff3113c0351cfd38b3a3713d54d628feea0f71e4532811c",
+        "endLine": 39,
+        "function": "_ready",
+        "line": 16,
+        "path": "res://scripts/entities/supper_object.gd",
+        "sourceSha256LF": "3169f57023c39421c050ff10f271d6a8946da3e236f0ce9388761f3266777bce"
+      },
+      "type": "supper_object"
+    },
+    {
+      "path": "res://scripts/entities/tide_station.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "c8cb3081fa8ff7e7bfad6528e294808f55eceb1f15e475c34ef1b1ce59a21c43",
+        "endLine": 8,
+        "function": "_ready",
+        "line": 8,
+        "path": "res://scripts/entities/tide_station.gd",
+        "sourceSha256LF": "0536c97e053d0d7d85f2b1621a972d45ff8631f647cc53b18520f9d7305fb94e"
+      },
+      "type": "tide_station"
+    },
+    {
+      "path": "res://scripts/entities/torch.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "b39ce8bfed16dd1c312ecf86257233daa0485018a8aae6b5c7127b5420637305",
+        "endLine": 22,
+        "function": "_ready",
+        "line": 13,
+        "path": "res://scripts/entities/torch.gd",
+        "sourceSha256LF": "396c71575abacdb590de5a03e8f6f7f1968c20e8238af6d5d51c8a3ba8911b7e"
+      },
+      "type": "torch"
+    },
+    {
+      "path": "res://scripts/entities/trigger.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "98f7a734215a269a05b3b87fac6b18bd7f4d3cb574179c348dfe8206bc03c066",
+        "endLine": 26,
+        "function": "_process",
+        "line": 14,
+        "path": "res://scripts/entities/trigger.gd",
+        "sourceSha256LF": "40d3e2da17607fd3afac468639e9dd590e8263c0aade05a3d04da316614511d3"
+      },
+      "type": "trigger"
+    },
+    {
+      "path": "res://scripts/entities/bed.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "5722d6e660791513e56c7183a906a7202136f6198949b3e91ec619f843a60e1e",
+        "endLine": 16,
+        "function": "_ready",
+        "line": 15,
+        "path": "res://scripts/entities/bed.gd",
+        "sourceSha256LF": "abc48aac965ee12282b62ef1c6d94733406a16d5c44d9a9742d09aea8d334bea"
+      },
+      "type": "wereld_bed"
+    },
+    {
+      "path": "res://scripts/entities/lantern.gd",
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "c0c7c5aa1f44662ab7d7f45c4e22662966ca0211492597b9f0031e6aac9f64ed",
+        "endLine": 32,
+        "function": "_ready",
+        "line": 18,
+        "path": "res://scripts/entities/lantern.gd",
+        "sourceSha256LF": "2b7a4e8e3d2b455f559ef8fd54138ea66b6ab2aa9f0b55f4aee34de22f869ddf"
+      },
+      "type": "wereld_lantaarn"
+    }
+  ],
+  "personalSavesUsed": false,
+  "phase": 5,
+  "producers": [
+    {
+      "id": "map_load",
+      "requiredProperties": [
+        "rows",
+        "all object slots including disabled",
+        "spawns",
+        "actual tile cells and polygons",
+        "solid_cells",
+        "nested colliders and layers",
+        "safe arrivals"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "896be06246aeb70014c3274327dd488d65d8349dacf92bf976790d544c417522",
+          "endLine": 287,
+          "function": "load_map",
+          "line": 159,
+          "path": "res://scripts/world.gd",
+          "sourceSha256LF": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "ef578257e1558f9f0af69aec217aeae022c444327ae69f85ae9af0f7ac0196aa",
+          "endLine": 559,
+          "function": "_spawn_objects",
+          "line": 467,
+          "path": "res://scripts/world.gd",
+          "sourceSha256LF": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "635b8c1d4bf5d8e6851c974a5f8db930db9f8c89d7969fb1f69fec6c9506689b",
+          "endLine": 418,
+          "function": "_build_tiles",
+          "line": 403,
+          "path": "res://scripts/world.gd",
+          "sourceSha256LF": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "86be4e1e42026782b8b2b9c1cf93462ce40a38e5ca33fd2f2e718632ba222495",
+          "endLine": 433,
+          "function": "_build_fountains",
+          "line": 419,
+          "path": "res://scripts/world.gd",
+          "sourceSha256LF": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "26e7e1ab54f93b1702fd9f22f67477bf11fbb594c2f77e922f45b9091996056e",
+          "endLine": 380,
+          "function": "safe_spawn_position",
+          "line": 370,
+          "path": "res://scripts/world.gd",
+          "sourceSha256LF": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "307655080682f135ce4b9d044b3aa1f5c00e3318455b4cb59682f5afb08d3d76",
+          "endLine": 46,
+          "function": "get_map",
+          "line": 23,
+          "path": "res://scripts/maps/registry.gd",
+          "sourceSha256LF": "7ba7e4b507807e21b58edc1d6cbaa5cc4fa3abd0629debe1748ed0ea9a6d5be8"
+        }
+      ]
+    },
+    {
+      "id": "legacy_migrations",
+      "requiredProperties": [
+        "before and after flags and quests",
+        "revision guards",
+        "canonical marsh valves"
+      ],
+      "requiredScenarios": [
+        "legacy_completed"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "c8abd391257be96c4c32f111f9c362e71561e872cbedd01aa831e99e8c743ade",
+          "endLine": 29,
+          "function": "migrate",
+          "line": 8,
+          "path": "res://scripts/core/living_world.gd",
+          "sourceSha256LF": "516c65e2026a1b8579af2fcfd317556c412669db59ad75ecdac5c466a8542738"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "480729a818688cdb37ab953c25ebffeb3df9e7b21403c72bb8e2e54bb42be22c",
+          "endLine": 14,
+          "function": "migrate",
+          "line": 7,
+          "path": "res://scripts/core/regional_adventures.gd",
+          "sourceSha256LF": "8bb02f0ba0433183c46f12646116a519d274951d6df3aa467a9f904aa3159320"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "46722948870b427208bfbcb932164c969b32b440d92e71caf0449b08e1c29dc4",
+          "endLine": 10,
+          "function": "migrate",
+          "line": 5,
+          "path": "res://scripts/core/first_route.gd",
+          "sourceSha256LF": "72c2c02313a55c34827378a145285f443912b0da689cb755fe56c784854daf1c"
+        }
+      ]
+    },
+    {
+      "id": "first_route",
+      "requiredProperties": [
+        "enemy kinds and relocation",
+        "tracks relief journal bowls",
+        "memorial body",
+        "echo flags"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "route_clues",
+        "route_echo_begin",
+        "route_echo_mid",
+        "route_echo_end",
+        "route_memorial_guard",
+        "route_memorial_guide"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "aea5a0274d60dd4755d2b25fc0540318caab3230cbc00daca1f04657e62648c6",
+          "endLine": 35,
+          "function": "prepare",
+          "line": 18,
+          "path": "res://scripts/entities/first_route.gd",
+          "sourceSha256LF": "a9d1ee3b61abe1e7dbbe8100240557b65473b06330707e9dcd37baea7d7fd08b"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "16d03846a906956120df2a05258d34c528ecc6e45b14711db81587f98c7c394e",
+          "endLine": 64,
+          "function": "_ready",
+          "line": 43,
+          "path": "res://scripts/entities/first_route.gd",
+          "sourceSha256LF": "a9d1ee3b61abe1e7dbbe8100240557b65473b06330707e9dcd37baea7d7fd08b"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "40983ab9ef74fdfdfa73537d5fd1da2ec438e91e7ffde2d3daa05501ca4a3b74",
+          "endLine": 44,
+          "function": "_ready",
+          "line": 16,
+          "path": "res://scripts/entities/route_object.gd",
+          "sourceSha256LF": "bdf0ad4a4122f8605784016420e01a37124f8958eda56a521211872de9b020da"
+        }
+      ]
+    },
+    {
+      "id": "access",
+      "requiredProperties": [
+        "closed decorative doors",
+        "portal rect conditions",
+        "target map and spawn",
+        "available state"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "3d3584d66449172728204cbf3fe5071ed063eb30d754a6d595495bdd6f0bd58f",
+          "endLine": 18,
+          "function": "prepare",
+          "line": 5,
+          "path": "res://scripts/core/access_points.gd",
+          "sourceSha256LF": "c3258bfab12418887d655d87e2e23bd9f7c67b894cd17cb5bc4718391e08d5f6"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "850bb1c5a651a7efa79d996a16cef1291455de3cfded0cdac02eba4f61d9e88d",
+          "endLine": 28,
+          "function": "available",
+          "line": 25,
+          "path": "res://scripts/entities/portal.gd",
+          "sourceSha256LF": "86c14d4ede7c7ab3c56e683e62fe99f442f3c5641aa0e2fac72acede1a3c5b5a"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "requiredProperties": [
+        "append order",
+        "resource_id and kind",
+        "source cooldown state"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "6ef26b1652ac6d6667e63f64c234e56baa3cdb44e10994bd827392ca28682975",
+          "endLine": 259,
+          "function": "resource_objects",
+          "line": 255,
+          "path": "res://scripts/data/ext/beroepen.gd",
+          "sourceSha256LF": "712b6e0e6102c348f2d6e207903ad219655b22072bf54941eb4e0a9089ba930a"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "6ac59b8abf359ebe707f8f3fba48348d85ecf17db28f95df39b666b48a5d0042",
+          "endLine": 96,
+          "function": "decorate",
+          "line": 89,
+          "path": "res://scripts/data/forest_food_species.gd",
+          "sourceSha256LF": "0ddc1c2020f61cdb797dbd581f770b00a8104947d58df60a10d197fde8bd3fa3"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "40ee33cece3517c9bca0e4ff70870cf4789a853c6a5ebd3ed3c4c7586e17e352",
+          "endLine": 32,
+          "function": "_ready",
+          "line": 28,
+          "path": "res://scripts/entities/resource_node.gd",
+          "sourceSha256LF": "756948e62f998d2c7d630262cc8370b16deb3c19950f7e5413361fbc1a723b99"
+        }
+      ]
+    },
+    {
+      "id": "tides",
+      "requiredProperties": [
+        "bank rows",
+        "flooded held last_state",
+        "collision cells",
+        "clock and occupancy"
+      ],
+      "requiredScenarios": [
+        "tide_low",
+        "tide_rising",
+        "tide_high",
+        "tide_falling",
+        "tide_held",
+        "tide_released"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "f05a9608a97ea3d22fdac2ce12ae0a5721f0b215d3ad736cc43151b5c008f4f6",
+          "endLine": 19,
+          "function": "prepare",
+          "line": 18,
+          "path": "res://scripts/core/tides.gd",
+          "sourceSha256LF": "60ada360e1d272848e0fdeae129c803a934cda9abf02feab58b756a040423c6f"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "82b9445783ce186c17e9be270d1b7287e84fca221caf878e0cabc9eba94e6675",
+          "endLine": 24,
+          "function": "set_bank",
+          "line": 20,
+          "path": "res://scripts/core/tides.gd",
+          "sourceSha256LF": "60ada360e1d272848e0fdeae129c803a934cda9abf02feab58b756a040423c6f"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "4dff0489f00a7e398d639a8e1a8b87ab14b944e6d02ab7512e44ad4a0f8d139a",
+          "endLine": 39,
+          "function": "sync",
+          "line": 21,
+          "path": "res://scripts/entities/tide_cove.gd",
+          "sourceSha256LF": "5a17c9709011b837d1ade0f22e26bd0b31292300b6ea02902741238f13016546"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "a1097b0a47e1a0f28aa3301995403a95ef9753c000905efb749caec4d133a9ee",
+          "endLine": 20,
+          "function": "occupied",
+          "line": 19,
+          "path": "res://scripts/entities/tide_cove.gd",
+          "sourceSha256LF": "5a17c9709011b837d1ade0f22e26bd0b31292300b6ea02902741238f13016546"
+        }
+      ]
+    },
+    {
+      "id": "coastal_adventures",
+      "requiredProperties": [
+        "short bridge",
+        "keeper presence",
+        "shelter and harbor-wheel body",
+        "resting keeper interaction",
+        "outcome flags"
+      ],
+      "requiredScenarios": [
+        "hollow_wheel",
+        "hollow_pool",
+        "hollow_workwater",
+        "hollow_duel",
+        "headland_shelter"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "ac2390014a0fceb9c567b3d9fd2205b5b50a28ef69cc20d0f2ad5d416dd0f336",
+          "endLine": 6,
+          "function": "prepare",
+          "line": 3,
+          "path": "res://scripts/core/coastal_adventures.gd",
+          "sourceSha256LF": "9315a2b9d108860e5d733c3fd6546dcb86d45c66dff21c1d12f74add23fc73a6"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "9d038671c9d7f6d6ead34f7cf573f8f019aa096eaf3092b120367ee3f9458d3f",
+          "endLine": 17,
+          "function": "_process",
+          "line": 8,
+          "path": "res://scripts/entities/coastal_adventure_director.gd",
+          "sourceSha256LF": "0dbe04494e70b8bc4f963ffe30d30c7f017e079f855aaea55039775ec33c1fd0"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "918afa2482c6ab840e7660f13a0a121abebb6c4730d59d9b6853c0d136aaa603",
+          "endLine": 16,
+          "function": "_ready",
+          "line": 9,
+          "path": "res://scripts/entities/coastal_adventure.gd",
+          "sourceSha256LF": "3ef042bb31b1ca3e76ffb5dda648573ebc96ad5a483a1bc113db3824df210f51"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "a7da40e76e7bd2c9f466364beb01b98cfb86c3a786729b57d04df66c68320044",
+          "endLine": 43,
+          "function": "_process",
+          "line": 37,
+          "path": "res://scripts/entities/coastal_adventure.gd",
+          "sourceSha256LF": "3ef042bb31b1ca3e76ffb5dda648573ebc96ad5a483a1bc113db3824df210f51"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "b4544128292e609a04ecfe70064f5763f05672a7a95c11dae41f02db32e6ddf1",
+          "endLine": 18,
+          "function": "body_hidden",
+          "line": 17,
+          "path": "res://scripts/entities/coastal_adventure.gd",
+          "sourceSha256LF": "3ef042bb31b1ca3e76ffb5dda648573ebc96ad5a483a1bc113db3824df210f51"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "f524b57267f9d2f1a4c7cc6c21c572314abca04f0a562908454f6f9d1a986823",
+          "endLine": 149,
+          "function": "_process",
+          "line": 138,
+          "path": "res://scripts/ui/coastal_adventure_ui.gd",
+          "sourceSha256LF": "a659c1618e0205bb79ccb463a18fe26de62c6506e2576bb2d55c667ad8619e51"
+        }
+      ]
+    },
+    {
+      "id": "water",
+      "requiredProperties": [
+        "water_cells",
+        "water components and type properties",
+        "waterfall and source descriptors"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "marsh_drained",
+        "marsh_bridge",
+        "tide_high"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "b76a820ecdd6ddb82c5f87f9ef1956f23d734dcf378d634d1b643ac7ca446421",
+          "endLine": 45,
+          "function": "enrich",
+          "line": 39,
+          "path": "res://scripts/core/water_features.gd",
+          "sourceSha256LF": "c2281e9faf2847e9fb18c6c2f00db305e820f7398d6bcfb922db72c24e435812"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "5588941096589c096bbe1a8d765afec93193ec126f00fae8e0000f7e85a2b560",
+          "endLine": 60,
+          "function": "describe",
+          "line": 46,
+          "path": "res://scripts/core/water_features.gd",
+          "sourceSha256LF": "c2281e9faf2847e9fb18c6c2f00db305e820f7398d6bcfb922db72c24e435812"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "4f884ca2ce6e39d81cbce3916b7226fd1d3b0d432bc1a6b74df7a1b3a848b979",
+          "endLine": 15,
+          "function": "_ready",
+          "line": 10,
+          "path": "res://scripts/entities/water_scenery.gd",
+          "sourceSha256LF": "3b23fe04e8d0d3c059845bf00e4fac7847ab6492aad587013ad21bba49a58363"
+        }
+      ]
+    },
+    {
+      "id": "living_geometry",
+      "requiredProperties": [
+        "terrain rows",
+        "solid_cells",
+        "mine iron copper",
+        "revealed flower",
+        "marsh mint and fishing spot",
+        "valve target_level"
+      ],
+      "requiredScenarios": [
+        "mine_restored",
+        "forest_restored",
+        "ice_west",
+        "ice_restored",
+        "sluices_closed",
+        "sluices_west",
+        "sluices_east",
+        "sluices_both",
+        "marsh_drained",
+        "marsh_bridge"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "46faee97b26f0d436d01deca7974b585ba3b7b5e6f1f8e6def211cc347d0a647",
+          "endLine": 94,
+          "function": "refresh",
+          "line": 51,
+          "path": "res://scripts/entities/living_scenery.gd",
+          "sourceSha256LF": "1ffa2dd571374eafa5e4ee63e602f7f224afe1871a6a1e3d8231e7c269ce2a3c"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "bb69ad6887442a79e8929dd7ed5b0ebe396269ae661676945fd380e32eaa695e",
+          "endLine": 33,
+          "function": "tile",
+          "line": 25,
+          "path": "res://scripts/entities/living_scenery.gd",
+          "sourceSha256LF": "1ffa2dd571374eafa5e4ee63e602f7f224afe1871a6a1e3d8231e7c269ce2a3c"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "181ae7f30b14b6b0873d3c7eed91fa1966bc52c9f1b5016bb7d36875c44b1a0a",
+          "endLine": 42,
+          "function": "resource",
+          "line": 35,
+          "path": "res://scripts/entities/living_scenery.gd",
+          "sourceSha256LF": "1ffa2dd571374eafa5e4ee63e602f7f224afe1871a6a1e3d8231e7c269ce2a3c"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "49d26e2e374ec3550c3a36fc00cf494e558952590aa3fcf9258fbf7b367bc197",
+          "endLine": 16,
+          "function": "prepare",
+          "line": 8,
+          "path": "res://scripts/core/marsh_waterworks.gd",
+          "sourceSha256LF": "5a8a71ba2a24e82efff341e20818fc6255b6c16ae989155aed1a6f08689f37b1"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "092256de5986b2e6957013ddd9209a03b8348d2a2ffc4af5a99705e76a541820",
+          "endLine": 31,
+          "function": "changes",
+          "line": 17,
+          "path": "res://scripts/core/marsh_waterworks.gd",
+          "sourceSha256LF": "5a8a71ba2a24e82efff341e20818fc6255b6c16ae989155aed1a6f08689f37b1"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "5cfe807feb8da4207bc697d35ce50e58e1e84a7eab174c23700ffff64007c2ca",
+          "endLine": 19,
+          "function": "target_level",
+          "line": 17,
+          "path": "res://scripts/entities/marsh_waterworks.gd",
+          "sourceSha256LF": "b85c0581409bd7c987df46aa8d52062b1545f9b42e61e4095c5da185d6d3cb51"
+        }
+      ]
+    },
+    {
+      "id": "landmarks",
+      "requiredProperties": [
+        "lighthouse and building cells",
+        "direct solid_cells additions",
+        "body rect and offsets"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "568a10b6aa34a64f0c951182f45c1e0a1da3d28852cb5f2880cf1aa237cb8610",
+          "endLine": 20,
+          "function": "_ready",
+          "line": 10,
+          "path": "res://scripts/entities/region_landmark.gd",
+          "sourceSha256LF": "73dc642de2a900f7b05c4a1d0392a27ee28bc7977c01d8644ea2b243f79d7c34"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "c1030cd8a1aac50e15d4589b1a4e8ae9684f166a1e1e5124b944a5f395c39585",
+          "endLine": 10,
+          "function": "_ready",
+          "line": 8,
+          "path": "res://scripts/entities/region_view.gd",
+          "sourceSha256LF": "69934bc419c33b238b4e93c168d86792feade8941f8c78369d0fb3f70dbb2666"
+        }
+      ]
+    },
+    {
+      "id": "opening",
+      "requiredProperties": [
+        "scriptless planters",
+        "gardener and courier",
+        "grate and wheel presence",
+        "fountain water strength",
+        "old-save arrivals"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "opening_water_restored",
+        "opening_legacy",
+        "routines_evening"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "bc2bc3af64ee2084fecec3e78d1fdf713fc5bbfd4df634c1667f12b3bd392f40",
+          "endLine": 70,
+          "function": "_ready",
+          "line": 16,
+          "path": "res://scripts/entities/village_opening.gd",
+          "sourceSha256LF": "7a84fc9920059bcc2b45f57b434a5c00d7b9c0b74777958010ad71076fd90eeb"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "9cda81069f92b2c32d256faec3c92fd026b98c6a8b8169546a5e6d30490b5801",
+          "endLine": 85,
+          "function": "actor",
+          "line": 72,
+          "path": "res://scripts/entities/village_opening.gd",
+          "sourceSha256LF": "7a84fc9920059bcc2b45f57b434a5c00d7b9c0b74777958010ad71076fd90eeb"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "ce0cd7f19be810b147fa6ffd8e3a59a7e511b2040f5fce16cbbd4f6456046e0b",
+          "endLine": 7,
+          "function": "enabled",
+          "line": 6,
+          "path": "res://scripts/core/opening.gd",
+          "sourceSha256LF": "c6562460f158e3d5f32e46f5b4cc2ef7e0e7d6c52cd257f3f049885defdf9d3e"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "2e06265bd082d14aca05df2fd4afb30b43d7f1c2465e727d510355ca874dd5ff",
+          "endLine": 10,
+          "function": "flowing",
+          "line": 9,
+          "path": "res://scripts/core/opening.gd",
+          "sourceSha256LF": "c6562460f158e3d5f32e46f5b4cc2ef7e0e7d6c52cd257f3f049885defdf9d3e"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "a7252985320e16b16dba356854bebc413a1b076dd726307e0db41d6bd2d84246",
+          "endLine": 33,
+          "function": "_ready",
+          "line": 23,
+          "path": "res://scripts/entities/fountain.gd",
+          "sourceSha256LF": "d4667e10f5e5d45c70e9a8f323793321d7ad2ffee9b9c883df04be0bf665f19d"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "be6b7ecc2499e9e767f0b28701a4c094dffe55769564229853c089ff682e6de3",
+          "endLine": 20,
+          "function": "_ready",
+          "line": 11,
+          "path": "res://scripts/entities/opening_device.gd",
+          "sourceSha256LF": "6f2a2fc70b74e3e150ba22c8eb880261aeb42f88fbb47242c64e855598b2dc18"
+        }
+      ]
+    },
+    {
+      "id": "supper",
+      "requiredProperties": [
+        "three guest roles",
+        "table footprint",
+        "actor route metadata",
+        "ls_served"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "routines_evening",
+        "full_progress"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "96f3a4e7a4ee2c3cfb3c2dc1496a8bf88815512e2e22f8b9f9eead61a156a3c3",
+          "endLine": 26,
+          "function": "_ready",
+          "line": 8,
+          "path": "res://scripts/entities/lake_supper.gd",
+          "sourceSha256LF": "9616a6779827a611c6e775595d76d7b1a27f2ccac6d8e85fec5143e0f8c295fc"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "767f5ec23b76d9d4eedc2f44360410c6091715fdc3e2382b0683b8598b5534cd",
+          "endLine": 43,
+          "function": "refresh",
+          "line": 28,
+          "path": "res://scripts/entities/lake_supper.gd",
+          "sourceSha256LF": "9616a6779827a611c6e775595d76d7b1a27f2ccac6d8e85fec5143e0f8c295fc"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "d97fe75d919ba1fe62b44fe11cbcfbdc5d631199afba828b1e07cd34cf1e590e",
+          "endLine": 49,
+          "function": "route",
+          "line": 42,
+          "path": "res://scripts/entities/supper_actor.gd",
+          "sourceSha256LF": "154b7c2e505293814ad151718c1a8fff60015d6a957473d44d57b17bd667919d"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "requiredProperties": [
+        "eight roles and restoration gates",
+        "day weather rest",
+        "work and rest routes",
+        "spawn avoidance"
+      ],
+      "requiredScenarios": [
+        "mine_restored",
+        "forest_restored",
+        "ice_restored",
+        "marsh_bridge",
+        "desert_wild",
+        "desert_caravan",
+        "archive_routes",
+        "archive_stories",
+        "ridge_rope",
+        "routines_evening",
+        "full_progress"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "5683e2251c42073c172d26542e4c15cdb4b540fd2e819f1add0b4d540c993c38",
+          "endLine": 28,
+          "function": "refresh",
+          "line": 12,
+          "path": "res://scripts/entities/world_memory.gd",
+          "sourceSha256LF": "5f8e86d91868a41dba9275941fe1a31276a1be4552ee40ed22afdf32989d0985"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "cfbc1583b6b212946feef489c8c58008c7d70c6171ced9029e1ee105ffec42e0",
+          "endLine": 45,
+          "function": "build_grid",
+          "line": 29,
+          "path": "res://scripts/entities/world_memory.gd",
+          "sourceSha256LF": "5f8e86d91868a41dba9275941fe1a31276a1be4552ee40ed22afdf32989d0985"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "150bfba32f4eec15e1506ea3e6fa4b4430104c02cdaf74867a50b1b2baa4fa68",
+          "endLine": 20,
+          "function": "resting",
+          "line": 18,
+          "path": "res://scripts/core/world_memory.gd",
+          "sourceSha256LF": "048f21edd6fcda6cbb0278cbfd3f12f3ff5a3f94c45f2386a83ffc810030de97"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "d0e255f170ae64c6df87d54fc9bd7932bdd1c29dfb761221524a32bada36e26d",
+          "endLine": 32,
+          "function": "route",
+          "line": 29,
+          "path": "res://scripts/entities/memory_actor.gd",
+          "sourceSha256LF": "28773854b2f54ed83331ba6b08eb1df5fb37a0ef6c139107e3e93f0b4881bb98"
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "requiredProperties": [
+        "layout and ownership",
+        "base bed table shelf transform",
+        "furniture shape",
+        "floor wall light choice"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "home_furnished"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "c46d7ecf16e6cd25e0ee1698b3bfca0df2a28b75f459d490526d718a8d5168b7",
+          "endLine": 152,
+          "function": "sync",
+          "line": 141,
+          "path": "res://scripts/core/personal_home.gd",
+          "sourceSha256LF": "bd036d440fa7c9cef5b36c3716acd42cc121a7bd71c08bd7e9557cee563250d9"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "256a06522fd690985ff7e37f3c9972f952bfbb17e454f8580af329488e2a791b",
+          "endLine": 29,
+          "function": "refresh_home",
+          "line": 21,
+          "path": "res://scripts/entities/home_station.gd",
+          "sourceSha256LF": "78cceb07e9c774e09a162adb08976984499626934ade4af3be7cb3cc06b78c27"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "f384f775bd5363011287f5a25543b38d8f3abb293b0a314d7ae769d24f7f8235",
+          "endLine": 16,
+          "function": "_ready",
+          "line": 10,
+          "path": "res://scripts/entities/house_furniture.gd",
+          "sourceSha256LF": "2ab7cc8e41175b2c9e7972f984f04859a135923d580627b93f290fa85f36e5a4"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "7f204346d2da1bce91cf885ac9341a8863b60cc62148fa9a1eb873bb37dcca84",
+          "endLine": 7,
+          "function": "_ready",
+          "line": 7,
+          "path": "res://scripts/entities/personal_house.gd",
+          "sourceSha256LF": "6b52a7a24c1c885b66f9af37f5687f06f67060c6063b4f4be8136127be773ebc"
+        }
+      ]
+    },
+    {
+      "id": "yard",
+      "requiredProperties": [
+        "station transform visibility and layer",
+        "retained machine ID and timer",
+        "fence gate shape and proximity",
+        "path overlay"
+      ],
+      "requiredScenarios": [
+        "yard_moved",
+        "yard_packed",
+        "yard_gate_far",
+        "yard_gate_near"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "f787ae05c5e0911728989e0dbe0aaa3e3380fd43282faeb486278f088c55a279",
+          "endLine": 259,
+          "function": "sync",
+          "line": 251,
+          "path": "res://scripts/core/yard.gd",
+          "sourceSha256LF": "1c5790dc59c97c2f2638b482238764e39dd3bd6a02ef258797d9b8901b32e8ad"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "5b398b7032cfd001f110de5ce659c5c5765980480b0cecfe2295aa0560264635",
+          "endLine": 97,
+          "function": "refresh_yard",
+          "line": 87,
+          "path": "res://scripts/entities/home_station.gd",
+          "sourceSha256LF": "78cceb07e9c774e09a162adb08976984499626934ade4af3be7cb3cc06b78c27"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "78c337807c36d323f7a0e5b995ebd439d48de2f7c2f8362a32f04df7ad852e45",
+          "endLine": 13,
+          "function": "_ready",
+          "line": 9,
+          "path": "res://scripts/entities/yard_fence.gd",
+          "sourceSha256LF": "e2d482db4bc25044603ffcdb19a8f2fe52047cc411c6e516875d828b34778feb"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "0dcec846a038a140aa945e80469da60be2b2726b60b074bed8b768630cc8b7f1",
+          "endLine": 19,
+          "function": "_physics_process",
+          "line": 14,
+          "path": "res://scripts/entities/yard_fence.gd",
+          "sourceSha256LF": "e2d482db4bc25044603ffcdb19a8f2fe52047cc411c6e516875d828b34778feb"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "c88e1f28f301a2edbc615c4e6d5709632c827a78583e299250ed643a778057c8",
+          "endLine": 193,
+          "function": "surface",
+          "line": 191,
+          "path": "res://scripts/core/yard.gd",
+          "sourceSha256LF": "1c5790dc59c97c2f2638b482238764e39dd3bd6a02ef258797d9b8901b32e8ad"
+        }
+      ]
+    },
+    {
+      "id": "farm",
+      "requiredProperties": [
+        "soil crop growth fertilizer regrow",
+        "wet and flow graph",
+        "source water",
+        "apple trunk collider",
+        "saved manure pickups",
+        "active-time jobs and honey"
+      ],
+      "requiredScenarios": [
+        "farm_dry",
+        "farm_irrigated",
+        "farm_disconnected",
+        "farm_ready",
+        "honey_no_flowers",
+        "honey_grown_flowers",
+        "saved_manure"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "a3da2464c28ec1ecb1f1792bdc90b47bf44f208cfe4c88b2ffbfa83d1a1264ad",
+          "endLine": 70,
+          "function": "irrigate",
+          "line": 56,
+          "path": "res://scripts/core/homestead.gd",
+          "sourceSha256LF": "bf6641d492770133145c5ad85611e4702496fd63318d377d3224060e14fce420"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "451cd857f8af122860e661dd10abaf70df189eeb0652c45a6387f044204d008d",
+          "endLine": 92,
+          "function": "advance",
+          "line": 79,
+          "path": "res://scripts/core/homestead.gd",
+          "sourceSha256LF": "bf6641d492770133145c5ad85611e4702496fd63318d377d3224060e14fce420"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "169a626b2fd26ebec8289dae4cb45c1a22e1eb6f673ef8dfb44ad6708ca8000f",
+          "endLine": 25,
+          "function": "_ready",
+          "line": 18,
+          "path": "res://scripts/entities/homestead.gd",
+          "sourceSha256LF": "b01768787234a510be5b4a01fc651dd1c37fa62121bd56c9408f0e0da62d2c67"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "180e75292f56d0852a6acc9f732928cd3463af250fd0e9082b846420e9416ef0",
+          "endLine": 118,
+          "function": "_process",
+          "line": 106,
+          "path": "res://scripts/entities/homestead.gd",
+          "sourceSha256LF": "b01768787234a510be5b4a01fc651dd1c37fa62121bd56c9408f0e0da62d2c67"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "f36fbb30131c8519645d0b044dae75bcfeaa2549061c187005e8518f043efb2a",
+          "endLine": 59,
+          "function": "sync",
+          "line": 49,
+          "path": "res://scripts/core/orchard.gd",
+          "sourceSha256LF": "4941a5649d3a8a73dabbbfb423a712f54bbb9f5c9dcf82ac59d23fc88589b475"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "b77c7f6e67a7b7cc1e6f756004a8a67d15f5ba2c6c4ce160841c79a6e726c5ce",
+          "endLine": 10,
+          "function": "_ready",
+          "line": 8,
+          "path": "res://scripts/entities/orchard_tree.gd",
+          "sourceSha256LF": "77d9ce3e5e339d4275b7b70559eb423f4a86cd4f71efc27cf23bc11546594f25"
+        }
+      ]
+    },
+    {
+      "id": "library",
+      "requiredProperties": [
+        "opened state",
+        "cleared rows and atlas",
+        "erased solid cells"
+      ],
+      "requiredScenarios": [
+        "library_backroom"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "c13f1da7523265e7e20cc8f44dd076943ac531a86fd782d0370290bd1a57b75a",
+          "endLine": 26,
+          "function": "_ready",
+          "line": 18,
+          "path": "res://scripts/entities/meer_kast.gd",
+          "sourceSha256LF": "c0d4a9c54d098eef7a49d95fe415aad57ef2202012ff3ac0b3127e0b5004ca11"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "74decf387326467ff61d5e60436935d158404e4046a45f2fe1f7a4ce2d8f3fd1",
+          "endLine": 47,
+          "function": "_clear_cells",
+          "line": 40,
+          "path": "res://scripts/entities/meer_kast.gd",
+          "sourceSha256LF": "c0d4a9c54d098eef7a49d95fe415aad57ef2202012ff3ac0b3127e0b5004ca11"
+        }
+      ]
+    },
+    {
+      "id": "gates",
+      "requiredProperties": [
+        "block_if",
+        "blocked",
+        "deferred disabled",
+        "size and offset",
+        "seal presence and progression"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "boss_gate_closed",
+        "full_progress"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "df2109df4090d63d6b34a63f4acbeb0c2fd8f970402fcba66083d5b4582bfe70",
+          "endLine": 28,
+          "function": "_ready",
+          "line": 20,
+          "path": "res://scripts/entities/gate.gd",
+          "sourceSha256LF": "3e3be30d19002ed1abb1329a5b258213d5cabc4dca1fb234b160669400f212f3"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "5201e13a0b870214c4e5493abd2bf73f2710f4ac6848a9c0cb6e776fb5f0e20f",
+          "endLine": 50,
+          "function": "_refresh",
+          "line": 39,
+          "path": "res://scripts/entities/gate.gd",
+          "sourceSha256LF": "3e3be30d19002ed1abb1329a5b258213d5cabc4dca1fb234b160669400f212f3"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "3001b46ec46d404025f07883bc0e97c1e373206c9c633c3b92d8fc2822a7d3e7",
+          "endLine": 21,
+          "function": "_ready",
+          "line": 14,
+          "path": "res://scripts/entities/diepte_gate.gd",
+          "sourceSha256LF": "fd90870ab4a86a20b23ba18a1b9f9437a3f07e088766c51a600b360a29d8961e"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "73947f1f28283fbce6948978e0555bccaaa538b6127dca00b05f6a6da7671fa3",
+          "endLine": 48,
+          "function": "_ready",
+          "line": 29,
+          "path": "res://scripts/entities/diepte_seal.gd",
+          "sourceSha256LF": "bdd68f4da59a6976ebc52fb9d464b3ea4798fcb05515c5ea6ea44b41339fd800"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "08eefc510677772502d5d087644b5347025343c900fdf2d4d5557db650a7723a",
+          "endLine": 113,
+          "function": "_open",
+          "line": 104,
+          "path": "res://scripts/entities/diepte_seal.gd",
+          "sourceSha256LF": "bdd68f4da59a6976ebc52fb9d464b3ea4798fcb05515c5ea6ea44b41339fd800"
+        }
+      ]
+    },
+    {
+      "id": "guardian",
+      "requiredProperties": [
+        "six deferred pillar shapes",
+        "guardian state",
+        "defeated removal",
+        "reward chest key and capacity-dependent contents"
+      ],
+      "requiredScenarios": [
+        "guardian_alive",
+        "guardian_defeated",
+        "guardian_reward_opened",
+        "guardian_full_hearts"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "f613c559854dcc21284adcc54130714a21d2b1026ad7a6c9fd70789ea3cc3f14",
+          "endLine": 124,
+          "function": "_ready",
+          "line": 101,
+          "path": "res://scripts/entities/guardian.gd",
+          "sourceSha256LF": "2120e9f681bc82d4e001800aadcb766a286a8a91f8896ac8c35dca685843bc37"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "01aed76d8893773693eda34a4c72863ed0b93e1a5a8db5e1445c4d9befd30015",
+          "endLine": 147,
+          "function": "_spawn_pillars",
+          "line": 135,
+          "path": "res://scripts/entities/guardian.gd",
+          "sourceSha256LF": "2120e9f681bc82d4e001800aadcb766a286a8a91f8896ac8c35dca685843bc37"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "ff45d1564c40273102018871931c30b35447b7449213f14f98545906ff5607c2",
+          "endLine": 162,
+          "function": "_make_chest",
+          "line": 148,
+          "path": "res://scripts/entities/guardian.gd",
+          "sourceSha256LF": "2120e9f681bc82d4e001800aadcb766a286a8a91f8896ac8c35dca685843bc37"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "1ad510725aa9aec99a37d8a7fdc4196a92eb775b27aa03c60e8cf04b50196f0f",
+          "endLine": 544,
+          "function": "_finish",
+          "line": 514,
+          "path": "res://scripts/entities/guardian.gd",
+          "sourceSha256LF": "2120e9f681bc82d4e001800aadcb766a286a8a91f8896ac8c35dca685843bc37"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "a4dbd12e28114131baa3a411b34fc7dd207b68b3e9dca5db5a2c06addc2ff6d6",
+          "endLine": 40,
+          "function": "_ready",
+          "line": 29,
+          "path": "res://scripts/entities/guardian_pillar.gd",
+          "sourceSha256LF": "6d3fc82d230df7638089e92bf693fd68a53ce5d1dd38aa9cd80617bbf74e4234"
+        }
+      ]
+    },
+    {
+      "id": "entity_existence",
+      "requiredProperties": [
+        "enabled and if filters",
+        "NPC exists_if removal",
+        "enemy unique-flag suppression",
+        "opened chest retained",
+        "unique pickup removed"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "full_progress",
+        "route_cat_home"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "ef578257e1558f9f0af69aec217aeae022c444327ae69f85ae9af0f7ac0196aa",
+          "endLine": 559,
+          "function": "_spawn_objects",
+          "line": 467,
+          "path": "res://scripts/world.gd",
+          "sourceSha256LF": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "d4c8115825731f4a772cdff16761493f3eeb945ceb4fbba90efa6c25cf702cf7",
+          "endLine": 57,
+          "function": "_process",
+          "line": 45,
+          "path": "res://scripts/entities/npc.gd",
+          "sourceSha256LF": "9e07d7ee6b62f94f312c78ea87f57d111163044efdbffa96885d09ea3063ce5f"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "b792aa7fbf5cbd56f7538f6da61a61073527b4ccbe8f36ba07255ef52ef8bd5f",
+          "endLine": 26,
+          "function": "_ready",
+          "line": 17,
+          "path": "res://scripts/entities/chest.gd",
+          "sourceSha256LF": "cac8794b4b05bfb1521194238807aea57f58c8b71939d8a4c73c9d6dde044f26"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "d1518f13d92bff64bc0cef1cbaea076f005963e6f40ca056f8f6d664f549104b",
+          "endLine": 27,
+          "function": "_ready",
+          "line": 26,
+          "path": "res://scripts/entities/pickup.gd",
+          "sourceSha256LF": "12612ceb8f94bd6446980d487a1163e299fe89db01ea1de2b409ca02cec3bd5e"
+        }
+      ]
+    },
+    {
+      "id": "regional",
+      "requiredProperties": [
+        "landmark collisions",
+        "rope spring folio flags",
+        "old ridge position repair",
+        "route conditions"
+      ],
+      "requiredScenarios": [
+        "desert_wild",
+        "desert_caravan",
+        "ridge_rope",
+        "archive_clues",
+        "archive_routes",
+        "archive_stories"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "04f1fa3836ea0f653d0154c3e49775ea1f18ce0f13fea2b4c3eda7519e9a3e28",
+          "endLine": 44,
+          "function": "_ready",
+          "line": 18,
+          "path": "res://scripts/entities/regional_adventures.gd",
+          "sourceSha256LF": "37452eb1e154c4892293114ed316f8b71cd4aaf78c171976eef087dcbf15f633"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "5faa84dc05c42d9bb37c44ea4e342616eedb8a02eb702c26bfcc53c06dc32f69",
+          "endLine": 90,
+          "function": "advance",
+          "line": 61,
+          "path": "res://scripts/entities/regional_adventures.gd",
+          "sourceSha256LF": "37452eb1e154c4892293114ed316f8b71cd4aaf78c171976eef087dcbf15f633"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "ad2b00349d23a40689a1fa65f0041cf919479785b545cf14533515e1b74aa1eb",
+          "endLine": 31,
+          "function": "_ready",
+          "line": 11,
+          "path": "res://scripts/entities/regional_object.gd",
+          "sourceSha256LF": "253292f29d36aed6d3f955e6acdc8544abd26ee36b89e5226a94b5fb5f581c3b"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "e17aeca39be17b2a408cf1d7f65190afb1601e89612ffc1442ed1a68b5d333db",
+          "endLine": 39,
+          "function": "safe_position",
+          "line": 35,
+          "path": "res://scripts/core/regional_adventures.gd",
+          "sourceSha256LF": "8bb02f0ba0433183c46f12646116a519d274951d6df3aa467a9f904aa3159320"
+        }
+      ]
+    },
+    {
+      "id": "atmosphere",
+      "requiredProperties": [
+        "weather darkness",
+        "window descriptors",
+        "outdoor status"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "routines_evening"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "6732d13f44fa1e81aaa5eb14d77d7255d285be1dc7b1b9152943ffbdd3cd2c25",
+          "endLine": 104,
+          "function": "enter_map",
+          "line": 82,
+          "path": "res://scripts/entities/atmosphere.gd",
+          "sourceSha256LF": "7906a6a1fdae0a04c0e40126a39d0974f7bea916d1358d6ed0ccfe80aeebc917"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "ad0292dd7d43489eb6af4f8b5989a6fc7ff1d98a9a991146b6f0788fa7a7fbf8",
+          "endLine": 232,
+          "function": "_build_windows",
+          "line": 209,
+          "path": "res://scripts/entities/atmosphere.gd",
+          "sourceSha256LF": "7906a6a1fdae0a04c0e40126a39d0974f7bea916d1358d6ed0ccfe80aeebc917"
+        }
+      ]
+    },
+    {
+      "id": "temporal_encounters",
+      "requiredProperties": [
+        "entry objects and full original algorithms retained",
+        "transient attacks projectiles waves not exhaustively sampled"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline"
+      ],
+      "scope": "baseline_entries_and_retained_temporal_authority",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "7c5ef0ec7c05d4b519fdda0e476f6cca74055304cfa81d06fc906b79d37c3cc2",
+          "endLine": 204,
+          "function": "begin",
+          "line": 198,
+          "path": "res://scripts/entities/living_object.gd",
+          "sourceSha256LF": "b3a5627166410d1a1e0edcfd4a2502f342f08139917b092222f08f1cb2d65acb"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "74cba3ddcc6b289d86f429b841b874e49135b617dc40d1264ed62db3cc75e143",
+          "endLine": 250,
+          "function": "_process",
+          "line": 225,
+          "path": "res://scripts/entities/living_object.gd",
+          "sourceSha256LF": "b3a5627166410d1a1e0edcfd4a2502f342f08139917b092222f08f1cb2d65acb"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "78187369ac77b8ca7baf57b939aac530b215c89ca793d0dd50ce98a3fbffcb1c",
+          "endLine": 223,
+          "function": "finish",
+          "line": 206,
+          "path": "res://scripts/entities/living_object.gd",
+          "sourceSha256LF": "b3a5627166410d1a1e0edcfd4a2502f342f08139917b092222f08f1cb2d65acb"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "86d582b786bac5bca0a7649e621d9266a1b28e653551694a14419f563575e75e",
+          "endLine": 82,
+          "function": "_ready",
+          "line": 70,
+          "path": "res://scripts/entities/arena_master.gd",
+          "sourceSha256LF": "b4648133c6c2d7ccb3aab51b5eede6c053c128da08b3b6bf32cb70a8eeff53ec"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "2b81f24397631f6ab220d2a987a21eea8f6a6fee9e8eac714fed7d91be831964",
+          "endLine": 115,
+          "function": "start_run",
+          "line": 91,
+          "path": "res://scripts/entities/arena_master.gd",
+          "sourceSha256LF": "b4648133c6c2d7ccb3aab51b5eede6c053c128da08b3b6bf32cb70a8eeff53ec"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "e41076233bab9782bb4dd2c4312d5cf66351d5ec68fa4d632e661449800ec17f",
+          "endLine": 184,
+          "function": "_start_round",
+          "line": 160,
+          "path": "res://scripts/entities/arena_master.gd",
+          "sourceSha256LF": "b4648133c6c2d7ccb3aab51b5eede6c053c128da08b3b6bf32cb70a8eeff53ec"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "98e02ff6995f92cf0f19263f9146155961a9ec88758db91f7fc0151c1b143143",
+          "endLine": 211,
+          "function": "_tick_spawns",
+          "line": 195,
+          "path": "res://scripts/entities/arena_master.gd",
+          "sourceSha256LF": "b4648133c6c2d7ccb3aab51b5eede6c053c128da08b3b6bf32cb70a8eeff53ec"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "08dcf7b749b67a1079261c471bfe13de878c6a6fe31574132befcd74ccc5efc2",
+          "endLine": 12,
+          "function": "start",
+          "line": 7,
+          "path": "res://scripts/entities/coastal_practice.gd",
+          "sourceSha256LF": "a5bf942b64778011f5a47336daecc27bd2ff700917a11d062c970f01314a77e2"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "4047fa4eeec85b18724c5022744dc957a776b040f93e8a0b00e507c764fe322d",
+          "endLine": 83,
+          "function": "_process",
+          "line": 60,
+          "path": "res://scripts/entities/combat_post.gd",
+          "sourceSha256LF": "08b0639176a0a43eebf845a2b946f3bbca0281f27ce7bca44baaf17f2309ea72"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "f4528d1bd32d5582b928adc61344e18e6a72f74a0c66d10349f32a9ea978ccd2",
+          "endLine": 95,
+          "function": "start_run",
+          "line": 85,
+          "path": "res://scripts/entities/shooting_range.gd",
+          "sourceSha256LF": "a7563c6b61c0e205a9600bdab1cf96847ee16811417832fdb027dbd234a9c83b"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "e1f2fd3c525b7d25db060dcaa7e36a04a34af738b97d2d150605ec4cf59ba6d1",
+          "endLine": 172,
+          "function": "activate",
+          "line": 163,
+          "path": "res://scripts/entities/guardian.gd",
+          "sourceSha256LF": "2120e9f681bc82d4e001800aadcb766a286a8a91f8896ac8c35dca685843bc37"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "d7614a856071c1a1668b60f8c91e04c83f6aa13f3d910c1e1805dd90642614c0",
+          "endLine": 785,
+          "function": "_die",
+          "line": 768,
+          "path": "res://scripts/entities/enemy.gd",
+          "sourceSha256LF": "747a4c0478d3e77c2b07f574a93c674eb25c6614c1996018f163e84bcd606fe8"
+        }
+      ]
+    },
+    {
+      "id": "coastal_workshop",
+      "requiredProperties": [
+        "coastal storage state",
+        "placed shelf flag",
+        "owned lamp and enabled state",
+        "sea or warm light color",
+        "fixed workshop footprints"
+      ],
+      "requiredScenarios": [
+        "fresh_baseline",
+        "coastal_workshop"
+      ],
+      "scope": "loaded_world_and_selected_state_witnesses",
+      "sourceAnchors": [
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "d8f97ed50d951765b43c9655b9ed7e8fa63d006aac4fdb88d04c3d34b1257d67",
+          "endLine": 50,
+          "function": "set_furniture",
+          "line": 40,
+          "path": "res://scripts/core/coastal_home.gd",
+          "sourceSha256LF": "0f7da0b759406f1ea8c23e5b792f1e4e7cdcc35b9c2006d5f688b0bce10792b2"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "4534f9b5d431e296522a7e6a10983a59ad65f8ba74b59993a040217441bd5a28",
+          "endLine": 20,
+          "function": "_ready",
+          "line": 9,
+          "path": "res://scripts/entities/coastal_workstation.gd",
+          "sourceSha256LF": "a988403d2043c39355c130a63a199dc9761fd00fd8ae527707f775bbcade0f2a"
+        },
+        {
+          "authority": "Preserved GDScript body; opaque to this contract builder",
+          "bodySha256LF": "ed21aeaa1c260d89ac40256cd044248c23dd8a1298250aa1871442d39cc0e29f",
+          "endLine": 37,
+          "function": "_process",
+          "line": 33,
+          "path": "res://scripts/entities/coastal_workstation.gd",
+          "sourceSha256LF": "a988403d2043c39355c130a63a199dc9761fd00fd8ae527707f775bbcade0f2a"
+        }
+      ]
+    }
+  ],
+  "registryHooks": [
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/living_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "daaa0d3b3dc056940403166cd83706b3802f150145ec863ed467831d41ea576a",
+        "endLine": 248,
+        "function": "enrich",
+        "line": 237,
+        "path": "res://scripts/data/living_maps.gd",
+        "sourceSha256LF": "6e4ed92ea90c29ef9577ed433d0d5c61201549707fd12ac3a13912dcc06f357c"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/regional_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "5f951878cc7343116c8d1e2419ffb6b5420eed93fbedfc63015a00752e9a09c0",
+        "endLine": 155,
+        "function": "enrich",
+        "line": 130,
+        "path": "res://scripts/data/regional_maps.gd",
+        "sourceSha256LF": "ada452e2024e35cae234cbd2f5b1d2756b767fd90638b18df0bd65dbaac05f0f"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/combat_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "dfc01a9f0cc3250c0d4dda64098cfec1cb0464f3b77f7dae7bc872f03907186e",
+        "endLine": 20,
+        "function": "enrich",
+        "line": 3,
+        "path": "res://scripts/data/combat_maps.gd",
+        "sourceSha256LF": "e9aec2e2d49a5cc2fec4d8b19c0d01b4ac3a3ae4a92e8ce079f41b06854ef3b3"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/craft_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "716e413eeb2180df8aa5ff5dd1e581aa62017bb90d6bc4d3e71e039fc7ddc3b8",
+        "endLine": 6,
+        "function": "enrich",
+        "line": 2,
+        "path": "res://scripts/data/craft_maps.gd",
+        "sourceSha256LF": "5b9220052714bd5e52a6e4a1ce5804205e65bc977a29066f671eaaf026a9cee7"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/space_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "bfe3f608595ee6a873a66faaa7709493c7ac2453665ecb10856806175e19fa67",
+        "endLine": 20,
+        "function": "enrich",
+        "line": 4,
+        "path": "res://scripts/data/space_maps.gd",
+        "sourceSha256LF": "66f9489b2b9e2e6c1451125cefa0b08fd2923aa15c14d6f082daa4b2ddeee804"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/habitat_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "4a63b420e37fcddb2ab26a97917e4e564231d8f4a436cb84ac261e0522a3ff94",
+        "endLine": 11,
+        "function": "enrich",
+        "line": 7,
+        "path": "res://scripts/data/habitat_maps.gd",
+        "sourceSha256LF": "c294eb5b249f9b263c45efa8161474a06231ca6635b5b311a266544c58b42cd5"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/coast_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "ffa026dbf1a4d058c6ce183784d20ffdc202e6ffed2de44f87aa998f78ab5780",
+        "endLine": 23,
+        "function": "enrich",
+        "line": 3,
+        "path": "res://scripts/data/coast_maps.gd",
+        "sourceSha256LF": "08279dbf6bca3badc7e4e4c8d6ba0465d1ef3493f231ab49b8452ea0641fb859"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/coastal_region_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "73a86b537c4d787ecbf39d0ec374be3765b38ab664c889eea2c7365c590fd1e3",
+        "endLine": 14,
+        "function": "enrich",
+        "line": 3,
+        "path": "res://scripts/data/coastal_region_maps.gd",
+        "sourceSha256LF": "c102aad0f7ee0d42ba9a05710359c99e34d2a689ae8472bf9c8ccdc897617ca4"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/adventure_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "3365c81516562da1dd2894665713657e892ea7e07c56a2811eacdeaf301c0005",
+        "endLine": 17,
+        "function": "enrich",
+        "line": 5,
+        "path": "res://scripts/data/adventure_maps.gd",
+        "sourceSha256LF": "afaa6602f2b6f07b248a8de8fda03f11f50efdb379327b2b921de3828c915d13"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/coastal_craft_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "555d24f3e2258a2ada9d09b93a45d5d3cff3f057e90a9c6265e0bfa8c01f62cf",
+        "endLine": 8,
+        "function": "enrich",
+        "line": 2,
+        "path": "res://scripts/data/coastal_craft_maps.gd",
+        "sourceSha256LF": "044293f6910f0191f1d74628ba878541f3230f3da013d84ca7a1f10ab31b55c5"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/homestead_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "ebc59af85f73a7813bd3ae2d0cff299ea2734fc3f24d16df3a35e6648ed9d5dd",
+        "endLine": 67,
+        "function": "enrich",
+        "line": 23,
+        "path": "res://scripts/data/homestead_maps.gd",
+        "sourceSha256LF": "891ef2d75f2d529578ec91be40fc866858137e0943dc0b1ebfc50efe0a935344"
+      }
+    },
+    {
+      "function": "prepare",
+      "path": "res://scripts/core/marsh_waterworks.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "49d26e2e374ec3550c3a36fc00cf494e558952590aa3fcf9258fbf7b367bc197",
+        "endLine": 16,
+        "function": "prepare",
+        "line": 8,
+        "path": "res://scripts/core/marsh_waterworks.gd",
+        "sourceSha256LF": "5a8a71ba2a24e82efff341e20818fc6255b6c16ae989155aed1a6f08689f37b1"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/route_repairs.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "eccb4f0720e63696c998c7f1a5f7674387303a75c51e6fa0fc26b0687b5ac605",
+        "endLine": 29,
+        "function": "enrich",
+        "line": 14,
+        "path": "res://scripts/data/route_repairs.gd",
+        "sourceSha256LF": "21a642c261a2cc42c20fd9c337679ff5e17985cf93fd5224e1021998ec6e2bad"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/mountain_maps.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "1b9c14be13bb2d607fec853b6a754f97cd90bbee0e81eaecc660ea3655c7095f",
+        "endLine": 9,
+        "function": "enrich",
+        "line": 3,
+        "path": "res://scripts/data/mountain_maps.gd",
+        "sourceSha256LF": "acd5639cb887530e23f1abce963d1ab6667bb4fac0362d2329dd3aaf09df347e"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/core/water_features.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "b76a820ecdd6ddb82c5f87f9ef1956f23d734dcf378d634d1b643ac7ca446421",
+        "endLine": 45,
+        "function": "enrich",
+        "line": 39,
+        "path": "res://scripts/core/water_features.gd",
+        "sourceSha256LF": "c2281e9faf2847e9fb18c6c2f00db305e820f7398d6bcfb922db72c24e435812"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/winter_greens.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "9b167118e35c35dafed55b957257dc74d6a98904f46653353da8ab9e041e9199",
+        "endLine": 74,
+        "function": "enrich",
+        "line": 46,
+        "path": "res://scripts/data/winter_greens.gd",
+        "sourceSha256LF": "e65faea7a3c01a7778395daa642e4076839cc825e4187736b42fcf97936dba7c"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/trail_life.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "bb12aad5846889e02d1e3103ec13331eb4bdd7af91b40beff4bb3440d4a43275",
+        "endLine": 94,
+        "function": "enrich",
+        "line": 35,
+        "path": "res://scripts/data/trail_life.gd",
+        "sourceSha256LF": "840b1bfaf346c21fabcebf147d8d16d3beeb1634341423ef02c7ce82c3c28222"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/flower_species.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "7c8a86a9219e81963b243d96aa8c5b2deac97513d6e49546e9b5aedd0518b824",
+        "endLine": 42,
+        "function": "enrich",
+        "line": 32,
+        "path": "res://scripts/data/flower_species.gd",
+        "sourceSha256LF": "d38c0162daffedb0e2498bde8c3a453de7ea5c92a6bd0b4444b7aa522ca14bcd"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/forest_food_species.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "e7d380945a5447f0c55ff063465c798fbffb5eefaf87a456099f8e4887051af7",
+        "endLine": 165,
+        "function": "enrich",
+        "line": 132,
+        "path": "res://scripts/data/forest_food_species.gd",
+        "sourceSha256LF": "0ddc1c2020f61cdb797dbd581f770b00a8104947d58df60a10d197fde8bd3fa3"
+      }
+    },
+    {
+      "function": "enrich",
+      "path": "res://scripts/data/training_yard_layout.gd",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "8b5d5d9701a5a8c782865cd1e554715e998e3281c4bd8a9786108a9653e1c6a3",
+        "endLine": 42,
+        "function": "enrich",
+        "line": 11,
+        "path": "res://scripts/data/training_yard_layout.gd",
+        "sourceSha256LF": "4fabab0739e883f0c29f011c184231d48f4a52328933e091b2340c8ed65729b9"
+      }
+    }
+  ],
+  "requiredMapIds": [
+    "arena",
+    "arena_hall",
+    "cave",
+    "coast",
+    "coast_workshop",
+    "dauwbos",
+    "depths1",
+    "depths2",
+    "dorstvallei",
+    "fisher_hut",
+    "forest",
+    "forest_edge",
+    "gull_island",
+    "harbor",
+    "headland",
+    "ijsdal",
+    "inn",
+    "kruipmoeras",
+    "lake",
+    "library",
+    "mistgarden",
+    "player_home",
+    "prismamine",
+    "reedvault",
+    "resonance",
+    "ridgepass",
+    "river_mouth",
+    "ruins",
+    "shop",
+    "smithy",
+    "steampeak",
+    "sunwell",
+    "temple",
+    "tidal_hollow",
+    "tide_cove",
+    "village",
+    "watchyard"
+  ],
+  "requiredScenarios": [
+    "archive_clues",
+    "archive_routes",
+    "archive_stories",
+    "boss_gate_closed",
+    "coastal_workshop",
+    "desert_caravan",
+    "desert_wild",
+    "farm_disconnected",
+    "farm_dry",
+    "farm_irrigated",
+    "farm_ready",
+    "forest_restored",
+    "fresh_baseline",
+    "full_progress",
+    "guardian_alive",
+    "guardian_defeated",
+    "guardian_full_hearts",
+    "guardian_reward_opened",
+    "headland_shelter",
+    "hollow_duel",
+    "hollow_pool",
+    "hollow_wheel",
+    "hollow_workwater",
+    "home_furnished",
+    "honey_grown_flowers",
+    "honey_no_flowers",
+    "ice_restored",
+    "ice_west",
+    "legacy_completed",
+    "library_backroom",
+    "marsh_bridge",
+    "marsh_drained",
+    "mine_restored",
+    "opening_legacy",
+    "opening_water_restored",
+    "ridge_rope",
+    "route_cat_home",
+    "route_clues",
+    "route_echo_begin",
+    "route_echo_end",
+    "route_echo_mid",
+    "route_memorial_guard",
+    "route_memorial_guide",
+    "routines_evening",
+    "saved_manure",
+    "sluices_both",
+    "sluices_closed",
+    "sluices_east",
+    "sluices_west",
+    "tide_falling",
+    "tide_held",
+    "tide_high",
+    "tide_low",
+    "tide_released",
+    "tide_rising",
+    "yard_gate_far",
+    "yard_gate_near",
+    "yard_moved",
+    "yard_packed"
+  ],
+  "safeProjections": [
+    {
+      "function": "refresh",
+      "ownerScripts": [
+        "res://scripts/entities/living_scenery.gd"
+      ],
+      "path": "res://scripts/entities/living_scenery.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "46faee97b26f0d436d01deca7974b585ba3b7b5e6f1f8e6def211cc347d0a647",
+        "endLine": 94,
+        "function": "refresh",
+        "line": 51,
+        "path": "res://scripts/entities/living_scenery.gd",
+        "sourceSha256LF": "1ffa2dd571374eafa5e4ee63e602f7f224afe1871a6a1e3d8231e7c269ce2a3c"
+      }
+    },
+    {
+      "function": "refresh",
+      "ownerScripts": [
+        "res://scripts/entities/world_memory.gd"
+      ],
+      "path": "res://scripts/entities/world_memory.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "5683e2251c42073c172d26542e4c15cdb4b540fd2e819f1add0b4d540c993c38",
+        "endLine": 28,
+        "function": "refresh",
+        "line": 12,
+        "path": "res://scripts/entities/world_memory.gd",
+        "sourceSha256LF": "5f8e86d91868a41dba9275941fe1a31276a1be4552ee40ed22afdf32989d0985"
+      }
+    },
+    {
+      "function": "refresh",
+      "ownerScripts": [
+        "res://scripts/entities/lake_supper.gd"
+      ],
+      "path": "res://scripts/entities/lake_supper.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "767f5ec23b76d9d4eedc2f44360410c6091715fdc3e2382b0683b8598b5534cd",
+        "endLine": 43,
+        "function": "refresh",
+        "line": 28,
+        "path": "res://scripts/entities/lake_supper.gd",
+        "sourceSha256LF": "9616a6779827a611c6e775595d76d7b1a27f2ccac6d8e85fec5143e0f8c295fc"
+      }
+    },
+    {
+      "function": "irrigate",
+      "ownerScripts": [
+        "res://scripts/core/homestead.gd"
+      ],
+      "path": "res://scripts/core/homestead.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "a3da2464c28ec1ecb1f1792bdc90b47bf44f208cfe4c88b2ffbfa83d1a1264ad",
+        "endLine": 70,
+        "function": "irrigate",
+        "line": 56,
+        "path": "res://scripts/core/homestead.gd",
+        "sourceSha256LF": "bf6641d492770133145c5ad85611e4702496fd63318d377d3224060e14fce420"
+      }
+    },
+    {
+      "function": "sync",
+      "ownerScripts": [
+        "res://scripts/core/yard.gd"
+      ],
+      "path": "res://scripts/core/yard.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "f787ae05c5e0911728989e0dbe0aaa3e3380fd43282faeb486278f088c55a279",
+        "endLine": 259,
+        "function": "sync",
+        "line": 251,
+        "path": "res://scripts/core/yard.gd",
+        "sourceSha256LF": "1c5790dc59c97c2f2638b482238764e39dd3bd6a02ef258797d9b8901b32e8ad"
+      }
+    },
+    {
+      "function": "sync",
+      "ownerScripts": [
+        "res://scripts/core/personal_home.gd"
+      ],
+      "path": "res://scripts/core/personal_home.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "c46d7ecf16e6cd25e0ee1698b3bfca0df2a28b75f459d490526d718a8d5168b7",
+        "endLine": 152,
+        "function": "sync",
+        "line": 141,
+        "path": "res://scripts/core/personal_home.gd",
+        "sourceSha256LF": "bd036d440fa7c9cef5b36c3716acd42cc121a7bd71c08bd7e9557cee563250d9"
+      }
+    },
+    {
+      "function": "sync",
+      "ownerScripts": [
+        "res://scripts/core/orchard.gd"
+      ],
+      "path": "res://scripts/core/orchard.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "f36fbb30131c8519645d0b044dae75bcfeaa2549061c187005e8518f043efb2a",
+        "endLine": 59,
+        "function": "sync",
+        "line": 49,
+        "path": "res://scripts/core/orchard.gd",
+        "sourceSha256LF": "4941a5649d3a8a73dabbbfb423a712f54bbb9f5c9dcf82ac59d23fc88589b475"
+      }
+    },
+    {
+      "function": "sync",
+      "ownerScripts": [
+        "res://scripts/entities/tide_cove.gd"
+      ],
+      "path": "res://scripts/entities/tide_cove.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "4dff0489f00a7e398d639a8e1a8b87ab14b944e6d02ab7512e44ad4a0f8d139a",
+        "endLine": 39,
+        "function": "sync",
+        "line": 21,
+        "path": "res://scripts/entities/tide_cove.gd",
+        "sourceSha256LF": "5a17c9709011b837d1ade0f22e26bd0b31292300b6ea02902741238f13016546"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/coastal_adventure_director.gd"
+      ],
+      "path": "res://scripts/entities/coastal_adventure_director.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "9d038671c9d7f6d6ead34f7cf573f8f019aa096eaf3092b120367ee3f9458d3f",
+        "endLine": 17,
+        "function": "_process",
+        "line": 8,
+        "path": "res://scripts/entities/coastal_adventure_director.gd",
+        "sourceSha256LF": "0dbe04494e70b8bc4f963ffe30d30c7f017e079f855aaea55039775ec33c1fd0"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/coastal_adventure.gd"
+      ],
+      "path": "res://scripts/entities/coastal_adventure.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "a7da40e76e7bd2c9f466364beb01b98cfb86c3a786729b57d04df66c68320044",
+        "endLine": 43,
+        "function": "_process",
+        "line": 37,
+        "path": "res://scripts/entities/coastal_adventure.gd",
+        "sourceSha256LF": "3ef042bb31b1ca3e76ffb5dda648573ebc96ad5a483a1bc113db3824df210f51"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/homestead.gd"
+      ],
+      "path": "res://scripts/entities/homestead.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "180e75292f56d0852a6acc9f732928cd3463af250fd0e9082b846420e9416ef0",
+        "endLine": 118,
+        "function": "_process",
+        "line": 106,
+        "path": "res://scripts/entities/homestead.gd",
+        "sourceSha256LF": "b01768787234a510be5b4a01fc651dd1c37fa62121bd56c9408f0e0da62d2c67"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/npc.gd",
+        "res://scripts/entities/coast_resident.gd"
+      ],
+      "path": "res://scripts/entities/npc.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "d4c8115825731f4a772cdff16761493f3eeb945ceb4fbba90efa6c25cf702cf7",
+        "endLine": 57,
+        "function": "_process",
+        "line": 45,
+        "path": "res://scripts/entities/npc.gd",
+        "sourceSha256LF": "9e07d7ee6b62f94f312c78ea87f57d111163044efdbffa96885d09ea3063ce5f"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/meer_kast.gd"
+      ],
+      "path": "res://scripts/entities/meer_kast.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "14232d1f073eaa9e1fcb0e8788bf839b79bdf0855c1ca6cc6f9930d134afbbed",
+        "endLine": 37,
+        "function": "_process",
+        "line": 29,
+        "path": "res://scripts/entities/meer_kast.gd",
+        "sourceSha256LF": "c0d4a9c54d098eef7a49d95fe415aad57ef2202012ff3ac0b3127e0b5004ca11"
+      }
+    },
+    {
+      "function": "_refresh",
+      "ownerScripts": [
+        "res://scripts/entities/gate.gd"
+      ],
+      "path": "res://scripts/entities/gate.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "5201e13a0b870214c4e5493abd2bf73f2710f4ac6848a9c0cb6e776fb5f0e20f",
+        "endLine": 50,
+        "function": "_refresh",
+        "line": 39,
+        "path": "res://scripts/entities/gate.gd",
+        "sourceSha256LF": "3e3be30d19002ed1abb1329a5b258213d5cabc4dca1fb234b160669400f212f3"
+      }
+    },
+    {
+      "function": "_physics_process",
+      "ownerScripts": [
+        "res://scripts/entities/yard_fence.gd"
+      ],
+      "path": "res://scripts/entities/yard_fence.gd",
+      "policy": "Only selected current-world owner; explicit zero-delta or refresh/sync arguments; no arbitrary dispatch",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "0dcec846a038a140aa945e80469da60be2b2726b60b074bed8b768630cc8b7f1",
+        "endLine": 19,
+        "function": "_physics_process",
+        "line": 14,
+        "path": "res://scripts/entities/yard_fence.gd",
+        "sourceSha256LF": "e2d482db4bc25044603ffcdb19a8f2fe52047cc411c6e516875d828b34778feb"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/first_route.gd"
+      ],
+      "path": "res://scripts/entities/first_route.gd",
+      "policy": "Current-world route director, delta0; project refuge light only, no elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "0dba7abbb2fb94880844e36f09d1ef79decdd1a08b858348a65e7189dc907952",
+        "endLine": 81,
+        "function": "_process",
+        "line": 65,
+        "path": "res://scripts/entities/first_route.gd",
+        "sourceSha256LF": "a9d1ee3b61abe1e7dbbe8100240557b65473b06330707e9dcd37baea7d7fd08b"
+      }
+    },
+    {
+      "function": "_physics_process",
+      "ownerScripts": [
+        "res://scripts/entities/supper_actor.gd"
+      ],
+      "path": "res://scripts/entities/supper_actor.gd",
+      "policy": "Lake Joris only, delta0, wait_time>0 and empty path; never enter movement branch.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "d4471c65b0252cf6726cf6d008635940fe099d31fa78b9d099c9cc7da21266ae",
+        "endLine": 87,
+        "function": "_physics_process",
+        "line": 51,
+        "path": "res://scripts/entities/supper_actor.gd",
+        "sourceSha256LF": "154b7c2e505293814ad151718c1a8fff60015d6a957473d44d57b17bd667919d"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/coastal_workstation.gd"
+      ],
+      "path": "res://scripts/entities/coastal_workstation.gd",
+      "policy": "Current-world workstation only, delta0; apply lamp enabled/color state without elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "ed21aeaa1c260d89ac40256cd044248c23dd8a1298250aa1871442d39cc0e29f",
+        "endLine": 37,
+        "function": "_process",
+        "line": 33,
+        "path": "res://scripts/entities/coastal_workstation.gd",
+        "sourceSha256LF": "a988403d2043c39355c130a63a199dc9761fd00fd8ae527707f775bbcade0f2a"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/house_furniture.gd"
+      ],
+      "path": "res://scripts/entities/house_furniture.gd",
+      "policy": "Current-world ground/entities owner only, delta0; resolve saved/fixed-clock light fields without interaction or elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "e0d1d7a2637e068aec790c1c20c30c212c29887002ceb4d38b4f8fead823a4d2",
+        "endLine": 19,
+        "function": "_process",
+        "line": 17,
+        "path": "res://scripts/entities/house_furniture.gd",
+        "sourceSha256LF": "2ab7cc8e41175b2c9e7972f984f04859a135923d580627b93f290fa85f36e5a4"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/torch.gd"
+      ],
+      "path": "res://scripts/entities/torch.gd",
+      "policy": "Current-world ground/entities owner only, delta0; resolve saved/fixed-clock light fields without interaction or elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "1ea643ab014aabd95e669e6928ac77dde2233ed5cc43cb51ecb831dc40b5f159",
+        "endLine": 31,
+        "function": "_process",
+        "line": 25,
+        "path": "res://scripts/entities/torch.gd",
+        "sourceSha256LF": "396c71575abacdb590de5a03e8f6f7f1968c20e8238af6d5d51c8a3ba8911b7e"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/lantern.gd"
+      ],
+      "path": "res://scripts/entities/lantern.gd",
+      "policy": "Current-world ground/entities owner only, delta0; resolve saved/fixed-clock light fields without interaction or elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "78a4f54576f3a7aae240f102cdae6de59ea88617f3dea385fd75913c99079a44",
+        "endLine": 40,
+        "function": "_process",
+        "line": 35,
+        "path": "res://scripts/entities/lantern.gd",
+        "sourceSha256LF": "2b7a4e8e3d2b455f559ef8fd54138ea66b6ab2aa9f0b55f4aee34de22f869ddf"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/savepoint.gd"
+      ],
+      "path": "res://scripts/entities/savepoint.gd",
+      "policy": "Current-world ground/entities owner only, delta0; resolve saved/fixed-clock light fields without interaction or elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "1c30c2b2eff13a73a8d5f86eb00222a388ef5916592cdf7ed225c18e8401aa74",
+        "endLine": 49,
+        "function": "_process",
+        "line": 37,
+        "path": "res://scripts/entities/savepoint.gd",
+        "sourceSha256LF": "0a12efa035a08c8c2071177847cb8495bde1c94803b9bc7167423df212c2f397"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/window_glow.gd"
+      ],
+      "path": "res://scripts/entities/window_glow.gd",
+      "policy": "Current-world ground/entities owner only, delta0; resolve saved/fixed-clock light fields without interaction or elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "85e7b2676ef12deff7aa0f70d1105ca539ce3f94b829b6ffb31595d962f9a58f",
+        "endLine": 37,
+        "function": "_process",
+        "line": 32,
+        "path": "res://scripts/entities/window_glow.gd",
+        "sourceSha256LF": "39a97db3dea646931c5fa369632dfb4098efe1e67dbbd5a1f89c495b3009a6c8"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/region_landmark.gd"
+      ],
+      "path": "res://scripts/entities/region_landmark.gd",
+      "policy": "Current-world ground/entities owner only, delta0; resolve saved/fixed-clock light fields without interaction or elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "22ee677db48f22742621e267b92c446141591f61210e3997c290253b4ad3f753",
+        "endLine": 29,
+        "function": "_process",
+        "line": 26,
+        "path": "res://scripts/entities/region_landmark.gd",
+        "sourceSha256LF": "73dc642de2a900f7b05c4a1d0392a27ee28bc7977c01d8644ea2b243f79d7c34"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/diepte_lamp.gd"
+      ],
+      "path": "res://scripts/entities/diepte_lamp.gd",
+      "policy": "Current-world ground/entities owner only, delta0; resolve saved/fixed-clock light fields without interaction or elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "9805086a7eadc328994bfbc3deffc92e73bdbb583a7e96a27f8c800b8e6fd5aa",
+        "endLine": 31,
+        "function": "_process",
+        "line": 27,
+        "path": "res://scripts/entities/diepte_lamp.gd",
+        "sourceSha256LF": "ad77d1a6baac79490865bfdb84df756088da3c95c491363350ec7add9213de0c"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/building_landmarks.gd"
+      ],
+      "path": "res://scripts/entities/building_landmarks.gd",
+      "policy": "Current-world ground/entities owner only, delta0; resolve saved/fixed-clock light fields without interaction or elapsed time.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "15329455efbe5dd84e8f56ad9eecb746ec3e897ffd7c771923d9d1d649c7e9ed",
+        "endLine": 58,
+        "function": "_process",
+        "line": 50,
+        "path": "res://scripts/entities/building_landmarks.gd",
+        "sourceSha256LF": "80dcbccdfcbeed13680cc283107dffc61191b9b9e0c96f32e49b246da5ef514e"
+      }
+    },
+    {
+      "function": "_process",
+      "ownerScripts": [
+        "res://scripts/entities/living_object.gd"
+      ],
+      "path": "res://scripts/entities/living_object.gd",
+      "policy": "Only current-world living_object with active == false, delta0; early return must exclude encounter spawn, combat and quest completion.",
+      "sourceAnchor": {
+        "authority": "Preserved GDScript body; opaque to this contract builder",
+        "bodySha256LF": "74cba3ddcc6b289d86f429b841b874e49135b617dc40d1264ed62db3cc75e143",
+        "endLine": 250,
+        "function": "_process",
+        "line": 225,
+        "path": "res://scripts/entities/living_object.gd",
+        "sourceSha256LF": "b3a5627166410d1a1e0edcfd4a2502f342f08139917b092222f08f1cb2d65acb"
+      }
+    }
+  ],
+  "samplingPolicy": {
+    "actors": "Freeze every process and physics callback; include deferred creations and disabled collider updates after fixed idle flush",
+    "arrivals": "Every authored arrival uses real correction in corresponding snapshot state",
+    "clock": "Freeze GameState and no ordinary Farm.advance",
+    "geometry": "Rows plus real tile cells/polygons, solid_cells and nested scripted/scriptless shapes, transforms, layers and disabled state",
+    "identity": "Keep all declared object slots including disabled; runtime occurrence IDs never replace legacy saved keys",
+    "state": "Record configured state before load and actual state after load and migrations"
+  },
+  "schema": "bluemap.world.coverage.v1",
+  "scope": "37 composed and loaded maps plus explicitly listed synthetic state witnesses; not every combinatorial or temporal state",
+  "sourceAuthority": "Pinned phase1 source inventory full-file hashes plus original function-body hashes; GDScript is retained opaque provenance, never interpreted by Unity",
+  "unityRuntimeImplemented": false
+}

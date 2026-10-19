@@ -8,7 +8,7 @@ Het register omvat de complete bewaarde bron, ook code die niet door een catalog
 
 ## Overdrachtsafspraken per systeem
 
-Fase 4 heeft de overdraagbare catalogi, identiteiten en regelcontracten bewezen tegen de vaste referentie; zie [DATA_FORMAT.md](DATA_FORMAT.md) en [fase 4](phase-04/README.md). De daadwerkelijke regels en geladen wereldtoestanden zijn daarmee nog niet in Unity uitgevoerd.
+Fase 4 heeft de overdraagbare catalogi, identiteiten en regelcontracten bewezen tegen de vaste referentie; zie [DATA_FORMAT.md](DATA_FORMAT.md) en [fase 4](phase-04/README.md). Fase 5 voegt de werkelijk door Godot geladen wereld toe: [37 kaarten en 162 opnamen](phase-05/README.md), inclusief native botsingen, 59 profielen, uiteindelijke slots en runtime-identiteiten. De daadwerkelijke regels en geladen wereldtoestanden zijn daarmee nog niet in Unity uitgevoerd.
 
 Alle onderstaande systemen zijn **als Godot-referentie bewaard**, nog niet als volledige gameplay in Unity gebouwd; de 86 oorspronkelijke suites blijven behouden en nieuwe Unity-tests moeten dezelfde bedoelde gedragsafspraken controleren.
 
@@ -39,7 +39,7 @@ De volledige namen en checksums van alle tests staan in het bronregister, met de
 
 ## Data die later extra aandacht vereist
 
-- Registry-kaarten en samengestelde catalogi zijn nu geïnventariseerd, maar vormen nog geen complete export van alle tijdens laden/spelen veranderde wereldtoestanden; fase 5 onderzoekt en exporteert die aanvullende runtime-uitkomsten.
+- Alle 37 werkelijk geladen kaarten en relevante synthetische quest-/wereldtoestanden zijn in fase 5 geëxporteerd; [dekkingsregister](world-coverage.json), [gerichte gevolgen](phase-05/world-witnesses.json) en [uiteindelijke identiteiten](phase-05/runtime-identities.json) bewaken deze referentie. Bewegende frames, combinaties en daadwerkelijke Unity-uitvoering blijven latere fases.
 - Objectvolgorde, uitgeschakelde objectslots, indices, oude opslagflags, tilevarianten, voorwaarden en acties blijven herkenbaar; hernummeren mag bestaande voortgang niet verschuiven.
 - Alle vijf opslagbestanden blijven afzonderlijk behouden; native Godot-inputevents vragen een expliciete omzetting, en bekende historische loaderafwijkingen worden nu gedocumenteerd zonder ze stilzwijgend te veranderen.
 - Echte persoonlijke saves zijn in deze fase niet geopend, gekopieerd of gepubliceerd; veilige import en terugexport moeten nog in fases 9 en 25 worden bewezen.

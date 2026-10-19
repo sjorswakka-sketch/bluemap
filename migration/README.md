@@ -1,6 +1,8 @@
-# Unity-migratie — fase 4 voltooid
+# Unity-migratie — fase 5 voltooid
 
-Het volgende **go** start fase 5: alle samengestelde kaarten en relevante runtime-toestanden exporteren; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 6: de eigen graphics, animatielagen, geluiden en teksten naar Unity brengen; de volledige game is nog niet overgezet.
+
+[Fase 5: de daadwerkelijk geladen wereld](phase-05/README.md) — alle 37 kaarten, 59 synthetische profielen en 162 kaartopnamen met oorspronkelijke slots, runtime-objecten, echte colliders, aankomsten en veranderde toestanden; zie [de wereldindex](world/index.json).
 
 [Fase 4: overdraagbare spelgegevens en vaste IDs](phase-04/README.md) — 34 catalogi, 377 tabellen, 905 objectslots, 33 voorwaarden, 36 acties en 139 migratietests; zie [het gegevensformaat](DATA_FORMAT.md).
 
@@ -19,6 +21,6 @@ De bronreferentie omvat 1.734 bestanden en 383 beeld-/geluidsassets; de inhoudsi
 
 Het losse bron-ZIP is met alle oorspronkelijke Git-blobs vergeleken en de Git-bundel is offline teruggehaald met objectcontrole; de zeven gepubliceerde herstelbestanden hebben dezelfde SHA256 als de gecontroleerde lokale bestanden.
 
-De kaarteninventaris is nog geen volledige export van geladen of door quests veranderde wereldtoestanden: dat volgt in fase 5; save-import en terugexport volgen in fases 9 en 25, en echte persoonlijke saves zijn niet geopend of gepubliceerd.
+De oorspronkelijke registry-inventaris blijft behouden; fase 5 voegt de daadwerkelijk geladen kaarten en benoemde veranderde toestanden toe, met expliciete dekkingsgrenzen. Save-import en terugexport volgen in fases 9 en 25; echte persoonlijke saves zijn niet geopend of gepubliceerd.
 
 Deze migratiebranch voegt in fase 1 uitsluitend referenties, documentatie en inventaris-/herstelhulpmiddelen toe; de Godot-game op de Claude-branch en het bestaande uitbreidingsplan blijven behouden.
