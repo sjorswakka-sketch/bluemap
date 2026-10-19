@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "success": true,
+  "phase": 3,
+  "identity": {
+    "schemaVersion": 1,
+    "phase": 3,
+    "previewVersion": "0.1.0-phase3",
+    "sourceCommit": "95811f4bc8a885d1f19fe084e2032753923cec38",
+    "inputFingerprint": "d73a5ba094a634678285004b97f5f93bc852f603b97d6dcd92ce0fda13e45d69",
+    "editorVersion": "6000.3.26f1",
+    "editorRevision": "de8167e7440c",
+    "target": "StandaloneWindows64"
+  },
+  "package": {
+    "file": "BlueMapUnityPreview-phase-03-95811f4b-Windows-x64.zip",
+    "sha256": "8ccac233bd3b6cf3f7d35e5c5c0b6de7e0b3f499b1f515366ca9f7e9da6fdced",
+    "bytes": 32921864,
+    "files": 145,
+    "uncompressedBytes": 89452266
+  },
+  "runtimeChecks": 16,
+  "architecture": "Windows-x64-PE32+",
+  "extracted": false,
+  "rawLogsPublished": false,
+  "godotSavesUsed": false,
+  "trust": "Integrity against supplied receipt and expected source; checksums are not signatures"
+}

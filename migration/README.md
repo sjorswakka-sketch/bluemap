@@ -1,6 +1,8 @@
-# Unity-migratie — fase 2 voltooid
+# Unity-migratie — fase 3 voltooid
 
-Het volgende **go** start fase 3: het verdere migratiespoor, passende controles en herkenbare downloads inrichten; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 4: overdraagbare spelgegevens en vaste IDs ontwerpen; de volledige game is nog niet overgezet.
+
+[Fase 3: afzonderlijke controles en herkenbare downloads](phase-03/README.md) — 62 eigen tests, bronbehoud, Godot-coexistentie, ingebedde buildherkomst en 16 Windows-runtimecontroles; zie [actuele downloads](DOWNLOADS.md).
 
 [Fase 2: bewezen lokale bouwomgeving](phase-02/README.md) — Unity 6.3 LTS 6000.3.26f1, Windows x64 / Mono, 14 geslaagde runtime-/beeldcontroles en een schone herbouw zonder cache of bronwijzigingen. De [kleine Windows-proef](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase2-probe) staat naast het blijvende Godot-herstelpunt.
 

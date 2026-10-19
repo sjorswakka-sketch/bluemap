@@ -1,5 +1,5 @@
-# BlueMap Unity — technische proef
+# BlueMap Unity — technische preview
 
-Dit is de afzonderlijke bouwproef van migratiefase 2, gepind op Unity 6000.3.26f1 (de8167e7440c). De huidige Godot-game staat nog in de repositoryroot en blijft behouden.
+De gameport wordt hier afzonderlijk opgebouwd op codex/unity-migration. De volledige bestaande Godot-game blijft in de repositoryroot en op het vaste herstelpunt bewaard.
 
-Zie [bouwomgeving en herhaalbare controle](../migration/phase-02/README.md); de eigen proefbeelden en eenvoudige bediening zijn tijdelijk testmateriaal, geen vervanging van de bestaande game.
+De huidige kleine technische proef gebruikt Unity 6000.3.26f1 (de8167e7440c), Windows x64 / Mono en heeft ingebouwde fase-/bronherkomst; ze vervangt geen gamegraphics of spelinhoud. Zie [bouw-, test- en downloadroute](../migration/phase-03/README.md), [downloads](../migration/DOWNLOADS.md) en [voortgang](../migration/PROGRESS.json).
