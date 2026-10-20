@@ -31,8 +31,8 @@
   "sourceClockCases": 9,
   "sourceClockFloat64Values": 45,
   "sourceTargetingCases": 6,
-  "pythonTests": 355,
-  "localPythonPasses": 353,
+  "pythonTests": 357,
+  "localPythonPasses": 355,
   "localPythonSkippedSymlinkFixtures": 2,
   "originalGodotSuites": [
     "smoke_test",
@@ -51,5 +51,8 @@
     "files": 147
   },
   "releaseUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase7-preview-66dcb268",
-  "nextPhase": 8
+  "nextPhase": 8,
+  "crossPlatformCompressionVerifiedBySourceBytes": true,
+  "foundationPackageTests": 18,
+  "nativeBuildUnchangedByCheckerCorrection": true
 }

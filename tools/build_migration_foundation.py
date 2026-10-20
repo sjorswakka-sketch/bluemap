@@ -9,9 +9,11 @@ from __future__ import annotations
 import argparse
 import gzip
 import hashlib
+import io
 import json
 from pathlib import Path, PurePosixPath
 import re
+import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCE = "unity/Assets/BlueMapFoundation/Resources/BlueMapFoundation"
@@ -88,7 +90,9 @@ def meta(unity_path, folder=False):
 
 
 def compress(data):
-    # Fix the gzip OS byte as well as mtime; Python/zlib versions must not invent provenance.
+    # Fixed headers make output repeatable within a compressor implementation.
+    # Deflate choices can still differ across Python/zlib versions: --check binds
+    # shipped compressed bytes to their manifest, then verifies exact source bytes.
     result = bytearray(gzip.compress(data, compresslevel=9, mtime=0))
     result[9] = 255
     return bytes(result)
@@ -160,6 +164,51 @@ def build_documents(root=ROOT):
     return docs, manifest
 
 
+def check_packed_documents(root, docs):
+    """Validate the shipped encoding without requiring local zlib to reproduce it."""
+    name = RESOURCE + "/manifest.json"
+    path = root / name
+    require(path.is_file(), "Missing foundation output: " + name)
+    require(path.stat().st_size <= 4 * 1024 * 1024, "Oversized foundation manifest")
+    actual_bytes = path.read_bytes().replace(b"\r\n", b"\n")
+    actual = json_document(actual_bytes, "shipped package manifest")
+    expected = json_document(docs[name], "expected package manifest")
+    require(isinstance(actual, dict) and isinstance(actual.get("documents"), list), "Invalid foundation package manifest")
+    require(len(actual["documents"]) == len(expected["documents"]), "Foundation package document coverage changed")
+    projected = dict(actual)
+    projected["documents"] = []
+    for row, reference in zip(actual["documents"], expected["documents"]):
+        require(isinstance(row, dict) and set(row) == set(reference), "Invalid foundation package descriptor")
+        require(isinstance(row["gzipBytes"], int) and not isinstance(row["gzipBytes"], bool)
+                and 0 < row["gzipBytes"] <= 129 * 1024 * 1024
+                and isinstance(row["gzipSha256"], str)
+                and bool(re.fullmatch(r"[0-9a-f]{64}", row["gzipSha256"])), "Invalid foundation gzip descriptor")
+        copied = dict(row)
+        copied["gzipBytes"] = reference["gzipBytes"]
+        copied["gzipSha256"] = reference["gzipSha256"]
+        projected["documents"].append(copied)
+    require(projected == expected, "Stale/corrupt foundation manifest metadata")
+    require(actual_bytes == canonical(actual), "Stale/corrupt foundation manifest formatting")
+    for row in actual["documents"]:
+        relative = row["sourcePath"].removeprefix("migration/").removesuffix(".json")
+        target = RESOURCE + "/" + relative + ".bytes"
+        path = root / target
+        require(path.is_file(), "Missing foundation output: " + target)
+        require(path.stat().st_size == row["gzipBytes"], "Stale/corrupt foundation gzip length: " + target)
+        packed = path.read_bytes()
+        require(sha(packed) == row["gzipSha256"], "Stale/corrupt foundation gzip hash: " + target)
+        try:
+            with gzip.GzipFile(fileobj=io.BytesIO(packed), mode="rb") as stream:
+                # A false descriptor can never cause unbounded expansion. Reading
+                # one extra byte also reaches and validates the gzip footer/CRC.
+                unpacked = stream.read(row["bytes"] + 1)
+        except (OSError, EOFError, zlib.error) as error:
+            raise FoundationError("Stale/corrupt foundation gzip stream: " + target) from error
+        require(len(unpacked) == row["bytes"] and sha(unpacked) == row["sha256"]
+                and unpacked == read(root, row["sourcePath"]), "Stale/corrupt foundation inflated source: " + target)
+    return actual
+
+
 def apply(root, docs, write=False):
     root = Path(root)
     # Validate every destination before the first write.
@@ -183,17 +232,21 @@ def apply(root, docs, write=False):
         else:
             existing.add(name)
     require(not (existing - set(docs)), "Unexpected extra files in foundation resources")
+    checked_manifest = None if write else check_packed_documents(root, docs)
     for name, data in docs.items():
         path = root / name
         if write:
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(data)
         else:
+            if name.endswith(".bytes") or name == RESOURCE + "/manifest.json":
+                continue  # Already bound to the shipped manifest and frozen source.
             require(path.is_file(), "Missing foundation output: " + name)
             actual = path.read_bytes()
             if path.suffix in {".json", ".meta"} and name != RESOURCE + "/state-oracle.json":
                 actual = actual.replace(b"\r\n", b"\n")
             require(actual == data, "Stale/corrupt foundation output: " + name)
+    return checked_manifest
 
 
 def main():
@@ -205,12 +258,14 @@ def main():
     parser.add_argument("--report", type=Path)
     args = parser.parse_args()
     docs, manifest = build_documents(args.root)
-    apply(args.root, docs, args.write)
+    checked_manifest = apply(args.root, docs, args.write)
+    if checked_manifest is not None:
+        manifest = checked_manifest
     report = {"status": "success", "schema": manifest["schema"], "files": len(docs),
               "maps": 37, "snapshots": 162, "scenarios": 59, "sourceFiles": manifest["sourceFiles"],
               "sourceBytes": sum(x["bytes"] for x in manifest["documents"]),
               "gzipBytes": sum(x["gzipBytes"] for x in manifest["documents"]),
-              "manifestSha256": sha(docs[RESOURCE + "/manifest.json"])}
+              "manifestSha256": sha(canonical(manifest))}
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_bytes(canonical(report))

@@ -8,6 +8,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import copy
 from pathlib import Path
 import sys
 import tempfile
@@ -203,6 +204,68 @@ class FoundationPackageTests(unittest.TestCase):
         path.write_bytes(original.replace(b"\n", b"\r\n"))
         docs, _ = self.build()
         self.assertEqual(gzip.decompress(docs[transfer.RESOURCE + "/world/snapshots/0.bytes"]), original)
+
+    def test_alternate_deflate_stream_with_exact_manifest_and_source_passes_without_writes(self):
+        source = transfer.canonical({"future": {"text": ("abcde" * 127 + "0123456789" * 51 + "x" * 99) * 12}})
+        row = self.world["shared"][0]
+        (self.root / "migration/world" / row["path"]).write_bytes(source)
+        row.update(bytes=len(source), sha256=transfer.sha(source))
+        self.refresh_manifests()
+        docs, manifest = self.build()
+        transfer.apply(self.root, docs, write=True)
+        target = transfer.RESOURCE + "/world/snapshots/0.bytes"
+        alternate = bytearray(gzip.compress(source, compresslevel=1, mtime=0))
+        alternate[9] = 255
+        alternate = bytes(alternate)
+        self.assertNotEqual(alternate[10:-8], docs[target][10:-8])
+        self.assertEqual(gzip.decompress(alternate), source)
+        shipped = copy.deepcopy(manifest)
+        descriptor = next(row for row in shipped["documents"] if row["sourcePath"] == "migration/world/snapshots/0.json")
+        descriptor.update(gzipBytes=len(alternate), gzipSha256=transfer.sha(alternate))
+        (self.root / target).write_bytes(alternate)
+        (self.root / transfer.RESOURCE / "manifest.json").write_bytes(transfer.canonical(shipped))
+        before = {path.relative_to(self.root).as_posix(): transfer.sha(path.read_bytes())
+                  for path in self.root.rglob("*") if path.is_file()}
+        with patch.object(Path, "write_bytes", side_effect=AssertionError("--check attempted to write")), \
+                patch.object(Path, "write_text", side_effect=AssertionError("--check attempted to write")):
+            checked = transfer.apply(self.root, docs)
+        self.assertEqual(checked, shipped)
+        self.assertEqual(before, {path.relative_to(self.root).as_posix(): transfer.sha(path.read_bytes())
+                                  for path in self.root.rglob("*") if path.is_file()})
+
+    def test_shipped_gzip_hash_length_content_footer_and_manifest_metadata_remain_strict(self):
+        docs, manifest = self.build()
+        transfer.apply(self.root, docs, write=True)
+        target = transfer.RESOURCE + "/world/snapshots/0.bytes"
+        original = docs[target]
+        wrong_content = transfer.compress(b'{"sequence":9}\n')
+        too_long = transfer.compress(gzip.decompress(original) + b" ")
+        wrong_crc = original[:-8] + bytes([original[-8] ^ 1]) + original[-7:]
+        for case, packed, rebind in (("hash", original[:-1] + bytes([original[-1] ^ 1]), False),
+                                     ("length", original[:-1], False),
+                                     ("content", wrong_content, True),
+                                     ("expansion_bound", too_long, True),
+                                     ("crc", wrong_crc, True),
+                                     ("not_gzip", b"not a gzip stream", True),
+                                     ("metadata", original, False),
+                                     ("descriptor_type", original, False)):
+            shipped = copy.deepcopy(manifest)
+            descriptor = next(row for row in shipped["documents"] if row["sourcePath"] == "migration/world/snapshots/0.json")
+            if rebind:
+                descriptor.update(gzipBytes=len(packed), gzipSha256=transfer.sha(packed))
+            if case == "metadata":
+                shipped["maps"] = 38
+            if case == "descriptor_type":
+                descriptor["gzipBytes"] = True
+            manifest_path = self.root / transfer.RESOURCE / "manifest.json"
+            (self.root / target).write_bytes(packed)
+            manifest_bytes = transfer.canonical(shipped)
+            manifest_path.write_bytes(manifest_bytes)
+            with self.subTest(case=case), self.assertRaises(transfer.FoundationError), \
+                    patch.object(Path, "write_bytes", side_effect=AssertionError("--check attempted to write")):
+                transfer.apply(self.root, docs)
+            self.assertEqual((self.root / target).read_bytes(), packed)
+            self.assertEqual(manifest_path.read_bytes(), manifest_bytes)
 
 
 if __name__ == "__main__":
