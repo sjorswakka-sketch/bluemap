@@ -24,7 +24,8 @@ import zlib
 EDITOR_VERSION = "6000.3.26f1"
 EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
-PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7", 8: "0.4.0-phase8"}
+PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
+                    8: "0.4.0-phase8", 9: "0.5.0-phase9"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -102,6 +103,33 @@ PLAYER_DETAIL_CHECKS = {
     "player_world_three_preview_maps_load", "player_world_source_footsteps_play_after_actual_walk",
 }
 PLAYER_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+PERSISTENCE_CHECKS = {"persistence_runtime_verified"}
+PERSISTENCE_DETAIL_CHECKS = {
+    "persistence_save_model_checks_ran", "persistence_settings_checks_ran", "persistence_store_checks_ran",
+    "persistence_save_source_oracle_complete", "persistence_settings_source_oracle_complete",
+    "persistence_source_read_only", "persistence_atomic_failure_preserves_previous",
+    "persistence_unknown_fields_lossless", "persistence_no_real_saves_accessed",
+    "persistence_fixture_import_opens", "persistence_import_keeps_adventure", "persistence_restart_roundtrip",
+    "persistence_cosmetic_corruption_archived", "persistence_settings_revision_saved",
+    "persistence_original_state_not_replaced_by_preview", "persistence_repeated_import_idempotent",
+    "persistence_stale_writer_rejected", "persistence_restore_previous_revision",
+    "persistence_corrupt_pointer_not_silently_reset", "persistence_explicit_recovery_after_corruption",
+    "persistence_source_target_separated", "persistence_profile_traversal_rejected",
+    "persistence_archive_traversal_rejected", "persistence_package_content_damage_rejected",
+    "persistence_concurrent_source_change_rejected", "persistence_plain_kind_is_data",
+    "persistence_malformed_json_rejected", "persistence_revisions_and_pointer_backups_retained",
+    "persistence_save_unknown_fields_retained", "persistence_save_legacy_flags_and_atlas_distinct",
+    "persistence_save_new_adventure_flag_not_leaked", "persistence_save_global_meta_keys_merge_without_rewards",
+    "persistence_save_malformed_imports_do_not_construct_partial_state",
+    "persistence_settings_preferences_roundtrip", "persistence_settings_unknown_sections_bytes_retained",
+    "persistence_settings_malformed_files_safe_defaults", "persistence_settings_legacy_shortcuts_avoid_existing_bindings",
+    "persistence_settings_physical_keys_modifiers_retained", "persistence_settings_empty_bindings_retained",
+    "persistence_settings_legacy_duplicate_bindings_retained", "persistence_settings_achievement_presence_semantics",
+    "persistence_settings_no_object_instantiation", "persistence_settings_original_bytes_immutable",
+    "persistence_settings_bounded_untrusted_config", "persistence_settings_imported_real_keyboard_modifiers",
+    "persistence_settings_rebind_restore_notifications", "persistence_settings_import_cannot_remove_fixed_menu_controls",
+}
+PERSISTENCE_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -123,7 +151,7 @@ PLAYER_ROOTS = {
     "MonoBleedingEdge", "BlueMapUnityProbe_Data", "D3D12",
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
-                  "PLAYER-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -272,6 +300,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 8:
         require(PLAYER_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 8 player runtime proof is incomplete")
+    if identity["phase"] >= 9:
+        require(PERSISTENCE_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 9 persistence runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -320,6 +351,32 @@ def validate_player(result: dict, identity: dict) -> None:
                 "Player detail checks contain a duplicate or a failed check")
         names.add(name)
     require(PLAYER_DETAIL_CHECKS <= names, "Required player motion/input/world checks are missing")
+
+
+def validate_persistence(result: dict, identity: dict) -> None:
+    """Require isolated save/settings fixtures and safe storage witnesses."""
+    require(isinstance(result, dict) and set(result) == PERSISTENCE_FIELDS,
+            "Phase 9 persistence proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported persistence proof schema")
+    require(result.get("identity") == identity,
+            "Persistence embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Persistence proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Persistence detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"},
+                "Malformed persistence detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid persistence detail check name")
+        require(name not in names and check["passed"] is True,
+                "Persistence detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(PERSISTENCE_DETAIL_CHECKS <= names,
+            "Required persistence save/settings/store checks are missing")
 
 
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
@@ -371,8 +428,15 @@ def _instructions(identity: dict) -> bytes:
         6: "Migratiefase 6: originele beelden, animaties, audio en teksten; nog niet de overgezette game.\n",
         7: "Migratiefase 7: technische spelbasis en originele presentatie; nog niet de overgezette game.\n",
         8: "Migratiefase 8: speler, camera en bediening; nog niet de volledige overgezette game.\n",
+        9: "Migratiefase 9: veilige opslag en import van saves en instellingen; nog niet de volledige overgezette game.\n",
     }
     controls = (
+        "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
+        "Bronbestanden worden uitsluitend gelezen nadat je ze zelf kiest.\n"
+        "De automatische controle gebruikt alleen eigen testbestanden.\n"
+        "De Unity-proef bewaart gegevens apart van de bestaande Godot-game.\n"
+        if identity["phase"] >= 9 else ""
+    ) + (
         "De proef start in de loopwereld (pagina 8).\n"
         "WASD / pijlen: lopen; Ctrl vasthouden: rennen; Shift / K: rollen; muis: richten.\n"
         "Controller: linkerstick lopen; L3 vasthouden rennen; B rollen; rechterstick richten.\n"
@@ -384,6 +448,17 @@ def _instructions(identity: dict) -> bytes:
         if identity["phase"] >= 8 else
         ("WASD / pijlen: verplaatsen; Esc: sluiten.\n" if identity["phase"] == 3 else
          "1-6: galerijpagina; M: muziek; N: muziek stoppen; Spatie: geluid; Esc: sluiten.\n"))
+    if identity["phase"] >= 9:
+        controls = controls.replace("De proef start in de loopwereld (pagina 8).\n",
+                                    "De proef start bij Opslag en instellingen (pagina 9).\n")
+        controls = controls.replace(
+            "F9: bediening aanpassen in het geheugen van deze proef; nog geen instellingenopslag.\n",
+            "F9 / I / Tab / controller Select: bediening aanpassen.\n"
+            "Gekoppeld profiel: gewijzigde bediening wordt in een nieuwe veilige revisie bewaard.\n"
+            "Zonder gekoppeld profiel blijft gewijzigde bediening tijdelijk.\n")
+        controls += ("Pagina 9: zelf importpad kiezen, een kopie importeren, een Unity-profiel openen,\n"
+                     "de vorige revisie herstellen en taal/geluid instellen.\n"
+                     "De loopproef overschrijft nooit het geïmporteerde avontuur.\n")
     return (
         "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
         description[identity["phase"]] +
@@ -391,20 +466,23 @@ def _instructions(identity: dict) -> bytes:
         "Pak de volledige map uit en start BlueMapUnityProbe.exe.\n"
         "Laat alle bijbehorende bestanden en de BlueMapUnityProbe_Data-map staan.\n"
         + controls +
-        "Deze proef gebruikt geen opslagbestanden van de bestaande game.\n\n"
+        ("Deze proef wijzigt geen opslagbestanden van de bestaande game.\n\n" if identity["phase"] >= 9 else
+           "Deze proef gebruikt geen opslagbestanden van de bestaande game.\n\n") +
         f"Preview: {identity['previewVersion']}\nBroncommit: {identity['sourceCommit']}\n"
         f"Bronvingerafdruk: {identity['inputFingerprint']}\n"
         f"Unity {EDITOR_VERSION} ({EDITOR_REVISION}), Windows x64 / Mono.\n"
         "BUILD-IDENTITY.json en RUNTIME-CHECKS.json beschrijven deze controlebuild.\n"
         + ("FOUNDATION-CHECKS.json bevat de controles van de technische spelbasis.\n" if identity["phase"] >= 7 else "") +
         ("PLAYER-CHECKS.json bevat de controles van speler, camera en bediening.\n" if identity["phase"] >= 8 else "") +
+        ("PERSISTENCE-CHECKS.json bevat de controles met eigen opslag- en importtestbestanden.\n" if identity["phase"] >= 9 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
 
 def package_player(player: Path, output: Path, identity: dict,
                    runtime_result: dict, foundation_result: dict | None = None,
-                   player_result: dict | None = None) -> tuple[Path, int]:
+                   player_result: dict | None = None,
+                   persistence_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -416,6 +494,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_player(player_result, identity)
     else:
         require(player_result is None, "Historical preview cannot contain phase 8 player proof")
+    if identity["phase"] >= 9:
+        validate_persistence(persistence_result, identity)
+    else:
+        require(persistence_result is None, "Historical preview cannot contain phase 9 persistence proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -431,6 +513,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["FOUNDATION-CHECKS.json"] = _json_bytes(foundation_result)
     if player_result is not None:
         payload["PLAYER-CHECKS.json"] = _json_bytes(player_result)
+    if persistence_result is not None:
+        payload["PERSISTENCE-CHECKS.json"] = _json_bytes(persistence_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -567,6 +651,15 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("PLAYER-CHECKS.json" not in payload and "player" not in receipt,
                 "Historical preview contains unsupported player proof")
+    if identity["phase"] >= 9:
+        require("PERSISTENCE-CHECKS.json" in payload, "Phase 9 packaged persistence proof is missing")
+        persistence = _json(payload["PERSISTENCE-CHECKS.json"], "PERSISTENCE-CHECKS.json")
+        validate_persistence(persistence, identity)
+        require(receipt.get("persistence") == persistence,
+                "Receipt persistence proof differs from package")
+    else:
+        require("PERSISTENCE-CHECKS.json" not in payload and "persistence" not in receipt,
+                "Historical preview contains unsupported persistence proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

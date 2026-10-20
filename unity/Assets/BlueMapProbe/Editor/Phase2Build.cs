@@ -38,7 +38,7 @@ namespace BlueMapMigration.Editor
             public double durationSeconds;
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
-            public string scope = "Original presentation and foundation plus source-based player movement, aiming, camera and native Input System; save import and full gameplay follow";
+            public string scope = "Original presentation, foundation, player movement and isolated lossless Godot save/settings import with recoverable Unity profiles; full gameplay follows";
             public PackageInput[] unityPackages;
             public DllInput[] runtimeDllInputs;
             public BuildIdentity identity;

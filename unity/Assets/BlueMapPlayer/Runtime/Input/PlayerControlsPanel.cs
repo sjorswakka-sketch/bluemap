@@ -16,6 +16,7 @@ namespace BlueMapMigration.Player
         float viewportHeight = 210;
         bool captureGuard;
         public bool IsOpen { get; private set; }
+        public bool PersistsChanges { get; set; }
         public bool BlocksShortcuts => input.Capturing || captureGuard;
         public PlayerControlsPanel(PlayerInputSource source)
         { input = source ?? throw new ArgumentNullException(nameof(source)); actions = input.RebindableActions.ToArray(); }
@@ -55,6 +56,9 @@ namespace BlueMapMigration.Player
             if (binding.kind == "axis" || path.EndsWith("/x", StringComparison.Ordinal) || path.EndsWith("/y", StringComparison.Ordinal))
                 path += binding.direction < 0 ? " −" : " +";
             if (binding.shift) path = "Shift + " + path;
+            if (binding.ctrl) path = "Ctrl + " + path;
+            if (binding.alt) path = "Alt + " + path;
+            if (binding.meta) path = "Meta + " + path;
             return path;
         }
 
@@ -64,8 +68,8 @@ namespace BlueMapMigration.Player
             GUI.Box(bounds, ""); GUILayout.BeginArea(new Rect(bounds.x + 20, bounds.y + 12, bounds.width - 40, bounds.height - 24));
             var heading = new GUIStyle(GUI.skin.label) { fontSize = 20 };
             var label = new GUIStyle(GUI.skin.label) { fontSize = 14, clipping = TextClipping.Clip };
-            GUILayout.Label("Bediening — alleen deze proefsessie", heading);
-            GUILayout.Label("Wijzigingen worden nog niet opgeslagen. De oorspronkelijke bediening blijft behouden.", label);
+            GUILayout.Label(PersistsChanges ? "Bediening — je Unity-profiel" : "Bediening — deze proefsessie", heading);
+            GUILayout.Label(PersistsChanges ? "Wijzigingen worden opgeslagen in je aparte Unity-profiel." : "Open of importeer een Unity-profiel om je wijzigingen te bewaren.", label);
             bool oldEnabled = GUI.enabled;
             // Pointer widgets follow the same one-device policy as gameplay.
             GUI.enabled = oldEnabled && !input.ControllerActive && !input.Capturing;

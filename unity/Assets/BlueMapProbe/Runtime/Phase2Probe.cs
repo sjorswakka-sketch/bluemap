@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 8) error = "phase must be 8.";
-            else if (previewVersion != "0.4.0-phase8") error = "previewVersion must be 0.4.0-phase8.";
+            else if (phase != 9) error = "phase must be 9.";
+            else if (previewVersion != "0.5.0-phase9") error = "previewVersion must be 0.5.0-phase9.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -78,6 +78,8 @@ namespace BlueMapMigration.Probe
         private BlueMapMigration.Phase6.Phase6Gallery gallery;
         private BlueMapMigration.Foundation.FoundationView foundationView;
         private BlueMapMigration.Player.PlayerWorld playerWorld;
+        private BlueMapMigration.Persistence.PersistenceCoordinator persistence;
+        private BlueMapMigration.Persistence.PersistencePanel persistencePanel;
         private bool automated, runtimeError;
         private int frames;
         private string output;
@@ -128,6 +130,7 @@ namespace BlueMapMigration.Probe
                 EnsureFoundationView();
                 gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(false);
                 EnsurePlayerWorld();
+                EnsurePersistence(false);ShowPersistence();
                 yield break;
             }
             while (frames < 60 || !SplashScreen.isFinished || Time.realtimeSinceStartup < 2.5f) yield return null;
@@ -266,9 +269,27 @@ namespace BlueMapMigration.Probe
             yield return new WaitForEndOfFrame();
             Texture2D rollCapture = CaptureCamera();
             File.WriteAllBytes(Path.Combine(output, "screenshot-player-roll.png"), rollCapture.EncodeToPNG()); Destroy(rollCapture);
-            playerWorld.gameObject.SetActive(false); RestoreGalleryCamera(); gallery.gameObject.SetActive(true);
+            var persistenceProof=BlueMapMigration.Persistence.PersistenceProbeRunner.Run(identity,output,playerWorld.InputSource);
+            Add("persistence_runtime_verified",persistenceProof.success);
+            File.WriteAllText(Path.Combine(output,"persistence-result.json"),JsonUtility.ToJson(persistenceProof,true));
+            EnsurePersistence(true);ShowPersistence();
+            yield return new WaitForEndOfFrame();
+            Texture2D persistenceCapture=ScreenCapture.CaptureScreenshotAsTexture();
+            File.WriteAllBytes(Path.Combine(output,"screenshot-persistence.png"),persistenceCapture.EncodeToPNG());Destroy(persistenceCapture);
             Finish();
         }
+        private void EnsurePersistence(bool fixture)
+        {
+            if(persistencePanel!=null)return;
+            persistence=fixture?BlueMapMigration.Persistence.PersistenceProbeRunner.Fixture:new BlueMapMigration.Persistence.PersistenceCoordinator(BlueMapMigration.Foundation.FoundationWorldRepository.LoadRequired(),playerWorld.InputSource,BlueMapMigration.Persistence.PersistencePaths.UnityDefault);
+            persistencePanel=new BlueMapMigration.Persistence.PersistencePanel();persistencePanel.Initialize(persistence,playerWorld.InputSource);
+            persistencePanel.WalkRequested+=()=>{persistencePanel.Visible=false;EnsurePlayerWorld();};
+            persistencePanel.ControlsRequested+=()=>{persistencePanel.Visible=false;EnsurePlayerWorld();if(!playerWorld.ControlsOpen)playerWorld.ToggleControls();};
+            persistence.PreferencesChanged+=()=>{playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);gallery.Audio.SetVolumes((float)persistence.Preferences.MusicVolume,(float)persistence.Preferences.SfxVolume,persistence.Preferences.Muted);};
+            playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);
+        }
+        private void ShowPersistence()
+        {playerWorld.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);gallery.gameObject.SetActive(false);RestoreGalleryCamera();persistencePanel.Visible=true;playerWorld.InputSource.SetFocused(Application.isFocused);}
         private void EnsurePlayerWorld()
         {
             if (playerWorld != null) { playerWorld.gameObject.SetActive(true); return; }
@@ -297,6 +318,16 @@ namespace BlueMapMigration.Probe
             if (Input.GetKeyDown(KeyCode.Escape) && (playerWorld == null || !playerWorld.gameObject.activeSelf)) Application.Quit();
             if (automated || foundationView == null) return;
             if (playerWorld != null && playerWorld.gameObject.activeSelf && playerWorld.ControlsOpen) return;
+            if(persistencePanel!=null&&persistencePanel.Visible&&persistencePanel.EditingSourceDirectory)return;
+            if(Input.GetKeyDown(KeyCode.Alpha9)){EnsurePersistence(false);ShowPersistence();}
+            if(persistencePanel!=null&&persistencePanel.Visible)
+            {
+                if(Input.GetKeyDown(KeyCode.Alpha8)){persistencePanel.Visible=false;EnsurePlayerWorld();}
+                if(Input.GetKeyDown(KeyCode.F9)){persistencePanel.Visible=false;EnsurePlayerWorld();if(!playerWorld.ControlsOpen)playerWorld.ToggleControls();}
+                return;
+            }
+            var pad=UnityEngine.InputSystem.Gamepad.current;
+            if(playerWorld!=null&&playerWorld.gameObject.activeSelf&&playerWorld.InputSource.ControllerActive&&pad!=null&&pad.startButton.isPressed&&pad.selectButton.wasPressedThisFrame){EnsurePersistence(false);ShowPersistence();return;}
             if (Input.GetKeyDown(KeyCode.Alpha8)) { foundationView.gameObject.SetActive(false); gallery.gameObject.SetActive(false); EnsurePlayerWorld(); }
             if (Input.GetKeyDown(KeyCode.Alpha7)) { if(playerWorld!=null)playerWorld.gameObject.SetActive(false); RestoreGalleryCamera(); gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(true); }
             if(playerWorld!=null && playerWorld.gameObject.activeSelf)
@@ -321,8 +352,14 @@ namespace BlueMapMigration.Probe
             finally { worldCamera.targetTexture = previousTarget; RenderTexture.active = previousActive; RenderTexture.ReleaseTemporary(target); }
         }
         private void Add(string name, bool passed) => checks.Add(new Check { name = name, passed = passed });
+        private void OnGUI()
+        {
+            if(persistencePanel==null||!persistencePanel.Visible)return;
+            var old=GUI.matrix;var oldFont=GUI.skin.font;GUI.matrix=Matrix4x4.Scale(new Vector3(Screen.width/1152f,Screen.height/648f,1));GUI.skin.font=gallery.Catalog.originalFont;
+            persistencePanel.Draw(new Rect(20,20,1112,608));GUI.skin.font=oldFont;GUI.matrix=old;
+        }
         private void LogReceived(string text, string stack, LogType type) { if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert) runtimeError = true; }
-        private void OnDestroy() { Application.logMessageReceived -= LogReceived; }
+        private void OnDestroy() { persistence?.Dispose();Application.logMessageReceived -= LogReceived; }
         private static string Argument(string key) { string[] args = Environment.GetCommandLineArgs(); for (int i = 0; i + 1 < args.Length; i++) if (args[i] == key) return args[i + 1]; return null; }
     }
 }

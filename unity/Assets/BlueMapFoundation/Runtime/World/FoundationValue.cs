@@ -94,6 +94,37 @@ namespace BlueMapMigration.Foundation
     public static class FoundationJson
     {
         private const int MaxDepth = 128, MaxNodes = 2000000, MaxString = 1000000;
+        // User saves are ordinary JSON. Their authored `kind` fields are data,
+        // never portable engine Variant discriminators.
+        public static FoundationValue ParsePlain(string json) => ParseRaw(json);
+        public static string StringifyPlain(FoundationValue value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            var text = new StringBuilder(); WritePlain(value,text,0); return text.ToString();
+        }
+        private static void WritePlain(FoundationValue value,StringBuilder text,int depth)
+        {
+            if (depth > MaxDepth) throw new FormatException("Plain save JSON depth exceeded.");
+            switch(value.Kind)
+            {
+                case "object": case "dictionary":
+                    text.Append('{');var keys=new HashSet<string>(StringComparer.Ordinal);
+                    for(int i=0;i<value.Entries.Count;i++)
+                    {
+                        string key=value.Entries[i].Key.AsString();if(!keys.Add(key))throw new FormatException("Duplicate plain save key.");
+                        if(i>0)text.Append(',');Quote(key,text);text.Append(':');WritePlain(value.Entries[i].Value,text,depth+1);
+                    }
+                    text.Append('}');return;
+                case "array":
+                    text.Append('[');for(int i=0;i<value.Items.Count;i++){if(i>0)text.Append(',');WritePlain(value.Items[i],text,depth+1);}text.Append(']');return;
+                case "string": Quote(value.AsString(),text);return;
+                case "int": value.AsInt64();text.Append(value.Scalar);return;
+                case "float": value.AsDouble();text.Append(value.Scalar);return;
+                case "bool": text.Append(value.AsBool()?"true":"false");return;
+                case "nil": text.Append("null");return;
+                default: throw new FormatException("Non-JSON engine value cannot be written to a user save: "+value.Kind);
+            }
+        }
         public static FoundationValue Parse(string json)
         {
             return Decode(ParseRaw(json), 0);

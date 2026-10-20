@@ -51,7 +51,7 @@ namespace BlueMapMigration.Player
     /// <summary>
     /// Real Unity Input System devices/events, with the original game's category arbitration.
     /// Sources are read unprocessed: Godot circular deadzones are applied once, not twice.
-    /// Rebindings are memory-only until phase 9's explicitly isolated save adapter exists.
+    /// An owned persistence adapter can observe binding changes; this class never opens or writes a save file.
     /// </summary>
     public sealed class PlayerInputSource : IDisposable
     {
@@ -78,6 +78,7 @@ namespace BlueMapMigration.Player
         public string CaptureMessage { get; private set; } = "";
         public IEnumerable<string> RebindableActions => actions.Values.Where(a => a.rebindable).Select(a => a.id);
         public string ActionLabel(string id) => actions[id].label;
+        public event Action BindingsChanged;
 
         public PlayerInputSource(IEnumerable<InputDevice> onlyDevices = null)
         {
@@ -269,6 +270,35 @@ namespace BlueMapMigration.Player
         }
 
         public IReadOnlyList<InputBindingSpec> Bindings(string id) => actions[id].bindings.Select(b => b.Copy()).ToArray();
+        public IReadOnlyList<InputBindingSpec> DefaultBindings(string id) => original[id].Select(b => b.Copy()).ToArray();
+
+        /// <summary>Apply a fully decoded profile atomically. Legacy duplicates/empty lists are deliberate; interactive conflict rules do not rewrite them.</summary>
+        public void ApplyImportedBindings(IReadOnlyDictionary<string, InputBindingSpec[]> imported)
+        {
+            if (imported == null || imported.Count != actions.Count || imported.Keys.Any(id => !actions.ContainsKey(id)))
+                throw new FormatException("Imported bindings must retain every original action.");
+            var staged = new Dictionary<string, InputBindingSpec[]>(StringComparer.Ordinal);
+            foreach (var pair in imported)
+            {
+                if (pair.Value == null || pair.Value.Length > 16) throw new FormatException("Imported binding limit exceeded.");
+                foreach (var binding in pair.Value)
+                    if (binding == null || (binding.category != "keyboard" && binding.category != "controller")
+                        || string.IsNullOrEmpty(binding.path) || binding.path.Length > 200
+                        || float.IsNaN(binding.direction) || float.IsInfinity(binding.direction) || Math.Abs(binding.direction) > 1)
+                        throw new FormatException("Invalid imported binding.");
+                if (pair.Value.Count(b => b.category == "keyboard") > 8 || pair.Value.Count(b => b.category == "controller") > 8)
+                    throw new FormatException("Imported category binding limit exceeded.");
+                if (!actions[pair.Key].rebindable)
+                {
+                    var expected = original[pair.Key];
+                    if (pair.Value.Length != expected.Length || pair.Value.Where((b, i) => b.path != expected[i].path || b.category != expected[i].category || b.direction != expected[i].direction || b.shift != expected[i].shift || b.ctrl != expected[i].ctrl || b.alt != expected[i].alt || b.meta != expected[i].meta).Any())
+                        throw new FormatException("Fixed menu and aiming bindings must remain reachable.");
+                }
+                staged.Add(pair.Key, pair.Value.Select(b => b.Copy()).ToArray());
+            }
+            foreach (var pair in staged) actions[pair.Key].bindings = pair.Value;
+            ForceRelease(); BindingsChanged?.Invoke();
+        }
 
         public void BeginRebindCapture(string id, string category)
         {
@@ -339,7 +369,7 @@ namespace BlueMapMigration.Player
                 var other = conflicts[0]; other.bindings = other.bindings.Where(b => b.category != category).Concat(old).ToArray();
             }
             action.bindings = action.bindings.Where(b => b.category != category).Concat(new[] { new InputBindingSpec { category = category, path = path, direction = direction, kind = "unity" } }).ToArray();
-            ForceRelease(); return "";
+            ForceRelease(); BindingsChanged?.Invoke(); return "";
         }
 
         static bool ValidPath(string path)
@@ -355,14 +385,16 @@ namespace BlueMapMigration.Player
             if (category != "keyboard" && category != "controller") return;
             foreach (var action in actions.Values.Where(a => a.rebindable))
                 action.bindings = action.bindings.Where(b => b.category != category).Concat(original[action.id].Where(b => b.category == category).Select(b => b.Copy())).ToArray();
-            ForceRelease();
+            ForceRelease(); BindingsChanged?.Invoke();
         }
 
         public static string SourcePath(InputBindingSpec b)
         {
             if (b.kind == "key")
             {
-                var names = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) { { "Space", "space" }, { "Enter", "enter" }, { "Tab", "tab" }, { "Escape", "escape" }, { "Shift", "shift" }, { "Ctrl", "ctrl" }, { "Alt", "alt" }, { "Meta", "meta" }, { "Left", "leftArrow" }, { "Right", "rightArrow" }, { "Up", "upArrow" }, { "Down", "downArrow" }, { "PageUp", "pageUp" }, { "PageDown", "pageDown" } };
+                var names = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) { { "Space", "space" }, { "Enter", "enter" }, { "Tab", "tab" }, { "Escape", "escape" }, { "Shift", "shift" }, { "Ctrl", "ctrl" }, { "Alt", "alt" }, { "Meta", "meta" }, { "Left", "leftArrow" }, { "Right", "rightArrow" }, { "Up", "upArrow" }, { "Down", "downArrow" }, { "PageUp", "pageUp" }, { "PageDown", "pageDown" },
+                    { "Apostrophe", "quote" }, { "Equal", "equals" }, { "BracketLeft", "leftBracket" }, { "BracketRight", "rightBracket" }, { "QuoteLeft", "backquote" }, { "Kp Enter", "numpadEnter" }, { "Kp Multiply", "numpadMultiply" }, { "Kp Divide", "numpadDivide" }, { "Kp Subtract", "numpadMinus" }, { "Kp Add", "numpadPlus" }, { "Kp Period", "numpadPeriod" }, { "Print", "printScreen" }, { "Menu", "contextMenu" } };
+                for (int digit = 0; digit <= 9; digit++) names["Kp " + digit] = "numpad" + digit;
                 return "<Keyboard>/" + (names.TryGetValue(b.keyName, out string name) ? name : b.keyName.ToLowerInvariant());
             }
             if (b.kind == "mouse")

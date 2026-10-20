@@ -23,6 +23,9 @@ namespace BlueMapMigration.Player
         public bool Frozen;
         public bool ControllerActive { get; private set; }
         public bool ControlsOpen => controls != null && controls.IsOpen;
+        public PlayerInputSource InputSource => input;
+        public void SetPersistencePreferences(BlueMapMigration.Persistence.LegacyPreferences preferences,bool linked)
+        {stepAudio.SetVolumes((float)preferences.MusicVolume,(float)preferences.SfxVolume,preferences.Muted);controls.PersistsChanges=linked;}
         public void ToggleControls() { controls.Toggle(); Session.State.SetUi("controls-preview",controls.IsOpen); }
         public string DirectionRow { get; private set; } = "down";
         public bool CrosshairVisible => gameObject.activeInHierarchy && Session != null && !Session.State.InputLocked;
@@ -280,11 +283,11 @@ namespace BlueMapMigration.Player
                 GUI.color=Color.white;controls.Draw(new Rect(196,80,760,480));GUI.matrix=old;return;
             }
             var label=new GUIStyle(GUI.skin.label){fontSize=15,normal={textColor=new Color(.91f,.94f,.86f)}};
-            GUI.Box(new Rect(16,14,510,80),"");GUI.Label(new Rect(28,22,480,24),"BlueMap Quest  /  Fase 8: loopproef",label);
+            GUI.Box(new Rect(16,14,510,80),"");GUI.Label(new Rect(28,22,480,24),"BlueMap Quest  /  Unity: loopproef",label);
             GUI.Label(new Rect(28,45,480,24),"Oorspronkelijk terrein • "+Snapshot.MapId+" • objectfuncties volgen",label);
             GUI.Box(new Rect(16,548,660,84),"");
             GUI.Label(new Rect(28,555,636,23),ControllerActive?"Linker stick lopen • L3 rennen • B rollen • rechter stick richten":"WASD / pijlen lopen • Ctrl rennen • Shift / K rollen • muis richten",label);
-            GUI.Label(new Rect(28,578,636,23),"F1 Dorp    F2 Bos    F3 Grot    P / Start pauze    1–8 proefpagina's",label);
+            GUI.Label(new Rect(28,578,636,23),"F1 Dorp   F2 Bos   F3 Grot   P / Start pauze   9 Opslag",label);
             GUI.Label(new Rect(28,601,636,23),Session.State.Paused?"Gepauzeerd — geen persoonlijke opslag":"Losse bewegingsproef — geen persoonlijke opslag",label);
             GUI.Box(new Rect(872,14,264,54),"");
             GUI.Label(new Rect(884,20,242,22),"Stamina "+Math.Ceiling(Motor.Stamina.Stamina)+" / "+Motor.Stamina.Capacity,label);

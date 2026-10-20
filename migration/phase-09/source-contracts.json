@@ -1,0 +1,258 @@
+{
+  "assetGuids": [
+    {
+      "guid": "08a442557cf77d6e49218bb8911e87f2",
+      "path": "unity/Assets/BlueMapPersistence"
+    },
+    {
+      "guid": "fd969d47a0fd2d2e290ad66ff76ad4dd",
+      "path": "unity/Assets/BlueMapPersistence/Resources"
+    },
+    {
+      "guid": "1ab38c14b6d57c528c0b2ce3426cfba1",
+      "path": "unity/Assets/BlueMapPersistence/Resources/BlueMapSaveOracle.json"
+    },
+    {
+      "guid": "8f1021e4ef360bb30604d21da41a9af6",
+      "path": "unity/Assets/BlueMapPersistence/Runtime"
+    },
+    {
+      "guid": "15ee059300d00193368f79b31bc0dea2",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Legacy"
+    },
+    {
+      "guid": "6176c60855ffae6f25426a3ddaa4f828",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Legacy/LegacySaveChecks.cs"
+    },
+    {
+      "guid": "ac3388c11383e951dbbcb9aec66af208",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Legacy/LegacySaveImporter.cs"
+    },
+    {
+      "guid": "a03df1389e15388cf567a96889312291",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Legacy/LegacySaveLayouts.cs"
+    },
+    {
+      "guid": "03f5096aad769e5508f73def2e4d9cc7",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Settings"
+    },
+    {
+      "guid": "b191b0aeddd9dbb9e710b0e10918d57c",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Settings/LegacySettingsBundle.cs"
+    },
+    {
+      "guid": "e86efe7f45930a41934f864dbe3c1797",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Settings/LegacySettingsChecks.cs"
+    },
+    {
+      "guid": "b0f8251a48eb42efeef1e349a4824ff1",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Settings/Resources"
+    },
+    {
+      "guid": "3a57ffab4e2c7956baf7e3703f42a6c6",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Settings/Resources/BlueMapPersistenceSettingsOracle.json"
+    },
+    {
+      "guid": "675389f402d432b820ecf8c89825b96c",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Settings/SafeConfigDocument.cs"
+    },
+    {
+      "guid": "ff930a2216fdbcb0b5d62cd3f119906c",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Store"
+    },
+    {
+      "guid": "9e0dc2695c25fbe73070348c331547cd",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Store/PersistenceCoordinator.cs"
+    },
+    {
+      "guid": "67e0704a82307177311927ecae2927d1",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Store/PersistenceProbeRunner.cs"
+    },
+    {
+      "guid": "9b8b1794e62f50fa8e3270861b5e6727",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/Store/PersistenceStore.cs"
+    },
+    {
+      "guid": "018ca6db5fe3371bce5371488f196690",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/UI"
+    },
+    {
+      "guid": "55ee67edee2d858c8e684b7cb92ec2fe",
+      "path": "unity/Assets/BlueMapPersistence/Runtime/UI/PersistencePanel.cs"
+    }
+  ],
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "enginesStarted": false,
+  "oracles": [
+    {
+      "bytes": 261392,
+      "coverage": {
+        "corruptSaves": 6,
+        "exactNumericValues": 147,
+        "saveScenarios": 22
+      },
+      "kind": "save",
+      "resourcePath": "unity/Assets/BlueMapPersistence/Resources/BlueMapSaveOracle.json",
+      "sha256": "00971874cff23d5f2edd5517285160c2da2cbb36a1e30b0ca63c82ffc7f912ca",
+      "sourcePath": "migration/phase-09/save-oracle.json"
+    },
+    {
+      "bytes": 212107,
+      "coverage": {
+        "actionsPerScenario": 22,
+        "fixtureDocuments": 23,
+        "settingsScenarios": 10
+      },
+      "kind": "settings",
+      "resourcePath": "unity/Assets/BlueMapPersistence/Runtime/Settings/Resources/BlueMapPersistenceSettingsOracle.json",
+      "sha256": "0e8071a1c32943067d74831182068501e94e6344a2a7d8e6b5a335a9673045ae",
+      "sourcePath": "migration/phase-09/settings-oracle.json"
+    }
+  ],
+  "personalSavesUsed": false,
+  "phase": 9,
+  "requiredNativeChecks": [
+    "persistence_archive_traversal_rejected",
+    "persistence_atomic_failure_preserves_previous",
+    "persistence_concurrent_source_change_rejected",
+    "persistence_corrupt_pointer_not_silently_reset",
+    "persistence_cosmetic_corruption_archived",
+    "persistence_explicit_recovery_after_corruption",
+    "persistence_fixture_import_opens",
+    "persistence_import_keeps_adventure",
+    "persistence_malformed_json_rejected",
+    "persistence_no_real_saves_accessed",
+    "persistence_original_state_not_replaced_by_preview",
+    "persistence_package_content_damage_rejected",
+    "persistence_plain_kind_is_data",
+    "persistence_profile_traversal_rejected",
+    "persistence_repeated_import_idempotent",
+    "persistence_restart_roundtrip",
+    "persistence_restore_previous_revision",
+    "persistence_revisions_and_pointer_backups_retained",
+    "persistence_save_global_meta_keys_merge_without_rewards",
+    "persistence_save_legacy_flags_and_atlas_distinct",
+    "persistence_save_malformed_imports_do_not_construct_partial_state",
+    "persistence_save_model_checks_ran",
+    "persistence_save_new_adventure_flag_not_leaked",
+    "persistence_save_source_oracle_complete",
+    "persistence_save_unknown_fields_retained",
+    "persistence_settings_achievement_presence_semantics",
+    "persistence_settings_bounded_untrusted_config",
+    "persistence_settings_checks_ran",
+    "persistence_settings_empty_bindings_retained",
+    "persistence_settings_import_cannot_remove_fixed_menu_controls",
+    "persistence_settings_imported_real_keyboard_modifiers",
+    "persistence_settings_legacy_duplicate_bindings_retained",
+    "persistence_settings_legacy_shortcuts_avoid_existing_bindings",
+    "persistence_settings_malformed_files_safe_defaults",
+    "persistence_settings_no_object_instantiation",
+    "persistence_settings_original_bytes_immutable",
+    "persistence_settings_physical_keys_modifiers_retained",
+    "persistence_settings_preferences_roundtrip",
+    "persistence_settings_rebind_restore_notifications",
+    "persistence_settings_revision_saved",
+    "persistence_settings_source_oracle_complete",
+    "persistence_settings_unknown_sections_bytes_retained",
+    "persistence_source_read_only",
+    "persistence_source_target_separated",
+    "persistence_stale_writer_rejected",
+    "persistence_store_checks_ran",
+    "persistence_unknown_fields_lossless"
+  ],
+  "schema": "bluemap.persistence.source-contracts.v1",
+  "sourceAnchors": [
+    {
+      "bytes": 13421,
+      "gitBlob": "52c05b53bb2fa675624b00ccb9579e460fd490b6",
+      "path": "project.godot",
+      "sha256": "4381f29aa19a0488ec38349b8d4692c972ed7b6f4d433e9ce184d17214594dfb"
+    },
+    {
+      "bytes": 32096,
+      "gitBlob": "47d621d751586d38a53c370fa7d2a516f3524450",
+      "path": "scripts/core/game_state.gd",
+      "sha256": "86bd03c3052581e8ac4bebc7e8f11e5580be02ead86fd2f0108f01232c85c22c"
+    },
+    {
+      "bytes": 9321,
+      "gitBlob": "0795760f49181b550300396c254da593e7c5011b",
+      "path": "scripts/core/world_atlas.gd",
+      "sha256": "98aee7768413296490332faa215113a0ad3671797b1c9144b2b19495bb22156c"
+    },
+    {
+      "bytes": 5494,
+      "gitBlob": "316fa5c891e2deec0befc59ee9e9aae43ea55114",
+      "path": "scripts/core/equipment.gd",
+      "sha256": "60276ccdb0c1ecbe52eee8a3b45a2b0f9f8e1221bf1cedd3643967a5aad65a7e"
+    },
+    {
+      "bytes": 5144,
+      "gitBlob": "b11d72c7b484fadfa2f22b85243c4eeb1e119e38",
+      "path": "scripts/core/appearance.gd",
+      "sha256": "9b67d08473f366ec3d53a526f62a1a361741391ced07ee2891c5d855fac98ceb"
+    },
+    {
+      "bytes": 12436,
+      "gitBlob": "403670241fc2f0b90b0fe930a3f9fd698c6d708a",
+      "path": "scripts/core/professions.gd",
+      "sha256": "3d15772b05ec1728ef11915088bd1e0fab5e60692fabe8390a433d092bc1f43a"
+    },
+    {
+      "bytes": 11825,
+      "gitBlob": "b2d0fac0244c79ef5466f57563d1bf0ab16a9fb6",
+      "path": "scripts/core/homestead.gd",
+      "sha256": "bf6641d492770133145c5ad85611e4702496fd63318d377d3224060e14fce420"
+    },
+    {
+      "bytes": 2529,
+      "gitBlob": "eac3b46d8d0b0864c6ff7584f0db53259e8dd099",
+      "path": "scripts/core/coastal_home.gd",
+      "sha256": "0f7da0b759406f1ea8c23e5b792f1e4e7cdcc35b9c2006d5f688b0bce10792b2"
+    },
+    {
+      "bytes": 6580,
+      "gitBlob": "394f1be38043f33b5e4918e5f78a697439759497",
+      "path": "scripts/core/stockroom.gd",
+      "sha256": "4f03a0e4dafe2cd54e0791ae1590f1bba757ccb73b5dc7ea4818fd08d1471aca"
+    },
+    {
+      "bytes": 9861,
+      "gitBlob": "c5015581e4c794259aef055757bafbcb8cf93683",
+      "path": "scripts/core/personal_home.gd",
+      "sha256": "bd036d440fa7c9cef5b36c3716acd42cc121a7bd71c08bd7e9557cee563250d9"
+    },
+    {
+      "bytes": 14914,
+      "gitBlob": "f63719d755985740ae8ffe14647f94bafb2e1c04",
+      "path": "scripts/core/yard.gd",
+      "sha256": "1c5790dc59c97c2f2638b482238764e39dd3bd6a02ef258797d9b8901b32e8ad"
+    },
+    {
+      "bytes": 2410,
+      "gitBlob": "70b762b7f22a05a875a26538aa5dcf97df92a6bc",
+      "path": "scripts/core/progression.gd",
+      "sha256": "a4e4ca1487a2ea0426d05a39921410097cbe6ea5bb0a3f3923dfafa8a2de279e"
+    },
+    {
+      "bytes": 15663,
+      "gitBlob": "5ca59d68df7a15583a4bcd94f098021c065aa186",
+      "path": "scripts/core/input_manager.gd",
+      "sha256": "b45a93ff35177e6a567c7c7a169c9554e9bb825702802a7727b44d22dd46795a"
+    },
+    {
+      "bytes": 4572,
+      "gitBlob": "27e5ff168d02080ad6c75dd3969f527f90b610d7",
+      "path": "scripts/core/lang.gd",
+      "sha256": "bd28e55994891258ace5eab1635f82f109064451cd140f5fb0fe2c205e5e4c11"
+    },
+    {
+      "bytes": 5165,
+      "gitBlob": "f552deb54fcd2fc731f87de150295f0077e7caf7",
+      "path": "scripts/core/sound.gd",
+      "sha256": "cb6af6f3b2d93da5c32c76a6c914dde55cf1c2ae7624261d3e50d115413d3803"
+    }
+  ],
+  "textEncoding": "UTF-8; CRLF normalized to LF as in committed Git text"
+}
