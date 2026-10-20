@@ -221,6 +221,12 @@ namespace BlueMapMigration.Route
                 {if(portal.Hint<=0){ShowMessage(Maps.Contains(portal.Map,StringComparer.Ordinal)?Translate(portal.Locked):T("Dit gebied volgt in fase 11. Dorp, woning, bosrand en Fluisterbos zijn nu verbonden.","This area arrives in phase 11. Village, home, forest edge and Whispering Woods are connected now."));portal.Hint=2.5;}continue;}
                 portal.Armed=false;if(TryTravel(portal.Map,portal.Spawn))break;
             }
+            // Original connected exits transfer before reaching the edge. Until every
+            // destination is ported, an unavailable exit must never strand the actor
+            // beyond the retained terrain or outside the camera's reachable area.
+            Vector2 current=World.Position;
+            Vector2 insideMap=new Vector2(Mathf.Clamp(current.x,8,Session.Current.Width*32-8),Mathf.Clamp(current.y,16,Session.Current.Height*32-16));
+            if(current!=insideMap){World.Teleport(insideMap);Gameplay.State.Position=PositionValue(insideMap);}
             lastPosition=World.Position;
         }
         public static bool Crossed(Rect rect,Vector2 from,Vector2 to)

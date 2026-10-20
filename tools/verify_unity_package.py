@@ -142,6 +142,7 @@ ROUTE_DETAIL_CHECKS = {
     "route_unknown_fields_retained", "route_rest_source_policy",
     "route_profiles_are_safe_copies", "route_save_failure_preserves_progress",
     "route_controller_navigation_verified",
+    "route_inventory_sustained_right_stick_keeps_focus", "route_unconnected_exit_keeps_player_inside_map",
     "route_dialogue_reward_commits_coherently", "route_modal_actions_and_calm_paused",
     "route_invalid_transaction_preserves_state", "route_observer_failure_cannot_duplicate_rewards",
     "route_pickup_unique_claim_and_full_hearts",

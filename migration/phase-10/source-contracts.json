@@ -340,6 +340,7 @@
     "route_dialogue_ui_verified",
     "route_harvest_cooldowns_and_tools",
     "route_invalid_transaction_preserves_state",
+    "route_inventory_sustained_right_stick_keeps_focus",
     "route_inventory_ui_verified",
     "route_modal_actions_and_calm_paused",
     "route_model_checks_ran",
@@ -386,6 +387,7 @@
     "route_source_pim_reward_once",
     "route_source_rest_no_time_skip",
     "route_transition_state_preserved",
+    "route_unconnected_exit_keeps_player_inside_map",
     "route_unknown_fields_retained",
     "route_village_home_forest_transitions",
     "route_world_checks_ran"

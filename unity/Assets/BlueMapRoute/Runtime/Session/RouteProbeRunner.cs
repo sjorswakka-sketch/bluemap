@@ -134,6 +134,17 @@ namespace BlueMapMigration.Route
                 bool returned=Travel(route,"forest_edge")&&Travel(route,"village");pim=Pim();NearNode(world,pim);route.InteractTarget(pim);ReadDialogue();
                 check("route_live_cat_quest_full_return",found&&returned&&state.QuestState("kat")=="done"&&state.Flag("cat_home")&&state.Count("heart_container")==1&&state.Get("hero_xp").AsInt64()==40);
                 check("route_portals_arm_and_enter_native",nativePortalEntries>=6);
+                string retainedMap=state.MapId;bool contained=true;float mapWidth=world.Snapshot.Width*32,mapHeight=world.Snapshot.Height*32;
+                foreach(var outsideEdge in new[]{new Vector2(Mathf.Min(640,mapWidth*.5f),mapHeight+4),new Vector2(-4,mapHeight*.5f),new Vector2(mapWidth+4,mapHeight*.5f),new Vector2(mapWidth*.5f,-4)})
+                {
+                    world.Teleport(outsideEdge);world.Step(0,new MotionInput{Direction=Vector2.zero});route.Tick(.02);
+                    Vector2 bounded=world.Position;
+                    contained&=state.MapId==retainedMap&&world.Snapshot.MapId==retainedMap&&bounded.x>=8&&bounded.x<=mapWidth-8&&bounded.y>=0&&bounded.y<=mapHeight-16;
+                    contained&=Math.Abs(state.Position.Items[0].AsDouble()-bounded.x)<.001&&Math.Abs(state.Position.Items[1].AsDouble()-bounded.y)<.001;
+                }
+                check("route_unconnected_exit_keeps_player_inside_map",contained&&nativePortalEntries>=6);
+                NearNode(world,pim);
+
                 state.Set("inventory",FoundationJson.ParsePlain("{\"potion\":2,\"prof_branch\":4,\"prof_stone\":2,\"prof_herb\":2,\"prof_berry\":3,\"prof_mushroom\":2,\"hs_grape\":3,\"hs_seed\":1,\"hs_flower_seed\":1,\"trail_flower\":2,\"hs_honey\":1,\"prof_log\":2,\"gel\":2,\"heart_container\":1,\"future_seed\":3}"));
                 route.OpenInventory();double before=state.PlayTime;route.Session.Clock.Tick(1);route.Tick(1);
                 check("route_inventory_ui_verified",route.Modal=="inventory"&&state.Paused&&state.PlayTime==before&&state.Count("potion")==2&&state.Count("future_seed")==3);
