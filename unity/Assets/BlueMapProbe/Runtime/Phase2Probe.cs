@@ -269,7 +269,9 @@ namespace BlueMapMigration.Probe
             yield return new WaitForEndOfFrame();
             Texture2D rollCapture = CaptureCamera();
             File.WriteAllBytes(Path.Combine(output, "screenshot-player-roll.png"), rollCapture.EncodeToPNG()); Destroy(rollCapture);
-            var persistenceProof=BlueMapMigration.Persistence.PersistenceProbeRunner.Run(identity,output,playerWorld.InputSource);
+            BlueMapMigration.Persistence.PersistenceProbeRunner.Result persistenceProof;
+            try{persistenceProof=BlueMapMigration.Persistence.PersistenceProbeRunner.Run(identity,output,playerWorld.InputSource);}
+            catch(Exception error){Debug.LogError("Native persistence proof failed: "+error);Add("persistence_runtime_verified",false);Finish();yield break;}
             Add("persistence_runtime_verified",persistenceProof.success);
             File.WriteAllText(Path.Combine(output,"persistence-result.json"),JsonUtility.ToJson(persistenceProof,true));
             EnsurePersistence(true);ShowPersistence();

@@ -32,35 +32,44 @@ namespace BlueMapMigration.Persistence
                 using (var input = new PlayerInputSource())
                 {
                     var bundle = LegacySettingsBundle.Decode(Bytes("settings"), Bytes("controls"), Bytes("meta"), Bytes("ng"), input, importer, "nl", "en");
-                    bool good = bundle.Preferences.Locale == test.Require("locale").AsString()
-                        && bundle.Preferences.Muted == test.Require("muted").AsBool()
-                        && bundle.Preferences.MusicVolume == test.Require("music").AsDouble()
-                        && bundle.Preferences.SfxVolume == test.Require("sfx").AsDouble();
+                    bool good = true; var differences = new List<string>();
+                    void Difference(string field, object expected, object actual)
+                    { good = false; if (differences.Count < 32) differences.Add(field + " expected=" + expected + " actual=" + actual); }
+                    void Scalar(string field, object expected, object actual)
+                    { if (!object.Equals(expected, actual)) Difference(field, expected, actual); }
+                    Scalar("locale", test.Require("locale").AsString(), bundle.Preferences.Locale);
+                    Scalar("muted", test.Require("muted").AsBool(), bundle.Preferences.Muted);
+                    Scalar("music", test.Require("music").AsDouble(), bundle.Preferences.MusicVolume);
+                    Scalar("sfx", test.Require("sfx").AsDouble(), bundle.Preferences.SfxVolume);
                     bundle.ApplyBindings(input);
                     foreach (var action in test.Require("bindings").Items)
                     {
-                        var actual = input.Bindings(action.Require("id").AsString()); var expected = action.Require("bindings").Items;
-                        if (actual.Count != expected.Count) { good = false; continue; }
+                        string actionId = action.Require("id").AsString(); var actual = input.Bindings(actionId); var expected = action.Require("bindings").Items;
+                        if (actual.Count != expected.Count) { Difference("bindings." + actionId + ".count", expected.Count, actual.Count); continue; }
                         for (int index = 0; index < actual.Count; index++)
                         {
                             var row = expected[index];
                             var expectedBinding = new InputBindingSpec { category=row.Require("category").AsString(),kind=row.Require("kind").AsString(),code=(int)row.Require("code").AsInt64(),keyName=row.Require("keyName").AsString(),direction=(float)row.Require("direction").AsDouble(),shift=row.Require("shift").AsBool(),ctrl=row.Require("ctrl").AsBool(),alt=row.Require("alt").AsBool(),meta=row.Require("meta").AsBool() };
                             expectedBinding.path = PlayerInputSource.SourcePath(expectedBinding);
                             var got = actual[index];
-                            good &= got.category == expectedBinding.category && got.kind == expectedBinding.kind && got.code == expectedBinding.code && got.keyName == expectedBinding.keyName && got.direction == expectedBinding.direction && got.path == expectedBinding.path
+                            bool same = got.category == expectedBinding.category && got.kind == expectedBinding.kind && got.code == expectedBinding.code && got.keyName == expectedBinding.keyName && got.direction == expectedBinding.direction && got.path == expectedBinding.path
                                 && got.shift == expectedBinding.shift && got.ctrl == expectedBinding.ctrl && got.alt == expectedBinding.alt && got.meta == expectedBinding.meta;
+                            if (!same) Difference("bindings." + actionId + "[" + index + "]", JsonUtility.ToJson(expectedBinding), JsonUtility.ToJson(got));
                         }
                     }
                     var expectedAchievements = test.Require("achievements").Items.Select(v => v.AsString()).OrderBy(v => v, StringComparer.Ordinal);
-                    good &= bundle.Achievements.Entries.Select(p => p.Key.AsString()).OrderBy(v => v, StringComparer.Ordinal).SequenceEqual(expectedAchievements);
-                    good &= Equal(bundle.NgMeta, test.Require("ng"));
+                    string[] gotAchievements = bundle.Achievements.Entries.Select(p => p.Key.AsString()).OrderBy(v => v, StringComparer.Ordinal).ToArray();
+                    if (!gotAchievements.SequenceEqual(expectedAchievements)) Difference("achievements", string.Join(",", expectedAchievements), string.Join(",", gotAchievements));
+                    if (!Equal(bundle.NgMeta, test.Require("ng"))) Difference("ng", FoundationJson.StringifyPlain(test.Require("ng")), FoundationJson.StringifyPlain(bundle.NgMeta));
                     foreach (var part in new[] { "settings", "controls", "meta", "ng" })
                     {
                         byte[] bytes = Bytes(part); string filename = part == "ng" ? "ng_plus.cfg" : part + ".cfg";
                         bool expectedValid = bytes != null && test.Require("parseOk").Require(part).AsBool();
-                        good &= bundle.Documents.ContainsKey(filename) == expectedValid;
-                        if (expectedValid) good &= bundle.Documents[filename].SourceBytes.SequenceEqual(bytes);
+                        bool gotValid = bundle.Documents.ContainsKey(filename);
+                        Scalar("documents." + part + ".valid", expectedValid, gotValid);
+                        if (expectedValid && gotValid && !bundle.Documents[filename].SourceBytes.SequenceEqual(bytes)) Difference("documents." + part + ".bytes", "original exact bytes", "different source bytes");
                     }
+                    if (!good) Debug.Log("Settings source oracle difference " + id + ":\n" + string.Join("\n", differences));
                     check("persistence_settings_source_" + id, good); originalsExact &= good; Cases++;
                     if (id == "unknown_multiline") unknownRetained = bundle.Documents["settings.cfg"].Root.Require("future").Require("values").Require("kind").AsString() == "literal" && bundle.Diagnostics.Count == 0;
                     if (id == "malformed") invalidSafe = bundle.Diagnostics.Count == 4 && bundle.Documents.Count == 0 && input.Bindings("attack").Count > 0;

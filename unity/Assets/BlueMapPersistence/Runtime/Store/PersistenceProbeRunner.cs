@@ -26,8 +26,9 @@ namespace BlueMapMigration.Persistence
             void Check(string name,bool passed){checks.Add(new Phase2Probe.Check{name=name,passed=passed});if(!passed)Debug.LogError("Persistence check failed: "+name);}
             var repository=FoundationWorldRepository.LoadRequired();
             LegacySaveChecks.Verify(repository,Check);LegacySettingsChecks.Verify(Check,repository);
-            string area=Path.Combine(output,"isolated-persistence-fixtures");Directory.CreateDirectory(area);
-            string source=Path.Combine(area,"godot-fixture"),target=Path.Combine(area,"unity-fixture");Directory.CreateDirectory(source);
+            // Keep the synthetic path short enough for the pinned Windows Mono file APIs.
+            string area=Path.Combine(output,"pf");Directory.CreateDirectory(area);
+            string source=Path.Combine(area,"g"),target=Path.Combine(area,"u");Directory.CreateDirectory(source);
             byte[] raw=PersistencePaths.Utf8.GetBytes("{\"map\":\"village\",\"pos\":[385.125,801.75],\"coins\":1234567890123,\"inventory\":{\"grape\":11,\"future_material\":27},\"flags\":{\"future_quest\":false},\"future\":{\"kind\":\"crop\",\"message\":\"🌱 behouden\"}}");
             File.WriteAllBytes(Path.Combine(source,"savegame.json"),raw);
             File.WriteAllBytes(Path.Combine(source,"settings.cfg"),PersistencePaths.Utf8.GetBytes("[audio]\nmusic=0.35\nsfx=0.7\nmuted=false\n[taal]\nlocale=\"nl\"\n[future]\nkind=\"vineyard\"\n"));
@@ -38,7 +39,8 @@ namespace BlueMapMigration.Persistence
             var before=LegacySourceSet.Read(source);var hashes=before.CopyFiles().ToDictionary(p=>p.Key,p=>PersistencePaths.Hash(p.Value));
             foreach(string name in before.FileNames)File.SetAttributes(Path.Combine(source,name),FileAttributes.ReadOnly);
             var coordinator=new PersistenceCoordinator(repository,input,target){SourceDirectory=source};
-            Check("persistence_fixture_import_opens",coordinator.ImportSource(source));
+            bool imported=coordinator.ImportSource(source);Check("persistence_fixture_import_opens",imported);
+            if(!imported)throw new InvalidOperationException("Synthetic profile import failed: "+coordinator.Status);
             var first=coordinator.Current;var store=new PersistenceStore(target);
             Check("persistence_import_keeps_adventure",first.Snapshot.State.Require("coins").AsInt64()==1234567890123&&first.Snapshot.State.Require("inventory").Require("future_material").AsInt64()==27);
             var loaded=store.Load(first.ProfileId);

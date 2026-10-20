@@ -173,7 +173,9 @@ namespace BlueMapMigration.Persistence
         static FoundationValue EncodeBindings(Dictionary<string, InputBindingSpec[]> map)
         {
             var result = new Dictionary<string, FoundationValue>(StringComparer.Ordinal);
-            foreach (var action in map) result.Add(action.Key, FoundationValue.Array(action.Value.Select(b => Dict(new Dictionary<string, FoundationValue> {
+            // Source bindings are stored in two separate category arrays. Keep the same stable
+            // keyboard-then-controller projection even when only one saved category is replaced.
+            foreach (var action in map) result.Add(action.Key, FoundationValue.Array(action.Value.OrderBy(b => b.category == "keyboard" ? 0 : 1).Select(b => Dict(new Dictionary<string, FoundationValue> {
                 {"category",FoundationValue.StringValue(b.category)},{"kind",FoundationValue.StringValue(b.kind)},{"path",FoundationValue.StringValue(b.path)},{"code",FoundationValue.Integer(b.code)},{"keyName",FoundationValue.StringValue(b.keyName ?? "")},{"direction",FoundationValue.Number(b.direction)},
                 {"shift",FoundationValue.Boolean(b.shift)},{"ctrl",FoundationValue.Boolean(b.ctrl)},{"alt",FoundationValue.Boolean(b.alt)},{"meta",FoundationValue.Boolean(b.meta)} }))));
             return Dict(result);
