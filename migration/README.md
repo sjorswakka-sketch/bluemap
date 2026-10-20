@@ -1,6 +1,8 @@
-# Unity-migratie — fase 10 voltooid
+# Unity-migratie — fase 11 voltooid
 
-Het volgende **go** start fase 11: alle 37 gebieden en toegangspunten; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 12: voorwerpen, buit en opslag; de volledige game is nog niet overgezet.
+
+[Fase 11: alle gebieden en toegangspunten](phase-11/README.md) — alle 37 bestaande gebieden en interieurs, oorspronkelijke questsloten, sleutels, boten, veilige aankomsten en terugroutes; 36 Windows-controles en 57 wereld-/toegangscontroles.
 
 [Fase 10: eerste speelbare route](phase-10/README.md) — dorp, woning, bosrand en bos; Pim en Muis, verzamelen, pickups, kisten, inventaris, opdrachten, rust, veilige speelkopieën, bewaren en laden; 35 Windows-controles en 73 routecontroles.
 

@@ -1,6 +1,6 @@
 # Bluemap Quest
 
-**Unity-migratie:** fases 1 tot en met 10 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), de [eerste speelbare Unity-route](migration/phase-10/README.md) en de [actuele downloads](migration/DOWNLOADS.md). Het volgende go start fase 11: alle 37 gebieden en toegangspunten. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
+**Unity-migratie:** fases 1 tot en met 11 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), [alle gebieden en toegangspunten in Unity](migration/phase-11/README.md) en de [actuele downloads](migration/DOWNLOADS.md). Het volgende go start fase 12: voorwerpen, buit en opslag. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
 
 0.34: een wereldatlas met opgeslagen gebiedsbezoeken en nieuwe gedetailleerde pixelart voor de speler en NPC’s; zie [wijzigingen](WORLD_ATLAS_CHARACTERS_034.md).
 
