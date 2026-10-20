@@ -106,7 +106,7 @@ def main():
         if fingerprint(ROOT) != before:
             raise ValueError('Original game source changed during recording')
         data = json.loads(outputs[0])
-        if len(data['cases']) != 22 or len(data['corrupt']) != 6:
+        if len(data['cases']) != 24 or len(data['corrupt']) != 6:
             raise ValueError('Save oracle coverage changed')
         if data.get('sourceHashes') != {name: hashlib.sha256((ROOT / name).read_bytes().replace(b'\r\n', b'\n')).hexdigest() for name in data.get('sourceHashes', {})} or len(data.get('sourceHashes', {})) != 11:
             raise ValueError('Original save source hashes differ')
@@ -126,7 +126,7 @@ def main():
                    'exactNumericValues': float64_values, 'sha256': hashlib.sha256(outputs[0]).hexdigest(),
                    'sourceHashes': data['sourceHashes']}
         (args.evidence_dir / 'receipt.json').write_bytes(canonical_bytes(receipt))
-        print('MIGRATION SAVE ORACLE OK: 22 save and 6 corrupt cases; 2 fresh processes')
+        print('MIGRATION SAVE ORACLE OK: 24 save and 6 corrupt cases; 2 fresh processes')
         return 0
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         print('MIGRATION SAVE ORACLE FAILED:', error, file=sys.stderr)

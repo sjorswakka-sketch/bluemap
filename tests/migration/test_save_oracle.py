@@ -38,7 +38,7 @@ class SaveSourceOracleTests(unittest.TestCase):
                     'boss_deaths','talked','achievements','arena_records','homestead','coastal_storage','stockroom',
                     'personal_home','yard','professions','hero_xp','equipment','appearance','clothing','ng_plus'}
         self.assertEqual(len(expected),34)
-        self.assertEqual(len(self.data['cases']),22)
+        self.assertEqual(len(self.data['cases']),24)
         for case in self.data['cases']:
             self.assertEqual(set(case['expected']), expected, case['id'])
             self.assertIsInstance(json.loads(case['inputJson']),dict)
@@ -46,13 +46,14 @@ class SaveSourceOracleTests(unittest.TestCase):
 
     def test_positive_negative_and_old_state_coverage(self):
         cases = {case['id']:case for case in self.data['cases']}
-        self.assertEqual(len(cases),22)
+        self.assertEqual(len(cases),24)
         self.assertTrue({'empty_old_save','legacy_flags_presence','explicit_visits_no_inference',
                          'farms_and_production','house_valid_custom','house_invalid_overlap',
                          'house_invalid_identifier','yard_valid_paths','yard_all_stations_stored',
                          'yard_invalid_crop_overlap','gear_clothing_appearance','bounded_storage',
                          'profession_cooldowns','unknown_future_fields','raw_version_object',
-                         'current_full_roundtrip','numeric_conversion','exact_day_boundary'} <= cases.keys())
+                         'current_full_roundtrip','numeric_conversion','exact_day_boundary',
+                         'json_integer_precision_positive','json_integer_precision_negative'} <= cases.keys())
         legacy=cases['legacy_flags_presence']['expected']
         self.assertIs(legacy['flags']['golem_ruins'],True)
         self.assertNotIn('ruins',legacy['visited_maps'])

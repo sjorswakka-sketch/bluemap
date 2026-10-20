@@ -27,7 +27,7 @@ namespace BlueMapMigration.Persistence
             input.BindingsChanged+=BindingsChanged;RefreshProfiles();
         }
         bool Try(Action action)
-        {try{action();return true;}catch(Exception error)when(error is System.IO.IOException||error is FormatException||error is UnauthorizedAccessException||error is OverflowException||error is ArgumentException){Status="Niet gewijzigd: "+error.Message;return false;}}
+        {try{action();return true;}catch(Exception error)when(error is System.IO.IOException||error is System.IO.InvalidDataException||error is FormatException||error is UnauthorizedAccessException||error is OverflowException||error is ArgumentException){Status="Niet gewijzigd: "+error.Message;return false;}}
         public bool RefreshProfiles()=>Try(()=>{Profiles=store.ProfileIds();});
         public PersistenceSnapshot Convert(LegacySourceSet source)
         {

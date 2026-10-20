@@ -291,7 +291,7 @@ namespace BlueMapMigration.Probe
             playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);
         }
         private void ShowPersistence()
-        {playerWorld.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);gallery.gameObject.SetActive(false);RestoreGalleryCamera();persistencePanel.Visible=true;playerWorld.InputSource.SetFocused(Application.isFocused);}
+        {playerWorld.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);gallery.gameObject.SetActive(false);RestoreGalleryCamera();persistencePanel.Visible=true;playerWorld.InputSource.SetContext(false,true);playerWorld.InputSource.SetFocused(Application.isFocused);}
         private void EnsurePlayerWorld()
         {
             if (playerWorld != null) { playerWorld.gameObject.SetActive(true); return; }
@@ -361,6 +361,7 @@ namespace BlueMapMigration.Probe
             persistencePanel.Draw(new Rect(20,20,1112,608));GUI.skin.font=oldFont;GUI.matrix=old;
         }
         private void LogReceived(string text, string stack, LogType type) { if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert) runtimeError = true; }
+        private void OnApplicationFocus(bool focused){if(persistencePanel!=null&&persistencePanel.Visible)playerWorld.InputSource.SetFocused(focused);}
         private void OnDestroy() { persistence?.Dispose();Application.logMessageReceived -= LogReceived; }
         private static string Argument(string key) { string[] args = Environment.GetCommandLineArgs(); for (int i = 0; i + 1 < args.Length; i++) if (args[i] == key) return args[i + 1]; return null; }
     }

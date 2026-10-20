@@ -105,10 +105,12 @@ func _run():
  fixtures.append({"id":"numeric_conversion","data":{"coins":"19 crates","kills":"12.7","rolls":true,"hp":"4","ng_plus":"2"}})
  fixtures.append({"id":"exact_day_boundary","data":{"day_time":-2.0,"pos":[-0.0,123.123456789],"play_time":0.123456789012345,"hero_xp":2250.9}})
  fixtures.append({"id":"malformed_nested_values","data":{"hero_xp":"777","appearance":{"hair_color":"4 styles","eye_color":true},"homestead":{"cells":{"05,29":{"kind":"soil","crop":"mint","established":true,"growth":65.3},"garbage":{"kind":"channel"}},"animal_due":{"future":"ignored"},"jobs":{"wine_b":{"batches":"bad","time":null}}},"personal_home":{"owned":null},"professions":{"xp":[],"cooldowns":[]},"stockroom":{"sort":"bad","favorites":{"prof_log":false}}}})
+ fixtures.append({"id":"json_integer_precision_positive","inputJson":'{"map":"forest","coins":9007199254740993,"inventory":{"future_stack":9007199254740993},"quests":{"future_quest":{"state":"active","step":9007199254740993}},"pos":[16777217,-0],"ng_plus":9007199254740993,"kills":9007199254740993}'})
+ fixtures.append({"id":"json_integer_precision_negative","inputJson":'{"coins":-9007199254740993,"inventory":{"future_stack":-9007199254740993},"quests":{"future_quest":{"state":"active","step":-9007199254740993}},"pos":[-16777217,-0.0],"day_time":-9007199254740993,"rolls":-9007199254740993}'})
  var cases:Array=[]
  for fixture:Dictionary in fixtures:
   gs.meta_achievements={}
-  var json:=JSON.stringify(fixture.data)
+  var json:String=fixture.inputJson if fixture.has("inputJson") else JSON.stringify(fixture.data)
   var f:=FileAccess.open(gs.SAVE_PATH,FileAccess.WRITE);f.store_string(json);f.close()
   var ok:bool=gs.load_game()
   if not ok:push_error("Source fixture rejected: "+fixture.id);quit(1);return

@@ -124,8 +124,17 @@ namespace BlueMapMigration.Persistence
                     bundle.ApplyBindings(input); int notifications = 0; input.BindingsChanged += () => notifications++;
                     InputFrame Keys(params Key[] keys) { InputSystem.QueueStateEvent(keyboard, new KeyboardState(keys)); InputSystem.Update(); return input.Read(); }
                     Keys(); bool plain = !Keys(Key.Q).Held("attack"); Keys(); bool controlOnly = !Keys(Key.Q, Key.LeftCtrl).Held("attack"); Keys();
-                    bool modified = Keys(Key.Q, Key.LeftCtrl, Key.LeftShift).Pressed("attack"); Keys();
-                    check("persistence_settings_imported_real_keyboard_modifiers", plain && controlOnly && modified);
+                    bool shiftOnly = !Keys(Key.Q, Key.LeftShift).Held("attack"); Keys();
+                    var leftFrame = Keys(Key.Q, Key.LeftCtrl, Key.LeftShift);
+                    bool modified = leftFrame.Pressed("attack") && leftFrame.Held("attack");
+                    string leftState = "q=" + keyboard.qKey.ReadUnprocessedValue() + ",ctrl=" + keyboard.leftCtrlKey.ReadUnprocessedValue() + ",shift=" + keyboard.leftShiftKey.ReadUnprocessedValue();
+                    Keys(); var rightFrame = Keys(Key.Q, Key.RightCtrl, Key.RightShift); bool rightModified = rightFrame.Pressed("attack") && rightFrame.Held("attack");
+                    string rightState = "q=" + keyboard.qKey.ReadUnprocessedValue() + ",ctrl=" + keyboard.rightCtrlKey.ReadUnprocessedValue() + ",shift=" + keyboard.rightShiftKey.ReadUnprocessedValue();
+                    var releaseFrame = Keys(); bool released = releaseFrame.Released("attack") && !releaseFrame.Held("attack");
+                    bool chords = plain && controlOnly && shiftOnly && modified && rightModified && released;
+                    if (!chords) Debug.Log("Imported modifier check: plain=" + plain + ",controlOnly=" + controlOnly + ",shiftOnly=" + shiftOnly + ",leftCombo=" + modified + ",rightCombo=" + rightModified + ",released=" + released
+                        + "; leftState=" + leftState + "; rightState=" + rightState + "; imported=" + string.Join("|", input.Bindings("attack").Select(b => JsonUtility.ToJson(b))));
+                    check("persistence_settings_imported_real_keyboard_modifiers", chords);
                     var encoded = LegacySettingsBundle.BindingValue(input); string result = input.Rebind("attack", "keyboard", "<Keyboard>/f9");
                     LegacySettingsBundle.ApplyBindingValue(input, FoundationJson.Parse(encoded.CanonicalJson));
                     bool restored = input.Bindings("attack").Any(b => b.category == "keyboard" && b.path == "<Keyboard>/q" && b.shift && b.ctrl);

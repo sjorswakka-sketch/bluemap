@@ -188,7 +188,7 @@ namespace BlueMapMigration.Persistence
             foreach(string path in names)
             {
                 string name=Path.GetFileNameWithoutExtension(path);if(!RevisionPattern.IsMatch(name))continue;
-                try{found.Add(ReadRevision(profile,name,null));}catch(IOException){}catch(FormatException){}
+                try{found.Add(ReadRevision(profile,name,null));}catch(Exception error)when(error is IOException||error is InvalidDataException||error is FormatException){}
             }
             return found.OrderByDescending(value=>value.CreatedUtc,StringComparer.Ordinal).ThenByDescending(value=>value.RevisionId,StringComparer.Ordinal).ToArray();
         }

@@ -85,6 +85,10 @@ namespace BlueMapMigration.Persistence
             {zip.GetEntry("state.json").Delete();using(var entry=zip.CreateEntry("state.json").Open()){byte[] bytes=PersistencePaths.Utf8.GetBytes("{}");entry.Write(bytes,0,bytes.Length);}}
             bool tamper=false;try{store.Load(first.ProfileId);}catch(Exception e)when(e is IOException||e is FormatException){tamper=true;}
             File.WriteAllBytes(package,originalPackage);Check("persistence_package_content_damage_rejected",tamper);
+            File.WriteAllBytes(package,new byte[]{1,2,3,4});
+            string priorActive=coordinator.Current.RevisionId;
+            Check("persistence_truncated_zip_does_not_crash_or_replace_active",!coordinator.OpenProfile(first.ProfileId)&&coordinator.Current.RevisionId==priorActive&&store.Revisions(first.ProfileId).All(value=>value.RevisionId!=second.RevisionId));
+            File.WriteAllBytes(package,originalPackage);
             foreach(string name in before.FileNames)File.SetAttributes(Path.Combine(source,name),FileAttributes.Normal);
             bool mutation=false;var changed=LegacySourceSet.Read(source);File.AppendAllText(Path.Combine(source,"settings.cfg"),"\n; fixture edit\n");
             try{changed.VerifyUnchanged();}catch(IOException){mutation=true;}File.WriteAllBytes(Path.Combine(source,"settings.cfg"),before.Get("settings.cfg"));

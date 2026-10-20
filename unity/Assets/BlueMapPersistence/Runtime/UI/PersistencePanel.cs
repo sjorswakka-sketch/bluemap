@@ -32,10 +32,12 @@ namespace BlueMapMigration.Persistence
             sourceDirectory = owner.SourceDirectory ?? "";
         }
         public void SetSourceDirectory(string path) { sourceDirectory = path ?? ""; }
+        string T(string dutch, string english) => coordinator.Preferences.Locale == "en" ? english : dutch;
 
         void Navigate()
         {
             if (lastFrame == Time.frameCount) return; lastFrame = Time.frameCount;
+            if (!Application.isFocused) { wasAccept = true; nextActivation = Time.unscaledTime + .2f; nextNavigation = nextActivation; return; }
             bool controller = input.ControllerActive; var pad = controller ? InputSystem.GetDeviceById(input.ControllerDeviceId) as Gamepad : null;
             var keyboard = controller ? null : Keyboard.current;
             bool accept = pad != null ? pad.buttonSouth.isPressed : keyboard != null && keyboard.enterKey.isPressed;
@@ -107,22 +109,22 @@ namespace BlueMapMigration.Persistence
             var label = new GUIStyle(GUI.skin.label) { fontSize = 14, wordWrap = true };
             var small = new GUIStyle(label) { fontSize = 12 };
             float x = bounds.x + 22, y = bounds.y + 16, width = bounds.width - 44;
-            GUI.Label(new Rect(x, y, width, 30), "Je avontuur veilig meenemen", title);
-            GUI.Label(new Rect(x, y + 35, width, 40), "Importeer een kopie van je Godot-opslag naar een apart Unity-profiel. Je oorspronkelijke spelbestanden blijven behouden.", label);
+            GUI.Label(new Rect(x, y, width, 30), T("Je avontuur veilig meenemen", "Bring your adventure safely"), title);
+            GUI.Label(new Rect(x, y + 35, width, 40), T("Importeer een kopie van je Godot-opslag naar een apart Unity-profiel. Je oorspronkelijke spelbestanden blijven behouden.", "Import a copy of your Godot save into a separate Unity profile. Your original game files remain preserved."), label);
             float leftWidth = Mathf.Floor(width * .55f), gap = 26, rightX = x + leftWidth + gap, rightWidth = width - leftWidth - gap;
             float top = y + 86;
-            GUI.Label(new Rect(x, top, leftWidth, 25), "1. Kies de map met je oorspronkelijke opslag", label);
+            GUI.Label(new Rect(x, top, leftWidth, 25), T("1. Kies de map met je oorspronkelijke opslag", "1. Choose the folder containing your original save"), label);
             bool oldEnabled = GUI.enabled; GUI.enabled = oldEnabled && !input.ControllerActive;
             GUI.SetNextControlName("Phase9ImportDirectory"); sourceDirectory = GUI.TextField(new Rect(x, top + 28, leftWidth, 31), sourceDirectory, 1024);
             editingSourceDirectory = GUI.GetNameOfFocusedControl() == "Phase9ImportDirectory";
             GUI.enabled = oldEnabled;
-            Button(1, new Rect(x, top + 68, leftWidth * .62f - 5, 34), "Kopie importeren");
-            Button(2, new Rect(x + leftWidth * .62f + 5, top + 68, leftWidth * .38f - 5, 34), "Profielen verversen");
-            GUI.Label(new Rect(x, top + 112, leftWidth, 40), "Import start alleen na jouw keuze. Ontbrekende of beschadigde onderdelen worden zichtbaar gemeld.", small);
-            GUI.Label(new Rect(x, top + 159, leftWidth, 25), "2. Bestaande Unity-profielen", label);
+            Button(1, new Rect(x, top + 68, leftWidth * .62f - 5, 34), T("Kopie importeren", "Import a copy"));
+            Button(2, new Rect(x + leftWidth * .62f + 5, top + 68, leftWidth * .38f - 5, 34), T("Profielen verversen", "Refresh profiles"));
+            GUI.Label(new Rect(x, top + 112, leftWidth, 40), T("Import start alleen na jouw keuze. Ontbrekende of beschadigde onderdelen worden zichtbaar gemeld.", "Import only starts when you choose it. Missing or damaged parts are reported visibly."), small);
+            GUI.Label(new Rect(x, top + 159, leftWidth, 25), T("2. Bestaande Unity-profielen", "2. Existing Unity profiles"), label);
             var profiles = coordinator.Profiles; selectedProfile = Mathf.Clamp(selectedProfile, 0, Mathf.Max(0, profiles.Count - 1));
             var list = new Rect(x, top + 189, leftWidth, 114); GUI.Box(list, "");
-            if (profiles.Count == 0) GUI.Label(new Rect(list.x + 10, list.y + 10, list.width - 20, 40), "Nog geen profiel. Importeer eerst een kopie.", small);
+            if (profiles.Count == 0) GUI.Label(new Rect(list.x + 10, list.y + 10, list.width - 20, 40), T("Nog geen profiel. Importeer eerst een kopie.", "No profile yet. Import a copy first."), small);
             else
             {
                 profileScroll = GUI.BeginScrollView(list, profileScroll, new Rect(0, 0, list.width - 24, profiles.Count * 28));
@@ -135,23 +137,23 @@ namespace BlueMapMigration.Persistence
                 }
                 GUI.EndScrollView();
             }
-            Button(4, new Rect(x, top + 313, leftWidth * .53f - 5, 34), "Gekozen profiel openen", profiles.Count > 0);
-            Button(5, new Rect(x + leftWidth * .53f + 5, top + 313, leftWidth * .47f - 5, 34), coordinator.HasProfile ? "Vorige versie herstellen" : "Profiel herstellen", coordinator.HasProfile || profiles.Count > 0);
+            Button(4, new Rect(x, top + 313, leftWidth * .53f - 5, 34), T("Gekozen profiel openen", "Open selected profile"), profiles.Count > 0);
+            Button(5, new Rect(x + leftWidth * .53f + 5, top + 313, leftWidth * .47f - 5, 34), coordinator.HasProfile ? T("Vorige versie herstellen", "Restore previous version") : T("Profiel herstellen", "Recover profile"), coordinator.HasProfile || profiles.Count > 0);
             var preferences = coordinator.Preferences;
-            GUI.Label(new Rect(rightX, top, rightWidth, 25), "Taal en geluid", title);
+            GUI.Label(new Rect(rightX, top, rightWidth, 25), T("Taal en geluid", "Language and audio"), title);
             Button(6, new Rect(rightX, top + 38, rightWidth, 34), preferences.Locale == "nl" ? "Taal: Nederlands" : "Language: English");
-            Button(7, new Rect(rightX, top + 82, rightWidth, 34), preferences.Muted ? "Geluid: uit" : "Geluid: aan");
-            GUI.Label(new Rect(rightX, top + 130, rightWidth, 26), "Muziek: " + Mathf.RoundToInt((float)preferences.MusicVolume * 100) + "%", label);
-            Button(8, new Rect(rightX, top + 160, rightWidth * .5f - 5, 32), "− zachter"); Button(9, new Rect(rightX + rightWidth * .5f + 5, top + 160, rightWidth * .5f - 5, 32), "+ harder");
-            GUI.Label(new Rect(rightX, top + 207, rightWidth, 26), "Effecten: " + Mathf.RoundToInt((float)preferences.SfxVolume * 100) + "%", label);
-            Button(10, new Rect(rightX, top + 237, rightWidth * .5f - 5, 32), "− zachter"); Button(11, new Rect(rightX + rightWidth * .5f + 5, top + 237, rightWidth * .5f - 5, 32), "+ harder");
-            GUI.Label(new Rect(rightX, top + 280, rightWidth, 38), "Voortgang, uiterlijk en bezittingen blijven bewaard. De loopproef verandert je oorspronkelijke avontuur niet.", small);
-            Button(12, new Rect(rightX, top + 321, rightWidth * .5f - 5, 34), "Loopproef");
-            Button(13, new Rect(rightX + rightWidth * .5f + 5, top + 321, rightWidth * .5f - 5, 34), "Bediening aanpassen");
+            Button(7, new Rect(rightX, top + 82, rightWidth, 34), preferences.Muted ? T("Geluid: uit", "Sound: off") : T("Geluid: aan", "Sound: on"));
+            GUI.Label(new Rect(rightX, top + 130, rightWidth, 26), T("Muziek: ", "Music: ") + Mathf.RoundToInt((float)preferences.MusicVolume * 100) + "%", label);
+            Button(8, new Rect(rightX, top + 160, rightWidth * .5f - 5, 32), T("− zachter", "− quieter")); Button(9, new Rect(rightX + rightWidth * .5f + 5, top + 160, rightWidth * .5f - 5, 32), T("+ harder", "+ louder"));
+            GUI.Label(new Rect(rightX, top + 207, rightWidth, 26), T("Effecten: ", "Effects: ") + Mathf.RoundToInt((float)preferences.SfxVolume * 100) + "%", label);
+            Button(10, new Rect(rightX, top + 237, rightWidth * .5f - 5, 32), T("− zachter", "− quieter")); Button(11, new Rect(rightX + rightWidth * .5f + 5, top + 237, rightWidth * .5f - 5, 32), T("+ harder", "+ louder"));
+            GUI.Label(new Rect(rightX, top + 280, rightWidth, 38), T("Voortgang, uiterlijk en bezittingen blijven bewaard. De loopproef verandert je oorspronkelijke avontuur niet.", "Progress, appearance and items stay preserved. The movement preview does not change your original adventure."), small);
+            Button(12, new Rect(rightX, top + 321, rightWidth * .5f - 5, 34), T("Loopproef", "Movement preview"));
+            Button(13, new Rect(rightX + rightWidth * .5f + 5, top + 321, rightWidth * .5f - 5, 34), T("Bediening aanpassen", "Edit controls"));
             float statusY = top + 367;
             GUI.Box(new Rect(x, statusY, width, 63), "");
-            GUI.Label(new Rect(x + 10, statusY + 8, width - 20, 49), coordinator.Status ?? "Kies een opslagmap of een bestaand profiel.", small);
-            GUI.Label(new Rect(x, bounds.yMax - 39, width, 27), input.ControllerActive ? "D-pad / linkerstick: kiezen  ·  A: gebruiken  ·  links/rechts bij profielen: profiel kiezen  ·  rechterstick: lijst schuiven" : "Muis: kiezen  ·  Tab / pijlen: navigeren  ·  Enter: gebruiken  ·  F9: opgeslagen bediening", small);
+            GUI.Label(new Rect(x + 10, statusY + 8, width - 20, 49), coordinator.Status ?? T("Kies een opslagmap of een bestaand profiel.", "Choose a save folder or an existing profile."), small);
+            GUI.Label(new Rect(x, bounds.yMax - 39, width, 27), input.ControllerActive ? T("D-pad / linkerstick: kiezen  ·  A: gebruiken  ·  links/rechts bij profielen: profiel kiezen  ·  rechterstick: lijst schuiven", "D-pad / left stick: select  ·  A: use  ·  left/right in profiles: choose profile  ·  right stick: scroll list") : T("Muis: kiezen  ·  Tab / pijlen: navigeren  ·  Enter: gebruiken  ·  F9: opgeslagen bediening", "Mouse: select  ·  Tab / arrows: navigate  ·  Enter: use  ·  F9: saved controls"), small);
         }
     }
 }

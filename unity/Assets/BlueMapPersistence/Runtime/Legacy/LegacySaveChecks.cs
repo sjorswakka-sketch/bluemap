@@ -30,9 +30,12 @@ namespace BlueMapMigration.Persistence
                 bool accepted=true;try{importer.Import(Encoding.UTF8.GetBytes(sourceCase.Require("inputJson").AsString()));}catch(FormatException){accepted=false;}
                 check("persistence_save_corrupt_source_"+OracleCases,accepted==sourceCase.Require("accepted").AsBool());OracleCases++;
             }
-            check("persistence_save_source_oracle_complete",OracleCases==28);
+            check("persistence_save_source_oracle_complete",OracleCases==30);
             var unknown=importer.Import(Encoding.UTF8.GetBytes("{\"version\":999,\"kind\":\"modded\",\"future\":{\"kind\":\"future_tag\",\"value\":123},\"homestead\":{\"future_crop\":42}}"));
             check("persistence_save_unknown_fields_retained",unknown.Raw.Require("kind").AsString()=="modded"&&unknown.Raw.Require("future").Require("kind").AsString()=="future_tag"&&unknown.Raw.Require("homestead").Require("future_crop").AsInt64()==42&&unknown.Raw.Require("version").AsInt64()==999);
+            var precise=importer.Import(Encoding.UTF8.GetBytes("{\"coins\":9007199254740993,\"inventory\":{\"future_stack\":-9007199254740993},\"pos\":[16777217,-0]}"));
+            check("persistence_save_binary64_projection_keeps_raw_int64",precise.Raw.Require("coins").AsInt64()==9007199254740993L&&precise.State.Coins==9007199254740992L&&precise.Raw.Require("inventory").Require("future_stack").AsInt64()==-9007199254740993L&&precise.State.Count("future_stack")==-9007199254740992L);
+            check("persistence_save_float32_position_keeps_signed_zero",precise.State.Position.Items[0].AsDouble()==16777216.0&&precise.State.Position.Items[1].DoubleBits==0x8000000000000000UL);
             var legacy=importer.Import(Encoding.UTF8.GetBytes("{\"flags\":{\"golem_ruins\":false,\"cat_found\":false}}"));
             check("persistence_save_legacy_flags_and_atlas_distinct",legacy.State.Flag("golem_ruins")&&legacy.State.Get("kills_by").Require("golem").AsInt64()==1&&!legacy.State.Get("visited_maps").TryGet("ruins",out _)&&legacy.State.Get("talked").Items[0].AsString()=="muis_bos");
             check("persistence_save_new_adventure_flag_not_leaked",!importer.Import(Encoding.UTF8.GetBytes("{}")).State.Flag("op_new_adventure"));

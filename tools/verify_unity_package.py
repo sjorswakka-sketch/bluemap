@@ -118,6 +118,7 @@ PERSISTENCE_DETAIL_CHECKS = {
     "persistence_archive_traversal_rejected", "persistence_package_content_damage_rejected",
     "persistence_concurrent_source_change_rejected", "persistence_plain_kind_is_data",
     "persistence_malformed_json_rejected", "persistence_revisions_and_pointer_backups_retained",
+    "persistence_truncated_zip_does_not_crash_or_replace_active",
     "persistence_save_unknown_fields_retained", "persistence_save_legacy_flags_and_atlas_distinct",
     "persistence_save_new_adventure_flag_not_leaked", "persistence_save_global_meta_keys_merge_without_rewards",
     "persistence_save_malformed_imports_do_not_construct_partial_state",

@@ -38,7 +38,7 @@ class PersistenceSourceContractTests(unittest.TestCase):
         self.assertFalse(checked["enginesStarted"])
         self.assertFalse(checked["personalSavesUsed"])
         counts = {entry["kind"]: entry["coverage"] for entry in checked["oracles"]}
-        self.assertEqual(counts["save"]["saveScenarios"], 22)
+        self.assertEqual(counts["save"]["saveScenarios"], 24)
         self.assertEqual(counts["save"]["corruptSaves"], 6)
         self.assertGreater(counts["save"]["exactNumericValues"], 0)
         self.assertEqual(counts["settings"]["settingsScenarios"], 10)

@@ -235,8 +235,14 @@ namespace BlueMapMigration.Player
         {
             var keyboard = device as Keyboard;
             if (keyboard == null) return true;
-            return (!binding.shift || keyboard.shiftKey.isPressed) && (!binding.ctrl || keyboard.ctrlKey.isPressed)
-                && (!binding.alt || keyboard.altKey.isPressed) && (!binding.meta || keyboard.leftMetaKey.isPressed || keyboard.rightMetaKey.isPressed);
+            // Read the same current raw state as Strength. ButtonControl.isPressed may use
+            // a per-update press cache; imported chords must also work across several queued
+            // keyboard updates in one rendered frame and with either physical modifier side.
+            bool shift = keyboard.leftShiftKey.ReadUnprocessedValue() > .5f || keyboard.rightShiftKey.ReadUnprocessedValue() > .5f;
+            bool ctrl = keyboard.leftCtrlKey.ReadUnprocessedValue() > .5f || keyboard.rightCtrlKey.ReadUnprocessedValue() > .5f;
+            bool alt = keyboard.leftAltKey.ReadUnprocessedValue() > .5f || keyboard.rightAltKey.ReadUnprocessedValue() > .5f;
+            bool meta = keyboard.leftMetaKey.ReadUnprocessedValue() > .5f || keyboard.rightMetaKey.ReadUnprocessedValue() > .5f;
+            return (!binding.shift || shift) && (!binding.ctrl || ctrl) && (!binding.alt || alt) && (!binding.meta || meta);
         }
 
         Vector2 Vector(string left, string right, string up, string bottom, float deadzone)

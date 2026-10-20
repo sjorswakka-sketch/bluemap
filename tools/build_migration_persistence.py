@@ -40,6 +40,7 @@ SAVE_CASE_IDS = {
     "bounded_storage", "current_full_roundtrip",
     "house_valid_custom", "house_invalid_identifier", "yard_valid_paths", "yard_all_stations_stored",
     "raw_version_object", "numeric_conversion", "exact_day_boundary", "malformed_nested_values",
+    "json_integer_precision_positive", "json_integer_precision_negative",
 }
 SETTINGS_CASE_IDS = {
     "missing", "full_defaults", "legacy_conflicts", "physical_and_modifiers", "explicit_empty",

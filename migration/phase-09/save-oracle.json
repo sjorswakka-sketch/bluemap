@@ -3884,6 +3884,358 @@
       "id": "malformed_nested_values",
       "inputJson": "{\"appearance\":{\"eye_color\":true,\"hair_color\":\"4 styles\"},\"hero_xp\":\"777\",\"homestead\":{\"animal_due\":{\"future\":\"ignored\"},\"cells\":{\"05,29\":{\"crop\":\"mint\",\"established\":true,\"growth\":65.3,\"kind\":\"soil\"},\"garbage\":{\"kind\":\"channel\"}},\"jobs\":{\"wine_b\":{\"batches\":\"bad\",\"time\":null}}},\"personal_home\":{\"owned\":null},\"professions\":{\"cooldowns\":[],\"xp\":[]},\"stockroom\":{\"favorites\":{\"prof_log\":false},\"sort\":\"bad\"}}",
       "useLoadPosition": true
+    },
+    {
+      "expected": {
+        "achievements": [],
+        "appearance": {
+          "eye_color": 0,
+          "eyes": "rond",
+          "gender": "m",
+          "hair": "m_kort",
+          "hair_color": 2
+        },
+        "arena_records": {},
+        "boss_deaths": 0,
+        "clothing": {},
+        "coastal_storage": {},
+        "coins": 9007199254740992,
+        "day_count": 0,
+        "day_time": {
+          "$f64": "333333333333c33f"
+        },
+        "deaths": 0,
+        "equipment": {},
+        "flags": {},
+        "hero_xp": 0,
+        "homestead": {
+          "animal_due": {},
+          "cells": {},
+          "drops": {},
+          "honey": 0,
+          "honey_time": {
+            "$f64": "0000000000000000"
+          },
+          "jobs": {},
+          "wild_due": {
+            "$f64": "0000000000000000"
+          }
+        },
+        "hp": 5,
+        "inventory": {
+          "future_stack": 9007199254740992
+        },
+        "kills": 9007199254740992,
+        "kills_by": {},
+        "map": "forest",
+        "meer": {},
+        "ng_plus": 9007199254740992,
+        "personal_home": {
+          "floor": 0,
+          "layout": {
+            "bed": {
+              "cell": [
+                3,
+                3
+              ],
+              "kind": "bed",
+              "tint": 0
+            },
+            "rug:1": {
+              "cell": [
+                4,
+                6
+              ],
+              "kind": "rug",
+              "tint": 0
+            },
+            "shelf": {
+              "cell": [
+                8,
+                2
+              ],
+              "kind": "shelf",
+              "tint": 0
+            },
+            "table": {
+              "cell": [
+                4,
+                8
+              ],
+              "kind": "table",
+              "tint": 0
+            }
+          },
+          "light": 0,
+          "owned": {
+            "bed": 1,
+            "bench": 0,
+            "cabinet": 0,
+            "chair": 1,
+            "lamp": 1,
+            "plant_bloom": 0,
+            "plant_leaf": 1,
+            "rug": 1,
+            "shelf": 1,
+            "table": 1,
+            "trophy_coast": 0,
+            "trophy_forest": 0,
+            "trophy_swamp": 0
+          },
+          "wall": 0
+        },
+        "play_time": {
+          "$f64": "0000000000000000"
+        },
+        "pos": [
+          {
+            "$f64": "0000000000007041"
+          },
+          {
+            "$f64": "0000000000000080"
+          }
+        ],
+        "potions_drunk": 0,
+        "professions": {
+          "cooldowns": {},
+          "xp": {
+            "alchemy": 0,
+            "cooking": 0,
+            "fishing": 0,
+            "foraging": 0,
+            "mining": 0,
+            "smithing": 0,
+            "woodcutting": 0
+          }
+        },
+        "quests": {
+          "future_quest": {
+            "state": "active",
+            "step": 9007199254740992
+          }
+        },
+        "rolls": 0,
+        "stockroom": {
+          "favorites": {},
+          "home": {},
+          "sort": 0
+        },
+        "talked": [],
+        "version": 1,
+        "visited_maps": {
+          "forest": true
+        },
+        "weapon": "wood",
+        "yard": {
+          "extensions": [],
+          "fences": {},
+          "owned": {
+            "boards": 0,
+            "fence": 12,
+            "gate": 2,
+            "gravel": 24,
+            "stone": 0
+          },
+          "paths": {},
+          "stations": {
+            "compost": [
+              7,
+              15
+            ],
+            "hive": [
+              15,
+              32
+            ],
+            "wine_a": [
+              4,
+              25
+            ],
+            "wine_b": [
+              12,
+              25
+            ]
+          }
+        }
+      },
+      "id": "json_integer_precision_positive",
+      "inputJson": "{\"map\":\"forest\",\"coins\":9007199254740993,\"inventory\":{\"future_stack\":9007199254740993},\"quests\":{\"future_quest\":{\"state\":\"active\",\"step\":9007199254740993}},\"pos\":[16777217,-0],\"ng_plus\":9007199254740993,\"kills\":9007199254740993}",
+      "useLoadPosition": true
+    },
+    {
+      "expected": {
+        "achievements": [],
+        "appearance": {
+          "eye_color": 0,
+          "eyes": "rond",
+          "gender": "m",
+          "hair": "m_kort",
+          "hair_color": 2
+        },
+        "arena_records": {},
+        "boss_deaths": 0,
+        "clothing": {},
+        "coastal_storage": {},
+        "coins": -9007199254740992,
+        "day_count": 0,
+        "day_time": {
+          "$f64": "0000000000000000"
+        },
+        "deaths": 0,
+        "equipment": {},
+        "flags": {},
+        "hero_xp": 0,
+        "homestead": {
+          "animal_due": {},
+          "cells": {},
+          "drops": {},
+          "honey": 0,
+          "honey_time": {
+            "$f64": "0000000000000000"
+          },
+          "jobs": {},
+          "wild_due": {
+            "$f64": "0000000000000000"
+          }
+        },
+        "hp": 5,
+        "inventory": {
+          "future_stack": -9007199254740992
+        },
+        "kills": 0,
+        "kills_by": {},
+        "map": "village",
+        "meer": {},
+        "ng_plus": 0,
+        "personal_home": {
+          "floor": 0,
+          "layout": {
+            "bed": {
+              "cell": [
+                3,
+                3
+              ],
+              "kind": "bed",
+              "tint": 0
+            },
+            "rug:1": {
+              "cell": [
+                4,
+                6
+              ],
+              "kind": "rug",
+              "tint": 0
+            },
+            "shelf": {
+              "cell": [
+                8,
+                2
+              ],
+              "kind": "shelf",
+              "tint": 0
+            },
+            "table": {
+              "cell": [
+                4,
+                8
+              ],
+              "kind": "table",
+              "tint": 0
+            }
+          },
+          "light": 0,
+          "owned": {
+            "bed": 1,
+            "bench": 0,
+            "cabinet": 0,
+            "chair": 1,
+            "lamp": 1,
+            "plant_bloom": 0,
+            "plant_leaf": 1,
+            "rug": 1,
+            "shelf": 1,
+            "table": 1,
+            "trophy_coast": 0,
+            "trophy_forest": 0,
+            "trophy_swamp": 0
+          },
+          "wall": 0
+        },
+        "play_time": {
+          "$f64": "0000000000000000"
+        },
+        "pos": [
+          {
+            "$f64": "00000000000070c1"
+          },
+          {
+            "$f64": "0000000000000080"
+          }
+        ],
+        "potions_drunk": 0,
+        "professions": {
+          "cooldowns": {},
+          "xp": {
+            "alchemy": 0,
+            "cooking": 0,
+            "fishing": 0,
+            "foraging": 0,
+            "mining": 0,
+            "smithing": 0,
+            "woodcutting": 0
+          }
+        },
+        "quests": {
+          "future_quest": {
+            "state": "active",
+            "step": -9007199254740992
+          }
+        },
+        "rolls": -9007199254740992,
+        "stockroom": {
+          "favorites": {},
+          "home": {},
+          "sort": 0
+        },
+        "talked": [],
+        "version": 1,
+        "visited_maps": {
+          "village": true
+        },
+        "weapon": "wood",
+        "yard": {
+          "extensions": [],
+          "fences": {},
+          "owned": {
+            "boards": 0,
+            "fence": 12,
+            "gate": 2,
+            "gravel": 24,
+            "stone": 0
+          },
+          "paths": {},
+          "stations": {
+            "compost": [
+              7,
+              15
+            ],
+            "hive": [
+              15,
+              32
+            ],
+            "wine_a": [
+              4,
+              25
+            ],
+            "wine_b": [
+              12,
+              25
+            ]
+          }
+        }
+      },
+      "id": "json_integer_precision_negative",
+      "inputJson": "{\"coins\":-9007199254740993,\"inventory\":{\"future_stack\":-9007199254740993},\"quests\":{\"future_quest\":{\"state\":\"active\",\"step\":-9007199254740993}},\"pos\":[-16777217,-0.0],\"day_time\":-9007199254740993,\"rolls\":-9007199254740993}",
+      "useLoadPosition": true
     }
   ],
   "corrupt": [

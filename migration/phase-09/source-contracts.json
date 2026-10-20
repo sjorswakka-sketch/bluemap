@@ -86,15 +86,15 @@
   "enginesStarted": false,
   "oracles": [
     {
-      "bytes": 261392,
+      "bytes": 269695,
       "coverage": {
         "corruptSaves": 6,
-        "exactNumericValues": 147,
-        "saveScenarios": 22
+        "exactNumericValues": 159,
+        "saveScenarios": 24
       },
       "kind": "save",
       "resourcePath": "unity/Assets/BlueMapPersistence/Resources/BlueMapSaveOracle.json",
-      "sha256": "00971874cff23d5f2edd5517285160c2da2cbb36a1e30b0ca63c82ffc7f912ca",
+      "sha256": "b6e7057f26aee46786b18a6dec02dc0dfb009df67dc255f76c1bb8dced437ba6",
       "sourcePath": "migration/phase-09/save-oracle.json"
     },
     {
@@ -159,6 +159,7 @@
     "persistence_source_target_separated",
     "persistence_stale_writer_rejected",
     "persistence_store_checks_ran",
+    "persistence_truncated_zip_does_not_crash_or_replace_active",
     "persistence_unknown_fields_lossless"
   ],
   "schema": "bluemap.persistence.source-contracts.v1",

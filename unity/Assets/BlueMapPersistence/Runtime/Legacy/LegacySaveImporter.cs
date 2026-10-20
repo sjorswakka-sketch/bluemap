@@ -40,8 +40,12 @@ namespace BlueMapMigration.Persistence
             string text;
             try { text = new UTF8Encoding(false, true).GetString(utf8); } catch (DecoderFallbackException e) { throw new FormatException("Save is not UTF-8.", e); }
             if (text.Length > 0 && text[0] == '\uFEFF') text = text.Substring(1);
-            var raw = FoundationJson.ParsePlain(text);
-            if (!Obj(raw)) throw new FormatException("Save root must be an object.");
+            var preservedRaw = FoundationJson.ParsePlain(text);
+            if (!Obj(preservedRaw)) throw new FormatException("Save root must be an object.");
+            // Godot's JSON reader produces binary64 for every JSON number.
+            // Preserve the original int64/lexical tree separately; use the source
+            // numeric semantics only in the gameplay projection, never ConfigFile.
+            var raw = SourceJsonNumbers(preservedRaw);
             var warnings = new List<string>();
             var values = new Dictionary<string, FoundationValue>(StringComparer.Ordinal);
             values["version"] = I(1);
@@ -112,7 +116,16 @@ namespace BlueMapMigration.Persistence
             foreach(var pair in raw.Entries)if(!values.ContainsKey(pair.Key.AsString()))warnings.Add("Retained unknown source field: "+pair.Key.AsString());
             if(raw.TryGet("version",out var version) && (!Numeric(version)||version.AsDouble()!=1))warnings.Add("Original loader ignores this version; raw source version retained.");
             var stateOut=new FoundationGameState(O(values)){UseLoadPosition=true,SpawnName="start",InGame=false};
-            return new LegacySaveImport(raw,stateOut,warnings);
+            return new LegacySaveImport(preservedRaw,stateOut,warnings);
+        }
+        private static FoundationValue SourceJsonNumbers(FoundationValue value)
+        {
+            if(Numeric(value))return N(value.AsDouble());
+            if(value.Kind=="array")
+            {var items=new List<FoundationValue>();foreach(var item in value.Items)items.Add(SourceJsonNumbers(item));return FoundationValue.Array(items);}
+            if(Obj(value))
+            {var fields=new Dictionary<string,FoundationValue>(StringComparer.Ordinal);foreach(var pair in value.Entries)fields[pair.Key.AsString()]=SourceJsonNumbers(pair.Value);return O(fields);}
+            return value;
         }
         public static long NormalizeHeroXp(FoundationValue raw)=> (long)Bound(raw,0,2250);
         public FoundationValue NormalizeOwned(FoundationValue raw)
