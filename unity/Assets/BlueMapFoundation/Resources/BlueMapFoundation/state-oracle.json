@@ -4,171 +4,216 @@
       "before": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "ended": false,
         "external_paused": false,
         "in_game": false,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": false,
         "ui_open": false
       },
       "delta": 12.0,
+      "delta_bits_le": "0000000000002840",
       "expected": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "input_locked": false,
-        "play_time": 17.5
+        "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140"
       }
     },
     {
       "before": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "ended": false,
         "external_paused": false,
         "in_game": true,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": false,
         "ui_open": false
       },
       "delta": 24.0,
+      "delta_bits_le": "0000000000003840",
       "expected": {
         "day_count": 3,
         "day_time": 0.2,
+        "day_time_bits_le": "9a9999999999c93f",
         "input_locked": false,
-        "play_time": 41.5
+        "play_time": 41.5,
+        "play_time_bits_le": "0000000000c04440"
       }
     },
     {
       "before": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "ended": false,
         "external_paused": false,
         "in_game": true,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": false,
         "ui_open": true
       },
       "delta": 12.0,
+      "delta_bits_le": "0000000000002840",
       "expected": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "input_locked": true,
-        "play_time": 17.5
+        "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140"
       }
     },
     {
       "before": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "ended": false,
         "external_paused": true,
         "in_game": true,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": false,
         "ui_open": false
       },
       "delta": 12.0,
+      "delta_bits_le": "0000000000002840",
       "expected": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "input_locked": false,
-        "play_time": 17.5
+        "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140"
       }
     },
     {
       "before": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "ended": true,
         "external_paused": false,
         "in_game": true,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": false,
         "ui_open": false
       },
       "delta": 12.0,
+      "delta_bits_le": "0000000000002840",
       "expected": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "input_locked": true,
-        "play_time": 17.5
+        "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140"
       }
     },
     {
       "before": {
         "day_count": 3,
         "day_time": 0.15,
+        "day_time_bits_le": "333333333333c33f",
         "ended": false,
         "external_paused": false,
         "in_game": true,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": true,
         "ui_open": false
       },
       "delta": 12.0,
+      "delta_bits_le": "0000000000002840",
       "expected": {
         "day_count": 3,
         "day_time": 0.175,
+        "day_time_bits_le": "666666666666c63f",
         "input_locked": true,
-        "play_time": 29.5
+        "play_time": 29.5,
+        "play_time_bits_le": "0000000000803d40"
       }
     },
     {
       "before": {
         "day_count": 3,
         "day_time": 0.9,
+        "day_time_bits_le": "cdccccccccccec3f",
         "ended": false,
         "external_paused": false,
         "in_game": true,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": false,
         "ui_open": false
       },
       "delta": 48.0,
+      "delta_bits_le": "0000000000004840",
       "expected": {
         "day_count": 4,
         "day_time": 0.0,
+        "day_time_bits_le": "0000000000000000",
         "input_locked": false,
-        "play_time": 65.5
+        "play_time": 65.5,
+        "play_time_bits_le": "0000000000605040"
       }
     },
     {
       "before": {
         "day_count": 3,
         "day_time": 0.9,
+        "day_time_bits_le": "cdccccccccccec3f",
         "ended": false,
         "external_paused": false,
         "in_game": true,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": false,
         "ui_open": false
       },
       "delta": 960.0,
+      "delta_bits_le": "0000000000008e40",
       "expected": {
         "day_count": 4,
         "day_time": 0.9,
+        "day_time_bits_le": "ccccccccccccec3f",
         "input_locked": false,
-        "play_time": 977.5
+        "play_time": 977.5,
+        "play_time_bits_le": "00000000008c8e40"
       }
     },
     {
       "before": {
         "day_count": 3,
         "day_time": 0.5,
+        "day_time_bits_le": "000000000000e03f",
         "ended": false,
         "external_paused": false,
         "in_game": true,
         "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140",
         "transitioning": false,
         "ui_open": false
       },
       "delta": 0.0,
+      "delta_bits_le": "0000000000000000",
       "expected": {
         "day_count": 3,
         "day_time": 0.5,
+        "day_time_bits_le": "000000000000e03f",
         "input_locked": false,
-        "play_time": 17.5
+        "play_time": 17.5,
+        "play_time_bits_le": "0000000000803140"
       }
     }
   ],
@@ -390,6 +435,7 @@
     }
   ],
   "engineVersion": "4.4.1-stable (official)",
+  "float64Encoding": "ieee754-binary64-little-endian-hex",
   "personalSavesUsed": false,
   "schema": "bluemap.foundation.source-oracle.v1",
   "sourceMethods": [

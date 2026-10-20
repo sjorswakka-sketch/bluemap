@@ -62,7 +62,7 @@ namespace BlueMapMigration.Foundation
             Label("49.758 tegels, dezelfde ruimte", 640, 239, 15, new Color32(160,181,177,255));
             Label("Voortgang blijft bij gebiedswissels.", 640, 283, 15, new Color32(232,237,223,255));
             Label("Pauze stopt de actieve speeltijd.", 640, 315, 15, new Color32(232,237,223,255));
-            status = Label("", 640, 366, 17, new Color32(225,199,139,255));
+            status = Label("", 640, 366, 16, new Color32(225,199,139,255));
             Label("Terreinweergave als controle.", 640, 466, 14, new Color32(160,181,177,255));
             Label("Objecten, speler en gameplay volgen", 640, 493, 14, new Color32(160,181,177,255));
             Label("in de volgende migratiefases.", 640, 518, 14, new Color32(160,181,177,255));
@@ -83,8 +83,8 @@ namespace BlueMapMigration.Foundation
         }
         private void RefreshStatus()
         {
-            if (status != null) status.text = "Speeltijd: " + Session.State.PlayTime.ToString("F1", System.Globalization.CultureInfo.InvariantCulture) + " s\n\n"
-                + (Session.State.Paused ? "Gepauzeerd" : "Actief") + "\n\nGebied " + (selected + 1) + " / " + maps.Length;
+            if (status != null) status.text = "Speeltijd: " + Session.State.PlayTime.ToString("F1", System.Globalization.CultureInfo.InvariantCulture) + " s\n"
+                + (Session.State.Paused ? "Gepauzeerd" : "Actief") + "\nGebied " + (selected + 1) + " / " + maps.Length;
         }
         private TextMesh Label(string value, int x, int y, int size, Color color)
         {

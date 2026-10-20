@@ -180,7 +180,7 @@ namespace BlueMapMigration.Foundation
             if (expected <= 0 || expected > 128 * 1024 * 1024) throw new FormatException("Foundation document exceeds decompression bound.");
             byte[] data = Inflate(compressed, expected);
             if (Hash(data) != row.Require("sha256").AsString()) throw new FormatException("Foundation source SHA256 mismatch: " + sourcePath);
-            return FoundationJson.Parse(new UTF8Encoding(false, true).GetString(data));
+            return FoundationJson.ParseDocument(new UTF8Encoding(false, true).GetString(data), sourcePath);
         }
         public static byte[] Inflate(byte[] compressed, int expectedBytes)
         {

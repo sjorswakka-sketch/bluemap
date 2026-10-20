@@ -1781,9 +1781,9 @@
   "sourceFiles": 221,
   "sourceYAxis": "down",
   "stateOracle": {
-    "bytes": 8868,
+    "bytes": 11060,
     "resourcePath": "BlueMapFoundation/state-oracle",
-    "sha256": "fe08167747b0a3641a986ec43ec259c3e42a08c1edebd10cdd6cfa228110dc6d",
+    "sha256": "c9a5b178141edfd542ff6d0c5fb03d17f03f62b4576d8629bc0ce0d69a540143",
     "sourcePath": "migration/phase-07/state-oracle.json"
   },
   "tilePixels": 32,

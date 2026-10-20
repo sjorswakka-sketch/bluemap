@@ -4,6 +4,9 @@ extends SceneTree
 func _initialize() -> void:
 	_run.call_deferred()
 
+func _float64_le(value: float) -> String:
+	return PackedFloat64Array([value]).to_byte_array().hex_encode()
+
 func _run() -> void:
 	var output := ""
 	var args := OS.get_cmdline_user_args()
@@ -11,6 +14,8 @@ func _run() -> void:
 		if args[index] == "--output" and index + 1 < args.size(): output = args[index + 1]
 	if not OS.get_user_data_dir().get_file().begins_with("Bluemap-Codex-Tests-") or output == "" or FileAccess.file_exists(output):
 		push_error("Unverified isolated foundation export"); quit(1); return
+	if _float64_le(1.0) != "000000000000f03f":
+		push_error("Foundation oracle requires little-endian Float64 bytes"); quit(1); return
 	var gs := root.get_node("GameState")
 	gs.set_process(false)
 	gs.new_game()
@@ -36,8 +41,9 @@ func _run() -> void:
 		gs.set_ui("oracle",fixture.ui_open)
 		paused=fixture.ui_open or fixture.external_paused
 		var before: Dictionary=fixture.duplicate();before.erase("delta");before["play_time"]=gs.play_time;before["day_count"]=gs.day_count
+		before["play_time_bits_le"]=_float64_le(gs.play_time);before["day_time_bits_le"]=_float64_le(gs.day_time)
 		gs._process(fixture.delta)
-		clocks.append({"before":before,"delta":fixture.delta,"expected":{"play_time":gs.play_time,"day_time":gs.day_time,"day_count":gs.day_count,"input_locked":gs.input_locked()}})
+		clocks.append({"before":before,"delta":fixture.delta,"delta_bits_le":_float64_le(fixture.delta),"expected":{"play_time":gs.play_time,"day_time":gs.day_time,"play_time_bits_le":_float64_le(gs.play_time),"day_time_bits_le":_float64_le(gs.day_time),"day_count":gs.day_count,"input_locked":gs.input_locked()}})
 	paused=false;gs.new_game();gs.set_process(false)
 	var player: Node2D=load("res://scripts/entities/player.gd").new()
 	player.process_mode=Node.PROCESS_MODE_DISABLED;root.add_child(player)
@@ -59,7 +65,7 @@ func _run() -> void:
 		var entry:=fixture.duplicate(true);entry["expected"]=str(player.target.name) if player.target else "";targeting.append(entry)
 		for node: Node in nodes: node.free()
 	gs.set_ui("oracle",false);player.free()
-	var report: Dictionary={"schema":"bluemap.foundation.source-oracle.v1","engineVersion":Engine.get_version_info().string,"conditionState":condition_state,"conditions":conditions,"clocks":clocks,"targeting":targeting,"personalSavesUsed":false,"sourceMethods":["scripts/core/game_state.gd::check","scripts/core/game_state.gd::_process","scripts/core/game_state.gd::input_locked","scripts/entities/player.gd::_update_target"]}
+	var report: Dictionary={"schema":"bluemap.foundation.source-oracle.v1","engineVersion":Engine.get_version_info().string,"float64Encoding":"ieee754-binary64-little-endian-hex","conditionState":condition_state,"conditions":conditions,"clocks":clocks,"targeting":targeting,"personalSavesUsed":false,"sourceMethods":["scripts/core/game_state.gd::check","scripts/core/game_state.gd::_process","scripts/core/game_state.gd::input_locked","scripts/entities/player.gd::_update_target"]}
 	var file:=FileAccess.open(output,FileAccess.WRITE)
 	if file==null:push_error("Cannot write foundation oracle");quit(1);return
 	file.store_string(JSON.stringify(report,"",true,true)+"\n");file.close()

@@ -1,6 +1,6 @@
 # Phase 7: immutable world and coordinate foundation
 
-`tools/build_migration_foundation.py` packages the existing phase 4 world and phase 5 portable data for Unity. It does not regenerate maps, execute the archived GDScript, reinterpret saved identities, open personal saves, or modify the Godot game.
+`tools/build_migration_foundation.py` packages the existing phase 4 portable data and phase 5 world export for Unity. It does not regenerate maps, execute the archived GDScript, reinterpret saved identities, open personal saves, or modify the Godot game.
 
 The 221 frozen JSON source documents comprise the world index, 162 map snapshots, shared tile definitions, the portable manifest and its 55 documents, and phase 5 runtime identities. Together they contain **335,783,962 bytes** in their committed LF text form; deterministic gzip stores these as **6,864,062 bytes**. Compression retains every source byte. Windows CRLF checkout endings are normalized back to the already hashed Git LF form before validation, as in the preceding migration phases. The original files remain in the repository.
 

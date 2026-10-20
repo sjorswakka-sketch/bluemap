@@ -139,6 +139,15 @@ namespace BlueMapMigration.Foundation
         }
         public static void VerifyOracle(FoundationValue oracle, Action<string, bool> check)
         {
+            if (oracle.Require("float64Encoding").AsString() != "ieee754-binary64-little-endian-hex") throw new FormatException("Unsupported source Float64 encoding");
+            bool malformedBitsRejected = true;
+            foreach (var malformed in new[] { "", "000000000000000", "00000000000000000", "000000000000000g", "000000000000F03F", "000000000000f07f", "000000000000f87f" })
+            {
+                bool rejected = false;
+                try { ReadDouble(FoundationJson.Parse("{\"value_bits_le\":\"" + malformed + "\"}"), "value"); } catch (FormatException) { rejected = true; }
+                malformedBitsRejected &= rejected;
+            }
+            check("foundation_source_float64_oracle_strict", malformedBitsRejected && BitConverter.DoubleToInt64Bits(ReadDouble(FoundationJson.Parse("{\"value_bits_le\":\"0000000000000080\"}"), "value")) == Int64.MinValue);
             var rulesState = new FoundationGameState(oracle.Require("conditionState"));
             var conditions = new FoundationConditionRegistry(rulesState); int cases = 0;
             foreach (var entry in oracle.Require("conditions").Items)
@@ -150,11 +159,11 @@ namespace BlueMapMigration.Foundation
             foreach (var entry in oracle.Require("clocks").Items)
             {
                 var state = new FoundationGameState(); var before = entry.Require("before"); var expected = entry.Require("expected");
-                state.PlayTime = before.Require("play_time").AsDouble(); state.DayTime = before.Require("day_time").AsDouble(); state.DayCount = before.Require("day_count").AsInt64();
+                state.PlayTime = ReadDouble(before, "play_time"); state.DayTime = ReadDouble(before, "day_time"); state.DayCount = before.Require("day_count").AsInt64();
                 state.InGame = before.Require("in_game").AsBool(); state.Ended = before.Require("ended").AsBool(); state.Transitioning = before.Require("transitioning").AsBool();
                 state.SetUi("oracle", before.Require("ui_open").AsBool());
-                new FoundationClock(state).Tick(entry.Require("delta").AsDouble(), before.Require("external_paused").AsBool());
-                check("foundation_source_clock_" + (++clocks), BitConverter.DoubleToInt64Bits(state.PlayTime) == BitConverter.DoubleToInt64Bits(expected.Require("play_time").AsDouble()) && BitConverter.DoubleToInt64Bits(state.DayTime) == BitConverter.DoubleToInt64Bits(expected.Require("day_time").AsDouble()) && state.DayCount == expected.Require("day_count").AsInt64() && state.InputLocked == expected.Require("input_locked").AsBool());
+                using (var clock = new FoundationClock(state)) clock.Tick(ReadDouble(entry, "delta"), before.Require("external_paused").AsBool());
+                check("foundation_source_clock_" + (++clocks), BitConverter.DoubleToInt64Bits(state.PlayTime) == BitConverter.DoubleToInt64Bits(ReadDouble(expected, "play_time")) && BitConverter.DoubleToInt64Bits(state.DayTime) == BitConverter.DoubleToInt64Bits(ReadDouble(expected, "day_time")) && state.DayCount == expected.Require("day_count").AsInt64() && state.InputLocked == expected.Require("input_locked").AsBool());
             }
             int targets = 0;
             foreach (var entry in oracle.Require("targeting").Items)
@@ -166,6 +175,26 @@ namespace BlueMapMigration.Foundation
                 check("foundation_source_target_" + (++targets), (selected?.Id ?? "") == entry.Require("expected").AsString());
             }
             check("foundation_source_oracle_count", cases >= 20 && clocks >= 8 && targets >= 5);
+        }
+        private static double ReadDouble(FoundationValue container, string name)
+        {
+            string text = container.Require(name + "_bits_le").AsString();
+            if (text.Length != 16) throw new FormatException("Source Float64 requires exactly eight little-endian bytes: " + name);
+            ulong bits = 0;
+            for (int index = 0; index < 8; index++)
+            {
+                int high = HexNibble(text[index * 2]), low = HexNibble(text[index * 2 + 1]);
+                bits |= (ulong)((high << 4) | low) << (index * 8);
+            }
+            double value = BitConverter.Int64BitsToDouble(unchecked((long)bits));
+            if (Double.IsNaN(value) || Double.IsInfinity(value)) throw new FormatException("Source Float64 must be finite: " + name);
+            return value;
+        }
+        private static int HexNibble(char value)
+        {
+            if (value >= '0' && value <= '9') return value - '0';
+            if (value >= 'a' && value <= 'f') return value - 'a' + 10;
+            throw new FormatException("Source Float64 bytes require lowercase hexadecimal digits");
         }
     }
 }

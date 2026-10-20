@@ -55,6 +55,8 @@ PRESENTATION_CHECKS = {
 }
 FOUNDATION_CHECKS = {"foundation_runtime_verified"}
 FOUNDATION_DETAIL_CHECKS = {
+    "foundation_metadata_kind_document_context_lossless",
+    "foundation_source_float64_oracle_strict",
     "foundation_world_checks_ran", "foundation_state_checks_ran", "foundation_session_checks_ran",
     "foundation_original_godot_oracle_available", "foundation_source_oracle_count",
     "foundation_world_37_maps_49758_tiles", "foundation_world_980_stable_slots",

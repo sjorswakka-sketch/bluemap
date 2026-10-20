@@ -53,11 +53,31 @@ namespace BlueMapMigration.Foundation
                 if (!sourcePath.StartsWith("migration/world/snapshots/", StringComparison.Ordinal) && sourcePath != "migration/world/index.json" && sourcePath != "migration/world/tile-set.json")
                 { repository.ReadDocument(sourcePath); sourceDocuments++; }
             check("foundation_all_221_source_documents_native_decoded", sourceDocuments + snapshotsDecoded + 2 == 221);
+            var identityMetadata = repository.ReadDocument("migration/portable/identity.json");
+            var declaration = identityMetadata.Require("declarations").Items[0];
+            var ruleMetadata = repository.ReadDocument("migration/portable/rules.json");
+            var invocation = ruleMetadata.Require("usage").Require("invocations").Items[0];
+            bool metadataContext = identityMetadata.Require("declarations").Items.Count == 377
+                && declaration.Kind == "object" && declaration.Entries.Count == 5
+                && declaration.Require("kind").String == "dictionary"
+                && declaration.Require("namespace").Items[1].String == "res://scripts/core/appearance.gd"
+                && declaration.Require("source").Require("constant").String == "DEFAULT"
+                && declaration.Require("entries").Items[0].Require("id").String == "gender"
+                && declaration.Require("declarationFingerprint").String == "db35d2f9ff65b7936c96003069ff4ee337afb954491cb3a8ea8b83475a37921a"
+                && invocation.Kind == "object" && invocation.Require("kind").String == "conditions"
+                && invocation.Require("invocation").Items[0].String == "kinds_killed"
+                && FoundationJson.ParseDocument(identityMetadata.CanonicalJson, "migration/portable/identity.json").CanonicalJson == identityMetadata.CanonicalJson
+                && FoundationJson.ParseDocument(ruleMetadata.CanonicalJson, "migration/portable/rules.json").CanonicalJson == ruleMetadata.CanonicalJson;
+            check("foundation_metadata_kind_document_context_lossless", metadataContext);
             var numbers = FoundationJson.Parse("{\"kind\":\"array\",\"values\":[{\"kind\":\"int\",\"value\":\"9223372036854775807\"},{\"kind\":\"int\",\"value\":\"9007199254740993\"},{\"kind\":\"float\",\"value\":\"-0.0\"},{\"kind\":\"float\",\"value\":\"0.10000000000000002\"}]}");
             check("foundation_variant_int64_and_double_bits", numbers.Items[0].Int64 == long.MaxValue && numbers.Items[1].Int64 == 9007199254740993L && numbers.Items[2].DoubleBits == 0x8000000000000000UL && numbers.Items[3].DoubleBits == unchecked((ulong)BitConverter.DoubleToInt64Bits(0.10000000000000002)) && FoundationJson.Parse(numbers.CanonicalJson).CanonicalJson == numbers.CanonicalJson);
             bool rejects = Rejects(() => FoundationJson.Parse("{\"kind\":\"future_engine_object\"}"))
                 && Rejects(() => FoundationJson.Parse("{\"a\":1,\"a\":2}"))
                 && Rejects(() => FoundationJson.Parse("{\"kind\":\"int\",\"value\":\"9223372036854775808\"}"))
+                && Rejects(() => FoundationJson.Parse("{\"kind\":\"int\",\"value\":\"3\",\"future\":4}"))
+                && Rejects(() => FoundationJson.Parse("{\"kind\":\"array\",\"values\":[{\"kind\":\"future_engine_object\"}]}"))
+                && Rejects(() => FoundationJson.ParseDocument(identityMetadata.CanonicalJson, "migration/portable/catalogs/identity.json"))
+                && Rejects(() => FoundationJson.ParseDocument("{\"schema\":\"bluemap.migration.identity.v2\",\"schemaVersion\":1,\"phase\":4}", "migration/portable/identity.json"))
                 && Rejects(() => FoundationJson.Parse("{\"kind\":\"vector\",\"type\":\"Vector2i\",\"values\":[{\"kind\":\"float\",\"value\":\"1.0\"},{\"kind\":\"int\",\"value\":\"2\"}]}"))
                 && Rejects(() => FoundationJson.Parse("\"\\ud800\""));
             check("foundation_variant_unknown_and_malformed_fail_closed", rejects);

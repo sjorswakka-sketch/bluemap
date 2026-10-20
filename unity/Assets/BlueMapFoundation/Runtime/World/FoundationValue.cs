@@ -96,9 +96,30 @@ namespace BlueMapMigration.Foundation
         private const int MaxDepth = 128, MaxNodes = 2000000, MaxString = 1000000;
         public static FoundationValue Parse(string json)
         {
+            return Decode(ParseRaw(json), 0);
+        }
+        // These two frozen phase-4 documents are ordinary metadata JSON. Their
+        // authored "kind" fields describe declarations, resources and rule use;
+        // they are not the typed transport discriminator. Select by document
+        // identity, never by a failed Variant decode or a guessed object shape.
+        public static FoundationValue ParseDocument(string json, string sourcePath)
+        {
+            if (sourcePath != "migration/portable/identity.json" && sourcePath != "migration/portable/rules.json") return Parse(json);
+            var raw = ParseRaw(json);
+            if (raw.Kind != "object" || raw.Require("phase").AsInt64() != 4 || raw.Require("schemaVersion").AsInt64() != 1)
+                throw new FormatException("Unknown phase-4 metadata document schema.");
+            if (sourcePath == "migration/portable/identity.json" && raw.Require("schema").AsString() != "bluemap.migration.identity.v1")
+                throw new FormatException("Unknown phase-4 identity document schema.");
+            if (sourcePath == "migration/portable/rules.json"
+                && (raw.Require("actions").Kind != "array" || raw.Require("conditions").Kind != "array" || raw.Require("usage").Kind != "object"))
+                throw new FormatException("Invalid phase-4 rule metadata document.");
+            return raw;
+        }
+        private static FoundationValue ParseRaw(string json)
+        {
             if (json == null || json.Length > 128 * 1024 * 1024) throw new FormatException("Foundation JSON size exceeded.");
             var parser = new Parser(json); var raw = parser.Read(0); parser.End();
-            return Decode(raw, 0);
+            return raw;
         }
         private static readonly HashSet<string> Types = new HashSet<string>(StringComparer.Ordinal)
         {

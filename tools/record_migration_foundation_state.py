@@ -5,11 +5,13 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
 import shutil
 import subprocess
+import struct
 import sys
 import tempfile
 import uuid
@@ -18,6 +20,25 @@ from migration_data_codec import canonical_bytes
 from record_migration_world import ENGINE_VERSION, ERROR, fingerprint, no_symlink
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def validate_float64_bits(data):
+    """JSON decimal strings are readable annotations; original Float64 bytes are authoritative."""
+    if data.get('float64Encoding') != 'ieee754-binary64-little-endian-hex':
+        raise ValueError('Missing exact source Float64 encoding')
+    count = 0
+    for entry in data['clocks']:
+        values = [(entry, 'delta')]
+        values += [(entry[side], name) for side in ('before', 'expected') for name in ('play_time', 'day_time')]
+        for container, name in values:
+            bits = container.get(name + '_bits_le')
+            if not isinstance(bits, str) or re.fullmatch(r'[0-9a-f]{16}', bits) is None:
+                raise ValueError('Malformed source Float64 bytes: ' + name)
+            value = struct.unpack('<d', bytes.fromhex(bits))[0]
+            if not math.isfinite(value):
+                raise ValueError('Non-finite source Float64 bytes: ' + name)
+            count += 1
+    return count
 
 
 def main():
@@ -86,6 +107,7 @@ def main():
         data = json.loads(outputs[0])
         if len(data['conditions']) != 26 or len(data['clocks']) != 9 or len(data['targeting']) != 6:
             raise ValueError('Oracle coverage changed')
+        float64_values = validate_float64_bits(data)
         if args.check:
             if args.output.read_bytes().replace(b'\r\n', b'\n') != outputs[0]:
                 raise ValueError('Fresh original methods disagree with checked-in state oracle')
@@ -98,6 +120,7 @@ def main():
         receipt = {'schema': 1, 'success': True, 'engineVersion': ENGINE_VERSION, 'checkOnly': args.check,
                    'freshProcessRuns': 2, 'sourceUnchanged': True, 'personalSavesUsed': False,
                    'conditions': len(data['conditions']), 'clocks': len(data['clocks']), 'targeting': len(data['targeting']),
+                   'exactFloat64Values': float64_values,
                    'sha256': hashlib.sha256(outputs[0]).hexdigest(),
                    'sourceHashes': {name: digest for name, digest in before.items() if name in ['scripts/core/game_state.gd', 'scripts/core/daynight.gd', 'scripts/entities/player.gd']}}
         (args.evidence_dir / 'receipt.json').write_bytes(canonical_bytes(receipt))
