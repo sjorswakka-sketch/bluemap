@@ -73,3 +73,5 @@ alle fysieke controllermerken, kabels, draadloze verbindingen of knoppen heeft
 doorgespeeld. De volledige gameplay-uitvoering van alle behouden acties en de
 uiteindelijke menu-uitstraling blijven bij de latere betreffende fases.
 
+
+De native vergelijking van berekende stickvectoren gebruikt een expliciete vectorafstand kleiner dan 0,00001 (kwadratische afstand kleiner dan 1e-10). Dit is een kleine, benoemde Float32-rekenmarge; de bronwaarden, 86 bindings en Resources-kopie blijven exact behouden. De afzonderlijke bewegingsoracle vergelijkt haar Float64- en Float32-bits zonder tolerantie.
