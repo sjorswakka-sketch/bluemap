@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "success": true,
+  "documentsVerified": 221,
+  "sourceBytes": 335783962,
+  "gzipBytes": 6864062,
+  "originalSourceBytesExact": true,
+  "stateOracleBytesExact": true,
+  "stateOracleSha256": "c9a5b178141edfd542ff6d0c5fb03d17f03f62b4576d8629bc0ce0d69a540143",
+  "manifestSha256": "0dd64f8a2e6f0d7f65e0ab1430b95fdd6c70a413c0ae16475cb4a0168eca6b21",
+  "personalSavesUsed": false,
+  "engineExecuted": false
+}

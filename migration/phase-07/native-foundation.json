@@ -1,0 +1,493 @@
+{
+    "schemaVersion": 1,
+    "success": true,
+    "checks": [
+        {
+            "name": "foundation_world_37_maps_49758_tiles",
+            "passed": true
+        },
+        {
+            "name": "foundation_world_980_stable_slots",
+            "passed": true
+        },
+        {
+            "name": "foundation_world_arrival_coordinate_roundtrip",
+            "passed": true
+        },
+        {
+            "name": "foundation_world_atomic_failed_and_staged_load",
+            "passed": true
+        },
+        {
+            "name": "foundation_world_162_scenarios_addressable",
+            "passed": true
+        },
+        {
+            "name": "foundation_all_221_source_documents_native_decoded",
+            "passed": true
+        },
+        {
+            "name": "foundation_metadata_kind_document_context_lossless",
+            "passed": true
+        },
+        {
+            "name": "foundation_variant_int64_and_double_bits",
+            "passed": true
+        },
+        {
+            "name": "foundation_variant_unknown_and_malformed_fail_closed",
+            "passed": true
+        },
+        {
+            "name": "foundation_gzip_exact_decompression_bound",
+            "passed": true
+        },
+        {
+            "name": "foundation_32px_rect_pivot_and_axis_adapter",
+            "passed": true
+        },
+        {
+            "name": "foundation_native_physics_layers_and_player_foot",
+            "passed": true
+        },
+        {
+            "name": "foundation_native_godot_or_masks_real_contacts",
+            "passed": true
+        },
+        {
+            "name": "foundation_invalid_collider_has_no_partial_mutation",
+            "passed": true
+        },
+        {
+            "name": "foundation_world_checks_ran",
+            "passed": true
+        },
+        {
+            "name": "foundation_state_all_34_save_fields",
+            "passed": true
+        },
+        {
+            "name": "foundation_state_new_game_defaults",
+            "passed": true
+        },
+        {
+            "name": "foundation_state_float_kind_and_negative_zero",
+            "passed": true
+        },
+        {
+            "name": "foundation_state_snapshot_immutable",
+            "passed": true
+        },
+        {
+            "name": "foundation_state_unknown_fields_lossless",
+            "passed": true
+        },
+        {
+            "name": "foundation_state_partial_source_not_filled",
+            "passed": true
+        },
+        {
+            "name": "foundation_state_non_dictionary_rejected",
+            "passed": true
+        },
+        {
+            "name": "foundation_ui_owners_independent",
+            "passed": true
+        },
+        {
+            "name": "foundation_ui_idempotent_and_resume",
+            "passed": true
+        },
+        {
+            "name": "foundation_transition_locks_input_without_pause",
+            "passed": true
+        },
+        {
+            "name": "foundation_ending_locks_input",
+            "passed": true
+        },
+        {
+            "name": "foundation_events_reentrant_order_and_disposal",
+            "passed": true
+        },
+        {
+            "name": "foundation_events_errors_visible_other_owners_called",
+            "passed": true
+        },
+        {
+            "name": "foundation_events_subscribe_during_dispatch",
+            "passed": true
+        },
+        {
+            "name": "foundation_events_hub_disposal_cancels_pending",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_title_does_not_advance",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_active_time_and_day",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_ui_pause",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_external_pause",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_transition_alone_keeps_source_time",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_ended_does_not_advance",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_large_delta_source_single_day",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_achievement_checks_even_when_paused",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_invalid_delta_rejected",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_items_mark_achievements_dirty",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_time_writes_do_not_mark_achievements",
+            "passed": true
+        },
+        {
+            "name": "foundation_clock_disposal_stops_clock",
+            "passed": true
+        },
+        {
+            "name": "foundation_conditions_empty_all_true",
+            "passed": true
+        },
+        {
+            "name": "foundation_conditions_invalid_payload_rejected",
+            "passed": true
+        },
+        {
+            "name": "foundation_conditions_unknown_is_false",
+            "passed": true
+        },
+        {
+            "name": "foundation_conditions_explicit_extension_handler",
+            "passed": true
+        },
+        {
+            "name": "foundation_actions_set_clear_flag",
+            "passed": true
+        },
+        {
+            "name": "foundation_actions_coins_clamp_at_zero",
+            "passed": true
+        },
+        {
+            "name": "foundation_actions_inventory_requires_actual_handler",
+            "passed": true
+        },
+        {
+            "name": "foundation_actions_malformed_payload_rejected",
+            "passed": true
+        },
+        {
+            "name": "foundation_actions_explicit_extension_handler",
+            "passed": true
+        },
+        {
+            "name": "foundation_actions_overflow_preserves_state",
+            "passed": true
+        },
+        {
+            "name": "foundation_actions_sequential_stop_on_unsupported",
+            "passed": true
+        },
+        {
+            "name": "foundation_interaction_nearest_target",
+            "passed": true
+        },
+        {
+            "name": "foundation_interaction_aim_scoring",
+            "passed": true
+        },
+        {
+            "name": "foundation_interaction_range_strict",
+            "passed": true
+        },
+        {
+            "name": "foundation_interaction_source_float32_coordinates",
+            "passed": true
+        },
+        {
+            "name": "foundation_interaction_ties_preserve_order",
+            "passed": true
+        },
+        {
+            "name": "foundation_interaction_unported_requires_handler",
+            "passed": true
+        },
+        {
+            "name": "foundation_interaction_explicit_handler_executes",
+            "passed": true
+        },
+        {
+            "name": "foundation_interaction_lock_checks_again_at_use",
+            "passed": true
+        },
+        {
+            "name": "foundation_location_commit_atomic_before_events",
+            "passed": true
+        },
+        {
+            "name": "foundation_location_invalid_commit_preserves_state",
+            "passed": true
+        },
+        {
+            "name": "foundation_state_checks_ran",
+            "passed": true
+        },
+        {
+            "name": "session_initial_area_commits",
+            "passed": true
+        },
+        {
+            "name": "session_transition_notification_once_and_locked",
+            "passed": true
+        },
+        {
+            "name": "session_missing_map_does_not_commit",
+            "passed": true
+        },
+        {
+            "name": "session_missing_arrival_does_not_commit",
+            "passed": true
+        },
+        {
+            "name": "session_paused_load_and_time_blocked",
+            "passed": true
+        },
+        {
+            "name": "session_other_area_commits",
+            "passed": true
+        },
+        {
+            "name": "session_old_area_subscriptions_released",
+            "passed": true
+        },
+        {
+            "name": "session_state_survives_transition",
+            "passed": true
+        },
+        {
+            "name": "session_post_commit_failure_is_explicit",
+            "passed": true
+        },
+        {
+            "name": "session_disposed_area_rejects_new_owners",
+            "passed": true
+        },
+        {
+            "name": "foundation_session_checks_ran",
+            "passed": true
+        },
+        {
+            "name": "foundation_original_godot_oracle_available",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_float64_oracle_strict",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_1",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_2",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_3",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_4",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_5",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_6",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_7",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_8",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_9",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_10",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_11",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_12",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_13",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_14",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_15",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_16",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_17",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_18",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_19",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_20",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_21",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_22",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_23",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_24",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_25",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_condition_26",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_1",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_2",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_3",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_4",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_5",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_6",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_7",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_8",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_clock_9",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_target_1",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_target_2",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_target_3",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_target_4",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_target_5",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_target_6",
+            "passed": true
+        },
+        {
+            "name": "foundation_source_oracle_count",
+            "passed": true
+        }
+    ],
+    "gameSaveAccessed": false,
+    "identity": {
+        "schemaVersion": 1,
+        "phase": 7,
+        "previewVersion": "0.3.0-phase7",
+        "sourceCommit": "66dcb26858ed06455d9252220d2eaacfc8b10d25",
+        "inputFingerprint": "e565c80389116fc9d7a0e491dcd00090f38470c63508a13b752e4a8a6d9ddeda",
+        "editorVersion": "6000.3.26f1",
+        "editorRevision": "de8167e7440c",
+        "target": "StandaloneWindows64"
+    }
+}

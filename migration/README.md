@@ -1,6 +1,8 @@
-# Unity-migratie — fase 6 voltooid
+# Unity-migratie — fase 7 voltooid
 
-Het volgende **go** start fase 7: de technische spelbasis; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 8: speler, camera en bediening; de volledige game is nog niet overgezet.
+
+[Fase 7: de technische spelbasis](phase-07/README.md) — alle 221 bronbestanden en 162 wereldopnamen native geladen, zelfstandige speltoestand, gebieden, gebeurtenissen, voorwaarden, interactiedoelen, actieve speeltijd en gecontroleerde coördinaten/botsingen; 31 Windows-controles en 119 deelcontroles.
 
 [Fase 6: oorspronkelijke presentatie in Unity](phase-06/README.md) — alle originele PNGs en WAVs, native sprites en animatieclips, 90 kapsels, 24 kledingstukken, fonts en alle 3.187 NL/EN-teksten; 30 echte Windows-runtimecontroles, 18.861 animatiegrenssamples en brongetrouwe transparantie.
 

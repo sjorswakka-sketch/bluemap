@@ -10,6 +10,8 @@ Het register omvat de complete bewaarde bron, ook code die niet door een catalog
 
 Fase 4 heeft de overdraagbare catalogi, identiteiten en regelcontracten bewezen tegen de vaste referentie; zie [DATA_FORMAT.md](DATA_FORMAT.md) en [fase 4](phase-04/README.md). Fase 5 voegt de werkelijk door Godot geladen wereld toe: [37 kaarten en 162 opnamen](phase-05/README.md), inclusief native botsingen, 59 profielen, uiteindelijke slots en runtime-identiteiten. De daadwerkelijke regels en geladen wereldtoestanden zijn daarmee nog niet in Unity uitgevoerd.
 
+Fase 7 voegt de [uitgevoerde C#-spelbasis](phase-07/README.md) toe: de 221 gegevensdocumenten en alle 162 opnamen laden native met bronhashcontrole; de 34 opslagvelden blijven als ruwe, zelfstandige toestand behouden. Coördinaten, native botsingsparen, basisvoorwaarden, interactiedoelkeuze, klok, gebeurteniseigenaars en atomaire gebiedswissels hebben eigen uitvoeringsbewijs. Gameplay-acties zonder geporteerde eigenaar geven een expliciete ontbrekende-handleruitkomst. Dit vervangt de latere systeemports en saveconversie niet.
+
 Alle onderstaande systemen zijn **als Godot-referentie bewaard**, nog niet als volledige gameplay in Unity gebouwd; de 86 oorspronkelijke suites blijven behouden en nieuwe Unity-tests moeten dezelfde bedoelde gedragsafspraken controleren.
 
 | Onderdeel | Oorspronkelijke bron | Bestaande controles / latere fase |

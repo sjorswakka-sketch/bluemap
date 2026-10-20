@@ -35,3 +35,9 @@ De bouw gebruikt uitsluitend gecommitteerde invoer in een tijdelijke Unity-kopie
 De preview behoudt de zes presentatiepagina's uit fase 6 en voegt pagina 7 toe: oorspronkelijke terreintegels rond een bestaand aankomstpunt, wisselen tussen de 37 gebieden en de pauzeerbare speeltijd. Objecten en terrein worden niet opnieuw geplaatst of verzonnen. Dit is een terrein- en spelbasiscontrole; de volledige wereldweergave en doorlopende gameplay volgen in de volgende fases.
 
 Toetsen 1–6 kiezen de presentatiepagina's, 7 opent de spelbasis, links/rechts wisselt gebied, P pauzeert en Escape sluit. Volledige spelerbeweging, camera, controllerbediening, veilige save-import en de eerste speelbare route volgen in fases 8–10. De oorspronkelijke volledige game blijft downloadbaar via het vaste Godot-herstelpunt.
+
+## Vastgelegde uitslag
+
+[Het uitvoeringsrapport](verification.json), [alle 119 deelcontroles](native-foundation.json) en [het onafhankelijke bronpakketbewijs](package-source-verification.json) horen bij Windows-bron 66dcb26858ed06455d9252220d2eaacfc8b10d25. De bouw heeft nul fouten en waarschuwingen en doorstaat alle 31 runtimecontroles in 181 frames. De complete Python-set telt 355 tests: lokaal 353 geslaagd en twee Windows-symlinkfixtures overgeslagen; GitHub voert de Linux-set en de oorspronkelijke wereld-/oracleherhalingen opnieuw uit. De drie relevante oorspronkelijke Godot-suites slagen eveneens.
+
+De decimalen van de oorspronkelijke JSON-schrijver konden één berekende klokwaarde afronden. De oracle bewaart daarom ook alle 45 oorspronkelijke Float64-bytewaarden; inputs en uitkomsten worden exact op die bytes vergeleken. Declaratie- en regelmetadata met een gewone kind-sleutel krijgen uitsluitend binnen hun twee gecontroleerde documentschema's een gewone JSON-context; de overige typed transport blijft strikt. Deze correcties wijzigen geen oorspronkelijke spelregels of inhoud.
