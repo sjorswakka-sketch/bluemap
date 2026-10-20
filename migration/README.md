@@ -1,6 +1,8 @@
-# Unity-migratie — fase 7 voltooid
+# Unity-migratie — fase 8 voltooid
 
-Het volgende **go** start fase 8: speler, camera en bediening; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 9: veilige import van saves en instellingen; de volledige game is nog niet overgezet.
+
+[Fase 8: speler, camera en bediening](phase-08/README.md) — lopen, rennen, stamina, rollen, onafhankelijke kijkrichting, crosshair, native invoer en tijdelijk bindingsmenu; drie loopbare terreinproeven, 32 Windows-controles, 119 basiscontroles en 69 spelercontroles.
 
 [Fase 7: de technische spelbasis](phase-07/README.md) — alle 221 bronbestanden en 162 wereldopnamen native geladen, zelfstandige speltoestand, gebieden, gebeurtenissen, voorwaarden, interactiedoelen, actieve speeltijd en gecontroleerde coördinaten/botsingen; 31 Windows-controles en 119 deelcontroles.
 

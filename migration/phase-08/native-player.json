@@ -1,0 +1,293 @@
+{
+    "schemaVersion": 1,
+    "success": true,
+    "checks": [
+        {
+            "name": "player_motion_partial_last_sprint_step",
+            "passed": true
+        },
+        {
+            "name": "player_motion_delayed_exhaustion_recovery",
+            "passed": true
+        },
+        {
+            "name": "player_motion_equipment_reduction_never_refills",
+            "passed": true
+        },
+        {
+            "name": "player_motion_invalid_spend_restore_rejected",
+            "passed": true
+        },
+        {
+            "name": "player_motion_corrupt_stamina_clamped",
+            "passed": true
+        },
+        {
+            "name": "player_motion_blocked_sprint_uses_no_energy",
+            "passed": true
+        },
+        {
+            "name": "player_motion_body_facing_independent_of_crosshair",
+            "passed": true
+        },
+        {
+            "name": "player_motion_transition_stops_without_stamina_refill",
+            "passed": true
+        },
+        {
+            "name": "player_motion_pause_freezes_timers_and_stamina",
+            "passed": true
+        },
+        {
+            "name": "player_motion_input_lock_freezes_stamina",
+            "passed": true
+        },
+        {
+            "name": "player_motion_footsteps_distance_remainder_single_event",
+            "passed": true
+        },
+        {
+            "name": "player_motion_frame_cannot_be_applied_twice",
+            "passed": true
+        },
+        {
+            "name": "player_motion_nonfinite_delta_rejected",
+            "passed": true
+        },
+        {
+            "name": "player_motion_roll_safe_window_strict_boundary",
+            "passed": true
+        },
+        {
+            "name": "player_motion_float32_products_round_before_sum",
+            "passed": true
+        },
+        {
+            "name": "player_motion_checks_ran",
+            "passed": true
+        },
+        {
+            "name": "player_input_real_package_virtual_devices",
+            "passed": true
+        },
+        {
+            "name": "player_input_all_36_source_actions_native_bindings",
+            "passed": true
+        },
+        {
+            "name": "player_input_all_binding_releases_no_latched_action",
+            "passed": true
+        },
+        {
+            "name": "player_input_keyboard_diagonal_normalized",
+            "passed": true
+        },
+        {
+            "name": "player_input_opposite_directions_cancel",
+            "passed": true
+        },
+        {
+            "name": "player_input_original_ctrl_sprint_shift_roll",
+            "passed": true
+        },
+        {
+            "name": "player_input_both_modifier_sides_preserved",
+            "passed": true
+        },
+        {
+            "name": "player_input_16_original_circular_deadzone_vectors",
+            "passed": true
+        },
+        {
+            "name": "player_input_switch_threshold_and_mouse_drift",
+            "passed": true
+        },
+        {
+            "name": "player_input_held_controller_does_not_steal_mouse",
+            "passed": true
+        },
+        {
+            "name": "player_input_old_held_keyboard_requires_fresh_press",
+            "passed": true
+        },
+        {
+            "name": "player_input_switching_press_works_once_and_releases",
+            "passed": true
+        },
+        {
+            "name": "player_input_wheel_activates_mouse_and_scrolls",
+            "passed": true
+        },
+        {
+            "name": "player_input_right_stick_aim_and_ui_scroll",
+            "passed": true
+        },
+        {
+            "name": "player_input_original_cursor_context_policy",
+            "passed": true
+        },
+        {
+            "name": "player_input_controller_disconnect_reconnect",
+            "passed": true
+        },
+        {
+            "name": "player_input_one_selected_gamepad",
+            "passed": true
+        },
+        {
+            "name": "player_input_focus_loss_releases_without_ghost_resume",
+            "passed": true
+        },
+        {
+            "name": "player_input_rebind_swap_reservations_and_reset",
+            "passed": true
+        },
+        {
+            "name": "player_input_real_event_rebind_capture_and_cancel",
+            "passed": true
+        },
+        {
+            "name": "player_input_no_real_hardware_or_save_claim",
+            "passed": true
+        },
+        {
+            "name": "player_input_device_lifecycle_no_callback_errors",
+            "passed": true
+        },
+        {
+            "name": "player_input_checks_ran",
+            "passed": true
+        },
+        {
+            "name": "player_motion_stamina_exact_source_oracle",
+            "passed": true
+        },
+        {
+            "name": "player_motion_surfaces_exact_source_oracle",
+            "passed": true
+        },
+        {
+            "name": "player_motion_equipment_exact_source_oracle",
+            "passed": true
+        },
+        {
+            "name": "player_motion_velocity_facing_exact_source_oracle",
+            "passed": true
+        },
+        {
+            "name": "player_motion_roll_exact_source_oracle",
+            "passed": true
+        },
+        {
+            "name": "player_motion_transition_exact_source_oracle",
+            "passed": true
+        },
+        {
+            "name": "player_motion_oracle_complete",
+            "passed": true
+        },
+        {
+            "name": "player_input_oracle_complete",
+            "passed": true
+        },
+        {
+            "name": "player_world_original_terrain_complete",
+            "passed": true
+        },
+        {
+            "name": "player_world_source_collision",
+            "passed": true
+        },
+        {
+            "name": "player_world_source_foot_shape",
+            "passed": true
+        },
+        {
+            "name": "player_world_sweep_stops_before_solid",
+            "passed": true
+        },
+        {
+            "name": "player_world_sweep_slides_along_wall",
+            "passed": true
+        },
+        {
+            "name": "player_world_blocked_running_preserves_stamina",
+            "passed": true
+        },
+        {
+            "name": "player_world_free_movement_no_grid_snap",
+            "passed": true
+        },
+        {
+            "name": "player_world_running_available_immediately",
+            "passed": true
+        },
+        {
+            "name": "player_body_faces_movement",
+            "passed": true
+        },
+        {
+            "name": "player_world_pause_stops_motion",
+            "passed": true
+        },
+        {
+            "name": "player_world_teleport_cancels_roll_keeps_energy",
+            "passed": true
+        },
+        {
+            "name": "player_aim_independent",
+            "passed": true
+        },
+        {
+            "name": "player_aim_idle_retains_stick_movement_resets",
+            "passed": true
+        },
+        {
+            "name": "player_aim_mouse_world_coordinates",
+            "passed": true
+        },
+        {
+            "name": "player_aim_locked_state_unchanged",
+            "passed": true
+        },
+        {
+            "name": "player_camera_bounds",
+            "passed": true
+        },
+        {
+            "name": "player_camera_source_smoothing",
+            "passed": true
+        },
+        {
+            "name": "player_camera_small_map_centered",
+            "passed": true
+        },
+        {
+            "name": "player_world_three_preview_maps_load",
+            "passed": true
+        },
+        {
+            "name": "player_world_source_footsteps_play_after_actual_walk",
+            "passed": true
+        },
+        {
+            "name": "player_world_checks_ran",
+            "passed": true
+        },
+        {
+            "name": "player_world_avatar_rendered_on_gpu",
+            "passed": true
+        }
+    ],
+    "gameSaveAccessed": false,
+    "identity": {
+        "schemaVersion": 1,
+        "phase": 8,
+        "previewVersion": "0.4.0-phase8",
+        "sourceCommit": "3f604417add679adcdaa4af5201025cb14400b32",
+        "inputFingerprint": "d64825b1d2fba8e8398139696d13920b78e403fe7f9191517b0e1e2ea3974e68",
+        "editorVersion": "6000.3.26f1",
+        "editorRevision": "de8167e7440c",
+        "target": "StandaloneWindows64"
+    }
+}

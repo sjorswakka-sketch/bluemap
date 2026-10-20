@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "success": true,
+  "releaseTag": "unity-phase8-preview-3f604417",
+  "releaseUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase8-preview-3f604417",
+  "sourceCommit": "3f604417add679adcdaa4af5201025cb14400b32",
+  "claudeCommitUnchanged": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "publishedFromDraft": true,
+  "assets": [
+    {
+      "name": "BlueMapUnityPreview-phase-08-3f604417-Windows-x64.zip",
+      "bytes": 69594717,
+      "sha256": "b709af31a21644dd179edbc1c65e5eecdfa9d11db5ff059321e35d5ecbbba4a4",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/BlueMapUnityPreview-phase-08-3f604417-Windows-x64.zip"
+    },
+    {
+      "name": "foundation-result.json",
+      "bytes": 13405,
+      "sha256": "655c76aa0f7befe996c183de4bda2213f37cddab0635632280794dae8b43ae1b",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/foundation-result.json"
+    },
+    {
+      "name": "import-report.json",
+      "bytes": 206647,
+      "sha256": "201157d7ad4b998be5c1b51b4836d920963c3860fecfd8e374280d921a592ed3",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/import-report.json"
+    },
+    {
+      "name": "package-verification.json",
+      "bytes": 937,
+      "sha256": "5d43326d8fe985940a1cdbbacdf997e5ea7fb1266a49f022de3de07ed22320a2",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/package-verification.json"
+    },
+    {
+      "name": "player-result.json",
+      "bytes": 8264,
+      "sha256": "7518fe0a37479810cbac7361cd29cf6d4dc2ceff6713b4574f6d52e14fa7b433",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/player-result.json"
+    },
+    {
+      "name": "presentation-result.json",
+      "bytes": 21148,
+      "sha256": "5e9a682378f19307f048c4d35892dcfefa3bf7d3d031a06708cd05e615d3505d",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/presentation-result.json"
+    },
+    {
+      "name": "receipt.json",
+      "bytes": 241361,
+      "sha256": "969bdf5e9b1f7a5447adfa93f6934ccfc35afbad862e63f3db00ac21119cbcc9",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/receipt.json"
+    },
+    {
+      "name": "screenshot-animation.png",
+      "bytes": 86572,
+      "sha256": "0c874a8ab38dc615dbf052595cf89c6f2bae677da90d1306c686565ca3a3f1c0",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-animation.png"
+    },
+    {
+      "name": "screenshot-clothing.png",
+      "bytes": 68335,
+      "sha256": "0a691757424ab352498f6b0108cd77ec9670c3afe9648ced0ca337456d8b8b6b",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-clothing.png"
+    },
+    {
+      "name": "screenshot-equipment.png",
+      "bytes": 66956,
+      "sha256": "cd7acdf7611dd100e5cc27e45c43f4839d78e3199bc8d3e4234c46ac50588412",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-equipment.png"
+    },
+    {
+      "name": "screenshot-foundation-cave.png",
+      "bytes": 113267,
+      "sha256": "e540f254585d7ff5eb7eec39105ab058c116ae9d3d7b579dcb8b8c6bad14041b",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-foundation-cave.png"
+    },
+    {
+      "name": "screenshot-foundation.png",
+      "bytes": 112528,
+      "sha256": "e819fab1b3116839f3eb11f280119ac1794857c7262d9b296acea558b7c1d3b5",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-foundation.png"
+    },
+    {
+      "name": "screenshot-hair.png",
+      "bytes": 74548,
+      "sha256": "75206700733081c45f0512135cf211061002c87002992795807a4bb26c1ebe1e",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-hair.png"
+    },
+    {
+      "name": "screenshot-languages.png",
+      "bytes": 108729,
+      "sha256": "25c53ee0f979d835839832a0050059f31da723a747ebc247ead61764da3fb208",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-languages.png"
+    },
+    {
+      "name": "screenshot-pixels.png",
+      "bytes": 63849,
+      "sha256": "f2bdf87dd0f955e4eef2efe04aef3c7aaec92d0b8be8ecbeb3b8e5c7c83da293",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-pixels.png"
+    },
+    {
+      "name": "screenshot-player-controls.png",
+      "bytes": 126943,
+      "sha256": "05a117008c801b054d7efc2a0f1588f6fe7ec50ea8ba09c6a4b4daaea3e96e11",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-player-controls.png"
+    },
+    {
+      "name": "screenshot-player-roll.png",
+      "bytes": 52377,
+      "sha256": "d12117dd8ea7c0c6108b95e260c343a38c2a69b1e11b8b399167a391ef4c0da9",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-player-roll.png"
+    },
+    {
+      "name": "screenshot-player-ui.png",
+      "bytes": 102399,
+      "sha256": "26ef28c383a6510a4b8313a2e6cc10ea1211cce2c365400d66666a5137fb01ba",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-player-ui.png"
+    },
+    {
+      "name": "screenshot-player.png",
+      "bytes": 51157,
+      "sha256": "d528b73bfc021fd3a796ee5c4bfa1dc7c252b9520f0ba460f009752abeee1a77",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-player.png"
+    },
+    {
+      "name": "screenshot-premultiplied.png",
+      "bytes": 21586,
+      "sha256": "cedbcf9ccd2c5c9ca8c6049a93f2d68130345048a05551b44f8ae1f3ddce2698",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot-premultiplied.png"
+    },
+    {
+      "name": "screenshot.png",
+      "bytes": 86525,
+      "sha256": "0fbad612b3eed07739922e1ff6ebd69aac80f56adfedf559725858d2c71cb2df",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/screenshot.png"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 291,
+      "sha256": "5708331cbac837dece1d315abe2fba2461f3164150dfe8d589011b392e769f73",
+      "url": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase8-preview-3f604417/SHA256SUMS.txt"
+    }
+  ]
+}
