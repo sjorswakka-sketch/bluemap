@@ -32,10 +32,14 @@ Zie [de opslagregels en compatibiliteit](SAVES.md) en [instellingen, bediening e
 
 ## Controle en grens van deze fase
 
-De oorspronkelijke Godot 4.4.1-methoden zijn uitgevoerd in twee verse processen onder een gecontroleerd tijdelijk UUID-testprofiel. De opslagreferentie bevat **22 geldige gevallen en 6 te weigeren corrupte bestanden**; de instellingenreferentie bevat **10 gevallen**. Daaronder vallen oude en nieuwe velden, onbekende gegevens, indelingen, grensgetallen, oude toetsconflicten, modifiers, lege en dubbele bindingslijsten, ontbrekende bestanden en kapotte ConfigFile-tekst. De oorspronkelijke spelbestanden blijven tijdens deze proeven ongewijzigd.
+De oorspronkelijke Godot 4.4.1-methoden zijn uitgevoerd in twee verse processen onder een gecontroleerd tijdelijk UUID-testprofiel. De opslagreferentie bevat **24 geldige gevallen en 6 te weigeren corrupte bestanden**; de instellingenreferentie bevat **10 gevallen**. Daaronder vallen oude en nieuwe velden, onbekende gegevens, indelingen, grensgetallen, oude toetsconflicten, modifiers, lege en dubbele bindingslijsten, ontbrekende bestanden en kapotte ConfigFile-tekst. De oorspronkelijke spelbestanden blijven tijdens deze proeven ongewijzigd.
 
 Deze tests gebruiken uitsluitend zelfgemaakte voorbeelden. Er zijn geen persoonlijke saves of instellingen geopend voor ontwikkeling, screenshots of automatische verificatie. De C#-controles vergelijken de referenties en testen daarnaast echte invoergebeurtenissen, schrijven, herstel, integriteit en foutpaden in een aparte testopslag.
 
-**De native Windows-uitvoering en de definitieve publicatie moeten deze documentversie nog bevestigen.** Bronreferenties en Python-controles alleen bewijzen niet dat de Windows-build werkt; de gepubliceerde fase mag pas gereed heten nadat dezelfde controles in de echte build slagen.
+**Native Windows-uitvoering en publicatie zijn geslaagd.** De echte speler slaagt voor 33 algemene controles, 119 spelbasiscontroles, 69 spelercontroles en 115 import-/opslagcontroles. Er zijn geen bouwfouten of bouwwaarschuwingen. De aanvullende bestaande Godot-regressie slaagt voor 14 suites met 1.961 controles. De lokale Python-suite heeft 438 tests, waarvan 2 Windows-symlinkgevallen zonder benodigde OS-rechten zijn overgeslagen; deze blijven actief in Linux CI.
 
 Deze fase bewaart en controleert het avontuur, maar zet nog geen volledige quest-, gevechts-, productie- of landbouwlus in Unity aan. Een import heeft geen offline opbrengst of nieuwe beloningen. Het volledig speelbaar aansluiten van de behouden toestand volgt vanaf fase 10; de eerdere Godot-versie blijft daarvoor de referentie.
+
+## Windows-download en herkomst
+
+[Download de fase 9-proef](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase9-preview-343f8564). Broncommit: `343f856435542015ea4d6fb952361ff63d2c9cd9`; invoerfingerprint: `fa72f4701a2ad702599277d4725112ba0459f243699965fa0f383fbeb18d8f07`. Windows-ZIP: 69,685,755 bytes, 151 bestanden, SHA256 `149ae870d14926dd60ddefed94c96da246e32e4decd978a476c5076e6b778e75`. De receipt bindt de native rapporten en 15 screenshots aan deze bouw. Alleen eigen testgegevens en toegestane rapporten zijn gepubliceerd; ruwe logs en testprofielen blijven privé. Een fysieke controller is niet met de hand getest.

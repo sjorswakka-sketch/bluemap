@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_9_in_progress",
+  "status": "phase_9_complete",
   "completed_phases": [
     1,
     2,
@@ -10,10 +10,11 @@
     5,
     6,
     7,
-    8
+    8,
+    9
   ],
-  "active_phase": 9,
-  "next_phase": 9,
+  "active_phase": null,
+  "next_phase": 10,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
@@ -21,11 +22,11 @@
   "unity_implementation_started": true,
   "completed_on": "2026-10-20",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-08/README.md",
-  "requires_next_go": false,
+  "checks": "phase-09/README.md",
+  "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": true,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase8-preview-3f604417",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase9-preview-343f8564",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -77,5 +78,14 @@
   "player_source_contracts": "phase-08/source-contracts.json",
   "player_input_system_package": "com.unity.inputsystem@1.20.1",
   "player_physical_controller_hands_on_tested": false,
-  "personal_save_import_started": false
+  "personal_save_import_started": false,
+  "save_import_runtime_verified": true,
+  "settings_import_runtime_verified": true,
+  "persistence_runtime_checks": 115,
+  "save_source_cases": 24,
+  "save_corrupt_source_cases": 6,
+  "settings_source_cases": 10,
+  "persistence_source_contracts": "phase-09/source-contracts.json",
+  "personal_files_used_for_tests": false,
+  "persistence_build_source": "343f856435542015ea4d6fb952361ff63d2c9cd9"
 }

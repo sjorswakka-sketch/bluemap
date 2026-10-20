@@ -1,6 +1,8 @@
-# Unity-migratie — fase 8 voltooid
+# Unity-migratie — fase 9 voltooid
 
-Het volgende **go** start fase 9: veilige import van saves en instellingen; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 10: de eerste volledig speelbare route tussen dorp, woning en bos; de volledige game is nog niet overgezet.
+
+[Fase 9: veilige opslag en instellingen](phase-09/README.md) — alle 34 opslagvelden, oorspronkelijke bronbytes, prestaties, Nieuw spel+, taal, audio en bediening; aparte Unity-profielen met herstel, 33 Windows-controles en 115 import-/opslagcontroles.
 
 [Fase 8: speler, camera en bediening](phase-08/README.md) — lopen, rennen, stamina, rollen, onafhankelijke kijkrichting, crosshair, native invoer en tijdelijk bindingsmenu; drie loopbare terreinproeven, 32 Windows-controles, 119 basiscontroles en 69 spelercontroles.
 
@@ -27,6 +29,6 @@ De bronreferentie omvat 1.734 bestanden en 383 beeld-/geluidsassets; de inhoudsi
 
 Het losse bron-ZIP is met alle oorspronkelijke Git-blobs vergeleken en de Git-bundel is offline teruggehaald met objectcontrole; de zeven gepubliceerde herstelbestanden hebben dezelfde SHA256 als de gecontroleerde lokale bestanden.
 
-De oorspronkelijke registry-inventaris blijft behouden; fase 5 voegt de daadwerkelijk geladen kaarten en benoemde veranderde toestanden toe, met expliciete dekkingsgrenzen. Save-import en terugexport volgen in fases 9 en 25; echte persoonlijke saves zijn niet geopend of gepubliceerd.
+De oorspronkelijke registry-inventaris blijft behouden; fase 5 voegt de daadwerkelijk geladen kaarten en benoemde veranderde toestanden toe, met expliciete dekkingsgrenzen. Save-import is in fase 9 bewezen met eigen testprofielen; terugexport volgt in fase 25. Echte persoonlijke saves zijn niet geopend of gepubliceerd.
 
 Deze migratiebranch voegt in fase 1 uitsluitend referenties, documentatie en inventaris-/herstelhulpmiddelen toe; de Godot-game op de Claude-branch en het bestaande uitbreidingsplan blijven behouden.
