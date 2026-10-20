@@ -39,6 +39,8 @@ jobs:
         run: |
           python tools/build_migration_graphics.py --check
           python tools/build_migration_audio_text.py --check
+      - name: Exacte spelgegevens voor de technische Unity-spelbasis controleren
+        run: python tools/build_migration_foundation.py --check --report "$RUNNER_TEMP/foundation-data.json"
       - name: Referentie, releasegegevens en teksten controleren
         run: |
           python tools/freeze_godot_reference.py --check
@@ -51,11 +53,13 @@ jobs:
           path: |
             ${{ runner.temp }}/migration-source.json
             ${{ runner.temp }}/portable-data.json
+            ${{ runner.temp }}/foundation-data.json
             migration/presentation/graphics.json
             migration/presentation/audio.json
             migration/presentation/localization.json
             migration/presentation-coverage.json
             unity/Assets/BlueMapContent/Resources/BlueMapAssets/Fonts/font-manifest.json
+            unity/Assets/BlueMapFoundation/Resources/BlueMapFoundation/manifest.json
           if-no-files-found: error
           retention-days: 30
       - name: Gecontroleerde overdraagbare spelgegevens bewaren
@@ -148,6 +152,8 @@ jobs:
           chmod +x "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64"
       - name: Twee echte wereldexports met geverifieerde aparte testopslag
         run: python tools/record_migration_world.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/world-evidence"
+      - name: Technische spelregels tweemaal herhalen met afzonderlijke testopslag
+        run: python tools/record_migration_foundation_state.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/foundation-evidence"
       - name: Gerichte wereldgevolgen en uiteindelijke IDs controleren
         run: |
           python tools/check_world_witnesses.py --directory migration/world --output "$RUNNER_TEMP/world-witnesses.json"
@@ -169,5 +175,8 @@ jobs:
             migration/world/index.json
             migration/world-coverage.json
             migration/phase-05/
+            ${{ runner.temp }}/foundation-evidence/receipt.json
+            ${{ runner.temp }}/foundation-evidence/state-oracle.json
+            migration/phase-07/state-oracle.json
           if-no-files-found: error
           retention-days: 30

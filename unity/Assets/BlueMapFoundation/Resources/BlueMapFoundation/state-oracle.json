@@ -1,0 +1,507 @@
+{
+  "clocks": [
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "ended": false,
+        "external_paused": false,
+        "in_game": false,
+        "play_time": 17.5,
+        "transitioning": false,
+        "ui_open": false
+      },
+      "delta": 12.0,
+      "expected": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "input_locked": false,
+        "play_time": 17.5
+      }
+    },
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "ended": false,
+        "external_paused": false,
+        "in_game": true,
+        "play_time": 17.5,
+        "transitioning": false,
+        "ui_open": false
+      },
+      "delta": 24.0,
+      "expected": {
+        "day_count": 3,
+        "day_time": 0.2,
+        "input_locked": false,
+        "play_time": 41.5
+      }
+    },
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "ended": false,
+        "external_paused": false,
+        "in_game": true,
+        "play_time": 17.5,
+        "transitioning": false,
+        "ui_open": true
+      },
+      "delta": 12.0,
+      "expected": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "input_locked": true,
+        "play_time": 17.5
+      }
+    },
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "ended": false,
+        "external_paused": true,
+        "in_game": true,
+        "play_time": 17.5,
+        "transitioning": false,
+        "ui_open": false
+      },
+      "delta": 12.0,
+      "expected": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "input_locked": false,
+        "play_time": 17.5
+      }
+    },
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "ended": true,
+        "external_paused": false,
+        "in_game": true,
+        "play_time": 17.5,
+        "transitioning": false,
+        "ui_open": false
+      },
+      "delta": 12.0,
+      "expected": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "input_locked": true,
+        "play_time": 17.5
+      }
+    },
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.15,
+        "ended": false,
+        "external_paused": false,
+        "in_game": true,
+        "play_time": 17.5,
+        "transitioning": true,
+        "ui_open": false
+      },
+      "delta": 12.0,
+      "expected": {
+        "day_count": 3,
+        "day_time": 0.175,
+        "input_locked": true,
+        "play_time": 29.5
+      }
+    },
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.9,
+        "ended": false,
+        "external_paused": false,
+        "in_game": true,
+        "play_time": 17.5,
+        "transitioning": false,
+        "ui_open": false
+      },
+      "delta": 48.0,
+      "expected": {
+        "day_count": 4,
+        "day_time": 0.0,
+        "input_locked": false,
+        "play_time": 65.5
+      }
+    },
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.9,
+        "ended": false,
+        "external_paused": false,
+        "in_game": true,
+        "play_time": 17.5,
+        "transitioning": false,
+        "ui_open": false
+      },
+      "delta": 960.0,
+      "expected": {
+        "day_count": 4,
+        "day_time": 0.9,
+        "input_locked": false,
+        "play_time": 977.5
+      }
+    },
+    {
+      "before": {
+        "day_count": 3,
+        "day_time": 0.5,
+        "ended": false,
+        "external_paused": false,
+        "in_game": true,
+        "play_time": 17.5,
+        "transitioning": false,
+        "ui_open": false
+      },
+      "delta": 0.0,
+      "expected": {
+        "day_count": 3,
+        "day_time": 0.5,
+        "input_locked": false,
+        "play_time": 17.5
+      }
+    }
+  ],
+  "conditionState": {
+    "coins": 23,
+    "flags": {
+      "demo": true
+    },
+    "hp": 4,
+    "inventory": {
+      "crystal_bos": 5,
+      "crystal_ruine": 1,
+      "gel": 2,
+      "heart_container": 2
+    },
+    "map": "village",
+    "quests": {
+      "done": {
+        "state": "done",
+        "step": 3
+      },
+      "main": {
+        "state": "active",
+        "step": 2
+      }
+    },
+    "weapon": "iron"
+  },
+  "conditions": [
+    {
+      "condition": [
+        "flag",
+        "demo"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "flag",
+        "missing"
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "no_flag",
+        "demo"
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "no_flag",
+        "missing"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "quest",
+        "main",
+        "active"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "quest",
+        "done",
+        "done"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "quest",
+        "missing",
+        "none"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "step",
+        "main",
+        2
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "step",
+        "main",
+        3
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "step",
+        "done",
+        3
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "has",
+        "gel"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "has",
+        "gel",
+        2
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "has",
+        "gel",
+        3
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "has",
+        "missing"
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "lacks",
+        "gel"
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "lacks",
+        "gel",
+        3
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "lacks",
+        "missing"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "coins",
+        23
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "coins",
+        24
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "map",
+        "village"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "map",
+        "forest"
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "weapon",
+        "iron"
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "weapon",
+        "wood"
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "crystals",
+        2
+      ],
+      "expected": true
+    },
+    {
+      "condition": [
+        "crystals",
+        3
+      ],
+      "expected": false
+    },
+    {
+      "condition": [
+        "hurt"
+      ],
+      "expected": true
+    }
+  ],
+  "engineVersion": "4.4.1-stable (official)",
+  "personalSavesUsed": false,
+  "schema": "bluemap.foundation.source-oracle.v1",
+  "sourceMethods": [
+    "scripts/core/game_state.gd::check",
+    "scripts/core/game_state.gd::_process",
+    "scripts/core/game_state.gd::input_locked",
+    "scripts/entities/player.gd::_update_target"
+  ],
+  "targeting": [
+    {
+      "aimX": 1,
+      "aimY": 0,
+      "aiming": false,
+      "candidates": [
+        {
+          "id": "edge",
+          "x": 40,
+          "y": 0
+        }
+      ],
+      "expected": "",
+      "locked": false
+    },
+    {
+      "aimX": 1,
+      "aimY": 0,
+      "aiming": false,
+      "candidates": [
+        {
+          "id": "west",
+          "x": -8,
+          "y": 0
+        },
+        {
+          "id": "east",
+          "x": 12,
+          "y": 0
+        }
+      ],
+      "expected": "west",
+      "locked": false
+    },
+    {
+      "aimX": 1,
+      "aimY": 0,
+      "aiming": true,
+      "candidates": [
+        {
+          "id": "west",
+          "x": -8,
+          "y": 0
+        },
+        {
+          "id": "east",
+          "x": 12,
+          "y": 0
+        }
+      ],
+      "expected": "east",
+      "locked": false
+    },
+    {
+      "aimX": 1,
+      "aimY": 0,
+      "aiming": false,
+      "candidates": [
+        {
+          "id": "first",
+          "x": 5,
+          "y": 0
+        },
+        {
+          "id": "second",
+          "x": -5,
+          "y": 0
+        }
+      ],
+      "expected": "first",
+      "locked": false
+    },
+    {
+      "aimX": 1,
+      "aimY": 0,
+      "aiming": true,
+      "candidates": [
+        {
+          "id": "origin",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "east",
+          "x": 15,
+          "y": 0
+        }
+      ],
+      "expected": "east",
+      "locked": false
+    },
+    {
+      "aimX": 1,
+      "aimY": 0,
+      "aiming": false,
+      "candidates": [
+        {
+          "id": "inside",
+          "x": 39,
+          "y": 0
+        }
+      ],
+      "expected": "",
+      "locked": true
+    }
+  ]
+}

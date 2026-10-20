@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_6_complete",
+  "status": "phase_7_in_progress",
   "completed_phases": [
     1,
     2,
@@ -10,7 +10,7 @@
     5,
     6
   ],
-  "active_phase": null,
+  "active_phase": 7,
   "next_phase": 7,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
@@ -22,7 +22,7 @@
   "checks": "phase-06/README.md",
   "requires_next_go": true,
   "unity_probe_created": true,
-  "game_port_started": false,
+  "game_port_started": true,
   "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase6-preview-c73127ce",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create and verify the explicitly identified phase 3 Windows technical preview.
+"""Create and verify explicitly identified Windows technical previews.
 
 This stdlib-only check never starts or extracts a player. Checksums establish
 integrity against a trusted receipt and source commit; they are not signatures.
@@ -24,7 +24,7 @@ import zlib
 EDITOR_VERSION = "6000.3.26f1"
 EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
-PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6"}
+PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -53,6 +53,21 @@ PRESENTATION_CHECKS = {
     "native_animation_boundaries_exact",
     "gpu_premultiplied_pixels_exact",
 }
+FOUNDATION_CHECKS = {"foundation_runtime_verified"}
+FOUNDATION_DETAIL_CHECKS = {
+    "foundation_world_checks_ran", "foundation_state_checks_ran", "foundation_session_checks_ran",
+    "foundation_original_godot_oracle_available", "foundation_source_oracle_count",
+    "foundation_world_37_maps_49758_tiles", "foundation_world_980_stable_slots",
+    "foundation_all_221_source_documents_native_decoded",
+    "foundation_native_physics_layers_and_player_foot",
+    "foundation_native_godot_or_masks_real_contacts",
+    "foundation_state_all_34_save_fields", "foundation_state_unknown_fields_lossless",
+    "session_state_survives_transition", "session_missing_map_does_not_commit",
+    "session_missing_arrival_does_not_commit",
+} | {f"foundation_source_condition_{index}" for index in range(1, 27)} \
+  | {f"foundation_source_clock_{index}" for index in range(1, 10)} \
+  | {f"foundation_source_target_{index}" for index in range(1, 7)}
+FOUNDATION_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -72,7 +87,7 @@ PLAYER_ROOTS = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge", "BlueMapUnityProbe_Data", "D3D12",
 }
-METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -212,9 +227,36 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     require(result["graphicsDeviceType"] in {"Direct3D11"},
             "Runtime did not use the pinned real graphics device")
     _validate_checks(result["checks"])
-    if identity["phase"] == 6:
+    if identity["phase"] >= 6:
         require(PRESENTATION_CHECKS <= {check["name"] for check in result["checks"]},
-                "Phase 6 presentation proof is incomplete")
+                f"Phase {identity['phase']} presentation proof is incomplete")
+    if identity["phase"] >= 7:
+        require(FOUNDATION_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 7 foundation runtime proof is incomplete")
+
+
+def validate_foundation(result: dict, identity: dict) -> None:
+    """Bind every foundation witness to this exact isolated player build."""
+    require(isinstance(result, dict) and set(result) == FOUNDATION_FIELDS,
+            "Phase 7 foundation proof has missing or unexpected fields")
+    require(result.get("schemaVersion") == 1 and type(result.get("schemaVersion")) is int,
+            "Unsupported foundation proof schema")
+    require(result.get("identity") == identity, "Foundation embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Foundation proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and len(checks) >= 10, "Foundation detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"},
+                "Malformed foundation detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid foundation detail check name")
+        require(name not in names and check["passed"] is True,
+                "Foundation detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(FOUNDATION_DETAIL_CHECKS <= names, "Required foundation world/state/session checks are missing")
 
 
 def _validate_pe(raw: bytes, name: str) -> None:
@@ -229,10 +271,14 @@ def _validate_pe(raw: bytes, name: str) -> None:
 
 
 def _instructions(identity: dict) -> bytes:
+    description = {
+        3: "Migratiefase 3: deze kleine controlebuild is nog niet de overgezette game.\n",
+        6: "Migratiefase 6: originele beelden, animaties, audio en teksten; nog niet de overgezette game.\n",
+        7: "Migratiefase 7: technische spelbasis en originele presentatie; nog niet de overgezette game.\n",
+    }
     return (
         "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
-        ("Migratiefase 3: deze kleine controlebuild is nog niet de overgezette game.\n" if identity["phase"] == 3 else
-         "Migratiefase 6: originele beelden, animaties, audio en teksten; nog niet de overgezette game.\n") +
+        description[identity["phase"]] +
         "De bestaande Godot-game en het herstelpunt blijven apart beschikbaar.\n\n"
         "Pak de volledige map uit en start BlueMapUnityProbe.exe.\n"
         "Laat alle bijbehorende bestanden en de BlueMapUnityProbe_Data-map staan.\n"
@@ -243,15 +289,20 @@ def _instructions(identity: dict) -> bytes:
         f"Bronvingerafdruk: {identity['inputFingerprint']}\n"
         f"Unity {EDITOR_VERSION} ({EDITOR_REVISION}), Windows x64 / Mono.\n"
         "BUILD-IDENTITY.json en RUNTIME-CHECKS.json beschrijven deze controlebuild.\n"
+        + ("FOUNDATION-CHECKS.json bevat de controles van de technische spelbasis.\n" if identity["phase"] >= 7 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
 
 def package_player(player: Path, output: Path, identity: dict,
-                   runtime_result: dict) -> tuple[Path, int]:
+                   runtime_result: dict, foundation_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
+    if identity["phase"] >= 7:
+        validate_foundation(foundation_result, identity)
+    else:
+        require(foundation_result is None, "Historical preview cannot contain phase 7 foundation proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -263,6 +314,8 @@ def package_player(player: Path, output: Path, identity: dict,
         "LEESMIJ.txt": _instructions(identity), "BUILD-IDENTITY.json": _json_bytes(identity),
         "RUNTIME-CHECKS.json": _json_bytes(runtime_result),
     }
+    if foundation_result is not None:
+        payload["FOUNDATION-CHECKS.json"] = _json_bytes(foundation_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -378,6 +431,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     require(embedded == identity, "Package identity differs from trusted receipt")
     runtime = _json(payload["RUNTIME-CHECKS.json"], "RUNTIME-CHECKS.json")
     _validate_runtime(runtime, identity)
+    if identity["phase"] >= 7:
+        require("FOUNDATION-CHECKS.json" in payload, "Phase 7 packaged foundation proof is missing")
+        foundation = _json(payload["FOUNDATION-CHECKS.json"], "FOUNDATION-CHECKS.json")
+        validate_foundation(foundation, identity)
+        require(receipt.get("foundation") == foundation, "Receipt foundation proof differs from package")
+    else:
+        require("FOUNDATION-CHECKS.json" not in payload and "foundation" not in receipt,
+                "Historical preview contains unsupported foundation proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

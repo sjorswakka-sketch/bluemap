@@ -15,6 +15,7 @@ import zipfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 import verify_unity_package as package
+import fetch_unity_preview as download
 
 
 def identity() -> dict:
@@ -38,6 +39,12 @@ def runtime(build_identity: dict) -> dict:
     }
 
 
+def foundation(build_identity: dict) -> dict:
+    names = sorted(package.FOUNDATION_DETAIL_CHECKS) + [f"foundation_detail_{i}" for i in range(8)]
+    return {"schemaVersion": 1, "identity": copy.deepcopy(build_identity), "success": True,
+            "gameSaveAccessed": False, "checks": [{"name": name, "passed": True} for name in names]}
+
+
 def pe_stub() -> bytes:
     """Small deliberate fixture, never a runnable executable."""
     raw = bytearray(256)
@@ -47,6 +54,25 @@ def pe_stub() -> bytes:
     struct.pack_into("<H", raw, 68, 0x8664)
     struct.pack_into("<H", raw, 88, 0x20B)
     return bytes(raw)
+
+
+class PreviewReferenceTests(unittest.TestCase):
+    def test_all_published_phase_formats_remain_supported(self):
+        for phase, version in ((3, "0.1.0-phase3"), (6, "0.2.0-phase6"), (7, "0.3.0-phase7")):
+            name = f"BlueMapUnityPreview-phase-{phase:02d}-aaaaaaaa-Windows-x64.zip"
+            manifest = {"schemaVersion": 1, "phase": phase, "previewVersion": version,
+                        "sourceCommit": "a" * 40, "packageName": name}
+            with self.subTest(phase=phase):
+                self.assertEqual(download.validate_preview_reference(manifest), (phase, "a" * 40, name))
+
+    def test_cross_phase_version_source_and_filename_are_rejected_before_download(self):
+        valid = {"schemaVersion": 1, "phase": 7, "previewVersion": "0.3.0-phase7",
+                 "sourceCommit": "a" * 40, "packageName": "BlueMapUnityPreview-phase-07-aaaaaaaa-Windows-x64.zip"}
+        for change in ({"phase": 6}, {"previewVersion": "0.2.0-phase6"}, {"schemaVersion": True},
+                       {"sourceCommit": "0" * 40}, {"sourceCommit": "A" * 40},
+                       {"packageName": "BlueMapUnityPreview-phase-06-aaaaaaaa-Windows-x64.zip"}):
+            with self.subTest(change=change), self.assertRaises(package.PackageError):
+                download.validate_preview_reference({**valid, **change})
 
 
 class UnityPackageTests(unittest.TestCase):
@@ -173,9 +199,127 @@ class UnityPackageTests(unittest.TestCase):
         with self.assertRaisesRegex(package.PackageError, "failed check"):
             package.package_player(self.player, self.output, build_identity, proof)
 
+    def phase7_fixture(self):
+        build_identity = {**identity(), "phase": 7, "previewVersion": "0.3.0-phase7"}
+        proof = runtime(build_identity)
+        proof["checks"] += [{"name": name, "passed": True}
+                            for name in sorted(package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS)]
+        details = foundation(build_identity)
+        output = self.base / "phase7-output"
+        output.mkdir()
+        archive, count = package.package_player(self.player, output, build_identity, proof, details)
+        receipt = {"phase": 7, "identity": build_identity, "success": True, "foundation": details,
+                   "rawLogsPublished": False, "godotSavesUsed": False, "checks": proof["checks"],
+                   "package": {"file": archive.name, "sha256": package.sha256(archive),
+                               "bytes": archive.stat().st_size, "files": count}}
+        return archive, receipt, proof
+
+    def test_phase7_foundation_package_and_historical_versions_verify(self) -> None:
+        archive, receipt, _ = self.phase7_fixture()
+        phase7 = package.verify_package(archive, receipt, "a" * 40)
+        phase6_archive, phase6_receipt, _ = self.phase6_fixture()
+        self.assertTrue(package.verify_package(phase6_archive, phase6_receipt, "a" * 40)["success"])
+        self.assertTrue(package.verify_package(self.archive, self.receipt, "a" * 40)["success"])
+        self.assertEqual(phase7["runtimeChecks"], 31)
+        self.assertEqual(phase7["phase"], 7)
+        with zipfile.ZipFile(archive) as packed:
+            root = package.archive_root(receipt["identity"])
+            self.assertEqual(json.loads(packed.read(root + "/FOUNDATION-CHECKS.json")), receipt["foundation"])
+            self.assertIn("Migratiefase 7", packed.read(root + "/LEESMIJ.txt").decode("utf-8"))
+
+    def test_phase7_cannot_omit_foundation_aggregate_or_any_presentation_witness(self) -> None:
+        build_identity = {**identity(), "phase": 7, "previewVersion": "0.3.0-phase7"}
+        for missing in sorted(package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS):
+            proof = runtime(build_identity)
+            proof["checks"] += [{"name": name, "passed": True} for name in sorted(
+                (package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS) - {missing})]
+            proof["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "proof"):
+                package.package_player(self.player, self.output, build_identity, proof, foundation(build_identity))
+
+    def test_phase7_foundation_details_fail_closed_before_packaging(self) -> None:
+        build_identity = {**identity(), "phase": 7, "previewVersion": "0.3.0-phase7"}
+        proof = runtime(build_identity)
+        proof["checks"] += [{"name": name, "passed": True}
+                            for name in sorted(package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS)]
+        changes = {
+            "missing": lambda d: None,
+            "stub": lambda d: {**d, "checks": [{"name": "foundation_stub", "passed": True}]},
+            "wrong_source": lambda d: {**d, "identity": {**build_identity, "sourceCommit": "c" * 40}},
+            "schema_bool": lambda d: {**d, "schemaVersion": True},
+            "failed": lambda d: {**d, "success": False},
+            "save_access": lambda d: {**d, "gameSaveAccessed": True},
+            "extra_field": lambda d: {**d, "privateLogPath": "must not publish"},
+            "failed_detail": lambda d: {**d, "checks": d["checks"][:-1] + [{"name": "failed_detail", "passed": False}]},
+            "duplicate": lambda d: {**d, "checks": d["checks"] + [d["checks"][0]]},
+        }
+        for label, edit in changes.items():
+            with self.subTest(change=label), self.assertRaises(package.PackageError):
+                package.package_player(self.player, self.output, build_identity, proof, edit(foundation(build_identity)))
+        for missing in sorted(package.FOUNDATION_DETAIL_CHECKS):
+            details = foundation(build_identity)
+            details["checks"] = [check for check in details["checks"] if check["name"] != missing]
+            details["checks"].append({"name": "irrelevant_detail", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "world/state/session"):
+                package.package_player(self.player, self.output, build_identity, proof, details)
+
+    def test_phase7_receipt_foundation_details_must_exactly_match_packaged_proof(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase7_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["foundation"]["checks"][-1]["name"] = "receipt_only_detail"
+        with self.assertRaisesRegex(package.PackageError, "Receipt foundation proof"):
+            package.verify_package(self.archive, self.receipt, "a" * 40)
+
+    def test_phase7_failed_details_cannot_be_hidden_by_rehashing_archive_and_receipt(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase7_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["foundation"]["checks"][-1]["passed"] = False
+        self.change_payload("FOUNDATION-CHECKS.json", json.dumps(self.receipt["foundation"]).encode())
+        with self.assertRaisesRegex(package.PackageError, "failed check"):
+            package.verify_package(self.archive, self.receipt, "a" * 40)
+
+    def test_phase7_missing_oracle_case_cannot_be_hidden_by_rehashing_archive_and_receipt(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase7_fixture()
+        self.identity = self.receipt["identity"]
+        details = self.receipt["foundation"]
+        details["checks"] = [check for check in details["checks"]
+                             if check["name"] != "foundation_source_condition_26"]
+        details["checks"].append({"name": "unrelated_green_detail", "passed": True})
+        self.change_payload("FOUNDATION-CHECKS.json", json.dumps(details).encode())
+        with self.assertRaisesRegex(package.PackageError, "world/state/session"):
+            package.verify_package(self.archive, self.receipt, "a" * 40)
+
+    def test_phase7_missing_native_source_decode_cannot_be_hidden_by_rehashing(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase7_fixture()
+        self.identity = self.receipt["identity"]
+        details = self.receipt["foundation"]
+        details["checks"] = [check for check in details["checks"]
+                             if check["name"] != "foundation_all_221_source_documents_native_decoded"]
+        details["checks"].append({"name": "unrelated_green_detail", "passed": True})
+        self.change_payload("FOUNDATION-CHECKS.json", json.dumps(details).encode())
+        with self.assertRaisesRegex(package.PackageError, "world/state/session"):
+            package.verify_package(self.archive, self.receipt, "a" * 40)
+
+    def test_phase7_missing_detail_document_is_rejected_even_with_rehashed_manifest(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase7_fixture()
+        self.identity = self.receipt["identity"]
+        self.rewrite(lambda files: [(info, raw) for info, raw in files
+                                   if not info.filename.endswith("/FOUNDATION-CHECKS.json")], True)
+        with self.assertRaisesRegex(package.PackageError, "foundation proof is missing"):
+            package.verify_package(self.archive, self.receipt, "a" * 40)
+
+    def test_historical_preview_cannot_be_mislabelled_as_foundation_verified(self) -> None:
+        details = foundation(self.identity)
+        with self.assertRaisesRegex(package.PackageError, "Historical preview"):
+            package.package_player(self.player, self.output, self.identity, self.runtime, details)
+        self.receipt["foundation"] = details
+        with self.assertRaisesRegex(package.PackageError, "Historical preview"):
+            package.verify_package(self.archive, self.receipt, "a" * 40)
+
     def test_unsupported_phase_and_cross_phase_preview_version_are_rejected(self) -> None:
         for phase, preview in ((4, "0.2.0-phase6"), (True, "0.2.0-phase6"),
-                               (6, "0.1.0-phase3"), (3, "0.2.0-phase6")):
+                               (6, "0.1.0-phase3"), (3, "0.2.0-phase6"),
+                               (7, "0.2.0-phase6"), (6, "0.3.0-phase7")):
             with self.subTest(phase=phase, preview=preview), self.assertRaises(package.PackageError):
                 package.validate_identity({**identity(), "phase": phase, "previewVersion": preview})
 

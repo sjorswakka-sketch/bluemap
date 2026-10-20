@@ -29,10 +29,11 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.2.0-phase6"
-PHASE = 6
+PREVIEW_VERSION = "0.3.0-phase7"
+PHASE = 7
 
-from verify_unity_package import PackageError, package_player, validate_identity, verify_package
+from verify_unity_package import (PackageError, package_player, validate_identity, verify_package,
+                                  validate_foundation, FOUNDATION_CHECKS)
 
 
 class ProbeError(RuntimeError):
@@ -386,6 +387,8 @@ def main() -> None:
             isinstance(c.get("name"), str) and c["name"] and c.get("passed") is True for c in checks),
             "Runtime reported a failed or missing check")
     require(len({c["name"] for c in checks}) == len(checks), "Runtime check names are duplicated")
+    require(FOUNDATION_CHECKS <= {c["name"] for c in checks},
+            "Required foundation runtime check is missing")
     require(type(result.get("frames")) is int and result["frames"] >= 60, "Runtime loop did not advance")
     require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
             "Unexpected runtime capture method")
@@ -406,8 +409,10 @@ def main() -> None:
                  "screenshot-languages.png", "screenshot-pixels.png", "screenshot-animation.png",
                  "screenshot-premultiplied.png"):
         captures[name] = validate_png(runtime / name)
+    foundation = read_json(runtime / "foundation-result.json")
+    validate_foundation(foundation, identity)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
-    package, file_count = package_player(player, output, identity, result)
+    package, file_count = package_player(player, output, identity, result, foundation)
     receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
                "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
                "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
@@ -416,6 +421,7 @@ def main() -> None:
                "graphicsDeviceType": graphics, "frames": result["frames"], "captureMode": result["captureMode"],
                "checks": checks, "screenshot": screenshot,
                "presentation": presentation, "import": imported, "captures": captures,
+               "foundation": foundation,
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,
                "buildSourceUnchanged": True, "buildProjectWasDisposable": True,

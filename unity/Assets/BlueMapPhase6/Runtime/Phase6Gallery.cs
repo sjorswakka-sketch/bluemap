@@ -107,9 +107,9 @@ namespace BlueMapMigration.Phase6
             animated.Clear(); witnesses.Clear(); Page = page; animationTime = 0;
             Label("BLUEMAP QUEST", 48, 30, 25, Ink);
             if (!string.IsNullOrEmpty(BuildCommit) && BuildCommit.Length >= 8) Label("PREVIEW  " + BuildCommit.Substring(0, 8), 940, 39, 12, Muted);
-            Label("Fase 6  /  oorspronkelijke pixelkunst, geluid en talen", 49, 68, 15, Muted);
+            Label("Fase 7  /  oorspronkelijke pixelkunst, geluid en talen", 49, 68, 15, Muted);
             Label("1 Overzicht   2 Kapsels   3 Kleding   4 Uitrusting   5 Talen   6 Pixelcontrole", 49, 602, 14, Muted);
-            Label("M Muziek starten   N Muziek stoppen   Spatie Geluid   Esc Sluiten", 49, 625, 12, Muted);
+            Label("7 Spelbasis   M Muziek starten   N Muziek stoppen   Spatie Geluid   Esc Sluiten", 49, 625, 12, Muted);
             switch (page)
             {
                 case "overview": Overview(); break;

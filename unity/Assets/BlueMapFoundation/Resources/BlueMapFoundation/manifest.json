@@ -1,0 +1,1791 @@
+{
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "documents": [
+    {
+      "bytes": 2688162,
+      "gzipBytes": 64411,
+      "gzipSha256": "afcd8c8d9fc9cf17d6acae8d4ffc063994e9f84082dc53dce540f52878ce67a5",
+      "resourcePath": "BlueMapFoundation/phase-05/runtime-identities",
+      "sha256": "78e174b9862238a66c57165e3f517aa0f660435d388cb40866fa81a9a8b0639a",
+      "sourcePath": "migration/phase-05/runtime-identities.json"
+    },
+    {
+      "bytes": 173040,
+      "gzipBytes": 4243,
+      "gzipSha256": "d618f8a8b3cdbe89ec7d4ebd95cc6a50c4ebbe582080caa285b638dbc29b772e",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/achievements",
+      "sha256": "15a99d69539b46020652bf995f224a04be4138d1f2cc6648a81d9c728314e52a",
+      "sourcePath": "migration/portable/catalogs/achievements.json"
+    },
+    {
+      "bytes": 64943,
+      "gzipBytes": 1155,
+      "gzipSha256": "c3f0a8a0696ad80796f0ebc467e68f4acd6d45a285ecbee984410e56af3aee9a",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/actions",
+      "sha256": "71ac7250b1076176b99b91081316b152b3b9b16fa6158c5a4e63ac4845f0303e",
+      "sourcePath": "migration/portable/catalogs/actions.json"
+    },
+    {
+      "bytes": 112941,
+      "gzipBytes": 2271,
+      "gzipSha256": "2d8c27836dc3453c92678f62c22c2784dffb76ce9752981cb900fe8bdcf58a3c",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/clothes",
+      "sha256": "36d98c1ab6ad5e60b7ac7b1ffc6088438bb9791fe1d2dca053cf0c8228be86db",
+      "sourcePath": "migration/portable/catalogs/clothes.json"
+    },
+    {
+      "bytes": 15847,
+      "gzipBytes": 651,
+      "gzipSha256": "21e9cd5ae03b05e680c559d66eb8f482b53918b0af11004f64a08e9091e7e793",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/clothing_slots",
+      "sha256": "fce34ef869b65e5a953c01fe34932ad1d4d70370d9114897ddf5836cde7c37de",
+      "sourcePath": "migration/portable/catalogs/clothing_slots.json"
+    },
+    {
+      "bytes": 64818,
+      "gzipBytes": 1082,
+      "gzipSha256": "0b41c7b76f08ffd279359ccc6175aee14b683bcb1719f932221d359a3bcd6af3",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/conditions",
+      "sha256": "a485a155180146c0179a289db6dead3d501b6e5702eeb7872f845b724a3a0d4c",
+      "sourcePath": "migration/portable/catalogs/conditions.json"
+    },
+    {
+      "bytes": 270306,
+      "gzipBytes": 3200,
+      "gzipSha256": "3afbf03168c60a5d2819ee3553d4155a7ad20fbb947e27e1b429177bbc9a0957",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/consumables",
+      "sha256": "5281fdb4478cd8687052aabfef502c3cede59186cb295c420678b01e3c6df8f1",
+      "sourcePath": "migration/portable/catalogs/consumables.json"
+    },
+    {
+      "bytes": 85612,
+      "gzipBytes": 1752,
+      "gzipSha256": "f20dd1c8c29ae255b2eddf17b276ee14f8e0115c07b18f05091564835c5927da",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/dye_colors",
+      "sha256": "81d0bccc2337ef890bccaafcda539b041844f6eef719e85ca175c6e6c3631c4d",
+      "sourcePath": "migration/portable/catalogs/dye_colors.json"
+    },
+    {
+      "bytes": 301392,
+      "gzipBytes": 7968,
+      "gzipSha256": "e33b292363af68ce1370eeb1945416e575fdddd833d74e1d9f692352a9f37521",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/enemies",
+      "sha256": "d1eac6de203e2d31a61794c94ef9fd0830bc8a149b63be074881261efe00b76e",
+      "sourcePath": "migration/portable/catalogs/enemies.json"
+    },
+    {
+      "bytes": 51561,
+      "gzipBytes": 1236,
+      "gzipSha256": "3a723b047f1c72a54035ecd773b134c7252750ec12727c6db141eab2d2b98d45",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/eye_colors",
+      "sha256": "764a3bfdff58b25e8291ee5e55faa43716b351a55fdac3f4ca156f6ad3ad6703",
+      "sourcePath": "migration/portable/catalogs/eye_colors.json"
+    },
+    {
+      "bytes": 44539,
+      "gzipBytes": 823,
+      "gzipSha256": "07971480dfb6c990e15c8c9c0c2be1ba83bbe7650815a64ebda05148fccb083b",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/eye_styles",
+      "sha256": "f63807cc070258322fe2bdb67a4d941a1c5b541683416c009d139c412cfee3c5",
+      "sourcePath": "migration/portable/catalogs/eye_styles.json"
+    },
+    {
+      "bytes": 21582,
+      "gzipBytes": 621,
+      "gzipSha256": "52b0b6ab07506e1b56656995cf4ee97db248fa362a5285b3ee7712f5012d52d7",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/formats",
+      "sha256": "3c26a4ff92f702e8a6f39c732e31dd2af68d5b16b07570b440ab445b15f6c82b",
+      "sourcePath": "migration/portable/catalogs/formats.json"
+    },
+    {
+      "bytes": 134466,
+      "gzipBytes": 3627,
+      "gzipSha256": "db35a1b76fa309d4e906210db1cfbaaee2bcf9f72f043e3f2d78b1df9d05564c",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/gear",
+      "sha256": "5b00c9c025cbd497438375081efcf2f117a86ff923801a10946345314a228024",
+      "sourcePath": "migration/portable/catalogs/gear.json"
+    },
+    {
+      "bytes": 15973,
+      "gzipBytes": 735,
+      "gzipSha256": "b41cb9ea1eda540f428fec7e4dbcdcc90421902cecf2bac9b8010c970d65d209",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/gear_slots",
+      "sha256": "7986cf80abe23dd85d6287c5fa9be18696dd3f833b5f6fef2bafa9b1bdec38a2",
+      "sourcePath": "migration/portable/catalogs/gear_slots.json"
+    },
+    {
+      "bytes": 5854,
+      "gzipBytes": 418,
+      "gzipSha256": "e0ddb34003e72753ec22cbbec923f80269058041b308efbc7c0489106915afb5",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/genders",
+      "sha256": "04a44859abb70a37aafb63edcae26c5dff06d8fec6557a51e6102cb25e4ace0f",
+      "sourcePath": "migration/portable/catalogs/genders.json"
+    },
+    {
+      "bytes": 68615,
+      "gzipBytes": 1608,
+      "gzipSha256": "2739a030495a77a810c8d51a508d667b856b31ff15d6934ae0e5f4d2147932f0",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/hair_colors",
+      "sha256": "e626da2473576b02883f631d4e35227593b2916a95a8d28d8a805f4c81e33061",
+      "sourcePath": "migration/portable/catalogs/hair_colors.json"
+    },
+    {
+      "bytes": 155604,
+      "gzipBytes": 2107,
+      "gzipSha256": "36a0eeca5759deee62de9266c40466e99126476d8de3b7dd0b8db34fe8c39c45",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/hair_m",
+      "sha256": "b700dbd5903e18ddf1e60d681bf5d209f38a830233fca7fcb53fb303b97bb1ca",
+      "sourcePath": "migration/portable/catalogs/hair_m.json"
+    },
+    {
+      "bytes": 157421,
+      "gzipBytes": 2125,
+      "gzipSha256": "9b00607e94e31b75b5e043fa38c89f3c3332607aec20231855dd0593afdcf2a0",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/hair_v",
+      "sha256": "bf27d98c73e8ef9bc668c5deb3921a10ad1baea1fe9f00f495f6dc44bfaff9c3",
+      "sourcePath": "migration/portable/catalogs/hair_v.json"
+    },
+    {
+      "bytes": 1084634,
+      "gzipBytes": 23706,
+      "gzipSha256": "c5fce0c29c01d9cc632de917ddacd5ffcda05a516882cd88520a90e2db6e9262",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/items",
+      "sha256": "971a67f863baac64dcec1c9661d6a72cab1e71d35872e53640ae5d780841d3a4",
+      "sourcePath": "migration/portable/catalogs/items.json"
+    },
+    {
+      "bytes": 83719,
+      "gzipBytes": 2095,
+      "gzipSha256": "e477a0f3707d2a775474e440a59cd0e9ef8f4622e57311b026826e500c942fdf",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/map_markers",
+      "sha256": "9335653d6500c8046a19717324bf4334a3e74fd6a2be009556ebf8c14f40f77a",
+      "sourcePath": "migration/portable/catalogs/map_markers.json"
+    },
+    {
+      "bytes": 108645,
+      "gzipBytes": 1701,
+      "gzipSha256": "41e2e703e1826dabe63bdc9c3741950a9c95f3b52a82cab3bab43778e3e09118",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/maps",
+      "sha256": "dfae5bf8160f52e63fb127d618ce6b0b9fb275076ab71b5402be0c18a47b0556",
+      "sourcePath": "migration/portable/catalogs/maps.json"
+    },
+    {
+      "bytes": 33454,
+      "gzipBytes": 755,
+      "gzipSha256": "fb9af94492080dc62a2f5f106401cc3f0412cb7c2cc5cdd11ccae76a5b883178",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/music_tracks",
+      "sha256": "b181ca72a215f9f90c934e82d8a855b462f32439a727b8074a410d00500a5125",
+      "sourcePath": "migration/portable/catalogs/music_tracks.json"
+    },
+    {
+      "bytes": 307678,
+      "gzipBytes": 5014,
+      "gzipSha256": "39eb63de52fdc763e75e411fd752e9e4c9b8accd54a2fc4f1531fb516d4dee5e",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/npcs",
+      "sha256": "765552e8b17eec148e0654e0b628968259a466c72ca09f3b1ad2b632b6c88f63",
+      "sourcePath": "migration/portable/catalogs/npcs.json"
+    },
+    {
+      "bytes": 114542,
+      "gzipBytes": 1856,
+      "gzipSha256": "f21df32654a55619ebba4bf19690e9571a5aa3bc701abcae18314fe2bb172225",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/object_types",
+      "sha256": "d1ec717d79a12f08d53ea23bd5f9204c429b50170040bb5d460ebfded80aa07d",
+      "sourcePath": "migration/portable/catalogs/object_types.json"
+    },
+    {
+      "bytes": 22339,
+      "gzipBytes": 964,
+      "gzipSha256": "0c2d9efc5e1d9166b0f5b7baf72e3607c5dc42a2afd542c785ba48761eef33ad",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/professions",
+      "sha256": "d4b4ce2bb48e09ca563f70c058f419015258d3a717905f20cd5ffc8f0f5f9b3c",
+      "sourcePath": "migration/portable/catalogs/professions.json"
+    },
+    {
+      "bytes": 206219,
+      "gzipBytes": 7635,
+      "gzipSha256": "17679631c50c530722b7d0db06b297f8f1f2d427351373beba466cad09761537",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/quests",
+      "sha256": "c7fe50d6560f6867482a95119f2e694bea5ead26e5dbf70cbf63ca5bdd387e0a",
+      "sourcePath": "migration/portable/catalogs/quests.json"
+    },
+    {
+      "bytes": 274514,
+      "gzipBytes": 4446,
+      "gzipSha256": "3164d5944f7852e4174f49075da4797e4c4686509671ab9f3656cc90d730f0a7",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/recipes",
+      "sha256": "306d5da9b4e503edc6108aaaad969c20a6ddde6486611b7954a29f4b6bfb10cf",
+      "sourcePath": "migration/portable/catalogs/recipes.json"
+    },
+    {
+      "bytes": 706143,
+      "gzipBytes": 11953,
+      "gzipSha256": "8eadb5d174f4ffb7fb4d40720ffaefcaa4e80c5f672116ff15269944a080f32c",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/resources",
+      "sha256": "9875baff9218607aa786222ba334e3db32672b0964cb36ac697ba20190e7daa0",
+      "sourcePath": "migration/portable/catalogs/resources.json"
+    },
+    {
+      "bytes": 55112,
+      "gzipBytes": 1321,
+      "gzipSha256": "39863a81c49a9dc6448b48930aa1313482f6a2dc45154f4b781f06452aa76168",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/shops",
+      "sha256": "1ef55e3d6707626ca0b9f8b863107d6481dc6b637c4ca715afe20c72d0b28643",
+      "sourcePath": "migration/portable/catalogs/shops.json"
+    },
+    {
+      "bytes": 105095,
+      "gzipBytes": 1347,
+      "gzipSha256": "096cc288f99ef1c5b48c1e68f3e914eb7e113c77cc641bd68d318e71cf7be216",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/solid_tile_types",
+      "sha256": "29503b245acae96e49323e0b855ac10be36a87e4cb11cac92917654fd6e28970",
+      "sourcePath": "migration/portable/catalogs/solid_tile_types.json"
+    },
+    {
+      "bytes": 348856,
+      "gzipBytes": 3843,
+      "gzipSha256": "bcdb3cc6be00a105b8d7d8e9e3ed5d39115b01880ab16e720395dbb4377e6e97",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/sounds",
+      "sha256": "3ded6fd29f9ddd31a572857d8deab53728a7cf8318c457dcd5bd730fb79bb2c5",
+      "sourcePath": "migration/portable/catalogs/sounds.json"
+    },
+    {
+      "bytes": 3299,
+      "gzipBytes": 310,
+      "gzipSha256": "1c734af3f19010145eb5c26c63abfe99f1212195c758ea44f6d19a26e937415e",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/special_pickups",
+      "sha256": "a648c5378a7a739463441a7fe39af8fae873d1e91b340f27e5e1e1f8b19a5e5b",
+      "sourcePath": "migration/portable/catalogs/special_pickups.json"
+    },
+    {
+      "bytes": 1305855,
+      "gzipBytes": 39720,
+      "gzipSha256": "486a4ec152d3a28a6cd34a61c8e12cfe6b7192d07f03f3ebd16fe5a5fea34d29",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/talks",
+      "sha256": "af12b263d6af09090cb56b593968a5f9c400ea774cd03975c0aa46cb2d906e77",
+      "sourcePath": "migration/portable/catalogs/talks.json"
+    },
+    {
+      "bytes": 220838,
+      "gzipBytes": 2334,
+      "gzipSha256": "29923839b73b809f598c98af8cfde3d917541ef47722011c08b4cdfee042a244",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/tile_types",
+      "sha256": "4f0f02ec12ca39e8e50c36e8c7f29be22aa2c9490777a6fa95f45eba24b7c142",
+      "sourcePath": "migration/portable/catalogs/tile_types.json"
+    },
+    {
+      "bytes": 21777,
+      "gzipBytes": 878,
+      "gzipSha256": "ccd64a67f14248eb70b2f4cdb624e5a519ec198482d2c13f44aebf3d964114d8",
+      "resourcePath": "BlueMapFoundation/portable/catalogs/weapons",
+      "sha256": "50c0dde1047172c764aac7016ba0c2c53e9c77bcd78d00c31b86c956da3b442b",
+      "sourcePath": "migration/portable/catalogs/weapons.json"
+    },
+    {
+      "bytes": 293319,
+      "gzipBytes": 8442,
+      "gzipSha256": "d2dfe52366cfaa0da91c640e9afdee942f38b3a47630ba415458614bd770a077",
+      "resourcePath": "BlueMapFoundation/portable/declarations/000",
+      "sha256": "2b7c88c2a2fbe5ceb2bd6b6c95c73dd2babf35137b89326230d6c28745d01a87",
+      "sourcePath": "migration/portable/declarations/000.json"
+    },
+    {
+      "bytes": 745512,
+      "gzipBytes": 23612,
+      "gzipSha256": "06e008057944609b30c7d85c0cce31ad4a655ed141781c5b227de0e1a77f7335",
+      "resourcePath": "BlueMapFoundation/portable/declarations/001",
+      "sha256": "bf8bf3433e94c0552db115c66a102bd386e93c675e8768a30b8878ac4921f5cd",
+      "sourcePath": "migration/portable/declarations/001.json"
+    },
+    {
+      "bytes": 756365,
+      "gzipBytes": 23639,
+      "gzipSha256": "0dd6305a660e926aa404d570ad92a726b93622d2dd4cd1d33e5af2e533f9731c",
+      "resourcePath": "BlueMapFoundation/portable/declarations/002",
+      "sha256": "0c3960eb63d63e6ba3730a9fa3cdf8480905a8953f82f4b5839c3d87029d9bb2",
+      "sourcePath": "migration/portable/declarations/002.json"
+    },
+    {
+      "bytes": 148253,
+      "gzipBytes": 6661,
+      "gzipSha256": "dd0a2c643d1eee529422a8028e09d778df2240e3a6a9fa8130d136b48abd7aad",
+      "resourcePath": "BlueMapFoundation/portable/declarations/003",
+      "sha256": "d1d090ec43f9123ef1ad79629e315165ee117ef776ba2c9c580608a93d0ce0fd",
+      "sourcePath": "migration/portable/declarations/003.json"
+    },
+    {
+      "bytes": 230543,
+      "gzipBytes": 9916,
+      "gzipSha256": "9d8d183cfbec950ee0bcffc8554967e93e8b984c27ce7dfa4542f3ccf392355b",
+      "resourcePath": "BlueMapFoundation/portable/declarations/004",
+      "sha256": "e8a6b7fcf8d8dea1c6279d8d6bb65e83dcde17d8fce93dacf52acd241f0ef672",
+      "sourcePath": "migration/portable/declarations/004.json"
+    },
+    {
+      "bytes": 721456,
+      "gzipBytes": 19507,
+      "gzipSha256": "169ba30709a4efae33cff90ba0e2c63f11efbb5beb91d6154602834d04b7c89c",
+      "resourcePath": "BlueMapFoundation/portable/declarations/005",
+      "sha256": "a3f4fe9fce4f614dfc43538bd38cef2fbe21af4a246d18225b2ba5d476de55e7",
+      "sourcePath": "migration/portable/declarations/005.json"
+    },
+    {
+      "bytes": 222652,
+      "gzipBytes": 8960,
+      "gzipSha256": "a1a3c4edf17f610ae8b5d61f8f98272851adbfa4a3afb9d440f1a8bdfe50bd83",
+      "resourcePath": "BlueMapFoundation/portable/declarations/006",
+      "sha256": "fbf7a5728e75281f593b7736618133cfe67e999d6b422ba91ea57772f1116d21",
+      "sourcePath": "migration/portable/declarations/006.json"
+    },
+    {
+      "bytes": 400198,
+      "gzipBytes": 17502,
+      "gzipSha256": "339c10be9b07b1679d2f9ec29d2bc769b4a7e3c2595ea3ee5254dbf561f961f8",
+      "resourcePath": "BlueMapFoundation/portable/declarations/007",
+      "sha256": "30b6744f64d1c55c268090778f6b0102695fe46817ee83d8fd34a99cd72b14cb",
+      "sourcePath": "migration/portable/declarations/007.json"
+    },
+    {
+      "bytes": 357792,
+      "gzipBytes": 12737,
+      "gzipSha256": "717f5e2751d593f684ba4be2f76fc02a77dec06e49460e6dbe50ba2d83b4ff6c",
+      "resourcePath": "BlueMapFoundation/portable/declarations/008",
+      "sha256": "2acda34cdfe43dd16b0cabe7b9defd4ce5dc8cba20909623310c95b67c29fa27",
+      "sourcePath": "migration/portable/declarations/008.json"
+    },
+    {
+      "bytes": 720114,
+      "gzipBytes": 20339,
+      "gzipSha256": "5714b424e06f3263c4ad3b9ea6ead159c1f2a8ec0a2880b76a9f1dc158bee83c",
+      "resourcePath": "BlueMapFoundation/portable/declarations/009",
+      "sha256": "7f96edda06c9a6685b564e0b0180c386249d140bc033f0df8901da5ffef62b4e",
+      "sourcePath": "migration/portable/declarations/009.json"
+    },
+    {
+      "bytes": 374804,
+      "gzipBytes": 10475,
+      "gzipSha256": "0343126187adaf5c78a236e0171280cc26a3ef0d31309b30906c83b91cc6d4ae",
+      "resourcePath": "BlueMapFoundation/portable/declarations/010",
+      "sha256": "ede167729b4ed6aaf1cac0b7775f9d487e34bcb1734a703ecb4a309f51e57816",
+      "sourcePath": "migration/portable/declarations/010.json"
+    },
+    {
+      "bytes": 933438,
+      "gzipBytes": 18778,
+      "gzipSha256": "4e0b98e28de496082adf77912986642f0cb9bd190ac1dc87f81a886578decf0b",
+      "resourcePath": "BlueMapFoundation/portable/declarations/011",
+      "sha256": "9d1b42d112846f88c1bd7889120918bb79f57527b666a3c24573bf7ac25ad75b",
+      "sourcePath": "migration/portable/declarations/011.json"
+    },
+    {
+      "bytes": 234439,
+      "gzipBytes": 6196,
+      "gzipSha256": "13f479f3a1a4afc952b02f321429fa25a30ed9547681e402a105b95e1b98a7f7",
+      "resourcePath": "BlueMapFoundation/portable/declarations/012",
+      "sha256": "c837176d36ace5d6083e615171d17080f60ff30a94f577eb5561a98fcbe045d2",
+      "sourcePath": "migration/portable/declarations/012.json"
+    },
+    {
+      "bytes": 885243,
+      "gzipBytes": 21862,
+      "gzipSha256": "083c77ef0ce4436cdb4dc00d01d124b24b4b9e4764dc7e0ea6934eba1b9322d4",
+      "resourcePath": "BlueMapFoundation/portable/declarations/013",
+      "sha256": "bd51cd33178e2aa24958afc86bc9ed13448256550bb1783912bf74af3deba7c5",
+      "sourcePath": "migration/portable/declarations/013.json"
+    },
+    {
+      "bytes": 811836,
+      "gzipBytes": 21305,
+      "gzipSha256": "ee6f4b2a4c85a58c90b7c61133c50aea1b29aebaf53db2e97810fddf3101863b",
+      "resourcePath": "BlueMapFoundation/portable/declarations/014",
+      "sha256": "16f7f5c002368d27f030ef16da1a3eb4adbcfcec67bc8b1cb541fcd474fc7084",
+      "sourcePath": "migration/portable/declarations/014.json"
+    },
+    {
+      "bytes": 10940,
+      "gzipBytes": 602,
+      "gzipSha256": "e5b40e0d875f88003a3c5876d3d3abe342a3a07b55478b28a5e403a3ee32df2b",
+      "resourcePath": "BlueMapFoundation/portable/declarations/015",
+      "sha256": "fb10c9d53134e09fff3df097e8c4cebfcb47ef545c91713cfa2d3b68e56725d0",
+      "sourcePath": "migration/portable/declarations/015.json"
+    },
+    {
+      "bytes": 233112,
+      "gzipBytes": 18109,
+      "gzipSha256": "46da7f1100cd930726c782ef902ed01ef668448da2b54b2ec5b7e214e03d62b8",
+      "resourcePath": "BlueMapFoundation/portable/header",
+      "sha256": "62f77da5a396100c114a9551629553ca0362e7072c49cef4430553ecd30c7a81",
+      "sourcePath": "migration/portable/header.json"
+    },
+    {
+      "bytes": 2808685,
+      "gzipBytes": 373596,
+      "gzipSha256": "f06a57a4b7da81d016fb94efe06c482f1f7936a49830c45f017eaaaa0aabf4ae",
+      "resourcePath": "BlueMapFoundation/portable/identity",
+      "sha256": "6bd8c7433d1a700a14ebee0f8a6dda14c84dc7fdc88b57e5012df9ea13c9215f",
+      "sourcePath": "migration/portable/identity.json"
+    },
+    {
+      "bytes": 12657,
+      "gzipBytes": 4136,
+      "gzipSha256": "22e9182956bd636c9a09bf2e8fc8d9fd41fb98b5c9207f128ebfc0a9f0ae6f6d",
+      "resourcePath": "BlueMapFoundation/portable/manifest",
+      "sha256": "0dd2d3ea38a30cde9ce449d460c4be6fef84d4023d883f96c88cc1e4a79d12ab",
+      "sourcePath": "migration/portable/manifest.json"
+    },
+    {
+      "bytes": 907780,
+      "gzipBytes": 22766,
+      "gzipSha256": "929616a48af2d8eb4777a27541dc47c88313a673326e74123aae6b5c7b5e1fcb",
+      "resourcePath": "BlueMapFoundation/portable/references",
+      "sha256": "e2f86b1059e557b1779e73b9cb89d342069434131efb55321a8ae132b399623d",
+      "sourcePath": "migration/portable/references.json"
+    },
+    {
+      "bytes": 341426,
+      "gzipBytes": 25633,
+      "gzipSha256": "2f4f4be33dcd59d5ae579d22a683c3d9ebed842b9b9c31595079653629c92047",
+      "resourcePath": "BlueMapFoundation/portable/rules",
+      "sha256": "77de59f5d15a5917a269fdc044d65bc1d7465e38826daa20c2a5ae63e9b89f19",
+      "sourcePath": "migration/portable/rules.json"
+    },
+    {
+      "bytes": 322666,
+      "gzipBytes": 20062,
+      "gzipSha256": "e1fe76f3ae0f48dd8e1a4f1b8c93bec584b57d464b65fa26b8d08ef052e192e1",
+      "resourcePath": "BlueMapFoundation/portable/save-contract",
+      "sha256": "44a81966deab4b8ac4dae74e7bc4ba5cfa936c382d70613480932633d9e8a808",
+      "sourcePath": "migration/portable/save-contract.json"
+    },
+    {
+      "bytes": 75791,
+      "gzipBytes": 14100,
+      "gzipSha256": "d90326df732dfe68f372c8ebd3790cbf51216c67257ce3e980186f4bcb8c28fa",
+      "resourcePath": "BlueMapFoundation/world/index",
+      "sha256": "d986a9a8ad3a03e2c5a5b9fb98e0622dbca76f950f52d35d756f611410af4743",
+      "sourcePath": "migration/world/index.json"
+    },
+    {
+      "bytes": 584230,
+      "gzipBytes": 17397,
+      "gzipSha256": "436b149bb0949f100d6ee86e7be9840750a24c40fbb430d88118066ffc250414",
+      "resourcePath": "BlueMapFoundation/world/snapshots/archive_clues/reedvault",
+      "sha256": "891a371bbd821aa6edc94327f8dafbf27db4afe0a0b9f1c64902a06fc86ed506",
+      "sourcePath": "migration/world/snapshots/archive_clues/reedvault.json"
+    },
+    {
+      "bytes": 3095941,
+      "gzipBytes": 49583,
+      "gzipSha256": "04bde47ff6396ba1a2003cd125f6c3796f47d9c65dd5cdb9db6d5a2ad5aa1c7f",
+      "resourcePath": "BlueMapFoundation/world/snapshots/archive_routes/kruipmoeras",
+      "sha256": "5b9e865293c621c0aaefb41854df504cf81a866a5112579a9a462cab2a01896c",
+      "sourcePath": "migration/world/snapshots/archive_routes/kruipmoeras.json"
+    },
+    {
+      "bytes": 602449,
+      "gzipBytes": 17860,
+      "gzipSha256": "60bd1a731f788f7b27dea40454d3f4d88e9ef45d83bd7549a8a39002377f2058",
+      "resourcePath": "BlueMapFoundation/world/snapshots/archive_routes/reedvault",
+      "sha256": "c62c4d8f526a946b24370e00b9e1e564575d31af54a56ef05f7ba26d1aa05be4",
+      "sourcePath": "migration/world/snapshots/archive_routes/reedvault.json"
+    },
+    {
+      "bytes": 3095468,
+      "gzipBytes": 49556,
+      "gzipSha256": "eabb65efd1e8a9856b53541fa0ab2990922a0eaff11f4e33f9717b2b835b02af",
+      "resourcePath": "BlueMapFoundation/world/snapshots/archive_stories/kruipmoeras",
+      "sha256": "5358d5011eff86195963a089e156a36c28de7e2e4d14d76a508c2e7a8526beda",
+      "sourcePath": "migration/world/snapshots/archive_stories/kruipmoeras.json"
+    },
+    {
+      "bytes": 601980,
+      "gzipBytes": 17840,
+      "gzipSha256": "39fdef0550e282e8e70a57a2b9e6df183596de56b58ff31cb995d5d4ed990021",
+      "resourcePath": "BlueMapFoundation/world/snapshots/archive_stories/reedvault",
+      "sha256": "03114cae93e564291c17a6951cb3f5cd4a64a42043d5fdf22f4e1545709e6a73",
+      "sourcePath": "migration/world/snapshots/archive_stories/reedvault.json"
+    },
+    {
+      "bytes": 513503,
+      "gzipBytes": 15230,
+      "gzipSha256": "6e574512abd6e7e762d687bdcf54870771477dbb00eac3ceaed97ef174e466ba",
+      "resourcePath": "BlueMapFoundation/world/snapshots/boss_gate_closed/temple",
+      "sha256": "7738ff34fb53cf869dcf0236d411a393661a768493342c7b73b02729ac34eb4c",
+      "sourcePath": "migration/world/snapshots/boss_gate_closed/temple.json"
+    },
+    {
+      "bytes": 390752,
+      "gzipBytes": 12337,
+      "gzipSha256": "860646f7185b3cda326566cf897dfbcaee284a4ad50196cf72ca2c62306fda21",
+      "resourcePath": "BlueMapFoundation/world/snapshots/coastal_workshop/coast_workshop",
+      "sha256": "cbc0dc798fa43d87acaee19a5cc30ce237b4e5a6a8533ff1d2e70af0db2768d3",
+      "sourcePath": "migration/world/snapshots/coastal_workshop/coast_workshop.json"
+    },
+    {
+      "bytes": 2813428,
+      "gzipBytes": 48816,
+      "gzipSha256": "b98b6a6ee747f2e838a2c07d31d9a0bcf029a1c3611a966d0dfd26e9288599d9",
+      "resourcePath": "BlueMapFoundation/world/snapshots/coastal_workshop/harbor",
+      "sha256": "850f86a03fd8e31c5c8c5fd16be1436105cd82efd58c150f903a1942cca174fe",
+      "sourcePath": "migration/world/snapshots/coastal_workshop/harbor.json"
+    },
+    {
+      "bytes": 1145576,
+      "gzipBytes": 29829,
+      "gzipSha256": "4905e0be437c32695d77b74a7951b1a78322b70d6c5bf7e0d1a76388efaa17e5",
+      "resourcePath": "BlueMapFoundation/world/snapshots/desert_caravan/dorstvallei",
+      "sha256": "6d1a314bbc7d83dbcbcaa3cc75779a156bd2dcd49f0692f4e6678241faefc526",
+      "sourcePath": "migration/world/snapshots/desert_caravan/dorstvallei.json"
+    },
+    {
+      "bytes": 550239,
+      "gzipBytes": 17582,
+      "gzipSha256": "ecf8abf7be11569886558a30b9f0c021a85ad2061b4c27c681a0fee97f0d45b3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/desert_caravan/sunwell",
+      "sha256": "48581e609deebfdfcd122196282bfd24cedab224a06bda0b99cf9d9e1b7435d6",
+      "sourcePath": "migration/world/snapshots/desert_caravan/sunwell.json"
+    },
+    {
+      "bytes": 1145564,
+      "gzipBytes": 29834,
+      "gzipSha256": "f4ab02e84ded5b43013cbbf9868a6ba4848a7d7577db01c4fccd51d0e93dbe11",
+      "resourcePath": "BlueMapFoundation/world/snapshots/desert_wild/dorstvallei",
+      "sha256": "813758f49912f310199d73fc05b09dee4a3482096a250bd52510afb4fea52424",
+      "sourcePath": "migration/world/snapshots/desert_wild/dorstvallei.json"
+    },
+    {
+      "bytes": 550227,
+      "gzipBytes": 17576,
+      "gzipSha256": "44d3b54e42514753840f17c4be82f03c4f5d315d589a80067d70515f35c189ce",
+      "resourcePath": "BlueMapFoundation/world/snapshots/desert_wild/sunwell",
+      "sha256": "759cbbf929529338e3be87bb4cb3bcdc40104ec36efbb56012b4ca0f921b42e4",
+      "sourcePath": "migration/world/snapshots/desert_wild/sunwell.json"
+    },
+    {
+      "bytes": 3454402,
+      "gzipBytes": 56734,
+      "gzipSha256": "0511a862c50ef58e919ae5288b9c09e6653a86054d6d186e9f0f6f690122d585",
+      "resourcePath": "BlueMapFoundation/world/snapshots/farm_disconnected/village",
+      "sha256": "05931c3365a39fb1f703ddb744c2cd48d79bd29c43f305be32e20f4002f01cf5",
+      "sourcePath": "migration/world/snapshots/farm_disconnected/village.json"
+    },
+    {
+      "bytes": 3439861,
+      "gzipBytes": 56350,
+      "gzipSha256": "ed1d8a9b1b8f24b7fcb8a99659b659c4971c7017b3a14a1f74f8b5ec0ea3fe85",
+      "resourcePath": "BlueMapFoundation/world/snapshots/farm_dry/village",
+      "sha256": "c27adf14cd9e495bf029efae578edb480b62838c21c98e3e85c14017411ea8c2",
+      "sourcePath": "migration/world/snapshots/farm_dry/village.json"
+    },
+    {
+      "bytes": 3473371,
+      "gzipBytes": 56920,
+      "gzipSha256": "dc292ceb367191d06056bfa3dcaf325b354c4386989e0d5c8e915bcd890178a9",
+      "resourcePath": "BlueMapFoundation/world/snapshots/farm_irrigated/village",
+      "sha256": "debee0fd31923b147644935afc7dc74f61b71ab0cc660b0a170000e92ee2dd0a",
+      "sourcePath": "migration/world/snapshots/farm_irrigated/village.json"
+    },
+    {
+      "bytes": 432189,
+      "gzipBytes": 12063,
+      "gzipSha256": "f31648c9e131f68a7f634c74c35a28be3b839b2ca2b5f55f2d30d5ae7c98f018",
+      "resourcePath": "BlueMapFoundation/world/snapshots/farm_ready/player_home",
+      "sha256": "681852d496e20cfc0f7affff0526bcab287b47464e673cb4cf5ae8455c5cdb35",
+      "sourcePath": "migration/world/snapshots/farm_ready/player_home.json"
+    },
+    {
+      "bytes": 3532682,
+      "gzipBytes": 58815,
+      "gzipSha256": "7d3b32c30d9578a0d0499956368b05788e5b8aae91981d772332fee263a89022",
+      "resourcePath": "BlueMapFoundation/world/snapshots/farm_ready/village",
+      "sha256": "5b7fe3313c989c343d0ac609fcde432efe4b714295ac5e2c347a6360c164b57e",
+      "sourcePath": "migration/world/snapshots/farm_ready/village.json"
+    },
+    {
+      "bytes": 3875779,
+      "gzipBytes": 58681,
+      "gzipSha256": "597e7eda8d062b9a6c4ec556518d11aa7193841fbc6f0df2066a22e0ac45e855",
+      "resourcePath": "BlueMapFoundation/world/snapshots/forest_restored/dauwbos",
+      "sha256": "1fcb22b2f6388afb5ee409ccd39d20f5014ba02ca9c73f5e64d884b220d79a2a",
+      "sourcePath": "migration/world/snapshots/forest_restored/dauwbos.json"
+    },
+    {
+      "bytes": 1058481,
+      "gzipBytes": 21469,
+      "gzipSha256": "247caaba70669f35188caf095e627b276a79ab03e492e020c04c91df0470d3bc",
+      "resourcePath": "BlueMapFoundation/world/snapshots/forest_restored/mistgarden",
+      "sha256": "8a654536aea21ed25cfe6ec294c0af09084eb7e44381987d2d9e457c46dec658",
+      "sourcePath": "migration/world/snapshots/forest_restored/mistgarden.json"
+    },
+    {
+      "bytes": 676872,
+      "gzipBytes": 15799,
+      "gzipSha256": "84319f7b2ff7c6f278efacb6446f6ad5462d8604ee491c656fe5d6a3ff35c068",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/arena",
+      "sha256": "8afa8861bd92afd9b8b19ae3fb4493c4fa40172668296796ccc0199f663a99be",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/arena.json"
+    },
+    {
+      "bytes": 329889,
+      "gzipBytes": 10079,
+      "gzipSha256": "1e749480561d3ecd87bb320b64ca5f6f3f9f98fbd5bb840a192ad2dc2008b2f0",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/arena_hall",
+      "sha256": "1772f586aa6fe6dc747194071be1e5e2d3ce72f63e039fa787d664f19222ed2a",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/arena_hall.json"
+    },
+    {
+      "bytes": 1515515,
+      "gzipBytes": 37156,
+      "gzipSha256": "6ceb789e2fe1e3f4375ca8e584ee94bf8eecf5ea6df8b8882ed258b2d5da4148",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/cave",
+      "sha256": "58ae9a4e85fd5882d9b3e27b9856ec5b47ba32d71d2841c532405631cfd94473",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/cave.json"
+    },
+    {
+      "bytes": 2070994,
+      "gzipBytes": 38871,
+      "gzipSha256": "af8707d3067ec6d956d1b9be7654b02f7ef9f2eacf3d9a0f8a41b4d3264424d9",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/coast",
+      "sha256": "757fddf77a645cd228cf8bbc46a4f39ec43fb39c50bd3621e0c70d984635a0cd",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/coast.json"
+    },
+    {
+      "bytes": 386378,
+      "gzipBytes": 12229,
+      "gzipSha256": "e1d7455fed538415f2a3325418446fcf7572df62ccb0bbc6b6b15de194454337",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/coast_workshop",
+      "sha256": "acdeb055dec6c879301f4c1e9396c1041cfa728e949bf6cc606eec208ba0e2d3",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/coast_workshop.json"
+    },
+    {
+      "bytes": 3863572,
+      "gzipBytes": 57705,
+      "gzipSha256": "e81680ddabf744511f0d575792ceabc06ecb13642f875920d0cc942c9afe1ea3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/dauwbos",
+      "sha256": "953b879f8b218474d6b7595fe0ef3dcb61e50dcd47f540f0b0c58062b0b0c763",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/dauwbos.json"
+    },
+    {
+      "bytes": 1367340,
+      "gzipBytes": 29319,
+      "gzipSha256": "982df093d67c72e08ed8867ed8ba116e7b4c670a4c77e75d6d7e1f13c1b0591c",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/depths1",
+      "sha256": "90263316e874df209bafc9052a4dd0bb6f0be9a3da39d3082906ca49855b0efb",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/depths1.json"
+    },
+    {
+      "bytes": 599107,
+      "gzipBytes": 17067,
+      "gzipSha256": "ecf18dc94130243639758b6eeb2a56cfd43cbac3f57c79ca3ebd735e045b696d",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/depths2",
+      "sha256": "73d84e229e33b9310cdc329da08aaf2ee43d7cbda85f2ccc0bba097015027b0d",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/depths2.json"
+    },
+    {
+      "bytes": 1129416,
+      "gzipBytes": 29457,
+      "gzipSha256": "1e435d943b053b1fa91d6c83d37a06c4ab19629dddbcf751215c4d7051a0b281",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/dorstvallei",
+      "sha256": "85f67b249070d70a2ae909116646b487da2051732e4c0ff90af2511c3dd9e086",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/dorstvallei.json"
+    },
+    {
+      "bytes": 229934,
+      "gzipBytes": 7793,
+      "gzipSha256": "3c6d531c7a6db740ad6ee94733aa78ce8e2203594a05de0e25768c23303a147f",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/fisher_hut",
+      "sha256": "51776f10c83a026371a7582563620ae94f83f2d51de338d77f0d366aab4100ee",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/fisher_hut.json"
+    },
+    {
+      "bytes": 4398608,
+      "gzipBytes": 67502,
+      "gzipSha256": "bfca6ab91342d55ecb5c2ba7017e50b917d8edefcecd5f0811a4c7df294506f9",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/forest",
+      "sha256": "dd87e021e4c84dac854855f9e5178d20893d1e5f2e0ecb994489d5cb5d41306f",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/forest.json"
+    },
+    {
+      "bytes": 3190948,
+      "gzipBytes": 41684,
+      "gzipSha256": "f43d7e5cb18607ba1b633cba0c5240db27b21ed800006ce0c24c529beb625836",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/forest_edge",
+      "sha256": "76fc96baf4282435c5d8513e5a24a02d432bbfbc375da8f5a27a425ef6b05398",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/forest_edge.json"
+    },
+    {
+      "bytes": 2279443,
+      "gzipBytes": 39097,
+      "gzipSha256": "75862e20800cc34b867e491d48777d0ac5a21b2f3b4eeaa4b7666bf2d963b712",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/gull_island",
+      "sha256": "8001d004605450e86c3a1f8337568b984671c0984d04ec5fbe156d6b387c5635",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/gull_island.json"
+    },
+    {
+      "bytes": 2809148,
+      "gzipBytes": 48784,
+      "gzipSha256": "31430779d64f913fd22369f7586083d848cee3e7a7316b842b6e656cf3311a71",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/harbor",
+      "sha256": "9396e97ff197d0eb95d6fbdd6fc14a67253ed883f709fe9f26bdd40ec21812a7",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/harbor.json"
+    },
+    {
+      "bytes": 2740342,
+      "gzipBytes": 49798,
+      "gzipSha256": "661624eb561feff1f1ed7177086ce79d8b278009c7e864bf5b63886f846bfb36",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/headland",
+      "sha256": "cd97a78c55fd804d0ec0c5b3e76cd12977035e70589621ecd12b635ce63982ed",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/headland.json"
+    },
+    {
+      "bytes": 3321694,
+      "gzipBytes": 51827,
+      "gzipSha256": "eae0106bb70bddd1203fa5a6e65a519ff698dba6762541ab26295fedbd381171",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/ijsdal",
+      "sha256": "02b2df82abcbe7c0657eb07aed7bc6339d4e7f5d4d441d0d00cd888fe7d4e579",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/ijsdal.json"
+    },
+    {
+      "bytes": 316538,
+      "gzipBytes": 9915,
+      "gzipSha256": "944143061af96839020fd86268c43662cc2acbb73e417cfb755a6316bd5ab93c",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/inn",
+      "sha256": "f6abbbda58b7dfacc5abcd73124a78fe7a5d4463bb0ee8bb92085539fbc86061",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/inn.json"
+    },
+    {
+      "bytes": 3123615,
+      "gzipBytes": 49159,
+      "gzipSha256": "cad89708ed532662e455739c986464cc7115d9e1ee96c273d6573d754be6a502",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/kruipmoeras",
+      "sha256": "3c34b0c7c8796cf353c360ec7d91c1cf5238f708165245ec312a08a93f657013",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/kruipmoeras.json"
+    },
+    {
+      "bytes": 3342061,
+      "gzipBytes": 52720,
+      "gzipSha256": "9a4a59ee433d5b0c2111002c93b028ea8e35a038b43f4ffa512f197097880400",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/lake",
+      "sha256": "0f7d02e441fb38cfdeb01b34b771ef6afb428eb716af2fcfe1fe65d9fc9b8094",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/lake.json"
+    },
+    {
+      "bytes": 374327,
+      "gzipBytes": 11285,
+      "gzipSha256": "e884c1dae394934f9268b6609dc9f98b8993115f20e7257f11a13a9025b9fd40",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/library",
+      "sha256": "635cbcf8af1de03ffdeed56c88a5c674384532c23b8c05cf931de351e458a078",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/library.json"
+    },
+    {
+      "bytes": 1042676,
+      "gzipBytes": 20980,
+      "gzipSha256": "73ae86820f694a1c4493ba1b5f2b4702b51a7e866bf31cb1acd43f81ab11afe3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/mistgarden",
+      "sha256": "e657f3ce91a10afb90cf2783ceac0fa643e307fb6e5acd70420fe2c80fcd65c0",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/mistgarden.json"
+    },
+    {
+      "bytes": 279816,
+      "gzipBytes": 8598,
+      "gzipSha256": "1d4fe25660cb284d7d2fb8bdbde5a7a84a79ab6e52b9098587020f52fa1e9772",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/player_home",
+      "sha256": "152f3fd454404be48e5dd88913ec015a92a110e5b47c5ec7826f56440396ffa4",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/player_home.json"
+    },
+    {
+      "bytes": 921706,
+      "gzipBytes": 25260,
+      "gzipSha256": "26cef374a5710efdcb0e0503eaeba7a227af39e58b427a3b6dc0d89ebd744e37",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/prismamine",
+      "sha256": "3b068343079fa1d741499900c38185a0eefdc78bc38b2e2857ac1858f37c92bf",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/prismamine.json"
+    },
+    {
+      "bytes": 580489,
+      "gzipBytes": 17315,
+      "gzipSha256": "eee5b783195682982f43179829777c63fe4327484417aadc8e70c9c4b5a137fd",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/reedvault",
+      "sha256": "421f30e9513e6c8f27204318481b8e92c9ca1b6db8ce5401f291bea3a8d26795",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/reedvault.json"
+    },
+    {
+      "bytes": 384728,
+      "gzipBytes": 12651,
+      "gzipSha256": "63211092a8193adafbcfaaa4ef380c9adf5f8b2c7004dabcedc588678245a9dc",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/resonance",
+      "sha256": "8d00886c026a5891b01da145fa62f6be7a27824f6311160168fee1da075691b9",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/resonance.json"
+    },
+    {
+      "bytes": 1372359,
+      "gzipBytes": 25691,
+      "gzipSha256": "6eac6b6e3fabab1f963c74c149bb93519b6abfd84c7b2c5e44aecb14e03f773b",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/ridgepass",
+      "sha256": "0927449d161aaef071c955126d5c8e3a65dcb52f3ca52e9b59ea97b4358cac2a",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/ridgepass.json"
+    },
+    {
+      "bytes": 2766978,
+      "gzipBytes": 49007,
+      "gzipSha256": "bc46dd36e355c2d176e7219979495a324a91b1a260e083bb68c48c1c9449268e",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/river_mouth",
+      "sha256": "62618af1ef0ac2e1859470b36ae55662d1450848c104e52a331af4c1bfcde9f6",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/river_mouth.json"
+    },
+    {
+      "bytes": 1307832,
+      "gzipBytes": 33976,
+      "gzipSha256": "37af455a839a4e7793d46831b34ce432c9022fcc889b3fc107399f9d39cc5716",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/ruins",
+      "sha256": "a5e8a198ff3f2b483c2c4523c7cf83f41c6f3293882c8848b16865dabcef2591",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/ruins.json"
+    },
+    {
+      "bytes": 214768,
+      "gzipBytes": 7524,
+      "gzipSha256": "1d04b77c8c0e1f7419aa9714fe6222e6454f7581cc80440651bde6ae15ca0d75",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/shop",
+      "sha256": "48aca1724d0dac011f5c1d99853e29994b5e82ed947f9c46773fee36d7df7a5a",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/shop.json"
+    },
+    {
+      "bytes": 270810,
+      "gzipBytes": 9127,
+      "gzipSha256": "9c4858d88b2a690c83d2fc32e1e5ad8a7e6da8c7a8a7e78df7aea3387bd1f19a",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/smithy",
+      "sha256": "bf86f77f3f41427ebe5db8e6fded40633a49e15308c1884cdccdbf4797dc037d",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/smithy.json"
+    },
+    {
+      "bytes": 1377919,
+      "gzipBytes": 43113,
+      "gzipSha256": "0bd7a5f4fb191c843b73a7eef15b4e99354963bfcd41da6f96329650baee081d",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/steampeak",
+      "sha256": "f3fa0839535e1bd5bee5e5fb60b11f0ad57ac4ee8dcf69070c11ffcfb40693d4",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/steampeak.json"
+    },
+    {
+      "bytes": 546139,
+      "gzipBytes": 17545,
+      "gzipSha256": "07d5907b85f7f240b94f97f065f2c819326fd47a0bac6d47d830e90ce7252e18",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/sunwell",
+      "sha256": "3a4fda74c43bf776c08ef7a9f4db2bfa527715665cd9d52ade21705b219a8183",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/sunwell.json"
+    },
+    {
+      "bytes": 510210,
+      "gzipBytes": 15138,
+      "gzipSha256": "ce198b86173c1634211b3f8118cb3f78be2ccd4754966f064e61b933ecdf4bd5",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/temple",
+      "sha256": "635f97acd5d1582a40702484cbc2f9ab87d48dd0a6af94003c58c01b416dd142",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/temple.json"
+    },
+    {
+      "bytes": 1023466,
+      "gzipBytes": 30319,
+      "gzipSha256": "295f65f4dffeec42f67cc3ca5b50033897405d8edb8536be44c2750b0ad6f6b0",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/tidal_hollow",
+      "sha256": "dfd886261efeec3888203f76df9d7ec6c2bd7bd0d8fa34d06f1637f06fe98f1a",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/tidal_hollow.json"
+    },
+    {
+      "bytes": 2487557,
+      "gzipBytes": 41902,
+      "gzipSha256": "12e4bfa674645f7059ecff1379eec2ae565562954118469371e7d9aa307e19fc",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/tide_cove",
+      "sha256": "9393e72bd10da7ffdb3e4ba6700890c7ee713b6ca059dbbda9ec3cfe00b9a683",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/tide_cove.json"
+    },
+    {
+      "bytes": 3405858,
+      "gzipBytes": 56045,
+      "gzipSha256": "43152d4eba1eefdfcb779014b53a1a153344e8add187f01ac59fca823090c3bd",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/village",
+      "sha256": "3197b89b73a4bf20be85d317361c546bbb73ad599bdae7f4ba82cb16d1ab011c",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/village.json"
+    },
+    {
+      "bytes": 1366470,
+      "gzipBytes": 22690,
+      "gzipSha256": "13e520450ede4e667c4b64813e1fd47c290cf939bbf40cfebe39d411345510b4",
+      "resourcePath": "BlueMapFoundation/world/snapshots/fresh_baseline/watchyard",
+      "sha256": "20e2c51762367f33120d538af9bd45a6087466a39f323ede94bdac83309ca77f",
+      "sourcePath": "migration/world/snapshots/fresh_baseline/watchyard.json"
+    },
+    {
+      "bytes": 1017726,
+      "gzipBytes": 25426,
+      "gzipSha256": "73ae46647ee49fc8a29601859c201d2d22d8c30cabc59d627bbc34ebc3f58885",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/arena",
+      "sha256": "9fc3975d4e63fbcfa6fc94770ef7709dc13394deb160b944483723e5288ba745",
+      "sourcePath": "migration/world/snapshots/full_progress/arena.json"
+    },
+    {
+      "bytes": 670745,
+      "gzipBytes": 19584,
+      "gzipSha256": "234b150db6ff72653c4030b24ba4f63d19a0f26589126d814220fea21511ddec",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/arena_hall",
+      "sha256": "636c640987b85f15934c6d2dd7bf6b6a6d25fb198181ec13c6813e5fe4029085",
+      "sourcePath": "migration/world/snapshots/full_progress/arena_hall.json"
+    },
+    {
+      "bytes": 1815505,
+      "gzipBytes": 46640,
+      "gzipSha256": "f4bf22b17bb19353d3e912cbd1989975f86f2191d32c8c4b57fd8592fdeb3f69",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/cave",
+      "sha256": "3485a3a221db3c69126a327fd70c92b69411606a404756bd14d7d69f2111f45c",
+      "sourcePath": "migration/world/snapshots/full_progress/cave.json"
+    },
+    {
+      "bytes": 2411772,
+      "gzipBytes": 48499,
+      "gzipSha256": "4b78fa454b45285a3d23179f1f43d94c6b035cf4c928fb39a12e74c1420c65ad",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/coast",
+      "sha256": "5ecfe9a18198faca5b5f7794562f5d96a60c59ca13ca8cb8b8e382c11fafdb88",
+      "sourcePath": "migration/world/snapshots/full_progress/coast.json"
+    },
+    {
+      "bytes": 727232,
+      "gzipBytes": 21843,
+      "gzipSha256": "7dbc404497c66c11ece6865f75e008c8a9aa074edc7e1010e63d9688de7dc960",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/coast_workshop",
+      "sha256": "f6c31f79108c72b4e7bb5023722439b73f1f72040306cb71398df3def1988fca",
+      "sourcePath": "migration/world/snapshots/full_progress/coast_workshop.json"
+    },
+    {
+      "bytes": 4200447,
+      "gzipBytes": 67444,
+      "gzipSha256": "17b645752860e9252520a08f37bae2aaeac57bc5945cfee96c1453dc70fb7188",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/dauwbos",
+      "sha256": "c00cb88c9233cb1eec30045223a6f6a26fe5ce99d0cfef07c5e5e1d38fa9b69f",
+      "sourcePath": "migration/world/snapshots/full_progress/dauwbos.json"
+    },
+    {
+      "bytes": 1679704,
+      "gzipBytes": 38100,
+      "gzipSha256": "18b2d919f06be814012596a95b427a149d16795d74b75c289a78614f5f16debf",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/depths1",
+      "sha256": "ad78d745dc4108c5c8ff145687c6d550fc54dc6020c29ba328d518f055ede9e3",
+      "sourcePath": "migration/world/snapshots/full_progress/depths1.json"
+    },
+    {
+      "bytes": 852202,
+      "gzipBytes": 24849,
+      "gzipSha256": "67fb83ef1cd619b27014464a72b7f6791c608a4e69435b72c3793152ca338a6f",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/depths2",
+      "sha256": "40456010d59ea8fafc3a5247969c51d44c009defb4992a2611b882902511c47c",
+      "sourcePath": "migration/world/snapshots/full_progress/depths2.json"
+    },
+    {
+      "bytes": 1476011,
+      "gzipBytes": 38646,
+      "gzipSha256": "9a7371a0e1108750e70bde4f9c8f8815a8f5b62bff8744ad9542174d1a3b2add",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/dorstvallei",
+      "sha256": "4d39f5a944ce2cddc1390294ea984e07869097e2b7bacb9d0e77b77159dc88bf",
+      "sourcePath": "migration/world/snapshots/full_progress/dorstvallei.json"
+    },
+    {
+      "bytes": 570788,
+      "gzipBytes": 17260,
+      "gzipSha256": "9ae446655601f2c5af85dc5eaf21fd74ddb5dfcba1cd0d740ce6088a88f140fd",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/fisher_hut",
+      "sha256": "e4fb55ac471f6b9e19f1c0f94ee9b25d4912c2792ffe7a4f5918f5dfd8af3d8b",
+      "sourcePath": "migration/world/snapshots/full_progress/fisher_hut.json"
+    },
+    {
+      "bytes": 4693093,
+      "gzipBytes": 76484,
+      "gzipSha256": "9b1d3f2111f8e2b9c775d5bfcf48bbf13d55aadfb6c9a4ca84c57ca2f5588b1e",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/forest",
+      "sha256": "1c4b3a9bc31d02267aa530ccb9e6d2c250fe1b349aba0b8f6d8db07dd65e1e0e",
+      "sourcePath": "migration/world/snapshots/full_progress/forest.json"
+    },
+    {
+      "bytes": 3531722,
+      "gzipBytes": 51430,
+      "gzipSha256": "05b86fa6bd93bbd177a8567a1830fe3ba8e9edb81df5be512b88a46e96eb5eeb",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/forest_edge",
+      "sha256": "5c5ac26e54ad1b6c1a1ccbe3b4a0b7a07860cfea9f8f151053df17e4f9fc381e",
+      "sourcePath": "migration/world/snapshots/full_progress/forest_edge.json"
+    },
+    {
+      "bytes": 2620218,
+      "gzipBytes": 48775,
+      "gzipSha256": "fe67d6e6c4deee4f753987a1a2fcdea15e94d248c53dc40dee1f71612ff36774",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/gull_island",
+      "sha256": "1dca03fe92492207b8193de4e35fd3fe5fde3dd30ef3664d0abff66e7c7c09e5",
+      "sourcePath": "migration/world/snapshots/full_progress/gull_island.json"
+    },
+    {
+      "bytes": 3149926,
+      "gzipBytes": 59324,
+      "gzipSha256": "539686f2a3706a97895620aaefecb106189637aafcc1068f7b15e4f6e7e3f9a3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/harbor",
+      "sha256": "972e316751909e30112843f4c6c3be823f0875e4572dddd08c28eb4c14f36bc2",
+      "sourcePath": "migration/world/snapshots/full_progress/harbor.json"
+    },
+    {
+      "bytes": 3081103,
+      "gzipBytes": 60149,
+      "gzipSha256": "e32cfb1b001870a97f4e0cd0c74358db81a729c87840631b1dd2ebd847cd23e2",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/headland",
+      "sha256": "03abcc9a03eef0b2529316feb31dd128fc7667895adf15076432550bd27a39d0",
+      "sourcePath": "migration/world/snapshots/full_progress/headland.json"
+    },
+    {
+      "bytes": 3680402,
+      "gzipBytes": 62441,
+      "gzipSha256": "b063ef8658dcc11c8bcd55135ea4185408ff48e581762e8d45c5d4b0069d53cf",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/ijsdal",
+      "sha256": "78039eff2e0962d3524061c1e61f7b12f2fbc22de55e456d368cc8627f73a250",
+      "sourcePath": "migration/world/snapshots/full_progress/ijsdal.json"
+    },
+    {
+      "bytes": 694759,
+      "gzipBytes": 19938,
+      "gzipSha256": "8dacc48d4cfc5dd7af76581afaedff3e35802c348a82b6702c4196e34a1e3239",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/inn",
+      "sha256": "1f276fbbe640c4afc6a94b32b830babdd4dab57ebd4766674c76b18d4697a580",
+      "sourcePath": "migration/world/snapshots/full_progress/inn.json"
+    },
+    {
+      "bytes": 3408308,
+      "gzipBytes": 59055,
+      "gzipSha256": "dbaa6bf23eac28c5d7b522c4d269a0beaee1ec4b3f9019a15dc9d69ee23e3394",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/kruipmoeras",
+      "sha256": "733fcfdb569f6543507d40860728fa58f0b33184c053026aa7993ff6064eeb3d",
+      "sourcePath": "migration/world/snapshots/full_progress/kruipmoeras.json"
+    },
+    {
+      "bytes": 3645384,
+      "gzipBytes": 61348,
+      "gzipSha256": "64ded13f59a89e8c96fc47ad90dd6345ea01516dabdc783a502f119dea0c20dd",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/lake",
+      "sha256": "2e4cf6726f4bdf29240aa97b7c7abef37807b301342073ab564801ca10032d7f",
+      "sourcePath": "migration/world/snapshots/full_progress/lake.json"
+    },
+    {
+      "bytes": 715102,
+      "gzipBytes": 20798,
+      "gzipSha256": "3641b8345c2bdbb5b47693336ada842f60f411277bbb6c35f520a3e8b17d62a7",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/library",
+      "sha256": "0df6cb743cd1f7eaa8035dc0d1ecdfc371cf6fd055875955c5aa6f5ea1a3d263",
+      "sourcePath": "migration/world/snapshots/full_progress/library.json"
+    },
+    {
+      "bytes": 1395608,
+      "gzipBytes": 30683,
+      "gzipSha256": "9394f22c53337434bfb309cb636b92e4376510efd1c4367e3dede622c0c6921b",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/mistgarden",
+      "sha256": "b24e1bb5f43794c594ebc63ffeb32a8a4332ac33370933455f38e0312dec1387",
+      "sourcePath": "migration/world/snapshots/full_progress/mistgarden.json"
+    },
+    {
+      "bytes": 651007,
+      "gzipBytes": 18488,
+      "gzipSha256": "def6d9fcd704025dc787de871cc221316c39059faf142b1fa164afe1a8870370",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/player_home",
+      "sha256": "17b42fd3903d2994374138612aa55ade27801d109646988923443bcbb825d7c1",
+      "sourcePath": "migration/world/snapshots/full_progress/player_home.json"
+    },
+    {
+      "bytes": 1291821,
+      "gzipBytes": 34562,
+      "gzipSha256": "de2d395d70434cd058d8f2a89b1451b29fcdd9d4faedb7f248c8f19ffcf7a0a1",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/prismamine",
+      "sha256": "ba2e40277c46da3e6f1017dc643d06f9c20feecd785c7ed9dbc287e0f7b4ae47",
+      "sourcePath": "migration/world/snapshots/full_progress/prismamine.json"
+    },
+    {
+      "bytes": 933493,
+      "gzipBytes": 27145,
+      "gzipSha256": "638ea5b0022e337443dbe82e0167cc6a0851179a5ad9837ec11dbd79491497c8",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/reedvault",
+      "sha256": "1f7140d8502466d8d421b3ae11761c06ad2952b653dbf83c93a1f8b8b528cc95",
+      "sourcePath": "migration/world/snapshots/full_progress/reedvault.json"
+    },
+    {
+      "bytes": 725583,
+      "gzipBytes": 22282,
+      "gzipSha256": "20742ddbb4b48cad88e55b13c7f97a20b118010d5bc09f2128786b15b98c73c7",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/resonance",
+      "sha256": "b098e9a80ec8efc1f8f4a7cc6c62eba2202e47fada019976a5768e10e53191d3",
+      "sourcePath": "migration/world/snapshots/full_progress/resonance.json"
+    },
+    {
+      "bytes": 1725290,
+      "gzipBytes": 35396,
+      "gzipSha256": "262aedf96903de9f5763e642f4dddb8a5e1e5b91ddf595380955a6516bb8c16c",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/ridgepass",
+      "sha256": "fdc8f522f489d3b78b8ca423d79bcdafff30f5925e8c06172fb4048bec619759",
+      "sourcePath": "migration/world/snapshots/full_progress/ridgepass.json"
+    },
+    {
+      "bytes": 3107754,
+      "gzipBytes": 59484,
+      "gzipSha256": "ee3f8fe6642a091a093a67abbb8eef5c63bf28ee5137862e9acb79cef6d84b28",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/river_mouth",
+      "sha256": "420f1760fa80776783aea79d02164e0f90f8d92a50bb76fd96814a761a69af5e",
+      "sourcePath": "migration/world/snapshots/full_progress/river_mouth.json"
+    },
+    {
+      "bytes": 1595345,
+      "gzipBytes": 42766,
+      "gzipSha256": "b9aa6b4f439b79154912a77f1109ea6cdcc656aef75f244ee57397d7dbfdbbc8",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/ruins",
+      "sha256": "2bd68ac901965eef3a32406c20f85f642c2d3aa2ecd5c9ddba895e4ee60f09bc",
+      "sourcePath": "migration/world/snapshots/full_progress/ruins.json"
+    },
+    {
+      "bytes": 555624,
+      "gzipBytes": 16971,
+      "gzipSha256": "72e9ca638c62dd7e8dbce32176ea828dd4aa80245cac370895d43c7ef6dd0de1",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/shop",
+      "sha256": "91c6e087b71b6bd0bc7e0d0027481f72a5e0edc242eaac271766a4d0864691cf",
+      "sourcePath": "migration/world/snapshots/full_progress/shop.json"
+    },
+    {
+      "bytes": 611681,
+      "gzipBytes": 18606,
+      "gzipSha256": "56a123ec8efafd908a198958ffcd8830102f8adaefbc0f40f21cca43aaa82072",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/smithy",
+      "sha256": "2b37953263e69adeeb1a9635e1fdc15ab245cbf1d80befd63d300d00286da9c6",
+      "sourcePath": "migration/world/snapshots/full_progress/smithy.json"
+    },
+    {
+      "bytes": 1718708,
+      "gzipBytes": 51788,
+      "gzipSha256": "a1e022ed449d17059d3993fd402b53e698b6d1cfd89617141032bc29d598bb88",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/steampeak",
+      "sha256": "ea111933b546e36752658549e9718b92a43481fd5e7ad502fcbc93e0d151b891",
+      "sourcePath": "migration/world/snapshots/full_progress/steampeak.json"
+    },
+    {
+      "bytes": 886897,
+      "gzipBytes": 27136,
+      "gzipSha256": "cbbcc2dcaf0b2e654a7f0df992c48bb54c0c4dd4a6fe91429b34e3d2454541a1",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/sunwell",
+      "sha256": "ae1d1f901835f42f9b07eeb7067d747eae98bfa8b33753a0ef81ac2d4bef494b",
+      "sourcePath": "migration/world/snapshots/full_progress/sunwell.json"
+    },
+    {
+      "bytes": 798873,
+      "gzipBytes": 23137,
+      "gzipSha256": "1ab1c7eaf77e2ed9742a783640041bfdb936e0925a4263afa85e129ac8d569f0",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/temple",
+      "sha256": "b6e1f30c010c95fcc39fa1ec4cb279d3f6aee51b3669f874cc0f21f164464628",
+      "sourcePath": "migration/world/snapshots/full_progress/temple.json"
+    },
+    {
+      "bytes": 1290023,
+      "gzipBytes": 37432,
+      "gzipSha256": "4ab3cb7079f8d4c675cd511df8eaaa510074a78fa79ba4e07bedfbe148871a33",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/tidal_hollow",
+      "sha256": "ac77fb7f233dab6e3fd921d51618e981e03342584a25fcdf0d0c71b64988d665",
+      "sourcePath": "migration/world/snapshots/full_progress/tidal_hollow.json"
+    },
+    {
+      "bytes": 2790613,
+      "gzipBytes": 51362,
+      "gzipSha256": "c1fd3ad402c0e00cd754e464b86d3836132c22ea748f053f32e46861970ae1c3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/tide_cove",
+      "sha256": "50f8e582da14081f7b57077b74e8762c284cd75c7c8ec67e31dc6cafc8a82837",
+      "sourcePath": "migration/world/snapshots/full_progress/tide_cove.json"
+    },
+    {
+      "bytes": 3766189,
+      "gzipBytes": 65051,
+      "gzipSha256": "74963f3e36255634dc47f690545ad16b045cc7a12eb68369c95aaea1db8cb15f",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/village",
+      "sha256": "000b64d146d57f02899be34332041a428732d4b93f467fb117c464914c3b0686",
+      "sourcePath": "migration/world/snapshots/full_progress/village.json"
+    },
+    {
+      "bytes": 1707245,
+      "gzipBytes": 31879,
+      "gzipSha256": "134364c0130d817d6ed0a97b2bf4fcd68d5d8df9a24f2aa3df1cba078315169e",
+      "resourcePath": "BlueMapFoundation/world/snapshots/full_progress/watchyard",
+      "sha256": "81f90c8d24baf6ab1a144fd463db4fd7684570277c1424d2ef4be3ec1aa7cd0d",
+      "sourcePath": "migration/world/snapshots/full_progress/watchyard.json"
+    },
+    {
+      "bytes": 602381,
+      "gzipBytes": 17166,
+      "gzipSha256": "6daca90d1e652d026a56946b281786074a2ddda8ea6a189f353ba7387d2460cb",
+      "resourcePath": "BlueMapFoundation/world/snapshots/guardian_alive/depths2",
+      "sha256": "6cb276d907c1ce7b0529e2a07da6863f53f985fa94a8beb2ef6f3771d0fc9f9b",
+      "sourcePath": "migration/world/snapshots/guardian_alive/depths2.json"
+    },
+    {
+      "bytes": 515090,
+      "gzipBytes": 15326,
+      "gzipSha256": "b4022b4a182a586a65e0862ad321fa48f7e005a9087949c19e34dc55d6bee7d3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/guardian_defeated/depths2",
+      "sha256": "ce7bd47bb2578ae9d33e6ee62b9eddf9580e4207933693afb398231d0ce03494",
+      "sourcePath": "migration/world/snapshots/guardian_defeated/depths2.json"
+    },
+    {
+      "bytes": 515966,
+      "gzipBytes": 15362,
+      "gzipSha256": "0d6b3321df4c74609266ebb56d5313a3f45897c047c1ef170bd5015947dbbd6b",
+      "resourcePath": "BlueMapFoundation/world/snapshots/guardian_full_hearts/depths2",
+      "sha256": "d65ddcd7f167d192b76cbbe7712d63161e0269f650a55da1675f5d34f180757c",
+      "sourcePath": "migration/world/snapshots/guardian_full_hearts/depths2.json"
+    },
+    {
+      "bytes": 515570,
+      "gzipBytes": 15355,
+      "gzipSha256": "94685591fcea4dee8509dadcb4a377e1d9d624bf958eaa0162c6f3f531ce8281",
+      "resourcePath": "BlueMapFoundation/world/snapshots/guardian_reward_opened/depths2",
+      "sha256": "34b54a4ca76dae96aff0e4b3c3fbd0914e987d5a5cfaa2868c6bff3ea2ecc7f7",
+      "sourcePath": "migration/world/snapshots/guardian_reward_opened/depths2.json"
+    },
+    {
+      "bytes": 2743040,
+      "gzipBytes": 49759,
+      "gzipSha256": "9fac2fb39988c819a3ad835eeb2214a2212e03a67d0cd42ee37bbb50f3873020",
+      "resourcePath": "BlueMapFoundation/world/snapshots/headland_shelter/headland",
+      "sha256": "f6ef9ae96e7a081ae5d704158b1d0ebcbe55a35b5bae6f9de6d7a1c1a85f4b76",
+      "sourcePath": "migration/world/snapshots/headland_shelter/headland.json"
+    },
+    {
+      "bytes": 1057306,
+      "gzipBytes": 31313,
+      "gzipSha256": "dc47812b21ba5da3685e0ee8806ad8bbbc7c0f5fb26a676bc2556a2adc9e2c0c",
+      "resourcePath": "BlueMapFoundation/world/snapshots/hollow_duel/tidal_hollow",
+      "sha256": "caa84078592f80141fe421d9e41d6a4aa7a31a006c6c117c013ee18757299a51",
+      "sourcePath": "migration/world/snapshots/hollow_duel/tidal_hollow.json"
+    },
+    {
+      "bytes": 1014969,
+      "gzipBytes": 30250,
+      "gzipSha256": "91612ab50408fb42affd096b4e20ae5cbbbe49531cb5f0b52366797645df4ced",
+      "resourcePath": "BlueMapFoundation/world/snapshots/hollow_pool/tidal_hollow",
+      "sha256": "06461f1f4f364b4bd7d0adb05eee5f205677df8ee7fd2185e5cf39fd52fd265e",
+      "sourcePath": "migration/world/snapshots/hollow_pool/tidal_hollow.json"
+    },
+    {
+      "bytes": 1012401,
+      "gzipBytes": 30203,
+      "gzipSha256": "2678acbaad421a099ec3c3d297336b341b1ec6fad7a09598fd2ddf171fcc22b9",
+      "resourcePath": "BlueMapFoundation/world/snapshots/hollow_wheel/tidal_hollow",
+      "sha256": "9656c5f1247a003a1fca4fe4c2f9bb64896f1a0f35ccdffc0bc259122c44568d",
+      "sourcePath": "migration/world/snapshots/hollow_wheel/tidal_hollow.json"
+    },
+    {
+      "bytes": 1014959,
+      "gzipBytes": 30259,
+      "gzipSha256": "fda77cf744b8783b252bb59e50a22e53258a71439b6217c886252c4b725404af",
+      "resourcePath": "BlueMapFoundation/world/snapshots/hollow_workwater/tidal_hollow",
+      "sha256": "61ee0f4221c2d71d98f9f3c20a626ca0f1077d2b3ffd7484e5a0776f6366e1e3",
+      "sourcePath": "migration/world/snapshots/hollow_workwater/tidal_hollow.json"
+    },
+    {
+      "bytes": 349047,
+      "gzipBytes": 9719,
+      "gzipSha256": "148787d5f437d8f72373fe47d3c36ab0941adfc6f76e1f17be2892172fb32cd8",
+      "resourcePath": "BlueMapFoundation/world/snapshots/home_furnished/player_home",
+      "sha256": "7c297428c659d2e103dd11bdd9238a79be765f01edea8e19675f79f460fdb2f7",
+      "sourcePath": "migration/world/snapshots/home_furnished/player_home.json"
+    },
+    {
+      "bytes": 3423132,
+      "gzipBytes": 56024,
+      "gzipSha256": "bed4eee11c7d9c5d37d09422e245fb1de04b586d9c15e6e55c316a8a7701712f",
+      "resourcePath": "BlueMapFoundation/world/snapshots/honey_grown_flowers/village",
+      "sha256": "6e73c4eed45b0efd24acdd4b513f1a0a737228e44c2f4617c9ee4158e04e6585",
+      "sourcePath": "migration/world/snapshots/honey_grown_flowers/village.json"
+    },
+    {
+      "bytes": 3411523,
+      "gzipBytes": 55833,
+      "gzipSha256": "93cd3ae63d31b09eab99e88986e89a7b4f52fae12ae7e9d8b33f6dec9acf2784",
+      "resourcePath": "BlueMapFoundation/world/snapshots/honey_no_flowers/village",
+      "sha256": "272c9405f8ae451699644d2d685c71a0d78a4b77ac06f7c73bc89a5fa576668a",
+      "sourcePath": "migration/world/snapshots/honey_no_flowers/village.json"
+    },
+    {
+      "bytes": 3349468,
+      "gzipBytes": 52862,
+      "gzipSha256": "9ad816c3d346b5f612c522e724230cd281de960c2c12712d829f65a897b82373",
+      "resourcePath": "BlueMapFoundation/world/snapshots/ice_restored/ijsdal",
+      "sha256": "60274d181915894a5d6b7d2e16864abc4aa0f599c0f0c6066767a18c3eb23496",
+      "sourcePath": "migration/world/snapshots/ice_restored/ijsdal.json"
+    },
+    {
+      "bytes": 1375976,
+      "gzipBytes": 25713,
+      "gzipSha256": "42000b6674b81279bf544074aaf1a8f2b24e923224220dbd750d6d1ef0a7393e",
+      "resourcePath": "BlueMapFoundation/world/snapshots/ice_restored/ridgepass",
+      "sha256": "90a749bd6321ee4e3c45069c5d11ab2580208b561254b5e7df91d8d338b3feab",
+      "sourcePath": "migration/world/snapshots/ice_restored/ridgepass.json"
+    },
+    {
+      "bytes": 3336393,
+      "gzipBytes": 52664,
+      "gzipSha256": "b85780739b735c135008437a786a9309264a31bb510fa4242dbb6fa21554f4d6",
+      "resourcePath": "BlueMapFoundation/world/snapshots/ice_west/ijsdal",
+      "sha256": "3c788883c77a11f0678a287bd11369e8d41329c3219753e49b1674c6644a6ce1",
+      "sourcePath": "migration/world/snapshots/ice_west/ijsdal.json"
+    },
+    {
+      "bytes": 1525751,
+      "gzipBytes": 37345,
+      "gzipSha256": "5b1b3e160cfb294c846155d8ff42d195d4c21765bf1c978a141407f33de65fdd",
+      "resourcePath": "BlueMapFoundation/world/snapshots/legacy_completed/cave",
+      "sha256": "ea1ee9d4ce9c215798445b52309075ecff413dcfab31c1a731f5d05697f8ac96",
+      "sourcePath": "migration/world/snapshots/legacy_completed/cave.json"
+    },
+    {
+      "bytes": 1151598,
+      "gzipBytes": 29948,
+      "gzipSha256": "72367441c74a3d6206cb53d78733cd5f5f37f120125430e76eedb83f9ecf25f5",
+      "resourcePath": "BlueMapFoundation/world/snapshots/legacy_completed/dorstvallei",
+      "sha256": "1130b291e8856136ed601de3c07e2fe715567d7bb9de5f2bbad57434e574b7de",
+      "sourcePath": "migration/world/snapshots/legacy_completed/dorstvallei.json"
+    },
+    {
+      "bytes": 3355986,
+      "gzipBytes": 53047,
+      "gzipSha256": "fec5315bdc67ed04e5192f263b916c8debc2b10b31ed77a156b654d66c1d1e35",
+      "resourcePath": "BlueMapFoundation/world/snapshots/legacy_completed/ijsdal",
+      "sha256": "ba97aa6e837b6b604d9261df494f1790dfa88a2181a050276177f6dd5752d4aa",
+      "sourcePath": "migration/world/snapshots/legacy_completed/ijsdal.json"
+    },
+    {
+      "bytes": 3096372,
+      "gzipBytes": 49609,
+      "gzipSha256": "a51bdb1aadc6f7c515965a996569e8a7efd851d71bf6ea53dadf7df494428773",
+      "resourcePath": "BlueMapFoundation/world/snapshots/legacy_completed/kruipmoeras",
+      "sha256": "b89f2eb8f5f98ccae799ec8654db2a4830520c0ac59b9883bcf6391081815e1f",
+      "sourcePath": "migration/world/snapshots/legacy_completed/kruipmoeras.json"
+    },
+    {
+      "bytes": 1318069,
+      "gzipBytes": 34180,
+      "gzipSha256": "fadb0f656f02300059ea46df358594116042ad8da309592238afd08de56b20e7",
+      "resourcePath": "BlueMapFoundation/world/snapshots/legacy_completed/ruins",
+      "sha256": "e7e4cb97f8da7ea49778dddaf22511db5d56bfe9799e2b2ad95464d9f22ce443",
+      "sourcePath": "migration/world/snapshots/legacy_completed/ruins.json"
+    },
+    {
+      "bytes": 377068,
+      "gzipBytes": 11380,
+      "gzipSha256": "469abef09908a8130c22bcbbac297e86ce57d526225daee11fabe05837a85163",
+      "resourcePath": "BlueMapFoundation/world/snapshots/library_backroom/library",
+      "sha256": "1aebc71a1e712700b344e2175bfdc20539e9a5049f55bf61e9890662b06768f4",
+      "sourcePath": "migration/world/snapshots/library_backroom/library.json"
+    },
+    {
+      "bytes": 3091508,
+      "gzipBytes": 49482,
+      "gzipSha256": "ad91818afc4de76052049f13a0386ad54f4993c67a333b9e40c0b58aae050836",
+      "resourcePath": "BlueMapFoundation/world/snapshots/marsh_bridge/kruipmoeras",
+      "sha256": "04258b5e3ac853c8b3d993aadc9e1c9a22063f28fa27a454f04f473f6729d540",
+      "sourcePath": "migration/world/snapshots/marsh_bridge/kruipmoeras.json"
+    },
+    {
+      "bytes": 585855,
+      "gzipBytes": 17446,
+      "gzipSha256": "0d4a64e4a62f3c5f447773c287fb6c6f2c8d0c2d5b0e715d7da53f7678646fdd",
+      "resourcePath": "BlueMapFoundation/world/snapshots/marsh_bridge/reedvault",
+      "sha256": "877fd2a71a5b17c4571b2288a70a514c287fc7b8745c38bbc51dd86883afd6a6",
+      "sourcePath": "migration/world/snapshots/marsh_bridge/reedvault.json"
+    },
+    {
+      "bytes": 3096795,
+      "gzipBytes": 49237,
+      "gzipSha256": "538b0e3d4ff7576f62ce60f3e9e99da5c30430994acb4cd7934c88735343a418",
+      "resourcePath": "BlueMapFoundation/world/snapshots/marsh_drained/kruipmoeras",
+      "sha256": "ed93824a25d7119caf6d5448a1e240faf6ee90bf0c1a22a6c847d60daee1504c",
+      "sourcePath": "migration/world/snapshots/marsh_drained/kruipmoeras.json"
+    },
+    {
+      "bytes": 584946,
+      "gzipBytes": 17425,
+      "gzipSha256": "b899754efd7de8d5fcb777377ba185a4f02194c3bd7343cfa6040024a026ec68",
+      "resourcePath": "BlueMapFoundation/world/snapshots/marsh_drained/reedvault",
+      "sha256": "e21128dd3853b08107f529e2d27c2bd4793a5687a314f813aaa9bf07bd310d95",
+      "sourcePath": "migration/world/snapshots/marsh_drained/reedvault.json"
+    },
+    {
+      "bytes": 955174,
+      "gzipBytes": 26054,
+      "gzipSha256": "802224e904221daa527226d8f0e1cd70b7e0dcff5d7ec51afaa3cf44453c3a93",
+      "resourcePath": "BlueMapFoundation/world/snapshots/mine_restored/prismamine",
+      "sha256": "d74a5f7fe17e221e494443d329f3f2bcb3fe97d305c83c2ab9e7b08ef761930b",
+      "sourcePath": "migration/world/snapshots/mine_restored/prismamine.json"
+    },
+    {
+      "bytes": 275032,
+      "gzipBytes": 9265,
+      "gzipSha256": "de06827dcadeeeed0d9485ef98958d21583cbef3e3b7e03c2bc19913e1ded877",
+      "resourcePath": "BlueMapFoundation/world/snapshots/mine_restored/smithy",
+      "sha256": "b25fb1dee0bfb195e38d871a8cd887a57c18fce4c04878271a56eaefcb28b14b",
+      "sourcePath": "migration/world/snapshots/mine_restored/smithy.json"
+    },
+    {
+      "bytes": 3383620,
+      "gzipBytes": 55452,
+      "gzipSha256": "0ecc88999b32b027cdaec91df2ad40b7e28b5768f879e1bbb1a57b91bc943d51",
+      "resourcePath": "BlueMapFoundation/world/snapshots/opening_legacy/village",
+      "sha256": "cce925f769a25f475fba321496991bdd29c3df7d2c849376556427ec1bfce506",
+      "sourcePath": "migration/world/snapshots/opening_legacy/village.json"
+    },
+    {
+      "bytes": 274525,
+      "gzipBytes": 9233,
+      "gzipSha256": "2962698ef5316a27489970f8ff4a6639c7b7e9eadb65e5a757a146e206767af9",
+      "resourcePath": "BlueMapFoundation/world/snapshots/opening_water_restored/smithy",
+      "sha256": "3a9d605dfbe1b0a4b4760197ba43ef6389ad1bcaf6608a936ae9d6f02cadd312",
+      "sourcePath": "migration/world/snapshots/opening_water_restored/smithy.json"
+    },
+    {
+      "bytes": 3408954,
+      "gzipBytes": 55808,
+      "gzipSha256": "c9b29ba5a179f6ef42392319ba41b1f0662d0bafd81888bbe21e26f51a76838f",
+      "resourcePath": "BlueMapFoundation/world/snapshots/opening_water_restored/village",
+      "sha256": "a50711960310127b977cbeb99d891e05792d9379f2472454ca3a97129aa8224a",
+      "sourcePath": "migration/world/snapshots/opening_water_restored/village.json"
+    },
+    {
+      "bytes": 3353391,
+      "gzipBytes": 52957,
+      "gzipSha256": "6a074d052a379de0c28d3dffad4d5d403e84ff96dd562313c19a18ffe2810358",
+      "resourcePath": "BlueMapFoundation/world/snapshots/ridge_rope/ijsdal",
+      "sha256": "b4c4958a211e49666cef073fd71676bdd0405f421dbe7c618c93967eefba85c4",
+      "sourcePath": "migration/world/snapshots/ridge_rope/ijsdal.json"
+    },
+    {
+      "bytes": 1392051,
+      "gzipBytes": 26097,
+      "gzipSha256": "0a5e9815c508380aa32a19bc508fd0d8a8056aecfcbf616e2c11f87fdcc9538b",
+      "resourcePath": "BlueMapFoundation/world/snapshots/ridge_rope/ridgepass",
+      "sha256": "8c0140d1bf5bc47d5248cade7c4ef2dba8e600e56cbe259a7873ebec7822f26f",
+      "sourcePath": "migration/world/snapshots/ridge_rope/ridgepass.json"
+    },
+    {
+      "bytes": 4386639,
+      "gzipBytes": 67109,
+      "gzipSha256": "dae3c687f8f8bf99bae4cbe91574731687e4f296cc1cd4a40b3eb8fd1cf7dec7",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_cat_home/forest",
+      "sha256": "4df54d5a2eb1787a3a3e5dd025437fc2dacb98e622a156462bdf514a2bc1d61b",
+      "sourcePath": "migration/world/snapshots/route_cat_home/forest.json"
+    },
+    {
+      "bytes": 3423165,
+      "gzipBytes": 56008,
+      "gzipSha256": "656d9e5b38564ca4cfc8424961f2f973915338e2e16dfac2f2970a16b8ae66b3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_cat_home/village",
+      "sha256": "96e95f96cd159e9b74447ab8f90dcef9f0038afb453067427d89bdfabe6c7511",
+      "sourcePath": "migration/world/snapshots/route_cat_home/village.json"
+    },
+    {
+      "bytes": 1520409,
+      "gzipBytes": 37226,
+      "gzipSha256": "4359bf2dc6134aab6b9c8f7ba4fba2b417613d62f578cb064491e2beb78c59fe",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_clues/cave",
+      "sha256": "50d199c039eeeb2ede605d4a4f996883189fdd39b37fe2e22d725eac342f5c73",
+      "sourcePath": "migration/world/snapshots/route_clues/cave.json"
+    },
+    {
+      "bytes": 1312734,
+      "gzipBytes": 34059,
+      "gzipSha256": "01f68dc80e9aca54576538314277c48253b9882ebf37f302364efbef581c37ed",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_clues/ruins",
+      "sha256": "6110642cacb20b78d3fa052571623286b526ca86c352e11222830de7a102723b",
+      "sourcePath": "migration/world/snapshots/route_clues/ruins.json"
+    },
+    {
+      "bytes": 1522516,
+      "gzipBytes": 37253,
+      "gzipSha256": "4134934ffcc080c1bb92fd7138ce89934bdd040aae9d51dd2f1f124cb382c186",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_echo_begin/cave",
+      "sha256": "b9a20a1f2389a0c129d5fde39eddc424679f00c83fe048471016116ebbce5319",
+      "sourcePath": "migration/world/snapshots/route_echo_begin/cave.json"
+    },
+    {
+      "bytes": 1523898,
+      "gzipBytes": 37300,
+      "gzipSha256": "7f2ccfe2c3c8a71fc08c45bf33d84fdb4e5f6118955f52f3fe0ccd1760fb49b8",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_echo_end/cave",
+      "sha256": "3e8a5758cdc4793da6dfb156bd1ed8a1f0ac544eb88c0e62d8e969e68e4ee54e",
+      "sourcePath": "migration/world/snapshots/route_echo_end/cave.json"
+    },
+    {
+      "bytes": 1522964,
+      "gzipBytes": 37273,
+      "gzipSha256": "8c656992ec1f26b51512633b4896a2bebaafcc8d8cb9ec3c0829e293fed0798c",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_echo_mid/cave",
+      "sha256": "74b297763a1da85de9fc64f3e41fe21a293f989ccfbbe3dccdc0ae8694f1b3b2",
+      "sourcePath": "migration/world/snapshots/route_echo_mid/cave.json"
+    },
+    {
+      "bytes": 1317578,
+      "gzipBytes": 34130,
+      "gzipSha256": "20c8ddf485c21867589940cefb75834b6020fd8988d1310363a8fd434bad8453",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_memorial_guard/ruins",
+      "sha256": "c99a9893a46c80f762980c89b70d3f6df581a72b39d91d254739b2908e6a7dab",
+      "sourcePath": "migration/world/snapshots/route_memorial_guard/ruins.json"
+    },
+    {
+      "bytes": 3414997,
+      "gzipBytes": 55915,
+      "gzipSha256": "33814df7308c65f7912bb27d32056551b26ccf4056559749c9ce1cad46c2dbd3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_memorial_guard/village",
+      "sha256": "0850d30ded970208f0cb92aa22dffd8ba7328d7fd7463eb7d96145b0e27b35c0",
+      "sourcePath": "migration/world/snapshots/route_memorial_guard/village.json"
+    },
+    {
+      "bytes": 1317584,
+      "gzipBytes": 34121,
+      "gzipSha256": "e9862f9514ef2c49fe54dc3ee6ed0422005e2f43dc9e11219a9a884b4723aa50",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_memorial_guide/ruins",
+      "sha256": "87612907a7bdf1bfa67db895c7cd4d05938bd818c17fccc9aa69c2f2451912de",
+      "sourcePath": "migration/world/snapshots/route_memorial_guide/ruins.json"
+    },
+    {
+      "bytes": 3414993,
+      "gzipBytes": 55921,
+      "gzipSha256": "93b610d6439f86121cee6c860800086c8d96904623e642a1329a751b43fb33fa",
+      "resourcePath": "BlueMapFoundation/world/snapshots/route_memorial_guide/village",
+      "sha256": "443442078585a07709471b544831de99480d1c4999991b2d7f3ae1a04f226d3b",
+      "sourcePath": "migration/world/snapshots/route_memorial_guide/village.json"
+    },
+    {
+      "bytes": 1165116,
+      "gzipBytes": 30208,
+      "gzipSha256": "794f9f7f432461cec20989ee97c53218c2373f1ac5d7453b0d236cbbbe79332c",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/dorstvallei",
+      "sha256": "43302bbb659a1cd4506f13c521362c0a202f42e2e7af026a70e03e0838fa8c0c",
+      "sourcePath": "migration/world/snapshots/routines_evening/dorstvallei.json"
+    },
+    {
+      "bytes": 2832738,
+      "gzipBytes": 49384,
+      "gzipSha256": "0d90ade9932c28950baf4822c24c7e2da30eb7ecd68177d25bfc3c66b0f98cd4",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/harbor",
+      "sha256": "e0fd735b318d34d83cd508dd71179220047b61de5a5ce7969b8540a6877c427c",
+      "sourcePath": "migration/world/snapshots/routines_evening/harbor.json"
+    },
+    {
+      "bytes": 3369525,
+      "gzipBytes": 53368,
+      "gzipSha256": "15a2f793c6eb0ed59d115190f23c66416e66d1d816ae5e19333c5ab991d2ceb0",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/ijsdal",
+      "sha256": "d3ba992805a7495ba8b008913bda179138496a57fa035e0f1b47b5bdf326d69b",
+      "sourcePath": "migration/world/snapshots/routines_evening/ijsdal.json"
+    },
+    {
+      "bytes": 377521,
+      "gzipBytes": 10944,
+      "gzipSha256": "e1c7387b3ec62277e9508d306853aa841697c8fa816a36de1f8b73d4573e5861",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/inn",
+      "sha256": "7012e4765a0d299436f15e49435450d1698fe1bc6e1283b23fb7db0c5f907727",
+      "sourcePath": "migration/world/snapshots/routines_evening/inn.json"
+    },
+    {
+      "bytes": 3109822,
+      "gzipBytes": 49915,
+      "gzipSha256": "6dbbb0c812fbfe5e205d1b399491c009b55d1eea1a5df9d31dd43a54d56dd974",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/kruipmoeras",
+      "sha256": "97de39dc3bf66c4f7c1d8c6dd02fa31304f8b432acd3e553086f4e764fc0048f",
+      "sourcePath": "migration/world/snapshots/routines_evening/kruipmoeras.json"
+    },
+    {
+      "bytes": 3365596,
+      "gzipBytes": 53214,
+      "gzipSha256": "f9e1a6420510495b192f750ad9c8461b8aadd60411e216ac65ed7a316323e7fb",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/lake",
+      "sha256": "8065ab7b55948545b80692c1cda4549497ca80581f0526f054ef04b32227a905",
+      "sourcePath": "migration/world/snapshots/routines_evening/lake.json"
+    },
+    {
+      "bytes": 1078418,
+      "gzipBytes": 21885,
+      "gzipSha256": "176d4d89851c26d2782023ec4739fa4b41451d3062d2e27b5d85d67c92729f2b",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/mistgarden",
+      "sha256": "64fa6cc9bc171d7c83190136f84497136e3168066127ab762838f05fb04f4bcb",
+      "sourcePath": "migration/world/snapshots/routines_evening/mistgarden.json"
+    },
+    {
+      "bytes": 974582,
+      "gzipBytes": 26433,
+      "gzipSha256": "ab12ad96f432c0a7a49c277da05a6eaa462541eb6e34e7a3d69f6493cc6de23e",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/prismamine",
+      "sha256": "4a4d97d965fc31bea012eb8232796400f997c6c41ac9493eacdbf2b67e6480c6",
+      "sourcePath": "migration/world/snapshots/routines_evening/prismamine.json"
+    },
+    {
+      "bytes": 616259,
+      "gzipBytes": 18100,
+      "gzipSha256": "8eb2faaca9303414c60e6dfe379db7177e19c77628f670d2acfd99c445737abc",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/reedvault",
+      "sha256": "0a44f02f3f9d2a8ffc5fda243c7bd0a515b4747af2147b0dac58bbdf95f30fb7",
+      "sourcePath": "migration/world/snapshots/routines_evening/reedvault.json"
+    },
+    {
+      "bytes": 1408084,
+      "gzipBytes": 26466,
+      "gzipSha256": "ff3fa9f2ae2464778bf33c65ec38494c1d02ef2f416e829b517e4db17bc0bf36",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/ridgepass",
+      "sha256": "1015b17109c4eab12b0a7c88f77cd3f829c7cbbedc61b139a6a0d8cd7342baf4",
+      "sourcePath": "migration/world/snapshots/routines_evening/ridgepass.json"
+    },
+    {
+      "bytes": 3429327,
+      "gzipBytes": 56509,
+      "gzipSha256": "f8e6656b7ae513baca6a3d51ec5a82ebc967eece77661b4439e88df120c6df5b",
+      "resourcePath": "BlueMapFoundation/world/snapshots/routines_evening/village",
+      "sha256": "399681ccba82943847912282d3b2cda48f3d421aa45d852d3fb89219e74b043d",
+      "sourcePath": "migration/world/snapshots/routines_evening/village.json"
+    },
+    {
+      "bytes": 4411127,
+      "gzipBytes": 67791,
+      "gzipSha256": "bb9c04ef0538191c0e872dafddbbbf542e37995c22becd3a50836ae5bddd8cdf",
+      "resourcePath": "BlueMapFoundation/world/snapshots/saved_manure/forest",
+      "sha256": "6ca419110ae898d32bdaae942b3c85a86097d067b1df026f7c0c9ecda97af947",
+      "sourcePath": "migration/world/snapshots/saved_manure/forest.json"
+    },
+    {
+      "bytes": 3125110,
+      "gzipBytes": 49100,
+      "gzipSha256": "5c8cf65b60c41577c06fa1018778903a48ff27580aa5e9f9255be7d86680bfa5",
+      "resourcePath": "BlueMapFoundation/world/snapshots/sluices_both/kruipmoeras",
+      "sha256": "6092bc95b6c556b999e4aa0a4ea12b41c701a8a0121640554c88eba4f3cb161c",
+      "sourcePath": "migration/world/snapshots/sluices_both/kruipmoeras.json"
+    },
+    {
+      "bytes": 3124180,
+      "gzipBytes": 49055,
+      "gzipSha256": "82214ebbfda83cd698e902c7627f22174d3043546b3e087bdf35df20151e346e",
+      "resourcePath": "BlueMapFoundation/world/snapshots/sluices_closed/kruipmoeras",
+      "sha256": "764915da39ce44051f436e99e66c4ab835407a223dbc972eab678e31c5b257b4",
+      "sourcePath": "migration/world/snapshots/sluices_closed/kruipmoeras.json"
+    },
+    {
+      "bytes": 3124635,
+      "gzipBytes": 49075,
+      "gzipSha256": "dbb3ae5456c54dc981325a1c7e133f98534e7fdc4694218c081185a6bab4ab3d",
+      "resourcePath": "BlueMapFoundation/world/snapshots/sluices_east/kruipmoeras",
+      "sha256": "5f7d61f8be113ba5e5db39fa4d7ec4165969d5cebc0f32c6166066530d16f9de",
+      "sourcePath": "migration/world/snapshots/sluices_east/kruipmoeras.json"
+    },
+    {
+      "bytes": 3124634,
+      "gzipBytes": 49079,
+      "gzipSha256": "c9818364c171b1143d377ac2d22f7c75d864465fb0cd8ccd526ce821b8df7e3f",
+      "resourcePath": "BlueMapFoundation/world/snapshots/sluices_west/kruipmoeras",
+      "sha256": "b444c4a5ec282ed6fa9f6804ec23d0bbeeae688ed54d8e5f30a2cbc73f8fea1a",
+      "sourcePath": "migration/world/snapshots/sluices_west/kruipmoeras.json"
+    },
+    {
+      "bytes": 2488160,
+      "gzipBytes": 41853,
+      "gzipSha256": "eb17ed541aac3a8f6011d7b1a2ed7d5d3751b8302c4b019389dcffea73c070c3",
+      "resourcePath": "BlueMapFoundation/world/snapshots/tide_falling/tide_cove",
+      "sha256": "070f22b5605f8f30bf36d57b002041be9eea5c5e1a5142f5039c58dbbd92162d",
+      "sourcePath": "migration/world/snapshots/tide_falling/tide_cove.json"
+    },
+    {
+      "bytes": 2450564,
+      "gzipBytes": 41330,
+      "gzipSha256": "770742660ae776edfbbe2d342c7efe436701554f0aca53b417a78abf0a109b9f",
+      "resourcePath": "BlueMapFoundation/world/snapshots/tide_held/tide_cove",
+      "sha256": "dbe6ce3c1784f903c0c1f7db6512aca9bd94fa9dd5f9d531e23116bd4fe8ea92",
+      "sourcePath": "migration/world/snapshots/tide_held/tide_cove.json"
+    },
+    {
+      "bytes": 2488281,
+      "gzipBytes": 41928,
+      "gzipSha256": "562f0b1cbacebb2e51283dcd50ddfc857a61878300221a572aa95b4ff062fdfd",
+      "resourcePath": "BlueMapFoundation/world/snapshots/tide_high/tide_cove",
+      "sha256": "321fc2541179a7b1c56c4d36cf126abf3812c4521b8e0f71bac539ba868da291",
+      "sourcePath": "migration/world/snapshots/tide_high/tide_cove.json"
+    },
+    {
+      "bytes": 2450561,
+      "gzipBytes": 41306,
+      "gzipSha256": "2706c71aa25ee34dbf3d94d051e171981e013a4855b4fbed7bcc97c79e9e3252",
+      "resourcePath": "BlueMapFoundation/world/snapshots/tide_low/tide_cove",
+      "sha256": "ecfd0ee2d47a9c2b7f925eeacd708124e23ca19c09710a5183cf1853fbfad7e8",
+      "sourcePath": "migration/world/snapshots/tide_low/tide_cove.json"
+    },
+    {
+      "bytes": 2487446,
+      "gzipBytes": 41964,
+      "gzipSha256": "29630b6752a7959a4e8f97420adb5ae8e7ebe4aed40dcce56aada4eb4cd452a7",
+      "resourcePath": "BlueMapFoundation/world/snapshots/tide_released/tide_cove",
+      "sha256": "3e865447fb94473cebb0d82109c3288cd3e16ce8cd253d16ac25d3efd805c52d",
+      "sourcePath": "migration/world/snapshots/tide_released/tide_cove.json"
+    },
+    {
+      "bytes": 2450524,
+      "gzipBytes": 41299,
+      "gzipSha256": "d08930b425623d441708a3e9aec7207a77e8dd75916cd064fd0025f6aaeeb86d",
+      "resourcePath": "BlueMapFoundation/world/snapshots/tide_rising/tide_cove",
+      "sha256": "459ad86bbc56e59a115e45158e44a2bd6bdf4629c0a9245ded6be3a6c2d9137c",
+      "sourcePath": "migration/world/snapshots/tide_rising/tide_cove.json"
+    },
+    {
+      "bytes": 3423146,
+      "gzipBytes": 56125,
+      "gzipSha256": "b40b7a81ff6e28926b42a98c6a76e7ec33cd541c01bc56b61929425553760721",
+      "resourcePath": "BlueMapFoundation/world/snapshots/yard_gate_far/village",
+      "sha256": "ac1f8569f2a8b35b0409d8ad9a154ddbccb28019264f33757a050379169b2080",
+      "sourcePath": "migration/world/snapshots/yard_gate_far/village.json"
+    },
+    {
+      "bytes": 3423157,
+      "gzipBytes": 56125,
+      "gzipSha256": "188ac7951800ff95b6f574004acc3b46094ed5e03e3de226a2035ebff3039755",
+      "resourcePath": "BlueMapFoundation/world/snapshots/yard_gate_near/village",
+      "sha256": "d593058f8aa2e3b0daf96b93bd8d97df8fe11f7a6de6a7a7b75a23b607f52801",
+      "sourcePath": "migration/world/snapshots/yard_gate_near/village.json"
+    },
+    {
+      "bytes": 3414661,
+      "gzipBytes": 55869,
+      "gzipSha256": "4f3d21d8823b30a783bff8d9d438362192374afeb236e138cf2103cc4da4a719",
+      "resourcePath": "BlueMapFoundation/world/snapshots/yard_moved/village",
+      "sha256": "ccd6cd229e37a0cd8fe435d20afb828225097a313bf45e10811bdcbab0aa3a4c",
+      "sourcePath": "migration/world/snapshots/yard_moved/village.json"
+    },
+    {
+      "bytes": 3413453,
+      "gzipBytes": 55879,
+      "gzipSha256": "ea9015d684fbe2169ce0e19c5783d350b4dba8f9f8b86bf1224a3dab83b5d61a",
+      "resourcePath": "BlueMapFoundation/world/snapshots/yard_packed/village",
+      "sha256": "6bf7497df3fa76a389c81292c660e48d7b2ff593543fa6c99c22d34679308859",
+      "sourcePath": "migration/world/snapshots/yard_packed/village.json"
+    },
+    {
+      "bytes": 4055979,
+      "gzipBytes": 32124,
+      "gzipSha256": "c289bcdcd80660a69cb3f6457fe9e8b603857b682311c3beae0cde61c36392c6",
+      "resourcePath": "BlueMapFoundation/world/tile-set",
+      "sha256": "7e4241617d3385097a5be54bcdc37917f80bcff2512ca1a0cfeb0eb2edb896d3",
+      "sourcePath": "migration/world/tile-set.json"
+    }
+  ],
+  "maps": 37,
+  "maxDocumentBytes": 134217728,
+  "phase": 7,
+  "scenarios": 59,
+  "schema": "bluemap.foundation.package.v1",
+  "scope": "Immutable source snapshots; rules and gameplay are ported explicitly by subsystem.",
+  "snapshots": 162,
+  "sourceFiles": 221,
+  "sourceYAxis": "down",
+  "stateOracle": {
+    "bytes": 8868,
+    "resourcePath": "BlueMapFoundation/state-oracle",
+    "sha256": "fe08167747b0a3641a986ec43ec259c3e42a08c1edebd10cdd6cfa228110dc6d",
+    "sourcePath": "migration/phase-07/state-oracle.json"
+  },
+  "tilePixels": 32,
+  "unityYAxis": "up"
+}

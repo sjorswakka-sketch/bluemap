@@ -33,7 +33,7 @@ namespace BlueMapMigration.Editor
             public double durationSeconds;
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
-            public string scope = "Original presentation gallery; gameplay and saves are not ported";
+            public string scope = "Original presentation plus isolated area/state/clock/interaction foundation; full gameplay and save import follow";
             public BuildIdentity identity;
         }
 

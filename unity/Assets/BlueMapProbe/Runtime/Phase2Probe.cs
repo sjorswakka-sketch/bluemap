@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 6) error = "phase must be 6.";
-            else if (previewVersion != "0.2.0-phase6") error = "previewVersion must be 0.2.0-phase6.";
+            else if (phase != 7) error = "phase must be 7.";
+            else if (previewVersion != "0.3.0-phase7") error = "previewVersion must be 0.3.0-phase7.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -58,7 +58,7 @@ namespace BlueMapMigration.Probe
         }
     }
 
-    // Isolated original-art gallery. No game world, user save or settings access.
+    // Original-art gallery and isolated foundation test. No personal save or settings access.
     public sealed class Phase2Probe : MonoBehaviour
     {
         [Serializable] public sealed class Check { public string name; public bool passed; }
@@ -76,6 +76,7 @@ namespace BlueMapMigration.Probe
         private readonly List<Check> checks = new List<Check>();
         private Camera worldCamera;
         private BlueMapMigration.Phase6.Phase6Gallery gallery;
+        private BlueMapMigration.Foundation.FoundationView foundationView;
         private bool automated, runtimeError;
         private int frames;
         private string output;
@@ -121,7 +122,12 @@ namespace BlueMapMigration.Probe
             var testBody = new GameObject("Isolated physics query witness"); testBody.transform.position = new Vector3(-100, -100, 0);
             var obstacle = testBody.AddComponent<BoxCollider2D>(); Physics2D.SyncTransforms();
             Add("physics2d_query", Physics2D.OverlapPoint(testBody.transform.position) == obstacle); Destroy(testBody);
-            if (!automated) yield break;
+            if (!automated)
+            {
+                EnsureFoundationView();
+                gallery.Show("overview"); foundationView.gameObject.SetActive(false);
+                yield break;
+            }
             while (frames < 60 || !SplashScreen.isFinished || Time.realtimeSinceStartup < 2.5f) yield return null;
             gallery.CheckNativeAnimationBoundaries();
             gallery.Audio.PlayMusic();
@@ -214,7 +220,29 @@ namespace BlueMapMigration.Probe
             Add("gpu_original_pixels_exact", presentation.nativeGpuMismatches == 0 && presentation.nativeGpuComparedPixels > 1000);
             Add("gpu_premultiplied_pixels_exact", presentation.premultipliedPixelsExact);
             File.WriteAllText(Path.Combine(output, "presentation-result.json"), JsonUtility.ToJson(presentation, true));
+            var foundation = BlueMapMigration.Foundation.FoundationProbeRunner.Run(identity);
+            Add("foundation_runtime_verified", foundation.success);
+            File.WriteAllText(Path.Combine(output, "foundation-result.json"), JsonUtility.ToJson(foundation, true));
+            EnsureFoundationView();
+            gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(true);
+            foundationView.Show("village");
+            yield return new WaitForEndOfFrame();
+            Texture2D foundationCapture = CaptureCamera();
+            File.WriteAllBytes(Path.Combine(output, "screenshot-foundation.png"), foundationCapture.EncodeToPNG());
+            Destroy(foundationCapture);
+            foundationView.Show("cave");
+            yield return new WaitForEndOfFrame();
+            Texture2D caveCapture = CaptureCamera();
+            File.WriteAllBytes(Path.Combine(output, "screenshot-foundation-cave.png"), caveCapture.EncodeToPNG());
+            Destroy(caveCapture);
+            foundationView.gameObject.SetActive(false); gallery.gameObject.SetActive(true);
             Finish();
+        }
+        private void EnsureFoundationView()
+        {
+            if (foundationView != null) return;
+            foundationView = new GameObject("Isolated area foundation").AddComponent<BlueMapMigration.Foundation.FoundationView>();
+            foundationView.Initialize(gallery.Catalog, automated);
         }
         private void Finish()
         {
@@ -224,7 +252,15 @@ namespace BlueMapMigration.Probe
             File.WriteAllText(Path.Combine(output, "result.json"), JsonUtility.ToJson(result, true));
             Debug.Log(passed ? "BLUEMAP_PHASE2_PLAYER_OK" : "BLUEMAP_PHASE2_PLAYER_FAILED"); Application.Quit(passed ? 0 : 1);
         }
-        private void Update() { frames++; if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit(); }
+        private void Update()
+        {
+            frames++;
+            if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+            if (automated || foundationView == null) return;
+            if (Input.GetKeyDown(KeyCode.Alpha7)) { gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(true); }
+            for (int i = 0; i < 6; i++) if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            { foundationView.gameObject.SetActive(false); gallery.gameObject.SetActive(true); gallery.Show(BlueMapMigration.Phase6.Phase6Gallery.Pages[i]); }
+        }
         private Texture2D CaptureCamera()
         {
             RenderTexture previousActive = RenderTexture.active, previousTarget = worldCamera.targetTexture;

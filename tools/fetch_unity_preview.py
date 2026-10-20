@@ -21,6 +21,22 @@ def require(condition, message):
         raise PackageError(message)
 
 
+def validate_preview_reference(manifest):
+    """Reject cross-phase references before Git lookups or release downloads."""
+    require(isinstance(manifest, dict) and type(manifest.get("schemaVersion")) is int and
+            manifest["schemaVersion"] == 1, "Unknown preview reference format")
+    commit = manifest.get("sourceCommit", "")
+    require(isinstance(commit, str) and re.fullmatch(r"[0-9a-f]{40}", commit) is not None and
+            commit != "0" * 40, "Invalid preview source commit")
+    phase = manifest.get("phase")
+    require(type(phase) is int and phase in PREVIEW_VERSIONS and
+            manifest.get("previewVersion") == PREVIEW_VERSIONS[phase], "Unsupported preview phase/version")
+    name = manifest.get("packageName", "")
+    require(name == f"BlueMapUnityPreview-phase-{phase:02d}-{commit[:8]}-Windows-x64.zip",
+            "Unexpected preview filename")
+    return phase, commit, name
+
+
 def fetch(url, target, expected_sha, max_bytes):
     parsed = urllib.parse.urlparse(url)
     require(parsed.scheme == "https" and parsed.netloc == "github.com" and not parsed.query and
@@ -48,9 +64,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
-    require(manifest.get("schemaVersion") == 1, "Unknown preview reference format")
-    commit = manifest.get("sourceCommit", "")
-    require(re.fullmatch(r"[0-9a-f]{40}", commit) is not None, "Invalid preview source commit")
+    phase, commit, name = validate_preview_reference(manifest)
     require(subprocess.run(["git", "merge-base", "--is-ancestor", commit, "HEAD"], cwd=ROOT).returncode == 0,
             "Preview source must be an ancestor of the checked migration branch")
     _, _, fingerprint = collect_build_inputs(ROOT, commit)
@@ -64,17 +78,15 @@ def main():
     require(not output.is_relative_to(ROOT) and not ROOT.is_relative_to(output),
             "Download output must be outside the checkout")
     output.mkdir(parents=True, exist_ok=True)
-    name = manifest.get("packageName", "")
-    phase = manifest.get("phase")
-    require(type(phase) is int and phase in PREVIEW_VERSIONS and
-            manifest.get("previewVersion") == PREVIEW_VERSIONS[phase], "Unsupported preview phase/version")
-    require(name == f"BlueMapUnityPreview-phase-{phase:02d}-{commit[:8]}-Windows-x64.zip", "Unexpected preview filename")
     receipt_path, package = output / "receipt.json", output / name
     fetch(manifest["receiptUrl"], receipt_path, manifest["receiptSha256"], 1024 * 1024)
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     size = fetch(manifest["packageUrl"], package, manifest["packageSha256"], 512 * 1024 * 1024)
     require(size == manifest.get("packageBytes"), "Preview download size differs")
     require(receipt.get("identity", {}).get("inputFingerprint") == fingerprint, "Receipt source fingerprint differs")
+    require(receipt.get("identity", {}).get("phase") == phase and
+            receipt["identity"].get("previewVersion") == manifest["previewVersion"],
+            "Receipt phase/version differs from preview reference")
     report = verify_package(package, receipt, commit)
     report.update({"sourceAnchoredToGit": True, "inputFingerprint": fingerprint,
                    "locallyBuiltPackageOnly": True, "remoteUnityCompilation": False})
