@@ -100,6 +100,28 @@ namespace BlueMapMigration.Player
             check("player_camera_bounds",bounds);
             check("player_camera_source_smoothing",PlayerCameraMath.Follow(Vector2.zero,new Vector2(100,100),.1)==new Vector2(50,50));
             check("player_camera_small_map_centered",PlayerCameraMath.Clamp(new Vector2(1000,-200),8,6)==new Vector2(128,96));
+            bool allMaps=true;
+            foreach(string map in new[]{"forest","cave","village"})
+            {
+                world.Show(map);
+                allMaps &= world.Snapshot.MapId==map && world.SourceTileColliders>0
+                    && world.Snapshot.Arrivals.Any(a=>a.Resolved==world.Position)
+                    && world.AvatarRenderer.sprite!=null;
+            }
+            check("player_world_three_preview_maps_load",allMaps);
+            // A real source path strip, with actual native collision resolution
+            // and the retained path clip, verifies the complete footstep chain.
+            bool footstep=false;
+            foreach(var cell in world.Snapshot.TerrainCells)
+            {
+                if(cell.AtlasX!=3 || cell.X+1>=world.Snapshot.Width)continue;
+                if(!world.Snapshot.TerrainCells.Any(next=>next.X==cell.X+1&&next.Y==cell.Y&&next.AtlasX==3))continue;
+                world.Teleport(new Vector2(cell.X*32+16,cell.Y*32+8));
+                int effects=world.LastStepEffects;world.Motor.StepDistance=0;
+                string sound=world.Step(.25,new MotionInput{Direction=Vector2.right});
+                if(sound=="path"&&world.LastStepEffects==effects+1){footstep=true;break;}
+            }
+            check("player_world_source_footsteps_play_after_actual_walk",footstep);
             world.Motor.Stamina.Reset();world.Teleport(saved);
         }
     }

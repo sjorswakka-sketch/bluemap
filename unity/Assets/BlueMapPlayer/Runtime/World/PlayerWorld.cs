@@ -273,6 +273,12 @@ namespace BlueMapMigration.Player
             if(!initialized)return;
             Matrix4x4 old=GUI.matrix;GUI.matrix=Matrix4x4.Scale(new Vector3(Screen.width/1152f,Screen.height/648f,1));
             GUI.skin.font=catalog.originalFont;
+            if(controls.IsOpen)
+            {
+                GUI.color=new Color(0,0,0,.58f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);
+                GUI.color=new Color(.075f,.12f,.13f,1);GUI.DrawTexture(new Rect(196,80,760,480),Texture2D.whiteTexture);
+                GUI.color=Color.white;controls.Draw(new Rect(196,80,760,480));GUI.matrix=old;return;
+            }
             var label=new GUIStyle(GUI.skin.label){fontSize=15,normal={textColor=new Color(.91f,.94f,.86f)}};
             GUI.Box(new Rect(16,14,510,80),"");GUI.Label(new Rect(28,22,480,24),"BlueMap Quest  /  Fase 8: loopproef",label);
             GUI.Label(new Rect(28,45,480,24),"Oorspronkelijk terrein • "+Snapshot.MapId+" • objectfuncties volgen",label);

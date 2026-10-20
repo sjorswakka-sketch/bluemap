@@ -99,6 +99,7 @@ PLAYER_DETAIL_CHECKS = {
     "player_motion_equipment_exact_source_oracle", "player_motion_velocity_facing_exact_source_oracle",
     "player_motion_roll_exact_source_oracle", "player_motion_transition_exact_source_oracle",
     "player_motion_float32_products_round_before_sum", "player_world_avatar_rendered_on_gpu",
+    "player_world_three_preview_maps_load", "player_world_source_footsteps_play_after_actual_walk",
 }
 PLAYER_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {

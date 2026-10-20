@@ -161,7 +161,9 @@
     "player_motion_velocity_facing_exact_source_oracle",
     "player_world_avatar_rendered_on_gpu",
     "player_world_checks_ran",
-    "player_world_source_collision"
+    "player_world_source_collision",
+    "player_world_source_footsteps_play_after_actual_walk",
+    "player_world_three_preview_maps_load"
   ],
   "schema": "bluemap.player.source-contracts.v1",
   "sourceAnchors": [
