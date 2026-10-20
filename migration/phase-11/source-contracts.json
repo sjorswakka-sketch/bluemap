@@ -1464,6 +1464,7 @@
   ],
   "requiredNativeChecks": [
     "world_access_all_37_maps_available",
+    "world_access_defeated_source_actors_stay_absent",
     "world_access_failed_travel_is_atomic",
     "world_access_gate_transaction_idempotent",
     "world_access_independent_earned_restoration",
