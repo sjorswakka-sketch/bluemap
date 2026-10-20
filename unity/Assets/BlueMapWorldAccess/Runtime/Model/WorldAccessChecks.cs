@@ -52,7 +52,7 @@ namespace BlueMapMigration.WorldAccess
                 {
                     var spec=boat.Require("spec");foreach(var route in model.BoatRoutes(spec))boats&=repository.MapIds.Contains(route.Require("to").AsString())&&repository.Read(route.Require("to").AsString()).MapData.Require("spawns").TryGet(route.Require("spawn").AsString(),out _);
                 }
-                unchanged&=before==FoundationJson.StringifyPlain(Snapshot(state));OracleSnapshots++;
+                unchanged&=before==FoundationJson.StringifyPlain(Snapshot(state));OracleSnapshots++;if(OracleSnapshots%20==0)Debug.Log("World source access verified: "+OracleSnapshots+"/162");
             }
             check("world_access_source_all_162_snapshots",OracleSnapshots==162&&maps.Count==37&&scenarios.Count==59);
             check("world_access_source_portal_conditions",portals);check("world_access_source_gate_conditions",gates);check("world_access_source_safe_arrivals",arrivals);check("world_access_source_safe_spawn_search",probes&&OracleProbes>800);
@@ -91,6 +91,20 @@ namespace BlueMapMigration.WorldAccess
             check("world_access_seal_earned_timing",locked&&delayed&&notEarly&&opened&&own.Flag("diepte_opened")&&own.QuestState("diepte")=="active"&&dirty==projection.DirtyVersion);
             own.MapId="ijsdal";own.Set("flags",FoundationJson.ParsePlain("{\"lw_heat_east\":true}"));var east=projection.Project("ijsdal");var baseline=repository.Read("ijsdal");bool westKept=true;for(int y=12;y<=13;y++)for(int x=10;x<16;x++)westKept&=east.MapData.Require("rows").Items[y].AsString()[x]==baseline.MapData.Require("rows").Items[y].AsString()[x];
             check("world_access_independent_earned_restoration",westKept&&east.MapData.Require("rows").Items[3].AsString()[40]==','&&!own.Flag("lw_heat_west")&&!own.Flag("lw_heat"));
+            bool defeatedHidden=true;int defeatedCount=0;
+            foreach(string map in new[]{"ruins","temple","depths2"})
+            {
+                var completed=repository.Read(map,"full_progress");var completedState=new FoundationGameState(own.Snapshot());
+                completedState.Set("flags",completed.StateAfter.Require("flags"));var completedModel=new WorldAccessModel(repository,completedState);
+                foreach(var actor in repository.Read(map).Root.Require("scene").Items)
+                {
+                    string script=WorldAccessModel.Get(actor,"script",FoundationValue.StringValue("")).AsString();if(!script.EndsWith("/enemy.gd",StringComparison.Ordinal)&&!script.EndsWith("/guardian.gd",StringComparison.Ordinal))continue;
+                    string flag=WorldAccessModel.Get(actor.Require("fields"),"unique_flag",FoundationValue.StringValue("")).AsString();if(flag==""||!completedState.Flag(flag))continue;
+                    bool absent=!completed.Root.Require("scene").Items.Any(n=>n.Require("script").AsString()==script&&WorldAccessModel.Get(n.Require("fields"),"unique_flag",FoundationValue.StringValue("")).AsString()==flag);
+                    defeatedHidden&=absent&&!completedModel.NodeVisible(actor);defeatedCount++;
+                }
+            }
+            check("world_access_defeated_source_actors_stay_absent",defeatedHidden&&defeatedCount==3);
             var unknown=projection.Conditions.Check(FoundationJson.ParsePlain("[\"future_unknown_access_rule\"]"));check("world_access_unknown_conditions_fail_closed",unknown.Status==FoundationRuleStatus.Unknown&&!unknown.Value);
         }
     }

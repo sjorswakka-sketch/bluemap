@@ -56,7 +56,7 @@ namespace BlueMapMigration.Route
             if(game.DialogueOpen){DrawDialogue();return;}
             if(route.Modal=="")return;
             GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;
-            if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
+            if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
         }
         private void DrawDialogue()
         {
@@ -99,6 +99,13 @@ namespace BlueMapMigration.Route
             string[] choices={T("Verder spelen","Resume"),T("Avontuur opslaan","Save adventure"),T("Opslaan en opnieuw laden","Save and reload"),T("Bediening aanpassen","Edit controls"),T("Opslaan en naar profielen","Save and return to profiles")};
             for(int i=0;i<choices.Length;i++)if(Button(new Rect(378,183+i*55,396,44),choices[i],route.Selection==i))route.ActivatePause(i);
             Label(380,474,390,route.SaveStatus,wrap,65);
+        }
+        private void DrawDoor()
+        {
+            Panel(new Rect(310,192,532,268));Label(334,211,484,T("Rafs havenwerkplaats","Raf’s harbor workshop"),title);
+            Label(334,258,484,T("De werkplaats binnengaan?","Enter the workshop?"),wrap,48);
+            if(Button(new Rect(334,327,484,42),T("Binnengaan","Enter"),true))route.ConfirmLinkedDoor();
+            if(Button(new Rect(624,399,194,34),T("Annuleren","Cancel")))route.CloseModal();
         }
         private void DrawBoat()
         {

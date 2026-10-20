@@ -18,6 +18,11 @@ namespace BlueMapMigration.WorldAccess
         public bool ArenaRunActive { get; set; }
         public bool TideFlooded { get; private set; }
         public bool TideHeld { get; private set; }
+        sealed class FootShape { public bool Disabled;public string Kind;public Vector2 Origin,Size;public double Radius; }
+        sealed class BodyFoot { public FoundationValue Node;public bool StatefulGate;public readonly List<FootShape> Shapes=new List<FootShape>(); }
+        sealed class Geometry { public readonly HashSet<long> Solids=new HashSet<long>();public readonly List<BodyFoot> Bodies=new List<BodyFoot>();public readonly List<(Vector2 min,Vector2 max)> Portals=new List<(Vector2,Vector2)>(); }
+        FoundationWorldSnapshot geometrySnapshot;
+        Geometry geometry;
         string tideMap="";
         readonly Dictionary<string,double> seals=new Dictionary<string,double>(StringComparer.Ordinal);
         public event Action Changed;
@@ -96,6 +101,8 @@ namespace BlueMapMigration.WorldAccess
             if(script.EndsWith("/gate.gd",StringComparison.Ordinal)||script.EndsWith("/diepte_gate.gd",StringComparison.Ordinal))return GateBlocked(fields);
             if(script.EndsWith("/diepte_seal.gd",StringComparison.Ordinal))return !State.Flag("diepte_opened");
             if(script.EndsWith("/meer_kast.gd",StringComparison.Ordinal))return !CheckAll(Get(fields,"open_if",Get(spec,"open_if",null)));
+            if(script.EndsWith("/enemy.gd",StringComparison.Ordinal)||script.EndsWith("/guardian.gd",StringComparison.Ordinal))
+            {string defeated=Get(fields,"unique_flag",FoundationValue.StringValue("")).AsString();if(defeated!=""&&State.Flag(defeated))return false;}
             string unique=Get(fields,"unique_key",FoundationValue.StringValue("")).AsString();
             if(script.EndsWith("/pickup.gd",StringComparison.Ordinal)&&unique!=""&&State.Flag(unique))return false;
             return true;
@@ -172,30 +179,55 @@ namespace BlueMapMigration.WorldAccess
         static bool Finite(Vector2 v)=>!float.IsNaN(v.x)&&!float.IsInfinity(v.x)&&!float.IsNaN(v.y)&&!float.IsInfinity(v.y);
         bool Solid(FoundationWorldSnapshot snapshot,Vector2 at,HashSet<long> cells)
         {int x=(int)Math.Floor(at.x/32),y=(int)Math.Floor(at.y/32);return x<0||y<0||x>=snapshot.Width||y>=snapshot.Height||cells.Contains(((long)x<<32)|(uint)y);}
-        static HashSet<long> Solids(FoundationWorldSnapshot snapshot)
-        {var result=new HashSet<long>();foreach(var cell in snapshot.Root.Require("terrain").Require("solidCells").Items)result.Add((cell.Items[0].AsInt64()<<32)|(uint)cell.Items[1].AsInt64());return result;}
-        public bool SpawnFits(FoundationWorldSnapshot snapshot,Vector2 at)=>SpawnFits(snapshot,at,Solids(snapshot));
+        Geometry GeometryFor(FoundationWorldSnapshot snapshot)
+        {
+            if(ReferenceEquals(snapshot,geometrySnapshot))return geometry;
+            var result=new Geometry();
+            foreach(var cell in snapshot.Root.Require("terrain").Require("solidCells").Items)result.Solids.Add((cell.Items[0].AsInt64()<<32)|(uint)cell.Items[1].AsInt64());
+            var children=new Dictionary<string,List<FoundationValue>>(StringComparer.Ordinal);
+            foreach(var node in snapshot.Root.Require("scene").Items)
+            {
+                if(!node.TryGet("shape",out _))continue;string parent=node.Require("parent").CanonicalJson;
+                if(!children.TryGetValue(parent,out var list)){list=new List<FoundationValue>();children.Add(parent,list);}list.Add(node);
+            }
+            foreach(var body in snapshot.Root.Require("scene").Items)
+            {
+                if(!body.TryGet("collision",out var collision)||(collision.Require("layer").AsInt64()&1)==0)continue;
+                var parent=Get(body,"parent",FoundationValue.Nil());if(parent.Kind=="nil"||parent.Items.Count!=1||parent.Items[0].AsString()!="entities")continue;
+                string script=body.Require("script").AsString();if(script.EndsWith("/player.gd",StringComparison.Ordinal))continue;
+                if(snapshot.MapId=="player_home"&&(script.EndsWith("/house_furniture.gd",StringComparison.Ordinal)||(script.EndsWith("/home_station.gd",StringComparison.Ordinal)&&new[]{"bed","table","shelf"}.Contains(Get(Spec(body.Require("fields")),"role",FoundationValue.StringValue("")).AsString()))))continue;
+                if(!children.TryGetValue(body.Require("address").CanonicalJson,out var shapes))continue;
+                var foot=new BodyFoot{Node=body,StatefulGate=script.EndsWith("/gate.gd",StringComparison.Ordinal)||script.EndsWith("/diepte_gate.gd",StringComparison.Ordinal)};
+                foreach(var child in shapes)
+                {
+                    var shape=child.Require("shape");var transform=child.Require("globalTransform");var parameters=shape.Require("parameters");string kind=shape.Require("class").AsString();
+                    Vector2 scale=new Vector2(Vec(transform.Require("x")).magnitude,Vec(transform.Require("y")).magnitude);
+                    var compiled=new FootShape{Disabled=shape.Require("disabled").AsBool(),Kind=kind,Origin=Vec(transform.Require("origin"))};
+                    if(kind=="RectangleShape2D")compiled.Size=Vector2.Scale(Vec(parameters.Require("size")),scale);
+                    else if(kind=="CircleShape2D")compiled.Radius=parameters.Require("radius").AsDouble()*Math.Max(scale.x,scale.y);
+                    foot.Shapes.Add(compiled);
+                }
+                result.Bodies.Add(foot);
+            }
+            foreach(var spec in snapshot.MapData.Require("objects").Items)
+            {if(spec.Require("type").AsString()!="portal")continue;var position=Vec(spec.Require("pos"))*32;var size=Vec(Get(spec,"size",FoundationValue.Array(new[]{FoundationValue.Integer(1),FoundationValue.Integer(1)})))*32;result.Portals.Add((position,position+size));}
+            geometrySnapshot=snapshot;geometry=result;return result;
+        }
+        public bool SpawnFits(FoundationWorldSnapshot snapshot,Vector2 at)=>SpawnFits(snapshot,at,GeometryFor(snapshot).Solids);
         bool SpawnFits(FoundationWorldSnapshot snapshot,Vector2 at,HashSet<long> solids)
         {
             if(!Finite(at))return false;Vector2 foot=at+new Vector2(0,8);
             foreach(var offset in new[]{Vector2.zero,new Vector2(8,0),new Vector2(-8,0),new Vector2(0,8),new Vector2(0,-8),new Vector2(6,6),new Vector2(-6,6),new Vector2(6,-6),new Vector2(-6,-6)})if(Solid(snapshot,foot+offset,solids))return false;
-            var scene=snapshot.Root.Require("scene").Items;
-            foreach(var body in scene)
+            var compiled=GeometryFor(snapshot);
+            foreach(var body in compiled.Bodies)
             {
-                if(!body.TryGet("collision",out var collision)||(collision.Require("layer").AsInt64()&1)==0||!NodeVisible(body))continue;
-                var parent=Get(body,"parent",FoundationValue.Nil());if(parent.Kind=="nil"||parent.Items.Count!=1||parent.Items[0].AsString()!="entities")continue;
-                string script=body.Require("script").AsString();if(script.EndsWith("/player.gd",StringComparison.Ordinal))continue;
-                if(snapshot.MapId=="player_home"&&(script.EndsWith("/house_furniture.gd",StringComparison.Ordinal)||(script.EndsWith("/home_station.gd",StringComparison.Ordinal)&&new[]{"bed","table","shelf"}.Contains(Get(Spec(body.Require("fields")),"role",FoundationValue.StringValue("")).AsString()))))continue;
-                bool statefulGate=script.EndsWith("/gate.gd",StringComparison.Ordinal)||script.EndsWith("/diepte_gate.gd",StringComparison.Ordinal);
-                var address=body.Require("address");
-                foreach(var child in scene)
+                if(!NodeVisible(body.Node))continue;
+                foreach(var shape in body.Shapes)
                 {
-                    if(!child.TryGet("shape",out var shape)||Get(child,"parent",FoundationValue.Nil()).CanonicalJson!=address.CanonicalJson||(shape.Require("disabled").AsBool()&&!statefulGate))continue;
-                    Vector2 origin=Vec(child.Require("globalTransform").Require("origin"));var transform=child.Require("globalTransform");Vector2 scale=new Vector2(Vec(transform.Require("x")).magnitude,Vec(transform.Require("y")).magnitude);
-                    string kind=shape.Require("class").AsString();var p=shape.Require("parameters");
-                    if(kind=="RectangleShape2D")
-                    {Vector2 size=Vector2.Scale(Vec(p.Require("size")),scale);var min=origin-size*.5f;var max=origin+size*.5f;var nearest=new Vector2(Mathf.Clamp(foot.x,min.x,max.x),Mathf.Clamp(foot.y,min.y,max.y));if((nearest-foot).magnitude<8)return false;}
-                    else if(kind=="CircleShape2D"&&(origin-foot).magnitude<8+p.Require("radius").AsDouble()*Math.Max(scale.x,scale.y))return false;
+                    if(shape.Disabled&&!body.StatefulGate)continue;
+                    if(shape.Kind=="RectangleShape2D")
+                    {var min=shape.Origin-shape.Size*.5f;var max=shape.Origin+shape.Size*.5f;var nearest=new Vector2(Mathf.Clamp(foot.x,min.x,max.x),Mathf.Clamp(foot.y,min.y,max.y));if((nearest-foot).magnitude<8)return false;}
+                    else if(shape.Kind=="CircleShape2D"&&(shape.Origin-foot).magnitude<8+shape.Radius)return false;
                 }
             }
             if(snapshot.MapId=="player_home")
@@ -207,8 +239,7 @@ namespace BlueMapMigration.WorldAccess
                     string kind=entry.Value.Require("kind").AsString();if(kind=="rug")continue;var cell=Vec(entry.Value.Require("cell"));var size=sizes.TryGetValue(kind,out var dims)?dims:Vector2.one;Vector2 min=cell*32+new Vector2(2,2),max=min+size*32-new Vector2(4,4);var nearest=new Vector2(Mathf.Clamp(foot.x,min.x,max.x),Mathf.Clamp(foot.y,min.y,max.y));if((nearest-foot).magnitude<8)return false;
                 }
             }
-            foreach(var spec in snapshot.MapData.Require("objects").Items)
-            {if(spec.Require("type").AsString()!="portal")continue;var position=Vec(spec.Require("pos"))*32;var size=Vec(Get(spec,"size",FoundationValue.Array(new[]{FoundationValue.Integer(1),FoundationValue.Integer(1)})))*32;if(at.x>=position.x&&at.x<position.x+size.x&&at.y>=position.y&&at.y<position.y+size.y)return false;}
+            foreach(var portal in compiled.Portals)if(at.x>=portal.min.x&&at.x<portal.max.x&&at.y>=portal.min.y&&at.y<portal.max.y)return false;
             return true;
         }
         public Vector2 PrepareSavedPosition(FoundationWorldSnapshot snapshot,Vector2 requested)
@@ -220,7 +251,7 @@ namespace BlueMapMigration.WorldAccess
             {var pos=Vec(spec.Require("pos"))*32-new Vector2(9,9);var size=Vec(Get(spec,"size",FoundationValue.Array(new[]{FoundationValue.Integer(2),FoundationValue.Integer(2)})))*32+new Vector2(18,18);basins.Add((pos,pos+size));}
             Func<Vector2,Vector2,Vector2,bool> inside=(at,min,max)=>at.x>=min.x&&at.x<max.x&&at.y>=min.y&&at.y<max.y;
             var candidates=new List<Vector2>();foreach(var basin in basins)if(inside(foot,basin.min,basin.max)){candidates.Add(new Vector2(basin.min.x,foot.y));candidates.Add(new Vector2(basin.max.x,foot.y));candidates.Add(new Vector2(foot.x,basin.min.y));candidates.Add(new Vector2(foot.x,basin.max.y));}
-            double best=Double.PositiveInfinity;var solids=Solids(snapshot);
+            double best=Double.PositiveInfinity;var solids=GeometryFor(snapshot).Solids;
             foreach(var at in candidates)
             {if(Solid(snapshot,at,solids)||basins.Any(b=>inside(at,b.min+Vector2.one*.1f,b.max-Vector2.one*.1f)))continue;double distance=(at-foot).magnitude;distance*=distance;if(distance<best){wanted=at-new Vector2(0,8);best=distance;}}
             if(snapshot.MapId=="player_home")
@@ -233,7 +264,7 @@ namespace BlueMapMigration.WorldAccess
         }
         public Vector2 ResolveArrival(FoundationWorldSnapshot snapshot,Vector2 requested)
         {
-            var solids=Solids(snapshot);if(SpawnFits(snapshot,requested,solids))return requested;
+            var solids=GeometryFor(snapshot).Solids;if(SpawnFits(snapshot,requested,solids))return requested;
             Vector2 start=Vec(snapshot.MapData.Require("spawns").Require("start"));int cx=Finite(requested)?(int)(requested.x/32):(int)start.x,cy=Finite(requested)?(int)(requested.y/32):(int)start.y;
             for(int radius=1;radius<=8;radius++)
             {

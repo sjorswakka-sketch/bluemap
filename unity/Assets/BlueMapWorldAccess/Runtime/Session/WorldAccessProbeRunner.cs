@@ -49,17 +49,17 @@ namespace BlueMapMigration.WorldAccess
             Last=new Result{identity=identity};var checks=new List<Phase2Probe.Check>();
             void Check(string name,bool passed){checks.Add(new Phase2Probe.Check{name=name,passed=passed});if(!passed)Debug.Log("World access failed: "+name);}
             var repository=FoundationWorldRepository.LoadRequired();
-            WorldAccessChecks.Verify(repository,Check);
+            Debug.Log("World access stage: original source model");WorldAccessChecks.Verify(repository,Check);
             Check("world_access_source_oracle_complete",WorldAccessChecks.OracleSnapshots==162&&WorldAccessChecks.OracleProbes>800&&checks.All(c=>c.passed));
-            WorldAccessPresentationChecks.Verify(catalog,repository,Check);
-            WorldAccessPresentationChecks.VerifyGpu(catalog,Check);
+            Debug.Log("World access stage: art identities");WorldAccessPresentationChecks.Verify(catalog,repository,Check);
+            Debug.Log("World access stage: native GPU pixels");WorldAccessPresentationChecks.VerifyGpu(catalog,Check);
             Check("world_access_original_art_preserved",FoundationJson.ParsePlain(Resources.Load<TextAsset>(RouteSourcePresentation.ResourcePath).text).Require("nodes").Items.Count==104&&checks.Where(c=>c.name.StartsWith("world_art_")).All(c=>c.passed));
             Check("world_access_all_37_maps_available",repository.MapIds.Count==37&&RouteWorldController.Maps.OrderBy(v=>v).SequenceEqual(repository.MapIds.OrderBy(v=>v)));
             route.CloseModal();Fixture?.Dispose();Fixture=new PersistenceCoordinator(repository,world.InputSource,Path.Combine(output,"world-access-profiles"));
             route.BeginNew(Fixture);var state=route.Gameplay.State;
             state.Set("future_world_access",Plain("{\"kind\":\"preserved\",\"amount\":9007199254740993}"));
             state.Coins=91;string inventory=FoundationJson.StringifyPlain(state.Get("inventory")),initialFlags=FoundationJson.StringifyPlain(state.Get("flags"));bool mapsFit=true,mapArt=true;
-            foreach(string map in repository.MapIds)
+            Debug.Log("World access stage: live 37 maps");foreach(string map in repository.MapIds)
             {
                 bool entered=route.TryTravel(map,Spawn(repository.Read(map)));if(entered){Last.maps++;mapsFit&=route.Access.SpawnFits(route.Session.Current,world.Position);mapArt&=world.RoutePresentation!=null&&world.RoutePresentation.Objects.Count>0&&world.Snapshot.MapId==map&&route.Session.State.MapId==map;}
                 else {mapsFit=false;mapArt=false;Debug.Log("World native entry failed: "+map+" / "+route.Message);}
@@ -84,7 +84,7 @@ namespace BlueMapMigration.WorldAccess
                 gateChecked=denied&&opened&&duplicate&&state.Count(key)==1&&!route.Access.GateBlocked(target.Fields)&&beforeFeet>afterFeet;break;
             }
             Check("world_access_native_gate_key_and_collision",gateChecked);
-            bool portals=true,locks=true;int lockedCases=0;
+            Debug.Log("World access stage: live portal crossings");bool portals=true,locks=true;int lockedCases=0;
             foreach(string map in repository.MapIds)
             {
                 var source=repository.Read(map);var cases=Nodes(source,"portal").ToArray();
@@ -111,7 +111,7 @@ namespace BlueMapMigration.WorldAccess
             Check("world_access_native_portal_transitions",portals&&Last.portalCases==69&&Last.portalCrossings==69);
             Check("world_access_native_locked_portals_stay_closed",locks&&lockedCases>=9);
             Check("world_access_original_quest_locks",locks&&lockedCases>=9&&checks.Where(c=>c.name=="world_access_source_portal_conditions"||c.name=="world_access_source_gate_conditions").All(c=>c.passed));
-            bool boatPassed=true,cancelled=true,boatNavigation=true;int boatCases=0;
+            Debug.Log("World access stage: boats");bool boatPassed=true,cancelled=true,boatNavigation=true;int boatCases=0;
             void ControllerPress(string action){var frame=new InputFrame{ControllerActive=true};frame.pressed.Add(action);route.HandleFrame(frame);}
             foreach(string map in repository.MapIds)
             {
@@ -134,6 +134,17 @@ namespace BlueMapMigration.WorldAccess
             Check("world_access_native_boats_free_and_validated",boatPassed&&boatCases>0&&Last.boatCrossings==boatCases);
             Check("world_access_native_boat_cancel_preserves_state",cancelled&&boatCases>0);
             Check("world_access_native_boat_controller_navigation",boatNavigation&&boatCases>0);route.HandleFrame(new InputFrame{ControllerActive=false});
+            route.CloseModal();route.TryTravel("harbor",Spawn(repository.Read("harbor")));var workshopDoor=route.Targets.FirstOrDefault(t=>t.Kind=="coastal_workstation");bool workshop=false;
+            if(workshopDoor!=null)
+            {
+                At(world,workshopDoor.Position+new Vector2(0,28));string before=FoundationJson.StringifyPlain(state.Snapshot());bool opened=route.InteractTarget(workshopDoor.Address);ControllerPress("ui_cancel");bool cancelledDoor=opened&&route.Modal==""&&before==FoundationJson.StringifyPlain(state.Snapshot());
+                opened=route.InteractTarget(workshopDoor.Address);ControllerPress("ui_accept");bool entered=opened&&state.MapId=="coast_workshop"&&world.Snapshot.MapId=="coast_workshop"&&route.Access.SpawnFits(route.Session.Current,world.Position);
+                yield return null;
+                var back=Nodes(world.Snapshot,"portal").FirstOrDefault(n=>n.Require("fields").Require("target_map").AsString()=="harbor");
+                if(back!=null){var rect=back.Require("fields").Require("rect");var at=FoundationCoordinates.Vector(rect.Require("position"));var size=FoundationCoordinates.Vector(rect.Require("size"));At(world,at+new Vector2(size.x*.5f,size.y+4));route.Tick(.02);At(world,at+new Vector2(size.x*.5f,size.y-4));route.Tick(.02);}
+                workshop=cancelledDoor&&entered&&state.MapId=="harbor"&&world.Snapshot.MapId=="harbor";
+            }
+            Check("world_access_native_workshop_door_and_return",workshop);
             route.CloseModal();route.TryTravel("inn",Spawn(repository.Read("inn")));Vector2 saved=world.Position;state.Coins=91;route.Save();state.Coins=1;bool reloaded=route.Reload(false);state=route.Gameplay.State;
             Check("world_access_loaded_area_retained",reloaded&&state.MapId=="inn"&&world.Snapshot.MapId=="inn"&&Vector2.Distance(world.Position,saved)<.001f&&state.Coins==91&&state.Get("future_world_access").Require("amount").AsInt64()==9007199254740993L);
             Check("world_access_no_real_saves_accessed",Fixture.Current.Snapshot.Origin=="unity"&&Fixture.Current.Snapshot.CopyOriginals().Count==0);

@@ -171,6 +171,7 @@ WORLD_ACCESS_DETAIL_CHECKS = {
     "world_access_native_boat_controller_navigation",
     "world_access_loaded_area_retained", "world_access_native_checks_ran",
     "world_access_failed_travel_is_atomic", "world_access_native_gate_key_and_collision",
+    "world_access_native_workshop_door_and_return",
     "world_access_source_all_162_snapshots", "world_access_source_portal_conditions",
     "world_access_source_gate_conditions", "world_access_source_safe_arrivals",
     "world_access_source_safe_spawn_search", "world_access_source_boat_routes",
@@ -178,6 +179,7 @@ WORLD_ACCESS_DETAIL_CHECKS = {
     "world_access_gate_transaction_idempotent", "world_access_tide_occupied_bank_safe",
     "world_access_seal_earned_timing", "world_access_independent_earned_restoration",
     "world_access_unknown_conditions_fail_closed",
+    "world_access_defeated_source_actors_stay_absent",
     *("world_access_source_case_" + name for name in (
         "gate_no_key", "gate_key", "gate_open_not_interactable", "conditions_fresh",
         "conditions_iron_main", "conditions_both_targets", "boat_distance_0", "boat_distance_6400",

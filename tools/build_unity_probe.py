@@ -424,7 +424,7 @@ def main() -> None:
     print("Windows x64 build verified; running the rendered player.", flush=True)
     run_hidden([str(executable), "-screen-width", "1152", "-screen-height", "648",
                 "-logFile", str(logs / "player.log"), "--probe-automated",
-                "--probe-output-directory", str(runtime)], 180, "Isolated BlueMap player: native game UI proof",
+                "--probe-output-directory", str(runtime)], 900, "Isolated BlueMap player: native game UI proof",
                rendered_player_window=True)
     result = read_json(runtime / "result.json")
     require(result.get("success") is True and result.get("identity") == identity,

@@ -38,6 +38,7 @@ SOURCE_PATHS = (
     "scripts/core/regional_adventures.gd", "scripts/core/personal_home.gd", "scripts/core/opening.gd",
     "scripts/core/living_world.gd", "scripts/core/first_route.gd",
     "scripts/data/house_catalog.gd", "scripts/entities/house_furniture.gd", "scripts/entities/home_station.gd",
+    "scripts/entities/coastal_workstation.gd", "scripts/ui/coastal_home_ui.gd", "scripts/data/coastal_craft_maps.gd",
 )
 RECORDERS = ("tools/migration_world_access_export.gd", "tools/record_migration_world_access.py",
              "tools/migration_world_art.gd", "tools/record_migration_world_art.py")

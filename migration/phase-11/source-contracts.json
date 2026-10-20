@@ -1477,6 +1477,7 @@
     "world_access_native_gate_key_and_collision",
     "world_access_native_locked_portals_stay_closed",
     "world_access_native_portal_transitions",
+    "world_access_native_workshop_door_and_return",
     "world_access_no_fixture_progress_applied",
     "world_access_no_fixture_state_injected",
     "world_access_no_real_saves_accessed",
@@ -1585,6 +1586,12 @@
       "sha256": "115f0d52b40e74664431608be9fb8826b9e93427d3c6e29ec86c7bfb04de578a"
     },
     {
+      "bytes": 460,
+      "gitBlob": "4785e3de331366fdc3ac86b2ca528cc51f815794",
+      "path": "scripts/data/coastal_craft_maps.gd",
+      "sha256": "044293f6910f0191f1d74628ba878541f3230f3da013d84ca7a1f10ab31b55c5"
+    },
+    {
       "bytes": 7261,
       "gitBlob": "3cd04a1158ae980a5297348dea44d441988a5f18",
       "path": "scripts/data/ext/boog.gd",
@@ -1607,6 +1614,12 @@
       "gitBlob": "4b3edb6b8adcab4f3353c15b0beb914464439408",
       "path": "scripts/data/quests.gd",
       "sha256": "7835307233fb3a9ca1d5ba295b15985eec8c8f824305fc5691ae1ff3b13501af"
+    },
+    {
+      "bytes": 2618,
+      "gitBlob": "34850dc5fbc1371ae2373d99a518916573b58f9e",
+      "path": "scripts/entities/coastal_workstation.gd",
+      "sha256": "a988403d2043c39355c130a63a199dc9761fd00fd8ae527707f775bbcade0f2a"
     },
     {
       "bytes": 1445,
@@ -1901,6 +1914,12 @@
       "gitBlob": "dbc72ab6fdcb15d92479e8e3a7a12efc62c03bf4",
       "path": "scripts/ui/coast_voyage.gd",
       "sha256": "3df74af5bfef63bfde8816ae7b6eb5bc45bffb93bf221bbddad72aa556c952dd"
+    },
+    {
+      "bytes": 13106,
+      "gitBlob": "cb3b3c4a3ae090f042807dafe959a0e8f3bf85b0",
+      "path": "scripts/ui/coastal_home_ui.gd",
+      "sha256": "a9833315bdcb94da4dc8e63795e30ef8e272db42903eb47682a1e26fab0f0653"
     },
     {
       "bytes": 25511,
