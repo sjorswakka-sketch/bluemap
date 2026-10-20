@@ -45,7 +45,7 @@ namespace BlueMapMigration.Route
             if(route.Modal==""&&!game.DialogueOpen)
             {
                 if(state.QuestState("kat")=="active")
-                {Panel(new Rect(18,124,298,82));Label(32,133,270,T("Pim zoekt Muis","Pim is looking for Muis"));Label(32,160,270,route.Translate(game.QuestText("kat")),small,36);}
+                {Panel(new Rect(18,124,298,82));Label(32,133,270,T("Pim zoekt Muis","Pim is looking for Muis"));Label(32,160,270,route.Translate(game.QuestText("kat")),new GUIStyle(small){wordWrap=true},36);}
                 Panel(new Rect(18,589,1116,43));Label(32,598,1090,route.BindingLabel("interact")+T(" praten / verzamelen  ·  "," talk / gather  ·  ")+route.BindingLabel("menu")+T(" tas  ·  "," inventory  ·  ")+route.BindingLabel("quests")+T(" opdrachten  ·  "," quests  ·  ")+route.BindingLabel("pause")+T(" menu  ·  "," menu  ·  ")+route.BindingLabel("sprint")+T(" rennen  ·  F9 bediening"," run  ·  F9 controls"),small);
                 if(route.CurrentTarget!=null){Panel(new Rect(360,526,432,48));Label(376,538,400,(route.BindingLabel("interact")+"  ")+route.Translate(route.CurrentTarget.Label));}
                 if(route.Working){Panel(new Rect(430,474,292,38));GUI.color=new Color(.43f,.77f,.57f);GUI.DrawTexture(new Rect(441,487,270*route.WorkFraction,10),Texture2D.whiteTexture);GUI.color=Color.white;}

@@ -66,7 +66,7 @@ namespace BlueMapMigration.Route
             var binding=World.InputSource.Bindings(action).FirstOrDefault(v=>v.category==category);
             if(binding==null)return action;
             string value=binding.path??"";int slash=value.LastIndexOf('/');if(slash>=0)value=value.Substring(slash+1);
-            switch(value){case "buttonSouth":value="A";break;case "buttonEast":value="B";break;case "leftShoulder":value="LB";break;case "rightShoulder":value="RB";break;case "leftStickPress":value="L3";break;case "rightStickPress":value="R3";break;case "select":value="Select";break;case "start":value="Start";break;case "leftCtrl":case "rightCtrl":value="Ctrl";break;case "leftShift":case "rightShift":value="Shift";break;default:value=value.Length==1?value.ToUpperInvariant():value;break;}
+            switch(value){case "buttonSouth":value="A";break;case "buttonEast":value="B";break;case "leftShoulder":value="LB";break;case "rightShoulder":value="RB";break;case "leftStickPress":value="L3";break;case "rightStickPress":value="R3";break;case "select":value="Select";break;case "start":value="Start";break;case "escape":value="Esc";break;case "enter":value="Enter";break;case "tab":value="Tab";break;case "leftCtrl":case "rightCtrl":value="Ctrl";break;case "leftShift":case "rightShift":value="Shift";break;default:value=value.Length==1?value.ToUpperInvariant():value;break;}
             return (binding.ctrl?"Ctrl+":"")+(binding.shift?"Shift+":"")+(binding.alt?"Alt+":"")+value;
         }
         public string Translate(string source)=>localization.Translate(source,locale:Locale);
@@ -176,7 +176,6 @@ namespace BlueMapMigration.Route
                 if(Modal=="inventory")
                 {
                     if(frame.Pressed("ui_up"))MoveInventory(-1);if(frame.Pressed("ui_down"))MoveInventory(1);
-                    if(frame.UiScroll.y!=0){InventoryScroll=Mathf.Clamp(InventoryScroll-frame.UiScroll.y*14,0,Math.Max(0,InventoryItems().Length*38-310));}
                     if(frame.ControllerActive&&Mathf.Abs(frame.Aim.y)>.25f&&uiRepeat<=0){MoveInventory(frame.Aim.y>0?1:-1);uiRepeat=.1;}
                 }
                 else if(Modal=="pause")

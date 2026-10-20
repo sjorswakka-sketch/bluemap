@@ -142,6 +142,19 @@ namespace BlueMapMigration.Route
                 int beforeStick=route.InventoryIndex;route.HandleFrame(Pad(new GamepadState{rightStick=new Vector2(0,-.9f)}));route.Tick(.11);route.HandleFrame(Neutral());
                 bool scrolled=route.InventoryIndex>beforeStick&&route.InventoryScroll>0&&route.InventoryIndex*38>=route.InventoryScroll&&route.InventoryIndex*38+38<=route.InventoryScroll+310;
                 check("route_inventory_controller_focus_and_right_stick_scroll",scrolled&&route.InventoryItems().Length>8);
+                // A held stick produces many frames between focus steps. Its scroll must
+                // never run ahead of the selected row while the repeat timer is waiting.
+                route.OpenInventory();route.Tick(.12);Neutral();int heldStart=route.InventoryIndex,heldPrevious=heldStart;float heldScroll=route.InventoryScroll;bool heldVisible=true,heldMonotonic=true;
+                for(int frameIndex=0;frameIndex<90;frameIndex++)
+                {
+                    route.HandleFrame(Pad(new GamepadState{rightStick=new Vector2(0,-.7f)}));route.Tick(1.0/60);
+                    float top=route.InventoryIndex*38;
+                    heldVisible&=top>=route.InventoryScroll-.01f&&top+38<=route.InventoryScroll+310.01f;
+                    heldMonotonic&=route.InventoryIndex>=heldPrevious&&route.InventoryScroll+.01f>=heldScroll;
+                    heldPrevious=route.InventoryIndex;heldScroll=route.InventoryScroll;
+                }
+                route.HandleFrame(Neutral());
+                check("route_inventory_sustained_right_stick_keeps_focus",heldVisible&&heldMonotonic&&route.InventoryIndex>heldStart+8&&route.InventoryScroll>0&&route.Modal=="inventory"&&state.Paused);
                 Press(GamepadButton.East);bool closed=route.Modal==""&&!state.Paused;
                 route.OpenPause();Press(GamepadButton.DpadDown);bool pauseNavigation=route.Modal=="pause"&&route.Selection>0;Press(GamepadButton.East);
                 check("route_controller_navigation_verified",navigated&&scrolled&&closed&&pauseNavigation&&route.Modal==""&&!state.Paused&&devices.All(device=>device.added&&!device.native)&&typeof(InputSystem).Assembly.GetName().Name=="Unity.InputSystem");

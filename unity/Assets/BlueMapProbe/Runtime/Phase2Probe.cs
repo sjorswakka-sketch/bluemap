@@ -134,6 +134,10 @@ namespace BlueMapMigration.Probe
                 EnsurePersistence(false);ShowPersistence();
                 yield break;
             }
+            // Automated virtual devices are deliberately exercised without taking focus
+            // from the user's app. Real adventures retain normal focus handling.
+            UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior=UnityEngine.InputSystem.InputSettings.BackgroundBehavior.IgnoreFocus;
+            Add("automated_input_background_scope",automated&&UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior==UnityEngine.InputSystem.InputSettings.BackgroundBehavior.IgnoreFocus);
             while (frames < 60 || !SplashScreen.isFinished || Time.realtimeSinceStartup < 2.5f) yield return null;
             gallery.CheckNativeAnimationBoundaries();
             gallery.Audio.PlayMusic();
