@@ -56,7 +56,7 @@ namespace BlueMapMigration.Foundation
                 Vector2 sourceCentre = new Vector2((cell.X - left) * 32 + 16, (cell.Y - top) * 32 + 16);
                 Vector2 mapped = FoundationCoordinates.ToUnity(sourceCentre) + new Vector2((48-576)/32f, (324-188)/32f);
                 obj.transform.position = new Vector3(mapped.x, mapped.y, 0);
-                var renderer = obj.AddComponent<SpriteRenderer>(); catalog.Apply(renderer, sprite); renderer.sortingOrder = 1;
+                var renderer = obj.AddComponent<SpriteRenderer>(); catalog.Apply(renderer, sprite.sprite); renderer.sortingOrder = 1;
             }
             Label("37 gebieden behouden", 640, 202, 21, new Color32(232,237,223,255));
             Label("49.758 tegels, dezelfde ruimte", 640, 239, 15, new Color32(160,181,177,255));
