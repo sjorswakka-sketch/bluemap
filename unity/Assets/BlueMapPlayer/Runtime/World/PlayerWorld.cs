@@ -19,6 +19,7 @@ namespace BlueMapMigration.Player
         public Vector2 Position => FoundationCoordinates.ToGodot(body.position);
         public Rigidbody2D Body => body;
         public CircleCollider2D Foot => foot;
+        public SpriteRenderer AvatarRenderer => actor;
         public bool Frozen;
         public bool ControllerActive { get; private set; }
         public bool ControlsOpen => controls != null && controls.IsOpen;
@@ -29,7 +30,7 @@ namespace BlueMapMigration.Player
         private Phase6Catalog catalog;
         private FoundationWorldRepository repository;
         private FoundationTileSet tileSet;
-        private Phase6Audio audio;
+        private Phase6Audio stepAudio;
         private Camera cameraView;
         private PlayerInputSource input;
         private PlayerControlsPanel controls;
@@ -58,7 +59,7 @@ namespace BlueMapMigration.Player
                 .ToDictionary(s=>(s.definition.x/32)+":"+(s.definition.y/32));
             tileNames = catalog.sprites.Where(s=>s.definition.id.StartsWith("tile:",StringComparison.Ordinal) && s.definition.y == 0)
                 .OrderBy(s=>s.definition.x).Select(s=>s.definition.id.Split(':')[1]).ToArray();
-            audio = gameObject.AddComponent<Phase6Audio>(); audio.Initialize(catalog);
+            stepAudio = gameObject.AddComponent<Phase6Audio>(); stepAudio.Initialize(catalog);
             avatar = new GameObject("Source player foot"); avatar.transform.SetParent(transform,false);
             body = avatar.AddComponent<Rigidbody2D>(); body.bodyType = RigidbodyType2D.Kinematic;
             body.gravityScale = 0; body.freezeRotation = true; body.useFullKinematicContacts = true;
@@ -99,7 +100,7 @@ namespace BlueMapMigration.Player
             Aim.Update(Position,Motor.Facing,Vector2.zero,Vector2.zero,false,false,Vector2.zero,false);
             cameraPosition=PlayerCameraMath.Clamp(Position,Snapshot.Width,Snapshot.Height);
             ConfigureCamera(); UpdateAppearance();
-            if (!Frozen) audio.PlayMusic(Snapshot.MapData.TryGet("music",out var music)?music.AsString():"forest");
+            if (!Frozen) stepAudio.PlayMusic(Snapshot.MapData.TryGet("music",out var music)?music.AsString():"forest");
             Physics2D.SyncTransforms();
         }
         private SpriteRenderer SpriteNode(Sprite sprite, Vector2 position,int order,Transform parent)
@@ -158,7 +159,13 @@ namespace BlueMapMigration.Player
             Sprite sprite=Sprite.Create(texture,new Rect(0,0,width,height),Vector2.one*.5f,32);ownedSprites.Add(sprite);return sprite;
         }
         public void Teleport(Vector2 sourcePosition)
-        { Motor.StopForTransition();body.position=FoundationCoordinates.ToUnity(sourcePosition);Physics2D.SyncTransforms(); }
+        { Motor.StopForTransition(); MoveBody(FoundationCoordinates.ToUnity(sourcePosition)); Physics2D.SyncTransforms(); }
+        private void MoveBody(Vector2 position)
+        {
+            // Rigidbody.position schedules a physics pose. Also synchronize the
+            // visible transform for a same-frame teleport and GPU capture.
+            body.position=position; avatar.transform.position=new Vector3(position.x,position.y,0);
+        }
         public string SurfaceAt(Vector2 sourcePosition)
         {
             int x=Mathf.FloorToInt(sourcePosition.x/32),y=Mathf.FloorToInt((sourcePosition.y+8)/32);
@@ -183,7 +190,7 @@ namespace BlueMapMigration.Player
                     float travel=Mathf.Max(0,hit.distance-.08f/32);
                     if(travel<=nearest){nearest=travel;normal=hit.normal;}
                 }
-                Vector2 advance=remaining/distance*nearest;position+=advance;body.position=position;
+                Vector2 advance=remaining/distance*nearest;position+=advance;MoveBody(position);
                 if(normal==Vector2.zero){remaining=Vector2.zero;break;}
                 remaining-=advance;remaining-=normal*Mathf.Min(0,Vector2.Dot(remaining,normal));
             }
@@ -194,7 +201,7 @@ namespace BlueMapMigration.Player
             Vector2 before=Position; motion.TileName=SurfaceAt(before);
             MotionFrame next=Motor.BeginStep(delta,motion); Sweep(next.VelocityPixels*(float)delta);
             string sound=Motor.CompleteStep(next,PlayerMotorModel.SourceLength(Position-before),SurfaceAt(Position));
-            if(sound!=""&&audio.PlayEffect("step_"+sound,Motor.Sprinting?-13:-17,UnityEngine.Random.Range(.94f,1.06f)))LastStepEffects++;
+            if(sound!=""&&stepAudio.PlayEffect("step_"+sound,Motor.Sprinting?-13:-17,UnityEngine.Random.Range(.94f,1.06f)))LastStepEffects++;
             Session.State.Position=FoundationValue.Array(new[]{FoundationValue.Number(Position.x),FoundationValue.Number(Position.y)});UpdateAppearance();return sound;
         }
         private void Update()
@@ -203,7 +210,7 @@ namespace BlueMapMigration.Player
             frame=input.Read();ControllerActive=frame.ControllerActive;
             if(ControllerActive!=lastController){Aim.DeviceChanged();rollPending=false;lastController=ControllerActive;}
             bool panelHandled=controls.IsOpen;
-            if(UnityEngine.Input.GetKeyDown(KeyCode.F9)||frame.Pressed("menu"))controls.Toggle();
+            if(!controls.BlocksShortcuts&&(UnityEngine.Input.GetKeyDown(KeyCode.F9)||frame.Pressed("menu")))controls.Toggle();
             controls.Handle(frame);
             panelHandled|=controls.IsOpen;
             Session.State.SetUi("controls-preview",controls.IsOpen);
@@ -224,7 +231,7 @@ namespace BlueMapMigration.Player
         {
             if(!initialized||Frozen||frame==null)return;
             if(rollPending)
-            { if(Motor.TryRoll(frame.Move,Session.State.InputLocked))audio.PlayEffect("dodge",-3,UnityEngine.Random.Range(.95f,1.05f));rollPending=false; }
+            { if(Motor.TryRoll(frame.Move,Session.State.InputLocked))stepAudio.PlayEffect("dodge",-3,UnityEngine.Random.Range(.95f,1.05f));rollPending=false; }
             Step(Time.fixedDeltaTime,new MotionInput { Direction=frame.Move,SprintHeld=frame.SprintHeld,Locked=Session.State.InputLocked,Paused=Session.State.Paused });
         }
         private void LateUpdate()
@@ -247,7 +254,7 @@ namespace BlueMapMigration.Player
         public void UpdateAppearance()
         {
             Vector2 facing=Motor.Facing;
-            DirectionRow=Mathf.Abs(facing.y)>Mathf.Abs(facing.x)?(facing.y>0?"down":"up"):(facing.x>=0?"right":"left");
+            DirectionRow=Mathf.Abs(facing.y)>Mathf.Abs(facing.x)?(facing.y>0?"down":"up"):(facing.x>0?"right":"left");
             string column=Motor.IsRolling?"step1":Motor.Moving?(((int)(Motor.WalkTime*9)%2)==0?"step1":"step2"):"idle";
             catalog.Apply(actor,catalog.GetSprite("generated:hair:m_kort:"+DirectionRow+":"+column));
             float bob=Motor.Moving?Mathf.Sin((float)Motor.WalkTime*18)*(Motor.Sprinting?1.6f:.6f):Mathf.Sin((float)clock*2.4f)*.55f;
@@ -291,7 +298,7 @@ namespace BlueMapMigration.Player
                 }
                 GUI.color=Color.white;
             }
-            bool enabled=GUI.enabled;GUI.enabled=enabled&&!ControllerActive;
+            bool enabled=GUI.enabled;GUI.enabled=enabled&&!ControllerActive&&!controls.BlocksShortcuts;
             if(GUI.Button(new Rect(872,78,264,28),"F9 / Select  Bediening aanpassen"))controls.Toggle();
             GUI.enabled=enabled;
             controls.Draw(new Rect(196,80,760,480));

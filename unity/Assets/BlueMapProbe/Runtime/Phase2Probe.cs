@@ -241,11 +241,19 @@ namespace BlueMapMigration.Probe
             yield return null;
             EnsurePlayerWorld();
             var player = BlueMapMigration.Player.PlayerProbeRunner.Run(identity, playerWorld);
-            Add("player_runtime_verified", player.success);
-            File.WriteAllText(Path.Combine(output, "player-result.json"), JsonUtility.ToJson(player, true));
             yield return new WaitForEndOfFrame();
             Texture2D playerCapture = CaptureCamera();
-            File.WriteAllBytes(Path.Combine(output, "screenshot-player.png"), playerCapture.EncodeToPNG()); Destroy(playerCapture);
+            File.WriteAllBytes(Path.Combine(output, "screenshot-player.png"), playerCapture.EncodeToPNG());
+            playerWorld.AvatarRenderer.enabled=false;
+            Texture2D withoutAvatar=CaptureCamera();playerWorld.AvatarRenderer.enabled=true;
+            Color32[] withPixels=playerCapture.GetPixels32(),withoutPixels=withoutAvatar.GetPixels32();
+            int avatarPixels=0;for(int i=0;i<withPixels.Length;i++)if(!withPixels[i].Equals(withoutPixels[i]))avatarPixels++;
+            bool avatarVisible=avatarPixels>100;
+            player.checks=player.checks.Concat(new[]{new Check{name="player_world_avatar_rendered_on_gpu",passed=avatarVisible}}).ToArray();
+            player.success &= avatarVisible;
+            Add("player_runtime_verified",player.success);
+            File.WriteAllText(Path.Combine(output,"player-result.json"),JsonUtility.ToJson(player,true));
+            Destroy(playerCapture);Destroy(withoutAvatar);
             Texture2D playerUiCapture = ScreenCapture.CaptureScreenshotAsTexture();
             File.WriteAllBytes(Path.Combine(output,"screenshot-player-ui.png"),playerUiCapture.EncodeToPNG()); Destroy(playerUiCapture);
             playerWorld.ToggleControls();
@@ -288,6 +296,7 @@ namespace BlueMapMigration.Probe
             frames++;
             if (Input.GetKeyDown(KeyCode.Escape) && (playerWorld == null || !playerWorld.gameObject.activeSelf)) Application.Quit();
             if (automated || foundationView == null) return;
+            if (playerWorld != null && playerWorld.gameObject.activeSelf && playerWorld.ControlsOpen) return;
             if (Input.GetKeyDown(KeyCode.Alpha8)) { foundationView.gameObject.SetActive(false); gallery.gameObject.SetActive(false); EnsurePlayerWorld(); }
             if (Input.GetKeyDown(KeyCode.Alpha7)) { if(playerWorld!=null)playerWorld.gameObject.SetActive(false); RestoreGalleryCamera(); gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(true); }
             if(playerWorld!=null && playerWorld.gameObject.activeSelf)

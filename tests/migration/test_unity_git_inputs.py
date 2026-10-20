@@ -11,6 +11,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -186,6 +187,33 @@ class BuildDependencyTests(unittest.TestCase):
             dll.write_bytes(data + b"altered after export")
             with self.assertRaisesRegex(build.ProbeError, "differs from its native build report"):
                 build.validate_runtime_dll_inputs([row], root)
+
+
+class OwnPlayerWindowTests(unittest.TestCase):
+    def run_mocked(self, command, rendered=False):
+        startup = SimpleNamespace(dwFlags=0, wShowWindow=-1)
+        with patch.object(build.subprocess, "STARTUPINFO", create=True, return_value=startup), \
+             patch.object(build.subprocess, "STARTF_USESHOWWINDOW", create=True, new=1), \
+             patch.object(build.subprocess, "CREATE_NO_WINDOW", create=True, new=0x08000000), \
+             patch.object(build.subprocess, "run", return_value=SimpleNamespace(returncode=0)) as run:
+            build.run_hidden(command, 180, "Owned preview test fixture", rendered_player_window=rendered)
+            arguments = run.call_args.kwargs
+            self.assertEqual(arguments["startupinfo"], startup)
+            self.assertEqual(arguments["creationflags"], 0x08000000)
+            return startup
+
+    def test_editor_stays_hidden_and_own_player_renders_without_activation(self):
+        hidden = self.run_mocked(["C:/Unity/Unity.exe", "-batchmode"])
+        rendered = self.run_mocked(["C:/OwnedPreview/BlueMapUnityProbe.exe", "--probe-automated"], True)
+        self.assertEqual((hidden.dwFlags, hidden.wShowWindow), (1, 0))
+        self.assertEqual((rendered.dwFlags, rendered.wShowWindow), (1, 7))
+
+    def test_visible_route_cannot_be_used_for_the_editor_or_an_unrelated_app(self):
+        for name in ("C:/Unity/Unity.exe", "C:/Other/app.exe"):
+            with self.subTest(executable=name), patch.object(build.subprocess, "run") as run:
+                with self.assertRaisesRegex(build.ProbeError, "Only the isolated preview player"):
+                    build.run_hidden([name], 180, "Blocked unrelated window", rendered_player_window=True)
+                run.assert_not_called()
 
 
 if __name__ == "__main__":

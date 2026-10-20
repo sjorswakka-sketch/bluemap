@@ -47,6 +47,10 @@ namespace BlueMapMigration.Player
             motor.RollTimer = PlayerMotorModel.RollTime - PlayerMotorModel.RollSafeTime;
             bool boundary = !motor.IsRollSafe; motor.RollTimer = .3;
             check("player_motion_roll_safe_window_strict_boundary", boundary && motor.IsRollSafe);
+            var analog = new Vector2(BitConverter.Int32BitsToSingle(unchecked((int)0x3e99999a)), BitConverter.Int32BitsToSingle(unchecked((int)0x3e666667)));
+            Vector2 analogFacing = PlayerMotorModel.NormalizeSource(analog);
+            check("player_motion_float32_products_round_before_sum", BitConverter.SingleToInt32Bits(PlayerMotorModel.SourceLengthSquared(analog)) == unchecked((int)0x3e100000)
+                && BitConverter.SingleToInt32Bits(analogFacing.x) == unchecked((int)0x3f4ccccd) && BitConverter.SingleToInt32Bits(analogFacing.y) == unchecked((int)0x3f19999a));
         }
         public static void VerifyOracle(FoundationValue oracle, Action<string, bool> check)
         {

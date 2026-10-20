@@ -20,6 +20,10 @@ namespace BlueMapMigration.Player
             HardwareInventory = PlayerInputSource.ConnectedDeviceInventory();
             BindingCases = 0; VectorCases = 0;
             bool oldCursor = Cursor.visible;
+            bool callbackErrors = false;
+            Application.LogCallback observe = (message, stack, type) =>
+            { if (type == LogType.Exception || type == LogType.Error || type == LogType.Assert) callbackErrors = true; };
+            Application.logMessageReceived += observe;
             var oldMode = InputSystem.settings.updateMode;
             var owned = new List<InputDevice>();
             PlayerInputSource source = null;
@@ -193,6 +197,8 @@ namespace BlueMapMigration.Player
                 foreach (var device in owned) if (device.added) InputSystem.RemoveDevice(device);
                 InputSystem.settings.updateMode = oldMode;
                 Cursor.visible = oldCursor;
+                Application.logMessageReceived -= observe;
+                check("player_input_device_lifecycle_no_callback_errors", !callbackErrors);
             }
         }
         static bool Near(Vector2 a, Vector2 b) => (a - b).sqrMagnitude < 0.0000000001f;

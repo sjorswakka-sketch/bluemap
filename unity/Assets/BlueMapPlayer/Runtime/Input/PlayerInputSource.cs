@@ -130,9 +130,10 @@ namespace BlueMapMigration.Player
         void OnDeviceChange(InputDevice device, InputDeviceChange change)
         {
             if (!Allowed(device)) return;
+            // Removed devices no longer own readable state memory when this callback runs.
+            RefreshDevices();
             if (device == controller && (change == InputDeviceChange.Removed || change == InputDeviceChange.Disconnected || change == InputDeviceChange.Disabled))
                 SelectDevice(null);
-            RefreshDevices();
         }
 
         void OnEvent(InputEventPtr data, InputDevice device)
@@ -191,9 +192,12 @@ namespace BlueMapMigration.Player
             // A held input from the previous category cannot spring back to life on a mouse move.
             blocked.Clear();
             foreach (var device in devices)
+            {
+                if (!device.added || !device.enabled) continue;
                 foreach (var control in device.allControls)
                     if (control is AxisControl axis && !(control is DeltaControl) && Mathf.Abs(axis.ReadUnprocessedValue()) > 0.01f)
                         blocked.Add(control);
+            }
         }
 
         void AfterUpdate()

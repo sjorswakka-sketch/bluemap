@@ -119,10 +119,15 @@ def check_editor(editor: Path) -> str:
     return product_version
 
 
-def run_hidden(command: list[str], timeout: int, label: str) -> None:
+def run_hidden(command: list[str], timeout: int, label: str, *, rendered_player_window: bool = False) -> None:
+    # Camera.Render works in a hidden window, but the player's own OnGUI
+    # backbuffer needs a presented window for ScreenCapture. Show only our
+    # isolated player, without activating it or capturing any desktop surface.
+    require(not rendered_player_window or (bool(command) and Path(command[0]).name == EXE_NAME),
+            "Only the isolated preview player may use a rendered test window")
     startup = subprocess.STARTUPINFO()
     startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-    startup.wShowWindow = 0
+    startup.wShowWindow = 7 if rendered_player_window else 0  # SW_SHOWNOACTIVATE / SW_HIDE.
     try:
         result = subprocess.run(command, cwd=ROOT, stdin=subprocess.DEVNULL,
                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
@@ -417,7 +422,8 @@ def main() -> None:
     print("Windows x64 build verified; running the rendered player.", flush=True)
     run_hidden([str(executable), "-screen-width", "1152", "-screen-height", "648",
                 "-logFile", str(logs / "player.log"), "--probe-automated",
-                "--probe-output-directory", str(runtime)], 180, "Unity preview player")
+                "--probe-output-directory", str(runtime)], 180, "Isolated BlueMap player: native game UI proof",
+               rendered_player_window=True)
     result = read_json(runtime / "result.json")
     require(result.get("success") is True and result.get("identity") == identity,
             "Runtime checks or embedded identity failed")

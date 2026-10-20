@@ -116,7 +116,15 @@ namespace BlueMapMigration.Player
         }
         public static Vector2 ScaleSource(Vector2 value, double factor)
         { float scalar = (float)factor; return new Vector2(value.x * scalar, value.y * scalar); }
-        public static float SourceLengthSquared(Vector2 value) => value.x * value.x + value.y * value.y;
+        // Mono can retain a Float32 multiplication at higher intermediate precision.
+        // Godot's real_t products each round to Float32 before their sum; materialize those exact bits.
+        public static float SourceLengthSquared(Vector2 value)
+        {
+            float xSquared = RoundSource(value.x * value.x);
+            float ySquared = RoundSource(value.y * value.y);
+            return RoundSource(xSquared + ySquared);
+        }
+        private static float RoundSource(float value) => BitConverter.Int32BitsToSingle(BitConverter.SingleToInt32Bits(value));
         public static bool HasSourceInput(Vector2 value) => value.x != 0 || value.y != 0;
         public static float SourceLength(Vector2 value) => (float)Math.Sqrt(SourceLengthSquared(value));
         public static Vector2 NormalizeSource(Vector2 value)

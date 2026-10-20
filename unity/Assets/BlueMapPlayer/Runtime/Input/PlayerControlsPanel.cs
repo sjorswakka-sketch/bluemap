@@ -16,6 +16,7 @@ namespace BlueMapMigration.Player
         float viewportHeight = 210;
         bool captureGuard;
         public bool IsOpen { get; private set; }
+        public bool BlocksShortcuts => input.Capturing || captureGuard;
         public PlayerControlsPanel(PlayerInputSource source)
         { input = source ?? throw new ArgumentNullException(nameof(source)); actions = input.RebindableActions.ToArray(); }
 

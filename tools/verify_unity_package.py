@@ -87,6 +87,7 @@ PLAYER_DETAIL_CHECKS = {
     "player_input_focus_loss_releases_without_ghost_resume", "player_input_rebind_swap_reservations_and_reset",
     "player_input_no_real_hardware_or_save_claim",
     "player_input_both_modifier_sides_preserved", "player_input_real_event_rebind_capture_and_cancel",
+    "player_input_device_lifecycle_no_callback_errors",
     "player_motion_partial_last_sprint_step", "player_motion_delayed_exhaustion_recovery",
     "player_motion_equipment_reduction_never_refills", "player_motion_invalid_spend_restore_rejected",
     "player_motion_corrupt_stamina_clamped", "player_motion_blocked_sprint_uses_no_energy",
@@ -97,6 +98,7 @@ PLAYER_DETAIL_CHECKS = {
     "player_motion_stamina_exact_source_oracle", "player_motion_surfaces_exact_source_oracle",
     "player_motion_equipment_exact_source_oracle", "player_motion_velocity_facing_exact_source_oracle",
     "player_motion_roll_exact_source_oracle", "player_motion_transition_exact_source_oracle",
+    "player_motion_float32_products_round_before_sum", "player_world_avatar_rendered_on_gpu",
 }
 PLAYER_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {

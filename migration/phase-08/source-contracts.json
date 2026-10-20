@@ -118,6 +118,7 @@
     "player_input_both_modifier_sides_preserved",
     "player_input_checks_ran",
     "player_input_controller_disconnect_reconnect",
+    "player_input_device_lifecycle_no_callback_errors",
     "player_input_focus_loss_releases_without_ghost_resume",
     "player_input_held_controller_does_not_steal_mouse",
     "player_input_keyboard_diagonal_normalized",
@@ -142,6 +143,7 @@
     "player_motion_delayed_exhaustion_recovery",
     "player_motion_equipment_exact_source_oracle",
     "player_motion_equipment_reduction_never_refills",
+    "player_motion_float32_products_round_before_sum",
     "player_motion_footsteps_distance_remainder_single_event",
     "player_motion_frame_cannot_be_applied_twice",
     "player_motion_input_lock_freezes_stamina",
@@ -157,6 +159,7 @@
     "player_motion_transition_exact_source_oracle",
     "player_motion_transition_stops_without_stamina_refill",
     "player_motion_velocity_facing_exact_source_oracle",
+    "player_world_avatar_rendered_on_gpu",
     "player_world_checks_ran",
     "player_world_source_collision"
   ],
