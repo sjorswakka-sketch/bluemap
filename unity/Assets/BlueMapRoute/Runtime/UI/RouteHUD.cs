@@ -35,7 +35,7 @@ namespace BlueMapMigration.Route
         public void Draw()
         {
             Styles();var game=route.Gameplay;var state=game.State;
-            Panel(new Rect(18,16,298,98));Label(32,24,270,route.AreaName,title);
+            Panel(new Rect(18,16,298,98));var areaTitle=new GUIStyle(title);while(areaTitle.fontSize>11&&areaTitle.CalcSize(new GUIContent(route.AreaName)).x>270)areaTitle.fontSize--;Label(32,24,270,route.AreaName,areaTitle);
             Label(32,54,270,T("Leven ","Health ")+state.Hp+" / "+game.MaxHp+"    ·    "+state.Coins+T(" munten"," coins"));
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;

@@ -76,17 +76,29 @@ func capture(map_id: String,scenario_id: String,node: Node2D,address: String):
  for property: Dictionary in node.get_property_list():
   if property.name in ["time","t","clock","animation_frame"]:node.set(property.name,0)
  var ground:=address.begins_with("ground/")
- var size:=Vector2i(world.map_size)*32+Vector2i(256,256) if ground else Vector2i(256,256)
+ var map_drawing:=ground or path.ends_with("/arena_crowd.gd")
+ var size:=Vector2i(world.map_size)*32+Vector2i(256,256) if map_drawing else Vector2i(256,256)
+ var anchor:=Vector2i(128,128)
  var viewport:=SubViewport.new();viewport.size=size;viewport.transparent_bg=true;viewport.world_2d=World2D.new()
  viewport.render_target_update_mode=SubViewport.UPDATE_ALWAYS
  viewport.canvas_item_default_texture_filter=Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
  root.add_child(viewport)
- node.reparent(viewport,false);node.position=Vector2(128,128);node.z_index=0;node.show()
+ # Source draws such as the prism mirrors read global_position. Preserve that
+ # position and move only the viewport canvas, never the authored node.
+ node.reparent(viewport,false);node.position=at;node.z_index=0;node.show()
  for child in node.get_children():
   if child is Light2D:child.enabled=false
   if child is CanvasLayer:child.hide()
- node.queue_redraw();await process_frame;RenderingServer.force_draw(false)
- var image:=viewport.get_texture().get_image();var used:=image.get_used_rect()
+ var image: Image
+ var used: Rect2i
+ for attempt in 6:
+  viewport.size=size;viewport.canvas_transform=Transform2D(0,Vector2(anchor)-at)
+  node.queue_redraw();await process_frame;RenderingServer.force_draw(false)
+  image=viewport.get_texture().get_image();used=image.get_used_rect()
+  if used.size==Vector2i.ZERO or (used.position.x>0 and used.position.y>0 and used.end.x<size.x and used.end.y<size.y):break
+  if attempt==5:push_error("Source draw exceeds adaptive capture: "+map_id+"/"+scenario_id+"/"+address);quit(1);return
+  if size.x<2048 and size.y<2048:size*=2;anchor*=2
+  else:size=Vector2i(world.map_size)*64+Vector2i(512,512);anchor=size/2
  if used.size.x>0 and used.size.y>0:
   used=used.grow(2).intersection(Rect2i(Vector2i.ZERO,size))
   var crop:=image.get_region(used)
@@ -97,7 +109,7 @@ func capture(map_id: String,scenario_id: String,node: Node2D,address: String):
   var fields: Dictionary={}
   for property: Dictionary in node.get_property_list():
    if property.name in ["obj","kind","key","unique_key"]:fields[property.name]=node.get(property.name)
-  document.nodes.append({"mapId":map_id,"scenarioId":scenario_id,"address":address,"script":path,"file":name,"position":[at.x,at.y],"offset":[used.position.x-128,used.position.y-128],"width":used.size.x,"height":used.size.y,"ground":ground,"fields":fields})
+  document.nodes.append({"mapId":map_id,"scenarioId":scenario_id,"address":address,"script":path,"file":name,"position":[at.x,at.y],"offset":[used.position.x-anchor.x,used.position.y-anchor.y],"width":used.size.x,"height":used.size.y,"ground":ground,"fields":fields,"captureSize":[size.x,size.y],"captureAnchor":[anchor.x,anchor.y],"unclipped":true})
  if node==original:node.reparent(old_parent,false);node.transform=old_transform
  else:node.queue_free()
  viewport.queue_free();await process_frame

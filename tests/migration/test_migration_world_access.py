@@ -3,12 +3,14 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import io
 import json
 from pathlib import Path
 import shutil
 import sys
 import tempfile
 import unittest
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
@@ -178,6 +180,34 @@ class WorldAccessSourceContractTests(unittest.TestCase):
             self.replace(name, access.canonical(value))
             with self.subTest(change=change), self.assertRaises(access.WorldAccessDataError):
                 access.check(self.root)
+
+    def test_full_source_drawing_bounds_and_transparent_crop_margin_are_required(self):
+        name = access.ART + "/index.json"
+        original = json.loads((self.root / name).read_bytes())
+        for change in ("clipped", "missing", "size", "anchor"):
+            value = copy.deepcopy(original)
+            if change == "clipped": value["nodes"][0]["unclipped"] = False
+            elif change == "missing": value["nodes"][0].pop("captureSize")
+            elif change == "size": value["nodes"][0]["captureSize"] = [1, 1]
+            else: value["nodes"][0]["captureAnchor"] = [-1, -1]
+            self.replace(name, access.canonical(value))
+            with self.subTest(change=change), self.assertRaisesRegex(access.WorldAccessDataError, "capture bounds"):
+                access.check(self.root)
+        value = copy.deepcopy(original)
+        filename = value["nodes"][0]["file"]
+        image_name = access.ART + "/" + filename
+        with Image.open(io.BytesIO((self.root / image_name).read_bytes())) as source:
+            modified = source.convert("RGBA")
+            modified.putpixel((0, 0), (255, 0, 0, 255))
+            buffer = io.BytesIO(); modified.save(buffer, format="PNG")
+            data, pixels = buffer.getvalue(), modified.tobytes()
+        for row in value["nodes"]:
+            if row["file"] == filename:
+                row.update(bytes=len(data), sha256=access.sha(data), rgbaSha256=access.sha(pixels))
+        self.replace(name, access.canonical(value))
+        self.replace(image_name, data)
+        with self.assertRaisesRegex(access.WorldAccessDataError, "touches its capture edge"):
+            access.check(self.root)
 
 
 if __name__ == "__main__":

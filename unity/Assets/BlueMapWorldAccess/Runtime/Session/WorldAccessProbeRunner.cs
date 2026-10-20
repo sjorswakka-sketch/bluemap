@@ -84,6 +84,11 @@ namespace BlueMapMigration.WorldAccess
                 gateChecked=denied&&opened&&duplicate&&state.Count(key)==1&&!route.Access.GateBlocked(target.Fields)&&beforeFeet>afterFeet;break;
             }
             Check("world_access_native_gate_key_and_collision",gateChecked);
+            state.SetFlag("lw_heat_east",true);state.SetFlag("lw_heat_west",false);route.TryTravel("ijsdal",Spawn(repository.Read("ijsdal")));string WestTiles(FoundationWorldSnapshot snapshot)=>String.Concat(Enumerable.Range(12,2).SelectMany(y=>Enumerable.Range(10,6).Select(x=>snapshot.MapData.Require("rows").Items[y].AsString()[x])));string beforeIce=WestTiles(route.Session.Current);state.SetFlag("lw_heat_west",true);bool thawRefreshed=route.RefreshAccessGeometry();string afterIce=WestTiles(route.Session.Current);
+            Check("world_access_native_independent_heat_refresh",thawRefreshed&&beforeIce==WestTiles(repository.Read("ijsdal"))&&afterIce==WestTiles(repository.Read("ijsdal","ice_restored"))&&beforeIce!=afterIce);
+            state.SetFlag("game_completed",false);state.SetFlag("diepte_opened",false);route.TryTravel("temple",Spawn(repository.Read("temple")));var seal=route.Targets.First(t=>t.Kind=="diepte_seal");var sealSpec=WorldAccessModel.Get(seal.Fields,"obj",seal.Fields);var sealSize=sealSpec.Require("size");Vector2 sealCenter=seal.Position+new Vector2(((float)sealSize.Items[0].AsDouble()-1)*16,((float)sealSize.Items[1].AsDouble()-1)*16);
+            At(world,sealCenter+new Vector2(0,80));route.Tick(.02);bool unearned=!state.Flag("diepte_opened");state.SetFlag("game_completed",true);route.Tick(.01);bool breaking=route.Access.SealBreaking(sealCenter);route.OpenPause();route.Tick(1.81);bool sealOpened=state.Flag("diepte_opened")&&state.QuestState("diepte")=="active"&&state.QuestStep("diepte")==1;bool sealHidden=world.RoutePresentation.Objects.TryGetValue(seal.Address,out var plate)&&!plate.activeSelf;route.CloseModal();
+            Check("world_access_native_earned_seal_opens",unearned&&breaking&&sealOpened&&sealHidden);
             Debug.Log("World access stage: live portal crossings");bool portals=true,locks=true;int lockedCases=0;
             foreach(string map in repository.MapIds)
             {
@@ -101,7 +106,7 @@ namespace BlueMapMigration.WorldAccess
                     Vector2 outside=center+Vector2.Scale(direction,size*.5f+new Vector2(4,4)),inside=center+Vector2.Scale(direction,size*.5f-new Vector2(4,4));
                     if(!route.Access.CheckAll(tests))
                     {lockedCases++;At(world,outside);route.Tick(.02);At(world,inside);route.Tick(.02);locks&=state.MapId==map&&route.Message!="";}
-                    Satisfy(state,tests);route.RefreshAccessGeometry();
+                    Satisfy(state,tests);route.RefreshAccessGeometry();route.TryTravel(map,Spawn(repository.Read(map)));
                     At(world,outside);route.Tick(.02);At(world,inside);route.Tick(.02);
                     bool entered=state.MapId==target&&world.Snapshot.MapId==target&&route.Access.SpawnFits(route.Session.Current,world.Position);
                     portals&=entered;if(entered)Last.portalCrossings++;else Debug.Log("World native portal failed: "+map+" -> "+target+"/"+spawn+" now="+state.MapId+" message="+route.Message);
@@ -111,20 +116,20 @@ namespace BlueMapMigration.WorldAccess
             Check("world_access_native_portal_transitions",portals&&Last.portalCases==69&&Last.portalCrossings==69);
             Check("world_access_native_locked_portals_stay_closed",locks&&lockedCases>=9);
             Check("world_access_original_quest_locks",locks&&lockedCases>=9&&checks.Where(c=>c.name=="world_access_source_portal_conditions"||c.name=="world_access_source_gate_conditions").All(c=>c.passed));
-            Debug.Log("World access stage: boats");bool boatPassed=true,cancelled=true,boatNavigation=true;int boatCases=0;
+            Debug.Log("World access stage: boats");bool boatPassed=true,cancelled=true,boatNavigation=true;int boatCases=0,multiChoices=0;
             void ControllerPress(string action){var frame=new InputFrame{ControllerActive=true};frame.pressed.Add(action);route.HandleFrame(frame);}
             foreach(string map in repository.MapIds)
             {
-                foreach(var dock in Nodes(repository.Read(map),"coast_dock").ToArray())
+                foreach(var dock in Nodes(repository.Read(map),"coast_dock").Concat(Nodes(repository.Read(map),"tide_station").Where(n=>WorldAccessModel.Get(WorldAccessModel.Get(n.Require("fields"),"obj",n.Require("fields")),"role",FoundationValue.StringValue("")).AsString()=="routes")).ToArray())
                 {
                     var fields=dock.Require("fields");var routes=route.Access.BoatRoutes(fields).ToArray();
                     foreach(var chosen in routes)
                     {
-                        boatCases++;route.CloseModal();route.TryTravel(map,Spawn(repository.Read(map)));var live=route.Targets.FirstOrDefault(t=>t.Kind=="coast_dock"&&Vector2.Distance(t.Position,Pos(dock))<1);
+                        boatCases++;route.CloseModal();route.TryTravel(map,Spawn(repository.Read(map)));var live=route.Targets.FirstOrDefault(t=>(t.Kind=="coast_dock"||t.Kind=="tide_station")&&Vector2.Distance(t.Position,Pos(dock))<1);
                         if(live==null){boatPassed=false;continue;}At(world,live.Position+new Vector2(0,24));string before=FoundationJson.StringifyPlain(state.Snapshot());
                         bool opened=route.OpenVoyage(live.Address);ControllerPress("ui_cancel");cancelled&=opened&&route.Modal==""&&!state.Paused&&FoundationJson.StringifyPlain(state.Snapshot())==before;
                         opened=route.OpenVoyage(live.Address);int index=route.VoyageRoutes.ToList().FindIndex(v=>v.Require("to").AsString()==chosen.Require("to").AsString()&&WorldAccessModel.Get(v,"spawn",FoundationValue.StringValue("start")).AsString()==WorldAccessModel.Get(chosen,"spawn",FoundationValue.StringValue("start")).AsString());
-                        long coins=state.Coins;string items=FoundationJson.StringifyPlain(state.Get("inventory"));for(int n=0;n<index;n++)ControllerPress("ui_down");boatNavigation&=opened&&route.Selection==index;ControllerPress("ui_accept");bool sailed=route.Modal=="boat_sailing";route.Tick(2.21);
+                        long coins=state.Coins;string items=FoundationJson.StringifyPlain(state.Get("inventory"));for(int n=0;n<index;n++)ControllerPress("ui_down");boatNavigation&=opened&&route.Selection==index;if(route.VoyageRoutes.Count>1){multiChoices++;int selected=route.Selection;ControllerPress("ui_up");ControllerPress("ui_down");boatNavigation&=route.Selection==selected;}ControllerPress("ui_accept");bool sailed=route.Modal=="boat_sailing";route.Tick(2.21);
                         bool arrived=sailed&&route.Modal==""&&state.MapId==chosen.Require("to").AsString()&&state.Coins==coins&&FoundationJson.StringifyPlain(state.Get("inventory"))==items&&route.Access.SpawnFits(route.Session.Current,world.Position);
                         boatPassed&=arrived;if(arrived)Last.boatCrossings++;else Debug.Log("Boat native failed: "+map+" -> "+chosen.Require("to").AsString()+" / "+route.Message);
                         yield return null;
@@ -133,7 +138,8 @@ namespace BlueMapMigration.WorldAccess
             }
             Check("world_access_native_boats_free_and_validated",boatPassed&&boatCases>0&&Last.boatCrossings==boatCases);
             Check("world_access_native_boat_cancel_preserves_state",cancelled&&boatCases>0);
-            Check("world_access_native_boat_controller_navigation",boatNavigation&&boatCases>0);route.HandleFrame(new InputFrame{ControllerActive=false});
+            Check("world_access_native_multidest_ferries",multiChoices==12&&boatNavigation&&boatPassed);
+            Check("world_access_native_boat_controller_navigation",boatNavigation&&multiChoices==12&&boatCases>0);route.HandleFrame(new InputFrame{ControllerActive=false});
             route.CloseModal();route.TryTravel("harbor",Spawn(repository.Read("harbor")));var workshopDoor=route.Targets.FirstOrDefault(t=>t.Kind=="coastal_workstation");bool workshop=false;
             if(workshopDoor!=null)
             {

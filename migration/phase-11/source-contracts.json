@@ -1,6 +1,6 @@
 {
   "art": {
-    "bytes": 2870035,
+    "bytes": 3395849,
     "indexPath": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/index.json",
     "maps": [
       "arena",
@@ -42,10 +42,10 @@
       "watchyard"
     ],
     "nodes": 3726,
-    "sha256": "7987a569bfb765f31a675b261a1249c175600e55821ca388c9bb1f72f61a5c2c",
+    "sha256": "c097ba9447c19ba1af58f1fee8b6f00ae89d8e9dbcee955ccb12786d6646d7f8",
     "snapshots": 158,
     "sourceScripts": 69,
-    "textures": 316
+    "textures": 318
   },
   "assetGuids": [
     {
@@ -111,6 +111,10 @@
     {
       "guid": "33ec0820eb2d0400cd69fdb6a146d651",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-04c3868b7c6d95d55b70.png"
+    },
+    {
+      "guid": "9ca7d4023a00b2c2242536a90ec85a7e",
+      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-0555c55c384ea3d92046.png"
     },
     {
       "guid": "ab66018d5cc464cb5d56577787a76ba8",
@@ -241,10 +245,6 @@
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-227861f98e4a16834b71.png"
     },
     {
-      "guid": "39795c89c9ecbe018374001a3c2fdc1c",
-      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-2310996c9c98b920e198.png"
-    },
-    {
       "guid": "2b0b3149face22af3db8399c7d8d1281",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-23d4a3045915a67be8f8.png"
     },
@@ -299,6 +299,10 @@
     {
       "guid": "8eb186c504589497e12d4826d44a0f1d",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-2e22eafe0061b6a4bddd.png"
+    },
+    {
+      "guid": "0c358177aed1934e7de86218da933064",
+      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-2e80595b41861fba9b3f.png"
     },
     {
       "guid": "2dddaa9b120d9b75691e7453dc56a172",
@@ -637,10 +641,6 @@
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-6bb45e977efaacef0a5f.png"
     },
     {
-      "guid": "7128e89d06a5cf8927443c7b490b5800",
-      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-6be1fb37204e84541502.png"
-    },
-    {
       "guid": "f6143115080c823272273ae97b88d448",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-6c66972c88e8fe7bd3a5.png"
     },
@@ -713,6 +713,10 @@
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-7c5f470880b59eb9c5f6.png"
     },
     {
+      "guid": "f30bb2bccdc28e0a790687896039ca26",
+      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-7c9d2314b9129ebe223b.png"
+    },
+    {
       "guid": "54ab5e91fe16ad890aa7b6c6d580fb78",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-7cc8bdf209ff37d62412.png"
     },
@@ -757,8 +761,8 @@
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-8714aee777b84fa6d9e0.png"
     },
     {
-      "guid": "b0f173098fd7445a30e3e4c7e2dc3e9d",
-      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-876652e786abbae469c7.png"
+      "guid": "d71b2e9267e661fa18c7b592e4f4a768",
+      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-874d175c91f6fba2028e.png"
     },
     {
       "guid": "60e28654017cf7e379e2de143d225dc3",
@@ -787,10 +791,6 @@
     {
       "guid": "8d0dc16760b25c82d23cf3cc37c19da3",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-8f5ed2b8ac896d3729b6.png"
-    },
-    {
-      "guid": "fc7fb42602927727f8a33e38cbce5e20",
-      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-90d091357ccaf7a74a71.png"
     },
     {
       "guid": "0a8f5255308f3eac7249dc90ffacaee0",
@@ -929,6 +929,10 @@
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-adb72bbab497dff248c8.png"
     },
     {
+      "guid": "a5af1de39c289b19d06e3d9871df7df8",
+      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-aed82b8faa57476a7c5d.png"
+    },
+    {
       "guid": "1d4bdcef5a5538476372ee7cb86a18fa",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-b0d79619ca7e833a4f43.png"
     },
@@ -997,8 +1001,16 @@
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-baf93ee49e537dd0111d.png"
     },
     {
+      "guid": "37e804362e748ebcd3911f6929362c11",
+      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-bd1553a42499db697cb3.png"
+    },
+    {
       "guid": "481509a04089aa7f4a4c18fb2521619f",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-bdfa98f85c32a21ba67d.png"
+    },
+    {
+      "guid": "aed40c0fa4a09cc52aaa779b09bf8324",
+      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-bf36de22027c9ed5d3a3.png"
     },
     {
       "guid": "bd0a64ddef3b7d005a136467b97f1bd4",
@@ -1059,6 +1071,10 @@
     {
       "guid": "c416eaa305db323220fbe51ca351df7d",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-c8d217ac943c5566798f.png"
+    },
+    {
+      "guid": "5570070081a8ae4011212fd181318053",
+      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-c8f4259667c0710ad0ec.png"
     },
     {
       "guid": "331ae877e361651c29815212bf4a767f",
@@ -1161,10 +1177,6 @@
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-dc06edb7937031ff1108.png"
     },
     {
-      "guid": "a9c0261ff5e23b761aca44f781f52387",
-      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-dc3f11e17ab3f4bf280a.png"
-    },
-    {
       "guid": "ba4b3f3c5373b3dbc386630f9752a178",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-dcd3614cf8cbbfeb95fd.png"
     },
@@ -1175,10 +1187,6 @@
     {
       "guid": "3b33f4fd0c781a74defc849dbefe9135",
       "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-df6c3ae5ba9fc1c15589.png"
-    },
-    {
-      "guid": "1095b5cdb3c736c8d046ad308f621326",
-      "path": "unity/Assets/BlueMapWorldAccess/Presentation/Resources/BlueMapWorldArt/node-e373ee971d016ec0b3bd.png"
     },
     {
       "guid": "7fe65bc8e6b3221a0e67b4a4bf243637",
@@ -1455,11 +1463,11 @@
     },
     {
       "path": "tools/migration_world_art.gd",
-      "sha256": "8775cfc8eed56dbfcf084f7d09deeb56d811cae7ad4555e53df852062d9f55ae"
+      "sha256": "3e3432babd556734bf27566e8ff7cae8ddc640398d457d0d686198d434a35c8d"
     },
     {
       "path": "tools/record_migration_world_art.py",
-      "sha256": "25695d881c79521ec65dc48f30558737907bb91da200ed827ccb87b94e756295"
+      "sha256": "b1b62cd9f7cd29321b6adb2cc15f306525996bf7c5735756dae24ba6ec136fdb"
     }
   ],
   "requiredNativeChecks": [
@@ -1475,8 +1483,11 @@
     "world_access_native_boat_controller_navigation",
     "world_access_native_boats_free_and_validated",
     "world_access_native_checks_ran",
+    "world_access_native_earned_seal_opens",
     "world_access_native_gate_key_and_collision",
+    "world_access_native_independent_heat_refresh",
     "world_access_native_locked_portals_stay_closed",
+    "world_access_native_multidest_ferries",
     "world_access_native_portal_transitions",
     "world_access_native_workshop_door_and_return",
     "world_access_no_fixture_progress_applied",
@@ -1675,6 +1686,12 @@
       "gitBlob": "109911ed5879f4b0a9176b88e6137ef15636d650",
       "path": "scripts/entities/tide_cove.gd",
       "sha256": "5a17c9709011b837d1ade0f22e26bd0b31292300b6ea02902741238f13016546"
+    },
+    {
+      "bytes": 1084,
+      "gitBlob": "066e0b59289db9fc2c30847e7f9049aa36b1e27e",
+      "path": "scripts/entities/tide_station.gd",
+      "sha256": "0536c97e053d0d7d85f2b1621a972d45ff8631f647cc53b18520f9d7305fb94e"
     },
     {
       "bytes": 2453,

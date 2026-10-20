@@ -39,6 +39,7 @@ SOURCE_PATHS = (
     "scripts/core/living_world.gd", "scripts/core/first_route.gd",
     "scripts/data/house_catalog.gd", "scripts/entities/house_furniture.gd", "scripts/entities/home_station.gd",
     "scripts/entities/coastal_workstation.gd", "scripts/ui/coastal_home_ui.gd", "scripts/data/coastal_craft_maps.gd",
+    "scripts/entities/tide_station.gd",
 )
 RECORDERS = ("tools/migration_world_access_export.gd", "tools/record_migration_world_access.py",
              "tools/migration_world_art.gd", "tools/record_migration_world_art.py")
@@ -272,12 +273,25 @@ def world_art(root, baseline, index, maps, snapshot_keys):
         require(type(row.get("width")) is int and type(row.get("height")) is int
                 and 0 < row["width"] <= 4096 and 0 < row["height"] <= 4096,
                 "Invalid original world drawing dimensions")
+        require(row.get("unclipped") is True and vector(row.get("captureSize"))
+                and all(type(n) is int and 0 < n <= 16384 for n in row["captureSize"])
+                and vector(row.get("captureAnchor"))
+                and all(0 <= anchor < size for anchor, size in zip(row["captureAnchor"], row["captureSize"]))
+                and all(0 <= offset + anchor and offset + anchor + extent <= size
+                        for offset, anchor, extent, size in zip(row["offset"], row["captureAnchor"],
+                            (row["width"], row["height"]), row["captureSize"])),
+                "Original world drawing capture bounds are incomplete/clipped")
         if filename not in textures:
             png = read(root, ART + "/" + filename, binary=True)
             require(len(png) >= 33 and png[:8] == b"\x89PNG\r\n\x1a\n", "Original world drawing is not PNG")
             with Image.open(io.BytesIO(png)) as image:
                 require(image.format == "PNG", "Original world drawing is not PNG")
-                textures[filename] = (len(png), sha(png), image.size, sha(image.convert("RGBA").tobytes()))
+                rgba = image.convert("RGBA")
+                box = rgba.getchannel("A").getbbox()
+                require(box is not None and box[0] > 0 and box[1] > 0
+                        and box[2] < image.width and box[3] < image.height,
+                        "Original world drawing touches its capture edge")
+                textures[filename] = (len(png), sha(png), image.size, sha(rgba.tobytes()))
         size, digest, dimensions, rgba = textures[filename]
         require(row.get("bytes") == size and row.get("sha256") == digest
                 and dimensions == (row["width"], row["height"]) and row.get("rgbaSha256") == rgba,

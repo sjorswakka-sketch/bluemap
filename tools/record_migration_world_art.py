@@ -56,7 +56,14 @@ def verify_reference(directory):
   if hashlib.sha256(raw).hexdigest()!=row["sha256"] or len(raw)!=row["bytes"] or raw[:8]!=b"\x89PNG\r\n\x1a\n" or struct.unpack_from(">II",raw,16)!=(row["width"],row["height"]):raise ValueError("Original texture bytes/dimensions differ")
   from PIL import Image
   with Image.open(path) as image:
-   if hashlib.sha256(image.convert("RGBA").tobytes()).hexdigest()!=row.get("rgbaSha256"):raise ValueError("Original source RGBA pixels differ")
+   rgba=image.convert("RGBA")
+   if hashlib.sha256(rgba.tobytes()).hexdigest()!=row.get("rgbaSha256"):raise ValueError("Original source RGBA pixels differ")
+   # Every used source pixel has a transparent margin, rather than being
+   # truncated at a fixed offscreen canvas edge (large towers/beams/crowds).
+   alpha=rgba.getchannel("A");bounds=alpha.getbbox()
+   if row.get("unclipped") is not True or bounds is None or bounds[0]<1 or bounds[1]<1 or bounds[2]>=rgba.width or bounds[3]>=rgba.height:raise ValueError("Original source drawing is clipped at capture boundary")
+   size=row.get("captureSize",[]);anchor=row.get("captureAnchor",[])
+   if len(size)!=2 or len(anchor)!=2 or any(type(v)is not int or v<=0 for v in size) or any(type(v)is not int for v in anchor):raise ValueError("Original capture bounds missing")
   snapshot_key=(row["mapId"],row["scenarioId"])
   if snapshot_key not in snapshots:
    data=json.loads((ROOT/"migration/world/snapshots"/row["scenarioId"]/(row["mapId"]+".json")).read_text(encoding="utf8"))

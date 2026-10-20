@@ -65,7 +65,7 @@ namespace BlueMapMigration.Route
                     sprite=Sprite.Create(texture,new Rect(0,0,texture.width,texture.height),new Vector2(0,1),32,0,SpriteMeshType.FullRect);owned.Add(sprite);capturedSprites.Add(name,sprite);
                 }
                 Vector2 at=Pair(entry.Require("position")),offset=Pair(entry.Require("offset"));
-                int order=entry.Require("ground").AsBool()?-15000:Mathf.RoundToInt(at.y);
+                int order=entry.Require("ground").AsBool()?-15000+checked((int)node.Require("address").Items[1].AsInt64()):Mathf.RoundToInt(at.y);
                 var renderer=Node(address,sprite,at+offset,order,catalog.premultipliedMaterial);
                 CapturedNodes++;
             }

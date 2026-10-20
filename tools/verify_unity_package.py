@@ -172,6 +172,8 @@ WORLD_ACCESS_DETAIL_CHECKS = {
     "world_access_loaded_area_retained", "world_access_native_checks_ran",
     "world_access_failed_travel_is_atomic", "world_access_native_gate_key_and_collision",
     "world_access_native_workshop_door_and_return",
+    "world_access_native_multidest_ferries", "world_access_native_independent_heat_refresh",
+    "world_access_native_earned_seal_opens",
     "world_access_source_all_162_snapshots", "world_access_source_portal_conditions",
     "world_access_source_gate_conditions", "world_access_source_safe_arrivals",
     "world_access_source_safe_spawn_search", "world_access_source_boat_routes",

@@ -34,6 +34,7 @@ namespace BlueMapMigration.Route
         private int boatChoice;
         private double voyageTime;
         private bool accessDirty;
+        private string geometrySignature="";
         private IDisposable accessSubscription;
         public PlayerWorld World {get;private set;}
         public RouteGameplay Gameplay {get;private set;}
@@ -170,10 +171,11 @@ namespace BlueMapMigration.Route
         public void ShowMessage(string text){Message=text??"";messageTime=5;}
         private void OnSaveRequested(){if(Running){Save();World.RefreshRouteState();}}
         private void AccessChanged(){accessDirty=true;World.RefreshRouteState();}
+        private string AccessGeometrySignature(string map)=>Access.SelectScenario(map)+(map=="ijsdal"?"|"+Gameplay.State.Flag("lw_heat_west")+"|"+Gameplay.State.Flag("lw_heat_east"):"");
         public bool RefreshAccessGeometry()
         {
             if(!Running||Gameplay.State.InputLocked)return false;accessDirty=false;string map=Session.Current.MapId;
-            if(Access.SelectScenario(map)==Session.Current.ScenarioId){World.RefreshRouteState();return false;}
+            if(AccessGeometrySignature(map)==geometrySignature){World.RefreshRouteState();return false;}
             return TryTravel(map,Gameplay.State.SpawnName,true);
         }
         public bool OpenLinkedDoor(string address)
@@ -192,7 +194,7 @@ namespace BlueMapMigration.Route
         }
         public bool OpenVoyage(string address)
         {
-            var target=targets.FirstOrDefault(t=>t.Address==address&&t.Kind=="coast_dock");
+            var target=targets.FirstOrDefault(t=>t.Address==address&&(t.Kind=="coast_dock"||t.Kind=="tide_station"));
             if(target==null||Gameplay.State.InputLocked||Vector2.Distance(World.Position,target.Position)>=40||Access.BoatRoutes(target.Fields).Count==0)return false;
             boat=target;boatMap=Gameplay.State.MapId;SetModal("boat");return true;
         }
@@ -262,12 +264,12 @@ namespace BlueMapMigration.Route
             if(Modal=="boat_sailing"){voyageTime+=delta;if(voyageTime>=2.2){ArriveVoyage();return;}}
             if(!Gameplay.State.InputLocked&&Session.Current.MapId=="tide_cove"&&Access.SyncTide(World.Position))accessDirty=true;
             if(accessDirty&&!Gameplay.State.InputLocked)RefreshAccessGeometry();
+            foreach(var seal in targets.Where(t=>t.Kind=="diepte_seal"))if(Access.TickSeal(seal.Fields,SealCenter(seal),World.Position,delta)){World.RefreshRouteState();ShowMessage(Translate(Access.LastMessage));}
             bool locked=Gameplay.State.InputLocked;
             if(locked){foreach(var portal in portals)portal.Armed=false;work=null;lastPosition=World.Position;return;}
             autoTime+=delta;if(autoTime>=30&&!SaveFailed)Save();
             var cat=targets.FirstOrDefault(t=>t.Kind=="npc"&&t.Id=="muis_bos"&&!t.Consumed);
             if(cat!=null&&!Gameplay.State.Flag("cat_found"))Gameplay.TickCat(delta,Vector2.Distance(World.Position,cat.Position),World.Motor.Velocity.magnitude,World.Motor.Sprinting||World.Motor.IsRolling);
-            foreach(var seal in targets.Where(t=>t.Kind=="diepte_seal"))if(Access.TickSeal(seal.Fields,SealCenter(seal),World.Position,delta)){World.RefreshRouteState();ShowMessage(Translate(Access.LastMessage));}
             NearbyPassage="";var nearby=portals.OrderBy(p=>Vector2.Distance(World.Position,p.Bounds.center)).FirstOrDefault();
             if(nearby!=null&&Vector2.Distance(World.Position,nearby.Bounds.center)<96){var allowed=conditions.CheckAll(nearby.Conditions);NearbyPassage=allowed.Status==FoundationRuleStatus.Supported&&allowed.Value?DestinationName(nearby.Map):Translate(nearby.Locked);}
             CurrentTarget=null;
@@ -313,7 +315,7 @@ namespace BlueMapMigration.Route
             if(target.Consumed||target.Kind=="pickup")return false;
             if(target.SceneNode!=null&&!Access.NodeVisible(target.SceneNode))return false;
             if((target.Kind=="gate"||target.Kind=="diepte_gate")&&!Access.GateBlocked(target.Fields))return false;
-            if(target.Kind=="diepte_seal")return false;
+            if(target.Kind=="diepte_seal")return !Access.SealBreaking(SealCenter(target));
             if(target.Kind=="npc"&&target.Id=="muis_bos"&&Gameplay.State.Flag("cat_found"))return false;
             if(target.Kind=="npc"&&target.Id=="muis_dorp"&&!Gameplay.State.Flag("cat_home"))return false;
             if(target.Fields.TryGet("exists_if",out var tests)){var result=conditions.CheckAll(tests);if(!result.Value)return false;}
@@ -331,8 +333,9 @@ namespace BlueMapMigration.Route
             work=null;
             switch(target.Kind)
             {
+                case "diepte_seal":SetModal("sign");Hud.SignSpeaker="Zegel";Hud.SignLines=new[]{Translate("Een zware steenplaat met een ster erin. De runen gloeien zachtjes."),Translate("Hij zit muurvast. Misschien gaat hij pas open als de Blauwe Kaart weer heel is.")};return true;
                 case "coastal_workstation":return OpenLinkedDoor(address);
-                case "coast_dock":return OpenVoyage(address);
+                case "coast_dock":case "tide_station":return OpenVoyage(address);
                 case "gate":case "diepte_gate":bool unlocked=Access.OpenGate(target.Fields);ShowMessage(Translate(Access.LastMessage));World.RefreshRouteState();return unlocked;
                 case "npc":bool talked=Gameplay.Talk(target.Id);SyncDialogue();if(!talked)ShowMessage(Translate(Gameplay.LastMessage));return talked;
                 case "resource_node":return StartResource(address);
@@ -357,7 +360,8 @@ namespace BlueMapMigration.Route
                     var rect=fields.Require("rect");Vector2 origin=FoundationCoordinates.Vector(rect.Require("position")),size=FoundationCoordinates.Vector(rect.Require("size"));
                     portals.Add(new Portal{Bounds=new Rect(origin,size),Map=fields.Require("target_map").AsString(),Spawn=fields.Require("target_spawn").AsString(),Conditions=fields.TryGet("conditions",out var tests)?tests:FoundationValue.Array(Array.Empty<FoundationValue>()),Locked=fields.TryGet("locked_text",out var text)?text.AsString():T("Deze doorgang is nog gesloten.","This passage is still closed.")});continue;
                 }
-                if(!new[]{"npc","resource_node","chest","pickup","home_station","stock_chest","savepoint","sign","route_object","opening_device","combat_post","gate","diepte_gate","coast_dock","diepte_seal","coastal_workstation"}.Contains(kind))continue;
+                if(!new[]{"npc","resource_node","chest","pickup","home_station","stock_chest","savepoint","sign","route_object","opening_device","combat_post","gate","diepte_gate","coast_dock","diepte_seal","coastal_workstation","tide_station"}.Contains(kind))continue;
+                if(kind=="tide_station"&&WorldAccessModel.Get(WorldAccessModel.Get(fields,"obj",fields),"role",FoundationValue.StringValue("")).AsString()!="routes")continue;
                 if(kind=="coastal_workstation"&&!WorldAccessModel.Get(WorldAccessModel.Get(fields,"obj",fields),"travel_link",FoundationValue.Boolean(false)).AsBool())continue;
                 var target=new RouteTarget{Address=RouteSourcePresentation.Address(node),Kind=kind,Position=at,Fields=fields,SceneNode=node,Id="",UniqueKey="",Label=kind};
                 switch(kind)
@@ -367,7 +371,9 @@ namespace BlueMapMigration.Route
                     case "chest":target.UniqueKey=fields.Require("unique_key").AsString();target.Label=T("Schatkist","Treasure chest");break;
                     case "pickup":target.Id=fields.Require("item").AsString();target.UniqueKey=fields.Require("unique_key").AsString();target.Consumed=target.UniqueKey!=""&&Gameplay.State.Flag(target.UniqueKey);break;
                     case "home_station":target.Id=fields.Require("obj").Require("role").AsString();if(World.RoutePresentation!=null&&World.RoutePresentation.Objects.TryGetValue("home-furniture/"+target.Id,out var furnishing))target.Position=FoundationCoordinates.ToGodot(furnishing.transform.position);target.Label=target.Id=="bed"?T("Rusten en opslaan","Rest and save"):T("Woning","Home");break;
+                    case "diepte_seal":target.Label=T("Zegel","Seal");break;
                     case "coastal_workstation":target.Label=T("Rafs havenwerkplaats","Raf’s harbor workshop");break;
+                    case "tide_station":target.Label=T("Bestemmingen en reisroutes","Destinations and travel routes");break;
                     case "coast_dock":target.Label=T("Gratis overtocht","Free crossing");break;
                     case "gate":case "diepte_gate":target.Label=T("Poort openen","Open gate");break;
                     case "savepoint":target.Label=T("Genezen en opslaan","Heal and save");break;
@@ -384,7 +390,7 @@ namespace BlueMapMigration.Route
                 var tile=catObject.Require("pos");
                 targets.Add(new RouteTarget{Address="conditional-npc/muis_dorp",Kind="npc",Id="muis_dorp",UniqueKey="",Label=catData.Require("name").AsString(),Position=new Vector2((float)tile.Items[0].AsDouble()*32+16,(float)tile.Items[1].AsDouble()*32+16),Fields=RouteGameplay.Object(("data",catData))});
             }
-            lastPosition=World.Position;World.RefreshRouteState();accessDirty=false;
+            lastPosition=World.Position;World.RefreshRouteState();geometrySignature=AccessGeometrySignature(Session.Current.MapId);accessDirty=false;
         }
         private void OnGUI(){if(!Running||World.ControlsOpen||!World.gameObject.activeInHierarchy)return;var matrix=GUI.matrix;var font=GUI.skin.font;GUI.matrix=Matrix4x4.Scale(new Vector3(Screen.width/1152f,Screen.height/648f,1));GUI.skin.font=Catalog.originalFont;Hud.Draw();GUI.skin.font=font;GUI.matrix=matrix;}
         private bool WantsToQuit()
