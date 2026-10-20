@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 10) error = "phase must be 10.";
-            else if (previewVersion != "0.6.0-phase10") error = "previewVersion must be 0.6.0-phase10.";
+            else if (phase != 11) error = "phase must be 11.";
+            else if (previewVersion != "0.7.0-phase11") error = "previewVersion must be 0.7.0-phase11.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -307,6 +307,24 @@ namespace BlueMapMigration.Probe
             yield return new WaitForEndOfFrame();SaveRouteCapture("dialogue");
             route.CloseModal();route.OpenInventory();
             yield return new WaitForEndOfFrame();SaveRouteCapture("inventory");
+            route.CloseModal();
+            var accessProof=BlueMapMigration.WorldAccess.WorldAccessProbeRunner.Run(identity,output,playerWorld,route,gallery.Catalog);
+            bool accessFailed=false;
+            while(true)
+            {
+                object current=null;bool more=false;
+                try{more=accessProof.MoveNext();if(more)current=accessProof.Current;}
+                catch(Exception error){Debug.LogError("Native world access proof failed: "+error);accessFailed=true;}
+                if(accessFailed||!more)break;yield return current;
+            }
+            Add("world_access_runtime_verified",!accessFailed&&BlueMapMigration.WorldAccess.WorldAccessProbeRunner.Last.success);
+            var capturePositions=new[]{new Vector2(672,320),new Vector2(784,288),new Vector2(688,496),new Vector2(1296,1264),new Vector2(1328,880),new Vector2(288,304),new Vector2(464,432),new Vector2(304,208)};int accessCaptureIndex=0;
+            foreach(var captureArea in new[]{new[]{"lake","lake"},new[]{"kruipmoeras","swamp"},new[]{"prismamine","mountain"},new[]{"steampeak","steampeak"},new[]{"harbor","coast"},new[]{"library","library"},new[]{"reedvault","reedvault"},new[]{"inn","interior"}})
+            {
+                route.CloseModal();var area=route.Session.Repository.Read(captureArea[0]);route.TryTravel(captureArea[0],area.Arrivals.FirstOrDefault(a=>a.Name=="start")?.Name??area.Arrivals[0].Name);
+                playerWorld.Present(route.Session.Current,route.Access.ResolveArrival(route.Session.Current,capturePositions[accessCaptureIndex++]));route.Tick(.02);
+                yield return new WaitForEndOfFrame();Texture2D capture=ScreenCapture.CaptureScreenshotAsTexture();File.WriteAllBytes(Path.Combine(output,"screenshot-access-"+captureArea[1]+".png"),capture.EncodeToPNG());Destroy(capture);
+            }
             Finish();
         }
         private void SaveRouteCapture(string name)

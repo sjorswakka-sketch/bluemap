@@ -25,7 +25,7 @@ EDITOR_VERSION = "6000.3.26f1"
 EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
-                    8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10"}
+                    8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -159,6 +159,34 @@ ROUTE_DETAIL_CHECKS = {
     "pickup_crystal", "pickup_item_full",
 )}
 ROUTE_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+WORLD_ACCESS_CHECKS = {"world_access_runtime_verified"}
+WORLD_ACCESS_DETAIL_CHECKS = {
+    "world_access_model_checks_ran", "world_access_source_oracle_complete",
+    "world_access_all_37_maps_available", "world_access_original_quest_locks",
+    "world_access_safe_arrivals", "world_access_native_portal_transitions",
+    "world_access_original_art_preserved", "world_access_no_real_saves_accessed",
+    "world_access_native_arrivals_fit", "world_access_no_fixture_state_injected",
+    "world_access_visits_record_actual_37_maps", "world_access_native_locked_portals_stay_closed",
+    "world_access_native_boats_free_and_validated", "world_access_native_boat_cancel_preserves_state",
+    "world_access_native_boat_controller_navigation",
+    "world_access_loaded_area_retained", "world_access_native_checks_ran",
+    "world_access_failed_travel_is_atomic", "world_access_native_gate_key_and_collision",
+    "world_access_source_all_162_snapshots", "world_access_source_portal_conditions",
+    "world_access_source_gate_conditions", "world_access_source_safe_arrivals",
+    "world_access_source_safe_spawn_search", "world_access_source_boat_routes",
+    "world_access_no_fixture_progress_applied", "world_access_unknown_fields_retained",
+    "world_access_gate_transaction_idempotent", "world_access_tide_occupied_bank_safe",
+    "world_access_seal_earned_timing", "world_access_independent_earned_restoration",
+    "world_access_unknown_conditions_fail_closed",
+    *("world_access_source_case_" + name for name in (
+        "gate_no_key", "gate_key", "gate_open_not_interactable", "conditions_fresh",
+        "conditions_iron_main", "conditions_both_targets", "boat_distance_0", "boat_distance_6400",
+        "boat_distance_6401", "boat_forged_target", "seal_unearned", "seal_earned_timing",
+        "tide_occupied_then_released", "world_legacy_migrations", "world_migrations_idempotent")),
+    "world_art_all_registered_maps", "world_art_snapshot_variants_available",
+    "world_art_native_rgba_exact", "world_art_gpu_pixels_exact", "world_render_all_37_source_maps",
+}
+WORLD_ACCESS_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -180,7 +208,7 @@ PLAYER_ROOTS = {
     "MonoBleedingEdge", "BlueMapUnityProbe_Data", "D3D12",
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
-                  "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -335,6 +363,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 10:
         require(ROUTE_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 10 route runtime proof is incomplete")
+    if identity["phase"] >= 11:
+        require(WORLD_ACCESS_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 11 world access runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -434,6 +465,29 @@ def validate_route(result: dict, identity: dict) -> None:
     require(ROUTE_DETAIL_CHECKS <= names, "Required playable route checks are missing")
 
 
+def validate_world_access(result: dict, identity: dict) -> None:
+    """Require the original entrances and world travel to run in this exact player."""
+    require(isinstance(result, dict) and set(result) == WORLD_ACCESS_FIELDS,
+            "Phase 11 world access proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported world access proof schema")
+    require(result.get("identity") == identity, "World access embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "World access proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "World access detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed world access detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid world access detail check name")
+        require(name not in names and check["passed"] is True,
+                "World access detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(WORLD_ACCESS_DETAIL_CHECKS <= names, "Required world access checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -485,6 +539,7 @@ def _instructions(identity: dict) -> bytes:
         8: "Migratiefase 8: speler, camera en bediening; nog niet de volledige overgezette game.\n",
         9: "Migratiefase 9: veilige opslag en import van saves en instellingen; nog niet de volledige overgezette game.\n",
         10: "Migratiefase 10: eerste speelbare route tussen dorp, woning en bos; nog niet de volledige overgezette game.\n",
+        11: "Migratiefase 11: alle 37 gebieden, interieurs en toegangspunten; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -533,6 +588,11 @@ def _instructions(identity: dict) -> bytes:
             "De automatische controle gebruikt alleen eigen testbestanden.\n"
             "De Unity-proef bewaart gegevens apart van de bestaande Godot-game.\n"
         )
+    if identity["phase"] >= 11:
+        controls = controls.replace(
+            "De route verbindt dorp, woning, bosrand en bos via de oorspronkelijke doorgangen.\n",
+            "Alle 37 bestaande gebieden en interieurs gebruiken hun oorspronkelijke doorgangen en questsloten.\n"
+            "Bewaren en laden behouden de bezochte gebieden en je voortgang in de afzonderlijke speelkopie.\n")
     return (
         "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
         description[identity["phase"]] +
@@ -550,6 +610,7 @@ def _instructions(identity: dict) -> bytes:
         ("PLAYER-CHECKS.json bevat de controles van speler, camera en bediening.\n" if identity["phase"] >= 8 else "") +
         ("PERSISTENCE-CHECKS.json bevat de controles met eigen opslag- en importtestbestanden.\n" if identity["phase"] >= 9 else "") +
         ("ROUTE-CHECKS.json bevat de controles van de eerste speelbare route.\n" if identity["phase"] >= 10 else "") +
+        ("WORLD-ACCESS-CHECKS.json bevat de controles van alle gebieden en toegangspunten.\n" if identity["phase"] >= 11 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
@@ -558,7 +619,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    runtime_result: dict, foundation_result: dict | None = None,
                    player_result: dict | None = None,
                    persistence_result: dict | None = None,
-                   route_result: dict | None = None) -> tuple[Path, int]:
+                   route_result: dict | None = None,
+                   world_access_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -578,6 +640,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_route(route_result, identity)
     else:
         require(route_result is None, "Historical preview cannot contain phase 10 route proof")
+    if identity["phase"] >= 11:
+        validate_world_access(world_access_result, identity)
+    else:
+        require(world_access_result is None, "Historical preview cannot contain phase 11 world access proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -597,6 +663,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["PERSISTENCE-CHECKS.json"] = _json_bytes(persistence_result)
     if route_result is not None:
         payload["ROUTE-CHECKS.json"] = _json_bytes(route_result)
+    if world_access_result is not None:
+        payload["WORLD-ACCESS-CHECKS.json"] = _json_bytes(world_access_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -750,6 +818,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("ROUTE-CHECKS.json" not in payload and "route" not in receipt,
                 "Historical preview contains unsupported route proof")
+    if identity["phase"] >= 11:
+        require("WORLD-ACCESS-CHECKS.json" in payload, "Phase 11 packaged world access proof is missing")
+        access = _json(payload["WORLD-ACCESS-CHECKS.json"], "WORLD-ACCESS-CHECKS.json")
+        validate_world_access(access, identity)
+        require(receipt.get("worldAccess") == access, "Receipt world access proof differs from package")
+    else:
+        require("WORLD-ACCESS-CHECKS.json" not in payload and "worldAccess" not in receipt,
+                "Historical preview contains unsupported world access proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

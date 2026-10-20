@@ -4,6 +4,7 @@ using System.Linq;
 using BlueMapMigration.Foundation;
 using BlueMapMigration.Phase6;
 using BlueMapMigration.Route;
+using BlueMapMigration.WorldAccess;
 using UnityEngine;
 
 namespace BlueMapMigration.Player
@@ -26,6 +27,9 @@ namespace BlueMapMigration.Player
         public bool RouteMode;
         public InputFrame LastInputFrame => frame;
         public RouteSourcePresentation RoutePresentation { get; private set; }
+        public WorldAccessModel WorldAccess { get; private set; }
+        public void SetWorldAccess(WorldAccessModel access)
+        { WorldAccess=access;if(RoutePresentation!=null){RoutePresentation.Access=access;RefreshRouteState();} }
         private bool ownsSession = true;
         private RouteAvatarAppearance routeAppearance;
         private RouteGameplay routeBonuses;
@@ -132,7 +136,7 @@ namespace BlueMapMigration.Player
             AddSourceObjects();
             if(RouteMode)
             {
-                RoutePresentation=new RouteSourcePresentation(catalog,Snapshot,Session.State,terrainRoot.transform);
+                RoutePresentation=new RouteSourcePresentation(catalog,Snapshot,Session.State,terrainRoot.transform,WorldAccess);
                 if(routeAppearance==null)routeAppearance=new RouteAvatarAppearance(catalog,visual.transform);
                 if(routeSort==null)routeSort=visual.AddComponent<UnityEngine.Rendering.SortingGroup>();
             }
@@ -159,8 +163,11 @@ namespace BlueMapMigration.Player
             var byAddress=nodes.ToDictionary(n=>n.Require("address").CanonicalJson);
             foreach(var node in nodes)
             {
-                if(!node.TryGet("shape",out var shape) || shape.Require("disabled").AsBool()) continue;
+                if(!node.TryGet("shape",out var shape)) continue;
                 var parent=byAddress[node.Require("parent").CanonicalJson];
+                bool disabled=shape.Require("disabled").AsBool();
+                bool statefulGate=RouteMode&&parent.Require("fields").TryGet("block_if",out _);
+                if(disabled&&!statefulGate)continue;
                 if(!parent.TryGet("collision",out var collision) || parent.Require("script").AsString().EndsWith("/player.gd",StringComparison.Ordinal)) continue;
                 if(RouteMode&&Snapshot.MapId=="player_home")
                 {
@@ -184,7 +191,7 @@ namespace BlueMapMigration.Player
                 else if(kind=="RectangleShape2D")
                 { size=FoundationCoordinates.Vector(parameters.Require("size")); FoundationCollision.Box(owner,new Rect(-size*.5f,size),layer,mask); }
                 else throw new FormatException("Unsupported source object foot: "+kind);
-                SourceObjectColliders++;
+                if(!disabled)SourceObjectColliders++;
                 string script=parent.Require("script").AsString();
                 if(RouteMode)continue;
                 if(script.EndsWith("/npc.gd",StringComparison.Ordinal))

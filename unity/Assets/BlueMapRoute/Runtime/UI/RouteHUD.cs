@@ -39,7 +39,7 @@ namespace BlueMapMigration.Route
             Label(32,54,270,T("Leven ","Health ")+state.Hp+" / "+game.MaxHp+"    ·    "+state.Coins+T(" munten"," coins"));
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 10","Unity preview · phase 10"),small);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 11","Unity preview · phase 11"),small);
             if(route.Message!=""){Panel(new Rect(326,18,550,84));Label(342,29,518,route.Message,wrap,63);}
             float noticeY=90;foreach(string notice in route.ItemNotices){Panel(new Rect(886,noticeY,248,44));Label(898,noticeY+9,222,notice,text);noticeY+=48;}
             if(route.Modal==""&&!game.DialogueOpen)
@@ -48,6 +48,7 @@ namespace BlueMapMigration.Route
                 {Panel(new Rect(18,124,298,82));Label(32,133,270,T("Pim zoekt Muis","Pim is looking for Muis"));Label(32,160,270,route.Translate(game.QuestText("kat")),new GUIStyle(small){wordWrap=true},36);}
                 Panel(new Rect(18,589,1116,43));Label(32,598,1090,route.BindingLabel("interact")+T(" praten / verzamelen  ·  "," talk / gather  ·  ")+route.BindingLabel("menu")+T(" tas  ·  "," inventory  ·  ")+route.BindingLabel("quests")+T(" opdrachten  ·  "," quests  ·  ")+route.BindingLabel("pause")+T(" menu  ·  "," menu  ·  ")+route.BindingLabel("sprint")+T(" rennen  ·  F9 bediening"," run  ·  F9 controls"),small);
                 if(route.CurrentTarget!=null){Panel(new Rect(360,526,432,48));Label(376,538,400,(route.BindingLabel("interact")+"  ")+route.Translate(route.CurrentTarget.Label));}
+                if(route.NearbyPassage!=""&&route.Message==""){Panel(new Rect(326,114,550,48));Label(342,125,518,route.NearbyPassage,wrap,36);}
                 if(route.Working){Panel(new Rect(430,474,292,38));GUI.color=new Color(.43f,.77f,.57f);GUI.DrawTexture(new Rect(441,487,270*route.WorkFraction,10),Texture2D.whiteTexture);GUI.color=Color.white;}
                 if(route.World.CrosshairVisible)
                 {var p=route.Camera.WorldToScreenPoint(FoundationCoordinates.ToUnity(route.World.Aim.Position));float x=p.x*1152/Screen.width,y=(Screen.height-p.y)*648/Screen.height;GUI.color=new Color(.96f,.95f,.78f,.95f);GUI.DrawTexture(new Rect(x-6,y,4,1),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x+3,y,4,1),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x,y-6,1,4),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x,y+3,1,4),Texture2D.whiteTexture);GUI.color=Color.white;}
@@ -55,7 +56,7 @@ namespace BlueMapMigration.Route
             if(game.DialogueOpen){DrawDialogue();return;}
             if(route.Modal=="")return;
             GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;
-            if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else DrawSign();
+            if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
         }
         private void DrawDialogue()
         {
@@ -89,7 +90,7 @@ namespace BlueMapMigration.Route
             foreach(var quest in route.Gameplay.State.Get("quests").Entries.Take(7))
             {string id=quest.Key.AsString();bool done=route.Gameplay.State.QuestState(id)=="done";Label(214,y,710,(done?"✓  ":"•  ")+route.Translate(route.Gameplay.QuestText(id)),wrap,43);y+=47;}
             if(y==179)Label(214,y,710,T("Praat met Pim in het dorp om Muis te helpen zoeken.","Talk to Pim in the village to help find Muis."),wrap,60);
-            Label(214,480,710,T("Dorp ↔ woning  ·  dorp ↔ bosrand ↔ Fluisterbos","Village ↔ home  ·  village ↔ forest edge ↔ Whispering Woods"),small);
+            Label(214,480,710,T("Ontdekte gebieden: ","Areas visited: ")+route.Gameplay.State.Get("visited_maps").Entries.Count(p=>p.Value.Kind=="bool"&&p.Value.AsBool())+" / "+RouteWorldController.Maps.Length,small);
             if(Button(new Rect(755,520,183,34),T("Sluiten","Close")))route.CloseModal();
         }
         private void DrawPause()
@@ -98,6 +99,15 @@ namespace BlueMapMigration.Route
             string[] choices={T("Verder spelen","Resume"),T("Avontuur opslaan","Save adventure"),T("Opslaan en opnieuw laden","Save and reload"),T("Bediening aanpassen","Edit controls"),T("Opslaan en naar profielen","Save and return to profiles")};
             for(int i=0;i<choices.Length;i++)if(Button(new Rect(378,183+i*55,396,44),choices[i],route.Selection==i))route.ActivatePause(i);
             Label(380,474,390,route.SaveStatus,wrap,65);
+        }
+        private void DrawBoat()
+        {
+            Panel(new Rect(260,150,632,390));Label(284,168,584,T("Overtocht","Crossing"),title);
+            Label(284,210,584,T("Deze overtocht is gratis. Je kunt altijd terugvaren.","This crossing is free. You can always sail back."),wrap,48);
+            if(route.Modal=="boat")
+            {var choices=route.VoyageRoutes;for(int i=0;i<choices.Count;i++)if(Button(new Rect(284,270+i*48,584,40),route.DestinationName(choices[i].Require("to").AsString()),route.Selection==i))route.ConfirmVoyage(i);}
+            else {Label(284,274,584,T("Onderweg…","Sailing…"),title);GUI.color=new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(284,323,584*(float)route.VoyageProgress,8),Texture2D.whiteTexture);GUI.color=Color.white;if(Button(new Rect(284,354,584,40),T("Meteen aankomen","Arrive now")))route.ArriveVoyage();}
+            if(Button(new Rect(674,484,194,34),T("Annuleren","Cancel")))route.CloseModal();
         }
         private void DrawSign()
         {Panel(new Rect(230,180,692,330));Label(254,194,644,route.Translate(SignSpeaker),title);Label(254,240,644,string.Join("\n",SignLines),wrap,190);if(Button(new Rect(715,456,183,34),T("Sluiten","Close")))route.CloseModal();}

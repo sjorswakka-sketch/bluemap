@@ -63,6 +63,12 @@ def route_proof(build_identity: dict) -> dict:
             "checks": [{"name": name, "passed": True} for name in sorted(package.ROUTE_DETAIL_CHECKS)]}
 
 
+def world_access_proof(build_identity: dict) -> dict:
+    return {"schemaVersion": 1, "identity": copy.deepcopy(build_identity), "success": True,
+            "gameSaveAccessed": False,
+            "checks": [{"name": name, "passed": True} for name in sorted(package.WORLD_ACCESS_DETAIL_CHECKS)]}
+
+
 def pe_stub() -> bytes:
     """Small deliberate fixture, never a runnable executable."""
     raw = bytearray(256)
@@ -77,7 +83,8 @@ def pe_stub() -> bytes:
 class PreviewReferenceTests(unittest.TestCase):
     def test_all_published_phase_formats_remain_supported(self):
         for phase, version in ((3, "0.1.0-phase3"), (6, "0.2.0-phase6"), (7, "0.3.0-phase7"),
-                               (8, "0.4.0-phase8"), (9, "0.5.0-phase9"), (10, "0.6.0-phase10")):
+                               (8, "0.4.0-phase8"), (9, "0.5.0-phase9"), (10, "0.6.0-phase10"),
+                               (11, "0.7.0-phase11")):
             name = f"BlueMapUnityPreview-phase-{phase:02d}-aaaaaaaa-Windows-x64.zip"
             manifest = {"schemaVersion": 1, "phase": phase, "previewVersion": version,
                         "sourceCommit": "a" * 40, "packageName": name}
@@ -301,6 +308,112 @@ class UnityPackageTests(unittest.TestCase):
                    "package": {"file": archive.name, "sha256": package.sha256(archive),
                                "bytes": archive.stat().st_size, "files": count}}
         return archive, receipt, proof
+
+    def phase11_fixture(self):
+        build_identity = {**identity(), "phase": 11, "previewVersion": "0.7.0-phase11"}
+        proof = runtime(build_identity)
+        proof["checks"] += [{"name": name, "passed": True} for name in sorted(
+            package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS | package.PLAYER_CHECKS |
+            package.PERSISTENCE_CHECKS | package.ROUTE_CHECKS | package.WORLD_ACCESS_CHECKS)]
+        details, player, persistence, route, access = (foundation(build_identity), player_proof(build_identity),
+                                                       persistence_proof(build_identity), route_proof(build_identity),
+                                                       world_access_proof(build_identity))
+        output = self.base / "phase11-output"
+        output.mkdir()
+        (self.player / package.PLAYER_INPUT_DLL).write_bytes(b"Deliberate non-runnable Input System DLL fixture\n")
+        archive, count = package.package_player(self.player, output, build_identity, proof,
+                                                details, player, persistence, route, access)
+        receipt = {"phase": 11, "identity": build_identity, "success": True,
+                   "foundation": details, "player": player, "persistence": persistence, "route": route,
+                   "worldAccess": access,
+                   "unityPackages": [{"name": "com.unity.inputsystem", "version": "1.0.0", "source": "registry"}],
+                   "runtimeDllInputs": [{"name": "Unity.InputSystem.dll",
+                                          "bytes": (self.player / package.PLAYER_INPUT_DLL).stat().st_size,
+                                          "sha256": package.sha256(self.player / package.PLAYER_INPUT_DLL)}],
+                   "rawLogsPublished": False, "godotSavesUsed": False, "checks": proof["checks"],
+                   "package": {"file": archive.name, "sha256": package.sha256(archive),
+                               "bytes": archive.stat().st_size, "files": count}}
+        return archive, receipt, proof
+
+    def test_phase11_world_access_and_historical_phase10_both_verify(self) -> None:
+        archive, receipt, _ = self.phase11_fixture()
+        report = package.verify_package(archive, receipt, "a" * 40)
+        self.assertEqual((report["phase"], report["runtimeChecks"]), (11, 35))
+        old_archive, old_receipt, _ = self.phase10_fixture()
+        self.assertTrue(package.verify_package(old_archive, old_receipt, "a" * 40)["success"])
+        with zipfile.ZipFile(archive) as packed:
+            root = package.archive_root(receipt["identity"])
+            self.assertEqual(json.loads(packed.read(root + "/WORLD-ACCESS-CHECKS.json")), receipt["worldAccess"])
+            self.assertIn("Migratiefase 11", packed.read(root + "/LEESMIJ.txt").decode("utf-8"))
+
+    def test_phase11_cannot_drop_any_previous_or_world_access_runtime_proof(self) -> None:
+        build_identity = {**identity(), "phase": 11, "previewVersion": "0.7.0-phase11"}
+        required = (package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS | package.PLAYER_CHECKS |
+                    package.PERSISTENCE_CHECKS | package.ROUTE_CHECKS | package.WORLD_ACCESS_CHECKS)
+        for missing in required:
+            proof = runtime(build_identity)
+            proof["checks"] += [{"name": name, "passed": True} for name in sorted(required - {missing})]
+            proof["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "proof"):
+                package.package_player(self.player, self.output, build_identity, proof,
+                                       foundation(build_identity), player_proof(build_identity),
+                                       persistence_proof(build_identity), route_proof(build_identity),
+                                       world_access_proof(build_identity))
+
+    def test_phase11_world_access_details_fail_closed(self) -> None:
+        build_identity = {**identity(), "phase": 11, "previewVersion": "0.7.0-phase11"}
+        changes = {
+            "missing": lambda d: None,
+            "stub": lambda d: {**d, "checks": [{"name": "world_stub", "passed": True}]},
+            "wrong_source": lambda d: {**d, "identity": {**build_identity, "sourceCommit": "c" * 40}},
+            "schema_bool": lambda d: {**d, "schemaVersion": True},
+            "failed": lambda d: {**d, "success": False},
+            "save_access": lambda d: {**d, "gameSaveAccessed": True},
+            "extra_field": lambda d: {**d, "privateSavePath": "must not publish"},
+            "failed_detail": lambda d: {**d, "checks": d["checks"] + [{"name": "failed_detail", "passed": False}]},
+            "duplicate": lambda d: {**d, "checks": d["checks"] + [d["checks"][0]]},
+        }
+        for label, edit in changes.items():
+            with self.subTest(change=label), self.assertRaises(package.PackageError):
+                package.validate_world_access(edit(world_access_proof(build_identity)), build_identity)
+
+    def test_phase11_each_native_world_access_check_is_required(self) -> None:
+        build_identity = {**identity(), "phase": 11, "previewVersion": "0.7.0-phase11"}
+        for missing in package.WORLD_ACCESS_DETAIL_CHECKS:
+            details = world_access_proof(build_identity)
+            details["checks"] = [check for check in details["checks"] if check["name"] != missing]
+            details["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "checks are missing"):
+                package.validate_world_access(details, build_identity)
+
+    def test_phase11_receipt_world_access_must_match_packaged_proof(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase11_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["worldAccess"]["checks"].append({"name": "receipt_only_check", "passed": True})
+        with self.assertRaisesRegex(package.PackageError, "Receipt world access proof"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_phase11_failed_world_access_rejected_even_after_rehashing(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase11_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["worldAccess"]["checks"][0]["passed"] = False
+        self.change_payload("WORLD-ACCESS-CHECKS.json", json.dumps(self.receipt["worldAccess"]).encode())
+        self.rejected()
+
+    def test_phase11_missing_world_access_rejected_even_after_rehashing(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase11_fixture()
+        self.identity = self.receipt["identity"]
+        self.rewrite(lambda files: [(info, raw) for info, raw in files
+                                   if not info.filename.endswith("/WORLD-ACCESS-CHECKS.json")], True)
+        with self.assertRaisesRegex(package.PackageError, "world access proof is missing"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_historical_phase10_cannot_claim_world_access_verified(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase10_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["worldAccess"] = world_access_proof(self.identity)
+        with self.assertRaisesRegex(package.PackageError, "unsupported world access proof"):
+            package.verify_package(self.archive, self.receipt)
 
     def test_phase10_route_and_historical_phase9_both_verify(self) -> None:
         archive, receipt, _ = self.phase10_fixture()

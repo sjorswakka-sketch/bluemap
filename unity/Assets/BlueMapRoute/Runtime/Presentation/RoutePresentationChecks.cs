@@ -28,7 +28,7 @@ namespace BlueMapMigration.Route
                         }
                         if(map=="forest")
                         {
-                            string chest=presentation.Objects.Keys.First(key=>presentation.Objects[key].GetComponent<SpriteRenderer>().sprite!=null&&key==Find(repository.Read(map),"/chest.gd"));
+                            string chest=Find(repository.Read(map),"/chest.gd");
                             var renderer=presentation.Objects[chest].GetComponent<SpriteRenderer>();Sprite before=renderer.sprite;
                             var source=repository.Read(map).Root.Require("scene").Items.First(node=>RouteSourcePresentation.Address(node)==chest);
                             state.SetFlag(source.Require("fields").Require("unique_key").AsString(),true);presentation.Tick(0,state);

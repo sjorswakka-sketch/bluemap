@@ -74,6 +74,19 @@ namespace BlueMapMigration.Foundation
             catch (Exception error) when (error is ArgumentException || error is FormatException || error is KeyNotFoundException || error is InvalidOperationException)
             { LastDiagnostic = error.Message; return false; }
 
+            return TryEnterPrepared(prepared,spawn,arrival.Resolved);
+        }
+
+        // A live access projection may select earned bridge/sluice terrain. Its fixture
+        // state is never committed; only the validated player location changes.
+        public bool TryEnterPrepared(FoundationWorldSnapshot prepared,string spawn,Vector2 resolved)
+        {
+            if(disposed)throw new ObjectDisposedException(nameof(FoundationSession));
+            LastDiagnostic=null;
+            if(State.InputLocked){LastDiagnostic="Area entry is locked by the current state.";return false;}
+            if(prepared==null||!prepared.Arrivals.Any(a=>a.Name==spawn)||!float.IsFinite(resolved.x)||!float.IsFinite(resolved.y))
+            {LastDiagnostic="The projected area or safe arrival is invalid.";return false;}
+            string mapId=prepared.MapId,scenarioId=prepared.ScenarioId;
             // Everything capable of failing validation has happened before the commit.
             // Notification failures are explicitly reported as POST-COMMIT diagnostics;
             // they never pretend that a valid committed location was rolled back.
@@ -86,11 +99,11 @@ namespace BlueMapMigration.Foundation
                 var old = Area; Area = new FoundationAreaScope();
                 try { old.Dispose(); } catch (Exception error) { errors.Add(error); }
                 State.InGame = true;
-                string position = "[" + arrival.Resolved.x.ToString("R", CultureInfo.InvariantCulture) + ","
-                    + arrival.Resolved.y.ToString("R", CultureInfo.InvariantCulture) + "]";
+                string position = "[" + resolved.x.ToString("R", CultureInfo.InvariantCulture) + ","
+                    + resolved.y.ToString("R", CultureInfo.InvariantCulture) + "]";
                 try { State.CommitLocation(mapId, spawn, FoundationJson.Parse(position)); }
                 catch (Exception error) { errors.Add(error); }
-                try { State.Events.Publish(new FoundationAreaEntered(prepared, spawn, arrival.Resolved)); }
+                try { State.Events.Publish(new FoundationAreaEntered(prepared, spawn, resolved)); }
                 catch (Exception error) { errors.Add(error); }
             }
             finally { State.Transitioning = false; }

@@ -38,7 +38,7 @@ namespace BlueMapMigration.Editor
             public double durationSeconds;
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
-            public string scope = "First playable village, home, forest edge and forest route with original quest, interactions, loot, resources and recoverable separate save profiles; full combat and other areas follow";
+            public string scope = "All 37 original areas, interiors, quest locks, earned bridge/sluice geometry, safe doorways, free boat crossings and recoverable separate save profiles; remaining gameplay systems follow the migration plan";
             public PackageInput[] unityPackages;
             public DllInput[] runtimeDllInputs;
             public BuildIdentity identity;

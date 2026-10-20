@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BlueMapMigration.Foundation;
 using BlueMapMigration.Phase6;
+using BlueMapMigration.WorldAccess;
 using UnityEngine;
 
 namespace BlueMapMigration.Route
@@ -27,33 +28,41 @@ namespace BlueMapMigration.Route
         private readonly List<MovingArt> moving=new List<MovingArt>();
         private readonly Dictionary<string,FoundationValue> sourceNodes;
         private readonly FoundationValue art,sourceItems,sourceNpcs;
+        public WorldAccessModel Access { get; set; }
+        private readonly List<PortalArt> portals=new List<PortalArt>();
+        private Sprite whitePixel,circlePixel;
+        private Texture2D circleTexture;
+        private readonly WorldHeatWindows heatWindows;
+        private sealed class PortalArt {public FoundationValue Fields;public SpriteRenderer Fill;public SpriteRenderer[] Border,Sparkles;public Vector2 Origin,Size;}
         private readonly Dictionary<string,Sprite> capturedSprites=new Dictionary<string,Sprite>(StringComparer.Ordinal);
         private sealed class MovingArt { public SpriteRenderer Renderer;public string Address,Sheet,Kind; public Vector2 Position;public Vector2Int Cell;public float Scale;public bool Humanoid;public string UniqueKey; }
-        public RouteSourcePresentation(Phase6Catalog catalog,FoundationWorldSnapshot snapshot,FoundationGameState state,Transform parent)
+        public RouteSourcePresentation(Phase6Catalog catalog,FoundationWorldSnapshot snapshot,FoundationGameState state,Transform parent,WorldAccessModel access=null)
         {
-            this.catalog=catalog;this.snapshot=snapshot;this.parent=parent;
+            this.catalog=catalog;this.snapshot=snapshot;this.parent=parent;Access=access;
             var file=Resources.Load<TextAsset>(ResourcePath);
             if(file==null)throw new FormatException("Original route art manifest is missing.");
             art=FoundationJson.ParsePlain(file.text);
             var oracle=FoundationJson.ParsePlain(Resources.Load<TextAsset>("BlueMapRouteOracle").text).Require("catalogs");sourceItems=oracle.Require("items");sourceNpcs=oracle.Require("npcs");
             if(art.Require("schemaVersion").AsInt64()!=1||art.Require("tilePixels").AsInt64()!=32||art.Require("alphaMode").AsString()!="premultiplied")throw new FormatException("Original route art contract changed.");
             sourceNodes=snapshot.Root.Require("scene").Items.ToDictionary(Address,StringComparer.Ordinal);
-            foreach(var entry in art.Require("nodes").Items)
+            var worldArt=WorldArtCatalog.For(snapshot);var selectedArt=worldArt??art;
+            string artFolder=worldArt==null?"BlueMapRouteArt/":"BlueMapWorldArt/";
+            foreach(var entry in selectedArt.Require("nodes").Items)
             {
-                if(entry.Require("mapId").AsString()!=snapshot.MapId)continue;
+                if(entry.Require("mapId").AsString()!=snapshot.MapId||(entry.TryGet("scenarioId",out var scenario)&&scenario.AsString()!=snapshot.ScenarioId))continue;
                 string address=entry.Require("address").AsString();
                 if(!sourceNodes.TryGetValue(address,out var node))throw new FormatException("Captured original route node is absent: "+snapshot.MapId+"/"+address);
                 if(Position(node)!=Pair(entry.Require("position")))throw new FormatException("Captured original object moved: "+address);
                 if(node.Require("script").AsString()!=entry.Require("script").AsString())throw new FormatException("Captured route node script changed: "+address);
                 var fields=node.Require("fields");
-                if(node.Require("script").AsString().EndsWith("/chest.gd",StringComparison.Ordinal))continue;
+                if(node.Require("script").AsString().EndsWith("/chest.gd",StringComparison.Ordinal)||fields.TryGet("block_if",out _))continue;
                 if(node.Require("script").AsString().EndsWith("/home_station.gd",StringComparison.Ordinal)&&fields.TryGet("obj",out var obj)&&obj.TryGet("role",out var role)&&((snapshot.MapId=="player_home"&&new[]{"bed","table","shelf"}.Contains(role.AsString()))||role.AsString()=="fall"))continue;
                 string name=entry.Require("file").AsString();
                 if(!capturedSprites.TryGetValue(name,out Sprite sprite))
                 {
-                    Texture2D texture=Resources.Load<Texture2D>("BlueMapRouteArt/"+name.Substring(0,name.Length-4));
+                    Texture2D texture=Resources.Load<Texture2D>(artFolder+name.Substring(0,name.Length-4));
                     if(texture==null||texture.width!=entry.Require("width").AsInt64()||texture.height!=entry.Require("height").AsInt64())throw new FormatException("Original route texture missing or resized: "+name);
-                    sprite=Sprite.Create(texture,new Rect(0,0,texture.width,texture.height),new Vector2(0,1),32);owned.Add(sprite);capturedSprites.Add(name,sprite);
+                    sprite=Sprite.Create(texture,new Rect(0,0,texture.width,texture.height),new Vector2(0,1),32,0,SpriteMeshType.FullRect);owned.Add(sprite);capturedSprites.Add(name,sprite);
                 }
                 Vector2 at=Pair(entry.Require("position")),offset=Pair(entry.Require("offset"));
                 int order=entry.Require("ground").AsBool()?-15000:Mathf.RoundToInt(at.y);
@@ -63,7 +72,9 @@ namespace BlueMapMigration.Route
             foreach(var node in snapshot.Root.Require("scene").Items)
             {
                 string script=node.Require("script").AsString();string address=Address(node);
-                if(script.EndsWith("/npc.gd",StringComparison.Ordinal))AddActor(node,address,false);
+                if(node.Require("fields").TryGet("block_if",out _))AddGate(node,address);
+                else if(script.EndsWith("/portal.gd",StringComparison.Ordinal))AddPortal(node,address);
+                else if(script.EndsWith("/npc.gd",StringComparison.Ordinal))AddActor(node,address,false);
                 else if(script.EndsWith("/enemy.gd",StringComparison.Ordinal))AddActor(node,address,true);
                 else if(script.EndsWith("/pickup.gd",StringComparison.Ordinal))AddPickup(node,address);
                 else if(script.EndsWith("/chest.gd",StringComparison.Ordinal))AddChest(node,address);
@@ -78,6 +89,7 @@ namespace BlueMapMigration.Route
             }
             if(snapshot.MapId=="player_home")AddHome(state);
             if(snapshot.MapId=="village")AddHomeCat();
+            heatWindows=new WorldHeatWindows(catalog,snapshot.MapId,parent);
             Tick(0,state);
         }
         public static string Address(FoundationValue node)=>String.Join("/",node.Require("address").Items.Select(v=>v.Kind=="string"?v.AsString():v.AsInt64().ToString(System.Globalization.CultureInfo.InvariantCulture)));
@@ -99,6 +111,40 @@ namespace BlueMapMigration.Route
             int columns=Mathf.FloorToInt(full.rect.width/width),rows=Mathf.FloorToInt(full.rect.height/height);
             column=Mathf.Clamp(column,0,Mathf.Max(0,columns-1));row=Mathf.Clamp(row,0,Mathf.Max(0,rows-1));
             var sprite=Sprite.Create(full.texture,new Rect(full.rect.x+column*width,full.rect.y+full.rect.height-(row+1)*height,width,height),Vector2.one*.5f,32*density);owned.Add(sprite);return sprite;
+        }
+        private void AddGate(FoundationValue node,string address)
+        {
+            var fields=node.Require("fields");Vector2 size=FoundationCoordinates.Vector(fields.Require("size_tiles"));Vector2 at=Position(node);
+            string sheet=node.Require("script").AsString().EndsWith("/diepte_gate.gd",StringComparison.Ordinal)?"depths_objects":"gate";int frame=sheet=="gate"?0:2;
+            var renderer=Node(address,Sheet(sheet,frame,0,new Vector2Int(16,16)),at,Mathf.RoundToInt(at.y),null);renderer.transform.localScale=Vector3.one*2;
+            for(int y=0;y<(int)size.y;y++)for(int x=0;x<(int)size.x;x++)
+            {
+                if(x==0&&y==0)continue;
+                var piece=new GameObject("Original gate leaf");piece.transform.SetParent(renderer.transform,false);piece.transform.localPosition=FoundationCoordinates.ToUnity(new Vector2(x*16,y*16));
+                var part=piece.AddComponent<SpriteRenderer>();catalog.Apply(part,renderer.sprite);part.sortingOrder=renderer.sortingOrder;
+            }
+        }
+        private SpriteRenderer Rectangle(Transform owner,Rect rect,int depth)
+        {
+            if(whitePixel==null){whitePixel=Sprite.Create(Texture2D.whiteTexture,new Rect(0,0,Texture2D.whiteTexture.width,Texture2D.whiteTexture.height),Vector2.one*.5f,Texture2D.whiteTexture.width);owned.Add(whitePixel);}
+            var child=new GameObject("Original doorway light");child.transform.SetParent(owner,false);child.transform.localPosition=FoundationCoordinates.ToUnity(rect.center);child.transform.localScale=new Vector3(rect.width/32,rect.height/32,1);
+            var renderer=child.AddComponent<SpriteRenderer>();renderer.sprite=whitePixel;renderer.sharedMaterial=catalog.straightMaterial;renderer.sortingOrder=depth;return renderer;
+        }
+        private void AddPortal(FoundationValue node,string address)
+        {
+            var fields=node.Require("fields");var rect=fields.Require("rect");Vector2 origin=FoundationCoordinates.Vector(rect.Require("position")),size=FoundationCoordinates.Vector(rect.Require("size"));
+            var root=new GameObject("Original portal light "+address);root.transform.SetParent(parent,false);root.transform.localPosition=FoundationCoordinates.ToUnity(origin);objects.Add(address,root);
+            int depth=-14000;var fill=Rectangle(root.transform,new Rect(Vector2.zero,size),depth);
+            var border=new[]{Rectangle(root.transform,new Rect(0,0,size.x,2),depth),Rectangle(root.transform,new Rect(0,size.y-2,size.x,2),depth),Rectangle(root.transform,new Rect(0,0,2,size.y),depth),Rectangle(root.transform,new Rect(size.x-2,0,2,size.y),depth)};
+            var sparks=new SpriteRenderer[3];
+            if(circlePixel==null)
+            {
+                circleTexture=new Texture2D(4,4,TextureFormat.RGBA32,false,true);circleTexture.filterMode=FilterMode.Point;
+                var pixels=new Color32[16];for(int y=0;y<4;y++)for(int x=0;x<4;x++)pixels[y*4+x]=new Color32(255,255,255,(byte)(((x-1.5f)*(x-1.5f)+(y-1.5f)*(y-1.5f)<=4)?255:0));
+                circleTexture.SetPixels32(pixels);circleTexture.Apply(false,false);circlePixel=Sprite.Create(circleTexture,new Rect(0,0,4,4),Vector2.one*.5f,32);owned.Add(circlePixel);
+            }
+            for(int i=0;i<3;i++){var sparkle=new GameObject("Original portal spark");sparkle.transform.SetParent(root.transform,false);sparks[i]=sparkle.AddComponent<SpriteRenderer>();sparks[i].sprite=circlePixel;sparks[i].sharedMaterial=catalog.straightMaterial;sparks[i].sortingOrder=depth+1;}
+            portals.Add(new PortalArt{Fields=fields,Fill=fill,Border=border,Sparkles=sparks,Origin=origin,Size=size});
         }
         private void AddActor(FoundationValue node,string address,bool enemy)
         {
@@ -126,6 +172,7 @@ namespace BlueMapMigration.Route
         }
         private void AddHomeCat()
         {
+            if(sourceNodes.Values.Any(node=>node.Require("fields").TryGet("npc_id",out var id)&&id.AsString()=="muis_dorp"))return;
             foreach(var obj in snapshot.MapData.Require("objects").Items)
             {
                 if(!obj.TryGet("type",out var type)||type.AsString()!="npc"||!obj.TryGet("id",out var id)||id.AsString()!="muis_dorp")continue;
@@ -165,6 +212,7 @@ namespace BlueMapMigration.Route
         public void SetVisible(string sourceAddress,bool visible){overrides[sourceAddress]=visible;if(objects.TryGetValue(sourceAddress,out var node))node.SetActive(visible);}
         public void Tick(double clock,FoundationGameState state)
         {
+            heatWindows?.Tick(state);
             foreach(var pair in objects)
             {
                 bool visible=true;
@@ -172,10 +220,21 @@ namespace BlueMapMigration.Route
                 {
                     var f=node.Require("fields");if(!node.Require("script").AsString().EndsWith("/chest.gd",StringComparison.Ordinal)&&f.TryGet("unique_key",out var key)&&key.AsString()!=""&&state.Flag(key.AsString()))visible=false;
                     if(f.TryGet("resource_id",out var resourceId)&&state.Get("professions").TryGet("cooldowns",out var cooldowns)&&cooldowns.TryGet(resourceId.AsString(),out var due))pair.Value.GetComponent<SpriteRenderer>().color=due.AsDouble()>state.PlayTime?new Color(.55f,.55f,.55f,.4f):Color.white;
+                    if(Access!=null)visible&=Access.NodeVisible(node);
+                    if(f.TryGet("block_if",out var block))visible&=Access!=null?Access.GateBlocked(f):new FoundationConditionRegistry(state).CheckAll(block).Value;
                     if(f.TryGet("npc_id",out var npc)&&npc.AsString()=="muis_bos"&&state.Flag("cat_found"))visible=false;
                 }
                 if(pair.Key=="conditional-npc/muis_dorp")visible=state.Flag("cat_home");
                 if(overrides.TryGetValue(pair.Key,out var forced))visible=forced;pair.Value.SetActive(visible);
+            }
+            foreach(var portal in portals)
+            {
+                var tests=portal.Fields.TryGet("conditions",out var conditions)?conditions:FoundationValue.Array(Array.Empty<FoundationValue>());
+                bool available=Access!=null?Access.Conditions.CheckAll(tests).Value:new FoundationConditionRegistry(state).CheckAll(tests).Value;
+                Color color=available?new Color(.55f,.8f,1):new Color(214/255f,173/255f,104/255f);float pulse=.5f+.5f*Mathf.Sin((float)clock*2.2f);
+                portal.Fill.color=new Color(color.r,color.g,color.b,.07f+.06f*pulse);foreach(var border in portal.Border)border.color=new Color(color.r,color.g,color.b,.3f+.25f*pulse);
+                float span=Mathf.Max(portal.Size.y,16);
+                for(int i=0;i<3;i++){float cycle=((float)clock*14+i*span/3)%span;portal.Sparkles[i].transform.localPosition=FoundationCoordinates.ToUnity(new Vector2(portal.Size.x*(.2f+.3f*i),portal.Size.y-cycle));portal.Sparkles[i].color=new Color(1,1,1,.55f*Mathf.Sin(Mathf.PI*cycle/span));}
             }
             foreach(var item in moving)
             {
@@ -185,6 +244,6 @@ namespace BlueMapMigration.Route
                 else if(item.Kind=="waterfall")catalog.Apply(item.Renderer,catalog.GetSprite("generated:waterfall:"+((int)(clock*8)%8)));
             }
         }
-        public void Dispose(){foreach(var sprite in owned)UnityEngine.Object.Destroy(sprite);owned.Clear();}
+        public void Dispose(){foreach(var sprite in owned)UnityEngine.Object.Destroy(sprite);owned.Clear();if(circleTexture!=null)UnityEngine.Object.Destroy(circleTexture);heatWindows?.Dispose();}
     }
 }
