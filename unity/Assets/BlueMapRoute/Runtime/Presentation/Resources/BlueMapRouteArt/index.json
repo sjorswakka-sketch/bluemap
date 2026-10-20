@@ -1,0 +1,3289 @@
+{
+  "alphaMode": "premultiplied",
+  "clock": 0,
+  "exporterSha256": "a8b2f9425b8217ff9ca1da10f158ddda153b02d30d7d852c16fc805e07e96eba",
+  "gameSaveAccessed": false,
+  "nodes": [
+    {
+      "address": "ground/5",
+      "bytes": 12674,
+      "fields": {},
+      "file": "node-91f7a94f74c915ab9e84.png",
+      "ground": true,
+      "height": 670,
+      "mapId": "village",
+      "offset": [
+        126,
+        36
+      ],
+      "position": [
+        0.0,
+        0.0
+      ],
+      "rgbaSha256": "c75ea2f4982cf3e4ed2c40b35df66af7f6d0bf9cd8605779bda518c1df76c72a",
+      "script": "res://scripts/entities/building_landmarks.gd",
+      "sha256": "6f03512afde13ddbb42c8b66c44c7740470a72222c6f4b4ca2a83eaba5ff4b7c",
+      "width": 1060
+    },
+    {
+      "address": "entities/326",
+      "bytes": 934,
+      "fields": {},
+      "file": "node-b2d3c7fc5e57ad48952b.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -34,
+        -34
+      ],
+      "position": [
+        640.0,
+        448.0
+      ],
+      "rgbaSha256": "e84fd0cb56819760d6c1f59cf1d9c68db82cd4cbef4bf758a656fc5da7c3540b",
+      "script": "res://scripts/entities/fountain.gd",
+      "sha256": "2795063d71518d87a8a87b1bf6945bf8b0381c140563bb381d430a1b9f67c241",
+      "width": 68
+    },
+    {
+      "address": "entities/333",
+      "bytes": 450,
+      "fields": {},
+      "file": "node-5750ee2137506ef3cb2d.png",
+      "ground": false,
+      "height": 40,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -22
+      ],
+      "position": [
+        720.0,
+        400.0
+      ],
+      "rgbaSha256": "0cd82b197d10d2e868c00cd88a49bc359ffced043df9fdcec330eeb165f1b24a",
+      "script": "res://scripts/entities/savepoint.gd",
+      "sha256": "a9f5ce3667bee2665c14bc2fd7334286e0e63ed2e0817dd89a10b1e43e3fc7d1",
+      "width": 36
+    },
+    {
+      "address": "entities/334",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:7",
+        "obj": {
+          "pos": [
+            18,
+            7
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        592.0,
+        240.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/335",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:8",
+        "obj": {
+          "pos": [
+            21,
+            7
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        688.0,
+        240.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/336",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:9",
+        "obj": {
+          "pos": [
+            3,
+            12
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        112.0,
+        400.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/337",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:10",
+        "obj": {
+          "pos": [
+            8,
+            12
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        272.0,
+        400.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/338",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:11",
+        "obj": {
+          "pos": [
+            15,
+            12
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        496.0,
+        400.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/339",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:12",
+        "obj": {
+          "pos": [
+            32,
+            11
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        1040.0,
+        368.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/340",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:13",
+        "obj": {
+          "pos": [
+            36,
+            12
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        1168.0,
+        400.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/341",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:14",
+        "obj": {
+          "pos": [
+            12,
+            15
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        400.0,
+        496.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/342",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:15",
+        "obj": {
+          "pos": [
+            25,
+            15
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        816.0,
+        496.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/343",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:16",
+        "obj": {
+          "pos": [
+            18,
+            18
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        592.0,
+        592.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/344",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:17",
+        "obj": {
+          "pos": [
+            9,
+            22
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        304.0,
+        720.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/345",
+      "bytes": 390,
+      "fields": {
+        "key": "wereld_lantaarn:village:18",
+        "obj": {
+          "pos": [
+            21,
+            22
+          ],
+          "type": "wereld_lantaarn"
+        }
+      },
+      "file": "node-109bd80d0c023b340e49.png",
+      "ground": false,
+      "height": 68,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -50
+      ],
+      "position": [
+        688.0,
+        720.0
+      ],
+      "rgbaSha256": "f4ba780c988745df0fa7db033fc329674fe08652786b418cbb947d8d704b57f8",
+      "script": "res://scripts/entities/lantern.gd",
+      "sha256": "b46ed35e15d3a54b60d89ec84c591ea57779f3d9696f94efd4e7c8ecab071ae9",
+      "width": 28
+    },
+    {
+      "address": "entities/348",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        688.0,
+        272.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/349",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        1200.0,
+        400.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/356",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        1008.0,
+        176.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/357",
+      "bytes": 284,
+      "fields": {},
+      "file": "node-56fae3e10211918dce50.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "village",
+      "offset": [
+        -10,
+        -18
+      ],
+      "position": [
+        1040.0,
+        144.0
+      ],
+      "rgbaSha256": "1fbfd7a2b71fdcec1531e2d4fd5b9d8f5f1ede97121d2250aaab3988cd7032b5",
+      "script": "res://scripts/entities/torch.gd",
+      "sha256": "419915f7ec22402ba8834fc5525378a7f48d779b9663ff5eedd31eb81fe62ddc",
+      "width": 22
+    },
+    {
+      "address": "entities/358",
+      "bytes": 284,
+      "fields": {},
+      "file": "node-56fae3e10211918dce50.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "village",
+      "offset": [
+        -10,
+        -18
+      ],
+      "position": [
+        1136.0,
+        144.0
+      ],
+      "rgbaSha256": "1fbfd7a2b71fdcec1531e2d4fd5b9d8f5f1ede97121d2250aaab3988cd7032b5",
+      "script": "res://scripts/entities/torch.gd",
+      "sha256": "419915f7ec22402ba8834fc5525378a7f48d779b9663ff5eedd31eb81fe62ddc",
+      "width": 22
+    },
+    {
+      "address": "entities/359",
+      "bytes": 319,
+      "fields": {
+        "key": "arena_prop:village:32",
+        "kind": "banner",
+        "obj": {
+          "kind": "banner",
+          "pos": [
+            30,
+            4
+          ],
+          "type": "arena_prop"
+        }
+      },
+      "file": "node-73b8e39e58f3de15aa27.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "village",
+      "offset": [
+        -16,
+        -18
+      ],
+      "position": [
+        976.0,
+        144.0
+      ],
+      "rgbaSha256": "10f2ac05a7301bf01530d577532643198d4c153eb785fd261ca6383962f98b5b",
+      "script": "res://scripts/entities/arena_prop.gd",
+      "sha256": "7bf6622595ecae11f0c313037422aeac1c039f9c113f2916fffaf5892509f121",
+      "width": 32
+    },
+    {
+      "address": "entities/360",
+      "bytes": 319,
+      "fields": {
+        "key": "arena_prop:village:33",
+        "kind": "banner",
+        "obj": {
+          "kind": "banner",
+          "pos": [
+            36,
+            4
+          ],
+          "type": "arena_prop"
+        }
+      },
+      "file": "node-73b8e39e58f3de15aa27.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "village",
+      "offset": [
+        -16,
+        -18
+      ],
+      "position": [
+        1168.0,
+        144.0
+      ],
+      "rgbaSha256": "10f2ac05a7301bf01530d577532643198d4c153eb785fd261ca6383962f98b5b",
+      "script": "res://scripts/entities/arena_prop.gd",
+      "sha256": "7bf6622595ecae11f0c313037422aeac1c039f9c113f2916fffaf5892509f121",
+      "width": 32
+    },
+    {
+      "address": "entities/364",
+      "bytes": 390,
+      "fields": {
+        "key": "boog_target:village:37",
+        "obj": {
+          "pos": [
+            35,
+            15
+          ],
+          "range": "schietbaan",
+          "type": "boog_target"
+        }
+      },
+      "file": "node-b0d79619ca7e833a4f43.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -18
+      ],
+      "position": [
+        1136.0,
+        496.0
+      ],
+      "rgbaSha256": "f8835ee23a4e001248c435775ff7680731928b60a554dcc0346e5b9682be859a",
+      "script": "res://scripts/entities/target.gd",
+      "sha256": "386cdb71c4e684a8d0cd553331847e3725404de7fe432ac212d6729c42da092d",
+      "width": 36
+    },
+    {
+      "address": "entities/365",
+      "bytes": 390,
+      "fields": {
+        "key": "boog_target:village:38",
+        "obj": {
+          "pos": [
+            37,
+            16
+          ],
+          "range": "schietbaan",
+          "type": "boog_target"
+        }
+      },
+      "file": "node-b0d79619ca7e833a4f43.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -18
+      ],
+      "position": [
+        1200.0,
+        528.0
+      ],
+      "rgbaSha256": "f8835ee23a4e001248c435775ff7680731928b60a554dcc0346e5b9682be859a",
+      "script": "res://scripts/entities/target.gd",
+      "sha256": "386cdb71c4e684a8d0cd553331847e3725404de7fe432ac212d6729c42da092d",
+      "width": 36
+    },
+    {
+      "address": "entities/366",
+      "bytes": 390,
+      "fields": {
+        "key": "boog_target:village:39",
+        "obj": {
+          "pos": [
+            34,
+            17
+          ],
+          "range": "schietbaan",
+          "type": "boog_target"
+        }
+      },
+      "file": "node-b0d79619ca7e833a4f43.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -18
+      ],
+      "position": [
+        1104.0,
+        560.0
+      ],
+      "rgbaSha256": "f8835ee23a4e001248c435775ff7680731928b60a554dcc0346e5b9682be859a",
+      "script": "res://scripts/entities/target.gd",
+      "sha256": "386cdb71c4e684a8d0cd553331847e3725404de7fe432ac212d6729c42da092d",
+      "width": 36
+    },
+    {
+      "address": "entities/367",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        944.0,
+        560.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/368",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        560.0,
+        1296.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/376",
+      "bytes": 450,
+      "fields": {},
+      "file": "node-5750ee2137506ef3cb2d.png",
+      "ground": false,
+      "height": 40,
+      "mapId": "village",
+      "offset": [
+        -18,
+        -22
+      ],
+      "position": [
+        304.0,
+        752.0
+      ],
+      "rgbaSha256": "0cd82b197d10d2e868c00cd88a49bc359ffced043df9fdcec330eeb165f1b24a",
+      "script": "res://scripts/entities/savepoint.gd",
+      "sha256": "a9f5ce3667bee2665c14bc2fd7334286e0e63ed2e0817dd89a10b1e43e3fc7d1",
+      "width": 36
+    },
+    {
+      "address": "entities/377",
+      "bytes": 587,
+      "fields": {
+        "key": "home_station:village:50",
+        "obj": {
+          "pos": [
+            7,
+            15
+          ],
+          "role": "compost",
+          "type": "home_station"
+        }
+      },
+      "file": "node-831ac004286ff2aa02ac.png",
+      "ground": false,
+      "height": 60,
+      "mapId": "village",
+      "offset": [
+        -35,
+        -33
+      ],
+      "position": [
+        228.0,
+        496.0
+      ],
+      "rgbaSha256": "d8412533ba7cbcc3e1a19e144ddf0e515634b59d2d8c7c3d162af22041409a49",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "7290d3520d46eb9c02088235b81da373650733d6f6f98e534f710f6c78233f91",
+      "width": 70
+    },
+    {
+      "address": "entities/378",
+      "bytes": 218,
+      "fields": {
+        "key": "home_station:village:51",
+        "obj": {
+          "pos": [
+            6,
+            23
+          ],
+          "role": "guide",
+          "type": "home_station"
+        }
+      },
+      "file": "node-71867456346f689fa267.png",
+      "ground": false,
+      "height": 40,
+      "mapId": "village",
+      "offset": [
+        -17,
+        -26
+      ],
+      "position": [
+        208.0,
+        752.0
+      ],
+      "rgbaSha256": "f272e70968ffb6f0ae602edb40c3498d315575a6742247ef18bef94ec17aa484",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "229464ae66687a15576c9ea1d7299727f31ad869694b1ed10e96012b94c8ea5a",
+      "width": 34
+    },
+    {
+      "address": "entities/379",
+      "bytes": 927,
+      "fields": {
+        "key": "home_station:village:52",
+        "obj": {
+          "pos": [
+            4,
+            25
+          ],
+          "role": "wine",
+          "type": "home_station",
+          "unit": "wine_a"
+        }
+      },
+      "file": "node-1986da5654b428759f1c.png",
+      "ground": false,
+      "height": 70,
+      "mapId": "village",
+      "offset": [
+        -23,
+        -40
+      ],
+      "position": [
+        144.0,
+        816.0
+      ],
+      "rgbaSha256": "cc12fa4660880752e2fc1930b2df776a461239cb09bc399f56d1918ed00d36da",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "3785671ecb13b949402882a4b24576e175583de2c57b7a3b06561cde597c60f3",
+      "width": 50
+    },
+    {
+      "address": "entities/380",
+      "bytes": 927,
+      "fields": {
+        "key": "home_station:village:53",
+        "obj": {
+          "pos": [
+            12,
+            25
+          ],
+          "role": "wine",
+          "type": "home_station",
+          "unit": "wine_b"
+        }
+      },
+      "file": "node-1986da5654b428759f1c.png",
+      "ground": false,
+      "height": 70,
+      "mapId": "village",
+      "offset": [
+        -23,
+        -40
+      ],
+      "position": [
+        400.0,
+        816.0
+      ],
+      "rgbaSha256": "cc12fa4660880752e2fc1930b2df776a461239cb09bc399f56d1918ed00d36da",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "3785671ecb13b949402882a4b24576e175583de2c57b7a3b06561cde597c60f3",
+      "width": 50
+    },
+    {
+      "address": "entities/381",
+      "bytes": 986,
+      "fields": {
+        "key": "home_station:village:54",
+        "obj": {
+          "pos": [
+            15,
+            32
+          ],
+          "role": "hive",
+          "type": "home_station",
+          "unit": "hive"
+        }
+      },
+      "file": "node-2deb493c9b24a57d0d44.png",
+      "ground": false,
+      "height": 72,
+      "mapId": "village",
+      "offset": [
+        -33,
+        -40
+      ],
+      "position": [
+        496.0,
+        1040.0
+      ],
+      "rgbaSha256": "260d2c5ef9c1c2e751f611ecb7c373496e7950e89830b773b9eae40fe98ac8e2",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "16c8c3c572669c690d84729c6838facd1711ccf6d196483c94c9d7e3ddfb26f3",
+      "width": 70
+    },
+    {
+      "address": "entities/382",
+      "bytes": 1527,
+      "fields": {
+        "key": "home_station:village:55",
+        "obj": {
+          "pos": [
+            36,
+            21
+          ],
+          "role": "fall",
+          "type": "home_station"
+        }
+      },
+      "file": "node-98a87084c9ac15767fb3.png",
+      "ground": false,
+      "height": 106,
+      "mapId": "village",
+      "offset": [
+        -48,
+        -58
+      ],
+      "position": [
+        1168.0,
+        688.0
+      ],
+      "rgbaSha256": "79572ce64a3d442dec00ae8dbf4c98624599166e8f3e4958c3f8682e283b8ed7",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "f80e644c2acc0f11803bb20b2f23f0821d47850b6b5cd0c6cb49cb5209ce067a",
+      "width": 99
+    },
+    {
+      "address": "entities/383",
+      "bytes": 455,
+      "fields": {
+        "key": "profession_resource:village:57",
+        "kind": "flower_daisy",
+        "obj": {
+          "id": "trail:village:37:9",
+          "kind": "flower_daisy",
+          "pos": [
+            28,
+            12
+          ],
+          "type": "profession_resource",
+          "wild_category": "flower"
+        }
+      },
+      "file": "node-223db3c1c3dd5a745469.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -15,
+        -22
+      ],
+      "position": [
+        912.0,
+        400.0
+      ],
+      "rgbaSha256": "4fbb62cb737fde7bfd62e47c54e8f544ce7afb8c61a58ae57efbc24ffe7f76e3",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "f77565d99e4cb137f9a47456e6586f2a4e052549ad17448aaa63f3dd8a456493",
+      "width": 31
+    },
+    {
+      "address": "entities/384",
+      "bytes": 491,
+      "fields": {
+        "key": "profession_resource:village:58",
+        "kind": "ff_hazelnut",
+        "obj": {
+          "id": "trail:village:14:42",
+          "kind": "ff_hazelnut",
+          "pos": [
+            14,
+            41
+          ],
+          "species": "hazelnut",
+          "type": "profession_resource",
+          "wild_category": "nut"
+        }
+      },
+      "file": "node-23d4a3045915a67be8f8.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "village",
+      "offset": [
+        -16,
+        -21
+      ],
+      "position": [
+        464.0,
+        1328.0
+      ],
+      "rgbaSha256": "be94579058810cd9f845603781ed6b57b76ea3dc961557c5a7f0bb213cf32865",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "8b9757284ed6fd3569b18257e35802f0c81fb0a27f5d9b61d4ee32f5e07ada80",
+      "width": 31
+    },
+    {
+      "address": "entities/385",
+      "bytes": 316,
+      "fields": {
+        "key": "profession_resource:village:59",
+        "kind": "trail_seeds",
+        "obj": {
+          "id": "trail:village:22:42",
+          "kind": "trail_seeds",
+          "pos": [
+            22,
+            42
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-d17d97635887a1b5f5b8.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -21
+      ],
+      "position": [
+        720.0,
+        1360.0
+      ],
+      "rgbaSha256": "fe9ab4c86262efd653115aaec83a1f75c5b3ecf91e1d0ff4edf7648ec0c1f10b",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "180041fadc43d679dc182e53915a00205ace9cb8345a18927d7f7712cfc4f9b0",
+      "width": 30
+    },
+    {
+      "address": "entities/386",
+      "bytes": 364,
+      "fields": {
+        "key": "profession_resource:village:60",
+        "kind": "branches",
+        "obj": {
+          "id": "village:twigs_west",
+          "kind": "branches",
+          "pos": [
+            10,
+            16
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-f71dd999cad822da4390.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        336.0,
+        528.0
+      ],
+      "rgbaSha256": "e1d3e2d7756584ecb382bf2987aa43b6b04052c9ebdb4748e2c4208b45692867",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "34fbd6b66fcf9c2ed94a147569d90a2193a496f9bfd6a8d518fa6adca17286b8",
+      "width": 32
+    },
+    {
+      "address": "entities/387",
+      "bytes": 364,
+      "fields": {
+        "key": "profession_resource:village:61",
+        "kind": "branches",
+        "obj": {
+          "id": "village:twigs_south",
+          "kind": "branches",
+          "pos": [
+            16,
+            22
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-f71dd999cad822da4390.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        528.0,
+        720.0
+      ],
+      "rgbaSha256": "e1d3e2d7756584ecb382bf2987aa43b6b04052c9ebdb4748e2c4208b45692867",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "34fbd6b66fcf9c2ed94a147569d90a2193a496f9bfd6a8d518fa6adca17286b8",
+      "width": 32
+    },
+    {
+      "address": "entities/388",
+      "bytes": 355,
+      "fields": {
+        "key": "profession_resource:village:62",
+        "kind": "stones",
+        "obj": {
+          "id": "village:flint_west",
+          "kind": "stones",
+          "pos": [
+            5,
+            16
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-f7f146fd0550f626c422.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        176.0,
+        528.0
+      ],
+      "rgbaSha256": "a67952bf93f8baf069e9aa8a53e0b8865b7b22264370c98579bc87009738777b",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "64b4742ff1a371ff5671fec39df25bc843bae305bbf439454e47da87e4ec9ffb",
+      "width": 34
+    },
+    {
+      "address": "entities/389",
+      "bytes": 355,
+      "fields": {
+        "key": "profession_resource:village:63",
+        "kind": "stones",
+        "obj": {
+          "id": "village:flint_south",
+          "kind": "stones",
+          "pos": [
+            23,
+            22
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-f7f146fd0550f626c422.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        752.0,
+        720.0
+      ],
+      "rgbaSha256": "a67952bf93f8baf069e9aa8a53e0b8865b7b22264370c98579bc87009738777b",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "64b4742ff1a371ff5671fec39df25bc843bae305bbf439454e47da87e4ec9ffb",
+      "width": 34
+    },
+    {
+      "address": "entities/390",
+      "bytes": 379,
+      "fields": {
+        "key": "profession_resource:village:64",
+        "kind": "herbs",
+        "obj": {
+          "id": "village:herbs_south",
+          "kind": "herbs",
+          "pos": [
+            25,
+            23
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-5822e92db5d8a882f86e.png",
+      "ground": false,
+      "height": 37,
+      "mapId": "village",
+      "offset": [
+        -14,
+        -24
+      ],
+      "position": [
+        816.0,
+        752.0
+      ],
+      "rgbaSha256": "0f36cc9c3d7563dbbfa72beff4eaa7f7d69778a81043ee6dfd01f8f2e457e3b2",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "09ec3b1be88c9d1411bbdabe3612c74ed505afcd157d9330dd8e528d21ddba79",
+      "width": 30
+    },
+    {
+      "address": "entities/391",
+      "bytes": 543,
+      "fields": {
+        "key": "profession_resource:village:65",
+        "kind": "berries",
+        "obj": {
+          "id": "village:berries_west",
+          "kind": "berries",
+          "pos": [
+            8,
+            17
+          ],
+          "species": "blueberry",
+          "type": "profession_resource",
+          "wild_category": "fruit"
+        }
+      },
+      "file": "node-dc06edb7937031ff1108.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "village",
+      "offset": [
+        -15,
+        -22
+      ],
+      "position": [
+        272.0,
+        560.0
+      ],
+      "rgbaSha256": "bc1f71bc24253982fb1a7b8177bff4943da378e50c715eb13c6cb53927667a3d",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "5ed8212882b990c0b5ca2ef93578d1d3116213a950fa201dd45853a26912fbca",
+      "width": 31
+    },
+    {
+      "address": "entities/394",
+      "bytes": 373,
+      "fields": {
+        "kind": "grate"
+      },
+      "file": "node-c82447f3cad477f9dfb0.png",
+      "ground": false,
+      "height": 32,
+      "mapId": "village",
+      "offset": [
+        -17,
+        -16
+      ],
+      "position": [
+        528.0,
+        400.0
+      ],
+      "rgbaSha256": "e03686d4ac9626df4a1812136537585bab1f77814a08ff0046d8d989548ddc8d",
+      "script": "res://scripts/entities/opening_device.gd",
+      "sha256": "4c627028a7c42019ac89a14255a8586bbdc0bd99de67588af3dfc905bcf7a07c",
+      "width": 36
+    },
+    {
+      "address": "entities/395",
+      "bytes": 363,
+      "fields": {
+        "kind": "wheel"
+      },
+      "file": "node-9d34816d04d8b41d66f3.png",
+      "ground": false,
+      "height": 40,
+      "mapId": "village",
+      "offset": [
+        -16,
+        -24
+      ],
+      "position": [
+        528.0,
+        464.0
+      ],
+      "rgbaSha256": "27b4a841792de89e08a355664f6bd4754607b1096017dffbac69254a00345980",
+      "script": "res://scripts/entities/opening_device.gd",
+      "sha256": "cddff5cb5a8378e87b9cf46565208ff4bd04640726ff07baa75ecaa97b707228",
+      "width": 32
+    },
+    {
+      "address": "entities/396",
+      "bytes": 709,
+      "fields": {},
+      "file": "node-18030320550cc73d70dd.png",
+      "ground": false,
+      "height": 37,
+      "mapId": "village",
+      "offset": [
+        -13,
+        -17
+      ],
+      "position": [
+        560.0,
+        368.0
+      ],
+      "rgbaSha256": "a42b45cbb3e6e063d1e519ef4aed1e4140f58d7fba3aa82bd09494a5c6a2d39b",
+      "script": "res://scripts/entities/village_actor.gd",
+      "sha256": "d7a07975c1e4a274181fddb1685abc528fa3870accb0ba1a6e5f91d7c1cbc30f",
+      "width": 27
+    },
+    {
+      "address": "entities/397",
+      "bytes": 758,
+      "fields": {},
+      "file": "node-05b995fe8f9e7cd8720b.png",
+      "ground": false,
+      "height": 37,
+      "mapId": "village",
+      "offset": [
+        -12,
+        -17
+      ],
+      "position": [
+        272.0,
+        432.0
+      ],
+      "rgbaSha256": "0f2f958b75d5f4f61b16a2afa5376f4f4dadd4246320b5d515afb48c053644aa",
+      "script": "res://scripts/entities/village_actor.gd",
+      "sha256": "311a07e530f760bfa14a90c973629851d26955f2c3ece6a2f5483818aaa3364e",
+      "width": 25
+    },
+    {
+      "address": "entities/2",
+      "bytes": 601,
+      "fields": {
+        "key": "home_station:player_home:1",
+        "obj": {
+          "pos": [
+            9,
+            3
+          ],
+          "role": "shelf",
+          "type": "home_station"
+        }
+      },
+      "file": "node-14ba0dcad2427f05812f.png",
+      "ground": false,
+      "height": 67,
+      "mapId": "player_home",
+      "offset": [
+        -32,
+        -49
+      ],
+      "position": [
+        288.0,
+        112.0
+      ],
+      "rgbaSha256": "3dfbc3fd50fc9c4dc5c2b195a3cd38929b89d6c0957ae1e03c212399c37b15dc",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "8206922e9bf0860b943b36e9fb7ccbf684991be74ea4cb4d7bc18a49a89d2e2f",
+      "width": 64
+    },
+    {
+      "address": "entities/3",
+      "bytes": 452,
+      "fields": {
+        "key": "home_station:player_home:2",
+        "obj": {
+          "pos": [
+            5,
+            8
+          ],
+          "role": "table",
+          "type": "home_station"
+        }
+      },
+      "file": "node-9dc4885171bcc94fa0b1.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "player_home",
+      "offset": [
+        -33,
+        -17
+      ],
+      "position": [
+        160.0,
+        272.0
+      ],
+      "rgbaSha256": "09fa073644d503fc1fbd7cd203be649790c64f9689d9a5a8fcc592bb7721d2d6",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "df9213c4c6e4472bfa6adcb5a3af5ba8e2a691e6104bd374d4e3f6a9a758cd32",
+      "width": 66
+    },
+    {
+      "address": "entities/4",
+      "bytes": 391,
+      "fields": {
+        "key": "home_station:player_home:3",
+        "obj": {
+          "pos": [
+            3,
+            4
+          ],
+          "role": "bed",
+          "type": "home_station"
+        }
+      },
+      "file": "node-211a692037e1106b07d9.png",
+      "ground": false,
+      "height": 66,
+      "mapId": "player_home",
+      "offset": [
+        -17,
+        -48
+      ],
+      "position": [
+        112.0,
+        144.0
+      ],
+      "rgbaSha256": "27333b426848bb1d8a9de0f937bc85d7ae95a46852f2ab8cd8e3413e95a5dbf1",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "9f26aec353fdba302b287b17b42732e277fe2e85988d68e8441a40d31768f334",
+      "width": 34
+    },
+    {
+      "address": "entities/5",
+      "bytes": 218,
+      "fields": {
+        "key": "home_station:player_home:4",
+        "obj": {
+          "pos": [
+            7,
+            4
+          ],
+          "role": "guide",
+          "type": "home_station"
+        }
+      },
+      "file": "node-71867456346f689fa267.png",
+      "ground": false,
+      "height": 40,
+      "mapId": "player_home",
+      "offset": [
+        -17,
+        -26
+      ],
+      "position": [
+        240.0,
+        144.0
+      ],
+      "rgbaSha256": "f272e70968ffb6f0ae602edb40c3498d315575a6742247ef18bef94ec17aa484",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "229464ae66687a15576c9ea1d7299727f31ad869694b1ed10e96012b94c8ea5a",
+      "width": 34
+    },
+    {
+      "address": "entities/6",
+      "bytes": 218,
+      "fields": {
+        "key": "home_station:player_home:5",
+        "obj": {
+          "pos": [
+            9,
+            8
+          ],
+          "role": "supplies",
+          "type": "home_station"
+        }
+      },
+      "file": "node-71867456346f689fa267.png",
+      "ground": false,
+      "height": 40,
+      "mapId": "player_home",
+      "offset": [
+        -17,
+        -26
+      ],
+      "position": [
+        304.0,
+        272.0
+      ],
+      "rgbaSha256": "f272e70968ffb6f0ae602edb40c3498d315575a6742247ef18bef94ec17aa484",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "229464ae66687a15576c9ea1d7299727f31ad869694b1ed10e96012b94c8ea5a",
+      "width": 34
+    },
+    {
+      "address": "entities/7",
+      "bytes": 388,
+      "fields": {
+        "key": "stock_chest:player_home:6",
+        "obj": {
+          "pos": [
+            10,
+            5
+          ],
+          "type": "stock_chest"
+        }
+      },
+      "file": "node-c3236f9a94a6695e142d.png",
+      "ground": false,
+      "height": 30,
+      "mapId": "player_home",
+      "offset": [
+        -15,
+        -18
+      ],
+      "position": [
+        336.0,
+        176.0
+      ],
+      "rgbaSha256": "fcb375f4c30ecef58b66ba42cd4cb16e14e7d50b82376b5ad1f4da345812b296",
+      "script": "res://scripts/entities/stock_chest.gd",
+      "sha256": "4b8516ca38248493729e4ad565b4be15228718cfef5085712a6ee589d4e2ede6",
+      "width": 30
+    },
+    {
+      "address": "ground/5",
+      "bytes": 376,
+      "fields": {},
+      "file": "node-cd2bb7a378e1e7122034.png",
+      "ground": true,
+      "height": 93,
+      "mapId": "forest_edge",
+      "offset": [
+        1006,
+        513
+      ],
+      "position": [
+        0.0,
+        0.0
+      ],
+      "rgbaSha256": "c55f7b4df6e72ddf0c1668fb90a720bc996d89999de1ae87b9ea15ff4d356d4c",
+      "script": "res://scripts/entities/edge_scenery.gd",
+      "sha256": "9491d1571de642e9e8881ae0e2cf66bf157698e0cbcfab55adf49724d10aadf8",
+      "width": 79
+    },
+    {
+      "address": "entities/487",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest_edge",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        112.0,
+        368.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/488",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest_edge",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        1296.0,
+        272.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/489",
+      "bytes": 1527,
+      "fields": {
+        "key": "home_station:forest_edge:4",
+        "obj": {
+          "pos": [
+            31,
+            15
+          ],
+          "role": "fall",
+          "type": "home_station"
+        }
+      },
+      "file": "node-98a87084c9ac15767fb3.png",
+      "ground": false,
+      "height": 106,
+      "mapId": "forest_edge",
+      "offset": [
+        -48,
+        -58
+      ],
+      "position": [
+        1008.0,
+        496.0
+      ],
+      "rgbaSha256": "79572ce64a3d442dec00ae8dbf4c98624599166e8f3e4958c3f8682e283b8ed7",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "f80e644c2acc0f11803bb20b2f23f0821d47850b6b5cd0c6cb49cb5209ce067a",
+      "width": 99
+    },
+    {
+      "address": "entities/490",
+      "bytes": 346,
+      "fields": {
+        "key": "profession_resource:forest_edge:5",
+        "kind": "trail_herbs",
+        "obj": {
+          "id": "trail:forest_edge:2:17",
+          "kind": "trail_herbs",
+          "pos": [
+            2,
+            17
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-227861f98e4a16834b71.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest_edge",
+      "offset": [
+        -13,
+        -21
+      ],
+      "position": [
+        80.0,
+        560.0
+      ],
+      "rgbaSha256": "4b442c5e027cb005a00a295814435cfc516e44764a8982b8c83e55c7cf9bdb2c",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "d5431c891ab1c9a26e8b151f1360e600148729fad1fc34202b7a1ee0db2c8435",
+      "width": 27
+    },
+    {
+      "address": "entities/491",
+      "bytes": 577,
+      "fields": {
+        "key": "profession_resource:forest_edge:6",
+        "kind": "flower_foxglove",
+        "obj": {
+          "id": "trail:forest_edge:6:12",
+          "kind": "flower_foxglove",
+          "pos": [
+            6,
+            12
+          ],
+          "type": "profession_resource",
+          "wild_category": "flower"
+        }
+      },
+      "file": "node-d860548adb6a11235bab.png",
+      "ground": false,
+      "height": 37,
+      "mapId": "forest_edge",
+      "offset": [
+        -14,
+        -24
+      ],
+      "position": [
+        208.0,
+        400.0
+      ],
+      "rgbaSha256": "d3f7d4c37fa97825214d4a581e6079c160d14cccf71e93e8022a2d3e299cf693",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "14b4effcce5381ca460b31724fa2c1c45343189d1c6a5058dd58cc9055c710bf",
+      "width": 29
+    },
+    {
+      "address": "entities/492",
+      "bytes": 491,
+      "fields": {
+        "key": "profession_resource:forest_edge:7",
+        "kind": "ff_hazelnut",
+        "obj": {
+          "id": "trail:forest_edge:37:9",
+          "kind": "ff_hazelnut",
+          "pos": [
+            34,
+            9
+          ],
+          "species": "hazelnut",
+          "type": "profession_resource",
+          "wild_category": "nut"
+        }
+      },
+      "file": "node-23d4a3045915a67be8f8.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest_edge",
+      "offset": [
+        -16,
+        -21
+      ],
+      "position": [
+        1104.0,
+        304.0
+      ],
+      "rgbaSha256": "be94579058810cd9f845603781ed6b57b76ea3dc961557c5a7f0bb213cf32865",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "8b9757284ed6fd3569b18257e35802f0c81fb0a27f5d9b61d4ee32f5e07ada80",
+      "width": 31
+    },
+    {
+      "address": "entities/493",
+      "bytes": 316,
+      "fields": {
+        "key": "profession_resource:forest_edge:8",
+        "kind": "trail_seeds",
+        "obj": {
+          "id": "trail:forest_edge:36:13",
+          "kind": "trail_seeds",
+          "pos": [
+            36,
+            13
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-d17d97635887a1b5f5b8.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest_edge",
+      "offset": [
+        -14,
+        -21
+      ],
+      "position": [
+        1168.0,
+        432.0
+      ],
+      "rgbaSha256": "fe9ab4c86262efd653115aaec83a1f75c5b3ecf91e1d0ff4edf7648ec0c1f10b",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "180041fadc43d679dc182e53915a00205ace9cb8345a18927d7f7712cfc4f9b0",
+      "width": 30
+    },
+    {
+      "address": "entities/497",
+      "bytes": 543,
+      "fields": {
+        "key": "profession_resource:forest_edge:12",
+        "kind": "ff_blueberry",
+        "obj": {
+          "id": "forestfood:forest_edge:blueberry",
+          "kind": "ff_blueberry",
+          "pos": [
+            12,
+            8
+          ],
+          "species": "blueberry",
+          "type": "profession_resource",
+          "wild_category": "fruit"
+        }
+      },
+      "file": "node-dc06edb7937031ff1108.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest_edge",
+      "offset": [
+        -15,
+        -22
+      ],
+      "position": [
+        400.0,
+        272.0
+      ],
+      "rgbaSha256": "bc1f71bc24253982fb1a7b8177bff4943da378e50c715eb13c6cb53927667a3d",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "5ed8212882b990c0b5ca2ef93578d1d3116213a950fa201dd45853a26912fbca",
+      "width": 31
+    },
+    {
+      "address": "entities/498",
+      "bytes": 594,
+      "fields": {
+        "key": "profession_resource:forest_edge:13",
+        "kind": "ff_raspberry",
+        "obj": {
+          "id": "forestfood:forest_edge:raspberry",
+          "kind": "ff_raspberry",
+          "pos": [
+            24,
+            9
+          ],
+          "species": "raspberry",
+          "type": "profession_resource",
+          "wild_category": "fruit"
+        }
+      },
+      "file": "node-61c7e4c3f0eb8845d610.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "forest_edge",
+      "offset": [
+        -16,
+        -23
+      ],
+      "position": [
+        784.0,
+        304.0
+      ],
+      "rgbaSha256": "8251d731d64c0c15ffd60a6a32c349e5705e3680777590e1b8195a7656e15c1b",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "4f3d2ce34996c0cb9ef11338222b60be26dc9455cebc1739ee2134eb397c259c",
+      "width": 31
+    },
+    {
+      "address": "entities/464",
+      "bytes": 450,
+      "fields": {},
+      "file": "node-5750ee2137506ef3cb2d.png",
+      "ground": false,
+      "height": 40,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -22
+      ],
+      "position": [
+        208.0,
+        496.0
+      ],
+      "rgbaSha256": "0cd82b197d10d2e868c00cd88a49bc359ffced043df9fdcec330eeb165f1b24a",
+      "script": "res://scripts/entities/savepoint.gd",
+      "sha256": "a9f5ce3667bee2665c14bc2fd7334286e0e63ed2e0817dd89a10b1e43e3fc7d1",
+      "width": 36
+    },
+    {
+      "address": "entities/465",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        176.0,
+        624.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/466",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        912.0,
+        624.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/467",
+      "bytes": 264,
+      "fields": {
+        "unique_key": "chest:forest:4"
+      },
+      "file": "node-e3ad993aacf823a162a0.png",
+      "ground": false,
+      "height": 30,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -12
+      ],
+      "position": [
+        272.0,
+        144.0
+      ],
+      "rgbaSha256": "e408293b20ea90222baa1c17687bb8231c0d19100aa0e41bbcb71da1dab2d33d",
+      "script": "res://scripts/entities/chest.gd",
+      "sha256": "94d0ced746fee7ed5fb177908921b914cf13325cbaa01d51a622f8831401bd6e",
+      "width": 32
+    },
+    {
+      "address": "entities/469",
+      "bytes": 264,
+      "fields": {
+        "unique_key": "chest:forest:6"
+      },
+      "file": "node-e3ad993aacf823a162a0.png",
+      "ground": false,
+      "height": 30,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -12
+      ],
+      "position": [
+        1008.0,
+        976.0
+      ],
+      "rgbaSha256": "e408293b20ea90222baa1c17687bb8231c0d19100aa0e41bbcb71da1dab2d33d",
+      "script": "res://scripts/entities/chest.gd",
+      "sha256": "94d0ced746fee7ed5fb177908921b914cf13325cbaa01d51a622f8831401bd6e",
+      "width": 32
+    },
+    {
+      "address": "entities/472",
+      "bytes": 282,
+      "fields": {},
+      "file": "node-58f3afcc1d098fd4cded.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -18
+      ],
+      "position": [
+        1552.0,
+        496.0
+      ],
+      "rgbaSha256": "071f85dd966859176782b7d60d9500899bdb89540aef0b77b27463896dfbcac2",
+      "script": "res://scripts/entities/gate.gd",
+      "sha256": "59a90232e58cb2983ee0837e389e375749496b124a340f950994bacc5accb44f",
+      "width": 68
+    },
+    {
+      "address": "entities/474",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        1520.0,
+        624.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/503",
+      "bytes": 248,
+      "fields": {},
+      "file": "node-4428f96d88799b77cae0.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -18
+      ],
+      "position": [
+        720.0,
+        1072.0
+      ],
+      "rgbaSha256": "3c231d898df890182c0870d5518d875a227d7f2a9203111b1538554048e5a575",
+      "script": "res://scripts/entities/gate.gd",
+      "sha256": "8067551f38b757525c65dfd640d129c9f02ffec9e4e6aadd4f1b47cb156def4f",
+      "width": 36
+    },
+    {
+      "address": "entities/504",
+      "bytes": 264,
+      "fields": {
+        "unique_key": "chest:forest:49"
+      },
+      "file": "node-e3ad993aacf823a162a0.png",
+      "ground": false,
+      "height": 30,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -12
+      ],
+      "position": [
+        720.0,
+        1136.0
+      ],
+      "rgbaSha256": "e408293b20ea90222baa1c17687bb8231c0d19100aa0e41bbcb71da1dab2d33d",
+      "script": "res://scripts/entities/chest.gd",
+      "sha256": "94d0ced746fee7ed5fb177908921b914cf13325cbaa01d51a622f8831401bd6e",
+      "width": 32
+    },
+    {
+      "address": "entities/505",
+      "bytes": 390,
+      "fields": {
+        "key": "boog_target:forest:50",
+        "obj": {
+          "do": [
+            [
+              "boog_progress",
+              "boog_bos_a",
+              "boog_bos_b"
+            ]
+          ],
+          "pos": [
+            27,
+            30
+          ],
+          "sets": "boog_bos_a",
+          "type": "boog_target"
+        }
+      },
+      "file": "node-b0d79619ca7e833a4f43.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -18
+      ],
+      "position": [
+        880.0,
+        976.0
+      ],
+      "rgbaSha256": "f8835ee23a4e001248c435775ff7680731928b60a554dcc0346e5b9682be859a",
+      "script": "res://scripts/entities/target.gd",
+      "sha256": "386cdb71c4e684a8d0cd553331847e3725404de7fe432ac212d6729c42da092d",
+      "width": 36
+    },
+    {
+      "address": "entities/506",
+      "bytes": 390,
+      "fields": {
+        "key": "boog_target:forest:51",
+        "obj": {
+          "do": [
+            [
+              "boog_progress",
+              "boog_bos_a",
+              "boog_bos_b"
+            ]
+          ],
+          "pos": [
+            27,
+            32
+          ],
+          "sets": "boog_bos_b",
+          "type": "boog_target"
+        }
+      },
+      "file": "node-b0d79619ca7e833a4f43.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -18
+      ],
+      "position": [
+        880.0,
+        1040.0
+      ],
+      "rgbaSha256": "f8835ee23a4e001248c435775ff7680731928b60a554dcc0346e5b9682be859a",
+      "script": "res://scripts/entities/target.gd",
+      "sha256": "386cdb71c4e684a8d0cd553331847e3725404de7fe432ac212d6729c42da092d",
+      "width": 36
+    },
+    {
+      "address": "entities/510",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        464.0,
+        528.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/516",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        432.0,
+        112.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/518",
+      "bytes": 464,
+      "fields": {
+        "key": "combat_post:forest:64",
+        "obj": {
+          "entry_direction": [
+            0,
+            -1
+          ],
+          "entry_pos": [
+            12,
+            25
+          ],
+          "entry_size": [
+            2,
+            2
+          ],
+          "kind": "entrance",
+          "pos": [
+            15,
+            26
+          ],
+          "type": "combat_post"
+        }
+      },
+      "file": "node-a223d1b169112776ee8a.png",
+      "ground": false,
+      "height": 66,
+      "mapId": "forest",
+      "offset": [
+        -14,
+        -40
+      ],
+      "position": [
+        496.0,
+        848.0
+      ],
+      "rgbaSha256": "a568480a87633a7785fb3d62dfb25bfb3d6f2d0d986e3907ad90b09a8d828dd5",
+      "script": "res://scripts/entities/combat_post.gd",
+      "sha256": "d63e682c6e5f9653fb8a0e889c821cce88f180c739f2b48d24b8acfbf0859acb",
+      "width": 40
+    },
+    {
+      "address": "entities/519",
+      "bytes": 303,
+      "fields": {},
+      "file": "node-b4e26e170dcc071e266c.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -18,
+        -16
+      ],
+      "position": [
+        336.0,
+        816.0
+      ],
+      "rgbaSha256": "374eeb0d1bec70cd15e53eb8a9ffb90f518bdc23bffc2cebe65e1cef5f668f2e",
+      "script": "res://scripts/entities/sign.gd",
+      "sha256": "9ef9140f5252ef4370f587ecfae8e182346662159cc98effe29251f4a806d4f8",
+      "width": 36
+    },
+    {
+      "address": "entities/520",
+      "bytes": 335,
+      "fields": {
+        "key": "home_station:forest:66",
+        "obj": {
+          "pos": [
+            7,
+            6
+          ],
+          "role": "wild_grape",
+          "type": "home_station"
+        }
+      },
+      "file": "node-b841c8ebd0d32b498bcc.png",
+      "ground": false,
+      "height": 32,
+      "mapId": "forest",
+      "offset": [
+        -31,
+        -25
+      ],
+      "position": [
+        240.0,
+        208.0
+      ],
+      "rgbaSha256": "3fdacb71ee77de0039e820993ada6e52394c58d7af3b33b8567b52268d6e7800",
+      "script": "res://scripts/entities/home_station.gd",
+      "sha256": "f122fc66bac7e226d4b5fd3b2eb097d6034383baba201216b3c7512b60fb3119",
+      "width": 62
+    },
+    {
+      "address": "entities/521",
+      "bytes": 342,
+      "fields": {
+        "key": "profession_resource:forest:67",
+        "kind": "trail_roots",
+        "obj": {
+          "id": "trail:forest:2:9",
+          "kind": "trail_roots",
+          "pos": [
+            2,
+            9
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-6bab727e953c99d82cd6.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -13,
+        -21
+      ],
+      "position": [
+        80.0,
+        304.0
+      ],
+      "rgbaSha256": "46009a2407a6ce1172172fad5c6eb28574f81f127e589564d19c83acd1669739",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "ac50d74175db66ec24004013e4d61a0177122666351d571bf3f5bde9f36c0f39",
+      "width": 27
+    },
+    {
+      "address": "entities/522",
+      "bytes": 598,
+      "fields": {
+        "key": "profession_resource:forest:68",
+        "kind": "ff_blackberry",
+        "obj": {
+          "id": "trail:forest:7:12",
+          "kind": "ff_blackberry",
+          "pos": [
+            8,
+            15
+          ],
+          "species": "blackberry",
+          "type": "profession_resource",
+          "wild_category": "fruit"
+        }
+      },
+      "file": "node-9fc7dea3adb06ecfac22.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -23
+      ],
+      "position": [
+        272.0,
+        496.0
+      ],
+      "rgbaSha256": "55e630c2320a4a5aa238c2e9a3c56e62f19bed081b63cf83965ba5535c5008a2",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "7d9df44b4c701e7682a4e6210317491e6de0e94e05cfce6a5b48217e8f9d5a3f",
+      "width": 31
+    },
+    {
+      "address": "entities/523",
+      "bytes": 346,
+      "fields": {
+        "key": "profession_resource:forest:69",
+        "kind": "trail_herbs",
+        "obj": {
+          "id": "trail:forest:50:19",
+          "kind": "trail_herbs",
+          "pos": [
+            50,
+            19
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-227861f98e4a16834b71.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -13,
+        -21
+      ],
+      "position": [
+        1616.0,
+        624.0
+      ],
+      "rgbaSha256": "4b442c5e027cb005a00a295814435cfc516e44764a8982b8c83e55c7cf9bdb2c",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "d5431c891ab1c9a26e8b151f1360e600148729fad1fc34202b7a1ee0db2c8435",
+      "width": 27
+    },
+    {
+      "address": "entities/524",
+      "bytes": 606,
+      "fields": {
+        "key": "profession_resource:forest:70",
+        "kind": "flower_bluebell",
+        "obj": {
+          "id": "trail:forest:45:16",
+          "kind": "flower_bluebell",
+          "pos": [
+            42,
+            16
+          ],
+          "type": "profession_resource",
+          "wild_category": "flower"
+        }
+      },
+      "file": "node-8c46f7b9ae0ee213661d.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -21
+      ],
+      "position": [
+        1360.0,
+        528.0
+      ],
+      "rgbaSha256": "dae6a1ab3ff5bbb40269d5c28cc5770748ae8fdfc12877e5dfc3052c2f964f41",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "128ae60d98c48279acfe98fa4ec20dc9d6954782c0e8880250aeea912fbe3f40",
+      "width": 33
+    },
+    {
+      "address": "entities/525",
+      "bytes": 568,
+      "fields": {
+        "key": "profession_resource:forest:71",
+        "kind": "ff_walnut",
+        "obj": {
+          "id": "trail:forest:49:35",
+          "kind": "ff_walnut",
+          "pos": [
+            49,
+            35
+          ],
+          "species": "walnut",
+          "type": "profession_resource",
+          "wild_category": "nut"
+        }
+      },
+      "file": "node-c5c14b668a51100bc1e3.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -15,
+        -21
+      ],
+      "position": [
+        1584.0,
+        1136.0
+      ],
+      "rgbaSha256": "3ab9c905538a22d3b2cd0b0eec238e248f6138fdb1da5c405e6ff65486402271",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "3d42fe838f53ad9082f042df006d196dd663f067eb56850073bfbadfb21c61be",
+      "width": 30
+    },
+    {
+      "address": "entities/526",
+      "bytes": 316,
+      "fields": {
+        "key": "profession_resource:forest:72",
+        "kind": "trail_seeds",
+        "obj": {
+          "id": "trail:forest:42:32",
+          "kind": "trail_seeds",
+          "pos": [
+            42,
+            32
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-d17d97635887a1b5f5b8.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -14,
+        -21
+      ],
+      "position": [
+        1360.0,
+        1040.0
+      ],
+      "rgbaSha256": "fe9ab4c86262efd653115aaec83a1f75c5b3ecf91e1d0ff4edf7648ec0c1f10b",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "180041fadc43d679dc182e53915a00205ace9cb8345a18927d7f7712cfc4f9b0",
+      "width": 30
+    },
+    {
+      "address": "entities/527",
+      "bytes": 342,
+      "fields": {
+        "key": "profession_resource:forest:73",
+        "kind": "trail_roots",
+        "obj": {
+          "id": "trail:forest:5:2",
+          "kind": "trail_roots",
+          "pos": [
+            5,
+            2
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-6bab727e953c99d82cd6.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -13,
+        -21
+      ],
+      "position": [
+        176.0,
+        80.0
+      ],
+      "rgbaSha256": "46009a2407a6ce1172172fad5c6eb28574f81f127e589564d19c83acd1669739",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "ac50d74175db66ec24004013e4d61a0177122666351d571bf3f5bde9f36c0f39",
+      "width": 27
+    },
+    {
+      "address": "entities/528",
+      "bytes": 456,
+      "fields": {
+        "key": "profession_resource:forest:74",
+        "kind": "ff_wild_apple",
+        "obj": {
+          "id": "trail:forest:16:3",
+          "kind": "ff_wild_apple",
+          "pos": [
+            21,
+            5
+          ],
+          "species": "wild_apple",
+          "type": "profession_resource",
+          "wild_category": "fruit"
+        }
+      },
+      "file": "node-a6a41e1cf041c999f6ef.png",
+      "ground": false,
+      "height": 36,
+      "mapId": "forest",
+      "offset": [
+        -15,
+        -23
+      ],
+      "position": [
+        688.0,
+        176.0
+      ],
+      "rgbaSha256": "be4fdff0cb4d4c4652a206c5362bc217d63bb3f955e23341c7f794a3341be77b",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "ea4412062f3a1193d827c1c0b04aafd7b53c9019cb3a16f0b89401eb55f08648",
+      "width": 30
+    },
+    {
+      "address": "entities/529",
+      "bytes": 346,
+      "fields": {
+        "key": "profession_resource:forest:75",
+        "kind": "trail_herbs",
+        "obj": {
+          "id": "trail:forest:2:30",
+          "kind": "trail_herbs",
+          "pos": [
+            2,
+            30
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-227861f98e4a16834b71.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -13,
+        -21
+      ],
+      "position": [
+        80.0,
+        976.0
+      ],
+      "rgbaSha256": "4b442c5e027cb005a00a295814435cfc516e44764a8982b8c83e55c7cf9bdb2c",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "d5431c891ab1c9a26e8b151f1360e600148729fad1fc34202b7a1ee0db2c8435",
+      "width": 27
+    },
+    {
+      "address": "entities/530",
+      "bytes": 606,
+      "fields": {
+        "key": "profession_resource:forest:76",
+        "kind": "flower_bluebell",
+        "obj": {
+          "id": "trail:forest:4:34",
+          "kind": "flower_bluebell",
+          "pos": [
+            10,
+            32
+          ],
+          "type": "profession_resource",
+          "wild_category": "flower"
+        }
+      },
+      "file": "node-8c46f7b9ae0ee213661d.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -21
+      ],
+      "position": [
+        336.0,
+        1040.0
+      ],
+      "rgbaSha256": "dae6a1ab3ff5bbb40269d5c28cc5770748ae8fdfc12877e5dfc3052c2f964f41",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "128ae60d98c48279acfe98fa4ec20dc9d6954782c0e8880250aeea912fbe3f40",
+      "width": 33
+    },
+    {
+      "address": "entities/534",
+      "bytes": 701,
+      "fields": {
+        "key": "profession_resource:forest:80",
+        "kind": "ff_chestnut",
+        "obj": {
+          "id": "forestfood:forest:chestnut",
+          "kind": "ff_chestnut",
+          "pos": [
+            15,
+            21
+          ],
+          "species": "chestnut",
+          "type": "profession_resource",
+          "wild_category": "nut"
+        }
+      },
+      "file": "node-e94d8f8a0d62c45050be.png",
+      "ground": false,
+      "height": 34,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -21
+      ],
+      "position": [
+        496.0,
+        688.0
+      ],
+      "rgbaSha256": "41d41da9789328cf45b251c54ba06703fb88d9c0cb272a5bbca14e9cdcf1b250",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "9adc8ac36144a93d4e8917587f00b8ca1d089f020b75d70b62d89ae0d0b2d266",
+      "width": 32
+    },
+    {
+      "address": "entities/535",
+      "bytes": 364,
+      "fields": {
+        "key": "profession_resource:forest:81",
+        "kind": "branches",
+        "obj": {
+          "id": "forest:twigs_entry",
+          "kind": "branches",
+          "pos": [
+            4,
+            15
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-f71dd999cad822da4390.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        144.0,
+        496.0
+      ],
+      "rgbaSha256": "e1d3e2d7756584ecb382bf2987aa43b6b04052c9ebdb4748e2c4208b45692867",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "34fbd6b66fcf9c2ed94a147569d90a2193a496f9bfd6a8d518fa6adca17286b8",
+      "width": 32
+    },
+    {
+      "address": "entities/536",
+      "bytes": 355,
+      "fields": {
+        "key": "profession_resource:forest:82",
+        "kind": "stones",
+        "obj": {
+          "id": "forest:flint_entry",
+          "kind": "stones",
+          "pos": [
+            3,
+            20
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-f7f146fd0550f626c422.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        112.0,
+        656.0
+      ],
+      "rgbaSha256": "a67952bf93f8baf069e9aa8a53e0b8865b7b22264370c98579bc87009738777b",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "64b4742ff1a371ff5671fec39df25bc843bae305bbf439454e47da87e4ec9ffb",
+      "width": 34
+    },
+    {
+      "address": "entities/537",
+      "bytes": 354,
+      "fields": {
+        "key": "profession_resource:forest:83",
+        "kind": "stump",
+        "obj": {
+          "id": "forest:birch_west",
+          "kind": "stump",
+          "pos": [
+            7,
+            21
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-e9239cfd40b6cc4528a3.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        240.0,
+        688.0
+      ],
+      "rgbaSha256": "cf899d0f73dcea23fd8e0e90fedf49104cf4553558767d120c1a90f77ea5c139",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "46a0c9dab6095fee8bad45212b5e7617f3ddba37240ffb55a9835de1f19337ea",
+      "width": 34
+    },
+    {
+      "address": "entities/538",
+      "bytes": 354,
+      "fields": {
+        "key": "profession_resource:forest:84",
+        "kind": "stump",
+        "obj": {
+          "id": "forest:birch_north",
+          "kind": "stump",
+          "pos": [
+            12,
+            12
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-e9239cfd40b6cc4528a3.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        400.0,
+        400.0
+      ],
+      "rgbaSha256": "cf899d0f73dcea23fd8e0e90fedf49104cf4553558767d120c1a90f77ea5c139",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "46a0c9dab6095fee8bad45212b5e7617f3ddba37240ffb55a9835de1f19337ea",
+      "width": 34
+    },
+    {
+      "address": "entities/539",
+      "bytes": 379,
+      "fields": {
+        "key": "profession_resource:forest:85",
+        "kind": "herbs",
+        "obj": {
+          "id": "forest:herbs_west",
+          "kind": "herbs",
+          "pos": [
+            8,
+            20
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-5822e92db5d8a882f86e.png",
+      "ground": false,
+      "height": 37,
+      "mapId": "forest",
+      "offset": [
+        -14,
+        -24
+      ],
+      "position": [
+        272.0,
+        656.0
+      ],
+      "rgbaSha256": "0f36cc9c3d7563dbbfa72beff4eaa7f7d69778a81043ee6dfd01f8f2e457e3b2",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "09ec3b1be88c9d1411bbdabe3612c74ed505afcd157d9330dd8e528d21ddba79",
+      "width": 30
+    },
+    {
+      "address": "entities/540",
+      "bytes": 543,
+      "fields": {
+        "key": "profession_resource:forest:86",
+        "kind": "berries",
+        "obj": {
+          "id": "forest:berries_west",
+          "kind": "berries",
+          "pos": [
+            11,
+            20
+          ],
+          "species": "blueberry",
+          "type": "profession_resource",
+          "wild_category": "fruit"
+        }
+      },
+      "file": "node-dc06edb7937031ff1108.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -15,
+        -22
+      ],
+      "position": [
+        368.0,
+        656.0
+      ],
+      "rgbaSha256": "bc1f71bc24253982fb1a7b8177bff4943da378e50c715eb13c6cb53927667a3d",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "5ed8212882b990c0b5ca2ef93578d1d3116213a950fa201dd45853a26912fbca",
+      "width": 31
+    },
+    {
+      "address": "entities/541",
+      "bytes": 337,
+      "fields": {
+        "key": "profession_resource:forest:87",
+        "kind": "mushrooms",
+        "obj": {
+          "id": "forest:mushrooms_west",
+          "kind": "mushrooms",
+          "pos": [
+            10,
+            27
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-ad93423801d5fa5acc55.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        336.0,
+        880.0
+      ],
+      "rgbaSha256": "fe1d35af384529571d93733a06b4ad0f605372563ec0282cd7c8931f2e1cd580",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "7d291cdcc98f4b344029fd7777b40e8d313b89abe6cd252cb0335802cc0793b2",
+      "width": 32
+    },
+    {
+      "address": "entities/542",
+      "bytes": 413,
+      "fields": {
+        "key": "profession_resource:forest:88",
+        "kind": "copper",
+        "obj": {
+          "id": "forest:copper_west",
+          "kind": "copper",
+          "pos": [
+            5,
+            26
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-07dccfe5bb597301adc0.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        176.0,
+        848.0
+      ],
+      "rgbaSha256": "0faa7656cb0d0463488fb4b9c0865a3ab7037fd7d07c44540189c1ac505d278c",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "5a52721bcdb9e8a599ce102d3d8aeaaea7d3ef523456bfe18a2c9b7fbb89a53b",
+      "width": 34
+    },
+    {
+      "address": "entities/543",
+      "bytes": 413,
+      "fields": {
+        "key": "profession_resource:forest:89",
+        "kind": "copper",
+        "obj": {
+          "id": "forest:copper_east",
+          "kind": "copper",
+          "pos": [
+            30,
+            20
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-07dccfe5bb597301adc0.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        976.0,
+        656.0
+      ],
+      "rgbaSha256": "0faa7656cb0d0463488fb4b9c0865a3ab7037fd7d07c44540189c1ac505d278c",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "5a52721bcdb9e8a599ce102d3d8aeaaea7d3ef523456bfe18a2c9b7fbb89a53b",
+      "width": 34
+    },
+    {
+      "address": "entities/544",
+      "bytes": 354,
+      "fields": {
+        "key": "profession_resource:forest:90",
+        "kind": "stump",
+        "obj": {
+          "id": "forest:birch_east",
+          "kind": "stump",
+          "pos": [
+            32,
+            22
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-e9239cfd40b6cc4528a3.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        1040.0,
+        720.0
+      ],
+      "rgbaSha256": "cf899d0f73dcea23fd8e0e90fedf49104cf4553558767d120c1a90f77ea5c139",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "46a0c9dab6095fee8bad45212b5e7617f3ddba37240ffb55a9835de1f19337ea",
+      "width": 34
+    },
+    {
+      "address": "entities/545",
+      "bytes": 337,
+      "fields": {
+        "key": "profession_resource:forest:91",
+        "kind": "mushrooms",
+        "obj": {
+          "id": "forest:mushrooms_east",
+          "kind": "mushrooms",
+          "pos": [
+            43,
+            23
+          ],
+          "type": "profession_resource"
+        }
+      },
+      "file": "node-ad93423801d5fa5acc55.png",
+      "ground": false,
+      "height": 35,
+      "mapId": "forest",
+      "offset": [
+        -16,
+        -22
+      ],
+      "position": [
+        1392.0,
+        752.0
+      ],
+      "rgbaSha256": "fe1d35af384529571d93733a06b4ad0f605372563ec0282cd7c8931f2e1cd580",
+      "script": "res://scripts/entities/resource_node.gd",
+      "sha256": "7d291cdcc98f4b344029fd7777b40e8d313b89abe6cd252cb0335802cc0793b2",
+      "width": 32
+    },
+    {
+      "address": "entities/546",
+      "bytes": 167,
+      "fields": {
+        "key": "",
+        "kind": "track",
+        "obj": {}
+      },
+      "file": "node-4fdb249afa28865c2bcb.png",
+      "ground": false,
+      "height": 19,
+      "mapId": "forest",
+      "offset": [
+        -13,
+        -12
+      ],
+      "position": [
+        368.0,
+        720.0
+      ],
+      "rgbaSha256": "57a184a012196f8aa16afb40cdc246efe8e3e0a2a24a4a91e9527f83953b5667",
+      "script": "res://scripts/entities/route_object.gd",
+      "sha256": "de4a35ab7c842c7945af8c897e69c16569071ef69236a2bb981be49475ea73b9",
+      "width": 24
+    },
+    {
+      "address": "entities/547",
+      "bytes": 167,
+      "fields": {
+        "key": "",
+        "kind": "track",
+        "obj": {}
+      },
+      "file": "node-4fdb249afa28865c2bcb.png",
+      "ground": false,
+      "height": 19,
+      "mapId": "forest",
+      "offset": [
+        -13,
+        -12
+      ],
+      "position": [
+        272.0,
+        816.0
+      ],
+      "rgbaSha256": "57a184a012196f8aa16afb40cdc246efe8e3e0a2a24a4a91e9527f83953b5667",
+      "script": "res://scripts/entities/route_object.gd",
+      "sha256": "de4a35ab7c842c7945af8c897e69c16569071ef69236a2bb981be49475ea73b9",
+      "width": 24
+    },
+    {
+      "address": "entities/548",
+      "bytes": 167,
+      "fields": {
+        "key": "",
+        "kind": "track",
+        "obj": {}
+      },
+      "file": "node-4fdb249afa28865c2bcb.png",
+      "ground": false,
+      "height": 19,
+      "mapId": "forest",
+      "offset": [
+        -13,
+        -12
+      ],
+      "position": [
+        336.0,
+        912.0
+      ],
+      "rgbaSha256": "57a184a012196f8aa16afb40cdc246efe8e3e0a2a24a4a91e9527f83953b5667",
+      "script": "res://scripts/entities/route_object.gd",
+      "sha256": "de4a35ab7c842c7945af8c897e69c16569071ef69236a2bb981be49475ea73b9",
+      "width": 24
+    }
+  ],
+  "palettes": {
+    "dye": [
+      [
+        0.752941191196442,
+        0.250980406999588,
+        0.250980406999588,
+        1.0
+      ],
+      [
+        0.815686285495758,
+        0.470588237047195,
+        0.18823529779911,
+        1.0
+      ],
+      [
+        0.847058832645416,
+        0.721568644046783,
+        0.227450981736183,
+        1.0
+      ],
+      [
+        0.290196090936661,
+        0.541176497936249,
+        0.290196090936661,
+        1.0
+      ],
+      [
+        0.415686279535294,
+        0.47843137383461,
+        0.227450981736183,
+        1.0
+      ],
+      [
+        0.227450981736183,
+        0.415686279535294,
+        0.7843137383461,
+        1.0
+      ],
+      [
+        0.180392161011696,
+        0.227450981736183,
+        0.39215686917305,
+        1.0
+      ],
+      [
+        0.47843137383461,
+        0.290196090936661,
+        0.541176497936249,
+        1.0
+      ],
+      [
+        0.847058832645416,
+        0.47843137383461,
+        0.603921592235565,
+        1.0
+      ],
+      [
+        0.541176497936249,
+        0.384313732385635,
+        0.219607844948769,
+        1.0
+      ],
+      [
+        0.909803926944733,
+        0.894117653369904,
+        0.854901969432831,
+        1.0
+      ],
+      [
+        0.164705887436867,
+        0.164705887436867,
+        0.196078434586525,
+        1.0
+      ],
+      [
+        0.227450981736183,
+        0.674509823322296,
+        0.627451002597809,
+        1.0
+      ],
+      [
+        0.541176497936249,
+        0.721568644046783,
+        0.227450981736183,
+        1.0
+      ],
+      [
+        0.847058832645416,
+        0.596078455448151,
+        0.164705887436867,
+        1.0
+      ],
+      [
+        0.47843137383461,
+        0.164705887436867,
+        0.227450981736183,
+        1.0
+      ],
+      [
+        0.47843137383461,
+        0.721568644046783,
+        0.909803926944733,
+        1.0
+      ],
+      [
+        0.909803926944733,
+        0.564705908298492,
+        0.47843137383461,
+        1.0
+      ],
+      [
+        0.909803926944733,
+        0.862745106220245,
+        0.752941191196442,
+        1.0
+      ],
+      [
+        0.415686279535294,
+        0.290196090936661,
+        0.164705887436867,
+        1.0
+      ]
+    ],
+    "hair": [
+      [
+        0.117647059261799,
+        0.10196078568697,
+        0.0862745121121407,
+        1.0
+      ],
+      [
+        0.227450981736183,
+        0.141176477074623,
+        0.0784313753247261,
+        1.0
+      ],
+      [
+        0.47843137383461,
+        0.290196090936661,
+        0.141176477074623,
+        1.0
+      ],
+      [
+        0.603921592235565,
+        0.352941185235977,
+        0.180392161011696,
+        1.0
+      ],
+      [
+        0.709803938865662,
+        0.415686279535294,
+        0.18823529779911,
+        1.0
+      ],
+      [
+        0.627451002597809,
+        0.219607844948769,
+        0.156862750649452,
+        1.0
+      ],
+      [
+        0.862745106220245,
+        0.721568644046783,
+        0.415686279535294,
+        1.0
+      ],
+      [
+        0.941176474094391,
+        0.815686285495758,
+        0.501960813999176,
+        1.0
+      ],
+      [
+        0.658823549747467,
+        0.658823549747467,
+        0.682352960109711,
+        1.0
+      ],
+      [
+        0.925490200519562,
+        0.909803926944733,
+        0.878431379795074,
+        1.0
+      ],
+      [
+        0.227450981736183,
+        0.541176497936249,
+        0.7843137383461,
+        1.0
+      ],
+      [
+        0.227450981736183,
+        0.47843137383461,
+        0.290196090936661,
+        1.0
+      ],
+      [
+        0.847058832645416,
+        0.47843137383461,
+        0.690196096897125,
+        1.0
+      ],
+      [
+        0.658823549747467,
+        0.541176497936249,
+        0.847058832645416,
+        1.0
+      ],
+      [
+        0.47843137383461,
+        0.847058832645416,
+        0.690196096897125,
+        1.0
+      ],
+      [
+        0.7843137383461,
+        0.721568644046783,
+        0.603921592235565,
+        1.0
+      ]
+    ]
+  },
+  "scenario": "fresh_baseline",
+  "schemaVersion": 1,
+  "sourceFiles": {
+    "res://scripts/core/character_layers.gd": "0f8782d8e2ac341ca62bd9f965fe86b60d1889c2a0ed176b6f76dffed2aae228",
+    "res://scripts/data/ext/uiterlijk.gd": "2aa17259a8087be72d662d2b2a0c03ed3c74e1bd37012ff3e2763d8c2fe108a3",
+    "res://scripts/entities/arena_prop.gd": "ca558c3d92cc3feaeeac2a6cb13524dae66f131e79475b4d07cbca75ad86fe5a",
+    "res://scripts/entities/building_landmarks.gd": "80dcbccdfcbeed13680cc283107dffc61191b9b9e0c96f32e49b246da5ef514e",
+    "res://scripts/entities/chest.gd": "cac8794b4b05bfb1521194238807aea57f58c8b71939d8a4c73c9d6dde044f26",
+    "res://scripts/entities/combat_post.gd": "08b0639176a0a43eebf845a2b946f3bbca0281f27ce7bca44baaf17f2309ea72",
+    "res://scripts/entities/edge_scenery.gd": "55bef4a1c05ec5e90fa6b7b52e711cf682d5736b0f53f736d8e4fd4c866e8e7a",
+    "res://scripts/entities/fountain.gd": "d4667e10f5e5d45c70e9a8f323793321d7ad2ffee9b9c883df04be0bf665f19d",
+    "res://scripts/entities/gate.gd": "3e3be30d19002ed1abb1329a5b258213d5cabc4dca1fb234b160669400f212f3",
+    "res://scripts/entities/home_station.gd": "78cceb07e9c774e09a162adb08976984499626934ade4af3be7cb3cc06b78c27",
+    "res://scripts/entities/lantern.gd": "2b7a4e8e3d2b455f559ef8fd54138ea66b6ab2aa9f0b55f4aee34de22f869ddf",
+    "res://scripts/entities/opening_device.gd": "6f2a2fc70b74e3e150ba22c8eb880261aeb42f88fbb47242c64e855598b2dc18",
+    "res://scripts/entities/resource_node.gd": "756948e62f998d2c7d630262cc8370b16deb3c19950f7e5413361fbc1a723b99",
+    "res://scripts/entities/route_object.gd": "bdf0ad4a4122f8605784016420e01a37124f8958eda56a521211872de9b020da",
+    "res://scripts/entities/savepoint.gd": "0a12efa035a08c8c2071177847cb8495bde1c94803b9bc7167423df212c2f397",
+    "res://scripts/entities/shooting_range.gd": "a7563c6b61c0e205a9600bdab1cf96847ee16811417832fdb027dbd234a9c83b",
+    "res://scripts/entities/sign.gd": "ba6bbdd7c03fbc3672d92fc36fb1b2e67505fba219e66b426d0a5affde233e1f",
+    "res://scripts/entities/stock_chest.gd": "479eaf89087b02a73f399e9a98c01e70c3d47a4b7040615e8e42afb739edec46",
+    "res://scripts/entities/target.gd": "3955b68204b5582e8bbdb9a3635126dd036e4a8feac8b72fafd831dcd96a30ae",
+    "res://scripts/entities/torch.gd": "396c71575abacdb590de5a03e8f6f7f1968c20e8238af6d5d51c8a3ba8911b7e",
+    "res://scripts/entities/village_actor.gd": "e9c70b1dccae255cd6ac77de13e82c18d70abeefcb08b32bcb6c0c5aeec5cbe0",
+    "res://scripts/entities/yard_scenery.gd": "02221197fd3b59924447927c8a852eaa8a8c6113673cd40b36920f6a7d2383fe"
+  },
+  "tilePixels": 32
+}

@@ -29,12 +29,12 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.5.0-phase9"
-PHASE = 9
+PREVIEW_VERSION = "0.6.0-phase10"
+PHASE = 10
 
 from verify_unity_package import (PackageError, package_player, validate_identity, verify_package,
                                   validate_foundation, FOUNDATION_CHECKS, validate_player, PLAYER_CHECKS,
-                                  validate_persistence, PERSISTENCE_CHECKS)
+                                  validate_persistence, PERSISTENCE_CHECKS, validate_route, ROUTE_CHECKS)
 
 
 class ProbeError(RuntimeError):
@@ -446,6 +446,8 @@ def main() -> None:
             "Required player runtime check is missing")
     require(PERSISTENCE_CHECKS <= {c["name"] for c in checks},
             "Required persistence runtime check is missing")
+    require(ROUTE_CHECKS <= {c["name"] for c in checks},
+            "Required playable route runtime check is missing")
     require(type(result.get("frames")) is int and result["frames"] >= 60, "Runtime loop did not advance")
     require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
             "Unexpected runtime capture method")
@@ -466,7 +468,10 @@ def main() -> None:
                  "screenshot-languages.png", "screenshot-pixels.png", "screenshot-animation.png",
                  "screenshot-premultiplied.png", "screenshot-foundation.png", "screenshot-foundation-cave.png",
                  "screenshot-player.png", "screenshot-player-roll.png", "screenshot-player-ui.png",
-                 "screenshot-player-controls.png", "screenshot-persistence.png"):
+                 "screenshot-player-controls.png", "screenshot-persistence.png",
+                 "screenshot-route-village.png", "screenshot-route-home.png",
+                 "screenshot-route-forest.png", "screenshot-route-ui.png",
+                 "screenshot-route-dialogue.png", "screenshot-route-inventory.png"):
         captures[name] = validate_png(runtime / name)
     foundation = read_json(runtime / "foundation-result.json")
     validate_foundation(foundation, identity)
@@ -474,8 +479,10 @@ def main() -> None:
     validate_player(player_checks, identity)
     persistence = read_json(runtime / "persistence-result.json")
     validate_persistence(persistence, identity)
+    route = read_json(runtime / "route-result.json")
+    validate_route(route, identity)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
-    package, file_count = package_player(player, output, identity, result, foundation, player_checks, persistence)
+    package, file_count = package_player(player, output, identity, result, foundation, player_checks, persistence, route)
     receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
                "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
                "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
@@ -487,6 +494,7 @@ def main() -> None:
                "foundation": foundation,
                "player": player_checks,
                "persistence": persistence,
+               "route": route,
                "unityPackages": report["unityPackages"], "runtimeDllInputs": report["runtimeDllInputs"],
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,

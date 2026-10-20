@@ -1,0 +1,512 @@
+{
+  "art": {
+    "bytes": 83747,
+    "indexPath": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/index.json",
+    "maps": [
+      "forest",
+      "forest_edge",
+      "player_home",
+      "village"
+    ],
+    "nodes": 104,
+    "sha256": "d49cf1b85572eb68d44208341a006a5fd3dee039e7f893eb96396a76fbb89db2",
+    "sourceScripts": 22
+  },
+  "assetGuids": [
+    {
+      "guid": "094ae8b6884b821067ff7e1ecc769121",
+      "path": "unity/Assets/BlueMapRoute"
+    },
+    {
+      "guid": "dc0af9b830869b929a1966693fc47700",
+      "path": "unity/Assets/BlueMapRoute/Runtime"
+    },
+    {
+      "guid": "e8397c3e5df9d20f6cc7252ad927ecc9",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Model"
+    },
+    {
+      "guid": "4b3916d9287530d6a5948a844d088a85",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Model/Resources"
+    },
+    {
+      "guid": "d5c08added34e1b6949e3384ff9ac902",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Model/Resources/BlueMapRouteOracle.json"
+    },
+    {
+      "guid": "f19866da9ee8252e8a94dbc600bac9c4",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Model/RouteGameplay.cs"
+    },
+    {
+      "guid": "74d8fa588241d26e0b3273cdeb20a493",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Model/RouteGameplayChecks.cs"
+    },
+    {
+      "guid": "1a2468323cd2bd8db8611b2b4809dab1",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation"
+    },
+    {
+      "guid": "18077389a05cb9f4ead98839817a4946",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Editor"
+    },
+    {
+      "guid": "ed73c0d05ad903bce89faa594f1cfa32",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Editor/RouteArtImporter.cs"
+    },
+    {
+      "guid": "8789ff97af6ee472c5004f910d3462d5",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources"
+    },
+    {
+      "guid": "b214c31216c48f051723f6d5dd8c8f4b",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt"
+    },
+    {
+      "guid": "16c32fa13a3edb0dd937cc8ede359dca",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/index.json"
+    },
+    {
+      "guid": "055e16e2ddb330cd618ada92c7176996",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-05b995fe8f9e7cd8720b.png"
+    },
+    {
+      "guid": "be5ed520eb6ac67a1ec1e740aaca5af8",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-07dccfe5bb597301adc0.png"
+    },
+    {
+      "guid": "aa6a507b92cbc3089a4f853385d37fe7",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-109bd80d0c023b340e49.png"
+    },
+    {
+      "guid": "a04765693cceafcd4056338c59c15975",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-14ba0dcad2427f05812f.png"
+    },
+    {
+      "guid": "d4ab7ea0573cb4db55a86b26fb799b7e",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-18030320550cc73d70dd.png"
+    },
+    {
+      "guid": "c5eaf903608a445d2a14a12b39fde89d",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-1986da5654b428759f1c.png"
+    },
+    {
+      "guid": "984f8fe95f41ad1cc6dff8999c604ab4",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-211a692037e1106b07d9.png"
+    },
+    {
+      "guid": "77d33e46fb6d0f16c7cd8dd062644b4a",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-223db3c1c3dd5a745469.png"
+    },
+    {
+      "guid": "07e883ecdfbcbeff31282ae772b5b4ab",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-227861f98e4a16834b71.png"
+    },
+    {
+      "guid": "c3f4240f041400744895e5a51bd3e73f",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-23d4a3045915a67be8f8.png"
+    },
+    {
+      "guid": "1ba7ed28a63f60609243bdf062fb8e60",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-2deb493c9b24a57d0d44.png"
+    },
+    {
+      "guid": "efd7c03175b09aa3a2829ae18d0636af",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-4428f96d88799b77cae0.png"
+    },
+    {
+      "guid": "ee458dd6044c94b65465881a91f55b07",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-4fdb249afa28865c2bcb.png"
+    },
+    {
+      "guid": "02d3199baa2167227ed89d5fd1e8ac7e",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-56fae3e10211918dce50.png"
+    },
+    {
+      "guid": "5e81af43a89133a12adfbe05fccbced5",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-5750ee2137506ef3cb2d.png"
+    },
+    {
+      "guid": "f7b0dba4b031edd5a2dba6c8d066adf9",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-5822e92db5d8a882f86e.png"
+    },
+    {
+      "guid": "89b146faf2bf67348c634573e221beca",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-58f3afcc1d098fd4cded.png"
+    },
+    {
+      "guid": "fbd16dee095aee6fd04abd0bb9ce943c",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-61c7e4c3f0eb8845d610.png"
+    },
+    {
+      "guid": "a0402c0e3e84d5647e03a86399a3ea65",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-6bab727e953c99d82cd6.png"
+    },
+    {
+      "guid": "6ea2ba1b1b163249819019892fbfc474",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-71867456346f689fa267.png"
+    },
+    {
+      "guid": "2607feb013e7ec294c2ce31a3bb0c31e",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-73b8e39e58f3de15aa27.png"
+    },
+    {
+      "guid": "bd887e01af6afeef7ae3ea77eb9d1333",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-831ac004286ff2aa02ac.png"
+    },
+    {
+      "guid": "b37645849f8b04cad9812fe8c12eaff1",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-8c46f7b9ae0ee213661d.png"
+    },
+    {
+      "guid": "6a82db021b0a32c3283c93ec0a212199",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-91f7a94f74c915ab9e84.png"
+    },
+    {
+      "guid": "b4baf9e4d59e7060169acd5ed30940dc",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-98a87084c9ac15767fb3.png"
+    },
+    {
+      "guid": "ee254d9a09547405a10c9e86727cad0d",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-9d34816d04d8b41d66f3.png"
+    },
+    {
+      "guid": "14931c0a7b8270d0883fa3d9c9f88354",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-9dc4885171bcc94fa0b1.png"
+    },
+    {
+      "guid": "533a028d0797bd2333020aae9d1c4339",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-9fc7dea3adb06ecfac22.png"
+    },
+    {
+      "guid": "1b16f06facc22ebfa12def593d33657c",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-a223d1b169112776ee8a.png"
+    },
+    {
+      "guid": "341e82c82faef3ce286836e6e0f31777",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-a6a41e1cf041c999f6ef.png"
+    },
+    {
+      "guid": "ebbf59c8e569bb9dd9ef9325d903b778",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-ad93423801d5fa5acc55.png"
+    },
+    {
+      "guid": "15d377828e91d055634b7a74b6a726c5",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-b0d79619ca7e833a4f43.png"
+    },
+    {
+      "guid": "d6aa708c8dc4654aeb93691663cc59b8",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-b2d3c7fc5e57ad48952b.png"
+    },
+    {
+      "guid": "f2396ce715823e24666d6174456cc53a",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-b4e26e170dcc071e266c.png"
+    },
+    {
+      "guid": "a2ca049220742e9cd230b0fdabb92fda",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-b841c8ebd0d32b498bcc.png"
+    },
+    {
+      "guid": "708ea448312a9df348cbfb8b768e990b",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-c3236f9a94a6695e142d.png"
+    },
+    {
+      "guid": "81a60ec6c51d74bc59b5dc14018d25b9",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-c5c14b668a51100bc1e3.png"
+    },
+    {
+      "guid": "d2a5080c4577624018e39420536c100f",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-c82447f3cad477f9dfb0.png"
+    },
+    {
+      "guid": "924dca10ad839ae172f6c64d8895908f",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-cd2bb7a378e1e7122034.png"
+    },
+    {
+      "guid": "f4fa72d9a92eee5aac37107f36153297",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-d17d97635887a1b5f5b8.png"
+    },
+    {
+      "guid": "e70143ca95034f597b8a19a9a650347c",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-d860548adb6a11235bab.png"
+    },
+    {
+      "guid": "ce667ac641433f6904acc241ecdefdf1",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-dc06edb7937031ff1108.png"
+    },
+    {
+      "guid": "ac6a736521ff2d8a11d1f63eca381a12",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-e3ad993aacf823a162a0.png"
+    },
+    {
+      "guid": "038947023df14ee8fc666ed6187bebd3",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-e9239cfd40b6cc4528a3.png"
+    },
+    {
+      "guid": "9af4c155a81ff4b0f49f87f642891704",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-e94d8f8a0d62c45050be.png"
+    },
+    {
+      "guid": "9c41abc91a3332a918cf9954c4541ba2",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-f71dd999cad822da4390.png"
+    },
+    {
+      "guid": "8f8308505f29256cd5421c893e831102",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/Resources/BlueMapRouteArt/node-f7f146fd0550f626c422.png"
+    },
+    {
+      "guid": "eb558683516ed50a2267379a8ef6fa2d",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/RouteAvatarAppearance.cs"
+    },
+    {
+      "guid": "f0700987b5102c4b7e682468c3d458f7",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/RoutePresentationChecks.cs"
+    },
+    {
+      "guid": "90935f2cdc853645c411f611cd4790b4",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Presentation/RouteSourcePresentation.cs"
+    },
+    {
+      "guid": "163dfa62185cb6e774cda94d2d2d50c2",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Session"
+    },
+    {
+      "guid": "b139cdf390d12f0fcb41307635c88393",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Session/RouteProbeRunner.cs"
+    },
+    {
+      "guid": "7e0955e8416b48d9b37730a0e3ae6fcb",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Session/RouteWorldController.cs"
+    },
+    {
+      "guid": "4c1e27d90ec949b2980137961fd61d33",
+      "path": "unity/Assets/BlueMapRoute/Runtime/UI"
+    },
+    {
+      "guid": "c38bf9149c7f4c4bbdffbb326a4aa12d",
+      "path": "unity/Assets/BlueMapRoute/Runtime/UI/RouteHUD.cs"
+    }
+  ],
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "enginesStarted": false,
+  "oracle": {
+    "bytes": 392595,
+    "coverage": {
+      "catalogEntries": {
+        "bonusLimits": 9,
+        "dialogues": 244,
+        "gear": 24,
+        "items": 226,
+        "npcs": 35,
+        "quests": 33,
+        "resources": 95,
+        "skills": 7,
+        "slots": 5
+      },
+      "exactNumericValues": 107,
+      "originalMethods": 9,
+      "scenarios": 26,
+      "wornGearDurationCases": 4
+    },
+    "resourcePath": "unity/Assets/BlueMapRoute/Runtime/Model/Resources/BlueMapRouteOracle.json",
+    "sha256": "fb1e18d6b60da6bc66ce8e01157d7cbe4e512d8326e196066b5f5d9d45ca4211",
+    "sourcePath": "migration/phase-10/route-oracle.json"
+  },
+  "personalSavesUsed": false,
+  "phase": 10,
+  "recorders": [
+    {
+      "path": "tools/migration_route_export.gd",
+      "sha256": "c83b95f151f478f62fedb002887516912b7e073c0480297fe0ed6e54e3dbee46"
+    },
+    {
+      "path": "tools/record_migration_route.py",
+      "sha256": "23069affeea72bf542d2b97ce1ae0e19ccc54e9e187872fd5ca63cb46996b994"
+    },
+    {
+      "path": "tools/migration_route_art.gd",
+      "sha256": "a8b2f9425b8217ff9ca1da10f158ddda153b02d30d7d852c16fc805e07e96eba"
+    },
+    {
+      "path": "tools/record_migration_route_art.py",
+      "sha256": "973e1d9e5efd02c4973f9edc9c164188652eade80b86fcb20c1909ddb29ed6c8"
+    }
+  ],
+  "requiredNativeChecks": [
+    "route_cat_calm_and_panic",
+    "route_chest_atomic_rewards",
+    "route_controller_navigation_verified",
+    "route_dialogue_reward_commits_coherently",
+    "route_dialogue_ui_verified",
+    "route_harvest_cooldowns_and_tools",
+    "route_invalid_transaction_preserves_state",
+    "route_inventory_ui_verified",
+    "route_modal_actions_and_calm_paused",
+    "route_model_checks_ran",
+    "route_no_real_saves_accessed",
+    "route_observer_failure_cannot_duplicate_rewards",
+    "route_original_art_gpu_pixels_exact",
+    "route_original_art_source_nodes",
+    "route_persistence_roundtrip",
+    "route_pickup_unique_claim_and_full_hearts",
+    "route_profiles_are_safe_copies",
+    "route_quest_rewards_idempotent",
+    "route_rest_source_policy",
+    "route_save_failure_preserves_progress",
+    "route_saved_home_layout_and_appearance_verified",
+    "route_source_bram_accept",
+    "route_source_cat_calm_interrupted",
+    "route_source_cat_panic",
+    "route_source_cat_wait_then_find",
+    "route_source_cat_without_quest",
+    "route_source_chest_basic",
+    "route_source_chest_heart",
+    "route_source_chest_owned_unique",
+    "route_source_chest_partial_stack_refused",
+    "route_source_gather_active_cooldown",
+    "route_source_gather_level_required",
+    "route_source_gather_missing_tool",
+    "route_source_gather_strong_tool",
+    "route_source_gather_xp_cap",
+    "route_source_gear_base",
+    "route_source_gear_negative_speed",
+    "route_source_gear_owned_not_worn",
+    "route_source_gear_worn_pack",
+    "route_source_oracle_complete",
+    "route_source_pickup_coin",
+    "route_source_pickup_crystal",
+    "route_source_pickup_heart_full",
+    "route_source_pickup_heart_hurt",
+    "route_source_pickup_item_full",
+    "route_source_pim_accept",
+    "route_source_pim_cancel_unread",
+    "route_source_pim_decline",
+    "route_source_pim_max_hearts",
+    "route_source_pim_reward_level",
+    "route_source_pim_reward_once",
+    "route_source_rest_no_time_skip",
+    "route_transition_state_preserved",
+    "route_unknown_fields_retained",
+    "route_village_home_forest_transitions",
+    "route_world_checks_ran"
+  ],
+  "schema": "bluemap.route.source-contracts.v1",
+  "sourceAnchors": [
+    {
+      "bytes": 13421,
+      "gitBlob": "52c05b53bb2fa675624b00ccb9579e460fd490b6",
+      "path": "project.godot",
+      "sha256": "4381f29aa19a0488ec38349b8d4692c972ed7b6f4d433e9ce184d17214594dfb"
+    },
+    {
+      "bytes": 32096,
+      "gitBlob": "47d621d751586d38a53c370fa7d2a516f3524450",
+      "path": "scripts/core/game_state.gd",
+      "sha256": "86bd03c3052581e8ac4bebc7e8f11e5580be02ead86fd2f0108f01232c85c22c"
+    },
+    {
+      "bytes": 12436,
+      "gitBlob": "403670241fc2f0b90b0fe930a3f9fd698c6d708a",
+      "path": "scripts/core/professions.gd",
+      "sha256": "3d15772b05ec1728ef11915088bd1e0fab5e60692fabe8390a433d092bc1f43a"
+    },
+    {
+      "bytes": 2410,
+      "gitBlob": "70b762b7f22a05a875a26538aa5dcf97df92a6bc",
+      "path": "scripts/core/progression.gd",
+      "sha256": "a4e4ca1487a2ea0426d05a39921410097cbe6ea5bb0a3f3923dfafa8a2de279e"
+    },
+    {
+      "bytes": 3483,
+      "gitBlob": "df5453625db5ccae1bbb6da766544045d4658d69",
+      "path": "scripts/entities/chest.gd",
+      "sha256": "cac8794b4b05bfb1521194238807aea57f58c8b71939d8a4c73c9d6dde044f26"
+    },
+    {
+      "bytes": 1440,
+      "gitBlob": "d78b3f231a5fc82d2c10aa4b8d27889459ae3047",
+      "path": "scripts/entities/route_npc.gd",
+      "sha256": "716368f45990b4f2c689d7318b3eb4fb104c3547f12cd515a10607f48c01c9e7"
+    },
+    {
+      "bytes": 2443,
+      "gitBlob": "a55ed8f2efc2813d6311938a7e8850882aaaa64f",
+      "path": "scripts/core/first_route.gd",
+      "sha256": "72c2c02313a55c34827378a145285f443912b0da689cb755fe56c784854daf1c"
+    },
+    {
+      "bytes": 16188,
+      "gitBlob": "4eea3bb0902c9d983a262cfb9452e2f028a5bfa0",
+      "path": "scripts/data/dialogue.gd",
+      "sha256": "29c6ef72e0d8635ae6c2a4b002ff1d17024de8c1df08c2c8e94e59e9c78de14a"
+    },
+    {
+      "bytes": 3456,
+      "gitBlob": "103d3d1e789ad8b4ad083deeee1b13827805386b",
+      "path": "scripts/data/npcs.gd",
+      "sha256": "6aa43dbababdc3b428e958ce2623e19fed428a06eaf4f4bb68f24e8c5c59313b"
+    },
+    {
+      "bytes": 1820,
+      "gitBlob": "4b3edb6b8adcab4f3353c15b0beb914464439408",
+      "path": "scripts/data/quests.gd",
+      "sha256": "7835307233fb3a9ca1d5ba295b15985eec8c8f824305fc5691ae1ff3b13501af"
+    },
+    {
+      "bytes": 32703,
+      "gitBlob": "e765e802ad917bf54d27419eb5896fd7cfc9ebe8",
+      "path": "scripts/data/ext/beroepen.gd",
+      "sha256": "712b6e0e6102c348f2d6e207903ad219655b22072bf54941eb4e0a9089ba930a"
+    },
+    {
+      "bytes": 4097,
+      "gitBlob": "b1a8ccf3d7a725ab6fad4124a8858b6ac9a332f4",
+      "path": "scripts/data/items.gd",
+      "sha256": "4e5762c372c27e53d34299be8dd9c13605a90aa9c71141d1c13f10a185441fdf"
+    },
+    {
+      "bytes": 5494,
+      "gitBlob": "316fa5c891e2deec0befc59ee9e9aae43ea55114",
+      "path": "scripts/core/equipment.gd",
+      "sha256": "60276ccdb0c1ecbe52eee8a3b45a2b0f9f8e1221bf1cedd3643967a5aad65a7e"
+    },
+    {
+      "bytes": 7779,
+      "gitBlob": "4b5ea495556ba49da21acb909509ddb2f96e903c",
+      "path": "scripts/data/ext/uitrusting.gd",
+      "sha256": "6c3d4809442cda5c3d3ef679c98a49ae832679fd548d12e0d68fc678639c1e05"
+    },
+    {
+      "bytes": 3642,
+      "gitBlob": "0bf545d2108fa012e80b6f83052c24c5b85ff363",
+      "path": "scripts/entities/pickup.gd",
+      "sha256": "12612ceb8f94bd6446980d487a1163e299fe89db01ea1de2b409ca02cec3bd5e"
+    },
+    {
+      "bytes": 6118,
+      "gitBlob": "fd8aa2bec10d0332854aca07e80dc6f00415d4c0",
+      "path": "scripts/maps/village.gd",
+      "sha256": "df5fb7f23a8ca3c2681e6482fbd5ee94c18fed5f49edde021e9c367009d7f795"
+    },
+    {
+      "bytes": 707,
+      "gitBlob": "39a99a168977b510d8512836523503e138b69ac8",
+      "path": "scripts/maps/player_home.gd",
+      "sha256": "12f80aee5d8c40fda34daac7116f67247d891339e35706459129323ff50d015e"
+    },
+    {
+      "bytes": 1949,
+      "gitBlob": "3037fe862c22e373aa7f78bd4e11ed5d4f927b2a",
+      "path": "scripts/maps/forest_edge.gd",
+      "sha256": "7fc2fb50de08ce7a9b324a8bae2da4a758387b0ca0822b0c66f3d0bfcbc69def"
+    },
+    {
+      "bytes": 7926,
+      "gitBlob": "7ba32b288ea96d67cb8e826b7ab24b2074eedbb7",
+      "path": "scripts/maps/forest.gd",
+      "sha256": "3602425f18fe1b35cd3a9c9e3df79759ae392c5978513042cecf89475736ec98"
+    }
+  ],
+  "textEncoding": "UTF-8; CRLF normalized to LF as in committed Git text",
+  "tilePixels": 32
+}

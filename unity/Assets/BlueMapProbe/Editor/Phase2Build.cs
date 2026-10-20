@@ -38,7 +38,7 @@ namespace BlueMapMigration.Editor
             public double durationSeconds;
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
-            public string scope = "Original presentation, foundation, player movement and isolated lossless Godot save/settings import with recoverable Unity profiles; full gameplay follows";
+            public string scope = "First playable village, home, forest edge and forest route with original quest, interactions, loot, resources and recoverable separate save profiles; full combat and other areas follow";
             public PackageInput[] unityPackages;
             public DllInput[] runtimeDllInputs;
             public BuildIdentity identity;

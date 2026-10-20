@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using BlueMapMigration.Foundation;
 using BlueMapMigration.Phase6;
+using BlueMapMigration.Route;
 using UnityEngine;
 
 namespace BlueMapMigration.Player
 {
     // A source-terrain walking preview. Unported object logic is never activated.
+    [DefaultExecutionOrder(-50)]
     public sealed class PlayerWorld : MonoBehaviour
     {
         public PlayerMotorModel Motor { get; } = new PlayerMotorModel();
@@ -21,6 +23,13 @@ namespace BlueMapMigration.Player
         public CircleCollider2D Foot => foot;
         public SpriteRenderer AvatarRenderer => actor;
         public bool Frozen;
+        public bool RouteMode;
+        public InputFrame LastInputFrame => frame;
+        public RouteSourcePresentation RoutePresentation { get; private set; }
+        private bool ownsSession = true;
+        private RouteAvatarAppearance routeAppearance;
+        private RouteGameplay routeBonuses;
+        private UnityEngine.Rendering.SortingGroup routeSort;
         public bool ControllerActive { get; private set; }
         public bool ControlsOpen => controls != null && controls.IsOpen;
         public PlayerInputSource InputSource => input;
@@ -44,11 +53,11 @@ namespace BlueMapMigration.Player
         private SpriteRenderer actor;
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private readonly List<Texture2D> ownedTextures = new List<Texture2D>();
+        private readonly Dictionary<string,GameObject> routeColliderOwners=new Dictionary<string,GameObject>(StringComparer.Ordinal);
         private readonly List<Tuple<SpriteRenderer,Vector2>> crowns = new List<Tuple<SpriteRenderer,Vector2>>();
         private readonly List<Tuple<SpriteRenderer,int,int,int>> waters = new List<Tuple<SpriteRenderer,int,int,int>>();
         private Dictionary<string,CatalogSprite> terrain;
         private string[] tileNames;
-        private string tileName;
         private Vector2 cameraPosition;
         private double clock;
         private bool rollPending, initialized, lastController;
@@ -73,16 +82,38 @@ namespace BlueMapMigration.Player
             Time.fixedDeltaTime = 1f/60f;
             initialized = true; Show("village");
         }
+        public void BindSession(FoundationSession session, bool takeOwnership = false)
+        {
+            if (session == null) throw new ArgumentNullException(nameof(session));
+            if (Session != null && !ReferenceEquals(Session,session))
+            { Session.State.SetUi("preview-hidden",false); Session.State.SetUi("controls-preview",false); if (ownsSession) Session.Dispose(); }
+            Session=session; ownsSession=takeOwnership;frame=null;rollPending=false;Motor.StopForTransition();
+            if(controls.IsOpen)controls.Toggle();input.SetContext(true,false);input.SetFocused(Application.isFocused&&isActiveAndEnabled);
+            routeBonuses=RouteMode?new RouteGameplay(repository,Session.State):null;
+            Session.State.SetUi("preview-hidden",false); Session.State.SetUi("controls-preview",false);
+        }
+        public void PresentCurrent()
+        {
+            if (Session.Current==null) throw new InvalidOperationException("Enter the route session before rendering it.");
+            var position=Session.State.Position;
+            Present(Session.Current,new Vector2((float)position.Items[0].AsDouble(),(float)position.Items[1].AsDouble()));
+        }
         public void Show(string mapId)
         {
             var source = repository.Read(mapId);
             string spawn = source.Arrivals.FirstOrDefault(a=>a.Name=="start")?.Name ?? source.Arrivals[0].Name;
             if (!Session.TryEnter(mapId,spawn)) throw new InvalidOperationException(Session.LastDiagnostic);
-            Snapshot = Session.Current;
+            Present(Session.Current,Session.Current.Arrivals.First(a=>a.Name==spawn).Resolved);
+        }
+        public void Present(FoundationWorldSnapshot snapshot, Vector2 sourcePosition)
+        {
+            Snapshot=snapshot??throw new ArgumentNullException(nameof(snapshot));
+            if (!float.IsFinite(sourcePosition.x)||!float.IsFinite(sourcePosition.y))throw new FormatException("Non-finite route position.");
+            RoutePresentation?.Dispose(); RoutePresentation=null;
             Motor.StopForTransition(); rollPending = false; Aim.DeviceChanged();
             if (terrainRoot != null) { terrainRoot.SetActive(false); Destroy(terrainRoot); }
             terrainRoot = new GameObject("Retained terrain and passive collision geometry"); terrainRoot.transform.SetParent(transform,false);
-            crowns.Clear(); waters.Clear(); SourceTileColliders=0; SourceObjectColliders=0;
+            crowns.Clear(); waters.Clear();routeColliderOwners.Clear(); SourceTileColliders=0; SourceObjectColliders=0;
             foreach (var cell in Snapshot.TerrainCells)
             {
                 CatalogSprite sprite = terrain[cell.AtlasX+":"+cell.AtlasY];
@@ -99,12 +130,20 @@ namespace BlueMapMigration.Player
                 if (waterRow>=0) waters.Add(Tuple.Create(node,cell.X,cell.Y,waterRow));
             }
             AddSourceObjects();
-            Teleport(Snapshot.Arrivals.First(a=>a.Name==spawn).Resolved);
+            if(RouteMode)
+            {
+                RoutePresentation=new RouteSourcePresentation(catalog,Snapshot,Session.State,terrainRoot.transform);
+                if(routeAppearance==null)routeAppearance=new RouteAvatarAppearance(catalog,visual.transform);
+                if(routeSort==null)routeSort=visual.AddComponent<UnityEngine.Rendering.SortingGroup>();
+            }
+            if(routeAppearance!=null)routeAppearance.Visible=RouteMode;
+            if(routeSort!=null)routeSort.enabled=RouteMode;
+            Teleport(sourcePosition);
             Aim.Update(Position,Motor.Facing,Vector2.zero,Vector2.zero,false,false,Vector2.zero,false);
             cameraPosition=PlayerCameraMath.Clamp(Position,Snapshot.Width,Snapshot.Height);
             ConfigureCamera(); UpdateAppearance();
             if (!Frozen) stepAudio.PlayMusic(Snapshot.MapData.TryGet("music",out var music)?music.AsString():"forest");
-            Physics2D.SyncTransforms();
+            SyncRouteFeet();Physics2D.SyncTransforms();
         }
         private SpriteRenderer SpriteNode(Sprite sprite, Vector2 position,int order,Transform parent)
         {
@@ -123,12 +162,19 @@ namespace BlueMapMigration.Player
                 if(!node.TryGet("shape",out var shape) || shape.Require("disabled").AsBool()) continue;
                 var parent=byAddress[node.Require("parent").CanonicalJson];
                 if(!parent.TryGet("collision",out var collision) || parent.Require("script").AsString().EndsWith("/player.gd",StringComparison.Ordinal)) continue;
+                if(RouteMode&&Snapshot.MapId=="player_home")
+                {
+                    string sourceScript=parent.Require("script").AsString();var sourceFields=parent.Require("fields");
+                    if(sourceScript.EndsWith("/house_furniture.gd",StringComparison.Ordinal))continue;
+                    if(sourceScript.EndsWith("/home_station.gd",StringComparison.Ordinal)&&sourceFields.TryGet("obj",out var sourceObject)&&sourceObject.TryGet("role",out var sourceRole)&&new[]{"bed","table","shelf"}.Contains(sourceRole.AsString()))continue;
+                }
                 uint layer=checked((uint)collision.Require("layer").AsInt64()),mask=checked((uint)collision.Require("mask").AsInt64());
                 if(!FoundationCollision.GodotCanPair(2,1,layer,mask))continue;
                 if(shape.Require("oneWay").AsBool())throw new FormatException("Source object has one-way geometry requiring an adapter.");
                 Matrix4x4 matrix=FoundationCoordinates.Transform(node.Require("globalTransform"));
                 var owner=new GameObject("Retained object foot: "+parent.Require("script").AsString()); owner.transform.SetParent(terrainRoot.transform,false);
                 owner.transform.localPosition=matrix.GetColumn(3);
+                if(RouteMode)routeColliderOwners[RouteSourcePresentation.Address(parent)]=owner;
                 Vector3 x=matrix.GetColumn(0),y=matrix.GetColumn(1);
                 owner.transform.localRotation=Quaternion.Euler(0,0,Mathf.Atan2(x.y,x.x)*Mathf.Rad2Deg);
                 owner.transform.localScale=new Vector3(x.magnitude,y.magnitude*Mathf.Sign(x.x*y.y-x.y*y.x),1);
@@ -140,6 +186,7 @@ namespace BlueMapMigration.Player
                 else throw new FormatException("Unsupported source object foot: "+kind);
                 SourceObjectColliders++;
                 string script=parent.Require("script").AsString();
+                if(RouteMode)continue;
                 if(script.EndsWith("/npc.gd",StringComparison.Ordinal))
                 {
                     var fields=parent.Require("fields"); string spriteId="";
@@ -202,6 +249,12 @@ namespace BlueMapMigration.Player
         public string Step(double delta,MotionInput motion)
         {
             Vector2 before=Position; motion.TileName=SurfaceAt(before);
+            if(RouteMode)
+            {
+                if(routeBonuses==null||!ReferenceEquals(routeBonuses.State,Session.State))routeBonuses=new RouteGameplay(repository,Session.State);
+                Motor.Stamina.ConfigureBonuses(routeBonuses.Bonus("stamina_max"),routeBonuses.Bonus("stamina_regen"));Motor.Stamina.ClampCapacity();
+                motion.SpeedMultiplier=PlayerSurface.EquipmentSpeedMultiplier(Session.State.Count("boots")>0,routeBonuses.Bonus("move_speed"));
+            }
             MotionFrame next=Motor.BeginStep(delta,motion); Sweep(next.VelocityPixels*(float)delta);
             string sound=Motor.CompleteStep(next,PlayerMotorModel.SourceLength(Position-before),SurfaceAt(Position));
             if(sound!=""&&stepAudio.PlayEffect("step_"+sound,Motor.Sprinting?-13:-17,UnityEngine.Random.Range(.94f,1.06f)))LastStepEffects++;
@@ -213,11 +266,11 @@ namespace BlueMapMigration.Player
             frame=input.Read();ControllerActive=frame.ControllerActive;
             if(ControllerActive!=lastController){Aim.DeviceChanged();rollPending=false;lastController=ControllerActive;}
             bool panelHandled=controls.IsOpen;
-            if(!controls.BlocksShortcuts&&(UnityEngine.Input.GetKeyDown(KeyCode.F9)||frame.Pressed("menu")))controls.Toggle();
+            if(!controls.BlocksShortcuts&&(UnityEngine.Input.GetKeyDown(KeyCode.F9)||(!RouteMode&&frame.Pressed("menu"))))controls.Toggle();
             controls.Handle(frame);
             panelHandled|=controls.IsOpen;
             Session.State.SetUi("controls-preview",controls.IsOpen);
-            if(!panelHandled&&frame.Pressed("pause"))Session.State.SetUi("player-preview",!Session.State.Paused);
+            if(!RouteMode&&!panelHandled&&frame.Pressed("pause"))Session.State.SetUi("player-preview",!Session.State.Paused);
             input.SetContext(true,Session.State.InputLocked);
             if(!panelHandled&&!Session.State.InputLocked&&frame.RollPressed)rollPending=true;
             Session.Clock.Tick(Time.unscaledDeltaTime);
@@ -229,6 +282,7 @@ namespace BlueMapMigration.Player
                 Motor.AimDirection=Aim.Direction;
             }
             UpdateAppearance();
+            RoutePresentation?.Tick(clock,Session.State);SyncRouteFeet();
         }
         private void FixedUpdate()
         {
@@ -259,7 +313,8 @@ namespace BlueMapMigration.Player
             Vector2 facing=Motor.Facing;
             DirectionRow=Mathf.Abs(facing.y)>Mathf.Abs(facing.x)?(facing.y>0?"down":"up"):(facing.x>0?"right":"left");
             string column=Motor.IsRolling?"step1":Motor.Moving?(((int)(Motor.WalkTime*9)%2)==0?"step1":"step2"):"idle";
-            catalog.Apply(actor,catalog.GetSprite("generated:hair:m_kort:"+DirectionRow+":"+column));
+            catalog.Apply(actor,catalog.GetSprite((RouteMode?"player:":"generated:hair:m_kort:")+DirectionRow+":"+column));
+            if(routeAppearance!=null){routeAppearance.Visible=RouteMode; if(RouteMode)routeAppearance.Update(Session.State,DirectionRow,column,0,Motor.IsRollSafe?.8f:1);}
             float bob=Motor.Moving?Mathf.Sin((float)Motor.WalkTime*18)*(Motor.Sprinting?1.6f:.6f):Mathf.Sin((float)clock*2.4f)*.55f;
             if(Motor.IsRolling)
             {
@@ -269,7 +324,8 @@ namespace BlueMapMigration.Player
                 visual.transform.localPosition=new Vector3(pivot.x,pivot.y-4f/32,0);
             }
             else { visual.transform.localRotation=Quaternion.identity;visual.transform.localPosition=new Vector3(0,-bob/32,0); }
-            actor.color=new Color(1,1,1,Motor.IsRollSafe?.8f:1);actor.sortingOrder=Mathf.RoundToInt(Position.y)+1;
+            actor.color=new Color(1,1,1,Motor.IsRollSafe?.8f:1);actor.sortingOrder=RouteMode?0:Mathf.RoundToInt(Position.y)+1;
+            if(routeSort!=null){routeSort.enabled=RouteMode;routeSort.sortingOrder=Mathf.RoundToInt(Position.y)+1;}
         }
         private void OnGUI()
         {
@@ -282,6 +338,7 @@ namespace BlueMapMigration.Player
                 GUI.color=new Color(.075f,.12f,.13f,1);GUI.DrawTexture(new Rect(196,80,760,480),Texture2D.whiteTexture);
                 GUI.color=Color.white;controls.Draw(new Rect(196,80,760,480));GUI.matrix=old;return;
             }
+            if(RouteMode){GUI.matrix=old;return;}
             var label=new GUIStyle(GUI.skin.label){fontSize=15,normal={textColor=new Color(.91f,.94f,.86f)}};
             GUI.Box(new Rect(16,14,510,80),"");GUI.Label(new Rect(28,22,480,24),"BlueMap Quest  /  Unity: loopproef",label);
             GUI.Label(new Rect(28,45,480,24),"Oorspronkelijk terrein • "+Snapshot.MapId+" • objectfuncties volgen",label);
@@ -313,12 +370,21 @@ namespace BlueMapMigration.Player
             controls.Draw(new Rect(196,80,760,480));
             GUI.matrix=old;
         }
+        public void PlayRouteEffect(string id) { stepAudio.PlayEffect(id,-8); }
+        private void SyncRouteFeet()
+        {
+            if(!RouteMode||RoutePresentation==null)return;
+            foreach(var pair in routeColliderOwners)if(pair.Value!=null&&RoutePresentation.Objects.TryGetValue(pair.Key,out var sourceVisual))pair.Value.SetActive(sourceVisual.activeSelf);
+        }
+        public void RefreshRouteState() { RoutePresentation?.Tick(clock,Session.State);SyncRouteFeet(); }
+        public void SetRouteObjectPosition(string sourceAddress,Vector2 sourcePosition) { RoutePresentation?.SetPosition(sourceAddress,sourcePosition); }
+        public void SetRouteObjectVisible(string sourceAddress,bool visible) { RoutePresentation?.SetVisible(sourceAddress,visible);SyncRouteFeet(); }
         private void OnApplicationFocus(bool focused) { if(input!=null){input.SetFocused(focused&&isActiveAndEnabled);rollPending=false;} }
         private void OnDisable() { if(initialized){Session.State.SetUi("preview-hidden",true);Motor.StopForTransition();input.SetFocused(false);} }
         private void OnEnable() { if(initialized){Session.State.SetUi("preview-hidden",false);input.SetFocused(Application.isFocused);ConfigureCamera();} }
         private void OnDestroy()
         {
-            input?.Dispose();Session?.Dispose();
+            input?.Dispose();if(ownsSession)Session?.Dispose();RoutePresentation?.Dispose();routeAppearance?.Dispose();
             foreach(var sprite in ownedSprites)Destroy(sprite);foreach(var texture in ownedTextures)Destroy(texture);
         }
     }

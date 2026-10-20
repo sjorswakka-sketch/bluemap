@@ -19,6 +19,8 @@ namespace BlueMapMigration.Persistence
         Vector2 profileScroll;
         public event Action WalkRequested;
         public event Action ControlsRequested;
+        public event Action NewAdventureRequested;
+        public event Action ContinueAdventureRequested;
         public bool EditingSourceDirectory => visible && editingSourceDirectory;
         public bool Visible
         {
@@ -46,7 +48,7 @@ namespace BlueMapMigration.Persistence
             if (keyboard != null && keyboard.tabKey.wasPressedThisFrame) vertical = keyboard.shiftKey.isPressed ? -1 : 1;
             if (vertical != 0 && Time.unscaledTime >= nextNavigation)
             {
-                focus = Mathf.Clamp(focus + vertical, 0, 13); GUI.FocusControl(""); nextNavigation = Time.unscaledTime + .18f;
+                focus = Mathf.Clamp(focus + vertical, 0, 15); GUI.FocusControl(""); nextNavigation = Time.unscaledTime + .18f;
             }
             if (pad != null && focus == 3 && coordinator.Profiles.Count > 0)
             {
@@ -78,6 +80,8 @@ namespace BlueMapMigration.Persistence
                 case 8: ChangeVolume(true, -.1); break; case 9: ChangeVolume(true, .1); break;
                 case 10: ChangeVolume(false, -.1); break; case 11: ChangeVolume(false, .1); break;
                 case 12: WalkRequested?.Invoke(); break;
+                case 14: NewAdventureRequested?.Invoke();break;
+                case 15: if(coordinator.HasProfile)ContinueAdventureRequested?.Invoke();break;
                 case 13: ControlsRequested?.Invoke(); break;
             }
         }
@@ -110,7 +114,7 @@ namespace BlueMapMigration.Persistence
             var small = new GUIStyle(label) { fontSize = 12 };
             float x = bounds.x + 22, y = bounds.y + 16, width = bounds.width - 44;
             GUI.Label(new Rect(x, y, width, 30), T("Je avontuur veilig meenemen", "Bring your adventure safely"), title);
-            GUI.Label(new Rect(x, y + 35, width, 40), T("Importeer een kopie van je Godot-opslag naar een apart Unity-profiel. Je oorspronkelijke spelbestanden blijven behouden.", "Import a copy of your Godot save into a separate Unity profile. Your original game files remain preserved."), label);
+            GUI.Label(new Rect(x, y + 35, width, 40), T("Importeer een kopie van je Godot-opslag naar een apart Unity-profiel. Je kunt ook direct een nieuw avontuur starten. Je oorspronkelijke spelbestanden blijven behouden.", "Import a copy of your Godot save into a separate Unity profile. You can also start a new adventure directly. Your original game files remain preserved."), label);
             float leftWidth = Mathf.Floor(width * .55f), gap = 26, rightX = x + leftWidth + gap, rightWidth = width - leftWidth - gap;
             float top = y + 86;
             GUI.Label(new Rect(x, top, leftWidth, 25), T("1. Kies de map met je oorspronkelijke opslag", "1. Choose the folder containing your original save"), label);
@@ -124,7 +128,7 @@ namespace BlueMapMigration.Persistence
             GUI.Label(new Rect(x, top + 159, leftWidth, 25), T("2. Bestaande Unity-profielen", "2. Existing Unity profiles"), label);
             var profiles = coordinator.Profiles; selectedProfile = Mathf.Clamp(selectedProfile, 0, Mathf.Max(0, profiles.Count - 1));
             var list = new Rect(x, top + 189, leftWidth, 114); GUI.Box(list, "");
-            if (profiles.Count == 0) GUI.Label(new Rect(list.x + 10, list.y + 10, list.width - 20, 40), T("Nog geen profiel. Importeer eerst een kopie.", "No profile yet. Import a copy first."), small);
+            if (profiles.Count == 0) GUI.Label(new Rect(list.x + 10, list.y + 10, list.width - 20, 40), T("Nog geen profiel. Start hieronder een nieuw avontuur, of importeer een kopie.", "No profile yet. Start a new adventure below, or import a copy."), small);
             else
             {
                 profileScroll = GUI.BeginScrollView(list, profileScroll, new Rect(0, 0, list.width - 24, profiles.Count * 28));
@@ -153,6 +157,8 @@ namespace BlueMapMigration.Persistence
             float statusY = top + 367;
             GUI.Box(new Rect(x, statusY, width, 63), "");
             GUI.Label(new Rect(x + 10, statusY + 8, width - 20, 49), coordinator.Status ?? T("Kies een opslagmap of een bestaand profiel.", "Choose a save folder or an existing profile."), small);
+            Button(14,new Rect(x,statusY+71,width*.5f-6,28),T("Nieuw avontuur","New adventure"));
+            Button(15,new Rect(x+width*.5f+6,statusY+71,width*.5f-6,28),coordinator.IsRouteProfile?T("Verder spelen","Continue adventure"):T("Speel een veilige kopie","Play a safe copy"),coordinator.HasProfile);
             GUI.Label(new Rect(x, bounds.yMax - 39, width, 27), input.ControllerActive ? T("D-pad / linkerstick: kiezen  ·  A: gebruiken  ·  links/rechts bij profielen: profiel kiezen  ·  rechterstick: lijst schuiven", "D-pad / left stick: select  ·  A: use  ·  left/right in profiles: choose profile  ·  right stick: scroll list") : T("Muis: kiezen  ·  Tab / pijlen: navigeren  ·  Enter: gebruiken  ·  F9: opgeslagen bediening", "Mouse: select  ·  Tab / arrows: navigate  ·  Enter: use  ·  F9: saved controls"), small);
         }
     }

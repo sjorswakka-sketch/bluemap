@@ -108,6 +108,22 @@ namespace BlueMapMigration.Foundation
             if (value) entries.Add(new KeyValuePair<FoundationValue, FoundationValue>(Text(flag), FoundationJson.Parse("true")));
             Set("flags", FoundationValue.Dictionary(entries));
         }
+        /// <summary>Publish one coherent gameplay transaction, including flags and all rewards, before any listener runs.</summary>
+        public void CommitFields(IDictionary<string, FoundationValue> updates)
+        {
+            if (updates == null) throw new ArgumentNullException(nameof(updates));
+            var prepared = new List<KeyValuePair<string, FoundationValue>>();
+            foreach (var update in updates)
+            {
+                if (String.IsNullOrEmpty(update.Key) || update.Value == null) throw new ArgumentException("A gameplay transaction requires named nonnull values.", nameof(updates));
+                prepared.Add(update);
+            }
+            foreach (var update in prepared) fields[update.Key] = update.Value;
+            var failures = new List<Exception>();
+            foreach (var update in prepared)
+                try { Events.Publish(new FoundationStateChanged(update.Key)); } catch (Exception error) { failures.Add(error); }
+            if (failures.Count != 0) throw new FoundationLocationCommittedException(failures);
+        }
         /// <summary>Commit validated area data together before any synchronous listener can observe it.</summary>
         public void CommitLocation(string mapId, string spawn, FoundationValue position)
         {

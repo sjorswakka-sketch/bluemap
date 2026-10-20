@@ -1,0 +1,32 @@
+# Eerste speelbare Unity-route
+
+Fase 10 sluit de bestaande basis aan op één doorlopende route: **dorp → woning → bosrand → bos**, inclusief de terugweg; de volledige game is nog niet overgezet.
+
+De oorspronkelijke opdracht van Pim en Muis vormt de eerste speellus: praten, de opdracht aannemen, Muis benaderen, rustig haar vertrouwen winnen, terugkeren en de oorspronkelijke beloning ontvangen. Daarnaast worden verzamelen met gereedschapseisen en afkoeltijden, voorwerpen, kisten, inventaris, opdrachten, thuis rusten, bewaren en opnieuw laden aangesloten.
+
+De route gebruikt dezelfde kaartmaten, paden, doorgangen, gebouwen en objectplaatsingen. Oorspronkelijke tekenfuncties zijn in twee afzonderlijke Godot-uitvoeringen vastgelegd: **104 objecten, 47 gedeelde texturen en vier kaarten**. Terreintegels, personages en interacties blijven afzonderlijke Unity-objecten. Opgeslagen meubels, haar, ogen, kleding en uitrustingslagen bouwen voort op de bestaande grafische catalogi. De wereld krijgt geen extra gebouwen of willekeurig toegevoegde versiering.
+
+## Voortgang en bediening
+
+**Nieuw avontuur** maakt een eigen Unity-profiel; spelen met een geïmporteerd profiel maakt eerst een afzonderlijke speelkopie. Het importprofiel, de oorspronkelijke Godot-bestanden en eerdere bewaarkopieën blijven behouden. De afzonderlijke technische loopproef blijft gescheiden van de opgeslagen speelroute.
+
+| Bediening | Toetsenbord | Controller |
+|---|---|---|
+| Bewegen / richten | WASD of pijlen / muis | Linkerstick / rechterstick |
+| Rennen / rollen | Ctrl / Shift of K | L3 / B |
+| Gebruiken en praten | E of Enter | A |
+| Inventaris / opdrachten | I of Tab / Q | Select / LB |
+| Pauzemenu | Esc of P | Start |
+| Bewaren / bediening | F5 / F9 | Via het pauzemenu |
+
+De proef start bij **Avontuur en opslag**. Het pauzemenu biedt bewaren, opnieuw laden en terugkeren naar profielen. Gebiedsovergangen werken tijdens het spelen via de bestaande doorgangen.
+
+## Controle en grenzen
+
+De oorspronkelijke Godot-methoden zijn tweemaal uitgevoerd onder gecontroleerde tijdelijke UUID-testopslag. De referentie bevat **26 spelscenario's en vier uitrustings-/verzameltijdgevallen**, met exacte binaire getallen naast de leesbare JSON-waarden. Daaronder vallen dialoogkeuzes, questbeloningen, Muis' rust en schrik, gereedschappen, afkoeltijden, gedeeltelijk volle stapels, unieke kistinhoud, pickups en rusten zonder tijdsprong. Zie [de spelregels en bronvergelijking](ROUTE.md) en [het broncontract](source-contracts.json).
+
+De beelduitvoer wordt gecontroleerd op oorspronkelijke scripts, kaartadressen, plaatsingen, PNG- en RGBA-hashes. De Unity-controles moeten daarnaast de native uitvoering, echte controllergebeurtenissen, veilige speelkopieën, herstel, bewaren, laden, interacties en oorspronkelijke pixels bevestigen.
+
+**Native Windows-verificatie en definitieve publicatie zijn nog in uitvoering.** Deze documentversie noemt de fase pas afgerond nadat de echte geïdentificeerde Windows-build alle controles heeft doorstaan en het gecontroleerde pakket is gepubliceerd.
+
+Deze fase bewijst de eerste route als geheel. De overige gebieden volgen in fase 11; volledige gevechten, thuisopslag, alle opdrachten, beroepen, landbouw, productie, uitgebreide bewonersroutines en sfeer komen in hun eigen vervolgfases. Hun oorspronkelijke spelgegevens en Godot-bron blijven beschikbaar. Testen, screenshots en publicatie gebruiken uitsluitend zelfgemaakte profielen; persoonlijke bestanden zijn niet geopend. Een fysieke controller is nog niet met de hand getest.

@@ -45,6 +45,10 @@ jobs:
         run: python tools/build_migration_player.py --check --report "$RUNNER_TEMP/player-data.json"
       - name: Veilige opslag, oorspronkelijke saves en instellingen controleren
         run: python tools/build_migration_persistence.py --check --report "$RUNNER_TEMP/persistence-data.json"
+      - name: Eerste speelroute, oorspronkelijke spelregels en tekeningen controleren
+        run: |
+          python tools/build_migration_route.py --check --report "$RUNNER_TEMP/route-data.json"
+          python tools/record_migration_route_art.py --verify-reference
       - name: Referentie, releasegegevens en teksten controleren
         run: |
           python tools/freeze_godot_reference.py --check
@@ -60,8 +64,10 @@ jobs:
             ${{ runner.temp }}/foundation-data.json
             ${{ runner.temp }}/player-data.json
             ${{ runner.temp }}/persistence-data.json
+            ${{ runner.temp }}/route-data.json
             migration/phase-08/source-contracts.json
             migration/phase-09/source-contracts.json
+            migration/phase-10/source-contracts.json
             migration/presentation/graphics.json
             migration/presentation/audio.json
             migration/presentation/localization.json
@@ -170,6 +176,8 @@ jobs:
         run: python tools/record_migration_saves.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/save-evidence"
       - name: Oorspronkelijke instellingen tweemaal herhalen met uitsluitend eigen testbestanden
         run: python tools/record_migration_settings.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/settings-evidence"
+      - name: Oorspronkelijke gesprekken, kat, beloningen en grondstoffen tweemaal herhalen
+        run: python tools/record_migration_route.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/route-evidence"
       - name: Gerichte wereldgevolgen en uiteindelijke IDs controleren
         run: |
           python tools/check_world_witnesses.py --directory migration/world --output "$RUNNER_TEMP/world-witnesses.json"
@@ -208,5 +216,9 @@ jobs:
             migration/phase-09/source-contracts.json
             migration/phase-09/save-oracle.json
             migration/phase-09/settings-oracle.json
+            ${{ runner.temp }}/route-evidence/receipt.json
+            ${{ runner.temp }}/route-evidence/route-oracle.json
+            migration/phase-10/source-contracts.json
+            migration/phase-10/route-oracle.json
           if-no-files-found: error
           retention-days: 30

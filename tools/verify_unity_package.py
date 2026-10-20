@@ -25,7 +25,7 @@ EDITOR_VERSION = "6000.3.26f1"
 EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
-                    8: "0.4.0-phase8", 9: "0.5.0-phase9"}
+                    8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -131,6 +131,33 @@ PERSISTENCE_DETAIL_CHECKS = {
     "persistence_settings_rebind_restore_notifications", "persistence_settings_import_cannot_remove_fixed_menu_controls",
 }
 PERSISTENCE_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+ROUTE_CHECKS = {"route_runtime_verified"}
+ROUTE_DETAIL_CHECKS = {
+    "route_model_checks_ran", "route_source_oracle_complete", "route_world_checks_ran",
+    "route_village_home_forest_transitions", "route_transition_state_preserved",
+    "route_inventory_ui_verified", "route_dialogue_ui_verified", "route_persistence_roundtrip",
+    "route_no_real_saves_accessed",
+    "route_quest_rewards_idempotent", "route_cat_calm_and_panic",
+    "route_harvest_cooldowns_and_tools", "route_chest_atomic_rewards",
+    "route_unknown_fields_retained", "route_rest_source_policy",
+    "route_profiles_are_safe_copies", "route_save_failure_preserves_progress",
+    "route_controller_navigation_verified",
+    "route_dialogue_reward_commits_coherently", "route_modal_actions_and_calm_paused",
+    "route_invalid_transaction_preserves_state", "route_observer_failure_cannot_duplicate_rewards",
+    "route_pickup_unique_claim_and_full_hearts",
+    "route_source_gear_base", "route_source_gear_worn_pack", "route_source_gear_owned_not_worn",
+    "route_source_gear_negative_speed",
+    "route_original_art_source_nodes", "route_original_art_gpu_pixels_exact",
+    "route_saved_home_layout_and_appearance_verified",
+} | {"route_source_" + name for name in (
+    "pim_accept", "pim_decline", "pim_cancel_unread", "bram_accept", "cat_wait_then_find",
+    "cat_without_quest", "cat_panic", "cat_calm_interrupted", "pim_reward_once", "pim_reward_level",
+    "pim_max_hearts", "chest_basic", "chest_owned_unique", "chest_partial_stack_refused", "chest_heart",
+    "gather_active_cooldown", "gather_missing_tool", "gather_strong_tool", "gather_level_required",
+    "gather_xp_cap", "rest_no_time_skip", "pickup_coin", "pickup_heart_full", "pickup_heart_hurt",
+    "pickup_crystal", "pickup_item_full",
+)}
+ROUTE_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -152,7 +179,7 @@ PLAYER_ROOTS = {
     "MonoBleedingEdge", "BlueMapUnityProbe_Data", "D3D12",
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
-                  "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -304,6 +331,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 9:
         require(PERSISTENCE_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 9 persistence runtime proof is incomplete")
+    if identity["phase"] >= 10:
+        require(ROUTE_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 10 route runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -380,6 +410,29 @@ def validate_persistence(result: dict, identity: dict) -> None:
             "Required persistence save/settings/store checks are missing")
 
 
+def validate_route(result: dict, identity: dict) -> None:
+    """Require a playable route witness from the exact isolated native build."""
+    require(isinstance(result, dict) and set(result) == ROUTE_FIELDS,
+            "Phase 10 route proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported route proof schema")
+    require(result.get("identity") == identity, "Route embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Route proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Route detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed route detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid route detail check name")
+        require(name not in names and check["passed"] is True,
+                "Route detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(ROUTE_DETAIL_CHECKS <= names, "Required playable route checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -430,6 +483,7 @@ def _instructions(identity: dict) -> bytes:
         7: "Migratiefase 7: technische spelbasis en originele presentatie; nog niet de overgezette game.\n",
         8: "Migratiefase 8: speler, camera en bediening; nog niet de volledige overgezette game.\n",
         9: "Migratiefase 9: veilige opslag en import van saves en instellingen; nog niet de volledige overgezette game.\n",
+        10: "Migratiefase 10: eerste speelbare route tussen dorp, woning en bos; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -460,6 +514,24 @@ def _instructions(identity: dict) -> bytes:
         controls += ("Pagina 9: zelf importpad kiezen, een kopie importeren, een Unity-profiel openen,\n"
                      "de vorige revisie herstellen en taal/geluid instellen.\n"
                      "De loopproef overschrijft nooit het geïmporteerde avontuur.\n")
+    if identity["phase"] >= 10:
+        controls = (
+            "De proef start bij Avontuur en opslag (pagina 9).\n"
+            "Start een nieuw avontuur, hervat een Unity-speelprofiel of maak een veilige speelkopie.\n"
+            "De route verbindt dorp, woning, bosrand en bos via de oorspronkelijke doorgangen.\n"
+            "WASD / pijlen: lopen; Ctrl vasthouden: rennen; Shift / K: rollen; muis: richten.\n"
+            "Controller: linkerstick lopen; L3 vasthouden rennen; B rollen; rechterstick richten.\n"
+            "E / Enter / controller A: gebruiken en praten.\n"
+            "I / Tab / Select: inventaris; Q / LB: opdrachten; F9: bediening aanpassen.\n"
+            "Esc / P / Start: pauzemenu met bewaren, laden en terug naar profielen; F5: snel bewaren.\n"
+            "Doorgangen werken tijdens het spelen zonder gebiedskeuzetoetsen.\n"
+            "1-6: oorspronkelijke presentatie; 7: spelbasis; 8: loopproef; 9: profielen (buiten een avontuur).\n"
+            "De afzonderlijke loopproef bewaart geen spelvoortgang.\n"
+            "Bronbestanden worden uitsluitend gelezen nadat je ze zelf kiest.\n"
+            "Het oorspronkelijke importprofiel blijft bewaard naast de afzonderlijke speelkopie.\n"
+            "De automatische controle gebruikt alleen eigen testbestanden.\n"
+            "De Unity-proef bewaart gegevens apart van de bestaande Godot-game.\n"
+        )
     return (
         "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
         description[identity["phase"]] +
@@ -476,6 +548,7 @@ def _instructions(identity: dict) -> bytes:
         + ("FOUNDATION-CHECKS.json bevat de controles van de technische spelbasis.\n" if identity["phase"] >= 7 else "") +
         ("PLAYER-CHECKS.json bevat de controles van speler, camera en bediening.\n" if identity["phase"] >= 8 else "") +
         ("PERSISTENCE-CHECKS.json bevat de controles met eigen opslag- en importtestbestanden.\n" if identity["phase"] >= 9 else "") +
+        ("ROUTE-CHECKS.json bevat de controles van de eerste speelbare route.\n" if identity["phase"] >= 10 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
@@ -483,7 +556,8 @@ def _instructions(identity: dict) -> bytes:
 def package_player(player: Path, output: Path, identity: dict,
                    runtime_result: dict, foundation_result: dict | None = None,
                    player_result: dict | None = None,
-                   persistence_result: dict | None = None) -> tuple[Path, int]:
+                   persistence_result: dict | None = None,
+                   route_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -499,6 +573,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_persistence(persistence_result, identity)
     else:
         require(persistence_result is None, "Historical preview cannot contain phase 9 persistence proof")
+    if identity["phase"] >= 10:
+        validate_route(route_result, identity)
+    else:
+        require(route_result is None, "Historical preview cannot contain phase 10 route proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -516,6 +594,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["PLAYER-CHECKS.json"] = _json_bytes(player_result)
     if persistence_result is not None:
         payload["PERSISTENCE-CHECKS.json"] = _json_bytes(persistence_result)
+    if route_result is not None:
+        payload["ROUTE-CHECKS.json"] = _json_bytes(route_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -661,6 +741,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("PERSISTENCE-CHECKS.json" not in payload and "persistence" not in receipt,
                 "Historical preview contains unsupported persistence proof")
+    if identity["phase"] >= 10:
+        require("ROUTE-CHECKS.json" in payload, "Phase 10 packaged route proof is missing")
+        route = _json(payload["ROUTE-CHECKS.json"], "ROUTE-CHECKS.json")
+        validate_route(route, identity)
+        require(receipt.get("route") == route, "Receipt route proof differs from package")
+    else:
+        require("ROUTE-CHECKS.json" not in payload and "route" not in receipt,
+                "Historical preview contains unsupported route proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

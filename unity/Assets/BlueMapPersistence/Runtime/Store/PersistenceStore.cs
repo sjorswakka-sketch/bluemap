@@ -104,17 +104,27 @@ namespace BlueMapMigration.Persistence
         readonly Dictionary<string,byte[]> originals;
         public FoundationValue State {get;}
         public FoundationValue Preferences {get;}
+        public string Origin {get;}
         public string SourceFingerprint {get;}
         public IReadOnlyList<string> Warnings {get;}
         public Dictionary<string,byte[]> CopyOriginals()=>originals.ToDictionary(p=>p.Key,p=>(byte[])p.Value.Clone(),StringComparer.Ordinal);
-        public PersistenceSnapshot(FoundationValue state,FoundationValue preferences,IDictionary<string,byte[]> originals,IEnumerable<string> warnings=null)
+        public PersistenceSnapshot(FoundationValue state,FoundationValue preferences,IDictionary<string,byte[]> originals,IEnumerable<string> warnings=null,string origin="godot")
         {
             State=state??throw new ArgumentNullException(nameof(state));Preferences=preferences??throw new ArgumentNullException(nameof(preferences));
-            var source=new LegacySourceSet(originals);this.originals=source.CopyFiles();SourceFingerprint=source.Fingerprint;
+            if(origin!="godot"&&origin!="unity")throw new FormatException("Onbekende oorsprong van dit profiel.");
+            Origin=origin;
+            if(origin=="unity")
+            {
+                if(originals==null||originals.Count!=0)throw new FormatException("Een nieuw Unity-avontuur bevat geen oorspronkelijke Godot-bestanden.");
+                this.originals=new Dictionary<string,byte[]>(StringComparer.Ordinal);
+                SourceFingerprint=PersistencePaths.Hash(PersistencePaths.Utf8.GetBytes("bluemap.unity.new-profile.v1"));
+            }
+            else {var source=new LegacySourceSet(originals);this.originals=source.CopyFiles();SourceFingerprint=source.Fingerprint;}
             Warnings=(warnings??Array.Empty<string>()).ToList().AsReadOnly();ValidateState(state);
             if(preferences.Kind!="object"&&preferences.Kind!="dictionary")throw new FormatException("Voorkeuren moeten een object zijn.");
         }
-        public PersistenceSnapshot WithPreferences(FoundationValue preferences)=>new PersistenceSnapshot(State,preferences,originals,Warnings);
+        public PersistenceSnapshot WithPreferences(FoundationValue preferences)=>new PersistenceSnapshot(State,preferences,originals,Warnings,Origin);
+        public PersistenceSnapshot WithState(FoundationValue state)=>new PersistenceSnapshot(state,Preferences,originals,Warnings,Origin);
         public static void ValidateState(FoundationValue state)
         {
             if(state.Kind!="object"&&state.Kind!="dictionary")throw new FormatException("Het Unity-avontuur moet een object zijn.");
@@ -248,7 +258,9 @@ namespace BlueMapMigration.Persistence
             foreach(var pair in snapshot.CopyOriginals())data.Add("legacy/"+pair.Key,pair.Value);
             var files=FoundationValue.Array(data.OrderBy(p=>p.Key,StringComparer.Ordinal).Select(p=>Obj(("name",FoundationValue.StringValue(p.Key)),("bytes",FoundationValue.Integer(p.Value.LongLength)),("sha256",FoundationValue.StringValue(PersistencePaths.Hash(p.Value))))));
             var metadata=Obj(("schemaVersion",FoundationValue.Integer(1)),("format",FoundationValue.StringValue("bluemap.unity.profile")),("profile",FoundationValue.StringValue(profile)),("revision",FoundationValue.StringValue(revision)),("createdUtc",FoundationValue.StringValue(created)),("sourceFingerprint",FoundationValue.StringValue(snapshot.SourceFingerprint)),("files",files),("warnings",FoundationValue.Array(snapshot.Warnings.Select(FoundationValue.StringValue))));
-            data.Add("profile.json",PersistencePaths.Utf8.GetBytes(FoundationJson.StringifyPlain(metadata)));
+            var annotated=metadata.Entries.ToDictionary(pair=>pair.Key.AsString(),pair=>pair.Value,StringComparer.Ordinal);
+            annotated.Add("origin",FoundationValue.StringValue(snapshot.Origin));
+            data.Add("profile.json",PersistencePaths.Utf8.GetBytes(FoundationJson.StringifyPlain(FoundationValue.Object(annotated))));
             long total=0;foreach(var pair in data){if(pair.Value.Length>Limit(pair.Key))throw new IOException("Het profiel is te groot.");total+=pair.Value.Length;}if(total>TotalLimit)throw new IOException("Het profiel is te groot.");
             using(var stream=new FileStream(path,FileMode.CreateNew,FileAccess.ReadWrite,FileShare.None))
             {
@@ -269,7 +281,7 @@ namespace BlueMapMigration.Persistence
             byte[] packed=PersistencePaths.ReadBounded(path,PackageLimit);var files=new Dictionary<string,byte[]>(StringComparer.Ordinal);
             using(var memory=new MemoryStream(packed,false))using(var zip=new ZipArchive(memory,ZipArchiveMode.Read,false))
             {
-                if(zip.Entries.Count<4||zip.Entries.Count>8)throw new IOException("Onvolledig of onbekend Unity-profiel.");
+                if(zip.Entries.Count<3||zip.Entries.Count>8)throw new IOException("Onvolledig of onbekend Unity-profiel.");
                 long total=0;
                 foreach(var entry in zip.Entries)
                 {
@@ -288,7 +300,8 @@ namespace BlueMapMigration.Persistence
             }
             if(indexed.Count!=files.Count-1)throw new IOException("Niet alle profielinhoud is gecontroleerd.");
             var originals=new Dictionary<string,byte[]>(StringComparer.Ordinal);foreach(string name in LegacySourceSet.Names)if(files.TryGetValue("legacy/"+name,out var bytes))originals.Add(name,bytes);
-            var snapshot=new PersistenceSnapshot(PersistencePaths.Json(files["state.json"]),PersistencePaths.Json(files["preferences.json"]),originals,metadata.Require("warnings").Items.Select(v=>v.AsString()));
+            string origin=metadata.TryGet("origin",out var originValue)?originValue.AsString():"godot";
+            var snapshot=new PersistenceSnapshot(PersistencePaths.Json(files["state.json"]),PersistencePaths.Json(files["preferences.json"]),originals,metadata.Require("warnings").Items.Select(v=>v.AsString()),origin);
             if(snapshot.SourceFingerprint!=metadata.Require("sourceFingerprint").AsString())throw new IOException("De oorspronkelijke opslagbytes zijn gewijzigd.");
             return new PersistenceRevision{ProfileId=profile,RevisionId=revision,PackageSha256=PersistencePaths.Hash(packed),CreatedUtc=metadata.Require("createdUtc").AsString(),Snapshot=snapshot};
         }

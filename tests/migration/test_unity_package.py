@@ -57,6 +57,12 @@ def persistence_proof(build_identity: dict) -> dict:
             "checks": [{"name": name, "passed": True} for name in sorted(package.PERSISTENCE_DETAIL_CHECKS)]}
 
 
+def route_proof(build_identity: dict) -> dict:
+    return {"schemaVersion": 1, "identity": copy.deepcopy(build_identity), "success": True,
+            "gameSaveAccessed": False,
+            "checks": [{"name": name, "passed": True} for name in sorted(package.ROUTE_DETAIL_CHECKS)]}
+
+
 def pe_stub() -> bytes:
     """Small deliberate fixture, never a runnable executable."""
     raw = bytearray(256)
@@ -71,7 +77,7 @@ def pe_stub() -> bytes:
 class PreviewReferenceTests(unittest.TestCase):
     def test_all_published_phase_formats_remain_supported(self):
         for phase, version in ((3, "0.1.0-phase3"), (6, "0.2.0-phase6"), (7, "0.3.0-phase7"),
-                               (8, "0.4.0-phase8"), (9, "0.5.0-phase9")):
+                               (8, "0.4.0-phase8"), (9, "0.5.0-phase9"), (10, "0.6.0-phase10")):
             name = f"BlueMapUnityPreview-phase-{phase:02d}-aaaaaaaa-Windows-x64.zip"
             manifest = {"schemaVersion": 1, "phase": phase, "previewVersion": version,
                         "sourceCommit": "a" * 40, "packageName": name}
@@ -271,6 +277,109 @@ class UnityPackageTests(unittest.TestCase):
                    "package": {"file": archive.name, "sha256": package.sha256(archive),
                                "bytes": archive.stat().st_size, "files": count}}
         return archive, receipt, proof
+
+    def phase10_fixture(self):
+        build_identity = {**identity(), "phase": 10, "previewVersion": "0.6.0-phase10"}
+        proof = runtime(build_identity)
+        proof["checks"] += [{"name": name, "passed": True} for name in sorted(
+            package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS | package.PLAYER_CHECKS |
+            package.PERSISTENCE_CHECKS | package.ROUTE_CHECKS)]
+        details, player, persistence, route = (foundation(build_identity), player_proof(build_identity),
+                                               persistence_proof(build_identity), route_proof(build_identity))
+        output = self.base / "phase10-output"
+        output.mkdir()
+        (self.player / package.PLAYER_INPUT_DLL).write_bytes(b"Deliberate non-runnable Input System DLL fixture\n")
+        archive, count = package.package_player(self.player, output, build_identity, proof,
+                                                details, player, persistence, route)
+        receipt = {"phase": 10, "identity": build_identity, "success": True,
+                   "foundation": details, "player": player, "persistence": persistence, "route": route,
+                   "unityPackages": [{"name": "com.unity.inputsystem", "version": "1.0.0", "source": "registry"}],
+                   "runtimeDllInputs": [{"name": "Unity.InputSystem.dll",
+                                          "bytes": (self.player / package.PLAYER_INPUT_DLL).stat().st_size,
+                                          "sha256": package.sha256(self.player / package.PLAYER_INPUT_DLL)}],
+                   "rawLogsPublished": False, "godotSavesUsed": False, "checks": proof["checks"],
+                   "package": {"file": archive.name, "sha256": package.sha256(archive),
+                               "bytes": archive.stat().st_size, "files": count}}
+        return archive, receipt, proof
+
+    def test_phase10_route_and_historical_phase9_both_verify(self) -> None:
+        archive, receipt, _ = self.phase10_fixture()
+        report = package.verify_package(archive, receipt, "a" * 40)
+        self.assertEqual((report["phase"], report["runtimeChecks"]), (10, 34))
+        old_archive, old_receipt, _ = self.phase9_fixture()
+        self.assertTrue(package.verify_package(old_archive, old_receipt, "a" * 40)["success"])
+        with zipfile.ZipFile(archive) as packed:
+            root = package.archive_root(receipt["identity"])
+            self.assertEqual(json.loads(packed.read(root + "/ROUTE-CHECKS.json")), receipt["route"])
+            self.assertIn("Migratiefase 10", packed.read(root + "/LEESMIJ.txt").decode("utf-8"))
+
+    def test_phase10_cannot_drop_previous_or_route_runtime_proof(self) -> None:
+        build_identity = {**identity(), "phase": 10, "previewVersion": "0.6.0-phase10"}
+        required = (package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS | package.PLAYER_CHECKS |
+                    package.PERSISTENCE_CHECKS | package.ROUTE_CHECKS)
+        for missing in required:
+            proof = runtime(build_identity)
+            proof["checks"] += [{"name": name, "passed": True} for name in sorted(required - {missing})]
+            proof["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "proof"):
+                package.package_player(self.player, self.output, build_identity, proof,
+                                       foundation(build_identity), player_proof(build_identity),
+                                       persistence_proof(build_identity), route_proof(build_identity))
+
+    def test_phase10_route_details_fail_closed(self) -> None:
+        build_identity = {**identity(), "phase": 10, "previewVersion": "0.6.0-phase10"}
+        changes = {
+            "missing": lambda d: None,
+            "stub": lambda d: {**d, "checks": [{"name": "route_stub", "passed": True}]},
+            "wrong_source": lambda d: {**d, "identity": {**build_identity, "sourceCommit": "c" * 40}},
+            "schema_bool": lambda d: {**d, "schemaVersion": True},
+            "failed": lambda d: {**d, "success": False},
+            "save_access": lambda d: {**d, "gameSaveAccessed": True},
+            "extra_field": lambda d: {**d, "privateSavePath": "must not publish"},
+            "failed_detail": lambda d: {**d, "checks": d["checks"] + [{"name": "failed_detail", "passed": False}]},
+            "duplicate": lambda d: {**d, "checks": d["checks"] + [d["checks"][0]]},
+        }
+        for label, edit in changes.items():
+            with self.subTest(change=label), self.assertRaises(package.PackageError):
+                package.validate_route(edit(route_proof(build_identity)), build_identity)
+
+    def test_phase10_each_native_route_check_is_required(self) -> None:
+        build_identity = {**identity(), "phase": 10, "previewVersion": "0.6.0-phase10"}
+        for missing in package.ROUTE_DETAIL_CHECKS:
+            details = route_proof(build_identity)
+            details["checks"] = [check for check in details["checks"] if check["name"] != missing]
+            details["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "checks are missing"):
+                package.validate_route(details, build_identity)
+
+    def test_phase10_receipt_route_must_match_packaged_proof(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase10_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["route"]["checks"].append({"name": "receipt_only_check", "passed": True})
+        with self.assertRaisesRegex(package.PackageError, "Receipt route proof"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_phase10_failed_route_rejected_even_after_rehashing(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase10_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["route"]["checks"][0]["passed"] = False
+        self.change_payload("ROUTE-CHECKS.json", json.dumps(self.receipt["route"]).encode())
+        self.rejected()
+
+    def test_phase10_missing_route_rejected_even_after_rehashing(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase10_fixture()
+        self.identity = self.receipt["identity"]
+        self.rewrite(lambda files: [(info, raw) for info, raw in files
+                                   if not info.filename.endswith("/ROUTE-CHECKS.json")], True)
+        with self.assertRaisesRegex(package.PackageError, "route proof is missing"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_historical_phase9_cannot_claim_route_verified(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase9_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["route"] = route_proof(self.identity)
+        with self.assertRaisesRegex(package.PackageError, "unsupported route proof"):
+            package.verify_package(self.archive, self.receipt)
 
     def test_phase9_save_settings_store_proof_and_historical_phase8_both_verify(self) -> None:
         archive, receipt, _ = self.phase9_fixture()

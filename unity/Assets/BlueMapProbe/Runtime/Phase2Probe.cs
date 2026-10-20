@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 9) error = "phase must be 9.";
-            else if (previewVersion != "0.5.0-phase9") error = "previewVersion must be 0.5.0-phase9.";
+            else if (phase != 10) error = "phase must be 10.";
+            else if (previewVersion != "0.6.0-phase10") error = "previewVersion must be 0.6.0-phase10.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -80,6 +80,7 @@ namespace BlueMapMigration.Probe
         private BlueMapMigration.Player.PlayerWorld playerWorld;
         private BlueMapMigration.Persistence.PersistenceCoordinator persistence;
         private BlueMapMigration.Persistence.PersistencePanel persistencePanel;
+        private BlueMapMigration.Route.RouteWorldController route;
         private bool automated, runtimeError;
         private int frames;
         private string output;
@@ -278,15 +279,56 @@ namespace BlueMapMigration.Probe
             yield return new WaitForEndOfFrame();
             Texture2D persistenceCapture=ScreenCapture.CaptureScreenshotAsTexture();
             File.WriteAllBytes(Path.Combine(output,"screenshot-persistence.png"),persistenceCapture.EncodeToPNG());Destroy(persistenceCapture);
+            persistencePanel.Visible=false;
+            EnsurePlayerWorld();EnsureRoute();
+            BlueMapMigration.Route.RouteProbeRunner.Result routeProof;
+            try{routeProof=BlueMapMigration.Route.RouteProbeRunner.Run(identity,output,playerWorld,route);}
+            catch(Exception error){Debug.LogError("Native route proof failed: "+error);Add("route_runtime_verified",false);Finish();yield break;}
+            Add("route_runtime_verified",routeProof.success);
+            File.WriteAllText(Path.Combine(output,"route-result.json"),JsonUtility.ToJson(routeProof,true));
+            foreach(string map in new[]{"village","player_home","forest"})
+            {
+                route.CloseModal();
+                string spawn=route.Session.Repository.Read(map).Arrivals.FirstOrDefault(v=>v.Name=="start")?.Name??route.Session.Repository.Read(map).Arrivals[0].Name;
+                route.TryTravel(map,spawn);
+                playerWorld.Present(route.Session.Current,map=="village"?new Vector2(770,624):map=="player_home"?new Vector2(208,240):new Vector2(350,976));
+                yield return new WaitForEndOfFrame();
+                Texture2D routeCapture=ScreenCapture.CaptureScreenshotAsTexture();
+                File.WriteAllBytes(Path.Combine(output,"screenshot-route-"+(map=="player_home"?"home":map)+".png"),routeCapture.EncodeToPNG());Destroy(routeCapture);
+            }
+            route.CloseModal();route.TryTravel("village",route.Session.Repository.Read("village").Arrivals.First(v=>v.Name=="start").Name);
+            playerWorld.Present(route.Session.Current,new Vector2(770,624));route.Tick(.02);
+            yield return new WaitForEndOfFrame();SaveRouteCapture("ui");
+            route.Gameplay.Talk("pim");
+            yield return new WaitForEndOfFrame();SaveRouteCapture("dialogue");
+            route.CloseModal();route.OpenInventory();
+            yield return new WaitForEndOfFrame();SaveRouteCapture("inventory");
             Finish();
+        }
+        private void SaveRouteCapture(string name)
+        {Texture2D capture=ScreenCapture.CaptureScreenshotAsTexture();File.WriteAllBytes(Path.Combine(output,"screenshot-route-"+name+".png"),capture.EncodeToPNG());Destroy(capture);}
+        private void EnsureRoute()
+        {
+            if(route!=null)return;
+            route=new GameObject("BlueMap Quest first playable route").AddComponent<BlueMapMigration.Route.RouteWorldController>();
+            route.Initialize(playerWorld,worldCamera,gallery.Catalog,automated);
+            route.ProfilesRequested+=ShowPersistence;
+        }
+        private void StartAdventure(bool fresh)
+        {
+            EnsureRoute();bool started=fresh?route.BeginNew(persistence):route.BeginContinue(persistence);
+            if(!started)return;
+            persistencePanel.Visible=false;gallery.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);playerWorld.gameObject.SetActive(true);
         }
         private void EnsurePersistence(bool fixture)
         {
             if(persistencePanel!=null)return;
             persistence=fixture?BlueMapMigration.Persistence.PersistenceProbeRunner.Fixture:new BlueMapMigration.Persistence.PersistenceCoordinator(BlueMapMigration.Foundation.FoundationWorldRepository.LoadRequired(),playerWorld.InputSource,BlueMapMigration.Persistence.PersistencePaths.UnityDefault);
             persistencePanel=new BlueMapMigration.Persistence.PersistencePanel();persistencePanel.Initialize(persistence,playerWorld.InputSource);
-            persistencePanel.WalkRequested+=()=>{persistencePanel.Visible=false;EnsurePlayerWorld();};
-            persistencePanel.ControlsRequested+=()=>{persistencePanel.Visible=false;EnsurePlayerWorld();if(!playerWorld.ControlsOpen)playerWorld.ToggleControls();};
+            persistencePanel.WalkRequested+=()=>{if(route!=null&&!route.PrepareMovementPreview())return;persistencePanel.Visible=false;EnsurePlayerWorld();};
+            persistencePanel.ControlsRequested+=()=>{if(route!=null&&!route.PrepareMovementPreview())return;persistencePanel.Visible=false;EnsurePlayerWorld();if(!playerWorld.ControlsOpen)playerWorld.ToggleControls();};
+            persistencePanel.NewAdventureRequested+=()=>StartAdventure(true);
+            persistencePanel.ContinueAdventureRequested+=()=>StartAdventure(false);
             persistence.PreferencesChanged+=()=>{playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);gallery.Audio.SetVolumes((float)persistence.Preferences.MusicVolume,(float)persistence.Preferences.SfxVolume,persistence.Preferences.Muted);};
             playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);
         }
@@ -317,6 +359,7 @@ namespace BlueMapMigration.Probe
         private void Update()
         {
             frames++;
+            if(route!=null&&route.Running)return;
             if (Input.GetKeyDown(KeyCode.Escape) && (playerWorld == null || !playerWorld.gameObject.activeSelf)) Application.Quit();
             if (automated || foundationView == null) return;
             if (playerWorld != null && playerWorld.gameObject.activeSelf && playerWorld.ControlsOpen) return;
@@ -324,8 +367,8 @@ namespace BlueMapMigration.Probe
             if(Input.GetKeyDown(KeyCode.Alpha9)){EnsurePersistence(false);ShowPersistence();}
             if(persistencePanel!=null&&persistencePanel.Visible)
             {
-                if(Input.GetKeyDown(KeyCode.Alpha8)){persistencePanel.Visible=false;EnsurePlayerWorld();}
-                if(Input.GetKeyDown(KeyCode.F9)){persistencePanel.Visible=false;EnsurePlayerWorld();if(!playerWorld.ControlsOpen)playerWorld.ToggleControls();}
+                if(Input.GetKeyDown(KeyCode.Alpha8)){if(route!=null&&!route.PrepareMovementPreview())return;persistencePanel.Visible=false;EnsurePlayerWorld();}
+                if(Input.GetKeyDown(KeyCode.F9)){if(route!=null&&!route.PrepareMovementPreview())return;persistencePanel.Visible=false;EnsurePlayerWorld();if(!playerWorld.ControlsOpen)playerWorld.ToggleControls();}
                 return;
             }
             var pad=UnityEngine.InputSystem.Gamepad.current;
