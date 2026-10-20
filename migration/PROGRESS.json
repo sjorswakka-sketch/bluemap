@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_10_in_progress",
+  "status": "phase_10_complete",
   "completed_phases": [
     1,
     2,
@@ -11,10 +11,11 @@
     6,
     7,
     8,
-    9
+    9,
+    10
   ],
-  "active_phase": 10,
-  "next_phase": 10,
+  "active_phase": null,
+  "next_phase": 11,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
@@ -22,11 +23,11 @@
   "unity_implementation_started": true,
   "completed_on": "2026-10-20",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-09/README.md",
-  "requires_next_go": false,
+  "checks": "phase-10/README.md",
+  "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": true,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase9-preview-343f8564",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase10-preview-712b2e02",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -38,7 +39,7 @@
   "world_runtime_manifest": "world/index.json",
   "world_runtime_profiles": 59,
   "world_runtime_snapshots": 162,
-  "world_gameplay_executed_in_unity": false,
+  "world_gameplay_executed_in_unity": true,
   "world_runtime_identity_manifest": "phase-05/runtime-identities.json",
   "world_float_encoding": "binary64-shortest-roundtrip-lossless",
   "world_float_tolerance": 0,
@@ -87,5 +88,20 @@
   "settings_source_cases": 10,
   "persistence_source_contracts": "phase-09/source-contracts.json",
   "personal_files_used_for_tests": false,
-  "persistence_build_source": "343f856435542015ea4d6fb952361ff63d2c9cd9"
+  "persistence_build_source": "343f856435542015ea4d6fb952361ff63d2c9cd9",
+  "route_runtime_verified": true,
+  "route_runtime_checks": 73,
+  "route_playable_maps": [
+    "village",
+    "player_home",
+    "forest_edge",
+    "forest"
+  ],
+  "route_source_cases": 26,
+  "route_source_exact_duration_cases": 4,
+  "route_art_source_nodes": 104,
+  "route_art_source_textures": 47,
+  "route_source_contracts": "phase-10/source-contracts.json",
+  "route_build_source": "712b2e02d0bb5c284bd2b5002d5af77b45ed8c5b",
+  "all_world_gameplay_port_complete": false
 }

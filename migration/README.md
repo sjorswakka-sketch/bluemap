@@ -1,6 +1,8 @@
-# Unity-migratie — fase 9 voltooid
+# Unity-migratie — fase 10 voltooid
 
-Het volgende **go** start fase 10: de eerste volledig speelbare route tussen dorp, woning en bos; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 11: alle 37 gebieden en toegangspunten; de volledige game is nog niet overgezet.
+
+[Fase 10: eerste speelbare route](phase-10/README.md) — dorp, woning, bosrand en bos; Pim en Muis, verzamelen, pickups, kisten, inventaris, opdrachten, rust, veilige speelkopieën, bewaren en laden; 35 Windows-controles en 73 routecontroles.
 
 [Fase 9: veilige opslag en instellingen](phase-09/README.md) — alle 34 opslagvelden, oorspronkelijke bronbytes, prestaties, Nieuw spel+, taal, audio en bediening; aparte Unity-profielen met herstel, 33 Windows-controles en 115 import-/opslagcontroles.
 
