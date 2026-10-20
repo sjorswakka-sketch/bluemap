@@ -11,7 +11,7 @@ The playable area network uses the existing 37 map IDs and the original 32-pixel
 - Coastal ferries remain free and preserve HP/items. Only original route membership, map/spawn validity, the source's 64-pixel boarding distance and transition/end guards permit departure. Cancel remains available in the controller presentation.
 - The temple seal requires already-earned `game_completed`, proximity below 112 pixels and the original 1.8-second breaking stage. It starts the existing `diepte` quest, advances its original first condition and sets `diepte_opened` once; it invents no quest or reward.
 - Restored marsh banks/bridge, thawed paths, the library backroom, mine/forest restoration, coastal wheel crossing and tide bank select their earned source geometry. East-only heating keeps the unearned west terrain unchanged. NPC existence, gate collision and portal eligibility evaluate live state independently of captured visual variants.
-- A rising/high tide waits while the player's foot occupies the previously dry bank; leaving it permits flooding. The raised return path and ferries retain their source routes.
+- A high/falling tide waits while the player's foot occupies the previously dry bank; leaving it permits flooding. The raised return path and ferries retain their source routes.
 
 ## Arrival safety and preservation
 
