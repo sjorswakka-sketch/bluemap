@@ -140,7 +140,7 @@ namespace BlueMapMigration.Persistence
             Button(4, new Rect(x, top + 313, leftWidth * .53f - 5, 34), T("Gekozen profiel openen", "Open selected profile"), profiles.Count > 0);
             Button(5, new Rect(x + leftWidth * .53f + 5, top + 313, leftWidth * .47f - 5, 34), coordinator.HasProfile ? T("Vorige versie herstellen", "Restore previous version") : T("Profiel herstellen", "Recover profile"), coordinator.HasProfile || profiles.Count > 0);
             var preferences = coordinator.Preferences;
-            GUI.Label(new Rect(rightX, top, rightWidth, 25), T("Taal en geluid", "Language and audio"), title);
+            GUI.Label(new Rect(rightX, top, rightWidth, 34), T("Taal en geluid", "Language and audio"), title);
             Button(6, new Rect(rightX, top + 38, rightWidth, 34), preferences.Locale == "nl" ? "Taal: Nederlands" : "Language: English");
             Button(7, new Rect(rightX, top + 82, rightWidth, 34), preferences.Muted ? T("Geluid: uit", "Sound: off") : T("Geluid: aan", "Sound: on"));
             GUI.Label(new Rect(rightX, top + 130, rightWidth, 26), T("Muziek: ", "Music: ") + Mathf.RoundToInt((float)preferences.MusicVolume * 100) + "%", label);
