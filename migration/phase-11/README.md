@@ -25,11 +25,13 @@ De controles koppelen de oorspronkelijke kaartgegevens, toegangspunten, voorwaar
 
 Naast de eerdere routebeelden worden acht voorbeelden vastgelegd: Zilvermeer, moeras, Prismamijn, warmwaterberg, haven, bibliotheek, Rietarchief en herberg. Beeld-, bron- en opslagcontroles moeten dezelfde geïdentificeerde Windows-build bevestigen.
 
-**Native Windows-verificatie en publicatie zijn geslaagd.** De echte geïdentificeerde speler slaagt voor 36 algemene controles, 119 spelbasiscontroles, 69 spelercontroles, 115 opslag-/importcontroles, 73 routecontroles en 57 wereld-/toegangscontroles; er zijn geen bouwfouten of bouwwaarschuwingen. De oorspronkelijke Godot-regressie slaagt voor 14 suites en 1,961 controles. De lokale Python-suite bevat 508 tests en 2 overgeslagen Windows-symlinkgevallen; deze blijven actief in Linux CI.
+**Native Windows-verificatie en publicatie zijn geslaagd.** De echte geïdentificeerde speler slaagt voor 36 algemene controles, 119 spelbasiscontroles, 69 spelercontroles, 115 opslag-/importcontroles, 73 routecontroles en 57 wereld-/toegangscontroles; er zijn geen bouwfouten of bouwwaarschuwingen. De oorspronkelijke Godot-regressie slaagt voor 14 suites en 1,961 controles. De lokale Python-suite bevat 526 tests en 2 overgeslagen Windows-symlinkgevallen; deze blijven actief in Linux CI.
 
 Deze fase sluit gebieden en toegangspunten aan. Volledige gevechten, alle buit- en opslagfuncties, overige gesprekken en opdrachten, uitgebreide bewonersroutines, beroepen, landbouw, productie en bijzondere puzzels worden in hun eigen vervolgfases speelbaar gemaakt. Hun oorspronkelijke spelgegevens en Godot-bron blijven behouden. Een fysieke controller is nog niet met de hand getest.
 
 De nieuwe bronvergelijking omvat 162 oorspronkelijke wereldtoestanden, 15 toegangsscenario's, 593 aankomsten en 1062 botsingsproeven. Naast de ongewijzigde eerste route zijn 3726 oorspronkelijke tekenobjecten uit 158 extra opnamen vastgelegd in 318 native texturen. De twee oorspronkelijke Godot-uitvoeringen gebruiken afzonderlijke tijdelijke testopslag.
+
+De Windows- en Linux-bronproeven gebruiken alle 1584 exacte binaire getalwaarden als referentie. De vergelijking controleert bij de bijbehorende decimale weergaven uitsluitend de twee aantoonbare oorspronkelijke afrondingswijzen; andere verschillen worden afgekeurd. Achttien extra regressietests bewaken onder meer beschadigde getallen, gewijzigde bits, ontbrekende velden en ongeldige afrondingen. De oorspronkelijke wereldgegevens en de geteste spelbuild blijven gelijk.
 
 ## Windows-download en herkomst
 

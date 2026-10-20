@@ -230,6 +230,11 @@ jobs:
             migration/phase-10/route-oracle.json
             ${{ runner.temp }}/world-access-evidence/receipt.json
             ${{ runner.temp }}/world-access-evidence/world-access-oracle.json
+            ${{ runner.temp }}/world-access-evidence/import.log
+            ${{ runner.temp }}/world-access-evidence/isolation.log
+            ${{ runner.temp }}/world-access-evidence/run-*.json
+            ${{ runner.temp }}/world-access-evidence/run-*.log
+            ${{ runner.temp }}/world-access-evidence/difference.json
             migration/phase-11/source-contracts.json
             migration/phase-11/world-access-oracle.json
           if-no-files-found: error

@@ -1459,7 +1459,7 @@
     },
     {
       "path": "tools/record_migration_world_access.py",
-      "sha256": "36e89fccecacbb262d339cea02a1da83a4b53ee9679390d3259a3809ba39b44c"
+      "sha256": "0bb7560ffe936ea040f6fb4dfbe80b4d342a924ab7e8c346f3904e4acd4d34fa"
     },
     {
       "path": "tools/migration_world_art.gd",

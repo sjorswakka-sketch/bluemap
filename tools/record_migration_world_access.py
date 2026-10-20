@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import argparse
+import copy
+from decimal import Decimal, ROUND_HALF_EVEN, ROUND_HALF_UP, localcontext
 import hashlib
 import json
 import math
@@ -17,18 +19,83 @@ import tempfile
 import uuid
 
 from migration_data_codec import canonical_bytes
-from record_migration_world import ENGINE_VERSION, ERROR, fingerprint, no_symlink
+from record_migration_world import ENGINE_VERSION, ERROR, fingerprint, first_differences, no_symlink
 
 ROOT = Path(__file__).resolve().parents[1]
+COMPARISON_POLICY = 'exact-f64-with-validated-godot-15-digit-mirrors-v1'
+
+
+def decode_float64_witness(value):
+    if (type(value) is not dict or set(value) != {'$f64'} or
+            type(value['$f64']) is not str or
+            not re.fullmatch(r'[0-9a-f]{16}', value['$f64'])):
+        raise ValueError('Invalid exact Float64 witness')
+    number = struct.unpack('<d', bytes.fromhex(value['$f64']))[0]
+    if not math.isfinite(number):
+        raise ValueError('Invalid exact Float64 witness')
+    return number
+
+
+def normalize_exact_mirrors(document):
+    """Validate redundant Godot JSON decimals against their unchanged exact witnesses.
+
+    Godot 4.4.1's platform CRTs choose different tie rounding for a 15-digit
+    decimal. Only these explicitly paired fields may use either rendering.
+    The exact IEEE bytes and every other field still participate in comparison.
+    """
+    def pair(plain, exact, path):
+        if type(exact) is dict:
+            if '$f64' in exact:
+                number = decode_float64_witness(exact)
+                if type(plain) is not float or not math.isfinite(plain):
+                    raise ValueError('Invalid Float64 decimal mirror at ' + path)
+                decimal = Decimal.from_float(number)
+                quantum = Decimal(1).scaleb(decimal.adjusted() - 14)
+                with localcontext() as context:
+                    context.prec = 128
+                    renderings = [float(decimal.quantize(quantum, rounding=mode))
+                                  for mode in (ROUND_HALF_EVEN, ROUND_HALF_UP)]
+                if not any(struct.pack('<d', plain) == struct.pack('<d', candidate)
+                           for candidate in renderings):
+                    raise ValueError('Invalid Godot 15-digit decimal mirror at ' + path)
+                return number
+            if type(plain) is not dict or plain.keys() != exact.keys():
+                raise ValueError('Mismatched exact dictionary shape at ' + path)
+            return {key: pair(plain[key], child, path + '/' + key)
+                    for key, child in exact.items()}
+        if type(exact) is list:
+            if type(plain) is not list or len(plain) != len(exact):
+                raise ValueError('Mismatched exact array shape at ' + path)
+            return [pair(left, right, path + '/' + str(index))
+                    for index, (left, right) in enumerate(zip(plain, exact))]
+        if (type(exact) not in (str, int, bool, type(None)) or
+                type(plain) is not type(exact) or plain != exact):
+            raise ValueError('Mismatched exact non-float value at ' + path)
+        return plain
+
+    if type(document) is not dict:
+        raise ValueError('World access oracle must be an object')
+    result = copy.deepcopy(document)
+    for collection, fields in (('snapshots', ('state',)),
+                               ('cases', ('initial', 'operation', 'result', 'expected'))):
+        if type(result.get(collection)) is not list:
+            raise ValueError('Missing world access oracle collection ' + collection)
+        for index, row in enumerate(result[collection]):
+            if type(row) is not dict:
+                raise ValueError('Invalid world access oracle row')
+            for field in fields:
+                if field not in row or field + 'Exact' not in row:
+                    raise ValueError('Missing exact mirror pair ' + collection + '/' + field)
+                row[field] = pair(row[field], row[field + 'Exact'],
+                                  '$/' + collection + '/' + str(index) + '/' + field)
+    return result
 
 
 def validate_float64_bits(value):
     count = 0
     if isinstance(value, dict):
-        if set(value) == {'$f64'}:
-            raw = bytes.fromhex(value['$f64'])
-            if len(raw) != 8 or not math.isfinite(struct.unpack('<d', raw)[0]):
-                raise ValueError('Invalid exact Float64 witness')
+        if '$f64' in value:
+            decode_float64_witness(value)
             return 1
         for child in value.values():
             count += validate_float64_bits(child)
@@ -105,8 +172,18 @@ def main():
         if len(data['snapshots']) != 162 or len(data['cases']) != 15:
             raise ValueError('World access oracle coverage changed')
         float64_values = validate_float64_bits(data)
+        comparison = canonical_bytes(normalize_exact_mirrors(data))
+        reference = None
         if args.check:
-            if args.output.read_bytes().replace(b'\r\n', b'\n') != outputs[0]:
+            reference = args.output.read_bytes().replace(b'\r\n', b'\n')
+            normalized_reference = canonical_bytes(normalize_exact_mirrors(json.loads(reference)))
+            if normalized_reference != comparison:
+                difference = {'schema': 1, 'kind': 'frozen-reference-mismatch',
+                              'referenceSha256': hashlib.sha256(reference).hexdigest(),
+                              'actualSha256': hashlib.sha256(outputs[0]).hexdigest(),
+                              'examples': first_differences(json.loads(reference), data, limit=20)}
+                (args.evidence_dir / 'difference.json').write_bytes(canonical_bytes(difference))
+                print('WORLD ACCESS REFERENCE DIFFERENCES ' + json.dumps(difference, ensure_ascii=False), flush=True)
                 raise ValueError('Fresh original methods disagree with checked-in state oracle')
         else:
             if args.output.exists():
@@ -119,6 +196,9 @@ def main():
                    'cases': len(data['cases']), 'snapshots': len(data['snapshots']),
                    'exactFloat64Values': float64_values,
                    'sha256': hashlib.sha256(outputs[0]).hexdigest(),
+                   'comparisonPolicy': COMPARISON_POLICY,
+                   'exactComparisonSha256': hashlib.sha256(comparison).hexdigest(),
+                   'referenceSha256': hashlib.sha256(reference).hexdigest() if reference is not None else None,
                    'sourceHashes': {name: digest for name, digest in before.items() if name in ['scripts/core/game_state.gd', 'scripts/world.gd', 'scripts/entities/gate.gd', 'scripts/entities/portal.gd', 'scripts/entities/diepte_gate.gd', 'scripts/entities/diepte_seal.gd', 'scripts/core/access_points.gd', 'scripts/core/fast_travel.gd', 'scripts/core/tides.gd', 'scripts/entities/tide_cove.gd', 'scripts/entities/living_scenery.gd', 'scripts/entities/meer_kast.gd', 'scripts/ui/coast_voyage.gd', 'scripts/ui/coast_routes.gd', 'scripts/data/arena.gd', 'scripts/data/ext/boog.gd', 'scripts/data/ext/echo.gd', 'scripts/core/living_world.gd', 'scripts/core/regional_adventures.gd', 'scripts/core/first_route.gd', 'scripts/data/quests.gd', 'scripts/core/personal_home.gd', 'scripts/data/house_catalog.gd', 'scripts/entities/home_station.gd', 'scripts/entities/house_furniture.gd']}}
         (args.evidence_dir / 'receipt.json').write_bytes(canonical_bytes(receipt))
         print('MIGRATION WORLD ACCESS ORACLE OK: 162 loaded worlds; 2 fresh processes')
