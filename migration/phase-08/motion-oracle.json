@@ -1,0 +1,2664 @@
+{
+  "engineVersion": "4.4.1-stable (official)",
+  "equipment": [
+    {
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999d93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005e40",
+        "threshold": "0000000000003940"
+      },
+      "delta": "000000000000f03f",
+      "equipment": {},
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "id": "none",
+      "inventory": {},
+      "moveBonus": "0000000000000000",
+      "ownsBoots": false,
+      "speedMultiplier": "000000000000f03f"
+    },
+    {
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999d93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005e40",
+        "threshold": "0000000000003940"
+      },
+      "delta": "000000000000f03f",
+      "equipment": {},
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "id": "boots",
+      "inventory": {
+        "boots": 1
+      },
+      "moveBonus": "0000000000000000",
+      "ownsBoots": true,
+      "speedMultiplier": "e17a14ae47e1f23f"
+    },
+    {
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000405f40",
+        "delay": "9a9999999999d93f",
+        "exhausted": true,
+        "maxBonus": "0000000000003940",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005e40",
+        "threshold": "0000000000403f40"
+      },
+      "delta": "000000000000f03f",
+      "equipment": {
+        "chest": "gear_scout_coat",
+        "hands": "gear_ra_grip"
+      },
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000405f40",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000003940",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000405f40",
+        "threshold": "0000000000403f40"
+      },
+      "id": "scout_climber_speed_cap",
+      "inventory": {
+        "boots": 1,
+        "gear_ra_grip": 1,
+        "gear_scout_coat": 1
+      },
+      "moveBonus": "b81e85eb51b8be3f",
+      "ownsBoots": true,
+      "speedMultiplier": "304ca60a4625f53f"
+    },
+    {
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999d93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005e40",
+        "threshold": "0000000000003940"
+      },
+      "delta": "000000000000f03f",
+      "equipment": {
+        "chest": "gear_bastion_coat"
+      },
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "id": "heavy_armor_penalty",
+      "inventory": {
+        "gear_bastion_coat": 1
+      },
+      "moveBonus": "7b14ae47e17ab4bf",
+      "ownsBoots": false,
+      "speedMultiplier": "713d0ad7a370ed3f"
+    },
+    {
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000406040",
+        "delay": "9a9999999999d93f",
+        "exhausted": true,
+        "maxBonus": "0000000000003e40",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005e40",
+        "threshold": "0000000000404040"
+      },
+      "delta": "000000000000f03f",
+      "equipment": {
+        "hands": "gear_ra_grip",
+        "head": "gear_bronze_helm",
+        "neck": "gear_rf_cord"
+      },
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000406040",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000003e40",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000406040",
+        "threshold": "0000000000404040"
+      },
+      "id": "capacity_cap",
+      "inventory": {
+        "gear_bronze_helm": 1,
+        "gear_ra_grip": 1,
+        "gear_rf_cord": 1
+      },
+      "moveBonus": "7b14ae47e17aa43f",
+      "ownsBoots": false,
+      "speedMultiplier": "a4703d0ad7a3f03f"
+    },
+    {
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999d93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "333333333333d33f",
+        "regenRate": "0000000000404040",
+        "stamina": "0000000000005e40",
+        "threshold": "0000000000003940"
+      },
+      "delta": "000000000000f03f",
+      "equipment": {
+        "neck": "gear_crystal_amulet",
+        "ring": "gear_rf_keepsake"
+      },
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "333333333333d33f",
+        "regenRate": "0000000000404040",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "id": "regen_cap",
+      "inventory": {
+        "gear_crystal_amulet": 1,
+        "gear_rf_keepsake": 1
+      },
+      "moveBonus": "0000000000000000",
+      "ownsBoots": false,
+      "speedMultiplier": "000000000000f03f"
+    },
+    {
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999d93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005e40",
+        "threshold": "0000000000003940"
+      },
+      "delta": "000000000000f03f",
+      "equipment": {
+        "chest": "gear_scout_coat"
+      },
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "id": "unowned_equipment_no_bonus",
+      "inventory": {},
+      "moveBonus": "0000000000000000",
+      "ownsBoots": false,
+      "speedMultiplier": "000000000000f03f"
+    },
+    {
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999d93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005e40",
+        "threshold": "0000000000003940"
+      },
+      "delta": "000000000000f03f",
+      "equipment": {},
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "id": "owned_not_equipped_no_bonus",
+      "inventory": {
+        "gear_scout_coat": 1
+      },
+      "moveBonus": "0000000000000000",
+      "ownsBoots": false,
+      "speedMultiplier": "000000000000f03f"
+    }
+  ],
+  "excludedPresentationMethods": [
+    "ground_tile (explicit fixture)",
+    "_update_aim",
+    "_update_target",
+    "_update_shake"
+  ],
+  "float64Encoding": "ieee754-binary64-little-endian-hex",
+  "motions": [
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "000000004055fd3f",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "0000803f00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000080aaea3f",
+        "velocity": "0000dc4200000000",
+        "walkTime": "794a90a70411913f"
+      },
+      "footsteps": [
+        "grass"
+      ],
+      "id": "walk_grass",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": false,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "00000000a0990140",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "0000803f00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "000000004033f33f",
+        "velocity": "0000044300000000",
+        "walkTime": "a38b2ebae87a943f"
+      },
+      "footsteps": [
+        "path"
+      ],
+      "id": "walk_path",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": false,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "tile": "path"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "0000000060660a40",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "0000803f00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": true,
+        "stepDistance": "0000000060660240",
+        "velocity": "0000464300000000",
+        "walkTime": "90a704794ab89e3f"
+      },
+      "footsteps": [
+        "path"
+      ],
+      "id": "run_path",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "abaaaaaaaaea5840",
+        "threshold": "0000000000003940"
+      },
+      "tile": "path"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "f304353ff30435bf",
+      "distance": "00000020f9ff0540",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "f404353ff40435bf",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": true,
+        "stepDistance": "00000040f2fffb3f",
+        "velocity": "6258e9426258e9c2",
+        "walkTime": "9a9999999199993f"
+      },
+      "footsteps": [
+        "grass"
+      ],
+      "id": "run_diagonal",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "abaaaaaaaaea5840",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "9a99993e6766663e",
+      "distance": "0000006066e6e43f",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "cdcc4c3f9a99193f",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000003333a73540",
+        "velocity": "cdccfa419a19bc41",
+        "walkTime": "db37ac7deb51783f"
+      },
+      "footsteps": [],
+      "id": "analog_walk",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": false,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "tile": "snow"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "00000000e0dd0040",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "0000803f00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": true,
+        "stepDistance": "00000000c0bbf13f",
+        "velocity": "0000fd4200000000",
+        "walkTime": "58fb86b56fa0933f"
+      },
+      "footsteps": [
+        "grass"
+      ],
+      "id": "partial_run",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "9a9999999999b93f",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "000000004055fd3f",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "0000803f00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000080aaea3f",
+        "velocity": "0000dc4200000000",
+        "walkTime": "794a90a70411913f"
+      },
+      "footsteps": [
+        "grass"
+      ],
+      "id": "exhausted_run",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000000000000000",
+      "distance": "0000000000000000",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000000000",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "footsteps": [],
+      "id": "idle_regen",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": false,
+      "staminaBefore": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "0000000000000000",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000000000",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "footsteps": [],
+      "id": "locked_stamina",
+      "locked": true,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000f0c100008040",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "000000006ad8f13f",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "0000803f00000000",
+        "knockback": "f51a72c1721f0140",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000000000",
+        "velocity": "9a99854200008040",
+        "walkTime": "0000000000000000"
+      },
+      "footsteps": [],
+      "id": "pushed_no_sprint",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "tile": "mud"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000803f00000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "0000000020220640",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "0000803f00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": true,
+        "stepDistance": "000000004044fc3f",
+        "velocity": "0000264300000000",
+        "walkTime": "09f294204fc1993f"
+      },
+      "footsteps": [
+        "grass"
+      ],
+      "id": "push_threshold",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "5555555555d54340",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "666666666666e63f",
+        "rollDirection": "000000000000803f",
+        "rollSafe": true,
+        "rollTimer": "333333333333d33f",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "000080bf00000000",
+      "distance": "0000000060550f40",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "dddddddddddde53f",
+        "rollDirection": "000000000000803f",
+        "rollSafe": true,
+        "rollTimer": "222222222222d23f",
+        "sprinting": false,
+        "stepDistance": "0000000000000000",
+        "velocity": "0000000000006b43",
+        "walkTime": "0000000000000000"
+      },
+      "footsteps": [],
+      "id": "rolling",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "9a9999999999c93f",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "b81e85eb51b8ae3f",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "0000000060550f40",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "787777777777c73f",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "3096fc62c92fa63f",
+        "sprinting": false,
+        "stepDistance": "0000000000000000",
+        "velocity": "0000000000006b43",
+        "walkTime": "0000000000000000"
+      },
+      "footsteps": [],
+      "id": "roll_safe_boundary",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": false,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": true,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "0000803f00000000",
+      "distance": "000000004055fd3f",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "0000803f00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000080aaea3f",
+        "velocity": "0000dc4200000000",
+        "walkTime": "794a90a70411913f"
+      },
+      "footsteps": [
+        "grass"
+      ],
+      "id": "attack_no_sprint",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": true,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    },
+    {
+      "attack": false,
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000000000000803f",
+        "knockback": "0000000000000000",
+        "moving": false,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "0000000000003540",
+        "velocity": "0000000000000000",
+        "walkTime": "0000000000000000"
+      },
+      "delta": "111111111111913f",
+      "direction": "000080bf00000000",
+      "distance": "000000006055fd3f",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "000080bf00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      },
+      "footsteps": [
+        "grass"
+      ],
+      "id": "aim_independent",
+      "locked": false,
+      "speedMultiplier": "000000000000f03f",
+      "sprint": false,
+      "staminaBefore": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999c93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "staminaExpected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "787777777777c73f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004440",
+        "threshold": "0000000000003940"
+      },
+      "tile": "grass"
+    }
+  ],
+  "personalSavesUsed": false,
+  "physicsAdapter": "Original CharacterBody2D methods; no world colliders. Actual measured distance is supplied to the C# post-collision stage.",
+  "rolls": [
+    {
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000080bf00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      },
+      "direction": "0000000000000000",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "000080bf00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "666666666666e63f",
+        "rollDirection": "000080bf00000000",
+        "rollSafe": true,
+        "rollTimer": "333333333333d33f",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      }
+    },
+    {
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000080bf00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      },
+      "direction": "f30435bff304353f",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "f40435bff404353f",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "666666666666e63f",
+        "rollDirection": "f40435bff404353f",
+        "rollSafe": true,
+        "rollTimer": "333333333333d33f",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      }
+    },
+    {
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000080bf00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "7b14ae47e17a843f",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      },
+      "direction": "0000803f00000000",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "000080bf00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "0000000000000000",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "7b14ae47e17a843f",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      }
+    },
+    {
+      "before": {
+        "aim": "0000803f00000000",
+        "facing": "000080bf00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "7b14ae47e17a843f",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      },
+      "direction": "0000803f00000000",
+      "expected": {
+        "aim": "0000803f00000000",
+        "facing": "000080bf00000000",
+        "knockback": "0000000000000000",
+        "moving": true,
+        "rollCooldown": "7b14ae47e17a843f",
+        "rollDirection": "000000000000803f",
+        "rollSafe": false,
+        "rollTimer": "0000000000000000",
+        "sprinting": false,
+        "stepDistance": "00000000c0aaea3f",
+        "velocity": "0000dcc200000000",
+        "walkTime": "5d74d1451711913f"
+      }
+    }
+  ],
+  "schema": "bluemap.player.motion.source-oracle.v1",
+  "sourceHashes": {
+    "scripts/core/equipment.gd": "60276ccdb0c1ecbe52eee8a3b45a2b0f9f8e1221bf1cedd3643967a5aad65a7e",
+    "scripts/core/game_state.gd": "86bd03c3052581e8ac4bebc7e8f11e5580be02ead86fd2f0108f01232c85c22c",
+    "scripts/core/movement.gd": "cac3c6ff079faca62eabeafb3508e326b067664fbad3eb95f42a94bc19a8cd3b",
+    "scripts/data/tiles.gd": "c505832497d7b8938814a57c57b39f131b3e7d7853d61f386405df87d19e4b0e",
+    "scripts/entities/player.gd": "4a5518b2475c5c7bc9d4966b50f48841cfb5ce7ec1b297327e12f5fab1700743"
+  },
+  "sourceMethods": [
+    "scripts/core/movement.gd",
+    "scripts/data/tiles.gd::movement_multiplier",
+    "scripts/data/tiles.gd::footstep_surface",
+    "scripts/entities/player.gd::_physics_process",
+    "scripts/entities/player.gd::_roll",
+    "scripts/entities/player.gd::_update_footsteps",
+    "scripts/entities/player.gd::stop_for_transition"
+  ],
+  "stamina": [
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "delta": "000000000000f03f",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005440",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f83f",
+      "id": "full_run",
+      "operation": "advance",
+      "result": false,
+      "sprinting": true
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "000000000000f03f",
+        "threshold": "0000000000003940"
+      },
+      "delta": "9a9999999999b93f",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f43f",
+      "id": "last_partial",
+      "operation": "advance",
+      "result": false,
+      "sprinting": true
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "2f6ea301bc05523f",
+        "threshold": "0000000000003940"
+      },
+      "delta": "f168e388b5f8e43e",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f83f",
+      "id": "last_threshold",
+      "operation": "advance",
+      "result": false,
+      "sprinting": true
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "fca9f1d24d62503f",
+        "threshold": "0000000000003940"
+      },
+      "delta": "9a9999999999b93f",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "355eba490c020440",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "threshold_no_sprint",
+      "operation": "advance",
+      "result": false,
+      "sprinting": true
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "delta": "9a9999999999e93f",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "delay_equal",
+      "operation": "advance",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "delta": "000000000000f03f",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "ffffffffffff1340",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "delay_excess",
+      "operation": "advance",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003840",
+        "threshold": "0000000000003940"
+      },
+      "delta": "7b14ae47e17a943f",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000803840",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "recovery_below",
+      "operation": "advance",
+      "result": false,
+      "sprinting": true
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000803840",
+        "threshold": "0000000000003940"
+      },
+      "delta": "7b14ae47e17a943f",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "recovery_equal",
+      "operation": "advance",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000805b40",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "zero_delta_clamps",
+      "operation": "advance",
+      "result": false,
+      "sprinting": true
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "000000000000f0bf",
+        "threshold": "0000000000003940"
+      },
+      "delta": "9a9999999999b9bf",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "negative_delta_clamps",
+      "operation": "advance",
+      "result": false,
+      "sprinting": true
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000002440",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f43f",
+      "id": "long_frame",
+      "operation": "advance",
+      "result": false,
+      "sprinting": true
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000840",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "full_rest",
+      "operation": "reset",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000002440",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000002440",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "spend_exact",
+      "operation": "spend",
+      "result": true,
+      "sprinting": false
+    },
+    {
+      "amount": "85eb51b81e052440",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000002440",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000002440",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "spend_too_much",
+      "operation": "spend",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "000000000000f03f",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004940",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "spend_exhausted",
+      "operation": "spend",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004940",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "spend_zero",
+      "operation": "spend",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "000000000000f0bf",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004940",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000004940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "spend_negative",
+      "operation": "spend",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "000000000000f03f",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "0000000000000000",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "355eba490c02f03f",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "spend_near_zero",
+      "operation": "spend",
+      "result": true,
+      "sprinting": false
+    },
+    {
+      "amount": "000000000000f03f",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "restore_full",
+      "operation": "restore",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000001040",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003840",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "restore_part",
+      "operation": "restore",
+      "result": true,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000001440",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "restore_threshold",
+      "operation": "restore",
+      "result": true,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000006940",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000005940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "restore_caps",
+      "operation": "restore",
+      "result": true,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "restore_zero",
+      "operation": "restore",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "000000000000f0bf",
+      "before": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003440",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "restore_negative",
+      "operation": "restore",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "000000000000f0bf",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000000000",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "clamp_negative",
+      "operation": "clamp",
+      "result": false,
+      "sprinting": false
+    },
+    {
+      "amount": "0000000000000000",
+      "before": {
+        "canSprint": false,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": true,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003940",
+        "threshold": "0000000000003940"
+      },
+      "delta": "0000000000000000",
+      "expected": {
+        "canSprint": true,
+        "capacity": "0000000000005940",
+        "delay": "9a9999999999e93f",
+        "exhausted": false,
+        "maxBonus": "0000000000000000",
+        "regenBonus": "0000000000000000",
+        "regenRate": "0000000000003940",
+        "stamina": "0000000000003940",
+        "threshold": "0000000000003940"
+      },
+      "factor": "000000000000f03f",
+      "id": "clamp_releases",
+      "operation": "clamp",
+      "result": false,
+      "sprinting": false
+    }
+  ],
+  "surfaces": [
+    {
+      "footstep": "grass",
+      "multiplier": "000000000000f03f",
+      "tile": "grass"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "tree"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "water"
+    },
+    {
+      "footstep": "path",
+      "multiplier": "333333333333f33f",
+      "tile": "path"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "stone"
+    },
+    {
+      "footstep": "grass",
+      "multiplier": "000000000000f03f",
+      "tile": "grass_flowers"
+    },
+    {
+      "footstep": "grass",
+      "multiplier": "000000000000f03f",
+      "tile": "grass_tufts"
+    },
+    {
+      "footstep": "wood",
+      "multiplier": "000000000000f03f",
+      "tile": "bridge"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "fence"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "roof"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "house_wall"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "house_window"
+    },
+    {
+      "footstep": "wood",
+      "multiplier": "000000000000f03f",
+      "tile": "door"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "cave_mouth"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "ruin_stairs"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "temple_door"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "rock"
+    },
+    {
+      "footstep": "grass",
+      "multiplier": "000000000000f03f",
+      "tile": "bush"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "dead_tree"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "well"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "crate"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "cave_floor"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "cave_wall"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "cave_crystal"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "stalagmite"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "ruin_floor"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "ruin_wall"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "ruin_pillar"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "ruin_cracked"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "temple_floor"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "temple_wall"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "temple_rune"
+    },
+    {
+      "footstep": "cloth",
+      "multiplier": "000000000000f03f",
+      "tile": "carpet"
+    },
+    {
+      "footstep": "wood",
+      "multiplier": "000000000000f03f",
+      "tile": "wood_floor"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "wood_wall"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "counter"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "shelf"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "bed"
+    },
+    {
+      "footstep": "cloth",
+      "multiplier": "000000000000f03f",
+      "tile": "mat"
+    },
+    {
+      "footstep": "sand",
+      "multiplier": "713d0ad7a370ed3f",
+      "tile": "meer_sand"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "meer_reeds"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "meer_lelie"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "meer_paal"
+    },
+    {
+      "footstep": "wood",
+      "multiplier": "000000000000f03f",
+      "tile": "meer_bibvloer"
+    },
+    {
+      "footstep": "cloth",
+      "multiplier": "000000000000f03f",
+      "tile": "meer_tapijt"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "void_floor"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "void_wall"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "void_crystal"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "rune_pad"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "void_stairs"
+    },
+    {
+      "footstep": "sand",
+      "multiplier": "713d0ad7a370ed3f",
+      "tile": "arena_sand"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "arena_wall"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "arena_tribune"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "arena_gate"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "arena_arch"
+    },
+    {
+      "footstep": "snow",
+      "multiplier": "666666666666ee3f",
+      "tile": "snow"
+    },
+    {
+      "footstep": "snow",
+      "multiplier": "666666666666ee3f",
+      "tile": "snow_tufts"
+    },
+    {
+      "footstep": "snow",
+      "multiplier": "000000000000f03f",
+      "tile": "snow_bush"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "pine"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "ice"
+    },
+    {
+      "footstep": "sand",
+      "multiplier": "713d0ad7a370ed3f",
+      "tile": "dune_sand"
+    },
+    {
+      "footstep": "sand",
+      "multiplier": "713d0ad7a370ed3f",
+      "tile": "dune_tufts"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "cactus"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "sandstone"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "oasis_grass"
+    },
+    {
+      "footstep": "grass",
+      "multiplier": "000000000000f03f",
+      "tile": "marsh_grass"
+    },
+    {
+      "footstep": "grass",
+      "multiplier": "000000000000f03f",
+      "tile": "marsh_tufts"
+    },
+    {
+      "footstep": "sand",
+      "multiplier": "295c8fc2f528ec3f",
+      "tile": "mud"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "bog_water"
+    },
+    {
+      "footstep": "grass",
+      "multiplier": "000000000000f03f",
+      "tile": "reed"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "willow"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "ce_sea"
+    },
+    {
+      "footstep": "sand",
+      "multiplier": "713d0ad7a370ed3f",
+      "tile": "ce_sand"
+    },
+    {
+      "footstep": "sand",
+      "multiplier": "713d0ad7a370ed3f",
+      "tile": "ce_dune"
+    },
+    {
+      "footstep": "grass",
+      "multiplier": "000000000000f03f",
+      "tile": "ce_grass"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "ce_cliff"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "ce_shore"
+    },
+    {
+      "footstep": "wood",
+      "multiplier": "000000000000f03f",
+      "tile": "ce_boardwalk"
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "ad_wetstone"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": "ad_seawall"
+    },
+    {
+      "footstep": "wood",
+      "multiplier": "333333333333f33f",
+      "tile": "yard_boards"
+    },
+    {
+      "footstep": "",
+      "multiplier": "000000000000f03f",
+      "tile": ""
+    },
+    {
+      "footstep": "stone",
+      "multiplier": "000000000000f03f",
+      "tile": "unknown_future"
+    }
+  ],
+  "transition": {
+    "before": {
+      "aim": "0000803f00000000",
+      "facing": "000080bf00000000",
+      "knockback": "0000a04100002041",
+      "moving": true,
+      "rollCooldown": "9a9999999999d93f",
+      "rollDirection": "000000000000803f",
+      "rollSafe": true,
+      "rollTimer": "9a9999999999c93f",
+      "sprinting": true,
+      "stepDistance": "0000000000002a40",
+      "velocity": "000040410000a040",
+      "walkTime": "0000000000001040"
+    },
+    "expected": {
+      "aim": "0000803f00000000",
+      "facing": "000080bf00000000",
+      "knockback": "0000000000000000",
+      "moving": false,
+      "rollCooldown": "9a9999999999d93f",
+      "rollDirection": "000000000000803f",
+      "rollSafe": false,
+      "rollTimer": "0000000000000000",
+      "sprinting": false,
+      "stepDistance": "0000000000002a40",
+      "velocity": "0000000000000000",
+      "walkTime": "0000000000001040"
+    },
+    "staminaBefore": {
+      "canSprint": true,
+      "capacity": "0000000000005940",
+      "delay": "0000000000000000",
+      "exhausted": false,
+      "maxBonus": "0000000000000000",
+      "regenBonus": "0000000000000000",
+      "regenRate": "0000000000003940",
+      "stamina": "0000000000003140",
+      "threshold": "0000000000003940"
+    },
+    "staminaExpected": {
+      "canSprint": true,
+      "capacity": "0000000000005940",
+      "delay": "0000000000000000",
+      "exhausted": false,
+      "maxBonus": "0000000000000000",
+      "regenBonus": "0000000000000000",
+      "regenRate": "0000000000003940",
+      "stamina": "0000000000003140",
+      "threshold": "0000000000003940"
+    }
+  },
+  "vectorEncoding": "ieee754-binary32-xy-little-endian-hex"
+}

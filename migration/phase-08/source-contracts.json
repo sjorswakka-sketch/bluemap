@@ -1,0 +1,216 @@
+{
+  "assetGuids": [
+    {
+      "guid": "5d87ab62125473a1c3088a1002a1ca29",
+      "path": "unity/Assets/BlueMapPlayer"
+    },
+    {
+      "guid": "f311416d560ea55a52224d6c3a9f7a33",
+      "path": "unity/Assets/BlueMapPlayer/Resources"
+    },
+    {
+      "guid": "7ea6f9f3bc4559f210cdbbe46f8b5ef5",
+      "path": "unity/Assets/BlueMapPlayer/Resources/BlueMapPlayerMotionOracle.json"
+    },
+    {
+      "guid": "ecf1d932eaf9ea447a2bac0162ef9991",
+      "path": "unity/Assets/BlueMapPlayer/Runtime"
+    },
+    {
+      "guid": "ae9d38c283ea34b6bc47b5485e3160cc",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Input"
+    },
+    {
+      "guid": "48fb16b7414696ae6474b7aec2c7bd55",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Input/PlayerControlsPanel.cs"
+    },
+    {
+      "guid": "a6ae210b9e7106143228bfdcf72fc7a8",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Input/PlayerInputChecks.cs"
+    },
+    {
+      "guid": "51d082c0c852dc332a89c4374b726ed0",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Input/PlayerInputSource.cs"
+    },
+    {
+      "guid": "73d84e073dada21d3e474dc9ede33699",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Input/Resources"
+    },
+    {
+      "guid": "f5d68b8a91edc2ac45374f16f15f5462",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Input/Resources/BlueMapPlayerInputOracle.json"
+    },
+    {
+      "guid": "7dffa9f22ebfcb4128d0de63d8e80761",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Motion"
+    },
+    {
+      "guid": "7e714370d67e7787298a55db7359c489",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Motion/PlayerMotionChecks.cs"
+    },
+    {
+      "guid": "1854c7ca63eae0c91da04acb83eeaefa",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Motion/PlayerMotorModel.cs"
+    },
+    {
+      "guid": "ec9c3b1413edc09ee8b0fdd753041ac9",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/Motion/PlayerStamina.cs"
+    },
+    {
+      "guid": "d3c2a6aba75d182fec53b38b1d069931",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/World"
+    },
+    {
+      "guid": "c1a54cbf1a504363ce208ec4da442bcd",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/World/PlayerCameraMath.cs"
+    },
+    {
+      "guid": "f92eeb3bc65fc5fe975bc576f6effb15",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/World/PlayerProbeRunner.cs"
+    },
+    {
+      "guid": "a3bc2b18b85e703e18a56a64bc858ae5",
+      "path": "unity/Assets/BlueMapPlayer/Runtime/World/PlayerWorld.cs"
+    }
+  ],
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "enginesStarted": false,
+  "oracles": [
+    {
+      "bytes": 30478,
+      "coverage": {
+        "actions": 36,
+        "bindings": 86,
+        "circularDeadzoneVectors": 16
+      },
+      "kind": "input",
+      "resourcePath": "unity/Assets/BlueMapPlayer/Runtime/Input/Resources/BlueMapPlayerInputOracle.json",
+      "sha256": "af3074d39263295cce1b38de5a9109cf0503366b135991c9c23417df9c00e51d",
+      "sourcePath": "migration/phase-08/input-oracle.json"
+    },
+    {
+      "bytes": 78893,
+      "coverage": {
+        "equipment": 8,
+        "exactNumericValues": 1528,
+        "motions": 15,
+        "rolls": 4,
+        "stamina": 26,
+        "surfaces": 83,
+        "transitions": 1
+      },
+      "kind": "motion",
+      "resourcePath": "unity/Assets/BlueMapPlayer/Resources/BlueMapPlayerMotionOracle.json",
+      "sha256": "0e20c802b0d28a965f48d7321a3c225541eb9e17a7948a32afae99fce06bce0d",
+      "sourcePath": "migration/phase-08/motion-oracle.json"
+    }
+  ],
+  "personalSavesUsed": false,
+  "phase": 8,
+  "requiredNativeChecks": [
+    "player_aim_independent",
+    "player_body_faces_movement",
+    "player_camera_bounds",
+    "player_input_16_original_circular_deadzone_vectors",
+    "player_input_all_36_source_actions_native_bindings",
+    "player_input_all_binding_releases_no_latched_action",
+    "player_input_checks_ran",
+    "player_input_controller_disconnect_reconnect",
+    "player_input_focus_loss_releases_without_ghost_resume",
+    "player_input_held_controller_does_not_steal_mouse",
+    "player_input_keyboard_diagonal_normalized",
+    "player_input_no_real_hardware_or_save_claim",
+    "player_input_old_held_keyboard_requires_fresh_press",
+    "player_input_one_selected_gamepad",
+    "player_input_opposite_directions_cancel",
+    "player_input_oracle_complete",
+    "player_input_original_ctrl_sprint_shift_roll",
+    "player_input_original_cursor_context_policy",
+    "player_input_real_package_virtual_devices",
+    "player_input_rebind_swap_reservations_and_reset",
+    "player_input_right_stick_aim_and_ui_scroll",
+    "player_input_switch_threshold_and_mouse_drift",
+    "player_input_switching_press_works_once_and_releases",
+    "player_input_wheel_activates_mouse_and_scrolls",
+    "player_motion_blocked_sprint_uses_no_energy",
+    "player_motion_body_facing_independent_of_crosshair",
+    "player_motion_checks_ran",
+    "player_motion_corrupt_stamina_clamped",
+    "player_motion_delayed_exhaustion_recovery",
+    "player_motion_equipment_exact_source_oracle",
+    "player_motion_equipment_reduction_never_refills",
+    "player_motion_footsteps_distance_remainder_single_event",
+    "player_motion_frame_cannot_be_applied_twice",
+    "player_motion_input_lock_freezes_stamina",
+    "player_motion_invalid_spend_restore_rejected",
+    "player_motion_nonfinite_delta_rejected",
+    "player_motion_oracle_complete",
+    "player_motion_partial_last_sprint_step",
+    "player_motion_pause_freezes_timers_and_stamina",
+    "player_motion_roll_exact_source_oracle",
+    "player_motion_roll_safe_window_strict_boundary",
+    "player_motion_stamina_exact_source_oracle",
+    "player_motion_surfaces_exact_source_oracle",
+    "player_motion_transition_exact_source_oracle",
+    "player_motion_transition_stops_without_stamina_refill",
+    "player_motion_velocity_facing_exact_source_oracle",
+    "player_world_checks_ran",
+    "player_world_source_collision"
+  ],
+  "schema": "bluemap.player.source-contracts.v1",
+  "sourceAnchors": [
+    {
+      "bytes": 13421,
+      "gitBlob": "52c05b53bb2fa675624b00ccb9579e460fd490b6",
+      "path": "project.godot",
+      "sha256": "4381f29aa19a0488ec38349b8d4692c972ed7b6f4d433e9ce184d17214594dfb"
+    },
+    {
+      "bytes": 15663,
+      "gitBlob": "5ca59d68df7a15583a4bcd94f098021c065aa186",
+      "path": "scripts/core/input_manager.gd",
+      "sha256": "b45a93ff35177e6a567c7c7a169c9554e9bb825702802a7727b44d22dd46795a"
+    },
+    {
+      "bytes": 22372,
+      "gitBlob": "26111cc957f29c112b8559e48f7fb816ff4bb36c",
+      "path": "scripts/entities/player.gd",
+      "sha256": "4a5518b2475c5c7bc9d4966b50f48841cfb5ce7ec1b297327e12f5fab1700743"
+    },
+    {
+      "bytes": 1480,
+      "gitBlob": "741de57117bd40b2142b0979922559131d10752d",
+      "path": "scripts/ui/crosshair.gd",
+      "sha256": "9185867e693a2a4a173dbc3768f9ee1500736b3acaafe67273da07a2297d8203"
+    },
+    {
+      "bytes": 2607,
+      "gitBlob": "58806b9c969a52d7d94d7a77abf3c8e43df277a9",
+      "path": "scripts/core/movement.gd",
+      "sha256": "cac3c6ff079faca62eabeafb3508e326b067664fbad3eb95f42a94bc19a8cd3b"
+    },
+    {
+      "bytes": 32096,
+      "gitBlob": "47d621d751586d38a53c370fa7d2a516f3524450",
+      "path": "scripts/core/game_state.gd",
+      "sha256": "86bd03c3052581e8ac4bebc7e8f11e5580be02ead86fd2f0108f01232c85c22c"
+    },
+    {
+      "bytes": 5494,
+      "gitBlob": "316fa5c891e2deec0befc59ee9e9aae43ea55114",
+      "path": "scripts/core/equipment.gd",
+      "sha256": "60276ccdb0c1ecbe52eee8a3b45a2b0f9f8e1221bf1cedd3643967a5aad65a7e"
+    },
+    {
+      "bytes": 10513,
+      "gitBlob": "ca3c52ddf552a7630fcc89f91b5f27fcaed58f2c",
+      "path": "scripts/data/tiles.gd",
+      "sha256": "c505832497d7b8938814a57c57b39f131b3e7d7853d61f386405df87d19e4b0e"
+    }
+  ],
+  "sourceYAxis": "down",
+  "textEncoding": "UTF-8; CRLF normalized to LF as in committed Git text",
+  "tilePixels": 32,
+  "unityYAxis": "up"
+}

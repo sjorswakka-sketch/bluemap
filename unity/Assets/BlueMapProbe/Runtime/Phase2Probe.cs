@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 7) error = "phase must be 7.";
-            else if (previewVersion != "0.3.0-phase7") error = "previewVersion must be 0.3.0-phase7.";
+            else if (phase != 8) error = "phase must be 8.";
+            else if (previewVersion != "0.4.0-phase8") error = "previewVersion must be 0.4.0-phase8.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -77,6 +77,7 @@ namespace BlueMapMigration.Probe
         private Camera worldCamera;
         private BlueMapMigration.Phase6.Phase6Gallery gallery;
         private BlueMapMigration.Foundation.FoundationView foundationView;
+        private BlueMapMigration.Player.PlayerWorld playerWorld;
         private bool automated, runtimeError;
         private int frames;
         private string output;
@@ -125,7 +126,8 @@ namespace BlueMapMigration.Probe
             if (!automated)
             {
                 EnsureFoundationView();
-                gallery.Show("overview"); foundationView.gameObject.SetActive(false);
+                gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(false);
+                EnsurePlayerWorld();
                 yield break;
             }
             while (frames < 60 || !SplashScreen.isFinished || Time.realtimeSinceStartup < 2.5f) yield return null;
@@ -235,9 +237,38 @@ namespace BlueMapMigration.Probe
             Texture2D caveCapture = CaptureCamera();
             File.WriteAllBytes(Path.Combine(output, "screenshot-foundation-cave.png"), caveCapture.EncodeToPNG());
             Destroy(caveCapture);
-            foundationView.gameObject.SetActive(false); gallery.gameObject.SetActive(true);
+            foundationView.gameObject.SetActive(false);
+            yield return null;
+            EnsurePlayerWorld();
+            var player = BlueMapMigration.Player.PlayerProbeRunner.Run(identity, playerWorld);
+            Add("player_runtime_verified", player.success);
+            File.WriteAllText(Path.Combine(output, "player-result.json"), JsonUtility.ToJson(player, true));
+            yield return new WaitForEndOfFrame();
+            Texture2D playerCapture = CaptureCamera();
+            File.WriteAllBytes(Path.Combine(output, "screenshot-player.png"), playerCapture.EncodeToPNG()); Destroy(playerCapture);
+            Texture2D playerUiCapture = ScreenCapture.CaptureScreenshotAsTexture();
+            File.WriteAllBytes(Path.Combine(output,"screenshot-player-ui.png"),playerUiCapture.EncodeToPNG()); Destroy(playerUiCapture);
+            playerWorld.ToggleControls();
+            yield return new WaitForEndOfFrame();
+            Texture2D controlsCapture = ScreenCapture.CaptureScreenshotAsTexture();
+            File.WriteAllBytes(Path.Combine(output,"screenshot-player-controls.png"),controlsCapture.EncodeToPNG()); Destroy(controlsCapture);
+            playerWorld.ToggleControls();
+            playerWorld.Motor.RollCooldown = 0; playerWorld.Motor.TryRoll(Vector2.right); playerWorld.Motor.RollTimer = .21;
+            playerWorld.UpdateAppearance();
+            yield return new WaitForEndOfFrame();
+            Texture2D rollCapture = CaptureCamera();
+            File.WriteAllBytes(Path.Combine(output, "screenshot-player-roll.png"), rollCapture.EncodeToPNG()); Destroy(rollCapture);
+            playerWorld.gameObject.SetActive(false); RestoreGalleryCamera(); gallery.gameObject.SetActive(true);
             Finish();
         }
+        private void EnsurePlayerWorld()
+        {
+            if (playerWorld != null) { playerWorld.gameObject.SetActive(true); return; }
+            playerWorld = new GameObject("Source player movement preview").AddComponent<BlueMapMigration.Player.PlayerWorld>();
+            playerWorld.Initialize(gallery.Catalog, worldCamera, automated);
+        }
+        private void RestoreGalleryCamera()
+        { worldCamera.orthographicSize = 10.125f; worldCamera.transform.position = new Vector3(0,0,-10); }
         private void EnsureFoundationView()
         {
             if (foundationView != null) return;
@@ -255,11 +286,18 @@ namespace BlueMapMigration.Probe
         private void Update()
         {
             frames++;
-            if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+            if (Input.GetKeyDown(KeyCode.Escape) && (playerWorld == null || !playerWorld.gameObject.activeSelf)) Application.Quit();
             if (automated || foundationView == null) return;
-            if (Input.GetKeyDown(KeyCode.Alpha7)) { gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(true); }
+            if (Input.GetKeyDown(KeyCode.Alpha8)) { foundationView.gameObject.SetActive(false); gallery.gameObject.SetActive(false); EnsurePlayerWorld(); }
+            if (Input.GetKeyDown(KeyCode.Alpha7)) { if(playerWorld!=null)playerWorld.gameObject.SetActive(false); RestoreGalleryCamera(); gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(true); }
+            if(playerWorld!=null && playerWorld.gameObject.activeSelf)
+            {
+                if(Input.GetKeyDown(KeyCode.F1))playerWorld.Show("village");
+                if(Input.GetKeyDown(KeyCode.F2))playerWorld.Show("forest");
+                if(Input.GetKeyDown(KeyCode.F3))playerWorld.Show("cave");
+            }
             for (int i = 0; i < 6; i++) if (Input.GetKeyDown(KeyCode.Alpha1 + i))
-            { foundationView.gameObject.SetActive(false); gallery.gameObject.SetActive(true); gallery.Show(BlueMapMigration.Phase6.Phase6Gallery.Pages[i]); }
+            { if(playerWorld!=null)playerWorld.gameObject.SetActive(false); RestoreGalleryCamera(); foundationView.gameObject.SetActive(false); gallery.gameObject.SetActive(true); gallery.Show(BlueMapMigration.Phase6.Phase6Gallery.Pages[i]); }
         }
         private Texture2D CaptureCamera()
         {

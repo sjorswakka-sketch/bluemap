@@ -24,7 +24,7 @@ import zlib
 EDITOR_VERSION = "6000.3.26f1"
 EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
-PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7"}
+PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7", 8: "0.4.0-phase8"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -70,6 +70,34 @@ FOUNDATION_DETAIL_CHECKS = {
   | {f"foundation_source_clock_{index}" for index in range(1, 10)} \
   | {f"foundation_source_target_{index}" for index in range(1, 7)}
 FOUNDATION_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+PLAYER_CHECKS = {"player_runtime_verified"}
+PLAYER_DETAIL_CHECKS = {
+    "player_motion_checks_ran", "player_input_checks_ran", "player_world_checks_ran",
+    "player_motion_oracle_complete", "player_input_oracle_complete",
+    "player_world_source_collision", "player_camera_bounds", "player_body_faces_movement",
+    "player_aim_independent",
+    "player_input_real_package_virtual_devices", "player_input_all_36_source_actions_native_bindings",
+    "player_input_all_binding_releases_no_latched_action", "player_input_keyboard_diagonal_normalized",
+    "player_input_opposite_directions_cancel", "player_input_original_ctrl_sprint_shift_roll",
+    "player_input_16_original_circular_deadzone_vectors", "player_input_switch_threshold_and_mouse_drift",
+    "player_input_held_controller_does_not_steal_mouse", "player_input_old_held_keyboard_requires_fresh_press",
+    "player_input_switching_press_works_once_and_releases", "player_input_wheel_activates_mouse_and_scrolls",
+    "player_input_right_stick_aim_and_ui_scroll", "player_input_original_cursor_context_policy",
+    "player_input_controller_disconnect_reconnect", "player_input_one_selected_gamepad",
+    "player_input_focus_loss_releases_without_ghost_resume", "player_input_rebind_swap_reservations_and_reset",
+    "player_input_no_real_hardware_or_save_claim",
+    "player_motion_partial_last_sprint_step", "player_motion_delayed_exhaustion_recovery",
+    "player_motion_equipment_reduction_never_refills", "player_motion_invalid_spend_restore_rejected",
+    "player_motion_corrupt_stamina_clamped", "player_motion_blocked_sprint_uses_no_energy",
+    "player_motion_body_facing_independent_of_crosshair", "player_motion_transition_stops_without_stamina_refill",
+    "player_motion_pause_freezes_timers_and_stamina", "player_motion_input_lock_freezes_stamina",
+    "player_motion_footsteps_distance_remainder_single_event", "player_motion_frame_cannot_be_applied_twice",
+    "player_motion_nonfinite_delta_rejected", "player_motion_roll_safe_window_strict_boundary",
+    "player_motion_stamina_exact_source_oracle", "player_motion_surfaces_exact_source_oracle",
+    "player_motion_equipment_exact_source_oracle", "player_motion_velocity_facing_exact_source_oracle",
+    "player_motion_roll_exact_source_oracle", "player_motion_transition_exact_source_oracle",
+}
+PLAYER_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -80,6 +108,7 @@ REQUIRED_FILES = {
     "BlueMapUnityProbe_Data/level0", "BUILD-IDENTITY.json", "RUNTIME-CHECKS.json",
     "LEESMIJ.txt", "FILES.json",
 }
+PLAYER_INPUT_DLL = "BlueMapUnityProbe_Data/Managed/Unity.InputSystem.dll"
 PE_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -89,7 +118,8 @@ PLAYER_ROOTS = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge", "BlueMapUnityProbe_Data", "D3D12",
 }
-METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
+                  "PLAYER-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -235,6 +265,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 7:
         require(FOUNDATION_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 7 foundation runtime proof is incomplete")
+    if identity["phase"] >= 8:
+        require(PLAYER_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 8 player runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -261,6 +294,62 @@ def validate_foundation(result: dict, identity: dict) -> None:
     require(FOUNDATION_DETAIL_CHECKS <= names, "Required foundation world/state/session checks are missing")
 
 
+def validate_player(result: dict, identity: dict) -> None:
+    """Require the native player witnesses, anchored to this isolated build."""
+    require(isinstance(result, dict) and set(result) == PLAYER_FIELDS,
+            "Phase 8 player proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported player proof schema")
+    require(result.get("identity") == identity, "Player embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Player proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Player detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"},
+                "Malformed player detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid player detail check name")
+        require(name not in names and check["passed"] is True,
+                "Player detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(PLAYER_DETAIL_CHECKS <= names, "Required player motion/input/world checks are missing")
+
+
+def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
+    packages = receipt.get("unityPackages")
+    require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
+    packages_seen = set()
+    for row in packages:
+        require(isinstance(row, dict) and set(row) == {"name", "version", "source"},
+                "Malformed resolved Unity package identity")
+        name = row["name"]
+        require(isinstance(name, str) and name not in packages_seen and
+                (name.startswith("com.unity.modules.") or name == "com.unity.inputsystem") and
+                isinstance(row["version"], str) and re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", row["version"]) is not None and
+                row["source"] == ("registry" if name == "com.unity.inputsystem" else "builtin"),
+                "Invalid or duplicate resolved Unity package identity")
+        packages_seen.add(name)
+    require("com.unity.inputsystem" in packages_seen, "Native Input System package identity is missing")
+    rows = receipt.get("runtimeDllInputs")
+    require(isinstance(rows, list) and bool(rows), "Phase 8 native runtime DLL witnesses are missing")
+    seen = set()
+    for row in rows:
+        require(isinstance(row, dict) and set(row) == {"name", "bytes", "sha256"}, "Malformed runtime DLL witness")
+        name = row["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[A-Za-z0-9_.-]+\.dll", name) is not None and name not in seen,
+                "Unsafe or duplicate runtime DLL witness")
+        seen.add(name)
+        target = "BlueMapUnityProbe_Data/Managed/" + name
+        require(target in payload and type(row["bytes"]) is int and row["bytes"] == len(payload[target]) and
+                isinstance(row["sha256"], str) and re.fullmatch(r"[0-9a-f]{64}", row["sha256"]) is not None and
+                row["sha256"] == hashlib.sha256(payload[target]).hexdigest(),
+                "Packaged runtime DLL differs from its build source witness")
+    require("Unity.InputSystem.dll" in seen, "Native Input System DLL witness is missing")
+
+
 def _validate_pe(raw: bytes, name: str) -> None:
     require(len(raw) >= 64 and raw[:2] == b"MZ", f"Runtime binary is not PE: {name}")
     offset = struct.unpack_from("<I", raw, 0x3C)[0]
@@ -277,27 +366,41 @@ def _instructions(identity: dict) -> bytes:
         3: "Migratiefase 3: deze kleine controlebuild is nog niet de overgezette game.\n",
         6: "Migratiefase 6: originele beelden, animaties, audio en teksten; nog niet de overgezette game.\n",
         7: "Migratiefase 7: technische spelbasis en originele presentatie; nog niet de overgezette game.\n",
+        8: "Migratiefase 8: speler, camera en bediening; nog niet de volledige overgezette game.\n",
     }
+    controls = (
+        "De proef start in de loopwereld (pagina 8).\n"
+        "WASD / pijlen: lopen; Ctrl vasthouden: rennen; Shift / K: rollen; muis: richten.\n"
+        "Controller: linkerstick lopen; L3 vasthouden rennen; B rollen; rechterstick richten.\n"
+        "P / Esc / Start: pauze; F1 dorp; F2 bos; F3 grot (gebiedskeuze voor deze proef).\n"
+        "F9: bediening aanpassen in het geheugen van deze proef; nog geen instellingenopslag.\n"
+        "1-6: oorspronkelijke presentatie; 7: spelbasis; 8: loopwereld.\n"
+        "Buiten de loopwereld sluit Esc de proef.\n"
+        "Omrande objectvoeten tonen botsingsruimte van nog niet volledig overgezette objecten.\n"
+        if identity["phase"] >= 8 else
+        ("WASD / pijlen: verplaatsen; Esc: sluiten.\n" if identity["phase"] == 3 else
+         "1-6: galerijpagina; M: muziek; N: muziek stoppen; Spatie: geluid; Esc: sluiten.\n"))
     return (
         "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
         description[identity["phase"]] +
         "De bestaande Godot-game en het herstelpunt blijven apart beschikbaar.\n\n"
         "Pak de volledige map uit en start BlueMapUnityProbe.exe.\n"
         "Laat alle bijbehorende bestanden en de BlueMapUnityProbe_Data-map staan.\n"
-        + ("WASD / pijlen: verplaatsen; Esc: sluiten.\n" if identity["phase"] == 3 else
-           "1-6: galerijpagina; M: muziek; N: muziek stoppen; Spatie: geluid; Esc: sluiten.\n") +
+        + controls +
         "Deze proef gebruikt geen opslagbestanden van de bestaande game.\n\n"
         f"Preview: {identity['previewVersion']}\nBroncommit: {identity['sourceCommit']}\n"
         f"Bronvingerafdruk: {identity['inputFingerprint']}\n"
         f"Unity {EDITOR_VERSION} ({EDITOR_REVISION}), Windows x64 / Mono.\n"
         "BUILD-IDENTITY.json en RUNTIME-CHECKS.json beschrijven deze controlebuild.\n"
         + ("FOUNDATION-CHECKS.json bevat de controles van de technische spelbasis.\n" if identity["phase"] >= 7 else "") +
+        ("PLAYER-CHECKS.json bevat de controles van speler, camera en bediening.\n" if identity["phase"] >= 8 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
 
 def package_player(player: Path, output: Path, identity: dict,
-                   runtime_result: dict, foundation_result: dict | None = None) -> tuple[Path, int]:
+                   runtime_result: dict, foundation_result: dict | None = None,
+                   player_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -305,6 +408,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_foundation(foundation_result, identity)
     else:
         require(foundation_result is None, "Historical preview cannot contain phase 7 foundation proof")
+    if identity["phase"] >= 8:
+        validate_player(player_result, identity)
+    else:
+        require(player_result is None, "Historical preview cannot contain phase 8 player proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -318,6 +425,8 @@ def package_player(player: Path, output: Path, identity: dict,
     }
     if foundation_result is not None:
         payload["FOUNDATION-CHECKS.json"] = _json_bytes(foundation_result)
+    if player_result is not None:
+        payload["PLAYER-CHECKS.json"] = _json_bytes(player_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -339,6 +448,8 @@ def package_player(player: Path, output: Path, identity: dict,
                 for name, data in sorted(payload.items())}
     payload["FILES.json"] = _json_bytes(manifest)
     require(REQUIRED_FILES <= set(payload), "Player output is missing required Windows runtime files")
+    if identity["phase"] >= 8:
+        require(PLAYER_INPUT_DLL in payload, "Phase 8 native Input System runtime is missing")
     for name in PE_FILES:
         _validate_pe(payload[name], name)
     try:
@@ -416,6 +527,8 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     except (zipfile.BadZipFile, RuntimeError, NotImplementedError, EOFError, zlib.error) as error:
         raise PackageError("ZIP structure, local header or CRC validation failed") from error
     require(REQUIRED_FILES <= set(payload), "ZIP is missing required runtime files")
+    if identity["phase"] >= 8:
+        require(PLAYER_INPUT_DLL in payload, "Phase 8 native Input System runtime is missing")
     manifest = _json(payload["FILES.json"], "FILES.json")
     require(set(manifest) == set(payload) - {"FILES.json"},
             "Package manifest contains missing, extra or self-referential paths")
@@ -441,6 +554,15 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("FOUNDATION-CHECKS.json" not in payload and "foundation" not in receipt,
                 "Historical preview contains unsupported foundation proof")
+    if identity["phase"] >= 8:
+        require("PLAYER-CHECKS.json" in payload, "Phase 8 packaged player proof is missing")
+        player = _json(payload["PLAYER-CHECKS.json"], "PLAYER-CHECKS.json")
+        validate_player(player, identity)
+        require(receipt.get("player") == player, "Receipt player proof differs from package")
+        _validate_runtime_inputs(receipt, payload)
+    else:
+        require("PLAYER-CHECKS.json" not in payload and "player" not in receipt,
+                "Historical preview contains unsupported player proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

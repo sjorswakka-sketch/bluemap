@@ -143,5 +143,50 @@ class RealGitInputTests(unittest.TestCase):
         self.assertEqual(build.collect_build_inputs(ROOT, source), (source, inputs, fingerprint))
 
 
+class BuildDependencyTests(unittest.TestCase):
+    def setUp(self):
+        self.lock = {"dependencies": {
+            "com.unity.inputsystem": {"version": "1.20.1", "source": "registry", "depth": 0, "dependencies": {}},
+            "com.unity.modules.physics2d": {"version": "1.0.0", "source": "builtin", "depth": 0, "dependencies": {}},
+        }}
+        self.packages = [{"name": name, "version": row["version"], "source": row["source"]}
+                         for name, row in self.lock["dependencies"].items()]
+        self.lock_bytes = json.dumps(self.lock).encode()
+
+    def test_actual_package_identities_must_equal_the_committed_lock(self):
+        build.validate_unity_packages(self.packages, self.lock_bytes)
+        for packages in (self.packages[:-1], self.packages + [self.packages[0]],
+                         [dict(row, version="99.0.0") for row in self.packages],
+                         self.packages + [{"name": "com.unity.unrequested", "version": "1.0.0", "source": "registry"}],
+                         [dict(row, privatePath="do not publish") for row in self.packages]):
+            with self.subTest(packages=packages), self.assertRaises(build.ProbeError):
+                build.validate_unity_packages(packages, self.lock_bytes)
+
+    def test_missing_native_input_package_or_malformed_lock_is_rejected(self):
+        for lock in (b"not JSON", b"{}", b'{"dependencies":[]}',
+                     b'{"dependencies":{"com.unity.inputsystem":{}}}',
+                     b'{"dependencies":{"com.unity.modules.physics2d":{"version":"1.0.0","source":"builtin"}}}'):
+            with self.subTest(lock=lock), self.assertRaises(build.ProbeError):
+                build.validate_unity_packages(self.packages, lock)
+
+    def test_native_dll_witness_checks_the_actual_built_file(self):
+        with tempfile.TemporaryDirectory(prefix="BlueMap-DLL-Witness-Tests-") as temporary:
+            root = Path(temporary)
+            dll = root / "BlueMapUnityProbe_Data/Managed/Unity.InputSystem.dll"
+            dll.parent.mkdir(parents=True)
+            data = b"Deliberate non-runnable runtime DLL witness fixture"
+            dll.write_bytes(data)
+            row = {"name": "Unity.InputSystem.dll", "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
+            build.validate_runtime_dll_inputs([row], root)
+            for rows in ([], [dict(row, name="../Unity.InputSystem.dll")], [row, row],
+                         [dict(row, bytes=True)], [dict(row, sha256="0" * 64)],
+                         [dict(row, privatePath="must not publish")]):
+                with self.subTest(rows=rows), self.assertRaises(build.ProbeError):
+                    build.validate_runtime_dll_inputs(rows, root)
+            dll.write_bytes(data + b"altered after export")
+            with self.assertRaisesRegex(build.ProbeError, "differs from its native build report"):
+                build.validate_runtime_dll_inputs([row], root)
+
+
 if __name__ == "__main__":
     unittest.main()

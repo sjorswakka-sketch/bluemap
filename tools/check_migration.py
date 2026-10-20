@@ -168,16 +168,23 @@ def validate_packages(manifest: dict, lock: dict) -> dict:
     require(set(manifest) == {"dependencies"} and set(lock) == {"dependencies"},
             "Unexpected Unity package manifest settings")
     for name, entry in locked.items():
-        require(name.startswith("com.unity.modules.") and isinstance(entry, dict)
-                and entry.get("source") == "builtin" and entry.get("version") == "1.0.0",
-                f"Only pinned built-in Unity modules are allowed: {name}")
+        require(isinstance(entry, dict), f"Invalid package lock: {name}")
+        if name == "com.unity.inputsystem":
+            require(entry.get("source") == "registry" and entry.get("version") == "1.20.1"
+                    and entry.get("url") == "https://packages.unity.com"
+                    and entry.get("dependencies") == {"com.unity.modules.uielements": "1.0.0"},
+                    "Input System must match the audited official 1.20.1 package")
+        else:
+            require(name.startswith("com.unity.modules.") and entry.get("source") == "builtin"
+                    and entry.get("version") == "1.0.0", f"Unapproved built-in Unity dependency: {name}")
         require(type(entry.get("depth")) is int and entry["depth"] >= 0
                 and isinstance(entry.get("dependencies"), dict), f"Invalid Unity module lock: {name}")
         for dependency, version in entry["dependencies"].items():
             require(version == "1.0.0" and dependency in locked,
                     f"Missing or unpinned Unity module dependency: {name} -> {dependency}")
     for name, version in direct.items():
-        require(version == "1.0.0" and name in locked and locked[name]["depth"] == 0,
+        require(version == ("1.20.1" if name == "com.unity.inputsystem" else "1.0.0")
+                and name in locked and locked[name]["depth"] == 0,
                 f"Manifest and lock differ for Unity module: {name}")
     require({name for name, entry in locked.items() if entry["depth"] == 0} == set(direct),
             "Direct Unity module set differs from its lock")
@@ -190,7 +197,7 @@ def validate_packages(manifest: dict, lock: dict) -> dict:
                 pending.append(name)
     require(reachable == set(locked), "Unity lock contains unreachable modules")
     return {"directModules": len(direct), "lockedModules": len(locked),
-            "externalDependencies": 0}
+            "externalDependencies": sum(entry["source"] == "registry" for entry in locked.values())}
 
 
 def validate_assets(project: Path) -> dict:

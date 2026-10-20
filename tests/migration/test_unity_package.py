@@ -45,6 +45,12 @@ def foundation(build_identity: dict) -> dict:
             "gameSaveAccessed": False, "checks": [{"name": name, "passed": True} for name in names]}
 
 
+def player_proof(build_identity: dict) -> dict:
+    return {"schemaVersion": 1, "identity": copy.deepcopy(build_identity), "success": True,
+            "gameSaveAccessed": False,
+            "checks": [{"name": name, "passed": True} for name in sorted(package.PLAYER_DETAIL_CHECKS)]}
+
+
 def pe_stub() -> bytes:
     """Small deliberate fixture, never a runnable executable."""
     raw = bytearray(256)
@@ -58,7 +64,8 @@ def pe_stub() -> bytes:
 
 class PreviewReferenceTests(unittest.TestCase):
     def test_all_published_phase_formats_remain_supported(self):
-        for phase, version in ((3, "0.1.0-phase3"), (6, "0.2.0-phase6"), (7, "0.3.0-phase7")):
+        for phase, version in ((3, "0.1.0-phase3"), (6, "0.2.0-phase6"), (7, "0.3.0-phase7"),
+                               (8, "0.4.0-phase8")):
             name = f"BlueMapUnityPreview-phase-{phase:02d}-aaaaaaaa-Windows-x64.zip"
             manifest = {"schemaVersion": 1, "phase": phase, "previewVersion": version,
                         "sourceCommit": "a" * 40, "packageName": name}
@@ -213,6 +220,139 @@ class UnityPackageTests(unittest.TestCase):
                    "package": {"file": archive.name, "sha256": package.sha256(archive),
                                "bytes": archive.stat().st_size, "files": count}}
         return archive, receipt, proof
+
+    def phase8_fixture(self):
+        build_identity = {**identity(), "phase": 8, "previewVersion": "0.4.0-phase8"}
+        proof = runtime(build_identity)
+        proof["checks"] += [{"name": name, "passed": True} for name in sorted(
+            package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS | package.PLAYER_CHECKS)]
+        details, player = foundation(build_identity), player_proof(build_identity)
+        output = self.base / "phase8-output"
+        output.mkdir()
+        (self.player / package.PLAYER_INPUT_DLL).write_bytes(b"Deliberate non-runnable Input System DLL fixture\n")
+        archive, count = package.package_player(self.player, output, build_identity, proof, details, player)
+        receipt = {"phase": 8, "identity": build_identity, "success": True,
+                   "foundation": details, "player": player,
+                   "unityPackages": [{"name": "com.unity.inputsystem", "version": "1.0.0", "source": "registry"}],
+                   "runtimeDllInputs": [{"name": "Unity.InputSystem.dll",
+                                          "bytes": (self.player / package.PLAYER_INPUT_DLL).stat().st_size,
+                                          "sha256": package.sha256(self.player / package.PLAYER_INPUT_DLL)}],
+                   "rawLogsPublished": False, "godotSavesUsed": False, "checks": proof["checks"],
+                   "package": {"file": archive.name, "sha256": package.sha256(archive),
+                               "bytes": archive.stat().st_size, "files": count}}
+        return archive, receipt, proof
+
+    def test_phase8_player_proof_and_historical_phase7_both_verify(self) -> None:
+        archive, receipt, _ = self.phase8_fixture()
+        report = package.verify_package(archive, receipt, "a" * 40)
+        self.assertEqual((report["phase"], report["runtimeChecks"]), (8, 32))
+        old_archive, old_receipt, _ = self.phase7_fixture()
+        self.assertTrue(package.verify_package(old_archive, old_receipt, "a" * 40)["success"])
+        with zipfile.ZipFile(archive) as packed:
+            root = package.archive_root(receipt["identity"])
+            self.assertEqual(json.loads(packed.read(root + "/PLAYER-CHECKS.json")), receipt["player"])
+            self.assertIn("Migratiefase 8", packed.read(root + "/LEESMIJ.txt").decode("utf-8"))
+
+    def test_phase8_runtime_cannot_drop_player_foundation_or_presentation_proof(self) -> None:
+        build_identity = {**identity(), "phase": 8, "previewVersion": "0.4.0-phase8"}
+        required = package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS | package.PLAYER_CHECKS
+        for missing in required:
+            proof = runtime(build_identity)
+            proof["checks"] += [{"name": name, "passed": True} for name in sorted(required - {missing})]
+            proof["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "proof"):
+                package.package_player(self.player, self.output, build_identity, proof,
+                                       foundation(build_identity), player_proof(build_identity))
+
+    def test_phase8_player_details_fail_closed_before_packaging(self) -> None:
+        build_identity = {**identity(), "phase": 8, "previewVersion": "0.4.0-phase8"}
+        proof = runtime(build_identity)
+        proof["checks"] += [{"name": name, "passed": True} for name in sorted(
+            package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS | package.PLAYER_CHECKS)]
+        changes = {
+            "missing": lambda d: None,
+            "stub": lambda d: {**d, "checks": [{"name": "player_stub", "passed": True}]},
+            "wrong_source": lambda d: {**d, "identity": {**build_identity, "sourceCommit": "c" * 40}},
+            "schema_bool": lambda d: {**d, "schemaVersion": True},
+            "failed": lambda d: {**d, "success": False},
+            "save_access": lambda d: {**d, "gameSaveAccessed": True},
+            "extra_field": lambda d: {**d, "privateLogPath": "must not publish"},
+            "failed_detail": lambda d: {**d, "checks": d["checks"] + [{"name": "failed_detail", "passed": False}]},
+            "duplicate": lambda d: {**d, "checks": d["checks"] + [d["checks"][0]]},
+        }
+        for label, edit in changes.items():
+            with self.subTest(change=label), self.assertRaises(package.PackageError):
+                package.package_player(self.player, self.output, build_identity, proof,
+                                       foundation(build_identity), edit(player_proof(build_identity)))
+
+    def test_phase8_each_required_detail_cannot_be_replaced_by_an_unrelated_green_check(self) -> None:
+        build_identity = {**identity(), "phase": 8, "previewVersion": "0.4.0-phase8"}
+        for missing in package.PLAYER_DETAIL_CHECKS:
+            details = player_proof(build_identity)
+            details["checks"] = [check for check in details["checks"] if check["name"] != missing]
+            details["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "checks are missing"):
+                package.validate_player(details, build_identity)
+
+    def test_phase8_receipt_player_details_must_exactly_match_packaged_proof(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase8_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["player"]["checks"].append({"name": "receipt_only_check", "passed": True})
+        with self.assertRaisesRegex(package.PackageError, "Receipt player proof"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_phase8_failed_player_proof_cannot_be_hidden_by_rehashing(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase8_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["player"]["checks"][0]["passed"] = False
+        self.change_payload("PLAYER-CHECKS.json", json.dumps(self.receipt["player"]).encode())
+        self.rejected()
+
+    def test_phase8_missing_player_detail_document_is_rejected_with_rehashed_manifest(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase8_fixture()
+        self.identity = self.receipt["identity"]
+        self.rewrite(lambda files: [(info, raw) for info, raw in files
+                                   if not info.filename.endswith("/PLAYER-CHECKS.json")], True)
+        with self.assertRaisesRegex(package.PackageError, "player proof is missing"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_phase8_missing_native_input_dll_is_rejected_with_rehashed_manifest(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase8_fixture()
+        self.identity = self.receipt["identity"]
+        self.rewrite(lambda files: [(info, raw) for info, raw in files
+                                   if not info.filename.endswith("/" + package.PLAYER_INPUT_DLL)], True)
+        with self.assertRaisesRegex(package.PackageError, "Input System runtime is missing"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_phase8_replaced_input_dll_cannot_hide_behind_a_rehashed_zip_manifest(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase8_fixture()
+        self.identity = self.receipt["identity"]
+        self.change_payload(package.PLAYER_INPUT_DLL, b"Replacement DLL with a valid archive checksum")
+        with self.assertRaisesRegex(package.PackageError, "runtime DLL differs"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_phase8_missing_or_malformed_runtime_dependency_witness_is_rejected(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase8_fixture()
+        self.identity = self.receipt["identity"]
+        valid = copy.deepcopy(self.receipt)
+        edits = (
+            {"runtimeDllInputs": []}, {"runtimeDllInputs": None}, {"unityPackages": []},
+            {"unityPackages": [{"name": "com.unity.inputsystem", "version": "1.0.0", "source": "builtin"}]},
+            {"runtimeDllInputs": [dict(valid["runtimeDllInputs"][0], name="../Unity.InputSystem.dll")]},
+            {"runtimeDllInputs": [dict(valid["runtimeDllInputs"][0], privateLogPath="not allowed")]},
+            {"runtimeDllInputs": valid["runtimeDllInputs"] * 2},
+            {"unityPackages": valid["unityPackages"] * 2},
+        )
+        for edit in edits:
+            with self.subTest(edit=edit), self.assertRaises(package.PackageError):
+                package.verify_package(self.archive, {**valid, **edit})
+
+    def test_historical_phase7_cannot_be_mislabelled_as_player_verified(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase7_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["player"] = player_proof(self.identity)
+        with self.assertRaisesRegex(package.PackageError, "unsupported player proof"):
+            package.verify_package(self.archive, self.receipt)
 
     def test_phase7_foundation_package_and_historical_versions_verify(self) -> None:
         archive, receipt, _ = self.phase7_fixture()

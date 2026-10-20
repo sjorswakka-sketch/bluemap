@@ -171,6 +171,18 @@ class PackagesAndTrackedFilesTests(unittest.TestCase):
     def test_pinned_builtins_pass(self):
         self.assertEqual(source.validate_packages(self.manifest, self.lock)["externalDependencies"], 0)
 
+    def test_only_audited_official_input_system_is_allowed(self):
+        manifest = source.read_json(Path(__file__).resolve().parents[2] / "unity/Packages/manifest.json")
+        locked = source.read_json(Path(__file__).resolve().parents[2] / "unity/Packages/packages-lock.json")
+        self.assertEqual(source.validate_packages(manifest, locked)["externalDependencies"], 1)
+        for field, bad in (("version", "1.20.2"), ("source", "git"), ("url", "https://example.com"),
+                           ("dependencies", {})):
+            with self.subTest(field=field):
+                changed = copy.deepcopy(locked)
+                changed["dependencies"]["com.unity.inputsystem"][field] = bad
+                with self.assertRaisesRegex(source.MigrationError, "audited"):
+                    source.validate_packages(manifest, changed)
+
     def test_external_registry_package_is_rejected(self):
         self.lock["dependencies"][self.module]["source"] = "registry"
         with self.assertRaisesRegex(source.MigrationError, "built-in"):

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Linq;
 using BlueMapMigration.Probe;
 using UnityEditor;
 using UnityEditor.Build;
@@ -21,6 +22,10 @@ namespace BlueMapMigration.Editor
         private const string IdentityAssetPath = "Assets/BlueMapProbe/Resources/BuildIdentity.json";
 
         [Serializable]
+        private sealed class PackageInput { public string name, version, source; }
+        [Serializable]
+        private sealed class DllInput { public string name, sha256; public long bytes; }
+        [Serializable]
         private sealed class Report
         {
             public string target = "StandaloneWindows64";
@@ -33,7 +38,9 @@ namespace BlueMapMigration.Editor
             public double durationSeconds;
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
-            public string scope = "Original presentation plus isolated area/state/clock/interaction foundation; full gameplay and save import follow";
+            public string scope = "Original presentation and foundation plus source-based player movement, aiming, camera and native Input System; save import and full gameplay follow";
+            public PackageInput[] unityPackages;
+            public DllInput[] runtimeDllInputs;
             public BuildIdentity identity;
         }
 
@@ -81,6 +88,18 @@ namespace BlueMapMigration.Editor
                 PlayerSettings.usePlayerLog = true;
                 PlayerSettings.allowFullscreenSwitch = false;
                 PlayerSettings.SplashScreen.show = false;
+                // The retained art gallery uses legacy input; the walking preview uses
+                // the pinned native Input System. Both are intentional in this phase.
+                var settings = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/ProjectSettings.asset")[0]);
+                settings.FindProperty("activeInputHandler").intValue = 2;
+                settings.ApplyModifiedPropertiesWithoutUndo();
+                var packageLock = BlueMapMigration.Foundation.FoundationJson.Parse(File.ReadAllText("Packages/packages-lock.json")).Require("dependencies");
+                var lockedNames = packageLock.Entries.Select(pair => pair.Key.AsString()).ToArray();
+                report.unityPackages = UnityEditor.PackageManager.PackageInfo.GetAllRegisteredPackages()
+                    .Select(package => new PackageInput { name = package.name, version = package.version,
+                        source = package.source == UnityEditor.PackageManager.PackageSource.BuiltIn ? "builtin" : "registry" })
+                    .Where(package => lockedNames.Contains(package.name))
+                    .OrderBy(package => package.name, StringComparer.Ordinal).ToArray();
                 PlayerSettings.SetUseDefaultGraphicsAPIs(BuildTarget.StandaloneWindows64, false);
                 PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { GraphicsDeviceType.Direct3D11 });
                 GraphicsSettings.defaultRenderPipeline = null;
@@ -120,6 +139,14 @@ namespace BlueMapMigration.Editor
                 report.totalWarnings = (int)summary.totalWarnings;
                 report.totalBytes = (long)summary.totalSize;
                 report.durationSeconds = summary.totalTime.TotalSeconds;
+                string inputDll = Path.Combine(output, "BlueMapUnityProbe_Data", "Managed", "Unity.InputSystem.dll");
+                if (summary.result == BuildResult.Succeeded)
+                {
+                    byte[] bytes = File.ReadAllBytes(inputDll);
+                    using (SHA256 hash = SHA256.Create())
+                        report.runtimeDllInputs = new[] { new DllInput { name = "Unity.InputSystem.dll", bytes = bytes.LongLength,
+                            sha256 = BitConverter.ToString(hash.ComputeHash(bytes)).Replace("-", "").ToLowerInvariant() } };
+                }
                 File.WriteAllText(reportPath, JsonUtility.ToJson(report, true));
                 if (summary.result != BuildResult.Succeeded || summary.totalErrors != 0)
                     throw new BuildFailedException("Windows probe failed. See the private build log.");

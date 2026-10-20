@@ -29,11 +29,11 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.3.0-phase7"
-PHASE = 7
+PREVIEW_VERSION = "0.4.0-phase8"
+PHASE = 8
 
 from verify_unity_package import (PackageError, package_player, validate_identity, verify_package,
-                                  validate_foundation, FOUNDATION_CHECKS)
+                                  validate_foundation, FOUNDATION_CHECKS, validate_player, PLAYER_CHECKS)
 
 
 class ProbeError(RuntimeError):
@@ -293,6 +293,50 @@ def collect_build_inputs(root: Path = ROOT, commit: str | None = None) -> tuple[
     return source_commit, inputs, fingerprint
 
 
+def validate_unity_packages(packages: object, lock_bytes: bytes) -> None:
+    """Bind actual resolved package identities to the committed package lock."""
+    try:
+        lock = json.loads(lock_bytes.decode("utf-8-sig"))
+    except (ValueError, UnicodeError) as error:
+        raise ProbeError("Invalid committed Unity package lock") from error
+    require(isinstance(lock, dict) and isinstance(lock.get("dependencies"), dict),
+            "Committed Unity package lock is missing its dependencies")
+    require(all(isinstance(name, str) and isinstance(value, dict) and
+                isinstance(value.get("version"), str) and isinstance(value.get("source"), str)
+                for name, value in lock["dependencies"].items()), "Malformed committed Unity package lock")
+    expected = {name: {"name": name, "version": value["version"], "source": value["source"]}
+                for name, value in lock["dependencies"].items()}
+    require("com.unity.inputsystem" in expected, "Phase 8 requires the pinned native Input System package")
+    require(isinstance(packages, list) and bool(packages), "Resolved Unity packages are missing")
+    observed = {}
+    for row in packages:
+        require(isinstance(row, dict) and set(row) == {"name", "version", "source"},
+                "Malformed resolved Unity package")
+        require(isinstance(row["name"], str) and row["name"] not in observed,
+                "Duplicate or malformed resolved Unity package name")
+        observed[row["name"]] = row
+    require(observed == expected, "Resolved Unity packages differ from the committed package lock")
+
+
+def validate_runtime_dll_inputs(rows: object, player: Path) -> None:
+    """Hash the actual built DLL, not a possibly different Editor assembly."""
+    require(isinstance(rows, list) and bool(rows), "Runtime DLL inputs are missing")
+    seen = set()
+    for row in rows:
+        require(isinstance(row, dict) and set(row) == {"name", "bytes", "sha256"},
+                "Malformed runtime DLL input")
+        name = row["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[A-Za-z0-9_.-]+\.dll", name) is not None and name not in seen,
+                "Unsafe or duplicate runtime DLL input name")
+        seen.add(name)
+        path = player / "BlueMapUnityProbe_Data" / "Managed" / name
+        require(type(row["bytes"]) is int and row["bytes"] > 0 and path.is_file() and
+                path.stat().st_size == row["bytes"] and isinstance(row["sha256"], str) and
+                re.fullmatch(r"[0-9a-f]{64}", row["sha256"]) is not None and sha256(path) == row["sha256"],
+                "Runtime DLL differs from its native build report")
+    require("Unity.InputSystem.dll" in seen, "Native Input System DLL source witness is missing")
+
+
 @contextmanager
 def disposable_build_directory():
     """Keep a failed isolated import for diagnosis; clean only our new cache."""
@@ -364,6 +408,8 @@ def main() -> None:
             report["totalErrors"] == 0, "Unity did not report an error-free build")
     require(type(report.get("totalWarnings")) is int and report["totalWarnings"] >= 0,
             "Invalid build warning count")
+    validate_unity_packages(report.get("unityPackages"), canonical_files["unity/Packages/packages-lock.json"])
+    validate_runtime_dll_inputs(report.get("runtimeDllInputs"), player)
     executable = player / EXE_NAME
     validate_pe(executable)
     require((player / "UnityPlayer.dll").is_file() and (player / "BlueMapUnityProbe_Data").is_dir(),
@@ -389,6 +435,8 @@ def main() -> None:
     require(len({c["name"] for c in checks}) == len(checks), "Runtime check names are duplicated")
     require(FOUNDATION_CHECKS <= {c["name"] for c in checks},
             "Required foundation runtime check is missing")
+    require(PLAYER_CHECKS <= {c["name"] for c in checks},
+            "Required player runtime check is missing")
     require(type(result.get("frames")) is int and result["frames"] >= 60, "Runtime loop did not advance")
     require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
             "Unexpected runtime capture method")
@@ -407,12 +455,16 @@ def main() -> None:
     captures = {}
     for name in ("screenshot-hair.png", "screenshot-clothing.png", "screenshot-equipment.png",
                  "screenshot-languages.png", "screenshot-pixels.png", "screenshot-animation.png",
-                 "screenshot-premultiplied.png"):
+                 "screenshot-premultiplied.png", "screenshot-foundation.png", "screenshot-foundation-cave.png",
+                 "screenshot-player.png", "screenshot-player-roll.png", "screenshot-player-ui.png",
+                 "screenshot-player-controls.png"):
         captures[name] = validate_png(runtime / name)
     foundation = read_json(runtime / "foundation-result.json")
     validate_foundation(foundation, identity)
+    player_checks = read_json(runtime / "player-result.json")
+    validate_player(player_checks, identity)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
-    package, file_count = package_player(player, output, identity, result, foundation)
+    package, file_count = package_player(player, output, identity, result, foundation, player_checks)
     receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
                "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
                "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
@@ -422,6 +474,8 @@ def main() -> None:
                "checks": checks, "screenshot": screenshot,
                "presentation": presentation, "import": imported, "captures": captures,
                "foundation": foundation,
+               "player": player_checks,
+               "unityPackages": report["unityPackages"], "runtimeDllInputs": report["runtimeDllInputs"],
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,
                "buildSourceUnchanged": True, "buildProjectWasDisposable": True,

@@ -9,7 +9,7 @@ import subprocess
 import urllib.parse
 import urllib.request
 
-from build_unity_probe import collect_build_inputs
+from build_unity_probe import ProbeError, collect_build_inputs, _collect_build_input_data, validate_unity_packages
 from verify_unity_package import PackageError, verify_package, PREVIEW_VERSIONS
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -67,7 +67,7 @@ def main():
     phase, commit, name = validate_preview_reference(manifest)
     require(subprocess.run(["git", "merge-base", "--is-ancestor", commit, "HEAD"], cwd=ROOT).returncode == 0,
             "Preview source must be an ancestor of the checked migration branch")
-    _, _, fingerprint = collect_build_inputs(ROOT, commit)
+    _, _, fingerprint, canonical_inputs = _collect_build_input_data(ROOT, commit)
     require(fingerprint == manifest.get("inputFingerprint"), "Preview fingerprint differs from its Git source")
     # A later evidence/docs commit may point back to the same actual build inputs.
     require(collect_build_inputs(ROOT, "HEAD")[2] == fingerprint,
@@ -87,6 +87,8 @@ def main():
     require(receipt.get("identity", {}).get("phase") == phase and
             receipt["identity"].get("previewVersion") == manifest["previewVersion"],
             "Receipt phase/version differs from preview reference")
+    if phase >= 8:
+        validate_unity_packages(receipt.get("unityPackages"), canonical_inputs["unity/Packages/packages-lock.json"])
     report = verify_package(package, receipt, commit)
     report.update({"sourceAnchoredToGit": True, "inputFingerprint": fingerprint,
                    "locallyBuiltPackageOnly": True, "remoteUnityCompilation": False})
@@ -98,5 +100,5 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except (PackageError, OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
+    except (PackageError, ProbeError, OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         raise SystemExit("UNITY PREVIEW DOWNLOAD FAILED: " + str(error))

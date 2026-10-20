@@ -1,0 +1,1422 @@
+{
+  "aimDeadzone": 0.24,
+  "defaults": [
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 85,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "U",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "homestead",
+      "label": "Tuinstanden",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 87,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "W",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194320,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Up",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 1,
+          "ctrl": false,
+          "direction": -1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 11,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "move_up",
+      "label": "Omhoog lopen",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 83,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "S",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194322,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Down",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 1,
+          "ctrl": false,
+          "direction": 1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 12,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "move_down",
+      "label": "Omlaag lopen",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 65,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "A",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194319,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Left",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 0,
+          "ctrl": false,
+          "direction": -1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 13,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "move_left",
+      "label": "Naar links lopen",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 68,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "D",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194321,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Right",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 0,
+          "ctrl": false,
+          "direction": 1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 14,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "move_right",
+      "label": "Naar rechts lopen",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 86,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "V",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 4,
+          "ctrl": false,
+          "direction": 1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.5,
+      "id": "technique",
+      "label": "Techniek (vasthouden + zwaard / boog)",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 32,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Space",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 74,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "J",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 1,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "mouse",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 2,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "attack",
+      "label": "Zwaard",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 70,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "F",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 76,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "L",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 2,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "mouse",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 5,
+          "ctrl": false,
+          "direction": 1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.5,
+      "id": "bow",
+      "label": "Boog",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 69,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "E",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194309,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Enter",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 0,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "interact",
+      "label": "Praten / gebruiken",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194325,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Shift",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 75,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "K",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 1,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "dodge",
+      "label": "Rollen",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194326,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Ctrl",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 7,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "sprint",
+      "label": "Rennen (vasthouden)",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 72,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "H",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 3,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "potion",
+      "label": "Drankje",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 73,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "I",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194306,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Tab",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 4,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "menu",
+      "label": "Inventaris",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 67,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "C",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 8,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "crafting",
+      "label": "Beroepen / maken",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 81,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Q",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 9,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "quests",
+      "label": "Opdrachten",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 78,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "N",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 10,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "map",
+      "label": "Kaart",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 84,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "T",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "wereld_prestaties",
+      "label": "Prestaties",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 66,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "B",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "wereld_beestenboek",
+      "label": "Beestenboek",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194305,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Escape",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 80,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "P",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 6,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "pause",
+      "label": "Pauze",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 82,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "R",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 6,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "restart",
+      "label": "Opnieuw na verlies",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 77,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "M",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "mute",
+      "label": "Geluid aan / uit",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194342,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "F11",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.200000002980232,
+      "id": "fullscreen",
+      "label": "Volledig scherm",
+      "rebindable": true
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194319,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Left",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 65,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "A",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 0,
+          "ctrl": false,
+          "direction": -1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 13,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "ui_left",
+      "label": "ui_left",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194321,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Right",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 68,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "D",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 0,
+          "ctrl": false,
+          "direction": 1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 14,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "ui_right",
+      "label": "ui_right",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194320,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Up",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 87,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "W",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 1,
+          "ctrl": false,
+          "direction": -1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 11,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "ui_up",
+      "label": "ui_up",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194322,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Down",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 83,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "S",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 1,
+          "ctrl": false,
+          "direction": 1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 12,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "ui_down",
+      "label": "ui_down",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194309,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Enter",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 32,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Space",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 0,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "ui_accept",
+      "label": "ui_accept",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194305,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Escape",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 1,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "ui_cancel",
+      "label": "ui_cancel",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194323,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "PageUp",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 9,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "ui_prev_tab",
+      "label": "ui_prev_tab",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194324,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "PageDown",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        },
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 10,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "",
+          "kind": "button",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.300000011920929,
+      "id": "ui_next_tab",
+      "label": "ui_next_tab",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194306,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Tab",
+          "kind": "key",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.5,
+      "id": "ui_focus_next",
+      "label": "ui_focus_next",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "keyboard",
+          "code": 4194306,
+          "ctrl": false,
+          "direction": 1,
+          "keyName": "Tab",
+          "kind": "key",
+          "meta": false,
+          "shift": true
+        }
+      ],
+      "deadzone": 0.5,
+      "id": "ui_focus_prev",
+      "label": "ui_focus_prev",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 2,
+          "ctrl": false,
+          "direction": -1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.239999994635582,
+      "id": "aim_left",
+      "label": "aim_left",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 2,
+          "ctrl": false,
+          "direction": 1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.239999994635582,
+      "id": "aim_right",
+      "label": "aim_right",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 3,
+          "ctrl": false,
+          "direction": -1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.239999994635582,
+      "id": "aim_up",
+      "label": "aim_up",
+      "rebindable": false
+    },
+    {
+      "bindings": [
+        {
+          "alt": false,
+          "category": "controller",
+          "code": 3,
+          "ctrl": false,
+          "direction": 1.0,
+          "keyName": "",
+          "kind": "axis",
+          "meta": false,
+          "shift": false
+        }
+      ],
+      "deadzone": 0.239999994635582,
+      "id": "aim_down",
+      "label": "aim_down",
+      "rebindable": false
+    }
+  ],
+  "engineVersion": "4.4.1-stable (official)",
+  "mouseSwitchPixels": 3.0,
+  "personalSavesUsed": false,
+  "schema": "bluemap.player-input.v1",
+  "switchDeadzone": 0.5,
+  "vectors": [
+    {
+      "deadzone": 0.2,
+      "expected": [
+        0.0,
+        0.0
+      ],
+      "raw": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.24,
+      "expected": [
+        0.0,
+        0.0
+      ],
+      "raw": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.2,
+      "expected": [
+        0.0,
+        0.0
+      ],
+      "raw": [
+        0.100000001490116,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.24,
+      "expected": [
+        0.0,
+        0.0
+      ],
+      "raw": [
+        0.100000001490116,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.2,
+      "expected": [
+        0.0,
+        0.0
+      ],
+      "raw": [
+        0.200000002980232,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.24,
+      "expected": [
+        0.0,
+        0.0
+      ],
+      "raw": [
+        0.200000002980232,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.2,
+      "expected": [
+        0.375,
+        0.0
+      ],
+      "raw": [
+        0.5,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.24,
+      "expected": [
+        0.342105269432068,
+        0.0
+      ],
+      "raw": [
+        0.5,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.2,
+      "expected": [
+        0.70710676908493,
+        0.70710676908493
+      ],
+      "raw": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "deadzone": 0.24,
+      "expected": [
+        0.70710676908493,
+        0.70710676908493
+      ],
+      "raw": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "deadzone": 0.2,
+      "expected": [
+        0.225000008940697,
+        -0.300000011920929
+      ],
+      "raw": [
+        0.300000011920929,
+        -0.400000005960464
+      ]
+    },
+    {
+      "deadzone": 0.24,
+      "expected": [
+        0.205263167619705,
+        -0.273684233427048
+      ],
+      "raw": [
+        0.300000011920929,
+        -0.400000005960464
+      ]
+    },
+    {
+      "deadzone": 0.2,
+      "expected": [
+        -0.0499999895691872,
+        0.0
+      ],
+      "raw": [
+        -0.239999994635582,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.24,
+      "expected": [
+        0.0,
+        0.0
+      ],
+      "raw": [
+        -0.239999994635582,
+        0.0
+      ]
+    },
+    {
+      "deadzone": 0.2,
+      "expected": [
+        -0.448223322629929,
+        0.448223322629929
+      ],
+      "raw": [
+        -0.5,
+        0.5
+      ]
+    },
+    {
+      "deadzone": 0.24,
+      "expected": [
+        -0.434597879648209,
+        0.434597879648209
+      ],
+      "raw": [
+        -0.5,
+        0.5
+      ]
+    }
+  ]
+}
