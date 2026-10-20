@@ -102,7 +102,7 @@
       },
       "kind": "motion",
       "resourcePath": "unity/Assets/BlueMapPlayer/Resources/BlueMapPlayerMotionOracle.json",
-      "sha256": "0e20c802b0d28a965f48d7321a3c225541eb9e17a7948a32afae99fce06bce0d",
+      "sha256": "3d5cbecf6d98811410a14a2dc2809ce863c7f68fd5d19daeb9f46a34f8e76563",
       "sourcePath": "migration/phase-08/motion-oracle.json"
     }
   ],
@@ -115,6 +115,7 @@
     "player_input_16_original_circular_deadzone_vectors",
     "player_input_all_36_source_actions_native_bindings",
     "player_input_all_binding_releases_no_latched_action",
+    "player_input_both_modifier_sides_preserved",
     "player_input_checks_ran",
     "player_input_controller_disconnect_reconnect",
     "player_input_focus_loss_releases_without_ghost_resume",
@@ -127,6 +128,7 @@
     "player_input_oracle_complete",
     "player_input_original_ctrl_sprint_shift_roll",
     "player_input_original_cursor_context_policy",
+    "player_input_real_event_rebind_capture_and_cancel",
     "player_input_real_package_virtual_devices",
     "player_input_rebind_swap_reservations_and_reset",
     "player_input_right_stick_aim_and_ui_scroll",
