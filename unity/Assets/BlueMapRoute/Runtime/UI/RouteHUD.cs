@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using BlueMapMigration.Foundation;
 using UnityEngine;
@@ -15,6 +16,10 @@ namespace BlueMapMigration.Route
         public int LastInventoryRows {get;private set;}
         public int LastDialogueLines {get;private set;}
         public bool InventorySelectionVisible {get;private set;}
+        private readonly List<Rect> receiptBounds=new List<Rect>();
+        public Rect LastMessageBounds {get;private set;}
+        public IReadOnlyList<Rect> LastReceiptBounds=>receiptBounds;
+        public bool ReceiptsVisible=>receiptBounds.Count>0;
         public RouteHUD(RouteWorldController controller){route=controller;}
         private string T(string nl,string en)=>route.T(nl,en);
         private void Styles()
@@ -34,14 +39,22 @@ namespace BlueMapMigration.Route
         }
         public void Draw()
         {
-            Styles();var game=route.Gameplay;var state=game.State;
+            Styles();var game=route.Gameplay;var state=game.State;receiptBounds.Clear();LastMessageBounds=Rect.zero;
             Panel(new Rect(18,16,298,98));var areaTitle=new GUIStyle(title);while(areaTitle.fontSize>11&&areaTitle.CalcSize(new GUIContent(route.AreaName)).x>270)areaTitle.fontSize--;Label(32,24,270,route.AreaName,areaTitle);
             Label(32,54,270,T("Leven ","Health ")+state.Hp+" / "+game.MaxHp+"    ·    "+state.Coins+T(" munten"," coins"));
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 11","Unity preview · phase 11"),small);
-            if(route.Message!=""){Panel(new Rect(326,18,550,84));Label(342,29,518,route.Message,wrap,63);}
-            float noticeY=90;foreach(string notice in route.ItemNotices){Panel(new Rect(886,noticeY,248,44));Label(898,noticeY+9,222,notice,text);noticeY+=48;}
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 12","Unity preview · phase 12"),small);
+            if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
+            if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
+            {
+                float noticeY=90;
+                foreach(string notice in route.ItemNotices)
+                {
+                    float height=Mathf.Clamp(wrap.CalcHeight(new GUIContent(notice),222)+18,44,72);
+                    var noticeRect=new Rect(886,noticeY,248,height);receiptBounds.Add(noticeRect);Panel(noticeRect);Label(898,noticeY+9,222,notice,wrap,height-18);noticeY+=height+6;
+                }
+            }
             if(route.Modal==""&&!game.DialogueOpen)
             {
                 if(state.QuestState("kat")=="active")
@@ -74,15 +87,8 @@ namespace BlueMapMigration.Route
         }
         private void DrawInventory()
         {
-            Panel(new Rect(190,106,772,466));Label(214,121,710,T("Je tas","Your inventory"),title);Label(214,154,710,T("Voorwerpen en aantallen blijven tussen gebieden en na laden bewaard.","Items and quantities persist between areas and after reloading."),small);
-            string[] ids=route.InventoryItems();var view=new Rect(214,196,724,310);var content=new Rect(0,0,700,Math.Max(310,ids.Length*38));
-            var enabled=GUI.enabled;GUI.enabled=!route.ControllerActive;Vector2 scroll=GUI.BeginScrollView(view,new Vector2(0,route.InventoryScroll),content,false,true);GUI.enabled=enabled;route.InventoryScroll=scroll.y;LastInventoryRows=ids.Length;
-            for(int i=0;i<ids.Length;i++)
-            {bool selected=i==route.InventoryIndex;GUI.color=selected?new Color(.20f,.39f,.31f):new Color(.07f,.12f,.13f);GUI.DrawTexture(new Rect(0,i*38,700,36),Texture2D.whiteTexture);GUI.color=Color.white;Label(14,i*38+5,580,(selected?"› ":"")+route.Translate(route.Gameplay.ItemName(ids[i])));Label(604,i*38+5,80,"× "+route.Gameplay.State.Count(ids[i]));}
-            GUI.EndScrollView();InventorySelectionVisible=ids.Length==0||route.InventoryIndex*38>=route.InventoryScroll-1&&route.InventoryIndex*38+38<=route.InventoryScroll+311;
-            if(ids.Length==0)Label(230,213,660,T("Je tas is leeg. Verken de paden en verzamel planten.","Your inventory is empty. Explore the paths and gather plants."),wrap,60);
-            Label(214,526,516,route.ControllerActive?T("D-pad kiezen · rechter stick scrollen · B sluiten","D-pad select · right stick scroll · B close"):T("Scroll met het muiswiel · I / Esc sluiten","Mouse wheel to scroll · I / Esc close"),small);
-            if(Button(new Rect(755,520,183,34),T("Sluiten","Close")))route.CloseModal();
+            route.InventoryPanel?.Draw();LastInventoryRows=route.InventoryItems().Length;
+            InventorySelectionVisible=route.InventoryPanel==null||route.InventoryPanel.SelectionVisible;
         }
         private void DrawQuests()
         {

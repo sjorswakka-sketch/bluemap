@@ -25,7 +25,8 @@ EDITOR_VERSION = "6000.3.26f1"
 EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
-                    8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11"}
+                    8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
+                    12: "0.8.0-phase12"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -191,6 +192,32 @@ WORLD_ACCESS_DETAIL_CHECKS = {
     "world_art_native_rgba_exact", "world_art_gpu_pixels_exact", "world_render_all_37_source_maps",
 }
 WORLD_ACCESS_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+INVENTORY_CHECKS = {"inventory_runtime_verified"}
+INVENTORY_DETAIL_CHECKS = {
+    "inventory_model_source_equivalence", "inventory_model_atomic_and_unique_rewards",
+    "inventory_native_checks_ran", "inventory_native_pickups_and_chests",
+    "inventory_native_home_storage_roundtrip", "inventory_native_coastal_storage_roundtrip",
+    "inventory_native_keyboard_mouse_navigation", "inventory_native_controller_navigation",
+    "inventory_native_sustained_right_stick_keeps_focus", "inventory_native_input_owner_switch",
+    "inventory_native_save_reload_preserves_inventory", "inventory_failed_transfer_is_atomic",
+    "inventory_unknown_fields_retained", "inventory_no_real_saves_accessed",
+    "inventory_item_receipts_pause_in_menus", "inventory_item_receipts_separate_message_lane",
+    "inventory_ui_search_shared", "inventory_ui_category_sort_favorites",
+    "inventory_ui_home_coast_capacities", "inventory_ui_controller_selection_visible",
+    "inventory_ui_right_stick_scroll", "inventory_ui_focus_actions",
+    "inventory_ui_input_device_exclusivity", "inventory_ui_responsive_layout",
+    "inventory_ui_original_item_icons", "inventory_ui_four_native_captures",
+    "inventory_ui_confirmation_cancel_atomic", "inventory_ui_search_shortcut_isolation",
+    "inventory_native_all_37_map_loot", "inventory_native_chest_and_pickup_art_updates",
+    "inventory_native_consumables_and_stamina", "inventory_native_failed_chest_keeps_all_rewards",
+    "inventory_native_favorites_bulk_preserved", "inventory_native_full_pickups_remain",
+    "inventory_native_groundloot_refresh_retained", "inventory_native_home_chest_inside_house",
+    "inventory_native_key_items_retained", "inventory_native_local_storage_supplies",
+    "inventory_native_magnetic_all_items", "inventory_native_owned_unique_chest_reward",
+    "inventory_native_receipt_feed_bounded", "inventory_native_storage_capacities",
+    "inventory_native_unique_pickup_once",
+}
+INVENTORY_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -212,7 +239,8 @@ PLAYER_ROOTS = {
     "MonoBleedingEdge", "BlueMapUnityProbe_Data", "D3D12",
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
-                  "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json",
+                  "INVENTORY-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -370,6 +398,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 11:
         require(WORLD_ACCESS_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 11 world access runtime proof is incomplete")
+    if identity["phase"] >= 12:
+        require(INVENTORY_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 12 inventory runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -492,6 +523,29 @@ def validate_world_access(result: dict, identity: dict) -> None:
     require(WORLD_ACCESS_DETAIL_CHECKS <= names, "Required world access checks are missing")
 
 
+def validate_inventory(result: dict, identity: dict) -> None:
+    """Bind original inventory, loot and storage behavior to this exact player."""
+    require(isinstance(result, dict) and set(result) == INVENTORY_FIELDS,
+            "Phase 12 inventory proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported inventory proof schema")
+    require(result.get("identity") == identity, "Inventory embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Inventory proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Inventory detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed inventory detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid inventory detail check name")
+        require(name not in names and check["passed"] is True,
+                "Inventory detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(INVENTORY_DETAIL_CHECKS <= names, "Required inventory checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -544,6 +598,7 @@ def _instructions(identity: dict) -> bytes:
         9: "Migratiefase 9: veilige opslag en import van saves en instellingen; nog niet de volledige overgezette game.\n",
         10: "Migratiefase 10: eerste speelbare route tussen dorp, woning en bos; nog niet de volledige overgezette game.\n",
         11: "Migratiefase 11: alle 37 gebieden, interieurs en toegangspunten; nog niet de volledige overgezette game.\n",
+        12: "Migratiefase 12: oorspronkelijke inventaris, buit en woning- en kustopslag; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -615,6 +670,7 @@ def _instructions(identity: dict) -> bytes:
         ("PERSISTENCE-CHECKS.json bevat de controles met eigen opslag- en importtestbestanden.\n" if identity["phase"] >= 9 else "") +
         ("ROUTE-CHECKS.json bevat de controles van de eerste speelbare route.\n" if identity["phase"] >= 10 else "") +
         ("WORLD-ACCESS-CHECKS.json bevat de controles van alle gebieden en toegangspunten.\n" if identity["phase"] >= 11 else "") +
+        ("INVENTORY-CHECKS.json bevat de controles van inventaris, buit en opslag.\n" if identity["phase"] >= 12 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
@@ -624,7 +680,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    player_result: dict | None = None,
                    persistence_result: dict | None = None,
                    route_result: dict | None = None,
-                   world_access_result: dict | None = None) -> tuple[Path, int]:
+                   world_access_result: dict | None = None,
+                   inventory_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -648,6 +705,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_world_access(world_access_result, identity)
     else:
         require(world_access_result is None, "Historical preview cannot contain phase 11 world access proof")
+    if identity["phase"] >= 12:
+        validate_inventory(inventory_result, identity)
+    else:
+        require(inventory_result is None, "Historical preview cannot contain phase 12 inventory proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -669,6 +730,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["ROUTE-CHECKS.json"] = _json_bytes(route_result)
     if world_access_result is not None:
         payload["WORLD-ACCESS-CHECKS.json"] = _json_bytes(world_access_result)
+    if inventory_result is not None:
+        payload["INVENTORY-CHECKS.json"] = _json_bytes(inventory_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -830,6 +893,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("WORLD-ACCESS-CHECKS.json" not in payload and "worldAccess" not in receipt,
                 "Historical preview contains unsupported world access proof")
+    if identity["phase"] >= 12:
+        require("INVENTORY-CHECKS.json" in payload, "Phase 12 packaged inventory proof is missing")
+        inventory = _json(payload["INVENTORY-CHECKS.json"], "INVENTORY-CHECKS.json")
+        validate_inventory(inventory, identity)
+        require(receipt.get("inventory") == inventory, "Receipt inventory proof differs from package")
+    else:
+        require("INVENTORY-CHECKS.json" not in payload and "inventory" not in receipt,
+                "Historical preview contains unsupported inventory proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

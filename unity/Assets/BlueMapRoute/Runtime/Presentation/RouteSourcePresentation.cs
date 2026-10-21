@@ -18,6 +18,9 @@ namespace BlueMapMigration.Route
         public int NativeActors { get; private set; }
         public int NativePickups { get; private set; }
         public int FurniturePieces { get; private set; }
+        public bool HomeStorageOpen { get; private set; }
+        public int HomeStorageVisualCount => homeStorage.Count;
+        public bool HomeStorageVisualOpen => homeStorage.Count > 0 && HomeStorageOpen && homeStorage.All(item => item.Renderer != null && item.Renderer.sprite == openHomeStorageSprite);
         public IReadOnlyDictionary<string,GameObject> Objects=>objects;
         private readonly Phase6Catalog catalog;
         private readonly FoundationWorldSnapshot snapshot;
@@ -26,6 +29,8 @@ namespace BlueMapMigration.Route
         private readonly Dictionary<string,bool> overrides=new Dictionary<string,bool>(StringComparer.Ordinal);
         private readonly List<Sprite> owned=new List<Sprite>();
         private readonly List<MovingArt> moving=new List<MovingArt>();
+        private readonly List<HomeStorageArt> homeStorage=new List<HomeStorageArt>();
+        private Sprite openHomeStorageSprite;
         private readonly Dictionary<string,FoundationValue> sourceNodes;
         private readonly FoundationValue art,sourceItems,sourceNpcs;
         public WorldAccessModel Access { get; set; }
@@ -36,6 +41,15 @@ namespace BlueMapMigration.Route
         private sealed class PortalArt {public FoundationValue Fields;public SpriteRenderer Fill;public SpriteRenderer[] Border,Sparkles;public Vector2 Origin,Size;}
         private readonly Dictionary<string,Sprite> capturedSprites=new Dictionary<string,Sprite>(StringComparer.Ordinal);
         private sealed class MovingArt { public SpriteRenderer Renderer;public string Address,Sheet,Kind; public Vector2 Position;public Vector2Int Cell;public float Scale;public bool Humanoid;public string UniqueKey; }
+        private sealed class HomeStorageArt
+        {
+            public SpriteRenderer Renderer;
+            public Sprite ClosedSprite;
+            public Material ClosedMaterial;
+            public Vector3 ClosedPosition,ClosedScale;
+            public Vector2 SourcePosition;
+            public int ClosedOrder;
+        }
         public RouteSourcePresentation(Phase6Catalog catalog,FoundationWorldSnapshot snapshot,FoundationGameState state,Transform parent,WorldAccessModel access=null)
         {
             this.catalog=catalog;this.snapshot=snapshot;this.parent=parent;Access=access;
@@ -67,6 +81,8 @@ namespace BlueMapMigration.Route
                 Vector2 at=Pair(entry.Require("position")),offset=Pair(entry.Require("offset"));
                 int order=entry.Require("ground").AsBool()?-15000+checked((int)node.Require("address").Items[1].AsInt64()):Mathf.RoundToInt(at.y);
                 var renderer=Node(address,sprite,at+offset,order,catalog.premultipliedMaterial);
+                if(node.Require("script").AsString().EndsWith("/stock_chest.gd",StringComparison.Ordinal))
+                    homeStorage.Add(new HomeStorageArt{Renderer=renderer,ClosedSprite=renderer.sprite,ClosedMaterial=renderer.sharedMaterial,ClosedPosition=renderer.transform.localPosition,ClosedScale=renderer.transform.localScale,ClosedOrder=renderer.sortingOrder,SourcePosition=at});
                 CapturedNodes++;
             }
             foreach(var node in snapshot.Root.Require("scene").Items)
@@ -105,6 +121,7 @@ namespace BlueMapMigration.Route
         private Sprite Sheet(string sheet,int column,int row,Vector2Int cell)
         {
             var full=catalog.GetSprite("image:assets/pixel_"+sheet+".png");int density=2;
+            if(sheet=="items_equipment"){full=catalog.GetSprite("image:generated:equipment-icons");density=1;}
             if(full==null){full=catalog.GetSprite("image:assets/"+sheet+".png");density=1;}
             if(full==null)throw new FormatException("Original sheet missing: "+sheet);
             int width=cell.x*density,height=cell.y*density;
@@ -160,10 +177,18 @@ namespace BlueMapMigration.Route
         }
         private void AddPickup(FoundationValue node,string address)
         {
-            var fields=node.Require("fields");string item=fields.Require("item").AsString();string sheet=item=="coin"?"coin":item=="heart"?"heart":"items";int frame=0;
+            var fields=node.Require("fields");SpawnPickup(address,fields.Require("item").AsString(),Position(node),fields.Require("unique_key").AsString());
+        }
+        /// <summary>A runtime drop uses the same retained source item atlas and motion path as an authored pickup.</summary>
+        public void SpawnPickup(string address,string item,Vector2 sourcePosition,string uniqueKey="")
+        {
+            if(string.IsNullOrWhiteSpace(address))throw new ArgumentException("A pickup source address is required.",nameof(address));
+            if(string.IsNullOrEmpty(item))throw new ArgumentException("A pickup item is required.",nameof(item));
+            if(!float.IsFinite(sourcePosition.x)||!float.IsFinite(sourcePosition.y))throw new ArgumentOutOfRangeException(nameof(sourcePosition));
+            string sheet=item=="coin"?"coin":item=="heart"?"heart":"items";int frame=0;
             if(item!="coin"&&item!="heart"&&sourceItems.TryGet(item,out var info)){sheet=info.TryGet("sheet",out var value)?value.AsString():"items";frame=checked((int)info.Require("icon").AsInt64());}
-            Vector2 at=Position(node);var r=Node(address,Sheet(sheet,frame,0,new Vector2Int(16,16)),at,Mathf.RoundToInt(at.y),null);r.transform.localScale=Vector3.one*2;
-            moving.Add(new MovingArt{Renderer=r,Address=address,Position=at,Kind="pickup",Sheet=sheet,Cell=new Vector2Int(16,16),UniqueKey=fields.Require("unique_key").AsString()});NativePickups++;
+            var r=Node(address,Sheet(sheet,frame,0,new Vector2Int(16,16)),sourcePosition,Mathf.RoundToInt(sourcePosition.y),null);r.transform.localScale=Vector3.one*2;
+            moving.Add(new MovingArt{Renderer=r,Address=address,Position=sourcePosition,Kind="pickup",Sheet=sheet,Cell=new Vector2Int(16,16),UniqueKey=uniqueKey??""});NativePickups++;
         }
         private void AddChest(FoundationValue node,string address)
         {
@@ -206,10 +231,35 @@ namespace BlueMapMigration.Route
         }
         public void SetPosition(string sourceAddress,Vector2 sourcePosition)
         {
-            foreach(var item in moving)if(item.Address==sourceAddress){item.Position=sourcePosition;item.Renderer.transform.localPosition=FoundationCoordinates.ToUnity(sourcePosition);return;}
+            foreach(var item in moving)if(item.Address==sourceAddress){item.Position=sourcePosition;item.Renderer.transform.localPosition=FoundationCoordinates.ToUnity(sourcePosition);if(item.Kind=="pickup")item.Renderer.sortingOrder=Mathf.RoundToInt(sourcePosition.y);return;}
             if(objects.TryGetValue(sourceAddress,out var node))node.transform.localPosition=FoundationCoordinates.ToUnity(sourcePosition);
         }
         public void SetVisible(string sourceAddress,bool visible){overrides[sourceAddress]=visible;if(objects.TryGetValue(sourceAddress,out var node))node.SetActive(visible);}
+        /// <summary>The original stock chest opens whenever an active home ledger is visible, including a remote view.</summary>
+        public void SetHomeStorageOpen(bool opened)
+        {
+            if(HomeStorageOpen==opened)return;
+            HomeStorageOpen=opened;
+            if(opened&&homeStorage.Count>0&&openHomeStorageSprite==null)openHomeStorageSprite=Sheet("stock_chest",1,0,new Vector2Int(32,32));
+            foreach(var item in homeStorage)
+            {
+                if(item.Renderer==null)continue;
+                if(opened)
+                {
+                    catalog.Apply(item.Renderer,openHomeStorageSprite);
+                    item.Renderer.transform.localPosition=FoundationCoordinates.ToUnity(item.SourcePosition+new Vector2(0,-3));
+                    item.Renderer.transform.localScale=Vector3.one;
+                    item.Renderer.sortingOrder=item.ClosedOrder;
+                }
+                else
+                {
+                    // Restore the retained Godot capture, including its transparent margins and alpha material.
+                    item.Renderer.sprite=item.ClosedSprite;item.Renderer.sharedMaterial=item.ClosedMaterial;
+                    item.Renderer.transform.localPosition=item.ClosedPosition;item.Renderer.transform.localScale=item.ClosedScale;
+                    item.Renderer.sortingOrder=item.ClosedOrder;
+                }
+            }
+        }
         public void Tick(double clock,FoundationGameState state)
         {
             heatWindows?.Tick(state);

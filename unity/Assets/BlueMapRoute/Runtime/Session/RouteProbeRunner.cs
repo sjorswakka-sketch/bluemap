@@ -146,26 +146,28 @@ namespace BlueMapMigration.Route
                 NearNode(world,pim);
 
                 state.Set("inventory",FoundationJson.ParsePlain("{\"potion\":2,\"prof_branch\":4,\"prof_stone\":2,\"prof_herb\":2,\"prof_berry\":3,\"prof_mushroom\":2,\"hs_grape\":3,\"hs_seed\":1,\"hs_flower_seed\":1,\"trail_flower\":2,\"hs_honey\":1,\"prof_log\":2,\"gel\":2,\"heart_container\":1,\"future_seed\":3}"));
+                var largeBag=state.Get("inventory").Entries.ToDictionary(p=>p.Key.AsString(),p=>p.Value,StringComparer.Ordinal);
+                foreach(var item in route.Inventory.Items.Entries.Take(64))if(!largeBag.ContainsKey(item.Key.AsString()))largeBag[item.Key.AsString()]=FoundationValue.Integer(1);
+                state.Set("inventory",FoundationValue.Object(largeBag));
                 route.OpenInventory();double before=state.PlayTime;route.Session.Clock.Tick(1);route.Tick(1);
                 check("route_inventory_ui_verified",route.Modal=="inventory"&&state.Paused&&state.PlayTime==before&&state.Count("potion")==2&&state.Count("future_seed")==3);
                 int selected=route.InventoryIndex;Neutral();route.HandleFrame(Pad(new GamepadState().WithButton(GamepadButton.DpadDown)));route.HandleFrame(Neutral());bool navigated=route.InventoryIndex!=selected;
-                for(int index=0;index<10;index++)Press(GamepadButton.DpadDown);
+                for(int index=0;index<2;index++)Press(GamepadButton.DpadDown);
                 int beforeStick=route.InventoryIndex;route.HandleFrame(Pad(new GamepadState{rightStick=new Vector2(0,-.9f)}));route.Tick(.11);route.HandleFrame(Neutral());
-                bool scrolled=route.InventoryIndex>beforeStick&&route.InventoryScroll>0&&route.InventoryIndex*38>=route.InventoryScroll&&route.InventoryIndex*38+38<=route.InventoryScroll+310;
+                bool scrolled=route.InventoryIndex>beforeStick&&route.InventoryPanel.Page>0&&route.InventoryPanel.SelectionVisible;
                 check("route_inventory_controller_focus_and_right_stick_scroll",scrolled&&route.InventoryItems().Length>8);
                 // A held stick produces many frames between focus steps. Its scroll must
                 // never run ahead of the selected row while the repeat timer is waiting.
-                route.OpenInventory();route.Tick(.12);Neutral();int heldStart=route.InventoryIndex,heldPrevious=heldStart;float heldScroll=route.InventoryScroll;bool heldVisible=true,heldMonotonic=true;
+                route.OpenInventory();route.Tick(.12);Neutral();int heldStart=route.InventoryIndex,heldPrevious=heldStart;int heldPage=route.InventoryPanel.Page;bool heldVisible=true,heldMonotonic=true;
                 for(int frameIndex=0;frameIndex<90;frameIndex++)
                 {
                     route.HandleFrame(Pad(new GamepadState{rightStick=new Vector2(0,-.7f)}));route.Tick(1.0/60);
-                    float top=route.InventoryIndex*38;
-                    heldVisible&=top>=route.InventoryScroll-.01f&&top+38<=route.InventoryScroll+310.01f;
-                    heldMonotonic&=route.InventoryIndex>=heldPrevious&&route.InventoryScroll+.01f>=heldScroll;
-                    heldPrevious=route.InventoryIndex;heldScroll=route.InventoryScroll;
+                    heldVisible&=route.InventoryPanel.SelectionVisible;
+                    heldMonotonic&=route.InventoryIndex>=heldPrevious&&route.InventoryPanel.Page>=heldPage;
+                    heldPrevious=route.InventoryIndex;heldPage=route.InventoryPanel.Page;
                 }
                 route.HandleFrame(Neutral());
-                check("route_inventory_sustained_right_stick_keeps_focus",heldVisible&&heldMonotonic&&route.InventoryIndex>heldStart+8&&route.InventoryScroll>0&&route.Modal=="inventory"&&state.Paused);
+                check("route_inventory_sustained_right_stick_keeps_focus",heldVisible&&heldMonotonic&&route.InventoryIndex>heldStart+8&&route.InventoryPanel.Page>0&&route.Modal=="inventory"&&state.Paused);
                 Press(GamepadButton.East);bool closed=route.Modal==""&&!state.Paused;
                 route.OpenPause();Press(GamepadButton.DpadDown);bool pauseNavigation=route.Modal=="pause"&&route.Selection>0;Press(GamepadButton.East);
                 check("route_controller_navigation_verified",navigated&&scrolled&&closed&&pauseNavigation&&route.Modal==""&&!state.Paused&&devices.All(device=>device.added&&!device.native)&&typeof(InputSystem).Assembly.GetName().Name=="Unity.InputSystem");

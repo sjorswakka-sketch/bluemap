@@ -29,13 +29,14 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.7.0-phase11"
-PHASE = 11
+PREVIEW_VERSION = "0.8.0-phase12"
+PHASE = 12
 
 from verify_unity_package import (PackageError, package_player, validate_identity, verify_package,
                                   validate_foundation, FOUNDATION_CHECKS, validate_player, PLAYER_CHECKS,
                                   validate_persistence, PERSISTENCE_CHECKS, validate_route, ROUTE_CHECKS,
-                                  validate_world_access, WORLD_ACCESS_CHECKS)
+                                  validate_world_access, WORLD_ACCESS_CHECKS,
+                                  validate_inventory, INVENTORY_CHECKS)
 
 
 class ProbeError(RuntimeError):
@@ -451,6 +452,8 @@ def main() -> None:
             "Required playable route runtime check is missing")
     require(WORLD_ACCESS_CHECKS <= {c["name"] for c in checks},
             "Required world access runtime check is missing")
+    require(INVENTORY_CHECKS <= {c["name"] for c in checks},
+            "Required inventory runtime check is missing")
     require(type(result.get("frames")) is int and result["frames"] >= 60, "Runtime loop did not advance")
     require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
             "Unexpected runtime capture method")
@@ -477,7 +480,9 @@ def main() -> None:
                  "screenshot-route-dialogue.png", "screenshot-route-inventory.png",
                  "screenshot-access-lake.png", "screenshot-access-swamp.png", "screenshot-access-mountain.png",
                  "screenshot-access-steampeak.png", "screenshot-access-coast.png", "screenshot-access-library.png",
-                 "screenshot-access-reedvault.png", "screenshot-access-interior.png"):
+                 "screenshot-access-reedvault.png", "screenshot-access-interior.png",
+                 "screenshot-inventory-bag.png", "screenshot-inventory-home.png",
+                 "screenshot-inventory-coast.png", "screenshot-inventory-controller.png"):
         captures[name] = validate_png(runtime / name)
     foundation = read_json(runtime / "foundation-result.json")
     validate_foundation(foundation, identity)
@@ -489,8 +494,11 @@ def main() -> None:
     validate_route(route, identity)
     world_access = read_json(runtime / "world-access-result.json")
     validate_world_access(world_access, identity)
+    inventory = read_json(runtime / "inventory-result.json")
+    validate_inventory(inventory, identity)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
-    package, file_count = package_player(player, output, identity, result, foundation, player_checks, persistence, route, world_access)
+    package, file_count = package_player(player, output, identity, result, foundation, player_checks,
+                                       persistence, route, world_access, inventory)
     receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
                "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
                "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
@@ -504,6 +512,7 @@ def main() -> None:
                "persistence": persistence,
                "route": route,
                "worldAccess": world_access,
+               "inventory": inventory,
                "unityPackages": report["unityPackages"], "runtimeDllInputs": report["runtimeDllInputs"],
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,

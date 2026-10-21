@@ -69,6 +69,12 @@ def world_access_proof(build_identity: dict) -> dict:
             "checks": [{"name": name, "passed": True} for name in sorted(package.WORLD_ACCESS_DETAIL_CHECKS)]}
 
 
+def inventory_proof(build_identity: dict) -> dict:
+    return {"schemaVersion": 1, "identity": copy.deepcopy(build_identity), "success": True,
+            "gameSaveAccessed": False,
+            "checks": [{"name": name, "passed": True} for name in sorted(package.INVENTORY_DETAIL_CHECKS)]}
+
+
 def pe_stub() -> bytes:
     """Small deliberate fixture, never a runnable executable."""
     raw = bytearray(256)
@@ -84,7 +90,7 @@ class PreviewReferenceTests(unittest.TestCase):
     def test_all_published_phase_formats_remain_supported(self):
         for phase, version in ((3, "0.1.0-phase3"), (6, "0.2.0-phase6"), (7, "0.3.0-phase7"),
                                (8, "0.4.0-phase8"), (9, "0.5.0-phase9"), (10, "0.6.0-phase10"),
-                               (11, "0.7.0-phase11")):
+                               (11, "0.7.0-phase11"), (12, "0.8.0-phase12")):
             name = f"BlueMapUnityPreview-phase-{phase:02d}-aaaaaaaa-Windows-x64.zip"
             manifest = {"schemaVersion": 1, "phase": phase, "previewVersion": version,
                         "sourceCommit": "a" * 40, "packageName": name}
@@ -308,6 +314,109 @@ class UnityPackageTests(unittest.TestCase):
                    "package": {"file": archive.name, "sha256": package.sha256(archive),
                                "bytes": archive.stat().st_size, "files": count}}
         return archive, receipt, proof
+
+    def phase12_fixture(self):
+        _, previous, previous_runtime = self.phase11_fixture()
+        receipt, proof = copy.deepcopy(previous), copy.deepcopy(previous_runtime)
+        build_identity = {**receipt["identity"], "phase": 12, "previewVersion": "0.8.0-phase12"}
+        receipt["identity"], receipt["phase"] = build_identity, 12
+        proof["identity"] = build_identity
+        proof["checks"] += [{"name": name, "passed": True} for name in sorted(package.INVENTORY_CHECKS)]
+        for field in ("foundation", "player", "persistence", "route", "worldAccess"):
+            receipt[field]["identity"] = build_identity
+        receipt["inventory"] = inventory_proof(build_identity)
+        output = self.base / "phase12-output"
+        output.mkdir()
+        archive, count = package.package_player(
+            self.player, output, build_identity, proof, receipt["foundation"], receipt["player"],
+            receipt["persistence"], receipt["route"], receipt["worldAccess"], receipt["inventory"])
+        receipt["checks"] = proof["checks"]
+        receipt["package"] = {"file": archive.name, "sha256": package.sha256(archive),
+                              "bytes": archive.stat().st_size, "files": count}
+        return archive, receipt, proof
+
+    def test_phase12_inventory_and_all_previous_proofs_verify(self) -> None:
+        archive, receipt, _ = self.phase12_fixture()
+        report = package.verify_package(archive, receipt, "a" * 40)
+        self.assertEqual((report["phase"], report["runtimeChecks"]), (12, 36))
+        with zipfile.ZipFile(archive) as packed:
+            root = package.archive_root(receipt["identity"])
+            for field, filename in (("inventory", "INVENTORY"), ("worldAccess", "WORLD-ACCESS"),
+                                    ("route", "ROUTE"), ("persistence", "PERSISTENCE"),
+                                    ("player", "PLAYER"), ("foundation", "FOUNDATION")):
+                self.assertEqual(json.loads(packed.read(root + "/" + filename + "-CHECKS.json")), receipt[field])
+            self.assertIn("Migratiefase 12", packed.read(root + "/LEESMIJ.txt").decode("utf-8"))
+
+    def test_phase12_cannot_drop_any_previous_or_inventory_runtime_proof(self) -> None:
+        build_identity = {**identity(), "phase": 12, "previewVersion": "0.8.0-phase12"}
+        required = (package.PRESENTATION_CHECKS | package.FOUNDATION_CHECKS | package.PLAYER_CHECKS |
+                    package.PERSISTENCE_CHECKS | package.ROUTE_CHECKS | package.WORLD_ACCESS_CHECKS |
+                    package.INVENTORY_CHECKS)
+        for missing in required:
+            proof = runtime(build_identity)
+            proof["checks"] += [{"name": name, "passed": True} for name in sorted(required - {missing})]
+            proof["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "proof"):
+                package.package_player(self.player, self.output, build_identity, proof,
+                                       foundation(build_identity), player_proof(build_identity),
+                                       persistence_proof(build_identity), route_proof(build_identity),
+                                       world_access_proof(build_identity), inventory_proof(build_identity))
+
+    def test_phase12_inventory_details_fail_closed(self) -> None:
+        build_identity = {**identity(), "phase": 12, "previewVersion": "0.8.0-phase12"}
+        changes = {
+            "missing": lambda d: None,
+            "stub": lambda d: {**d, "checks": [{"name": "inventory_stub", "passed": True}]},
+            "wrong_source": lambda d: {**d, "identity": {**build_identity, "sourceCommit": "c" * 40}},
+            "schema_bool": lambda d: {**d, "schemaVersion": True},
+            "failed": lambda d: {**d, "success": False},
+            "save_access": lambda d: {**d, "gameSaveAccessed": True},
+            "extra_field": lambda d: {**d, "privateSavePath": "must not publish"},
+            "failed_detail": lambda d: {**d, "checks": d["checks"] + [{"name": "failed_detail", "passed": False}]},
+            "duplicate": lambda d: {**d, "checks": d["checks"] + [d["checks"][0]]},
+            "invalid_name": lambda d: {**d, "checks": d["checks"] + [{"name": "bad-name", "passed": True}]},
+        }
+        for label, edit in changes.items():
+            with self.subTest(change=label), self.assertRaises(package.PackageError):
+                package.validate_inventory(edit(inventory_proof(build_identity)), build_identity)
+
+    def test_phase12_each_native_inventory_check_is_required(self) -> None:
+        build_identity = {**identity(), "phase": 12, "previewVersion": "0.8.0-phase12"}
+        for missing in package.INVENTORY_DETAIL_CHECKS:
+            details = inventory_proof(build_identity)
+            details["checks"] = [check for check in details["checks"] if check["name"] != missing]
+            details["checks"].append({"name": "unrelated_green_check", "passed": True})
+            with self.subTest(missing=missing), self.assertRaisesRegex(package.PackageError, "checks are missing"):
+                package.validate_inventory(details, build_identity)
+
+    def test_phase12_receipt_inventory_must_match_packaged_proof(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase12_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["inventory"]["checks"].append({"name": "receipt_only_check", "passed": True})
+        with self.assertRaisesRegex(package.PackageError, "Receipt inventory proof"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_phase12_failed_inventory_rejected_even_after_rehashing(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase12_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["inventory"]["checks"][0]["passed"] = False
+        self.change_payload("INVENTORY-CHECKS.json", json.dumps(self.receipt["inventory"]).encode())
+        self.rejected()
+
+    def test_phase12_missing_inventory_rejected_even_after_rehashing(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase12_fixture()
+        self.identity = self.receipt["identity"]
+        self.rewrite(lambda files: [(info, raw) for info, raw in files
+                                   if not info.filename.endswith("/INVENTORY-CHECKS.json")], True)
+        with self.assertRaisesRegex(package.PackageError, "inventory proof is missing"):
+            package.verify_package(self.archive, self.receipt)
+
+    def test_historical_phase11_cannot_claim_inventory_verified(self) -> None:
+        self.archive, self.receipt, self.runtime = self.phase11_fixture()
+        self.identity = self.receipt["identity"]
+        self.receipt["inventory"] = inventory_proof(self.identity)
+        with self.assertRaisesRegex(package.PackageError, "unsupported inventory proof"):
+            package.verify_package(self.archive, self.receipt)
 
     def phase11_fixture(self):
         build_identity = {**identity(), "phase": 11, "previewVersion": "0.7.0-phase11"}

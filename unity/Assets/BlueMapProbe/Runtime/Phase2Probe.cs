@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 11) error = "phase must be 11.";
-            else if (previewVersion != "0.7.0-phase11") error = "previewVersion must be 0.7.0-phase11.";
+            else if (phase != 12) error = "phase must be 12.";
+            else if (previewVersion != "0.8.0-phase12") error = "previewVersion must be 0.8.0-phase12.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -325,6 +325,16 @@ namespace BlueMapMigration.Probe
                 playerWorld.Present(route.Session.Current,route.Access.ResolveArrival(route.Session.Current,capturePositions[accessCaptureIndex++]));route.Tick(.02);
                 yield return new WaitForEndOfFrame();Texture2D capture=ScreenCapture.CaptureScreenshotAsTexture();File.WriteAllBytes(Path.Combine(output,"screenshot-access-"+captureArea[1]+".png"),capture.EncodeToPNG());Destroy(capture);
             }
+            var inventoryProof=BlueMapMigration.Inventory.InventoryProbeRunner.Run(identity,output,playerWorld,route,gallery.Catalog);
+            bool inventoryFailed=false;
+            while(true)
+            {
+                object current=null;bool more=false;
+                try{more=inventoryProof.MoveNext();if(more)current=inventoryProof.Current;}
+                catch(Exception error){Debug.LogError("Native inventory proof failed: "+error);inventoryFailed=true;}
+                if(inventoryFailed||!more)break;yield return current;
+            }
+            Add("inventory_runtime_verified",!inventoryFailed&&BlueMapMigration.Inventory.InventoryProbeRunner.Last.success);
             Finish();
         }
         private void SaveRouteCapture(string name)

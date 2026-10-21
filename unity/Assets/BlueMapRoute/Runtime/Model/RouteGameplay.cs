@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using BlueMapMigration.Foundation;
 using BlueMapMigration.Persistence;
+using BlueMapMigration.Inventory;
 using UnityEngine;
 
 namespace BlueMapMigration.Route
@@ -32,7 +33,8 @@ namespace BlueMapMigration.Route
         private const string DialogueOwner="route_dialogue";
         public FoundationGameState State { get; }
         public FoundationValue Resources => catalogs.Require("resources");
-        public FoundationValue Items => catalogs.Require("items");
+        public InventoryModel Inventory { get; }
+        public FoundationValue Items => Inventory.Items;
         public RouteDialogue Dialogue { get; private set; }
         public bool DialogueOpen => Dialogue!=null;
         public string LastMessage { get; private set; }="";
@@ -54,6 +56,10 @@ namespace BlueMapMigration.Route
             oracle=FoundationJson.ParsePlain(resource.text);
             if(oracle.Require("schema").AsString()!="bluemap.route.source-oracle.v1" || oracle.Require("personalSavesUsed").AsBool())throw new FormatException("Invalid route reference.");
             catalogs=oracle.Require("catalogs");conditions=new FoundationConditionRegistry(State);importer=new LegacySaveImporter(repository);
+            Inventory=new InventoryModel(repository,State);
+            Inventory.ItemObtained+=(id,quantity)=>ItemObtained?.Invoke(id,quantity);
+            Inventory.SoundRequested+=id=>SoundRequested?.Invoke(id);
+            Inventory.SaveRequested+=Saved;
         }
         public static RouteGameplay NewGame(FoundationWorldRepository repository)
         {
@@ -74,17 +80,9 @@ namespace BlueMapMigration.Route
         private void Commit(Dictionary<string,FoundationValue> updates)
         { State.CommitFields(updates); }
         private void Saved() { DirtyVersion=checked(DirtyVersion+1);SaveRequested?.Invoke(); }
-        public string ItemName(string id)=>Items.TryGet(id,out var item)?Get(item,"name",FoundationValue.StringValue(id)).AsString():id;
-        public long Room(string id)
-        { long cap=Items.TryGet(id,out var item)?Get(item,"max",FoundationValue.Integer(0)).AsInt64():0;return cap>0?Math.Max(0,cap-State.Count(id)):1000000; }
-        private void Give(string id,long quantity)
-        {
-            quantity=Math.Min(quantity,Room(id));if(quantity<=0)return;
-            var inventory=Replace(State.Get("inventory"),id,FoundationValue.Integer(checked(State.Count(id)+quantity)));
-            var changes=new Dictionary<string,FoundationValue>{{"inventory",inventory}};
-            if(id=="heart_container")changes["hp"]=FoundationValue.Integer(Math.Min(checked(State.Hp+quantity),checked(5+inventory.Require(id).AsInt64())));
-            Commit(changes);RefreshQuests();ItemObtained?.Invoke(id,quantity);
-        }
+        public string ItemName(string id)=>Inventory.ItemName(id);
+        public long Room(string id)=>Inventory.Room(id);
+        private void Give(string id,long quantity)=>Inventory.Give(id,quantity);
         private void StartQuest(string id)
         {
             if(State.Get("quests").TryGet(id,out _))return;
@@ -191,7 +189,7 @@ namespace BlueMapMigration.Route
                     case "set_flag":State.SetFlag(id,true);RefreshQuests();break;
                     case "clear_flag":State.SetFlag(id,false);RefreshQuests();break;
                     case "give":Give(id,count);break;
-                    case "take":long left=State.Count(id)-count;State.Set("inventory",Replace(State.Get("inventory"),id,FoundationValue.Integer(left),left<=0));State.Set("equipment",importer.NormalizeEquipment(State.Get("equipment"),State.Get("inventory")));State.Set("clothing",importer.NormalizeClothing(State.Get("clothing"),State.Get("inventory")));RefreshQuests();break;
+                    case "take":Inventory.Take(id,count);break;
                     case "coins":State.Coins=Math.Max(0,checked(State.Coins+a[1].AsInt64()));break;
                     case "heal":State.Hp=MaxHp;SoundRequested?.Invoke("heal");break;
                     case "sound":SoundRequested?.Invoke(id);break;
@@ -289,49 +287,13 @@ namespace BlueMapMigration.Route
         }
         public bool OpenChest(string uniqueKey,FoundationValue contents)
         {
-            if(busy||State.InputLocked||String.IsNullOrEmpty(uniqueKey))return false;
-            if(State.Flag(uniqueKey)){LastMessage="De kist is leeg.";return true;}
-            var totals=new Dictionary<string,long>(StringComparer.Ordinal);
-            foreach(var entry in contents.Items)
-            { if(entry.Items.Count!=2)throw new FormatException("Invalid source chest entry.");string item=entry.Items[0].AsString();long amount=entry.Items[1].AsInt64();if(amount<0)throw new FormatException("Negative chest reward.");totals[item]=checked((totals.TryGetValue(item,out var old)?old:0)+amount); }
-            var inventory=State.Get("inventory");var grants=new Dictionary<string,long>();
-            foreach(var pair in totals)
-            {
-                if(pair.Key=="coins")continue;
-                bool unique=Items.TryGet(pair.Key,out var item)&&Get(item,"max",FoundationValue.Integer(0)).AsInt64()==1;
-                if(unique&&State.Count(pair.Key)>0)continue;
-                if(Room(pair.Key)<pair.Value){LastMessage="Niet genoeg ruimte voor: "+ItemName(pair.Key);return false;}
-                grants[pair.Key]=pair.Value;inventory=Replace(inventory,pair.Key,FoundationValue.Integer(checked(State.Count(pair.Key)+pair.Value)));
-            }
-            long coins=checked(State.Coins+(totals.TryGetValue("coins",out var money)?money:0));
-            var flags=Replace(State.Get("flags"),uniqueKey,FoundationValue.Boolean(true));
-            var changes=new Dictionary<string,FoundationValue>{{"inventory",inventory},{"flags",flags},{"coins",FoundationValue.Integer(Math.Max(0,coins))}};
-            if(grants.TryGetValue("heart_container",out var hearts))changes["hp"]=FoundationValue.Integer(Math.Min(checked(State.Hp+hearts),checked(5+inventory.Require("heart_container").AsInt64())));
-            busy=true;
-            try
-            {Commit(changes);RefreshQuests();foreach(var grant in grants)ItemObtained?.Invoke(grant.Key,grant.Value);if(money!=0)ItemObtained?.Invoke("coins",money);LastMessage="De kist is geopend.";Saved();return true;}
-            finally{busy=false;}
+            if(busy)return false;
+            bool opened=Inventory.OpenChest(uniqueKey??"",contents);LastMessage=Inventory.LastMessage;return opened;
         }
-        public bool CollectPickup(string item,string uniqueKey)
+        public bool CollectPickup(string item,string uniqueKey,string instanceKey="")
         {
-            if(busy||State.InputLocked||(!String.IsNullOrEmpty(uniqueKey)&&State.Flag(uniqueKey)))return false;
-            if(item=="heart"&&State.Hp>=MaxHp)return false;
-            if(item!="coin"&&item!="heart"&&Room(item)<=0){LastMessage="Geen ruimte voor: "+ItemName(item);return false;}
-            var changes=new Dictionary<string,FoundationValue>();
-            if(item=="coin")changes["coins"]=FoundationValue.Integer(Math.Max(0,checked(State.Coins+1)));
-            else if(item=="heart")changes["hp"]=FoundationValue.Integer(Math.Min(MaxHp,checked(State.Hp+1)));
-            else
-            {
-                var inventory=Replace(State.Get("inventory"),item,FoundationValue.Integer(checked(State.Count(item)+1)));changes["inventory"]=inventory;
-                if(item=="heart_container")changes["hp"]=FoundationValue.Integer(Math.Min(checked(State.Hp+1),checked(5+inventory.Require(item).AsInt64())));
-            }
-            if(!String.IsNullOrEmpty(uniqueKey))changes["flags"]=Replace(State.Get("flags"),uniqueKey,FoundationValue.Boolean(true));
-            busy=true;
-            try
-            {
-                Commit(changes);RefreshQuests();ItemObtained?.Invoke(item,1);SoundRequested?.Invoke(item=="coin"?"coin":item=="heart"?"heart":"chest");Saved();return true;
-            }
-            finally{busy=false;}
+            if(busy)return false;
+            bool collected=Inventory.CollectPickup(item,uniqueKey??"",instanceKey??"");LastMessage=Inventory.LastMessage;return collected;
         }
         public bool Rest()
         {if(busy||State.InputLocked)return false;State.Hp=MaxHp;LastMessage="Je bent uitgerust. Je voortgang is opgeslagen.";SoundRequested?.Invoke("heal");Saved();return true;}

@@ -1,0 +1,2423 @@
+{
+  "assetGuids": [
+    {
+      "guid": "e29bab7c4d1dd55e1b620a5c19e2bcb1",
+      "path": "unity/Assets/BlueMapInventory"
+    },
+    {
+      "guid": "a0c8a90a3d4534c1b2ac81f8c346384f",
+      "path": "unity/Assets/BlueMapInventory/Runtime"
+    },
+    {
+      "guid": "fc2f51c32cf91043dfa2a37403e35c9b",
+      "path": "unity/Assets/BlueMapInventory/Runtime/Model"
+    },
+    {
+      "guid": "884a3dfc24547baa102eb09e3b2276e2",
+      "path": "unity/Assets/BlueMapInventory/Runtime/Model/InventoryModel.cs"
+    },
+    {
+      "guid": "b89d1f91206df18c7f3368777f55f8d1",
+      "path": "unity/Assets/BlueMapInventory/Runtime/Model/InventoryModelChecks.cs"
+    },
+    {
+      "guid": "3eaf5aa504525edc384ce80459224d79",
+      "path": "unity/Assets/BlueMapInventory/Runtime/Model/Resources"
+    },
+    {
+      "guid": "74346545ce0cc120f57045271af227b4",
+      "path": "unity/Assets/BlueMapInventory/Runtime/Model/Resources/BlueMapInventoryOracle.json"
+    },
+    {
+      "guid": "e61ae79b01dc4c97a454d38560763bd2",
+      "path": "unity/Assets/BlueMapInventory/Runtime/Session"
+    },
+    {
+      "guid": "ae0fe548af5872f646c57495fe36bc8d",
+      "path": "unity/Assets/BlueMapInventory/Runtime/Session/InventoryProbeRunner.cs"
+    },
+    {
+      "guid": "b8ce138855ba4d3ba973bf5209657eca",
+      "path": "unity/Assets/BlueMapInventory/Runtime/Session/InventoryUiProbeRunner.cs"
+    },
+    {
+      "guid": "bdb4a15c8f584357ba7078f57ad2de72",
+      "path": "unity/Assets/BlueMapInventory/Runtime/UI"
+    },
+    {
+      "guid": "ed37eb4b8a15476daf7002f40b69c8f2",
+      "path": "unity/Assets/BlueMapInventory/Runtime/UI/InventoryPanel.cs"
+    }
+  ],
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "enginesStarted": false,
+  "frozenReferenceFiles": [
+    {
+      "bytes": 3764939,
+      "path": "migration/reference/maps-inventory.json",
+      "sha256": "3b6e3818d720f501dbcce09252919f7c76f2814a651a5fba796a322767cfb207"
+    },
+    {
+      "bytes": 1084634,
+      "path": "migration/portable/catalogs/items.json",
+      "sha256": "971a67f863baac64dcec1c9661d6a72cab1e71d35872e53640ae5d780841d3a4"
+    },
+    {
+      "bytes": 206219,
+      "path": "migration/portable/catalogs/quests.json",
+      "sha256": "c7fe50d6560f6867482a95119f2e694bea5ead26e5dbf70cbf63ca5bdd387e0a"
+    },
+    {
+      "bytes": 75791,
+      "path": "migration/world/index.json",
+      "sha256": "d986a9a8ad3a03e2c5a5b9fb98e0622dbca76f950f52d35d756f611410af4743"
+    }
+  ],
+  "oracle": {
+    "bytes": 3527899,
+    "coverage": {
+      "canonicalChests": 33,
+      "canonicalPickups": 73,
+      "caseIds": [
+        "bag_cap_arrow",
+        "bag_cap_cloth_backpack",
+        "bag_cap_cloth_beanie",
+        "bag_cap_cloth_beret",
+        "bag_cap_cloth_blouse",
+        "bag_cap_cloth_boots",
+        "bag_cap_cloth_cape",
+        "bag_cap_cloth_cloak",
+        "bag_cap_cloth_dress",
+        "bag_cap_cloth_felt_hat",
+        "bag_cap_cloth_headband",
+        "bag_cap_cloth_nightcap",
+        "bag_cap_cloth_overalls",
+        "bag_cap_cloth_sandals",
+        "bag_cap_cloth_scarf",
+        "bag_cap_cloth_shirt",
+        "bag_cap_cloth_shoes",
+        "bag_cap_cloth_shorts",
+        "bag_cap_cloth_skirt",
+        "bag_cap_cloth_slippers",
+        "bag_cap_cloth_straw_hat",
+        "bag_cap_cloth_sweater",
+        "bag_cap_cloth_trousers",
+        "bag_cap_cloth_tunic",
+        "bag_cap_cloth_vest",
+        "bag_cap_cw_hook",
+        "bag_cap_cw_lamp",
+        "bag_cap_cw_shelf",
+        "bag_cap_gear_bastion_coat",
+        "bag_cap_gear_bronze_helm",
+        "bag_cap_gear_cloth_hood",
+        "bag_cap_gear_copper_amulet",
+        "bag_cap_gear_copper_ring",
+        "bag_cap_gear_crystal_amulet",
+        "bag_cap_gear_crystal_ring",
+        "bag_cap_gear_cw_anchor",
+        "bag_cap_gear_cw_fan",
+        "bag_cap_gear_iron_armor",
+        "bag_cap_gear_leather_armor",
+        "bag_cap_gear_novice_gloves",
+        "bag_cap_gear_pg_focus",
+        "bag_cap_gear_pg_focus_plus",
+        "bag_cap_gear_pg_grip",
+        "bag_cap_gear_pg_grip_plus",
+        "bag_cap_gear_pg_pack",
+        "bag_cap_gear_pg_pack_plus",
+        "bag_cap_gear_ra_compass",
+        "bag_cap_gear_ra_grip",
+        "bag_cap_gear_rf_cord",
+        "bag_cap_gear_rf_keepsake",
+        "bag_cap_gear_scout_coat",
+        "bag_cap_gear_smith_gloves",
+        "bag_cap_heart_container",
+        "bag_cap_hs_hoe",
+        "bag_cap_ls_crate",
+        "bag_cap_lw_lantern",
+        "bag_cap_lw_lens",
+        "bag_cap_op_rake",
+        "bag_cap_prof_axe",
+        "bag_cap_prof_copper_pickaxe",
+        "bag_cap_prof_iron_axe",
+        "bag_cap_prof_pickaxe",
+        "bag_cap_ra_waterskin",
+        "bag_cap_td_line",
+        "bag_unlimited_and_unknown",
+        "bulk_existing_skip_favorites",
+        "bulk_materials_only",
+        "chest_aggregate_exact_fit",
+        "chest_aggregate_refused",
+        "chest_hearts_capped",
+        "chest_owned_coat",
+        "chest_owned_only",
+        "coast_material_only",
+        "coast_twelve_species",
+        "coins_clamp",
+        "consume_bag_then_home",
+        "consume_no_remote_supply",
+        "consume_preflight_no_loss",
+        "favorites_toggle_known_only",
+        "full_text_owned",
+        "heart_container_heals",
+        "home_cap_and_partial",
+        "home_transfer_roundtrip",
+        "magnet_arrow",
+        "magnet_coin",
+        "magnet_full_ammo_remains",
+        "magnet_full_heart_remains",
+        "magnet_heart",
+        "magnet_hs_grape",
+        "magnet_no_early_collection",
+        "magnet_outside_range",
+        "magnet_owned_not_worn",
+        "magnet_prof_branch",
+        "magnet_worn_pack",
+        "normalize_coast_slot_limit",
+        "normalize_home_slot_limit",
+        "normalize_invalid_coast",
+        "normalize_invalid_home",
+        "original_chest_cave_19",
+        "original_chest_cave_20",
+        "original_chest_dauwbos_11",
+        "original_chest_dauwbos_12",
+        "original_chest_depths1_4",
+        "original_chest_depths1_5",
+        "original_chest_depths1_6",
+        "original_chest_dorstvallei_8",
+        "original_chest_dorstvallei_9",
+        "original_chest_fisher_hut_2",
+        "original_chest_forest_4",
+        "original_chest_forest_49",
+        "original_chest_forest_6",
+        "original_chest_ijsdal_8",
+        "original_chest_ijsdal_9",
+        "original_chest_inn_4",
+        "original_chest_kruipmoeras_10",
+        "original_chest_kruipmoeras_11",
+        "original_chest_kruipmoeras_12",
+        "original_chest_lake_22",
+        "original_chest_lake_23",
+        "original_chest_lake_24",
+        "original_chest_library_9",
+        "original_chest_mistgarden_4",
+        "original_chest_prismamine_5",
+        "original_chest_prismamine_6",
+        "original_chest_reedvault_5",
+        "original_chest_ridgepass_4",
+        "original_chest_ruins_18",
+        "original_chest_ruins_19",
+        "original_chest_ruins_41",
+        "original_chest_sunwell_5",
+        "original_chest_sunwell_6",
+        "pickup_arrow",
+        "pickup_arrow_full",
+        "pickup_coin",
+        "pickup_crystal_bos",
+        "pickup_gear_bronze_helm",
+        "pickup_heart",
+        "pickup_heart_full",
+        "pickup_hs_grape",
+        "pickup_potion",
+        "pickup_prof_branch",
+        "pickup_ruin_key",
+        "query_en_sort_0",
+        "query_en_sort_1",
+        "query_en_sort_2",
+        "query_en_sort_3",
+        "query_nl_sort_0",
+        "query_nl_sort_1",
+        "query_nl_sort_2",
+        "query_nl_sort_3",
+        "reach_coast_9600",
+        "reach_coast_9601",
+        "reach_home_17600",
+        "reach_home_17601",
+        "reach_village_17600",
+        "reach_village_17601",
+        "storage_not_in_game",
+        "storage_wrong_map",
+        "take_reconciles_clothing",
+        "take_reconciles_gear",
+        "use_full_cw_broth",
+        "use_full_ff_almond",
+        "use_full_ff_beechnut",
+        "use_full_ff_black_walnut",
+        "use_full_ff_blackberry",
+        "use_full_ff_blackcurrant",
+        "use_full_ff_butternut",
+        "use_full_ff_cashew",
+        "use_full_ff_cedar_nut",
+        "use_full_ff_chestnut",
+        "use_full_ff_coconut",
+        "use_full_ff_gooseberry",
+        "use_full_ff_hickory",
+        "use_full_ff_japanese_walnut",
+        "use_full_ff_macadamia",
+        "use_full_ff_pecan",
+        "use_full_ff_pine_nut",
+        "use_full_ff_pistachio",
+        "use_full_ff_raspberry",
+        "use_full_ff_redcurrant",
+        "use_full_ff_rosehip",
+        "use_full_ff_sea_buckthorn",
+        "use_full_ff_walnut",
+        "use_full_ff_wild_apple",
+        "use_full_ff_wild_pear",
+        "use_full_ff_wild_plum",
+        "use_full_ff_wild_strawberry",
+        "use_full_hs_grape",
+        "use_full_hs_honey",
+        "use_full_hs_wine",
+        "use_full_jacht_braadstuk",
+        "use_full_ls_broth",
+        "use_full_ls_chowder",
+        "use_full_or_apple",
+        "use_full_or_balm",
+        "use_full_or_carrot",
+        "use_full_or_stew",
+        "use_full_or_tea",
+        "use_full_potion",
+        "use_full_prof_berry",
+        "use_full_prof_berry_meal",
+        "use_full_prof_cactusvijg",
+        "use_full_prof_dauwsoep",
+        "use_full_prof_fish_meal",
+        "use_full_prof_frost_tonic",
+        "use_full_prof_mistdrank",
+        "use_full_prof_moeraselixer",
+        "use_full_prof_stew",
+        "use_full_prof_tonic",
+        "use_full_prof_veenbes",
+        "use_full_prof_veenbespap",
+        "use_full_prof_winter_gloed",
+        "use_full_prof_winterbes",
+        "use_full_prof_zandbalsem",
+        "use_full_trail_nut",
+        "use_full_winter_beet",
+        "use_full_winter_broccoli",
+        "use_full_winter_carrot",
+        "use_full_winter_cauliflower",
+        "use_full_winter_celeriac",
+        "use_full_winter_kale",
+        "use_full_winter_lambs_lettuce",
+        "use_full_winter_leek",
+        "use_full_winter_parsnip",
+        "use_full_winter_purslane",
+        "use_full_winter_red_cabbage",
+        "use_full_winter_salsify",
+        "use_full_winter_savoy",
+        "use_full_winter_spinach",
+        "use_full_winter_sprouts",
+        "use_full_winter_swede",
+        "use_hurt_cw_broth",
+        "use_hurt_ff_almond",
+        "use_hurt_ff_beechnut",
+        "use_hurt_ff_black_walnut",
+        "use_hurt_ff_blackberry",
+        "use_hurt_ff_blackcurrant",
+        "use_hurt_ff_butternut",
+        "use_hurt_ff_cashew",
+        "use_hurt_ff_cedar_nut",
+        "use_hurt_ff_chestnut",
+        "use_hurt_ff_coconut",
+        "use_hurt_ff_gooseberry",
+        "use_hurt_ff_hickory",
+        "use_hurt_ff_japanese_walnut",
+        "use_hurt_ff_macadamia",
+        "use_hurt_ff_pecan",
+        "use_hurt_ff_pine_nut",
+        "use_hurt_ff_pistachio",
+        "use_hurt_ff_raspberry",
+        "use_hurt_ff_redcurrant",
+        "use_hurt_ff_rosehip",
+        "use_hurt_ff_sea_buckthorn",
+        "use_hurt_ff_walnut",
+        "use_hurt_ff_wild_apple",
+        "use_hurt_ff_wild_pear",
+        "use_hurt_ff_wild_plum",
+        "use_hurt_ff_wild_strawberry",
+        "use_hurt_hs_grape",
+        "use_hurt_hs_honey",
+        "use_hurt_hs_wine",
+        "use_hurt_jacht_braadstuk",
+        "use_hurt_ls_broth",
+        "use_hurt_ls_chowder",
+        "use_hurt_or_apple",
+        "use_hurt_or_balm",
+        "use_hurt_or_carrot",
+        "use_hurt_or_stew",
+        "use_hurt_or_tea",
+        "use_hurt_potion",
+        "use_hurt_prof_berry",
+        "use_hurt_prof_berry_meal",
+        "use_hurt_prof_cactusvijg",
+        "use_hurt_prof_dauwsoep",
+        "use_hurt_prof_fish_meal",
+        "use_hurt_prof_frost_tonic",
+        "use_hurt_prof_mistdrank",
+        "use_hurt_prof_moeraselixer",
+        "use_hurt_prof_stew",
+        "use_hurt_prof_tonic",
+        "use_hurt_prof_veenbes",
+        "use_hurt_prof_veenbespap",
+        "use_hurt_prof_winter_gloed",
+        "use_hurt_prof_winterbes",
+        "use_hurt_prof_zandbalsem",
+        "use_hurt_trail_nut",
+        "use_hurt_winter_beet",
+        "use_hurt_winter_broccoli",
+        "use_hurt_winter_carrot",
+        "use_hurt_winter_cauliflower",
+        "use_hurt_winter_celeriac",
+        "use_hurt_winter_kale",
+        "use_hurt_winter_lambs_lettuce",
+        "use_hurt_winter_leek",
+        "use_hurt_winter_parsnip",
+        "use_hurt_winter_purslane",
+        "use_hurt_winter_red_cabbage",
+        "use_hurt_winter_salsify",
+        "use_hurt_winter_savoy",
+        "use_hurt_winter_spinach",
+        "use_hurt_winter_sprouts",
+        "use_hurt_winter_swede",
+        "use_missing_or_tool",
+        "withdraw_ammo_limit"
+      ],
+      "cases": 304,
+      "consumables": 71,
+      "dictionaryInputOrderPreserved": true,
+      "exactFloat64Values": 4133,
+      "items": 226,
+      "loadedChests": 172,
+      "loadedPickups": 369,
+      "loadedSnapshots": 162,
+      "loadedStores": 7,
+      "maps": 37,
+      "methods": [
+        "scripts/core/coastal_home.gd::normalize",
+        "scripts/core/game_state.gd::_refresh_quests",
+        "scripts/core/game_state.gd::add_coins",
+        "scripts/core/game_state.gd::full_text",
+        "scripts/core/game_state.gd::give",
+        "scripts/core/game_state.gd::room",
+        "scripts/core/game_state.gd::take",
+        "scripts/core/game_state.gd::use_potion",
+        "scripts/core/professions.gd::use_item",
+        "scripts/core/professions.gd::use_reason",
+        "scripts/core/stockroom.gd::bulk",
+        "scripts/core/stockroom.gd::consume",
+        "scripts/core/stockroom.gd::ids",
+        "scripts/core/stockroom.gd::movable",
+        "scripts/core/stockroom.gd::nearby_kind",
+        "scripts/core/stockroom.gd::normalize",
+        "scripts/core/stockroom.gd::room",
+        "scripts/core/stockroom.gd::toggle_favorite",
+        "scripts/core/stockroom.gd::transfer",
+        "scripts/entities/chest.gd::interact",
+        "scripts/entities/pickup.gd::_collect",
+        "scripts/entities/pickup.gd::_process",
+        "scripts/entities/pickup.gd::magnet_range",
+        "scripts/maps/registry.gd::get_map",
+        "scripts/world.gd::load_map",
+        "tools/migration_world_scenarios.gd::project"
+      ],
+      "quests": 33
+    },
+    "resourcePath": "unity/Assets/BlueMapInventory/Runtime/Model/Resources/BlueMapInventoryOracle.json",
+    "sha256": "cad64e70a727a50bb86ccecb082dd98936c69f5b77d6d5a2faf64e0f5478d75e",
+    "sourcePath": "migration/phase-12/inventory-state-oracle.json"
+  },
+  "personalSavesUsed": false,
+  "phase": 12,
+  "recorders": [
+    {
+      "path": "tools/migration_inventory_export.gd",
+      "sha256": "ece33926d3ed98adf85c34fc60fcabd914fac5fa0243cc236f84983f0d16440b"
+    },
+    {
+      "path": "tools/record_migration_inventory_state.py",
+      "sha256": "b26b15e57360683021f1223e60e6dfdb00d9ad94435112297e16a3afcba481b1"
+    },
+    {
+      "path": "tools/migration_route_export.gd",
+      "sha256": "c83b95f151f478f62fedb002887516912b7e073c0480297fe0ed6e54e3dbee46"
+    },
+    {
+      "path": "tools/migration_world_scenarios.gd",
+      "sha256": "45b365f080a9bb2b8440d8a10e6d8d072d6a6d9c231fac3bf2e711f08aac0a97"
+    }
+  ],
+  "requiredNativeChecks": [
+    "inventory_failed_transfer_is_atomic",
+    "inventory_item_receipts_pause_in_menus",
+    "inventory_item_receipts_separate_message_lane",
+    "inventory_model_atomic_and_unique_rewards",
+    "inventory_model_source_equivalence",
+    "inventory_native_all_37_map_loot",
+    "inventory_native_checks_ran",
+    "inventory_native_chest_and_pickup_art_updates",
+    "inventory_native_coastal_storage_roundtrip",
+    "inventory_native_consumables_and_stamina",
+    "inventory_native_controller_navigation",
+    "inventory_native_failed_chest_keeps_all_rewards",
+    "inventory_native_favorites_bulk_preserved",
+    "inventory_native_full_pickups_remain",
+    "inventory_native_groundloot_refresh_retained",
+    "inventory_native_home_chest_inside_house",
+    "inventory_native_home_storage_roundtrip",
+    "inventory_native_input_owner_switch",
+    "inventory_native_key_items_retained",
+    "inventory_native_keyboard_mouse_navigation",
+    "inventory_native_local_storage_supplies",
+    "inventory_native_magnetic_all_items",
+    "inventory_native_owned_unique_chest_reward",
+    "inventory_native_pickups_and_chests",
+    "inventory_native_receipt_feed_bounded",
+    "inventory_native_save_reload_preserves_inventory",
+    "inventory_native_storage_capacities",
+    "inventory_native_sustained_right_stick_keeps_focus",
+    "inventory_native_unique_pickup_once",
+    "inventory_no_real_saves_accessed",
+    "inventory_ui_category_sort_favorites",
+    "inventory_ui_confirmation_cancel_atomic",
+    "inventory_ui_controller_selection_visible",
+    "inventory_ui_focus_actions",
+    "inventory_ui_four_native_captures",
+    "inventory_ui_home_coast_capacities",
+    "inventory_ui_input_device_exclusivity",
+    "inventory_ui_original_item_icons",
+    "inventory_ui_responsive_layout",
+    "inventory_ui_right_stick_scroll",
+    "inventory_ui_search_shared",
+    "inventory_ui_search_shortcut_isolation",
+    "inventory_unknown_fields_retained"
+  ],
+  "schema": "bluemap.inventory-state.source-contracts.v1",
+  "sourceAnchors": [
+    {
+      "bytes": 13421,
+      "gitBlob": "52c05b53bb2fa675624b00ccb9579e460fd490b6",
+      "path": "project.godot",
+      "sha256": "4381f29aa19a0488ec38349b8d4692c972ed7b6f4d433e9ce184d17214594dfb"
+    },
+    {
+      "bytes": 170,
+      "gitBlob": "7705ae284a504af14236600af7bad7920881bb20",
+      "path": "scenes/main.tscn",
+      "sha256": "0d3cfc61c1f4e7ed5e33ceb0b837d61cac6d04390ff64571182fbfeee4188711"
+    },
+    {
+      "bytes": 2529,
+      "gitBlob": "eac3b46d8d0b0864c6ff7584f0db53259e8dd099",
+      "path": "scripts/core/coastal_home.gd",
+      "sha256": "0f7da0b759406f1ea8c23e5b792f1e4e7cdcc35b9c2006d5f688b0bce10792b2"
+    },
+    {
+      "bytes": 5494,
+      "gitBlob": "316fa5c891e2deec0befc59ee9e9aae43ea55114",
+      "path": "scripts/core/equipment.gd",
+      "sha256": "60276ccdb0c1ecbe52eee8a3b45a2b0f9f8e1221bf1cedd3643967a5aad65a7e"
+    },
+    {
+      "bytes": 32096,
+      "gitBlob": "47d621d751586d38a53c370fa7d2a516f3524450",
+      "path": "scripts/core/game_state.gd",
+      "sha256": "86bd03c3052581e8ac4bebc7e8f11e5580be02ead86fd2f0108f01232c85c22c"
+    },
+    {
+      "bytes": 4572,
+      "gitBlob": "27e5ff168d02080ad6c75dd3969f527f90b610d7",
+      "path": "scripts/core/lang.gd",
+      "sha256": "bd28e55994891258ace5eab1635f82f109064451cd140f5fb0fe2c205e5e4c11"
+    },
+    {
+      "bytes": 2607,
+      "gitBlob": "58806b9c969a52d7d94d7a77abf3c8e43df277a9",
+      "path": "scripts/core/movement.gd",
+      "sha256": "cac3c6ff079faca62eabeafb3508e326b067664fbad3eb95f42a94bc19a8cd3b"
+    },
+    {
+      "bytes": 12436,
+      "gitBlob": "403670241fc2f0b90b0fe930a3f9fd698c6d708a",
+      "path": "scripts/core/professions.gd",
+      "sha256": "3d15772b05ec1728ef11915088bd1e0fab5e60692fabe8390a433d092bc1f43a"
+    },
+    {
+      "bytes": 6580,
+      "gitBlob": "394f1be38043f33b5e4918e5f78a697439759497",
+      "path": "scripts/core/stockroom.gd",
+      "sha256": "4f03a0e4dafe2cd54e0791ae1590f1bba757ccb73b5dc7ea4818fd08d1471aca"
+    },
+    {
+      "bytes": 4570,
+      "gitBlob": "c16be2b1c1e7434cdd673e6e624f1007b5c14f8e",
+      "path": "scripts/data/achievements.gd",
+      "sha256": "a6ceecbd4c1ff1cdff5bf1550851b2980b22f6f9c7bea7a709fbc7e4ba2cce63"
+    },
+    {
+      "bytes": 822,
+      "gitBlob": "b2c922d6ae76f9943d9091108ae33695498e9c49",
+      "path": "scripts/data/adventure_maps.gd",
+      "sha256": "afaa6602f2b6f07b248a8de8fda03f11f50efdb379327b2b921de3828c915d13"
+    },
+    {
+      "bytes": 9235,
+      "gitBlob": "effa500be73fd4496dc64a52a0066bf3c902e0d6",
+      "path": "scripts/data/arena.gd",
+      "sha256": "115f0d52b40e74664431608be9fb8826b9e93427d3c6e29ec86c7bfb04de578a"
+    },
+    {
+      "bytes": 2160,
+      "gitBlob": "2f4ad9c5169dfc8e8b60a1fb0294562a0d91c990",
+      "path": "scripts/data/buildings.gd",
+      "sha256": "2f79bbdb9a096ce52dab21361f60d66ca5379417e32d3bb8ba5e24264f00a84b"
+    },
+    {
+      "bytes": 2782,
+      "gitBlob": "8b48dfc0ca0a71cef594612d5c913f191bd9e0a9",
+      "path": "scripts/data/character_art.gd",
+      "sha256": "2ff58cf482759b50b2bb50f237a0265408e9d189a7756cae9ed0bd3a0939a021"
+    },
+    {
+      "bytes": 1631,
+      "gitBlob": "c5830f56cacc20b9324758484f45442690a2ba8e",
+      "path": "scripts/data/coast_maps.gd",
+      "sha256": "08279dbf6bca3badc7e4e4c8d6ba0465d1ef3493f231ab49b8452ea0641fb859"
+    },
+    {
+      "bytes": 460,
+      "gitBlob": "4785e3de331366fdc3ac86b2ca528cc51f815794",
+      "path": "scripts/data/coastal_craft_maps.gd",
+      "sha256": "044293f6910f0191f1d74628ba878541f3230f3da013d84ca7a1f10ab31b55c5"
+    },
+    {
+      "bytes": 829,
+      "gitBlob": "beab55c3b7e9596359132df2d65c5164df19856c",
+      "path": "scripts/data/coastal_region_maps.gd",
+      "sha256": "c102aad0f7ee0d42ba9a05710359c99e34d2a689ae8472bf9c8ccdc897617ca4"
+    },
+    {
+      "bytes": 1042,
+      "gitBlob": "7cd3fec20c785b5456483aec71b8d1e4196856d8",
+      "path": "scripts/data/combat_maps.gd",
+      "sha256": "e9aec2e2d49a5cc2fec4d8b19c0d01b4ac3a3ae4a92e8ce079f41b06854ef3b3"
+    },
+    {
+      "bytes": 8160,
+      "gitBlob": "4712853fbeed7dcbd41e06e868177d47c312591a",
+      "path": "scripts/data/content.gd",
+      "sha256": "3f288351b952f09788d7a864ba083ae362059ad8a2b2bde4b71395beab175d98"
+    },
+    {
+      "bytes": 312,
+      "gitBlob": "3bd55278d1cb4854c6cc3069a4abfc5016229601",
+      "path": "scripts/data/craft_maps.gd",
+      "sha256": "5b9220052714bd5e52a6e4a1ce5804205e65bc977a29066f671eaaf026a9cee7"
+    },
+    {
+      "bytes": 1037,
+      "gitBlob": "98397dcd3c0f74cf50aa41125c91373ee5d7c6e4",
+      "path": "scripts/data/credits.gd",
+      "sha256": "6c84da99b814165e3f69d4d5fe3d71b95a3d7b9ca8426f8a839546c7628f532a"
+    },
+    {
+      "bytes": 16188,
+      "gitBlob": "4eea3bb0902c9d983a262cfb9452e2f028a5bfa0",
+      "path": "scripts/data/dialogue.gd",
+      "sha256": "29c6ef72e0d8635ae6c2a4b002ff1d17024de8c1df08c2c8e94e59e9c78de14a"
+    },
+    {
+      "bytes": 4373,
+      "gitBlob": "6cb0a3defda089da984382d795187b059429a632",
+      "path": "scripts/data/enemies.gd",
+      "sha256": "a201b8295763ad34a92a2b0608c9cc9bd5de422ee89eff26558a566dcae86578"
+    },
+    {
+      "bytes": 13685,
+      "gitBlob": "874b081efe6148b8a5095bc11efc91971d54cf33",
+      "path": "scripts/data/ext/arena.gd",
+      "sha256": "b159f89ef967e6122ba06eb7de698d106cee19375f34966a256a1f65dfce4e3a"
+    },
+    {
+      "bytes": 32703,
+      "gitBlob": "e765e802ad917bf54d27419eb5896fd7cfc9ebe8",
+      "path": "scripts/data/ext/beroepen.gd",
+      "sha256": "712b6e0e6102c348f2d6e207903ad219655b22072bf54941eb4e0a9089ba930a"
+    },
+    {
+      "bytes": 7261,
+      "gitBlob": "3cd04a1158ae980a5297348dea44d441988a5f18",
+      "path": "scripts/data/ext/boog.gd",
+      "sha256": "64878808826a84a2631928b95bc5a81904692133baadd80f50ad685da5b06e04"
+    },
+    {
+      "bytes": 1383,
+      "gitBlob": "b691be42f72c2fa56847d35f4e3c1829c40ed07d",
+      "path": "scripts/data/ext/coast.gd",
+      "sha256": "74d7beacf2e66a729e2363a3adc1b2fbf20d89b84535d4d4ab1ff2473f5e1afa"
+    },
+    {
+      "bytes": 3027,
+      "gitBlob": "abc1a45dd1e8e3aa5059eba614ca0e2dc7e87d71",
+      "path": "scripts/data/ext/coastal_adventures.gd",
+      "sha256": "52446d055c95f0e6eefdaaccaad0db5b5e2714f20c20c1fbdfda1fddc00f4bfb"
+    },
+    {
+      "bytes": 2045,
+      "gitBlob": "f2cc475b94d7016a8a3703903d111728fafb41e7",
+      "path": "scripts/data/ext/coastal_craft.gd",
+      "sha256": "59505eedeccc96a7968673aa4d4d461025cc1e840a116d35f38e52f073bd7dbf"
+    },
+    {
+      "bytes": 1919,
+      "gitBlob": "7e8e67b565696ad691eea321d68e7744c427b839",
+      "path": "scripts/data/ext/coastal_region.gd",
+      "sha256": "d6f2d7c63b2e85696b51c30d23554264d0a5810d08fe3f2442b5802a2ff17f87"
+    },
+    {
+      "bytes": 1000,
+      "gitBlob": "a46d6fb05a1bb00b9011b7f035ad494aa5302631",
+      "path": "scripts/data/ext/combat.gd",
+      "sha256": "49f1d87ade12050164c0864f63836d4891d51cb6b156868e629f06c210d449fe"
+    },
+    {
+      "bytes": 1797,
+      "gitBlob": "4a445ca9983ac8830423e5ccd6e63b0e12f5cc26",
+      "path": "scripts/data/ext/craft_progression.gd",
+      "sha256": "b4e052d516f15ff848ea8c7472d044db711a998d595f74c37eda385f0299f8dd"
+    },
+    {
+      "bytes": 711,
+      "gitBlob": "31a9e8d84e02c21790d4c7b12a341833cd3e545f",
+      "path": "scripts/data/ext/dagritme.gd",
+      "sha256": "0760f8696785c321a6eed5da1a720b9321da0e2ab5ad2a100d740b6b4c6a2fbe"
+    },
+    {
+      "bytes": 7350,
+      "gitBlob": "d95dd7e784d7549c094e7f4cd4bb757c65d2569e",
+      "path": "scripts/data/ext/diepte.gd",
+      "sha256": "8cc0f9b769d9e7c080a2c08baaa4c0affb6a9b1c60b917aabc13d5e3e8e54136"
+    },
+    {
+      "bytes": 8971,
+      "gitBlob": "f8d0e369c6094cb2942c7c8d3a6ba9a13fe9b362",
+      "path": "scripts/data/ext/dorst.gd",
+      "sha256": "4aceabedf9439c856cb751ca314cd2833a40a38e5da82ffa93d763dfb353ab3e"
+    },
+    {
+      "bytes": 1797,
+      "gitBlob": "e90827f4f17172e26fab8d2c654c69a1279e50f5",
+      "path": "scripts/data/ext/echo.gd",
+      "sha256": "4c56760ac2f4916ca7af6a2d2ee018e6561ce1408f1edaeb02a342eb2432c023"
+    },
+    {
+      "bytes": 2801,
+      "gitBlob": "1e5d22546c6e774441306ef9001da3cc16bd79c2",
+      "path": "scripts/data/ext/first_route.gd",
+      "sha256": "4786c6bd1b95c1731675a971fe7c0ac7d1a637b18469a469ab4b0c2e583884c6"
+    },
+    {
+      "bytes": 8618,
+      "gitBlob": "5d03e18aa6af71387b025480bbedc27939819c03",
+      "path": "scripts/data/ext/flower_species.gd",
+      "sha256": "77d64ec528ff0f274ea18ed6d2a2f44bfac676ed2feb8a830ee30088fbda5dc3"
+    },
+    {
+      "bytes": 23135,
+      "gitBlob": "280a82aa965b8abfc6ddec4a4e70aa09089f9b94",
+      "path": "scripts/data/ext/forest_food_species.gd",
+      "sha256": "1ce9c9f4b4d6c483290150d0265af345e364e98a106c217ed932c40ce1dc17f4"
+    },
+    {
+      "bytes": 1178,
+      "gitBlob": "7b52352ace37bd10ce6db0b35b315fb280785a99",
+      "path": "scripts/data/ext/habitat.gd",
+      "sha256": "5b7a08ed1c09c85fdd6bd6aa2550c1278d4020d036cbd6e01d432412c93e9455"
+    },
+    {
+      "bytes": 2141,
+      "gitBlob": "206064f2e60ef1b84efe3f5a664141fe9d705930",
+      "path": "scripts/data/ext/homestead.gd",
+      "sha256": "f903c6cbe22ac521bc58aa424502a67425be365764232f84ef9f2079b8cd5d1a"
+    },
+    {
+      "bytes": 3789,
+      "gitBlob": "0fc81f2265fcbf004877a98f1cee8ed484e62846",
+      "path": "scripts/data/ext/lake_supper.gd",
+      "sha256": "11458c0839a55b63b0ca90b305bc6f531eb9f52164db27283a6871494a768a7f"
+    },
+    {
+      "bytes": 8267,
+      "gitBlob": "3a0cf9cccbd57f9c431a76734e18a6a10e7a692b",
+      "path": "scripts/data/ext/living.gd",
+      "sha256": "11b1e37821004f212b192a0c17076ff9583f83307628139e81905b4b92173992"
+    },
+    {
+      "bytes": 22143,
+      "gitBlob": "5aba7d5809b53e64a57a2aec3f2b62b25c210bf8",
+      "path": "scripts/data/ext/meer.gd",
+      "sha256": "1e0b19c1e2d2a0c1f198846c9d463d72615d4184b0567e4fbaf50e1cf3aab1cd"
+    },
+    {
+      "bytes": 3295,
+      "gitBlob": "dfa755df2ccf41bbfab491b30fce626296cebd41",
+      "path": "scripts/data/ext/meer_boeken.gd",
+      "sha256": "024bfda3d4e7ee31b0cff24d01f595faa1a8c1ffdc2d36c6f2e7e3fe36b86eb9"
+    },
+    {
+      "bytes": 4041,
+      "gitBlob": "55ab60df0fb6a5240c229bb1a67d51561575ca30",
+      "path": "scripts/data/ext/meer_logic.gd",
+      "sha256": "ddc4f894f757fc41d40178aaae856dc8e6e7cb09441b663dba6ae4f5c177e7f9"
+    },
+    {
+      "bytes": 3308,
+      "gitBlob": "13ecad3b38e9b27040a6c72974f0e0e67763cb56",
+      "path": "scripts/data/ext/meer_vis.gd",
+      "sha256": "8011ba4495efb746814588bbae55e3e576972b4fa9b4c3fc4f2a3da254c5af41"
+    },
+    {
+      "bytes": 9279,
+      "gitBlob": "80a0c4a3b74b1f44036391864509e434ebd89669",
+      "path": "scripts/data/ext/moeras.gd",
+      "sha256": "2612a6eae8532303c4f28333de0cda2dab41b885fc97a82d967aefbe0a11a76c"
+    },
+    {
+      "bytes": 600,
+      "gitBlob": "440dabbd1be3dd20f5d96dab0656b23fbdc80a26",
+      "path": "scripts/data/ext/mountain.gd",
+      "sha256": "54e534b995c6d95df8990de2565bda89c6e544e3b103cfee462c81666346822e"
+    },
+    {
+      "bytes": 993,
+      "gitBlob": "8995119a5e5b023e91d9ef7d1815b73ba5abfc37",
+      "path": "scripts/data/ext/opening.gd",
+      "sha256": "920aa8ca454cf32ad83eb1f7643074360227f880fc65a464c7240e8b88ae77fc"
+    },
+    {
+      "bytes": 2812,
+      "gitBlob": "9d6c64446cebaa2fb70e28db97b218e809861729",
+      "path": "scripts/data/ext/orchard.gd",
+      "sha256": "5816c88b3f716b48d80499a82aa8fe4085e6e23af03c7a0b6ffab0e78cb8c28a"
+    },
+    {
+      "bytes": 12310,
+      "gitBlob": "ca7da4a68fe58fc1f3c1d10f158c29c04d1c1ebc",
+      "path": "scripts/data/ext/polijst.gd",
+      "sha256": "9147fa167b4046096185dcf9d5bee49856b1a2d6b318cee555ef46be277c86ea"
+    },
+    {
+      "bytes": 4197,
+      "gitBlob": "28e38cadbe5d8322497fb904312f79237f1e3a74",
+      "path": "scripts/data/ext/regional.gd",
+      "sha256": "60be467bb2c6600625204e69ee003980ad032691dd06ca6656e11cfb1c5bdcd9"
+    },
+    {
+      "bytes": 5623,
+      "gitBlob": "ab1a1792fac8456ffcd2411dd1c92ae23ff19beb",
+      "path": "scripts/data/ext/sneeuw.gd",
+      "sha256": "6dbcd627f6beaf69b2dfb1fd8b4107ce3f6eb8ee1be87af078fe8afcd6e06af2"
+    },
+    {
+      "bytes": 474,
+      "gitBlob": "01fb4932de62250e3ed345319309040430942682",
+      "path": "scripts/data/ext/tides.gd",
+      "sha256": "f403d64dbe81b07215d264efdafdb4352d63cda95a357d791d2549d2caa800e8"
+    },
+    {
+      "bytes": 1590,
+      "gitBlob": "11c2a30c720b1bc0af06eb49f285b2b366de615c",
+      "path": "scripts/data/ext/trail_life.gd",
+      "sha256": "7a6d5a003244fa381739ca487f2cb1f75ace21e9e8d13c36cfe8e3f16f068595"
+    },
+    {
+      "bytes": 18663,
+      "gitBlob": "6475897e3775157c490c7bb133ad4734210521ba",
+      "path": "scripts/data/ext/uiterlijk.gd",
+      "sha256": "2aa17259a8087be72d662d2b2a0c03ed3c74e1bd37012ff3e2763d8c2fe108a3"
+    },
+    {
+      "bytes": 7779,
+      "gitBlob": "4b5ea495556ba49da21acb909509ddb2f96e903c",
+      "path": "scripts/data/ext/uitrusting.gd",
+      "sha256": "6c3d4809442cda5c3d3ef679c98a49ae832679fd548d12e0d68fc678639c1e05"
+    },
+    {
+      "bytes": 3255,
+      "gitBlob": "05180a3d1de3a4780b02ae5fb2f17a1cf9e8edd7",
+      "path": "scripts/data/ext/vijanden.gd",
+      "sha256": "eb4ab3c4b0983e718f85a823b38f83925bd1ff2c33839e9cb454cbc70181c994"
+    },
+    {
+      "bytes": 5106,
+      "gitBlob": "68ef40eb2caaf4295c2829e5915a60e3077af4ea",
+      "path": "scripts/data/ext/wereld.gd",
+      "sha256": "7c37f917ffc8a3d04f338facb90c56da8791634217d4114b1992654c6e05c128"
+    },
+    {
+      "bytes": 4418,
+      "gitBlob": "1e7415ea10e64f74fe8110c5a02a1315c5194589",
+      "path": "scripts/data/ext/winter_greens.gd",
+      "sha256": "ddaa6389e8e8351a4fd3c404bf8f225d341e2621ca2fa82fb070b57095570f7b"
+    },
+    {
+      "bytes": 439,
+      "gitBlob": "faf6835c94a1cbe0332c95768f6f5c161516e6a4",
+      "path": "scripts/data/ext/work_together.gd",
+      "sha256": "e9a0a3afa6ad0bb983234ed3b36f08c36120bce5578af21df4b98986f762e156"
+    },
+    {
+      "bytes": 211,
+      "gitBlob": "1900bea0be12c1f2bdd2a67e6a04c4c9ef391ac9",
+      "path": "scripts/data/ext/world_memory.gd",
+      "sha256": "d0173926dd94019cac9d4cbc57fdb352efe199065dd6815fbb2f36fe5a16fcd0"
+    },
+    {
+      "bytes": 1939,
+      "gitBlob": "fe2aca5935e3d21bf20ba1ac2e58c3e39312bb1e",
+      "path": "scripts/data/flower_species.gd",
+      "sha256": "d38c0162daffedb0e2498bde8c3a453de7ea5c92a6bd0b4444b7aa522ca14bcd"
+    },
+    {
+      "bytes": 8177,
+      "gitBlob": "d344600f30c88a2fad5fa531545fbcc86ca52880",
+      "path": "scripts/data/forest_food_species.gd",
+      "sha256": "0ddc1c2020f61cdb797dbd581f770b00a8104947d58df60a10d197fde8bd3fa3"
+    },
+    {
+      "bytes": 546,
+      "gitBlob": "412c358096659dee7b1b758b5810cc6e74dd65ae",
+      "path": "scripts/data/habitat_maps.gd",
+      "sha256": "c294eb5b249f9b263c45efa8161474a06231ca6635b5b311a266544c58b42cd5"
+    },
+    {
+      "bytes": 3577,
+      "gitBlob": "f3154f713a26b11be9dc9b63c975a12fe45350a4",
+      "path": "scripts/data/homestead_maps.gd",
+      "sha256": "891ef2d75f2d529578ec91be40fc866858137e0943dc0b1ebfc50efe0a935344"
+    },
+    {
+      "bytes": 3160,
+      "gitBlob": "d07e1cfdc7c087879c5b092f62920b3c73a79fad",
+      "path": "scripts/data/house_catalog.gd",
+      "sha256": "8503993f044350c6634cc077f3ddd0ac0947939bf43557233ffbff986af09d83"
+    },
+    {
+      "bytes": 4097,
+      "gitBlob": "b1a8ccf3d7a725ab6fad4124a8858b6ac9a332f4",
+      "path": "scripts/data/items.gd",
+      "sha256": "4e5762c372c27e53d34299be8dd9c13605a90aa9c71141d1c13f10a185441fdf"
+    },
+    {
+      "bytes": 3775,
+      "gitBlob": "01c2ebd0bfaf1d065a043c5af0ed1f5c770a8b06",
+      "path": "scripts/data/living_maps.gd",
+      "sha256": "6e4ed92ea90c29ef9577ed433d0d5c61201549707fd12ac3a13912dcc06f357c"
+    },
+    {
+      "bytes": 635,
+      "gitBlob": "3a9ac37ea9444770f78965ce6b694089dc4e301f",
+      "path": "scripts/data/mountain_maps.gd",
+      "sha256": "acd5639cb887530e23f1abce963d1ab6667bb4fac0362d2329dd3aaf09df347e"
+    },
+    {
+      "bytes": 3456,
+      "gitBlob": "103d3d1e789ad8b4ad083deeee1b13827805386b",
+      "path": "scripts/data/npcs.gd",
+      "sha256": "6aa43dbababdc3b428e958ce2623e19fed428a06eaf4f4bb68f24e8c5c59313b"
+    },
+    {
+      "bytes": 2959,
+      "gitBlob": "0698e97853ec310bb6598986b40451d0e7cad5b4",
+      "path": "scripts/data/orchard_catalog.gd",
+      "sha256": "0000f4920014b2d86b5ed3954a7dcc7aed1ef6cb4bf6aad7a5d3553ee1fae4b3"
+    },
+    {
+      "bytes": 1820,
+      "gitBlob": "4b3edb6b8adcab4f3353c15b0beb914464439408",
+      "path": "scripts/data/quests.gd",
+      "sha256": "7835307233fb3a9ca1d5ba295b15985eec8c8f824305fc5691ae1ff3b13501af"
+    },
+    {
+      "bytes": 3808,
+      "gitBlob": "0e2a06f1a8397cc610326f7a37b0b1efb0425514",
+      "path": "scripts/data/regional_maps.gd",
+      "sha256": "ada452e2024e35cae234cbd2f5b1d2756b767fd90638b18df0bd65dbaac05f0f"
+    },
+    {
+      "bytes": 18821,
+      "gitBlob": "f72aef8e930218a831934c89871b25cc7285200c",
+      "path": "scripts/data/route_repairs.gd",
+      "sha256": "21a642c261a2cc42c20fd9c337679ff5e17985cf93fd5224e1021998ec6e2bad"
+    },
+    {
+      "bytes": 1234,
+      "gitBlob": "46d17b371822cd3048ce08ab00eddc5e63555319",
+      "path": "scripts/data/shops.gd",
+      "sha256": "71872e7b1032c41cacb3b23919cb4946aaa9c81fdb3b016656030f9d796ae560"
+    },
+    {
+      "bytes": 1123,
+      "gitBlob": "1d3927dcf04b9733c4bb2b39f5efe913eaae06fe",
+      "path": "scripts/data/space_maps.gd",
+      "sha256": "66f9489b2b9e2e6c1451125cefa0b08fd2923aa15c14d6f082daa4b2ddeee804"
+    },
+    {
+      "bytes": 10513,
+      "gitBlob": "ca3c52ddf552a7630fcc89f91b5f27fcaed58f2c",
+      "path": "scripts/data/tiles.gd",
+      "sha256": "c505832497d7b8938814a57c57b39f131b3e7d7853d61f386405df87d19e4b0e"
+    },
+    {
+      "bytes": 5538,
+      "gitBlob": "9e4cb9a17aa0c88a495b81d68deeefdc633a22b8",
+      "path": "scripts/data/trail_life.gd",
+      "sha256": "840b1bfaf346c21fabcebf147d8d16d3beeb1634341423ef02c7ce82c3c28222"
+    },
+    {
+      "bytes": 1983,
+      "gitBlob": "0a950fd52a3a84cdbf5687d0a91c429b5314aeac",
+      "path": "scripts/data/training_yard_layout.gd",
+      "sha256": "4fabab0739e883f0c29f011c184231d48f4a52328933e091b2340c8ed65729b9"
+    },
+    {
+      "bytes": 1917,
+      "gitBlob": "d23856c63eb537ddd420955c798b0129b2a2d94d",
+      "path": "scripts/data/water_layouts.gd",
+      "sha256": "93f277119d7dc31abf790b0eda685bc065f41ca5ec00b65fdcc12db8013b6927"
+    },
+    {
+      "bytes": 3854,
+      "gitBlob": "622cec24066273d25eef18ca468ed23b09e58ad4",
+      "path": "scripts/data/winter_greens.gd",
+      "sha256": "e65faea7a3c01a7778395daa642e4076839cc825e4187736b42fcf97936dba7c"
+    },
+    {
+      "bytes": 2779,
+      "gitBlob": "a86a7e324377c144ce4b9633caa7a5c3f540a14d",
+      "path": "scripts/data/yard_catalog.gd",
+      "sha256": "37144278df7417679b7c086152f8f7dcda3e1a84ea3d45bbe54ac65c0dcbbe53"
+    },
+    {
+      "bytes": 3483,
+      "gitBlob": "df5453625db5ccae1bbb6da766544045d4658d69",
+      "path": "scripts/entities/chest.gd",
+      "sha256": "cac8794b4b05bfb1521194238807aea57f58c8b71939d8a4c73c9d6dde044f26"
+    },
+    {
+      "bytes": 2618,
+      "gitBlob": "34850dc5fbc1371ae2373d99a518916573b58f9e",
+      "path": "scripts/entities/coastal_workstation.gd",
+      "sha256": "a988403d2043c39355c130a63a199dc9761fd00fd8ae527707f775bbcade0f2a"
+    },
+    {
+      "bytes": 3642,
+      "gitBlob": "0bf545d2108fa012e80b6f83052c24c5b85ff363",
+      "path": "scripts/entities/pickup.gd",
+      "sha256": "12612ceb8f94bd6446980d487a1163e299fe89db01ea1de2b409ca02cec3bd5e"
+    },
+    {
+      "bytes": 1098,
+      "gitBlob": "34bf4399d34435bc5a69b014a3e83e38399daa67",
+      "path": "scripts/entities/stock_chest.gd",
+      "sha256": "479eaf89087b02a73f399e9a98c01e70c3d47a4b7040615e8e42afb739edec46"
+    },
+    {
+      "bytes": 2453,
+      "gitBlob": "a6bccd5386636ef800c38036f9e8d6b45a90ff16",
+      "path": "scripts/maps/arena.gd",
+      "sha256": "08d4ddaa11b7910c1597e30182b73760e8179740e26d01fa02a3dcb59b4e569c"
+    },
+    {
+      "bytes": 1615,
+      "gitBlob": "6658fb9c94f3ee2e0fa989162508259cc458c0d4",
+      "path": "scripts/maps/arena_hall.gd",
+      "sha256": "7d2673d3a670559531d268f75f26714ed07cc0a9d0bb83624ec396eec3416323"
+    },
+    {
+      "bytes": 5711,
+      "gitBlob": "beb3df6d2413b4eecf0c4cd356113ff27f6489ac",
+      "path": "scripts/maps/cave.gd",
+      "sha256": "a39a131787c80d6167aa54e28eb776b8d41db902a912ec9d2c1c81843cd700d0"
+    },
+    {
+      "bytes": 3307,
+      "gitBlob": "2be9167fcc335b227a1054af79cc6c05387e4815",
+      "path": "scripts/maps/coast.gd",
+      "sha256": "47c0d2416707d58bd6ab14baf4dff839bc30f32d9bacd67e8aea732e519a3946"
+    },
+    {
+      "bytes": 2668,
+      "gitBlob": "52e974c10c66e48dde21756bdab476689cd5db52",
+      "path": "scripts/maps/coast_workshop.gd",
+      "sha256": "281ba87e82bb8f3fac030f4318a24a01170d006407a7d78f700ffbd8083b2d74"
+    },
+    {
+      "bytes": 4514,
+      "gitBlob": "c218a54b127876611b83cb777e5ed3961b12932f",
+      "path": "scripts/maps/dauwbos.gd",
+      "sha256": "f637eb851bc532bf45b0cadb059a8756d8b9c5e8749e00bda2a566b963494704"
+    },
+    {
+      "bytes": 5326,
+      "gitBlob": "f0c290c422bd81c574e6cb0a3db98b998c6344ae",
+      "path": "scripts/maps/depths1.gd",
+      "sha256": "47ae35826c59236f5f8131038dccd74f836602b6e5f0844d634e87fff7eeefe2"
+    },
+    {
+      "bytes": 2904,
+      "gitBlob": "03c2f18df8f344ede3a6425cfa46d6c2a5a7a568",
+      "path": "scripts/maps/depths2.gd",
+      "sha256": "cefe686dfa54a066f47e9eb8449b50b36e5fb800a982c530227765259562b662"
+    },
+    {
+      "bytes": 3997,
+      "gitBlob": "91f90234bf012da0358a251f66b52e4948bcfad7",
+      "path": "scripts/maps/dorstvallei.gd",
+      "sha256": "a777f9ca7e832194bed1845f06b32d871c5a4a3cc37455641bfe2a6b2a6fc826"
+    },
+    {
+      "bytes": 1132,
+      "gitBlob": "52056fd5b9b6be82eb94f7a16ccb06bb2f726d30",
+      "path": "scripts/maps/fisher_hut.gd",
+      "sha256": "c4ab25a82015d8fc92acce3e382c908475809a94a9607fd5f17990549a13789e"
+    },
+    {
+      "bytes": 7926,
+      "gitBlob": "7ba32b288ea96d67cb8e826b7ab24b2074eedbb7",
+      "path": "scripts/maps/forest.gd",
+      "sha256": "3602425f18fe1b35cd3a9c9e3df79759ae392c5978513042cecf89475736ec98"
+    },
+    {
+      "bytes": 1949,
+      "gitBlob": "3037fe862c22e373aa7f78bd4e11ed5d4f927b2a",
+      "path": "scripts/maps/forest_edge.gd",
+      "sha256": "7fc2fb50de08ce7a9b324a8bae2da4a758387b0ca0822b0c66f3d0bfcbc69def"
+    },
+    {
+      "bytes": 2596,
+      "gitBlob": "c11eaf4889f40404f6b82a936885f56757f313c2",
+      "path": "scripts/maps/gull_island.gd",
+      "sha256": "49ac5ccef77d6de62c4beee43635eebde5cab6ea61c2f2e0509f9ead5f153a7c"
+    },
+    {
+      "bytes": 6282,
+      "gitBlob": "f130b16bade20fcd7eeb7d29fa7025ce92a82315",
+      "path": "scripts/maps/harbor.gd",
+      "sha256": "255e13a853f32db8d768a6e3760cf0ff5ca2161c6317eac1983874c355299044"
+    },
+    {
+      "bytes": 5180,
+      "gitBlob": "91d557d124fe94e5c04fd66aadd2ecb0b015cf90",
+      "path": "scripts/maps/headland.gd",
+      "sha256": "530f8576e7d7e5118efe012b04a766849f5c63c6835ff958e408b673a32c6848"
+    },
+    {
+      "bytes": 4009,
+      "gitBlob": "de9980f58f029c136550bbe96e73d554d4b55cb2",
+      "path": "scripts/maps/ijsdal.gd",
+      "sha256": "bb1f2f644971c7d5886bc801d71b7161f6b039254ade7df93c4f2962ff4064ec"
+    },
+    {
+      "bytes": 1325,
+      "gitBlob": "85fda150d2e1ae62db06becb40a566dcd438a0d9",
+      "path": "scripts/maps/inn.gd",
+      "sha256": "d82bee85e7b9c73bd72b5f1ce9ee3a5be13966aaa2c58bffbd9133d0f599e7d4"
+    },
+    {
+      "bytes": 4513,
+      "gitBlob": "64a949d4edfa8c40702257925c57120cb963795d",
+      "path": "scripts/maps/kruipmoeras.gd",
+      "sha256": "1fbd30b85c12e82315ce152bb7eeca2915e0a132d07c277c76b9ad146802dfed"
+    },
+    {
+      "bytes": 4951,
+      "gitBlob": "9e476bfc5599de8d34461f45239cee344e11be29",
+      "path": "scripts/maps/lake.gd",
+      "sha256": "24bfd92bdd22c7654c10c262a2798f562415ad0a5e985d9abf3f53847c7abfeb"
+    },
+    {
+      "bytes": 1582,
+      "gitBlob": "b0f1656e96ab72f6bd76aae3fcb5e998a8031924",
+      "path": "scripts/maps/library.gd",
+      "sha256": "9366582a3292cb8064e480fe5329fa53417e8b825e02ce62218905da332f59cb"
+    },
+    {
+      "bytes": 1738,
+      "gitBlob": "044135708c8beb0682f91a2be08c2b3e1a81ea10",
+      "path": "scripts/maps/mistgarden.gd",
+      "sha256": "2ad27fb313147f8f11dd8e85d84e654073a3ee884f05e9ce9bc187e89c9bff73"
+    },
+    {
+      "bytes": 707,
+      "gitBlob": "39a99a168977b510d8512836523503e138b69ac8",
+      "path": "scripts/maps/player_home.gd",
+      "sha256": "12f80aee5d8c40fda34daac7116f67247d891339e35706459129323ff50d015e"
+    },
+    {
+      "bytes": 3789,
+      "gitBlob": "90093aab1faafda860f798a33dfc847834cddb3b",
+      "path": "scripts/maps/prismamine.gd",
+      "sha256": "eb01fda41acc6492c7cc0bf2f780499d54771739f2b815fd72ae47b413a17f97"
+    },
+    {
+      "bytes": 2002,
+      "gitBlob": "f3efdd5d8423e8328cc54c4f8cf4294e51d3c87f",
+      "path": "scripts/maps/reedvault.gd",
+      "sha256": "46bfb3f14b8695eee8a406399cefc0091c473a0641ff30d4b4223bb46a1eef89"
+    },
+    {
+      "bytes": 2406,
+      "gitBlob": "fae45cb2bf966d5057539faead445475d73c3843",
+      "path": "scripts/maps/registry.gd",
+      "sha256": "7ba7e4b507807e21b58edc1d6cbaa5cc4fa3abd0629debe1748ed0ea9a6d5be8"
+    },
+    {
+      "bytes": 2221,
+      "gitBlob": "7770cf54194e5dddfef9e7abd82bcfe472f6c2d5",
+      "path": "scripts/maps/resonance.gd",
+      "sha256": "96a547f7848c062a612cc4dd93e46e50172694e2aeba4b88904ff805a74a461a"
+    },
+    {
+      "bytes": 1926,
+      "gitBlob": "09a87980f64dff1b2900ea806e63505e5fc369ca",
+      "path": "scripts/maps/ridgepass.gd",
+      "sha256": "2859adeebe1f6388af32ca8afe0d71e59b9d29c821597cf4802a1a08e36b72b6"
+    },
+    {
+      "bytes": 5165,
+      "gitBlob": "eb6ba4f5231400b67df5ec1ed29d70c894dab971",
+      "path": "scripts/maps/river_mouth.gd",
+      "sha256": "e3309de9b42e396dcdfa81a4e8e260dbf9588d4c4857602b5ec5bbb893355527"
+    },
+    {
+      "bytes": 5598,
+      "gitBlob": "6000c13277a9175e25f81f6c7f9085308ef17629",
+      "path": "scripts/maps/ruins.gd",
+      "sha256": "079be8c287c6693298e8fdbf05c971adcc9dfcd172d17f320ae38b316b135681"
+    },
+    {
+      "bytes": 785,
+      "gitBlob": "a8dd35ed5ba2b3b69afdf228b3562bffe1c0dab3",
+      "path": "scripts/maps/shop.gd",
+      "sha256": "4d7fbd712025ad636f3a604bbc3c2843504afeec30b64bbf9dd2be6c2c715d50"
+    },
+    {
+      "bytes": 768,
+      "gitBlob": "5d417e4fa667e557dd5e243d6f7f1950f60dd171",
+      "path": "scripts/maps/smithy.gd",
+      "sha256": "72e1ab5f22ed2ae3955eff0be844a0afb6d52325d623c19b5abab341362eba69"
+    },
+    {
+      "bytes": 8719,
+      "gitBlob": "687f8ab98c2660a9234db56391261fea9f00a2f8",
+      "path": "scripts/maps/steampeak.gd",
+      "sha256": "5fdbdef08b3adeeb8002266ab589b61c9a66bd153bad98e0912d415769e43647"
+    },
+    {
+      "bytes": 2299,
+      "gitBlob": "45858ad8738e16a88fc88211e00a1ac12bd9a3d8",
+      "path": "scripts/maps/sunwell.gd",
+      "sha256": "e69617c7106f97fc8c36545551877071d200dfe759f2b58ef73ab9b505a6ef16"
+    },
+    {
+      "bytes": 2601,
+      "gitBlob": "8eef49fe24e2f9ad5c0f139b5037f2e9b7fff4dc",
+      "path": "scripts/maps/temple.gd",
+      "sha256": "833868b68754a26ad9574bfee556362721309d2cee6a11597f63015ce7c12cda"
+    },
+    {
+      "bytes": 4593,
+      "gitBlob": "5c7242f3209008a8929e98cb1d9b885cabf72180",
+      "path": "scripts/maps/tidal_hollow.gd",
+      "sha256": "122f7d0d9f04f4c3d80d598613addef0c61187d0a8e28f9d1b534fdc33d801f3"
+    },
+    {
+      "bytes": 4095,
+      "gitBlob": "39aa986605cc127a0457b80f9606787c9741af21",
+      "path": "scripts/maps/tide_cove.gd",
+      "sha256": "e49c55d4d257fc3031d7250b728b0536a035379d69fcc36f27d4eed2037c7743"
+    },
+    {
+      "bytes": 6118,
+      "gitBlob": "fd8aa2bec10d0332854aca07e80dc6f00415d4c0",
+      "path": "scripts/maps/village.gd",
+      "sha256": "df5fb7f23a8ca3c2681e6482fbd5ee94c18fed5f49edde021e9c367009d7f795"
+    },
+    {
+      "bytes": 1502,
+      "gitBlob": "f8805df395312c66f06593ffe7384c7776100a96",
+      "path": "scripts/maps/watchyard.gd",
+      "sha256": "6eb3d3d17efde4d92b00b087ab68b0ab6cfb0c7a936161f4a0abac4c3b368cb1"
+    },
+    {
+      "bytes": 13106,
+      "gitBlob": "cb3b3c4a3ae090f042807dafe959a0e8f3bf85b0",
+      "path": "scripts/ui/coastal_home_ui.gd",
+      "sha256": "a9833315bdcb94da4dc8e63795e30ef8e272db42903eb47682a1e26fab0f0653"
+    },
+    {
+      "bytes": 2559,
+      "gitBlob": "7b920a82e26ee9ea5e8392e9f8452636e64d108f",
+      "path": "scripts/ui/item_receipts.gd",
+      "sha256": "ac035d7f8f28326ca13135a772450db26f53d300a4c93a88ef0df1d0f5749d76"
+    },
+    {
+      "bytes": 12053,
+      "gitBlob": "ed85d2f16f648b458006a045c1460985ff10178c",
+      "path": "scripts/ui/stock_ui.gd",
+      "sha256": "560ee0c11d09cc6b9b0772c9d69e00471322cb4de90b8d79982f299762d69572"
+    },
+    {
+      "bytes": 25511,
+      "gitBlob": "fa63fc4aa9939ad40e628c695f2d2622b8ac6890",
+      "path": "scripts/world.gd",
+      "sha256": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
+    },
+    {
+      "bytes": 604877,
+      "gitBlob": "34829ee82fb1a427485cb1b522fcfb3d2be6b499",
+      "path": "translations/en.po",
+      "sha256": "19b3de6dbf9a3798d6de8c6cb557eebe9c6da8d329c182d7982e945ef960f4a4"
+    }
+  ],
+  "textEncoding": "UTF-8; CRLF normalized to LF as in committed Git text",
+  "worldSnapshots": [
+    {
+      "bytes": 676872,
+      "mapId": "arena",
+      "path": "snapshots/fresh_baseline/arena.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "8afa8861bd92afd9b8b19ae3fb4493c4fa40172668296796ccc0199f663a99be"
+    },
+    {
+      "bytes": 329889,
+      "mapId": "arena_hall",
+      "path": "snapshots/fresh_baseline/arena_hall.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "1772f586aa6fe6dc747194071be1e5e2d3ce72f63e039fa787d664f19222ed2a"
+    },
+    {
+      "bytes": 1515515,
+      "mapId": "cave",
+      "path": "snapshots/fresh_baseline/cave.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "58ae9a4e85fd5882d9b3e27b9856ec5b47ba32d71d2841c532405631cfd94473"
+    },
+    {
+      "bytes": 2070994,
+      "mapId": "coast",
+      "path": "snapshots/fresh_baseline/coast.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "757fddf77a645cd228cf8bbc46a4f39ec43fb39c50bd3621e0c70d984635a0cd"
+    },
+    {
+      "bytes": 386378,
+      "mapId": "coast_workshop",
+      "path": "snapshots/fresh_baseline/coast_workshop.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "acdeb055dec6c879301f4c1e9396c1041cfa728e949bf6cc606eec208ba0e2d3"
+    },
+    {
+      "bytes": 3863572,
+      "mapId": "dauwbos",
+      "path": "snapshots/fresh_baseline/dauwbos.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "953b879f8b218474d6b7595fe0ef3dcb61e50dcd47f540f0b0c58062b0b0c763"
+    },
+    {
+      "bytes": 1367340,
+      "mapId": "depths1",
+      "path": "snapshots/fresh_baseline/depths1.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "90263316e874df209bafc9052a4dd0bb6f0be9a3da39d3082906ca49855b0efb"
+    },
+    {
+      "bytes": 599107,
+      "mapId": "depths2",
+      "path": "snapshots/fresh_baseline/depths2.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "73d84e229e33b9310cdc329da08aaf2ee43d7cbda85f2ccc0bba097015027b0d"
+    },
+    {
+      "bytes": 1129416,
+      "mapId": "dorstvallei",
+      "path": "snapshots/fresh_baseline/dorstvallei.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "85f67b249070d70a2ae909116646b487da2051732e4c0ff90af2511c3dd9e086"
+    },
+    {
+      "bytes": 229934,
+      "mapId": "fisher_hut",
+      "path": "snapshots/fresh_baseline/fisher_hut.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "51776f10c83a026371a7582563620ae94f83f2d51de338d77f0d366aab4100ee"
+    },
+    {
+      "bytes": 4398608,
+      "mapId": "forest",
+      "path": "snapshots/fresh_baseline/forest.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "dd87e021e4c84dac854855f9e5178d20893d1e5f2e0ecb994489d5cb5d41306f"
+    },
+    {
+      "bytes": 3190948,
+      "mapId": "forest_edge",
+      "path": "snapshots/fresh_baseline/forest_edge.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "76fc96baf4282435c5d8513e5a24a02d432bbfbc375da8f5a27a425ef6b05398"
+    },
+    {
+      "bytes": 2279443,
+      "mapId": "gull_island",
+      "path": "snapshots/fresh_baseline/gull_island.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "8001d004605450e86c3a1f8337568b984671c0984d04ec5fbe156d6b387c5635"
+    },
+    {
+      "bytes": 2809148,
+      "mapId": "harbor",
+      "path": "snapshots/fresh_baseline/harbor.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "9396e97ff197d0eb95d6fbdd6fc14a67253ed883f709fe9f26bdd40ec21812a7"
+    },
+    {
+      "bytes": 2740342,
+      "mapId": "headland",
+      "path": "snapshots/fresh_baseline/headland.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "cd97a78c55fd804d0ec0c5b3e76cd12977035e70589621ecd12b635ce63982ed"
+    },
+    {
+      "bytes": 3321694,
+      "mapId": "ijsdal",
+      "path": "snapshots/fresh_baseline/ijsdal.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "02b2df82abcbe7c0657eb07aed7bc6339d4e7f5d4d441d0d00cd888fe7d4e579"
+    },
+    {
+      "bytes": 316538,
+      "mapId": "inn",
+      "path": "snapshots/fresh_baseline/inn.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "f6abbbda58b7dfacc5abcd73124a78fe7a5d4463bb0ee8bb92085539fbc86061"
+    },
+    {
+      "bytes": 3123615,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/fresh_baseline/kruipmoeras.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "3c34b0c7c8796cf353c360ec7d91c1cf5238f708165245ec312a08a93f657013"
+    },
+    {
+      "bytes": 3342061,
+      "mapId": "lake",
+      "path": "snapshots/fresh_baseline/lake.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "0f7d02e441fb38cfdeb01b34b771ef6afb428eb716af2fcfe1fe65d9fc9b8094"
+    },
+    {
+      "bytes": 374327,
+      "mapId": "library",
+      "path": "snapshots/fresh_baseline/library.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "635cbcf8af1de03ffdeed56c88a5c674384532c23b8c05cf931de351e458a078"
+    },
+    {
+      "bytes": 1042676,
+      "mapId": "mistgarden",
+      "path": "snapshots/fresh_baseline/mistgarden.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "e657f3ce91a10afb90cf2783ceac0fa643e307fb6e5acd70420fe2c80fcd65c0"
+    },
+    {
+      "bytes": 279816,
+      "mapId": "player_home",
+      "path": "snapshots/fresh_baseline/player_home.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "152f3fd454404be48e5dd88913ec015a92a110e5b47c5ec7826f56440396ffa4"
+    },
+    {
+      "bytes": 921706,
+      "mapId": "prismamine",
+      "path": "snapshots/fresh_baseline/prismamine.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "3b068343079fa1d741499900c38185a0eefdc78bc38b2e2857ac1858f37c92bf"
+    },
+    {
+      "bytes": 580489,
+      "mapId": "reedvault",
+      "path": "snapshots/fresh_baseline/reedvault.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "421f30e9513e6c8f27204318481b8e92c9ca1b6db8ce5401f291bea3a8d26795"
+    },
+    {
+      "bytes": 384728,
+      "mapId": "resonance",
+      "path": "snapshots/fresh_baseline/resonance.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "8d00886c026a5891b01da145fa62f6be7a27824f6311160168fee1da075691b9"
+    },
+    {
+      "bytes": 1372359,
+      "mapId": "ridgepass",
+      "path": "snapshots/fresh_baseline/ridgepass.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "0927449d161aaef071c955126d5c8e3a65dcb52f3ca52e9b59ea97b4358cac2a"
+    },
+    {
+      "bytes": 2766978,
+      "mapId": "river_mouth",
+      "path": "snapshots/fresh_baseline/river_mouth.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "62618af1ef0ac2e1859470b36ae55662d1450848c104e52a331af4c1bfcde9f6"
+    },
+    {
+      "bytes": 1307832,
+      "mapId": "ruins",
+      "path": "snapshots/fresh_baseline/ruins.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "a5e8a198ff3f2b483c2c4523c7cf83f41c6f3293882c8848b16865dabcef2591"
+    },
+    {
+      "bytes": 214768,
+      "mapId": "shop",
+      "path": "snapshots/fresh_baseline/shop.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "48aca1724d0dac011f5c1d99853e29994b5e82ed947f9c46773fee36d7df7a5a"
+    },
+    {
+      "bytes": 270810,
+      "mapId": "smithy",
+      "path": "snapshots/fresh_baseline/smithy.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "bf86f77f3f41427ebe5db8e6fded40633a49e15308c1884cdccdbf4797dc037d"
+    },
+    {
+      "bytes": 1377919,
+      "mapId": "steampeak",
+      "path": "snapshots/fresh_baseline/steampeak.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "f3fa0839535e1bd5bee5e5fb60b11f0ad57ac4ee8dcf69070c11ffcfb40693d4"
+    },
+    {
+      "bytes": 546139,
+      "mapId": "sunwell",
+      "path": "snapshots/fresh_baseline/sunwell.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "3a4fda74c43bf776c08ef7a9f4db2bfa527715665cd9d52ade21705b219a8183"
+    },
+    {
+      "bytes": 510210,
+      "mapId": "temple",
+      "path": "snapshots/fresh_baseline/temple.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "635f97acd5d1582a40702484cbc2f9ab87d48dd0a6af94003c58c01b416dd142"
+    },
+    {
+      "bytes": 1023466,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/fresh_baseline/tidal_hollow.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "dfd886261efeec3888203f76df9d7ec6c2bd7bd0d8fa34d06f1637f06fe98f1a"
+    },
+    {
+      "bytes": 2487557,
+      "mapId": "tide_cove",
+      "path": "snapshots/fresh_baseline/tide_cove.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "9393e72bd10da7ffdb3e4ba6700890c7ee713b6ca059dbbda9ec3cfe00b9a683"
+    },
+    {
+      "bytes": 3405858,
+      "mapId": "village",
+      "path": "snapshots/fresh_baseline/village.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "3197b89b73a4bf20be85d317361c546bbb73ad599bdae7f4ba82cb16d1ab011c"
+    },
+    {
+      "bytes": 1366470,
+      "mapId": "watchyard",
+      "path": "snapshots/fresh_baseline/watchyard.json",
+      "scenarioId": "fresh_baseline",
+      "sha256": "20e2c51762367f33120d538af9bd45a6087466a39f323ede94bdac83309ca77f"
+    },
+    {
+      "bytes": 3408954,
+      "mapId": "village",
+      "path": "snapshots/opening_water_restored/village.json",
+      "scenarioId": "opening_water_restored",
+      "sha256": "a50711960310127b977cbeb99d891e05792d9379f2472454ca3a97129aa8224a"
+    },
+    {
+      "bytes": 274525,
+      "mapId": "smithy",
+      "path": "snapshots/opening_water_restored/smithy.json",
+      "scenarioId": "opening_water_restored",
+      "sha256": "3a9d605dfbe1b0a4b4760197ba43ef6389ad1bcaf6608a936ae9d6f02cadd312"
+    },
+    {
+      "bytes": 3383620,
+      "mapId": "village",
+      "path": "snapshots/opening_legacy/village.json",
+      "scenarioId": "opening_legacy",
+      "sha256": "cce925f769a25f475fba321496991bdd29c3df7d2c849376556427ec1bfce506"
+    },
+    {
+      "bytes": 3429327,
+      "mapId": "village",
+      "path": "snapshots/routines_evening/village.json",
+      "scenarioId": "routines_evening",
+      "sha256": "399681ccba82943847912282d3b2cda48f3d421aa45d852d3fb89219e74b043d"
+    },
+    {
+      "bytes": 3365596,
+      "mapId": "lake",
+      "path": "snapshots/routines_evening/lake.json",
+      "scenarioId": "routines_evening",
+      "sha256": "8065ab7b55948545b80692c1cda4549497ca80581f0526f054ef04b32227a905"
+    },
+    {
+      "bytes": 377521,
+      "mapId": "inn",
+      "path": "snapshots/routines_evening/inn.json",
+      "scenarioId": "routines_evening",
+      "sha256": "7012e4765a0d299436f15e49435450d1698fe1bc6e1283b23fb7db0c5f907727"
+    },
+    {
+      "bytes": 2832738,
+      "mapId": "harbor",
+      "path": "snapshots/routines_evening/harbor.json",
+      "scenarioId": "routines_evening",
+      "sha256": "e0fd735b318d34d83cd508dd71179220047b61de5a5ce7969b8540a6877c427c"
+    },
+    {
+      "bytes": 974582,
+      "mapId": "prismamine",
+      "path": "snapshots/routines_evening/prismamine.json",
+      "scenarioId": "routines_evening",
+      "sha256": "4a4d97d965fc31bea012eb8232796400f997c6c41ac9493eacdbf2b67e6480c6"
+    },
+    {
+      "bytes": 1078418,
+      "mapId": "mistgarden",
+      "path": "snapshots/routines_evening/mistgarden.json",
+      "scenarioId": "routines_evening",
+      "sha256": "64fa6cc9bc171d7c83190136f84497136e3168066127ab762838f05fb04f4bcb"
+    },
+    {
+      "bytes": 3369525,
+      "mapId": "ijsdal",
+      "path": "snapshots/routines_evening/ijsdal.json",
+      "scenarioId": "routines_evening",
+      "sha256": "d3ba992805a7495ba8b008913bda179138496a57fa035e0f1b47b5bdf326d69b"
+    },
+    {
+      "bytes": 3109822,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/routines_evening/kruipmoeras.json",
+      "scenarioId": "routines_evening",
+      "sha256": "97de39dc3bf66c4f7c1d8c6dd02fa31304f8b432acd3e553086f4e764fc0048f"
+    },
+    {
+      "bytes": 1165116,
+      "mapId": "dorstvallei",
+      "path": "snapshots/routines_evening/dorstvallei.json",
+      "scenarioId": "routines_evening",
+      "sha256": "43302bbb659a1cd4506f13c521362c0a202f42e2e7af026a70e03e0838fa8c0c"
+    },
+    {
+      "bytes": 616259,
+      "mapId": "reedvault",
+      "path": "snapshots/routines_evening/reedvault.json",
+      "scenarioId": "routines_evening",
+      "sha256": "0a44f02f3f9d2a8ffc5fda243c7bd0a515b4747af2147b0dac58bbdf95f30fb7"
+    },
+    {
+      "bytes": 1408084,
+      "mapId": "ridgepass",
+      "path": "snapshots/routines_evening/ridgepass.json",
+      "scenarioId": "routines_evening",
+      "sha256": "1015b17109c4eab12b0a7c88f77cd3f829c7cbbedc61b139a6a0d8cd7342baf4"
+    },
+    {
+      "bytes": 3124180,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/sluices_closed/kruipmoeras.json",
+      "scenarioId": "sluices_closed",
+      "sha256": "764915da39ce44051f436e99e66c4ab835407a223dbc972eab678e31c5b257b4"
+    },
+    {
+      "bytes": 3124634,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/sluices_west/kruipmoeras.json",
+      "scenarioId": "sluices_west",
+      "sha256": "b444c4a5ec282ed6fa9f6804ec23d0bbeeae688ed54d8e5f30a2cbc73f8fea1a"
+    },
+    {
+      "bytes": 3124635,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/sluices_east/kruipmoeras.json",
+      "scenarioId": "sluices_east",
+      "sha256": "5f7d61f8be113ba5e5db39fa4d7ec4165969d5cebc0f32c6166066530d16f9de"
+    },
+    {
+      "bytes": 3125110,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/sluices_both/kruipmoeras.json",
+      "scenarioId": "sluices_both",
+      "sha256": "6092bc95b6c556b999e4aa0a4ea12b41c701a8a0121640554c88eba4f3cb161c"
+    },
+    {
+      "bytes": 3096795,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/marsh_drained/kruipmoeras.json",
+      "scenarioId": "marsh_drained",
+      "sha256": "ed93824a25d7119caf6d5448a1e240faf6ee90bf0c1a22a6c847d60daee1504c"
+    },
+    {
+      "bytes": 584946,
+      "mapId": "reedvault",
+      "path": "snapshots/marsh_drained/reedvault.json",
+      "scenarioId": "marsh_drained",
+      "sha256": "e21128dd3853b08107f529e2d27c2bd4793a5687a314f813aaa9bf07bd310d95"
+    },
+    {
+      "bytes": 3091508,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/marsh_bridge/kruipmoeras.json",
+      "scenarioId": "marsh_bridge",
+      "sha256": "04258b5e3ac853c8b3d993aadc9e1c9a22063f28fa27a454f04f473f6729d540"
+    },
+    {
+      "bytes": 585855,
+      "mapId": "reedvault",
+      "path": "snapshots/marsh_bridge/reedvault.json",
+      "scenarioId": "marsh_bridge",
+      "sha256": "877fd2a71a5b17c4571b2288a70a514c287fc7b8745c38bbc51dd86883afd6a6"
+    },
+    {
+      "bytes": 2450561,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_low/tide_cove.json",
+      "scenarioId": "tide_low",
+      "sha256": "ecfd0ee2d47a9c2b7f925eeacd708124e23ca19c09710a5183cf1853fbfad7e8"
+    },
+    {
+      "bytes": 2450524,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_rising/tide_cove.json",
+      "scenarioId": "tide_rising",
+      "sha256": "459ad86bbc56e59a115e45158e44a2bd6bdf4629c0a9245ded6be3a6c2d9137c"
+    },
+    {
+      "bytes": 2488281,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_high/tide_cove.json",
+      "scenarioId": "tide_high",
+      "sha256": "321fc2541179a7b1c56c4d36cf126abf3812c4521b8e0f71bac539ba868da291"
+    },
+    {
+      "bytes": 2488160,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_falling/tide_cove.json",
+      "scenarioId": "tide_falling",
+      "sha256": "070f22b5605f8f30bf36d57b002041be9eea5c5e1a5142f5039c58dbbd92162d"
+    },
+    {
+      "bytes": 2450564,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_held/tide_cove.json",
+      "scenarioId": "tide_held",
+      "sha256": "dbe6ce3c1784f903c0c1f7db6512aca9bd94fa9dd5f9d531e23116bd4fe8ea92"
+    },
+    {
+      "bytes": 2487446,
+      "mapId": "tide_cove",
+      "path": "snapshots/tide_released/tide_cove.json",
+      "scenarioId": "tide_released",
+      "sha256": "3e865447fb94473cebb0d82109c3288cd3e16ce8cd253d16ac25d3efd805c52d"
+    },
+    {
+      "bytes": 1145564,
+      "mapId": "dorstvallei",
+      "path": "snapshots/desert_wild/dorstvallei.json",
+      "scenarioId": "desert_wild",
+      "sha256": "813758f49912f310199d73fc05b09dee4a3482096a250bd52510afb4fea52424"
+    },
+    {
+      "bytes": 550227,
+      "mapId": "sunwell",
+      "path": "snapshots/desert_wild/sunwell.json",
+      "scenarioId": "desert_wild",
+      "sha256": "759cbbf929529338e3be87bb4cb3bcdc40104ec36efbb56012b4ca0f921b42e4"
+    },
+    {
+      "bytes": 1145576,
+      "mapId": "dorstvallei",
+      "path": "snapshots/desert_caravan/dorstvallei.json",
+      "scenarioId": "desert_caravan",
+      "sha256": "6d1a314bbc7d83dbcbcaa3cc75779a156bd2dcd49f0692f4e6678241faefc526"
+    },
+    {
+      "bytes": 550239,
+      "mapId": "sunwell",
+      "path": "snapshots/desert_caravan/sunwell.json",
+      "scenarioId": "desert_caravan",
+      "sha256": "48581e609deebfdfcd122196282bfd24cedab224a06bda0b99cf9d9e1b7435d6"
+    },
+    {
+      "bytes": 3336393,
+      "mapId": "ijsdal",
+      "path": "snapshots/ice_west/ijsdal.json",
+      "scenarioId": "ice_west",
+      "sha256": "3c788883c77a11f0678a287bd11369e8d41329c3219753e49b1674c6644a6ce1"
+    },
+    {
+      "bytes": 3349468,
+      "mapId": "ijsdal",
+      "path": "snapshots/ice_restored/ijsdal.json",
+      "scenarioId": "ice_restored",
+      "sha256": "60274d181915894a5d6b7d2e16864abc4aa0f599c0f0c6066767a18c3eb23496"
+    },
+    {
+      "bytes": 1375976,
+      "mapId": "ridgepass",
+      "path": "snapshots/ice_restored/ridgepass.json",
+      "scenarioId": "ice_restored",
+      "sha256": "90a749bd6321ee4e3c45069c5d11ab2580208b561254b5e7df91d8d338b3feab"
+    },
+    {
+      "bytes": 1392051,
+      "mapId": "ridgepass",
+      "path": "snapshots/ridge_rope/ridgepass.json",
+      "scenarioId": "ridge_rope",
+      "sha256": "8c0140d1bf5bc47d5248cade7c4ef2dba8e600e56cbe259a7873ebec7822f26f"
+    },
+    {
+      "bytes": 3353391,
+      "mapId": "ijsdal",
+      "path": "snapshots/ridge_rope/ijsdal.json",
+      "scenarioId": "ridge_rope",
+      "sha256": "b4c4958a211e49666cef073fd71676bdd0405f421dbe7c618c93967eefba85c4"
+    },
+    {
+      "bytes": 584230,
+      "mapId": "reedvault",
+      "path": "snapshots/archive_clues/reedvault.json",
+      "scenarioId": "archive_clues",
+      "sha256": "891a371bbd821aa6edc94327f8dafbf27db4afe0a0b9f1c64902a06fc86ed506"
+    },
+    {
+      "bytes": 602449,
+      "mapId": "reedvault",
+      "path": "snapshots/archive_routes/reedvault.json",
+      "scenarioId": "archive_routes",
+      "sha256": "c62c4d8f526a946b24370e00b9e1e564575d31af54a56ef05f7ba26d1aa05be4"
+    },
+    {
+      "bytes": 3095941,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/archive_routes/kruipmoeras.json",
+      "scenarioId": "archive_routes",
+      "sha256": "5b9e865293c621c0aaefb41854df504cf81a866a5112579a9a462cab2a01896c"
+    },
+    {
+      "bytes": 601980,
+      "mapId": "reedvault",
+      "path": "snapshots/archive_stories/reedvault.json",
+      "scenarioId": "archive_stories",
+      "sha256": "03114cae93e564291c17a6951cb3f5cd4a64a42043d5fdf22f4e1545709e6a73"
+    },
+    {
+      "bytes": 3095468,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/archive_stories/kruipmoeras.json",
+      "scenarioId": "archive_stories",
+      "sha256": "5358d5011eff86195963a089e156a36c28de7e2e4d14d76a508c2e7a8526beda"
+    },
+    {
+      "bytes": 4386639,
+      "mapId": "forest",
+      "path": "snapshots/route_cat_home/forest.json",
+      "scenarioId": "route_cat_home",
+      "sha256": "4df54d5a2eb1787a3a3e5dd025437fc2dacb98e622a156462bdf514a2bc1d61b"
+    },
+    {
+      "bytes": 3423165,
+      "mapId": "village",
+      "path": "snapshots/route_cat_home/village.json",
+      "scenarioId": "route_cat_home",
+      "sha256": "96e95f96cd159e9b74447ab8f90dcef9f0038afb453067427d89bdfabe6c7511"
+    },
+    {
+      "bytes": 1312734,
+      "mapId": "ruins",
+      "path": "snapshots/route_clues/ruins.json",
+      "scenarioId": "route_clues",
+      "sha256": "6110642cacb20b78d3fa052571623286b526ca86c352e11222830de7a102723b"
+    },
+    {
+      "bytes": 1520409,
+      "mapId": "cave",
+      "path": "snapshots/route_clues/cave.json",
+      "scenarioId": "route_clues",
+      "sha256": "50d199c039eeeb2ede605d4a4f996883189fdd39b37fe2e22d725eac342f5c73"
+    },
+    {
+      "bytes": 1522516,
+      "mapId": "cave",
+      "path": "snapshots/route_echo_begin/cave.json",
+      "scenarioId": "route_echo_begin",
+      "sha256": "b9a20a1f2389a0c129d5fde39eddc424679f00c83fe048471016116ebbce5319"
+    },
+    {
+      "bytes": 1522964,
+      "mapId": "cave",
+      "path": "snapshots/route_echo_mid/cave.json",
+      "scenarioId": "route_echo_mid",
+      "sha256": "74b297763a1da85de9fc64f3e41fe21a293f989ccfbbe3dccdc0ae8694f1b3b2"
+    },
+    {
+      "bytes": 1523898,
+      "mapId": "cave",
+      "path": "snapshots/route_echo_end/cave.json",
+      "scenarioId": "route_echo_end",
+      "sha256": "3e8a5758cdc4793da6dfb156bd1ed8a1f0ac544eb88c0e62d8e969e68e4ee54e"
+    },
+    {
+      "bytes": 1317578,
+      "mapId": "ruins",
+      "path": "snapshots/route_memorial_guard/ruins.json",
+      "scenarioId": "route_memorial_guard",
+      "sha256": "c99a9893a46c80f762980c89b70d3f6df581a72b39d91d254739b2908e6a7dab"
+    },
+    {
+      "bytes": 3414997,
+      "mapId": "village",
+      "path": "snapshots/route_memorial_guard/village.json",
+      "scenarioId": "route_memorial_guard",
+      "sha256": "0850d30ded970208f0cb92aa22dffd8ba7328d7fd7463eb7d96145b0e27b35c0"
+    },
+    {
+      "bytes": 1317584,
+      "mapId": "ruins",
+      "path": "snapshots/route_memorial_guide/ruins.json",
+      "scenarioId": "route_memorial_guide",
+      "sha256": "87612907a7bdf1bfa67db895c7cd4d05938bd818c17fccc9aa69c2f2451912de"
+    },
+    {
+      "bytes": 3414993,
+      "mapId": "village",
+      "path": "snapshots/route_memorial_guide/village.json",
+      "scenarioId": "route_memorial_guide",
+      "sha256": "443442078585a07709471b544831de99480d1c4999991b2d7f3ae1a04f226d3b"
+    },
+    {
+      "bytes": 955174,
+      "mapId": "prismamine",
+      "path": "snapshots/mine_restored/prismamine.json",
+      "scenarioId": "mine_restored",
+      "sha256": "d74a5f7fe17e221e494443d329f3f2bcb3fe97d305c83c2ab9e7b08ef761930b"
+    },
+    {
+      "bytes": 275032,
+      "mapId": "smithy",
+      "path": "snapshots/mine_restored/smithy.json",
+      "scenarioId": "mine_restored",
+      "sha256": "b25fb1dee0bfb195e38d871a8cd887a57c18fce4c04878271a56eaefcb28b14b"
+    },
+    {
+      "bytes": 3875779,
+      "mapId": "dauwbos",
+      "path": "snapshots/forest_restored/dauwbos.json",
+      "scenarioId": "forest_restored",
+      "sha256": "1fcb22b2f6388afb5ee409ccd39d20f5014ba02ca9c73f5e64d884b220d79a2a"
+    },
+    {
+      "bytes": 1058481,
+      "mapId": "mistgarden",
+      "path": "snapshots/forest_restored/mistgarden.json",
+      "scenarioId": "forest_restored",
+      "sha256": "8a654536aea21ed25cfe6ec294c0af09084eb7e44381987d2d9e457c46dec658"
+    },
+    {
+      "bytes": 349047,
+      "mapId": "player_home",
+      "path": "snapshots/home_furnished/player_home.json",
+      "scenarioId": "home_furnished",
+      "sha256": "7c297428c659d2e103dd11bdd9238a79be765f01edea8e19675f79f460fdb2f7"
+    },
+    {
+      "bytes": 3414661,
+      "mapId": "village",
+      "path": "snapshots/yard_moved/village.json",
+      "scenarioId": "yard_moved",
+      "sha256": "ccd6cd229e37a0cd8fe435d20afb828225097a313bf45e10811bdcbab0aa3a4c"
+    },
+    {
+      "bytes": 3413453,
+      "mapId": "village",
+      "path": "snapshots/yard_packed/village.json",
+      "scenarioId": "yard_packed",
+      "sha256": "6bf7497df3fa76a389c81292c660e48d7b2ff593543fa6c99c22d34679308859"
+    },
+    {
+      "bytes": 3423146,
+      "mapId": "village",
+      "path": "snapshots/yard_gate_far/village.json",
+      "scenarioId": "yard_gate_far",
+      "sha256": "ac1f8569f2a8b35b0409d8ad9a154ddbccb28019264f33757a050379169b2080"
+    },
+    {
+      "bytes": 3423157,
+      "mapId": "village",
+      "path": "snapshots/yard_gate_near/village.json",
+      "scenarioId": "yard_gate_near",
+      "sha256": "d593058f8aa2e3b0daf96b93bd8d97df8fe11f7a6de6a7a7b75a23b607f52801"
+    },
+    {
+      "bytes": 3439861,
+      "mapId": "village",
+      "path": "snapshots/farm_dry/village.json",
+      "scenarioId": "farm_dry",
+      "sha256": "c27adf14cd9e495bf029efae578edb480b62838c21c98e3e85c14017411ea8c2"
+    },
+    {
+      "bytes": 3473371,
+      "mapId": "village",
+      "path": "snapshots/farm_irrigated/village.json",
+      "scenarioId": "farm_irrigated",
+      "sha256": "debee0fd31923b147644935afc7dc74f61b71ab0cc660b0a170000e92ee2dd0a"
+    },
+    {
+      "bytes": 3454402,
+      "mapId": "village",
+      "path": "snapshots/farm_disconnected/village.json",
+      "scenarioId": "farm_disconnected",
+      "sha256": "05931c3365a39fb1f703ddb744c2cd48d79bd29c43f305be32e20f4002f01cf5"
+    },
+    {
+      "bytes": 3532682,
+      "mapId": "village",
+      "path": "snapshots/farm_ready/village.json",
+      "scenarioId": "farm_ready",
+      "sha256": "5b7fe3313c989c343d0ac609fcde432efe4b714295ac5e2c347a6360c164b57e"
+    },
+    {
+      "bytes": 432189,
+      "mapId": "player_home",
+      "path": "snapshots/farm_ready/player_home.json",
+      "scenarioId": "farm_ready",
+      "sha256": "681852d496e20cfc0f7affff0526bcab287b47464e673cb4cf5ae8455c5cdb35"
+    },
+    {
+      "bytes": 3411523,
+      "mapId": "village",
+      "path": "snapshots/honey_no_flowers/village.json",
+      "scenarioId": "honey_no_flowers",
+      "sha256": "272c9405f8ae451699644d2d685c71a0d78a4b77ac06f7c73bc89a5fa576668a"
+    },
+    {
+      "bytes": 3423132,
+      "mapId": "village",
+      "path": "snapshots/honey_grown_flowers/village.json",
+      "scenarioId": "honey_grown_flowers",
+      "sha256": "6e73c4eed45b0efd24acdd4b513f1a0a737228e44c2f4617c9ee4158e04e6585"
+    },
+    {
+      "bytes": 390752,
+      "mapId": "coast_workshop",
+      "path": "snapshots/coastal_workshop/coast_workshop.json",
+      "scenarioId": "coastal_workshop",
+      "sha256": "cbc0dc798fa43d87acaee19a5cc30ce237b4e5a6a8533ff1d2e70af0db2768d3"
+    },
+    {
+      "bytes": 2813428,
+      "mapId": "harbor",
+      "path": "snapshots/coastal_workshop/harbor.json",
+      "scenarioId": "coastal_workshop",
+      "sha256": "850f86a03fd8e31c5c8c5fd16be1436105cd82efd58c150f903a1942cca174fe"
+    },
+    {
+      "bytes": 1012401,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/hollow_wheel/tidal_hollow.json",
+      "scenarioId": "hollow_wheel",
+      "sha256": "9656c5f1247a003a1fca4fe4c2f9bb64896f1a0f35ccdffc0bc259122c44568d"
+    },
+    {
+      "bytes": 1014969,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/hollow_pool/tidal_hollow.json",
+      "scenarioId": "hollow_pool",
+      "sha256": "06461f1f4f364b4bd7d0adb05eee5f205677df8ee7fd2185e5cf39fd52fd265e"
+    },
+    {
+      "bytes": 1014959,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/hollow_workwater/tidal_hollow.json",
+      "scenarioId": "hollow_workwater",
+      "sha256": "61ee0f4221c2d71d98f9f3c20a626ca0f1077d2b3ffd7484e5a0776f6366e1e3"
+    },
+    {
+      "bytes": 1057306,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/hollow_duel/tidal_hollow.json",
+      "scenarioId": "hollow_duel",
+      "sha256": "caa84078592f80141fe421d9e41d6a4aa7a31a006c6c117c013ee18757299a51"
+    },
+    {
+      "bytes": 2743040,
+      "mapId": "headland",
+      "path": "snapshots/headland_shelter/headland.json",
+      "scenarioId": "headland_shelter",
+      "sha256": "f6ef9ae96e7a081ae5d704158b1d0ebcbe55a35b5bae6f9de6d7a1c1a85f4b76"
+    },
+    {
+      "bytes": 377068,
+      "mapId": "library",
+      "path": "snapshots/library_backroom/library.json",
+      "scenarioId": "library_backroom",
+      "sha256": "1aebc71a1e712700b344e2175bfdc20539e9a5049f55bf61e9890662b06768f4"
+    },
+    {
+      "bytes": 602381,
+      "mapId": "depths2",
+      "path": "snapshots/guardian_alive/depths2.json",
+      "scenarioId": "guardian_alive",
+      "sha256": "6cb276d907c1ce7b0529e2a07da6863f53f985fa94a8beb2ef6f3771d0fc9f9b"
+    },
+    {
+      "bytes": 515090,
+      "mapId": "depths2",
+      "path": "snapshots/guardian_defeated/depths2.json",
+      "scenarioId": "guardian_defeated",
+      "sha256": "ce7bd47bb2578ae9d33e6ee62b9eddf9580e4207933693afb398231d0ce03494"
+    },
+    {
+      "bytes": 515570,
+      "mapId": "depths2",
+      "path": "snapshots/guardian_reward_opened/depths2.json",
+      "scenarioId": "guardian_reward_opened",
+      "sha256": "34b54a4ca76dae96aff0e4b3c3fbd0914e987d5a5cfaa2868c6bff3ea2ecc7f7"
+    },
+    {
+      "bytes": 515966,
+      "mapId": "depths2",
+      "path": "snapshots/guardian_full_hearts/depths2.json",
+      "scenarioId": "guardian_full_hearts",
+      "sha256": "d65ddcd7f167d192b76cbbe7712d63161e0269f650a55da1675f5d34f180757c"
+    },
+    {
+      "bytes": 4411127,
+      "mapId": "forest",
+      "path": "snapshots/saved_manure/forest.json",
+      "scenarioId": "saved_manure",
+      "sha256": "6ca419110ae898d32bdaae942b3c85a86097d067b1df026f7c0c9ecda97af947"
+    },
+    {
+      "bytes": 513503,
+      "mapId": "temple",
+      "path": "snapshots/boss_gate_closed/temple.json",
+      "scenarioId": "boss_gate_closed",
+      "sha256": "7738ff34fb53cf869dcf0236d411a393661a768493342c7b73b02729ac34eb4c"
+    },
+    {
+      "bytes": 1017726,
+      "mapId": "arena",
+      "path": "snapshots/full_progress/arena.json",
+      "scenarioId": "full_progress",
+      "sha256": "9fc3975d4e63fbcfa6fc94770ef7709dc13394deb160b944483723e5288ba745"
+    },
+    {
+      "bytes": 670745,
+      "mapId": "arena_hall",
+      "path": "snapshots/full_progress/arena_hall.json",
+      "scenarioId": "full_progress",
+      "sha256": "636c640987b85f15934c6d2dd7bf6b6a6d25fb198181ec13c6813e5fe4029085"
+    },
+    {
+      "bytes": 1815505,
+      "mapId": "cave",
+      "path": "snapshots/full_progress/cave.json",
+      "scenarioId": "full_progress",
+      "sha256": "3485a3a221db3c69126a327fd70c92b69411606a404756bd14d7d69f2111f45c"
+    },
+    {
+      "bytes": 2411772,
+      "mapId": "coast",
+      "path": "snapshots/full_progress/coast.json",
+      "scenarioId": "full_progress",
+      "sha256": "5ecfe9a18198faca5b5f7794562f5d96a60c59ca13ca8cb8b8e382c11fafdb88"
+    },
+    {
+      "bytes": 727232,
+      "mapId": "coast_workshop",
+      "path": "snapshots/full_progress/coast_workshop.json",
+      "scenarioId": "full_progress",
+      "sha256": "f6c31f79108c72b4e7bb5023722439b73f1f72040306cb71398df3def1988fca"
+    },
+    {
+      "bytes": 4200447,
+      "mapId": "dauwbos",
+      "path": "snapshots/full_progress/dauwbos.json",
+      "scenarioId": "full_progress",
+      "sha256": "c00cb88c9233cb1eec30045223a6f6a26fe5ce99d0cfef07c5e5e1d38fa9b69f"
+    },
+    {
+      "bytes": 1679704,
+      "mapId": "depths1",
+      "path": "snapshots/full_progress/depths1.json",
+      "scenarioId": "full_progress",
+      "sha256": "ad78d745dc4108c5c8ff145687c6d550fc54dc6020c29ba328d518f055ede9e3"
+    },
+    {
+      "bytes": 852202,
+      "mapId": "depths2",
+      "path": "snapshots/full_progress/depths2.json",
+      "scenarioId": "full_progress",
+      "sha256": "40456010d59ea8fafc3a5247969c51d44c009defb4992a2611b882902511c47c"
+    },
+    {
+      "bytes": 1476011,
+      "mapId": "dorstvallei",
+      "path": "snapshots/full_progress/dorstvallei.json",
+      "scenarioId": "full_progress",
+      "sha256": "4d39f5a944ce2cddc1390294ea984e07869097e2b7bacb9d0e77b77159dc88bf"
+    },
+    {
+      "bytes": 570788,
+      "mapId": "fisher_hut",
+      "path": "snapshots/full_progress/fisher_hut.json",
+      "scenarioId": "full_progress",
+      "sha256": "e4fb55ac471f6b9e19f1c0f94ee9b25d4912c2792ffe7a4f5918f5dfd8af3d8b"
+    },
+    {
+      "bytes": 4693093,
+      "mapId": "forest",
+      "path": "snapshots/full_progress/forest.json",
+      "scenarioId": "full_progress",
+      "sha256": "1c4b3a9bc31d02267aa530ccb9e6d2c250fe1b349aba0b8f6d8db07dd65e1e0e"
+    },
+    {
+      "bytes": 3531722,
+      "mapId": "forest_edge",
+      "path": "snapshots/full_progress/forest_edge.json",
+      "scenarioId": "full_progress",
+      "sha256": "5c5ac26e54ad1b6c1a1ccbe3b4a0b7a07860cfea9f8f151053df17e4f9fc381e"
+    },
+    {
+      "bytes": 2620218,
+      "mapId": "gull_island",
+      "path": "snapshots/full_progress/gull_island.json",
+      "scenarioId": "full_progress",
+      "sha256": "1dca03fe92492207b8193de4e35fd3fe5fde3dd30ef3664d0abff66e7c7c09e5"
+    },
+    {
+      "bytes": 3149926,
+      "mapId": "harbor",
+      "path": "snapshots/full_progress/harbor.json",
+      "scenarioId": "full_progress",
+      "sha256": "972e316751909e30112843f4c6c3be823f0875e4572dddd08c28eb4c14f36bc2"
+    },
+    {
+      "bytes": 3081103,
+      "mapId": "headland",
+      "path": "snapshots/full_progress/headland.json",
+      "scenarioId": "full_progress",
+      "sha256": "03abcc9a03eef0b2529316feb31dd128fc7667895adf15076432550bd27a39d0"
+    },
+    {
+      "bytes": 3680402,
+      "mapId": "ijsdal",
+      "path": "snapshots/full_progress/ijsdal.json",
+      "scenarioId": "full_progress",
+      "sha256": "78039eff2e0962d3524061c1e61f7b12f2fbc22de55e456d368cc8627f73a250"
+    },
+    {
+      "bytes": 694759,
+      "mapId": "inn",
+      "path": "snapshots/full_progress/inn.json",
+      "scenarioId": "full_progress",
+      "sha256": "1f276fbbe640c4afc6a94b32b830babdd4dab57ebd4766674c76b18d4697a580"
+    },
+    {
+      "bytes": 3408308,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/full_progress/kruipmoeras.json",
+      "scenarioId": "full_progress",
+      "sha256": "733fcfdb569f6543507d40860728fa58f0b33184c053026aa7993ff6064eeb3d"
+    },
+    {
+      "bytes": 3645384,
+      "mapId": "lake",
+      "path": "snapshots/full_progress/lake.json",
+      "scenarioId": "full_progress",
+      "sha256": "2e4cf6726f4bdf29240aa97b7c7abef37807b301342073ab564801ca10032d7f"
+    },
+    {
+      "bytes": 715102,
+      "mapId": "library",
+      "path": "snapshots/full_progress/library.json",
+      "scenarioId": "full_progress",
+      "sha256": "0df6cb743cd1f7eaa8035dc0d1ecdfc371cf6fd055875955c5aa6f5ea1a3d263"
+    },
+    {
+      "bytes": 1395608,
+      "mapId": "mistgarden",
+      "path": "snapshots/full_progress/mistgarden.json",
+      "scenarioId": "full_progress",
+      "sha256": "b24e1bb5f43794c594ebc63ffeb32a8a4332ac33370933455f38e0312dec1387"
+    },
+    {
+      "bytes": 651007,
+      "mapId": "player_home",
+      "path": "snapshots/full_progress/player_home.json",
+      "scenarioId": "full_progress",
+      "sha256": "17b42fd3903d2994374138612aa55ade27801d109646988923443bcbb825d7c1"
+    },
+    {
+      "bytes": 1291821,
+      "mapId": "prismamine",
+      "path": "snapshots/full_progress/prismamine.json",
+      "scenarioId": "full_progress",
+      "sha256": "ba2e40277c46da3e6f1017dc643d06f9c20feecd785c7ed9dbc287e0f7b4ae47"
+    },
+    {
+      "bytes": 933493,
+      "mapId": "reedvault",
+      "path": "snapshots/full_progress/reedvault.json",
+      "scenarioId": "full_progress",
+      "sha256": "1f7140d8502466d8d421b3ae11761c06ad2952b653dbf83c93a1f8b8b528cc95"
+    },
+    {
+      "bytes": 725583,
+      "mapId": "resonance",
+      "path": "snapshots/full_progress/resonance.json",
+      "scenarioId": "full_progress",
+      "sha256": "b098e9a80ec8efc1f8f4a7cc6c62eba2202e47fada019976a5768e10e53191d3"
+    },
+    {
+      "bytes": 1725290,
+      "mapId": "ridgepass",
+      "path": "snapshots/full_progress/ridgepass.json",
+      "scenarioId": "full_progress",
+      "sha256": "fdc8f522f489d3b78b8ca423d79bcdafff30f5925e8c06172fb4048bec619759"
+    },
+    {
+      "bytes": 3107754,
+      "mapId": "river_mouth",
+      "path": "snapshots/full_progress/river_mouth.json",
+      "scenarioId": "full_progress",
+      "sha256": "420f1760fa80776783aea79d02164e0f90f8d92a50bb76fd96814a761a69af5e"
+    },
+    {
+      "bytes": 1595345,
+      "mapId": "ruins",
+      "path": "snapshots/full_progress/ruins.json",
+      "scenarioId": "full_progress",
+      "sha256": "2bd68ac901965eef3a32406c20f85f642c2d3aa2ecd5c9ddba895e4ee60f09bc"
+    },
+    {
+      "bytes": 555624,
+      "mapId": "shop",
+      "path": "snapshots/full_progress/shop.json",
+      "scenarioId": "full_progress",
+      "sha256": "91c6e087b71b6bd0bc7e0d0027481f72a5e0edc242eaac271766a4d0864691cf"
+    },
+    {
+      "bytes": 611681,
+      "mapId": "smithy",
+      "path": "snapshots/full_progress/smithy.json",
+      "scenarioId": "full_progress",
+      "sha256": "2b37953263e69adeeb1a9635e1fdc15ab245cbf1d80befd63d300d00286da9c6"
+    },
+    {
+      "bytes": 1718708,
+      "mapId": "steampeak",
+      "path": "snapshots/full_progress/steampeak.json",
+      "scenarioId": "full_progress",
+      "sha256": "ea111933b546e36752658549e9718b92a43481fd5e7ad502fcbc93e0d151b891"
+    },
+    {
+      "bytes": 886897,
+      "mapId": "sunwell",
+      "path": "snapshots/full_progress/sunwell.json",
+      "scenarioId": "full_progress",
+      "sha256": "ae1d1f901835f42f9b07eeb7067d747eae98bfa8b33753a0ef81ac2d4bef494b"
+    },
+    {
+      "bytes": 798873,
+      "mapId": "temple",
+      "path": "snapshots/full_progress/temple.json",
+      "scenarioId": "full_progress",
+      "sha256": "b6e1f30c010c95fcc39fa1ec4cb279d3f6aee51b3669f874cc0f21f164464628"
+    },
+    {
+      "bytes": 1290023,
+      "mapId": "tidal_hollow",
+      "path": "snapshots/full_progress/tidal_hollow.json",
+      "scenarioId": "full_progress",
+      "sha256": "ac77fb7f233dab6e3fd921d51618e981e03342584a25fcdf0d0c71b64988d665"
+    },
+    {
+      "bytes": 2790613,
+      "mapId": "tide_cove",
+      "path": "snapshots/full_progress/tide_cove.json",
+      "scenarioId": "full_progress",
+      "sha256": "50f8e582da14081f7b57077b74e8762c284cd75c7c8ec67e31dc6cafc8a82837"
+    },
+    {
+      "bytes": 3766189,
+      "mapId": "village",
+      "path": "snapshots/full_progress/village.json",
+      "scenarioId": "full_progress",
+      "sha256": "000b64d146d57f02899be34332041a428732d4b93f467fb117c464914c3b0686"
+    },
+    {
+      "bytes": 1707245,
+      "mapId": "watchyard",
+      "path": "snapshots/full_progress/watchyard.json",
+      "scenarioId": "full_progress",
+      "sha256": "81f90c8d24baf6ab1a144fd463db4fd7684570277c1424d2ef4be3ec1aa7cd0d"
+    },
+    {
+      "bytes": 3355986,
+      "mapId": "ijsdal",
+      "path": "snapshots/legacy_completed/ijsdal.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "ba97aa6e837b6b604d9261df494f1790dfa88a2181a050276177f6dd5752d4aa"
+    },
+    {
+      "bytes": 3096372,
+      "mapId": "kruipmoeras",
+      "path": "snapshots/legacy_completed/kruipmoeras.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "b89f2eb8f5f98ccae799ec8654db2a4830520c0ac59b9883bcf6391081815e1f"
+    },
+    {
+      "bytes": 1151598,
+      "mapId": "dorstvallei",
+      "path": "snapshots/legacy_completed/dorstvallei.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "1130b291e8856136ed601de3c07e2fe715567d7bb9de5f2bbad57434e574b7de"
+    },
+    {
+      "bytes": 1318069,
+      "mapId": "ruins",
+      "path": "snapshots/legacy_completed/ruins.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "e7e4cb97f8da7ea49778dddaf22511db5d56bfe9799e2b2ad95464d9f22ce443"
+    },
+    {
+      "bytes": 1525751,
+      "mapId": "cave",
+      "path": "snapshots/legacy_completed/cave.json",
+      "scenarioId": "legacy_completed",
+      "sha256": "ea1ee9d4ce9c215798445b52309075ecff413dcfab31c1a731f5d05697f8ac96"
+    }
+  ]
+}
