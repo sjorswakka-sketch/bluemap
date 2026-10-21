@@ -69,7 +69,7 @@ namespace BlueMapMigration.Inventory
                 var mouse = InputSystem.AddDevice<Mouse>("Phase12InventoryMouse"); devices.Add(mouse);
                 var gamepad = InputSystem.AddDevice<Gamepad>("Phase12InventoryGamepad"); devices.Add(gamepad);
                 input = new PlayerInputSource(devices); input.SetContext(true, true);
-                Vector2 pointer = new Vector2(300 * Screen.width / 1152f, (648 - 310) * Screen.height / 648f);
+                Vector2 pointer = Vector2.zero;
                 InputFrame Sample(GamepadState pad, KeyboardState keys, MouseState mouseState, double delta = 1.0 / 60)
                 {
                     InputSystem.QueueStateEvent(keyboard, keys); InputSystem.QueueStateEvent(mouse, mouseState); InputSystem.QueueStateEvent(gamepad, pad); InputSystem.Update();
@@ -85,7 +85,12 @@ namespace BlueMapMigration.Inventory
                 void Preferences(string locale)
                 { var old = route.Persistence.Preferences; if (!route.Persistence.SetPreferences(new LegacyPreferences(locale, old.Muted, old.MusicVolume, old.SfxVolume))) throw new IOException("Cannot store synthetic UI language preference."); route.UpdateInventoryContext(); }
 
-                yield return Resolution(1152, 648); Preferences("nl");
+                yield return Resolution(1152, 648);
+                // Resizing and opening an IMGUI view need an actual rendered frame. Compute the
+                // physical pointer only after the requested viewport has been applied.
+                yield return new WaitForEndOfFrame();
+                pointer = new Vector2(300 * Screen.width / 1152f, (648 - 310) * Screen.height / 648f);
+                Preferences("nl");
                 if (!Travel("player_home")) throw new InvalidOperationException("The synthetic home UI could not be reached.");
                 var model = route.Inventory; var state = model.State;
                 var bag = state.Get("inventory").Entries.ToDictionary(row => row.Key.AsString(), row => row.Value, StringComparer.Ordinal);
@@ -120,11 +125,17 @@ namespace BlueMapMigration.Inventory
                 state.Hp = Math.Max(1, state.MaxHp - 2);
 
                 // Keyboard and mouse enter through the real event manager, then the same live UI handler as a player.
-                KeyPress(Key.I); var panel = route.InventoryPanel; int beforeKeyboard = panel.SelectedIndex;
-                KeyPress(Key.DownArrow); int afterKeyboard = panel.SelectedIndex;
-                var wheel = Sample(new GamepadState(), new KeyboardState(), new MouseState { position = pointer, scroll = new Vector2(0, -120) }); Neutral();
-                bool keyboardMouse = route.Modal == "inventory" && panel.Kind == "bag" && afterKeyboard == beforeKeyboard + InventoryPanel.Columns && panel.SelectedIndex == afterKeyboard + InventoryPanel.Columns && !wheel.ControllerActive && wheel.CursorVisible;
+                KeyPress(Key.I);
                 yield return new WaitForEndOfFrame();
+                var panel = route.InventoryPanel; int beforeKeyboard = panel.SelectedIndex;
+                KeyPress(Key.DownArrow);
+                yield return new WaitForEndOfFrame();
+                int afterKeyboard = panel.SelectedIndex;
+                var wheel = Sample(new GamepadState(), new KeyboardState(), new MouseState { position = pointer, scroll = new Vector2(0, -120) });
+                int afterWheel = panel.SelectedIndex; Neutral();
+                yield return new WaitForEndOfFrame();
+                bool keyboardMouse = route.Modal == "inventory" && panel.Kind == "bag" && afterKeyboard == beforeKeyboard + InventoryPanel.Columns && afterWheel == afterKeyboard + InventoryPanel.Columns && panel.SelectedIndex == afterWheel && !wheel.ControllerActive && wheel.CursorVisible;
+                Debug.Log($"Inventory keyboard/mouse native stages: viewport={Screen.width}x{Screen.height}, pointer={pointer}, modal={route.Modal}, kind={panel.Kind}, before={beforeKeyboard}, afterKeyboard={afterKeyboard}, afterWheel={afterWheel}, afterRender={panel.SelectedIndex}, wheel={wheel.UiScroll}, ownerController={wheel.ControllerActive}, cursorVisible={wheel.CursorVisible}, selectionVisible={panel.SelectionVisible}, viewportRect={panel.ViewportRect}, renderedBounds={panel.RenderedSelectedBounds}");
                 check("inventory_native_keyboard_mouse_navigation", keyboardMouse && panel.SelectionVisible && Contains(panel.ViewportRect, panel.RenderedSelectedBounds));
 
                 // Actual IMGUI search focus must protect ordinary P/I letters from pause/inventory shortcuts.
