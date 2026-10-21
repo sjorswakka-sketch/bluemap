@@ -26,7 +26,7 @@ EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
-                    12: "0.8.0-phase12", 13: "0.9.0-phase13"}
+                    12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -240,6 +240,47 @@ PROGRESSION_DETAIL_CHECKS = {
     "progression_native_save_reload_preserves_selections",
 }
 PROGRESSION_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+COMBAT_CHECKS = {"combat_runtime_verified"}
+COMBAT_DETAIL_CHECKS = {
+    'combat_encounter_source_equivalence',
+    'combat_encounter_source_family_coverage',
+    'combat_encounter_source_projectile_pillar_guardian_coverage',
+    'combat_model_atomic_and_unknown_safety',
+    'combat_model_source_equivalence',
+    'combat_native_all_maps_original_placements',
+    'combat_native_arrows_fly_over_original_water',
+    'combat_native_bow_consumes_one_hits_monster',
+    'combat_native_cancelled_bow_keeps_ammunition',
+    'combat_native_combo_spends_shared_stamina',
+    'combat_native_controller_technique_modifier',
+    'combat_native_cover_precedes_arrow_target',
+    'combat_native_death_keeps_last_safe_inventory',
+    'combat_native_defeat_rewards_once',
+    'combat_native_devices_remain_exclusive',
+    'combat_native_empty_quiver_no_free_projectile',
+    'combat_native_existing_tool_requirements',
+    'combat_native_facing_follows_movement',
+    'combat_native_four_rendered_captures',
+    'combat_native_guardian_phases_delayed_reward',
+    'combat_native_guardian_reward_chest_exists',
+    'combat_native_guardian_reward_once',
+    'combat_native_guardian_source_intro',
+    'combat_native_hurt_invulnerability_knockback',
+    'combat_native_keyboard_and_controller_actions',
+    'combat_native_king_victory_saves_safe_village',
+    'combat_native_melee_hits_actual_actor',
+    'combat_native_menu_cancels_preparation',
+    'combat_native_peaceful_wildlife_no_contact_damage',
+    'combat_native_retry_heals_retains_unknowns',
+    'combat_native_roll_cancels_and_protects',
+    'combat_native_sword_shatters_hostile_projectile',
+    'combat_native_technique_slows_and_blocks_sprint',
+    'combat_native_towns_keep_source_enemy_population',
+    'combat_native_training_no_loot_or_xp',
+    'combat_no_personal_saves_used',
+    'combat_shared_state_motor_energy',
+}
+COMBAT_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -262,7 +303,7 @@ PLAYER_ROOTS = {
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
                   "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json",
-                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -426,6 +467,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 13:
         require(PROGRESSION_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 13 progression runtime proof is incomplete")
+    if identity["phase"] >= 14:
+        require(COMBAT_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 14 combat runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -594,6 +638,29 @@ def validate_progression(result: dict, identity: dict) -> None:
     require(PROGRESSION_DETAIL_CHECKS <= names, "Required progression checks are missing")
 
 
+def validate_combat(result: dict, identity: dict) -> None:
+    """Bind original combat, monsters, wildlife and rewards to this isolated player."""
+    require(isinstance(result, dict) and set(result) == COMBAT_FIELDS,
+            "Phase 14 combat proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported combat proof schema")
+    require(result.get("identity") == identity, "Combat embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Combat proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Combat detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed combat detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid combat detail check name")
+        require(name not in names and check["passed"] is True,
+                "Combat detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(COMBAT_DETAIL_CHECKS <= names, "Required combat checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -648,6 +715,7 @@ def _instructions(identity: dict) -> bytes:
         11: "Migratiefase 11: alle 37 gebieden, interieurs en toegangspunten; nog niet de volledige overgezette game.\n",
         12: "Migratiefase 12: oorspronkelijke inventaris, buit en woning- en kustopslag; nog niet de volledige overgezette game.\n",
         13: "Migratiefase 13: oorspronkelijke ervaring, statistieken, uitrusting, upgrades en uiterlijk; nog niet de volledige overgezette game.\n",
+        14: "Migratiefase 14: oorspronkelijke gevechten, monsters, wilde dieren, projectielen en beloningen; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -721,6 +789,7 @@ def _instructions(identity: dict) -> bytes:
         ("WORLD-ACCESS-CHECKS.json bevat de controles van alle gebieden en toegangspunten.\n" if identity["phase"] >= 11 else "") +
         ("INVENTORY-CHECKS.json bevat de controles van inventaris, buit en opslag.\n" if identity["phase"] >= 12 else "") +
         ("PROGRESSION-CHECKS.json bevat de controles van ervaring, uitrusting, upgrades en uiterlijk.\n" if identity["phase"] >= 13 else "") +
+        ("COMBAT-CHECKS.json bevat de controles van gevechten, monsters, wilde dieren en buit.\n" if identity["phase"] >= 14 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
@@ -732,7 +801,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    route_result: dict | None = None,
                    world_access_result: dict | None = None,
                    inventory_result: dict | None = None,
-                   progression_result: dict | None = None) -> tuple[Path, int]:
+                   progression_result: dict | None = None,
+                   combat_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -764,6 +834,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_progression(progression_result, identity)
     else:
         require(progression_result is None, "Historical preview cannot contain phase 13 progression proof")
+    if identity["phase"] >= 14:
+        validate_combat(combat_result, identity)
+    else:
+        require(combat_result is None, "Historical preview cannot contain phase 14 combat proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -789,6 +863,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["INVENTORY-CHECKS.json"] = _json_bytes(inventory_result)
     if progression_result is not None:
         payload["PROGRESSION-CHECKS.json"] = _json_bytes(progression_result)
+    if combat_result is not None:
+        payload["COMBAT-CHECKS.json"] = _json_bytes(combat_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -966,6 +1042,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("PROGRESSION-CHECKS.json" not in payload and "progression" not in receipt,
                 "Historical preview contains unsupported progression proof")
+    if identity["phase"] >= 14:
+        require("COMBAT-CHECKS.json" in payload, "Phase 14 packaged combat proof is missing")
+        combat = _json(payload["COMBAT-CHECKS.json"], "COMBAT-CHECKS.json")
+        validate_combat(combat, identity)
+        require(receipt.get("combat") == combat, "Receipt combat proof differs from package")
+    else:
+        require("COMBAT-CHECKS.json" not in payload and "combat" not in receipt,
+                "Historical preview contains unsupported combat proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

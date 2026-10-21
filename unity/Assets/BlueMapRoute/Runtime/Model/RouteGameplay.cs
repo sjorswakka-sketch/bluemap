@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BlueMapMigration.Foundation;
 using BlueMapMigration.Persistence;
 using BlueMapMigration.Inventory;
@@ -141,6 +142,12 @@ namespace BlueMapMigration.Route
             }
             finally{busy=false;Saved();}
         }
+        public bool ShowSourceLines(string id,string speaker,IEnumerable<string> lines)
+        {
+            if(State.Ended||DialogueOpen)return false;var text=lines.ToList();var node=Object(("speaker",FoundationValue.StringValue(speaker)),("lines",FoundationValue.Array(text.Select(FoundationValue.StringValue))));
+            Dialogue=new RouteDialogue{Id=id,Speaker=speaker,Lines=text.AsReadOnly(),Choices=new List<RouteChoice>().AsReadOnly(),ChoicesReady=false,Source=node};dialogueActionsDone=false;State.SetUi(DialogueOwner,true);return true;
+        }
+        public bool ShowSourceDialogue(string id){if(State.Ended||DialogueOpen||!Oracle.Require("catalogs").Require("dialogues").TryGet(id,out _))return false;Enter(id);return true;}
         private void Enter(string id)
         {
             if(!catalogs.Require("dialogues").TryGet(id,out var node))throw new FormatException("Unknown original dialogue: "+id);

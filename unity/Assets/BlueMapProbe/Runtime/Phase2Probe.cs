@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 13) error = "phase must be 13.";
-            else if (previewVersion != "0.9.0-phase13") error = "previewVersion must be 0.9.0-phase13.";
+            else if (phase != 14) error = "phase must be 14.";
+            else if (previewVersion != "0.10.0-phase14") error = "previewVersion must be 0.10.0-phase14.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -345,6 +345,16 @@ namespace BlueMapMigration.Probe
                 if(progressionFailed||!more)break;yield return current;
             }
             Add("progression_runtime_verified",!progressionFailed&&BlueMapMigration.Progression.ProgressionProbeRunner.Last.success);
+            var combatProof=BlueMapMigration.Combat.CombatProbeRunner.Run(identity,output,playerWorld,route,gallery.Catalog);
+            bool combatFailed=false;
+            while(true)
+            {
+                object current=null;bool more=false;
+                try{more=combatProof.MoveNext();if(more)current=combatProof.Current;}
+                catch(Exception error){Debug.LogError("Native combat proof failed: "+error);combatFailed=true;}
+                if(combatFailed||!more)break;yield return current;
+            }
+            Add("combat_runtime_verified",!combatFailed&&BlueMapMigration.Combat.CombatProbeRunner.Last.success);
             Finish();
         }
         private void SaveRouteCapture(string name)

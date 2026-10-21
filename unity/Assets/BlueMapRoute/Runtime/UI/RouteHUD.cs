@@ -45,7 +45,7 @@ namespace BlueMapMigration.Route
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
             var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP"),small,20);
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 13","Unity preview · phase 13"),small);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 14","Unity preview · phase 14"),small);
             if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
             if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
             {
@@ -60,17 +60,42 @@ namespace BlueMapMigration.Route
             {
                 if(state.QuestState("kat")=="active")
                 {Panel(new Rect(18,144,298,82));Label(32,153,270,T("Pim zoekt Muis","Pim is looking for Muis"));Label(32,180,270,route.Translate(game.QuestText("kat")),new GUIStyle(small){wordWrap=true},36);}
-                Panel(new Rect(18,589,1116,43));Label(32,598,1090,route.BindingLabel("interact")+T(" praten / verzamelen  ·  "," talk / gather  ·  ")+route.BindingLabel("menu")+T(" tas  ·  "," inventory  ·  ")+route.BindingLabel("quests")+T(" opdrachten  ·  "," quests  ·  ")+route.BindingLabel("pause")+T(" menu  ·  "," menu  ·  ")+route.BindingLabel("sprint")+T(" rennen  ·  F9 bediening"," run  ·  F9 controls"),small);
+                Panel(new Rect(18,589,1116,43));string controls=route.CombatSimulationEnabled?
+                    route.BindingLabel("attack")+T(" zwaard · "," sword · ")+route.BindingLabel("bow")+T(" boog · "," bow · ")+route.BindingLabel("technique")+T(" + aanval techniek · "," + attack technique · ")+route.BindingLabel("dodge")+T(" rollen · "," roll · ")+route.BindingLabel("interact")+T(" praten · "," talk · ")+route.BindingLabel("menu")+T(" tas · "," bag · ")+route.BindingLabel("sprint")+T(" rennen · "," run · ")+route.BindingLabel("pause")+T(" menu"," menu"):
+                    route.BindingLabel("interact")+T(" praten / verzamelen  ·  "," talk / gather  ·  ")+route.BindingLabel("menu")+T(" tas  ·  "," inventory  ·  ")+route.BindingLabel("quests")+T(" opdrachten  ·  "," quests  ·  ")+route.BindingLabel("pause")+T(" menu  ·  "," menu  ·  ")+route.BindingLabel("sprint")+T(" rennen  ·  F9 bediening"," run  ·  F9 controls");Label(32,598,1090,controls,small);
                 if(route.CurrentTarget!=null){Panel(new Rect(360,526,432,48));Label(376,538,400,(route.BindingLabel("interact")+"  ")+route.Translate(route.CurrentTarget.Label));}
                 if(route.NearbyPassage!=""&&route.Message==""){Panel(new Rect(326,114,550,48));Label(342,125,518,route.NearbyPassage,wrap,36);}
                 if(route.Working){Panel(new Rect(430,474,292,38));GUI.color=new Color(.43f,.77f,.57f);GUI.DrawTexture(new Rect(441,487,270*route.WorkFraction,10),Texture2D.whiteTexture);GUI.color=Color.white;}
                 if(route.World.CrosshairVisible)
                 {var p=route.Camera.WorldToScreenPoint(FoundationCoordinates.ToUnity(route.World.Aim.Position));float x=p.x*1152/Screen.width,y=(Screen.height-p.y)*648/Screen.height;GUI.color=new Color(.96f,.95f,.78f,.95f);GUI.DrawTexture(new Rect(x-6,y,4,1),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x+3,y,4,1),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x,y-6,1,4),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x,y+3,1,4),Texture2D.whiteTexture);GUI.color=Color.white;}
             }
+            if(route.Modal==""&&!game.DialogueOpen)DrawCombat();
             if(game.DialogueOpen){DrawDialogue();return;}
             if(route.Modal=="")return;
             GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;
-            if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
+            if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
+        }
+        public Rect BossBounds {get;private set;}
+        private void DrawCombat()
+        {
+            BossBounds=Rect.zero;var combat=route.Combat;if(!route.CombatSimulationEnabled||combat==null)return;
+            var boss=route.ActiveBoss;
+            if(boss!=null){BossBounds=new Rect(370,166,412,62);Panel(BossBounds);Label(384,172,384,route.Translate(boss.Text("name",boss.Kind)),text);GUI.color=new Color(.25f,.20f,.26f);GUI.DrawTexture(new Rect(384,204,384,9),Texture2D.whiteTexture);GUI.color=new Color(.79f,.36f,.36f);GUI.DrawTexture(new Rect(384,204,384*Mathf.Clamp01((float)boss.Hp/boss.MaxHp),9),Texture2D.whiteTexture);GUI.color=Color.white;}
+            string phase=combat.Player.Phase;
+            if(phase!=""){Panel(new Rect(18,242,298,68));string action=phase=="prepare"?T("Techniek voorbereiden","Preparing technique"):phase=="guard"?T("Bewaken","Guarding"):phase=="counter"?T("Nu terugslaan!","Counter now!"):T("Techniek","Technique");Label(32,250,270,action);float total=combat.Player.Profile.TryGet("windup",out var windup)?(float)windup.AsDouble():1;GUI.color=new Color(.55f,.9f,1);GUI.DrawTexture(new Rect(32,291,270*(phase=="prepare"?Mathf.Clamp01((float)combat.Player.Elapsed/total):1),5),Texture2D.whiteTexture);GUI.color=Color.white;}
+            if(route.Gameplay.State.Count("bow")>0){Panel(new Rect(18,322,186,39));Label(32,329,160,route.BindingLabel("bow")+T("  Pijlen: ","  Arrows: ")+route.Gameplay.State.Count("arrow"),small);}
+        }
+        private string DamageSource(string source){int i=source.IndexOf(" (",StringComparison.Ordinal);return i>=0?route.Translate(source.Substring(0,i))+" ("+route.Translate(source.Substring(i+2).TrimEnd(')'))+")":route.Translate(source);}
+        private void DrawDefeat()
+        {
+            Panel(new Rect(296,184,560,292));Label(320,204,512,T("Verslagen","Defeated"),title);Label(320,248,512,T("Je laatste veilige voortgang is bewaard.","Your last safe progress is retained."),wrap,60);
+            string source=route.Combat?.Player.LastDamageSource??"";Label(320,304,512,T("Verslagen door: ","Defeated by: ")+DamageSource(source),wrap,52);
+            if(Button(new Rect(320,386,512,48),route.BindingLabel("restart")+"  "+T("Opnieuw proberen","Try again"),true))route.RetryAfterDefeat();
+        }
+        private void DrawVictory()
+        {
+            Panel(new Rect(266,174,620,300));Label(290,196,572,T("De Blauwe Kaart is gered!","The Blue Map is saved!"),title);Label(290,250,572,T("De Slijmkoning is verslagen. Je avontuur en beloningen zijn opgeslagen in het dorp.","The Slime King is defeated. Your adventure and rewards are saved in the village."),wrap,108);
+            if(Button(new Rect(290,392,572,46),T("Verder verkennen","Continue exploring"),true))route.CloseModal();
         }
         private void DrawDialogue()
         {

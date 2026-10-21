@@ -5,15 +5,25 @@ using BlueMapMigration.Foundation;
 using BlueMapMigration.Phase6;
 using BlueMapMigration.Route;
 using BlueMapMigration.WorldAccess;
+using BlueMapMigration.Combat;
 using UnityEngine;
 
 namespace BlueMapMigration.Player
 {
-    // A source-terrain walking preview. Unported object logic is never activated.
+    // Original terrain, native foot collisions and layered player motion shared by the live adventure.
     [DefaultExecutionOrder(-50)]
     public sealed class PlayerWorld : MonoBehaviour
     {
         public PlayerMotorModel Motor { get; } = new PlayerMotorModel();
+        public CombatModel Combat {get;private set;}
+        private PlayerCombatPresentation combatArt;
+        private readonly HashSet<string> arrowOver=new HashSet<string>(StringComparer.Ordinal){"water"};
+        private double hitstop;private float shake;
+        public bool CombatHitstop=>hitstop>0;
+        public double CombatTimeScale=>CombatHitstop?.08:1;
+        public void CombatImpact(double seconds,double pixels){if(!Frozen){hitstop=Math.Max(hitstop,seconds);shake=Math.Max(shake,(float)pixels);}}
+        public void BindCombat(CombatModel combat){Combat=combat;arrowOver.Clear();arrowOver.Add("water");if(combat!=null&&combat.Catalogs.TryGet("arrowOverTiles",out var over))foreach(var type in over.Items)arrowOver.Add(type.AsString());combatArt?.Dispose();combatArt=combat==null?null:new PlayerCombatPresentation(catalog,avatar.transform);}
+        public bool Roll(Vector2 direction){bool ok=Motor.TryRoll(direction,Session.State.InputLocked);if(ok){Combat?.OnRolled();stepAudio.PlayEffect("dodge",-3);}return ok;}
         public PlayerAimModel Aim { get; } = new PlayerAimModel();
         public FoundationWorldSnapshot Snapshot { get; private set; }
         public FoundationSession Session { get; private set; }
@@ -96,11 +106,11 @@ namespace BlueMapMigration.Player
             routeBonuses=RouteMode?new RouteGameplay(repository,Session.State):null;
             Session.State.SetUi("preview-hidden",false); Session.State.SetUi("controls-preview",false);
         }
-        public void PresentCurrent()
+        public void PresentCurrent(bool preserveMotion=false)
         {
             if (Session.Current==null) throw new InvalidOperationException("Enter the route session before rendering it.");
             var position=Session.State.Position;
-            Present(Session.Current,new Vector2((float)position.Items[0].AsDouble(),(float)position.Items[1].AsDouble()));
+            Present(Session.Current,new Vector2((float)position.Items[0].AsDouble(),(float)position.Items[1].AsDouble()),preserveMotion);
         }
         public void Show(string mapId)
         {
@@ -109,12 +119,12 @@ namespace BlueMapMigration.Player
             if (!Session.TryEnter(mapId,spawn)) throw new InvalidOperationException(Session.LastDiagnostic);
             Present(Session.Current,Session.Current.Arrivals.First(a=>a.Name==spawn).Resolved);
         }
-        public void Present(FoundationWorldSnapshot snapshot, Vector2 sourcePosition)
+        public void Present(FoundationWorldSnapshot snapshot, Vector2 sourcePosition,bool preserveMotion=false)
         {
             Snapshot=snapshot??throw new ArgumentNullException(nameof(snapshot));
             if (!float.IsFinite(sourcePosition.x)||!float.IsFinite(sourcePosition.y))throw new FormatException("Non-finite route position.");
             RoutePresentation?.Dispose(); RoutePresentation=null;
-            Motor.StopForTransition(); rollPending = false; Aim.DeviceChanged();
+            if(!preserveMotion){Motor.StopForTransition();rollPending=false;Aim.DeviceChanged();}
             if (terrainRoot != null) { terrainRoot.SetActive(false); Destroy(terrainRoot); }
             terrainRoot = new GameObject("Retained terrain and passive collision geometry"); terrainRoot.transform.SetParent(transform,false);
             crowns.Clear(); waters.Clear();routeColliderOwners.Clear(); SourceTileColliders=0; SourceObjectColliders=0;
@@ -142,9 +152,8 @@ namespace BlueMapMigration.Player
             }
             if(routeAppearance!=null)routeAppearance.Visible=RouteMode;
             if(routeSort!=null)routeSort.enabled=RouteMode;
-            Teleport(sourcePosition);
-            Aim.Update(Position,Motor.Facing,Vector2.zero,Vector2.zero,false,false,Vector2.zero,false);
-            cameraPosition=PlayerCameraMath.Clamp(Position,Snapshot.Width,Snapshot.Height);
+            if(preserveMotion){MoveBody(FoundationCoordinates.ToUnity(sourcePosition));Physics2D.SyncTransforms();}
+            else{Teleport(sourcePosition);Aim.Update(Position,Motor.Facing,Vector2.zero,Vector2.zero,false,false,Vector2.zero,false);cameraPosition=PlayerCameraMath.Clamp(Position,Snapshot.Width,Snapshot.Height);}
             ConfigureCamera(); UpdateAppearance();
             if (!Frozen) stepAudio.PlayMusic(Snapshot.MapData.TryGet("music",out var music)?music.AsString():"forest");
             SyncRouteFeet();Physics2D.SyncTransforms();
@@ -215,6 +224,7 @@ namespace BlueMapMigration.Player
             texture.SetPixels32(pixels);texture.Apply();ownedTextures.Add(texture);
             Sprite sprite=Sprite.Create(texture,new Rect(0,0,width,height),Vector2.one*.5f,32);ownedSprites.Add(sprite);return sprite;
         }
+        public void FocusCameraOnPlayer(){cameraPosition=PlayerCameraMath.Clamp(Position,Snapshot.Width,Snapshot.Height);ConfigureCamera();}
         public void Teleport(Vector2 sourcePosition)
         { Motor.StopForTransition(); MoveBody(FoundationCoordinates.ToUnity(sourcePosition)); Physics2D.SyncTransforms(); }
         private void MoveBody(Vector2 position)
@@ -228,6 +238,24 @@ namespace BlueMapMigration.Player
             int x=Mathf.FloorToInt(sourcePosition.x/32),y=Mathf.FloorToInt((sourcePosition.y+8)/32);
             if(x<0||y<0||x>=Snapshot.Width||y>=Snapshot.Height)return "";
             var cell=Snapshot.TerrainCells[y*Snapshot.Width+x]; return tileNames[cell.AtlasX];
+        }
+        public string TileAt(Vector2 point)
+        {int x=Mathf.FloorToInt(point.x/32),y=Mathf.FloorToInt(point.y/32);return x<0||y<0||x>=Snapshot.Width||y>=Snapshot.Height?"":tileNames[Snapshot.TerrainCells[y*Snapshot.Width+x].AtlasX];}
+        public bool CombatSolid(Vector2 point)
+        {int x=Mathf.FloorToInt(point.x/32),y=Mathf.FloorToInt(point.y/32);if(x<0||y<0||x>=Snapshot.Width||y>=Snapshot.Height)return true;return tileSet.IsSolid(Snapshot.TerrainCells[y*Snapshot.Width+x]);}
+        public bool CombatBodyFits(Vector2 point,float radius)
+        {var colliders=Physics2D.OverlapCircleAll(FoundationCoordinates.ToUnity(point),radius/32,FoundationCollision.Mask(1));return !colliders.Any(c=>!c.isTrigger&&c!=foot);}
+        public bool CombatClearLine(Vector2 from,Vector2 to,bool arrow=false)
+        {
+            var start=FoundationCoordinates.ToUnity(from);var end=FoundationCoordinates.ToUnity(to);var d=end-start;
+            foreach(var hit in Physics2D.RaycastAll(start,d.normalized,d.magnitude,FoundationCollision.Mask(1)))
+            {
+                if(hit.collider==null||hit.collider.isTrigger||hit.collider==foot)continue;
+                if(arrow&&hit.collider.gameObject.name.StartsWith("tile ",StringComparison.Ordinal))
+                {string[] xy=hit.collider.gameObject.name.Substring(5).Split(',');if(xy.Length==2&&int.TryParse(xy[0],out int x)&&int.TryParse(xy[1],out int y)&&arrowOver.Contains(TileAt(new Vector2(x*32+16,y*32+16))))continue;}
+                return false;
+            }
+            return true;
         }
         public Vector2 Sweep(Vector2 displacement)
         {
@@ -256,6 +284,7 @@ namespace BlueMapMigration.Player
         public string Step(double delta,MotionInput motion)
         {
             Vector2 before=Position; motion.TileName=SurfaceAt(before);
+            if(Combat!=null&&!motion.Paused){Combat.Player.Position=before;Combat.Player.AimDirection=Aim.Direction;Combat.BeforePhysics(delta);motion.AttackActive|=Combat.Player.AttackTimer>0;motion.BowActive|=Combat.Player.BowAnim>0;motion.CombatBusy|=Combat.TechniqueBusy;motion.CombatMovementFactor=Combat.MovementScale;}
             if(RouteMode)
             {
                 ApplyEquipmentBonuses();
@@ -264,13 +293,16 @@ namespace BlueMapMigration.Player
             MotionFrame next=Motor.BeginStep(delta,motion); Sweep(next.VelocityPixels*(float)delta);
             string sound=Motor.CompleteStep(next,PlayerMotorModel.SourceLength(Position-before),SurfaceAt(Position));
             if(sound!=""&&stepAudio.PlayEffect("step_"+sound,Motor.Sprinting?-13:-17,UnityEngine.Random.Range(.94f,1.06f)))LastStepEffects++;
+            if(Combat!=null&&!motion.Paused){Combat.Player.Position=Position;Combat.AfterPhysics(delta);}
             Session.State.Position=FoundationValue.Array(new[]{FoundationValue.Number(Position.x),FoundationValue.Number(Position.y)});UpdateAppearance();return sound;
         }
         private void Update()
         {
             if(!initialized||Frozen)return;
+            hitstop=Math.Max(0,hitstop-Time.unscaledDeltaTime);shake=Mathf.MoveTowards(shake,0,22*Time.unscaledDeltaTime);
             frame=input.Read();ControllerActive=frame.ControllerActive;
-            if(ControllerActive!=lastController){Aim.DeviceChanged();rollPending=false;lastController=ControllerActive;}
+            if(ControllerActive!=lastController){Aim.DeviceChanged();Combat?.Cancel();rollPending=false;lastController=ControllerActive;}
+            if(Session.State.InputLocked)Combat?.Cancel();
             bool panelHandled=controls.IsOpen;
             if(!controls.BlocksShortcuts&&(UnityEngine.Input.GetKeyDown(KeyCode.F9)||(!RouteMode&&frame.Pressed("menu"))))controls.Toggle();
             controls.Handle(frame);
@@ -279,8 +311,8 @@ namespace BlueMapMigration.Player
             if(!RouteMode&&!panelHandled&&frame.Pressed("pause"))Session.State.SetUi("player-preview",!Session.State.Paused);
             input.SetContext(true,Session.State.InputLocked);
             if(!panelHandled&&!Session.State.InputLocked&&frame.RollPressed)rollPending=true;
-            Session.Clock.Tick(Time.unscaledDeltaTime);
-            if(!Session.State.Paused)clock+=Time.unscaledDeltaTime;
+            Session.Clock.Tick(Time.unscaledDeltaTime*CombatTimeScale);
+            if(!Session.State.Paused)clock+=Time.unscaledDeltaTime*CombatTimeScale;
             if(!Session.State.InputLocked)
             {
                 Vector2 mouse=FoundationCoordinates.ToGodot(cameraView.ScreenToWorldPoint(frame.MousePosition));
@@ -294,13 +326,13 @@ namespace BlueMapMigration.Player
         {
             if(!initialized||Frozen||frame==null)return;
             if(rollPending)
-            { if(Motor.TryRoll(frame.Move,Session.State.InputLocked))stepAudio.PlayEffect("dodge",-3,UnityEngine.Random.Range(.95f,1.05f));rollPending=false; }
-            Step(Time.fixedDeltaTime,new MotionInput { Direction=frame.Move,SprintHeld=frame.SprintHeld,Locked=Session.State.InputLocked,Paused=Session.State.Paused });
+            { Roll(frame.Move);rollPending=false; }
+            Step(Time.fixedDeltaTime*CombatTimeScale,new MotionInput { Direction=frame.Move,SprintHeld=frame.SprintHeld,Locked=Session.State.InputLocked,Paused=Session.State.Paused });
         }
         private void LateUpdate()
         {
             if(!initialized)return;
-            if(!Frozen&&!Session.State.Paused)cameraPosition=PlayerCameraMath.Follow(cameraPosition,Position,Time.unscaledDeltaTime);
+            if(!Frozen&&!Session.State.Paused)cameraPosition=PlayerCameraMath.Follow(cameraPosition,Position,Time.unscaledDeltaTime*CombatTimeScale);
             cameraPosition=PlayerCameraMath.Clamp(cameraPosition,Snapshot.Width,Snapshot.Height);ConfigureCamera();
             foreach(var crown in crowns)
             {
@@ -312,7 +344,8 @@ namespace BlueMapMigration.Player
         private void ConfigureCamera()
         {
             cameraView.orthographic=true;cameraView.orthographicSize=5.0625f;
-            Vector2 at=FoundationCoordinates.ToUnity(cameraPosition);cameraView.transform.position=new Vector3(at.x,at.y,-10);
+            Vector2 offset=shake>0?UnityEngine.Random.insideUnitCircle*shake:Vector2.zero;
+            Vector2 at=FoundationCoordinates.ToUnity(cameraPosition+offset);cameraView.transform.position=new Vector3(at.x,at.y,-10);
         }
         public void UpdateAppearance()
         {
@@ -330,6 +363,8 @@ namespace BlueMapMigration.Player
                 visual.transform.localPosition=new Vector3(pivot.x,pivot.y-4f/32,0);
             }
             else { visual.transform.localRotation=Quaternion.identity;visual.transform.localPosition=new Vector3(0,-bob/32,0); }
+            if(Combat!=null&&Combat.Player.AttackTimer>0){Vector2 lean=Combat.Player.AttackDirection*Mathf.Sin((float)(1-Combat.Player.AttackTimer/.18)*Mathf.PI)*3;visual.transform.localPosition+=new Vector3(lean.x/32,-lean.y/32,0);}
+            bool flicker=Combat!=null&&Combat.Player.Invulnerable>0&&((int)(Combat.Player.Invulnerable*12)%2==0);visual.SetActive(!flicker);combatArt?.Draw(Combat,Position);
             actor.color=new Color(1,1,1,Motor.IsRollSafe?.8f:1);actor.sortingOrder=RouteMode?0:Mathf.RoundToInt(Position.y)+1;
             if(routeSort!=null){routeSort.enabled=RouteMode;routeSort.sortingOrder=Mathf.RoundToInt(Position.y)+1;}
         }
@@ -376,6 +411,7 @@ namespace BlueMapMigration.Player
             controls.Draw(new Rect(196,80,760,480));
             GUI.matrix=old;
         }
+        public void PlayRouteMusic(string id){if(!Frozen)stepAudio.PlayMusic(id);}
         public void PlayRouteEffect(string id) { stepAudio.PlayEffect(id,-8); }
         private void SyncRouteFeet()
         {
@@ -393,12 +429,12 @@ namespace BlueMapMigration.Player
         public void RefreshRouteState() { ApplyEquipmentBonuses();RoutePresentation?.Tick(clock,Session.State);SyncRouteFeet();UpdateAppearance(); }
         public void SetRouteObjectPosition(string sourceAddress,Vector2 sourcePosition) { RoutePresentation?.SetPosition(sourceAddress,sourcePosition); }
         public void SetRouteObjectVisible(string sourceAddress,bool visible) { RoutePresentation?.SetVisible(sourceAddress,visible);SyncRouteFeet(); }
-        private void OnApplicationFocus(bool focused) { if(input!=null){input.SetFocused(focused&&isActiveAndEnabled);rollPending=false;} }
+        private void OnApplicationFocus(bool focused) { if(input!=null){input.SetFocused(focused&&isActiveAndEnabled);if(!focused)Combat?.Cancel();rollPending=false;} }
         private void OnDisable() { if(initialized){Session.State.SetUi("preview-hidden",true);Motor.StopForTransition();input.SetFocused(false);} }
         private void OnEnable() { if(initialized){Session.State.SetUi("preview-hidden",false);input.SetFocused(Application.isFocused);ConfigureCamera();} }
         private void OnDestroy()
         {
-            input?.Dispose();if(ownsSession)Session?.Dispose();RoutePresentation?.Dispose();routeAppearance?.Dispose();
+            combatArt?.Dispose();input?.Dispose();if(ownsSession)Session?.Dispose();RoutePresentation?.Dispose();routeAppearance?.Dispose();
             foreach(var sprite in ownedSprites)Destroy(sprite);foreach(var texture in ownedTextures)Destroy(texture);
         }
     }

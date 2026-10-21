@@ -59,6 +59,8 @@ jobs:
         run: python tools/build_migration_inventory_state.py --check --report "$RUNNER_TEMP/inventory-data.json"
       - name: Oorspronkelijke ervaring, uitrusting, upgrades en uiterlijk controleren
         run: python tools/build_migration_progression.py --check --report "$RUNNER_TEMP/progression-data.json"
+      - name: Oorspronkelijke gevechten, monsters, projectielen en wilde dieren controleren
+        run: python tools/build_migration_combat.py --check --report "$RUNNER_TEMP/combat-data.json"
       - name: Referentie, releasegegevens en teksten controleren
         run: |
           python tools/freeze_godot_reference.py --check
@@ -78,12 +80,14 @@ jobs:
             ${{ runner.temp }}/world-access-data.json
             ${{ runner.temp }}/inventory-data.json
             ${{ runner.temp }}/progression-data.json
+            ${{ runner.temp }}/combat-data.json
             migration/phase-08/source-contracts.json
             migration/phase-09/source-contracts.json
             migration/phase-10/source-contracts.json
             migration/phase-11/source-contracts.json
             migration/phase-12/source-contracts.json
             migration/phase-13/source-contracts.json
+            migration/phase-14/source-contracts.json
             migration/presentation/graphics.json
             migration/presentation/audio.json
             migration/presentation/localization.json
@@ -167,7 +171,7 @@ jobs:
   world:
     name: Geladen wereld en veranderde toestanden opnieuw exporteren
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -200,6 +204,10 @@ jobs:
         run: python tools/record_migration_inventory_state.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/inventory-evidence"
       - name: Oorspronkelijke ervaring, uitrusting en uiterlijk tweemaal herhalen
         run: python tools/record_migration_progression.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/progression-evidence"
+      - name: Oorspronkelijke wapens, aanvallen, schade en herstel tweemaal herhalen
+        run: python tools/record_migration_combat.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/combat-evidence"
+      - name: Oorspronkelijke vijanden, wilde dieren, bazen en projectielen tweemaal herhalen
+        run: python tools/record_migration_encounter.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/encounter-evidence"
       - name: Gerichte wereldgevolgen en uiteindelijke IDs controleren
         run: |
           python tools/check_world_witnesses.py --directory migration/world --output "$RUNNER_TEMP/world-witnesses.json"
@@ -269,5 +277,22 @@ jobs:
             ${{ runner.temp }}/progression-evidence/difference.json
             migration/phase-13/source-contracts.json
             migration/phase-13/progression-oracle.json
+            ${{ runner.temp }}/combat-evidence/receipt.json
+            ${{ runner.temp }}/combat-evidence/combat-oracle.json
+            ${{ runner.temp }}/combat-evidence/import.log
+            ${{ runner.temp }}/combat-evidence/isolation.log
+            ${{ runner.temp }}/combat-evidence/run-*.json
+            ${{ runner.temp }}/combat-evidence/run-*.log
+            ${{ runner.temp }}/combat-evidence/difference.json
+            ${{ runner.temp }}/encounter-evidence/receipt.json
+            ${{ runner.temp }}/encounter-evidence/encounter-oracle.json
+            ${{ runner.temp }}/encounter-evidence/import.log
+            ${{ runner.temp }}/encounter-evidence/isolation.log
+            ${{ runner.temp }}/encounter-evidence/run-*.json
+            ${{ runner.temp }}/encounter-evidence/run-*.log
+            ${{ runner.temp }}/encounter-evidence/difference.json
+            migration/phase-14/source-contracts.json
+            migration/phase-14/combat-oracle.json
+            migration/phase-14/encounter-oracle.json
           if-no-files-found: error
           retention-days: 30
