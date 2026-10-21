@@ -30,7 +30,7 @@ namespace BlueMapMigration.Combat
                 case "spitter":Spitter(e,offset,distance,dt);break;
                 case "golem":
                     bool enraged=e.Hp*2<e.MaxHp;if(e.State=="idle"){if(distance<e.Number("sight"))e.Desired=direction*e.Number("chase_speed")*(enraged?1.4f:1);else Wander(e,dt);if(distance<66&&e.StateTime>1.2)Enter(e,"windup");}
-                    else if(e.State=="windup"&&e.StateTime>(enraged?.65f:.9f)){if(distance<56)Hurt(e.Position,(int)e.Number("slam_damage",e.Number("damage")),e.Text("name")+" (klap)");if(enraged)for(int i=0;i<6;i++)Fire(e,"rock",e.Position,Rotate(Vector2.right,Mathf.PI*2*i/6+.3f),95,1);SoundRequested?.Invoke("slam");Enter(e,"recover");}
+                    else if(e.State=="windup"&&e.StateTime>(enraged?.65:.9)){if(distance<56)Hurt(e.Position,(int)e.Number("slam_damage",e.Number("damage")),e.Text("name")+" (klap)");if(enraged)for(int i=0;i<6;i++)Fire(e,"rock",e.Position,Rotate(Vector2.right,Mathf.PI*2*i/6+.3f),95,1);SoundRequested?.Invoke("slam");Enter(e,"recover");}
                     else if(e.State=="recover"&&e.StateTime>.9)Enter(e,"idle");break;
                 case "king":King(e,dt);break;
                 case "cv_ram":case "cv_slinger":CombatAi(e,offset,distance);break;
@@ -43,7 +43,7 @@ namespace BlueMapMigration.Combat
             }
         }
         void Fire(EncounterActor e,string kind,Vector2 at,Vector2 aim,float speed,int damage=-1)=>SpawnProjectile(kind,at,aim,speed,damage<0?(int)e.Number("damage",1):damage,e.Text("name",e.Kind)+(kind=="arrow"?" (pijl)":kind=="arcane_orb"?" (tovervonk)":kind=="slimeball"?" (slijmbal)":kind=="rock"?" (steen)":""));
-        void Hint(EncounterActor e){string hint=e.Text("hint");string flag="vijanden_hint_"+e.Kind;if(hint!=""&&!state.Flag(flag)){state.SetFlag(flag,true);MessageRequested?.Invoke(hint);e.Special=Math.Max(e.Special,3.5f);}}
+        void Hint(EncounterActor e){string hint=e.Text("hint");string flag="vijanden_hint_"+e.Kind;if(hint!=""&&!state.Flag(flag)){state.SetFlag(flag,true);MessageRequested?.Invoke(hint);e.Special=Math.Max(e.Special,3.5);}}
         void Mage(EncounterActor e,Vector2 offset,float distance,double dt)
         {
             e.Special-=dt;Vector2 dir=offset.normalized;
@@ -68,15 +68,15 @@ namespace BlueMapMigration.Combat
                 if(distance<e.Number("flee_range")&&e.HopCooldown<=0){foreach(float shrink in new[]{1,.8f,.6f,.45f})foreach(float turn in new[]{0,.5f,-.5f,1,-1,1.5f,-1.5f}){Vector2 spot=e.Position+Rotate(-offset.normalized,turn)*e.Number("hop_distance")*shrink;if(Vector2.Distance(spot,player.Position)>distance+15&&Fits(e,spot)&&BodyClear(e,e.Position,spot)){e.HopFrom=e.Position;e.HopTo=spot;e.HopCount++;Enter(e,"hop");SoundRequested?.Invoke("spitter_hop");return;}}e.HopCooldown=.5;}
                 else if(e.Special<=0){Enter(e,"windup");e.Special=e.Scalar("spit_every");e.Aim=offset.normalized;}
             }
-            else if(e.State=="windup"){if(e.StateTime<e.Scalar("windup")-.15f)e.Aim=offset.normalized;if(e.StateTime>=e.Scalar("windup")){int fan=(int)e.Number("fan");for(int i=0;i<fan;i++)Fire(e,"slimeball",e.Position+new Vector2(0,6),Rotate(e.Aim,(i-(fan-1)/2f)*e.Number("fan_spread")),e.Number("ball_speed"));e.Knockback=-e.Aim*90;e.ActionFlash=.2;Enter(e,"idle");SoundRequested?.Invoke("spitter_spit");}}
-            else if(e.State=="hop"){float p=(float)Math.Clamp(e.StateTime/e.Scalar("hop_time"),0,1);e.AirHeight=Mathf.Sin(p*Mathf.PI)*14;e.Position=Vector2.Lerp(e.HopFrom,e.HopTo,p);if(p>=1){e.AirHeight=0;e.HopCooldown=e.Scalar("hop_cooldown");e.Special=Math.Max(e.Special,.7f);Enter(e,"idle");}}
+            else if(e.State=="windup"){if(e.StateTime<e.Scalar("windup")-.15)e.Aim=offset.normalized;if(e.StateTime>=e.Scalar("windup")){int fan=(int)e.Number("fan");for(int i=0;i<fan;i++)Fire(e,"slimeball",e.Position+new Vector2(0,6),Rotate(e.Aim,(i-(fan-1)/2f)*e.Number("fan_spread")),e.Number("ball_speed"));e.Knockback=-e.Aim*90;e.ActionFlash=.2;Enter(e,"idle");SoundRequested?.Invoke("spitter_spit");}}
+            else if(e.State=="hop"){double p=Math.Clamp(e.StateTime/e.Scalar("hop_time"),0,1);e.AirHeight=Math.Sin(p*Math.PI)*14;e.Position=Vector2.Lerp(e.HopFrom,e.HopTo,(float)p);if(p>=1){e.AirHeight=0;e.HopCooldown=e.Scalar("hop_cooldown");e.Special=Math.Max(e.Special,.7);Enter(e,"idle");}}
         }
         void King(EncounterActor e,double dt)
         {
-            int phase=e.Hp>(e.MaxHp*.65f)?1:e.Hp>e.MaxHp*.3f?2:3;
-            if(e.State=="idle"&&e.StateTime>(phase==1?.9f:phase==2?.6f:.4f)){e.HopPhase=phase;Vector2 goal=player.Position+player.Velocity*.2f;if(!Fits(e,goal)){bool found=false;for(int radius=1;radius<5&&!found;radius++)for(int i=0;i<8;i++){Vector2 candidate=goal+Rotate(Vector2.right,i*Mathf.PI/4)*radius*24;if(Fits(e,candidate)){goal=candidate;found=true;break;}}if(!found)goal=e.Position;}e.HopTo=goal;Enter(e,"crouch");}
-            else if(e.State=="crouch"&&e.StateTime>(e.HopPhase==1?.65f:e.HopPhase==2?.6f:.5f)){Enter(e,"hop");e.HopFrom=e.Position;}
-            else if(e.State=="hop"){float p=(float)Math.Clamp(e.StateTime/(e.HopPhase<3?.8:.6),0,1);e.AirHeight=Mathf.Sin(p*Mathf.PI)*52;e.Position=Vector2.Lerp(e.HopFrom,e.HopTo,p);if(p>=1){e.AirHeight=0;e.HopCount++;float shock=e.HopPhase==1?64:e.HopPhase==2?74:86;if(Vector2.Distance(e.Position,player.Position)<shock)Hurt(e.Position,e.HopPhase==1?1:(int)e.Number("slam_damage",2),e.Text("name")+" (landing)");if((e.HopPhase==1&&e.HopCount%4==0||e.HopPhase==3&&e.HopCount%3==0)&&actors.Count(a=>!a.Dead&&a.Kind=="slime_mini")<3)for(int i=0;i<2;i++){Vector2 at=e.Position+Rotate(Vector2.right,Range(0,Mathf.PI*2))*60;if(Fits(e,at))Spawn("slime_mini",at);}if(e.HopPhase>=2){int bullets=e.HopPhase==2?3:5;for(int i=0;i<bullets;i++)Fire(e,"slimeball",e.Position,Rotate((player.Position-e.Position).normalized,(i-(bullets-1)/2f)*.3f),115,1);}SoundRequested?.Invoke("slam");Enter(e,"land");}}
+            int phase=e.Hp>(e.MaxHp*.65)?1:e.Hp>e.MaxHp*.3?2:3;
+            if(e.State=="idle"&&e.StateTime>(phase==1?.9:phase==2?.6:.4)){e.HopPhase=phase;Vector2 goal=player.Position+player.Velocity*.2f;if(!Fits(e,goal)){bool found=false;for(int radius=1;radius<5&&!found;radius++)for(int i=0;i<8;i++){Vector2 candidate=goal+Rotate(Vector2.right,i*Mathf.PI/4)*radius*24;if(Fits(e,candidate)){goal=candidate;found=true;break;}}if(!found)goal=e.Position;}e.HopTo=goal;Enter(e,"crouch");}
+            else if(e.State=="crouch"&&e.StateTime>(e.HopPhase==1?.65:e.HopPhase==2?.6:.5)){Enter(e,"hop");e.HopFrom=e.Position;}
+            else if(e.State=="hop"){double p=Math.Clamp(e.StateTime/(e.HopPhase<3?.8:.6),0,1);e.AirHeight=Math.Sin(p*Math.PI)*52;e.Position=Vector2.Lerp(e.HopFrom,e.HopTo,(float)p);if(p>=1){e.AirHeight=0;e.HopCount++;float shock=e.HopPhase==1?64:e.HopPhase==2?74:86;if(Vector2.Distance(e.Position,player.Position)<shock)Hurt(e.Position,e.HopPhase==1?1:(int)e.Number("slam_damage",2),e.Text("name")+" (landing)");if((e.HopPhase==1&&e.HopCount%4==0||e.HopPhase==3&&e.HopCount%3==0)&&actors.Count(a=>!a.Dead&&a.Kind=="slime_mini")<3)for(int i=0;i<2;i++){Vector2 at=e.Position+Rotate(Vector2.right,Range(0,Mathf.PI*2))*60;if(Fits(e,at))Spawn("slime_mini",at);}if(e.HopPhase>=2){int bullets=e.HopPhase==2?3:5;for(int i=0;i<bullets;i++)Fire(e,"slimeball",e.Position,Rotate((player.Position-e.Position).normalized,(i-(bullets-1)/2f)*.3f),115,1);}SoundRequested?.Invoke("slam");Enter(e,"land");}}
             else if(e.State=="land"&&e.StateTime>.65)Enter(e,"idle");
         }
         void CombatAi(EncounterActor e,Vector2 offset,float distance)
@@ -84,7 +84,7 @@ namespace BlueMapMigration.Combat
             if(e.State=="cv_warn"){if(e.StateTime>=.85){if(e.Behavior=="cv_ram")Enter(e,"cv_charge");else{Fire(e,"cv_thorn",e.Position,e.Aim,150,1);SoundRequested?.Invoke("cv_thorn");Enter(e,"cv_rest");}}return;}
             if(e.State=="cv_charge"){if(e.StateTime>.45||!BodyClear(e,e.Position,e.Position+e.Aim*16))Enter(e,"cv_rest");else e.Desired=e.Aim*205;return;}
             if(e.State=="cv_rest"){if(e.StateTime>1.3)Enter(e,"idle");return;}
-            if(!Clear(e.Position,player.Position)||distance>(player.Noisy?230:140)){e.StateTime=Math.Min(e.StateTime,.6f);return;}
+            if(!Clear(e.Position,player.Position)||distance>(player.Noisy?230:140)){e.StateTime=Math.Min(e.StateTime,.6);return;}
             if(e.Behavior=="cv_slinger"){if(distance<85)e.Desired=Free(e,-offset.normalized)*34;else if(distance>185)e.Desired=Free(e,offset.normalized)*25;}else if(distance>115)e.Desired=Free(e,offset.normalized)*42;
             if(e.StateTime>1.1&&distance>24&&SlotFree(e)){e.Aim=offset.normalized;Enter(e,"cv_warn");SoundRequested?.Invoke("cv_ready");}
         }
@@ -133,16 +133,16 @@ namespace BlueMapMigration.Combat
                 if(e.State=="hb_rest"){if(e.StateTime>=1.8)Enter(e,"idle");return;}
                 if(e.State=="hb_root_warn"){e.Length=Math.Min(e.Length,Clip(e,100,12));if(e.Length<18){Enter(e,"hb_rest");return;}if(e.StateTime>=1.1){Enter(e,"hb_root_hit");SoundRequested?.Invoke("hb_root_strike");}return;}
                 if(e.State=="hb_root_hit"){if(!e.Hit&&HabitatTarget(e)&&Strip(e,player.Position+new Vector2(0,8),18,e.Length,12)){e.Hit=true;Hurt(e.Origin,1,e.Text("name"));}if(e.StateTime>=.18)Enter(e,"hb_rest");return;}
-                if(e.StateTime<1.6||!HabitatTarget(e)||distance>100||!SlotFree(e))return;e.Aim=distance>.1f?offset.normalized:Vector2.down;e.Origin=e.Position+new Vector2(0,8);e.Length=Clip(e,100,12);if(e.Length<18)return;Enter(e,"hb_root_warn");SoundRequested?.Invoke("hb_root_ready");return;
+                if(e.StateTime<1.6||!HabitatTarget(e)||distance>100||!SlotFree(e))return;e.Aim=distance>.1f?offset.normalized:new Vector2(0,1);e.Origin=e.Position+new Vector2(0,8);e.Length=Clip(e,100,12);if(e.Length<18)return;Enter(e,"hb_root_warn");SoundRequested?.Invoke("hb_root_ready");return;
             }
             if(e.State=="hb_rest"){if(e.StateTime>=1.6)Enter(e,"idle");return;}
             var light=FixedLight(e);
             if(e.State=="hb_moth_warn"){if(light.HasValue||!HabitatTarget(e)){Enter(e,"hb_rest");return;}e.Length=Math.Min(e.Length,Clip(e,70,12));if(e.StateTime>=.85)Enter(e,"hb_moth_dash");return;}
-            if(e.State=="hb_moth_dash"){if(!HabitatTarget(e)||e.StateTime>=.46||e.Traveled>=e.Length){Enter(e,"hb_rest");return;}HabitatMove(e,e.Aim,Math.Min(155,(e.Length-e.Traveled)/Math.Max(dt,.001f)),dt);if(e.Desired==Vector2.zero)Enter(e,"hb_rest");return;}
+            if(e.State=="hb_moth_dash"){if(!HabitatTarget(e)||e.StateTime>=.46||e.Traveled>=e.Length){Enter(e,"hb_rest");return;}HabitatMove(e,e.Aim,Math.Min(155,(e.Length-e.Traveled)/Math.Max(dt,.001)),dt);if(e.Desired==Vector2.zero)Enter(e,"hb_rest");return;}
             e.Distracted=light.HasValue;Vector2 target=light??player.Position;bool lamp=player.Lamp&&(PlayerLampAt?.Invoke(player.Position)??true);
-            if(!light.HasValue&&(!lamp||distance>=112||!HabitatTarget(e))){Vector2 back=e.Home-e.Position;if(back.magnitude>10)HabitatMove(e,back.normalized,28,dt);e.StateTime=Math.Min(e.StateTime,.7f);return;}
-            Vector2 toward=target-e.Position;if(e.Distracted){if(toward.magnitude>30)HabitatMove(e,toward.normalized,38,dt);e.StateTime=Math.Min(e.StateTime,.7f);return;}
-            if(toward.magnitude>52)HabitatMove(e,toward.normalized,38,dt);else if(e.StateTime>1.4&&SlotFree(e)){e.Aim=toward.magnitude>.1f?toward.normalized:Vector2.down;e.Origin=e.Position+new Vector2(0,8);e.Length=Clip(e,70,12);e.Traveled=0;if(e.Length<20)return;Enter(e,"hb_moth_warn");SoundRequested?.Invoke("hb_moth_ready");}
+            if(!light.HasValue&&(!lamp||distance>=112||!HabitatTarget(e))){Vector2 back=e.Home-e.Position;if(back.magnitude>10)HabitatMove(e,back.normalized,28,dt);e.StateTime=Math.Min(e.StateTime,.7);return;}
+            Vector2 toward=target-e.Position;if(e.Distracted){if(toward.magnitude>30)HabitatMove(e,toward.normalized,38,dt);e.StateTime=Math.Min(e.StateTime,.7);return;}
+            if(toward.magnitude>52)HabitatMove(e,toward.normalized,38,dt);else if(e.StateTime>1.4&&SlotFree(e)){e.Aim=toward.magnitude>.1f?toward.normalized:new Vector2(0,1);e.Origin=e.Position+new Vector2(0,8);e.Length=Clip(e,70,12);e.Traveled=0;if(e.Length<20)return;Enter(e,"hb_moth_warn");SoundRequested?.Invoke("hb_moth_ready");}
         }
         bool CoastAllowed(EncounterActor e,Vector2 at)=>new Rect((e.Kind=="ad_keeper"?38*32:8*32)+20,5*32+20,(e.Kind=="ad_keeper"?18*32:16*32)-40,18*32-40).Contains(at)&&at.y<24*32&&at.x>=7*32;
         bool CoastTarget(EncounterActor e)=>CoastAllowed(e,player.Position)&&Vector2.Distance(e.Position,player.Position)<e.Number("sight")&&Clear(e.Position,player.Position);
@@ -151,8 +151,8 @@ namespace BlueMapMigration.Combat
             if(!CoastTarget(e)){if(e.State!="ad_idle")Enter(e,"ad_idle");e.Knockback=Vector2.zero;Vector2 home=e.Home-e.Position;if(home.magnitude>3&&CoastAllowed(e,e.Position+home.normalized*(float)(30*dt)))e.Desired=home.normalized*30;return;}
             if(e.State=="idle"||e.State=="ad_idle"){if(e.StateTime<1.2||actors.Any(a=>a!=e&&!a.Dead&&Vector2.Distance(a.Position,e.Position)<280&&a.State.StartsWith("ad_",StringComparison.Ordinal)&&a.State!="ad_rest"&&a.State!="ad_idle"))return;if(e.Kind!="ad_wisp"&&distance>100){Vector2 direction=Rotate(offset.normalized,(float)(.25*Math.Sin(e.Time)));Vector2 next=e.Position+direction*(float)(e.Number("speed")*dt);if(CoastAllowed(e,next)&&BodyClear(e,e.Position,next))e.Desired=direction*e.Number("speed");return;}e.Aim=offset.normalized;e.Origin=e.Position;e.Pulse=0;e.Combo=0;Enter(e,"ad_warn");SoundRequested?.Invoke("ad_warn");return;}
             if(e.State=="ad_warn"||e.State=="ad_warn2"){if(e.StateTime>=.95){Enter(e,e.Kind=="ad_wisp"?"ad_pulse":"ad_swing");SoundRequested?.Invoke(e.Kind=="ad_wisp"?"ad_pulse":"ad_swipe");}return;}
-            if(e.State=="ad_swing"){Vector2 d=player.Position-e.Origin;if(!e.Hit&&CoastTarget(e)&&d.magnitude<=118&&(d.magnitude<8||Math.Abs(Angle(e.Aim,d))<=.58f)){Hurt(e.Position,(int)e.Number("damage"),e.Text("name"));e.Hit=true;}if(e.StateTime>=.18){if(e.Kind=="ad_keeper"&&e.Combo==0){e.Combo=1;e.Aim=Rotate(e.Aim,Mathf.PI/2);Enter(e,"ad_warn2");SoundRequested?.Invoke("ad_warn");}else Enter(e,"ad_rest");}}
-            else if(e.State=="ad_pulse"){double previous=e.Pulse;e.Pulse=Math.Min(148,e.StateTime/.7f*148);Vector2 d=player.Position-e.Origin;if(!e.Hit&&CoastTarget(e)&&d.magnitude<=e.Pulse+8&&d.magnitude>=Math.Max(0,previous-8)&&Math.Abs(Angle(e.Aim,d))>.52f){Hurt(e.Position,(int)e.Number("damage"),e.Text("name"));e.Hit=true;}if(e.StateTime>=.7)Enter(e,"ad_rest");}
+            if(e.State=="ad_swing"){Vector2 d=player.Position-e.Origin;if(!e.Hit&&CoastTarget(e)&&d.magnitude<=118&&(d.magnitude<8||Math.Abs(Angle(e.Aim,d))<=.58)){Hurt(e.Position,(int)e.Number("damage"),e.Text("name"));e.Hit=true;}if(e.StateTime>=.18){if(e.Kind=="ad_keeper"&&e.Combo==0){e.Combo=1;e.Aim=Rotate(e.Aim,Mathf.PI/2);Enter(e,"ad_warn2");SoundRequested?.Invoke("ad_warn");}else Enter(e,"ad_rest");}}
+            else if(e.State=="ad_pulse"){double previous=e.Pulse;e.Pulse=Math.Min(148,e.StateTime/.7*148);Vector2 d=player.Position-e.Origin;if(!e.Hit&&CoastTarget(e)&&d.magnitude<=e.Pulse+8&&d.magnitude>=Math.Max(0,previous-8)&&Math.Abs(Angle(e.Aim,d))>.52){Hurt(e.Position,(int)e.Number("damage"),e.Text("name"));e.Hit=true;}if(e.StateTime>=.7)Enter(e,"ad_rest");}
             else if(e.State=="ad_rest"&&e.StateTime>=1.6)Enter(e,"ad_idle");if(!CoastAllowed(e,e.Position+e.Knockback*(float)dt))e.Knockback=Vector2.zero;
         }
         void AfterMove(EncounterActor e,Vector2 before)

@@ -141,7 +141,7 @@ namespace BlueMapMigration.Combat
             if(breakGuard){if(e.Behavior=="hb_root"){e.GuardBroken=1.8;Enter(e,"hb_rest");}else if(e.Behavior=="lw_guard")e.GuardBroken=1.8;}
             if(arrow&&precise&&e.Behavior=="hb_root"){e.GuardBroken=1.8;Enter(e,"hb_rest");}
             if(e.Behavior=="hb_root"&&new[]{"idle","hb_root_warn"}.Contains(e.State)&&e.GuardBroken<=0)return false;
-            if(e.Behavior=="lw_guard"&&e.GuardBroken<=0&&Vector2.Dot(direction.normalized,e.Aim)<-.45f)return false;
+            if(e.Behavior=="lw_guard"&&e.GuardBroken<=0&&Vector2.Dot(direction.normalized,e.Aim)<-.45)return false;
             if(arrow&&e.Behavior=="golem"&&e.State!="windup"&&e.State!="recover")return false;
             if(e.Behavior=="hb_moth")Enter(e,"hb_rest");
             if(e.Behavior.StartsWith("ad_",StringComparison.Ordinal)&&e.State!="ad_swing"&&e.State!="ad_pulse")Enter(e,"ad_rest");

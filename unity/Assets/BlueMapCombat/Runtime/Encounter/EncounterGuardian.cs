@@ -23,7 +23,7 @@ namespace BlueMapMigration.Combat
                     if(distance<104)e.Desired=-offset.normalized*(float)PhaseValue(e,1)*1.3f;else if(distance>190)e.Desired=offset.normalized*(float)PhaseValue(e,1);
                     if(e.StateTime>=PhaseValue(e,0))GuardianAttack(e,distance);break;
                 case "charge_windup":
-                    double windup=PhaseValue(e,2);if(e.StateTime<windup*.6f){Vector2 lead=player.Position-e.Position+player.Velocity*(float)((windup-e.StateTime)*.6);e.Aim=Vector2.Lerp(e.Aim,lead.normalized,.18f).normalized;e.Length=ChargeLength(e);}
+                    double windup=PhaseValue(e,2);if(e.StateTime<windup*.6){Vector2 lead=player.Position-e.Position+player.Velocity*(float)((windup-e.StateTime)*.6);e.Aim=Vector2.Lerp(e.Aim,lead.normalized,.18f).normalized;e.Length=ChargeLength(e);}
                     if(e.StateTime>=windup){e.DashLeft=e.Length;Enter(e,"charge_dash");}break;
                 case "charge_dash":e.Desired=e.Aim*(float)PhaseValue(e,3);break;
                 case "stunned":if(e.StateTime>=PhaseValue(e,5))Enter(e,"idle");break;
