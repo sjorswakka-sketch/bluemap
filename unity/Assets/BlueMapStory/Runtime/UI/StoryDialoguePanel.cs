@@ -49,19 +49,29 @@ namespace BlueMapMigration.Story
    fullTextHeight=Math.Max(fullText==""?0:28,text.CalcHeight(new GUIContent(fullText),984));float body=Mathf.Clamp(fullTextHeight,fullText==""?0:64,ready?132:340);rowHeights=choices.Select(c=>Math.Max(44,choiceText.CalcHeight(new GUIContent(c),960)+18)).ToArray();float choicesHeight=ready?Math.Min(284,rowHeights.Sum()):0;float height=Math.Max(196,52+body+(ready?choicesHeight+10:0)+52);PanelRect=new Rect(60,622-height,1032,height);TextViewportRect=new Rect(84,PanelRect.y+52,984,body);ChoiceViewportRect=ready?new Rect(84,TextViewportRect.yMax+10,984,choicesHeight):Rect.zero;ContinueRect=new Rect(858,PanelRect.yMax-40,210,30);textScroll=Mathf.Clamp(textScroll,0,MaxTextScroll);EnsureChoiceVisible();
   }
   void EnsureChoiceVisible(){if(!ready||choices.Count==0||rowHeights.Length!=choices.Count)return;float top=0;for(int i=0;i<selected;i++)top+=rowHeights[i];float bottom=top+rowHeights[selected];if(top<choiceScroll)choiceScroll=top;if(bottom>choiceScroll+ChoiceViewportRect.height)choiceScroll=bottom-ChoiceViewportRect.height;choiceScroll=Mathf.Clamp(choiceScroll,0,MaxChoiceScroll);}
+  int ChoiceAt(Vector2 point)
+  {if(!ready||!ChoiceViewportRect.Contains(point))return -1;float y=ChoiceViewportRect.y-choiceScroll;for(int i=0;i<choices.Count;i++){if(new Rect(ChoiceViewportRect.x,y,ChoiceViewportRect.width,rowHeights[i]-4).Contains(point))return i;y+=rowHeights[i];}return -1;}
+  bool HandlePointer(Event e)
+  {
+   if(e.type!=EventType.MouseDown&&e.type!=EventType.MouseUp)return false;if(controller){e.Use();return true;}Vector2 point=e.mousePosition;bool inside=PanelRect.Contains(point);
+   if(e.type==EventType.MouseDown)
+   {
+    pressedChoice=-1;if(inside&&openedPointerFrame!=Time.frameCount)
+    {if(e.button==1)CloseRequested?.Invoke();else if(e.button==0){if(ready){int hit=ChoiceAt(point);if(hit>=0){pressedChoice=selected=hit;pressedChoiceContext=choiceContext;}}else if(consumedPointerFrame!=Time.frameCount){guiPointerFrame=consumedPointerFrame=Time.frameCount;Advance();}}}
+   }
+   else
+   {int hit=ChoiceAt(point);bool confirm=e.button==0&&hit>=0&&hit==pressedChoice&&pressedChoiceContext==choiceContext;pressedChoice=-1;if(confirm){consumedPointerFrame=Time.frameCount;ChoiceRequested?.Invoke(hit);}}
+   if(inside)e.Use();return true;
+  }
   public void Draw()
   {
-   if(!IsOpen)return;Styles();Layout();RenderedSelectedBounds=Rect.zero;var e=Event.current;bool pointerRelease=!controller&&e.type==EventType.MouseUp&&e.button==0;if(!controller&&e.type==EventType.MouseDown&&e.button==0)pressedChoice=-1;if(controller&&(e.isMouse||e.type==EventType.ScrollWheel))e.Use();
-   if(!controller&&e.type==EventType.MouseDown&&PanelRect.Contains(e.mousePosition)&&e.button==1&&openedPointerFrame!=Time.frameCount){CloseRequested?.Invoke();e.Use();return;}
+   if(!IsOpen)return;Styles();Layout();var e=Event.current;if(HandlePointer(e))return;RenderedSelectedBounds=Rect.zero;if(controller&&(e.isMouse||e.type==EventType.ScrollWheel))e.Use();
    StoryUi.Panel(PanelRect);StoryUi.Border(PanelRect,new Color(.45f,.75f,1),3);GUI.Label(new Rect(84,PanelRect.y+12,950,30),speaker,title);
    GUI.BeginGroup(TextViewportRect);GUI.Label(new Rect(0,-textScroll,TextViewportRect.width,Math.Max(fullTextHeight,TextViewportRect.height)),DisplayedText,text);GUI.EndGroup();StoryUi.Rail(TextViewportRect,textScroll,fullTextHeight);
    if(ready)
-   {GUI.BeginGroup(ChoiceViewportRect);float y=-choiceScroll;var clip=new Rect(0,0,ChoiceViewportRect.width,ChoiceViewportRect.height);for(int i=0;i<choices.Count;i++){var r=new Rect(0,y,ChoiceViewportRect.width,rowHeights[i]-4);if(i==selected)RenderedSelectedBounds=new Rect(r.x+ChoiceViewportRect.x,r.y+ChoiceViewportRect.y,r.width,r.height);bool released=StoryUi.Button(r,choices[i],choiceText,controller,i==selected);if(!controller&&e.type==EventType.MouseDown&&e.button==0&&openedPointerFrame!=Time.frameCount&&clip.Contains(e.mousePosition)&&r.Contains(e.mousePosition)){pressedChoice=i;pressedChoiceContext=choiceContext;e.Use();}if(released){if(pressedChoice==i&&pressedChoiceContext==choiceContext&&clip.Contains(e.mousePosition)){selected=i;consumedPointerFrame=Time.frameCount;pressedChoice=-1;ChoiceRequested?.Invoke(i);e.Use();break;}e.Use();}y+=rowHeights[i];}GUI.EndGroup();StoryUi.Rail(ChoiceViewportRect,choiceScroll,rowHeights.Sum());GUI.Label(new Rect(84,PanelRect.yMax-34,984,25),T("↑ ↓ kiezen · ","↑ ↓ choose · ")+binding("ui_accept")+T(" bevestigen · "," confirm · ")+binding("ui_cancel")+T(" sluiten"," close"),small);}
+   {GUI.BeginGroup(ChoiceViewportRect);float y=-choiceScroll;for(int i=0;i<choices.Count;i++){var r=new Rect(0,y,ChoiceViewportRect.width,rowHeights[i]-4);if(i==selected)RenderedSelectedBounds=new Rect(r.x+ChoiceViewportRect.x,r.y+ChoiceViewportRect.y,r.width,r.height);StoryUi.Button(r,choices[i],choiceText,controller,i==selected);y+=rowHeights[i];}GUI.EndGroup();StoryUi.Rail(ChoiceViewportRect,choiceScroll,rowHeights.Sum());GUI.Label(new Rect(84,PanelRect.yMax-34,984,25),T("↑ ↓ kiezen · ","↑ ↓ choose · ")+binding("ui_accept")+T(" bevestigen · "," confirm · ")+binding("ui_cancel")+T(" sluiten"," close"),small);}
    else
    {GUI.Label(new Rect(84,PanelRect.yMax-34,746,25),(Math.Max(0,lineIndex)+1)+" / "+Math.Max(1,view.Lines.Count)+" · "+binding("ui_accept")+T(" / klik verder · "," / click continue · ")+binding("ui_cancel")+T(" sluiten"," close"),small);if(StoryUi.Button(ContinueRect,IsRevealed?T("Verder  ▾","Continue  ▾"):T("Alles tonen","Show all"),small,controller))e.Use();}
-   // The source panel acts once on press, including its continue affordance. Release must not advance again.
-   if(!controller&&!ready&&e.type==EventType.MouseDown&&e.button==0&&PanelRect.Contains(e.mousePosition)){if(openedPointerFrame!=Time.frameCount&&consumedPointerFrame!=Time.frameCount){guiPointerFrame=consumedPointerFrame=Time.frameCount;Advance();}e.Use();}
-   if(pointerRelease)pressedChoice=-1;
   }
  }
 }
