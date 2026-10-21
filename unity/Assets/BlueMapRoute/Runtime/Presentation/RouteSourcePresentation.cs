@@ -234,6 +234,7 @@ namespace BlueMapMigration.Route
             foreach(var item in moving)if(item.Address==sourceAddress){item.Position=sourcePosition;item.Renderer.transform.localPosition=FoundationCoordinates.ToUnity(sourcePosition);if(item.Kind=="pickup")item.Renderer.sortingOrder=Mathf.RoundToInt(sourcePosition.y);return;}
             if(objects.TryGetValue(sourceAddress,out var node))node.transform.localPosition=FoundationCoordinates.ToUnity(sourcePosition);
         }
+        public bool ClearVisibilityOverride(string sourceAddress)=>overrides.Remove(sourceAddress);
         public void SetVisible(string sourceAddress,bool visible){overrides[sourceAddress]=visible;if(objects.TryGetValue(sourceAddress,out var node)&&node!=null)node.SetActive(visible);}
         /// <summary>The original stock chest opens whenever an active home ledger is visible, including a remote view.</summary>
         public void SetHomeStorageOpen(bool opened)

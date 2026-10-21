@@ -428,6 +428,13 @@ namespace BlueMapMigration.Player
         public IReadOnlyList<RouteAvatarAppearance.VisualLayer> AvatarLayers(string row,string pose="idle")=>routeAppearance?.Compose(Session.State,row,pose,0,1);
         public void RefreshRouteState() { ApplyEquipmentBonuses();RoutePresentation?.Tick(clock,Session.State);SyncRouteFeet();UpdateAppearance(); }
         public void SetRouteObjectPosition(string sourceAddress,Vector2 sourcePosition) { RoutePresentation?.SetPosition(sourceAddress,sourcePosition); }
+        public void SetCombatSourceVisible(string sourceAddress,bool visible)
+        {
+            if(RoutePresentation==null)return;
+            if(!visible)RoutePresentation.SetVisible(sourceAddress,false);
+            else if(RoutePresentation.ClearVisibilityOverride(sourceAddress))RoutePresentation.Tick(clock,Session.State);
+            SyncRouteFeet();
+        }
         public void SetRouteObjectVisible(string sourceAddress,bool visible) { RoutePresentation?.SetVisible(sourceAddress,visible);SyncRouteFeet(); }
         private void OnApplicationFocus(bool focused) { if(input!=null){input.SetFocused(focused&&isActiveAndEnabled);if(!focused)Combat?.Cancel();rollPending=false;} }
         private void OnDisable() { if(initialized){Session.State.SetUi("preview-hidden",true);Motor.StopForTransition();input.SetFocused(false);} }

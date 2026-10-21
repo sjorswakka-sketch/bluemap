@@ -32,7 +32,7 @@ namespace BlueMapMigration.Route
             Combat.DefeatRecorded+=RecordDeathAtLastSafeSave;Combat.Defeated+=PlayerDefeated;Combat.SaveRequested+=OnSaveRequested;
             Encounter.HurtRequested+=EncounterHurt;Encounter.LootRequested+=EncounterLoot;Encounter.EnemyDied+=EnemyDied;
             Encounter.GuardianFinished+=GuardianReward;Encounter.EndingRequested+=CompleteKingEnding;
-            Encounter.SoundRequested+=OnSound;Encounter.MessageRequested+=ShowMessage;Encounter.SourceVisibilityRequested+=World.SetRouteObjectVisible;
+            Encounter.SoundRequested+=OnSound;Encounter.MessageRequested+=ShowMessage;Encounter.SourceVisibilityRequested+=World.SetCombatSourceVisible;
             Encounter.PlayerPushRequested+=PushPlayer;Encounter.AnimalDropRequested+=AnimalDrop;
             World.BindCombat(CombatSimulationEnabled?Combat:null);LoadCombatMap();
         }
