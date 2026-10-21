@@ -5,6 +5,7 @@ using BlueMapMigration.Foundation;
 using BlueMapMigration.Persistence;
 using BlueMapMigration.Inventory;
 using BlueMapMigration.Progression;
+using BlueMapMigration.Story;
 using UnityEngine;
 
 namespace BlueMapMigration.Route
@@ -23,22 +24,32 @@ namespace BlueMapMigration.Route
         public IReadOnlyList<RouteChoice> Choices { get; internal set; }
         public bool ChoicesReady { get; internal set; }
         internal FoundationValue Source;
+        public bool FromData {get;internal set;}=true;
     }
     /// <summary>First source route: original conversations, quest actions, harvest commits, loot and rest.</summary>
     public sealed class RouteGameplay
     {
         private readonly FoundationValue oracle,catalogs;
-        private readonly FoundationConditionRegistry conditions;
-        private readonly LegacySaveImporter importer;
         private readonly FoundationWorldRepository repository;
-        private bool busy,dialogueActionsDone;
-        private const string DialogueOwner="route_dialogue";
+        private bool busy;
+        private StoryDialogue storyDialogue;
+        private RouteDialogue routeDialogue;
+        public StoryModel Story {get;}
         public FoundationGameState State { get; }
         public FoundationValue Resources => catalogs.Require("resources");
         public InventoryModel Inventory { get; }
         public ProgressionModel Progression { get; }
         public FoundationValue Items => Inventory.Items;
-        public RouteDialogue Dialogue { get; private set; }
+        public RouteDialogue Dialogue
+        {
+            get
+            {
+                var current=Story.Dialogue;if(current==null){storyDialogue=null;routeDialogue=null;return null;}
+                if(!ReferenceEquals(storyDialogue,current)){storyDialogue=current;routeDialogue=new RouteDialogue();}
+                routeDialogue.Id=current.Id;routeDialogue.Speaker=current.Speaker;routeDialogue.Lines=current.Lines;routeDialogue.Source=current.Source;routeDialogue.FromData=current.FromData;
+                routeDialogue.Choices=current.Choices.Select(c=>new RouteChoice(c.Source)).ToArray();routeDialogue.ChoicesReady=current.ChoicesReady;return routeDialogue;
+            }
+        }
         public bool DialogueOpen => Dialogue!=null;
         public string LastMessage { get; private set; }="";
         public long DirtyVersion { get; private set; }
@@ -58,7 +69,7 @@ namespace BlueMapMigration.Route
             if(resource==null)throw new FormatException("Missing original route reference.");
             oracle=FoundationJson.ParsePlain(resource.text);
             if(oracle.Require("schema").AsString()!="bluemap.route.source-oracle.v1" || oracle.Require("personalSavesUsed").AsBool())throw new FormatException("Invalid route reference.");
-            catalogs=oracle.Require("catalogs");conditions=new FoundationConditionRegistry(State);importer=new LegacySaveImporter(repository);
+            catalogs=oracle.Require("catalogs");
             Inventory=new InventoryModel(repository,State);
             Progression=new ProgressionModel(repository,State,Inventory);
             Progression.SaveRequested+=Saved;
@@ -67,6 +78,9 @@ namespace BlueMapMigration.Route
             Inventory.ItemObtained+=(id,quantity)=>ItemObtained?.Invoke(id,quantity);
             Inventory.SoundRequested+=id=>SoundRequested?.Invoke(id);
             Inventory.SaveRequested+=Saved;
+            Story=new StoryModel(repository,State,Inventory,Progression);
+            Story.SaveRequested+=Saved;Story.ItemObtained+=(id,amount)=>ItemObtained?.Invoke(id,amount);
+            Story.SoundRequested+=id=>SoundRequested?.Invoke(id);Story.Toast+=text=>LastMessage=text;
         }
         public static RouteGameplay NewGame(FoundationWorldRepository repository)
         {
@@ -87,75 +101,26 @@ namespace BlueMapMigration.Route
         private void Commit(Dictionary<string,FoundationValue> updates)
         { State.CommitFields(updates); }
         private void Saved() { DirtyVersion=checked(DirtyVersion+1);SaveRequested?.Invoke(); }
-        public string FormatDialogue(string line)=>(line??"").Replace("{gel}",State.Count("gel").ToString()).Replace("{shards}",State.Count("shard").ToString()).Replace("{coins}",State.Coins.ToString());
+        public string FormatDialogue(string line)=>Story.Format(line);
         public string ItemName(string id)=>Inventory.ItemName(id);
         public long Room(string id)=>Inventory.Room(id);
         private void Give(string id,long quantity)=>Inventory.Give(id,quantity);
-        private void StartQuest(string id)
-        {
-            if(State.Get("quests").TryGet(id,out _))return;
-            State.Set("quests",Replace(State.Get("quests"),id,Object(("state",FoundationValue.StringValue("active")),("step",FoundationValue.Integer(0)))));RefreshQuests();
-        }
-        private void FinishQuest(string id) { Progression.FinishQuest(id); }
-        private void RefreshQuests()
-        {
-            var next=State.Get("quests");bool changed=false;
-            foreach(var entry in State.Get("quests").Entries)
-            {
-                string id=entry.Key.AsString();var quest=entry.Value;
-                if(quest.Require("state").AsString()!="active"||!catalogs.Require("quests").TryGet(id,out var info))continue;
-                var steps=info.Require("steps").Items;long step=quest.Require("step").AsInt64();
-                while(step>=0&&step<steps.Count-1&&steps[(int)step].TryGet("advance_if",out var tests))
-                { var result=conditions.CheckAll(tests);if(result.Status!=FoundationRuleStatus.Supported||!result.Value)break;step++;changed=true; }
-                if(step!=quest.Require("step").AsInt64())next=Replace(next,id,Replace(quest,"step",FoundationValue.Integer(step)));
-            }
-            if(changed)State.Set("quests",next);
-        }
-        private bool Check(FoundationValue row)=>!row.TryGet("if",out var tests)||conditions.CheckAll(tests).Value;
-        private void NoteTalked(string id)
-        {
-            var talked=new List<FoundationValue>(State.Get("talked").Items);foreach(var value in talked)if(value.AsString()==id)return;
-            talked.Add(FoundationValue.StringValue(id));State.Set("talked",FoundationValue.Array(talked));
-        }
+        private void RefreshQuests()=>Story.RefreshQuests();
         public bool Talk(string npcId)
         {
-            if(busy||State.InputLocked||DialogueOpen)return false;
-            if(!catalogs.Require("npcs").TryGet(npcId,out var npc)){LastMessage="Dit gesprek is nog niet aangesloten.";return false;}
-            busy=true;
+            if(busy||State.InputLocked||DialogueOpen)return false;busy=true;
             try
             {
-                NoteTalked(npcId);
-                if(npcId=="muis_bos")
-                {
-                    if(State.Flag("cat_found")){LastMessage="Muis is al op weg naar Pim.";return false;}
-                    if(CatCalm<2)
-                    {
-                        if(CatPanic>0)LastMessage="Muis schrikt van het lawaai. Geef haar even rust.";
-                        else {CatWaiting=true;LastMessage="Je steekt rustig je hand uit. Blijf bij Muis staan tot ze je vertrouwt.";}
-                        return false;
-                    }
-                    StartQuest("kat");
-                }
-                foreach(var rule in npc.Require("rules").Items)
-                    if(Check(rule)){Enter(rule.Require("talk").AsString());return true;}
-                return false;
+                if(npcId=="muis_bos"&&State.Flag("cat_found")){LastMessage="Muis is al op weg naar Pim.";return false;}
+                bool result=Story.Talk(npcId,new StoryNpcContext{CatCalm=CatCalm,CatPanic=CatPanic});
+                if(npcId=="muis_bos"&&CatCalm<2&&CatPanic<=0)CatWaiting=true;
+                if(Story.LastMessage!="")LastMessage=Story.LastMessage;return result;
             }
             finally{busy=false;Saved();}
         }
-        public bool ShowSourceLines(string id,string speaker,IEnumerable<string> lines)
-        {
-            if(State.Ended||DialogueOpen)return false;var text=lines.ToList();var node=Object(("speaker",FoundationValue.StringValue(speaker)),("lines",FoundationValue.Array(text.Select(FoundationValue.StringValue))));
-            Dialogue=new RouteDialogue{Id=id,Speaker=speaker,Lines=text.AsReadOnly(),Choices=new List<RouteChoice>().AsReadOnly(),ChoicesReady=false,Source=node};dialogueActionsDone=false;State.SetUi(DialogueOwner,true);return true;
-        }
-        public bool ShowSourceDialogue(string id){if(State.Ended||DialogueOpen||!Oracle.Require("catalogs").Require("dialogues").TryGet(id,out _))return false;Enter(id);return true;}
-        private void Enter(string id)
-        {
-            if(!catalogs.Require("dialogues").TryGet(id,out var node))throw new FormatException("Unknown original dialogue: "+id);
-            var lines=new List<string>();foreach(var line in Get(node,"lines",FoundationValue.Array(Array.Empty<FoundationValue>())).Items)lines.Add(line.AsString());
-            Dialogue=new RouteDialogue{Id=id,Speaker=Get(node,"speaker",FoundationValue.StringValue("")).AsString(),Lines=lines.AsReadOnly(),Choices=new List<RouteChoice>().AsReadOnly(),ChoicesReady=false,Source=node};
-            dialogueActionsDone=false;State.SetUi(DialogueOwner,true);
-        }
-        public void CloseDialogue(){Dialogue=null;dialogueActionsDone=false;State.SetUi(DialogueOwner,false);}
+        public bool ShowSourceLines(string id,string speaker,IEnumerable<string> lines)=>!State.Ended&&!DialogueOpen&&Story.ShowLines(id,speaker,lines);
+        public bool ShowSourceDialogue(string id)=>!State.Ended&&!DialogueOpen&&Story.ShowDialogue(id);
+        public void CloseDialogue()=>Story.CloseDialogue();
         private bool CanRun(FoundationValue actions)
         {
             foreach(var action in actions.Items)
@@ -172,73 +137,24 @@ namespace BlueMapMigration.Route
                             foreach(var input in recipe.Require("materials").Entries)if(State.Count(input.Key.AsString())<input.Value.AsInt64()){LastMessage="De voorwaarde is intussen veranderd.";return false;}
                         }
                         break;
-                    default:LastMessage="Dit onderdeel volgt in een volgende migratiefase: "+action.Items[0].AsString();return false;
+                    default:if(!Story.CanRunActions(FoundationValue.Array(new[]{action}))){LastMessage="Onbekende verhaalactie: "+action.Items[0].AsString();return false;}break;
                 }
             return true;
         }
-        private void Run(FoundationValue actions)
-        {
-            // Original actions remain sequential in the detached state. The coherent final
-            // transaction prevents an observer failure from duplicating a quest reward.
-            var staged=new RouteGameplay(repository,new FoundationGameState(State.Snapshot()));
-            var receipts=new List<KeyValuePair<string,long>>();var sounds=new List<string>();
-            staged.ItemObtained+=(id,amount)=>receipts.Add(new KeyValuePair<string,long>(id,amount));
-            staged.SoundRequested+=id=>sounds.Add(id);staged.RunDirect(actions);
-            var updates=new Dictionary<string,FoundationValue>(StringComparer.Ordinal);
-            foreach(var entry in staged.State.Fields)if(!State.Fields.TryGetValue(entry.Key,out var previous)||!ReferenceEquals(previous,entry.Value))updates.Add(entry.Key,entry.Value);
-            Commit(updates);if(staged.LastMessage!="")LastMessage=staged.LastMessage;
-            foreach(var receipt in receipts)ItemObtained?.Invoke(receipt.Key,receipt.Value);foreach(var sound in sounds)SoundRequested?.Invoke(sound);
-        }
-        private void RunDirect(FoundationValue actions)
-        {
-            foreach(var action in actions.Items)
-            {
-                var a=action.Items;string id=a.Count>1&&a[1].Kind=="string"?a[1].AsString():"";long count=a.Count>2?a[2].AsInt64():1;
-                switch(a[0].AsString())
-                {
-                    case "start_quest":StartQuest(id);break;
-                    case "finish_quest":FinishQuest(id);break;
-                    case "quest_step":if(State.Get("quests").TryGet(id,out var q)){State.Set("quests",Replace(State.Get("quests"),id,Replace(q,"step",a[2])));RefreshQuests();}break;
-                    case "set_flag":State.SetFlag(id,true);RefreshQuests();break;
-                    case "clear_flag":State.SetFlag(id,false);RefreshQuests();break;
-                    case "give":Give(id,count);break;
-                    case "take":Inventory.Take(id,count);break;
-                    case "coins":State.Coins=Math.Max(0,checked(State.Coins+a[1].AsInt64()));break;
-                    case "weapon":Progression.SetWeapon(id);break;
-                    case "heal":State.Hp=MaxHp;SoundRequested?.Invoke("heal");break;
-                    case "sound":SoundRequested?.Invoke(id);break;
-                    case "toast":LastMessage=id;break;
-                    case "save":break;
-                }
-            }
-        }
         public bool Advance()
         {
-            if(busy||Dialogue==null||Dialogue.ChoicesReady)return false;
-            busy=true;
-            try
-            {
-                var node=Dialogue.Source;
-                if(!dialogueActionsDone&&node.TryGet("do",out var actions)) { if(!CanRun(actions))return false;dialogueActionsDone=true;Run(actions); }
-                if(node.TryGet("choices",out var choices))
-                {
-                    var available=new List<RouteChoice>();foreach(var choice in choices.Items)if(Check(choice))available.Add(new RouteChoice(choice));
-                    Dialogue.Choices=available.AsReadOnly();Dialogue.ChoicesReady=true;if(available.Count==0)CloseDialogue();return true;
-                }
-                if(node.TryGet("branch",out var branches))foreach(var branch in branches.Items)if(Check(branch)){Enter(branch.Require("next").AsString());return true;}
-                if(node.TryGet("next",out var next))Enter(next.AsString());else CloseDialogue();return true;
-            }
-            finally{busy=false;Saved();}
+            if(busy||!DialogueOpen||Dialogue.ChoicesReady)return false;
+            if(Dialogue.Source.TryGet("do",out var actions)&&!CanRun(actions))return false;
+            busy=true;try{return Story.Advance();}finally{busy=false;Saved();}
         }
         public bool Choose(int index)
         {
-            if(busy||Dialogue==null||!Dialogue.ChoicesReady||index<0||index>=Dialogue.Choices.Count)return false;
+            if(busy||!DialogueOpen||!Dialogue.ChoicesReady||index<0||index>=Dialogue.Choices.Count)return false;
             var selected=Dialogue.Choices[index].Source;
-            if(!Check(selected)){LastMessage="De voorwaarde is intussen veranderd.";return false;}
+            // Original model preserves source event semantics; the interactive boundary rejects stale purchases.
+            if(selected.TryGet("if",out var tests)&&!Story.CheckAll(tests)){LastMessage="De voorwaarde is intussen veranderd.";return false;}
             if(selected.TryGet("do",out var actions)&&!CanRun(actions))return false;
-            busy=true;
-            try{if(actions!=null)Run(actions);if(selected.TryGet("next",out var next))Enter(next.AsString());else CloseDialogue();return true;}
-            finally{busy=false;Saved();}
+            busy=true;try{return Story.Choose(index);}finally{busy=false;Saved();}
         }
         public void ResetCat(){CatCalm=0;CatPanic=0;CatWaiting=false;}
         public void TickCat(double delta,double distance,double speed,bool loud)
@@ -303,10 +219,6 @@ namespace BlueMapMigration.Route
         }
         public bool Rest()
         {if(busy||State.InputLocked)return false;State.Hp=MaxHp;LastMessage="Je bent uitgerust. Je voortgang is opgeslagen.";SoundRequested?.Invoke("heal");Saved();return true;}
-        public string QuestText(string id)
-        {
-            if(!catalogs.Require("quests").TryGet(id,out var info)||info.Require("steps").Items.Count==0)return "";
-            int step=(int)Math.Max(0,Math.Min(info.Require("steps").Items.Count-1,State.QuestStep(id)));return info.Require("steps").Items[step].Require("text").AsString();
-        }
+        public string QuestText(string id)=>Story.QuestText(id);
     }
 }

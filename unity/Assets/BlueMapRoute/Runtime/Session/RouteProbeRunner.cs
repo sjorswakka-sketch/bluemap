@@ -111,7 +111,7 @@ namespace BlueMapMigration.Route
                 void Press(GamepadButton button)
                 {Neutral();route.HandleFrame(Pad(new GamepadState().WithButton(button)));route.HandleFrame(Neutral());}
                 void ReadDialogue()
-                {for(int guard=0;guard<32&&route.Gameplay.DialogueOpen&&!route.Gameplay.Dialogue.ChoicesReady;guard++)Press(GamepadButton.South);}
+                {for(int guard=0;guard<32&&route.Gameplay.DialogueOpen&&!route.Gameplay.Dialogue.ChoicesReady;guard++){route.DialoguePanel?.Reveal();Press(GamepadButton.South);}}
                 string Pim()=>FindNode(world.Snapshot,"/npc.gd","npc_id","pim");
                 string pim=Pim();NearNode(world,pim);bool openedPim=route.InteractTarget(pim);Debug.Log("Route proof Pim: opened="+openedPim+" id="+(route.Gameplay.Dialogue?.Id??"closed")+" line="+route.DialogueLineIndex+" owners="+String.Join(",",state.UiOwners)+" targets="+route.Targets.Count+" map="+state.MapId+" position="+world.Position);
                 bool dialogue=route.Gameplay.DialogueOpen&&route.Gameplay.Dialogue.Id=="pim_intro"&&route.DialogueLineIndex==0&&state.QuestState("kat")=="none"&&state.Paused;

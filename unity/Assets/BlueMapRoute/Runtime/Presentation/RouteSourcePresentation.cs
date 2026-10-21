@@ -38,6 +38,7 @@ namespace BlueMapMigration.Route
         private Sprite whitePixel,circlePixel;
         private Texture2D circleTexture;
         private readonly WorldHeatWindows heatWindows;
+        public BlueMapMigration.Story.StorySourceVisuals StoryVisuals {get;private set;}
         private sealed class PortalArt {public FoundationValue Fields;public SpriteRenderer Fill;public SpriteRenderer[] Border,Sparkles;public Vector2 Origin,Size;}
         private readonly Dictionary<string,Sprite> capturedSprites=new Dictionary<string,Sprite>(StringComparer.Ordinal);
         private sealed class MovingArt { public SpriteRenderer Renderer;public string Address,Sheet,Kind; public Vector2 Position;public Vector2Int Cell;public float Scale;public bool Humanoid;public string UniqueKey; }
@@ -106,6 +107,7 @@ namespace BlueMapMigration.Route
             if(snapshot.MapId=="player_home")AddHome(state);
             if(snapshot.MapId=="village")AddHomeCat();
             heatWindows=new WorldHeatWindows(catalog,snapshot.MapId,parent);
+            StoryVisuals=new BlueMapMigration.Story.StorySourceVisuals(catalog,snapshot,objects);
             Tick(0,state);
         }
         public static string Address(FoundationValue node)=>String.Join("/",node.Require("address").Items.Select(v=>v.Kind=="string"?v.AsString():v.AsInt64().ToString(System.Globalization.CultureInfo.InvariantCulture)));
@@ -263,7 +265,7 @@ namespace BlueMapMigration.Route
         }
         public void Tick(double clock,FoundationGameState state)
         {
-            heatWindows?.Tick(state);
+            heatWindows?.Tick(state);StoryVisuals?.Tick(state);
             foreach(var pair in objects)
             {
                 bool visible=true;
@@ -295,6 +297,6 @@ namespace BlueMapMigration.Route
                 else if(item.Kind=="waterfall")catalog.Apply(item.Renderer,catalog.GetSprite("generated:waterfall:"+((int)(clock*8)%8)));
             }
         }
-        public void Dispose(){foreach(var sprite in owned)UnityEngine.Object.Destroy(sprite);owned.Clear();if(circleTexture!=null)UnityEngine.Object.Destroy(circleTexture);heatWindows?.Dispose();}
+        public void Dispose(){foreach(var sprite in owned)UnityEngine.Object.Destroy(sprite);owned.Clear();if(circleTexture!=null)UnityEngine.Object.Destroy(circleTexture);heatWindows?.Dispose();StoryVisuals?.Dispose();}
     }
 }

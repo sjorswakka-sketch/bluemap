@@ -11,6 +11,7 @@ namespace BlueMapMigration.Route
     {
         private readonly RouteWorldController route;
         private GUIStyle text,title,small,wrap;
+        public string StoryTrackerText{get;set;}="";
         public string SignSpeaker="";
         public string[] SignLines=Array.Empty<string>();
         public int LastInventoryRows {get;private set;}
@@ -18,6 +19,10 @@ namespace BlueMapMigration.Route
         public bool InventorySelectionVisible {get;private set;}
         private readonly List<Rect> receiptBounds=new List<Rect>();
         public Rect LastMessageBounds {get;private set;}
+        public Rect LastTrackerBounds {get;private set;}
+        public bool TrackerTextFits {get;private set;}=true;
+        public Rect LastTechniqueBounds {get;private set;}
+        public Rect LastAmmoBounds {get;private set;}
         public IReadOnlyList<Rect> LastReceiptBounds=>receiptBounds;
         public bool ReceiptsVisible=>receiptBounds.Count>0;
         public RouteHUD(RouteWorldController controller){route=controller;}
@@ -39,13 +44,13 @@ namespace BlueMapMigration.Route
         }
         public void Draw()
         {
-            Styles();var game=route.Gameplay;var state=game.State;receiptBounds.Clear();LastMessageBounds=Rect.zero;
+            Styles();var game=route.Gameplay;var state=game.State;receiptBounds.Clear();LastMessageBounds=Rect.zero;LastTrackerBounds=Rect.zero;LastTechniqueBounds=Rect.zero;LastAmmoBounds=Rect.zero;TrackerTextFits=true;
             Panel(new Rect(18,16,298,118));var areaTitle=new GUIStyle(title);while(areaTitle.fontSize>11&&areaTitle.CalcSize(new GUIContent(route.AreaName)).x>270)areaTitle.fontSize--;Label(32,24,270,route.AreaName,areaTitle);
             Label(32,54,270,T("Leven ","Health ")+state.Hp+" / "+game.MaxHp+"    ·    "+state.Coins+T(" munten"," coins"));
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
             var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP"),small,20);
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 14","Unity preview · phase 14"),small);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 15","Unity preview · phase 15"),small);
             if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
             if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
             {
@@ -58,7 +63,9 @@ namespace BlueMapMigration.Route
             }
             if(route.Modal==""&&!game.DialogueOpen)
             {
-                if(state.QuestState("kat")=="active")
+                if(StoryTrackerText!="")
+                {var trackerStyle=new GUIStyle(wrap);while(trackerStyle.fontSize>14&&trackerStyle.CalcHeight(new GUIContent(StoryTrackerText),270)>160)trackerStyle.fontSize--;float needed=trackerStyle.CalcHeight(new GUIContent(StoryTrackerText),270);float trackerHeight=Mathf.Clamp(needed+20,60,180);TrackerTextFits=needed<=trackerHeight-20+.1f;LastTrackerBounds=new Rect(18,144,298,trackerHeight);Panel(LastTrackerBounds);Label(32,154,270,StoryTrackerText,trackerStyle,trackerHeight-20);}
+                else if(state.QuestState("kat")=="active")
                 {Panel(new Rect(18,144,298,82));Label(32,153,270,T("Pim zoekt Muis","Pim is looking for Muis"));Label(32,180,270,route.Translate(game.QuestText("kat")),new GUIStyle(small){wordWrap=true},36);}
                 Panel(new Rect(18,589,1116,43));string controls=route.CombatSimulationEnabled?
                     route.BindingLabel("attack")+T(" zwaard · "," sword · ")+route.BindingLabel("bow")+T(" boog · "," bow · ")+route.BindingLabel("technique")+T(" + aanval techniek · "," + attack technique · ")+route.BindingLabel("dodge")+T(" rollen · "," roll · ")+route.BindingLabel("interact")+T(" praten · "," talk · ")+route.BindingLabel("menu")+T(" tas · "," bag · ")+route.BindingLabel("sprint")+T(" rennen · "," run · ")+route.BindingLabel("pause")+T(" menu"," menu"):
@@ -82,8 +89,9 @@ namespace BlueMapMigration.Route
             var boss=route.ActiveBoss;
             if(boss!=null){BossBounds=new Rect(370,166,412,62);Panel(BossBounds);Label(384,172,384,route.Translate(boss.Text("name",boss.Kind)),text);GUI.color=new Color(.25f,.20f,.26f);GUI.DrawTexture(new Rect(384,204,384,9),Texture2D.whiteTexture);GUI.color=new Color(.79f,.36f,.36f);GUI.DrawTexture(new Rect(384,204,384*Mathf.Clamp01((float)boss.Hp/boss.MaxHp),9),Texture2D.whiteTexture);GUI.color=Color.white;}
             string phase=combat.Player.Phase;
-            if(phase!=""){Panel(new Rect(18,242,298,68));string action=phase=="prepare"?T("Techniek voorbereiden","Preparing technique"):phase=="guard"?T("Bewaken","Guarding"):phase=="counter"?T("Nu terugslaan!","Counter now!"):T("Techniek","Technique");Label(32,250,270,action);float total=combat.Player.Profile.TryGet("windup",out var windup)?(float)windup.AsDouble():1;GUI.color=new Color(.55f,.9f,1);GUI.DrawTexture(new Rect(32,291,270*(phase=="prepare"?Mathf.Clamp01((float)combat.Player.Elapsed/total):1),5),Texture2D.whiteTexture);GUI.color=Color.white;}
-            if(route.Gameplay.State.Count("bow")>0){Panel(new Rect(18,322,186,39));Label(32,329,160,route.BindingLabel("bow")+T("  Pijlen: ","  Arrows: ")+route.Gameplay.State.Count("arrow"),small);}
+            float techniqueY=Math.Max(242,LastTrackerBounds.yMax+12),ammoY=phase!=""?Math.Max(322,techniqueY+80):Math.Max(322,LastTrackerBounds.yMax+12);
+            if(phase!=""){LastTechniqueBounds=new Rect(18,techniqueY,298,68);Panel(LastTechniqueBounds);string action=phase=="prepare"?T("Techniek voorbereiden","Preparing technique"):phase=="guard"?T("Bewaken","Guarding"):phase=="counter"?T("Nu terugslaan!","Counter now!"):T("Techniek","Technique");Label(32,techniqueY+8,270,action);float total=combat.Player.Profile.TryGet("windup",out var windup)?(float)windup.AsDouble():1;GUI.color=new Color(.55f,.9f,1);GUI.DrawTexture(new Rect(32,techniqueY+49,270*(phase=="prepare"?Mathf.Clamp01((float)combat.Player.Elapsed/total):1),5),Texture2D.whiteTexture);GUI.color=Color.white;}
+            if(route.Gameplay.State.Count("bow")>0){LastAmmoBounds=new Rect(18,ammoY,186,39);Panel(LastAmmoBounds);Label(32,ammoY+7,160,route.BindingLabel("bow")+T("  Pijlen: ","  Arrows: ")+route.Gameplay.State.Count("arrow"),small);}
         }
         private string DamageSource(string source){int i=source.IndexOf(" (",StringComparison.Ordinal);return i>=0?route.Translate(source.Substring(0,i))+" ("+route.Translate(source.Substring(i+2).TrimEnd(')'))+")":route.Translate(source);}
         private void DrawDefeat()
@@ -99,17 +107,8 @@ namespace BlueMapMigration.Route
         }
         private void DrawDialogue()
         {
-            var dialogue=route.Gameplay.Dialogue;int line=Mathf.Clamp(route.DialogueLineIndex,0,Math.Max(0,dialogue.Lines.Count-1));LastDialogueLines=dialogue.Lines.Count;
-            float height=dialogue.ChoicesReady?Math.Max(210,130+dialogue.Choices.Count*44):212;float top=620-height;
-            Panel(new Rect(126,top,900,height));Label(148,top+13,850,route.Translate(dialogue.Speaker),title);
-            if(dialogue.ChoicesReady)
-            {for(int i=0;i<dialogue.Choices.Count;i++)if(Button(new Rect(146,top+56+i*44,860,38),route.Translate(dialogue.Choices[i].Text),i==route.Selection))route.ChooseDialogue(i);}
-            else
-            {
-                string value=dialogue.Lines.Count==0?"…":route.Gameplay.FormatDialogue(route.Translate(dialogue.Lines[line]));Label(148,top+52,850,value,wrap,100);
-                Label(148,top+168,560,(line+1)+" / "+Math.Max(1,dialogue.Lines.Count)+"    "+T("Esc / B sluiten","Esc / B close"),small);
-                if(Button(new Rect(789,top+163,215,35),route.ControllerActive?T("A  Verder","A  Continue"):T("E / Enter  Verder","E / Enter  Continue")))route.AdvanceDialogue();
-            }
+            LastDialogueLines=route.Gameplay.Dialogue?.Lines.Count??0;
+            route.DialoguePanel?.Draw();
         }
         private void DrawInventory()
         {
@@ -118,12 +117,7 @@ namespace BlueMapMigration.Route
         }
         private void DrawQuests()
         {
-            Panel(new Rect(190,106,772,466));Label(214,123,710,T("Je opdrachten","Your quests"),title);float y=179;
-            foreach(var quest in route.Gameplay.State.Get("quests").Entries.Take(7))
-            {string id=quest.Key.AsString();bool done=route.Gameplay.State.QuestState(id)=="done";Label(214,y,710,(done?"✓  ":"•  ")+route.Translate(route.Gameplay.QuestText(id)),wrap,43);y+=47;}
-            if(y==179)Label(214,y,710,T("Praat met Pim in het dorp om Muis te helpen zoeken.","Talk to Pim in the village to help find Muis."),wrap,60);
-            Label(214,480,710,T("Ontdekte gebieden: ","Areas visited: ")+route.Gameplay.State.Get("visited_maps").Entries.Count(p=>p.Value.Kind=="bool"&&p.Value.AsBool())+" / "+RouteWorldController.Maps.Length,small);
-            if(Button(new Rect(755,520,183,34),T("Sluiten","Close")))route.CloseModal();
+            route.QuestPanel?.Draw();
         }
         private void DrawPause()
         {

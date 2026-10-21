@@ -100,18 +100,17 @@ namespace BlueMapMigration.Route
         }
         private void TickCombatTriggers()
         {
-            if(Session.Current.MapId!="temple"&&Session.Current.MapId!="depths2")return;
             foreach(var node in Session.Current.Root.Require("scene").Items)
             {
-                if(!node.Require("script").AsString().EndsWith("/trigger.gd",StringComparison.Ordinal))continue;
+                if(!node.TryGet("script",out var script)||script.Kind!="string"||!script.AsString().EndsWith("/trigger.gd",StringComparison.Ordinal))continue;
                 var fields=node.Require("fields");if(!fields.TryGet("actions",out var actions))continue;
-                var talk=actions.Items.FirstOrDefault(a=>a.Items.Count>=2&&a.Items[0].AsString()=="talk");if(talk==null)continue;
-                string id=talk.Items[1].AsString();if(!new[]{"king_intro","guardian_intro","guardian_defeat"}.Contains(id))continue;
-                string once=fields.TryGet("once_flag",out var of)?of.AsString():"";if(once!=""&&Gameplay.State.Flag(once))continue;
-                if(fields.TryGet("conditions",out var tests)&&!conditions.CheckAll(tests).Value)continue;
+                string once=fields.TryGet("once_flag",out var flag)?flag.AsString():"";if(once!=""&&Gameplay.State.Flag(once))continue;
+                if(fields.TryGet("conditions",out var tests)&&!Story.CheckAll(tests))continue;
                 var rect=fields.Require("rect");var bounds=new Rect(FoundationCoordinates.Vector(rect.Require("position")),FoundationCoordinates.Vector(rect.Require("size")));if(!bounds.Contains(World.Position))continue;
-                if(once!="")Gameplay.State.SetFlag(once,true);Combat.Cancel();work=null;
-                if(Gameplay.ShowSourceDialogue(id)){SyncDialogue();bossIntroPending=id!="guardian_defeat";World.RefreshRouteState();}break;
+                var batch=actions.Items.ToList();if(once!="")batch.Insert(0,Action("set_flag",BlueMapMigration.Story.StoryModel.S(once)));
+                Combat.Cancel();work=null;Story.RunActions(FoundationValue.Array(batch));SyncDialogue();
+                if(actions.Items.Any(v=>v.Items.Count>1&&v.Items[0].AsString()=="talk"&&v.Items[1].AsString()=="guardian_intro"))bossIntroPending=true;
+                World.RefreshRouteState();Save();if(Gameplay.State.InputLocked)break;
             }
         }
         private void RecordDeathAtLastSafeSave(long deaths,long bossDeaths)

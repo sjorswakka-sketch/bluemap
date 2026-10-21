@@ -286,6 +286,14 @@
       "path": "unity/Assets/BlueMapRoute/Runtime/Session/RouteWorldController.cs"
     },
     {
+      "guid": "8ab2db3daec4520d8e07f20b49e2073a",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Session/StoryObjectActions.cs"
+    },
+    {
+      "guid": "28afece7410855c0a06c6a7fe40bd05e",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Session/StoryRouteController.cs"
+    },
+    {
       "guid": "4c1e27d90ec949b2980137961fd61d33",
       "path": "unity/Assets/BlueMapRoute/Runtime/UI"
     },
