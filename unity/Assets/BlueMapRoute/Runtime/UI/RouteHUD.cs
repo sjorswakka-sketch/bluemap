@@ -40,11 +40,12 @@ namespace BlueMapMigration.Route
         public void Draw()
         {
             Styles();var game=route.Gameplay;var state=game.State;receiptBounds.Clear();LastMessageBounds=Rect.zero;
-            Panel(new Rect(18,16,298,98));var areaTitle=new GUIStyle(title);while(areaTitle.fontSize>11&&areaTitle.CalcSize(new GUIContent(route.AreaName)).x>270)areaTitle.fontSize--;Label(32,24,270,route.AreaName,areaTitle);
+            Panel(new Rect(18,16,298,118));var areaTitle=new GUIStyle(title);while(areaTitle.fontSize>11&&areaTitle.CalcSize(new GUIContent(route.AreaName)).x>270)areaTitle.fontSize--;Label(32,24,270,route.AreaName,areaTitle);
             Label(32,54,270,T("Leven ","Health ")+state.Hp+" / "+game.MaxHp+"    ·    "+state.Coins+T(" munten"," coins"));
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 12","Unity preview · phase 12"),small);
+            var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP"),small,20);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 13","Unity preview · phase 13"),small);
             if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
             if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
             {
@@ -58,7 +59,7 @@ namespace BlueMapMigration.Route
             if(route.Modal==""&&!game.DialogueOpen)
             {
                 if(state.QuestState("kat")=="active")
-                {Panel(new Rect(18,124,298,82));Label(32,133,270,T("Pim zoekt Muis","Pim is looking for Muis"));Label(32,160,270,route.Translate(game.QuestText("kat")),new GUIStyle(small){wordWrap=true},36);}
+                {Panel(new Rect(18,144,298,82));Label(32,153,270,T("Pim zoekt Muis","Pim is looking for Muis"));Label(32,180,270,route.Translate(game.QuestText("kat")),new GUIStyle(small){wordWrap=true},36);}
                 Panel(new Rect(18,589,1116,43));Label(32,598,1090,route.BindingLabel("interact")+T(" praten / verzamelen  ·  "," talk / gather  ·  ")+route.BindingLabel("menu")+T(" tas  ·  "," inventory  ·  ")+route.BindingLabel("quests")+T(" opdrachten  ·  "," quests  ·  ")+route.BindingLabel("pause")+T(" menu  ·  "," menu  ·  ")+route.BindingLabel("sprint")+T(" rennen  ·  F9 bediening"," run  ·  F9 controls"),small);
                 if(route.CurrentTarget!=null){Panel(new Rect(360,526,432,48));Label(376,538,400,(route.BindingLabel("interact")+"  ")+route.Translate(route.CurrentTarget.Label));}
                 if(route.NearbyPassage!=""&&route.Message==""){Panel(new Rect(326,114,550,48));Label(342,125,518,route.NearbyPassage,wrap,36);}
@@ -69,7 +70,7 @@ namespace BlueMapMigration.Route
             if(game.DialogueOpen){DrawDialogue();return;}
             if(route.Modal=="")return;
             GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;
-            if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
+            if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
         }
         private void DrawDialogue()
         {
@@ -80,7 +81,7 @@ namespace BlueMapMigration.Route
             {for(int i=0;i<dialogue.Choices.Count;i++)if(Button(new Rect(146,top+56+i*44,860,38),route.Translate(dialogue.Choices[i].Text),i==route.Selection))route.ChooseDialogue(i);}
             else
             {
-                string value=dialogue.Lines.Count==0?"…":route.Translate(dialogue.Lines[line]);Label(148,top+52,850,value,wrap,100);
+                string value=dialogue.Lines.Count==0?"…":route.Gameplay.FormatDialogue(route.Translate(dialogue.Lines[line]));Label(148,top+52,850,value,wrap,100);
                 Label(148,top+168,560,(line+1)+" / "+Math.Max(1,dialogue.Lines.Count)+"    "+T("Esc / B sluiten","Esc / B close"),small);
                 if(Button(new Rect(789,top+163,215,35),route.ControllerActive?T("A  Verder","A  Continue"):T("E / Enter  Verder","E / Enter  Continue")))route.AdvanceDialogue();
             }

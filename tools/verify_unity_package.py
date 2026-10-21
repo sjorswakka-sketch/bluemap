@@ -26,7 +26,7 @@ EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
-                    12: "0.8.0-phase12"}
+                    12: "0.8.0-phase12", 13: "0.9.0-phase13"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -219,6 +219,27 @@ INVENTORY_DETAIL_CHECKS = {
     "inventory_native_unique_pickup_once",
 }
 INVENTORY_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+PROGRESSION_CHECKS = {"progression_runtime_verified"}
+PROGRESSION_DETAIL_CHECKS = {
+    "progression_model_source_equivalence", "progression_native_checks_ran",
+    "progression_no_real_saves_accessed",
+    "progression_model_atomic_rewards", "progression_model_owned_cosmetic_and_upgrade_safety",
+    "progression_ui_stats_readable", "progression_ui_all_slots", "progression_ui_compare_and_confirm",
+    "progression_ui_hair_clothing_layers", "progression_ui_controller_selection_visible",
+    "progression_ui_sustained_right_stick", "progression_ui_input_owner_switch",
+    "progression_ui_responsive_layout", "progression_ui_four_native_captures",
+    "progression_ui_browsing_is_readonly", "progression_ui_upgrade_confirmation",
+    "progression_ui_character_entry",
+    "progression_native_xp_rewards_once", "progression_native_reload_does_not_reward_levels",
+    "progression_native_quest_xp_main_and_repeat", "progression_native_arena_exclusion",
+    "progression_native_all_equipment_slots_apply", "progression_native_removed_gear_reconciles_capacity",
+    "progression_native_gather_and_magnet_bonuses", "progression_native_gear_browsing_pure",
+    "progression_native_greta_original_dialogue_upgrades", "progression_native_forge_proximity_and_no_free_star",
+    "progression_native_forge_rechecks_complete_cost", "progression_native_source_gear_upgrades",
+    "progression_native_all_hair_and_clothing_layers", "progression_native_cosmetic_stats_and_shared_layer_order",
+    "progression_native_save_reload_preserves_selections",
+}
+PROGRESSION_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -241,7 +262,7 @@ PLAYER_ROOTS = {
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
                   "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json",
-                  "INVENTORY-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -402,6 +423,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 12:
         require(INVENTORY_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 12 inventory runtime proof is incomplete")
+    if identity["phase"] >= 13:
+        require(PROGRESSION_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 13 progression runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -547,6 +571,29 @@ def validate_inventory(result: dict, identity: dict) -> None:
     require(INVENTORY_DETAIL_CHECKS <= names, "Required inventory checks are missing")
 
 
+def validate_progression(result: dict, identity: dict) -> None:
+    """Bind original experience, equipment, appearance and upgrades to this player."""
+    require(isinstance(result, dict) and set(result) == PROGRESSION_FIELDS,
+            "Phase 13 progression proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported progression proof schema")
+    require(result.get("identity") == identity, "Progression embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Progression proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Progression detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed progression detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid progression detail check name")
+        require(name not in names and check["passed"] is True,
+                "Progression detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(PROGRESSION_DETAIL_CHECKS <= names, "Required progression checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -600,6 +647,7 @@ def _instructions(identity: dict) -> bytes:
         10: "Migratiefase 10: eerste speelbare route tussen dorp, woning en bos; nog niet de volledige overgezette game.\n",
         11: "Migratiefase 11: alle 37 gebieden, interieurs en toegangspunten; nog niet de volledige overgezette game.\n",
         12: "Migratiefase 12: oorspronkelijke inventaris, buit en woning- en kustopslag; nog niet de volledige overgezette game.\n",
+        13: "Migratiefase 13: oorspronkelijke ervaring, statistieken, uitrusting, upgrades en uiterlijk; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -672,6 +720,7 @@ def _instructions(identity: dict) -> bytes:
         ("ROUTE-CHECKS.json bevat de controles van de eerste speelbare route.\n" if identity["phase"] >= 10 else "") +
         ("WORLD-ACCESS-CHECKS.json bevat de controles van alle gebieden en toegangspunten.\n" if identity["phase"] >= 11 else "") +
         ("INVENTORY-CHECKS.json bevat de controles van inventaris, buit en opslag.\n" if identity["phase"] >= 12 else "") +
+        ("PROGRESSION-CHECKS.json bevat de controles van ervaring, uitrusting, upgrades en uiterlijk.\n" if identity["phase"] >= 13 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
@@ -682,7 +731,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    persistence_result: dict | None = None,
                    route_result: dict | None = None,
                    world_access_result: dict | None = None,
-                   inventory_result: dict | None = None) -> tuple[Path, int]:
+                   inventory_result: dict | None = None,
+                   progression_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -710,6 +760,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_inventory(inventory_result, identity)
     else:
         require(inventory_result is None, "Historical preview cannot contain phase 12 inventory proof")
+    if identity["phase"] >= 13:
+        validate_progression(progression_result, identity)
+    else:
+        require(progression_result is None, "Historical preview cannot contain phase 13 progression proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -733,6 +787,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["WORLD-ACCESS-CHECKS.json"] = _json_bytes(world_access_result)
     if inventory_result is not None:
         payload["INVENTORY-CHECKS.json"] = _json_bytes(inventory_result)
+    if progression_result is not None:
+        payload["PROGRESSION-CHECKS.json"] = _json_bytes(progression_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -902,6 +958,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("INVENTORY-CHECKS.json" not in payload and "inventory" not in receipt,
                 "Historical preview contains unsupported inventory proof")
+    if identity["phase"] >= 13:
+        require("PROGRESSION-CHECKS.json" in payload, "Phase 13 packaged progression proof is missing")
+        progression = _json(payload["PROGRESSION-CHECKS.json"], "PROGRESSION-CHECKS.json")
+        validate_progression(progression, identity)
+        require(receipt.get("progression") == progression, "Receipt progression proof differs from package")
+    else:
+        require("PROGRESSION-CHECKS.json" not in payload and "progression" not in receipt,
+                "Historical preview contains unsupported progression proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

@@ -38,7 +38,7 @@ namespace BlueMapMigration.Editor
             public double durationSeconds;
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
-            public string scope = "Original magnetic loot, atomic chest rewards, six-column backpack, physical home and coastal storage, search, sorting, favorites and controller navigation across the 37 retained areas with separate recoverable save profiles; remaining gameplay systems follow the migration plan";
+            public string scope = "Original experience, five equipment slots, source weapon and gear upgrades, all ninety hairstyles and twenty-four clothing pieces with shared visible layers, plus magnetic loot and physical storage across the 37 retained areas; remaining gameplay systems follow the migration plan";
             public PackageInput[] unityPackages;
             public DllInput[] runtimeDllInputs;
             public BuildIdentity identity;

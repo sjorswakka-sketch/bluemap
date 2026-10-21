@@ -258,8 +258,7 @@ namespace BlueMapMigration.Player
             Vector2 before=Position; motion.TileName=SurfaceAt(before);
             if(RouteMode)
             {
-                if(routeBonuses==null||!ReferenceEquals(routeBonuses.State,Session.State))routeBonuses=new RouteGameplay(repository,Session.State);
-                Motor.Stamina.ConfigureBonuses(routeBonuses.Bonus("stamina_max"),routeBonuses.Bonus("stamina_regen"));Motor.Stamina.ClampCapacity();
+                ApplyEquipmentBonuses();
                 motion.SpeedMultiplier=PlayerSurface.EquipmentSpeedMultiplier(Session.State.Count("boots")>0,routeBonuses.Bonus("move_speed"));
             }
             MotionFrame next=Motor.BeginStep(delta,motion); Sweep(next.VelocityPixels*(float)delta);
@@ -383,7 +382,15 @@ namespace BlueMapMigration.Player
             if(!RouteMode||RoutePresentation==null)return;
             foreach(var pair in routeColliderOwners)if(pair.Value!=null&&RoutePresentation.Objects.TryGetValue(pair.Key,out var sourceVisual))pair.Value.SetActive(sourceVisual.activeSelf);
         }
-        public void RefreshRouteState() { RoutePresentation?.Tick(clock,Session.State);SyncRouteFeet(); }
+        public void ApplyEquipmentBonuses()
+        {
+            if(!RouteMode||Session==null||Motor==null)return;
+            if(routeBonuses==null||!ReferenceEquals(routeBonuses.State,Session.State))routeBonuses=new RouteGameplay(repository,Session.State);
+            Motor.Stamina.ConfigureBonuses(routeBonuses.Bonus("stamina_max"),routeBonuses.Bonus("stamina_regen"));Motor.Stamina.ClampCapacity();
+        }
+        public void DrawAvatarPreview(Rect bounds,string row){routeAppearance?.DrawPreview(Session.State,bounds,row);}
+        public IReadOnlyList<RouteAvatarAppearance.VisualLayer> AvatarLayers(string row,string pose="idle")=>routeAppearance?.Compose(Session.State,row,pose,0,1);
+        public void RefreshRouteState() { ApplyEquipmentBonuses();RoutePresentation?.Tick(clock,Session.State);SyncRouteFeet();UpdateAppearance(); }
         public void SetRouteObjectPosition(string sourceAddress,Vector2 sourcePosition) { RoutePresentation?.SetPosition(sourceAddress,sourcePosition); }
         public void SetRouteObjectVisible(string sourceAddress,bool visible) { RoutePresentation?.SetVisible(sourceAddress,visible);SyncRouteFeet(); }
         private void OnApplicationFocus(bool focused) { if(input!=null){input.SetFocused(focused&&isActiveAndEnabled);rollPending=false;} }

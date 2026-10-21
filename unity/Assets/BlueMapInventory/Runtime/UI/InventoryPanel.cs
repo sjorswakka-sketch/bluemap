@@ -58,7 +58,7 @@ namespace BlueMapMigration.Inventory
         public long PendingQuantity => pendingAmount;
         public int ActivePane { get; private set; }
         public int FocusZone => focus;
-        public string FocusName => letters ? "letters" : pending != "" ? "confirmation" : new[] { "items", "search", "category", "sort", "favorites", "actions", "bulk", "details", "destination", "close" }[focus];
+        public string FocusName => letters ? "letters" : pending != "" ? "confirmation" : new[] { "items", "search", "category", "sort", "favorites", "actions", "bulk", "details", "destination", "close", "character" }[focus];
         public string Query => query;
         public int Category => category;
         public bool FavoritesOnly => onlyFavorites;
@@ -98,6 +98,7 @@ namespace BlueMapMigration.Inventory
         public event Action<string> UseRequested;
         public event Action Closed;
         public event Action<string> ContextRequested;
+        public event Action CharacterRequested;
 
         [Serializable] sealed class AliasManifest { public AliasEntry[] aliases = Array.Empty<AliasEntry>(); }
         [Serializable] sealed class AliasEntry { public string name = "", originalTextureId = "", detailedTextureId = ""; public int density = 1; }
@@ -123,7 +124,7 @@ namespace BlueMapMigration.Inventory
         Color Gold => new Color(.92f, .82f, .57f);
         Color Ink => new Color(.91f, .94f, .88f);
         static bool Contains(Rect outer, Rect inner) => inner.xMin >= outer.xMin - .5f && inner.yMin >= outer.yMin - .5f && inner.xMax <= outer.xMax + .5f && inner.yMax <= outer.yMax + .5f;
-        public IReadOnlyList<Rect> LayoutRects() => new[] { PanelRect, new Rect(98, 82, 488, 36), new Rect(98, 150, 244, 30), new Rect(350, 150, 66, 30), new Rect(424, 150, 190, 30), new Rect(622, 150, 235, 30), new Rect(865, 150, 187, 30), BagGridRect, BagListRect, StockListRect, new Rect(624, 208, 430, 328), new Rect(98, 516, 956, 34), new Rect(98, 558, 956, 34), new Rect(98, 598, 956, 18) };
+        public IReadOnlyList<Rect> LayoutRects() => new[] { PanelRect, new Rect(98, 82, 380, 36), new Rect(494, 84, 122, 30), new Rect(98, 150, 244, 30), new Rect(350, 150, 66, 30), new Rect(424, 150, 190, 30), new Rect(622, 150, 235, 30), new Rect(865, 150, 187, 30), BagGridRect, BagListRect, StockListRect, new Rect(624, 208, 430, 328), new Rect(98, 516, 956, 34), new Rect(98, 558, 956, 34), new Rect(98, 598, 956, 18) };
 
         public void Open(string kind = "bag")
         {
@@ -155,7 +156,7 @@ namespace BlueMapMigration.Inventory
         public void SetCategory(int value) { category = Mathf.Clamp(value, 0, 5); Refresh(); }
         public void SetFavoritesOnly(bool value) { onlyFavorites = value; Refresh(); }
         public void SetSort(int value) { model.SetSort(Mathf.Clamp(value, 0, 3)); Refresh(); }
-        public void SetFocus(int value) { focus = Mathf.Clamp(value, 0, 9); if (!IsStorage && focus == 6) focus = 7; if (focus != 1) clearSearchFocus = true; }
+        public void SetFocus(int value) { focus = Mathf.Clamp(value, 0, 10); if (!IsStorage && focus == 6) focus = 7; if (focus != 1) clearSearchFocus = true; }
         public void SwitchPane(int pane) { ActivePane = IsStorage ? Mathf.Clamp(pane, 0, 1) : 0; focus = 0; clearSearchFocus = true; RememberSelection(); EnsureVisible(); }
         public void MoveSelection(int delta)
         {
@@ -245,8 +246,8 @@ namespace BlueMapMigration.Inventory
         }
         void CycleFocus(int direction)
         {
-            focus = (focus + direction + 10) % 10;
-            if (!IsStorage && focus == 6) focus = (focus + direction + 10) % 10;
+            focus = (focus + direction + 11) % 11;
+            if (!IsStorage && focus == 6) focus = (focus + direction + 11) % 11;
             actionIndex = 0; if (focus != 1) clearSearchFocus = true;
         }
         void Navigate(int horizontal, int vertical)
@@ -266,6 +267,7 @@ namespace BlueMapMigration.Inventory
                 case 7: detailScroll = Math.Max(0, detailScroll + (vertical != 0 ? vertical : horizontal) * 24); break;
                 case 8: ChangeKind((horizontal != 0 ? horizontal : vertical) > 0 ? Kind == "bag" ? "home" : Kind == "home" ? "coast" : "bag" : Kind == "bag" ? "coast" : Kind == "coast" ? "home" : "bag"); focus = 8; break;
                 case 9: break;
+                case 10: break;
             }
         }
         void ActivateFocused()
@@ -285,6 +287,7 @@ namespace BlueMapMigration.Inventory
                 case 7: focus = 0; break;
                 case 8: ChangeKind(Kind == "bag" ? "home" : Kind == "home" ? "coast" : "bag"); focus = 8; break;
                 case 9: Close(); break;
+                case 10: CharacterRequested?.Invoke(); break;
             }
         }
         void UseSelected()
@@ -402,7 +405,8 @@ namespace BlueMapMigration.Inventory
             Fill(new Rect(0, 0, 1152, 648), new Color(.01f, .025f, .035f, .78f));
             Fill(new Rect(PanelRect.x + 6, PanelRect.y + 6, PanelRect.width, PanelRect.height), new Color(0, 0, 0, .3f));
             Card(PanelRect, true); Fill(new Rect(PanelRect.x + 2, PanelRect.y + 2, PanelRect.width - 4, 4), Accent);
-            Label(new Rect(98, 82, 488, 34), Kind == "home" ? T("Huisvoorraad", "Home stock") : Kind == "coast" ? T("Havenkist", "Harbor chest") : T("Je spullen", "Your belongings"), title);
+            Label(new Rect(98, 82, 380, 34), Kind == "home" ? T("Huisvoorraad", "Home stock") : Kind == "coast" ? T("Havenkist", "Harbor chest") : T("Je spullen", "Your belongings"), title);
+            if(Button(new Rect(494,84,122,30),T("Je held","Your hero"),focus==10&&controller))CharacterRequested?.Invoke();
             string[] destinations = { "bag", "home", "coast" };
             string[] destinationNames = { T("Tas", "Backpack"), T("Huis", "Home"), T("Haven", "Harbor") };
             for (int i = 0; i < 3; i++) if (Button(new Rect(628 + i * 132, 84, 122, 30), destinationNames[i], Kind == destinations[i])) ChangeKind(destinations[i]);

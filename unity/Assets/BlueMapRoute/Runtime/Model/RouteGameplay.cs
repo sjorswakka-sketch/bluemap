@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BlueMapMigration.Foundation;
 using BlueMapMigration.Persistence;
 using BlueMapMigration.Inventory;
+using BlueMapMigration.Progression;
 using UnityEngine;
 
 namespace BlueMapMigration.Route
@@ -34,6 +35,7 @@ namespace BlueMapMigration.Route
         public FoundationGameState State { get; }
         public FoundationValue Resources => catalogs.Require("resources");
         public InventoryModel Inventory { get; }
+        public ProgressionModel Progression { get; }
         public FoundationValue Items => Inventory.Items;
         public RouteDialogue Dialogue { get; private set; }
         public bool DialogueOpen => Dialogue!=null;
@@ -57,6 +59,10 @@ namespace BlueMapMigration.Route
             if(oracle.Require("schema").AsString()!="bluemap.route.source-oracle.v1" || oracle.Require("personalSavesUsed").AsBool())throw new FormatException("Invalid route reference.");
             catalogs=oracle.Require("catalogs");conditions=new FoundationConditionRegistry(State);importer=new LegacySaveImporter(repository);
             Inventory=new InventoryModel(repository,State);
+            Progression=new ProgressionModel(repository,State,Inventory);
+            Progression.SaveRequested+=Saved;
+            Progression.SoundRequested+=id=>SoundRequested?.Invoke(id);
+            Progression.Toast+=text=>LastMessage=text;
             Inventory.ItemObtained+=(id,quantity)=>ItemObtained?.Invoke(id,quantity);
             Inventory.SoundRequested+=id=>SoundRequested?.Invoke(id);
             Inventory.SaveRequested+=Saved;
@@ -80,6 +86,7 @@ namespace BlueMapMigration.Route
         private void Commit(Dictionary<string,FoundationValue> updates)
         { State.CommitFields(updates); }
         private void Saved() { DirtyVersion=checked(DirtyVersion+1);SaveRequested?.Invoke(); }
+        public string FormatDialogue(string line)=>(line??"").Replace("{gel}",State.Count("gel").ToString()).Replace("{shards}",State.Count("shard").ToString()).Replace("{coins}",State.Coins.ToString());
         public string ItemName(string id)=>Inventory.ItemName(id);
         public long Room(string id)=>Inventory.Room(id);
         private void Give(string id,long quantity)=>Inventory.Give(id,quantity);
@@ -88,18 +95,7 @@ namespace BlueMapMigration.Route
             if(State.Get("quests").TryGet(id,out _))return;
             State.Set("quests",Replace(State.Get("quests"),id,Object(("state",FoundationValue.StringValue("active")),("step",FoundationValue.Integer(0)))));RefreshQuests();
         }
-        private void FinishQuest(string id)
-        {
-            if(!State.Get("quests").TryGet(id,out var quest)||quest.Require("state").AsString()=="done")return;
-            var updated=Replace(quest,"state",FoundationValue.StringValue("done"));
-            long before=LegacySaveImporter.NormalizeHeroXp(State.Get("hero_xp"));
-            bool main=catalogs.Require("quests").TryGet(id,out var questInfo)&&Get(questInfo,"main",FoundationValue.Boolean(false)).AsBool();
-            long reward=catalogs.Require("quests").TryGet(id,out _)?(main||id=="diepte"?100:40):0;
-            long total=Math.Min(2250,checked(before+reward));
-            long coins=checked(State.Coins+(HeroLevel(total)-HeroLevel(before))*15);
-            Commit(new Dictionary<string,FoundationValue>{{"quests",Replace(State.Get("quests"),id,updated)},{"hero_xp",FoundationValue.Integer(total)},{"coins",FoundationValue.Integer(Math.Max(0,coins))}});RefreshQuests();
-        }
-        private static int HeroLevel(long xp) { int level=1;while(level<10&&xp>=25*level*(level+1))level++;return level; }
+        private void FinishQuest(string id) { Progression.FinishQuest(id); }
         private void RefreshQuests()
         {
             var next=State.Get("quests");bool changed=false;
@@ -159,6 +155,16 @@ namespace BlueMapMigration.Route
                 switch(action.Items[0].AsString())
                 {
                     case "start_quest":case "quest_step":case "finish_quest":case "set_flag":case "clear_flag":case "give":case "take":case "coins":case "heal":case "save":case "sound":case "toast":break;
+                    case "weapon":
+                        string target=action.Items[1].AsString();
+                        if(!Progression.Catalogs.Require("weapons").TryGet(target,out _)){LastMessage="Onbekende wapenverbetering.";return false;}
+                        if(target=="iron"||target=="crystal")
+                        {
+                            var recipe=Progression.Catalogs.Require("weaponUpgrades").Require(target);
+                            if(State.Get("weapon").AsString()!=recipe.Require("from").AsString()||State.Coins<recipe.Require("coins").AsInt64()){LastMessage="De voorwaarde is intussen veranderd.";return false;}
+                            foreach(var input in recipe.Require("materials").Entries)if(State.Count(input.Key.AsString())<input.Value.AsInt64()){LastMessage="De voorwaarde is intussen veranderd.";return false;}
+                        }
+                        break;
                     default:LastMessage="Dit onderdeel volgt in een volgende migratiefase: "+action.Items[0].AsString();return false;
                 }
             return true;
@@ -191,6 +197,7 @@ namespace BlueMapMigration.Route
                     case "give":Give(id,count);break;
                     case "take":Inventory.Take(id,count);break;
                     case "coins":State.Coins=Math.Max(0,checked(State.Coins+a[1].AsInt64()));break;
+                    case "weapon":Progression.SetWeapon(id);break;
                     case "heal":State.Hp=MaxHp;SoundRequested?.Invoke("heal");break;
                     case "sound":SoundRequested?.Invoke(id);break;
                     case "toast":LastMessage=id;break;
@@ -251,15 +258,7 @@ namespace BlueMapMigration.Route
         { long amount=Resources.Require(kind).Require("amount").AsInt64();return amount+(kind=="stump"&&State.Count("prof_iron_axe")>0?1:0); }
         public double ResourceDuration(string kind)
         {return Get(Resources.Require(kind),"duration",FoundationValue.Number(.65)).AsDouble()*(1-Bonus("harvest_time_reduction"));}
-        public double Bonus(string stat)
-        {
-            double result=0;var gear=catalogs.Require("gear");
-            foreach(var slotEntry in catalogs.Require("slots").Entries)
-            { var slot=slotEntry.Key;
-                if(State.Get("equipment").TryGet(slot.AsString(),out var id)&&State.Count(id.AsString())>0&&gear.TryGet(id.AsString(),out var info)&&Get(info,"slot",FoundationValue.StringValue("")).AsString()==slot.AsString()&&Get(info,"bonuses",Empty()).TryGet(stat,out var number))result+=stat=="move_speed"?number.AsDouble():Math.Max(0,number.AsDouble());
-            }
-            double limit=catalogs.Require("bonusLimits").Require(stat).AsDouble();return Math.Max(-limit,Math.Min(limit,result));
-        }
+        public double Bonus(string stat)=>Progression.Bonus(stat);
         public string ResourceReason(string kind,string id)
         {
             if(!Resources.TryGet(kind,out var resource))return "Onbekende grondstof.";

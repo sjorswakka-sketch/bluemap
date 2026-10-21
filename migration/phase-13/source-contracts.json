@@ -1,0 +1,1873 @@
+{
+  "assetGuids": [
+    {
+      "guid": "7ee846916ae241adbeebb6c7dd03a940",
+      "path": "unity/Assets/BlueMapProgression"
+    },
+    {
+      "guid": "b38757d9dee3405c8d753af38d0f6fee",
+      "path": "unity/Assets/BlueMapProgression/Runtime"
+    },
+    {
+      "guid": "6e57604483ad4a5c80a6c9d557d54a13",
+      "path": "unity/Assets/BlueMapProgression/Runtime/Model"
+    },
+    {
+      "guid": "9ca302390afc46c7b6b49fe262cce6a3",
+      "path": "unity/Assets/BlueMapProgression/Runtime/Model/ProgressionModel.cs"
+    },
+    {
+      "guid": "d4dc1a9df0d543539d8031ba99dc3b2f",
+      "path": "unity/Assets/BlueMapProgression/Runtime/Model/ProgressionModelChecks.cs"
+    },
+    {
+      "guid": "719f33f83e16494fb3a8546eb0f3911c",
+      "path": "unity/Assets/BlueMapProgression/Runtime/Model/Resources"
+    },
+    {
+      "guid": "c2d83a760b3b4be6a57e837288103e9b",
+      "path": "unity/Assets/BlueMapProgression/Runtime/Model/Resources/BlueMapProgressionOracle.json"
+    },
+    {
+      "guid": "1d43c0dc731543bdae2b949b18f6bc92",
+      "path": "unity/Assets/BlueMapProgression/Runtime/Session"
+    },
+    {
+      "guid": "075b0235b38442189decddd710b12127",
+      "path": "unity/Assets/BlueMapProgression/Runtime/Session/ProgressionProbeRunner.cs"
+    },
+    {
+      "guid": "eab5c13b1cef40a8ac734d2fb741aa05",
+      "path": "unity/Assets/BlueMapProgression/Runtime/Session/ProgressionUiProbeRunner.cs"
+    },
+    {
+      "guid": "7948520b23e64fd1954dfe31d5105f77",
+      "path": "unity/Assets/BlueMapProgression/Runtime/UI"
+    },
+    {
+      "guid": "437e7bebd880411ea967ff6278ab47d1",
+      "path": "unity/Assets/BlueMapProgression/Runtime/UI/ProgressionPanel.cs"
+    }
+  ],
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "enginesStarted": false,
+  "frozenReferenceFiles": [
+    {
+      "bytes": 12657,
+      "path": "migration/portable/manifest.json",
+      "sha256": "0dd2d3ea38a30cde9ce449d460c4be6fef84d4023d883f96c88cc1e4a79d12ab"
+    },
+    {
+      "bytes": 15973,
+      "path": "migration/portable/catalogs/gear_slots.json",
+      "sha256": "7986cf80abe23dd85d6287c5fa9be18696dd3f833b5f6fef2bafa9b1bdec38a2"
+    },
+    {
+      "bytes": 134466,
+      "path": "migration/portable/catalogs/gear.json",
+      "sha256": "5b00c9c025cbd497438375081efcf2f117a86ff923801a10946345314a228024"
+    },
+    {
+      "bytes": 15847,
+      "path": "migration/portable/catalogs/clothing_slots.json",
+      "sha256": "fce34ef869b65e5a953c01fe34932ad1d4d70370d9114897ddf5836cde7c37de"
+    },
+    {
+      "bytes": 112941,
+      "path": "migration/portable/catalogs/clothes.json",
+      "sha256": "36d98c1ab6ad5e60b7ac7b1ffc6088438bb9791fe1d2dca053cf0c8228be86db"
+    },
+    {
+      "bytes": 155604,
+      "path": "migration/portable/catalogs/hair_m.json",
+      "sha256": "b700dbd5903e18ddf1e60d681bf5d209f38a830233fca7fcb53fb303b97bb1ca"
+    },
+    {
+      "bytes": 157421,
+      "path": "migration/portable/catalogs/hair_v.json",
+      "sha256": "bf27d98c73e8ef9bc668c5deb3921a10ad1baea1fe9f00f495f6dc44bfaff9c3"
+    },
+    {
+      "bytes": 68615,
+      "path": "migration/portable/catalogs/hair_colors.json",
+      "sha256": "e626da2473576b02883f631d4e35227593b2916a95a8d28d8a805f4c81e33061"
+    },
+    {
+      "bytes": 51561,
+      "path": "migration/portable/catalogs/eye_colors.json",
+      "sha256": "764a3bfdff58b25e8291ee5e55faa43716b351a55fdac3f4ca156f6ad3ad6703"
+    },
+    {
+      "bytes": 44539,
+      "path": "migration/portable/catalogs/eye_styles.json",
+      "sha256": "f63807cc070258322fe2bdb67a4d941a1c5b541683416c009d139c412cfee3c5"
+    },
+    {
+      "bytes": 85612,
+      "path": "migration/portable/catalogs/dye_colors.json",
+      "sha256": "81d0bccc2337ef890bccaafcda539b041844f6eef719e85ca175c6e6c3631c4d"
+    },
+    {
+      "bytes": 5854,
+      "path": "migration/portable/catalogs/genders.json",
+      "sha256": "04a44859abb70a37aafb63edcae26c5dff06d8fec6557a51e6102cb25e4ace0f"
+    },
+    {
+      "bytes": 21777,
+      "path": "migration/portable/catalogs/weapons.json",
+      "sha256": "50c0dde1047172c764aac7016ba0c2c53e9c77bcd78d00c31b86c956da3b442b"
+    },
+    {
+      "bytes": 22339,
+      "path": "migration/portable/catalogs/professions.json",
+      "sha256": "d4b4ce2bb48e09ca563f70c058f419015258d3a717905f20cd5ffc8f0f5f9b3c"
+    },
+    {
+      "bytes": 274514,
+      "path": "migration/portable/catalogs/recipes.json",
+      "sha256": "306d5da9b4e503edc6108aaaad969c20a6ddde6486611b7954a29f4b6bfb10cf"
+    },
+    {
+      "bytes": 55112,
+      "path": "migration/portable/catalogs/shops.json",
+      "sha256": "1ef55e3d6707626ca0b9f8b863107d6481dc6b637c4ca715afe20c72d0b28643"
+    },
+    {
+      "bytes": 1305855,
+      "path": "migration/portable/catalogs/talks.json",
+      "sha256": "af12b263d6af09090cb56b593968a5f9c400ea774cd03975c0aa46cb2d906e77"
+    },
+    {
+      "bytes": 206219,
+      "path": "migration/portable/catalogs/quests.json",
+      "sha256": "c7fe50d6560f6867482a95119f2e694bea5ead26e5dbf70cbf63ca5bdd387e0a"
+    },
+    {
+      "path": "migration/reference/source-manifest.json",
+      "sha256": "5300a24edd771f0c94566a3255fffa798a2daf654419960d22c3703d8533d5d6"
+    },
+    {
+      "path": "migration/reference/maps-inventory.json",
+      "sha256": "3b6e3818d720f501dbcce09252919f7c76f2814a651a5fba796a322767cfb207"
+    },
+    {
+      "path": "migration/world/index.json",
+      "sha256": "d986a9a8ad3a03e2c5a5b9fb98e0622dbca76f950f52d35d756f611410af4743"
+    },
+    {
+      "path": "migration/phase-12/inventory-state-oracle.json",
+      "sha256": "cad64e70a727a50bb86ccecb082dd98936c69f5b77d6d5a2faf64e0f5478d75e"
+    }
+  ],
+  "oracle": {
+    "bytes": 6549516,
+    "coverage": {
+      "caseIds": [
+        "appearance-invalid-input",
+        "appearance-preserve-extensions",
+        "clothing-invalid-normalization",
+        "clothing-owned-cloth_backpack",
+        "clothing-owned-cloth_beanie",
+        "clothing-owned-cloth_beret",
+        "clothing-owned-cloth_blouse",
+        "clothing-owned-cloth_boots",
+        "clothing-owned-cloth_cape",
+        "clothing-owned-cloth_cloak",
+        "clothing-owned-cloth_dress",
+        "clothing-owned-cloth_felt_hat",
+        "clothing-owned-cloth_headband",
+        "clothing-owned-cloth_nightcap",
+        "clothing-owned-cloth_overalls",
+        "clothing-owned-cloth_sandals",
+        "clothing-owned-cloth_scarf",
+        "clothing-owned-cloth_shirt",
+        "clothing-owned-cloth_shoes",
+        "clothing-owned-cloth_shorts",
+        "clothing-owned-cloth_skirt",
+        "clothing-owned-cloth_slippers",
+        "clothing-owned-cloth_straw_hat",
+        "clothing-owned-cloth_sweater",
+        "clothing-owned-cloth_trousers",
+        "clothing-owned-cloth_tunic",
+        "clothing-owned-cloth_vest",
+        "clothing-persist-slot-dye-no-gameplay-bonus",
+        "clothing-removal-reconcile",
+        "clothing-unowned-cloth_backpack",
+        "clothing-unowned-cloth_beanie",
+        "clothing-unowned-cloth_beret",
+        "clothing-unowned-cloth_blouse",
+        "clothing-unowned-cloth_boots",
+        "clothing-unowned-cloth_cape",
+        "clothing-unowned-cloth_cloak",
+        "clothing-unowned-cloth_dress",
+        "clothing-unowned-cloth_felt_hat",
+        "clothing-unowned-cloth_headband",
+        "clothing-unowned-cloth_nightcap",
+        "clothing-unowned-cloth_overalls",
+        "clothing-unowned-cloth_sandals",
+        "clothing-unowned-cloth_scarf",
+        "clothing-unowned-cloth_shirt",
+        "clothing-unowned-cloth_shoes",
+        "clothing-unowned-cloth_shorts",
+        "clothing-unowned-cloth_skirt",
+        "clothing-unowned-cloth_slippers",
+        "clothing-unowned-cloth_straw_hat",
+        "clothing-unowned-cloth_sweater",
+        "clothing-unowned-cloth_trousers",
+        "clothing-unowned-cloth_tunic",
+        "clothing-unowned-cloth_vest",
+        "enemy-ad_crab-arena",
+        "enemy-ad_crab-forest",
+        "enemy-ad_keeper-arena",
+        "enemy-ad_keeper-forest",
+        "enemy-ad_wisp-arena",
+        "enemy-ad_wisp-forest",
+        "enemy-bat-arena",
+        "enemy-bat-forest",
+        "enemy-crystal_beetle-arena",
+        "enemy-crystal_beetle-forest",
+        "enemy-diepte_golem-arena",
+        "enemy-diepte_golem-forest",
+        "enemy-future_enemy-arena",
+        "enemy-future_enemy-forest",
+        "enemy-golem-arena",
+        "enemy-golem-forest",
+        "enemy-guardian-arena",
+        "enemy-guardian-forest",
+        "enemy-king-arena",
+        "enemy-king-forest",
+        "enemy-lw_singer-arena",
+        "enemy-lw_singer-forest",
+        "enemy-lw_stalker-arena",
+        "enemy-lw_stalker-forest",
+        "enemy-lw_warden-arena",
+        "enemy-lw_warden-forest",
+        "enemy-mage-arena",
+        "enemy-mage-forest",
+        "enemy-prism_moth-arena",
+        "enemy-prism_moth-forest",
+        "enemy-skeleton-arena",
+        "enemy-skeleton-forest",
+        "enemy-slime-arena",
+        "enemy-slime-forest",
+        "enemy-slime_blue-arena",
+        "enemy-slime_blue-forest",
+        "enemy-slime_mini-arena",
+        "enemy-slime_mini-forest",
+        "enemy-slime_red-arena",
+        "enemy-slime_red-forest",
+        "enemy-slime_spitter-arena",
+        "enemy-slime_spitter-forest",
+        "eye-color--1",
+        "eye-color-0",
+        "eye-color-1",
+        "eye-color-10",
+        "eye-color-11",
+        "eye-color-12",
+        "eye-color-2",
+        "eye-color-3",
+        "eye-color-4",
+        "eye-color-5",
+        "eye-color-6",
+        "eye-color-7",
+        "eye-color-8",
+        "eye-color-9",
+        "eyes-boos",
+        "eyes-dicht",
+        "eyes-dromerig",
+        "eyes-groot",
+        "eyes-knipoog",
+        "eyes-ovaal",
+        "eyes-rond",
+        "eyes-slaperig",
+        "eyes-smal",
+        "eyes-sterretjes",
+        "eyes-stip",
+        "eyes-straler",
+        "eyes-vonkel",
+        "eyes-vriendelijk",
+        "eyes-wijs",
+        "eyes-wimpers",
+        "gear-capacity-no-refill",
+        "gear-combined-caps",
+        "gear-normalize-invalid-owned",
+        "gear-owned-gear_bastion_coat",
+        "gear-owned-gear_bronze_helm",
+        "gear-owned-gear_cloth_hood",
+        "gear-owned-gear_copper_amulet",
+        "gear-owned-gear_copper_ring",
+        "gear-owned-gear_crystal_amulet",
+        "gear-owned-gear_crystal_ring",
+        "gear-owned-gear_cw_anchor",
+        "gear-owned-gear_cw_fan",
+        "gear-owned-gear_iron_armor",
+        "gear-owned-gear_leather_armor",
+        "gear-owned-gear_novice_gloves",
+        "gear-owned-gear_pg_focus",
+        "gear-owned-gear_pg_focus_plus",
+        "gear-owned-gear_pg_grip",
+        "gear-owned-gear_pg_grip_plus",
+        "gear-owned-gear_pg_pack",
+        "gear-owned-gear_pg_pack_plus",
+        "gear-owned-gear_ra_compass",
+        "gear-owned-gear_ra_grip",
+        "gear-owned-gear_rf_cord",
+        "gear-owned-gear_rf_keepsake",
+        "gear-owned-gear_scout_coat",
+        "gear-owned-gear_smith_gloves",
+        "gear-removal-reconcile",
+        "gear-unowned-gear_bastion_coat",
+        "gear-unowned-gear_bronze_helm",
+        "gear-unowned-gear_cloth_hood",
+        "gear-unowned-gear_copper_amulet",
+        "gear-unowned-gear_copper_ring",
+        "gear-unowned-gear_crystal_amulet",
+        "gear-unowned-gear_crystal_ring",
+        "gear-unowned-gear_cw_anchor",
+        "gear-unowned-gear_cw_fan",
+        "gear-unowned-gear_iron_armor",
+        "gear-unowned-gear_leather_armor",
+        "gear-unowned-gear_novice_gloves",
+        "gear-unowned-gear_pg_focus",
+        "gear-unowned-gear_pg_focus_plus",
+        "gear-unowned-gear_pg_grip",
+        "gear-unowned-gear_pg_grip_plus",
+        "gear-unowned-gear_pg_pack",
+        "gear-unowned-gear_pg_pack_plus",
+        "gear-unowned-gear_ra_compass",
+        "gear-unowned-gear_ra_grip",
+        "gear-unowned-gear_rf_cord",
+        "gear-unowned-gear_rf_keepsake",
+        "gear-unowned-gear_scout_coat",
+        "gear-unowned-gear_smith_gloves",
+        "gear-whole-set-preview-gear_bastion_coat",
+        "gear-whole-set-preview-gear_bronze_helm",
+        "gear-whole-set-preview-gear_cloth_hood",
+        "gear-whole-set-preview-gear_copper_amulet",
+        "gear-whole-set-preview-gear_copper_ring",
+        "gear-whole-set-preview-gear_crystal_amulet",
+        "gear-whole-set-preview-gear_crystal_ring",
+        "gear-whole-set-preview-gear_cw_anchor",
+        "gear-whole-set-preview-gear_cw_fan",
+        "gear-whole-set-preview-gear_iron_armor",
+        "gear-whole-set-preview-gear_leather_armor",
+        "gear-whole-set-preview-gear_novice_gloves",
+        "gear-whole-set-preview-gear_pg_focus",
+        "gear-whole-set-preview-gear_pg_focus_plus",
+        "gear-whole-set-preview-gear_pg_grip",
+        "gear-whole-set-preview-gear_pg_grip_plus",
+        "gear-whole-set-preview-gear_pg_pack",
+        "gear-whole-set-preview-gear_pg_pack_plus",
+        "gear-whole-set-preview-gear_ra_compass",
+        "gear-whole-set-preview-gear_ra_grip",
+        "gear-whole-set-preview-gear_rf_cord",
+        "gear-whole-set-preview-gear_rf_keepsake",
+        "gear-whole-set-preview-gear_scout_coat",
+        "gear-whole-set-preview-gear_smith_gloves",
+        "hair-color--1",
+        "hair-color-0",
+        "hair-color-1",
+        "hair-color-10",
+        "hair-color-11",
+        "hair-color-12",
+        "hair-color-13",
+        "hair-color-14",
+        "hair-color-15",
+        "hair-color-16",
+        "hair-color-2",
+        "hair-color-3",
+        "hair-color-4",
+        "hair-color-5",
+        "hair-color-6",
+        "hair-color-7",
+        "hair-color-8",
+        "hair-color-9",
+        "hair-m_bos",
+        "hair-m_buzz",
+        "hair-m_dreads",
+        "hair-m_emopony",
+        "hair-m_golvend",
+        "hair-m_gordijn",
+        "hair-m_halflang",
+        "hair-m_halflang_vol",
+        "hair-m_kaal",
+        "hair-m_knot",
+        "hair-m_knot_kort",
+        "hair-m_kort",
+        "hair-m_kort_kuif",
+        "hair-m_krul_kuif",
+        "hair-m_krulbob",
+        "hair-m_krullen",
+        "hair-m_krullen_lang",
+        "hair-m_krulstaart",
+        "hair-m_kuif",
+        "hair-m_lang",
+        "hair-m_lang_vol",
+        "hair-m_mohawk",
+        "hair-m_mohawk_lang",
+        "hair-m_opgestoken",
+        "hair-m_pagenkop",
+        "hair-m_pony",
+        "hair-m_pony_lang",
+        "hair-m_samurai",
+        "hair-m_scheiding",
+        "hair-m_scheiding_lang",
+        "hair-m_staart",
+        "hair-m_staart_lang",
+        "hair-m_stekelmohawk",
+        "hair-m_stekels",
+        "hair-m_stekels_lang",
+        "hair-m_surfer",
+        "hair-m_vlecht",
+        "hair-m_vlecht_kort",
+        "hair-m_vlechtkroon",
+        "hair-m_warrig",
+        "hair-m_waterval",
+        "hair-m_wetenschapper",
+        "hair-m_zijpony",
+        "hair-m_zijstaart",
+        "hair-m_zijstaart_lang",
+        "hair-v_afro",
+        "hair-v_bob",
+        "hair-v_bob_krul",
+        "hair-v_bob_lang",
+        "hair-v_dubbelstaart",
+        "hair-v_emopony",
+        "hair-v_golvend",
+        "hair-v_gordijn",
+        "hair-v_gordijn_lang",
+        "hair-v_halflang",
+        "hair-v_halflang_vol",
+        "hair-v_halfop",
+        "hair-v_hoge_staart",
+        "hair-v_kaal",
+        "hair-v_knot",
+        "hair-v_knot_lang",
+        "hair-v_knotjes",
+        "hair-v_kort",
+        "hair-v_kort_golvend",
+        "hair-v_kort_pony",
+        "hair-v_kroonvlecht",
+        "hair-v_krulbob",
+        "hair-v_krullen",
+        "hair-v_krullen_lang",
+        "hair-v_krulstaart",
+        "hair-v_laagjes",
+        "hair-v_lang",
+        "hair-v_lang_pony",
+        "hair-v_mohawk",
+        "hair-v_opgestoken",
+        "hair-v_pagenkop",
+        "hair-v_pixie",
+        "hair-v_pixie_kuif",
+        "hair-v_staart",
+        "hair-v_staart_vol",
+        "hair-v_stekelpixie",
+        "hair-v_stekels",
+        "hair-v_vlecht",
+        "hair-v_vlechtband",
+        "hair-v_vlechtjes",
+        "hair-v_waterval",
+        "hair-v_wilde_krullen",
+        "hair-v_zijpony",
+        "hair-v_zijstaart",
+        "hair-v_zijvlecht",
+        "hero-boundary-1--1",
+        "hero-boundary-1-0",
+        "hero-boundary-1-1",
+        "hero-boundary-10--1",
+        "hero-boundary-10-0",
+        "hero-boundary-10-1",
+        "hero-boundary-2--1",
+        "hero-boundary-2-0",
+        "hero-boundary-2-1",
+        "hero-boundary-3--1",
+        "hero-boundary-3-0",
+        "hero-boundary-3-1",
+        "hero-boundary-4--1",
+        "hero-boundary-4-0",
+        "hero-boundary-4-1",
+        "hero-boundary-5--1",
+        "hero-boundary-5-0",
+        "hero-boundary-5-1",
+        "hero-boundary-6--1",
+        "hero-boundary-6-0",
+        "hero-boundary-6-1",
+        "hero-boundary-7--1",
+        "hero-boundary-7-0",
+        "hero-boundary-7-1",
+        "hero-boundary-8--1",
+        "hero-boundary-8-0",
+        "hero-boundary-8-1",
+        "hero-boundary-9--1",
+        "hero-boundary-9-0",
+        "hero-boundary-9-1",
+        "hero-import-level-does-not-reward",
+        "hero-multilevel-cap-repeat",
+        "hero-normalize-13",
+        "hero-normalize-14",
+        "hero-normalize-15",
+        "hero-normalize-16",
+        "hero-normalize-17",
+        "hero-normalize-18",
+        "hero-normalize-19",
+        "hero-normalize-20",
+        "hero-normalize-21",
+        "hero-normalize-22",
+        "hero-normalize-23",
+        "hero-normalize-24",
+        "hero-normalize-25",
+        "hero-normalize-26",
+        "hero-normalize-27",
+        "hero-threshold--1",
+        "hero-threshold-0",
+        "hero-threshold-1",
+        "hero-threshold-10",
+        "hero-threshold-11",
+        "hero-threshold-2",
+        "hero-threshold-3",
+        "hero-threshold-4",
+        "hero-threshold-5",
+        "hero-threshold-6",
+        "hero-threshold-7",
+        "hero-threshold-8",
+        "hero-threshold-9",
+        "quest-ad_keeper",
+        "quest-ad_message",
+        "quest-ad_pilot",
+        "quest-ad_wheel",
+        "quest-arena_kampioen",
+        "quest-boog_schietbaan",
+        "quest-cactusvijgen",
+        "quest-dauw",
+        "quest-diepte",
+        "quest-drank",
+        "quest-first_water",
+        "quest-ijswacht",
+        "quest-kat",
+        "quest-kruiden",
+        "quest-lantaarn",
+        "quest-lichtwerk",
+        "quest-ls_supper",
+        "quest-main",
+        "quest-medaillon",
+        "quest-meer_boeken",
+        "quest-meer_karper",
+        "quest-mistbloemen",
+        "quest-mistsporen",
+        "quest-prisma_herstel",
+        "quest-ra_archive",
+        "quest-ra_ridge",
+        "quest-rf_echo",
+        "quest-rf_memory",
+        "quest-unknown",
+        "quest-veenbessen",
+        "quest-vellen_en_vlees",
+        "quest-warmte",
+        "quest-wilgentwijgen",
+        "quest-zonneschijf",
+        "upgrade-full-pg_focus_plus",
+        "upgrade-full-pg_grip_plus",
+        "upgrade-full-pg_pack_plus",
+        "upgrade-local-coast-pg_pack_plus",
+        "upgrade-local-home-pg_pack_plus",
+        "upgrade-locked-pg_focus_plus",
+        "upgrade-locked-pg_grip_plus",
+        "upgrade-locked-pg_pack_plus",
+        "upgrade-lowlevel-pg_focus_plus",
+        "upgrade-lowlevel-pg_grip_plus",
+        "upgrade-lowlevel-pg_pack_plus",
+        "upgrade-missing-pg_focus_plus",
+        "upgrade-missing-pg_grip_plus",
+        "upgrade-missing-pg_pack_plus",
+        "upgrade-remote-coast-pg_pack_plus",
+        "upgrade-remote-home-pg_pack_plus",
+        "upgrade-station-pg_focus_plus",
+        "upgrade-station-pg_grip_plus",
+        "upgrade-unworn-pg_focus_plus",
+        "upgrade-unworn-pg_grip_plus",
+        "upgrade-unworn-pg_pack_plus",
+        "upgrade-worn-pg_focus_plus",
+        "upgrade-worn-pg_grip_plus",
+        "upgrade-worn-pg_pack_plus",
+        "weapon-conditions-crystal-coins",
+        "weapon-conditions-crystal-gel",
+        "weapon-conditions-crystal-none",
+        "weapon-conditions-crystal-shard",
+        "weapon-conditions-iron-coins",
+        "weapon-conditions-iron-gel",
+        "weapon-conditions-iron-none",
+        "weapon-conditions-iron-shard",
+        "weapon-original-actions-crystal",
+        "weapon-original-actions-iron",
+        "weapon-original-earned-opcode",
+        "weapon-path-crystal",
+        "weapon-path-iron",
+        "weapon-path-star",
+        "weapon-path-wood"
+      ],
+      "cases": 442,
+      "clothing": 24,
+      "clothingSlots": 5,
+      "dictionaryInputOrderPreserved": true,
+      "dyeColors": 20,
+      "exactFloat64Values": 6580,
+      "eyeColors": 12,
+      "eyeStyles": 16,
+      "gear": 24,
+      "gearSlots": 5,
+      "gearUpgradeRecipes": 3,
+      "hairColors": 16,
+      "hairStyles": 90,
+      "methods": [
+        "scripts/core/appearance.gd::dye",
+        "scripts/core/appearance.gd::normalize_appearance",
+        "scripts/core/appearance.gd::normalize_clothing",
+        "scripts/core/appearance.gd::owned_in_slot",
+        "scripts/core/appearance.gd::reconcile",
+        "scripts/core/appearance.gd::set_eye_color",
+        "scripts/core/appearance.gd::set_eyes",
+        "scripts/core/appearance.gd::set_gender",
+        "scripts/core/appearance.gd::set_hair",
+        "scripts/core/appearance.gd::set_hair_color",
+        "scripts/core/appearance.gd::unwear",
+        "scripts/core/appearance.gd::wear",
+        "scripts/core/appearance.gd::worn",
+        "scripts/core/craft_journal.gd::crafted",
+        "scripts/core/equipment.gd::bonus",
+        "scripts/core/equipment.gd::comparison_text",
+        "scripts/core/equipment.gd::equip",
+        "scripts/core/equipment.gd::equipped",
+        "scripts/core/equipment.gd::normalize",
+        "scripts/core/equipment.gd::normalize_owned",
+        "scripts/core/equipment.gd::owned",
+        "scripts/core/equipment.gd::preview_bonus",
+        "scripts/core/equipment.gd::reconcile",
+        "scripts/core/equipment.gd::stats_text",
+        "scripts/core/equipment.gd::unequip",
+        "scripts/core/game_state.gd::add_hero_xp",
+        "scripts/core/game_state.gd::finish_quest",
+        "scripts/core/game_state.gd::register_kill",
+        "scripts/core/game_state.gd::set_weapon",
+        "scripts/core/professions.gd::craft",
+        "scripts/core/professions.gd::craft_reason",
+        "scripts/core/progression.gd::enemy_xp",
+        "scripts/core/progression.gd::level_for",
+        "scripts/core/progression.gd::normalize",
+        "scripts/core/progression.gd::progress",
+        "scripts/core/progression.gd::quest_xp",
+        "scripts/core/progression.gd::threshold",
+        "scripts/core/stockroom.gd::consume",
+        "scripts/ui/progression_page.gd::weapon_upgrade"
+      ],
+      "quests": 33,
+      "weaponUpgradeRoutes": 3,
+      "weapons": 4
+    },
+    "resourcePath": "unity/Assets/BlueMapProgression/Runtime/Model/Resources/BlueMapProgressionOracle.json",
+    "sha256": "66a9c0b04ff396b2cf88138d378bceadfe0b76af0cfe7b7aeda533757ab8e31b",
+    "sourcePath": "migration/phase-13/progression-oracle.json"
+  },
+  "originalDictionaryOrders": {
+    "bonusLimits": [
+      "move_speed",
+      "stamina_max",
+      "armor",
+      "attack_cooldown_reduction",
+      "stamina_regen",
+      "magnet_range",
+      "technique_cost_reduction",
+      "bow_preparation_reduction",
+      "harvest_time_reduction"
+    ],
+    "clothing": [
+      "cloth_straw_hat",
+      "cloth_beret",
+      "cloth_beanie",
+      "cloth_cape",
+      "cloth_scarf",
+      "cloth_tunic",
+      "cloth_blouse",
+      "cloth_shirt",
+      "cloth_trousers",
+      "cloth_skirt",
+      "cloth_shoes",
+      "cloth_slippers",
+      "cloth_headband",
+      "cloth_felt_hat",
+      "cloth_nightcap",
+      "cloth_backpack",
+      "cloth_cloak",
+      "cloth_sweater",
+      "cloth_vest",
+      "cloth_dress",
+      "cloth_shorts",
+      "cloth_overalls",
+      "cloth_boots",
+      "cloth_sandals"
+    ],
+    "clothingSlots": [
+      "hat",
+      "back",
+      "top",
+      "bottom",
+      "feet"
+    ],
+    "eyes": [
+      "rond",
+      "stip",
+      "groot",
+      "wimpers",
+      "knipoog",
+      "slaperig",
+      "boos",
+      "sterretjes",
+      "vonkel",
+      "vriendelijk",
+      "dicht",
+      "smal",
+      "ovaal",
+      "wijs",
+      "straler",
+      "dromerig"
+    ],
+    "gear": [
+      "gear_cw_anchor",
+      "gear_cw_fan",
+      "gear_ra_grip",
+      "gear_ra_compass",
+      "gear_rf_keepsake",
+      "gear_rf_cord",
+      "gear_scout_coat",
+      "gear_bastion_coat",
+      "gear_cloth_hood",
+      "gear_bronze_helm",
+      "gear_leather_armor",
+      "gear_iron_armor",
+      "gear_novice_gloves",
+      "gear_smith_gloves",
+      "gear_copper_amulet",
+      "gear_crystal_amulet",
+      "gear_copper_ring",
+      "gear_crystal_ring",
+      "gear_pg_grip",
+      "gear_pg_grip_plus",
+      "gear_pg_focus",
+      "gear_pg_focus_plus",
+      "gear_pg_pack",
+      "gear_pg_pack_plus"
+    ],
+    "gearSlots": [
+      "head",
+      "chest",
+      "hands",
+      "neck",
+      "ring"
+    ],
+    "genders": [
+      "m",
+      "v"
+    ],
+    "hairM": [
+      "m_kaal",
+      "m_buzz",
+      "m_kort",
+      "m_kort_kuif",
+      "m_kuif",
+      "m_mohawk",
+      "m_mohawk_lang",
+      "m_scheiding",
+      "m_scheiding_lang",
+      "m_krullen",
+      "m_krullen_lang",
+      "m_bos",
+      "m_staart",
+      "m_staart_lang",
+      "m_vlecht",
+      "m_knot",
+      "m_lang",
+      "m_lang_vol",
+      "m_pony",
+      "m_pony_lang",
+      "m_zijpony",
+      "m_gordijn",
+      "m_krul_kuif",
+      "m_halflang",
+      "m_halflang_vol",
+      "m_knot_kort",
+      "m_vlecht_kort",
+      "m_golvend",
+      "m_dreads",
+      "m_emopony",
+      "m_stekels",
+      "m_stekels_lang",
+      "m_zijstaart",
+      "m_zijstaart_lang",
+      "m_stekelmohawk",
+      "m_waterval",
+      "m_pagenkop",
+      "m_wetenschapper",
+      "m_krulbob",
+      "m_vlechtkroon",
+      "m_opgestoken",
+      "m_surfer",
+      "m_krulstaart",
+      "m_warrig",
+      "m_samurai"
+    ],
+    "hairV": [
+      "v_bob",
+      "v_bob_krul",
+      "v_pixie",
+      "v_pixie_kuif",
+      "v_lang",
+      "v_lang_pony",
+      "v_staart",
+      "v_staart_vol",
+      "v_vlecht",
+      "v_vlechtjes",
+      "v_knot",
+      "v_knot_lang",
+      "v_krullen",
+      "v_krullen_lang",
+      "v_golvend",
+      "v_gordijn",
+      "v_gordijn_lang",
+      "v_zijpony",
+      "v_halflang",
+      "v_halflang_vol",
+      "v_bob_lang",
+      "v_afro",
+      "v_knotjes",
+      "v_kroonvlecht",
+      "v_kort",
+      "v_kort_pony",
+      "v_mohawk",
+      "v_krulstaart",
+      "v_emopony",
+      "v_kaal",
+      "v_stekels",
+      "v_zijstaart",
+      "v_zijvlecht",
+      "v_waterval",
+      "v_hoge_staart",
+      "v_krulbob",
+      "v_pagenkop",
+      "v_laagjes",
+      "v_vlechtband",
+      "v_opgestoken",
+      "v_wilde_krullen",
+      "v_halfop",
+      "v_stekelpixie",
+      "v_dubbelstaart",
+      "v_kort_golvend"
+    ],
+    "recipes": [
+      "stone_axe",
+      "stone_pickaxe",
+      "arrows",
+      "copper_bar",
+      "copper_pickaxe",
+      "iron_bar",
+      "iron_axe",
+      "potion",
+      "tonic",
+      "berry_meal",
+      "stew",
+      "fish_meal",
+      "bronze_helm",
+      "iron_armor",
+      "smith_gloves",
+      "crystal_amulet",
+      "crystal_ring",
+      "frost_tonic",
+      "winter_glow",
+      "sand_balm",
+      "roast_meat",
+      "mist_drank",
+      "dauw_soep",
+      "moeras_elixer",
+      "veenbes_pap",
+      "prism_lantern",
+      "grounding_powder",
+      "bridge_components",
+      "living_resin",
+      "scout_coat",
+      "ls_chowder",
+      "ls_broth",
+      "pg_grip",
+      "pg_grip_plus",
+      "pg_focus",
+      "pg_focus_plus",
+      "pg_pack",
+      "pg_pack_plus",
+      "pine_copper_bar",
+      "bog_iron_bar",
+      "pine_arrows",
+      "cw_hook",
+      "cw_anchor",
+      "cw_fan",
+      "cw_shelf",
+      "cw_lamp",
+      "cw_broth",
+      "hs_seeds",
+      "hs_flowers",
+      "or_stew",
+      "or_tea",
+      "or_balm"
+    ],
+    "skills": [
+      "foraging",
+      "woodcutting",
+      "mining",
+      "fishing",
+      "smithing",
+      "alchemy",
+      "cooking"
+    ],
+    "upgradeRecipes": [
+      "pg_grip_plus",
+      "pg_focus_plus",
+      "pg_pack_plus"
+    ],
+    "weapons": [
+      "wood",
+      "iron",
+      "crystal",
+      "star"
+    ]
+  },
+  "personalSavesUsed": false,
+  "phase": 13,
+  "recorders": [
+    {
+      "path": "tools/migration_progression_export.gd",
+      "sha256": "96be75d3a489f3d6e6fa607ed63187c229adfb53a57cd19f317a8b1d059ddcde"
+    },
+    {
+      "path": "tools/record_migration_progression.py",
+      "sha256": "975095224821cdf9dba683cf8b58bdbefdd15d60d42ebddae9837115954e8ca3"
+    },
+    {
+      "path": "tools/migration_inventory_export.gd",
+      "sha256": "ece33926d3ed98adf85c34fc60fcabd914fac5fa0243cc236f84983f0d16440b"
+    },
+    {
+      "path": "tools/record_migration_inventory_state.py",
+      "sha256": "b26b15e57360683021f1223e60e6dfdb00d9ad94435112297e16a3afcba481b1"
+    },
+    {
+      "path": "tools/migration_route_export.gd",
+      "sha256": "c83b95f151f478f62fedb002887516912b7e073c0480297fe0ed6e54e3dbee46"
+    }
+  ],
+  "requiredNativeChecks": [
+    "progression_model_atomic_rewards",
+    "progression_model_owned_cosmetic_and_upgrade_safety",
+    "progression_model_source_equivalence",
+    "progression_native_all_equipment_slots_apply",
+    "progression_native_all_hair_and_clothing_layers",
+    "progression_native_arena_exclusion",
+    "progression_native_checks_ran",
+    "progression_native_cosmetic_stats_and_shared_layer_order",
+    "progression_native_forge_proximity_and_no_free_star",
+    "progression_native_forge_rechecks_complete_cost",
+    "progression_native_gather_and_magnet_bonuses",
+    "progression_native_gear_browsing_pure",
+    "progression_native_greta_original_dialogue_upgrades",
+    "progression_native_quest_xp_main_and_repeat",
+    "progression_native_reload_does_not_reward_levels",
+    "progression_native_removed_gear_reconciles_capacity",
+    "progression_native_save_reload_preserves_selections",
+    "progression_native_source_gear_upgrades",
+    "progression_native_xp_rewards_once",
+    "progression_no_real_saves_accessed",
+    "progression_ui_all_slots",
+    "progression_ui_browsing_is_readonly",
+    "progression_ui_character_entry",
+    "progression_ui_compare_and_confirm",
+    "progression_ui_controller_selection_visible",
+    "progression_ui_four_native_captures",
+    "progression_ui_hair_clothing_layers",
+    "progression_ui_input_owner_switch",
+    "progression_ui_responsive_layout",
+    "progression_ui_stats_readable",
+    "progression_ui_sustained_right_stick",
+    "progression_ui_upgrade_confirmation"
+  ],
+  "schema": "bluemap.progression.source-contracts.v1",
+  "sourceAnchors": [
+    {
+      "bytes": 13421,
+      "gitBlob": "52c05b53bb2fa675624b00ccb9579e460fd490b6",
+      "path": "project.godot",
+      "sha256": "4381f29aa19a0488ec38349b8d4692c972ed7b6f4d433e9ce184d17214594dfb"
+    },
+    {
+      "bytes": 170,
+      "gitBlob": "7705ae284a504af14236600af7bad7920881bb20",
+      "path": "scenes/main.tscn",
+      "sha256": "0d3cfc61c1f4e7ed5e33ceb0b837d61cac6d04390ff64571182fbfeee4188711"
+    },
+    {
+      "bytes": 5144,
+      "gitBlob": "b11d72c7b484fadfa2f22b85243c4eeb1e119e38",
+      "path": "scripts/core/appearance.gd",
+      "sha256": "9b67d08473f366ec3d53a526f62a1a361741391ced07ee2891c5d855fac98ceb"
+    },
+    {
+      "bytes": 609,
+      "gitBlob": "83a3aa25982aa5075dc3f475d995e012ce2c1bfe",
+      "path": "scripts/core/appearance_draw.gd",
+      "sha256": "b5895e1635dbc5304ce25802cae289b333829c631edd1389bfae31de727d903b"
+    },
+    {
+      "bytes": 2079,
+      "gitBlob": "1d5c12cc2804e731e0ac4bc209608c3cbeb9f711",
+      "path": "scripts/core/art.gd",
+      "sha256": "fea8f65ad6441c066d63bc92492ed0194efa7cac13ba49408e4320f74b893c49"
+    },
+    {
+      "bytes": 1048,
+      "gitBlob": "34f8c8efd9bf6fe0c1d0fb3dbc546a3ba0957cbb",
+      "path": "scripts/core/character_draw.gd",
+      "sha256": "fbfc4273a7386a5d3df3825ade9ff56104fa552eafa12368d54fa0f9fa241386"
+    },
+    {
+      "bytes": 5202,
+      "gitBlob": "a7730b650732bb8a574e7408db24e7210a92dcbf",
+      "path": "scripts/core/character_layers.gd",
+      "sha256": "0f8782d8e2ac341ca62bd9f965fe86b60d1889c2a0ed176b6f76dffed2aae228"
+    },
+    {
+      "bytes": 2529,
+      "gitBlob": "eac3b46d8d0b0864c6ff7584f0db53259e8dd099",
+      "path": "scripts/core/coastal_home.gd",
+      "sha256": "0f7da0b759406f1ea8c23e5b792f1e4e7cdcc35b9c2006d5f688b0bce10792b2"
+    },
+    {
+      "bytes": 6323,
+      "gitBlob": "f605c8e7ca00f0ac9a5f21232c6d4cb3103bb346",
+      "path": "scripts/core/craft_journal.gd",
+      "sha256": "c000311b482604ceec4ce72ba4ae10526686606307c6aa4aba1b633a2081c79a"
+    },
+    {
+      "bytes": 5494,
+      "gitBlob": "316fa5c891e2deec0befc59ee9e9aae43ea55114",
+      "path": "scripts/core/equipment.gd",
+      "sha256": "60276ccdb0c1ecbe52eee8a3b45a2b0f9f8e1221bf1cedd3643967a5aad65a7e"
+    },
+    {
+      "bytes": 2936,
+      "gitBlob": "3805859b157cef9b7e83293d7311efb43c6f6586",
+      "path": "scripts/core/equipment_art.gd",
+      "sha256": "7a3fde2501090ad28fd58461991ca67bebf33532e956a31efbca25656c89cf80"
+    },
+    {
+      "bytes": 32096,
+      "gitBlob": "47d621d751586d38a53c370fa7d2a516f3524450",
+      "path": "scripts/core/game_state.gd",
+      "sha256": "86bd03c3052581e8ac4bebc7e8f11e5580be02ead86fd2f0108f01232c85c22c"
+    },
+    {
+      "bytes": 4572,
+      "gitBlob": "27e5ff168d02080ad6c75dd3969f527f90b610d7",
+      "path": "scripts/core/lang.gd",
+      "sha256": "bd28e55994891258ace5eab1635f82f109064451cd140f5fb0fe2c205e5e4c11"
+    },
+    {
+      "bytes": 2607,
+      "gitBlob": "58806b9c969a52d7d94d7a77abf3c8e43df277a9",
+      "path": "scripts/core/movement.gd",
+      "sha256": "cac3c6ff079faca62eabeafb3508e326b067664fbad3eb95f42a94bc19a8cd3b"
+    },
+    {
+      "bytes": 12436,
+      "gitBlob": "403670241fc2f0b90b0fe930a3f9fd698c6d708a",
+      "path": "scripts/core/professions.gd",
+      "sha256": "3d15772b05ec1728ef11915088bd1e0fab5e60692fabe8390a433d092bc1f43a"
+    },
+    {
+      "bytes": 2410,
+      "gitBlob": "70b762b7f22a05a875a26538aa5dcf97df92a6bc",
+      "path": "scripts/core/progression.gd",
+      "sha256": "a4e4ca1487a2ea0426d05a39921410097cbe6ea5bb0a3f3923dfafa8a2de279e"
+    },
+    {
+      "bytes": 6580,
+      "gitBlob": "394f1be38043f33b5e4918e5f78a697439759497",
+      "path": "scripts/core/stockroom.gd",
+      "sha256": "4f03a0e4dafe2cd54e0791ae1590f1bba757ccb73b5dc7ea4818fd08d1471aca"
+    },
+    {
+      "bytes": 4570,
+      "gitBlob": "c16be2b1c1e7434cdd673e6e624f1007b5c14f8e",
+      "path": "scripts/data/achievements.gd",
+      "sha256": "a6ceecbd4c1ff1cdff5bf1550851b2980b22f6f9c7bea7a709fbc7e4ba2cce63"
+    },
+    {
+      "bytes": 822,
+      "gitBlob": "b2c922d6ae76f9943d9091108ae33695498e9c49",
+      "path": "scripts/data/adventure_maps.gd",
+      "sha256": "afaa6602f2b6f07b248a8de8fda03f11f50efdb379327b2b921de3828c915d13"
+    },
+    {
+      "bytes": 9235,
+      "gitBlob": "effa500be73fd4496dc64a52a0066bf3c902e0d6",
+      "path": "scripts/data/arena.gd",
+      "sha256": "115f0d52b40e74664431608be9fb8826b9e93427d3c6e29ec86c7bfb04de578a"
+    },
+    {
+      "bytes": 2160,
+      "gitBlob": "2f4ad9c5169dfc8e8b60a1fb0294562a0d91c990",
+      "path": "scripts/data/buildings.gd",
+      "sha256": "2f79bbdb9a096ce52dab21361f60d66ca5379417e32d3bb8ba5e24264f00a84b"
+    },
+    {
+      "bytes": 2782,
+      "gitBlob": "8b48dfc0ca0a71cef594612d5c913f191bd9e0a9",
+      "path": "scripts/data/character_art.gd",
+      "sha256": "2ff58cf482759b50b2bb50f237a0265408e9d189a7756cae9ed0bd3a0939a021"
+    },
+    {
+      "bytes": 1631,
+      "gitBlob": "c5830f56cacc20b9324758484f45442690a2ba8e",
+      "path": "scripts/data/coast_maps.gd",
+      "sha256": "08279dbf6bca3badc7e4e4c8d6ba0465d1ef3493f231ab49b8452ea0641fb859"
+    },
+    {
+      "bytes": 460,
+      "gitBlob": "4785e3de331366fdc3ac86b2ca528cc51f815794",
+      "path": "scripts/data/coastal_craft_maps.gd",
+      "sha256": "044293f6910f0191f1d74628ba878541f3230f3da013d84ca7a1f10ab31b55c5"
+    },
+    {
+      "bytes": 829,
+      "gitBlob": "beab55c3b7e9596359132df2d65c5164df19856c",
+      "path": "scripts/data/coastal_region_maps.gd",
+      "sha256": "c102aad0f7ee0d42ba9a05710359c99e34d2a689ae8472bf9c8ccdc897617ca4"
+    },
+    {
+      "bytes": 1042,
+      "gitBlob": "7cd3fec20c785b5456483aec71b8d1e4196856d8",
+      "path": "scripts/data/combat_maps.gd",
+      "sha256": "e9aec2e2d49a5cc2fec4d8b19c0d01b4ac3a3ae4a92e8ce079f41b06854ef3b3"
+    },
+    {
+      "bytes": 8160,
+      "gitBlob": "4712853fbeed7dcbd41e06e868177d47c312591a",
+      "path": "scripts/data/content.gd",
+      "sha256": "3f288351b952f09788d7a864ba083ae362059ad8a2b2bde4b71395beab175d98"
+    },
+    {
+      "bytes": 312,
+      "gitBlob": "3bd55278d1cb4854c6cc3069a4abfc5016229601",
+      "path": "scripts/data/craft_maps.gd",
+      "sha256": "5b9220052714bd5e52a6e4a1ce5804205e65bc977a29066f671eaaf026a9cee7"
+    },
+    {
+      "bytes": 1037,
+      "gitBlob": "98397dcd3c0f74cf50aa41125c91373ee5d7c6e4",
+      "path": "scripts/data/credits.gd",
+      "sha256": "6c84da99b814165e3f69d4d5fe3d71b95a3d7b9ca8426f8a839546c7628f532a"
+    },
+    {
+      "bytes": 16188,
+      "gitBlob": "4eea3bb0902c9d983a262cfb9452e2f028a5bfa0",
+      "path": "scripts/data/dialogue.gd",
+      "sha256": "29c6ef72e0d8635ae6c2a4b002ff1d17024de8c1df08c2c8e94e59e9c78de14a"
+    },
+    {
+      "bytes": 4373,
+      "gitBlob": "6cb0a3defda089da984382d795187b059429a632",
+      "path": "scripts/data/enemies.gd",
+      "sha256": "a201b8295763ad34a92a2b0608c9cc9bd5de422ee89eff26558a566dcae86578"
+    },
+    {
+      "bytes": 13685,
+      "gitBlob": "874b081efe6148b8a5095bc11efc91971d54cf33",
+      "path": "scripts/data/ext/arena.gd",
+      "sha256": "b159f89ef967e6122ba06eb7de698d106cee19375f34966a256a1f65dfce4e3a"
+    },
+    {
+      "bytes": 32703,
+      "gitBlob": "e765e802ad917bf54d27419eb5896fd7cfc9ebe8",
+      "path": "scripts/data/ext/beroepen.gd",
+      "sha256": "712b6e0e6102c348f2d6e207903ad219655b22072bf54941eb4e0a9089ba930a"
+    },
+    {
+      "bytes": 7261,
+      "gitBlob": "3cd04a1158ae980a5297348dea44d441988a5f18",
+      "path": "scripts/data/ext/boog.gd",
+      "sha256": "64878808826a84a2631928b95bc5a81904692133baadd80f50ad685da5b06e04"
+    },
+    {
+      "bytes": 1383,
+      "gitBlob": "b691be42f72c2fa56847d35f4e3c1829c40ed07d",
+      "path": "scripts/data/ext/coast.gd",
+      "sha256": "74d7beacf2e66a729e2363a3adc1b2fbf20d89b84535d4d4ab1ff2473f5e1afa"
+    },
+    {
+      "bytes": 3027,
+      "gitBlob": "abc1a45dd1e8e3aa5059eba614ca0e2dc7e87d71",
+      "path": "scripts/data/ext/coastal_adventures.gd",
+      "sha256": "52446d055c95f0e6eefdaaccaad0db5b5e2714f20c20c1fbdfda1fddc00f4bfb"
+    },
+    {
+      "bytes": 2045,
+      "gitBlob": "f2cc475b94d7016a8a3703903d111728fafb41e7",
+      "path": "scripts/data/ext/coastal_craft.gd",
+      "sha256": "59505eedeccc96a7968673aa4d4d461025cc1e840a116d35f38e52f073bd7dbf"
+    },
+    {
+      "bytes": 1919,
+      "gitBlob": "7e8e67b565696ad691eea321d68e7744c427b839",
+      "path": "scripts/data/ext/coastal_region.gd",
+      "sha256": "d6f2d7c63b2e85696b51c30d23554264d0a5810d08fe3f2442b5802a2ff17f87"
+    },
+    {
+      "bytes": 1000,
+      "gitBlob": "a46d6fb05a1bb00b9011b7f035ad494aa5302631",
+      "path": "scripts/data/ext/combat.gd",
+      "sha256": "49f1d87ade12050164c0864f63836d4891d51cb6b156868e629f06c210d449fe"
+    },
+    {
+      "bytes": 1797,
+      "gitBlob": "4a445ca9983ac8830423e5ccd6e63b0e12f5cc26",
+      "path": "scripts/data/ext/craft_progression.gd",
+      "sha256": "b4e052d516f15ff848ea8c7472d044db711a998d595f74c37eda385f0299f8dd"
+    },
+    {
+      "bytes": 711,
+      "gitBlob": "31a9e8d84e02c21790d4c7b12a341833cd3e545f",
+      "path": "scripts/data/ext/dagritme.gd",
+      "sha256": "0760f8696785c321a6eed5da1a720b9321da0e2ab5ad2a100d740b6b4c6a2fbe"
+    },
+    {
+      "bytes": 7350,
+      "gitBlob": "d95dd7e784d7549c094e7f4cd4bb757c65d2569e",
+      "path": "scripts/data/ext/diepte.gd",
+      "sha256": "8cc0f9b769d9e7c080a2c08baaa4c0affb6a9b1c60b917aabc13d5e3e8e54136"
+    },
+    {
+      "bytes": 8971,
+      "gitBlob": "f8d0e369c6094cb2942c7c8d3a6ba9a13fe9b362",
+      "path": "scripts/data/ext/dorst.gd",
+      "sha256": "4aceabedf9439c856cb751ca314cd2833a40a38e5da82ffa93d763dfb353ab3e"
+    },
+    {
+      "bytes": 1797,
+      "gitBlob": "e90827f4f17172e26fab8d2c654c69a1279e50f5",
+      "path": "scripts/data/ext/echo.gd",
+      "sha256": "4c56760ac2f4916ca7af6a2d2ee018e6561ce1408f1edaeb02a342eb2432c023"
+    },
+    {
+      "bytes": 2801,
+      "gitBlob": "1e5d22546c6e774441306ef9001da3cc16bd79c2",
+      "path": "scripts/data/ext/first_route.gd",
+      "sha256": "4786c6bd1b95c1731675a971fe7c0ac7d1a637b18469a469ab4b0c2e583884c6"
+    },
+    {
+      "bytes": 8618,
+      "gitBlob": "5d03e18aa6af71387b025480bbedc27939819c03",
+      "path": "scripts/data/ext/flower_species.gd",
+      "sha256": "77d64ec528ff0f274ea18ed6d2a2f44bfac676ed2feb8a830ee30088fbda5dc3"
+    },
+    {
+      "bytes": 23135,
+      "gitBlob": "280a82aa965b8abfc6ddec4a4e70aa09089f9b94",
+      "path": "scripts/data/ext/forest_food_species.gd",
+      "sha256": "1ce9c9f4b4d6c483290150d0265af345e364e98a106c217ed932c40ce1dc17f4"
+    },
+    {
+      "bytes": 1178,
+      "gitBlob": "7b52352ace37bd10ce6db0b35b315fb280785a99",
+      "path": "scripts/data/ext/habitat.gd",
+      "sha256": "5b7a08ed1c09c85fdd6bd6aa2550c1278d4020d036cbd6e01d432412c93e9455"
+    },
+    {
+      "bytes": 2141,
+      "gitBlob": "206064f2e60ef1b84efe3f5a664141fe9d705930",
+      "path": "scripts/data/ext/homestead.gd",
+      "sha256": "f903c6cbe22ac521bc58aa424502a67425be365764232f84ef9f2079b8cd5d1a"
+    },
+    {
+      "bytes": 3789,
+      "gitBlob": "0fc81f2265fcbf004877a98f1cee8ed484e62846",
+      "path": "scripts/data/ext/lake_supper.gd",
+      "sha256": "11458c0839a55b63b0ca90b305bc6f531eb9f52164db27283a6871494a768a7f"
+    },
+    {
+      "bytes": 8267,
+      "gitBlob": "3a0cf9cccbd57f9c431a76734e18a6a10e7a692b",
+      "path": "scripts/data/ext/living.gd",
+      "sha256": "11b1e37821004f212b192a0c17076ff9583f83307628139e81905b4b92173992"
+    },
+    {
+      "bytes": 22143,
+      "gitBlob": "5aba7d5809b53e64a57a2aec3f2b62b25c210bf8",
+      "path": "scripts/data/ext/meer.gd",
+      "sha256": "1e0b19c1e2d2a0c1f198846c9d463d72615d4184b0567e4fbaf50e1cf3aab1cd"
+    },
+    {
+      "bytes": 3295,
+      "gitBlob": "dfa755df2ccf41bbfab491b30fce626296cebd41",
+      "path": "scripts/data/ext/meer_boeken.gd",
+      "sha256": "024bfda3d4e7ee31b0cff24d01f595faa1a8c1ffdc2d36c6f2e7e3fe36b86eb9"
+    },
+    {
+      "bytes": 4041,
+      "gitBlob": "55ab60df0fb6a5240c229bb1a67d51561575ca30",
+      "path": "scripts/data/ext/meer_logic.gd",
+      "sha256": "ddc4f894f757fc41d40178aaae856dc8e6e7cb09441b663dba6ae4f5c177e7f9"
+    },
+    {
+      "bytes": 3308,
+      "gitBlob": "13ecad3b38e9b27040a6c72974f0e0e67763cb56",
+      "path": "scripts/data/ext/meer_vis.gd",
+      "sha256": "8011ba4495efb746814588bbae55e3e576972b4fa9b4c3fc4f2a3da254c5af41"
+    },
+    {
+      "bytes": 9279,
+      "gitBlob": "80a0c4a3b74b1f44036391864509e434ebd89669",
+      "path": "scripts/data/ext/moeras.gd",
+      "sha256": "2612a6eae8532303c4f28333de0cda2dab41b885fc97a82d967aefbe0a11a76c"
+    },
+    {
+      "bytes": 600,
+      "gitBlob": "440dabbd1be3dd20f5d96dab0656b23fbdc80a26",
+      "path": "scripts/data/ext/mountain.gd",
+      "sha256": "54e534b995c6d95df8990de2565bda89c6e544e3b103cfee462c81666346822e"
+    },
+    {
+      "bytes": 993,
+      "gitBlob": "8995119a5e5b023e91d9ef7d1815b73ba5abfc37",
+      "path": "scripts/data/ext/opening.gd",
+      "sha256": "920aa8ca454cf32ad83eb1f7643074360227f880fc65a464c7240e8b88ae77fc"
+    },
+    {
+      "bytes": 2812,
+      "gitBlob": "9d6c64446cebaa2fb70e28db97b218e809861729",
+      "path": "scripts/data/ext/orchard.gd",
+      "sha256": "5816c88b3f716b48d80499a82aa8fe4085e6e23af03c7a0b6ffab0e78cb8c28a"
+    },
+    {
+      "bytes": 12310,
+      "gitBlob": "ca7da4a68fe58fc1f3c1d10f158c29c04d1c1ebc",
+      "path": "scripts/data/ext/polijst.gd",
+      "sha256": "9147fa167b4046096185dcf9d5bee49856b1a2d6b318cee555ef46be277c86ea"
+    },
+    {
+      "bytes": 4197,
+      "gitBlob": "28e38cadbe5d8322497fb904312f79237f1e3a74",
+      "path": "scripts/data/ext/regional.gd",
+      "sha256": "60be467bb2c6600625204e69ee003980ad032691dd06ca6656e11cfb1c5bdcd9"
+    },
+    {
+      "bytes": 5623,
+      "gitBlob": "ab1a1792fac8456ffcd2411dd1c92ae23ff19beb",
+      "path": "scripts/data/ext/sneeuw.gd",
+      "sha256": "6dbcd627f6beaf69b2dfb1fd8b4107ce3f6eb8ee1be87af078fe8afcd6e06af2"
+    },
+    {
+      "bytes": 474,
+      "gitBlob": "01fb4932de62250e3ed345319309040430942682",
+      "path": "scripts/data/ext/tides.gd",
+      "sha256": "f403d64dbe81b07215d264efdafdb4352d63cda95a357d791d2549d2caa800e8"
+    },
+    {
+      "bytes": 1590,
+      "gitBlob": "11c2a30c720b1bc0af06eb49f285b2b366de615c",
+      "path": "scripts/data/ext/trail_life.gd",
+      "sha256": "7a6d5a003244fa381739ca487f2cb1f75ace21e9e8d13c36cfe8e3f16f068595"
+    },
+    {
+      "bytes": 18663,
+      "gitBlob": "6475897e3775157c490c7bb133ad4734210521ba",
+      "path": "scripts/data/ext/uiterlijk.gd",
+      "sha256": "2aa17259a8087be72d662d2b2a0c03ed3c74e1bd37012ff3e2763d8c2fe108a3"
+    },
+    {
+      "bytes": 7779,
+      "gitBlob": "4b5ea495556ba49da21acb909509ddb2f96e903c",
+      "path": "scripts/data/ext/uitrusting.gd",
+      "sha256": "6c3d4809442cda5c3d3ef679c98a49ae832679fd548d12e0d68fc678639c1e05"
+    },
+    {
+      "bytes": 3255,
+      "gitBlob": "05180a3d1de3a4780b02ae5fb2f17a1cf9e8edd7",
+      "path": "scripts/data/ext/vijanden.gd",
+      "sha256": "eb4ab3c4b0983e718f85a823b38f83925bd1ff2c33839e9cb454cbc70181c994"
+    },
+    {
+      "bytes": 5106,
+      "gitBlob": "68ef40eb2caaf4295c2829e5915a60e3077af4ea",
+      "path": "scripts/data/ext/wereld.gd",
+      "sha256": "7c37f917ffc8a3d04f338facb90c56da8791634217d4114b1992654c6e05c128"
+    },
+    {
+      "bytes": 4418,
+      "gitBlob": "1e7415ea10e64f74fe8110c5a02a1315c5194589",
+      "path": "scripts/data/ext/winter_greens.gd",
+      "sha256": "ddaa6389e8e8351a4fd3c404bf8f225d341e2621ca2fa82fb070b57095570f7b"
+    },
+    {
+      "bytes": 439,
+      "gitBlob": "faf6835c94a1cbe0332c95768f6f5c161516e6a4",
+      "path": "scripts/data/ext/work_together.gd",
+      "sha256": "e9a0a3afa6ad0bb983234ed3b36f08c36120bce5578af21df4b98986f762e156"
+    },
+    {
+      "bytes": 211,
+      "gitBlob": "1900bea0be12c1f2bdd2a67e6a04c4c9ef391ac9",
+      "path": "scripts/data/ext/world_memory.gd",
+      "sha256": "d0173926dd94019cac9d4cbc57fdb352efe199065dd6815fbb2f36fe5a16fcd0"
+    },
+    {
+      "bytes": 1939,
+      "gitBlob": "fe2aca5935e3d21bf20ba1ac2e58c3e39312bb1e",
+      "path": "scripts/data/flower_species.gd",
+      "sha256": "d38c0162daffedb0e2498bde8c3a453de7ea5c92a6bd0b4444b7aa522ca14bcd"
+    },
+    {
+      "bytes": 8177,
+      "gitBlob": "d344600f30c88a2fad5fa531545fbcc86ca52880",
+      "path": "scripts/data/forest_food_species.gd",
+      "sha256": "0ddc1c2020f61cdb797dbd581f770b00a8104947d58df60a10d197fde8bd3fa3"
+    },
+    {
+      "bytes": 546,
+      "gitBlob": "412c358096659dee7b1b758b5810cc6e74dd65ae",
+      "path": "scripts/data/habitat_maps.gd",
+      "sha256": "c294eb5b249f9b263c45efa8161474a06231ca6635b5b311a266544c58b42cd5"
+    },
+    {
+      "bytes": 3577,
+      "gitBlob": "f3154f713a26b11be9dc9b63c975a12fe45350a4",
+      "path": "scripts/data/homestead_maps.gd",
+      "sha256": "891ef2d75f2d529578ec91be40fc866858137e0943dc0b1ebfc50efe0a935344"
+    },
+    {
+      "bytes": 3160,
+      "gitBlob": "d07e1cfdc7c087879c5b092f62920b3c73a79fad",
+      "path": "scripts/data/house_catalog.gd",
+      "sha256": "8503993f044350c6634cc077f3ddd0ac0947939bf43557233ffbff986af09d83"
+    },
+    {
+      "bytes": 4097,
+      "gitBlob": "b1a8ccf3d7a725ab6fad4124a8858b6ac9a332f4",
+      "path": "scripts/data/items.gd",
+      "sha256": "4e5762c372c27e53d34299be8dd9c13605a90aa9c71141d1c13f10a185441fdf"
+    },
+    {
+      "bytes": 3775,
+      "gitBlob": "01c2ebd0bfaf1d065a043c5af0ed1f5c770a8b06",
+      "path": "scripts/data/living_maps.gd",
+      "sha256": "6e4ed92ea90c29ef9577ed433d0d5c61201549707fd12ac3a13912dcc06f357c"
+    },
+    {
+      "bytes": 635,
+      "gitBlob": "3a9ac37ea9444770f78965ce6b694089dc4e301f",
+      "path": "scripts/data/mountain_maps.gd",
+      "sha256": "acd5639cb887530e23f1abce963d1ab6667bb4fac0362d2329dd3aaf09df347e"
+    },
+    {
+      "bytes": 3456,
+      "gitBlob": "103d3d1e789ad8b4ad083deeee1b13827805386b",
+      "path": "scripts/data/npcs.gd",
+      "sha256": "6aa43dbababdc3b428e958ce2623e19fed428a06eaf4f4bb68f24e8c5c59313b"
+    },
+    {
+      "bytes": 2959,
+      "gitBlob": "0698e97853ec310bb6598986b40451d0e7cad5b4",
+      "path": "scripts/data/orchard_catalog.gd",
+      "sha256": "0000f4920014b2d86b5ed3954a7dcc7aed1ef6cb4bf6aad7a5d3553ee1fae4b3"
+    },
+    {
+      "bytes": 1820,
+      "gitBlob": "4b3edb6b8adcab4f3353c15b0beb914464439408",
+      "path": "scripts/data/quests.gd",
+      "sha256": "7835307233fb3a9ca1d5ba295b15985eec8c8f824305fc5691ae1ff3b13501af"
+    },
+    {
+      "bytes": 3808,
+      "gitBlob": "0e2a06f1a8397cc610326f7a37b0b1efb0425514",
+      "path": "scripts/data/regional_maps.gd",
+      "sha256": "ada452e2024e35cae234cbd2f5b1d2756b767fd90638b18df0bd65dbaac05f0f"
+    },
+    {
+      "bytes": 18821,
+      "gitBlob": "f72aef8e930218a831934c89871b25cc7285200c",
+      "path": "scripts/data/route_repairs.gd",
+      "sha256": "21a642c261a2cc42c20fd9c337679ff5e17985cf93fd5224e1021998ec6e2bad"
+    },
+    {
+      "bytes": 1234,
+      "gitBlob": "46d17b371822cd3048ce08ab00eddc5e63555319",
+      "path": "scripts/data/shops.gd",
+      "sha256": "71872e7b1032c41cacb3b23919cb4946aaa9c81fdb3b016656030f9d796ae560"
+    },
+    {
+      "bytes": 1123,
+      "gitBlob": "1d3927dcf04b9733c4bb2b39f5efe913eaae06fe",
+      "path": "scripts/data/space_maps.gd",
+      "sha256": "66f9489b2b9e2e6c1451125cefa0b08fd2923aa15c14d6f082daa4b2ddeee804"
+    },
+    {
+      "bytes": 10513,
+      "gitBlob": "ca3c52ddf552a7630fcc89f91b5f27fcaed58f2c",
+      "path": "scripts/data/tiles.gd",
+      "sha256": "c505832497d7b8938814a57c57b39f131b3e7d7853d61f386405df87d19e4b0e"
+    },
+    {
+      "bytes": 5538,
+      "gitBlob": "9e4cb9a17aa0c88a495b81d68deeefdc633a22b8",
+      "path": "scripts/data/trail_life.gd",
+      "sha256": "840b1bfaf346c21fabcebf147d8d16d3beeb1634341423ef02c7ce82c3c28222"
+    },
+    {
+      "bytes": 1983,
+      "gitBlob": "0a950fd52a3a84cdbf5687d0a91c429b5314aeac",
+      "path": "scripts/data/training_yard_layout.gd",
+      "sha256": "4fabab0739e883f0c29f011c184231d48f4a52328933e091b2340c8ed65729b9"
+    },
+    {
+      "bytes": 1917,
+      "gitBlob": "d23856c63eb537ddd420955c798b0129b2a2d94d",
+      "path": "scripts/data/water_layouts.gd",
+      "sha256": "93f277119d7dc31abf790b0eda685bc065f41ca5ec00b65fdcc12db8013b6927"
+    },
+    {
+      "bytes": 3854,
+      "gitBlob": "622cec24066273d25eef18ca468ed23b09e58ad4",
+      "path": "scripts/data/winter_greens.gd",
+      "sha256": "e65faea7a3c01a7778395daa642e4076839cc825e4187736b42fcf97936dba7c"
+    },
+    {
+      "bytes": 2779,
+      "gitBlob": "a86a7e324377c144ce4b9633caa7a5c3f540a14d",
+      "path": "scripts/data/yard_catalog.gd",
+      "sha256": "37144278df7417679b7c086152f8f7dcda3e1a84ea3d45bbe54ac65c0dcbbe53"
+    },
+    {
+      "bytes": 3483,
+      "gitBlob": "df5453625db5ccae1bbb6da766544045d4658d69",
+      "path": "scripts/entities/chest.gd",
+      "sha256": "cac8794b4b05bfb1521194238807aea57f58c8b71939d8a4c73c9d6dde044f26"
+    },
+    {
+      "bytes": 2618,
+      "gitBlob": "34850dc5fbc1371ae2373d99a518916573b58f9e",
+      "path": "scripts/entities/coastal_workstation.gd",
+      "sha256": "a988403d2043c39355c130a63a199dc9761fd00fd8ae527707f775bbcade0f2a"
+    },
+    {
+      "bytes": 3642,
+      "gitBlob": "0bf545d2108fa012e80b6f83052c24c5b85ff363",
+      "path": "scripts/entities/pickup.gd",
+      "sha256": "12612ceb8f94bd6446980d487a1163e299fe89db01ea1de2b409ca02cec3bd5e"
+    },
+    {
+      "bytes": 22372,
+      "gitBlob": "26111cc957f29c112b8559e48f7fb816ff4bb36c",
+      "path": "scripts/entities/player.gd",
+      "sha256": "4a5518b2475c5c7bc9d4966b50f48841cfb5ce7ec1b297327e12f5fab1700743"
+    },
+    {
+      "bytes": 1098,
+      "gitBlob": "34bf4399d34435bc5a69b014a3e83e38399daa67",
+      "path": "scripts/entities/stock_chest.gd",
+      "sha256": "479eaf89087b02a73f399e9a98c01e70c3d47a4b7040615e8e42afb739edec46"
+    },
+    {
+      "bytes": 2453,
+      "gitBlob": "a6bccd5386636ef800c38036f9e8d6b45a90ff16",
+      "path": "scripts/maps/arena.gd",
+      "sha256": "08d4ddaa11b7910c1597e30182b73760e8179740e26d01fa02a3dcb59b4e569c"
+    },
+    {
+      "bytes": 1615,
+      "gitBlob": "6658fb9c94f3ee2e0fa989162508259cc458c0d4",
+      "path": "scripts/maps/arena_hall.gd",
+      "sha256": "7d2673d3a670559531d268f75f26714ed07cc0a9d0bb83624ec396eec3416323"
+    },
+    {
+      "bytes": 5711,
+      "gitBlob": "beb3df6d2413b4eecf0c4cd356113ff27f6489ac",
+      "path": "scripts/maps/cave.gd",
+      "sha256": "a39a131787c80d6167aa54e28eb776b8d41db902a912ec9d2c1c81843cd700d0"
+    },
+    {
+      "bytes": 3307,
+      "gitBlob": "2be9167fcc335b227a1054af79cc6c05387e4815",
+      "path": "scripts/maps/coast.gd",
+      "sha256": "47c0d2416707d58bd6ab14baf4dff839bc30f32d9bacd67e8aea732e519a3946"
+    },
+    {
+      "bytes": 2668,
+      "gitBlob": "52e974c10c66e48dde21756bdab476689cd5db52",
+      "path": "scripts/maps/coast_workshop.gd",
+      "sha256": "281ba87e82bb8f3fac030f4318a24a01170d006407a7d78f700ffbd8083b2d74"
+    },
+    {
+      "bytes": 4514,
+      "gitBlob": "c218a54b127876611b83cb777e5ed3961b12932f",
+      "path": "scripts/maps/dauwbos.gd",
+      "sha256": "f637eb851bc532bf45b0cadb059a8756d8b9c5e8749e00bda2a566b963494704"
+    },
+    {
+      "bytes": 5326,
+      "gitBlob": "f0c290c422bd81c574e6cb0a3db98b998c6344ae",
+      "path": "scripts/maps/depths1.gd",
+      "sha256": "47ae35826c59236f5f8131038dccd74f836602b6e5f0844d634e87fff7eeefe2"
+    },
+    {
+      "bytes": 2904,
+      "gitBlob": "03c2f18df8f344ede3a6425cfa46d6c2a5a7a568",
+      "path": "scripts/maps/depths2.gd",
+      "sha256": "cefe686dfa54a066f47e9eb8449b50b36e5fb800a982c530227765259562b662"
+    },
+    {
+      "bytes": 3997,
+      "gitBlob": "91f90234bf012da0358a251f66b52e4948bcfad7",
+      "path": "scripts/maps/dorstvallei.gd",
+      "sha256": "a777f9ca7e832194bed1845f06b32d871c5a4a3cc37455641bfe2a6b2a6fc826"
+    },
+    {
+      "bytes": 1132,
+      "gitBlob": "52056fd5b9b6be82eb94f7a16ccb06bb2f726d30",
+      "path": "scripts/maps/fisher_hut.gd",
+      "sha256": "c4ab25a82015d8fc92acce3e382c908475809a94a9607fd5f17990549a13789e"
+    },
+    {
+      "bytes": 7926,
+      "gitBlob": "7ba32b288ea96d67cb8e826b7ab24b2074eedbb7",
+      "path": "scripts/maps/forest.gd",
+      "sha256": "3602425f18fe1b35cd3a9c9e3df79759ae392c5978513042cecf89475736ec98"
+    },
+    {
+      "bytes": 1949,
+      "gitBlob": "3037fe862c22e373aa7f78bd4e11ed5d4f927b2a",
+      "path": "scripts/maps/forest_edge.gd",
+      "sha256": "7fc2fb50de08ce7a9b324a8bae2da4a758387b0ca0822b0c66f3d0bfcbc69def"
+    },
+    {
+      "bytes": 2596,
+      "gitBlob": "c11eaf4889f40404f6b82a936885f56757f313c2",
+      "path": "scripts/maps/gull_island.gd",
+      "sha256": "49ac5ccef77d6de62c4beee43635eebde5cab6ea61c2f2e0509f9ead5f153a7c"
+    },
+    {
+      "bytes": 6282,
+      "gitBlob": "f130b16bade20fcd7eeb7d29fa7025ce92a82315",
+      "path": "scripts/maps/harbor.gd",
+      "sha256": "255e13a853f32db8d768a6e3760cf0ff5ca2161c6317eac1983874c355299044"
+    },
+    {
+      "bytes": 5180,
+      "gitBlob": "91d557d124fe94e5c04fd66aadd2ecb0b015cf90",
+      "path": "scripts/maps/headland.gd",
+      "sha256": "530f8576e7d7e5118efe012b04a766849f5c63c6835ff958e408b673a32c6848"
+    },
+    {
+      "bytes": 4009,
+      "gitBlob": "de9980f58f029c136550bbe96e73d554d4b55cb2",
+      "path": "scripts/maps/ijsdal.gd",
+      "sha256": "bb1f2f644971c7d5886bc801d71b7161f6b039254ade7df93c4f2962ff4064ec"
+    },
+    {
+      "bytes": 1325,
+      "gitBlob": "85fda150d2e1ae62db06becb40a566dcd438a0d9",
+      "path": "scripts/maps/inn.gd",
+      "sha256": "d82bee85e7b9c73bd72b5f1ce9ee3a5be13966aaa2c58bffbd9133d0f599e7d4"
+    },
+    {
+      "bytes": 4513,
+      "gitBlob": "64a949d4edfa8c40702257925c57120cb963795d",
+      "path": "scripts/maps/kruipmoeras.gd",
+      "sha256": "1fbd30b85c12e82315ce152bb7eeca2915e0a132d07c277c76b9ad146802dfed"
+    },
+    {
+      "bytes": 4951,
+      "gitBlob": "9e476bfc5599de8d34461f45239cee344e11be29",
+      "path": "scripts/maps/lake.gd",
+      "sha256": "24bfd92bdd22c7654c10c262a2798f562415ad0a5e985d9abf3f53847c7abfeb"
+    },
+    {
+      "bytes": 1582,
+      "gitBlob": "b0f1656e96ab72f6bd76aae3fcb5e998a8031924",
+      "path": "scripts/maps/library.gd",
+      "sha256": "9366582a3292cb8064e480fe5329fa53417e8b825e02ce62218905da332f59cb"
+    },
+    {
+      "bytes": 1738,
+      "gitBlob": "044135708c8beb0682f91a2be08c2b3e1a81ea10",
+      "path": "scripts/maps/mistgarden.gd",
+      "sha256": "2ad27fb313147f8f11dd8e85d84e654073a3ee884f05e9ce9bc187e89c9bff73"
+    },
+    {
+      "bytes": 707,
+      "gitBlob": "39a99a168977b510d8512836523503e138b69ac8",
+      "path": "scripts/maps/player_home.gd",
+      "sha256": "12f80aee5d8c40fda34daac7116f67247d891339e35706459129323ff50d015e"
+    },
+    {
+      "bytes": 3789,
+      "gitBlob": "90093aab1faafda860f798a33dfc847834cddb3b",
+      "path": "scripts/maps/prismamine.gd",
+      "sha256": "eb01fda41acc6492c7cc0bf2f780499d54771739f2b815fd72ae47b413a17f97"
+    },
+    {
+      "bytes": 2002,
+      "gitBlob": "f3efdd5d8423e8328cc54c4f8cf4294e51d3c87f",
+      "path": "scripts/maps/reedvault.gd",
+      "sha256": "46bfb3f14b8695eee8a406399cefc0091c473a0641ff30d4b4223bb46a1eef89"
+    },
+    {
+      "bytes": 2406,
+      "gitBlob": "fae45cb2bf966d5057539faead445475d73c3843",
+      "path": "scripts/maps/registry.gd",
+      "sha256": "7ba7e4b507807e21b58edc1d6cbaa5cc4fa3abd0629debe1748ed0ea9a6d5be8"
+    },
+    {
+      "bytes": 2221,
+      "gitBlob": "7770cf54194e5dddfef9e7abd82bcfe472f6c2d5",
+      "path": "scripts/maps/resonance.gd",
+      "sha256": "96a547f7848c062a612cc4dd93e46e50172694e2aeba4b88904ff805a74a461a"
+    },
+    {
+      "bytes": 1926,
+      "gitBlob": "09a87980f64dff1b2900ea806e63505e5fc369ca",
+      "path": "scripts/maps/ridgepass.gd",
+      "sha256": "2859adeebe1f6388af32ca8afe0d71e59b9d29c821597cf4802a1a08e36b72b6"
+    },
+    {
+      "bytes": 5165,
+      "gitBlob": "eb6ba4f5231400b67df5ec1ed29d70c894dab971",
+      "path": "scripts/maps/river_mouth.gd",
+      "sha256": "e3309de9b42e396dcdfa81a4e8e260dbf9588d4c4857602b5ec5bbb893355527"
+    },
+    {
+      "bytes": 5598,
+      "gitBlob": "6000c13277a9175e25f81f6c7f9085308ef17629",
+      "path": "scripts/maps/ruins.gd",
+      "sha256": "079be8c287c6693298e8fdbf05c971adcc9dfcd172d17f320ae38b316b135681"
+    },
+    {
+      "bytes": 785,
+      "gitBlob": "a8dd35ed5ba2b3b69afdf228b3562bffe1c0dab3",
+      "path": "scripts/maps/shop.gd",
+      "sha256": "4d7fbd712025ad636f3a604bbc3c2843504afeec30b64bbf9dd2be6c2c715d50"
+    },
+    {
+      "bytes": 768,
+      "gitBlob": "5d417e4fa667e557dd5e243d6f7f1950f60dd171",
+      "path": "scripts/maps/smithy.gd",
+      "sha256": "72e1ab5f22ed2ae3955eff0be844a0afb6d52325d623c19b5abab341362eba69"
+    },
+    {
+      "bytes": 8719,
+      "gitBlob": "687f8ab98c2660a9234db56391261fea9f00a2f8",
+      "path": "scripts/maps/steampeak.gd",
+      "sha256": "5fdbdef08b3adeeb8002266ab589b61c9a66bd153bad98e0912d415769e43647"
+    },
+    {
+      "bytes": 2299,
+      "gitBlob": "45858ad8738e16a88fc88211e00a1ac12bd9a3d8",
+      "path": "scripts/maps/sunwell.gd",
+      "sha256": "e69617c7106f97fc8c36545551877071d200dfe759f2b58ef73ab9b505a6ef16"
+    },
+    {
+      "bytes": 2601,
+      "gitBlob": "8eef49fe24e2f9ad5c0f139b5037f2e9b7fff4dc",
+      "path": "scripts/maps/temple.gd",
+      "sha256": "833868b68754a26ad9574bfee556362721309d2cee6a11597f63015ce7c12cda"
+    },
+    {
+      "bytes": 4593,
+      "gitBlob": "5c7242f3209008a8929e98cb1d9b885cabf72180",
+      "path": "scripts/maps/tidal_hollow.gd",
+      "sha256": "122f7d0d9f04f4c3d80d598613addef0c61187d0a8e28f9d1b534fdc33d801f3"
+    },
+    {
+      "bytes": 4095,
+      "gitBlob": "39aa986605cc127a0457b80f9606787c9741af21",
+      "path": "scripts/maps/tide_cove.gd",
+      "sha256": "e49c55d4d257fc3031d7250b728b0536a035379d69fcc36f27d4eed2037c7743"
+    },
+    {
+      "bytes": 6118,
+      "gitBlob": "fd8aa2bec10d0332854aca07e80dc6f00415d4c0",
+      "path": "scripts/maps/village.gd",
+      "sha256": "df5fb7f23a8ca3c2681e6482fbd5ee94c18fed5f49edde021e9c367009d7f795"
+    },
+    {
+      "bytes": 1502,
+      "gitBlob": "f8805df395312c66f06593ffe7384c7776100a96",
+      "path": "scripts/maps/watchyard.gd",
+      "sha256": "6eb3d3d17efde4d92b00b087ab68b0ab6cfb0c7a936161f4a0abac4c3b368cb1"
+    },
+    {
+      "bytes": 10896,
+      "gitBlob": "dad386607180b3a107ec5dda88ebc527011f9d1b",
+      "path": "scripts/ui/appearance_page.gd",
+      "sha256": "e8a20a2aaa012da170bb96ff08cf443cc04e8e8684f8dc8af57f01f97d4c2522"
+    },
+    {
+      "bytes": 13106,
+      "gitBlob": "cb3b3c4a3ae090f042807dafe959a0e8f3bf85b0",
+      "path": "scripts/ui/coastal_home_ui.gd",
+      "sha256": "a9833315bdcb94da4dc8e63795e30ef8e272db42903eb47682a1e26fab0f0653"
+    },
+    {
+      "bytes": 22035,
+      "gitBlob": "a03fb63805227704f95fc56344a4bf5242796eb9",
+      "path": "scripts/ui/crafting_ui.gd",
+      "sha256": "4a3ec0a6c660544cd2453796b9d819d1cb5bb061f139f79e16109e7676209f9e"
+    },
+    {
+      "bytes": 12008,
+      "gitBlob": "7fc67eb98b5b5e4e68f13f093e2670f686e08471",
+      "path": "scripts/ui/equipment_page.gd",
+      "sha256": "166cbdbe72dbd7cdb83ec31d50108e3d3fe51eea54df6b8fc6fae377d91e3515"
+    },
+    {
+      "bytes": 2559,
+      "gitBlob": "7b920a82e26ee9ea5e8392e9f8452636e64d108f",
+      "path": "scripts/ui/item_receipts.gd",
+      "sha256": "ac035d7f8f28326ca13135a772450db26f53d300a4c93a88ef0df1d0f5749d76"
+    },
+    {
+      "bytes": 13536,
+      "gitBlob": "a5fe62fb0070dcb5f9c421dc96e394ead52d6e9e",
+      "path": "scripts/ui/progression_page.gd",
+      "sha256": "aad4f7fb539d2d070f490330a3353687daae96e234dcdc6ff8f9b85fc4ce20a8"
+    },
+    {
+      "bytes": 12053,
+      "gitBlob": "ed85d2f16f648b458006a045c1460985ff10178c",
+      "path": "scripts/ui/stock_ui.gd",
+      "sha256": "560ee0c11d09cc6b9b0772c9d69e00471322cb4de90b8d79982f299762d69572"
+    },
+    {
+      "bytes": 25511,
+      "gitBlob": "fa63fc4aa9939ad40e628c695f2d2622b8ac6890",
+      "path": "scripts/world.gd",
+      "sha256": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
+    },
+    {
+      "bytes": 604877,
+      "gitBlob": "34829ee82fb1a427485cb1b522fcfb3d2be6b499",
+      "path": "translations/en.po",
+      "sha256": "19b3de6dbf9a3798d6de8c6cb557eebe9c6da8d329c182d7982e945ef960f4a4"
+    }
+  ],
+  "textEncoding": "UTF-8; CRLF normalized to LF as in committed Git text",
+  "world": {
+    "indexSha256": "d986a9a8ad3a03e2c5a5b9fb98e0622dbca76f950f52d35d756f611410af4743",
+    "maps": 37,
+    "snapshots": 162,
+    "verifiedBy": "migration/phase-11/source-contracts.json"
+  }
+}

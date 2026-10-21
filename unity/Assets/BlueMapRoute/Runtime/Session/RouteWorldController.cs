@@ -7,6 +7,7 @@ using BlueMapMigration.Persistence;
 using BlueMapMigration.Phase6;
 using BlueMapMigration.WorldAccess;
 using BlueMapMigration.Inventory;
+using BlueMapMigration.Progression;
 using UnityEngine;
 
 namespace BlueMapMigration.Route
@@ -45,6 +46,8 @@ namespace BlueMapMigration.Route
         public RouteHUD Hud {get;private set;}
         public InventoryModel Inventory=>Gameplay?.Inventory;
         public InventoryPanel InventoryPanel {get;private set;}
+        public ProgressionModel Progression=>Gameplay?.Progression;
+        public ProgressionPanel ProgressionPanel {get;private set;}
         public string Modal {get;private set;}="";
         public int DialogueLineIndex {get;private set;}
         public int Selection {get;private set;}
@@ -119,6 +122,11 @@ namespace BlueMapMigration.Route
             Inventory.Language=Locale;Inventory.Translator=Translate;
             InventoryPanel=new InventoryPanel(Inventory,Catalog,Translate,T);
             InventoryPanel.Closed+=CloseModal;InventoryPanel.ContextRequested+=UpdateInventoryContext;
+            InventoryPanel.CharacterRequested+=OpenCharacter;
+            Progression.Translator=Translate;
+            ProgressionPanel=new ProgressionPanel(Progression,Catalog,Translate,T){AvatarPreview=World.DrawAvatarPreview};
+            ProgressionPanel.Closed+=CloseModal;ProgressionPanel.InventoryRequested+=OpenInventory;
+            Progression.Changed+=ProgressionChanged;Progression.StaminaCapacityChanged+=ProgressionCapacityChanged;Progression.Toast+=ShowMessage;
             InventoryPanel.CanUse=CanUseInventoryItem;InventoryPanel.UseRequested+=UseInventoryItem;
             Inventory.StaminaRestored+=RestoreInventoryStamina;Inventory.Changed+=InventoryChanged;
             Session=new FoundationSession(repository,Gameplay.State);interaction=new FoundationInteractionRegistry(Gameplay.State);Access=new WorldAccessModel(repository,Gameplay.State);conditions=Access.Conditions;
@@ -143,7 +151,9 @@ namespace BlueMapMigration.Route
         {
             if(Gameplay!=null){Gameplay.SaveRequested-=OnSaveRequested;Gameplay.ItemObtained-=OnItem;Gameplay.SoundRequested-=OnSound;Gameplay.CloseDialogue();Gameplay.State.SetUi("route_modal",false);}
             if(Inventory!=null){Inventory.StaminaRestored-=RestoreInventoryStamina;Inventory.Changed-=InventoryChanged;}
-            if(InventoryPanel!=null){InventoryPanel.Closed-=CloseModal;InventoryPanel.Close();InventoryPanel=null;}
+            if(InventoryPanel!=null){InventoryPanel.CharacterRequested-=OpenCharacter;InventoryPanel.Closed-=CloseModal;InventoryPanel.Close();InventoryPanel=null;}
+            if(Progression!=null){Progression.Changed-=ProgressionChanged;Progression.StaminaCapacityChanged-=ProgressionCapacityChanged;Progression.Toast-=ShowMessage;}
+            if(ProgressionPanel!=null){ProgressionPanel.Closed-=CloseModal;ProgressionPanel.InventoryRequested-=OpenInventory;ProgressionPanel.Close();ProgressionPanel=null;}
             if(Access!=null){Access.Changed-=AccessChanged;Access.SaveRequested-=OnSaveRequested;}accessSubscription?.Dispose();accessSubscription=null;
             Running=false;work=null;boat=null;ItemNotices.Clear();itemNoticeLives.Clear();Session?.Dispose();Session=null;
         }
@@ -175,6 +185,13 @@ namespace BlueMapMigration.Route
         {if(!Running||(saveFirst&&!Save()))return false;if(!Persistence.ReloadAdventure()){ShowMessage(Persistence.Status);return false;}return Begin(Persistence);}
         public void OpenInventory()
         {if(!Running)return;SetModal("inventory");UpdateInventoryContext("bag");InventoryPanel.SetControllerActive(ControllerActive);InventoryPanel.Open("bag");InventoryIndex=0;InventoryScroll=0;}
+        private void OpenCharacter()=>OpenProgression();
+        public void OpenProgression(string tab="overview")
+        {if(!Running)return;SetModal("progression");UpdateProgressionContext();ProgressionPanel.SetControllerActive(ControllerActive);ProgressionPanel.Open(tab);}
+        public void UpdateProgressionContext()
+        {if(Progression==null)return;UpdateInventoryContext();Progression.Translator=Translate;Progression.SetUpgradeContext(Running&&!Gameplay.State.Ended&&!Gameplay.State.Transitioning&&targets.Any(t=>t.Kind=="npc"&&t.Id=="greta"&&Enabled(t)&&Vector2.Distance(World.Position,t.Position)<40));}
+        private void ProgressionCapacityChanged(){World.RefreshRouteState();UpdateInventoryContext();}
+        private void ProgressionChanged(){World.RefreshRouteState();ProgressionPanel?.Refresh();InventoryPanel?.Refresh();if(Running)Save();}
         public bool OpenStorage(string kind="home")
         {
             if(!Running||(kind!="home"&&kind!="coast"))return false;
@@ -211,8 +228,8 @@ namespace BlueMapMigration.Route
 
         public void OpenQuests(){SetModal("quests");}
         public void OpenPause(){SetModal("pause");Selection=0;}
-        private void SetModal(string mode){if(!Running)return;if(mode!="inventory")InventoryPanel?.Close();work=null;Gameplay.CloseDialogue();Modal=mode;Selection=0;Gameplay.State.SetUi("route_modal",mode!="");World.Motor.StopForTransition();}
-        public void CloseModal(){if(Gameplay==null)return;linkedDoor=null;Gameplay.CloseDialogue();Modal="";Selection=0;Gameplay.State.SetUi("route_modal",false);lastDialogue="";InventoryPanel?.Close();World.RoutePresentation?.SetHomeStorageOpen(false);}
+        private void SetModal(string mode){if(!Running)return;if(mode!="inventory")InventoryPanel?.Close();if(mode!="progression")ProgressionPanel?.Close();work=null;Gameplay.CloseDialogue();Modal=mode;Selection=0;Gameplay.State.SetUi("route_modal",mode!="");World.Motor.StopForTransition();}
+        public void CloseModal(){if(Gameplay==null)return;linkedDoor=null;Gameplay.CloseDialogue();Modal="";Selection=0;Gameplay.State.SetUi("route_modal",false);lastDialogue="";InventoryPanel?.Close();ProgressionPanel?.Close();World.RoutePresentation?.SetHomeStorageOpen(false);}
         public bool PrepareMovementPreview()
         {
             if(Running&&!Save())return false;
@@ -300,6 +317,10 @@ namespace BlueMapMigration.Route
             }
             if(Modal!="")
             {
+                if(Modal=="progression")
+                {
+                    UpdateProgressionContext();ProgressionPanel.SetControllerActive(ControllerActive);ProgressionPanel.HandleInput(frame,inventoryFrameDelta);return;
+                }
                 if(Modal=="inventory")
                 {
                     if(frame.Pressed("menu")&&!InventoryPanel.SearchEditing){CloseModal();return;}
@@ -330,7 +351,7 @@ namespace BlueMapMigration.Route
             if(!Gameplay.State.InputLocked&&Session.Current.MapId=="tide_cove"&&Access.SyncTide(World.Position))accessDirty=true;
             if(accessDirty&&!Gameplay.State.InputLocked)RefreshAccessGeometry();
             foreach(var seal in targets.Where(t=>t.Kind=="diepte_seal"))if(Access.TickSeal(seal.Fields,SealCenter(seal),World.Position,delta)){World.RefreshRouteState();ShowMessage(Translate(Access.LastMessage));}
-            inventoryFrameDelta=delta;UpdateInventoryContext(InventoryPanel?.Kind??"bag");TickPickups(delta);
+            inventoryFrameDelta=delta;UpdateInventoryContext(InventoryPanel?.Kind??"bag");UpdateProgressionContext();TickPickups(delta);
             bool locked=Gameplay.State.InputLocked;
             if(locked){foreach(var portal in portals)portal.Armed=false;work=null;lastPosition=World.Position;return;}
             autoTime+=delta;if(autoTime>=30&&!SaveFailed)Save();
@@ -491,7 +512,7 @@ namespace BlueMapMigration.Route
             }
             lastPosition=World.Position;World.RefreshRouteState();geometrySignature=AccessGeometrySignature(Session.Current.MapId);accessDirty=false;
         }
-        private void OnGUI(){if(!Running||World.ControlsOpen||!World.gameObject.activeInHierarchy)return;var matrix=GUI.matrix;var font=GUI.skin.font;GUI.matrix=Matrix4x4.Scale(new Vector3(Screen.width/1152f,Screen.height/648f,1));GUI.skin.font=Catalog.originalFont;InventoryPanel?.SetControllerActive(ControllerActive);Hud.Draw();GUI.skin.font=font;GUI.matrix=matrix;}
+        private void OnGUI(){if(!Running||World.ControlsOpen||!World.gameObject.activeInHierarchy)return;var matrix=GUI.matrix;var font=GUI.skin.font;GUI.matrix=Matrix4x4.Scale(new Vector3(Screen.width/1152f,Screen.height/648f,1));GUI.skin.font=Catalog.originalFont;InventoryPanel?.SetControllerActive(ControllerActive);ProgressionPanel?.SetControllerActive(ControllerActive);Hud.Draw();GUI.skin.font=font;GUI.matrix=matrix;}
         private bool WantsToQuit()
         {
             if(Automated||!Running)return true;
