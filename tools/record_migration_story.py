@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Record the original Godot story, gear, cosmetics and upgrades methods twice in a verified isolated project."""
+"""Record the original Godot conversations, quests and ordered consequences twice in a verified isolated project."""
 from __future__ import annotations
 
 import argparse

@@ -699729,7 +699729,7 @@
         "deaths": 0,
         "equipment": {},
         "flags": {
-          "op_new_adventure": true
+          "greta_star_seen": true
         },
         "hero_xp": 0,
         "homestead": {},
@@ -699780,7 +699780,7 @@
         "deaths": 0,
         "equipment": {},
         "flags": {
-          "op_new_adventure": true
+          "greta_star_seen": true
         },
         "hero_xp": 0,
         "homestead": {},
@@ -699836,7 +699836,7 @@
         "deaths": 0,
         "equipment": {},
         "flags": {
-          "op_new_adventure": true
+          "greta_star_seen": true
         },
         "hero_xp": 0,
         "homestead": {},
@@ -699885,7 +699885,7 @@
         "deaths": 0,
         "equipment": {},
         "flags": {
-          "op_new_adventure": true
+          "greta_star_seen": true
         },
         "hero_xp": 0,
         "homestead": {},
@@ -699959,7 +699959,7 @@
             {
               "$dict": [
                 [
-                  "op_new_adventure",
+                  "greta_star_seen",
                   true
                 ]
               ]
@@ -700135,11 +700135,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "greta_star",
+            "id": "greta_star_again",
             "lines": [
-              "Wacht eens even... Is dat... het STERRENZWAARD?!",
-              "Ik ken het alleen uit de oude verhalen van mijn opa. Het is niet van ijzer gemaakt, maar van sterrenlicht!",
-              "Daar kan zelfs ik niets meer aan verbeteren. Pas er goed op, held!"
+              "Mag ik het Sterrenzwaard nog één keertje vasthouden? ... Prachtig. Ga maar, held, de wereld wacht!"
             ],
             "sourceIndices": [],
             "speaker": "Greta",
@@ -700148,7 +700146,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "greta_star"
+              "payload": "greta_star_again"
             }
           ],
           "state": {
@@ -700170,7 +700168,7 @@
             "deaths": 0,
             "equipment": {},
             "flags": {
-              "op_new_adventure": true
+              "greta_star_seen": true
             },
             "hero_xp": 0,
             "homestead": {},
@@ -700209,9 +700207,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Wacht eens even... Is dat... het STERRENZWAARD?!",
-              "Ik ken het alleen uit de oude verhalen van mijn opa. Het is niet van ijzer gemaakt, maar van sterrenlicht!",
-              "Daar kan zelfs ik niets meer aan verbeteren. Pas er goed op, held!"
+              "Mag ik het Sterrenzwaard nog één keertje vasthouden? ... Prachtig. Ga maar, held, de wereld wacht!"
             ],
             "sourceIndices": [],
             "speaker": "Greta",
@@ -700220,7 +700216,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "greta_star"
+              "payload": "greta_star_again"
             }
           ],
           "state": {
@@ -700242,7 +700238,7 @@
             "deaths": 0,
             "equipment": {},
             "flags": {
-              "op_new_adventure": true
+              "greta_star_seen": true
             },
             "hero_xp": 0,
             "homestead": {},
@@ -700281,11 +700277,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "greta_star",
+            "id": "greta_star_again",
             "lines": [
-              "Wacht eens even... Is dat... het STERRENZWAARD?!",
-              "Ik ken het alleen uit de oude verhalen van mijn opa. Het is niet van ijzer gemaakt, maar van sterrenlicht!",
-              "Daar kan zelfs ik niets meer aan verbeteren. Pas er goed op, held!"
+              "Mag ik het Sterrenzwaard nog één keertje vasthouden? ... Prachtig. Ga maar, held, de wereld wacht!"
             ],
             "sourceIndices": [],
             "speaker": "Greta",
@@ -700296,7 +700290,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "greta_star"
+              "payload": "greta_star_again"
             }
           ],
           "state": {
@@ -700320,7 +700314,7 @@
             "deaths": 0,
             "equipment": {},
             "flags": {
-              "op_new_adventure": true
+              "greta_star_seen": true
             },
             "hero_xp": 0,
             "homestead": {},
@@ -700365,9 +700359,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Wacht eens even... Is dat... het STERRENZWAARD?!",
-              "Ik ken het alleen uit de oude verhalen van mijn opa. Het is niet van ijzer gemaakt, maar van sterrenlicht!",
-              "Daar kan zelfs ik niets meer aan verbeteren. Pas er goed op, held!"
+              "Mag ik het Sterrenzwaard nog één keertje vasthouden? ... Prachtig. Ga maar, held, de wereld wacht!"
             ],
             "sourceIndices": [],
             "speaker": "Greta",
@@ -700378,7 +700370,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "greta_star"
+              "payload": "greta_star_again"
             }
           ],
           "state": {
@@ -700402,7 +700394,7 @@
             "deaths": 0,
             "equipment": {},
             "flags": {
-              "op_new_adventure": true
+              "greta_star_seen": true
             },
             "hero_xp": 0,
             "homestead": {},
@@ -700485,7 +700477,7 @@
                     {
                       "$dict": [
                         [
-                          "op_new_adventure",
+                          "greta_star_seen",
                           true
                         ]
                       ]
@@ -700663,7 +700655,7 @@
                 "$dict": [
                   [
                     "id",
-                    "greta_star"
+                    "greta_star_again"
                   ],
                   [
                     "active",
@@ -700680,9 +700672,7 @@
                   [
                     "lines",
                     [
-                      "Wacht eens even... Is dat... het STERRENZWAARD?!",
-                      "Ik ken het alleen uit de oude verhalen van mijn opa. Het is niet van ijzer gemaakt, maar van sterrenlicht!",
-                      "Daar kan zelfs ik niets meer aan verbeteren. Pas er goed op, held!"
+                      "Mag ik het Sterrenzwaard nog één keertje vasthouden? ... Prachtig. Ga maar, held, de wereld wacht!"
                     ]
                   ],
                   [
@@ -700717,7 +700707,7 @@
                     ],
                     [
                       "payload",
-                      "greta_star"
+                      "greta_star_again"
                     ]
                   ]
                 }
@@ -700769,7 +700759,7 @@
                     {
                       "$dict": [
                         [
-                          "op_new_adventure",
+                          "greta_star_seen",
                           true
                         ]
                       ]
@@ -700964,9 +700954,7 @@
                   [
                     "lines",
                     [
-                      "Wacht eens even... Is dat... het STERRENZWAARD?!",
-                      "Ik ken het alleen uit de oude verhalen van mijn opa. Het is niet van ijzer gemaakt, maar van sterrenlicht!",
-                      "Daar kan zelfs ik niets meer aan verbeteren. Pas er goed op, held!"
+                      "Mag ik het Sterrenzwaard nog één keertje vasthouden? ... Prachtig. Ga maar, held, de wereld wacht!"
                     ]
                   ],
                   [
@@ -701001,7 +700989,7 @@
                     ],
                     [
                       "payload",
-                      "greta_star"
+                      "greta_star_again"
                     ]
                   ]
                 }
@@ -784909,7 +784897,7 @@
         "professions": {},
         "quests": {
           "lantaarn": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -784971,7 +784959,7 @@
         "professions": {},
         "quests": {
           "lantaarn": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -785026,7 +785014,7 @@
         "professions": {},
         "quests": {
           "lantaarn": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -785086,7 +785074,7 @@
         "professions": {},
         "quests": {
           "lantaarn": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -785154,7 +785142,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -785330,10 +785318,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "lotte_intro",
+            "id": "lotte_menu",
             "lines": [
-              "Ik ben Lotte. Ik maak lantaarns voor het dorp.",
-              "Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten."
+              "Heb je de nachtlantaarn al gevonden?"
             ],
             "sourceIndices": [],
             "speaker": "Lotte",
@@ -785342,7 +785329,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "lotte_intro"
+              "payload": "lotte_menu"
             }
           ],
           "state": {
@@ -785385,7 +785372,7 @@
             "professions": {},
             "quests": {
               "lantaarn": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -785408,8 +785395,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Ik ben Lotte. Ik maak lantaarns voor het dorp.",
-              "Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten."
+              "Heb je de nachtlantaarn al gevonden?"
             ],
             "sourceIndices": [],
             "speaker": "Lotte",
@@ -785418,7 +785404,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "lotte_intro"
+              "payload": "lotte_menu"
             }
           ],
           "state": {
@@ -785461,7 +785447,7 @@
             "professions": {},
             "quests": {
               "lantaarn": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -785484,10 +785470,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "lotte_intro",
+            "id": "lotte_menu",
             "lines": [
-              "Ik ben Lotte. Ik maak lantaarns voor het dorp.",
-              "Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten."
+              "Heb je de nachtlantaarn al gevonden?"
             ],
             "sourceIndices": [],
             "speaker": "Lotte",
@@ -785498,7 +785483,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "lotte_intro"
+              "payload": "lotte_menu"
             }
           ],
           "state": {
@@ -785549,7 +785534,7 @@
             "professions": {},
             "quests": {
               "lantaarn": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -785572,8 +785557,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Ik ben Lotte. Ik maak lantaarns voor het dorp.",
-              "Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten."
+              "Heb je de nachtlantaarn al gevonden?"
             ],
             "sourceIndices": [],
             "speaker": "Lotte",
@@ -785584,7 +785568,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "lotte_intro"
+              "payload": "lotte_menu"
             }
           ],
           "state": {
@@ -785635,7 +785619,7 @@
             "professions": {},
             "quests": {
               "lantaarn": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -785712,7 +785696,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -785890,7 +785874,7 @@
                 "$dict": [
                   [
                     "id",
-                    "lotte_intro"
+                    "lotte_menu"
                   ],
                   [
                     "active",
@@ -785907,8 +785891,7 @@
                   [
                     "lines",
                     [
-                      "Ik ben Lotte. Ik maak lantaarns voor het dorp.",
-                      "Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten."
+                      "Heb je de nachtlantaarn al gevonden?"
                     ]
                   ],
                   [
@@ -785943,7 +785926,7 @@
                     ],
                     [
                       "payload",
-                      "lotte_intro"
+                      "lotte_menu"
                     ]
                   ]
                 }
@@ -786011,7 +785994,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -786206,8 +786189,7 @@
                   [
                     "lines",
                     [
-                      "Ik ben Lotte. Ik maak lantaarns voor het dorp.",
-                      "Mijn beste werk, de nachtlantaarn, is verdwenen. Ik had hem meegenomen naar de ruïne en daar gelaten."
+                      "Heb je de nachtlantaarn al gevonden?"
                     ]
                   ],
                   [
@@ -786242,7 +786224,7 @@
                     ],
                     [
                       "payload",
-                      "lotte_intro"
+                      "lotte_menu"
                     ]
                   ]
                 }
@@ -793350,7 +793332,7 @@
         "professions": {},
         "quests": {
           "kruiden": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -793412,7 +793394,7 @@
         "professions": {},
         "quests": {
           "kruiden": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -793467,7 +793449,7 @@
         "professions": {},
         "quests": {
           "kruiden": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -793527,7 +793509,7 @@
         "professions": {},
         "quests": {
           "kruiden": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -793595,7 +793577,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -793771,10 +793753,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "elke_intro",
+            "id": "elke_menu",
             "lines": [
-              "Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.",
-              "De verse kruiden uit het bos zijn het beste. Die mis ik nu."
+              "Heb je de kruiden al?"
             ],
             "sourceIndices": [],
             "speaker": "Elke",
@@ -793783,7 +793764,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "elke_intro"
+              "payload": "elke_menu"
             }
           ],
           "state": {
@@ -793826,7 +793807,7 @@
             "professions": {},
             "quests": {
               "kruiden": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -793849,8 +793830,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.",
-              "De verse kruiden uit het bos zijn het beste. Die mis ik nu."
+              "Heb je de kruiden al?"
             ],
             "sourceIndices": [],
             "speaker": "Elke",
@@ -793859,7 +793839,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "elke_intro"
+              "payload": "elke_menu"
             }
           ],
           "state": {
@@ -793902,7 +793882,7 @@
             "professions": {},
             "quests": {
               "kruiden": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -793925,10 +793905,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "elke_intro",
+            "id": "elke_menu",
             "lines": [
-              "Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.",
-              "De verse kruiden uit het bos zijn het beste. Die mis ik nu."
+              "Heb je de kruiden al?"
             ],
             "sourceIndices": [],
             "speaker": "Elke",
@@ -793939,7 +793918,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "elke_intro"
+              "payload": "elke_menu"
             }
           ],
           "state": {
@@ -793990,7 +793969,7 @@
             "professions": {},
             "quests": {
               "kruiden": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -794013,8 +793992,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.",
-              "De verse kruiden uit het bos zijn het beste. Die mis ik nu."
+              "Heb je de kruiden al?"
             ],
             "sourceIndices": [],
             "speaker": "Elke",
@@ -794025,7 +794003,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "elke_intro"
+              "payload": "elke_menu"
             }
           ],
           "state": {
@@ -794076,7 +794054,7 @@
             "professions": {},
             "quests": {
               "kruiden": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -794153,7 +794131,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -794331,7 +794309,7 @@
                 "$dict": [
                   [
                     "id",
-                    "elke_intro"
+                    "elke_menu"
                   ],
                   [
                     "active",
@@ -794348,8 +794326,7 @@
                   [
                     "lines",
                     [
-                      "Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.",
-                      "De verse kruiden uit het bos zijn het beste. Die mis ik nu."
+                      "Heb je de kruiden al?"
                     ]
                   ],
                   [
@@ -794384,7 +794361,7 @@
                     ],
                     [
                       "payload",
-                      "elke_intro"
+                      "elke_menu"
                     ]
                   ]
                 }
@@ -794452,7 +794429,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -794647,8 +794624,7 @@
                   [
                     "lines",
                     [
-                      "Welkom bij mijn kruiden. Ik ben Elke. Ik droog, maal en brouw alles wat groen is.",
-                      "De verse kruiden uit het bos zijn het beste. Die mis ik nu."
+                      "Heb je de kruiden al?"
                     ]
                   ],
                   [
@@ -794683,7 +794659,7 @@
                     ],
                     [
                       "payload",
-                      "elke_intro"
+                      "elke_menu"
                     ]
                   ]
                 }
@@ -807933,7 +807909,7 @@
         "professions": {},
         "quests": {
           "dauw": {
-            "state": "none",
+            "state": "active",
             "step": 0
           },
           "mistbloemen": {
@@ -807999,7 +807975,7 @@
         "professions": {},
         "quests": {
           "dauw": {
-            "state": "none",
+            "state": "active",
             "step": 0
           },
           "mistbloemen": {
@@ -808058,7 +808034,7 @@
         "professions": {},
         "quests": {
           "dauw": {
-            "state": "none",
+            "state": "active",
             "step": 0
           },
           "mistbloemen": {
@@ -808122,7 +808098,7 @@
         "professions": {},
         "quests": {
           "dauw": {
-            "state": "none",
+            "state": "active",
             "step": 0
           },
           "mistbloemen": {
@@ -808194,7 +808170,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -808385,10 +808361,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "mira_intro",
+            "id": "mira_menu",
             "lines": [
-              "Welkom in het Dauwbos. Ik ben Mira. Ik bewaar de dauw hier.",
-              "De mist wordt dikker. Ik zoek een oude dauwsteen om het evenwicht te herstellen."
+              "Heb je de steen al?"
             ],
             "sourceIndices": [],
             "speaker": "Mira",
@@ -808397,7 +808372,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "mira_intro"
+              "payload": "mira_menu"
             }
           ],
           "state": {
@@ -808440,7 +808415,7 @@
             "professions": {},
             "quests": {
               "dauw": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               },
               "mistbloemen": {
@@ -808467,8 +808442,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Welkom in het Dauwbos. Ik ben Mira. Ik bewaar de dauw hier.",
-              "De mist wordt dikker. Ik zoek een oude dauwsteen om het evenwicht te herstellen."
+              "Heb je de steen al?"
             ],
             "sourceIndices": [],
             "speaker": "Mira",
@@ -808477,7 +808451,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "mira_intro"
+              "payload": "mira_menu"
             }
           ],
           "state": {
@@ -808520,7 +808494,7 @@
             "professions": {},
             "quests": {
               "dauw": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               },
               "mistbloemen": {
@@ -808547,10 +808521,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "mira_intro",
+            "id": "mira_menu",
             "lines": [
-              "Welkom in het Dauwbos. Ik ben Mira. Ik bewaar de dauw hier.",
-              "De mist wordt dikker. Ik zoek een oude dauwsteen om het evenwicht te herstellen."
+              "Heb je de steen al?"
             ],
             "sourceIndices": [],
             "speaker": "Mira",
@@ -808561,7 +808534,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "mira_intro"
+              "payload": "mira_menu"
             }
           ],
           "state": {
@@ -808612,7 +808585,7 @@
             "professions": {},
             "quests": {
               "dauw": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               },
               "mistbloemen": {
@@ -808639,8 +808612,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Welkom in het Dauwbos. Ik ben Mira. Ik bewaar de dauw hier.",
-              "De mist wordt dikker. Ik zoek een oude dauwsteen om het evenwicht te herstellen."
+              "Heb je de steen al?"
             ],
             "sourceIndices": [],
             "speaker": "Mira",
@@ -808651,7 +808623,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "mira_intro"
+              "payload": "mira_menu"
             }
           ],
           "state": {
@@ -808702,7 +808674,7 @@
             "professions": {},
             "quests": {
               "dauw": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               },
               "mistbloemen": {
@@ -808783,7 +808755,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -808976,7 +808948,7 @@
                 "$dict": [
                   [
                     "id",
-                    "mira_intro"
+                    "mira_menu"
                   ],
                   [
                     "active",
@@ -808993,8 +808965,7 @@
                   [
                     "lines",
                     [
-                      "Welkom in het Dauwbos. Ik ben Mira. Ik bewaar de dauw hier.",
-                      "De mist wordt dikker. Ik zoek een oude dauwsteen om het evenwicht te herstellen."
+                      "Heb je de steen al?"
                     ]
                   ],
                   [
@@ -809029,7 +809000,7 @@
                     ],
                     [
                       "payload",
-                      "mira_intro"
+                      "mira_menu"
                     ]
                   ]
                 }
@@ -809097,7 +809068,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -809307,8 +809278,7 @@
                   [
                     "lines",
                     [
-                      "Welkom in het Dauwbos. Ik ben Mira. Ik bewaar de dauw hier.",
-                      "De mist wordt dikker. Ik zoek een oude dauwsteen om het evenwicht te herstellen."
+                      "Heb je de steen al?"
                     ]
                   ],
                   [
@@ -809343,7 +809313,7 @@
                     ],
                     [
                       "payload",
-                      "mira_intro"
+                      "mira_menu"
                     ]
                   ]
                 }
@@ -819080,7 +819050,7 @@
         "professions": {},
         "quests": {
           "warmte": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -819142,7 +819112,7 @@
         "professions": {},
         "quests": {
           "warmte": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -819197,7 +819167,7 @@
         "professions": {},
         "quests": {
           "warmte": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -819257,7 +819227,7 @@
         "professions": {},
         "quests": {
           "warmte": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -819325,7 +819295,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -819501,9 +819471,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "fenna_intro",
+            "id": "fenna_menu",
             "lines": [
-              "De noordelijke huizen zijn verlaten sinds hun vuurkorven uitgingen. Help je de warmte terugbrengen? Takken vind je langs het plein; koken of prismatechniek werkt ook."
+              "De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."
             ],
             "sourceIndices": [],
             "speaker": "Fenna",
@@ -819512,7 +819482,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "fenna_intro"
+              "payload": "fenna_menu"
             }
           ],
           "state": {
@@ -819555,7 +819525,7 @@
             "professions": {},
             "quests": {
               "warmte": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -819578,7 +819548,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "De noordelijke huizen zijn verlaten sinds hun vuurkorven uitgingen. Help je de warmte terugbrengen? Takken vind je langs het plein; koken of prismatechniek werkt ook."
+              "De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."
             ],
             "sourceIndices": [],
             "speaker": "Fenna",
@@ -819587,7 +819557,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "fenna_intro"
+              "payload": "fenna_menu"
             }
           ],
           "state": {
@@ -819630,7 +819600,7 @@
             "professions": {},
             "quests": {
               "warmte": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -819653,9 +819623,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "fenna_intro",
+            "id": "fenna_menu",
             "lines": [
-              "De noordelijke huizen zijn verlaten sinds hun vuurkorven uitgingen. Help je de warmte terugbrengen? Takken vind je langs het plein; koken of prismatechniek werkt ook."
+              "De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."
             ],
             "sourceIndices": [],
             "speaker": "Fenna",
@@ -819666,7 +819636,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "fenna_intro"
+              "payload": "fenna_menu"
             }
           ],
           "state": {
@@ -819717,7 +819687,7 @@
             "professions": {},
             "quests": {
               "warmte": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -819740,7 +819710,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "De noordelijke huizen zijn verlaten sinds hun vuurkorven uitgingen. Help je de warmte terugbrengen? Takken vind je langs het plein; koken of prismatechniek werkt ook."
+              "De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."
             ],
             "sourceIndices": [],
             "speaker": "Fenna",
@@ -819751,7 +819721,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "fenna_intro"
+              "payload": "fenna_menu"
             }
           ],
           "state": {
@@ -819802,7 +819772,7 @@
             "professions": {},
             "quests": {
               "warmte": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -819879,7 +819849,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -820057,7 +820027,7 @@
                 "$dict": [
                   [
                     "id",
-                    "fenna_intro"
+                    "fenna_menu"
                   ],
                   [
                     "active",
@@ -820074,7 +820044,7 @@
                   [
                     "lines",
                     [
-                      "De noordelijke huizen zijn verlaten sinds hun vuurkorven uitgingen. Help je de warmte terugbrengen? Takken vind je langs het plein; koken of prismatechniek werkt ook."
+                      "De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."
                     ]
                   ],
                   [
@@ -820109,7 +820079,7 @@
                     ],
                     [
                       "payload",
-                      "fenna_intro"
+                      "fenna_menu"
                     ]
                   ]
                 }
@@ -820177,7 +820147,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -820372,7 +820342,7 @@
                   [
                     "lines",
                     [
-                      "De noordelijke huizen zijn verlaten sinds hun vuurkorven uitgingen. Help je de warmte terugbrengen? Takken vind je langs het plein; koken of prismatechniek werkt ook."
+                      "De vuurkorven staan voor de twee noordelijke huizen. Houd vijanden uit de buurt tot het vuur stabiel is. Samen brengen we de warmte terug."
                     ]
                   ],
                   [
@@ -820407,7 +820377,7 @@
                     ],
                     [
                       "payload",
-                      "fenna_intro"
+                      "fenna_menu"
                     ]
                   ]
                 }
@@ -824806,7 +824776,7 @@
         "professions": {},
         "quests": {
           "ijswacht": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -824868,7 +824838,7 @@
         "professions": {},
         "quests": {
           "ijswacht": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -824923,7 +824893,7 @@
         "professions": {},
         "quests": {
           "ijswacht": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -824983,7 +824953,7 @@
         "professions": {},
         "quests": {
           "ijswacht": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -825051,7 +825021,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -825227,10 +825197,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "roos_intro",
+            "id": "roos_menu",
             "lines": [
-              "Stil maar. Ik ben Roos, jageres van IJsdal. Ik houd de paden vrij van slijmen.",
-              "De ijsblauwe slijmen worden brutaal deze winter. Ze verschuilen zich tussen de rotsen."
+              "Zijn de paden al veilig?"
             ],
             "sourceIndices": [],
             "speaker": "Roos",
@@ -825239,7 +825208,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "roos_intro"
+              "payload": "roos_menu"
             }
           ],
           "state": {
@@ -825282,7 +825251,7 @@
             "professions": {},
             "quests": {
               "ijswacht": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -825305,8 +825274,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Stil maar. Ik ben Roos, jageres van IJsdal. Ik houd de paden vrij van slijmen.",
-              "De ijsblauwe slijmen worden brutaal deze winter. Ze verschuilen zich tussen de rotsen."
+              "Zijn de paden al veilig?"
             ],
             "sourceIndices": [],
             "speaker": "Roos",
@@ -825315,7 +825283,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "roos_intro"
+              "payload": "roos_menu"
             }
           ],
           "state": {
@@ -825358,7 +825326,7 @@
             "professions": {},
             "quests": {
               "ijswacht": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -825381,10 +825349,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "roos_intro",
+            "id": "roos_menu",
             "lines": [
-              "Stil maar. Ik ben Roos, jageres van IJsdal. Ik houd de paden vrij van slijmen.",
-              "De ijsblauwe slijmen worden brutaal deze winter. Ze verschuilen zich tussen de rotsen."
+              "Zijn de paden al veilig?"
             ],
             "sourceIndices": [],
             "speaker": "Roos",
@@ -825395,7 +825362,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "roos_intro"
+              "payload": "roos_menu"
             }
           ],
           "state": {
@@ -825446,7 +825413,7 @@
             "professions": {},
             "quests": {
               "ijswacht": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -825469,8 +825436,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Stil maar. Ik ben Roos, jageres van IJsdal. Ik houd de paden vrij van slijmen.",
-              "De ijsblauwe slijmen worden brutaal deze winter. Ze verschuilen zich tussen de rotsen."
+              "Zijn de paden al veilig?"
             ],
             "sourceIndices": [],
             "speaker": "Roos",
@@ -825481,7 +825447,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "roos_intro"
+              "payload": "roos_menu"
             }
           ],
           "state": {
@@ -825532,7 +825498,7 @@
             "professions": {},
             "quests": {
               "ijswacht": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -825609,7 +825575,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -825787,7 +825753,7 @@
                 "$dict": [
                   [
                     "id",
-                    "roos_intro"
+                    "roos_menu"
                   ],
                   [
                     "active",
@@ -825804,8 +825770,7 @@
                   [
                     "lines",
                     [
-                      "Stil maar. Ik ben Roos, jageres van IJsdal. Ik houd de paden vrij van slijmen.",
-                      "De ijsblauwe slijmen worden brutaal deze winter. Ze verschuilen zich tussen de rotsen."
+                      "Zijn de paden al veilig?"
                     ]
                   ],
                   [
@@ -825840,7 +825805,7 @@
                     ],
                     [
                       "payload",
-                      "roos_intro"
+                      "roos_menu"
                     ]
                   ]
                 }
@@ -825908,7 +825873,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -826103,8 +826068,7 @@
                   [
                     "lines",
                     [
-                      "Stil maar. Ik ben Roos, jageres van IJsdal. Ik houd de paden vrij van slijmen.",
-                      "De ijsblauwe slijmen worden brutaal deze winter. Ze verschuilen zich tussen de rotsen."
+                      "Zijn de paden al veilig?"
                     ]
                   ],
                   [
@@ -826139,7 +826103,7 @@
                     ],
                     [
                       "payload",
-                      "roos_intro"
+                      "roos_menu"
                     ]
                   ]
                 }
@@ -833273,7 +833237,7 @@
         "professions": {},
         "quests": {
           "vellen_en_vlees": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -833335,7 +833299,7 @@
         "professions": {},
         "quests": {
           "vellen_en_vlees": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -833390,7 +833354,7 @@
         "professions": {},
         "quests": {
           "vellen_en_vlees": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -833450,7 +833414,7 @@
         "professions": {},
         "quests": {
           "vellen_en_vlees": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -833518,7 +833482,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -833694,10 +833658,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "jelle_intro",
+            "id": "jelle_menu",
             "lines": [
-              "Vreemdeling! Welkom in de Dorstvallei. Ik ben Jelle; ik handel in vellen en vlees.",
-              "De vossen hier hebben de zachtste vacht van het land. Maar vangen... dat is een ander verhaal."
+              "Heb je de vellen en het vlees al?"
             ],
             "sourceIndices": [],
             "speaker": "Jelle",
@@ -833706,7 +833669,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "jelle_intro"
+              "payload": "jelle_menu"
             }
           ],
           "state": {
@@ -833749,7 +833712,7 @@
             "professions": {},
             "quests": {
               "vellen_en_vlees": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -833772,8 +833735,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Vreemdeling! Welkom in de Dorstvallei. Ik ben Jelle; ik handel in vellen en vlees.",
-              "De vossen hier hebben de zachtste vacht van het land. Maar vangen... dat is een ander verhaal."
+              "Heb je de vellen en het vlees al?"
             ],
             "sourceIndices": [],
             "speaker": "Jelle",
@@ -833782,7 +833744,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "jelle_intro"
+              "payload": "jelle_menu"
             }
           ],
           "state": {
@@ -833825,7 +833787,7 @@
             "professions": {},
             "quests": {
               "vellen_en_vlees": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -833848,10 +833810,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "jelle_intro",
+            "id": "jelle_menu",
             "lines": [
-              "Vreemdeling! Welkom in de Dorstvallei. Ik ben Jelle; ik handel in vellen en vlees.",
-              "De vossen hier hebben de zachtste vacht van het land. Maar vangen... dat is een ander verhaal."
+              "Heb je de vellen en het vlees al?"
             ],
             "sourceIndices": [],
             "speaker": "Jelle",
@@ -833862,7 +833823,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "jelle_intro"
+              "payload": "jelle_menu"
             }
           ],
           "state": {
@@ -833913,7 +833874,7 @@
             "professions": {},
             "quests": {
               "vellen_en_vlees": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -833936,8 +833897,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Vreemdeling! Welkom in de Dorstvallei. Ik ben Jelle; ik handel in vellen en vlees.",
-              "De vossen hier hebben de zachtste vacht van het land. Maar vangen... dat is een ander verhaal."
+              "Heb je de vellen en het vlees al?"
             ],
             "sourceIndices": [],
             "speaker": "Jelle",
@@ -833948,7 +833908,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "jelle_intro"
+              "payload": "jelle_menu"
             }
           ],
           "state": {
@@ -833999,7 +833959,7 @@
             "professions": {},
             "quests": {
               "vellen_en_vlees": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -834076,7 +834036,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -834254,7 +834214,7 @@
                 "$dict": [
                   [
                     "id",
-                    "jelle_intro"
+                    "jelle_menu"
                   ],
                   [
                     "active",
@@ -834271,8 +834231,7 @@
                   [
                     "lines",
                     [
-                      "Vreemdeling! Welkom in de Dorstvallei. Ik ben Jelle; ik handel in vellen en vlees.",
-                      "De vossen hier hebben de zachtste vacht van het land. Maar vangen... dat is een ander verhaal."
+                      "Heb je de vellen en het vlees al?"
                     ]
                   ],
                   [
@@ -834307,7 +834266,7 @@
                     ],
                     [
                       "payload",
-                      "jelle_intro"
+                      "jelle_menu"
                     ]
                   ]
                 }
@@ -834375,7 +834334,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -834570,8 +834529,7 @@
                   [
                     "lines",
                     [
-                      "Vreemdeling! Welkom in de Dorstvallei. Ik ben Jelle; ik handel in vellen en vlees.",
-                      "De vossen hier hebben de zachtste vacht van het land. Maar vangen... dat is een ander verhaal."
+                      "Heb je de vellen en het vlees al?"
                     ]
                   ],
                   [
@@ -834606,7 +834564,7 @@
                     ],
                     [
                       "payload",
-                      "jelle_intro"
+                      "jelle_menu"
                     ]
                   ]
                 }
@@ -840479,7 +840437,7 @@
         "professions": {},
         "quests": {
           "cactusvijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -840542,7 +840500,7 @@
         "professions": {},
         "quests": {
           "cactusvijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -840598,7 +840556,7 @@
         "professions": {},
         "quests": {
           "cactusvijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -840659,7 +840617,7 @@
         "professions": {},
         "quests": {
           "cactusvijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -840731,7 +840689,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -840907,10 +840865,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "sana_intro",
+            "id": "sana_menu",
             "lines": [
-              "Welkom bij de oase, reiziger. Ik ben Sana. Dit water is het hart van de vallei.",
-              "Ik maak koele drankjes van cactusvijgen. Zoet, en je houdt er de hitte mee uit."
+              "Volg de blauwe luifels in de Zonnekloof naar de oude bron. De ingang ligt in de noordelijke zandsteenwand, rechts van de oase."
             ],
             "sourceIndices": [],
             "speaker": "Sana",
@@ -840919,7 +840876,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "sana_intro"
+              "payload": "sana_menu"
             }
           ],
           "state": {
@@ -840963,7 +840920,7 @@
             "professions": {},
             "quests": {
               "cactusvijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -840986,8 +840943,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Welkom bij de oase, reiziger. Ik ben Sana. Dit water is het hart van de vallei.",
-              "Ik maak koele drankjes van cactusvijgen. Zoet, en je houdt er de hitte mee uit."
+              "Volg de blauwe luifels in de Zonnekloof naar de oude bron. De ingang ligt in de noordelijke zandsteenwand, rechts van de oase."
             ],
             "sourceIndices": [],
             "speaker": "Sana",
@@ -840996,7 +840952,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "sana_intro"
+              "payload": "sana_menu"
             }
           ],
           "state": {
@@ -841040,7 +840996,7 @@
             "professions": {},
             "quests": {
               "cactusvijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -841063,10 +841019,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "sana_intro",
+            "id": "sana_menu",
             "lines": [
-              "Welkom bij de oase, reiziger. Ik ben Sana. Dit water is het hart van de vallei.",
-              "Ik maak koele drankjes van cactusvijgen. Zoet, en je houdt er de hitte mee uit."
+              "Volg de blauwe luifels in de Zonnekloof naar de oude bron. De ingang ligt in de noordelijke zandsteenwand, rechts van de oase."
             ],
             "sourceIndices": [],
             "speaker": "Sana",
@@ -841077,7 +841032,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "sana_intro"
+              "payload": "sana_menu"
             }
           ],
           "state": {
@@ -841129,7 +841084,7 @@
             "professions": {},
             "quests": {
               "cactusvijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -841152,8 +841107,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Welkom bij de oase, reiziger. Ik ben Sana. Dit water is het hart van de vallei.",
-              "Ik maak koele drankjes van cactusvijgen. Zoet, en je houdt er de hitte mee uit."
+              "Volg de blauwe luifels in de Zonnekloof naar de oude bron. De ingang ligt in de noordelijke zandsteenwand, rechts van de oase."
             ],
             "sourceIndices": [],
             "speaker": "Sana",
@@ -841164,7 +841118,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "sana_intro"
+              "payload": "sana_menu"
             }
           ],
           "state": {
@@ -841216,7 +841170,7 @@
             "professions": {},
             "quests": {
               "cactusvijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -841297,7 +841251,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -841475,7 +841429,7 @@
                 "$dict": [
                   [
                     "id",
-                    "sana_intro"
+                    "sana_menu"
                   ],
                   [
                     "active",
@@ -841492,8 +841446,7 @@
                   [
                     "lines",
                     [
-                      "Welkom bij de oase, reiziger. Ik ben Sana. Dit water is het hart van de vallei.",
-                      "Ik maak koele drankjes van cactusvijgen. Zoet, en je houdt er de hitte mee uit."
+                      "Volg de blauwe luifels in de Zonnekloof naar de oude bron. De ingang ligt in de noordelijke zandsteenwand, rechts van de oase."
                     ]
                   ],
                   [
@@ -841528,7 +841481,7 @@
                     ],
                     [
                       "payload",
-                      "sana_intro"
+                      "sana_menu"
                     ]
                   ]
                 }
@@ -841600,7 +841553,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -841795,8 +841748,7 @@
                   [
                     "lines",
                     [
-                      "Welkom bij de oase, reiziger. Ik ben Sana. Dit water is het hart van de vallei.",
-                      "Ik maak koele drankjes van cactusvijgen. Zoet, en je houdt er de hitte mee uit."
+                      "Volg de blauwe luifels in de Zonnekloof naar de oude bron. De ingang ligt in de noordelijke zandsteenwand, rechts van de oase."
                     ]
                   ],
                   [
@@ -841831,7 +841783,7 @@
                     ],
                     [
                       "payload",
-                      "sana_intro"
+                      "sana_menu"
                     ]
                   ]
                 }
@@ -851635,7 +851587,7 @@
         "professions": {},
         "quests": {
           "veenbessen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -851697,7 +851649,7 @@
         "professions": {},
         "quests": {
           "veenbessen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -851752,7 +851704,7 @@
         "professions": {},
         "quests": {
           "veenbessen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -851812,7 +851764,7 @@
         "professions": {},
         "quests": {
           "veenbessen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -851880,7 +851832,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -852056,10 +852008,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "stien_intro",
+            "id": "stien_menu",
             "lines": [
-              "Hé daar, oppassen waar je loopt! De turfvelden verrassen je, voor je het weet zak je tot je enkels.",
-              "Ik ben Stien. Ik steek turf, zodat het dorp warm blijft in de winter."
+              "Heb je de veenbessen al? Mijn maag knort luider dan de vorsten."
             ],
             "sourceIndices": [],
             "speaker": "Stien",
@@ -852068,7 +852019,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "stien_intro"
+              "payload": "stien_menu"
             }
           ],
           "state": {
@@ -852111,7 +852062,7 @@
             "professions": {},
             "quests": {
               "veenbessen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -852134,8 +852085,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Hé daar, oppassen waar je loopt! De turfvelden verrassen je, voor je het weet zak je tot je enkels.",
-              "Ik ben Stien. Ik steek turf, zodat het dorp warm blijft in de winter."
+              "Heb je de veenbessen al? Mijn maag knort luider dan de vorsten."
             ],
             "sourceIndices": [],
             "speaker": "Stien",
@@ -852144,7 +852094,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "stien_intro"
+              "payload": "stien_menu"
             }
           ],
           "state": {
@@ -852187,7 +852137,7 @@
             "professions": {},
             "quests": {
               "veenbessen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -852210,10 +852160,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "stien_intro",
+            "id": "stien_menu",
             "lines": [
-              "Hé daar, oppassen waar je loopt! De turfvelden verrassen je, voor je het weet zak je tot je enkels.",
-              "Ik ben Stien. Ik steek turf, zodat het dorp warm blijft in de winter."
+              "Heb je de veenbessen al? Mijn maag knort luider dan de vorsten."
             ],
             "sourceIndices": [],
             "speaker": "Stien",
@@ -852224,7 +852173,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "stien_intro"
+              "payload": "stien_menu"
             }
           ],
           "state": {
@@ -852275,7 +852224,7 @@
             "professions": {},
             "quests": {
               "veenbessen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -852298,8 +852247,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Hé daar, oppassen waar je loopt! De turfvelden verrassen je, voor je het weet zak je tot je enkels.",
-              "Ik ben Stien. Ik steek turf, zodat het dorp warm blijft in de winter."
+              "Heb je de veenbessen al? Mijn maag knort luider dan de vorsten."
             ],
             "sourceIndices": [],
             "speaker": "Stien",
@@ -852310,7 +852258,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "stien_intro"
+              "payload": "stien_menu"
             }
           ],
           "state": {
@@ -852361,7 +852309,7 @@
             "professions": {},
             "quests": {
               "veenbessen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -852438,7 +852386,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -852616,7 +852564,7 @@
                 "$dict": [
                   [
                     "id",
-                    "stien_intro"
+                    "stien_menu"
                   ],
                   [
                     "active",
@@ -852633,8 +852581,7 @@
                   [
                     "lines",
                     [
-                      "Hé daar, oppassen waar je loopt! De turfvelden verrassen je, voor je het weet zak je tot je enkels.",
-                      "Ik ben Stien. Ik steek turf, zodat het dorp warm blijft in de winter."
+                      "Heb je de veenbessen al? Mijn maag knort luider dan de vorsten."
                     ]
                   ],
                   [
@@ -852669,7 +852616,7 @@
                     ],
                     [
                       "payload",
-                      "stien_intro"
+                      "stien_menu"
                     ]
                   ]
                 }
@@ -852737,7 +852684,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -852932,8 +852879,7 @@
                   [
                     "lines",
                     [
-                      "Hé daar, oppassen waar je loopt! De turfvelden verrassen je, voor je het weet zak je tot je enkels.",
-                      "Ik ben Stien. Ik steek turf, zodat het dorp warm blijft in de winter."
+                      "Heb je de veenbessen al? Mijn maag knort luider dan de vorsten."
                     ]
                   ],
                   [
@@ -852968,7 +852914,7 @@
                     ],
                     [
                       "payload",
-                      "stien_intro"
+                      "stien_menu"
                     ]
                   ]
                 }
@@ -857349,7 +857295,7 @@
         "professions": {},
         "quests": {
           "wilgentwijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -857411,7 +857357,7 @@
         "professions": {},
         "quests": {
           "wilgentwijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -857466,7 +857412,7 @@
         "professions": {},
         "quests": {
           "wilgentwijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -857526,7 +857472,7 @@
         "professions": {},
         "quests": {
           "wilgentwijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -857594,7 +857540,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -857770,9 +857716,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "mees_intro",
+            "id": "mees_menu",
             "lines": [
-              "De westelijke oversteek is gebroken. Kijk bij de lier naast het eiland: eerst de sluizen goed zetten, dan repareren. Bouw, brouw, of neem de gevaarlijke route langs de bewakers."
+              "De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."
             ],
             "sourceIndices": [],
             "speaker": "Mees",
@@ -857781,7 +857727,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "mees_intro"
+              "payload": "mees_menu"
             }
           ],
           "state": {
@@ -857824,7 +857770,7 @@
             "professions": {},
             "quests": {
               "wilgentwijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -857847,7 +857793,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "De westelijke oversteek is gebroken. Kijk bij de lier naast het eiland: eerst de sluizen goed zetten, dan repareren. Bouw, brouw, of neem de gevaarlijke route langs de bewakers."
+              "De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."
             ],
             "sourceIndices": [],
             "speaker": "Mees",
@@ -857856,7 +857802,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "mees_intro"
+              "payload": "mees_menu"
             }
           ],
           "state": {
@@ -857899,7 +857845,7 @@
             "professions": {},
             "quests": {
               "wilgentwijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -857922,9 +857868,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "mees_intro",
+            "id": "mees_menu",
             "lines": [
-              "De westelijke oversteek is gebroken. Kijk bij de lier naast het eiland: eerst de sluizen goed zetten, dan repareren. Bouw, brouw, of neem de gevaarlijke route langs de bewakers."
+              "De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."
             ],
             "sourceIndices": [],
             "speaker": "Mees",
@@ -857935,7 +857881,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "mees_intro"
+              "payload": "mees_menu"
             }
           ],
           "state": {
@@ -857986,7 +857932,7 @@
             "professions": {},
             "quests": {
               "wilgentwijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -858009,7 +857955,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "De westelijke oversteek is gebroken. Kijk bij de lier naast het eiland: eerst de sluizen goed zetten, dan repareren. Bouw, brouw, of neem de gevaarlijke route langs de bewakers."
+              "De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."
             ],
             "sourceIndices": [],
             "speaker": "Mees",
@@ -858020,7 +857966,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "mees_intro"
+              "payload": "mees_menu"
             }
           ],
           "state": {
@@ -858071,7 +858017,7 @@
             "professions": {},
             "quests": {
               "wilgentwijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -858148,7 +858094,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -858326,7 +858272,7 @@
                 "$dict": [
                   [
                     "id",
-                    "mees_intro"
+                    "mees_menu"
                   ],
                   [
                     "active",
@@ -858343,7 +858289,7 @@
                   [
                     "lines",
                     [
-                      "De westelijke oversteek is gebroken. Kijk bij de lier naast het eiland: eerst de sluizen goed zetten, dan repareren. Bouw, brouw, of neem de gevaarlijke route langs de bewakers."
+                      "De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."
                     ]
                   ],
                   [
@@ -858378,7 +858324,7 @@
                     ],
                     [
                       "payload",
-                      "mees_intro"
+                      "mees_menu"
                     ]
                   ]
                 }
@@ -858446,7 +858392,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -858641,7 +858587,7 @@
                   [
                     "lines",
                     [
-                      "De westelijke oversteek is gebroken. Kijk bij de lier naast het eiland: eerst de sluizen goed zetten, dan repareren. Bouw, brouw, of neem de gevaarlijke route langs de bewakers."
+                      "De lier staat ten westen van het eiland. Zet de westelijke sluis open en de oostelijke dicht. Brugonderdelen, levende hars of de bewaakte lier helpen je daarna verder."
                     ]
                   ],
                   [
@@ -858676,7 +858622,7 @@
                     ],
                     [
                       "payload",
-                      "mees_intro"
+                      "mees_menu"
                     ]
                   ]
                 }
@@ -863124,7 +863070,7 @@
         "professions": {},
         "quests": {
           "zonneschijf": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -863186,7 +863132,7 @@
         "professions": {},
         "quests": {
           "zonneschijf": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -863241,7 +863187,7 @@
         "professions": {},
         "quests": {
           "zonneschijf": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -863301,7 +863247,7 @@
         "professions": {},
         "quests": {
           "zonneschijf": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -863369,7 +863315,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -863545,11 +863491,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "wouda_intro",
+            "id": "wouda_menu",
             "lines": [
-              "Ah... een wandelaar uit het noorden. Ik ben Wouda; het moeras kent mij en ik ken het moeras.",
-              "Weet je wat dit land ooit was? De zilverzijde van het meer. De zon lag hier op het water en de schijf werd aanbeden.",
-              "Toen zakte de grond, steeg het veen, en verdween de tempel onder de drijfmest."
+              "Het moeras ademt, hoor je dat? Vraag maar wat je wilt weten."
             ],
             "sourceIndices": [],
             "speaker": "Wouda",
@@ -863558,7 +863502,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "wouda_intro"
+              "payload": "wouda_menu"
             }
           ],
           "state": {
@@ -863601,7 +863545,7 @@
             "professions": {},
             "quests": {
               "zonneschijf": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -863624,9 +863568,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Ah... een wandelaar uit het noorden. Ik ben Wouda; het moeras kent mij en ik ken het moeras.",
-              "Weet je wat dit land ooit was? De zilverzijde van het meer. De zon lag hier op het water en de schijf werd aanbeden.",
-              "Toen zakte de grond, steeg het veen, en verdween de tempel onder de drijfmest."
+              "Het moeras ademt, hoor je dat? Vraag maar wat je wilt weten."
             ],
             "sourceIndices": [],
             "speaker": "Wouda",
@@ -863635,7 +863577,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "wouda_intro"
+              "payload": "wouda_menu"
             }
           ],
           "state": {
@@ -863678,7 +863620,7 @@
             "professions": {},
             "quests": {
               "zonneschijf": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -863701,11 +863643,9 @@
             "choices": [],
             "choicesReady": false,
             "fromData": true,
-            "id": "wouda_intro",
+            "id": "wouda_menu",
             "lines": [
-              "Ah... een wandelaar uit het noorden. Ik ben Wouda; het moeras kent mij en ik ken het moeras.",
-              "Weet je wat dit land ooit was? De zilverzijde van het meer. De zon lag hier op het water en de schijf werd aanbeden.",
-              "Toen zakte de grond, steeg het veen, en verdween de tempel onder de drijfmest."
+              "Het moeras ademt, hoor je dat? Vraag maar wat je wilt weten."
             ],
             "sourceIndices": [],
             "speaker": "Wouda",
@@ -863716,7 +863656,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "wouda_intro"
+              "payload": "wouda_menu"
             }
           ],
           "state": {
@@ -863767,7 +863707,7 @@
             "professions": {},
             "quests": {
               "zonneschijf": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -863790,9 +863730,7 @@
             "fromData": true,
             "id": "",
             "lines": [
-              "Ah... een wandelaar uit het noorden. Ik ben Wouda; het moeras kent mij en ik ken het moeras.",
-              "Weet je wat dit land ooit was? De zilverzijde van het meer. De zon lag hier op het water en de schijf werd aanbeden.",
-              "Toen zakte de grond, steeg het veen, en verdween de tempel onder de drijfmest."
+              "Het moeras ademt, hoor je dat? Vraag maar wat je wilt weten."
             ],
             "sourceIndices": [],
             "speaker": "Wouda",
@@ -863803,7 +863741,7 @@
           "events": [
             {
               "kind": "dialogue_requested",
-              "payload": "wouda_intro"
+              "payload": "wouda_menu"
             }
           ],
           "state": {
@@ -863854,7 +863792,7 @@
             "professions": {},
             "quests": {
               "zonneschijf": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -863931,7 +863869,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -864109,7 +864047,7 @@
                 "$dict": [
                   [
                     "id",
-                    "wouda_intro"
+                    "wouda_menu"
                   ],
                   [
                     "active",
@@ -864126,9 +864064,7 @@
                   [
                     "lines",
                     [
-                      "Ah... een wandelaar uit het noorden. Ik ben Wouda; het moeras kent mij en ik ken het moeras.",
-                      "Weet je wat dit land ooit was? De zilverzijde van het meer. De zon lag hier op het water en de schijf werd aanbeden.",
-                      "Toen zakte de grond, steeg het veen, en verdween de tempel onder de drijfmest."
+                      "Het moeras ademt, hoor je dat? Vraag maar wat je wilt weten."
                     ]
                   ],
                   [
@@ -864163,7 +864099,7 @@
                     ],
                     [
                       "payload",
-                      "wouda_intro"
+                      "wouda_menu"
                     ]
                   ]
                 }
@@ -864231,7 +864167,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -864426,9 +864362,7 @@
                   [
                     "lines",
                     [
-                      "Ah... een wandelaar uit het noorden. Ik ben Wouda; het moeras kent mij en ik ken het moeras.",
-                      "Weet je wat dit land ooit was? De zilverzijde van het meer. De zon lag hier op het water en de schijf werd aanbeden.",
-                      "Toen zakte de grond, steeg het veen, en verdween de tempel onder de drijfmest."
+                      "Het moeras ademt, hoor je dat? Vraag maar wat je wilt weten."
                     ]
                   ],
                   [
@@ -864463,7 +864397,7 @@
                     ],
                     [
                       "payload",
-                      "wouda_intro"
+                      "wouda_menu"
                     ]
                   ]
                 }
@@ -1381910,7 +1381844,7 @@
         "professions": {},
         "quests": {
           "drank": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1381970,7 +1381904,7 @@
         "professions": {},
         "quests": {
           "drank": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1382023,7 +1381957,7 @@
         "professions": {},
         "quests": {
           "drank": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1382083,7 +1382017,7 @@
         "professions": {},
         "quests": {
           "drank": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1382151,7 +1382085,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1382374,7 +1382308,7 @@
             "professions": {},
             "quests": {
               "drank": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1382440,7 +1382374,7 @@
             "professions": {},
             "quests": {
               "drank": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1382518,7 +1382452,7 @@
             "professions": {},
             "quests": {
               "drank": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1382594,7 +1382528,7 @@
             "professions": {},
             "quests": {
               "drank": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1382669,7 +1382603,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1382950,7 +1382884,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1383233,12 +1383167,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1397582,7 +1397516,7 @@
         "professions": {},
         "quests": {
           "boog_schietbaan": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1397642,7 +1397576,7 @@
         "professions": {},
         "quests": {
           "boog_schietbaan": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1397695,7 +1397629,7 @@
         "professions": {},
         "quests": {
           "boog_schietbaan": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1397755,7 +1397689,7 @@
         "professions": {},
         "quests": {
           "boog_schietbaan": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1397823,7 +1397757,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1398046,7 +1397980,7 @@
             "professions": {},
             "quests": {
               "boog_schietbaan": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1398112,7 +1398046,7 @@
             "professions": {},
             "quests": {
               "boog_schietbaan": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1398190,7 +1398124,7 @@
             "professions": {},
             "quests": {
               "boog_schietbaan": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1398266,7 +1398200,7 @@
             "professions": {},
             "quests": {
               "boog_schietbaan": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1398341,7 +1398275,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1398622,7 +1398556,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1398905,12 +1398839,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1408444,7 +1408378,7 @@
         "professions": {},
         "quests": {
           "meer_karper": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1408504,7 +1408438,7 @@
         "professions": {},
         "quests": {
           "meer_karper": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1408557,7 +1408491,7 @@
         "professions": {},
         "quests": {
           "meer_karper": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1408617,7 +1408551,7 @@
         "professions": {},
         "quests": {
           "meer_karper": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1408685,7 +1408619,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1408908,7 +1408842,7 @@
             "professions": {},
             "quests": {
               "meer_karper": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1408974,7 +1408908,7 @@
             "professions": {},
             "quests": {
               "meer_karper": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1409052,7 +1408986,7 @@
             "professions": {},
             "quests": {
               "meer_karper": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1409128,7 +1409062,7 @@
             "professions": {},
             "quests": {
               "meer_karper": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1409203,7 +1409137,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1409484,7 +1409418,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1409767,12 +1409701,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1421650,7 +1421584,7 @@
         "professions": {},
         "quests": {
           "meer_boeken": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1421710,7 +1421644,7 @@
         "professions": {},
         "quests": {
           "meer_boeken": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1421763,7 +1421697,7 @@
         "professions": {},
         "quests": {
           "meer_boeken": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1421823,7 +1421757,7 @@
         "professions": {},
         "quests": {
           "meer_boeken": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1421891,7 +1421825,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1422114,7 +1422048,7 @@
             "professions": {},
             "quests": {
               "meer_boeken": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1422180,7 +1422114,7 @@
             "professions": {},
             "quests": {
               "meer_boeken": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1422258,7 +1422192,7 @@
             "professions": {},
             "quests": {
               "meer_boeken": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1422334,7 +1422268,7 @@
             "professions": {},
             "quests": {
               "meer_boeken": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1422409,7 +1422343,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1422690,7 +1422624,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1422973,12 +1422907,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1600668,7 +1600602,7 @@
         "professions": {},
         "quests": {
           "lantaarn": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1600728,7 +1600662,7 @@
         "professions": {},
         "quests": {
           "lantaarn": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1600781,7 +1600715,7 @@
         "professions": {},
         "quests": {
           "lantaarn": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1600841,7 +1600775,7 @@
         "professions": {},
         "quests": {
           "lantaarn": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1600909,7 +1600843,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1601132,7 +1601066,7 @@
             "professions": {},
             "quests": {
               "lantaarn": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1601198,7 +1601132,7 @@
             "professions": {},
             "quests": {
               "lantaarn": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1601276,7 +1601210,7 @@
             "professions": {},
             "quests": {
               "lantaarn": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1601352,7 +1601286,7 @@
             "professions": {},
             "quests": {
               "lantaarn": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1601427,7 +1601361,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1601708,7 +1601642,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1601991,12 +1601925,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1613898,7 +1613832,7 @@
         "professions": {},
         "quests": {
           "kruiden": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1613958,7 +1613892,7 @@
         "professions": {},
         "quests": {
           "kruiden": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1614011,7 +1613945,7 @@
         "professions": {},
         "quests": {
           "kruiden": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1614071,7 +1614005,7 @@
         "professions": {},
         "quests": {
           "kruiden": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1614139,7 +1614073,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1614362,7 +1614296,7 @@
             "professions": {},
             "quests": {
               "kruiden": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1614428,7 +1614362,7 @@
             "professions": {},
             "quests": {
               "kruiden": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1614506,7 +1614440,7 @@
             "professions": {},
             "quests": {
               "kruiden": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1614582,7 +1614516,7 @@
             "professions": {},
             "quests": {
               "kruiden": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1614657,7 +1614591,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1614938,7 +1614872,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1615221,12 +1615155,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1638178,7 +1638112,7 @@
         "professions": {},
         "quests": {
           "mistbloemen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1638238,7 +1638172,7 @@
         "professions": {},
         "quests": {
           "mistbloemen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1638291,7 +1638225,7 @@
         "professions": {},
         "quests": {
           "mistbloemen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1638351,7 +1638285,7 @@
         "professions": {},
         "quests": {
           "mistbloemen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1638419,7 +1638353,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1638642,7 +1638576,7 @@
             "professions": {},
             "quests": {
               "mistbloemen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1638708,7 +1638642,7 @@
             "professions": {},
             "quests": {
               "mistbloemen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1638786,7 +1638720,7 @@
             "professions": {},
             "quests": {
               "mistbloemen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1638862,7 +1638796,7 @@
             "professions": {},
             "quests": {
               "mistbloemen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1638937,7 +1638871,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1639218,7 +1639152,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1639501,12 +1639435,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1643478,7 +1643412,7 @@
         "professions": {},
         "quests": {
           "dauw": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1643538,7 +1643472,7 @@
         "professions": {},
         "quests": {
           "dauw": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1643591,7 +1643525,7 @@
         "professions": {},
         "quests": {
           "dauw": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1643651,7 +1643585,7 @@
         "professions": {},
         "quests": {
           "dauw": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1643719,7 +1643653,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1643942,7 +1643876,7 @@
             "professions": {},
             "quests": {
               "dauw": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1644008,7 +1643942,7 @@
             "professions": {},
             "quests": {
               "dauw": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1644086,7 +1644020,7 @@
             "professions": {},
             "quests": {
               "dauw": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1644162,7 +1644096,7 @@
             "professions": {},
             "quests": {
               "dauw": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1644237,7 +1644171,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1644518,7 +1644452,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1644801,12 +1644735,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1659190,7 +1659124,7 @@
         "professions": {},
         "quests": {
           "warmte": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1659250,7 +1659184,7 @@
         "professions": {},
         "quests": {
           "warmte": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1659303,7 +1659237,7 @@
         "professions": {},
         "quests": {
           "warmte": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1659363,7 +1659297,7 @@
         "professions": {},
         "quests": {
           "warmte": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1659431,7 +1659365,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1659654,7 +1659588,7 @@
             "professions": {},
             "quests": {
               "warmte": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1659720,7 +1659654,7 @@
             "professions": {},
             "quests": {
               "warmte": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1659798,7 +1659732,7 @@
             "professions": {},
             "quests": {
               "warmte": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1659874,7 +1659808,7 @@
             "professions": {},
             "quests": {
               "warmte": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1659949,7 +1659883,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1660230,7 +1660164,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1660513,12 +1660447,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1667234,7 +1667168,7 @@
         "professions": {},
         "quests": {
           "ijswacht": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1667294,7 +1667228,7 @@
         "professions": {},
         "quests": {
           "ijswacht": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1667347,7 +1667281,7 @@
         "professions": {},
         "quests": {
           "ijswacht": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1667407,7 +1667341,7 @@
         "professions": {},
         "quests": {
           "ijswacht": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1667475,7 +1667409,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1667698,7 +1667632,7 @@
             "professions": {},
             "quests": {
               "ijswacht": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1667764,7 +1667698,7 @@
             "professions": {},
             "quests": {
               "ijswacht": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1667842,7 +1667776,7 @@
             "professions": {},
             "quests": {
               "ijswacht": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1667918,7 +1667852,7 @@
             "professions": {},
             "quests": {
               "ijswacht": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1667993,7 +1667927,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1668274,7 +1668208,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1668557,12 +1668491,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1683094,7 +1683028,7 @@
         "professions": {},
         "quests": {
           "vellen_en_vlees": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1683154,7 +1683088,7 @@
         "professions": {},
         "quests": {
           "vellen_en_vlees": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1683207,7 +1683141,7 @@
         "professions": {},
         "quests": {
           "vellen_en_vlees": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1683267,7 +1683201,7 @@
         "professions": {},
         "quests": {
           "vellen_en_vlees": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1683335,7 +1683269,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1683558,7 +1683492,7 @@
             "professions": {},
             "quests": {
               "vellen_en_vlees": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1683624,7 +1683558,7 @@
             "professions": {},
             "quests": {
               "vellen_en_vlees": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1683702,7 +1683636,7 @@
             "professions": {},
             "quests": {
               "vellen_en_vlees": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1683778,7 +1683712,7 @@
             "professions": {},
             "quests": {
               "vellen_en_vlees": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1683853,7 +1683787,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1684134,7 +1684068,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1684417,12 +1684351,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1693694,7 +1693628,7 @@
         "professions": {},
         "quests": {
           "cactusvijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1693754,7 +1693688,7 @@
         "professions": {},
         "quests": {
           "cactusvijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1693807,7 +1693741,7 @@
         "professions": {},
         "quests": {
           "cactusvijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1693867,7 +1693801,7 @@
         "professions": {},
         "quests": {
           "cactusvijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1693935,7 +1693869,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1694158,7 +1694092,7 @@
             "professions": {},
             "quests": {
               "cactusvijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1694224,7 +1694158,7 @@
             "professions": {},
             "quests": {
               "cactusvijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1694302,7 +1694236,7 @@
             "professions": {},
             "quests": {
               "cactusvijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1694378,7 +1694312,7 @@
             "professions": {},
             "quests": {
               "cactusvijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1694453,7 +1694387,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1694734,7 +1694668,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1695017,12 +1694951,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1709480,7 +1709414,7 @@
         "professions": {},
         "quests": {
           "veenbessen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1709540,7 +1709474,7 @@
         "professions": {},
         "quests": {
           "veenbessen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1709593,7 +1709527,7 @@
         "professions": {},
         "quests": {
           "veenbessen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1709653,7 +1709587,7 @@
         "professions": {},
         "quests": {
           "veenbessen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1709721,7 +1709655,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1709944,7 +1709878,7 @@
             "professions": {},
             "quests": {
               "veenbessen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1710010,7 +1709944,7 @@
             "professions": {},
             "quests": {
               "veenbessen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1710088,7 +1710022,7 @@
             "professions": {},
             "quests": {
               "veenbessen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1710164,7 +1710098,7 @@
             "professions": {},
             "quests": {
               "veenbessen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1710239,7 +1710173,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1710520,7 +1710454,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1710803,12 +1710737,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1720080,7 +1720014,7 @@
         "professions": {},
         "quests": {
           "wilgentwijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1720140,7 +1720074,7 @@
         "professions": {},
         "quests": {
           "wilgentwijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1720193,7 +1720127,7 @@
         "professions": {},
         "quests": {
           "wilgentwijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1720253,7 +1720187,7 @@
         "professions": {},
         "quests": {
           "wilgentwijgen": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1720321,7 +1720255,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1720544,7 +1720478,7 @@
             "professions": {},
             "quests": {
               "wilgentwijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1720610,7 +1720544,7 @@
             "professions": {},
             "quests": {
               "wilgentwijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1720688,7 +1720622,7 @@
             "professions": {},
             "quests": {
               "wilgentwijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1720764,7 +1720698,7 @@
             "professions": {},
             "quests": {
               "wilgentwijgen": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1720839,7 +1720773,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1721120,7 +1721054,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1721403,12 +1721337,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {
@@ -1730754,7 +1730688,7 @@
         "professions": {},
         "quests": {
           "zonneschijf": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1730814,7 +1730748,7 @@
         "professions": {},
         "quests": {
           "zonneschijf": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1730867,7 +1730801,7 @@
         "professions": {},
         "quests": {
           "zonneschijf": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1730927,7 +1730861,7 @@
         "professions": {},
         "quests": {
           "zonneschijf": {
-            "state": "none",
+            "state": "active",
             "step": 0
           }
         },
@@ -1730995,7 +1730929,7 @@
                     "$dict": [
                       [
                         "state",
-                        "none"
+                        "active"
                       ],
                       [
                         "step",
@@ -1731218,7 +1731152,7 @@
             "professions": {},
             "quests": {
               "zonneschijf": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1731284,7 +1731218,7 @@
             "professions": {},
             "quests": {
               "zonneschijf": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1731362,7 +1731296,7 @@
             "professions": {},
             "quests": {
               "zonneschijf": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1731438,7 +1731372,7 @@
             "professions": {},
             "quests": {
               "zonneschijf": {
-                "state": "none",
+                "state": "active",
                 "step": 0
               }
             },
@@ -1731513,7 +1731447,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1731794,7 +1731728,7 @@
                             "$dict": [
                               [
                                 "state",
-                                "none"
+                                "active"
                               ],
                               [
                                 "step",
@@ -1732077,12 +1732011,12 @@
         ]
       ],
       "results": [
-        true,
-        true
+        false,
+        false
       ],
       "resultsExact": [
-        true,
-        true
+        false,
+        false
       ]
     },
     {

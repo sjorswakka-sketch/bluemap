@@ -27,6 +27,7 @@ CONTRACT = 'migration/phase-15/source-contracts.json'
 ORACLE = 'migration/phase-15/story-oracle.json'
 ASSETS = 'unity/Assets/BlueMapStory'
 RESOURCE = ASSETS + '/Runtime/Model/Resources/BlueMapStoryOracle.json'
+CATALOG_RESOURCE = ASSETS + '/Runtime/Model/Resources/BlueMapStoryCatalog.json'
 RECORDERS = ('tools/migration_story_export.gd', 'tools/migration_story_dialogue_fixture.gd',
              'tools/record_migration_story.py', 'tools/migration_inventory_export.gd',
              'tools/record_migration_inventory_state.py', 'tools/migration_route_export.gd')
@@ -324,11 +325,51 @@ def oracle_coverage(value, reference, root):
         require(path.startswith('scripts/') and re.search(r'\bfunc\s+' + re.escape(name) + r'\s*\(', read(root, path).decode('utf-8')),
                 'Unverified original story method: ' + method)
     objects = object_coverage(value, normalized, root)
+    traversals = semantic_traversal_coverage(cases, catalogs)
     return {'cases': len(cases), 'caseIds': ids, 'methods': methods, **reference['census']['catalogCounts'],
             'maps': len(reference['maps']), 'modules': len(reference['census']['modules']),
             'actions': len(reference['census']['actionNames']), 'conditions': len(reference['census']['conditionNames']),
             'formats': len(reference['census']['formatNames']), 'exactFloat64Values': recorder.validate_float64_bits(value),
-            'dictionaryInputOrderPreserved': True, **objects}
+            'dictionaryInputOrderPreserved': True, **objects, **traversals}
+
+
+def semantic_traversal_coverage(cases, catalogs):
+    """A labeled fixture is coverage only when its intended source branch was visited."""
+    rows = {row['id']: row for row in cases}
+    choices, rules, contrasts = 0, 0, 0
+    for key, node in catalogs['dialogues'].items():
+        for index in range(len(node.get('choices', []))):
+            row = rows.get('dialogue-choice-' + key + '-' + str(index))
+            require(row is not None and row['results'][-1] is True, 'Intended original dialogue choice was not selected')
+            choices += 1
+    for key, node in catalogs['npcs'].items():
+        for index, rule in enumerate(node['rules']):
+            row = rows.get('npc-rule-' + key + '-' + str(index))
+            require(row is not None and row['observations'][0]['dialogue']['id'] == rule['talk'],
+                    'Intended original NPC rule was shadowed by a different greeting')
+            rules += 1
+    for row in cases:
+        if not row['id'].startswith('condition-') or not row['operations']:
+            continue
+        op = row['operations'][0]
+        if len(op) != 2 or op[0] != 'check' or len(op[1]) != 3 or op[1][0] != 'quest' or op[1][2] != 'none':
+            continue
+        expected = row['id'].endswith('-true')
+        require(row['results'][0] is expected, 'Original quest-none positive/negative contexts lack outcome contrast')
+        contrasts += 1
+    require(contrasts % 2 == 0, 'Incomplete original quest-none condition pair')
+    return {'actualDialogueChoiceTraversals': choices, 'actualNpcRuleTraversals': rules,
+            'questNoneConditionContrastPairs': contrasts // 2,
+            'externalConditionContexts': ['arena_fight', 'arena_free']}
+
+
+def validate_runtime_catalog(value, ordered_catalogs, digest):
+    require(isinstance(value, dict) and set(value) == {'schema', 'sourceOracleSha256', 'personalSavesUsed', 'catalogsOrdered'}
+            and value['schema'] == 'bluemap.story.catalog.v1' and value['personalSavesUsed'] is False,
+            'Bounded story runtime catalog schema/privacy differs')
+    require(value['sourceOracleSha256'] == digest, 'Story runtime catalog source hash differs')
+    require(canonical(value['catalogsOrdered']) == canonical(ordered_catalogs),
+            'Story runtime catalog is not the exact lossless original catalog projection')
 
 
 def object_coverage(value, normalized, root):
@@ -421,11 +462,17 @@ def build_contract(root=ROOT):
         anchors.append({'path': name, 'bytes': len(raw), 'sha256': sha(raw), 'gitBlob': entry['git_blob']})
     reference = original_references(root)
     raw = read(root, ORACLE)
-    coverage = oracle_coverage(document(raw, ORACLE), reference, root)
+    oracle = document(raw, ORACLE)
+    coverage = oracle_coverage(oracle, reference, root)
     require(read(root, RESOURCE) == raw, 'Native story oracle differs from original methods')
+    catalog_raw = read(root, CATALOG_RESOURCE)
+    validate_runtime_catalog(document(catalog_raw, CATALOG_RESOURCE), oracle['catalogsOrdered'], sha(raw))
     return {'schema': 'bluemap.story.source-contracts.v1', 'phase': 15,
             'baselineCommit': baseline['commit'], 'baselineTree': baseline['tree'], 'sourceAnchors': anchors,
             'oracle': {'sourcePath': ORACLE, 'resourcePath': RESOURCE, 'sha256': sha(raw), 'bytes': len(raw), 'coverage': coverage},
+            'runtimeCatalog': {'path': CATALOG_RESOURCE, 'sha256': sha(catalog_raw), 'bytes': len(catalog_raw),
+                               'sourceOracleSha256': sha(raw),
+                               'purpose': 'Lossless normal-dialogue catalog; complete oracle retained for separate native proof'},
             'originalStoryCensus': reference['census'],
             'loadedStoryObjects': loaded_story_objects(root),
             'frozenReferenceFiles': [{'path': name, 'sha256': digest} for name, digest in REFERENCE_DIGESTS.items()],

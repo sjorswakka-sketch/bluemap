@@ -121,7 +121,7 @@ func put_cond(f:Dictionary,c:Array,yes:bool=true):
   f.flags[str(c[1])]=yes if id=="flag" else not yes
  elif id in ["quest","step"]:
   if not f.has("quests"):f.quests={}
-  f.quests[str(c[1])]={"state":("active" if id=="step" else str(c[2])) if yes else "none","step":int(c[2]) if id=="step" else 0}
+  f.quests[str(c[1])]={"state":("active" if id=="step" else str(c[2])) if yes else ("active" if id=="quest" and str(c[2])=="none" else "none"),"step":int(c[2]) if id=="step" else 0}
  elif id in ["has","lacks"]:
   if not f.has("inventory"):f.inventory={}
   f.inventory[str(c[1])]=amount if yes==(id=="has") else maxi(0,amount-1)
@@ -255,10 +255,13 @@ func _run():
   var rules:Array=Npcs.info(id).rules
   for i:int in rules.size():
    var f:Dictionary={}
+   var target_conditions:Array=rules[i].get("if",[])
    for j:int in i:
     var previous:Dictionary=rules[j]
-    if previous.has("if") and not previous["if"].is_empty():put_cond(f,previous["if"][0],false)
-   for c:Array in rules[i].get("if",[]):put_cond(f,c)
+    for condition:Array in previous.get("if",[]):
+     if not target_conditions.has(condition):
+      put_cond(f,condition,false);break
+   for c:Array in target_conditions:put_cond(f,c)
    story_case("npc-rule-"+id+"-"+str(i),f,[["npc",id,2.0,0.0],["close"]])
  for id:String in Quests.QUESTS:
   story_case("quest-lifecycle-"+id,{},[["state",id],["quest_step",id],["start",id],["start",id],["quest_text",id],["finish",id],["finish",id],["state",id],["quest_step",id]])

@@ -303,7 +303,7 @@ namespace BlueMapMigration.Probe
             route.CloseModal();route.TryTravel("village",route.Session.Repository.Read("village").Arrivals.First(v=>v.Name=="start").Name);
             playerWorld.Present(route.Session.Current,new Vector2(770,624));route.Tick(.02);
             yield return new WaitForEndOfFrame();SaveRouteCapture("ui");
-            route.Gameplay.Talk("pim");
+            route.Gameplay.Talk("pim");route.DialoguePanel?.Reveal();
             yield return new WaitForEndOfFrame();SaveRouteCapture("dialogue");
             route.CloseModal();route.OpenInventory();
             yield return new WaitForEndOfFrame();SaveRouteCapture("inventory");

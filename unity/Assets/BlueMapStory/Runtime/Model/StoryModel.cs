@@ -26,10 +26,10 @@ namespace BlueMapMigration.Story
  /// <summary>Original ordered story rules. Construction/import grants nothing; action batches commit before observers.</summary>
  public sealed partial class StoryModel
  {
-  static FoundationValue reference,catalogs;readonly FoundationWorldRepository repository;
+  static FoundationValue reference,catalogs;static string oracleSha256;public static bool SourceOracleLoaded=>reference!=null;readonly FoundationWorldRepository repository;
   readonly List<StoryEffect> effects=new List<StoryEffect>();bool busy,staging,dialogueActionsDone;
   public FoundationGameState State {get;} public InventoryModel Inventory {get;} public ProgressionModel Progression {get;}
-  public FoundationValue Oracle {get;} public FoundationValue Catalogs=>catalogs;public StoryDialogue Dialogue {get;private set;}
+  public FoundationValue Oracle {get{if(reference==null){var asset=Resources.Load<TextAsset>("BlueMapStoryOracle");if(asset==null)throw new FormatException("Missing original story reference");string digest;using(var sha=System.Security.Cryptography.SHA256.Create())digest=BitConverter.ToString(sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(asset.text))).Replace("-","").ToLowerInvariant();if(digest!=oracleSha256)throw new FormatException("Original story reference differs from its exact gameplay catalog");var parsed=FoundationJson.ParsePlain(asset.text);if(parsed.Require("schema").AsString()!="bluemap.story.source-oracle.v1"||parsed.Require("personalSavesUsed").AsBool())throw new FormatException("Invalid original story reference");reference=parsed;}return reference;}} public FoundationValue Catalogs=>catalogs;public StoryDialogue Dialogue {get;private set;}
   public StoryDialogue LastPresentedDialogue {get;private set;}
   public bool DialogueOpen=>Dialogue!=null;public bool IsExecuting=>busy;public bool ArenaActive {get;set;}public int PendingSupperStitch {get;set;}
   public string LastMessage {get;private set;}="";public Func<string,string> Translator {get;set;}=value=>value;
@@ -41,9 +41,8 @@ namespace BlueMapMigration.Story
   {
    this.repository=repository??throw new ArgumentNullException(nameof(repository));State=state??throw new ArgumentNullException(nameof(state));Inventory=inventory??new InventoryModel(repository,state);Progression=progression??new ProgressionModel(repository,state,Inventory);
    if(!ReferenceEquals(State,Inventory.State)||!ReferenceEquals(State,Progression.State))throw new ArgumentException("Story owners must share source state");
-   if(reference==null){var asset=Resources.Load<TextAsset>("BlueMapStoryOracle");if(asset==null)throw new FormatException("Missing original story reference");reference=FoundationJson.ParsePlain(asset.text);}
-   Oracle=reference;if(Oracle.Require("schema").AsString()!="bluemap.story.source-oracle.v1"||Oracle.Require("personalSavesUsed").AsBool())throw new FormatException("Invalid original story reference");
-   if(catalogs==null)catalogs=InventoryModelChecks.DecodeOrdered(Oracle.Require("catalogsOrdered"));Journey=new StoryJourney(repository,this);Journey.SaveRequested+=()=>{Emit("quests_changed");Emit("save_requested");};
+   if(catalogs==null){var asset=Resources.Load<TextAsset>("BlueMapStoryCatalog");if(asset==null)throw new FormatException("Missing original story gameplay catalog");var source=FoundationJson.ParsePlain(asset.text);if(source.Require("schema").AsString()!="bluemap.story.catalog.v1"||source.Require("personalSavesUsed").AsBool())throw new FormatException("Invalid story gameplay catalog");oracleSha256=source.Require("sourceOracleSha256").AsString();if(oracleSha256.Length!=64)throw new FormatException("Missing original story catalog provenance");catalogs=InventoryModelChecks.DecodeOrdered(source.Require("catalogsOrdered"));}
+   Journey=new StoryJourney(repository,this);Journey.SaveRequested+=()=>{Emit("quests_changed");Emit("save_requested");};
   }
   public static FoundationValue S(string v)=>FoundationValue.StringValue(v);public static FoundationValue I(long v)=>FoundationValue.Integer(v);public static FoundationValue E()=>InventoryModel.Empty();
   public static FoundationValue G(FoundationValue d,string k,FoundationValue f)=>InventoryModel.Get(d,k,f);public static FoundationValue R(FoundationValue d,string k,FoundationValue v,bool remove=false)=>InventoryModel.Replace(d,k,v,remove);

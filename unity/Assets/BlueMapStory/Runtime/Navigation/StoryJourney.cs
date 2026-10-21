@@ -8,12 +8,12 @@ namespace BlueMapMigration.Story
  /// <summary>Original journey.gd routing and HUD precedence; one optional focus in existing save flags.</summary>
  public sealed class StoryJourney
  {
-  readonly FoundationWorldRepository repository;readonly StoryModel model;
+  readonly StoryModel model;
   readonly Dictionary<string,List<FoundationValue>> links=new Dictionary<string,List<FoundationValue>>(StringComparer.Ordinal);
   FoundationGameState State=>model.State;FoundationValue Quests=>model.Catalogs.Require("quests");
   public double Stamina {get;set;}=100;public double StaminaCapacity {get;set;}=100;
   public event Action SaveRequested;
-  public StoryJourney(FoundationWorldRepository repository,StoryModel model){this.repository=repository;this.model=model;}
+  public StoryJourney(FoundationWorldRepository repository,StoryModel model){this.model=model;}
   string Tr(string text)=>model.Translator?.Invoke(text)??text;
   static FoundationValue Get(FoundationValue v,string key,FoundationValue fallback)=>v.TryGet(key,out var x)?x:fallback;
   static FoundationValue Text(string v)=>FoundationValue.StringValue(v);
@@ -49,11 +49,13 @@ namespace BlueMapMigration.Story
    return target.Items[Math.Min(step,target.Items.Count-1)].AsString();
   }
   bool MapExists(string id)=>model.Catalogs.Require("maps").TryGet(id,out _);
-  string Title(string id)=>MapExists(id)?Tr(repository.Read(id).MapData.Require("name").AsString()):"";
+  // Original journey.gd reads immutable Maps.get_map data, never a loaded scene or collision snapshot.
+  FoundationValue Map(string id)=>model.Catalogs.Require("maps").Require(id);
+  string Title(string id)=>MapExists(id)?Tr(Map(id).Require("name").AsString()):"";
   IReadOnlyList<FoundationValue> Links(string id)
   {
    if(links.TryGetValue(id,out var list))return list;list=new List<FoundationValue>();
-   var objects=repository.Read(id).MapData.Require("objects").Items;
+   var objects=Map(id).Require("objects").Items;
    foreach(var obj in objects){string kind=obj.Require("type").AsString();if(kind=="portal"||kind=="coast_dock"||Get(obj,"travel_link",FoundationValue.Boolean(false)).AsBool())list.Add(obj);}
    foreach(var obj in objects)if(obj.Require("type").AsString()=="tide_station"&&Get(obj,"role",Text("")).AsString()=="routes")
     foreach(var r in obj.Require("routes").Items)list.Add(FoundationValue.Object(new Dictionary<string,FoundationValue>{{"type",Text("coast_route")},{"pos",obj.Require("pos")},{"to",r.Require("to")},{"spawn",r.Require("spawn")}}));
