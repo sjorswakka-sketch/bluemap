@@ -16,7 +16,7 @@ namespace BlueMapMigration.Route
         static readonly Vector2[] PracticeSpawns={new Vector2(8.5f,7.5f)*32,new Vector2(17.5f,7.5f)*32,new Vector2(14.5f,5.5f)*32};
         private bool InteractCombatPost(RouteTarget target)
         {
-            if(!CombatSimulationEnabled)return false;var obj=target.Fields.Require("obj");string kind=obj.Require("kind").AsString();if(kind=="rack")return false;
+            if(!CombatSimulationEnabled)return false;var obj=target.Fields.Require("obj");string kind=BlueMapMigration.WorldAccess.WorldAccessModel.Get(obj,"kind",FoundationValue.StringValue("")).AsString();if(kind=="rack")return false;
             if(kind!="entrance"&&PracticeRunning){StopPractice();ShowMessage(Translate("Oefening gestopt. Je kunt meteen opnieuw beginnen."));return true;}
             if(kind=="entrance"||!practiceRead.Contains(target.Address))
             {

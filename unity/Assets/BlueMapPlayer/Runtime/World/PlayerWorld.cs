@@ -416,7 +416,7 @@ namespace BlueMapMigration.Player
         private void SyncRouteFeet()
         {
             if(!RouteMode||RoutePresentation==null)return;
-            foreach(var pair in routeColliderOwners)if(pair.Value!=null&&RoutePresentation.Objects.TryGetValue(pair.Key,out var sourceVisual))pair.Value.SetActive(sourceVisual.activeSelf);
+            foreach(var pair in routeColliderOwners)if(pair.Value!=null&&RoutePresentation.Objects.TryGetValue(pair.Key,out var sourceVisual)&&sourceVisual!=null)pair.Value.SetActive(sourceVisual.activeSelf);
         }
         public void ApplyEquipmentBonuses()
         {
