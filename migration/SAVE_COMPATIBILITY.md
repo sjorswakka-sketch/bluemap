@@ -2,7 +2,7 @@
 
 Dit document bewaart de fase-1-broninventarisatie van **Bluemap Quest 0.34.0-preview**, commit `a8a988be27835dec979d2523a3a85a34385eac54`. De brontabellen en toenmalige acceptatie-eisen hieronder blijven de historische referentie; ze beschrijven geen latere wijzigingen aan de oorspronkelijke Godot-game.
 
-**Actuele migratiestatus:** veilige import en afzonderlijke Unity-profielen zijn in [fase 9](phase-09/README.md) gebouwd en bewezen; de huidige [fase 13](phase-13/README.md) behoudt alle 34 opslagvelden, onbekende toekomstige velden, originele bronbytes en gekozen uitrusting/uiterlijk. Alle tests gebruiken eigen synthetische profielen. Persoonlijke bestanden worden alleen na expliciete keuze op een veilige kopie geïmporteerd. Omgekeerde export van nieuw gemaakte Unity-voortgang naar Godot is nog niet bewezen en blijft fase 25.
+**Actuele migratiestatus:** veilige import en afzonderlijke Unity-profielen zijn in [fase 9](phase-09/README.md) gebouwd en bewezen; de huidige [fase 14](phase-14/README.md) behoudt alle 34 opslagvelden, onbekende toekomstige velden, originele bronbytes, uitrusting/uiterlijk en unieke gevechtsbeloningen. Alle tests gebruiken eigen synthetische profielen. Persoonlijke bestanden worden alleen na expliciete keuze op een veilige kopie geïmporteerd. Omgekeerde export van nieuw gemaakte Unity-voortgang naar Godot is nog niet bewezen en blijft fase 25.
 
 De machineleesbare tegenhanger is [reference/save-contract.json](reference/save-contract.json). Daarin staan alle 34 hoofdvelden, geneste structuren, bronnen, migraties, ID-regels en controleprofielen. De bronverwijzingen zijn relatief aan de repository en horen bij bovenstaande commit.
 

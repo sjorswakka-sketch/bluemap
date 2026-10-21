@@ -63,3 +63,7 @@ Voer `python tools/freeze_godot_reference.py --check` uit voor alle oorspronkeli
 Het inhoudshulpmiddel `tools/record_migration_inventory.py` gebruikt een tijdelijke projectkopie en gecontroleerde unieke testopslag; zie de eigen helptekst voor export/check-opties.
 
 Het bestaande `tools/run_tests.py` voert Godot-tests eveneens in aparte opslag uit; gebruik het nooit met een handmatig geopende echte spelersave.
+
+## Fase 14 — gevechten, monsters en wilde dieren
+
+De oorspronkelijke wapens, aanvallen, projectielen, vijand- en dierengedragingen, schade en beloningen zijn native uitgevoerd en met beide originele bronoracles vergeleken. 212 spelergevallen en 208 ontmoetingsgevallen behouden exacte getallen, volgorde en alle 34 opslagvelden. Dezelfde 37 kaarten en ruime plaatsingen blijven bestaan; verdere quests en beroepssystemen volgen hun eigen fases. Alle 1.732 originele bestanden en eerdere bewijzen blijven behouden. Zie [fase 14](phase-14/README.md) en [de bewezen Windows-release](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase14-preview-cf27358f).

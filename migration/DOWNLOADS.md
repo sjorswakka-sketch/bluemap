@@ -3,7 +3,8 @@
 | Wat wil je openen? | Download | Inhoud |
 |---|---|---|
 | De volledige bestaande game | [Godot 0.34.0-preview](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) | Bestaande game, oorspronkelijke wereld en systemen; bron en herstelgeschiedenis inbegrepen |
-| De actuele technische Unity-preview | [Fase 13 — f15a1641](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase13-preview-f15a1641) | Ervaring, statistieken, uitrusting, upgrades, haar en kleding; nog geen volledige gameport |
+| De actuele technische Unity-preview | [Fase 14 — cf27358f](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase14-preview-cf27358f) | Gevechten, monsters, wilde dieren, projectielen en beloningen; nog geen volledige gameport |
+| De eerdere uitrustingsproef | [Unity-fase 13](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase13-preview-f15a1641) | Ervaring, gear, upgrades, haar en kleding |
 | De eerdere inventarisproef | [Unity-fase 12](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase12-preview-40b4af28) | Magnetische buit, veilige kisten, tas, woning- en kustopslag |
 | De eerdere wereldproef | [Unity-fase 11](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase11-preview-0e7d75f8) | Alle 37 gebieden en toegangspunten, oorspronkelijke questsloten en veilige voortgang |
 | De eerdere eerste speelroute | [Unity-fase 10](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase10-preview-712b2e02) | Dorp, woning, bosrand en bos met Pim en Muis, verzamelen, buit en inventaris |
@@ -20,4 +21,4 @@ De actuele verwijzing en vertrouwde hashes staan in [preview.json](preview.json)
 
 Alle downloads blijven binnen dezelfde repository; het bouwen van de Unity-speler gebeurt met de bestaande lokale activatie, de GitHub-workflow controleert bron en pakket. [Uitleg en controles](phase-03/README.md).
 
-De actuele fase 13 start bij **Avontuur en opslag**. Begin een nieuw avontuur of hervat een veilige speelkopie. Open de tas met I/Tab/Select en gebruik de heldknop voor overzicht, uitrusting, uiterlijk en upgrades. De menu’s tonen oorspronkelijke waarden en vergelijkingen; echte upgrades gebruiken de juiste lokale smid of werkplek en kosten. De 37 gebieden, voorraadkisten en controllerlijsten blijven beschikbaar. Alle oorspronkelijke Godot-bestanden blijven behouden; [grenzen en controles](phase-13/README.md).
+De actuele fase 14 start bij **Avontuur en opslag**. Begin een nieuw avontuur of hervat een veilige speelkopie. De bestaande wereld bevat de oorspronkelijke gevechten en dieren, met herkenbare aanvalssignalen en animaties. Uitrusting, inventaris en opgeslagen voortgang blijven behouden. Alle oorspronkelijke Godot-bestanden blijven behouden; [grenzen en controles](phase-14/README.md).
