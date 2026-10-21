@@ -22,7 +22,7 @@ namespace BlueMapMigration.Route
    DialoguePanel.AdvanceRequested+=AdvanceDialogue;DialoguePanel.ChoiceRequested+=ChooseDialogue;DialoguePanel.CloseRequested+=CloseModal;
    QuestPanel=new StoryQuestPanel(Catalog,Translate,T,BindingLabel);QuestPanel.ToggleFocusRequested+=ToggleStoryFocus;QuestPanel.CloseRequested+=CloseModal;
    Story.EffectRequested+=StoryEffect;Story.DialogueChanged+=SyncDialogue;Story.ExternalActionHandler=HandleStoryExternal;
-   Story.Journey.SaveRequested+=OnSaveRequested;
+   // StoryModel already forwards focus saves through Gameplay.SaveRequested.
    storySubscription=Gameplay.State.Events.Subscribe<FoundationStateChanged>(change=>
    {if((change.Field=="inventory"||change.Field=="flags")&&!Story.IsExecuting&&!refreshingStory){refreshingStory=true;try{Story.RefreshQuests();}finally{refreshingStory=false;}}});
    lastDialogueToken=null;storyInput=null;storyEndingPending=false;LastStoryService="";RefreshStoryViews();
@@ -30,7 +30,7 @@ namespace BlueMapMigration.Route
   void DetachStory()
   {
    storySubscription?.Dispose();storySubscription=null;
-   if(Story!=null){Story.EffectRequested-=StoryEffect;Story.DialogueChanged-=SyncDialogue;Story.ExternalActionHandler=null;Story.Journey.SaveRequested-=OnSaveRequested;}
+   if(Story!=null){Story.EffectRequested-=StoryEffect;Story.DialogueChanged-=SyncDialogue;Story.ExternalActionHandler=null;}
    if(DialoguePanel!=null){DialoguePanel.AdvanceRequested-=AdvanceDialogue;DialoguePanel.ChoiceRequested-=ChooseDialogue;DialoguePanel.CloseRequested-=CloseModal;DialoguePanel.SetView(null);}
    if(QuestPanel!=null){QuestPanel.ToggleFocusRequested-=ToggleStoryFocus;QuestPanel.CloseRequested-=CloseModal;QuestPanel.Close();}
    DialoguePanel=null;QuestPanel=null;lastDialogueToken=null;storyInput=null;ResetStoryObjectWork();

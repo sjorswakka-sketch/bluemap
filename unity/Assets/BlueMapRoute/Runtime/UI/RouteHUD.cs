@@ -12,6 +12,7 @@ namespace BlueMapMigration.Route
         private readonly RouteWorldController route;
         private GUIStyle text,title,small,wrap;
         public string StoryTrackerText{get;set;}="";
+        public bool LayoutProofActive{get;set;}
         public string SignSpeaker="";
         public string[] SignLines=Array.Empty<string>();
         public int LastInventoryRows {get;private set;}
@@ -44,6 +45,7 @@ namespace BlueMapMigration.Route
         }
         public void Draw()
         {
+            if(LayoutProofActive)return;
             Styles();var game=route.Gameplay;var state=game.State;receiptBounds.Clear();LastMessageBounds=Rect.zero;LastTrackerBounds=Rect.zero;LastTechniqueBounds=Rect.zero;LastAmmoBounds=Rect.zero;TrackerTextFits=true;
             Panel(new Rect(18,16,298,118));var areaTitle=new GUIStyle(title);while(areaTitle.fontSize>11&&areaTitle.CalcSize(new GUIContent(route.AreaName)).x>270)areaTitle.fontSize--;Label(32,24,270,route.AreaName,areaTitle);
             Label(32,54,270,T("Leven ","Health ")+state.Hp+" / "+game.MaxHp+"    ·    "+state.Coins+T(" munten"," coins"));
