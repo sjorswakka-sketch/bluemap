@@ -198,6 +198,14 @@ namespace BlueMapMigration.Route
             if(!used&&Inventory.LastMessage!="")ShowMessage(Translate(Inventory.LastMessage));
             if(used)Save();World.RefreshRouteState();
         }
+        public bool UseQuickPotion()
+        {
+            if(!Running||Gameplay.State.InputLocked)return false;
+            UpdateInventoryContext();bool used=Inventory.UseItem("potion");
+            if(used){work=null;Save();World.RefreshRouteState();}
+            else ShowMessage(Translate(Gameplay.State.Count("potion")>0?"Je hebt al alle hartjes.":"Je hebt geen helddrank."));
+            return used;
+        }
         private void RestoreInventoryStamina(double amount){World.Motor.Stamina.Restore(amount);}
         private void InventoryChanged(){InventoryPanel?.Refresh();World.RefreshRouteState();}
 
@@ -309,6 +317,7 @@ namespace BlueMapMigration.Route
                 return;
             }
             if(frame.Pressed("menu")){OpenInventory();return;}if(frame.Pressed("quests")){OpenQuests();return;}if(frame.Pressed("pause")){OpenPause();return;}
+            if(frame.Pressed("potion")){UseQuickPotion();return;}
             if(frame.Pressed("interact")&&CurrentTarget!=null)InteractTarget(CurrentTarget.Address);
             if(frame.Pressed("attack")||frame.Pressed("bow"))ShowMessage(T("Gevechten volgen in fase 14; deze gebieden zijn een verkenningsproef.","Combat arrives in phase 14; these areas are an exploration preview."));
         }

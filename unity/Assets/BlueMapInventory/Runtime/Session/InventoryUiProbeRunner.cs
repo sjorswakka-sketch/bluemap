@@ -109,6 +109,16 @@ namespace BlueMapMigration.Inventory
                 bool allIcons = model.Items.Entries.All(row => route.InventoryPanel.HasSourceIcon(row.Key.AsString()));
                 check("inventory_ui_original_item_icons", allIcons && model.Items.Entries.Count == 226);
 
+                // The retained H/Y shortcut uses the same transaction as the bag action and never wastes a potion.
+                long quickCount = state.Count("potion"), quickDrunk = state.Get("potions_drunk").AsInt64(), quickHp = state.Hp;
+                KeyPress(Key.H);
+                bool keyboardPotion = state.Count("potion") == quickCount - 1 && state.Hp == Math.Min(state.MaxHp, quickHp + 3) && state.Get("potions_drunk").AsInt64() == quickDrunk + 1;
+                state.Hp = state.MaxHp - 1; Press(GamepadButton.North);
+                bool controllerPotion = state.Count("potion") == quickCount - 2 && state.Hp == state.MaxHp && state.Get("potions_drunk").AsInt64() == quickDrunk + 2;
+                KeyPress(Key.H); Press(GamepadButton.North);
+                bool noWaste = state.Hp == state.MaxHp && state.Count("potion") == quickCount - 2 && state.Get("potions_drunk").AsInt64() == quickDrunk + 2;
+                state.Hp = Math.Max(1, state.MaxHp - 2);
+
                 // Keyboard and mouse enter through the real event manager, then the same live UI handler as a player.
                 KeyPress(Key.I); var panel = route.InventoryPanel; int beforeKeyboard = panel.SelectedIndex;
                 KeyPress(Key.DownArrow); int afterKeyboard = panel.SelectedIndex;
@@ -121,10 +131,13 @@ namespace BlueMapMigration.Inventory
                 panel.FocusSearch(); yield return new WaitForEndOfFrame(); yield return new WaitForEndOfFrame();
                 bool searchFocused = panel.SearchEditing;
                 string beforeSearch = FoundationJson.StringifyPlain(state.Get("inventory"));
-                KeyPress(Key.P); KeyPress(Key.I); panel.SetQuery("potion");
+                long menuPotions = state.Count("potion"), menuHp = state.Hp;
+                KeyPress(Key.P); KeyPress(Key.I); KeyPress(Key.H); panel.SetQuery("potion");
                 bool typedSearch = searchFocused && route.Modal == "inventory" && panel.SearchEditing && panel.Query == "potion" && beforeSearch == FoundationJson.StringifyPlain(state.Get("inventory"));
+                bool searchPotionIgnored = state.Count("potion") == menuPotions && state.Hp == menuHp;
                 KeyPress(Key.Escape);
                 check("inventory_ui_search_shortcut_isolation", typedSearch && route.Modal == "");
+                check("inventory_native_potion_hotkeys", keyboardPotion && controllerPotion && noWaste && searchPotionIgnored);
 
                 // Shared filters are operated with actual shoulder, D-pad and face-button events.
                 route.OpenStorage("home"); panel = route.InventoryPanel;

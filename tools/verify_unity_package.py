@@ -198,6 +198,7 @@ INVENTORY_DETAIL_CHECKS = {
     "inventory_native_checks_ran", "inventory_native_pickups_and_chests",
     "inventory_native_home_storage_roundtrip", "inventory_native_coastal_storage_roundtrip",
     "inventory_native_keyboard_mouse_navigation", "inventory_native_controller_navigation",
+    "inventory_native_potion_hotkeys",
     "inventory_native_sustained_right_stick_keeps_focus", "inventory_native_input_owner_switch",
     "inventory_native_save_reload_preserves_inventory", "inventory_failed_transfer_is_atomic",
     "inventory_unknown_fields_retained", "inventory_no_real_saves_accessed",

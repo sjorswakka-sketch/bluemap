@@ -161,7 +161,18 @@ namespace BlueMapMigration.Inventory
 
             Debug.Log("Inventory stage: consumables restore native health and stamina without waste");
             state.Set("inventory",Plain("{\"hs_grape\":2,\"hs_wine\":2,\"hs_honey\":2,\"potion\":2}"));state.Hp=2;world.Motor.Stamina.Stamina=30;route.UpdateInventoryContext();long oldDrunk=state.Get("potions_drunk").AsInt64();
-            bool grape=route.Inventory.UseItem("hs_grape")&&state.Hp==3;route.UpdateInventoryContext();bool wine=route.Inventory.UseItem("hs_wine")&&world.Motor.Stamina.Stamina==70;route.UpdateInventoryContext();bool honey=route.Inventory.UseItem("hs_honey")&&state.Hp==4&&world.Motor.Stamina.Stamina==95;route.UpdateInventoryContext();bool potion=route.Inventory.UseItem("potion")&&state.Hp==5&&state.Get("potions_drunk").AsInt64()==oldDrunk+1;
+            double expectedEnergy=30;long expectedHp=2;
+            bool UseOriginal(string id)
+            {
+                // Use the fully merged original catalog: its specific forest grape override
+                // restores eight stamina as well as a heart (the older base entry only healed).
+                var original=oracle.Require("catalogs").Require("items").Require(id);long quantity=state.Count(id);
+                expectedHp=Math.Min(state.MaxHp,expectedHp+Get(original,"heal",I(0)).AsInt64());expectedEnergy=Math.Min(world.Motor.Stamina.Capacity,expectedEnergy+Get(original,"stamina",I(0)).AsDouble());
+                route.UpdateInventoryContext();bool used=route.Inventory.UseItem(id);
+                Debug.Log("Inventory native use "+id+": used="+used+" hp="+state.Hp+"/"+expectedHp+" stamina="+world.Motor.Stamina.Stamina+"/"+expectedEnergy+" modelStamina="+route.Inventory.Stamina+" quantity="+state.Count(id)+"/"+(quantity-1));
+                return used&&state.Hp==expectedHp&&world.Motor.Stamina.Stamina==expectedEnergy&&route.Inventory.Stamina==expectedEnergy&&state.Count(id)==quantity-1;
+            }
+            bool grape=UseOriginal("hs_grape"),wine=UseOriginal("hs_wine"),honey=UseOriginal("hs_honey"),potion=UseOriginal("potion")&&state.Get("potions_drunk").AsInt64()==oldDrunk+1;
             world.Motor.Stamina.Reset();route.UpdateInventoryContext();string full=Json(state.Snapshot());bool noWaste=!route.Inventory.CanUseItem("hs_grape")&&!route.Inventory.CanUseItem("hs_wine")&&!route.Inventory.UseItem("hs_grape")&&!route.Inventory.UseItem("hs_wine")&&full==Json(state.Snapshot());
             Check("inventory_native_consumables_and_stamina",grape&&wine&&honey&&potion&&noWaste&&state.Paused);
 

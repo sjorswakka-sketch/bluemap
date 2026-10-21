@@ -474,6 +474,7 @@
     "inventory_native_magnetic_all_items",
     "inventory_native_owned_unique_chest_reward",
     "inventory_native_pickups_and_chests",
+    "inventory_native_potion_hotkeys",
     "inventory_native_receipt_feed_bounded",
     "inventory_native_save_reload_preserves_inventory",
     "inventory_native_storage_capacities",
@@ -1017,6 +1018,12 @@
       "gitBlob": "0bf545d2108fa012e80b6f83052c24c5b85ff363",
       "path": "scripts/entities/pickup.gd",
       "sha256": "12612ceb8f94bd6446980d487a1163e299fe89db01ea1de2b409ca02cec3bd5e"
+    },
+    {
+      "bytes": 22372,
+      "gitBlob": "26111cc957f29c112b8559e48f7fb816ff4bb36c",
+      "path": "scripts/entities/player.gd",
+      "sha256": "4a5518b2475c5c7bc9d4966b50f48841cfb5ce7ec1b297327e12f5fab1700743"
     },
     {
       "bytes": 1098,

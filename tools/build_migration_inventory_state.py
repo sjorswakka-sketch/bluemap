@@ -37,6 +37,7 @@ SOURCE_PATHS = (
     "scripts/core/equipment.gd", "scripts/core/professions.gd", "scripts/core/movement.gd",
     "scripts/core/lang.gd", "scripts/entities/chest.gd", "scripts/entities/pickup.gd",
     "scripts/entities/stock_chest.gd", "scripts/entities/coastal_workstation.gd",
+    "scripts/entities/player.gd",
     "scripts/ui/stock_ui.gd", "scripts/ui/coastal_home_ui.gd", "scripts/ui/item_receipts.gd",
     "translations/en.po",
 )
