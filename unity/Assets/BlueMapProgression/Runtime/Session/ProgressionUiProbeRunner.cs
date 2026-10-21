@@ -186,19 +186,34 @@ namespace BlueMapMigration.Progression
                 // Remote screens remain guides; actual forging rechecks the exact physical context and costs.
                 route.OpenProgression("upgrade"); panel = route.ProgressionPanel; panel.SelectUpgrade(0); string remote = Json(state.Snapshot());
                 Press(GamepadButton.South); Press(GamepadButton.South); bool remoteDenied = !panel.ConfirmationVisible && panel.UpgradeReason != "" && remote == Json(state.Snapshot());
+                int longestUpgrade = 1; float longestHeight = 0;
+                for (int index = 1; index <= panel.UpgradeIds.Count; index++)
+                {
+                    panel.SelectUpgrade(index); yield return new WaitForEndOfFrame();
+                    if (panel.MaxDetailsScroll > longestHeight) { longestHeight = panel.MaxDetailsScroll; longestUpgrade = index; }
+                }
+                panel.SelectUpgrade(longestUpgrade); Press(GamepadButton.South); Press(GamepadButton.DpadDown);
+                bool detailEntry = panel.Zone == 3; bool detailVisible = true;
+                for (int frame = 0; frame < 90; frame++)
+                {
+                    Pad(new GamepadState { rightStick = new Vector2(0, -.9f) }); yield return new WaitForEndOfFrame();
+                    detailVisible &= panel.Zone == 3 && panel.SelectionVisible && Contains(panel.ViewportRect, panel.RenderedSelectedBounds);
+                }
+                Neutral(); bool detailScrolled = longestHeight > 0 && panel.DetailsScroll > 0 && panel.DetailsScroll <= panel.MaxDetailsScroll + .5f;
+                Press(GamepadButton.East); bool detailBack = panel.Zone == 0 && route.Modal == "progression";
                 AtGreta(); route.OpenProgression("upgrade"); panel = route.ProgressionPanel; panel.SelectUpgrade(0);
                 long coins = state.Coins, gel = state.Count("gel"); string beforeConfirmation = Json(state.Snapshot());
                 Press(GamepadButton.South); Press(GamepadButton.South); bool pending = panel.ConfirmationVisible && beforeConfirmation == Json(state.Snapshot());
                 Press(GamepadButton.East); bool cancelled = !panel.ConfirmationVisible && route.Modal == "progression" && beforeConfirmation == Json(state.Snapshot());
                 Press(GamepadButton.South); Press(GamepadButton.South); bool upgraded = !panel.ConfirmationVisible && state.Weapon == "iron" && state.Coins == coins - 40 && state.Count("gel") == gel - 5;
-                check("progression_ui_upgrade_confirmation", remoteDenied && pending && cancelled && upgraded && panel.UpgradeIds.Count == 3);
+                check("progression_ui_upgrade_confirmation", remoteDenied && detailEntry && detailVisible && detailScrolled && detailBack && pending && cancelled && upgraded && panel.UpgradeIds.Count == 3);
 
                 // The four public pictures are the actual player UI at the main window size.
                 KeyPress(Key.DownArrow); route.OpenProgression("overview"); panel = route.ProgressionPanel; panel.SelectOverview(0);
                 yield return new WaitForEndOfFrame(); Capture(Path.Combine(output, CaptureFiles[0]), 1152, 648); Captures++;
                 KeyPress(Key.PageDown); panel.SelectSlot(panel.GearSlots.ToList().IndexOf("head")); panel.SelectCandidate(panel.Alternatives.ToList().IndexOf("gear_bronze_helm"));
                 yield return new WaitForEndOfFrame(); Capture(Path.Combine(output, CaptureFiles[1]), 1152, 648); Captures++;
-                KeyPress(Key.PageDown); model.Unwear("hat"); model.Wear("cloth_cape"); model.Wear("cloth_tunic"); model.Dye("top", 8); panel.SelectAppearanceRow(1);
+                KeyPress(Key.PageDown); model.Unwear("hat"); model.Unequip("head"); model.Wear("cloth_cape"); model.Wear("cloth_tunic"); model.Dye("top", 8); panel.SelectAppearanceRow(1);
                 yield return new WaitForEndOfFrame(); Capture(Path.Combine(output, CaptureFiles[2]), 1152, 648); Captures++;
                 KeyPress(Key.PageDown); panel.SelectUpgrade(0);
                 yield return new WaitForEndOfFrame(); Capture(Path.Combine(output, CaptureFiles[3]), 1152, 648); Captures++;

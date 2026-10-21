@@ -141,7 +141,7 @@ namespace BlueMapMigration.Route
             var requested=!relocated&&float.IsFinite(saved.x)&&float.IsFinite(saved.y)&&saved.x>=0&&saved.y>=0&&saved.x<source.Width*32&&saved.y<source.Height*32?saved:source.Arrivals.First(v=>v.Name==spawn).Resolved;
             var safe=Access.ResolveArrival(source,Access.PrepareSavedPosition(source,requested));if(!Access.SpawnFits(source,safe)){ShowMessage(T("Geen veilige aankomst beschikbaar.","No safe arrival is available."));return false;}
             if(!Session.TryEnterPrepared(source,spawn,safe))throw new InvalidOperationException(Session.LastDiagnostic);
-            RecordVisit(map);World.RouteMode=true;World.gameObject.SetActive(true);World.BindSession(Session);World.PresentCurrent();World.Motor.Stamina.Reset();
+            RecordVisit(map);World.RouteMode=true;World.gameObject.SetActive(true);World.BindSession(Session);World.PresentCurrent();World.ApplyEquipmentBonuses();World.Motor.Stamina.Reset();
             Gameplay.SaveRequested+=OnSaveRequested;Gameplay.ItemObtained+=OnItem;Gameplay.SoundRequested+=OnSound;
             Running=true;Modal="";Selection=0;lastDialogue="";autoTime=0;SaveFailed=false;BuildTargets();
             ShowMessage(relocated?T("Je speelkopie begint in het dorp; je oorspronkelijke locatie en profiel zijn bewaard.","Your play copy starts in the village; the original location and profile are retained."):(map=="village"&&Gameplay.State.QuestState("kat")=="none"?T("Welkom in BlueMap Quest. Praat met Pim op het dorpsplein.","Welcome to BlueMap Quest. Talk to Pim in the village."):AreaName));

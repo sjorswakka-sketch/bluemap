@@ -97,7 +97,7 @@ namespace BlueMapMigration.Progression
             bool accept=frame.Pressed("ui_accept")||frame.Pressed("interact");
             int horizontal=frame.Pressed("ui_right")?1:frame.Pressed("ui_left")?-1:0,vertical=frame.Pressed("ui_down")?1:frame.Pressed("ui_up")?-1:0;
             if(frame.Pressed("ui_cancel")||frame.Pressed("pause"))
-            {if(pendingKind!=""){pendingKind="";return;}if(dyeMode){dyeMode=false;return;}if(Tab=="equipment"&&zone>0){zone=0;return;}Close();return;}
+            {if(pendingKind!=""){pendingKind="";return;}if(dyeMode){dyeMode=false;return;}if((Tab=="equipment"||Tab=="upgrade")&&zone>0){zone=0;return;}Close();return;}
             if(pendingKind!=""){if(horizontal!=0||vertical!=0)pendingConfirm=!pendingConfirm;if(accept){if(pendingConfirm)ConfirmUpgrade();else pendingKind="";}return;}
             if(frame.Pressed("ui_next_tab"))ChangeTab(tabs[(Array.IndexOf(tabs,Tab)+1)%tabs.Length]);
             if(frame.Pressed("ui_prev_tab"))ChangeTab(tabs[Mod(Array.IndexOf(tabs,Tab)-1,tabs.Length)]);
@@ -113,7 +113,7 @@ namespace BlueMapMigration.Progression
             if(Tab=="appearance")
             {if(vertical!=0)SelectAppearanceRow(selectedAppearance+vertical);else if(horizontal!=0)CycleAppearance(horizontal);return;}
             if(Tab=="overview"){if(zone==0&&vertical!=0)SelectOverview(selectedOverview+vertical);else if(horizontal!=0||zone==3)detailScroll=Math.Max(0,detailScroll+(vertical!=0?vertical:horizontal)*46);return;}
-            if(Tab=="upgrade"){if(zone==0&&vertical!=0)SelectUpgrade(selectedUpgrade+vertical);if(horizontal<0)zone=0;else if(horizontal>0)zone=2;if(zone==3&&vertical!=0)detailScroll=Math.Max(0,detailScroll+vertical*46);return;}
+            if(Tab=="upgrade"){if(zone==0&&vertical!=0)SelectUpgrade(selectedUpgrade+vertical);if(horizontal<0)zone=0;else if(horizontal>0)zone=2;else if(zone==2&&vertical>0)zone=3;else if(zone==3&&vertical!=0)detailScroll=Math.Max(0,detailScroll+vertical*46);return;}
             if(zone==0){if(vertical!=0)SelectSlot(selectedSlot+vertical);if(horizontal>0&&Alternatives.Count>0)zone=1;}
             else if(zone==1){if(horizontal<0)zone=0;else if(horizontal>0||vertical>0&&selectedCandidate==Alternatives.Count-1){zone=2;action=0;}else if(vertical!=0)SelectCandidate(selectedCandidate+vertical);}
             else if(zone==2){if(vertical<0)zone=1;else if(vertical>0)zone=3;else if(horizontal<0){if(action==0)zone=0;else action=0;}else if(horizontal>0)action=1;}
