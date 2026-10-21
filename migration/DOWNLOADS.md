@@ -3,7 +3,8 @@
 | Wat wil je openen? | Download | Inhoud |
 |---|---|---|
 | De volledige bestaande game | [Godot 0.34.0-preview](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) | Bestaande game, oorspronkelijke wereld en systemen; bron en herstelgeschiedenis inbegrepen |
-| De actuele technische Unity-preview | [Fase 12 — 40b4af28](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase12-preview-40b4af28) | Tas, magnetische buit, veilige kisten, thuis- en kustopslag, zoeken, sorteren en favorieten; nog geen volledige gameport |
+| De actuele technische Unity-preview | [Fase 13 — f15a1641](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase13-preview-f15a1641) | Ervaring, statistieken, uitrusting, upgrades, haar en kleding; nog geen volledige gameport |
+| De eerdere inventarisproef | [Unity-fase 12](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase12-preview-40b4af28) | Magnetische buit, veilige kisten, tas, woning- en kustopslag |
 | De eerdere wereldproef | [Unity-fase 11](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase11-preview-0e7d75f8) | Alle 37 gebieden en toegangspunten, oorspronkelijke questsloten en veilige voortgang |
 | De eerdere eerste speelroute | [Unity-fase 10](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase10-preview-712b2e02) | Dorp, woning, bosrand en bos met Pim en Muis, verzamelen, buit en inventaris |
 | De eerdere opslagproef | [Unity-fase 9](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase9-preview-343f8564) | Veilige import, instellingen, aparte Unity-profielen en herstel |
@@ -19,4 +20,4 @@ De actuele verwijzing en vertrouwde hashes staan in [preview.json](preview.json)
 
 Alle downloads blijven binnen dezelfde repository; het bouwen van de Unity-speler gebeurt met de bestaande lokale activatie, de GitHub-workflow controleert bron en pakket. [Uitleg en controles](phase-03/README.md).
 
-De actuele fase 12 start bij **Avontuur en opslag**. Begin een nieuw Unity-avontuur of hervat een veilige speelkopie. De 37 gebieden en de eerste route blijven beschikbaar. Gebruik de voorraadkist binnen je woning of de materiaalopslag in de kustwerkplaats; op afstand kun je de voorraad alleen bekijken. I/Tab/Select opent de tas, E/Enter/A gebruikt, Esc/B gaat terug; schouderknoppen kiezen een bedieningselement en de rechterstick volgt lange lijsten. Zoeken, categorieën, sorteren, favorieten en overzetten per 1, 10 of stapel zijn beschikbaar. Alle oorspronkelijke Godot-bestanden blijven behouden; [grenzen en controles](phase-12/README.md).
+De actuele fase 13 start bij **Avontuur en opslag**. Begin een nieuw avontuur of hervat een veilige speelkopie. Open de tas met I/Tab/Select en gebruik de heldknop voor overzicht, uitrusting, uiterlijk en upgrades. De menu’s tonen oorspronkelijke waarden en vergelijkingen; echte upgrades gebruiken de juiste lokale smid of werkplek en kosten. De 37 gebieden, voorraadkisten en controllerlijsten blijven beschikbaar. Alle oorspronkelijke Godot-bestanden blijven behouden; [grenzen en controles](phase-13/README.md).

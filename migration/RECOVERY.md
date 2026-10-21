@@ -38,7 +38,7 @@ Alle tests of previews horen in een aparte projectkopie met unieke Bluemap-Codex
 
 ## Voortgang en terugkeer
 Persoonlijke saves zijn niet opgenomen in deze openbare release; maak bij latere import een lokale, exacte kopie van savegame.json, meta.cfg, ng_plus.cfg, controls.cfg en settings.cfg uit de eigen Godot-opslag.
-Unity-import is nog niet gebouwd; Unity zal aparte opslag krijgen, de oorspronkelijke Godot-bestanden behouden en pas na bewezen terugexport nieuwe Unity-voortgang terug naar Godot kunnen overzetten.
-De werkende Godot-branche blijft beschikbaar; fases 9 en 25 bewijzen de conversie en omgekeerde route.
+Unity-import en aparte profielen zijn sinds [fase 9](phase-09/README.md) gebouwd en bewezen. De huidige [fase 13](phase-13/README.md) bewaart voortgang, uitrusting en uiterlijk in afzonderlijke speelkopieën; de oorspronkelijke Godot-bestanden blijven ongewijzigd. Terugexport van nieuw gemaakte Unity-voortgang naar Godot is nog niet bewezen en blijft fase 25.
+De werkende Godot-branche blijft beschikbaar. Fase 9 bewijst de import; fase 25 moet de omgekeerde route afzonderlijk bewijzen.
 
 Controleer alle losse herstelbestanden met SHA256SUMS.txt; details staan in recovery-manifest.json.

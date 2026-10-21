@@ -1,6 +1,8 @@
 # Opslag en identiteit — behoudscontract fase 1
 
-Dit is een broninventarisatie van **Bluemap Quest 0.34.0-preview**, commit `a8a988be27835dec979d2523a3a85a34385eac54`. Er is geen converter, Unity-game of omgekeerde export gebouwd. Er zijn geen echte spelerbestanden geopend. De hieronder genoemde scenario's zijn acceptatie-eisen voor volgende fases, geen reeds geslaagde Unity-tests.
+Dit document bewaart de fase-1-broninventarisatie van **Bluemap Quest 0.34.0-preview**, commit `a8a988be27835dec979d2523a3a85a34385eac54`. De brontabellen en toenmalige acceptatie-eisen hieronder blijven de historische referentie; ze beschrijven geen latere wijzigingen aan de oorspronkelijke Godot-game.
+
+**Actuele migratiestatus:** veilige import en afzonderlijke Unity-profielen zijn in [fase 9](phase-09/README.md) gebouwd en bewezen; de huidige [fase 13](phase-13/README.md) behoudt alle 34 opslagvelden, onbekende toekomstige velden, originele bronbytes en gekozen uitrusting/uiterlijk. Alle tests gebruiken eigen synthetische profielen. Persoonlijke bestanden worden alleen na expliciete keuze op een veilige kopie geïmporteerd. Omgekeerde export van nieuw gemaakte Unity-voortgang naar Godot is nog niet bewezen en blijft fase 25.
 
 De machineleesbare tegenhanger is [reference/save-contract.json](reference/save-contract.json). Daarin staan alle 34 hoofdvelden, geneste structuren, bronnen, migraties, ID-regels en controleprofielen. De bronverwijzingen zijn relatief aan de repository en horen bij bovenstaande commit.
 
@@ -200,7 +202,7 @@ Stamina blijft tijdens kaartwissels in één `Movement`-object bestaan, maar `st
 
 Ook de UI-eigenaren, overgangstatus, achievementmeldingsqueue, save-eigenaarschap, actieve arena-run en defeat-handler zijn runtimegegevens. De bestaande game belooft dus geen hervatting van een midden-in-een-aanval- of midden-in-een-menu-moment; fase 1 verzint daar geen nieuwe compatibiliteitsbelofte bij.
 
-## Verplichte bewijsvoering voor een latere converter
+## Oorspronkelijke acceptatie-eisen en latere bewijsvoering
 
 De twaalf scenario-ID's `SC01` t/m `SC12` staan machineleesbaar in het JSON-contract. Ze omvatten een synthetische volledige save, oudere saves met ontbrekende versus lege velden, falseflaggedrag, stabiele geopende objecten, gear/NG+, landbouw/productie, alle grondstof-ID-families, alle kaarten/dynamische profielen, metadata, invoerinstellingen, onderbroken/idempotente import en ongeldige/toekomstige data.
 
@@ -210,4 +212,4 @@ Voor terugkeer zijn er twee afzonderlijke garanties: de ongewijzigde Godot-relea
 
 ## Uitgevoerde fase-1-controle
 
-Alleen statische broncontrole: de hoofdveldset is automatisch met `save_game()` vergeleken en bevat exact 34 velden, zonder ontbrekende of extra; het contract noemt de 22 configureerbare actie-IDs en alle vijf bestanden. JSON moet gewoon parseerbaar blijven. Er zijn voor dit register geen echte saves gebruikt, geen Godot-/Unity-processen gestart en geen runtimebestanden gewijzigd. De converter- en rondreisacceptaties zijn nog uit te voeren werk.
+Alleen statische broncontrole: de hoofdveldset is automatisch met `save_game()` vergeleken en bevat exact 34 velden, zonder ontbrekende of extra; het contract noemt de 22 configureerbare actie-IDs en alle vijf bestanden. JSON moet gewoon parseerbaar blijven. Er zijn voor dit register geen echte saves gebruikt, geen Godot-/Unity-processen gestart en geen runtimebestanden gewijzigd. Dit beschrijft uitsluitend wat in fase 1 was uitgevoerd. Het latere import-/profielbewijs staat bij fase 9 en de voortgangsuitbreiding bij fase 13; de rondreis via omgekeerde export blijft fase 25.

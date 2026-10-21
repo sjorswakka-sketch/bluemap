@@ -1,6 +1,6 @@
 # BlueMap Quest — migratie naar Unity
 
-Status: fases 1 tot en met 12 afgerond; fase 13 is gestart met het go van de gebruiker en wordt inclusief controles en publicatie uitgevoerd.
+Status: fases 1 tot en met 13 afgerond op 2026-10-21; het volgende go start fase 14.
 
 Eén volgend **go** start één volledige volgende fase, inclusief het noodzakelijke ontwerp, implementatie, eigen hulpmiddelen, controles, bewijs en publicatie op het migratiespoor; daarna volgt een korte rapportage en is het volgende go voor de volgende fase. Een mislukte controle wordt binnen de lopende fase opgelost en telt niet als een afgeronde fase.
 

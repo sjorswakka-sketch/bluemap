@@ -1,6 +1,8 @@
-# Unity-migratie — fase 12 voltooid
+# Unity-migratie — fase 13 voltooid
 
-Het volgende **go** start fase 13: ervaring, gear en uiterlijk; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 14: gevechten, monsters en wild; de volledige game is nog niet overgezet.
+
+[Fase 13: ervaring, uitrusting en uiterlijk](phase-13/README.md) — oorspronkelijke heldervaring, uitrustingsbonussen, wapenniveaus, upgrades, haar en kleding; 38 algemene Windows-controles en 32 voortgangscontroles.
 
 [Fase 12: voorwerpen, buit en opslag](phase-12/README.md) — oorspronkelijke magnetische buit, veilige kisten, tas, woning- en kustopslag, zoeken, sorteren, favorieten en controllerlijsten; 37 algemene Windows-controles en 44 inventariscontroles.
 

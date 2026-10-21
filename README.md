@@ -1,6 +1,6 @@
 # Bluemap Quest
 
-**Unity-migratie:** fases 1 tot en met 12 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), [voorwerpen, buit en opslag in Unity](migration/phase-12/README.md) en de [actuele downloads](migration/DOWNLOADS.md). Het volgende go start fase 13: ervaring, gear en uiterlijk. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
+**Unity-migratie:** fases 1 tot en met 13 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), [ervaring, uitrusting en uiterlijk in Unity](migration/phase-13/README.md) en de [actuele downloads](migration/DOWNLOADS.md). Het volgende go start fase 14: gevechten, monsters en wild. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
 
 0.34: een wereldatlas met opgeslagen gebiedsbezoeken en nieuwe gedetailleerde pixelart voor de speler en NPC’s; zie [wijzigingen](WORLD_ATLAS_CHARACTERS_034.md).
 

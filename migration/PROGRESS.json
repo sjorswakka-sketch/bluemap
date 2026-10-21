@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_13_in_progress",
+  "status": "phase_13_complete",
   "completed_phases": [
     1,
     2,
@@ -14,10 +14,11 @@
     9,
     10,
     11,
-    12
+    12,
+    13
   ],
-  "active_phase": 13,
-  "next_phase": 13,
+  "active_phase": null,
+  "next_phase": 14,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
@@ -25,11 +26,11 @@
   "unity_implementation_started": true,
   "completed_on": "2026-10-21",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-12/README.md",
-  "requires_next_go": false,
+  "checks": "phase-13/README.md",
+  "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": true,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase12-preview-40b4af28",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase13-preview-f15a1641",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -162,5 +163,14 @@
   "inventory_source_items": 226,
   "inventory_source_loaded_snapshots": 162,
   "inventory_source_contracts": "phase-12/source-contracts.json",
-  "inventory_build_source": "40b4af28919873e322ff1711822781fd807c4dec"
+  "inventory_build_source": "40b4af28919873e322ff1711822781fd807c4dec",
+  "progression_runtime_verified": true,
+  "progression_runtime_checks": 32,
+  "progression_source_cases": 442,
+  "progression_source_exact_values": 6580,
+  "progression_gear_items": 24,
+  "progression_clothing_items": 24,
+  "progression_hair_styles": 90,
+  "progression_source_contracts": "phase-13/source-contracts.json",
+  "progression_build_source": "f15a16411d9264730e5db35f759c1ce46424bd04"
 }
