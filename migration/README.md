@@ -1,6 +1,8 @@
-# Unity-migratie — fase 11 voltooid
+# Unity-migratie — fase 12 voltooid
 
-Het volgende **go** start fase 12: voorwerpen, buit en opslag; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 13: ervaring, gear en uiterlijk; de volledige game is nog niet overgezet.
+
+[Fase 12: voorwerpen, buit en opslag](phase-12/README.md) — oorspronkelijke magnetische buit, veilige kisten, tas, woning- en kustopslag, zoeken, sorteren, favorieten en controllerlijsten; 37 algemene Windows-controles en 44 inventariscontroles.
 
 [Fase 11: alle gebieden en toegangspunten](phase-11/README.md) — alle 37 bestaande gebieden en interieurs, oorspronkelijke questsloten, sleutels, boten, veilige aankomsten en terugroutes; 36 Windows-controles en 57 wereld-/toegangscontroles.
 

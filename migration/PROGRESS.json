@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_12_in_progress",
+  "status": "phase_12_complete",
   "completed_phases": [
     1,
     2,
@@ -13,22 +13,23 @@
     8,
     9,
     10,
-    11
+    11,
+    12
   ],
-  "active_phase": 12,
-  "next_phase": 12,
+  "active_phase": null,
+  "next_phase": 13,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
   "godot_branch": "claude/affectionate-mendel-vc1idx",
   "unity_implementation_started": true,
-  "completed_on": "2026-10-20",
+  "completed_on": "2026-10-21",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-11/README.md",
-  "requires_next_go": false,
+  "checks": "phase-12/README.md",
+  "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": true,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase11-preview-0e7d75f8",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase12-preview-40b4af28",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -154,5 +155,12 @@
   "world_access_art_source_textures": 318,
   "world_access_source_contracts": "phase-11/source-contracts.json",
   "world_access_build_source": "0e7d75f8a8c16da4f6a1d3663cea161a4ee57625",
-  "all_world_access_port_complete": true
+  "all_world_access_port_complete": true,
+  "inventory_runtime_verified": true,
+  "inventory_runtime_checks": 44,
+  "inventory_source_cases": 304,
+  "inventory_source_items": 226,
+  "inventory_source_loaded_snapshots": 162,
+  "inventory_source_contracts": "phase-12/source-contracts.json",
+  "inventory_build_source": "40b4af28919873e322ff1711822781fd807c4dec"
 }

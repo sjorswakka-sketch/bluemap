@@ -39,6 +39,10 @@ Alle onderstaande systemen zijn **als Godot-referentie bewaard**, nog niet als v
 
 De volledige namen en checksums van alle tests staan in het bronregister, met de geslaagde baseline in [godot-test-baseline.json](reference/godot-test-baseline.json); bovenstaande tabel is een leeswijzer en claimt geen volledige dekking door één geselecteerde test.
 
+## Uitvoeringsbewijs fase 12
+
+[Voorwerpen, buit en opslag](phase-12/README.md) zijn in Unity uitgevoerd en vergeleken: 304 oorspronkelijke gedragsgevallen, alle 226 items en 162 geladen wereldtoestanden; 44 native inventariscontroles voor beloningen, opslag, bediening, herstel en behoud bij herladen. Het [broncontract](phase-12/source-contracts.json) bindt alle sleutels en regels aan de ongewijzigde Godot-referentie. Dit bewijst de inventarisfase; de volledige uitrustingsbediening volgt in fase 13.
+
 ## Data die later extra aandacht vereist
 
 - Alle 37 werkelijk geladen kaarten en relevante synthetische quest-/wereldtoestanden zijn in fase 5 geëxporteerd; [dekkingsregister](world-coverage.json), [gerichte gevolgen](phase-05/world-witnesses.json) en [uiteindelijke identiteiten](phase-05/runtime-identities.json) bewaken deze referentie. Bewegende frames, combinaties en daadwerkelijke Unity-uitvoering blijven latere fases.
