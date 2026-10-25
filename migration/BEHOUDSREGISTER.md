@@ -67,3 +67,7 @@ Het bestaande `tools/run_tests.py` voert Godot-tests eveneens in aparte opslag u
 ## Fase 14 — gevechten, monsters en wilde dieren
 
 De oorspronkelijke wapens, aanvallen, projectielen, vijand- en dierengedragingen, schade en beloningen zijn native uitgevoerd en met beide originele bronoracles vergeleken. 212 spelergevallen en 208 ontmoetingsgevallen behouden exacte getallen, volgorde en alle 34 opslagvelden. Dezelfde 37 kaarten en ruime plaatsingen blijven bestaan; verdere quests en beroepssystemen volgen hun eigen fases. Alle 1.732 originele bestanden en eerdere bewijzen blijven behouden. Zie [fase 14](phase-14/README.md) en [de bewezen Windows-release](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase14-preview-cf27358f).
+
+## Fase 15 — gesprekken, quests en gevolgen
+
+De oorspronkelijke dialogen, NPC-regels, questvoorwaarden, keuzes en gevolgen zijn native uitgevoerd en met 1265 originele brongevallen vergeleken. Exacte getallen, woordenboek- en signaalvolgorde en alle 34 opslagvelden blijven behouden. Dezelfde 37 kaarten, ruime plaatsingen en alle eerdere controles blijven bestaan. Zie [fase 15](phase-15/README.md) en [de bewezen Windows-release](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase15-preview-3a961f2a).

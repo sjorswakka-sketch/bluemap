@@ -1,6 +1,8 @@
-# Unity-migratie — fase 14 voltooid
+# Unity-migratie — fase 15 voltooid
 
-Het volgende **go** start fase 15: gesprekken, quests en gevolgen; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 16: levendige bewoners; de volledige game is nog niet overgezet.
+
+[Fase 15: gesprekken, quests en gevolgen](phase-15/README.md) — oorspronkelijke dialogen, voorwaarden, keuzes, questvoortgang en blijvende gevolgen; 40 algemene Windows-controles en 32 verhaalcontroles.
 
 [Fase 14: gevechten, monsters en wilde dieren](phase-14/README.md) — oorspronkelijke aanvallen, boog, technieken, projectielen, vijand- en dierengedrag, schade en beloningen; 39 algemene Windows-controles en 37 gevechtscontroles.
 
