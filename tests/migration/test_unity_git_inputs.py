@@ -206,7 +206,7 @@ class OwnPlayerWindowTests(unittest.TestCase):
         hidden = self.run_mocked(["C:/Unity/Unity.exe", "-batchmode"])
         rendered = self.run_mocked(["C:/OwnedPreview/BlueMapUnityProbe.exe", "--probe-automated"], True)
         self.assertEqual((hidden.dwFlags, hidden.wShowWindow), (1, 0))
-        self.assertEqual((rendered.dwFlags, rendered.wShowWindow), (1, 7))
+        self.assertEqual((rendered.dwFlags, rendered.wShowWindow), (1, 4))  # Normal window, without activation.
 
     def test_visible_route_cannot_be_used_for_the_editor_or_an_unrelated_app(self):
         for name in ("C:/Unity/Unity.exe", "C:/Other/app.exe"):

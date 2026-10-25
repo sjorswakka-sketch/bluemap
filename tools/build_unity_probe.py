@@ -132,7 +132,7 @@ def run_hidden(command: list[str], timeout: int, label: str, *, rendered_player_
             "Only the isolated preview player may use a rendered test window")
     startup = subprocess.STARTUPINFO()
     startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-    startup.wShowWindow = 7 if rendered_player_window else 0  # SW_SHOWNOACTIVATE / SW_HIDE.
+    startup.wShowWindow = 4 if rendered_player_window else 0  # SW_SHOWNOACTIVATE / SW_HIDE; never minimize the render target.
     try:
         result = subprocess.run(command, cwd=ROOT, stdin=subprocess.DEVNULL,
                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
