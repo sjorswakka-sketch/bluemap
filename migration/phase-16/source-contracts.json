@@ -25108,6 +25108,13 @@
       "sha256": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
     }
   ],
+  "thirdPartyNotice": {
+    "bytes": 1385,
+    "firstPhase": 16,
+    "packagedIn": "LEESMIJ.txt",
+    "path": "unity/Assets/BlueMapResidents/Runtime/Motion/GodotAStar.LICENSE.txt",
+    "sha256": "11f91c1008ef58cdc1c24e6203786e0b22a009916d2d3823f4e3d0386c39cf6a"
+  },
   "world": {
     "indexSha256": "d986a9a8ad3a03e2c5a5b9fb98e0622dbca76f950f52d35d756f611410af4743",
     "loadedObjects": 601,

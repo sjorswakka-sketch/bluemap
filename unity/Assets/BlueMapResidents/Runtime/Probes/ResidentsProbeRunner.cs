@@ -205,7 +205,7 @@ namespace BlueMapMigration.Residents
             string beforeBag = Json(state.Get("inventory"));
             bool greeted = route.InteractTarget(memory.Target.Address) && route.Gameplay.DialogueOpen && state.Flag("wm_met_gardener");
             route.CloseModal();
-            Travel("village"); var book = route.Targets.First(target => target.Kind == "memory_book"); At(book);
+            Travel("inn"); var book = route.Targets.First(target => target.Kind == "memory_book"); At(book);
             bool readBook = route.InteractTarget(book.Address) && route.Gameplay.DialogueOpen
                 && route.Gameplay.Dialogue.Lines.Any(line => line.Contains(route.Residents.Name("gardener")));
             check("residents_native_memory_interaction_and_book", greeted && readBook && state.Coins == beforeCoins

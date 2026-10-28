@@ -22,7 +22,7 @@ from build_migration_story import (CASE_FIELDS, REFERENCE_DIGESTS, declared_arra
     plain_world, check as check_story)
 from migration_world_data import decode_wire
 from record_migration_inventory_state import decode_ordered_input
-from verify_unity_package import RESIDENTS_DETAIL_CHECKS
+from verify_unity_package import RESIDENTS_DETAIL_CHECKS, RESIDENTS_THIRD_PARTY_NOTICE
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = 'migration/phase-16/source-contracts.json'
@@ -299,6 +299,9 @@ def build_contract(root=ROOT):
     validate_runtime_catalog(document(catalog_raw, SOCIAL_CATALOG), social['catalogsOrdered'], sha(social_raw))
     motion_catalog_raw = read(root, MOTION_CATALOG)
     validate_motion_catalog(document(motion_catalog_raw, MOTION_CATALOG), motion['catalog'])
+    license_path = ASSETS + '/Runtime/Motion/GodotAStar.LICENSE.txt'
+    license_raw = read(root, license_path)
+    require(license_raw == RESIDENTS_THIRD_PARTY_NOTICE.encode('utf-8'), 'Packaged resident pathfinder notice differs from original attribution')
     loaded = loaded_residents(root)
     return {'schema': 'bluemap.residents.source-contracts.v1', 'phase': 16,
         'baselineCommit': baseline['commit'], 'baselineTree': baseline['tree'], 'sourceAnchors': anchors,
@@ -310,6 +313,8 @@ def build_contract(root=ROOT):
                            'sourceOracleSha256': sha(social_raw), 'purpose': 'Lossless resident gameplay catalog; full oracle loaded only for native equivalence proof'},
         'motionCatalog': {'path': MOTION_CATALOG, 'sha256': sha(motion_catalog_raw), 'bytes': len(motion_catalog_raw),
                           'sourceOracleSha256': sha(motion_raw), 'purpose': 'Exact original route places; full motion oracle loaded only for native equivalence proof'},
+        'thirdPartyNotice': {'path': license_path, 'bytes': len(license_raw), 'sha256': sha(license_raw),
+                            'packagedIn': 'LEESMIJ.txt', 'firstPhase': 16},
         'originalResidentCatalogs': original, 'loadedResidentObjects': loaded,
         'world': {'maps': 37, 'snapshots': len(loaded), 'loadedObjects': sum(len(row['objects']) for row in loaded),
                   'indexSha256': REFERENCE_DIGESTS['migration/world/index.json']},

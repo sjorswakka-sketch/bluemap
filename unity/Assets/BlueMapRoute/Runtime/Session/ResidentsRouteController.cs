@@ -74,7 +74,7 @@ namespace BlueMapMigration.Route
    residents.Clear();if(!retain){Residents.CloseKitchen();Residents.RemoveObject();foreach(var o in supperObjects.Values)o.Alive=false;supperObjects.Clear();activeSupperAddress="";}
    residentsMap=Session.Current.MapId;
    residentTerrain=new ResidentFootGrid(Session.Current.Width,Session.Current.Height,
-    Session.Current.Root.Require("terrain").Require("solidCells").Items.Select(v=>ResidentMotionModel.Cell(FoundationCoordinates.Vector(v)*32)));
+    Session.Current.Root.Require("terrain").Require("solidCells").Items.Select(v=>new Vector2Int((int)v.Items[0].AsInt64(),(int)v.Items[1].AsInt64())));
    residentObstacles=new List<ResidentRoamObstacle>();
    foreach(var spec in Session.Current.MapData.Require("objects").Items)
    {
@@ -239,8 +239,19 @@ namespace BlueMapMigration.Route
   {
    if(Residents==null||!ResidentsSimulationEnabled)return;
    Residents.PlayerPosition=World.Position;Residents.PlayerLoud=World.Motor.Sprinting||World.Motor.IsRolling||(Combat?.Player.AttackTimer??0)>0||(Combat?.Player.BowAnim??0)>0||(Combat?.Player.Phase??"")!="";
-   if(residentLanguage!=Locale){residentLanguage=Locale;foreach(var a in residents){a.Bubble="";a.Motion.BubbleTime=0;}if(Residents.Village!=null){Residents.Village.GardenerTime=0;Residents.Village.CourierTime=0;}}
-   Residents.SetLanguage(Locale);ResidentsKitchen?.SetControllerActive(ControllerActive);
+   Residents.SetLanguage(Locale);
+   if(residentLanguage!=Locale)
+   {
+    residentLanguage=Locale;foreach(var a in residents)
+    {
+     a.Bubble="";a.Motion.BubbleTime=0;
+     if(a.Motion.Kind=="memory")a.Target.Label=Residents.Name(a.Motion.Role);
+     else if(a.Motion.Kind=="village")a.Target.Label=Translate(a.Motion.Role=="gardener"?"Nelle de hovenier":"Bo de broodbezorger");
+     else if(a.Motion.Kind=="supper")a.Target.Label=Translate(a.Motion.Role=="joris"?"Visser Joris":a.Motion.Role=="bo"?"Bo de broodbezorger":"Nelle de hovenier");
+    }
+    if(Residents.Village!=null){Residents.Village.GardenerTime=0;Residents.Village.CourierTime=0;}
+   }
+   ResidentsKitchen?.SetControllerActive(ControllerActive);
    if(Residents.Kitchen?.Active==true){Residents.TickKitchen(uiDelta);ResidentsKitchen?.Tick(uiDelta);}
    if(Gameplay.State.Paused)return;
    RefreshResidentActors();residentSourceVisuals.Tick(Gameplay.State);

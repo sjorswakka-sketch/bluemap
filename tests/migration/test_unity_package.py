@@ -370,6 +370,9 @@ class UnityPackageTests(unittest.TestCase):
                                     ("persistence", "PERSISTENCE"), ("player", "PLAYER"), ("foundation", "FOUNDATION")):
                 self.assertEqual(json.loads(packed.read(root + "/" + filename + "-CHECKS.json")), receipt[field])
             self.assertIn("Migratiefase 16", packed.read(root + "/LEESMIJ.txt").decode("utf-8"))
+            self.assertIn(package.RESIDENTS_THIRD_PARTY_NOTICE, packed.read(root + "/LEESMIJ.txt").decode("utf-8"))
+            original_notice = Path(__file__).resolve().parents[2] / "unity/Assets/BlueMapResidents/Runtime/Motion/GodotAStar.LICENSE.txt"
+            self.assertEqual(package.RESIDENTS_THIRD_PARTY_NOTICE, original_notice.read_text(encoding="utf-8"))
 
     def test_phase16_cannot_drop_any_previous_or_residents_runtime_proof(self) -> None:
         build_identity = {**identity(), "phase": 16, "previewVersion": "0.12.0-phase16"}

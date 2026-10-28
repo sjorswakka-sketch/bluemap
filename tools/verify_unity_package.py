@@ -28,6 +28,31 @@ PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
                     12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14", 15: "0.11.0-phase15",
                     16: "0.12.0-phase16"}
+RESIDENTS_THIRD_PARTY_NOTICE = '''Godot Engine (4.4.1) AStarGrid2D and SortArray behavior adaptation.
+https://github.com/godotengine/godot/tree/4.4.1-stable/core/math/a_star_grid_2d.cpp
+https://github.com/godotengine/godot/tree/4.4.1-stable/core/templates/sort_array.h
+
+Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+'''
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -905,7 +930,8 @@ def _instructions(identity: dict) -> bytes:
         ("COMBAT-CHECKS.json bevat de controles van gevechten, monsters, wilde dieren en buit.\n" if identity["phase"] >= 14 else "") +
         ("STORY-CHECKS.json bevat de controles van gesprekken, quests, keuzes en blijvende gevolgen.\n" if identity["phase"] >= 15 else "") +
         ("RESIDENTS-CHECKS.json bevat de controles van bewonersroutines, rondlopen, herinneringen en avondgasten.\n" if identity["phase"] >= 16 else "") +
-        "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
+        "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n" +
+        ("\n" + RESIDENTS_THIRD_PARTY_NOTICE if identity["phase"] >= 16 else "")
     ).encode("utf-8")
 
 
