@@ -25,6 +25,10 @@
       "path": "unity/Assets/BlueMapStory/Runtime/Model/Resources/BlueMapStoryOracle.json"
     },
     {
+      "guid": "3b57e156d36a4ceaaea7c9af22c62b12",
+      "path": "unity/Assets/BlueMapStory/Runtime/Model/StoryContextActions.cs"
+    },
+    {
       "guid": "9c24d772950b4b3c83f6ac770a559841",
       "path": "unity/Assets/BlueMapStory/Runtime/Model/StoryDialogue.cs"
     },

@@ -52,7 +52,7 @@ namespace BlueMapMigration.Route
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
             var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP"),small,20);
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 15","Unity preview · phase 15"),small);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 16","Unity preview · phase 16"),small);
             if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
             if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
             {

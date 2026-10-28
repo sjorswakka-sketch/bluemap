@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "success": true,
+  "scope": "source integrity only; no Unity compile or player run",
+  "baselineCommit": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "baselineTree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
+  "godot": {
+    "filesCompared": 1732,
+    "allowlist": [
+      ".gitignore",
+      "README.md"
+    ],
+    "comparison": "UTF-8 CRLF normalized; binary bytes exact",
+    "indexEntriesVerified": true
+  },
+  "unity": {
+    "editorVersion": "6000.3.26f1",
+    "editorRevision": "de8167e7440c",
+    "directModules": 9,
+    "lockedModules": 13,
+    "externalDependencies": 1,
+    "assetGuids": 1278,
+    "buildScenes": 1,
+    "registeredUnityFiles": 2421,
+    "cacheBuildLicenseFiles": 0
+  },
+  "playerSavesAccessed": false,
+  "unityLicenseAccessed": false,
+  "enginesStarted": false
+}

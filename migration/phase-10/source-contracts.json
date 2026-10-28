@@ -278,6 +278,10 @@
       "path": "unity/Assets/BlueMapRoute/Runtime/Session/CombatTraining.cs"
     },
     {
+      "guid": "db2e8b52314c44018104705db1181eef",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Session/ResidentsRouteController.cs"
+    },
+    {
       "guid": "b139cdf390d12f0fcb41307635c88393",
       "path": "unity/Assets/BlueMapRoute/Runtime/Session/RouteProbeRunner.cs"
     },

@@ -68,6 +68,9 @@ namespace BlueMapMigration.Player
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private readonly List<Texture2D> ownedTextures = new List<Texture2D>();
         private readonly Dictionary<string,GameObject> routeColliderOwners=new Dictionary<string,GameObject>(StringComparer.Ordinal);
+        private readonly Dictionary<string,Vector2> residentFootOffsets=new Dictionary<string,Vector2>(StringComparer.Ordinal);
+        private readonly Dictionary<string,Vector2> residentMoveVelocities=new Dictionary<string,Vector2>(StringComparer.Ordinal);
+        private readonly HashSet<string> dynamicResidentFeet=new HashSet<string>(StringComparer.Ordinal);
         private readonly List<Tuple<SpriteRenderer,Vector2>> crowns = new List<Tuple<SpriteRenderer,Vector2>>();
         private readonly List<Tuple<SpriteRenderer,int,int,int>> waters = new List<Tuple<SpriteRenderer,int,int,int>>();
         private Dictionary<string,CatalogSprite> terrain;
@@ -127,7 +130,7 @@ namespace BlueMapMigration.Player
             if(!preserveMotion){Motor.StopForTransition();rollPending=false;Aim.DeviceChanged();}
             if (terrainRoot != null) { terrainRoot.SetActive(false); Destroy(terrainRoot); }
             terrainRoot = new GameObject("Retained terrain and passive collision geometry"); terrainRoot.transform.SetParent(transform,false);
-            crowns.Clear(); waters.Clear();routeColliderOwners.Clear(); SourceTileColliders=0; SourceObjectColliders=0;
+            crowns.Clear(); waters.Clear();routeColliderOwners.Clear();residentFootOffsets.Clear();residentMoveVelocities.Clear();dynamicResidentFeet.Clear(); SourceTileColliders=0; SourceObjectColliders=0;
             foreach (var cell in Snapshot.TerrainCells)
             {
                 CatalogSprite sprite = terrain[cell.AtlasX+":"+cell.AtlasY];
@@ -190,7 +193,11 @@ namespace BlueMapMigration.Player
                 Matrix4x4 matrix=FoundationCoordinates.Transform(node.Require("globalTransform"));
                 var owner=new GameObject("Retained object foot: "+parent.Require("script").AsString()); owner.transform.SetParent(terrainRoot.transform,false);
                 owner.transform.localPosition=matrix.GetColumn(3);
-                if(RouteMode)routeColliderOwners[RouteSourcePresentation.Address(parent)]=owner;
+                if(RouteMode)
+                {
+                    string address=RouteSourcePresentation.Address(parent);routeColliderOwners[address]=owner;
+                    residentFootOffsets[address]=FoundationCoordinates.ToGodot(owner.transform.localPosition)-FoundationCoordinates.Vector(parent.Require("globalTransform").Require("origin"));
+                }
                 Vector3 x=matrix.GetColumn(0),y=matrix.GetColumn(1);
                 owner.transform.localRotation=Quaternion.Euler(0,0,Mathf.Atan2(x.y,x.x)*Mathf.Rad2Deg);
                 owner.transform.localScale=new Vector3(x.magnitude,y.magnitude*Mathf.Sign(x.x*y.y-x.y*y.x),1);
@@ -427,7 +434,57 @@ namespace BlueMapMigration.Player
         public void DrawAvatarPreview(Rect bounds,string row){routeAppearance?.DrawPreview(Session.State,bounds,row);}
         public IReadOnlyList<RouteAvatarAppearance.VisualLayer> AvatarLayers(string row,string pose="idle")=>routeAppearance?.Compose(Session.State,row,pose,0,1);
         public void RefreshRouteState() { ApplyEquipmentBonuses();RoutePresentation?.Tick(clock,Session.State);SyncRouteFeet();UpdateAppearance(); }
-        public void SetRouteObjectPosition(string sourceAddress,Vector2 sourcePosition) { RoutePresentation?.SetPosition(sourceAddress,sourcePosition); }
+        public void SetRouteObjectPosition(string sourceAddress,Vector2 sourcePosition)
+        { RoutePresentation?.SetPosition(sourceAddress,sourcePosition);MoveResidentFoot(sourceAddress,sourcePosition);Physics2D.SyncTransforms(); }
+        private void MoveResidentFoot(string address,Vector2 sourcePosition)
+        {if(routeColliderOwners.TryGetValue(address,out var owner)&&owner!=null)owner.transform.localPosition=FoundationCoordinates.ToUnity(sourcePosition+(residentFootOffsets.TryGetValue(address,out var offset)?offset:new Vector2(0,8)));}
+        public void UpsertResident(string address,string kind,string sheet,int roleFrame,Vector2 position,Vector2 velocity,double time,int direction,bool resting)
+        {
+            if(RoutePresentation==null||terrainRoot==null)return;
+            RoutePresentation.UpsertResident(address,kind,sheet,roleFrame,position,velocity,time,direction,resting);
+            if(!routeColliderOwners.TryGetValue(address,out var owner)||owner==null)
+            {
+                owner=new GameObject("Original resident foot "+address);owner.transform.SetParent(terrainRoot.transform,false);routeColliderOwners[address]=owner;residentFootOffsets[address]=new Vector2(0,8);FoundationCollision.Box(owner,new Rect(-7,-5,14,10),1,3);dynamicResidentFeet.Add(address);SourceObjectColliders++;
+            }
+            MoveResidentFoot(address,position);if(RoutePresentation.Objects.TryGetValue(address,out var visualNode))owner.SetActive(visualNode.activeSelf);Physics2D.SyncTransforms();
+        }
+        public void RemoveResident(string address)
+        {
+            RoutePresentation?.RemoveResident(address);
+            if(routeColliderOwners.Remove(address,out var owner)&&owner!=null){owner.SetActive(false);Destroy(owner);}
+            residentFootOffsets.Remove(address);residentMoveVelocities.Remove(address);if(dynamicResidentFeet.Remove(address))SourceObjectColliders=Math.Max(0,SourceObjectColliders-1);Physics2D.SyncTransforms();
+        }
+        public Collider2D ResidentFoot(string address)=>routeColliderOwners.TryGetValue(address,out var owner)&&owner!=null?owner.GetComponent<Collider2D>():null;
+        public Vector2 ResidentVisualPosition(string address)=>RoutePresentation?.ResidentVisualPosition(address)??Vector2.zero;
+        public int ResidentVisualFrame(string address)=>RoutePresentation?.ResidentVisualFrame(address)??0;
+        public void UpdateResidentWork(string address,string kind,string role,int taskIndex,bool pathEmpty,bool evening,bool resting)=>RoutePresentation?.UpdateResidentWork(address,kind,role,taskIndex,pathEmpty,evening,resting);
+        public void UpdateResidentCat(string address,double panic,double calm,bool waiting)=>RoutePresentation?.UpdateResidentCat(address,panic,calm,waiting);
+        public void UpdateResidentObject(string address,string kind,Vector2 position,double time,bool pulling,double progress,Vector2 playerPosition,bool netDone,bool served,bool favoriteBroth)=>RoutePresentation?.UpdateResidentObject(address,kind,position,time,pulling,progress,playerPosition,netDone,served,favoriteBroth);
+        public int ResidentObjectFrame(string address)=>RoutePresentation?.ResidentObjectFrame(address)??-1;
+        public Vector2 ResidentMoveVelocity(string address)=>residentMoveVelocities.TryGetValue(address,out var velocity)?velocity:Vector2.zero;
+        /// <summary>Collision-resolved resident movement, including the player and other residents, excluding only its own foot.</summary>
+        public Vector2 ResolveResidentMove(string address,Vector2 from,Vector2 velocity,double delta)
+        {
+            if(!double.IsFinite(delta)||delta<0||!float.IsFinite(from.x)||!float.IsFinite(from.y)||!float.IsFinite(velocity.x)||!float.IsFinite(velocity.y))throw new ArgumentOutOfRangeException(nameof(delta));
+            Vector2 remaining=FoundationCoordinates.ToUnity(PlayerMotorModel.ScaleSource(velocity,delta)),position=FoundationCoordinates.ToUnity(from),resolvedVelocity=FoundationCoordinates.ToUnity(velocity);
+            var own=ResidentFoot(address);MoveResidentFoot(address,from);Physics2D.SyncTransforms();
+            for(int slide=0;slide<4&&remaining.sqrMagnitude>1e-12f;slide++)
+            {
+                float distance=remaining.magnitude;var center=position+FoundationCoordinates.ToUnity(new Vector2(0,8));
+                var contacts=Physics2D.BoxCastAll(center,new Vector2(14f/32,10f/32),0,remaining/distance,distance+.08f/32,~0);
+                float nearest=distance;Vector2 normal=Vector2.zero;
+                foreach(var contact in contacts)
+                {
+                    var hit=contact.collider;if(hit==null||hit==own||hit.isTrigger||!hit.gameObject.activeInHierarchy)continue;
+                    var bits=hit.GetComponent<FoundationCollisionBits>();if(bits==null||!FoundationCollision.GodotCanPair(1,3,bits.sourceLayer,bits.sourceMask)||Vector2.Dot(remaining,contact.normal)>=0)continue;
+                    float travel=Mathf.Max(0,contact.distance-.08f/32);if(travel<=nearest){nearest=travel;normal=contact.normal;}
+                }
+                Vector2 advance=remaining/distance*nearest;position+=advance;MoveResidentFoot(address,FoundationCoordinates.ToGodot(position));Physics2D.SyncTransforms();
+                if(normal==Vector2.zero){remaining=Vector2.zero;break;}
+                remaining-=advance;remaining-=normal*Mathf.Min(0,Vector2.Dot(remaining,normal));resolvedVelocity-=normal*Mathf.Min(0,Vector2.Dot(resolvedVelocity,normal));
+            }
+            residentMoveVelocities[address]=FoundationCoordinates.ToGodot(resolvedVelocity);return FoundationCoordinates.ToGodot(position);
+        }
         public void SetCombatSourceVisible(string sourceAddress,bool visible)
         {
             if(RoutePresentation==null)return;

@@ -29,8 +29,8 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.11.0-phase15"
-PHASE = 15
+PREVIEW_VERSION = "0.12.0-phase16"
+PHASE = 16
 
 from verify_unity_package import (PackageError, package_player, validate_identity, verify_package,
                                   validate_foundation, FOUNDATION_CHECKS, validate_player, PLAYER_CHECKS,
@@ -38,7 +38,7 @@ from verify_unity_package import (PackageError, package_player, validate_identit
                                   validate_world_access, WORLD_ACCESS_CHECKS,
                                   validate_inventory, INVENTORY_CHECKS,
                                   validate_progression, PROGRESSION_CHECKS, validate_combat, COMBAT_CHECKS,
-                                  validate_story, STORY_CHECKS)
+                                  validate_story, STORY_CHECKS, validate_residents, RESIDENTS_CHECKS)
 
 
 class ProbeError(RuntimeError):
@@ -462,6 +462,8 @@ def main() -> None:
             "Required combat runtime check is missing")
     require(STORY_CHECKS <= {c["name"] for c in checks},
             "Required story runtime check is missing")
+    require(RESIDENTS_CHECKS <= {c["name"] for c in checks},
+            "Required residents runtime check is missing")
     require(type(result.get("frames")) is int and result["frames"] >= 60, "Runtime loop did not advance")
     require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
             "Unexpected runtime capture method")
@@ -496,7 +498,9 @@ def main() -> None:
                  "screenshot-combat-melee.png", "screenshot-combat-bow.png",
                  "screenshot-combat-monsters.png", "screenshot-combat-wildlife.png",
                  "screenshot-story-dialogue.png", "screenshot-story-journal.png",
-                 "screenshot-story-choice.png", "screenshot-story-consequence.png"):
+                 "screenshot-story-choice.png", "screenshot-story-consequence.png",
+                 "screenshot-residents-roaming.png", "screenshot-residents-routines.png",
+                 "screenshot-residents-memory.png", "screenshot-residents-supper.png"):
         captures[name] = validate_png(runtime / name)
     foundation = read_json(runtime / "foundation-result.json")
     validate_foundation(foundation, identity)
@@ -516,9 +520,11 @@ def main() -> None:
     validate_combat(combat, identity)
     story = read_json(runtime / "story-result.json")
     validate_story(story, identity)
+    residents = read_json(runtime / "residents-result.json")
+    validate_residents(residents, identity)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
     package, file_count = package_player(player, output, identity, result, foundation, player_checks,
-                                       persistence, route, world_access, inventory, progression, combat, story)
+                                       persistence, route, world_access, inventory, progression, combat, story, residents)
     receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
                "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
                "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
@@ -536,6 +542,7 @@ def main() -> None:
                "progression": progression,
                "combat": combat,
                "story": story,
+               "residents": residents,
                "unityPackages": report["unityPackages"], "runtimeDllInputs": report["runtimeDllInputs"],
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,

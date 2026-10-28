@@ -106,14 +106,14 @@ namespace BlueMapMigration.Route
         public long Room(string id)=>Inventory.Room(id);
         private void Give(string id,long quantity)=>Inventory.Give(id,quantity);
         private void RefreshQuests()=>Story.RefreshQuests();
-        public bool Talk(string npcId)
+        public bool Talk(string npcId,bool catLoud=false)
         {
             if(busy||State.InputLocked||DialogueOpen)return false;busy=true;
             try
             {
                 if(npcId=="muis_bos"&&State.Flag("cat_found")){LastMessage="Muis is al op weg naar Pim.";return false;}
-                bool result=Story.Talk(npcId,new StoryNpcContext{CatCalm=CatCalm,CatPanic=CatPanic});
-                if(npcId=="muis_bos"&&CatCalm<2&&CatPanic<=0)CatWaiting=true;
+                bool result=Story.Talk(npcId,new StoryNpcContext{CatCalm=CatCalm,CatPanic=CatPanic,CatLoud=catLoud});
+                if(npcId=="muis_bos"&&CatCalm<2&&CatPanic<=0&&!catLoud)CatWaiting=true;
                 if(Story.LastMessage!="")LastMessage=Story.LastMessage;return result;
             }
             finally{busy=false;Saved();}
@@ -157,6 +157,8 @@ namespace BlueMapMigration.Route
             busy=true;try{return Story.Choose(index);}finally{busy=false;Saved();}
         }
         public void ResetCat(){CatCalm=0;CatPanic=0;CatWaiting=false;}
+        internal void SynchronizeResidentCat(double calm,double panic,bool waiting)
+        {CatCalm=calm;CatPanic=panic;CatWaiting=waiting;}
         public void TickCat(double delta,double distance,double speed,bool loud)
         {
             if(delta<0||double.IsNaN(delta)||double.IsInfinity(delta)||distance<0||speed<0||double.IsNaN(distance)||double.IsInfinity(distance)||double.IsNaN(speed)||double.IsInfinity(speed))throw new ArgumentOutOfRangeException(nameof(delta));

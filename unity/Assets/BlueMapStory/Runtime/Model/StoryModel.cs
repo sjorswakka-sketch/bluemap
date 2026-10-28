@@ -92,12 +92,15 @@ namespace BlueMapMigration.Story
   public bool RunActions(FoundationValue actions)=>Operation(()=>{RunTransaction(actions);return true;});
   public bool RunTrigger(FoundationValue conditions,string once,FoundationValue actions,bool inside=true)=>Operation(()=>{if(State.InputLocked||!inside||once!=""&&State.Flag(once)||!CheckAll(conditions))return false;var sequence=new List<FoundationValue>();if(once!="")sequence.Add(A(S("set_flag"),S(once)));sequence.AddRange(actions.Items);RunTransaction(FoundationValue.Array(sequence));return true;});
   void RunTransaction(FoundationValue actions)
+  { RunSourceTransaction(stage=>{foreach(var action in actions.Items)stage.Execute(action);}); }
+  void RunSourceTransaction(Action<StoryModel> mutate)
   {
-   var stage=new StoryModel(repository,new FoundationGameState(State.Snapshot())){staging=true,ArenaActive=ArenaActive,Translator=Translator,PendingSupperStitch=PendingSupperStitch};stage.Inventory.Language=Inventory.Language;stage.Inventory.Stamina=Inventory.Stamina;stage.Inventory.StaminaCapacity=Inventory.StaminaCapacity;
+   var stage=new StoryModel(repository,new FoundationGameState(State.Snapshot())){staging=true,ArenaActive=ArenaActive,Translator=Translator,PendingSupperStitch=PendingSupperStitch,ContextActionResolver=ContextActionResolver};stage.Inventory.Language=Inventory.Language;stage.Inventory.Stamina=Inventory.Stamina;stage.Inventory.StaminaCapacity=Inventory.StaminaCapacity;
    stage.Dialogue=Dialogue;stage.dialogueActionsDone=dialogueActionsDone;
-   foreach(var action in actions.Items)stage.Execute(action);
+   mutate(stage);
    var updates=new Dictionary<string,FoundationValue>();foreach(var row in stage.State.Fields)if(!State.Fields.TryGetValue(row.Key,out var old)||!ReferenceEquals(old,row.Value))updates[row.Key]=row.Value;
    // All fields, rewards and quest completion precede synchronous listeners; unknown profile fields remain untouched.
+   PendingSupperStitch=stage.PendingSupperStitch;
    State.CommitFields(updates);Inventory.Stamina=stage.Inventory.Stamina;Inventory.StaminaCapacity=stage.Inventory.StaminaCapacity;
    foreach(var effect in stage.effects){effects.Add(effect);Deliver(effect);}Changed?.Invoke();
   }
@@ -112,6 +115,7 @@ namespace BlueMapMigration.Story
   void CoinsDirect(long amount){Inventory.AddCoins(amount);Emit("items_changed");}
   void Execute(FoundationValue action)
   {
+   if(ContextActionResolver!=null&&ContextActionResolver(this,action))return;
    var a=action.Items;string name=a[0].AsString(),id=a.Count>1&&a[1].Kind=="string"?a[1].AsString():"";long amount=a.Count>2?N(a[2]):1;
    switch(name){case "start_quest":StartDirect(id);break;case "quest_step":StepDirect(id,N(a[2]));break;case "finish_quest":FinishDirect(id);break;case "set_flag":SetFlagDirect(id,true);break;case "clear_flag":SetFlagDirect(id,false);break;case "give":GiveDirect(id,amount);break;case "take":TakeDirect(id,amount);break;case "coins":CoinsDirect(N(a[1]));break;
     case "heal":State.Hp=State.MaxHp;Emit("hp_changed");Inventory.StaminaCapacity=100+Progression.Bonus("stamina_max");Inventory.Stamina=Inventory.StaminaCapacity;Emit("full_rest");break;

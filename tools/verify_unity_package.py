@@ -26,7 +26,8 @@ EDITOR_REVISION = "de8167e7440c"
 PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
-                    12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14", 15: "0.11.0-phase15"}
+                    12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14", 15: "0.11.0-phase15",
+                    16: "0.12.0-phase16"}
 MAX_FILES = 10000
 MAX_FILE_BYTES = 512 * 1024 * 1024
 MAX_TOTAL_BYTES = 1024 * 1024 * 1024
@@ -318,6 +319,22 @@ STORY_DETAIL_CHECKS = {
     'story_ui_translation_before_format',
 }
 STORY_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+RESIDENTS_CHECKS = {"residents_runtime_verified", "automated_audio_silent"}
+RESIDENTS_DETAIL_CHECKS = {
+    "residents_motion_source_equivalence", "residents_motion_boundaries_and_pause",
+    "residents_social_source_equivalence", "residents_social_ordered_actions_and_unknown_safety",
+    "residents_native_shared_state_and_profile", "residents_native_village_motion_targets",
+    "residents_native_moving_feet_no_old_anchor", "residents_native_pause_and_dialogue_freeze",
+    "residents_native_same_map_refresh_retains_actors", "residents_native_daytime_route_change",
+    "residents_native_dynamic_memory_spawn", "residents_native_memory_motion_and_player_occupancy",
+    "residents_native_memory_interaction_and_book", "residents_native_basket_tools_and_interruption",
+    "residents_native_basket_reward_once", "residents_native_net_ordered_actions_once",
+    "residents_native_kitchen_shared_state", "residents_native_kitchen_keyboard_controller_mouse",
+    "residents_native_kitchen_nl_en_responsive_layout", "residents_native_supper_guests_and_share",
+    "residents_native_reload_no_duplicate_rewards", "residents_native_four_rendered_captures",
+    "residents_no_personal_saves_used",
+}
+RESIDENTS_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -340,7 +357,7 @@ PLAYER_ROOTS = {
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
                   "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json",
-                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -510,6 +527,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 15:
         require(STORY_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 15 story runtime proof is incomplete")
+    if identity["phase"] >= 16:
+        require(RESIDENTS_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 16 residents runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -724,6 +744,30 @@ def validate_story(result: dict, identity: dict) -> None:
     require(STORY_DETAIL_CHECKS <= names, "Required story checks are missing")
 
 
+def validate_residents(result: dict, identity: dict) -> None:
+    """Bind original routines, roaming and social consequences to this player."""
+    require(bool(RESIDENTS_DETAIL_CHECKS), "Resident callback contract is not frozen")
+    require(isinstance(result, dict) and set(result) == RESIDENTS_FIELDS,
+            "Phase 16 residents proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported residents proof schema")
+    require(result.get("identity") == identity, "Residents embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Residents proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Residents detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed residents detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid residents detail check name")
+        require(name not in names and check["passed"] is True,
+                "Residents detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(RESIDENTS_DETAIL_CHECKS <= names, "Required residents checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -780,6 +824,7 @@ def _instructions(identity: dict) -> bytes:
         13: "Migratiefase 13: oorspronkelijke ervaring, statistieken, uitrusting, upgrades en uiterlijk; nog niet de volledige overgezette game.\n",
         14: "Migratiefase 14: oorspronkelijke gevechten, monsters, wilde dieren, projectielen en beloningen; nog niet de volledige overgezette game.\n",
         15: "Migratiefase 15: oorspronkelijke gesprekken, quests, voorwaarden, beloningen en verhaalgevolgen; nog niet de volledige overgezette game.\n",
+        16: "Migratiefase 16: bewegende bewoners, dagroutines, wereldherinneringen en de gezamenlijke maaltijd; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -833,6 +878,10 @@ def _instructions(identity: dict) -> bytes:
             "De route verbindt dorp, woning, bosrand en bos via de oorspronkelijke doorgangen.\n",
             "Alle 37 bestaande gebieden en interieurs gebruiken hun oorspronkelijke doorgangen en questsloten.\n"
             "Bewaren en laden behouden de bezochte gebieden en je voortgang in de afzonderlijke speelkopie.\n")
+    if identity["phase"] >= 16:
+        controls += ("Bewoners volgen hun oorspronkelijke routes en reageren op herstelde plekken.\n"
+                     "Bij Mila's fornuis kies je een gerecht en bereid je het in drie stappen; daarna kun je delen aan tafel.\n"
+                     "De keuken ondersteunt toetsenbord, muis en controller. Automatische tests starten zonder geluid.\n")
     return (
         "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
         description[identity["phase"]] +
@@ -855,6 +904,7 @@ def _instructions(identity: dict) -> bytes:
         ("PROGRESSION-CHECKS.json bevat de controles van ervaring, uitrusting, upgrades en uiterlijk.\n" if identity["phase"] >= 13 else "") +
         ("COMBAT-CHECKS.json bevat de controles van gevechten, monsters, wilde dieren en buit.\n" if identity["phase"] >= 14 else "") +
         ("STORY-CHECKS.json bevat de controles van gesprekken, quests, keuzes en blijvende gevolgen.\n" if identity["phase"] >= 15 else "") +
+        ("RESIDENTS-CHECKS.json bevat de controles van bewonersroutines, rondlopen, herinneringen en avondgasten.\n" if identity["phase"] >= 16 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n"
     ).encode("utf-8")
 
@@ -868,7 +918,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    inventory_result: dict | None = None,
                    progression_result: dict | None = None,
                    combat_result: dict | None = None,
-                   story_result: dict | None = None) -> tuple[Path, int]:
+                   story_result: dict | None = None,
+                   residents_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -908,6 +959,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_story(story_result, identity)
     else:
         require(story_result is None, "Historical preview cannot contain phase 15 story proof")
+    if identity["phase"] >= 16:
+        validate_residents(residents_result, identity)
+    else:
+        require(residents_result is None, "Historical preview cannot contain phase 16 residents proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -937,6 +992,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["COMBAT-CHECKS.json"] = _json_bytes(combat_result)
     if story_result is not None:
         payload["STORY-CHECKS.json"] = _json_bytes(story_result)
+    if residents_result is not None:
+        payload["RESIDENTS-CHECKS.json"] = _json_bytes(residents_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -1130,6 +1187,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("STORY-CHECKS.json" not in payload and "story" not in receipt,
                 "Historical preview contains unsupported story proof")
+    if identity["phase"] >= 16:
+        require("RESIDENTS-CHECKS.json" in payload, "Phase 16 packaged residents proof is missing")
+        residents = _json(payload["RESIDENTS-CHECKS.json"], "RESIDENTS-CHECKS.json")
+        validate_residents(residents, identity)
+        require(receipt.get("residents") == residents, "Receipt residents proof differs from package")
+    else:
+        require("RESIDENTS-CHECKS.json" not in payload and "residents" not in receipt,
+                "Historical preview contains unsupported residents proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")
