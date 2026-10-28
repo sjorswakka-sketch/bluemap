@@ -1,6 +1,6 @@
 # Bluemap Quest
 
-**Unity-migratie:** fases 1 tot en met 15 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), [gesprekken, quests en gevolgen in Unity](migration/phase-15/README.md) en de [actuele downloads](migration/DOWNLOADS.md). Het volgende go start fase 16: levendige bewoners. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
+**Unity-migratie:** fases 1 tot en met 16 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), [levendige bewoners in Unity](migration/phase-16/README.md) en de [actuele downloads](migration/DOWNLOADS.md). Het volgende go start fase 17: beroepen, crafting en handel. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
 
 0.34: een wereldatlas met opgeslagen gebiedsbezoeken en nieuwe gedetailleerde pixelart voor de speler en NPC’s; zie [wijzigingen](WORLD_ATLAS_CHARACTERS_034.md).
 

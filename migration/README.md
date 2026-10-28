@@ -1,6 +1,8 @@
-# Unity-migratie — fase 15 voltooid
+# Unity-migratie — fase 16 voltooid
 
-Het volgende **go** start fase 16: levendige bewoners; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 17: beroepen, crafting en handel; de volledige game is nog niet overgezet.
+
+[Fase 16: levendige bewoners](phase-16/README.md) — oorspronkelijke routines, begrensd rondlopen, ontmoetingen, wereldherinneringen en de gezamenlijke maaltijd; 42 algemene Windows-controles en 23 bewonerscontroles.
 
 [Fase 15: gesprekken, quests en gevolgen](phase-15/README.md) — oorspronkelijke dialogen, voorwaarden, keuzes, questvoortgang en blijvende gevolgen; 40 algemene Windows-controles en 32 verhaalcontroles.
 

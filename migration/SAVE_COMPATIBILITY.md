@@ -2,7 +2,7 @@
 
 Dit document bewaart de fase-1-broninventarisatie van **Bluemap Quest 0.34.0-preview**, commit `a8a988be27835dec979d2523a3a85a34385eac54`. De brontabellen en toenmalige acceptatie-eisen hieronder blijven de historische referentie; ze beschrijven geen latere wijzigingen aan de oorspronkelijke Godot-game.
 
-**Actuele migratiestatus:** veilige import en afzonderlijke Unity-profielen zijn in [fase 9](phase-09/README.md) gebouwd en bewezen; de huidige [fase 15](phase-15/README.md) behoudt alle 34 opslagvelden, onbekende toekomstige velden, originele bronbytes, uitrusting/uiterlijk, unieke beloningen en verhaalvoortgang. Alle tests gebruiken eigen synthetische profielen. Persoonlijke bestanden worden alleen na expliciete keuze op een veilige kopie geïmporteerd. Omgekeerde export van nieuw gemaakte Unity-voortgang naar Godot is nog niet bewezen en blijft fase 25.
+**Actuele migratiestatus:** veilige import en afzonderlijke Unity-profielen zijn in [fase 9](phase-09/README.md) gebouwd en bewezen; de huidige [fase 16](phase-16/README.md) behoudt alle 34 opslagvelden, onbekende toekomstige velden, originele bronbytes, uitrusting/uiterlijk, unieke beloningen en verhaalvoortgang. Alle tests gebruiken eigen synthetische profielen. Persoonlijke bestanden worden alleen na expliciete keuze op een veilige kopie geïmporteerd. Omgekeerde export van nieuw gemaakte Unity-voortgang naar Godot is nog niet bewezen en blijft fase 25.
 
 De machineleesbare tegenhanger is [reference/save-contract.json](reference/save-contract.json). Daarin staan alle 34 hoofdvelden, geneste structuren, bronnen, migraties, ID-regels en controleprofielen. De bronverwijzingen zijn relatief aan de repository en horen bij bovenstaande commit.
 
@@ -213,3 +213,5 @@ Voor terugkeer zijn er twee afzonderlijke garanties: de ongewijzigde Godot-relea
 ## Uitgevoerde fase-1-controle
 
 Alleen statische broncontrole: de hoofdveldset is automatisch met `save_game()` vergeleken en bevat exact 34 velden, zonder ontbrekende of extra; het contract noemt de 22 configureerbare actie-IDs en alle vijf bestanden. JSON moet gewoon parseerbaar blijven. Er zijn voor dit register geen echte saves gebruikt, geen Godot-/Unity-processen gestart en geen runtimebestanden gewijzigd. Dit beschrijft uitsluitend wat in fase 1 was uitgevoerd. Het latere import-/profielbewijs staat bij fase 9 en de voortgangsuitbreiding bij fase 13; de rondreis via omgekeerde export blijft fase 25.
+
+Fase 16 bewaart bovendien bewonersontmoetingen, wereldherinneringen en de maaltijdvoortgang zonder dubbele beloningen na laden. Automatische proeven gebruiken uitsluitend eigen opslag en starten zonder hoorbaar geluid.

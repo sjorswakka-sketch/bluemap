@@ -71,3 +71,7 @@ De oorspronkelijke wapens, aanvallen, projectielen, vijand- en dierengedragingen
 ## Fase 15 — gesprekken, quests en gevolgen
 
 De oorspronkelijke dialogen, NPC-regels, questvoorwaarden, keuzes en gevolgen zijn native uitgevoerd en met 1265 originele brongevallen vergeleken. Exacte getallen, woordenboek- en signaalvolgorde en alle 34 opslagvelden blijven behouden. Dezelfde 37 kaarten, ruime plaatsingen en alle eerdere controles blijven bestaan. Zie [fase 15](phase-15/README.md) en [de bewezen Windows-release](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase15-preview-3a961f2a).
+
+## Fase 16 — levendige bewoners
+
+De oorspronkelijke routines, begrensde bewegingen, acht herinneringsrollen, dorpsactiviteiten en maaltijd zijn native getest en gebonden aan 611 bewegings- en 239 sociale brongevallen. Exacte getallen, geordende gevolgen, alle opslagvelden en de rustige wereldindeling blijven behouden. Zie [fase 16](phase-16/README.md) en [de bewezen Windows-release](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase16-preview-27000405).
