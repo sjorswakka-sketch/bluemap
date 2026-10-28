@@ -319,13 +319,13 @@ namespace BlueMapMigration.Route
                 sheet="ls_stove";cell=new Vector2Int(24,24);center=new Vector2(0,-4);r.Frame=(int)(time*3)%2;
                 for(int i=0;i<3;i++)
                 {
-                    double rise=(time*9+i*6)%22;var steam=r.Steam[i];steam.enabled=true;catalog.Apply(steam,ResidentEllipse(1.7f,1.7f));steam.color=new Color(.95f,.89f,.73f,(float)((1-rise/22)*.4));steam.transform.localPosition=FoundationCoordinates.ToUnity(new Vector2((float)(-6+i*6+Math.Sin(time*2+i)*2),(float)(-24-rise)));steam.transform.localScale=Vector3.one;steam.transform.localRotation=Quaternion.identity;
+                    double rise=(time*9+i*6)%22;var steam=r.Steam[i];steam.enabled=true;steam.sprite=ResidentEllipse(1.7f,1.7f);steam.sharedMaterial=catalog.straightMaterial;steam.color=new Color(.95f,.89f,.73f,(float)((1-rise/22)*.4));steam.transform.localPosition=FoundationCoordinates.ToUnity(new Vector2((float)(-6+i*6+Math.Sin(time*2+i)*2),(float)(-24-rise)));steam.transform.localScale=Vector3.one;steam.transform.localRotation=Quaternion.identity;
                 }
             }
             else if(kind=="basket")
             {
                 sheet="ls_items";cell=new Vector2Int(16,16);center=new Vector2((float)(Math.Sin(time)*3),(float)(Math.Sin(time*2)*2));r.Frame=0;
-                r.Water.enabled=true;catalog.Apply(r.Water,ResidentEllipse(17,5));r.Water.color=new Color(.8f,.94f,1,.5f);r.Water.transform.localPosition=FoundationCoordinates.ToUnity(center+new Vector2(0,9));r.Water.transform.localScale=Vector3.one;r.Water.transform.localRotation=Quaternion.identity;
+                r.Water.enabled=true;r.Water.sprite=ResidentEllipse(17,5);r.Water.sharedMaterial=catalog.straightMaterial;r.Water.color=new Color(.8f,.94f,1,.5f);r.Water.transform.localPosition=FoundationCoordinates.ToUnity(center+new Vector2(0,9));r.Water.transform.localScale=Vector3.one;r.Water.transform.localRotation=Quaternion.identity;
                 if(pulling)
                 {ResidentLine(r.Line,playerPosition-position+new Vector2(0,-10),center,1,new Color(230/255f,215/255f,173/255f));ResidentRectangle(r.Progress,new Rect(-19,-27,(float)(38*Math.Min(progress/1.8,1)),3),new Color(195/255f,227/255f,193/255f));}
             }
@@ -345,7 +345,7 @@ namespace BlueMapMigration.Route
                 for(int i=0;i<r.Effects.Length;i++)r.Effects[i]=ResidentPart(root.transform,"Original resident work particle "+i);
                 if(sourceNodes.TryGetValue(address,out var source)&&source.Require("fields").TryGet("data",out var data))
                 {if(data.TryGet("scale",out var scale))r.Scale=(float)scale.AsDouble();if(data.TryGet("ghost",out var ghost))r.Ghost=ghost.AsBool();}
-                catalog.Apply(r.Shadow,ShadowSprite());r.Shadow.transform.localPosition=FoundationCoordinates.ToUnity(new Vector2(0,14));residents.Add(address,r);if(!this.moving.Any(m=>m.Address==address&&m.Kind=="npc"))NativeActors++;
+                r.Shadow.sprite=ShadowSprite();r.Shadow.sharedMaterial=catalog.straightMaterial;r.Shadow.transform.localPosition=FoundationCoordinates.ToUnity(new Vector2(0,14));residents.Add(address,r);if(!this.moving.Any(m=>m.Address==address&&m.Kind=="npc"))NativeActors++;
             }
             r.Position=position;r.Sheet=sheet;r.Velocity=velocity;r.Time=time;r.Direction=direction;r.RoleFrame=roleFrame;r.Root.transform.localPosition=FoundationCoordinates.ToUnity(position);
             bool moving=BlueMapMigration.Residents.ResidentMotionModel.IsMoving(velocity);bool memory=kind=="memory"||kind=="memory_actor";
