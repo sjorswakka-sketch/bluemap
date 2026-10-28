@@ -79,6 +79,15 @@ def validate_ordered_inputs(document):
     return True
 
 
+def isolated_environment(task, inherited=None):
+    task = Path(task).resolve()
+    result = dict(os.environ if inherited is None else inherited)
+    result.update(BLUEMAP_LANG='nl', APPDATA=str(task / 'appdata'), LOCALAPPDATA=str(task / 'localappdata'),
+                  XDG_DATA_HOME=str(task / 'xdg-data'), XDG_CONFIG_HOME=str(task / 'xdg-config'),
+                  XDG_CACHE_HOME=str(task / 'xdg-cache'))
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('godot')
@@ -92,8 +101,9 @@ def main():
     token = 'Bluemap-Codex-Tests-' + uuid.uuid4().hex
     before = fingerprint(ROOT)
     user_dir = None
-    isolated_env = dict(os.environ, BLUEMAP_LANG='nl', APPDATA=str(task / 'appdata'), LOCALAPPDATA=str(task / 'localappdata'))
+    isolated_env = isolated_environment(task)
     (task / 'appdata').mkdir(); (task / 'localappdata').mkdir()
+    (task / 'xdg-data').mkdir(); (task / 'xdg-config').mkdir(); (task / 'xdg-cache').mkdir()
     try:
         no_symlink(args.evidence_dir)
         no_symlink(args.output)

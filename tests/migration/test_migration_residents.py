@@ -129,6 +129,37 @@ class ResidentExactNumericTests(unittest.TestCase):
                 residents.case_ids(rows)
 
 
+class ResidentRecorderIsolationTests(unittest.TestCase):
+    HOMES = ('APPDATA', 'LOCALAPPDATA', 'XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME')
+
+    def inherited(self):
+        return {**{key: '/personal-placeholder/' + key.lower() for key in self.HOMES},
+                'BLUEMAP_LANG': 'en', 'UNRELATED_SETTING': 'preserve'}
+
+    def test_every_windows_and_linux_home_stays_in_the_exact_test_task(self):
+        task = (ROOT.parent / 'resident-isolation-first').resolve()
+        environment = social.isolated_environment(task, self.inherited())
+        for key in self.HOMES:
+            with self.subTest(home=key):
+                self.assertTrue(Path(environment[key]).is_absolute())
+                self.assertTrue(Path(environment[key]).resolve().is_relative_to(task))
+        self.assertEqual(environment['BLUEMAP_LANG'], 'nl')
+
+    def test_isolation_never_changes_the_callers_environment(self):
+        inherited = self.inherited(); before = dict(inherited)
+        environment = social.isolated_environment(ROOT.parent / 'resident-isolation-first', inherited)
+        self.assertEqual(inherited, before)
+        self.assertIsNot(environment, inherited)
+        self.assertEqual(environment['UNRELATED_SETTING'], 'preserve')
+        environment['UNRELATED_SETTING'] = 'changed-only-in-test-copy'
+        self.assertEqual(inherited['UNRELATED_SETTING'], 'preserve')
+
+    def test_two_uuid_tasks_cannot_share_save_settings_or_cache_locations(self):
+        first = social.isolated_environment(ROOT.parent / 'resident-isolation-first', self.inherited())
+        second = social.isolated_environment(ROOT.parent / 'resident-isolation-second', self.inherited())
+        self.assertTrue({first[key] for key in self.HOMES}.isdisjoint({second[key] for key in self.HOMES}))
+
+
 class OriginalResidentOracleTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

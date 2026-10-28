@@ -22870,7 +22870,7 @@
     },
     {
       "path": "tools/record_migration_resident_social.py",
-      "sha256": "2658f400206b0b9f297391a5e36931a222313e36ed520672bb8fc91ba67428f7"
+      "sha256": "5818ca5ca5a672110b0f43171dd5fff89ebf666f8a72fac071b2a60cb5cebf67"
     }
   ],
   "requiredNativeChecks": [

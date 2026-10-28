@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "phase": 15,
-  "previewVersion": "0.11.0-phase15",
-  "releaseTag": "unity-phase15-preview-3a961f2a",
-  "releaseUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase15-preview-3a961f2a",
-  "sourceCommit": "3a961f2a43113b61e8e0679fb0f700f7f797e664",
-  "inputFingerprint": "a055c2e2841732a4b8d7e770e97b3ed69322bd3d71150d7980fd9a9315c6b3e4",
-  "packageName": "BlueMapUnityPreview-phase-15-3a961f2a-Windows-x64.zip",
-  "packageUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase15-preview-3a961f2a/BlueMapUnityPreview-phase-15-3a961f2a-Windows-x64.zip",
-  "packageSha256": "666bd59decf2f52131dd2aeb342b1a346218d4464b9659a4f1cf5b74e8d9b994",
-  "packageBytes": 73936440,
-  "receiptUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase15-preview-3a961f2a/receipt.json",
-  "receiptSha256": "0a911bba6fa1cd1de31075e80c5516789c6988556e6a056af4949e9fc714abd5"
+  "phase": 16,
+  "previewVersion": "0.12.0-phase16",
+  "releaseTag": "unity-phase16-preview-27000405",
+  "releaseUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase16-preview-27000405",
+  "sourceCommit": "27000405bb724066436b1757d5b7702de85c29c1",
+  "inputFingerprint": "d8f66825ae2d9e4a87d635e192c8cc71d74a536cba8fdaa3ac890b66ab63324f",
+  "packageName": "BlueMapUnityPreview-phase-16-27000405-Windows-x64.zip",
+  "packageUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase16-preview-27000405/BlueMapUnityPreview-phase-16-27000405-Windows-x64.zip",
+  "packageSha256": "b01e2bc937b9f214e196671698979523cb7cd8622340507be179ab4f7ac31324",
+  "packageBytes": 74947154,
+  "receiptUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase16-preview-27000405/receipt.json",
+  "receiptSha256": "1ef59a96070db2ad835dbba3e35261d6d348e47f41c85846018ef83a897a11e1"
 }
