@@ -1,6 +1,6 @@
 # BlueMap Quest — migratie naar Unity
 
-Status: fases 1 tot en met 16 afgerond; fase 17 is in uitvoering. De spelregels van fase 17 zijn bewezen gelijk aan de bron; de Windows-build, de controles in de speler en de download wachten op een actieve Unity-licentie.
+Status: fases 1 tot en met 17 afgerond; fase 18 wacht op het volgende go.
 
 Eén volgend **go** start één volledige volgende fase, inclusief het noodzakelijke ontwerp, implementatie, eigen hulpmiddelen, controles, bewijs en publicatie op het migratiespoor; daarna volgt een korte rapportage en is het volgende go voor de volgende fase. Een mislukte controle wordt binnen de lopende fase opgelost en telt niet als een afgeronde fase.
 

@@ -1,8 +1,8 @@
-# Unity-migratie — fase 16 voltooid, fase 17 in uitvoering
+# Unity-migratie — fase 17 voltooid
 
-Fase 17 (beroepen, crafting en handel) is in uitvoering en nog niet afgerond: de spelregels zijn overgezet en bewezen gelijk aan de Godot-bron, maar de Windows-build en de controles in de echte speler wachten op een actieve Unity-licentie op deze werkplek. De volledige game is nog niet overgezet.
+Het volgende **go** start fase 18: persoonlijk huis en erf; de volledige game is nog niet overgezet.
 
-[Fase 17: beroepen, crafting en handel — in uitvoering](phase-17/README.md) — zeven beroepen, 95 grondstofsoorten, 52 recepten, beide winkels en het vissen; 1.306 brongevallen met 5.420 handelingen exact gelijk in het Unity-model. Nog geen Windows-build, spelercontroles of download.
+[Fase 17: beroepen, crafting en handel](phase-17/README.md) — zeven beroepen, 95 grondstofsoorten, 52 recepten, beide winkels en het vissen; 43 algemene Windows-controles en 18 beroepscontroles.
 
 [Fase 16: levendige bewoners](phase-16/README.md) — oorspronkelijke routines, begrensd rondlopen, ontmoetingen, wereldherinneringen en de gezamenlijke maaltijd; 42 algemene Windows-controles en 23 bewonerscontroles.
 

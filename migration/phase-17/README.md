@@ -1,42 +1,21 @@
-# Fase 17 — beroepen, crafting en handel (in uitvoering)
+# Fase 17 — beroepen, crafting en handel
 
-**Status: nog niet afgerond.** De spelregels zijn overgezet en bewezen gelijk aan de Godot-bron. De Windows-build, de controles in de echte Unity-speler, de beelden en de download ontbreken nog: op 27 november 2026 startte de Unity-editor op deze werkplek niet meer omdat er geen actieve Unity-licentie werd gevonden. Fase 17 telt pas als afgerond wanneer die stappen zijn geslaagd.
+De zeven beroepen met ervaring en niveaus, alle 95 grondstofsoorten met hun gereedschap, niveau-eis, verzameltijd en hersteltijd, alle 52 recepten met werkplek, ontgrendeling en materiaalgebruik uit tas en nabije kist, het materiaaldoel en de werktekeningen, de bronvermeldingen in het veldboek, beide winkels met hun 33 regels en het vissen in het Zilvermeer zijn overgezet. **C** opent het beroepenboek, verzamelen volgt de oorspronkelijke tijd en regels, winkels openen vanuit het gesprek en een visplek start het visspel. De rustige wereldindeling en alle 37 bestaande gebieden blijven behouden.
 
-## Wat is overgezet
+De oorspronkelijke Godot 4.4.1-methoden zijn uitgevoerd in twee verse stille Windows-processen: 1.306 gevallen met 5.420 handelingen en 43.637 exacte Float64-getuigen. Elk recept, elke grondstofsoort en elke winkelregel heeft een eigen brongeval. Het Unity-model geeft voor ieder geval exact hetzelfde resultaat, dezelfde meldingen en dezelfde 34 opslagvelden, zonder tolerantie. Toevalswaarden bij het vissen zijn een expliciete invoergrens: de opname legt vast welke waarden de Godot-generator leverde en het model verbruikt precies die waarden; deze port claimt geen identieke randomgenerator.
 
-De zeven beroepen met ervaring en niveaus, alle 95 grondstofsoorten met hun gereedschap, niveau-eis, verzameltijd en hersteltijd, alle 52 recepten met werkplek, ontgrendeling, materiaalgebruik uit tas en nabije kist, het materiaaldoel en de werktekeningen, de bronvermeldingen in het veldboek, beide winkels met hun 33 regels, eenmalige aankopen en weigeringen, en het vissen in het Zilvermeer: beet, haspel, vangstregistratie, de Gouden Karper en de visprijzen.
+Normaal spelen laadt een kleine catalogus van 157 kB; de volledige bronopname wordt uitsluitend voor het equivalentiebewijs geladen. Onbekende toekomstige opslagvelden blijven behouden. Persoonlijke saves zijn niet gebruikt.
 
-In de speelbare wereld opent **C** het beroepenboek, loopt verzamelen via de oorspronkelijke tijd en regels, openen winkels vanuit het gesprek, zijn werktekeningen te lezen en start een visplek het visspel. De tijdelijke melding dat winkels later volgen is vervangen door de echte winkel.
+De echte Windows-speler slaagt voor 43 algemene, 119 basis-, 69 speler-, 115 opslag-, 73 route-, 57 wereld/toegangs-, 44 inventaris-, 32 uitrusting/uiterlijk-, 37 gevechts-, 32 verhaal-, 23 bewoners- en 18 beroepscontroles: 662 in totaal, nul fouten en waarschuwingen. Alle eerdere controles blijven verplicht. De live proeven verzamelen met echte tijd en onderbreking, weigeren een stronk zonder bijl en maken daarna de eerste bijl, gebruiken het beroepenboek met materiaaldoel, lezen een werktekening één keer, kopen in de winkel en weigeren bij te weinig munten, vangen één vis via het echte visspel en laden daarna opnieuw zonder dubbele beloning.
 
-## Wat is bewezen
+Alle 777 Python-tests eindigen zonder fouten. Alle 1.732 oorspronkelijke bestanden en Git-modes blijven behouden.
 
-De oorspronkelijke Godot 4.4.1-methoden zijn uitgevoerd in twee verse stille processen: **1.306 gevallen met 5.420 handelingen** en ruim 43.000 exacte Float64-getuigen. Elk recept, elke grondstofsoort en elke winkelregel heeft een eigen brongeval. Het Unity-model geeft voor ieder geval exact hetzelfde resultaat, dezelfde meldingen en dezelfde 34 opslagvelden, zonder tolerantie. Dat is gecontroleerd met de vastgezette Unity-compiler en de Mono-runtime van dezelfde editor, buiten de editor om.
+[Windows-download](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase17-preview-6cfdf9d3), versie 0.13.0-phase17. ZIP `BlueMapUnityPreview-phase-17-6cfdf9d3-Windows-x64.zip`: 75,419,832 bytes, SHA256 `fceed518c31b4b9a7bcea53e5eecf5bd7a12ab93ad4e539d7776d843a70c8579`. De gepubliceerde ZIP is daarna werkelijk gedownload en opnieuw gecontroleerd. De drie nieuwe beelden tonen het beroepenboek, de winkel en het vissen. Het beroepenboek is met echte virtuele Unity InputSystem-gebeurtenissen voor toetsenbord en controller getest; vier eigen private NL/EN-beelden controleren 1152×648 en 960×540. Een fysieke controller is niet handmatig getest.
 
-Toevalswaarden zijn een expliciete invoergrens: de opname legt vast welke waarden de Godot-generator leverde, en het Unity-model verbruikt precies die waarden in dezelfde volgorde. Deze port claimt geen identieke randomgenerator. Veertig haspelsimulaties en dertien vissessies lopen daarmee bit-exact gelijk.
+Begin bij **Avontuur en opslag**. C opent Beroepen; pijltjes kiezen, Enter maakt of gebruikt, PageUp/PageDown wisselt naar eten en drinken. E verzamelt, praat en werpt uit; houd E ingedrukt om de viszone te laten stijgen.
 
-Vijf aanvullende modelcontroles slagen: bladeren verandert niets en behoudt onbekende toekomstige velden, een geweigerde aankoop of een onmogelijk recept verandert niets, en een luisteraar kan tijdens het maken geen beloning verdubbelen.
+Automatische Unity-tests zetten vanaf het opstarten uitsluitend de testlistener stil; Godot-proeven draaien zonder geluid. Het systeemvolume en gewone gamevoorkeuren worden daarvoor niet veranderd.
 
-De volledige Unity-runtime (106 bronbestanden) compileert zonder fouten of waarschuwingen. Alle 1.732 oorspronkelijke Godot-bestanden zijn ongewijzigd. Persoonlijke saves zijn niet gebruikt en elke enginetest draaide zonder geluid.
+Nog niet in deze fase: de speler draait bij het uitwerpen niet naar het water; de visverkoop aan Joris en Mila loopt nog via de gespreksroute van fase 15; de Linux-herhaling van de opname draait alleen op GitHub. Huisinrichting volgt in fase 18, uitsluitend na een nieuw **go**; landbouw, water, productie en resterende regionale mechanieken volgen hun eigen fases. De volledige gameport en terugexport naar Godot zijn nog niet bewezen.
 
-## Wat nog ontbreekt
-
-- De Windows-build en de controles in de echte speler. De 18 beoogde beroepscontroles staan klaar in `ProfessionsProbeRunner`, maar zijn nog nooit uitgevoerd; de schermen en de wereldkoppeling zijn dus alleen gecompileerd, niet gespeeld.
-- De drie beelden (beroepenboek, winkel, vissen), het pakket en de publieke download.
-- De Linux-herhaling van de opname via GitHub.
-- De visverkoop aan Joris en Mila liep al via de gesprekken van fase 15; het model bevat nu ook de bronregels, maar het gesprek gebruikt nog zijn eigen route.
-- De speler draait bij het uitwerpen nog niet naar het water.
-
-Huisinrichting, landbouw, water en productie volgen hun eigen fases.
-
-## Verder gaan
-
-Meld je aan in Unity (Hub) zodat de editor weer een geldige licentie heeft. Daarna:
-
-    python tools/build_unity_probe.py --editor "C:/Program Files/Unity/Hub/Editor/6000.3.26f1/Editor/Unity.exe" --output "C:/Temp/BlueMapUnityProbe-fase17"
-
-De opname opnieuw controleren kan zonder Unity:
-
-    python tools/record_migration_professions.py Godot_v4.4.1-stable_win64_console.exe --check --evidence-dir <nieuwe map buiten de repository>
-    python tools/build_migration_professions.py --check
-
-Zie het [broncontract](source-contracts.json) en de [bronopname](professions-oracle.json). De Claude-branch en het Godot-herstelpunt blijven beschikbaar.
+Broncommit `6cfdf9d34f833bbf99e4ecd86bd51a9e8baa4aa2`, fingerprint `25de64f269e3bbac4b45a7e076fab969f7b51d241e3213db45941b302541c4c8`. GitHub controleert bron en de werkelijk gepubliceerde download; een gehoste Unity-compilatie wordt niet geclaimd. Zie het [broncontract](source-contracts.json) en de [bronopname](professions-oracle.json). Ruwe logs, testprofielen, caches en activatiegegevens blijven buiten publieke pakketten. De Claude-branch en het Godot-herstelpunt blijven beschikbaar.
