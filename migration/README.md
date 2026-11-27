@@ -34,7 +34,7 @@ Het volgende **go** start fase 18: persoonlijk huis en erf; de volledige game is
 
 [Fase 2: bewezen lokale bouwomgeving](phase-02/README.md) — Unity 6.3 LTS 6000.3.26f1, Windows x64 / Mono, 14 geslaagde runtime-/beeldcontroles en een schone herbouw zonder cache of bronwijzigingen. De [kleine Windows-proef](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase2-probe) staat naast het blijvende Godot-herstelpunt.
 
-- [Plan met 28 fases](PLAN.md) en [voortgang](PROGRESS.json).
+- [Plan met 23 fases](PLAN.md) en [voortgang](PROGRESS.json).
 - [Permanent Godot-herstelpunt met speelbare Windows-download](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) en [herstel-/herbouwinstructies](RECOVERY.md).
 - [Behoudsregister](BEHOUDSREGISTER.md) en [save- en ID-contract](SAVE_COMPATIBILITY.md).
 - [Alle oorspronkelijke bronbestanden en hashes](reference/source-manifest.json).
@@ -45,6 +45,6 @@ De bronreferentie omvat 1.734 bestanden en 383 beeld-/geluidsassets; de inhoudsi
 
 Het losse bron-ZIP is met alle oorspronkelijke Git-blobs vergeleken en de Git-bundel is offline teruggehaald met objectcontrole; de zeven gepubliceerde herstelbestanden hebben dezelfde SHA256 als de gecontroleerde lokale bestanden.
 
-De oorspronkelijke registry-inventaris blijft behouden; fase 5 voegt de daadwerkelijk geladen kaarten en benoemde veranderde toestanden toe, met expliciete dekkingsgrenzen. Save-import is in fase 9 bewezen met eigen testprofielen; terugexport volgt in fase 25. Echte persoonlijke saves zijn niet geopend of gepubliceerd.
+De oorspronkelijke registry-inventaris blijft behouden; fase 5 voegt de daadwerkelijk geladen kaarten en benoemde veranderde toestanden toe, met expliciete dekkingsgrenzen. Save-import is in fase 9 bewezen met eigen testprofielen; terugexport volgt in fase 22. Echte persoonlijke saves zijn niet geopend of gepubliceerd.
 
 Deze migratiebranch voegt in fase 1 uitsluitend referenties, documentatie en inventaris-/herstelhulpmiddelen toe; de Godot-game op de Claude-branch en het bestaande uitbreidingsplan blijven behouden.

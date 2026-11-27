@@ -6,9 +6,9 @@
 
 De game wordt van Godot naar Unity overgezet. **Waarom Unity?** De visie voor BlueMap Quest, in graphics en in systemen, is veel groter dan wat de game nu is; Unity geeft daar de ruimte voor. Eerst wordt de bestaande game één op één overgezet, daarna groeit hij verder.
 
-**Stand: fase 17 van 28 afgerond** (27 november 2026). Nieuw in deze versie: de zeven beroepen, verzamelen met gereedschap, alle recepten in het beroepenboek (toets C), de winkels en vissen in het Zilvermeer. Eerder overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, en bewoners met dagroutines. Nog niet overgezet: huis en erf, landbouw, water en irrigatie, productie en bijen, en een deel van de bijzondere gebieden. Dit is dus een testversie, nog niet de hele game.
+**Stand: fase 17 van 23 afgerond** (27 november 2026). Nieuw in deze versie: de zeven beroepen, verzamelen met gereedschap, alle recepten in het beroepenboek (toets C), de winkels en vissen in het Zilvermeer. Eerder overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, en bewoners met dagroutines. Nog niet overgezet: huis en erf, landbouw, water en irrigatie, productie en bijen, en een deel van de bijzondere gebieden. Dit is dus een testversie, nog niet de hele game.
 
-- [Wat er per fase is overgezet](migration/README.md) en het [plan van 28 fases](migration/PLAN.md)
+- [Wat er per fase is overgezet](migration/README.md) en het [plan van 23 fases](migration/PLAN.md)
 - [Alle downloads, ook eerdere testversies](migration/DOWNLOADS.md)
 - [De volledige bestaande Godot-game 0.34](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) blijft speelbaar en ongewijzigd op de branch `claude/affectionate-mendel-vc1idx`
 

@@ -207,5 +207,21 @@
   "professions_source_contracts": "phase-17/source-contracts.json",
   "professions_started_on": "2026-11-27",
   "professions_runtime_checks": 18,
-  "professions_build_source": "6cfdf9d34f833bbf99e4ecd86bd51a9e8baa4aa2"
+  "professions_build_source": "6cfdf9d34f833bbf99e4ecd86bd51a9e8baa4aa2",
+  "total_phases": 23,
+  "plan_consolidated_on": "2026-11-27",
+  "plan_previous_total_phases": 28,
+  "plan_phase_renumbering": {
+    "18": 18,
+    "19": 19,
+    "20": 19,
+    "21": 19,
+    "22": 20,
+    "23": 21,
+    "24": 21,
+    "25": 22,
+    "26": 22,
+    "27": 22,
+    "28": 23
+  }
 }

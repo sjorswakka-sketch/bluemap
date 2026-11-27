@@ -55,25 +55,30 @@ Dit wordt het actieve ontwikkelplan en vervangt de oude eerstvolgende ronde als 
 
 18. **Persoonlijk huis en erf:** Breng woning, teleportpunt, meubels, afwerkingen, verlichting, tuinindeling en erfuitbreidingen over met behoud van vrije deuren, looproutes en opgeslagen plaatsingen.
 
-19. **Landbouw en boomgaard:** Herstel grondbewerking, zaden, alle bestaande gewassen, fruitbomen, struiken, mest en fertilizer met dezelfde groeistadia, oogstregels en opbrengsten.
+19. **Landbouw, water en productie:** Herstel grondbewerking, zaden, alle bestaande gewassen, fruitbomen, struiken en mest met dezelfde groeistadia en opbrengsten; alle watertypes, poelen, rivieren, watervallen en aangesloten kanalen met begrijpelijke waterwerking, correcte bruggen en oversteekbare irrigatie; en compost, druiven, wijnvaten, honing en bijen met dezelfde voorraden en berekening op actieve speeltijd.
 
-20. **Water en irrigatie:** Zet alle bestaande watertypes, poelen, rivieren, watervallen en aangesloten kanalen over met begrijpelijke waterwerking, correcte bruggen en gemakkelijk oversteekbare irrigatie.
+20. **Bijzondere gebieden en uitdagingen:** Herstel regionale avonturen, moerassluizen, getijden, veerboten, warme bronnen, grotten, puzzels, bazen en arena’s inclusief hun zichtbare gevolgen en beloningen.
 
-21. **Productie en bijen:** Herstel compost, druiven, wijnvaten, honing, bijen en bloemenvereisten met dezelfde voorraden, verwerkingsregels en berekening op basis van actieve speeltijd.
+21. **Sfeer, wereldkaart en complete interfaces:** Breng dag- en nachtwisseling, weer, belichting, omgevingsgeluiden, muziek, wateranimaties, stoom en effecten terug met dezelfde rustige uitstraling, en werk lokale kaart, wereldatlas, snelreizen en alle beroeps- en spelmenu’s af met NL/EN, duidelijke apparaatwisseling, toetsinstellingen, controllerfocus, rechterstickscrollen en leesbare lijsten.
 
-22. **Bijzondere gebieden en uitdagingen:** Herstel regionale avonturen, moerassluizen, getijden, veerboten, warme bronnen, grotten, puzzels, bazen en arena’s inclusief hun zichtbare gevolgen en beloningen.
+22. **Volledige voortgang, vergelijking en Windows-proefversie:** Controleer geïmporteerde en nieuwe voortgang tot en met het einde en Nieuw spel+ en bewijs voor bestaande spelinhoud een veilige terugexport naar Godot; meet de Unity-release op vergelijkbare hardware en verbeter aangetoonde knelpunten; controleer alle bestaande spelonderdelen tegen de Godot-referentie en de bedoelingen van de 86 testsuites en lever een complete geteste Unity-Windows-proefversie met lange speelsessies.
 
-23. **Sfeer en presentatie:** Breng bestaande dag- en nachtwisseling, weer, belichting, omgevingsgeluiden, muziek, wateranimaties, stoom en effecten terug met dezelfde rustige en samenhangende uitstraling.
+23. **Unity als hoofdversie:** Maak na geslaagde eindcontroles met het laatste go Unity de standaard op de Claude-branch binnen dezelfde GitHub en behoud de Godot-bron, build en herstelroute.
 
-24. **Wereldkaart en complete interfaces:** Werk lokale kaart, wereldatlas, snelreizen en alle beroeps- en spelmenu’s af met NL/EN, duidelijke apparaatwisseling, toetsinstellingen, controllerfocus, rechterstickscrollen en leesbare lijsten.
+### Samengevoegd op 27 november 2026
 
-25. **Volledige voortgang en terugkeer:** Controleer geïmporteerde en nieuwe voortgang tot en met het einde en Nieuw spel+ en bewijs voor bestaande spelinhoud ook een veilige terugexport naar Godot.
+Het plan telde 28 fases; de elf resterende zijn samengevoegd tot zes, zodat er 23 fases zijn. Er vervalt geen inhoud en de bewijseisen per onderdeel blijven gelijk; wat verandert is dat nauw verbonden onderdelen één keer worden opgenomen, gebouwd, getest en gepubliceerd in plaats van elk apart. Fases 1 tot en met 17 houden hun nummer.
 
-26. **Ruimte voor verdere groei:** Meet de Unity-release op vergelijkbare hardware, verbeter aangetoonde knelpunten en beproef grotere gebieden en meer actieve systemen zonder de echte wereld voller te zetten.
+| Nieuw | Was | Waarom samen |
+|---|---|---|
+| 18 | 18 | Ongewijzigd: huis en erf hebben eigen ontwerpschermen en opslag |
+| 19 | 19, 20, 21 | Gewassen, irrigatie en productie delen dezelfde tuinopslag en hangen van elkaar af: water voedt gewassen, bloemen voeden bijen |
+| 20 | 22 | Ongewijzigd |
+| 21 | 23, 24 | Sfeer en interfaces zijn beide presentatie en worden met dezelfde beelden beoordeeld |
+| 22 | 25, 26, 27 | Voortgang, prestaties en eindvergelijking zijn samen de eindcontrole van één complete proefversie |
+| 23 | 28 | Ongewijzigd |
 
-27. **Volledige vergelijking en Windows-proefversie:** Controleer alle bestaande spelonderdelen tegen de Godot-referentie en de bedoelingen van de 86 testsuites en lever een complete geteste Unity-Windows-proefversie met lange speelsessies.
-
-28. **Unity als hoofdversie:** Maak na geslaagde eindcontroles met het laatste go Unity de standaard op de Claude-branch binnen dezelfde GitHub en behoud de Godot-bron, build en herstelroute.
+Een fase is daardoor groter. Als een samengevoegde fase tijdens de uitvoering te groot blijkt, wordt er tussentijds een geteste Windows-versie gepubliceerd in plaats van te wachten tot de hele fase af is.
 
 ## Werkwijze per go
 
@@ -83,7 +88,7 @@ Dit wordt het actieve ontwikkelplan en vervangt de oude eerstvolgende ronde als 
 4. Publiceer de geteste fase op de Unity-migratiebranch in dezelfde repository, zonder force-push en met een duidelijke beschrijving van wat al werkt en nog ontbreekt.
 5. Werk het behoudsregister en de voortgang bij en meld precies wat is gebouwd, getest, gepubliceerd en wat het volgende go uitvoert.
 
-Het laatste go voor fase 28 is de opdracht voor de concrete omschakeling na de vooraf geteste proefversie; hiervoor komt geen extra algemene bevestigingsronde. Een noodzakelijk Unity-account, aanmelding of passende licentie kan wel een handeling van de gebruiker vereisen en wordt vroeg gecontroleerd in fase 2; er worden geen aankopen gedaan of nieuwe betaalde diensten afgesloten.
+Het laatste go voor fase 23 is de opdracht voor de concrete omschakeling na de vooraf geteste proefversie; hiervoor komt geen extra algemene bevestigingsronde. Een noodzakelijk Unity-account, aanmelding of passende licentie kan wel een handeling van de gebruiker vereisen en wordt vroeg gecontroleerd in fase 2; er worden geen aankopen gedaan of nieuwe betaalde diensten afgesloten.
 
 ## Behoudsregister en voorwaarden voor afronden
 
@@ -116,11 +121,11 @@ De originele opslag wordt niet overschreven: import maakt een gevalideerde kopie
 
 Landbouw en productie rekenen in de huidige game met actieve speeltijd, niet met een nieuwe onbeperkte offline-inhaalsimulatie; pauze, dagritme, timers en opbrengsten behouden hun regels. Eventuele toekomstige offlinegroei is een aparte uitbreiding.
 
-Een backup garandeert alleen terugkeer naar de voortgang van het backupmoment. Terugkeer met daarna in Unity gemaakte voortgang vraagt een bewezen omgekeerde export voor de overgezette bestaande spelinhoud, die pas in fase 25 als ondersteund wordt gemeld. Later toegevoegde Unity-functies die Godot niet kent vallen buiten die terugexport en mogen niet stilzwijgend worden weggegooid.
+Een backup garandeert alleen terugkeer naar de voortgang van het backupmoment. Terugkeer met daarna in Unity gemaakte voortgang vraagt een bewezen omgekeerde export voor de overgezette bestaande spelinhoud, die pas in fase 22 als ondersteund wordt gemeld. Later toegevoegde Unity-functies die Godot niet kent vallen buiten die terugexport en mogen niet stilzwijgend worden weggegooid.
 
 ## GitHub en bouwbestanden
 
-De voorgestelde migratiebranch is codex/unity-migration binnen de bestaande repository, te maken tijdens uitvoering; de gewone Claude-branch blijft tot fase 28 de bruikbare referentie en main wordt niet ongemerkt vervangen of hernoemd. Een eenvoudig uitgangspunt is een Unity-project in een eigen Unity/-map naast de bestaande Godot-bron, met apart herkenbare builds en workflows; definitieve mappen worden vroeg vastgelegd en oude links, eventuele websitebestanden en buildpaden blijven gecontroleerd behouden.
+De voorgestelde migratiebranch is codex/unity-migration binnen de bestaande repository, te maken tijdens uitvoering; de gewone Claude-branch blijft tot fase 23 de bruikbare referentie en main wordt niet ongemerkt vervangen of hernoemd. Een eenvoudig uitgangspunt is een Unity-project in een eigen Unity/-map naast de bestaande Godot-bron, met apart herkenbare builds en workflows; definitieve mappen worden vroeg vastgelegd en oude links, eventuele websitebestanden en buildpaden blijven gecontroleerd behouden.
 
 Assets en hun Unity-.meta-bestanden worden samen bewaard, editor- en pakketversies worden vastgezet, en caches zoals Library, Temp en lokaal gegenereerde builds horen niet in Git. Bestaande Godot-tests en -builds blijven uitvoerbaar via de behouden referentie. Unity krijgt een eigen pakketcontrole: een Unity-Windows-game bestaat doorgaans uit de exe plus Data-map en runtimebestanden, zodat de oude Godot-controle die precies een exe en LEESMIJ verwacht niet blind hergebruikt mag worden.
 
