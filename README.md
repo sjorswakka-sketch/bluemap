@@ -1,6 +1,19 @@
 # Bluemap Quest
 
-**Unity-migratie:** fases 1 tot en met 16 zijn afgerond; zie het [migratieplan en behoudsregister](migration/README.md), [levendige bewoners in Unity](migration/phase-16/README.md) en de [actuele downloads](migration/DOWNLOADS.md). Het volgende go start fase 17: beroepen, crafting en handel. De bestaande Godot-game blijft speelbaar via het [vaste herstelpunt](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0).
+## Unity-versie: nu te testen
+
+**[Download de nieuwste Windows-testversie](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase17-preview-6cfdf9d3)** — pak `BlueMapUnityPreview-phase-17-6cfdf9d3-Windows-x64.zip` uit en start `BlueMapUnityProbe.exe`. Kies daarna **Avontuur en opslag**. Installeren is niet nodig.
+
+De game wordt van Godot naar Unity overgezet. **Stand: fase 17 van 28 afgerond** (27 november 2026). Nieuw in deze versie: de zeven beroepen, verzamelen met gereedschap, alle recepten in het beroepenboek (toets C), de winkels en vissen in het Zilvermeer. Eerder overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, en bewoners met dagroutines. Nog niet overgezet: huis en erf, landbouw, water en irrigatie, productie en bijen, en een deel van de bijzondere gebieden. Dit is dus een testversie, nog niet de hele game.
+
+- [Wat er per fase is overgezet](migration/README.md) en het [plan van 28 fases](migration/PLAN.md)
+- [Alle downloads, ook eerdere testversies](migration/DOWNLOADS.md)
+- [De volledige bestaande Godot-game 0.34](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) blijft speelbaar en ongewijzigd op de branch `claude/affectionate-mendel-vc1idx`
+
+Iets gevonden tijdens het testen? Meld het via [Issues](https://github.com/sjorswakka-sketch/bluemap/issues).
+
+## De Godot-game (0.34)
+
 
 0.34: een wereldatlas met opgeslagen gebiedsbezoeken en nieuwe gedetailleerde pixelart voor de speler en NPC’s; zie [wijzigingen](WORLD_ATLAS_CHARACTERS_034.md).
 
