@@ -143,12 +143,13 @@ namespace BlueMapMigration.Route
             if(!Session.TryEnterPrepared(source,spawn,safe))throw new InvalidOperationException(Session.LastDiagnostic);
             RecordVisit(map);World.RouteMode=true;World.gameObject.SetActive(true);World.BindSession(Session);World.PresentCurrent();World.Motor.RollCooldown=0;World.ApplyEquipmentBonuses();World.Motor.Stamina.Reset();
             Gameplay.SaveRequested+=OnSaveRequested;Gameplay.ItemObtained+=OnItem;Gameplay.SoundRequested+=OnSound;
-            Running=true;Modal="";Selection=0;lastDialogue="";autoTime=0;SaveFailed=false;BuildTargets();InitializeCombat();InitializeStory();InitializeResidents();InitializeProfessions();
+            Running=true;Modal="";Selection=0;lastDialogue="";autoTime=0;SaveFailed=false;BuildTargets();InitializeCombat();InitializeStory();InitializeResidents();InitializeProfessions();InitializeHome();
             ShowMessage(relocated?T("Je speelkopie begint in het dorp; je oorspronkelijke locatie en profiel zijn bewaard.","Your play copy starts in the village; the original location and profile are retained."):(map=="village"&&Gameplay.State.QuestState("kat")=="none"?T("Welkom in BlueMap Quest. Praat met Pim op het dorpsplein.","Welcome to BlueMap Quest. Talk to Pim in the village."):AreaName));
             return Save();
         }
         private void Detach()
         {
+            DetachHome();
             DetachProfessions();
             DetachResidents();
             DetachStory();
@@ -232,8 +233,8 @@ namespace BlueMapMigration.Route
 
         public void OpenQuests(){SetModal("quests");RefreshStoryViews();QuestPanel?.Open();}
         public void OpenPause(){SetModal("pause");Selection=0;}
-        private void SetModal(string mode){if(!Running)return;Residents?.CloseKitchen();Combat?.Cancel();if(mode!="quests")QuestPanel?.Close();if(mode!="inventory")InventoryPanel?.Close();if(mode!="progression")ProgressionPanel?.Close();CloseProfessionViews(mode);work=null;Gameplay.CloseDialogue();Modal=mode;Selection=0;Gameplay.State.SetUi("route_modal",mode!="");World.Motor.StopForTransition();}
-        public void CloseModal(){if(Gameplay==null)return;Residents?.CloseKitchen();linkedDoor=null;Gameplay.CloseDialogue();Modal="";Selection=0;Gameplay.State.SetUi("route_modal",false);lastDialogue="";lastDialogueToken=null;QuestPanel?.Close();SyncDialogue();InventoryPanel?.Close();ProgressionPanel?.Close();CloseProfessionViews("");World.RoutePresentation?.SetHomeStorageOpen(false);}
+        private void SetModal(string mode){if(!Running)return;Residents?.CloseKitchen();Combat?.Cancel();if(mode!="quests")QuestPanel?.Close();if(mode!="inventory")InventoryPanel?.Close();if(mode!="progression")ProgressionPanel?.Close();CloseProfessionViews(mode);CloseHomeViews(mode);work=null;Gameplay.CloseDialogue();Modal=mode;Selection=0;Gameplay.State.SetUi("route_modal",mode!="");World.Motor.StopForTransition();}
+        public void CloseModal(){if(Gameplay==null)return;Residents?.CloseKitchen();linkedDoor=null;Gameplay.CloseDialogue();Modal="";Selection=0;Gameplay.State.SetUi("route_modal",false);lastDialogue="";lastDialogueToken=null;QuestPanel?.Close();SyncDialogue();InventoryPanel?.Close();ProgressionPanel?.Close();CloseProfessionViews("");CloseHomeViews("");World.RoutePresentation?.SetHomeStorageOpen(false);}
         public bool PrepareMovementPreview()
         {
             if(Running&&!Save())return false;
@@ -332,6 +333,7 @@ namespace BlueMapMigration.Route
                     UpdateProgressionContext();ProgressionPanel.SetControllerActive(ControllerActive);ProgressionPanel.HandleInput(frame,inventoryFrameDelta);return;
                 }
                 if(HandleProfessionsModal(frame))return;
+                if(HandleHomeModal(frame))return;
                 if(Modal=="victory"){if(frame.Pressed("ui_accept")||frame.Pressed("interact"))CloseModal();return;}
                 if(Modal=="inventory")
                 {
@@ -364,7 +366,7 @@ namespace BlueMapMigration.Route
             if(accessDirty&&!Gameplay.State.InputLocked)RefreshAccessGeometry();
             foreach(var seal in targets.Where(t=>t.Kind=="diepte_seal"))if(Access.TickSeal(seal.Fields,SealCenter(seal),World.Position,delta)){World.RefreshRouteState();ShowMessage(Translate(Access.LastMessage));}
             inventoryFrameDelta=delta;UpdateInventoryContext(InventoryPanel?.Kind??"bag");UpdateProgressionContext();TickPickups(delta);
-            TickCombat(delta);TickResidents(delta,uiDelta??delta);TickProfessions(delta,uiDelta??delta);
+            TickCombat(delta);TickResidents(delta,uiDelta??delta);TickProfessions(delta,uiDelta??delta);TickHome(delta);
             bool locked=Gameplay.State.InputLocked;
             if(locked){foreach(var portal in portals)portal.Armed=false;work=null;lastPosition=World.Position;return;}
             autoTime+=delta;if(autoTime>=30&&!SaveFailed)Save();
@@ -480,7 +482,7 @@ namespace BlueMapMigration.Route
                 case "meer_visplek":return StartFishing(address);
                 case "craft_notes":return ReadCraftNotes(target);
                 case "chest":bool opened=Gameplay.OpenChest(target.UniqueKey,target.Fields.Require("contents"));ShowMessage(Translate(Gameplay.LastMessage));World.RefreshRouteState();return opened;
-                case "home_station":if(target.Id=="bed"){bool rest=Gameplay.Rest();World.Motor.Stamina.Reset();ShowMessage(Translate(Gameplay.LastMessage));return rest;}ShowMessage(T("Je woning en inrichting zijn bewaard. Uitbreiden volgt later in het migratieplan.","Your home and furnishings are retained. Expansion follows later in the migration plan."));return true;
+                case "home_station":return InteractHomeStation(target);
                 case "savepoint":var flags=Gameplay.State.Get("flags").Entries.ToDictionary(p=>p.Key.AsString(),p=>p.Value,StringComparer.Ordinal);flags["altaar_"+Gameplay.State.MapId+"_"+(int)(target.Position.x/32)+"_"+(int)(target.Position.y/32)]=FoundationValue.Boolean(true);Gameplay.State.Set("flags",FoundationValue.Object(flags));Gameplay.Rest();World.Motor.Stamina.Reset();ShowMessage(T("Voortgang opgeslagen. Je bent genezen!","Progress saved. You are healed!"));return true;
                 case "sign":SetModal("sign");Hud.SignSpeaker=target.Fields.TryGet("speaker",out var speaker)?speaker.AsString():"";Hud.SignLines=target.Fields.Require("lines").Items.Select(v=>Translate(v.AsString())).ToArray();return true;
                 case "stock_chest":return OpenStorage("home");

@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 17) error = "phase must be 17.";
-            else if (previewVersion != "0.13.0-phase17") error = "previewVersion must be 0.13.0-phase17.";
+            else if (phase != 18) error = "phase must be 18.";
+            else if (previewVersion != "0.14.0-phase18") error = "previewVersion must be 0.14.0-phase18.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -395,6 +395,16 @@ namespace BlueMapMigration.Probe
                 if(professionsFailed||!more)break;yield return current;
             }
             Add("professions_runtime_verified",!professionsFailed&&BlueMapMigration.Professions.ProfessionsProbeRunner.Last.success);
+            var homeProof=BlueMapMigration.Home.HomeProbeRunner.Run(identity,output,playerWorld,route,gallery.Catalog);
+            bool homeFailed=false;
+            while(true)
+            {
+                object current=null;bool more=false;
+                try{more=homeProof.MoveNext();if(more)current=homeProof.Current;}
+                catch(Exception error){Debug.LogError("Native home proof failed: "+error);homeFailed=true;}
+                if(homeFailed||!more)break;yield return current;
+            }
+            Add("home_runtime_verified",!homeFailed&&BlueMapMigration.Home.HomeProbeRunner.Last.success);
             Finish();
         }
         private void SaveRouteCapture(string name)

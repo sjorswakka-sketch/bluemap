@@ -240,8 +240,11 @@ namespace BlueMapMigration.Player
             // visible transform for a same-frame teleport and GPU capture.
             body.position=position; avatar.transform.position=new Vector3(position.x,position.y,0);
         }
+        /// <summary>A saved player-made surface (a yard path) takes precedence over the terrain below it.</summary>
+        public Func<Vector2,string> SurfaceOverride { get; set; }
         public string SurfaceAt(Vector2 sourcePosition)
         {
+            if(SurfaceOverride!=null){string made=SurfaceOverride(sourcePosition);if(!String.IsNullOrEmpty(made))return made;}
             int x=Mathf.FloorToInt(sourcePosition.x/32),y=Mathf.FloorToInt((sourcePosition.y+8)/32);
             if(x<0||y<0||x>=Snapshot.Width||y>=Snapshot.Height)return "";
             var cell=Snapshot.TerrainCells[y*Snapshot.Width+x]; return tileNames[cell.AtlasX];
