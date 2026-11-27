@@ -186,8 +186,8 @@ namespace BlueMapMigration.Home
             // --- The yard: paths, a fence and a self-opening gate ---
             Travel("village");
             var guide = Station("guide");
-            bool yardMenu = Reach(guide) && route.Modal == "home_menu" && route.HomeMenu.OptionIds.SequenceEqual(new[] { "yard", "close" });
-            bool yardOpened = route.HomeMenu.ActivateSelected() && route.Modal == "yard_editor" && route.YardEditor.IsOpen;
+            bool yardMenu = Reach(guide) && route.Modal == "garden_menu" && route.GardenMenu.OptionIds.Contains("yard") && route.GardenMenu.LayoutFits;
+            bool yardOpened = route.GardenMenu.Choose("yard") && route.Modal == "yard_editor" && route.YardEditor.IsOpen;
             var yard = route.YardEditor;
             var outside = new Vector2(240, 720);
             world.Teleport(outside); world.Step(0, new MotionInput());

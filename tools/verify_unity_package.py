@@ -27,7 +27,7 @@ PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
                     12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14", 15: "0.11.0-phase15",
-                    16: "0.12.0-phase16", 17: "0.13.0-phase17", 18: "0.14.0-phase18"}
+                    16: "0.12.0-phase16", 17: "0.13.0-phase17", 18: "0.14.0-phase18", 19: "0.15.0-phase19"}
 RESIDENTS_THIRD_PARTY_NOTICE = '''Godot Engine (4.4.1) AStarGrid2D and SortArray behavior adaptation.
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/math/a_star_grid_2d.cpp
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/templates/sort_array.h
@@ -385,6 +385,19 @@ HOME_DETAIL_CHECKS = {
     "home_native_three_rendered_captures", "home_no_personal_saves_used",
 }
 HOME_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+FARM_CHECKS = {"farm_runtime_verified", "automated_audio_silent"}
+FARM_DETAIL_CHECKS = {
+    "farm_model_source_equivalence", "farm_catalog_complete", "farm_reading_is_pure",
+    "farm_refusals_change_nothing", "farm_grows_on_active_time_only",
+    "farm_dry_crop_waits_and_keeps_unrelated_fields", "farm_native_shared_state_and_profile",
+    "farm_native_guide_supplies_and_seed_book", "farm_native_channel_soil_and_planting",
+    "farm_native_growth_on_active_time_and_harvest", "farm_native_apple_tree_crown_and_trunk",
+    "farm_native_keyboard_and_controller_work", "farm_native_menus_nl_en_responsive_layout",
+    "farm_native_compost_wine_and_honey", "farm_native_fertilize_harvest_all_and_help",
+    "farm_native_reload_keeps_garden", "farm_native_water_types_named", "farm_native_wild_grapes",
+    "farm_native_three_rendered_captures", "farm_no_personal_saves_used",
+}
+FARM_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -407,7 +420,7 @@ PLAYER_ROOTS = {
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
                   "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json",
-                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "PROFESSIONS-CHECKS.json", "HOME-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "PROFESSIONS-CHECKS.json", "HOME-CHECKS.json", "FARM-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -586,6 +599,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 18:
         require(HOME_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 18 home runtime proof is incomplete")
+    if identity["phase"] >= 19:
+        require(FARM_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 19 farm runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -872,6 +888,30 @@ def validate_home(result: dict, identity: dict) -> None:
     require(HOME_DETAIL_CHECKS <= names, "Required home checks are missing")
 
 
+def validate_farm(result: dict, identity: dict) -> None:
+    """Bind the original garden, production stations and water types to this player."""
+    require(bool(FARM_DETAIL_CHECKS), "Farm callback contract is not frozen")
+    require(isinstance(result, dict) and set(result) == FARM_FIELDS,
+            "Phase 19 farm proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported farm proof schema")
+    require(result.get("identity") == identity, "Farm embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Farm proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Farm detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed farm detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid farm detail check name")
+        require(name not in names and check["passed"] is True,
+                "Farm detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(FARM_DETAIL_CHECKS <= names, "Required farm checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -931,6 +971,7 @@ def _instructions(identity: dict) -> bytes:
         16: "Migratiefase 16: bewegende bewoners, dagroutines, wereldherinneringen en de gezamenlijke maaltijd; nog niet de volledige overgezette game.\n",
         17: "Migratiefase 17: de zeven beroepen, vindplaatsen, gereedschap, recepten, werkplaatsen, winkels en vissen; nog niet de volledige overgezette game.\n",
         18: "Migratiefase 18: je eigen huis en erf inrichten met meubels, vloer, wand en licht, paden, hekken, poortjes en bouwruimte; nog niet de volledige overgezette game.\n",
+        19: "Migratiefase 19: je eigen tuin met kanalen, gewassen, boomgaard, mesthoop, wijnvaten en bijenkast, en benoemde watertypes; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -995,6 +1036,10 @@ def _instructions(identity: dict) -> bytes:
     if identity["phase"] >= 18:
         controls += ("Bij je bed of de tuingids in je huis kies je Je huis inrichten; buiten bij de tuingids Erf inrichten.\n"
                      "Een ontwerp wordt pas bewaard met Toepassen en opslaan; annuleren verwerpt het. Poortjes openen vanzelf.\n")
+    if identity["phase"] >= 19:
+        controls += ("Haal bij de tuingids je gratis hak en zaden. U opent de tuinstanden; houd E vast om de tegel voor je te bewerken.\n"
+                     "Graaf een kanaal vanaf de beek, bewerk grond ernaast en plant. Gewassen groeien alleen op actieve speeltijd en verdorren niet.\n"
+                     "Mesthoop, wijnvaten en bijenkast werken bij de werkplek zelf; Zaden en boomgaard verkoopt zaden bij de tuingids.\n")
     return (
         "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
         description[identity["phase"]] +
@@ -1020,6 +1065,7 @@ def _instructions(identity: dict) -> bytes:
         ("RESIDENTS-CHECKS.json bevat de controles van bewonersroutines, rondlopen, herinneringen en avondgasten.\n" if identity["phase"] >= 16 else "") +
         ("PROFESSIONS-CHECKS.json bevat de controles van beroepen, recepten, werkplaatsen, winkels en vissen.\n" if identity["phase"] >= 17 else "") +
         ("HOME-CHECKS.json bevat de controles van huisinrichting, erf, paden, hekken en poortjes.\n" if identity["phase"] >= 18 else "") +
+        ("FARM-CHECKS.json bevat de controles van tuin, kanalen, gewassen, boomgaard, productie en watertypes.\n" if identity["phase"] >= 19 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n" +
         ("\n" + RESIDENTS_THIRD_PARTY_NOTICE if identity["phase"] >= 16 else "")
     ).encode("utf-8")
@@ -1037,7 +1083,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    story_result: dict | None = None,
                    residents_result: dict | None = None,
                    professions_result: dict | None = None,
-                   home_result: dict | None = None) -> tuple[Path, int]:
+                   home_result: dict | None = None,
+                   farm_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -1089,6 +1136,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_home(home_result, identity)
     else:
         require(home_result is None, "Historical preview cannot contain phase 18 home proof")
+    if identity["phase"] >= 19:
+        validate_farm(farm_result, identity)
+    else:
+        require(farm_result is None, "Historical preview cannot contain phase 19 farm proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -1124,6 +1175,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["PROFESSIONS-CHECKS.json"] = _json_bytes(professions_result)
     if home_result is not None:
         payload["HOME-CHECKS.json"] = _json_bytes(home_result)
+    if farm_result is not None:
+        payload["FARM-CHECKS.json"] = _json_bytes(farm_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -1341,6 +1394,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("HOME-CHECKS.json" not in payload and "home" not in receipt,
                 "Historical preview contains unsupported home proof")
+    if identity["phase"] >= 19:
+        require("FARM-CHECKS.json" in payload, "Phase 19 packaged farm proof is missing")
+        farm = _json(payload["FARM-CHECKS.json"], "FARM-CHECKS.json")
+        validate_farm(farm, identity)
+        require(receipt.get("farm") == farm, "Receipt farm proof differs from package")
+    else:
+        require("FARM-CHECKS.json" not in payload and "farm" not in receipt,
+                "Historical preview contains unsupported farm proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

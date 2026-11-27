@@ -57,22 +57,12 @@ namespace BlueMapMigration.Route
   }
   bool InteractHomeStation(RouteTarget target)
   {
-   string role=StationRole(target),map=Gameplay.State.MapId;var choices=new List<KeyValuePair<string,string>>();string title,body;
-   if(map=="player_home"&&(role=="bed"||role=="guide"||role=="supplies"))
-   {
-    title=Translate(role=="bed"?"Je eigen bed":role=="supplies"?"Tuinvoorraad":"Woning en tuin");
-    body=role=="bed"?Translate("Een rustige eigen woning. Rusten vult hartjes en stamina aan en slaat hier op. Het blauwe punt voor je huis ontdekt een snelreisbestemming op de kaart."):T("Dit huis is van jou. Verplaats je meubels, maak nieuwe en kies vloer, wand en licht. Tuinwerk volgt in de volgende migratiefase.","This house is yours. Move your furniture, make more and choose the floor, wall and light. Garden work follows in the next migration phase.");
-    if(role=="bed")choices.Add(new KeyValuePair<string,string>("rest",Translate("Rusten en opslaan")));
-    choices.Add(new KeyValuePair<string,string>("decorate",Translate("Je huis inrichten")));
-   }
-   else if(map=="village"&&(role=="guide"||role=="supplies"))
-   {
-    title=Translate("Woning en tuin");body=T("Dit huis en de tuin zijn van jou. Verplaats je werkplekken, leg paden, hekken en poortjes en ontsluit extra bouwruimte. Landbouw en productie volgen in de volgende migratiefase.","This house and garden are yours. Move your work stations, lay paths, fences and gates and unlock more building room. Farming and production follow in the next migration phase.");
-    choices.Add(new KeyValuePair<string,string>("yard",Translate("Erf inrichten")));
-   }
-   else{ShowMessage(T("Deze werkplek is bewaard; productie volgt in de volgende migratiefase.","This work station is retained; production follows in the next migration phase."));return true;}
-   choices.Add(new KeyValuePair<string,string>("close",Translate("Sluiten")));
-   homeMenuStation=target;SetModal("home_menu");HomeMenu.SetControllerActive(ControllerActive);HomeMenu.Open(title,body,choices);HomeMenu.NotifyOpened(storyInput);return true;
+   string role=StationRole(target),map=Gameplay.State.MapId;
+   if(role!="bed")return InteractGardenStation(target);
+   if(map!="player_home")return false;
+   var choices=new List<KeyValuePair<string,string>>{new KeyValuePair<string,string>("rest",Translate("Rusten en opslaan")),new KeyValuePair<string,string>("decorate",Translate("Je huis inrichten")),new KeyValuePair<string,string>("close",Translate("Sluiten"))};
+   homeMenuStation=target;SetModal("home_menu");HomeMenu.SetControllerActive(ControllerActive);
+   HomeMenu.Open(Translate("Je eigen bed"),Translate("Een rustige eigen woning. Rusten vult hartjes en stamina aan en slaat hier op. Het blauwe punt voor je huis ontdekt een snelreisbestemming op de kaart."),choices);HomeMenu.NotifyOpened(storyInput);return true;
   }
   void HomeMenuChosen(string id)
   {

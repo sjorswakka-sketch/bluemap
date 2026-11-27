@@ -233,6 +233,8 @@ namespace BlueMapMigration.Home
   bool SolidTerrain(HomeCell at){var solid=G(Yard.Require("solidTerrain"),Terrain(at),FoundationValue.Boolean(false));return solid.Kind=="bool"&&solid.AsBool();}
   public HomeCell Anchor(string id,FoundationValue data){var value=G(data.Require("stations"),id,A(Array.Empty<FoundationValue>()));return Arr(value)&&value.Items.Count==2?new HomeCell((int)N(value.Items[0]),(int)N(value.Items[1])):new HomeCell(-999,-999);}
   public static HomeRect Bounds(HomeCell at)=>new HomeRect(at.X-1,at.Y-1,3,3);
+  /// <summary>A tile taken by a fixed object of the village map (a door, sign, resident or resource).</summary>
+  public static bool YardFixedCell(HomeCell at){LoadCatalog();return yardFixed.Contains(at);}
   public static bool YardReserved(HomeCell at)=>new HomeRect(6,21,4,4).Has(at)||new HomeRect(17,30,9,3).Has(at)||new HomeRect(17,36,9,3).Has(at)||new HomeRect(17,39,6,4).Has(at)||(at.X==9&&at.Y==27)||(at.X==6&&at.Y==24);
   public bool OwnedCell(HomeCell at,FoundationValue extensions)
   {

@@ -52,7 +52,7 @@ namespace BlueMapMigration.Route
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
             var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP"),small,20);
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 18","Unity preview · phase 18"),small);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 19","Unity preview · phase 19"),small);
             if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
             if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
             {
@@ -74,6 +74,11 @@ namespace BlueMapMigration.Route
                     route.BindingLabel("interact")+T(" praten / verzamelen  ·  "," talk / gather  ·  ")+route.BindingLabel("menu")+T(" tas  ·  "," inventory  ·  ")+route.BindingLabel("quests")+T(" opdrachten  ·  "," quests  ·  ")+route.BindingLabel("pause")+T(" menu  ·  "," menu  ·  ")+route.BindingLabel("sprint")+T(" rennen  ·  F9 bediening"," run  ·  F9 controls");Label(32,598,1090,controls,small);
                 if(route.CurrentTarget!=null){Panel(new Rect(360,526,432,48));Label(376,538,400,(route.BindingLabel("interact")+"  ")+route.Translate(route.CurrentTarget.Label));}
                 if(route.NearbyPassage!=""&&route.Message==""){Panel(new Rect(326,114,550,48));Label(342,125,518,route.NearbyPassage,wrap,36);}
+                LastGardenHintBounds=Rect.zero;LastWaterInfoBounds=Rect.zero;
+                if(route.GardenHint!="")
+                {var hint=new GUIStyle(wrap);var content=new GUIContent(route.GardenHint);while(hint.fontSize>13&&hint.CalcHeight(content,692)>132)hint.fontSize--;float needed=hint.CalcHeight(content,692);float height=Mathf.Min(150,needed+18);GardenHintFits=needed<=height-18+.5f;LastGardenHintBounds=new Rect(216,581-height,720,height);Panel(LastGardenHintBounds);Label(230,LastGardenHintBounds.y+9,692,route.GardenHint,hint,height-18);}
+                else if(route.WaterInfo!=""&&route.NearbyPassage=="")
+                {var water=new GUIStyle(wrap){fontSize=14};var content=new GUIContent(route.WaterInfo);float needed=water.CalcHeight(content,396);float height=Mathf.Min(110,needed+16);WaterInfoFits=needed<=height-16+.5f;LastWaterInfoBounds=new Rect(712,581-height,420,height);Panel(LastWaterInfoBounds);Label(724,LastWaterInfoBounds.y+8,396,route.WaterInfo,water,height-16);}
                 if(route.Working){Panel(new Rect(430,474,292,38));GUI.color=new Color(.43f,.77f,.57f);GUI.DrawTexture(new Rect(441,487,270*route.WorkFraction,10),Texture2D.whiteTexture);GUI.color=Color.white;}
                 if(route.World.CrosshairVisible)
                 {var p=route.Camera.WorldToScreenPoint(FoundationCoordinates.ToUnity(route.World.Aim.Position));float x=p.x*1152/Screen.width,y=(Screen.height-p.y)*648/Screen.height;GUI.color=new Color(.96f,.95f,.78f,.95f);GUI.DrawTexture(new Rect(x-6,y,4,1),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x+3,y,4,1),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x,y-6,1,4),Texture2D.whiteTexture);GUI.DrawTexture(new Rect(x,y+3,1,4),Texture2D.whiteTexture);GUI.color=Color.white;}
@@ -82,9 +87,10 @@ namespace BlueMapMigration.Route
             if(game.DialogueOpen){DrawDialogue();return;}
             if(route.Modal=="")return;
             if(route.Modal!="fishing"){GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;}
-            if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="home_menu")route.HomeMenu?.Draw();else if(route.Modal=="house_editor")route.HouseEditor?.Draw();else if(route.Modal=="yard_editor")route.YardEditor?.Draw();else if(route.Modal=="professions")route.ProfessionsPanel?.Draw();else if(route.Modal=="shop")route.ShopPanel?.Draw();else if(route.Modal=="fishing")route.FishingView?.Draw();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
+            if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="home_menu")route.HomeMenu?.Draw();else if(route.Modal=="house_editor")route.HouseEditor?.Draw();else if(route.Modal=="yard_editor")route.YardEditor?.Draw();else if(route.Modal=="garden_menu")route.GardenMenu?.Draw();else if(route.Modal=="seed_book")route.SeedBook?.Draw();else if(route.Modal=="professions")route.ProfessionsPanel?.Draw();else if(route.Modal=="shop")route.ShopPanel?.Draw();else if(route.Modal=="fishing")route.FishingView?.Draw();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
         }
         public Rect BossBounds {get;private set;}
+        public Rect LastGardenHintBounds {get;private set;} public Rect LastWaterInfoBounds {get;private set;} public bool GardenHintFits {get;private set;}=true;public bool WaterInfoFits {get;private set;}=true;
         private void DrawCombat()
         {
             BossBounds=Rect.zero;var combat=route.Combat;if(!route.CombatSimulationEnabled||combat==null)return;
