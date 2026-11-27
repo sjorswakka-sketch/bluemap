@@ -221,6 +221,8 @@ jobs:
         run: python tools/record_migration_resident_motion.py --godot "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --output migration/phase-16/motion-oracle.json --check --evidence-dir "$RUNNER_TEMP/resident-motion-evidence"
       - name: Oorspronkelijke herinneringen, dorpsactiviteiten en avondgasten tweemaal herhalen
         run: python tools/record_migration_resident_social.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/resident-social-evidence"
+      - name: Oorspronkelijke beroepen, recepten, winkels en vissen tweemaal herhalen
+        run: python tools/record_migration_professions.py "$RUNNER_TEMP/godot/Godot_v4.4.1-stable_linux.x86_64" --check --evidence-dir "$RUNNER_TEMP/professions-evidence"
       - name: Gerichte wereldgevolgen en uiteindelijke IDs controleren
         run: |
           python tools/check_world_witnesses.py --directory migration/world --output "$RUNNER_TEMP/world-witnesses.json"
