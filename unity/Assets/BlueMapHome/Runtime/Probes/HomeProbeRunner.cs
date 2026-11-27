@@ -217,8 +217,8 @@ namespace BlueMapMigration.Home
             Stand(gateCenter + new Vector2(0, 150)); bool closedFar = route.YardOpenGates == 0;
             Stand(gateCenter + new Vector2(0, 40)); bool opensNear = route.YardOpenGates == 1;
             Stand(gateCenter + new Vector2(0, 70)); bool staysOpen = route.YardOpenGates == 1;
-            Stand(gateCenter + new Vector2(0, 150)); bool closesBehind = route.YardOpenGates == 0;
             yield return new WaitForEndOfFrame(); Capture("yard"); captures++;
+            Stand(gateCenter + new Vector2(0, 150)); bool closesBehind = route.YardOpenGates == 0;
             check("home_native_yard_gate_opens_and_closes", closedFar && opensNear && staysOpen && closesBehind);
 
             // --- Move the hive, store a wine barrel and unlock building room ---
@@ -239,9 +239,9 @@ namespace BlueMapMigration.Home
             check("home_native_yard_station_move_store_and_expand", reopened && movedHive && stored && expanded && stationsApplied && placed);
 
             // --- A profile reload keeps the whole design ---
-            string house = Json(Model().HouseView), yardSaved = Json(Model().YardView);
+            FoundationValue houseBefore = Model().HouseView, yardBefore = Model().YardView; string house = Json(houseBefore), yardSaved = Json(yardBefore);
             bool reloaded = route.Save() && route.Reload(false); route.Tick(0); state = route.Gameplay.State;
-            bool kept = reloaded && Json(Model().HouseView) == house && Json(Model().YardView) == yardSaved;
+            bool kept = reloaded && Same(Model().HouseView, houseBefore) && Same(Model().YardView, yardBefore);
             if (state.MapId != "village") Travel("village");
             route.Tick(0);
             bool redrawn = route.YardPathNodes == 2 && route.YardFenceNodes == 2 && route.YardGateNodes == 1
@@ -249,6 +249,20 @@ namespace BlueMapMigration.Home
             if (!(kept && redrawn)) Detail("reload", ("reloaded", reloaded), ("kept", kept), ("redrawn", redrawn), ("map", state.MapId), ("house", Json(Model().HouseView)), ("was", house), ("yard", Json(Model().YardView)), ("wasYard", yardSaved));
             check("home_native_reload_keeps_house_and_yard", kept && redrawn);
             check("home_native_three_rendered_captures", captures == 3);
+        }
+
+        /// <summary>The same saved content, regardless of key order or of whole numbers stored as int or float.</summary>
+        static bool Same(FoundationValue a, FoundationValue b)
+        {
+            bool Table(FoundationValue v) => v.Kind == "object" || v.Kind == "dictionary";
+            bool Numeric(FoundationValue v) => v.Kind == "int" || v.Kind == "float";
+            if (Table(a) || Table(b))
+                return Table(a) && Table(b) && a.Entries.Count == b.Entries.Count
+                    && a.Entries.All(row => b.TryGet(row.Key.AsString(), out var other) && Same(row.Value, other));
+            if (a.Kind == "array" || b.Kind == "array")
+                return a.Kind == b.Kind && a.Items.Count == b.Items.Count && a.Items.Zip(b.Items, Same).All(same => same);
+            if (Numeric(a) || Numeric(b)) return Numeric(a) && Numeric(b) && a.AsDouble() == b.AsDouble();
+            return a.Kind == b.Kind && a.CanonicalJson == b.CanonicalJson;
         }
 
         /// <summary>A bag with the given counts set; used to prepare synthetic test profiles only.</summary>

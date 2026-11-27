@@ -18,7 +18,7 @@ namespace BlueMapMigration.Home
   readonly Phase6Catalog catalog;readonly HomeModel model;readonly Func<string,string,string> bilingual;readonly Func<string,string> binding;readonly Func<Vector2> player;
   InputFrame lastHandled,openingFrame;bool controller;int zone,kindIndex,actionIndex,pressedZone=-1,pressedIndex=-1,openedFrame=-1;double repeatWait;long tint;GUIStyle heading,text,small,row;
   FoundationValue draft;string editingId="";HomeCell cursor=new HomeCell(4,9);
-  public const float Step=34,RowHeight=27,ActionHeight=34;
+  public const float Step=34,RowHeight=27,ActionHeight=37;
   public static readonly Rect PanelRect=new Rect(24,14,1104,620),ListRect=new Rect(40,84,300,13*RowHeight),DetailRect=new Rect(40,444,300,128),PlanRect=new Rect(360,84,10*Step,10*Step),ActionsRect=new Rect(720,84,392,9*ActionHeight),StatusRect=new Rect(360,434,752,44),CounterRect=new Rect(360,484,752,22),HintRect=new Rect(40,598,1072,22);
   public static readonly string[] ActionIds={"make","pack","tint","floor","wall","light","apply","reset","cancel"};
   public bool IsOpen {get;private set;} public string Kind=>model.PieceIds[kindIndex];public string EditingId=>editingId;public HomeCell Cursor=>cursor;public int Zone=>zone;public int ActionIndex=>actionIndex;public long Tint=>tint;

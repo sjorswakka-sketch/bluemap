@@ -18,7 +18,7 @@ namespace BlueMapMigration.Home
   readonly Phase6Catalog catalog;readonly HomeModel model;readonly Func<string,string,string> bilingual;readonly Func<string,string> binding;readonly Func<Vector2> player;
   InputFrame lastHandled,openingFrame;bool controller,rowMode;int zone,kindIndex,actionIndex,view,extensionIndex,pressedZone=-1,pressedIndex=-1,openedFrame=-1;double repeatWait;GUIStyle heading,text,small,row;
   FoundationValue draft,candidate;string reason="";HomeCell cursor=new HomeCell(8,26),start=new HomeCell(-99,-99);string[] ids=Array.Empty<string>();
-  public const float RowHeight=27,ActionHeight=32;
+  public const float RowHeight=27,ActionHeight=37;
   public static readonly Rect PanelRect=new Rect(16,10,1120,628),ListRect=new Rect(30,76,250,11*RowHeight),DetailRect=new Rect(30,382,250,196),PlanRect=new Rect(296,76,600,380),ActionsRect=new Rect(912,76,214,10*ActionHeight),StatusRect=new Rect(296,466,830,44),CountsRect=new Rect(296,514,830,40),HintRect=new Rect(30,604,1096,22);
   public static readonly string[] ActionIds={"place","pack","row","view","make","extension","expand","apply","reset","cancel"};
   public bool IsOpen {get;private set;} public string Kind=>ids[kindIndex];public HomeCell Cursor=>cursor;public int Zone=>zone;public int View=>view;public bool RowMode=>rowMode;public string Reason=>reason;public int ActionIndex=>actionIndex;
