@@ -12,7 +12,7 @@ namespace BlueMapMigration.Professions
  {
   readonly Phase6Catalog catalog;readonly ProfessionsModel model;readonly Func<string,string,string> bilingual;readonly Func<string,string> binding;
   InputFrame lastHandled,openingFrame;bool controller;int selected,pressed=-1,openedFrame=-1;float scroll;double repeatWait;IReadOnlyList<ShopRow> rows=Array.Empty<ShopRow>();GUIStyle heading,coins,text,small,row;
-  public const float RowHeight=40;
+  public const float RowHeight=44;
   public static readonly Rect PanelRect=new Rect(276,54,600,540),ListRect=new Rect(296,146,560,280),DescriptionRect=new Rect(296,436,560,62),CloseRect=new Rect(296,534,560,40),HintRect=new Rect(296,506,560,22);
   public bool IsOpen {get;private set;} public string ShopId {get;private set;}="";
   public IReadOnlyList<ShopRow> Rows=>rows;public int Selected=>selected;public float Scroll=>scroll;public bool ControllerActive=>controller;public Rect RenderedSelectedBounds {get;private set;}=Rect.zero;
@@ -83,7 +83,7 @@ namespace BlueMapMigration.Professions
    GUI.BeginGroup(ListRect);
    for(int i=0;i<rows.Count;i++)
    {
-    var r=new Rect(0,i*RowHeight-scroll,ListRect.width-14,RowHeight-6);if(r.yMax<0||r.y>ListRect.height)continue;var style=new GUIStyle(row);if(rows[i].Owned)style.normal.textColor=new Color(.42f,.5f,.56f);
+    var r=new Rect(0,i*RowHeight-scroll,ListRect.width-14,RowHeight-6);if(r.yMax<0||r.y>ListRect.height)continue;var style=new GUIStyle(row);style.fontSize=20;if(rows[i].Owned)style.normal.textColor=new Color(.42f,.5f,.56f);
     while(style.fontSize>15&&style.CalcSize(new GUIContent(rows[i].Text)).x>r.width-24)style.fontSize--;
     StoryUi.Button(r,rows[i].Text,style,true,selected==i,!rows[i].Owned);if(selected==i)RenderedSelectedBounds=new Rect(ListRect.x+r.x,ListRect.y+r.y,r.width,r.height);
    }

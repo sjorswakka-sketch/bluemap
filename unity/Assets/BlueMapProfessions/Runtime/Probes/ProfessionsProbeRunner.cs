@@ -87,6 +87,11 @@ namespace BlueMapMigration.Professions
             Debug.Log("Professions native proof: " + checks.Count + " checks");
         }
 
+        /// <summary>Positive numeric entries only: a reload may add zero defaults or reorder keys.</summary>
+        static Dictionary<string, double> Counts(FoundationValue table) => table.Entries
+            .Where(row => (row.Value.Kind == "int" || row.Value.Kind == "float") && row.Value.AsDouble() != 0)
+            .ToDictionary(row => row.Key.AsString(), row => row.Value.AsDouble(), StringComparer.Ordinal);
+
         static IEnumerator Resolution(int width, int height)
         {
             Screen.SetResolution(width, height, FullScreenMode.Windowed);
@@ -252,11 +257,22 @@ namespace BlueMapMigration.Professions
             check("professions_native_fishing_catch_once", cast && bite && hooked && pictured && caught && again2 && released);
 
             // --- A profile reload keeps skill, cooldowns and purchases without paying twice ---
-            string professionsBefore = state.Get("professions").CanonicalJson, inventoryBefore = state.Get("inventory").CanonicalJson, lakeBefore = state.Get("meer").CanonicalJson; long coins = state.Coins;
+            string inventoryBefore = state.Get("inventory").CanonicalJson, lakeBefore = state.Get("meer").CanonicalJson, goalBefore = model.Goal;
+            var bagBefore = Counts(state.Get("inventory")); var lakeCounts = Counts(state.Get("meer"));
+            var xpBefore = model.SkillIds.ToDictionary(skill => skill, skill => model.Xp(skill));
+            var waitBefore = state.Get("professions").Require("cooldowns").Entries.ToDictionary(row => row.Key.AsString(), row => row.Value.AsDouble());
+            double clockBefore = state.PlayTime; long coins = state.Coins;
             bool saved = route.Save() && route.Reload(false);
             state = route.Gameplay.State; model = route.Professions;
-            bool kept = saved && state.Get("professions").CanonicalJson == professionsBefore && state.Get("inventory").CanonicalJson == inventoryBefore
-                && state.Get("meer").CanonicalJson == lakeBefore && state.Coins == coins && model.Level("woodcutting") >= 1 && state.Count("boots") == 1;
+            bool sameSkills = model.SkillIds.All(skill => model.Xp(skill) == xpBefore[skill]) && model.Goal == goalBefore;
+            var waitAfter = state.Get("professions").Require("cooldowns");
+            bool sameWaits = waitBefore.Count > 0 && waitBefore.All(row => row.Value <= clockBefore || waitAfter.TryGet(row.Key, out var due) && due.AsDouble() == row.Value);
+            bool sameBag = Counts(state.Get("inventory")).OrderBy(row => row.Key, StringComparer.Ordinal).SequenceEqual(bagBefore.OrderBy(row => row.Key, StringComparer.Ordinal));
+            bool sameLake = Counts(state.Get("meer")).OrderBy(row => row.Key, StringComparer.Ordinal).SequenceEqual(lakeCounts.OrderBy(row => row.Key, StringComparer.Ordinal));
+            if (!(saved && sameSkills && sameWaits && sameBag && sameLake && state.Coins == coins))
+                Debug.Log("Professions reload detail: saved=" + saved + " skills=" + sameSkills + " waits=" + sameWaits + " bag=" + sameBag + " lake=" + sameLake + " coins=" + state.Coins + "/" + coins + " clock=" + clockBefore + "/" + state.PlayTime + " before=" + inventoryBefore + " after=" + state.Get("inventory").CanonicalJson + " lake=" + lakeBefore + " -> " + state.Get("meer").CanonicalJson);
+            bool kept = saved && sameSkills && sameWaits && sameBag
+                && sameLake && state.Coins == coins && model.Level("woodcutting") >= 1 && state.Count("boots") == 1;
             check("professions_native_reload_keeps_progress_without_duplicates", kept);
             check("professions_native_three_rendered_captures", captures == 3);
         }
@@ -292,8 +308,12 @@ namespace BlueMapMigration.Professions
                 var down = PadPress(GamepadButton.DpadDown);
                 bool controllerMoved = down.ControllerActive && panel.ControllerActive && (panel.Entries.Count < 2 || panel.EntryIndex == first + 1);
                 PadPress(GamepadButton.DpadLeft); bool controllerColumn = panel.Column == 0;
-                PadPress(GamepadButton.DpadDown); bool controllerSkill = panel.SkillIndex == 1 && panel.SelectedSkill == route.Professions.SkillIds[1];
+                int skillBefore = panel.SkillIndex, skillCount = route.Professions.SkillIds.Count;
+                PadPress(GamepadButton.DpadDown); int skillAfter = (skillBefore + 1) % (skillCount + 1);
+                bool controllerSkill = panel.SkillIndex == skillAfter && (skillAfter == skillCount ? panel.Supplies : panel.SelectedSkill == route.Professions.SkillIds[skillAfter]);
                 PadPress(GamepadButton.DpadRight);
+                if (!(keyboardOpened && keyboardMoved && controllerMoved && controllerColumn && controllerSkill))
+                    Debug.Log("Professions book input detail: opened=" + keyboardOpened + " moved=" + keyboardMoved + " pad=" + controllerMoved + " column=" + controllerColumn + " skill=" + controllerSkill + " entries=" + panel.Entries.Count + " index=" + panel.EntryIndex + " modal=" + route.Modal);
                 check("professions_native_book_keyboard_and_controller", keyboardOpened && keyboardMoved && controllerMoved && controllerColumn && controllerSkill);
 
                 string privateRoot = Path.Combine(output, "private-professions-ui");
