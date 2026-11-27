@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 16) error = "phase must be 16.";
-            else if (previewVersion != "0.12.0-phase16") error = "previewVersion must be 0.12.0-phase16.";
+            else if (phase != 17) error = "phase must be 17.";
+            else if (previewVersion != "0.13.0-phase17") error = "previewVersion must be 0.13.0-phase17.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";

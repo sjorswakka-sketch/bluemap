@@ -38,7 +38,7 @@ namespace BlueMapMigration.Editor
             public double durationSeconds;
             public string scriptingBackend = "Mono";
             public string renderPipeline = "Built-in";
-            public string scope = "Original world, player, safe profiles, equipment, combat, conversations and quests with bounded resident roaming, work and rest routines, remembered encounters and evening guests. Remaining profession, home, farming, water, production and regional systems follow their migration phases";
+            public string scope = "Original world, player, safe profiles, equipment, combat, conversations and quests with bounded resident roaming, work and rest routines, remembered encounters and evening guests, plus professions, gathering, recipes, shops and lake fishing. Remaining home, farming, water, production and regional systems follow their migration phases";
             public PackageInput[] unityPackages;
             public DllInput[] runtimeDllInputs;
             public BuildIdentity identity;
