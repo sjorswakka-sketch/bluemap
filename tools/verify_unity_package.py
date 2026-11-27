@@ -27,7 +27,7 @@ PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
                     12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14", 15: "0.11.0-phase15",
-                    16: "0.12.0-phase16"}
+                    16: "0.12.0-phase16", 17: "0.13.0-phase17"}
 RESIDENTS_THIRD_PARTY_NOTICE = '''Godot Engine (4.4.1) AStarGrid2D and SortArray behavior adaptation.
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/math/a_star_grid_2d.cpp
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/templates/sort_array.h
@@ -360,6 +360,19 @@ RESIDENTS_DETAIL_CHECKS = {
     "residents_no_personal_saves_used",
 }
 RESIDENTS_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+PROFESSIONS_CHECKS = {"professions_runtime_verified", "automated_audio_silent"}
+PROFESSIONS_DETAIL_CHECKS = {
+    "professions_model_source_equivalence", "professions_catalog_complete",
+    "professions_browsing_is_pure_and_keeps_unknown_fields", "professions_refusals_change_nothing",
+    "professions_reentrant_listeners_cannot_duplicate", "professions_native_shared_state_and_profile",
+    "professions_native_timed_harvest_and_cooldown", "professions_native_tool_gate_and_first_axe",
+    "professions_native_book_goal_and_recipe", "professions_native_book_keyboard_and_controller",
+    "professions_native_book_nl_en_responsive_layout", "professions_native_workplace_and_notes_once",
+    "professions_native_shop_rows_and_purchase", "professions_native_fishing_rod_gate",
+    "professions_native_fishing_catch_once", "professions_native_reload_keeps_progress_without_duplicates",
+    "professions_native_three_rendered_captures", "professions_no_personal_saves_used",
+}
+PROFESSIONS_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -382,7 +395,7 @@ PLAYER_ROOTS = {
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
                   "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json",
-                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "PROFESSIONS-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -555,6 +568,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 16:
         require(RESIDENTS_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 16 residents runtime proof is incomplete")
+    if identity["phase"] >= 17:
+        require(PROFESSIONS_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 17 professions runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -793,6 +809,30 @@ def validate_residents(result: dict, identity: dict) -> None:
     require(RESIDENTS_DETAIL_CHECKS <= names, "Required residents checks are missing")
 
 
+def validate_professions(result: dict, identity: dict) -> None:
+    """Bind original professions, recipes, shops and fishing to this player."""
+    require(bool(PROFESSIONS_DETAIL_CHECKS), "Professions callback contract is not frozen")
+    require(isinstance(result, dict) and set(result) == PROFESSIONS_FIELDS,
+            "Phase 17 professions proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported professions proof schema")
+    require(result.get("identity") == identity, "Professions embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Professions proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Professions detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed professions detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid professions detail check name")
+        require(name not in names and check["passed"] is True,
+                "Professions detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(PROFESSIONS_DETAIL_CHECKS <= names, "Required professions checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -850,6 +890,7 @@ def _instructions(identity: dict) -> bytes:
         14: "Migratiefase 14: oorspronkelijke gevechten, monsters, wilde dieren, projectielen en beloningen; nog niet de volledige overgezette game.\n",
         15: "Migratiefase 15: oorspronkelijke gesprekken, quests, voorwaarden, beloningen en verhaalgevolgen; nog niet de volledige overgezette game.\n",
         16: "Migratiefase 16: bewegende bewoners, dagroutines, wereldherinneringen en de gezamenlijke maaltijd; nog niet de volledige overgezette game.\n",
+        17: "Migratiefase 17: de zeven beroepen, vindplaatsen, gereedschap, recepten, werkplaatsen, winkels en vissen; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -907,6 +948,10 @@ def _instructions(identity: dict) -> bytes:
         controls += ("Bewoners volgen hun oorspronkelijke routes en reageren op herstelde plekken.\n"
                      "Bij Mila's fornuis kies je een gerecht en bereid je het in drie stappen; daarna kun je delen aan tafel.\n"
                      "De keuken ondersteunt toetsenbord, muis en controller. Automatische tests starten zonder geluid.\n")
+    if identity["phase"] >= 17:
+        controls += ("C opent Beroepen: kies een beroep, lees wat een recept vraagt en maak het; Tab wisselt naar eten en drinken.\n"
+                     "Verzamelen met E duurt even en stopt als je wegloopt; gereedschap wordt automatisch gebruikt.\n"
+                     "Winkels openen vanuit het gesprek. Bij een visplek werp je uit met E; houd E ingedrukt om de zone te laten stijgen.\n")
     return (
         "BLUEMAP QUEST - UNITY TECHNISCHE PREVIEW\n\n" +
         description[identity["phase"]] +
@@ -930,6 +975,7 @@ def _instructions(identity: dict) -> bytes:
         ("COMBAT-CHECKS.json bevat de controles van gevechten, monsters, wilde dieren en buit.\n" if identity["phase"] >= 14 else "") +
         ("STORY-CHECKS.json bevat de controles van gesprekken, quests, keuzes en blijvende gevolgen.\n" if identity["phase"] >= 15 else "") +
         ("RESIDENTS-CHECKS.json bevat de controles van bewonersroutines, rondlopen, herinneringen en avondgasten.\n" if identity["phase"] >= 16 else "") +
+        ("PROFESSIONS-CHECKS.json bevat de controles van beroepen, recepten, werkplaatsen, winkels en vissen.\n" if identity["phase"] >= 17 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n" +
         ("\n" + RESIDENTS_THIRD_PARTY_NOTICE if identity["phase"] >= 16 else "")
     ).encode("utf-8")
@@ -945,7 +991,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    progression_result: dict | None = None,
                    combat_result: dict | None = None,
                    story_result: dict | None = None,
-                   residents_result: dict | None = None) -> tuple[Path, int]:
+                   residents_result: dict | None = None,
+                   professions_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -989,6 +1036,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_residents(residents_result, identity)
     else:
         require(residents_result is None, "Historical preview cannot contain phase 16 residents proof")
+    if identity["phase"] >= 17:
+        validate_professions(professions_result, identity)
+    else:
+        require(professions_result is None, "Historical preview cannot contain phase 17 professions proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -1020,6 +1071,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["STORY-CHECKS.json"] = _json_bytes(story_result)
     if residents_result is not None:
         payload["RESIDENTS-CHECKS.json"] = _json_bytes(residents_result)
+    if professions_result is not None:
+        payload["PROFESSIONS-CHECKS.json"] = _json_bytes(professions_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -1221,6 +1274,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("RESIDENTS-CHECKS.json" not in payload and "residents" not in receipt,
                 "Historical preview contains unsupported residents proof")
+    if identity["phase"] >= 17:
+        require("PROFESSIONS-CHECKS.json" in payload, "Phase 17 packaged professions proof is missing")
+        professions = _json(payload["PROFESSIONS-CHECKS.json"], "PROFESSIONS-CHECKS.json")
+        validate_professions(professions, identity)
+        require(receipt.get("professions") == professions, "Receipt professions proof differs from package")
+    else:
+        require("PROFESSIONS-CHECKS.json" not in payload and "professions" not in receipt,
+                "Historical preview contains unsupported professions proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

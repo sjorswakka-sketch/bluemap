@@ -385,6 +385,16 @@ namespace BlueMapMigration.Probe
                 if(residentsFailed||!more)break;yield return current;
             }
             Add("residents_runtime_verified",!residentsFailed&&BlueMapMigration.Residents.ResidentsProbeRunner.Last.success);
+            var professionsProof=BlueMapMigration.Professions.ProfessionsProbeRunner.Run(identity,output,playerWorld,route,gallery.Catalog);
+            bool professionsFailed=false;
+            while(true)
+            {
+                object current=null;bool more=false;
+                try{more=professionsProof.MoveNext();if(more)current=professionsProof.Current;}
+                catch(Exception error){Debug.LogError("Native professions proof failed: "+error);professionsFailed=true;}
+                if(professionsFailed||!more)break;yield return current;
+            }
+            Add("professions_runtime_verified",!professionsFailed&&BlueMapMigration.Professions.ProfessionsProbeRunner.Last.success);
             Finish();
         }
         private void SaveRouteCapture(string name)

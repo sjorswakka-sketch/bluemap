@@ -29,8 +29,8 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.12.0-phase16"
-PHASE = 16
+PREVIEW_VERSION = "0.13.0-phase17"
+PHASE = 17
 
 from verify_unity_package import (PackageError, package_player, validate_identity, verify_package,
                                   validate_foundation, FOUNDATION_CHECKS, validate_player, PLAYER_CHECKS,
@@ -38,7 +38,8 @@ from verify_unity_package import (PackageError, package_player, validate_identit
                                   validate_world_access, WORLD_ACCESS_CHECKS,
                                   validate_inventory, INVENTORY_CHECKS,
                                   validate_progression, PROGRESSION_CHECKS, validate_combat, COMBAT_CHECKS,
-                                  validate_story, STORY_CHECKS, validate_residents, RESIDENTS_CHECKS)
+                                  validate_story, STORY_CHECKS, validate_residents, RESIDENTS_CHECKS,
+                                  validate_professions, PROFESSIONS_CHECKS)
 
 
 class ProbeError(RuntimeError):
@@ -464,6 +465,8 @@ def main() -> None:
             "Required story runtime check is missing")
     require(RESIDENTS_CHECKS <= {c["name"] for c in checks},
             "Required residents runtime check is missing")
+    require(PROFESSIONS_CHECKS <= {c["name"] for c in checks},
+            "Required professions runtime check is missing")
     require(type(result.get("frames")) is int and result["frames"] >= 60, "Runtime loop did not advance")
     require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
             "Unexpected runtime capture method")
@@ -500,7 +503,9 @@ def main() -> None:
                  "screenshot-story-dialogue.png", "screenshot-story-journal.png",
                  "screenshot-story-choice.png", "screenshot-story-consequence.png",
                  "screenshot-residents-roaming.png", "screenshot-residents-routines.png",
-                 "screenshot-residents-memory.png", "screenshot-residents-supper.png"):
+                 "screenshot-residents-memory.png", "screenshot-residents-supper.png",
+                 "screenshot-professions-book.png", "screenshot-professions-shop.png",
+                 "screenshot-professions-fishing.png"):
         captures[name] = validate_png(runtime / name)
     foundation = read_json(runtime / "foundation-result.json")
     validate_foundation(foundation, identity)
@@ -522,9 +527,12 @@ def main() -> None:
     validate_story(story, identity)
     residents = read_json(runtime / "residents-result.json")
     validate_residents(residents, identity)
+    professions = read_json(runtime / "professions-result.json")
+    validate_professions(professions, identity)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
     package, file_count = package_player(player, output, identity, result, foundation, player_checks,
-                                       persistence, route, world_access, inventory, progression, combat, story, residents)
+                                       persistence, route, world_access, inventory, progression, combat, story, residents,
+                                       professions)
     receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
                "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
                "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
@@ -543,6 +551,7 @@ def main() -> None:
                "combat": combat,
                "story": story,
                "residents": residents,
+               "professions": professions,
                "unityPackages": report["unityPackages"], "runtimeDllInputs": report["runtimeDllInputs"],
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,

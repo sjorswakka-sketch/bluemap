@@ -81,8 +81,8 @@ namespace BlueMapMigration.Route
             if(route.Modal==""&&!game.DialogueOpen)DrawCombat();
             if(game.DialogueOpen){DrawDialogue();return;}
             if(route.Modal=="")return;
-            GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;
-            if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
+            if(route.Modal!="fishing"){GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;}
+            if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="professions")route.ProfessionsPanel?.Draw();else if(route.Modal=="shop")route.ShopPanel?.Draw();else if(route.Modal=="fishing")route.FishingView?.Draw();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
         }
         public Rect BossBounds {get;private set;}
         private void DrawCombat()

@@ -68,7 +68,7 @@ namespace BlueMapMigration.Route
     case "toast":string message=effect.Payload.AsString();if(!message.StartsWith("Gekregen:",StringComparison.Ordinal)&&!message.StartsWith("Obtained:",StringComparison.Ordinal)&&!message.StartsWith("Received:",StringComparison.Ordinal))ShowMessage(message);break;
     case "world_action":var a=effect.Payload.Items;switch(a[0].AsString()){case "music":World.PlayRouteMusic(a[1].AsString());break;case "boss_start":OnSound("boss");World.PlayRouteMusic("boss");Encounter?.ActivateBosses();break;}break;
     case "ending_requested":storyEndingPending=true;break;
-    case "shop_requested":LastStoryService="shop:"+effect.Payload.AsString();StoryServiceRequested?.Invoke(StoryModel.A(StoryModel.S("shop"),effect.Payload));ShowMessage(T("Deze winkel opent in de handelsfase van de migratie.","This shop opens in the trading phase of the migration."));break;
+    case "shop_requested":LastStoryService="shop:"+effect.Payload.AsString();StoryServiceRequested?.Invoke(StoryModel.A(StoryModel.S("shop"),effect.Payload));pendingShop=effect.Payload.AsString();break;
    }
   }
   bool HandleStoryExternal(FoundationValue action)
