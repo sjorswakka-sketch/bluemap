@@ -90,18 +90,37 @@ namespace BlueMapMigration.Farm
         static FoundationValue With(FoundationValue inventory, params (string item, long count)[] items)
         { foreach (var row in items) inventory = InventoryModel.Replace(inventory, row.item, FoundationValue.Integer(row.count), row.count <= 0); return inventory; }
 
-        /// <summary>The same saved content, regardless of key order or of whole numbers stored as int or float.</summary>
-        static bool Same(FoundationValue a, FoundationValue b)
+        /// <summary>
+        /// The first place where two saved values differ, or null when they hold the same content. Key order and
+        /// whole numbers stored as int or float do not count as a difference.
+        /// </summary>
+        static string Difference(FoundationValue a, FoundationValue b, string path = "garden")
         {
             bool Table(FoundationValue v) => v.Kind == "object" || v.Kind == "dictionary";
             bool Numeric(FoundationValue v) => v.Kind == "int" || v.Kind == "float";
             if (Table(a) || Table(b))
-                return Table(a) && Table(b) && a.Entries.Count == b.Entries.Count
-                    && a.Entries.All(row => b.TryGet(row.Key.AsString(), out var other) && Same(row.Value, other));
+            {
+                if (!Table(a) || !Table(b)) return path + ": " + a.Kind + " != " + b.Kind;
+                foreach (var row in a.Entries) if (!b.TryGet(row.Key.AsString(), out _)) return path + "." + row.Key.AsString() + ": only now";
+                foreach (var row in b.Entries)
+                {
+                    if (!a.TryGet(row.Key.AsString(), out var now)) return path + "." + row.Key.AsString() + ": only before";
+                    string inner = Difference(now, row.Value, path + "." + row.Key.AsString()); if (inner != null) return inner;
+                }
+                return null;
+            }
             if (a.Kind == "array" || b.Kind == "array")
-                return a.Kind == b.Kind && a.Items.Count == b.Items.Count && a.Items.Zip(b.Items, Same).All(same => same);
-            if (Numeric(a) || Numeric(b)) return Numeric(a) && Numeric(b) && a.AsDouble() == b.AsDouble();
-            return a.Kind == b.Kind && a.CanonicalJson == b.CanonicalJson;
+            {
+                if (a.Kind != b.Kind || a.Items.Count != b.Items.Count) return path + ": list differs";
+                for (int i = 0; i < a.Items.Count; i++) { string inner = Difference(a.Items[i], b.Items[i], path + "[" + i + "]"); if (inner != null) return inner; }
+                return null;
+            }
+            if (Numeric(a) || Numeric(b))
+                return Numeric(a) && Numeric(b) && a.AsDouble() == b.AsDouble() ? null : path + ": " + (Numeric(a) ? a.AsDouble().ToString("R") : a.Kind) + " != " + (Numeric(b) ? b.AsDouble().ToString("R") : b.Kind);
+            if (a.Kind != b.Kind) return path + ": " + a.Kind + " != " + b.Kind;
+            if (a.Kind == "string") return a.AsString() == b.AsString() ? null : path + ": " + a.AsString() + " != " + b.AsString();
+            if (a.Kind == "bool") return a.AsBool() == b.AsBool() ? null : path + ": " + a.AsBool() + " != " + b.AsBool();
+            return null;
         }
 
         static IEnumerator RunLiveEpisodes(string output, FoundationWorldRepository repository,
@@ -183,13 +202,13 @@ namespace BlueMapMigration.Farm
             bool dug = Work(ditchA, "channel") == 1 && Work(ditchB, "channel") == 1 && Model().IsWet(ditchA) && Model().IsWet(ditchB);
             bool tilled = Work(bed, "soil") == 1 && Model().Watered(bed);
             bool sown = Work(bed, "grape") == 1 && Crop(bed) == "grape" && state.Count("hs_seed") == 7 && Work(bed, "grape") == 0;
-            route.Tick(0);
+            route.Tick(6); route.Tick(0);
             bool drawn = route.GardenChannelNodes == 2 && route.GardenWetChannels == 2 && route.GardenSoilNodes == 1 && route.GardenCropNodes == 1;
             bool hint = route.GardenHint.Contains(Model().ModeName("grape")) && route.GardenHint.Contains(Model().CellText(bed).Split('\n')[0]) && route.GardenPreviewVisible;
             yield return new WaitForEndOfFrame();
             bool hintDrawn = route.Hud.LastGardenHintBounds.width > 0 && route.Hud.GardenHintFits && StoryUi.Contains(new Rect(0, 0, 1152, 648), route.Hud.LastGardenHintBounds);
             if (!(dug && tilled && sown && drawn && hint && hintDrawn))
-                Detail("work", ("dug", dug), ("tilled", tilled), ("sown", sown), ("drawn", drawn), ("hint", hint), ("hintDrawn", hintDrawn), ("channels", route.GardenChannelNodes), ("wet", route.GardenWetChannels), ("soil", route.GardenSoilNodes), ("crops", route.GardenCropNodes), ("text", route.GardenHint.Replace("\n", " | ")), ("aim", route.GardenAimCell().Key), ("reason", Model().WorkReason(bed, "soil")));
+                Detail("work", ("dug", dug), ("tilled", tilled), ("sown", sown), ("drawn", drawn), ("hint", hint), ("hintDrawn", hintDrawn), ("channels", route.GardenChannelNodes), ("wet", route.GardenWetChannels), ("soil", route.GardenSoilNodes), ("crops", route.GardenCropNodes), ("text", route.GardenHint.Replace("\n", " | ")), ("aim", route.GardenAimCell().Key), ("reason", Model().WorkReason(bed, "soil")), ("message", route.Message), ("target", route.CurrentTarget?.Kind + "/" + route.CurrentTarget?.Id), ("preview", route.GardenPreviewVisible), ("mode", Model().Mode));
             check("farm_native_channel_soil_and_planting", dug && tilled && sown && drawn && hint && hintDrawn);
 
             // --- Growth follows active play time and nothing else ---
@@ -266,9 +285,10 @@ namespace BlueMapMigration.Farm
             bool reloaded = route.Save() && route.Reload(false); route.Tick(0); state = route.Gameplay.State;
             if (state.MapId != "village") Travel("village");
             route.Tick(0);
-            bool kept = reloaded && Same(Model().FarmView, before);
+            string difference = Difference(Model().FarmView, before);
+            bool kept = reloaded && difference == null;
             bool redrawn = route.GardenChannelNodes == 2 && route.GardenWetChannels == 2 && route.GardenTreeNodes == 1 && route.GardenSoilNodes >= 2;
-            if (!(kept && redrawn)) Detail("reload", ("reloaded", reloaded), ("kept", kept), ("redrawn", redrawn), ("map", state.MapId), ("channels", route.GardenChannelNodes), ("trees", route.GardenTreeNodes), ("soil", route.GardenSoilNodes));
+            if (!(kept && redrawn)) Detail("reload", ("reloaded", reloaded), ("kept", kept), ("redrawn", redrawn), ("map", state.MapId), ("channels", route.GardenChannelNodes), ("trees", route.GardenTreeNodes), ("soil", route.GardenSoilNodes), ("difference", difference));
             check("farm_native_reload_keeps_garden", kept && redrawn);
 
             // --- Water is named where you stand beside it ---

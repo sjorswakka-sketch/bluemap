@@ -30,11 +30,16 @@ namespace BlueMapMigration.Farm
   public Rect RenderedSelectedBounds {get;private set;}=Rect.zero;public bool BodyFits {get;private set;}=true;public int Draws {get;private set;}
   public event Action<string> Chosen;public event Action CloseRequested;
   int Rows=>(options.Count+1)/2;
-  float GridTop=>PanelRect.yMax-34-Rows*OptionHeight;
+  /// <summary>A rough line count; the frame grows with the text and the choices instead of leaving a tall empty panel.</summary>
+  int Lines=>Body.Split('\n').Sum(line=>Math.Max(1,(int)Math.Ceiling(line.Length/72.0)));
+  float BodyHeight=>Mathf.Clamp(Lines*25+12,50,PanelRect.height-56-46-Rows*OptionHeight-34-8);
+  /// <summary>The drawn frame, centred inside the largest allowed panel.</summary>
+  public Rect Frame{get{float height=56+BodyHeight+8+46+Rows*OptionHeight+34;return new Rect(PanelRect.x,PanelRect.y+(PanelRect.height-height)/2,PanelRect.width,height);}}
+  float GridTop=>Frame.yMax-34-Rows*OptionHeight;
   public Rect OptionRect(int index)=>new Rect(PanelRect.x+24+(index%2)*(ColumnWidth+12),GridTop+(index/2)*OptionHeight,ColumnWidth,OptionHeight-6);
   public Rect InfoRect=>new Rect(PanelRect.x+24,GridTop-46,852,40);
-  public Rect BodyRect=>new Rect(PanelRect.x+24,PanelRect.y+56,852,Math.Max(0,InfoRect.y-PanelRect.y-62));
-  public bool LayoutFits=>StoryUi.Contains(new Rect(0,0,1152,648),PanelRect)&&BodyRect.height>=40&&Enumerable.Range(0,options.Count).All(i=>StoryUi.Contains(PanelRect,OptionRect(i)))&&StoryUi.Contains(PanelRect,InfoRect);
+  public Rect BodyRect=>new Rect(PanelRect.x+24,Frame.y+56,852,Math.Max(0,InfoRect.y-Frame.y-62));
+  public bool LayoutFits=>StoryUi.Contains(new Rect(0,0,1152,648),PanelRect)&&StoryUi.Contains(PanelRect,Frame)&&BodyRect.height>=40&&Enumerable.Range(0,options.Count).All(i=>StoryUi.Contains(Frame,OptionRect(i)))&&StoryUi.Contains(Frame,InfoRect);
   public GardenMenu(Phase6Catalog sourceCatalog,Func<string,string,string> textTranslator,Func<string,string> bindingLabel){catalog=sourceCatalog;bilingual=textTranslator??((nl,en)=>nl);binding=bindingLabel??(s=>s);}
   /// <summary>Show a menu; when it is rebuilt for the same role the chosen entry stays under the cursor.</summary>
   public void Open(string role,string title,IEnumerable<string> lines,IEnumerable<GardenOption> choices,string focus=null)
@@ -80,12 +85,12 @@ namespace BlueMapMigration.Farm
     else{bool activate=e.button==0&&hit>=0&&hit==pressed;pressed=-1;if(activate){selected=hit;ActivateSelected();}}
     e.Use();if(!IsOpen)return;
    }
-   StoryUi.Panel(PanelRect);GUI.Label(new Rect(PanelRect.x+24,PanelRect.y+12,852,38),Title,heading);
+   var frame=Frame;StoryUi.Panel(frame);GUI.Label(new Rect(frame.x+24,frame.y+12,852,38),Title,heading);
    var text=StoryUi.Text(catalog,18,true);var body=BodyRect;var content=new GUIContent(Body);while(text.fontSize>13&&text.CalcHeight(content,body.width)>body.height)text.fontSize--;
    BodyFits=text.CalcHeight(content,body.width)<=body.height+.5f;GUI.Label(body,Body,text);
    if(selected>=0&&selected<options.Count&&options[selected].Info!="")GUI.Label(InfoRect,options[selected].Info,info);
    for(int i=0;i<options.Count;i++){var r=OptionRect(i);StoryUi.Button(r,options[i].Label,options[i].Enabled?row:off,true,selected==i&&options[i].Enabled);if(selected==i)RenderedSelectedBounds=r;}
-   GUI.Label(new Rect(PanelRect.x+24,PanelRect.yMax-28,852,20),binding("ui_accept")+bilingual(" kiezen · "," choose · ")+binding("ui_cancel")+bilingual(" sluiten"," close"),small);
+   GUI.Label(new Rect(frame.x+24,frame.yMax-28,852,20),binding("ui_accept")+bilingual(" kiezen · "," choose · ")+binding("ui_cancel")+bilingual(" sluiten"," close"),small);
   }
  }
 }
