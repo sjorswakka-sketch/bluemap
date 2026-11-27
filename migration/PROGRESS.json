@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_17_complete",
+  "status": "phase_18_complete",
   "completed_phases": [
     1,
     2,
@@ -19,10 +19,11 @@
     14,
     15,
     16,
-    17
+    17,
+    18
   ],
   "active_phase": null,
-  "next_phase": 18,
+  "next_phase": 19,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
@@ -30,11 +31,11 @@
   "unity_implementation_started": true,
   "completed_on": "2026-11-27",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-17/README.md",
+  "checks": "phase-18/README.md",
   "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": true,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase17-preview-6cfdf9d3",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase18-preview-d743e720",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -223,5 +224,15 @@
     "26": 22,
     "27": 22,
     "28": 23
-  }
+  },
+  "home_model_equivalence_verified": true,
+  "home_runtime_verified": true,
+  "home_runtime_checks": 18,
+  "home_source_cases": 249,
+  "home_source_operations": 25619,
+  "home_furniture_pieces": 13,
+  "home_yard_pieces": 7,
+  "home_work_stations": 4,
+  "home_source_contracts": "phase-18/source-contracts.json",
+  "home_build_source": "d743e720865ec4650a4bda6c3af50311c0161471"
 }

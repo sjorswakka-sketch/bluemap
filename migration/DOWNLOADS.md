@@ -3,7 +3,8 @@
 | Wat wil je openen? | Download | Inhoud |
 |---|---|---|
 | De volledige bestaande game | [Godot 0.34.0-preview](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) | Bestaande game, oorspronkelijke wereld en systemen; bron en herstelgeschiedenis inbegrepen |
-| De actuele technische Unity-preview | [Fase 17 — 6cfdf9d3](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase17-preview-6cfdf9d3) | Zeven beroepen, verzamelen, recepten, werkplaatsen, winkels en vissen; nog geen volledige gameport |
+| De actuele technische Unity-preview | [Fase 18 — d743e720](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase18-preview-d743e720) | Huis en erf inrichten: meubels, vloer, wand en licht, paden, hekken, poortjes en bouwruimte; nog geen volledige gameport |
+| De eerdere beroepenproef | [Unity-fase 17 — 6cfdf9d3](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase17-preview-6cfdf9d3) | Zeven beroepen, verzamelen, recepten, werkplaatsen, winkels en vissen; nog geen volledige gameport |
 | De eerdere bewonersproef | [Unity-fase 16](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase16-preview-27000405) | Bewonersroutines, ontmoetingen, wereldherinneringen en de gezamenlijke maaltijd; nog geen volledige gameport |
 | De eerdere verhaalproef | [Unity-fase 15](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase15-preview-3a961f2a) | Gesprekken, quests, keuzes en blijvende gevolgen |
 | De eerdere gevechtsproef | [Unity-fase 14](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase14-preview-cf27358f) | Gevechten, monsters, wilde dieren en projectielen |
@@ -24,4 +25,4 @@ De actuele verwijzing en vertrouwde hashes staan in [preview.json](preview.json)
 
 Alle downloads blijven binnen dezelfde repository; het bouwen van de Unity-speler gebeurt met de bestaande lokale activatie, de GitHub-workflow controleert bron en pakket. [Uitleg en controles](phase-03/README.md).
 
-De actuele fase 17 start bij **Avontuur en opslag**. C opent het beroepenboek, E verzamelt en werpt uit bij een visplek, en winkels openen vanuit het gesprek. Begin een nieuw avontuur of hervat een veilige speelkopie. Bewoners volgen hun eigen routes, herstelde plekken krijgen ontmoetingen en bij het meer kun je samen koken en delen. Eerdere wereld-, gevechts-, verhaal- en opslagsystemen blijven behouden. [Grenzen en controles](phase-16/README.md).
+De actuele fase 18 start bij **Avontuur en opslag**. Bij je bed of de tuingids in huis kies je Je huis inrichten; buiten bij de tuingids Erf inrichten. C opent het beroepenboek, E verzamelt en werpt uit bij een visplek, en winkels openen vanuit het gesprek. Begin een nieuw avontuur of hervat een veilige speelkopie. Bewoners volgen hun eigen routes, herstelde plekken krijgen ontmoetingen en bij het meer kun je samen koken en delen. Eerdere wereld-, gevechts-, verhaal- en opslagsystemen blijven behouden. [Grenzen en controles](phase-16/README.md).

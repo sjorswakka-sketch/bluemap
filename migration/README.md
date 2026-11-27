@@ -1,6 +1,8 @@
-# Unity-migratie — fase 17 voltooid
+# Unity-migratie — fase 18 voltooid
 
-Het volgende **go** start fase 18: persoonlijk huis en erf; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 19: landbouw, water en productie; de volledige game is nog niet overgezet.
+
+[Fase 18: persoonlijk huis en erf](phase-18/README.md) — meubels, vloer, wand en licht, verplaatsbare werkplekken, paden, hekken, poortjes en twee weiden; 44 algemene Windows-controles en 18 huis- en erfcontroles.
 
 [Fase 17: beroepen, crafting en handel](phase-17/README.md) — zeven beroepen, 95 grondstofsoorten, 52 recepten, beide winkels en het vissen; 43 algemene Windows-controles en 18 beroepscontroles.
 
