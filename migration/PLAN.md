@@ -1,6 +1,6 @@
 # BlueMap Quest — migratie naar Unity
 
-Status: fases 1 tot en met 18 afgerond; fase 19 wacht op het volgende go.
+Status: fases 1 tot en met 19 afgerond; fase 20 wacht op het volgende go.
 
 Eén volgend **go** start één volledige volgende fase, inclusief het noodzakelijke ontwerp, implementatie, eigen hulpmiddelen, controles, bewijs en publicatie op het migratiespoor; daarna volgt een korte rapportage en is het volgende go voor de volgende fase. Een mislukte controle wordt binnen de lopende fase opgelost en telt niet als een afgeronde fase.
 

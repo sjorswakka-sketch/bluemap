@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_18_complete",
+  "status": "phase_19_complete",
   "completed_phases": [
     1,
     2,
@@ -20,10 +20,11 @@
     15,
     16,
     17,
-    18
+    18,
+    19
   ],
   "active_phase": null,
-  "next_phase": 19,
+  "next_phase": 20,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
@@ -31,11 +32,11 @@
   "unity_implementation_started": true,
   "completed_on": "2026-11-27",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-18/README.md",
+  "checks": "phase-19/README.md",
   "requires_next_go": true,
   "unity_probe_created": true,
   "game_port_started": true,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase18-preview-d743e720",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase19-preview-fc8f9c15",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -234,5 +235,16 @@
   "home_yard_pieces": 7,
   "home_work_stations": 4,
   "home_source_contracts": "phase-18/source-contracts.json",
-  "home_build_source": "d743e720865ec4650a4bda6c3af50311c0161471"
+  "home_build_source": "d743e720865ec4650a4bda6c3af50311c0161471",
+  "farm_model_equivalence_verified": true,
+  "farm_runtime_verified": true,
+  "farm_runtime_checks": 20,
+  "farm_source_cases": 297,
+  "farm_source_operations": 2800,
+  "farm_crops": 8,
+  "farm_jobs": 3,
+  "farm_water_types": 10,
+  "farm_water_maps": 37,
+  "farm_source_contracts": "phase-19/source-contracts.json",
+  "farm_build_source": "fc8f9c15d6efeb9e54a79936ace268596d9ea008"
 }

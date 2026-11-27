@@ -2,11 +2,11 @@
 
 ## Unity-versie: nu te testen
 
-**[Download de nieuwste Windows-testversie](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase18-preview-d743e720)** — pak `BlueMapUnityPreview-phase-18-d743e720-Windows-x64.zip` uit en start `BlueMapUnityProbe.exe`. Kies daarna **Avontuur en opslag**. Installeren is niet nodig.
+**[Download de nieuwste Windows-testversie](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase19-preview-fc8f9c15)** — pak `BlueMapUnityPreview-phase-19-fc8f9c15-Windows-x64.zip` uit en start `BlueMapUnityProbe.exe`. Kies daarna **Avontuur en opslag**. Installeren is niet nodig.
 
 De game wordt van Godot naar Unity overgezet. **Waarom Unity?** De visie voor BlueMap Quest, in graphics en in systemen, is veel groter dan wat de game nu is; Unity geeft daar de ruimte voor. Eerst wordt de bestaande game één op één overgezet, daarna groeit hij verder.
 
-**Stand: fase 18 van 23 afgerond** (27 november 2026). Nieuw in deze versie: je eigen huis en erf inrichten — meubels verplaatsen en maken, vloer, wand en licht kiezen, werkplekken verplaatsen, paden, hekken en vanzelf openende poortjes leggen en extra bouwruimte ontsluiten. Eerder overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, bewoners met dagroutines, de zeven beroepen, recepten, winkels en vissen. Nog niet overgezet: landbouw, water en irrigatie, productie en bijen, en een deel van de bijzondere gebieden. Dit is dus een testversie, nog niet de hele game.
+**Stand: fase 19 van 23 afgerond** (27 november 2026). Nieuw in deze versie: je eigen tuin — graaf kanalen vanaf de beek, plant druiven, bloemen, groenten, kruiden, bessen en appelbomen, maak compost, wijn en honing en koop zaden in het zadenboek; naast water lees je welk water het is. Druk **U** voor de tuinstanden. Eerder overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, bewoners met dagroutines, de zeven beroepen, recepten, winkels en vissen, en je eigen huis en erf inrichten. Nog niet overgezet: een deel van de bijzondere gebieden (moerassluizen, getijden, veerboten, arena), dag en nacht, weer en de wereldkaart. Dit is dus een testversie, nog niet de hele game.
 
 - [Wat er per fase is overgezet](migration/README.md) en het [plan van 23 fases](migration/PLAN.md)
 - [Alle downloads, ook eerdere testversies](migration/DOWNLOADS.md)

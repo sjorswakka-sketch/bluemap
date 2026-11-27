@@ -1,6 +1,8 @@
-# Unity-migratie — fase 18 voltooid
+# Unity-migratie — fase 19 voltooid
 
-Het volgende **go** start fase 19: landbouw, water en productie; de volledige game is nog niet overgezet.
+Het volgende **go** start fase 20: bijzondere gebieden en uitdagingen; de volledige game is nog niet overgezet.
+
+[Fase 19: landbouw, water en productie](phase-19/README.md) — kanalen, acht gewassen, boomgaard, mesthoop, wijnvaten, bijenkast, zadenboek en tien benoemde watertypes; 45 algemene Windows-controles en 20 tuin-, productie- en watercontroles.
 
 [Fase 18: persoonlijk huis en erf](phase-18/README.md) — meubels, vloer, wand en licht, verplaatsbare werkplekken, paden, hekken, poortjes en twee weiden; 44 algemene Windows-controles en 18 huis- en erfcontroles.
 
