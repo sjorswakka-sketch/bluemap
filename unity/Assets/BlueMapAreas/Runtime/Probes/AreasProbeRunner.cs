@@ -130,12 +130,15 @@ namespace BlueMapMigration.Areas
             // --- Marsh sluices: west open and east closed lowers the water ---
             var west = Seek(t => Is(t, "living_object", "sluice") && Id(t) == "lw_sluice_west", "kruipmoeras");
             Flags(("lw_drained", false), ("lw_sluice_west", false), ("lw_sluice_east", true), ("lw_sluice_west_seen", false), ("lw_sluice_east_seen", false));
-            var east = Find(t => Is(t, "living_object", "sluice") && Id(t) == "lw_sluice_east");
+            RouteTarget Sluice(string id) => Find(t => Is(t, "living_object", "sluice") && Id(t) == id);
+            var east = Sluice("lw_sluice_east");
             bool opened = Reach(west) && state.Flag("lw_sluice_west") && state.Flag("lw_sluice_west_seen") && !state.Flag("lw_drained") && state.QuestState("wilgentwijgen") == "active";
-            route.Tick(0); bool label = west != null && west.Label.Contains(route.Translate("open"));
-            bool drained = Reach(east) && !state.Flag("lw_sluice_east") && state.Flag("lw_drained");
-            bool settled = Reach(east) && !state.Flag("lw_sluice_east") && state.Flag("lw_drained");
-            if (!(opened && label && drained && settled)) Detail("sluices", ("west", west != null), ("east", east != null), ("opened", opened), ("label", label), ("drained", drained), ("settled", settled), ("map", state.MapId));
+            route.Tick(0); route.Tick(0); bool label = Sluice("lw_sluice_west") != null && Sluice("lw_sluice_west").Label.Contains(route.Translate("open"));
+            bool drained = Reach(Sluice("lw_sluice_east")) && !state.Flag("lw_sluice_east") && state.Flag("lw_drained"); route.Tick(0); route.Tick(0);
+            // Once the water is safe, using a sluice again changes nothing.
+            if (Sluice("lw_sluice_east") != null) Reach(Sluice("lw_sluice_east")); if (Sluice("lw_sluice_west") != null) Reach(Sluice("lw_sluice_west"));
+            bool settled = !state.Flag("lw_sluice_east") && state.Flag("lw_sluice_west") && state.Flag("lw_drained");
+            if (!(opened && label && drained && settled)) Detail("sluices", ("west", west != null), ("east", east != null), ("opened", opened), ("label", label), ("drained", drained), ("settled", settled), ("map", state.MapId), ("label", Sluice("lw_sluice_west")?.Label), ("eastNow", Sluice("lw_sluice_east") != null));
             check("areas_native_sluices_drain_the_marsh", opened && label && drained && settled);
             route.Tick(0); yield return new WaitForEndOfFrame(); Capture("marsh");
 
