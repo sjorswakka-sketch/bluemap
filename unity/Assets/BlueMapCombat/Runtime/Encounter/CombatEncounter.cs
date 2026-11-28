@@ -95,6 +95,8 @@ namespace BlueMapMigration.Combat
             }
             Render();
         }
+        /// <summary>Every original enemy kind, in source order.</summary>
+        public IReadOnlyList<string> EnemyKinds=>Get(rules,"enemies").Entries.Select(row=>row.Key.AsString()).ToArray();
         /// <summary>The original data of an enemy kind, or null when the kind is unknown.</summary>
         public FoundationValue EnemyData(string kind){var data=Get(Get(rules,"enemies"),kind);return data.Entries.Count==0?null:data;}
         public EncounterActor Spawn(string kind,Vector2 at,string uniqueFlag="",string address="",FoundationValue data=null)

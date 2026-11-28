@@ -310,6 +310,10 @@
       "path": "unity/Assets/BlueMapRoute/Runtime/Session/ProfessionsRouteController.cs"
     },
     {
+      "guid": "0548c3a7eb549774a2bb28fad60ded2b",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Session/RecordsRouteController.cs"
+    },
+    {
       "guid": "db2e8b52314c44018104705db1181eef",
       "path": "unity/Assets/BlueMapRoute/Runtime/Session/ResidentsRouteController.cs"
     },

@@ -27,7 +27,8 @@ PREVIEW_VERSION = "0.1.0-phase3"  # Historical downloads remain verifiable.
 PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
                     12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14", 15: "0.11.0-phase15",
-                    16: "0.12.0-phase16", 17: "0.13.0-phase17", 18: "0.14.0-phase18", 19: "0.15.0-phase19", 20: "0.16.0-phase20"}
+                    16: "0.12.0-phase16", 17: "0.13.0-phase17", 18: "0.14.0-phase18", 19: "0.15.0-phase19", 20: "0.16.0-phase20",
+                    21: "0.17.0-phase21"}
 RESIDENTS_THIRD_PARTY_NOTICE = '''Godot Engine (4.4.1) AStarGrid2D and SortArray behavior adaptation.
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/math/a_star_grid_2d.cpp
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/templates/sort_array.h
@@ -412,6 +413,25 @@ AREAS_DETAIL_CHECKS = {
     "areas_no_personal_saves_used",
 }
 AREAS_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+ATMOSPHERE_CHECKS = {"atmosphere_runtime_verified", "automated_audio_silent"}
+ATMOSPHERE_DETAIL_CHECKS = {
+    "atmosphere_native_shared_state_and_profile",
+    "atmosphere_native_hour_colours_follow_source",
+    "atmosphere_native_night_is_darker_and_lamps_glow",
+    "atmosphere_native_caves_dark_and_interiors_plain",
+    "atmosphere_native_weather_follows_map_and_clock",
+    "atmosphere_native_ambience_follows_climate_and_hour",
+    "atmosphere_native_atlas_regions_names_and_steps",
+    "atmosphere_native_fast_travel_between_altars",
+    "atmosphere_native_achievements_unlock_and_announce",
+    "atmosphere_native_bestiary_known_and_hidden",
+    "atmosphere_native_language_volume_and_mute",
+    "atmosphere_native_keys_open_map_and_books",
+    "atmosphere_native_reload_keeps_records",
+    "atmosphere_native_three_rendered_captures",
+    "atmosphere_no_personal_saves_used",
+}
+ATMOSPHERE_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -434,7 +454,7 @@ PLAYER_ROOTS = {
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
                   "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json",
-                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "PROFESSIONS-CHECKS.json", "HOME-CHECKS.json", "FARM-CHECKS.json", "AREAS-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "PROFESSIONS-CHECKS.json", "HOME-CHECKS.json", "FARM-CHECKS.json", "AREAS-CHECKS.json", "ATMOSPHERE-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -619,6 +639,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 20:
         require(AREAS_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 20 areas runtime proof is incomplete")
+    if identity["phase"] >= 21:
+        require(ATMOSPHERE_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 21 atmosphere runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -953,6 +976,30 @@ def validate_areas(result: dict, identity: dict) -> None:
     require(AREAS_DETAIL_CHECKS <= names, "Required areas checks are missing")
 
 
+def validate_atmosphere(result: dict, identity: dict) -> None:
+    """Bind the hour, weather, lamps, atlas, travel, achievements and settings to this player."""
+    require(bool(ATMOSPHERE_DETAIL_CHECKS), "Atmosphere callback contract is not frozen")
+    require(isinstance(result, dict) and set(result) == ATMOSPHERE_FIELDS,
+            "Phase 21 atmosphere proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported atmosphere proof schema")
+    require(result.get("identity") == identity, "Atmosphere embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Atmosphere proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Atmosphere detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed atmosphere detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid atmosphere detail check name")
+        require(name not in names and check["passed"] is True,
+                "Atmosphere detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(ATMOSPHERE_DETAIL_CHECKS <= names, "Required atmosphere checks are missing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -1014,6 +1061,7 @@ def _instructions(identity: dict) -> bytes:
         18: "Migratiefase 18: je eigen huis en erf inrichten met meubels, vloer, wand en licht, paden, hekken, poortjes en bouwruimte; nog niet de volledige overgezette game.\n",
         19: "Migratiefase 19: je eigen tuin met kanalen, gewassen, boomgaard, mesthoop, wijnvaten en bijenkast, en benoemde watertypes; nog niet de volledige overgezette game.\n",
         20: "Migratiefase 20: bijzondere gebieden en uitdagingen: sluizen, spiegels, vuurkorven, woestijn en bergpas, archief, resonantieproef, arena, kustavonturen en schietbaan; nog niet de volledige overgezette game.\n",
+        21: "Migratiefase 21: het uur van de dag, donkere grotten, weer, lamplicht en achtergrondgeluid, de wereldkaart (N), snelreizen tussen altaren, prestaties (T), het beestenboek (B) en taal en geluid in het pauzemenu; nog niet de volledige overgezette game.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -1109,6 +1157,7 @@ def _instructions(identity: dict) -> bytes:
         ("HOME-CHECKS.json bevat de controles van huisinrichting, erf, paden, hekken en poortjes.\n" if identity["phase"] >= 18 else "") +
         ("FARM-CHECKS.json bevat de controles van tuin, kanalen, gewassen, boomgaard, productie en watertypes.\n" if identity["phase"] >= 19 else "") +
         ("AREAS-CHECKS.json bevat de controles van sluizen, spiegels, vuurkorven, woestijn, bergpas, archief, proef, arena, kust en schietbaan.\n" if identity["phase"] >= 20 else "") +
+        ("ATMOSPHERE-CHECKS.json bevat de controles van dag en nacht, weer, lamplicht, wereldkaart, snelreizen, prestaties, beestenboek en instellingen.\n" if identity["phase"] >= 21 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n" +
         ("\n" + RESIDENTS_THIRD_PARTY_NOTICE if identity["phase"] >= 16 else "")
     ).encode("utf-8")
@@ -1128,7 +1177,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    professions_result: dict | None = None,
                    home_result: dict | None = None,
                    farm_result: dict | None = None,
-                   areas_result: dict | None = None) -> tuple[Path, int]:
+                   areas_result: dict | None = None,
+                   atmosphere_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -1188,6 +1238,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_areas(areas_result, identity)
     else:
         require(areas_result is None, "Historical preview cannot contain phase 20 areas proof")
+    if identity["phase"] >= 21:
+        validate_atmosphere(atmosphere_result, identity)
+    else:
+        require(atmosphere_result is None, "Historical preview cannot contain phase 21 atmosphere proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -1227,6 +1281,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["FARM-CHECKS.json"] = _json_bytes(farm_result)
     if areas_result is not None:
         payload["AREAS-CHECKS.json"] = _json_bytes(areas_result)
+    if atmosphere_result is not None:
+        payload["ATMOSPHERE-CHECKS.json"] = _json_bytes(atmosphere_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -1460,6 +1516,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("AREAS-CHECKS.json" not in payload and "areas" not in receipt,
                 "Historical preview contains unsupported areas proof")
+    if identity["phase"] >= 21:
+        require("ATMOSPHERE-CHECKS.json" in payload, "Phase 21 packaged atmosphere proof is missing")
+        atmosphere = _json(payload["ATMOSPHERE-CHECKS.json"], "ATMOSPHERE-CHECKS.json")
+        validate_atmosphere(atmosphere, identity)
+        require(receipt.get("atmosphere") == atmosphere, "Receipt atmosphere proof differs from package")
+    else:
+        require("ATMOSPHERE-CHECKS.json" not in payload and "atmosphere" not in receipt,
+                "Historical preview contains unsupported atmosphere proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

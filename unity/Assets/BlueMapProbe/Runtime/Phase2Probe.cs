@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 20) error = "phase must be 20.";
-            else if (previewVersion != "0.16.0-phase20") error = "previewVersion must be 0.16.0-phase20.";
+            else if (phase != 21) error = "phase must be 21.";
+            else if (previewVersion != "0.17.0-phase21") error = "previewVersion must be 0.17.0-phase21.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -425,6 +425,16 @@ namespace BlueMapMigration.Probe
                 if(areasFailed||!more)break;yield return current;
             }
             Add("areas_runtime_verified",!areasFailed&&BlueMapMigration.Areas.AreasProbeRunner.Last.success);
+            var atmosphereProof=BlueMapMigration.Atmosphere.AtmosphereProbeRunner.Run(identity,output,playerWorld,route,gallery.Catalog);
+            bool atmosphereFailed=false;
+            while(true)
+            {
+                object current=null;bool more=false;
+                try{more=atmosphereProof.MoveNext();if(more)current=atmosphereProof.Current;}
+                catch(Exception error){Debug.LogError("Native atmosphere proof failed: "+error);atmosphereFailed=true;}
+                if(atmosphereFailed||!more)break;yield return current;
+            }
+            Add("atmosphere_runtime_verified",!atmosphereFailed&&BlueMapMigration.Atmosphere.AtmosphereProbeRunner.Last.success);
             Finish();
         }
         private void SaveRouteCapture(string name)
