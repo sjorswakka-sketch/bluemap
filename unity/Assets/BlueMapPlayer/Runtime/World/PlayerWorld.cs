@@ -422,6 +422,9 @@ namespace BlueMapMigration.Player
             GUI.matrix=old;
         }
         public void PlayRouteMusic(string id){if(!Frozen)stepAudio.PlayMusic(id);}
+        /// <summary>The quiet background loop of a climate and part of the day; silent in automated runs.</summary>
+        public bool PlayRouteAmbience(string cue){return !Frozen&&stepAudio.PlayAmbience(cue);}
+        public void StopRouteAmbience(){stepAudio.StopAmbience();}
         public void PlayRouteEffect(string id) { stepAudio.PlayEffect(id,-8); }
         private void SyncRouteFeet()
         {

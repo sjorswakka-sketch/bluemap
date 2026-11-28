@@ -149,7 +149,7 @@ namespace BlueMapMigration.Route
         }
         private void Detach()
         {
-            DetachFarm();DetachHome();
+            ClearAtmosphere();atmosphereBuiltFor=null;DetachFarm();DetachHome();
             DetachProfessions();
             DetachResidents();
             DetachStory();
@@ -369,7 +369,7 @@ namespace BlueMapMigration.Route
             if(accessDirty&&!Gameplay.State.InputLocked)RefreshAccessGeometry();
             foreach(var seal in targets.Where(t=>t.Kind=="diepte_seal"))if(Access.TickSeal(seal.Fields,SealCenter(seal),World.Position,delta)){World.RefreshRouteState();ShowMessage(Translate(Access.LastMessage));}
             inventoryFrameDelta=delta;UpdateInventoryContext(InventoryPanel?.Kind??"bag");UpdateProgressionContext();TickPickups(delta);
-            TickCombat(delta);TickResidents(delta,uiDelta??delta);TickProfessions(delta,uiDelta??delta);TickHome(delta);TickFarm(delta);TickAreas(delta);TickArena(delta);TickCoast(delta);TickBow(delta);
+            TickCombat(delta);TickResidents(delta,uiDelta??delta);TickProfessions(delta,uiDelta??delta);TickHome(delta);TickFarm(delta);TickAreas(delta);TickArena(delta);TickCoast(delta);TickBow(delta);TickAtmosphere(uiDelta??delta);
             bool locked=Gameplay.State.InputLocked;
             if(locked){foreach(var portal in portals)portal.Armed=false;work=null;lastPosition=World.Position;return;}
             autoTime+=delta;if(autoTime>=30&&!SaveFailed)Save();
