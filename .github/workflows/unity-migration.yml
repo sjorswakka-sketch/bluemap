@@ -2,9 +2,9 @@ name: Unity-migratie controleren
 
 on:
   push:
-    branches: ["codex/unity-migration"]
+    branches: ["codex/unity-migration", "claude/affectionate-mendel-vc1idx"]
   pull_request:
-    branches: ["codex/unity-migration"]
+    branches: ["codex/unity-migration", "claude/affectionate-mendel-vc1idx"]
   workflow_dispatch:
 
 permissions:

@@ -1,6 +1,6 @@
 # BlueMap Quest — migratie naar Unity
 
-Status: fases 1 tot en met 22 afgerond; fase 23 (Unity als hoofdversie) wacht op het laatste go van sjors.
+Status: alle 23 fases afgerond. Sjors gaf op 28 november 2026 het laatste go; Unity is de hoofdversie op de Claude-branch en de Godot-bron en het herstelpunt blijven behouden ([fase 23](phase-23/README.md)).
 
 Eén volgend **go** start één volledige volgende fase, inclusief het noodzakelijke ontwerp, implementatie, eigen hulpmiddelen, controles, bewijs en publicatie op het migratiespoor; daarna volgt een korte rapportage en is het volgende go voor de volgende fase. Een mislukte controle wordt binnen de lopende fase opgelost en telt niet als een afgeronde fase.
 

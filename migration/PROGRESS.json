@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_22_complete",
+  "status": "phase_23_complete",
   "completed_phases": [
     1,
     2,
@@ -24,10 +24,11 @@
     19,
     20,
     21,
-    22
+    22,
+    23
   ],
   "active_phase": null,
-  "next_phase": 23,
+  "next_phase": null,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
@@ -35,8 +36,8 @@
   "unity_implementation_started": true,
   "completed_on": "2026-11-28",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-22/README.md",
-  "requires_next_go": true,
+  "checks": "phase-23/README.md",
+  "requires_next_go": false,
   "unity_probe_created": true,
   "game_port_started": true,
   "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase22-preview-f22f846e",
@@ -268,5 +269,10 @@
   "completion_return_cases": 24,
   "completion_sources": 7,
   "completion_source_contracts": "phase-22/source-contracts.json",
-  "completion_build_source": "f22f846e2000f22ca8e6823966c188faf3d67f92"
+  "completion_build_source": "f22f846e2000f22ca8e6823966c188faf3d67f92",
+  "unity_is_main_version": true,
+  "main_branch": "claude/affectionate-mendel-vc1idx",
+  "godot_recovery_tag": "godot-baseline-0.34.0",
+  "godot_source_preserved": true,
+  "main_switch_fast_forward_from": "a8a988be27835dec979d2523a3a85a34385eac54"
 }

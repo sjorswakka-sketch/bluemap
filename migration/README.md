@@ -1,6 +1,8 @@
-# Unity-migratie — fase 22 voltooid
+# Unity-migratie — alle 23 fases voltooid
 
-Alleen fase 23 resteert: Unity de hoofdversie maken op de Claude-branch. Die stap wacht op een laatste go.
+Unity is de hoofdversie op de Claude-branch. De Godot-bron, de Godot-build en het herstelpunt blijven behouden.
+
+[Fase 23: Unity is de hoofdversie](phase-23/README.md) — de Claude-branch is zonder force-push doorgeschoven naar de Unity-migratie; beide bouwroutes draaien op de hoofdbranch; wat nog ontbreekt staat er eerlijk bij.
 
 [Fase 22: het einde, Nieuw spel+ en de terugweg naar Godot](phase-22/README.md) — epiloog en aftiteling, Nieuw spel+, een bewezen kopie terug naar Godot (24 saves door de echte Godot geladen), gemeten beeldtijden, een lange sessie door alle 37 gebieden en een [leeswijzer voor de 86 suites](phase-22/COVERAGE.md); 48 algemene Windows-controles en 62 afrondingscontroles.
 
