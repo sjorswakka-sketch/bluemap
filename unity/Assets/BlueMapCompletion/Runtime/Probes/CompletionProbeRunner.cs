@@ -228,6 +228,29 @@ namespace BlueMapMigration.Completion
             if (!(fresh && carried && stronger && stillOpen && second)) Detail("ngplus", ("started", started), ("fresh", fresh), ("carried", carried), ("stronger", stronger), ("open", stillOpen), ("second", second), ("hp", state.Hp), ("coins", state.Coins), ("weapon", state.Get("weapon").AsString()), ("ng", state.Get("ng_plus").AsInt64()));
             check("completion_native_new_game_plus_best_gear_stronger_enemies", fresh && carried && stronger && stillOpen && second);
             check("completion_native_three_rendered_captures", captures == 3);
+
+            // --- A normal start: the title screen, the opening pages and a heart for every life ---
+            route.CloseModal(); bool can = false; var chosen = new List<string>();
+            var title = new TitlePanel(route.Catalog, route.T) { Version = "v" + Application.version };
+            title.CanContinue = () => can; title.CanNewGamePlus = () => can; title.Chosen += chosen.Add;
+            title.Show(); bool startsOnNew = TitlePanel.Entries[title.Focus] == "new" && !title.Activate("continue") && !title.Activate("new_plus") && title.Activate("new");
+            title.Move(1); bool skips = TitlePanel.Entries[title.Focus] == "sound"; title.Move(-1); title.Move(-1); bool wraps = TitlePanel.Entries[title.Focus] == "language";
+            can = true; title.Show(); bool onContinue = TitlePanel.Entries[title.Focus] == "continue" && title.Activate("new_plus") && title.Activate("quit") && chosen.SequenceEqual(new[] { "new", "new_plus", "quit" });
+            Phase2Probe.TitlePreview = title; yield return new WaitForEndOfFrame(); yield return new WaitForEndOfFrame();
+            bool titleDrawn = title.Draws > 0 && title.LayoutFits && title.Label("language").Contains(route.Locale == "en" ? "English" : "Nederlands"); Capture("title");
+            Phase2Probe.TitlePreview = null; title.Hide(); bool hidden = !title.Activate("new");
+            yield return new WaitForSecondsRealtime(1.1f);
+            bool latest = route.Save() && Fixture.LatestRouteProfile() == Fixture.Current.ProfileId;
+            var firstPages = new EndingPanel(route.Catalog, route.Translate, route.T, route.BindingLabel); firstPages.OpenIntro(0);
+            bool intro = firstPages.Pages.Count == 1 && route.OpenIntro() && route.Modal == "intro" && route.Intro.Kind == "intro" && route.Intro.Pages.Count == 4 && route.Ending.Kind == "ending";
+            yield return new WaitForEndOfFrame(); intro &= route.Intro.Draws > 0 && route.Intro.LayoutFits;
+            for (int i = 0; i < 8 && route.Intro.IsOpen; i++) route.Intro.Advance();
+            bool introDone = !route.Intro.IsOpen && route.Modal == ""; bool skipped = route.OpenIntro(); route.Intro.Skip(); skipped &= route.Modal == "" && !route.Intro.IsOpen;
+            state.Hp = route.Gameplay.MaxHp; yield return new WaitForEndOfFrame(); yield return new WaitForEndOfFrame();
+            bool hearts = route.Hud.LastHeartCount == route.Gameplay.MaxHp && route.Hud.LastFullHearts == route.Gameplay.MaxHp && route.Hud.LastHeartsBounds.width > 0 && route.Hud.LastHeartsBounds.width <= 270.5f;
+            state.Hp = 3; yield return new WaitForEndOfFrame(); yield return new WaitForEndOfFrame(); hearts &= route.Hud.LastFullHearts == 3 && route.Hud.LastHeartCount == route.Gameplay.MaxHp; state.Hp = route.Gameplay.MaxHp;
+            if (!(startsOnNew && skips && wraps && onContinue && titleDrawn && hidden && latest && intro && introDone && skipped && hearts)) Detail("finish", ("new", startsOnNew), ("skips", skips), ("wraps", wraps), ("continue", onContinue), ("drawn", titleDrawn), ("hidden", hidden), ("latest", latest), ("intro", intro), ("introDone", introDone), ("skipped", skipped), ("hearts", hearts), ("count", route.Hud.LastHeartCount), ("full", route.Hud.LastFullHearts));
+            check("completion_native_title_intro_and_hearts", startsOnNew && skips && wraps && onContinue && titleDrawn && hidden && latest && intro && introDone && skipped && hearts && captures == 4);
         }
     }
 }

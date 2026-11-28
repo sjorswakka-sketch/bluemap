@@ -28,7 +28,8 @@ PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
                     12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14", 15: "0.11.0-phase15",
                     16: "0.12.0-phase16", 17: "0.13.0-phase17", 18: "0.14.0-phase18", 19: "0.15.0-phase19", 20: "0.16.0-phase20",
-                    21: "0.17.0-phase21", 22: "0.18.0-phase22"}
+                    21: "0.17.0-phase21", 22: "0.18.0-phase22",
+                    23: "0.19.0-phase23"}
 RESIDENTS_THIRD_PARTY_NOTICE = '''Godot Engine (4.4.1) AStarGrid2D and SortArray behavior adaptation.
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/math/a_star_grid_2d.cpp
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/templates/sort_array.h
@@ -500,6 +501,8 @@ COMPLETION_DETAIL_CHECKS = {
 COMPLETION_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks", "frameMaps", "frameAverageMs",
                      "frameSlowestMs", "sessionMaps", "sessionSimulatedMinutes", "sessionErrors", "sessionMemoryGrowthMb"}
 COMPLETION_FRAME_BUDGET_MS = 33.4
+# Added by the finishing round; the phase 22 download stays verifiable without it.
+FINISH_DETAIL_CHECKS = {"completion_native_title_intro_and_hearts"}
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -1093,6 +1096,8 @@ def validate_completion(result: dict, identity: dict) -> None:
                 "Completion detail checks contain a duplicate or a failed check")
         names.add(name)
     require(COMPLETION_DETAIL_CHECKS <= names, "Required completion checks are missing")
+    if identity["phase"] >= 23:
+        require(FINISH_DETAIL_CHECKS <= names, "Required title, intro and hearts check is missing")
     maps, average, slowest = result["frameMaps"], result["frameAverageMs"], result["frameSlowestMs"]
     require(isinstance(maps, list) and len(maps) == 5 and len(set(maps)) == 5 and all(isinstance(name, str) for name in maps),
             "Frame times must cover five different maps")
@@ -1168,6 +1173,7 @@ def _instructions(identity: dict) -> bytes:
         20: "Migratiefase 20: bijzondere gebieden en uitdagingen: sluizen, spiegels, vuurkorven, woestijn en bergpas, archief, resonantieproef, arena, kustavonturen en schietbaan; nog niet de volledige overgezette game.\n",
         21: "Migratiefase 21: het uur van de dag, donkere grotten, weer, lamplicht en achtergrondgeluid, de wereldkaart (N), snelreizen tussen altaren, prestaties (T), het beestenboek (B) en taal en geluid in het pauzemenu; nog niet de volledige overgezette game.\n",
         22: "Migratiefase 22: het einde met epiloog en aftiteling, Nieuw spel+, een veilige kopie terug naar de Godot-game, gemeten beeldtijden en een lange speelsessie door alle 37 gebieden. Unity is nog niet de hoofdversie; dat is de laatste fase.\n",
+        23: "Fase 23: Unity is de hoofdversie. De game begint met een titelscherm (Doorgaan, Nieuw spel, Nieuw spel+, geluid, bediening, opslag en import) en de openingspagina's, en toont je levens als hartjes. Nog niet alles uit de Godot-game is overgezet; zie de pagina van fase 23 op GitHub.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"

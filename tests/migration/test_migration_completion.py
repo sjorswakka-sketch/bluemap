@@ -28,8 +28,9 @@ class CompletionContractTests(unittest.TestCase):
 
     def test_package_contract_names_the_native_checks(self) -> None:
         self.assertEqual(package.PREVIEW_VERSIONS[22], '0.18.0-phase22')
-        self.assertEqual(set(self.contract['coverage']['nativeChecks']), package.COMPLETION_DETAIL_CHECKS)
+        self.assertEqual(set(self.contract['coverage']['nativeChecks']), package.COMPLETION_DETAIL_CHECKS | package.FINISH_DETAIL_CHECKS)
         self.assertEqual(len(package.COMPLETION_DETAIL_CHECKS), 62)
+        self.assertEqual(package.PREVIEW_VERSIONS[23], '0.19.0-phase23')
 
     def test_godot_loaded_every_save_unity_wrote(self) -> None:
         source = json.loads((ROOT / completion.SAVE_ORACLE).read_text(encoding='utf-8'))
@@ -84,6 +85,10 @@ class CompletionContractTests(unittest.TestCase):
                 'frameMaps': ['a', 'b', 'c', 'd', 'e'], 'frameAverageMs': [5.0] * 5, 'frameSlowestMs': [9.0] * 5,
                 'sessionMaps': 37, 'sessionSimulatedMinutes': 12.3, 'sessionErrors': 0, 'sessionMemoryGrowthMb': 4.0}
         package.validate_completion(good, identity)
+        with self.assertRaises(package.PackageError):
+            package.validate_completion(dict(good, identity={'phase': 23}), {'phase': 23})
+        finished = dict(good, identity={'phase': 23}, checks=good['checks'] + [{'name': name, 'passed': True} for name in sorted(package.FINISH_DETAIL_CHECKS)])
+        package.validate_completion(finished, {'phase': 23})
         for key, value in (('frameAverageMs', [5.0, 5.0, 5.0, 5.0, 40.0]), ('sessionMaps', 36), ('sessionErrors', 1),
                            ('sessionSimulatedMinutes', 2.0), ('sessionMemoryGrowthMb', 500.0)):
             bad = dict(good, **{key: value})

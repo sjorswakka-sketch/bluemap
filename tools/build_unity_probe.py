@@ -29,8 +29,8 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.18.0-phase22"
-PHASE = 22
+PREVIEW_VERSION = "0.19.0-phase23"
+PHASE = 23
 
 from verify_unity_package import (PackageError, package_player, validate_identity, verify_package,
                                   validate_foundation, FOUNDATION_CHECKS, validate_player, PLAYER_CHECKS,
@@ -525,7 +525,7 @@ def main() -> None:
                  "screenshot-atmosphere-night.png", "screenshot-atmosphere-atlas.png",
                  "screenshot-atmosphere-bestiary.png",
                  "screenshot-completion-epilogue.png", "screenshot-completion-stats.png",
-                 "screenshot-completion-new-game-plus.png"):
+                 "screenshot-completion-new-game-plus.png", "screenshot-completion-title.png"):
         captures[name] = validate_png(runtime / name)
     foundation = read_json(runtime / "foundation-result.json")
     validate_foundation(foundation, identity)

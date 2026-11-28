@@ -124,6 +124,18 @@ namespace BlueMapMigration.Persistence
             var fields=Current.Snapshot.Preferences.Entries.ToDictionary(pair=>pair.Key.AsString(),pair=>pair.Value,StringComparer.Ordinal);fields["ngMeta"]=meta;
             Current=store.SavePreferences(Current,FoundationValue.Object(fields));
         });
+        /// <summary>The adventure that was saved last, or null when there is none yet.</summary>
+        public string LatestRouteProfile()
+        {
+            string best=null,stamp="";
+            foreach(string id in store.ProfileIds())
+            {
+                if(!id.StartsWith("route-",StringComparison.Ordinal))continue;
+                try{var head=store.Load(id);if(best==null||String.CompareOrdinal(head.CreatedUtc??"",stamp)>0){best=id;stamp=head.CreatedUtc??"";}}
+                catch(Exception error)when(error is System.IO.IOException||error is System.IO.InvalidDataException||error is FormatException){}
+            }
+            return best;
+        }
         public string LastExportDirectory {get;private set;}="";
         public LegacySaveExport LastExport {get;private set;}
         /// <summary>A new folder next to the Unity profiles; never a Godot save folder.</summary>

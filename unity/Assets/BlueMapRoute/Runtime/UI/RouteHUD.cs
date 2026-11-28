@@ -48,11 +48,11 @@ namespace BlueMapMigration.Route
             if(LayoutProofActive)return;
             Styles();var game=route.Gameplay;var state=game.State;receiptBounds.Clear();LastMessageBounds=Rect.zero;LastTrackerBounds=Rect.zero;LastTechniqueBounds=Rect.zero;LastAmmoBounds=Rect.zero;TrackerTextFits=true;
             Panel(new Rect(18,16,298,118));var areaTitle=new GUIStyle(title);while(areaTitle.fontSize>11&&areaTitle.CalcSize(new GUIContent(route.AreaName)).x>270)areaTitle.fontSize--;Label(32,24,270,route.AreaName,areaTitle);
-            Label(32,54,270,T("Leven ","Health ")+state.Hp+" / "+game.MaxHp+"    ·    "+state.Coins+T(" munten"," coins"));
+            DrawHearts(32,56,(int)state.Hp,(int)game.MaxHp);
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
-            var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP"),small,20);
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 22","Unity preview · phase 22"),small);
+            var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP")+"  ·  "+state.Coins+T(" munten"," coins"),small,20);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-versie · fase 23","Unity version · phase 23"),small);
             if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
             if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
             {
@@ -99,9 +99,20 @@ namespace BlueMapMigration.Route
             if(game.DialogueOpen){DrawDialogue();return;}
             if(route.Modal=="")return;
             if(route.Modal!="fishing"){GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;}
-            if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="home_menu")route.HomeMenu?.Draw();else if(route.Modal=="house_editor")route.HouseEditor?.Draw();else if(route.Modal=="yard_editor")route.YardEditor?.Draw();else if(route.Modal=="garden_menu")route.GardenMenu?.Draw();else if(route.Modal=="world_map")route.WorldMap?.Draw();else if(route.Modal=="records")route.Records?.Draw();else if(route.Modal=="seed_book")route.SeedBook?.Draw();else if(route.Modal=="professions")route.ProfessionsPanel?.Draw();else if(route.Modal=="shop")route.ShopPanel?.Draw();else if(route.Modal=="fishing")route.FishingView?.Draw();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
+            if(route.Modal=="intro")route.Intro?.Draw();else if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="home_menu")route.HomeMenu?.Draw();else if(route.Modal=="house_editor")route.HouseEditor?.Draw();else if(route.Modal=="yard_editor")route.YardEditor?.Draw();else if(route.Modal=="garden_menu")route.GardenMenu?.Draw();else if(route.Modal=="world_map")route.WorldMap?.Draw();else if(route.Modal=="records")route.Records?.Draw();else if(route.Modal=="seed_book")route.SeedBook?.Draw();else if(route.Modal=="professions")route.ProfessionsPanel?.Draw();else if(route.Modal=="shop")route.ShopPanel?.Draw();else if(route.Modal=="fishing")route.FishingView?.Draw();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
         }
         public Rect BossBounds {get;private set;}
+        public Rect LastHeartsBounds {get;private set;} public int LastHeartCount {get;private set;} public int LastFullHearts {get;private set;}
+        /// <summary>One heart per life from the original ui_heart sheet: frame 0 is full, frame 1 is empty.</summary>
+        private void DrawHearts(float x,float y,int hp,int max)
+        {
+            var sprite=route.Catalog.GetSprite("image:assets/ui_heart.png");max=Math.Max(1,max);float step=Mathf.Min(28,270f/max),width=Mathf.Min(26,step-2),height=width*12f/13f;
+            LastHeartsBounds=new Rect(x,y,step*(max-1)+width,height);LastHeartCount=max;LastFullHearts=Mathf.Clamp(hp,0,max);
+            if(sprite==null){Label(x,y-2,270,T("Leven ","Health ")+hp+" / "+max);return;}
+            var source=sprite.textureRect;float tw=sprite.texture.width,th=sprite.texture.height;
+            for(int i=0;i<max;i++)
+            {int frame=i<hp?0:1;GUI.DrawTextureWithTexCoords(new Rect(x+i*step,y+(24-height)/2,width,height),sprite.texture,new Rect((source.x+frame*13)/tw,source.y/th,13/tw,source.height/th));}
+        }
         public Rect LastAchievementBounds {get;private set;} public Rect LastClockBounds {get;private set;} public Rect LastArenaBounds {get;private set;} public Rect LastRegionBounds {get;private set;} public Rect LastGardenHintBounds {get;private set;} public Rect LastWaterInfoBounds {get;private set;} public bool GardenHintFits {get;private set;}=true;public bool WaterInfoFits {get;private set;}=true;
         private void DrawCombat()
         {

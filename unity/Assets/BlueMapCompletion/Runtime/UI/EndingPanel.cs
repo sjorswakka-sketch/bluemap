@@ -22,6 +22,8 @@ namespace BlueMapMigration.Completion
   public const float TypeSpeed=45,CreditsSpeed=46,CreditsLine=40;
   readonly Phase6Catalog catalog;readonly Func<string,string> translate,binding;readonly Func<string,string,string> bilingual;
   readonly List<Page> pages=new List<Page>();InputFrame lastHandled,openingFrame;double typed,scroll,time;int line;
+  /// <summary>"ending" for the epilogue, "intro" for the opening pages of a new adventure.</summary>
+  public string Kind {get;private set;}="ending";
   public bool IsOpen {get;private set;} public int PageIndex {get;private set;} public int Draws {get;private set;} public bool LayoutFits {get;private set;}=true;
   public IReadOnlyList<Page> Pages=>pages;public Page Current=>IsOpen&&PageIndex<pages.Count?pages[PageIndex]:null;
   public IReadOnlyList<(string label,string value)> Stats {get;private set;}=Array.Empty<(string,string)>();
@@ -31,7 +33,7 @@ namespace BlueMapMigration.Completion
   {catalog=sourceCatalog;translate=translator??(s=>s);bilingual=textTranslator??((nl,en)=>nl);binding=bindingLabel??(s=>s);}
   public void Open(IReadOnlyList<(string label,string value)> stats)
   {
-   Stats=stats??Array.Empty<(string,string)>();pages.Clear();
+   Kind="ending";Stats=stats??Array.Empty<(string,string)>();pages.Clear();
    pages.Add(new Page{Type="text",Speaker="",Lines=new[]{"Met een enorme plof zakt de Slijmkoning in elkaar.","Het groene gel trekt weg uit de tempel, sijpelt als een rivier door het land... en verdwijnt.","Het wordt heel stil in de Kristaltempel."}});
    pages.Add(new Page{Type="text",Speaker="",Lines=new[]{"De Blauwe Kaart is weer heel."}});
    pages.Add(new Page{Type="text",Speaker="Oudste Bram",Lines=new[]{"Dankzij jou is Azura weer veilig. De Blauwe Kaart laat weer zien waar het land rustig is."}});
@@ -42,6 +44,20 @@ namespace BlueMapMigration.Completion
    pages.Add(new Page{Type="stats"});pages.Add(new Page{Type="credits"});pages.Add(new Page{Type="end"});
    IsOpen=true;PageIndex=0;line=0;typed=0;scroll=0;time=0;
   }
+  /// <summary>The opening pages of scripts/ui/intro.gd: one page for a first adventure, the legend of the map in New Game+.</summary>
+  public void OpenIntro(long ngPlus)
+  {
+   Kind="intro";Stats=Array.Empty<(string,string)>();pages.Clear();
+   if(ngPlus==0)pages.Add(new Page{Type="text",Speaker="",Lines=new[]{"Je komt aan in Dageraadsdorp. Brood wordt bezorgd, de smid is aan het werk… maar op het plein sputtert de fontein. Een hovenier kan je hulp gebruiken."}});
+   else
+   {
+    foreach(string line in new[]{"Azura is een land vol bossen, ruïnes en grotten. Eeuwenlang werd het beschermd door de Blauwe Kaart.","De kaart is gemaakt van gloeiend kristal. Hij houdt de slijmen rustig en laat zien waar het land veilig is.","Maar op een nacht barstte de kaart. De drie grote kristallen vlogen het land in, en overal werden de slijmen wild.",
+     "Jij komt aan in Dageraadsdorp, het dorpje onder de tempel waar de kaart hangt. Daar begint je avontuur... Maar let op: dit is Nieuw spel+. De slijmen zijn sterker geworden, en jij hebt je beste spullen mee!"})
+     pages.Add(new Page{Type="text",Speaker="",Lines=new[]{line}});
+   }
+   IsOpen=true;PageIndex=0;line=0;typed=0;scroll=0;time=0;
+  }
+  public void Skip(){if(!IsOpen)return;IsOpen=false;Finished?.Invoke();}
   public void NotifyOpened(InputFrame frame){openingFrame=frame;lastHandled=null;}
   public void Close(){IsOpen=false;}
   string LineText=>Current?.Type=="text"?translate(Current.Lines[line]):"";
@@ -63,6 +79,7 @@ namespace BlueMapMigration.Completion
   public void HandleInput(InputFrame frame)
   {
    if(!IsOpen||frame==null||ReferenceEquals(lastHandled,frame))return;lastHandled=frame;if(ReferenceEquals(openingFrame,frame))return;
+   if(Kind=="intro"&&(frame.Pressed("ui_cancel")||frame.Pressed("pause"))){Skip();return;}
    if(frame.Pressed("ui_accept")||frame.Pressed("interact")||frame.Pressed("attack"))Advance();
   }
   public void Draw()
@@ -105,6 +122,7 @@ namespace BlueMapMigration.Completion
    }
    if(page.Type!="credits"||time>1.5)
    {var hint=Centered(17,new Color(1,1,1,.55f+.35f*Mathf.Sin((float)time*3)));GUI.Label(new Rect(0,592,1152,30),binding("ui_accept")+bilingual(page.Type=="end"?" verder in het dorp":page.Type=="credits"?" overslaan":" verder",page.Type=="end"?" continue in the village":page.Type=="credits"?" skip":" continue"),hint);}
+   if(Kind=="intro"){var skip=Centered(15,new Color(1,1,1,.4f));GUI.Label(new Rect(0,620,1152,24),binding("ui_cancel")+bilingual(" = overslaan"," = skip"),skip);}
    LayoutFits=fits;
   }
  }

@@ -18,11 +18,20 @@ namespace BlueMapMigration.Route
  {
   public const long NgStartCoins=100;
   public EndingPanel Ending {get;private set;}
+  /// <summary>The opening pages shown when a new adventure starts.</summary>
+  public EndingPanel Intro {get;private set;}
   LegacySaveImporter completionRules;
   LegacySaveImporter CompletionRules=>completionRules??(completionRules=new LegacySaveImporter(repository));
-  void InitializeCompletion(){Ending=new EndingPanel(Catalog,Translate,T,BindingLabel);Ending.Finished+=FinishEnding;}
-  void DetachCompletion(){Ending?.Close();Ending=null;}
-  void TickCompletion(double delta){if(Modal=="victory"&&Ending!=null&&Ending.IsOpen)Ending.Tick(delta);}
+  void InitializeCompletion(){Ending=new EndingPanel(Catalog,Translate,T,BindingLabel);Ending.Finished+=FinishEnding;Intro=new EndingPanel(Catalog,Translate,T,BindingLabel);Intro.Finished+=FinishIntro;}
+  void DetachCompletion(){Ending?.Close();Ending=null;Intro?.Close();Intro=null;}
+  void TickCompletion(double delta){if(Modal=="victory"&&Ending!=null&&Ending.IsOpen)Ending.Tick(delta);if(Modal=="intro"&&Intro!=null&&Intro.IsOpen)Intro.Tick(delta);}
+  void PlayMapMusic(){if(Session?.Current!=null)World.PlayRouteMusic(Session.Current.MapData.TryGet("music",out var music)?music.AsString():"village");}
+  void FinishIntro(){CloseModal();PlayMapMusic();}
+  /// <summary>The opening pages of a new adventure; the legend of the Blue Map in New Game+.</summary>
+  public bool OpenIntro()
+  {
+   if(!Running||Intro==null)return false;SetModal("intro");Intro.OpenIntro(Gameplay.State.Get("ng_plus").AsInt64());Intro.NotifyOpened(storyInput);World.PlayRouteMusic("temple");return true;
+  }
   void FinishEnding(){CloseModal();if(Session?.Current!=null)World.PlayRouteMusic(Session.Current.MapData.TryGet("music",out var music)?music.AsString():"village");ShowMessage(Translate("Je voortgang is bewaard: je kunt verder in het dorp."));}
   static long Whole(FoundationValue source,string key,long fallback=0){return source!=null&&source.TryGet(key,out var value)&&(value.Kind=="int"||value.Kind=="float")?(long)value.AsDouble():fallback;}
   static bool Truth(FoundationValue source,string key){return source!=null&&source.TryGet(key,out var value)&&value.Kind=="bool"&&value.AsBool();}
@@ -93,7 +102,7 @@ namespace BlueMapMigration.Route
    if(coordinator.Current.Snapshot.State.TryGet("achievements",out var achievements))game.State.Set("achievements",achievements);
    var state=NewGamePlusState(game.State.Snapshot(),coordinator.NgMeta,CompletionRules);
    if(!coordinator.CreateRouteCopy(state,false)){ShowMessage(coordinator.Status);return false;}
-   return Begin(coordinator);
+   if(!Begin(coordinator))return false;if(!Automated)OpenIntro();return true;
   }
   /// <summary>The main story ends here, as when the Slime King falls.</summary>
   public void RequestEnding()=>CompleteKingEnding();

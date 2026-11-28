@@ -63,10 +63,11 @@
    "completion_native_reload_keeps_completion",
    "completion_native_shared_state_and_profile",
    "completion_native_three_rendered_captures",
+   "completion_native_title_intro_and_hearts",
    "completion_no_personal_saves_used"
   ],
   "returnCases": 24,
-  "sources": 7,
+  "sources": 9,
   "suites": 86
  },
  "coverageGuide": "b9022c113e835c74268ed0ae91ccca289768d699702184759f82ae8741663987",
@@ -81,6 +82,8 @@
   "scripts/data/credits.gd": "6c84da99b814165e3f69d4d5fe3d71b95a3d7b9ca8426f8a839546c7628f532a",
   "scripts/entities/enemy.gd": "747a4c0478d3e77c2b07f574a93c674eb25c6614c1996018f163e84bcd606fe8",
   "scripts/ui/ending.gd": "9dd9b8b24d1ef06aa84bca9007e0db1d945a9a9afbca59d0b65aa133451e7dd7",
+  "scripts/ui/hud.gd": "c301e0a7f870798e851f6958174a6c7b8c14facd8ecba93374644b54b35fc652",
+  "scripts/ui/intro.gd": "e0e85abc1647d183c94ff8247c30bc37d0412749934ff9f25ecc7b6a640fc1b9",
   "scripts/ui/menu_ui.gd": "10d924959f08480af3c822f9e455ecbd1452e683d485354ea15b73d550f17e35",
   "scripts/ui/title.gd": "df6321aac1beef6ba217577415caabc946181e65c615686edca7fe3d923852ea",
   "scripts/world.gd": "968ceae15eb202e6ca85abb6dd0dd5960f03126917b14dca8ec512a34abd7aa1"
@@ -95,15 +98,17 @@
   "unity/Assets/BlueMapCompletion/Runtime/Export/LegacySaveExporter.cs": "14f4aed6bc4085dbfdfbe10b2e8ecbc9ab295e23c226eeb8fe0afc67457fc031",
   "unity/Assets/BlueMapCompletion/Runtime/Export/LegacySaveExporter.cs.meta": "0b121e1b5d5137209ff5d95d467e96e6e7b1cebc5f3a0af140650ded73a69c4f",
   "unity/Assets/BlueMapCompletion/Runtime/Probes.meta": "f6b5c843fbfa4173760724f0d17f24d10e79905afbbcb405f0579ea22bc5f59f",
-  "unity/Assets/BlueMapCompletion/Runtime/Probes/CompletionProbeRunner.cs": "824df5899ecdb48c3e5581b61380aa9da27182eaf964c8c930b1112fad4e7515",
+  "unity/Assets/BlueMapCompletion/Runtime/Probes/CompletionProbeRunner.cs": "c9fd2bfe19ad206ac29a12c283301b123c7031d3fed3954f34ae6de2de42d8f9",
   "unity/Assets/BlueMapCompletion/Runtime/Probes/CompletionProbeRunner.cs.meta": "7daee621603ad709d9ebd1ea1dac309f65f7a66837467798ab08292715260fc1",
   "unity/Assets/BlueMapCompletion/Runtime/Resources.meta": "cc7018b78e3836d9c220600dbb4c8dd7f9e146b7d4c9dafbdacc9aaa8892c92a",
   "unity/Assets/BlueMapCompletion/Runtime/Resources/BlueMapExportOracle.json": "890ecadf45c9b056d1e6a0913e2bd1b5fdbe6c91e3ed3f3d3e46ffb7fe5e9612",
   "unity/Assets/BlueMapCompletion/Runtime/Resources/BlueMapExportOracle.json.meta": "bb81a3946ea895acb273bd66e08587a05e50312bd86ee47b7d718f661d0c78c0",
   "unity/Assets/BlueMapCompletion/Runtime/UI.meta": "6ff8e0480a6150a6083133e6bc4a43f3189cee42408616fb12f80a5915e13e5f",
-  "unity/Assets/BlueMapCompletion/Runtime/UI/EndingPanel.cs": "968b36704b48a7cc096dc5327d974874b5fcac3875ac1ee13fab00b1c6c85f61",
+  "unity/Assets/BlueMapCompletion/Runtime/UI/EndingPanel.cs": "a7e7060a3042ebcd7d4dc541d3adfe1cedb12a125c4c30489a09f0638a7352c1",
   "unity/Assets/BlueMapCompletion/Runtime/UI/EndingPanel.cs.meta": "65fba9c5dea082f26806fc072d9180c161cdb3bdf28c53266d0ced97e6b0dd7d",
-  "unity/Assets/BlueMapRoute/Runtime/Session/CompletionRouteController.cs": "4ca9ee1a637abcac9872e8e58b084dd7d36ce383f6333fe09db13143beb34361",
+  "unity/Assets/BlueMapCompletion/Runtime/UI/TitlePanel.cs": "fb379df45ad74b56392de6847c0016a14c5b877b455b1c78bb19bb8534d92192",
+  "unity/Assets/BlueMapCompletion/Runtime/UI/TitlePanel.cs.meta": "79421d0cc79436aa253f660543d9dc0d919029094063efa8ada7d1d5391ed416",
+  "unity/Assets/BlueMapRoute/Runtime/Session/CompletionRouteController.cs": "b2bfa005e4a17c1df7112b9e56e2979018660109b5a18a0dded854eebacbe06b",
   "unity/Assets/BlueMapRoute/Runtime/Session/CompletionRouteController.cs.meta": "5c5f36ae356e2dbe5bb559f05375462880401c23df16124a40c2701cd1604a14"
  }
 }

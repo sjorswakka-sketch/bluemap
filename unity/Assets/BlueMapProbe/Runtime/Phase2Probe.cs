@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 22) error = "phase must be 22.";
-            else if (previewVersion != "0.18.0-phase22") error = "previewVersion must be 0.18.0-phase22.";
+            else if (phase != 23) error = "phase must be 23.";
+            else if (previewVersion != "0.19.0-phase23") error = "previewVersion must be 0.19.0-phase23.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -141,7 +141,7 @@ namespace BlueMapMigration.Probe
                 EnsureFoundationView();
                 gallery.gameObject.SetActive(false); foundationView.gameObject.SetActive(false);
                 EnsurePlayerWorld();
-                EnsurePersistence(false);ShowPersistence();
+                ShowTitle();
                 yield break;
             }
             // Automated virtual devices are deliberately exercised without taking focus
@@ -454,13 +454,13 @@ namespace BlueMapMigration.Probe
             if(route!=null)return;
             route=new GameObject("BlueMap Quest first playable route").AddComponent<BlueMapMigration.Route.RouteWorldController>();
             route.Initialize(playerWorld,worldCamera,gallery.Catalog,automated);
-            route.ProfilesRequested+=ShowPersistence;
+            route.ProfilesRequested+=ShowTitle;
         }
         private void StartAdventure(bool fresh)
         {
             EnsureRoute();bool started=fresh?route.BeginNew(persistence):route.BeginContinue(persistence);
             if(!started)return;
-            persistencePanel.Visible=false;gallery.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);playerWorld.gameObject.SetActive(true);
+            titlePanel?.Hide();persistencePanel.Visible=false;gallery.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);playerWorld.gameObject.SetActive(true);
         }
         private void EnsurePersistence(bool fixture)
         {
@@ -472,9 +472,45 @@ namespace BlueMapMigration.Probe
             persistencePanel.NewAdventureRequested+=()=>StartAdventure(true);
             persistencePanel.ContinueAdventureRequested+=()=>StartAdventure(false);
             persistencePanel.NewGamePlusAvailable=()=>BlueMapMigration.Route.RouteWorldController.NgPlusAvailable(persistence);
-            persistencePanel.NewGamePlusRequested+=()=>{EnsureRoute();if(!route.BeginNewGamePlus(persistence))return;persistencePanel.Visible=false;gallery.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);playerWorld.gameObject.SetActive(true);};
+            persistencePanel.NewGamePlusRequested+=()=>{EnsureRoute();if(!route.BeginNewGamePlus(persistence))return;titlePanel?.Hide();persistencePanel.Visible=false;gallery.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);playerWorld.gameObject.SetActive(true);};
             persistence.PreferencesChanged+=()=>{playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);gallery.Audio.SetVolumes((float)persistence.Preferences.MusicVolume,(float)persistence.Preferences.SfxVolume,persistence.Preferences.Muted);};
             playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);
+        }
+        private BlueMapMigration.Completion.TitlePanel titlePanel;
+        /// <summary>Set by the automated proof to have the title screen drawn for one picture.</summary>
+        public static BlueMapMigration.Completion.TitlePanel TitlePreview;
+        private void ShowTitle()
+        {
+            EnsurePersistence(false);persistencePanel.Visible=false;
+            playerWorld.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);gallery.gameObject.SetActive(false);RestoreGalleryCamera();
+            playerWorld.InputSource.SetContext(false,true);playerWorld.InputSource.SetFocused(Application.isFocused);
+            // The adventure you saved last is opened, so Continue, your language and your volume are ready at once.
+            if(!persistence.HasProfile){string latest=persistence.LatestRouteProfile();if(latest!=null)persistence.OpenProfile(latest);}
+            if(titlePanel==null)
+            {
+                titlePanel=new BlueMapMigration.Completion.TitlePanel(gallery.Catalog,(nl,en)=>persistence.Preferences.Locale=="en"?en:nl){Version="v"+Application.version};
+                titlePanel.CanContinue=()=>persistence.HasProfile&&persistence.IsRouteProfile;
+                titlePanel.CanNewGamePlus=()=>BlueMapMigration.Route.RouteWorldController.NgPlusAvailable(persistence);
+                titlePanel.Muted=()=>persistence.Preferences.Muted;titlePanel.Locale=()=>persistence.Preferences.Locale;
+                titlePanel.Chosen+=TitleChosen;
+            }
+            titlePanel.Notice="";titlePanel.Show();
+        }
+        private void TitleChosen(string id)
+        {
+            var preferences=persistence.Preferences;
+            switch(id)
+            {
+                case "continue":StartAdventure(false);break;
+                case "new":StartAdventure(true);break;
+                case "new_plus":EnsureRoute();if(!route.BeginNewGamePlus(persistence))break;titlePanel.Hide();persistencePanel.Visible=false;gallery.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);playerWorld.gameObject.SetActive(true);break;
+                case "sound":persistence.SetPreferences(new BlueMapMigration.Persistence.LegacyPreferences(preferences.Locale,!preferences.Muted,preferences.MusicVolume,preferences.SfxVolume));break;
+                case "language":persistence.SetPreferences(new BlueMapMigration.Persistence.LegacyPreferences(preferences.Locale=="nl"?"en":"nl",preferences.Muted,preferences.MusicVolume,preferences.SfxVolume));break;
+                case "controls":if(route!=null&&!route.PrepareMovementPreview())break;titlePanel.Hide();EnsurePlayerWorld();if(!playerWorld.ControlsOpen)playerWorld.ToggleControls();break;
+                case "saves":titlePanel.Hide();ShowPersistence();break;
+                case "quit":Application.Quit();break;
+            }
+            if(titlePanel.Visible&&(id=="continue"||id=="new"||id=="new_plus"))titlePanel.Notice=persistence.Status??"";
         }
         private void ShowPersistence()
         {playerWorld.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);gallery.gameObject.SetActive(false);RestoreGalleryCamera();persistencePanel.Visible=true;playerWorld.InputSource.SetContext(false,true);playerWorld.InputSource.SetFocused(Application.isFocused);}
@@ -505,8 +541,10 @@ namespace BlueMapMigration.Probe
         {
             frames++;
             if(route!=null&&route.Running)return;
-            if (Input.GetKeyDown(KeyCode.Escape) && (playerWorld == null || !playerWorld.gameObject.activeSelf)) Application.Quit();
-            if (automated || foundationView == null) return;
+            if (automated || foundationView == null) { if (Input.GetKeyDown(KeyCode.Escape) && (playerWorld == null || !playerWorld.gameObject.activeSelf)) Application.Quit(); return; }
+            if (titlePanel != null && titlePanel.Visible) return;
+            // Escape leads back to the title screen; quitting is a deliberate choice there.
+            if (Input.GetKeyDown(KeyCode.Escape) && (playerWorld == null || !playerWorld.gameObject.activeSelf)) { ShowTitle(); return; }
             if (playerWorld != null && playerWorld.gameObject.activeSelf && playerWorld.ControlsOpen) return;
             if(persistencePanel!=null&&persistencePanel.Visible&&persistencePanel.EditingSourceDirectory)return;
             if(Input.GetKeyDown(KeyCode.Alpha9)){EnsurePersistence(false);ShowPersistence();}
@@ -544,6 +582,9 @@ namespace BlueMapMigration.Probe
         private void Add(string name, bool passed) => checks.Add(new Check { name = name, passed = passed });
         private void OnGUI()
         {
+            var shownTitle=titlePanel!=null&&titlePanel.Visible?titlePanel:TitlePreview;
+            if(shownTitle!=null&&shownTitle.Visible)
+            {var before=GUI.matrix;GUI.matrix=Matrix4x4.Scale(new Vector3(Screen.width/1152f,Screen.height/648f,1));shownTitle.Draw(playerWorld!=null?playerWorld.InputSource:null);GUI.matrix=before;return;}
             if(persistencePanel==null||!persistencePanel.Visible)return;
             var old=GUI.matrix;var oldFont=GUI.skin.font;GUI.matrix=Matrix4x4.Scale(new Vector3(Screen.width/1152f,Screen.height/648f,1));GUI.skin.font=gallery.Catalog.originalFont;
             persistencePanel.Draw(new Rect(20,20,1112,608));GUI.skin.font=oldFont;GUI.matrix=old;

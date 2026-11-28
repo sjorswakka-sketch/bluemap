@@ -106,7 +106,7 @@ namespace BlueMapMigration.Route
             var initial=repository.Read("village");game.State.Position=PositionValue((initial.Arrivals.FirstOrDefault(v=>v.Name=="start")??initial.Arrivals[0]).Resolved);
             if(coordinator.HasProfile&&coordinator.Current.Snapshot.State.TryGet("achievements",out var achievements))game.State.Set("achievements",achievements);
             if(!coordinator.CreateRouteCopy(game.State.Snapshot(),false)){ShowMessage(coordinator.Status);return false;}
-            return Begin(coordinator);
+            if(!Begin(coordinator))return false;if(!Automated)OpenIntro();return true;
         }
         public bool BeginContinue(PersistenceCoordinator coordinator)
         {
@@ -237,7 +237,7 @@ namespace BlueMapMigration.Route
         public void OpenQuests(){SetModal("quests");RefreshStoryViews();QuestPanel?.Open();}
         public void OpenPause(){SetModal("pause");Selection=0;}
         private void SetModal(string mode){if(!Running)return;Residents?.CloseKitchen();Combat?.Cancel();if(mode!="quests")QuestPanel?.Close();if(mode!="inventory")InventoryPanel?.Close();if(mode!="progression")ProgressionPanel?.Close();CloseProfessionViews(mode);CloseHomeViews(mode);CloseFarmViews(mode);if(mode!="world_map")WorldMap?.Close();if(mode!="records")Records?.Close();work=null;Gameplay.CloseDialogue();Modal=mode;Selection=0;Gameplay.State.SetUi("route_modal",mode!="");World.Motor.StopForTransition();}
-        public void CloseModal(){if(Gameplay==null)return;Residents?.CloseKitchen();linkedDoor=null;Gameplay.CloseDialogue();Modal="";Selection=0;Gameplay.State.SetUi("route_modal",false);lastDialogue="";lastDialogueToken=null;QuestPanel?.Close();SyncDialogue();InventoryPanel?.Close();ProgressionPanel?.Close();CloseProfessionViews("");CloseHomeViews("");CloseFarmViews("");WorldMap?.Close();Records?.Close();Ending?.Close();World.RoutePresentation?.SetHomeStorageOpen(false);}
+        public void CloseModal(){if(Gameplay==null)return;Residents?.CloseKitchen();linkedDoor=null;Gameplay.CloseDialogue();Modal="";Selection=0;Gameplay.State.SetUi("route_modal",false);lastDialogue="";lastDialogueToken=null;QuestPanel?.Close();SyncDialogue();InventoryPanel?.Close();ProgressionPanel?.Close();CloseProfessionViews("");CloseHomeViews("");CloseFarmViews("");WorldMap?.Close();Records?.Close();Ending?.Close();Intro?.Close();World.RoutePresentation?.SetHomeStorageOpen(false);}
         public bool PrepareMovementPreview()
         {
             if(Running&&!Save())return false;
@@ -340,6 +340,7 @@ namespace BlueMapMigration.Route
                 if(HandleFarmModal(frame))return;
                 if(HandleWorldMapModal(frame))return;
                 if(HandleRecordsModal(frame))return;
+                if(Modal=="intro"){if(Intro!=null&&Intro.IsOpen)Intro.HandleInput(frame);else CloseModal();return;}
                 if(Modal=="victory"){if(Ending!=null&&Ending.IsOpen)Ending.HandleInput(frame);else if(frame.Pressed("ui_accept")||frame.Pressed("interact"))CloseModal();return;}
                 if(Modal=="inventory")
                 {

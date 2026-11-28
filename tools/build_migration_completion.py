@@ -28,7 +28,7 @@ SESSION = 'unity/Assets/BlueMapRoute/Runtime/Session/'
 CONTROLLERS = (SESSION + 'CompletionRouteController.cs',)
 SOURCE_MANIFEST = 'migration/reference/source-manifest.json'
 SOURCE_PATHS = ('scripts/core/game_state.gd', 'scripts/ui/ending.gd', 'scripts/data/credits.gd', 'scripts/ui/title.gd',
-                'scripts/world.gd', 'scripts/entities/enemy.gd', 'scripts/ui/menu_ui.gd')
+                'scripts/world.gd', 'scripts/entities/enemy.gd', 'scripts/ui/menu_ui.gd', 'scripts/ui/intro.gd', 'scripts/ui/hud.gd')
 # Which migration phase ported the subject of each original suite. A reading guide by subject: it does not claim that
 # every Godot assertion was run again in Unity.
 SUITES = {
@@ -110,7 +110,7 @@ def native_checks(root: Path, ids: list[str]) -> list[str]:
     require('"completion_export_roundtrip_" + id' in export and '"completion_export_godot_loaded_" + id' in export,
             'Per-save return checks are missing')
     names += fixed + ['completion_export_roundtrip_' + i for i in ids] + ['completion_export_godot_loaded_' + i for i in ids]
-    require(len(names) == len(set(names)) and len(names) == 62, 'Native completion checks are missing or duplicated')
+    require(len(names) == len(set(names)) and len(names) == 63, 'Native completion checks are missing or duplicated')
     return sorted(names)
 
 
