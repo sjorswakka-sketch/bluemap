@@ -33,7 +33,7 @@ namespace BlueMapMigration.Route
    achievementSubscription=Gameplay.State.Events.Subscribe<FoundationAchievementCheckRequested>(request=>CheckAchievements());achievementQueue.Clear();AchievementBanner="";AchievementBannerTime=0;
   }
   void DetachRecords(){achievementSubscription?.Dispose();achievementSubscription=null;Records=null;}
-  public bool AchievementOwned(string id){var owned=Gameplay.State.Get("achievements");return owned.TryGet(id,out var value)&&(value.Kind!="bool"||value.AsBool());}
+  public bool AchievementOwned(string id){var owned=Gameplay.State.Get("achievements");return owned.Kind=="array"?owned.Items.Any(v=>v.Kind=="string"&&v.AsString()==id):owned.TryGet(id,out var value)&&(value.Kind!="bool"||value.AsBool());}
   public int AchievementsOwned=>AchievementCatalog.Items.Count(row=>AchievementOwned(row.Require("id").AsString()));
   /// <summary>Unlock every achievement whose conditions now hold. One without conditions is never earned by itself.</summary>
   public int CheckAchievements()
@@ -50,7 +50,7 @@ namespace BlueMapMigration.Route
   public bool UnlockAchievement(string id)
   {
    if(AchievementOwned(id)||!AchievementCatalog.Items.Any(row=>row.Require("id").AsString()==id))return false;
-   Gameplay.State.Set("achievements",InventoryModel.Replace(Gameplay.State.Get("achievements"),id,FoundationValue.Boolean(true)));achievementQueue.Enqueue(id);AchievementsUnlockedThisSession++;return true;
+   var owned=Gameplay.State.Get("achievements");var list=owned.Kind=="array"?owned.Items.ToList():owned.Entries.Select(row=>row.Key).ToList();list.Add(StoryModel.S(id));Gameplay.State.Set("achievements",FoundationValue.Array(list));achievementQueue.Enqueue(id);AchievementsUnlockedThisSession++;return true;
   }
   string AchievementName(string id){var row=AchievementCatalog.Items.First(r=>r.Require("id").AsString()==id);return Translate(row.Require("name").AsString());}
   void TickRecords(double delta)

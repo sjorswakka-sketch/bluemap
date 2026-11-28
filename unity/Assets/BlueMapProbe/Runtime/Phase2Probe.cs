@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 21) error = "phase must be 21.";
-            else if (previewVersion != "0.17.0-phase21") error = "previewVersion must be 0.17.0-phase21.";
+            else if (phase != 22) error = "phase must be 22.";
+            else if (previewVersion != "0.18.0-phase22") error = "previewVersion must be 0.18.0-phase22.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -435,6 +435,16 @@ namespace BlueMapMigration.Probe
                 if(atmosphereFailed||!more)break;yield return current;
             }
             Add("atmosphere_runtime_verified",!atmosphereFailed&&BlueMapMigration.Atmosphere.AtmosphereProbeRunner.Last.success);
+            var completionProof=BlueMapMigration.Completion.CompletionProbeRunner.Run(identity,output,playerWorld,route,gallery.Catalog);
+            bool completionFailed=false;
+            while(true)
+            {
+                object current=null;bool more=false;
+                try{more=completionProof.MoveNext();if(more)current=completionProof.Current;}
+                catch(Exception error){Debug.LogError("Native completion proof failed: "+error);completionFailed=true;}
+                if(completionFailed||!more)break;yield return current;
+            }
+            Add("completion_runtime_verified",!completionFailed&&BlueMapMigration.Completion.CompletionProbeRunner.Last.success);
             Finish();
         }
         private void SaveRouteCapture(string name)
@@ -461,6 +471,8 @@ namespace BlueMapMigration.Probe
             persistencePanel.ControlsRequested+=()=>{if(route!=null&&!route.PrepareMovementPreview())return;persistencePanel.Visible=false;EnsurePlayerWorld();if(!playerWorld.ControlsOpen)playerWorld.ToggleControls();};
             persistencePanel.NewAdventureRequested+=()=>StartAdventure(true);
             persistencePanel.ContinueAdventureRequested+=()=>StartAdventure(false);
+            persistencePanel.NewGamePlusAvailable=()=>BlueMapMigration.Route.RouteWorldController.NgPlusAvailable(persistence);
+            persistencePanel.NewGamePlusRequested+=()=>{EnsureRoute();if(!route.BeginNewGamePlus(persistence))return;persistencePanel.Visible=false;gallery.gameObject.SetActive(false);foundationView.gameObject.SetActive(false);playerWorld.gameObject.SetActive(true);};
             persistence.PreferencesChanged+=()=>{playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);gallery.Audio.SetVolumes((float)persistence.Preferences.MusicVolume,(float)persistence.Preferences.SfxVolume,persistence.Preferences.Muted);};
             playerWorld.SetPersistencePreferences(persistence.Preferences,persistence.HasProfile);
         }

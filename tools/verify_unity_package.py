@@ -28,7 +28,7 @@ PREVIEW_VERSIONS = {3: PREVIEW_VERSION, 6: "0.2.0-phase6", 7: "0.3.0-phase7",
                     8: "0.4.0-phase8", 9: "0.5.0-phase9", 10: "0.6.0-phase10", 11: "0.7.0-phase11",
                     12: "0.8.0-phase12", 13: "0.9.0-phase13", 14: "0.10.0-phase14", 15: "0.11.0-phase15",
                     16: "0.12.0-phase16", 17: "0.13.0-phase17", 18: "0.14.0-phase18", 19: "0.15.0-phase19", 20: "0.16.0-phase20",
-                    21: "0.17.0-phase21"}
+                    21: "0.17.0-phase21", 22: "0.18.0-phase22"}
 RESIDENTS_THIRD_PARTY_NOTICE = '''Godot Engine (4.4.1) AStarGrid2D and SortArray behavior adaptation.
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/math/a_star_grid_2d.cpp
 https://github.com/godotengine/godot/tree/4.4.1-stable/core/templates/sort_array.h
@@ -432,6 +432,74 @@ ATMOSPHERE_DETAIL_CHECKS = {
     "atmosphere_no_personal_saves_used",
 }
 ATMOSPHERE_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks"}
+COMPLETION_CHECKS = {"completion_runtime_verified", "automated_audio_silent"}
+COMPLETION_DETAIL_CHECKS = {
+    "completion_export_roundtrip_empty_old_save",
+    "completion_export_roundtrip_legacy_flags_presence",
+    "completion_export_roundtrip_explicit_visits_no_inference",
+    "completion_export_roundtrip_negative_day_and_fractionals",
+    "completion_export_roundtrip_unknown_future_fields",
+    "completion_export_roundtrip_nested_invalid_types",
+    "completion_export_roundtrip_farms_and_production",
+    "completion_export_roundtrip_house_invalid_overlap",
+    "completion_export_roundtrip_yard_invalid_crop_overlap",
+    "completion_export_roundtrip_records_talk_and_stats",
+    "completion_export_roundtrip_gear_clothing_appearance",
+    "completion_export_roundtrip_profession_cooldowns",
+    "completion_export_roundtrip_bounded_storage",
+    "completion_export_roundtrip_current_full_roundtrip",
+    "completion_export_roundtrip_house_valid_custom",
+    "completion_export_roundtrip_house_invalid_identifier",
+    "completion_export_roundtrip_yard_valid_paths",
+    "completion_export_roundtrip_yard_all_stations_stored",
+    "completion_export_roundtrip_raw_version_object",
+    "completion_export_roundtrip_numeric_conversion",
+    "completion_export_roundtrip_exact_day_boundary",
+    "completion_export_roundtrip_malformed_nested_values",
+    "completion_export_roundtrip_json_integer_precision_positive",
+    "completion_export_roundtrip_json_integer_precision_negative",
+    "completion_export_godot_loaded_empty_old_save",
+    "completion_export_godot_loaded_legacy_flags_presence",
+    "completion_export_godot_loaded_explicit_visits_no_inference",
+    "completion_export_godot_loaded_negative_day_and_fractionals",
+    "completion_export_godot_loaded_unknown_future_fields",
+    "completion_export_godot_loaded_nested_invalid_types",
+    "completion_export_godot_loaded_farms_and_production",
+    "completion_export_godot_loaded_house_invalid_overlap",
+    "completion_export_godot_loaded_yard_invalid_crop_overlap",
+    "completion_export_godot_loaded_records_talk_and_stats",
+    "completion_export_godot_loaded_gear_clothing_appearance",
+    "completion_export_godot_loaded_profession_cooldowns",
+    "completion_export_godot_loaded_bounded_storage",
+    "completion_export_godot_loaded_current_full_roundtrip",
+    "completion_export_godot_loaded_house_valid_custom",
+    "completion_export_godot_loaded_house_invalid_identifier",
+    "completion_export_godot_loaded_yard_valid_paths",
+    "completion_export_godot_loaded_yard_all_stations_stored",
+    "completion_export_godot_loaded_raw_version_object",
+    "completion_export_godot_loaded_numeric_conversion",
+    "completion_export_godot_loaded_exact_day_boundary",
+    "completion_export_godot_loaded_malformed_nested_values",
+    "completion_export_godot_loaded_json_integer_precision_positive",
+    "completion_export_godot_loaded_json_integer_precision_negative",
+    "completion_export_all_original_cases",
+    "completion_export_reports_unknown_fields",
+    "completion_export_lists_achievements",
+    "completion_export_refuses_incomplete_state",
+    "completion_native_shared_state_and_profile",
+    "completion_native_frame_time_within_budget",
+    "completion_native_long_session_through_all_maps",
+    "completion_native_ending_epilogue_numbers_and_credits",
+    "completion_native_finished_round_remembers_best_gear",
+    "completion_native_export_folder_for_godot",
+    "completion_native_reload_keeps_completion",
+    "completion_native_new_game_plus_best_gear_stronger_enemies",
+    "completion_native_three_rendered_captures",
+    "completion_no_personal_saves_used",
+}
+COMPLETION_FIELDS = {"schemaVersion", "identity", "success", "gameSaveAccessed", "checks", "frameMaps", "frameAverageMs",
+                     "frameSlowestMs", "sessionMaps", "sessionSimulatedMinutes", "sessionErrors", "sessionMemoryGrowthMb"}
+COMPLETION_FRAME_BUDGET_MS = 33.4
 REQUIRED_FILES = {
     "BlueMapUnityProbe.exe", "UnityPlayer.dll", "UnityCrashHandler64.exe",
     "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -454,7 +522,7 @@ PLAYER_ROOTS = {
 }
 METADATA_FILES = {"BUILD-IDENTITY.json", "RUNTIME-CHECKS.json", "FOUNDATION-CHECKS.json",
                   "PLAYER-CHECKS.json", "PERSISTENCE-CHECKS.json", "ROUTE-CHECKS.json", "WORLD-ACCESS-CHECKS.json",
-                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "PROFESSIONS-CHECKS.json", "HOME-CHECKS.json", "FARM-CHECKS.json", "AREAS-CHECKS.json", "ATMOSPHERE-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
+                  "INVENTORY-CHECKS.json", "PROGRESSION-CHECKS.json", "COMBAT-CHECKS.json", "STORY-CHECKS.json", "RESIDENTS-CHECKS.json", "PROFESSIONS-CHECKS.json", "HOME-CHECKS.json", "FARM-CHECKS.json", "AREAS-CHECKS.json", "ATMOSPHERE-CHECKS.json", "COMPLETION-CHECKS.json", "FILES.json", "LEESMIJ.txt"}
 PRIVATE_SUFFIXES = {".log", ".dmp", ".ulf", ".lic", ".license", ".pfx", ".p12", ".pem", ".key"}
 GAME_SAVE_NAMES = {"savegame.cfg", "savegame.json", "meta.cfg", "ng_plus.cfg",
                    "controls.cfg", "settings.cfg"}
@@ -642,6 +710,9 @@ def _validate_runtime(result: dict, identity: dict) -> None:
     if identity["phase"] >= 21:
         require(ATMOSPHERE_CHECKS <= {check["name"] for check in result["checks"]},
                 "Phase 21 atmosphere runtime proof is incomplete")
+    if identity["phase"] >= 22:
+        require(COMPLETION_CHECKS <= {check["name"] for check in result["checks"]},
+                "Phase 22 completion runtime proof is incomplete")
 
 
 def validate_foundation(result: dict, identity: dict) -> None:
@@ -1000,6 +1071,40 @@ def validate_atmosphere(result: dict, identity: dict) -> None:
     require(ATMOSPHERE_DETAIL_CHECKS <= names, "Required atmosphere checks are missing")
 
 
+def validate_completion(result: dict, identity: dict) -> None:
+    """Bind the ending, New Game+, the return to Godot, frame times and the long session to this player."""
+    require(bool(COMPLETION_DETAIL_CHECKS), "Completion callback contract is not frozen")
+    require(isinstance(result, dict) and set(result) == COMPLETION_FIELDS,
+            "Phase 22 completion proof has missing or unexpected fields")
+    require(type(result.get("schemaVersion")) is int and result["schemaVersion"] == 1,
+            "Unsupported completion proof schema")
+    require(result.get("identity") == identity, "Completion embedded identity differs from package identity")
+    require(result.get("success") is True and result.get("gameSaveAccessed") is False,
+            "Completion proof failed or accessed existing game saves")
+    checks = result.get("checks")
+    require(isinstance(checks, list) and bool(checks), "Completion detail checks are missing")
+    names = set()
+    for check in checks:
+        require(isinstance(check, dict) and set(check) == {"name", "passed"}, "Malformed completion detail check")
+        name = check["name"]
+        require(isinstance(name, str) and re.fullmatch(r"[a-z0-9_]{1,80}", name) is not None,
+                "Invalid completion detail check name")
+        require(name not in names and check["passed"] is True,
+                "Completion detail checks contain a duplicate or a failed check")
+        names.add(name)
+    require(COMPLETION_DETAIL_CHECKS <= names, "Required completion checks are missing")
+    maps, average, slowest = result["frameMaps"], result["frameAverageMs"], result["frameSlowestMs"]
+    require(isinstance(maps, list) and len(maps) == 5 and len(set(maps)) == 5 and all(isinstance(name, str) for name in maps),
+            "Frame times must cover five different maps")
+    for values in (average, slowest):
+        require(isinstance(values, list) and len(values) == len(maps) and all(type(value) in (int, float) and value > 0 for value in values),
+                "Frame times are missing")
+    require(all(value <= COMPLETION_FRAME_BUDGET_MS for value in average), "Average frame time exceeds the budget")
+    require(result["sessionMaps"] == 37 and result["sessionErrors"] == 0 and type(result["sessionSimulatedMinutes"]) in (int, float)
+            and result["sessionSimulatedMinutes"] >= 11.5 and type(result["sessionMemoryGrowthMb"]) in (int, float)
+            and result["sessionMemoryGrowthMb"] < 200, "The long session is incomplete, had errors or kept growing")
+
+
 def _validate_runtime_inputs(receipt: dict, payload: dict[str, bytes]) -> None:
     packages = receipt.get("unityPackages")
     require(isinstance(packages, list) and bool(packages), "Phase 8 resolved package identities are missing")
@@ -1062,6 +1167,7 @@ def _instructions(identity: dict) -> bytes:
         19: "Migratiefase 19: je eigen tuin met kanalen, gewassen, boomgaard, mesthoop, wijnvaten en bijenkast, en benoemde watertypes; nog niet de volledige overgezette game.\n",
         20: "Migratiefase 20: bijzondere gebieden en uitdagingen: sluizen, spiegels, vuurkorven, woestijn en bergpas, archief, resonantieproef, arena, kustavonturen en schietbaan; nog niet de volledige overgezette game.\n",
         21: "Migratiefase 21: het uur van de dag, donkere grotten, weer, lamplicht en achtergrondgeluid, de wereldkaart (N), snelreizen tussen altaren, prestaties (T), het beestenboek (B) en taal en geluid in het pauzemenu; nog niet de volledige overgezette game.\n",
+        22: "Migratiefase 22: het einde met epiloog en aftiteling, Nieuw spel+, een veilige kopie terug naar de Godot-game, gemeten beeldtijden en een lange speelsessie door alle 37 gebieden. Unity is nog niet de hoofdversie; dat is de laatste fase.\n",
     }
     controls = (
         "9: veilige opslag, import en instellingen; 8: loopwereld.\n"
@@ -1158,6 +1264,7 @@ def _instructions(identity: dict) -> bytes:
         ("FARM-CHECKS.json bevat de controles van tuin, kanalen, gewassen, boomgaard, productie en watertypes.\n" if identity["phase"] >= 19 else "") +
         ("AREAS-CHECKS.json bevat de controles van sluizen, spiegels, vuurkorven, woestijn, bergpas, archief, proef, arena, kust en schietbaan.\n" if identity["phase"] >= 20 else "") +
         ("ATMOSPHERE-CHECKS.json bevat de controles van dag en nacht, weer, lamplicht, wereldkaart, snelreizen, prestaties, beestenboek en instellingen.\n" if identity["phase"] >= 21 else "") +
+        ("COMPLETION-CHECKS.json bevat de controles van het einde, Nieuw spel+, de terugweg naar Godot, beeldtijden en de lange speelsessie.\n" if identity["phase"] >= 22 else "") +
         "FILES.json bevat de bestanden, groottes en SHA256-controlesommen.\n" +
         ("\n" + RESIDENTS_THIRD_PARTY_NOTICE if identity["phase"] >= 16 else "")
     ).encode("utf-8")
@@ -1178,7 +1285,8 @@ def package_player(player: Path, output: Path, identity: dict,
                    home_result: dict | None = None,
                    farm_result: dict | None = None,
                    areas_result: dict | None = None,
-                   atmosphere_result: dict | None = None) -> tuple[Path, int]:
+                   atmosphere_result: dict | None = None,
+                   completion_result: dict | None = None) -> tuple[Path, int]:
     """Package only the verified runtime payload; never include surrounding logs."""
     validate_identity(identity)
     _validate_runtime(runtime_result, identity)
@@ -1242,6 +1350,10 @@ def package_player(player: Path, output: Path, identity: dict,
         validate_atmosphere(atmosphere_result, identity)
     else:
         require(atmosphere_result is None, "Historical preview cannot contain phase 21 atmosphere proof")
+    if identity["phase"] >= 22:
+        validate_completion(completion_result, identity)
+    else:
+        require(completion_result is None, "Historical preview cannot contain phase 22 completion proof")
     player, output = Path(player), Path(output)
     require(player.is_dir() and not player.is_symlink(), "Player directory is missing or a symlink")
     require(output.is_dir(), "Package output directory must already exist")
@@ -1283,6 +1395,8 @@ def package_player(player: Path, output: Path, identity: dict,
         payload["AREAS-CHECKS.json"] = _json_bytes(areas_result)
     if atmosphere_result is not None:
         payload["ATMOSPHERE-CHECKS.json"] = _json_bytes(atmosphere_result)
+    if completion_result is not None:
+        payload["COMPLETION-CHECKS.json"] = _json_bytes(completion_result)
     seen = {_safe_path(name) for name in payload}
     total = sum(map(len, payload.values()))
     for path in sorted(player.rglob("*")):
@@ -1524,6 +1638,14 @@ def verify_package(path: Path, receipt: dict, expected_source_commit: str | None
     else:
         require("ATMOSPHERE-CHECKS.json" not in payload and "atmosphere" not in receipt,
                 "Historical preview contains unsupported atmosphere proof")
+    if identity["phase"] >= 22:
+        require("COMPLETION-CHECKS.json" in payload, "Phase 22 packaged completion proof is missing")
+        completion = _json(payload["COMPLETION-CHECKS.json"], "COMPLETION-CHECKS.json")
+        validate_completion(completion, identity)
+        require(receipt.get("completion") == completion, "Receipt completion proof differs from package")
+    else:
+        require("COMPLETION-CHECKS.json" not in payload and "completion" not in receipt,
+                "Historical preview contains unsupported completion proof")
     require(receipt.get("success") is True and receipt.get("rawLogsPublished") is False and
             receipt.get("godotSavesUsed") is False, "Receipt failed isolation/privacy checks")
     require(receipt.get("checks") == runtime["checks"], "Receipt runtime checks do not match package")

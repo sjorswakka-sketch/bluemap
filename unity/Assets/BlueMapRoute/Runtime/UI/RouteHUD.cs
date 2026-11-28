@@ -52,7 +52,7 @@ namespace BlueMapMigration.Route
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
             var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP"),small,20);
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 21","Unity preview · phase 21"),small);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 22","Unity preview · phase 22"),small);
             if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
             if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
             {
@@ -122,6 +122,7 @@ namespace BlueMapMigration.Route
         }
         private void DrawVictory()
         {
+            if(route.Ending!=null&&route.Ending.IsOpen){route.Ending.Draw();return;}
             Panel(new Rect(266,174,620,300));Label(290,196,572,T("De Blauwe Kaart is gered!","The Blue Map is saved!"),title);Label(290,250,572,T("De Slijmkoning is verslagen. Je avontuur en beloningen zijn opgeslagen in het dorp.","The Slime King is defeated. Your adventure and rewards are saved in the village."),wrap,108);
             if(Button(new Rect(290,392,572,46),T("Verder verkennen","Continue exploring"),true))route.CloseModal();
         }

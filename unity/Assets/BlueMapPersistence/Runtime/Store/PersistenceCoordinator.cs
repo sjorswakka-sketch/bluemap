@@ -116,6 +116,26 @@ namespace BlueMapMigration.Persistence
             fields["audioLanguage"]=FoundationValue.Object(audio);if(bindingsChanged)fields["bindings"]=LegacySettingsBundle.BindingValue(input);return FoundationValue.Object(fields);
         }
         public bool SetPreferences(LegacyPreferences preferences)=>StorePreferences(preferences,false);
+        /// <summary>What the game remembers of finished rounds (New Game+); null without a profile.</summary>
+        public FoundationValue NgMeta=>Current!=null&&Current.Snapshot.Preferences.TryGet("ngMeta",out var meta)?meta:null;
+        public bool SetNgMeta(FoundationValue meta)=>Try(()=>
+        {
+            if(Current==null)throw new System.IO.IOException("Open eerst een profiel.");if(meta==null)throw new ArgumentNullException(nameof(meta));
+            var fields=Current.Snapshot.Preferences.Entries.ToDictionary(pair=>pair.Key.AsString(),pair=>pair.Value,StringComparer.Ordinal);fields["ngMeta"]=meta;
+            Current=store.SavePreferences(Current,FoundationValue.Object(fields));
+        });
+        public string LastExportDirectory {get;private set;}="";
+        public LegacySaveExport LastExport {get;private set;}
+        /// <summary>A new folder next to the Unity profiles; never a Godot save folder.</summary>
+        public string NextExportDirectory()=>System.IO.Path.Combine(System.IO.Path.GetDirectoryName(store.Root)??store.Root,"GodotExport",DateTime.UtcNow.ToString("yyyyMMdd-HHmmss-fff",System.Globalization.CultureInfo.InvariantCulture));
+        /// <summary>Writes the open profile in the form the Godot game reads, into a new folder of its own.</summary>
+        public bool ExportForGodot(string directory=null)=>Try(()=>
+        {
+            if(Current==null)throw new System.IO.IOException("Open eerst een profiel.");
+            string target=String.IsNullOrEmpty(directory)?NextExportDirectory():directory;
+            LastExport=LegacyProfileExporter.Write(Current.Snapshot,target);LastExportDirectory=PersistencePaths.Checked(target);
+            Status="Kopie voor de Godot-game gemaakt in: "+LastExportDirectory+(LastExport.UnknownToGodot.Count==0?"":"  (onbekend voor Godot: "+String.Join(", ",LastExport.UnknownToGodot)+")");
+        });
         bool StorePreferences(LegacyPreferences preferences,bool bindingsChanged)=>Try(()=>
         {
             if(Current!=null)Current=store.SavePreferences(Current,Updated(preferences,bindingsChanged));

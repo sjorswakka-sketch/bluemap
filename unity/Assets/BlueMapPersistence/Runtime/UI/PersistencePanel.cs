@@ -21,6 +21,8 @@ namespace BlueMapMigration.Persistence
         public event Action ControlsRequested;
         public event Action NewAdventureRequested;
         public event Action ContinueAdventureRequested;
+        public event Action NewGamePlusRequested;
+        public Func<bool> NewGamePlusAvailable = () => false;
         public bool EditingSourceDirectory => visible && editingSourceDirectory;
         public bool Visible
         {
@@ -48,7 +50,7 @@ namespace BlueMapMigration.Persistence
             if (keyboard != null && keyboard.tabKey.wasPressedThisFrame) vertical = keyboard.shiftKey.isPressed ? -1 : 1;
             if (vertical != 0 && Time.unscaledTime >= nextNavigation)
             {
-                focus = Mathf.Clamp(focus + vertical, 0, 15); GUI.FocusControl(""); nextNavigation = Time.unscaledTime + .18f;
+                focus = Mathf.Clamp(focus + vertical, 0, 17); GUI.FocusControl(""); nextNavigation = Time.unscaledTime + .18f;
             }
             if (pad != null && focus == 3 && coordinator.Profiles.Count > 0)
             {
@@ -82,6 +84,8 @@ namespace BlueMapMigration.Persistence
                 case 12: WalkRequested?.Invoke(); break;
                 case 14: NewAdventureRequested?.Invoke();break;
                 case 15: if(coordinator.HasProfile)ContinueAdventureRequested?.Invoke();break;
+                case 16: if(NewGamePlusAvailable())NewGamePlusRequested?.Invoke();break;
+                case 17: if(coordinator.HasProfile)coordinator.ExportForGodot();break;
                 case 13: ControlsRequested?.Invoke(); break;
             }
         }
@@ -157,8 +161,11 @@ namespace BlueMapMigration.Persistence
             float statusY = top + 367;
             GUI.Box(new Rect(x, statusY, width, 63), "");
             GUI.Label(new Rect(x + 10, statusY + 8, width - 20, 49), coordinator.Status ?? T("Kies een opslagmap of een bestaand profiel.", "Choose a save folder or an existing profile."), small);
-            Button(14,new Rect(x,statusY+71,width*.5f-6,28),T("Nieuw avontuur","New adventure"));
-            Button(15,new Rect(x+width*.5f+6,statusY+71,width*.5f-6,28),coordinator.IsRouteProfile?T("Verder spelen","Continue adventure"):T("Speel een veilige kopie","Play a safe copy"),coordinator.HasProfile);
+            float quarter=(width-18)/4f;
+            Button(14,new Rect(x,statusY+71,quarter,28),T("Nieuw avontuur","New adventure"));
+            Button(16,new Rect(x+(quarter+6)*2,statusY+71,quarter,28),T("Nieuw spel+","New Game+"),NewGamePlusAvailable());
+            Button(17,new Rect(x+(quarter+6)*3,statusY+71,quarter,28),T("Kopie voor Godot","Copy for Godot"),coordinator.HasProfile);
+            Button(15,new Rect(x+quarter+6,statusY+71,quarter,28),coordinator.IsRouteProfile?T("Verder spelen","Continue adventure"):T("Speel een veilige kopie","Play a safe copy"),coordinator.HasProfile);
             GUI.Label(new Rect(x, bounds.yMax - 39, width, 27), input.ControllerActive ? T("D-pad / linkerstick: kiezen  ·  A: gebruiken  ·  links/rechts bij profielen: profiel kiezen  ·  rechterstick: lijst schuiven", "D-pad / left stick: select  ·  A: use  ·  left/right in profiles: choose profile  ·  right stick: scroll list") : T("Muis: kiezen  ·  Tab / pijlen: navigeren  ·  Enter: gebruiken  ·  F9: opgeslagen bediening", "Mouse: select  ·  Tab / arrows: navigate  ·  Enter: use  ·  F9: saved controls"), small);
         }
     }

@@ -75,6 +75,8 @@ jobs:
         run: python tools/build_migration_areas.py --check --report "$RUNNER_TEMP/areas-data.json"
       - name: Sfeer, wereldkaart, prestaties en instellingen controleren
         run: python tools/build_migration_atmosphere.py --check --report "$RUNNER_TEMP/atmosphere-data.json"
+      - name: Einde, Nieuw spel+ en de terugweg naar Godot controleren
+        run: python tools/build_migration_completion.py --check --report "$RUNNER_TEMP/completion-data.json"
       - name: Referentie, releasegegevens en teksten controleren
         run: |
           python tools/freeze_godot_reference.py --check
@@ -110,6 +112,8 @@ jobs:
             migration/phase-19/source-contracts.json
             migration/phase-20/source-contracts.json
             migration/phase-21/source-contracts.json
+            migration/phase-22/source-contracts.json
+            migration/phase-22/export-oracle.json
             migration/presentation/graphics.json
             migration/presentation/audio.json
             migration/presentation/localization.json
@@ -357,6 +361,8 @@ jobs:
             migration/phase-19/source-contracts.json
             migration/phase-20/source-contracts.json
             migration/phase-21/source-contracts.json
+            migration/phase-22/source-contracts.json
+            migration/phase-22/export-oracle.json
             migration/phase-16/motion-oracle.json
             migration/phase-16/social-oracle.json
           if-no-files-found: error

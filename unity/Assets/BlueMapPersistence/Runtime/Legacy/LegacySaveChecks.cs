@@ -45,7 +45,7 @@ namespace BlueMapMigration.Persistence
             check("persistence_save_malformed_imports_do_not_construct_partial_state",refused==5);
             check("persistence_save_model_checks_ran",true);
         }
-        private static string Difference(FoundationValue actual,FoundationValue expected,string path)
+        internal static string Difference(FoundationValue actual,FoundationValue expected,string path)
         {
             if(expected.TryGet("$f64",out var bits))
             {

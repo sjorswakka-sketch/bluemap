@@ -29,8 +29,8 @@ EXPECTED_VERSION = "6000.3.26f1"
 EXPECTED_REVISION = "de8167e7440c"
 TARGET = "StandaloneWindows64"
 EXE_NAME = "BlueMapUnityProbe.exe"
-PREVIEW_VERSION = "0.17.0-phase21"
-PHASE = 21
+PREVIEW_VERSION = "0.18.0-phase22"
+PHASE = 22
 
 from verify_unity_package import (PackageError, package_player, validate_identity, verify_package,
                                   validate_foundation, FOUNDATION_CHECKS, validate_player, PLAYER_CHECKS,
@@ -41,7 +41,8 @@ from verify_unity_package import (PackageError, package_player, validate_identit
                                   validate_story, STORY_CHECKS, validate_residents, RESIDENTS_CHECKS,
                                   validate_professions, PROFESSIONS_CHECKS, validate_home, HOME_CHECKS,
                                   validate_farm, FARM_CHECKS, validate_areas, AREAS_CHECKS,
-                                  validate_atmosphere, ATMOSPHERE_CHECKS)
+                                  validate_atmosphere, ATMOSPHERE_CHECKS,
+                                  validate_completion, COMPLETION_CHECKS)
 
 
 class ProbeError(RuntimeError):
@@ -477,6 +478,8 @@ def main() -> None:
             "Required areas runtime check is missing")
     require(ATMOSPHERE_CHECKS <= {c["name"] for c in checks},
             "Required atmosphere runtime check is missing")
+    require(COMPLETION_CHECKS <= {c["name"] for c in checks},
+            "Required completion runtime check is missing")
     require(type(result.get("frames")) is int and result["frames"] >= 60, "Runtime loop did not advance")
     require(result.get("captureMode") == "Camera.Render to GPU RenderTexture; window overlay excluded",
             "Unexpected runtime capture method")
@@ -520,7 +523,9 @@ def main() -> None:
                  "screenshot-farm-seed-book.png", "screenshot-farm-garden.png", "screenshot-farm-station.png",
                  "screenshot-areas-marsh.png", "screenshot-areas-arena.png", "screenshot-areas-coast.png",
                  "screenshot-atmosphere-night.png", "screenshot-atmosphere-atlas.png",
-                 "screenshot-atmosphere-bestiary.png"):
+                 "screenshot-atmosphere-bestiary.png",
+                 "screenshot-completion-epilogue.png", "screenshot-completion-stats.png",
+                 "screenshot-completion-new-game-plus.png"):
         captures[name] = validate_png(runtime / name)
     foundation = read_json(runtime / "foundation-result.json")
     validate_foundation(foundation, identity)
@@ -552,10 +557,12 @@ def main() -> None:
     validate_areas(areas, identity)
     atmosphere = read_json(runtime / "atmosphere-result.json")
     validate_atmosphere(atmosphere, identity)
+    completion = read_json(runtime / "completion-result.json")
+    validate_completion(completion, identity)
     require(collect_build_inputs()[2] == fingerprint, "Original build source changed during the build")
     package, file_count = package_player(player, output, identity, result, foundation, player_checks,
                                        persistence, route, world_access, inventory, progression, combat, story, residents,
-                                       professions, home, farm, areas, atmosphere)
+                                       professions, home, farm, areas, atmosphere, completion)
     receipt = {"schemaVersion": 2, "phase": PHASE, "success": True, "identity": identity,
                "editorVersion": EXPECTED_VERSION, "editorRevision": EXPECTED_REVISION,
                "editorProductVersion": product_version, "target": TARGET, "scriptingBackend": "Mono",
@@ -579,6 +586,7 @@ def main() -> None:
                "farm": farm,
                "areas": areas,
                "atmosphere": atmosphere,
+               "completion": completion,
                "unityPackages": report["unityPackages"], "runtimeDllInputs": report["runtimeDllInputs"],
                "package": {"file": package.name, "sha256": sha256(package), "bytes": package.stat().st_size,
                            "files": file_count}, "rawLogsPublished": False, "godotSavesUsed": False,

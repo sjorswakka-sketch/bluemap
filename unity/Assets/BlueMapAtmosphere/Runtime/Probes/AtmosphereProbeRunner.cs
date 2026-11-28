@@ -196,7 +196,7 @@ namespace BlueMapMigration.Atmosphere
             check("atmosphere_native_fast_travel_between_altars", none && found && listed && tabs && travelled && unknown);
 
             // --- Achievements unlock from their original conditions and are announced once ---
-            route.CloseModal(); state.Set("achievements", InventoryModel.Empty()); state.Set("kills", FoundationValue.Integer(0)); route.Tick(0);
+            route.CloseModal(); state.Set("achievements", FoundationValue.Array(new FoundationValue[0])); state.Set("kills", FoundationValue.Integer(0)); route.Tick(0);
             int before = route.AchievementsOwned; int idle = route.CheckAchievements();
             state.Set("kills", FoundationValue.Integer(1));
             bool unlocked = route.CheckAchievements() >= 1 && route.AchievementOwned("first_blood") && route.CheckAchievements() == 0 && route.AchievementsOwned > before;
@@ -238,7 +238,7 @@ namespace BlueMapMigration.Atmosphere
 
             // --- A reload keeps achievements and discoveries ---
             bool reloaded = route.Save() && route.Reload(false); route.Tick(0); state = route.Gameplay.State;
-            bool kept = reloaded && route.AchievementOwned("first_blood") && state.Flag(forestKey) && state.Flag("wereld_snel_gereisd") && route.DiscoveredAltars().Count == 2;
+            bool kept = reloaded && state.Get("achievements").Kind == "array" && route.AchievementOwned("first_blood") && state.Flag(forestKey) && state.Flag("wereld_snel_gereisd") && route.DiscoveredAltars().Count == 2;
             check("atmosphere_native_reload_keeps_records", kept);
             check("atmosphere_native_three_rendered_captures", captures == 3);
         }

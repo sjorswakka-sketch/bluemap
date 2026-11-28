@@ -143,13 +143,13 @@ namespace BlueMapMigration.Route
             if(!Session.TryEnterPrepared(source,spawn,safe))throw new InvalidOperationException(Session.LastDiagnostic);
             RecordVisit(map);World.RouteMode=true;World.gameObject.SetActive(true);World.BindSession(Session);World.PresentCurrent();World.Motor.RollCooldown=0;World.ApplyEquipmentBonuses();World.Motor.Stamina.Reset();
             Gameplay.SaveRequested+=OnSaveRequested;Gameplay.ItemObtained+=OnItem;Gameplay.SoundRequested+=OnSound;
-            Running=true;Modal="";Selection=0;lastDialogue="";autoTime=0;SaveFailed=false;BuildTargets();InitializeCombat();InitializeStory();InitializeResidents();InitializeProfessions();InitializeHome();InitializeFarm();InitializeWorldMap();InitializeRecords();
+            Running=true;Modal="";Selection=0;lastDialogue="";autoTime=0;SaveFailed=false;BuildTargets();InitializeCombat();InitializeStory();InitializeResidents();InitializeProfessions();InitializeHome();InitializeFarm();InitializeWorldMap();InitializeRecords();InitializeCompletion();
             ShowMessage(relocated?T("Je speelkopie begint in het dorp; je oorspronkelijke locatie en profiel zijn bewaard.","Your play copy starts in the village; the original location and profile are retained."):(map=="village"&&Gameplay.State.QuestState("kat")=="none"?T("Welkom in BlueMap Quest. Praat met Pim op het dorpsplein.","Welcome to BlueMap Quest. Talk to Pim in the village."):AreaName));
             return Save();
         }
         private void Detach()
         {
-            ClearAtmosphere();atmosphereBuiltFor=null;DetachRecords();DetachWorldMap();DetachFarm();DetachHome();
+            ClearAtmosphere();atmosphereBuiltFor=null;DetachCompletion();DetachRecords();DetachWorldMap();DetachFarm();DetachHome();
             DetachProfessions();
             DetachResidents();
             DetachStory();
@@ -182,6 +182,8 @@ namespace BlueMapMigration.Route
         {
             if(!Running||Persistence==null||Gameplay.State.Ended||Gameplay.State.Hp<=0)return false;
             FlushFarmTime();
+            // After the ending every save remembers your best gear for New Game+.
+            if(Gameplay.State.Flag("game_completed"))RecordCompletion();
             bool saved=Persistence.SaveAdventure(Gameplay.State.Snapshot());SaveFailed=!saved;autoTime=0;
             SaveStatus=saved?T("Opgeslagen","Saved"):Persistence.Status;
             if(!saved)ShowMessage(T("Opslaan is niet gelukt; je voortgang blijft actief. Probeer opnieuw.","Saving failed; your progress remains active. Please retry."));
@@ -235,7 +237,7 @@ namespace BlueMapMigration.Route
         public void OpenQuests(){SetModal("quests");RefreshStoryViews();QuestPanel?.Open();}
         public void OpenPause(){SetModal("pause");Selection=0;}
         private void SetModal(string mode){if(!Running)return;Residents?.CloseKitchen();Combat?.Cancel();if(mode!="quests")QuestPanel?.Close();if(mode!="inventory")InventoryPanel?.Close();if(mode!="progression")ProgressionPanel?.Close();CloseProfessionViews(mode);CloseHomeViews(mode);CloseFarmViews(mode);if(mode!="world_map")WorldMap?.Close();if(mode!="records")Records?.Close();work=null;Gameplay.CloseDialogue();Modal=mode;Selection=0;Gameplay.State.SetUi("route_modal",mode!="");World.Motor.StopForTransition();}
-        public void CloseModal(){if(Gameplay==null)return;Residents?.CloseKitchen();linkedDoor=null;Gameplay.CloseDialogue();Modal="";Selection=0;Gameplay.State.SetUi("route_modal",false);lastDialogue="";lastDialogueToken=null;QuestPanel?.Close();SyncDialogue();InventoryPanel?.Close();ProgressionPanel?.Close();CloseProfessionViews("");CloseHomeViews("");CloseFarmViews("");WorldMap?.Close();Records?.Close();World.RoutePresentation?.SetHomeStorageOpen(false);}
+        public void CloseModal(){if(Gameplay==null)return;Residents?.CloseKitchen();linkedDoor=null;Gameplay.CloseDialogue();Modal="";Selection=0;Gameplay.State.SetUi("route_modal",false);lastDialogue="";lastDialogueToken=null;QuestPanel?.Close();SyncDialogue();InventoryPanel?.Close();ProgressionPanel?.Close();CloseProfessionViews("");CloseHomeViews("");CloseFarmViews("");WorldMap?.Close();Records?.Close();Ending?.Close();World.RoutePresentation?.SetHomeStorageOpen(false);}
         public bool PrepareMovementPreview()
         {
             if(Running&&!Save())return false;
@@ -338,7 +340,7 @@ namespace BlueMapMigration.Route
                 if(HandleFarmModal(frame))return;
                 if(HandleWorldMapModal(frame))return;
                 if(HandleRecordsModal(frame))return;
-                if(Modal=="victory"){if(frame.Pressed("ui_accept")||frame.Pressed("interact"))CloseModal();return;}
+                if(Modal=="victory"){if(Ending!=null&&Ending.IsOpen)Ending.HandleInput(frame);else if(frame.Pressed("ui_accept")||frame.Pressed("interact"))CloseModal();return;}
                 if(Modal=="inventory")
                 {
                     if(frame.Pressed("menu")&&!InventoryPanel.SearchEditing){CloseModal();return;}
@@ -375,7 +377,7 @@ namespace BlueMapMigration.Route
             if(accessDirty&&!Gameplay.State.InputLocked)RefreshAccessGeometry();
             foreach(var seal in targets.Where(t=>t.Kind=="diepte_seal"))if(Access.TickSeal(seal.Fields,SealCenter(seal),World.Position,delta)){World.RefreshRouteState();ShowMessage(Translate(Access.LastMessage));}
             inventoryFrameDelta=delta;UpdateInventoryContext(InventoryPanel?.Kind??"bag");UpdateProgressionContext();TickPickups(delta);
-            TickCombat(delta);TickResidents(delta,uiDelta??delta);TickProfessions(delta,uiDelta??delta);TickHome(delta);TickFarm(delta);TickAreas(delta);TickArena(delta);TickCoast(delta);TickBow(delta);TickAtmosphere(uiDelta??delta);TickRecords(uiDelta??delta);
+            TickCombat(delta);TickResidents(delta,uiDelta??delta);TickProfessions(delta,uiDelta??delta);TickHome(delta);TickFarm(delta);TickAreas(delta);TickArena(delta);TickCoast(delta);TickBow(delta);TickAtmosphere(uiDelta??delta);TickRecords(uiDelta??delta);TickCompletion(uiDelta??delta);
             bool locked=Gameplay.State.InputLocked;
             if(locked){foreach(var portal in portals)portal.Armed=false;work=null;lastPosition=World.Position;return;}
             autoTime+=delta;if(autoTime>=30&&!SaveFailed)Save();

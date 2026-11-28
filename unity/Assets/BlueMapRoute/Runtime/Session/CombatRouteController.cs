@@ -134,7 +134,7 @@ namespace BlueMapMigration.Route
             Gameplay.State.SetFlag("game_completed",true);Progression.FinishQuest("main");
             var map=repository.Read("village");string spawn=map.Arrivals.FirstOrDefault(a=>a.Name=="start")?.Name??map.Arrivals[0].Name;
             if(!TryTravel("village",spawn))return;
-            SetModal("victory");ShowMessage(T("De Blauwe Kaart is gered!","The Blue Map is saved!"));Save();
+            CheckAchievements();Save();OpenEnding();
         }
     }
 }
