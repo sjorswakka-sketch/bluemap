@@ -95,6 +95,8 @@ namespace BlueMapMigration.Combat
             }
             Render();
         }
+        /// <summary>The original data of an enemy kind, or null when the kind is unknown.</summary>
+        public FoundationValue EnemyData(string kind){var data=Get(Get(rules,"enemies"),kind);return data.Entries.Count==0?null:data;}
         public EncounterActor Spawn(string kind,Vector2 at,string uniqueFlag="",string address="",FoundationValue data=null)
         {
             data=data??Get(Get(rules,"enemies"),kind);if(data.Entries.Count==0)throw new ArgumentException("Unknown original enemy: "+kind);

@@ -75,6 +75,7 @@ namespace BlueMapMigration.Route
   {
    if(action.Items[0].AsString()=="rf_choose")return RememberStoryChoice(action.Items[1].AsString());
    if(HandleAreaExternal(action.Items[0].AsString(),action))return true;
+   if(HandleArenaExternal(action.Items[0].AsString(),action))return true;
    // Source contextual commands without their required live actor are no-ops; retain the complete payload for its owning later phase.
    LastStoryService=action.Items[0].AsString();StoryServiceRequested?.Invoke(action);
    ShowMessage(T("Deze activiteit wordt aangesloten in de bijbehorende migratiefase.","This activity will be connected in its corresponding migration phase."));return false;
