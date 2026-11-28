@@ -71,6 +71,8 @@ jobs:
         run: python tools/build_migration_home.py --check --report "$RUNNER_TEMP/home-data.json"
       - name: Oorspronkelijke tuin, irrigatie, productie en watertypes controleren
         run: python tools/build_migration_farm.py --check --report "$RUNNER_TEMP/farm-data.json"
+      - name: Bijzondere gebieden en uitdagingen controleren
+        run: python tools/build_migration_areas.py --check --report "$RUNNER_TEMP/areas-data.json"
       - name: Referentie, releasegegevens en teksten controleren
         run: |
           python tools/freeze_godot_reference.py --check
@@ -104,6 +106,7 @@ jobs:
             migration/phase-17/source-contracts.json
             migration/phase-18/source-contracts.json
             migration/phase-19/source-contracts.json
+            migration/phase-20/source-contracts.json
             migration/presentation/graphics.json
             migration/presentation/audio.json
             migration/presentation/localization.json
@@ -349,6 +352,7 @@ jobs:
             migration/phase-17/source-contracts.json
             migration/phase-18/source-contracts.json
             migration/phase-19/source-contracts.json
+            migration/phase-20/source-contracts.json
             migration/phase-16/motion-oracle.json
             migration/phase-16/social-oracle.json
           if-no-files-found: error

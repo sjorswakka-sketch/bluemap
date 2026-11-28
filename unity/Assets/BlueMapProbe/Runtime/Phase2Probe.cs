@@ -25,8 +25,8 @@ namespace BlueMapMigration.Probe
         public bool IsValid(out string error)
         {
             if (schemaVersion != 1) error = "schemaVersion must be 1.";
-            else if (phase != 19) error = "phase must be 19.";
-            else if (previewVersion != "0.15.0-phase19") error = "previewVersion must be 0.15.0-phase19.";
+            else if (phase != 20) error = "phase must be 20.";
+            else if (previewVersion != "0.16.0-phase20") error = "previewVersion must be 0.16.0-phase20.";
             else if (!IsHash(sourceCommit, 40)) error = "sourceCommit must contain 40 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (!IsHash(inputFingerprint, 64)) error = "inputFingerprint must contain 64 lowercase hexadecimal characters and cannot be a placeholder.";
             else if (editorVersion != "6000.3.26f1") error = "editorVersion must be 6000.3.26f1.";
@@ -415,6 +415,16 @@ namespace BlueMapMigration.Probe
                 if(farmFailed||!more)break;yield return current;
             }
             Add("farm_runtime_verified",!farmFailed&&BlueMapMigration.Farm.FarmProbeRunner.Last.success);
+            var areasProof=BlueMapMigration.Areas.AreasProbeRunner.Run(identity,output,playerWorld,route,gallery.Catalog);
+            bool areasFailed=false;
+            while(true)
+            {
+                object current=null;bool more=false;
+                try{more=areasProof.MoveNext();if(more)current=areasProof.Current;}
+                catch(Exception error){Debug.LogError("Native areas proof failed: "+error);areasFailed=true;}
+                if(areasFailed||!more)break;yield return current;
+            }
+            Add("areas_runtime_verified",!areasFailed&&BlueMapMigration.Areas.AreasProbeRunner.Last.success);
             Finish();
         }
         private void SaveRouteCapture(string name)

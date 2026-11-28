@@ -52,7 +52,7 @@ namespace BlueMapMigration.Route
             GUI.color=new Color(.22f,.30f,.27f);GUI.DrawTexture(new Rect(32,92,270,7),Texture2D.whiteTexture);
             GUI.color=route.World.Motor.Stamina.Exhausted?new Color(.85f,.46f,.30f):new Color(.40f,.76f,.57f);GUI.DrawTexture(new Rect(32,92,270*(float)(route.World.Motor.Stamina.Stamina/route.World.Motor.Stamina.Capacity),7),Texture2D.whiteTexture);GUI.color=Color.white;
             var progress=route.Progression.Progress;Label(32,106,270,"Lv "+progress.Level+"  ·  "+(progress.AtMax?T("Maximumlevel","Maximum level"):progress.Current+" / "+progress.Needed+" XP"),small,20);
-            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 19","Unity preview · phase 19"),small);
+            Panel(new Rect(886,16,248,58));Label(900,23,222,"BlueMap Quest",text);Label(900,47,222,T("Unity-proef · fase 20","Unity preview · phase 20"),small);
             if(route.Message!=""){LastMessageBounds=new Rect(326,18,550,84);Panel(LastMessageBounds);Label(342,29,518,route.Message,wrap,63);}
             if(!state.InputLocked&&!game.DialogueOpen&&!state.Ended)
             {
@@ -77,6 +77,8 @@ namespace BlueMapMigration.Route
                 LastGardenHintBounds=Rect.zero;LastWaterInfoBounds=Rect.zero;LastRegionBounds=Rect.zero;LastArenaBounds=Rect.zero;
                 if(route.ArenaBannerTime>0&&route.ArenaBannerTitle!="")
                 {LastArenaBounds=new Rect(326,232,500,route.ArenaBannerSub!=""?84:52);Panel(LastArenaBounds);var big=new GUIStyle(text){alignment=TextAnchor.MiddleCenter,fontSize=26};big.normal.textColor=new Color(1,.86f,.45f);Label(336,238,480,route.ArenaBannerTitle,big,38);if(route.ArenaBannerSub!=""){var sub=new GUIStyle(small){alignment=TextAnchor.MiddleCenter,fontSize=17};Label(336,280,480,route.ArenaBannerSub,sub,28);}}
+                if(route.RangeStatus!="")
+                {var bar=new Rect(476,170,200,40);Panel(bar);var centered=new GUIStyle(text){alignment=TextAnchor.MiddleCenter,fontSize=20};if(route.RangeState=="run"&&route.RangeTimeLeft<5)centered.normal.textColor=new Color(1,.5f,.45f);Label(486,175,180,route.RangeStatus,centered,30);}
                 if(route.ArenaStatus!="")
                 {var bar=new Rect(371,170,410,36);Panel(bar);var centered=new GUIStyle(small){alignment=TextAnchor.MiddleCenter,fontSize=16};Label(381,175,390,route.ArenaStatus,centered,26);}
                 if(route.RegionStatus!="")

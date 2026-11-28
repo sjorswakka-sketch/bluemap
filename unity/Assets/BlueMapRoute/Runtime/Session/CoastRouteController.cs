@@ -29,7 +29,7 @@ namespace BlueMapMigration.Route
    if(!reopen){SetModal("garden_menu");GardenMenu.SetControllerActive(ControllerActive);}
    infoHandler=handler;GardenMenu.Open("info:"+target.Address,title,lines,options.Concat(new[]{new GardenOption("close",Translate("Sluiten"))}),focus);if(!reopen)GardenMenu.NotifyOpened(storyInput);
   }
-  bool InfoValid()=>infoTarget!=null&&infoMap==Gameplay.State.MapId&&targets.Contains(infoTarget)&&!Gameplay.State.Transitioning&&!Gameplay.State.Ended&&Vector2.Distance(World.Position,infoTarget.Position)<=64;
+  bool InfoValid()=>infoMap==Gameplay.State.MapId&&!Gameplay.State.Transitioning&&!Gameplay.State.Ended&&(infoTarget==null||(targets.Contains(infoTarget)&&Vector2.Distance(World.Position,infoTarget.Position)<=64));
   // --- Coastal adventures -------------------------------------------------------------------------------
   bool CoastEvidence(AreaBatch b)=>b.Flag("ad_splinter")&&b.Flag("ad_silt");
   void CoastBegin(AreaBatch b,string quest){if(!QuestKnown(quest))b.Start(quest);}

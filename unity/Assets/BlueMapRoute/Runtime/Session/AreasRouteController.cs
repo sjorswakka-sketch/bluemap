@@ -152,7 +152,7 @@ namespace BlueMapMigration.Route
    b.Save();b.Run();
   }
   /// <summary>A choice made in the conversation of a living object; ignored when the player walked away.</summary>
-  bool ChooseAreaAction(string action)
+  public bool ChooseAreaAction(string action)
   {
    var target=pendingArea;if(target==null||pendingAreaMap!=Gameplay.State.MapId||!targets.Contains(target)||Vector2.Distance(World.Position,target.Position)>72)return false;
    var work=Work(target);if(work.Active)return false;string kind=ObjectKind(target),id=ObjectId(target);var b=new AreaBatch(this);
@@ -282,7 +282,7 @@ namespace BlueMapMigration.Route
    }
    return false;
   }
-  bool ChooseRegional(string choice)
+  public bool ChooseRegional(string choice)
   {
    var target=pendingArea;if(target==null||target.Kind!="regional_object"||pendingAreaMap!=Gameplay.State.MapId||!targets.Contains(target)||Vector2.Distance(World.Position,target.Position)>64)return false;
    string kind=ObjectKind(target);var b=new AreaBatch(this);
