@@ -123,7 +123,7 @@ namespace BlueMapMigration.Route
   }
   public bool OpenGardenMenu(string role,RouteTarget station)
   {
-   if(!Running||Farm==null)return false;FlushFarmTime();UpdateInventoryContext();gardenRole=role;gardenStation=station;SetModal("garden_menu");GardenMenu.SetControllerActive(ControllerActive);
+   if(!Running||Farm==null)return false;FlushFarmTime();UpdateInventoryContext();infoHandler=null;gardenRole=role;gardenStation=station;SetModal("garden_menu");GardenMenu.SetControllerActive(ControllerActive);
    BuildGardenMenu();GardenMenu.NotifyOpened(storyInput);return true;
   }
   void BuildGardenMenu(string focus=null)
@@ -193,7 +193,9 @@ namespace BlueMapMigration.Route
   string GardenJobId()=>gardenRole=="compost"?"compost":gardenStation!=null?StationUnit(gardenStation):"";
   void GardenChosen(string id)
   {
-   if(Farm==null||Modal!="garden_menu")return;FlushFarmTime();UpdateInventoryContext();
+   if(Farm==null||Modal!="garden_menu")return;
+   if(infoHandler!=null){var handler=infoHandler;handler(id);World.RefreshRouteState();return;}
+   FlushFarmTime();UpdateInventoryContext();
    if(id.StartsWith("mode:",StringComparison.Ordinal)){ChooseGardenMode(id.Substring(5));return;}
    if(id.StartsWith("start:",StringComparison.Ordinal)){if(Farm.StartJob(GardenJobId(),Int64.Parse(id.Substring(6),System.Globalization.CultureInfo.InvariantCulture)))OnSound("select");BuildGardenMenu();return;}
    switch(id)
