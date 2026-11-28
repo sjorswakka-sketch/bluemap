@@ -1,6 +1,8 @@
-# Unity-migratie — fase 21 voltooid
+# Unity-migratie — fase 22 voltooid
 
-Fase 22 volgt direct: de volledige voortgang tot het einde, terugexport naar Godot en de eindcontroles; de volledige game is nog niet overgezet.
+Alleen fase 23 resteert: Unity de hoofdversie maken op de Claude-branch. Die stap wacht op een laatste go.
+
+[Fase 22: het einde, Nieuw spel+ en de terugweg naar Godot](phase-22/README.md) — epiloog en aftiteling, Nieuw spel+, een bewezen kopie terug naar Godot (24 saves door de echte Godot geladen), gemeten beeldtijden, een lange sessie door alle 37 gebieden en een [leeswijzer voor de 86 suites](phase-22/COVERAGE.md); 48 algemene Windows-controles en 62 afrondingscontroles.
 
 [Fase 21: sfeer, wereldkaart en boeken](phase-21/README.md) — dag en nacht, donkere grotten, weer, lamplicht en achtergrondgeluid, de wereldkaart, snelreizen, prestaties, het beestenboek en instellingen tijdens het spelen; 47 algemene Windows-controles en 15 sfeercontroles.
 
