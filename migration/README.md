@@ -1,6 +1,8 @@
-# Unity-migratie — fase 20 voltooid
+# Unity-migratie — fase 21 voltooid
 
-Fase 21 volgt direct: sfeer, wereldkaart en complete interfaces; de volledige game is nog niet overgezet.
+Fase 22 volgt direct: de volledige voortgang tot het einde, terugexport naar Godot en de eindcontroles; de volledige game is nog niet overgezet.
+
+[Fase 21: sfeer, wereldkaart en boeken](phase-21/README.md) — dag en nacht, donkere grotten, weer, lamplicht en achtergrondgeluid, de wereldkaart, snelreizen, prestaties, het beestenboek en instellingen tijdens het spelen; 47 algemene Windows-controles en 15 sfeercontroles.
 
 [Fase 20: bijzondere gebieden en uitdagingen](phase-20/README.md) — sluizen, spiegels, vuurkorven, woestijn en bergpas, archief, resonantieproef, arena, kustavonturen, werkplaats en schietbaan; 46 algemene Windows-controles en 19 gebiedscontroles.
 

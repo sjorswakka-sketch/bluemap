@@ -2,11 +2,11 @@
 
 ## Unity-versie: nu te testen
 
-**[Download de nieuwste Windows-testversie](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase20-preview-627f0a1e)** — pak `BlueMapUnityPreview-phase-20-627f0a1e-Windows-x64.zip` uit en start `BlueMapUnityProbe.exe`. Kies daarna **Avontuur en opslag**. Installeren is niet nodig.
+**[Download de nieuwste Windows-testversie](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase21-preview-ab7565e6)** — pak `BlueMapUnityPreview-phase-21-ab7565e6-Windows-x64.zip` uit en start `BlueMapUnityProbe.exe`. Kies daarna **Avontuur en opslag**. Installeren is niet nodig.
 
 De game wordt van Godot naar Unity overgezet. **Waarom Unity?** De visie voor BlueMap Quest, in graphics en in systemen, is veel groter dan wat de game nu is; Unity geeft daar de ruimte voor. Eerst wordt de bestaande game één op één overgezet, daarna groeit hij verder.
 
-**Stand: fase 20 van 23 afgerond** (28 november 2026). Nieuw in deze versie: de bijzondere gebieden en uitdagingen — de moerassluizen en de brug, de spiegels van de Prismamijn, vuurkorven en de warmwaterbron, de Zonnekloof en de Bergpas, het Rietarchief, de resonantieproef, de arena met brons, zilver en goud, de kustavonturen met het tijrad en de Schelpenhoeder, Rafs werkplaats, boogdoelwitten en de schietbaan. Eerder overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, bewoners met dagroutines, de zeven beroepen, recepten, winkels en vissen, je eigen huis en erf, en de tuin met kanalen, gewassen, wijn en honing. Nog niet overgezet: dag en nacht, weer, lichteffecten en de wereldkaart, en de laatste eindcontroles. Dit is dus een testversie, nog niet de hele game.
+**Stand: fase 21 van 23 afgerond** (28 november 2026). Nieuw in deze versie: dag en nacht met de oorspronkelijke kleuren, donkere grotten, regen, sneeuw en stuivend zand, lamplicht en achtergrondgeluid; de wereldkaart (N) met snelreizen tussen ontdekte altaren; prestaties (T) en het beestenboek (B); en taal, volume en dempen (M) tijdens het spelen. Eerder overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, bewoners met dagroutines, de zeven beroepen, recepten, winkels en vissen, je eigen huis en erf, de tuin met kanalen, gewassen, wijn en honing, en de bijzondere gebieden met sluizen, arena, kustavonturen en schietbaan. Nog niet overgezet: het titelscherm, de intro, het einde met aftiteling en de laatste eindcontroles. Dit is dus een testversie, nog niet de hele game.
 
 - [Wat er per fase is overgezet](migration/README.md) en het [plan van 23 fases](migration/PLAN.md)
 - [Alle downloads, ook eerdere testversies](migration/DOWNLOADS.md)
