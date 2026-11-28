@@ -2,14 +2,15 @@
 
 ## Unity-versie: de hoofdversie
 
-**[Download de nieuwste Windows-versie](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase22-preview-f22f846e)** — pak het ZIP-bestand uit en start `BlueMapUnityProbe.exe`. Kies daarna **Avontuur en opslag**. Installeren is niet nodig.
+**[Download de nieuwste Windows-versie](https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase23-preview-4259c060)** — pak het ZIP-bestand uit en start `BlueMapUnityProbe.exe`. Je komt in het titelscherm; je Godot-opslag importeer je via **Opslag en import**. Installeren is niet nodig.
 
 BlueMap Quest is van Godot naar Unity overgezet. **Waarom Unity?** De visie voor BlueMap Quest, in graphics en in systemen, is veel groter dan wat de game nu is; Unity geeft daar de ruimte voor. Eerst is de bestaande game overgezet, nu groeit hij in Unity verder.
 
-**Stand: alle 23 fases afgerond** (28 november 2026). Unity is de versie waarop verder wordt gebouwd. Overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, bewoners met dagroutines, de zeven beroepen, recepten, winkels en vissen, je eigen huis, erf en tuin, de bijzondere gebieden met sluizen, arena, kustavonturen en schietbaan, dag en nacht, weer, wereldkaart, snelreizen, prestaties en beestenboek, en het einde met Nieuw spel+. Je Godot-opslag kun je veilig importeren en je voortgang kan ook weer terug naar Godot. Nog niet gelijk aan de Godot-game: het titelscherm met intro, bewegend water en enkele effecten; de volledige lijst staat bij [fase 22](migration/phase-22/README.md) en [fase 23](migration/phase-23/README.md).
+**Stand: alle 23 fases afgerond** (28 november 2026). Unity is de versie waarop verder wordt gebouwd. Overgezet: alle 37 gebieden, inventaris en opslag, uitrusting en uiterlijk, gevechten, gesprekken en quests, bewoners met dagroutines, de zeven beroepen, recepten, winkels en vissen, je eigen huis, erf en tuin, de bijzondere gebieden met sluizen, arena, kustavonturen en schietbaan, dag en nacht, weer, wereldkaart, snelreizen, prestaties en beestenboek, en het einde met Nieuw spel+. Je Godot-opslag kun je veilig importeren en je voortgang kan ook weer terug naar Godot. Nog niet gelijk aan de Godot-game: bewegend water en enkele effecten; de volledige lijst staat bij [fase 22](migration/phase-22/README.md) en [fase 23](migration/phase-23/README.md).
 
 - [Wat er per fase is overgezet](migration/README.md) en het [plan van 23 fases](migration/PLAN.md)
 - [Alle downloads, ook eerdere testversies](migration/DOWNLOADS.md)
+- [Verder bouwen aan de Unity-versie](unity/UITBREIDEN.md)
 - [De volledige oorspronkelijke Godot-game 0.34](https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0) blijft speelbaar; de Godot-bron staat ongewijzigd in deze repository en op de tag `godot-baseline-0.34.0` ([herstelinstructies](migration/RECOVERY.md))
 
 Iets gevonden tijdens het spelen? Meld het via [Issues](https://github.com/sjorswakka-sketch/bluemap/issues).

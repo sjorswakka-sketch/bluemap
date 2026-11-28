@@ -40,7 +40,7 @@
   "requires_next_go": false,
   "unity_probe_created": true,
   "game_port_started": true,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase22-preview-f22f846e",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase23-preview-4259c060",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -274,5 +274,6 @@
   "main_branch": "claude/affectionate-mendel-vc1idx",
   "godot_recovery_tag": "godot-baseline-0.34.0",
   "godot_source_preserved": true,
-  "main_switch_fast_forward_from": "a8a988be27835dec979d2523a3a85a34385eac54"
+  "main_switch_fast_forward_from": "a8a988be27835dec979d2523a3a85a34385eac54",
+  "finishing_round_build_source": "4259c060f498a5f7ea21877d9a35a94e1e79e401"
 }

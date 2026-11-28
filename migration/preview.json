@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "phase": 22,
-  "previewVersion": "0.18.0-phase22",
-  "releaseTag": "unity-phase22-preview-f22f846e",
-  "releaseUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase22-preview-f22f846e",
-  "sourceCommit": "f22f846e2000f22ca8e6823966c188faf3d67f92",
-  "inputFingerprint": "6cee96bd1a819d7e81ecafb13e1b44da5472ea1ef3e89109409b3502167d5bbd",
-  "packageName": "BlueMapUnityPreview-phase-22-f22f846e-Windows-x64.zip",
-  "packageUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase22-preview-f22f846e/BlueMapUnityPreview-phase-22-f22f846e-Windows-x64.zip",
-  "packageSha256": "35ff65bb2eeb2e3c11056a4a3da83943cddae9e13c7275a88f856b4f0547eb1b",
-  "packageBytes": 76767921,
-  "receiptUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase22-preview-f22f846e/receipt.json",
-  "receiptSha256": "62d44268d226de24648743757e9e9b57e9e18091e973516dd226622f692a1224"
+  "phase": 23,
+  "previewVersion": "0.19.0-phase23",
+  "releaseTag": "unity-phase23-preview-4259c060",
+  "releaseUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase23-preview-4259c060",
+  "sourceCommit": "4259c060f498a5f7ea21877d9a35a94e1e79e401",
+  "inputFingerprint": "731dc661693f771ab31cbf1d3c5454a2a364460d39c73a946c0b78bee5c504c4",
+  "packageName": "BlueMapUnityPreview-phase-23-4259c060-Windows-x64.zip",
+  "packageUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase23-preview-4259c060/BlueMapUnityPreview-phase-23-4259c060-Windows-x64.zip",
+  "packageSha256": "26fdedb8b39596df5f96d9e20c19eea148baf397d7500411f4533aabf4401dcf",
+  "packageBytes": 76774718,
+  "receiptUrl": "https://github.com/sjorswakka-sketch/bluemap/releases/download/unity-phase23-preview-4259c060/receipt.json",
+  "receiptSha256": "7ccd84e593f1ea880c05711d0f44b46ca76f56019c1f30419ebaf8087be16af8"
 }
