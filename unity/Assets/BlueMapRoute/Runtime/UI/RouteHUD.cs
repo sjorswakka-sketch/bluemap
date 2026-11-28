@@ -96,7 +96,7 @@ namespace BlueMapMigration.Route
             if(game.DialogueOpen){DrawDialogue();return;}
             if(route.Modal=="")return;
             if(route.Modal!="fishing"){GUI.color=new Color(0,0,0,.40f);GUI.DrawTexture(new Rect(0,0,1152,648),Texture2D.whiteTexture);GUI.color=Color.white;}
-            if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="home_menu")route.HomeMenu?.Draw();else if(route.Modal=="house_editor")route.HouseEditor?.Draw();else if(route.Modal=="yard_editor")route.YardEditor?.Draw();else if(route.Modal=="garden_menu")route.GardenMenu?.Draw();else if(route.Modal=="seed_book")route.SeedBook?.Draw();else if(route.Modal=="professions")route.ProfessionsPanel?.Draw();else if(route.Modal=="shop")route.ShopPanel?.Draw();else if(route.Modal=="fishing")route.FishingView?.Draw();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
+            if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="home_menu")route.HomeMenu?.Draw();else if(route.Modal=="house_editor")route.HouseEditor?.Draw();else if(route.Modal=="yard_editor")route.YardEditor?.Draw();else if(route.Modal=="garden_menu")route.GardenMenu?.Draw();else if(route.Modal=="world_map")route.WorldMap?.Draw();else if(route.Modal=="seed_book")route.SeedBook?.Draw();else if(route.Modal=="professions")route.ProfessionsPanel?.Draw();else if(route.Modal=="shop")route.ShopPanel?.Draw();else if(route.Modal=="fishing")route.FishingView?.Draw();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
         }
         public Rect BossBounds {get;private set;}
         public Rect LastClockBounds {get;private set;} public Rect LastArenaBounds {get;private set;} public Rect LastRegionBounds {get;private set;} public Rect LastGardenHintBounds {get;private set;} public Rect LastWaterInfoBounds {get;private set;} public bool GardenHintFits {get;private set;}=true;public bool WaterInfoFits {get;private set;}=true;
@@ -138,10 +138,12 @@ namespace BlueMapMigration.Route
         }
         private void DrawPause()
         {
-            Panel(new Rect(356,115,440,437));Label(380,132,392,T("Even rust","Take a break"),title);
+            Panel(new Rect(356,60,440,548));Label(380,72,392,T("Even rust","Take a break"),title);
             string[] choices={T("Verder spelen","Resume"),T("Avontuur opslaan","Save adventure"),T("Opslaan en opnieuw laden","Save and reload"),T("Bediening aanpassen","Edit controls"),T("Opslaan en naar profielen","Save and return to profiles")};
-            for(int i=0;i<choices.Length;i++)if(Button(new Rect(378,183+i*55,396,44),choices[i],route.Selection==i))route.ActivatePause(i);
-            Label(380,474,390,route.SaveStatus,wrap,65);
+            for(int i=0;i<choices.Length;i++)if(Button(new Rect(378,118+i*46,396,40),choices[i],route.Selection==i))route.ActivatePause(i);
+            // Language, volume and mute can be changed while playing; they are saved with the other preferences.
+            for(int i=0;i<4;i++)if(Button(new Rect(378,118+(5+i)*46,396,40),route.SettingsLine(i),route.Selection==5+i))route.ActivatePause(5+i);
+            Label(380,540,390,route.SaveStatus,wrap,60);
         }
         private void DrawDoor()
         {
