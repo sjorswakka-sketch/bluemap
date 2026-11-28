@@ -1,6 +1,8 @@
-# Unity-migratie — fase 19 voltooid
+# Unity-migratie — fase 20 voltooid
 
-Het volgende **go** start fase 20: bijzondere gebieden en uitdagingen; de volledige game is nog niet overgezet.
+Fase 21 volgt direct: sfeer, wereldkaart en complete interfaces; de volledige game is nog niet overgezet.
+
+[Fase 20: bijzondere gebieden en uitdagingen](phase-20/README.md) — sluizen, spiegels, vuurkorven, woestijn en bergpas, archief, resonantieproef, arena, kustavonturen, werkplaats en schietbaan; 46 algemene Windows-controles en 19 gebiedscontroles.
 
 [Fase 19: landbouw, water en productie](phase-19/README.md) — kanalen, acht gewassen, boomgaard, mesthoop, wijnvaten, bijenkast, zadenboek en tien benoemde watertypes; 45 algemene Windows-controles en 20 tuin-, productie- en watercontroles.
 

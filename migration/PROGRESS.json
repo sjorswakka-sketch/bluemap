@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "plan": "PLAN.md",
-  "status": "phase_19_complete",
+  "status": "phase_20_complete",
   "completed_phases": [
     1,
     2,
@@ -21,22 +21,23 @@
     16,
     17,
     18,
-    19
+    19,
+    20
   ],
   "active_phase": null,
-  "next_phase": 20,
+  "next_phase": 21,
   "baseline_commit": "a8a988be27835dec979d2523a3a85a34385eac54",
   "baseline_tree": "73ba02ea4db0a1c920360b6570f5209ccb970143",
   "migration_branch": "codex/unity-migration",
   "godot_branch": "claude/affectionate-mendel-vc1idx",
   "unity_implementation_started": true,
-  "completed_on": "2026-11-27",
+  "completed_on": "2026-11-28",
   "recovery_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/godot-baseline-0.34.0",
-  "checks": "phase-19/README.md",
-  "requires_next_go": true,
+  "checks": "phase-20/README.md",
+  "requires_next_go": false,
   "unity_probe_created": true,
   "game_port_started": true,
-  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase19-preview-fc8f9c15",
+  "probe_release": "https://github.com/sjorswakka-sketch/bluemap/releases/tag/unity-phase20-preview-627f0a1e",
   "local_build_route_verified": true,
   "github_hosted_unity_build_verified": false,
   "preview_reference": "preview.json",
@@ -246,5 +247,11 @@
   "farm_water_types": 10,
   "farm_water_maps": 37,
   "farm_source_contracts": "phase-19/source-contracts.json",
-  "farm_build_source": "fc8f9c15d6efeb9e54a79936ace268596d9ea008"
+  "farm_build_source": "fc8f9c15d6efeb9e54a79936ace268596d9ea008",
+  "areas_runtime_verified": true,
+  "areas_runtime_checks": 19,
+  "areas_recorded_oracle": false,
+  "areas_sources": 33,
+  "areas_source_contracts": "phase-20/source-contracts.json",
+  "areas_build_source": "627f0a1ef2d8f4db9ef6fc0f16c78b13bdb8403f"
 }
