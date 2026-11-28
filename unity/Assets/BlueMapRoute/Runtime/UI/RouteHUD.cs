@@ -74,7 +74,9 @@ namespace BlueMapMigration.Route
                     route.BindingLabel("interact")+T(" praten / verzamelen  ·  "," talk / gather  ·  ")+route.BindingLabel("menu")+T(" tas  ·  "," inventory  ·  ")+route.BindingLabel("quests")+T(" opdrachten  ·  "," quests  ·  ")+route.BindingLabel("pause")+T(" menu  ·  "," menu  ·  ")+route.BindingLabel("sprint")+T(" rennen  ·  F9 bediening"," run  ·  F9 controls");Label(32,598,1090,controls,small);
                 if(route.CurrentTarget!=null){Panel(new Rect(360,526,432,48));Label(376,538,400,(route.BindingLabel("interact")+"  ")+route.Translate(route.CurrentTarget.Label));}
                 if(route.NearbyPassage!=""&&route.Message==""){Panel(new Rect(326,114,550,48));Label(342,125,518,route.NearbyPassage,wrap,36);}
-                LastGardenHintBounds=Rect.zero;LastWaterInfoBounds=Rect.zero;
+                LastGardenHintBounds=Rect.zero;LastWaterInfoBounds=Rect.zero;LastRegionBounds=Rect.zero;
+                if(route.RegionStatus!="")
+                {LastRegionBounds=new Rect(371,170,410,52);Panel(LastRegionBounds);var centered=new GUIStyle(small){alignment=TextAnchor.MiddleCenter,fontSize=16};Label(381,176,390,route.RegionStatus,centered,24);GUI.color=new Color(.20f,.30f,.38f);GUI.DrawTexture(new Rect(383,206,386,6),Texture2D.whiteTexture);GUI.color=new Color(.55f,.80f,.92f);GUI.DrawTexture(new Rect(383,206,386*Mathf.Clamp01(route.RegionGauge),6),Texture2D.whiteTexture);GUI.color=Color.white;}
                 if(route.GardenHint!="")
                 {var hint=new GUIStyle(wrap);var content=new GUIContent(route.GardenHint);while(hint.fontSize>13&&hint.CalcHeight(content,692)>132)hint.fontSize--;float needed=hint.CalcHeight(content,692);float height=Mathf.Min(150,needed+18);GardenHintFits=needed<=height-18+.5f;LastGardenHintBounds=new Rect(216,581-height,720,height);Panel(LastGardenHintBounds);Label(230,LastGardenHintBounds.y+9,692,route.GardenHint,hint,height-18);}
                 else if(route.WaterInfo!=""&&route.NearbyPassage=="")
@@ -90,7 +92,7 @@ namespace BlueMapMigration.Route
             if(route.Modal=="defeat")DrawDefeat();else if(route.Modal=="victory")DrawVictory();else if(route.Modal=="home_menu")route.HomeMenu?.Draw();else if(route.Modal=="house_editor")route.HouseEditor?.Draw();else if(route.Modal=="yard_editor")route.YardEditor?.Draw();else if(route.Modal=="garden_menu")route.GardenMenu?.Draw();else if(route.Modal=="seed_book")route.SeedBook?.Draw();else if(route.Modal=="professions")route.ProfessionsPanel?.Draw();else if(route.Modal=="shop")route.ShopPanel?.Draw();else if(route.Modal=="fishing")route.FishingView?.Draw();else if(route.Modal=="progression")route.ProgressionPanel?.Draw();else if(route.Modal=="inventory")DrawInventory();else if(route.Modal=="quests")DrawQuests();else if(route.Modal=="pause")DrawPause();else if(route.Modal=="door")DrawDoor();else if(route.Modal=="boat"||route.Modal=="boat_sailing")DrawBoat();else DrawSign();
         }
         public Rect BossBounds {get;private set;}
-        public Rect LastGardenHintBounds {get;private set;} public Rect LastWaterInfoBounds {get;private set;} public bool GardenHintFits {get;private set;}=true;public bool WaterInfoFits {get;private set;}=true;
+        public Rect LastRegionBounds {get;private set;} public Rect LastGardenHintBounds {get;private set;} public Rect LastWaterInfoBounds {get;private set;} public bool GardenHintFits {get;private set;}=true;public bool WaterInfoFits {get;private set;}=true;
         private void DrawCombat()
         {
             BossBounds=Rect.zero;var combat=route.Combat;if(!route.CombatSimulationEnabled||combat==null)return;

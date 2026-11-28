@@ -369,7 +369,7 @@ namespace BlueMapMigration.Route
             if(accessDirty&&!Gameplay.State.InputLocked)RefreshAccessGeometry();
             foreach(var seal in targets.Where(t=>t.Kind=="diepte_seal"))if(Access.TickSeal(seal.Fields,SealCenter(seal),World.Position,delta)){World.RefreshRouteState();ShowMessage(Translate(Access.LastMessage));}
             inventoryFrameDelta=delta;UpdateInventoryContext(InventoryPanel?.Kind??"bag");UpdateProgressionContext();TickPickups(delta);
-            TickCombat(delta);TickResidents(delta,uiDelta??delta);TickProfessions(delta,uiDelta??delta);TickHome(delta);TickFarm(delta);
+            TickCombat(delta);TickResidents(delta,uiDelta??delta);TickProfessions(delta,uiDelta??delta);TickHome(delta);TickFarm(delta);TickAreas(delta);
             bool locked=Gameplay.State.InputLocked;
             if(locked){foreach(var portal in portals)portal.Armed=false;work=null;lastPosition=World.Position;return;}
             autoTime+=delta;if(autoTime>=30&&!SaveFailed)Save();
@@ -476,6 +476,7 @@ namespace BlueMapMigration.Route
                 case "memory_actor":case "memory_book":case "supper_object":return InteractResidentObject(target);
                 case "route_object":case "opening_device":return InteractStoryObject(target);
                 case "combat_post":return InteractCombatPost(target);
+                case "living_object":case "regional_object":case "echo_trial":return InteractAreaObject(target);
                 case "diepte_seal":SetModal("sign");Hud.SignSpeaker="Zegel";Hud.SignLines=new[]{Translate("Een zware steenplaat met een ster erin. De runen gloeien zachtjes."),Translate("Hij zit muurvast. Misschien gaat hij pas open als de Blauwe Kaart weer heel is.")};return true;
                 case "coastal_workstation":if(StorageTarget(target))return OpenStorage("coast");return OpenLinkedDoor(address);
                 case "coast_dock":case "tide_station":return OpenVoyage(address);
@@ -506,7 +507,8 @@ namespace BlueMapMigration.Route
                     var rect=fields.Require("rect");Vector2 origin=FoundationCoordinates.Vector(rect.Require("position")),size=FoundationCoordinates.Vector(rect.Require("size"));
                     portals.Add(new Portal{Bounds=new Rect(origin,size),Map=fields.Require("target_map").AsString(),Spawn=fields.Require("target_spawn").AsString(),Conditions=fields.TryGet("conditions",out var tests)?tests:FoundationValue.Array(Array.Empty<FoundationValue>()),Locked=fields.TryGet("locked_text",out var text)?text.AsString():T("Deze doorgang is nog gesloten.","This passage is still closed.")});continue;
                 }
-                if(!new[]{"npc","coast_resident","supper_actor","village_actor","memory_actor","memory_book","supper_object","resource_node","meer_visplek","craft_notes","chest","pickup","home_station","stock_chest","savepoint","sign","route_object","opening_device","combat_post","gate","diepte_gate","coast_dock","diepte_seal","coastal_workstation","tide_station"}.Contains(kind))continue;
+                if(!new[]{"npc","coast_resident","supper_actor","village_actor","memory_actor","memory_book","supper_object","resource_node","meer_visplek","craft_notes","chest","pickup","home_station","stock_chest","savepoint","sign","route_object","opening_device","combat_post","gate","diepte_gate","coast_dock","diepte_seal","coastal_workstation","tide_station","living_object","regional_object","echo_trial"}.Contains(kind))continue;
+                if(AreaScenery(kind,fields))continue;
                 if(kind=="combat_post"&&WorldAccessModel.Get(fields.Require("obj"),"kind",FoundationValue.StringValue("")).AsString()=="rack")continue;
                 if(kind=="tide_station"&&WorldAccessModel.Get(WorldAccessModel.Get(fields,"obj",fields),"role",FoundationValue.StringValue("")).AsString()!="routes")continue;
                 if(kind=="coastal_workstation"&&!WorldAccessModel.Get(WorldAccessModel.Get(fields,"obj",fields),"travel_link",FoundationValue.Boolean(false)).AsBool()&&WorldAccessModel.Get(WorldAccessModel.Get(fields,"obj",fields),"role",FoundationValue.StringValue("")).AsString()!="storage")continue;
@@ -526,6 +528,7 @@ namespace BlueMapMigration.Route
                     case "pickup":target.Id=fields.Require("item").AsString();target.UniqueKey=fields.Require("unique_key").AsString();target.Consumed=target.UniqueKey!=""&&Gameplay.State.Flag(target.UniqueKey);target.Pickup=new InventoryPickup(target.Id,target.Position,target.UniqueKey,Gameplay.State.MapId+"/"+target.Address){Collected=target.Consumed};break;
                     case "home_station":target.Id=fields.Require("obj").Require("role").AsString();if(World.RoutePresentation!=null&&World.RoutePresentation.Objects.TryGetValue("home-furniture/"+target.Id,out var furnishing))target.Position=FoundationCoordinates.ToGodot(furnishing.transform.position);target.Label=StationLabel(target.Id);break;
                     case "diepte_seal":target.Label=T("Zegel","Seal");break;
+                    case "living_object":case "regional_object":case "echo_trial":target.Id=ObjectKind(target);target.Label=AreaLabel(target);break;
                     case "coastal_workstation":target.Label=StorageTarget(target)?T("Havenopslag","Harbor storage"):T("Rafs havenwerkplaats","Raf’s harbor workshop");break;
                     case "tide_station":target.Label=T("Bestemmingen en reisroutes","Destinations and travel routes");break;
                     case "coast_dock":target.Label=T("Gratis overtocht","Free crossing");break;

@@ -270,6 +270,10 @@
       "path": "unity/Assets/BlueMapRoute/Runtime/Session"
     },
     {
+      "guid": "cf546d8fbcd90eb3bc894948a5bdc0be",
+      "path": "unity/Assets/BlueMapRoute/Runtime/Session/AreasRouteController.cs"
+    },
+    {
       "guid": "8d6a8bd67ae740b89c8bf7a7f40c9f17",
       "path": "unity/Assets/BlueMapRoute/Runtime/Session/CombatRouteController.cs"
     },
